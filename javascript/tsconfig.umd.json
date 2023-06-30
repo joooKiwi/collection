@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "UMD",
+    "target": "ES2022",
+
+    "outDir": "dist/universal module definition",
+  },
+  "include": [
+    "src",
+  ],
+}
