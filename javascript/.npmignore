@@ -1,0 +1,5 @@
+/.idea
+/coverage/**/*
+tsconfig*.json
+jest.config.ts
+/test/**/*
