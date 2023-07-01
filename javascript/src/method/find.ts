@@ -13,27 +13,27 @@ import type {Nullable, NullOr}                           from "../general type"
  * Get the first element found or <b>null</b> if nothing was found
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param callback The given predicate
+ * @param predicate The given predicate
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
  *
  * @extensionFunction
  */
-export function find<const T, const S extends T, >(collection: Nullable<CollectionHolder>, callback: RestrainedBooleanCallback<T, S>,): NullOr<S>
+export function find<const T, const S extends T, >(collection: Nullable<CollectionHolder>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Get the first element found or <b>null</b> if nothing was found
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param callback The given predicate
+ * @param predicate The given predicate
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
  *
  * @extensionFunction
  */
-export function find<const T, >(collection: Nullable<CollectionHolder>, callback: BooleanCallback<T>,): NullOr<T>
-export function find<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, callback: | BooleanCallback<T> | RestrainedBooleanCallback<T, S>,): NullOr<| T | S> {
+export function find<const T, >(collection: Nullable<CollectionHolder>, predicate: BooleanCallback<T>,): NullOr<T>
+export function find<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | BooleanCallback<T> | RestrainedBooleanCallback<T, S>,): NullOr<| T | S> {
     if (collection == null)
         return null
     if (collection.isEmpty)
@@ -43,7 +43,7 @@ export function find<const T, const S extends T, >(collection: Nullable<Collecti
     let index = -1
     while (++index < size) {
         const value = collection.get(index,)
-        if (callback(value, index,))
+        if (predicate(value, index,))
             return value
     }
     return null

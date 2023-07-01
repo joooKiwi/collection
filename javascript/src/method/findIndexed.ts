@@ -13,27 +13,27 @@ import type {Nullable, NullOr}                                         from "../
  * Get the first element found or <b>null</b> if nothing was found
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param callback The given predicate
+ * @param predicate The given predicate
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
  *
  * @extensionFunction
  */
-export function findIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder>, callback: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+export function findIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder>, predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Get the first element found or <b>null</b> if nothing was found
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param callback The given predicate
+ * @param predicate The given predicate
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
  *
  * @extensionFunction
  */
-export function findIndexed<const T, >(collection: Nullable<CollectionHolder>, callback: ReverseBooleanCallback<T>,): NullOr<T>
-export function findIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, callback: | ReverseBooleanCallback<T> | ReverseRestrainedBooleanCallback<T, S>,): NullOr<| T | S> {
+export function findIndexed<const T, >(collection: Nullable<CollectionHolder>, predicate: ReverseBooleanCallback<T>,): NullOr<T>
+export function findIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | ReverseBooleanCallback<T> | ReverseRestrainedBooleanCallback<T, S>,): NullOr<| T | S> {
     if (collection == null)
         return null
     if (collection.isEmpty)
@@ -43,7 +43,7 @@ export function findIndexed<const T, const S extends T, >(collection: Nullable<C
     let index = -1
     while (++index < size) {
         const value = collection.get(index,)
-        if (callback(index, value,))
+        if (predicate(index, value,))
             return value
     }
     return null

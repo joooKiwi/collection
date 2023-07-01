@@ -46,13 +46,13 @@ export function lastOrNull<const T, const S extends T, >(collection: Nullable<Co
  * @extensionFunction
  */
 export function lastOrNull<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-export function lastOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, callback?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+export function lastOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
     if (collection == null)
         return null
     if (collection.isEmpty)
         return null
-    if (callback != null)
-        return collection.findLast(callback,)
+    if (predicate != null)
+        return collection.findLast(predicate,)
 
     return collection.getOrNull(-1,)
 }

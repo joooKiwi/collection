@@ -34,10 +34,10 @@ export function any<const T, const COLLECTION extends CollectionHolder<T> = Coll
  * @extensionFunction
  */
 export function any<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
-export function any<const T, >(collection: Nullable<CollectionHolder<T>>, callback?: Nullable<BooleanCallback<T>>,): boolean {
+export function any<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,): boolean {
     if (collection == null)
         return false
-    if (callback == null)
+    if (predicate == null)
         return collection.isNotEmpty
     if (collection.isEmpty)
         return false
@@ -45,7 +45,7 @@ export function any<const T, >(collection: Nullable<CollectionHolder<T>>, callba
     const size = collection.size
     let index = -1
     while (++index < size)
-        if (callback(collection.get(index,), index,))
+        if (predicate(collection.get(index,), index,))
             return true
     return false
 }
