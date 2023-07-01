@@ -1,0 +1,34 @@
+/*
+ * Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ *
+ * This project is free to use.
+ * All the right is reserved to the author of this project.
+ */
+
+import type {CollectionHolder} from "./CollectionHolder"
+
+/** The general description of a simple {@link CollectionHolder} constructor */
+export interface CollectionHolderConstructor<T = unknown, > {
+
+    /**
+     * Create a new {@link CollectionHolder} from an {@link ReadonlyArray array}
+     *
+     * @param array The array to retrieve its values
+     */
+    new(array: readonly T[],): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder} from a {@link ReadonlySet set}
+     *
+     * @param set The set to retrieve its values
+     */
+    new(set: ReadonlySet<T>,): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder} from an {@link Iterable iterable}
+     *
+     * @param iterable The iterable to loop over its values
+     */
+    new(iterable: Iterable<T>,): CollectionHolder<T>
+
+}
