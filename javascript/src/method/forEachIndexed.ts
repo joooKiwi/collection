@@ -13,7 +13,7 @@ import type {IndexValueCallback} from "../CollectionHolder.types"
  * and return the {@link collection} afterwards
  *
  * @param collection The {@link CollectionHolder collection}
- * @param callback The callback for each element
+ * @param action The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
@@ -21,10 +21,10 @@ import type {IndexValueCallback} from "../CollectionHolder.types"
  *
  * @extensionFunction
  */
-export function forEachIndexed<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, callback: IndexValueCallback<T>,): COLLECTION {
+export function forEachIndexed<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
     const size = collection.size
     let index = -1
     while (++index < size)
-        callback(index, collection.get(index,),)
+        action(index, collection.get(index,),)
     return collection
 }
