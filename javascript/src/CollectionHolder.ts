@@ -220,6 +220,7 @@ export interface CollectionHolder<out T = unknown, > {
      * @param fromIndex The inclusive starting index
      * @param toIndex The exclusive ending index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item)
@@ -237,6 +238,7 @@ export interface CollectionHolder<out T = unknown, > {
      * @param fromIndex The inclusive starting index
      * @param toIndex The exclusive ending index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item)
@@ -255,6 +257,7 @@ export interface CollectionHolder<out T = unknown, > {
      * @param fromIndex The inclusive starting index
      * @param toIndex The exclusive ending index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
@@ -272,6 +275,7 @@ export interface CollectionHolder<out T = unknown, > {
      * @param fromIndex The inclusive starting index
      * @param toIndex The exclusive ending index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
@@ -290,6 +294,7 @@ export interface CollectionHolder<out T = unknown, > {
      * @param fromIndex The inclusive starting index
      * @param toIndex The exclusive ending index
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      *
@@ -306,6 +311,7 @@ export interface CollectionHolder<out T = unknown, > {
      * @param fromIndex The inclusive starting index
      * @param toIndex The exclusive ending index
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      *
@@ -323,6 +329,7 @@ export interface CollectionHolder<out T = unknown, > {
      * @param fromIndex The inclusive starting index
      * @param toIndex The exclusive ending index
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      *
@@ -339,6 +346,7 @@ export interface CollectionHolder<out T = unknown, > {
      * @param fromIndex The inclusive starting index
      * @param toIndex The exclusive ending index
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      *

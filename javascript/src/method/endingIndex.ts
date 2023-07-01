@@ -15,6 +15,7 @@ import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param toIndex The ending index (or {@link CollectionHolder.size size} by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
  *
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
@@ -26,6 +27,7 @@ export function endingIndex(collection: NonEmptyCollectionHolder, toIndex?: Null
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param toIndex The ending index (or {@link CollectionHolder.size size} by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
  *
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
@@ -45,8 +47,8 @@ export function endingIndex(collection: Nullable<CollectionHolder>, toIndex: Nul
     if (endingIndex < 0)
         endingIndex += collectionSize
     if (endingIndex < 0)
-        return 0
+        throw new RangeError(`The ending index "${toIndex}" is under 0 after calculation from "${collectionSize} - ${Math.abs(toIndex)}".`,)
     if (endingIndex > collectionSize)
-        return size
+        throw new RangeError(`The ending index "${toIndex}" is over the collection size "${collectionSize}".`,)
     return endingIndex
 }

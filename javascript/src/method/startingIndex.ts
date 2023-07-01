@@ -15,6 +15,7 @@ import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The starting index (or 0 by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
  *
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
@@ -26,6 +27,7 @@ export function startingIndex(collection: NonEmptyCollectionHolder, fromIndex?: 
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The starting index (or 0 by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
  *
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
@@ -43,10 +45,10 @@ export function startingIndex(collection: Nullable<CollectionHolder>, fromIndex:
 
     let startingIndex = fromIndex
     if (startingIndex > collectionSize)
-        return collectionSize
+        throw new RangeError(`The starting index "${fromIndex}" is over the collection size "${collectionSize}".`,)
     if (startingIndex < 0)
         startingIndex += collectionSize
     if (startingIndex < 0)
-        return 0
+        throw new RangeError(`The starting index "${fromIndex}" is under 0 after calculation from "${collectionSize} - ${Math.abs(fromIndex)}".`,)
     return startingIndex
 }
