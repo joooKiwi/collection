@@ -492,7 +492,7 @@ export interface CollectionHolder<out T = unknown, > {
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @returns {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+     * @returns {boolean} <b>true</b> only if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html Kotlin all()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All()
      */
