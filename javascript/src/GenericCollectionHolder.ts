@@ -101,6 +101,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             this.#isEmpty = false
             if (size == 1) {
                 const value = this[0] = reference[0]
+                this.#hasNull = value == null
                 this.#array = Object.freeze([value,],)
                 return
             }
@@ -127,6 +128,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             this.#isEmpty = false
             if (size == 1) {
                 const value = this[0] = reference[Symbol.iterator]().next().value
+                this.#hasNull = value == null
                 this.#array = Object.freeze([value,],)
                 return
             }
