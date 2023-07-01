@@ -41,6 +41,21 @@ export interface CollectionHolderConstructor<T = unknown, > {
 
 
     /**
+     * Create a new {@link CollectionHolder} from an {@link CollectionHolder}
+     *
+     * @param collectionHolder The collection holder to retrieve its values
+     */
+    new(collectionHolder: CollectionHolder<T>,): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder} from an {@link CollectionHolder} callback
+     *
+     * @param lateCollectionHolder The callback returning an {@link Iterable iterable} to retrieve its values
+     */
+    new(lateCollectionHolder: () => CollectionHolder<T>,): CollectionHolder<T>
+
+
+    /**
      * Create a new {@link CollectionHolder} from an {@link Iterable iterable}
      *
      * @param iterable The iterable to loop over its values

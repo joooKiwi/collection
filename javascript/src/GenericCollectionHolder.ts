@@ -33,6 +33,7 @@ import {indexOfFirst}        from "./method/indexOfFirst"
 import {indexOfFirstIndexed} from "./method/indexOfFirstIndexed"
 import {indexOfLast}         from "./method/indexOfLast"
 import {indexOfLastIndexed}  from "./method/indexOfLastIndexed"
+import {isCollectionHolder}  from "./method/isCollectionHolder"
 import {join}                from "./method/join"
 import {last}                from "./method/last"
 import {lastIndexOf}         from "./method/lastIndexOf"
@@ -80,6 +81,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public constructor(lateSet: () => ReadonlySet<T>,)
     public constructor(iterable: Iterable<T>,)
     public constructor(lateIterable: () => Iterable<T>,)
+    public constructor(collectionHolder: CollectionHolder<T>,)
+    public constructor(lateCollectionHolder: () => CollectionHolder<T>,)
     public constructor(reference: REFERENCE,)
     public constructor(lateReference: () => REFERENCE,)
     public constructor(reference: | REFERENCE | (() => REFERENCE),)
@@ -107,10 +110,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             }
 
             const array = new Array(size,)
-            this[0] = array[0] = reference[0]
-            this[size - 1] = array[size - 1] = reference[size - 1]
-            let index = size - 1
-            while (index-- > 1)
+            let index = size
+            while (index-- > 0)
                 this[index] = array[index] = reference[index]
             this.#array = Object.freeze(array,)
             return
@@ -139,6 +140,16 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             while (++index < size)
                 this[index] = array[index] = iterator.next().value
             this.#array = Object.freeze(array,)
+            return
+        }
+
+        if (isCollectionHolder<T>(reference)) {
+            const size = this.#size = reference.size
+            this.#isEmpty = reference.isEmpty
+            this.#array = reference.toArray()
+            let index = size
+            while (index-- > 0)
+                this[index] = reference[index]
             return
         }
 

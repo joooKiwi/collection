@@ -5,7 +5,9 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-import {EmptyCollectionHolder}   from "./EmptyCollectionHolder"
+import type {CollectionHolder} from "./CollectionHolder"
+
+import {EmptyCollectionHolder} from "./EmptyCollectionHolder"
 
 /** A simple class containing every field used by any {@link CollectionHolder} instances */
 export namespace CollectionConstants {
@@ -37,5 +39,31 @@ export namespace CollectionConstants {
      * @uniqueJavascriptVariable
      */
     export const COLLECTION_HOLDER_TO_STRING_TAG = "CollectionHolder"
+    /** Every method applicable to a {@link CollectionHolder} */
+    export const EVERY_COLLECTION_METHODS = Object.freeze([
+        "size", "length", "count",
+        "isEmpty", "isNotEmpty",
+        "hasNull", "includesNull", "containsNull",
+        "get", "getOrElse", "getOrNull", "at", "atOrElse", "atOrNull",
+        "indexOf", "lastIndexOf", "indexOfFirst", "indexOfFirstIndexed", "indexOfLast", "indexOfLastIndexed",
+        "first", "firstOrNull",
+        "last", "lastOrNull",
+        "all", "any", "none",
+        "hasOne", "includesOne", "containsOne", "hasAll", "includesAll", "containsAll",
+        "join",
+        "filter", "filterIndexed", "filterNot", "filterIndexedNot", "filterNotNull", "requireNoNulls",
+        "find", "findIndexed", "findLast", "findLastIndexed",
+        "map", "mapIndexed",
+        "forEach", "forEachIndexed",
+        Symbol.iterator, Symbol.toStringTag,
+        "objectValuesMap",
+        "toIterator",
+        "toArray", "toMutableArray",
+        "toSet", "toMutableSet",
+        "toWeakSet", "toMutableWeakSet",
+        "toMap", "toMutableMap",
+        "toReversed",
+        "toString", "toLocaleString",
+    ] as const satisfies readonly (keyof CollectionHolder | symbol)[],)
 
 }
