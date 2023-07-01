@@ -684,10 +684,11 @@ export interface CollectionHolder<out T = unknown, > {
     //#region -------------------- Join methods --------------------
 
     /**
-     * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
+     * Create a new {@link String} from every element in the current {@link CollectionHolder collection} using a {@link separator}
      * utilizing the given {@link prefix} and {@link postfix} if supplied.
      *
-     * Note that if the {@link collection} is huge, a {@link limit} can be specified followed by a {@link truncated} value.
+     * Note that if the current {@link CollectionHolder collection} is huge,
+     * a {@link limit} can be specified followed by a {@link truncated} value.
      *
      * @param separator The separator for the result ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
      * @param prefix The character before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX "["} by default)

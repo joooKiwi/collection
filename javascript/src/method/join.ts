@@ -15,7 +15,8 @@ import {CollectionConstants} from "../CollectionConstants"
  * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
  * utilizing the given {@link prefix} and {@link postfix} if supplied.
  *
- * Note that if the {@link collection} is huge, a {@link limit} can be specified followed by a {@link truncated} value.
+ * Note that if the {@link collection} is huge,
+ * a {@link limit} can be specified followed by a {@link truncated} value.
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param separator The separator for the result ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
