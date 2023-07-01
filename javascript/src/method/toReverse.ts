@@ -35,16 +35,18 @@ export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, 
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    const size = collection.size,
-        startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
-        endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
+    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<T>, () => {
+        const size = collection.size,
+            startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
+            endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
-    if (endingIndex < startingIndex)
-        throw new RangeError(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`,)
+        if (endingIndex < startingIndex)
+            throw new RangeError(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`,)
 
-    const newArray = [] as T[]
-    let index = endingIndex
-    while (--index >= startingIndex)
-        newArray.push(collection.get(index,),)
-    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<T>, newArray,)
+        const newArray = [] as T[]
+        let index = endingIndex
+        while (--index >= startingIndex)
+            newArray.push(collection.get(index,),)
+        return newArray
+    },)
 }

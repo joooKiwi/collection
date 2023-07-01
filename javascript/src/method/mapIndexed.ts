@@ -32,10 +32,12 @@ export function mapIndexed<const T, const U, >(collection: Nullable<CollectionHo
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    const size = collection.size,
-        array = new Array(size,)
-    let index = -1
-    while (++index < size)
-        array[index] = transform(index, collection.get(index,),)
-    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<U>, array,)
+    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<U>, () => {
+        const size = collection.size,
+            newArray = new Array(size,)
+        let index = -1
+        while (++index < size)
+            newArray[index] = transform(index, collection.get(index,),)
+        return newArray
+    },)
 }

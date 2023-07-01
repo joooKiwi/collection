@@ -32,10 +32,12 @@ export function map<const T, const U, >(collection: Nullable<CollectionHolder<T>
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    const size = collection.size,
-        array = new Array(size,)
-    let index = -1
-    while (++index < size)
-        array[index] = transform(collection.get(index,), index,)
-    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<U>, array,)
+    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<U>, () => {
+        const size = collection.size,
+            newArray = new Array(size,)
+        let index = -1
+        while (++index < size)
+            newArray[index] = transform(collection.get(index,), index,)
+        return newArray
+    },)
 }

@@ -76,12 +76,17 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(reference: readonly T[],)
-    public constructor(reference: ReadonlySet<T>,)
-    public constructor(reference: Iterable<T>,)
+    public constructor(array: readonly T[],)
+    public constructor(lateArray: () => readonly T[],)
+    public constructor(set: ReadonlySet<T>,)
+    public constructor(lateSet: () => ReadonlySet<T>,)
+    public constructor(iterable: Iterable<T>,)
+    public constructor(lateIterable: () => Iterable<T>,)
     public constructor(reference: REFERENCE,)
-    public constructor(reference: REFERENCE,) {
-        this.#reference = reference
+    public constructor(lateReference: () => REFERENCE,)
+    public constructor(reference: | REFERENCE | (() => REFERENCE),)
+    public constructor(reference: | REFERENCE | (() => REFERENCE),) {
+        reference = this.#reference = reference instanceof Function ? reference() : reference
 
         if (reference instanceof Array) {
             const size = this.#size = reference.length

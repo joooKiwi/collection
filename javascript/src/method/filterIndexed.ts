@@ -50,13 +50,15 @@ export function filterIndexed<const T, const S extends T, >(collection: Nullable
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    const newArray = [] as T[],
-        size = collection.size
-    let index = -1
-    while (++index < size) {
-        const value = collection.get(index,)
-        if (predicate(index, value,))
-            newArray.push(value,)
-    }
-    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<T>, newArray,)
+    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<T>, () => {
+        const newArray = [] as T[],
+            size = collection.size
+        let index = -1
+        while (++index < size) {
+            const value = collection.get(index,)
+            if (predicate(index, value,))
+                newArray.push(value,)
+        }
+        return newArray
+    },)
 }

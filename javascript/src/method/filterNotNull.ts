@@ -31,13 +31,15 @@ export function filterNotNull<const T, >(collection: Nullable<CollectionHolder<T
     if (!collection.hasNull)
         return collection as CollectionHolder<NonNullable<T>>
 
-    const newArray = [] as NonNullable<T>[],
-        size = collection.size
-    let index = -1
-    while (++index < size) {
-        const value = collection.get(index,)
-        if (value != null)
-            newArray.push(value,)
-    }
-    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<NonNullable<T>>, newArray,)
+    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<NonNullable<T>>, () => {
+        const newArray = [] as NonNullable<T>[],
+            size = collection.size
+        let index = -1
+        while (++index < size) {
+            const value = collection.get(index,)
+            if (value != null)
+                newArray.push(value,)
+        }
+        return newArray
+    },)
 }
