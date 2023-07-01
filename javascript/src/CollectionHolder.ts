@@ -19,7 +19,8 @@ import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexVal
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/ Kotlin Collection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable C# Enumerable
  */
-export interface CollectionHolder<out T = unknown, > {
+export interface CollectionHolder<out T = unknown, >
+    extends Iterable<T> {
 
     /**
      * Get the value at the index (without validating if it exists in the {@link CollectionHolder})
