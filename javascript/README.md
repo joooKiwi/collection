@@ -80,6 +80,7 @@ It can be separated in different categories.
  - `toString` & `toLocaleString`
 
 <span>4.</span> The **utility** methods _(not part of the `CollectionHolder`)_
+ - `isCollectionHolder`
  - `endingIndex`
  - `startingIndex`
  - `newInstance`
