@@ -133,9 +133,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
             const array = new Array(size,)
             const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-            this[0] = array[0] = iterator.next().value
-            let index = size
-            while (index-- > 0)
+            let index = -1
+            while (++index < size)
                 this[index] = array[index] = iterator.next().value
             this.#array = Object.freeze(array,)
             return
@@ -153,9 +152,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
         const array = []
         this.#isEmpty = false
-        this[0] = array[0] = value.value
-        value = iterator.next()
-        let size = 1
+        let size = 0
         while (!value.done) {
             this[size] = array[size] = value.value
             value = iterator.next()
