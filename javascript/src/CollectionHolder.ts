@@ -132,8 +132,9 @@ export interface CollectionHolder<out T = unknown, > {
 
 
     /**
-     * Get the element at the specified index in the {@link CollectionHolder collection}
-     * or the return value of the {@link defaultValue callback}
+     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
      *
      * @param index The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size}
@@ -147,8 +148,9 @@ export interface CollectionHolder<out T = unknown, > {
     getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
 
     /**
-     * Get the element at the specified index in the {@link CollectionHolder collection}
-     * or the return value of the {@link defaultValue callback}
+     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
      *
      * @param index The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
@@ -158,8 +160,9 @@ export interface CollectionHolder<out T = unknown, > {
     atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
 
     /**
-     * Get the element at the specified index in the {@link CollectionHolder collection}
-     * or the return value of the {@link defaultValue callback}
+     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
      *
      * @param index The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
@@ -173,8 +176,9 @@ export interface CollectionHolder<out T = unknown, > {
     getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
     /**
-     * Get the element at the specified index in the {@link CollectionHolder collection}
-     * or the return value of the {@link defaultValue callback}
+     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
      *
      * @param index The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
