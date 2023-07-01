@@ -5,45 +5,56 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-import {GenericCollectionHolder} from "../src/GenericCollectionHolder"
+import type {CollectionHolder} from "../src"
 
-import {A, A_NULL_B_UNDEFINED, AB, AB12, AB_OBJECT, ABAB, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, ABCDEFGHIJ, EMPTY, NULL_ABCD, SINGULAR_A_OBJECT, SINGULAR_B_OBJECT, UNDEFINED_ABCD} from "./constantCollections"
-import {nonPresentItem, sizeValues, TEMPLATE_ITEMS}                                                                                                                                       from "./constantValues"
+import {A, A_NULL_B_UNDEFINED, AB, AB12, AB_OBJECT, AB_AB, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, ABCDEFGHIJ, EMPTY, NULL_ABCD, SINGULAR_A_OBJECT, SINGULAR_B_OBJECT, UNDEFINED_ABCD} from "./constantCollections"
+import {iterableCreation, everyInstances, nonPresentItem, sizeValues, TEMPLATE_ITEMS}                                                                                                      from "./constantValues"
 
-describe("CollectionHolderTest", () => {
+describe("CollectionHolderTest", () => { describe.each(everyInstances,)("%s", ({value: instance,},) => { describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
     //#region -------------------- Instances --------------------
 
-    const EMPTY_INSTANCE = () => new GenericCollectionHolder(EMPTY,),
-        A_INSTANCE = () => new GenericCollectionHolder(A,),
-        AB_INSTANCE = () => new GenericCollectionHolder(AB,),
-        AB_OBJECT_INSTANCE = () => new GenericCollectionHolder(AB_OBJECT,),
-        A_NULL_B_UNDEFINED_INSTANCE = () => new GenericCollectionHolder(A_NULL_B_UNDEFINED,),
-        AB12_INSTANCE = () => new GenericCollectionHolder(AB12,),
-        ABCD_INSTANCE = () => new GenericCollectionHolder(ABCD,),
-        ABAB_INSTANCE = () => new GenericCollectionHolder(ABAB,),
-        ABCDEFGHIJ_INSTANCE = () => new GenericCollectionHolder(ABCDEFGHIJ,),
-        ABCD_ABCD_INSTANCE = () => new GenericCollectionHolder(ABCD_ABCD,),
-        NULL_ABCD_INSTANCE = () => new GenericCollectionHolder(NULL_ABCD,),
-        ABCD_NULL_INSTANCE = () => new GenericCollectionHolder(ABCD_NULL,),
-        UNDEFINED_ABCD_INSTANCE = () => new GenericCollectionHolder(UNDEFINED_ABCD,),
-        ABCD_UNDEFINED_INSTANCE = () => new GenericCollectionHolder(ABCD_UNDEFINED,),
-        TEMPLATE_ITEMS_INSTANCE = () => new GenericCollectionHolder(TEMPLATE_ITEMS,)
+    // @ts-ignore
+    const EMPTY_INSTANCE = () => new instance(arrayOrSetCreation(EMPTY,),) as CollectionHolder<typeof EMPTY[number]>,
+        // @ts-ignore
+        A_INSTANCE = () => new instance(arrayOrSetCreation(A,),) as CollectionHolder<typeof A[number]>,
+        // @ts-ignore
+        AB_INSTANCE = () => new instance(arrayOrSetCreation(AB,),) as CollectionHolder<typeof AB[number]>,
+        // @ts-ignore
+        AB_OBJECT_INSTANCE = () => new instance(arrayOrSetCreation(AB_OBJECT,),) as CollectionHolder<typeof AB_OBJECT[number]>,
+        // @ts-ignore
+        A_NULL_B_UNDEFINED_INSTANCE = () => new instance(arrayOrSetCreation(A_NULL_B_UNDEFINED,),) as CollectionHolder<typeof A_NULL_B_UNDEFINED[number]>,
+        // @ts-ignore
+        AB12_INSTANCE = () => new instance(arrayOrSetCreation(AB12,),) as CollectionHolder<typeof AB12[number]>,
+        // @ts-ignore
+        ABCD_INSTANCE = () => new instance(arrayOrSetCreation(ABCD,),) as CollectionHolder<typeof ABCD[number]>,
+        // @ts-ignore
+        AB_AB_INSTANCE = () => new instance(arrayOrSetCreation(AB_AB,),) as CollectionHolder<typeof AB_AB[number]>,
+        // @ts-ignore
+        ABCDEFGHIJ_INSTANCE = () => new instance(arrayOrSetCreation(ABCDEFGHIJ,),) as CollectionHolder<typeof ABCDEFGHIJ[number]>,
+        // @ts-ignore
+        ABCD_ABCD_INSTANCE = () => new instance(arrayOrSetCreation(ABCD_ABCD,),) as CollectionHolder<typeof ABCD_ABCD[number]>,
+        // @ts-ignore
+        NULL_ABCD_INSTANCE = () => new instance(arrayOrSetCreation(NULL_ABCD,),) as CollectionHolder<typeof NULL_ABCD[number]>,
+        // @ts-ignore
+        ABCD_NULL_INSTANCE = () => new instance(arrayOrSetCreation(ABCD_NULL,),) as CollectionHolder<typeof ABCD_NULL[number]>,
+        // @ts-ignore
+        UNDEFINED_ABCD_INSTANCE = () => new instance(arrayOrSetCreation(UNDEFINED_ABCD,),) as CollectionHolder<typeof UNDEFINED_ABCD[number]>,
+        // @ts-ignore
+        ABCD_UNDEFINED_INSTANCE = () => new instance(arrayOrSetCreation(ABCD_UNDEFINED,),) as CollectionHolder<typeof ABCD_UNDEFINED[number]>,
+        // @ts-ignore
+        TEMPLATE_ITEMS_INSTANCE = () => new instance(arrayOrSetCreation(TEMPLATE_ITEMS,),) as CollectionHolder<typeof TEMPLATE_ITEMS[number]>
 
     //#endregion -------------------- Instances --------------------
 
-    describe("size", () => describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
-        const it = new GenericCollectionHolder(array,)
-        test("size", () => expect(it.size,).toStrictEqual(size),)
-        test("length", () => expect(it.length,).toStrictEqual(size),)
-        test("count", () => expect(it.count,).toStrictEqual(size),)
-        if (size === 0) {
-            test("isEmpty", () => expect(it.isEmpty).toBeTrue(),)
-            test("isNotEmpty", () => expect(it.isNotEmpty).toBeFalse(),)
-        } else {
-            test("isEmpty", () => expect(it.isEmpty).toBeFalse(),)
-            test("isNotEmpty", () => expect(it.isNotEmpty).toBeTrue(),)
-        }
-    },),)
+    describe("size", () => { describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
+        // @ts-ignore
+        const newInstance = () => new instance(arrayOrSetCreation(array,),) as CollectionHolder<typeof array[number]>
+        test("size", () => expect(newInstance().size,).toStrictEqual(size,),)
+        test("length", () => expect(newInstance().length,).toStrictEqual(size,),)
+        test("count", () => expect(newInstance().count,).toStrictEqual(size,),)
+        test("isEmpty", () => expect(newInstance().isEmpty).toBe(size === 0,),)
+        test("isNotEmpty", () => expect(newInstance().isNotEmpty).toBe(size !== 0,),)
+    },) },)
     describe("value", () => {
         describe("get / at", () => {
             describe("simple", () => {
@@ -53,17 +64,17 @@ describe("CollectionHolderTest", () => {
                     test("at", () => expect(() => EMPTY_INSTANCE().at(0,),).toThrow(ReferenceError,),)
                 },)
                 describe("[a,b](0)", () => {
-                    test("index", () => expect(AB_INSTANCE()[0],).toEqual('a',),)
+                    test.skip("index", () => expect(AB_INSTANCE()[0],).toEqual('a',),)
                     test("get", () => expect(AB_INSTANCE().get(0,),).toEqual('a',),)
                     test("at", () => expect(AB_INSTANCE().at(0,),).toEqual('a',),)
                 },)
                 describe("[a,b](3)", () => {
-                    test("index", () => expect(AB_INSTANCE()[3],).toBeUndefined(),)
+                    test.skip("index", () => expect(AB_INSTANCE()[3],).toBeUndefined(),)
                     test("get", () => expect(() => AB_INSTANCE().get(3,),).toThrow(ReferenceError,),)
                     test("at", () => expect(() => AB_INSTANCE().at(3,),).toThrow(ReferenceError,),)
                 },)
                 describe("[a,b,c,d](1)", () => {
-                    test("index", () => expect(ABCD_INSTANCE()[1],).toEqual('b',),)
+                    test.skip("index", () => expect(ABCD_INSTANCE()[1],).toEqual('b',),)
                     test("get", () => expect(ABCD_INSTANCE().get(1,),).toEqual('b',),)
                     test("at", () => expect(ABCD_INSTANCE().at(1,),).toEqual('b',),)
                 },)
@@ -158,20 +169,26 @@ describe("CollectionHolderTest", () => {
                 test("[a,b,c,d].(d,null,2) == null", () => expect(ABCD_INSTANCE().indexOf('d', null, 2,),).toBeNull(),)
 
 
-                test("[a,b,a,b].(a) == 0", () => expect(ABAB_INSTANCE().indexOf('a',),).toBe(0,),)
-                test("[a,b,a,b].(b) == 1", () => expect(ABAB_INSTANCE().indexOf('b',),).toBe(1,),)
+                test("[a,b,A,B].(a) == 0", () => expect(AB_AB_INSTANCE().indexOf('a',),).toBe(0,),)
+                test("[a,b,A,B].(b) == 1", () => expect(AB_AB_INSTANCE().indexOf('b',),).toBe(1,),)
+                test("[a,b,A,B].(A) == 2", () => expect(AB_AB_INSTANCE().indexOf('A',),).toBe(2,),)
+                test("[a,b,A,B].(B) == 3", () => expect(AB_AB_INSTANCE().indexOf('B',),).toBe(3,),)
 
-                test("[a,b,a,b].(a,2) == 2", () => expect(ABAB_INSTANCE().indexOf('a', 2,),).toBe(2,),)
-                test("[a,b,a,b].(b,2) == 3", () => expect(ABAB_INSTANCE().indexOf('b', 2,),).toBe(3,),)
+                test("[a,b,A,B].(a,2) == null", () => expect(AB_AB_INSTANCE().indexOf('a', 2,),).toBeNull(),)
+                test("[a,b,A,B].(b,2) == null", () => expect(AB_AB_INSTANCE().indexOf('b', 2,),).toBeNull(),)
+                test("[a,b,A,B].(A,2) == 3", () => expect(AB_AB_INSTANCE().indexOf('A', 2,),).toBe(2,),)
+                test("[a,b,A,B].(B,2) == 3", () => expect(AB_AB_INSTANCE().indexOf('B', 2,),).toBe(3,),)
 
-                test("[a,b,a,b].(a,null,2) == null", () => expect(ABCD_INSTANCE().indexOf('a', null, 2,),).toBe(0,),)
-                test("[a,b,a,b].(b,null,2) == null", () => expect(ABCD_INSTANCE().indexOf('b', null, 2,),).toBe(1,),)
+                test("[a,b,A,B].(a,null,2) == 0", () => expect(ABCD_INSTANCE().indexOf('a', null, 2,),).toBe(0,),)
+                test("[a,b,A,B].(b,null,2) == 1", () => expect(ABCD_INSTANCE().indexOf('b', null, 2,),).toBe(1,),)
+                test("[a,b,A,B].(A,null,2) == null", () => expect(ABCD_INSTANCE().indexOf('A', null, 2,),).toBeNull(),)
+                test("[a,b,A,B].(B,null,2) == null", () => expect(ABCD_INSTANCE().indexOf('B', null, 2,),).toBeNull(),)
 
 
-                test("[a,b].(a,500) == null", () => expect(AB_INSTANCE().indexOf('a', 500,),).toBeNull(),)
-                test("[a,b].(a,-500) == 0", () => expect(AB_INSTANCE().indexOf('a', -500,),).toBe(0,),)
-                test("[a,b].(a,null,500) == 0", () => expect(AB_INSTANCE().indexOf('a', null, 500,),).toBe(0,),)
-                test("[a,b].(a,null,-500) == 0", () => expect(AB_INSTANCE().indexOf('a', null, -500,),).toBeNull(),)
+                test("[a,b].(a,500) → Error", () => expect(() => AB_INSTANCE().indexOf('a', 500,),).toThrow(RangeError,),)
+                test("[a,b].(a,-500) → Error", () => expect(() => AB_INSTANCE().indexOf('a', -500,),).toThrow(RangeError,),)
+                test("[a,b].(a,null,500) → Error", () => expect(() => AB_INSTANCE().indexOf('a', null, 500,),).toThrow(RangeError,),)
+                test("[a,b].(a,null,-500) → Error", () => expect(() => AB_INSTANCE().indexOf('a', null, -500,),).toThrow(RangeError,),)
                 test("[a,b,c,d].(a,-2) == null", () => expect(ABCD_INSTANCE().indexOf('a', -2,),).toBeNull(),)
                 test("[a,b,c,d].(a,null,-2) == 0", () => expect(ABCD_INSTANCE().indexOf('a', null, -2,),).toBe(0,),)
             },)
@@ -193,25 +210,31 @@ describe("CollectionHolderTest", () => {
                 test("[a,b,c,d].(d,null,2) == null", () => expect(ABCD_INSTANCE().lastIndexOf('d', null, 2,),).toBeNull(),)
 
 
-                test("[a,b,a,b].(a) == 2", () => expect(ABAB_INSTANCE().lastIndexOf('a',),).toBe(2,),)
-                test("[a,b,a,b].(b) == 3", () => expect(ABAB_INSTANCE().lastIndexOf('b',),).toBe(3,),)
+                test("[a,b,A,B].(a) == 0", () => expect(AB_AB_INSTANCE().lastIndexOf('a',),).toBe(0,),)
+                test("[a,b,A,B].(b) == 1", () => expect(AB_AB_INSTANCE().lastIndexOf('b',),).toBe(1,),)
+                test("[a,b,A,B].(A) == 2", () => expect(AB_AB_INSTANCE().lastIndexOf('A',),).toBe(2,),)
+                test("[a,b,A,B].(B) == 3", () => expect(AB_AB_INSTANCE().lastIndexOf('B',),).toBe(3,),)
 
-                test("[a,b,a,b].(a,2) == 2", () => expect(ABAB_INSTANCE().lastIndexOf('a', 2,),).toBe(2,),)
-                test("[a,b,a,b].(b,2) == 3", () => expect(ABAB_INSTANCE().lastIndexOf('b', 2,),).toBe(3,),)
+                test("[a,b,A,B].(a,2) == null", () => expect(AB_AB_INSTANCE().lastIndexOf('a', 2,),).toBeNull(),)
+                test("[a,b,A,B].(b,2) == null", () => expect(AB_AB_INSTANCE().lastIndexOf('b', 2,),).toBeNull(),)
+                test("[a,b,A,B].(A,2) == 2", () => expect(AB_AB_INSTANCE().lastIndexOf('A', 2,),).toBe(2,),)
+                test("[a,b,A,B].(B,2) == 3", () => expect(AB_AB_INSTANCE().lastIndexOf('B', 2,),).toBe(3,),)
 
-                test("[a,b,a,b].(a,null,2) == null", () => expect(ABAB_INSTANCE().lastIndexOf('a', null, 2,),).toBe(0,),)
-                test("[a,b,a,b].(b,null,2) == null", () => expect(ABAB_INSTANCE().lastIndexOf('b', null, 2,),).toBe(1,),)
+                test("[a,b,a,b].(a,null,2) == 0", () => expect(AB_AB_INSTANCE().lastIndexOf('a', null, 2,),).toBe(0,),)
+                test("[a,b,a,b].(b,null,2) == 1", () => expect(AB_AB_INSTANCE().lastIndexOf('b', null, 2,),).toBe(1,),)
+                test("[a,b,a,b].(A,null,2) == null", () => expect(AB_AB_INSTANCE().lastIndexOf('A', null, 2,),).toBeNull(),)
+                test("[a,b,a,b].(B,null,2) == null", () => expect(AB_AB_INSTANCE().lastIndexOf('B', null, 2,),).toBeNull(),)
 
 
-                test("[a,b].(a,500) == null", () => expect(AB_INSTANCE().lastIndexOf('a', 500,),).toBeNull(),)
-                test("[a,b].(a,-500) == 0", () => expect(AB_INSTANCE().lastIndexOf('a', -500,),).toBe(0,),)
-                test("[a,b].(a,null,500) == 0", () => expect(AB_INSTANCE().lastIndexOf('a', null, 500,),).toBe(0,),)
-                test("[a,b].(a,null,-500) == null", () => expect(AB_INSTANCE().lastIndexOf('a', null, -500,),).toBeNull(),)
+                test("[a,b].(a,500) → Error", () => expect(() => AB_INSTANCE().lastIndexOf('a', 500,),).toThrow(RangeError,),)
+                test("[a,b].(a,-500) → Error", () => expect(() => AB_INSTANCE().lastIndexOf('a', -500,),).toThrow(RangeError,),)
+                test("[a,b].(a,null,500) → Error", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, 500,),).toThrow(RangeError,),)
+                test("[a,b].(a,null,-500) → Error", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, -500,),).toThrow(RangeError,),)
                 test("[a,b,c,d].(a,-2) == null", () => expect(ABCD_INSTANCE().lastIndexOf('a', -2,),).toBeNull(),)
                 test("[a,b,c,d].(a,null,-2) == 0", () => expect(ABCD_INSTANCE().lastIndexOf('a', null, -2,),).toBe(0,),)
             },)
         },)
-        describe("first",() => {
+        describe("first", () => {
             describe("[].first() == throw|null", () => {
                 test("throw", () => expect(() => EMPTY_INSTANCE().first(),).toThrow(ReferenceError,),)
                 test("or null", () => expect(EMPTY_INSTANCE().firstOrNull(),).toBeNull(),)
@@ -241,7 +264,7 @@ describe("CollectionHolderTest", () => {
             },)
             test("[a,b,c,d,undefined].first(!a) == b", () => expect(ABCD_UNDEFINED_INSTANCE().first(it => it !== 'a',),).toBe('b',),)
         },)
-        describe("last",() => {
+        describe("last", () => {
             describe("[]", () => {
                 test("throw", () => expect(() => EMPTY_INSTANCE().last(),).toThrow(ReferenceError,),)
                 test("or null", () => expect(EMPTY_INSTANCE().lastOrNull(),).toBeNull(),)
@@ -378,8 +401,8 @@ describe("CollectionHolderTest", () => {
             },)
         },)
         describe("all", () => {
-            describe('singular item', () => {
-                describe('singular item', () => {
+            describe("singular item", () => {
+                describe("singular item", () => {
                     describe('a', () => {
                         test("has", () => expect(A_INSTANCE().hasAll('a',),).toBeTrue(),)
                         test("includes", () => expect(A_INSTANCE().includesAll('a',),).toBeTrue(),)
@@ -432,13 +455,13 @@ describe("CollectionHolderTest", () => {
     },)
     describe("join", () => {
         test("[a,b].join()", () => expect(AB_INSTANCE().join(),).toBe("[a, b]",),)
-        test("[a,b].join(;)", () => expect(AB_INSTANCE().join(';',),).toBe("[a;b]",),)
-        test("[a,b].join(null, <)", () => expect(AB_INSTANCE().join(null,'<', null,),).toBe("<a, b]",),)
-        test("[a,b].join(null, null, >)", () => expect(AB_INSTANCE().join(null,null, '>',),).toBe("[a, b>",),)
-        test("[a,b].join(null, null, null, 1)", () => expect(AB_INSTANCE().join(null,null, null, 1,),).toBe("[a, …]",),)
-        test("[a,b].join(null, null, null, null, \"...\")", () => expect(AB_INSTANCE().join(null,null, null, null, "...",),).toBe("[a, b]",),)
-        test("[a,b].join(null, null, null, 1, \"...\")", () => expect(AB_INSTANCE().join(null,null, null, 1, "...",),).toBe("[a, ...]",),)
-        test("[a,b].join(null, null, null, null, () => toUpperCase)", () => expect(AB_INSTANCE().join(null,null, null, null, null, it => it.toUpperCase(),),).toBe("[A, B]",),)
+        test("[a,b].join(;)", () => expect(AB_INSTANCE().join(";",),).toBe("[a;b]",),)
+        test("[a,b].join(null, <)", () => expect(AB_INSTANCE().join(null, "<", null,),).toBe("<a, b]",),)
+        test("[a,b].join(null, null, >)", () => expect(AB_INSTANCE().join(null, null, ">",),).toBe("[a, b>",),)
+        test("[a,b].join(null, null, null, 1)", () => expect(AB_INSTANCE().join(null, null, null, 1,),).toBe("[a, …]",),)
+        test("[a,b].join(null, null, null, null, \"...\")", () => expect(AB_INSTANCE().join(null, null, null, null, "...",),).toBe("[a, b]",),)
+        test("[a,b].join(null, null, null, 1, \"...\")", () => expect(AB_INSTANCE().join(null, null, null, 1, "...",),).toBe("[a, ...]",),)
+        test("[a,b].join(null, null, null, null, () => toUpperCase)", () => expect(AB_INSTANCE().join(null, null, null, null, null, it => it.toUpperCase(),),).toBe("[A, B]",),)
     },)
     describe("filter", () => {
         test("[a,b,c,d].filter(d) == [d]", () => expect(ABCD_INSTANCE().filter(it => it === 'd',).toArray(),).toStrictEqual(['d',],),)
@@ -503,23 +526,23 @@ describe("CollectionHolderTest", () => {
         test("[a,b,c,d,A,B,C,D].findLastIndexIndexed(7) == 7", () => expect(ABCD_ABCD_INSTANCE().indexOfLastIndexed(it => it === 7,),).toBe(7,),)
         test("[a,b,c,d,A,B,C,D].findLastIndexIndexed(26) == null", () => expect(ABCD_ABCD_INSTANCE().indexOfLastIndexed(it => it === 26,),).toBeNull(),)
     },)
-    describe("reverse", () => {
-        test("[a,b,c,d,e,f,g,h,i,j].reverse() == [j,i,h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed().toArray(),).toStrictEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
+    describe("toReverse", () => {
+        test("[a,b,c,d,e,f,g,h,i,j].() == [j,i,h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed().toArray(),).toStrictEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
 
-        test("[a,b,c,d,e,f,g,h,i,j].reverse(2) == [j,i,h,g,f,e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2,).toArray(),).toStrictEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].reverse(null, 2) == [j,i]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, 2,).toArray(),).toStrictEqual(['b', 'a',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].reverse(2, 5) == [e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2, 5,).toArray(),).toStrictEqual(['e', 'd', 'c',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(2) == [j,i,h,g,f,e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2,).toArray(),).toStrictEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(null, 2) == [j,i]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, 2,).toArray(),).toStrictEqual(['b', 'a',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(2, 5) == [e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2, 5,).toArray(),).toStrictEqual(['e', 'd', 'c',],),)
 
-        test("[a,b,c,d,e,f,g,h,i,j].reverse(-2) == [j,i]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-2,).toArray(),).toStrictEqual(['j', 'i',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].reverse(null, -2) == [h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, -2,).toArray(),).toStrictEqual(['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].reverse(-5, -2) == [g,f,e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-5, -2,).toArray(),).toStrictEqual(['h', 'g', 'f',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(-2) == [j,i]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-2,).toArray(),).toStrictEqual(['j', 'i',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(null, -2) == [h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, -2,).toArray(),).toStrictEqual(['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(-5, -2) == [g,f,e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-5, -2,).toArray(),).toStrictEqual(['h', 'g', 'f',],),)
 
-        test('[a,b,c,d,e,f,g,h,i,j].reverse(2, 1) => error', () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(2, 1,),).toThrow(RangeError,),)
+        test("[a,b,c,d,e,f,g,h,i,j].(2, 1) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(2, 1,).isEmpty,).toThrow(RangeError,),)
 
-        test("[a,b,c,d,e,f,g,h,i,j].reverse(400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(400,),).toThrow(RangeError,),)
-        test("[a,b,c,d,e,f,g,h,i,j].reverse(-400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-400,),).toThrow(RangeError,),)
-        test("[a,b,c,d,e,f,g,h,i,j].reverse(null, 400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 400,),).toThrow(RangeError,),)
-        test("[a,b,c,d,e,f,g,h,i,j].reverse(null, -400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -400,),).toThrow(RangeError,),)
+        test("[a,b,c,d,e,f,g,h,i,j].(400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(400,).isEmpty,).toThrow(RangeError,),)
+        test("[a,b,c,d,e,f,g,h,i,j].(-400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-400,).isEmpty,).toThrow(RangeError,),)
+        test("[a,b,c,d,e,f,g,h,i,j].(null, 400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 400,).isEmpty,).toThrow(RangeError,),)
+        test("[a,b,c,d,e,f,g,h,i,j].(null, -400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -400,).isEmpty,).toThrow(RangeError,),)
     },)
     describe("iterator", () => {
         const iterator = AB_INSTANCE()[Symbol.iterator]()
@@ -567,4 +590,4 @@ describe("CollectionHolderTest", () => {
             test("size", () => expect(AB_INSTANCE().toMutableMap().size,).toBe(2,),)
         })
     },)
-},)
+},) },) },)

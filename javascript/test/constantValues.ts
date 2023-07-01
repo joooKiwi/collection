@@ -5,6 +5,9 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
+import {GenericCollectionHolder}     from "../src/GenericCollectionHolder"
+import {LazyGenericCollectionHolder} from "../src/LazyGenericCollectionHolder"
+
 import {Holder} from "./Holder"
 
 export const sizeValues = () => [
@@ -17,4 +20,15 @@ export const sizeValues = () => [
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j',
         true, false,
     ] as const,
+    everyInstances = [
+        new Holder(GenericCollectionHolder, GenericCollectionHolder.name,),
+        new Holder(LazyGenericCollectionHolder, LazyGenericCollectionHolder.name,),
+    ] as const,
+    iterableCreation = [
+        new Holder(<T>(iterable:Iterable<T>,) => Array.from(iterable,), "array",),
+        new Holder(<T>(iterable: Iterable<T>,) => new Set(iterable,), "set",),
+        new Holder(<T>(iterable: Iterable<T>,) => iterable[Symbol.iterator]() as IterableIterator<T>, "iterable",),
+        new Holder(<T>(iterable: Iterable<T>,) => new GenericCollectionHolder(iterable,), "generic collection holder",),
+        new Holder(<T>(iterable: Iterable<T>,) => new LazyGenericCollectionHolder(iterable,), "lazy generic collection holder",),
+    ],
     nonPresentItem = Symbol()
