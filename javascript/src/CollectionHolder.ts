@@ -112,7 +112,7 @@ export interface CollectionHolder<out T = unknown, > {
      * @param index The index to retrieve a value
      *
      * @canReceiveNegativeValue
-     * @throws {ReferenceError} The index calculated is over the {@link size}
+     * @throws {ReferenceError} The index calculated is under 0 or over the {@link size} (after calculation)
      * @see ReadonlyArray.at
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html Kotlin get(index)
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/element-at.html Kotlin elementAt(index)
