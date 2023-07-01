@@ -85,7 +85,8 @@ It can be separated in different categories.
  - `newInstance`
 
 ---
-Almost every method is present in the `src/methods` at the exception of `get(index)`
+Almost every method is present in the `src/methods` at the exception of
+`get(index)`, `getOrNull(index)` and `getOrElse(index,defaultValue)`
 that is handled differently based on the type of instance.
 
 The non-implemented methods are `size` (with its alias `length` & `count`)

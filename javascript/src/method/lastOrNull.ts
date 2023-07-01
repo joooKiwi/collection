@@ -9,8 +9,6 @@ import type {Nullable, NullOr}                           from "../general type"
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 
-import {getOrNull} from "./getOrNull"
-
 /**
  * Get the last element in the current {@link collection}
  * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -56,5 +54,5 @@ export function lastOrNull<const T, const S extends T, >(collection: Nullable<Co
     if (callback != null)
         return collection.findLast(callback,)
 
-    return getOrNull(collection, -1,)
+    return collection.getOrNull(-1,)
 }

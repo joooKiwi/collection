@@ -25,8 +25,6 @@ import {first}               from "./method/first"
 import {firstOrNull}         from "./method/firstOrNull"
 import {forEach}             from "./method/forEach"
 import {forEachIndexed}      from "./method/forEachIndexed"
-import {getOrElse}           from "./method/getOrElse"
-import {getOrNull}           from "./method/getOrNull"
 import {hasAll}              from "./method/hasAll"
 import {hasNull}             from "./method/hasNull"
 import {hasOne}              from "./method/hasOne"
@@ -86,6 +84,9 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public constructor(lateReference: () => REFERENCE,)
     public constructor(reference: | REFERENCE | (() => REFERENCE),)
     public constructor(reference: | REFERENCE | (() => REFERENCE),) {
+        // README: The eager instantiation has some weird shenanigan in order to keep its laziness nature.
+        //         Also, in order to be efficient, there is some duplicate code in the constructor.
+
         reference = this.#reference = reference instanceof Function ? reference() : reference
 
         if (reference instanceof Array) {
@@ -230,9 +231,9 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
         const size = this.size,
             indexToRetrieve = index < 0 ? size + index : index
         if (indexToRetrieve < 0)
-            throw new ReferenceError(`The index ${index}${index === indexToRetrieve ? "" : ` (${indexToRetrieve} after calculation)`} is under 0.`,)
+            throw new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is under 0.`,)
         if (indexToRetrieve > size)
-            throw new ReferenceError(`The index ${index}${index === indexToRetrieve ? "" : ` (${indexToRetrieve} after calculation)`} is over the size of the collection (${size}).`,)
+            throw new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is over the size of the collection (${size}).`,)
         return this[indexToRetrieve] as T
     }
 
@@ -244,7 +245,16 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
-        return getOrElse(this, index, defaultValue,)
+        if (this.isEmpty)
+            return defaultValue(index < 0 ? this.size + index : index,)
+
+        const size = this.size,
+            indexToRetrieve = index < 0 ? size + index : index
+        if (indexToRetrieve < 0)
+            return defaultValue(indexToRetrieve,)
+        if (indexToRetrieve > size)
+            return defaultValue(indexToRetrieve,)
+        return this.get(indexToRetrieve,)
     }
 
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
@@ -255,7 +265,15 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
 
     public getOrNull(index: number,): NullOr<T> {
-        return getOrNull(this, index,)
+        if (this.isEmpty)
+            return null
+        const size = this.size,
+            indexToRetrieve = index < 0 ? size + index : index
+        if (indexToRetrieve < 0)
+            return null
+        if (indexToRetrieve > size)
+            return null
+        return this[indexToRetrieve] as T
     }
 
     public atOrNull(index: number,): NullOr<T> {

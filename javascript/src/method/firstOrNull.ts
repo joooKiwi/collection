@@ -9,8 +9,6 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {Nullable, NullOr}                           from "../general type"
 
-import {getOrNull} from "./getOrNull"
-
 /**
  * Get the first element in the {@link collection}
  * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -56,5 +54,5 @@ export function firstOrNull<const T, const S extends T, >(collection: Nullable<C
     if (predicate != null)
         return collection.find(predicate,)
 
-    return getOrNull(collection, 0,) as NullOr<T>
+    return collection.getOrNull(0,)
 }
