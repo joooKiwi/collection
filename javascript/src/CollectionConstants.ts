@@ -22,16 +22,16 @@ export namespace CollectionConstants {
     export const EMPTY_MAP = Object.freeze(new Map<never, never>(),)
     export const EMPTY_COLLECTION_HOLDER = Object.freeze(EmptyCollectionHolder.get,) as EmptyCollectionHolder
     /** A simple empty {@link String} */
-    export const EMPTY_STRING = Object.freeze("",) as ""
+    export const EMPTY_STRING = Object.freeze('',) as ''
 
     /** The default value for the separator {@link String string} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
     export const DEFAULT_JOIN_SEPARATOR = ", "
     /** The default value for the prefix {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
-    export const DEFAULT_JOIN_PREFIX = "["
+    export const DEFAULT_JOIN_PREFIX = '['
     /** The default value for the truncated {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
-    export const DEFAULT_JOIN_TRUNCATED = "…"
+    export const DEFAULT_JOIN_TRUNCATED = '…'
     /** The default value for the postfix {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
-    export const DEFAULT_JOIN_POSTFIX = "]"
+    export const DEFAULT_JOIN_POSTFIX = ']'
 
     /**
      * The simple {@link Symbol.toStringTag} of an {@link CollectionHolder}
