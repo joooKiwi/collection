@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Javascript implementation of a collection based on Array (from Javascript), Set (from Javascript), List (from Java/Kotlin) and Enumerable (from C#)",
 
   "scripts": {
@@ -118,7 +118,7 @@
   "author": "JóôòKiwi",
   "license": "MIT",
   "dependencies": {
-    "@joookiwi/lazy": "^1.0.0"
+    "@joookiwi/lazy": "^1.0.1"
   },
   "devDependencies": {
     "@types/jest": "^29.5.2",
