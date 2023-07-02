@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "module": "AMD",
+    "target": "ES2022",
+
+    "outFile": "dist/asynchronous module definition/index.js",
+  },
+  "include": [
+    "src",
+  ],
+}

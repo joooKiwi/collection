@@ -1,0 +1,32 @@
+/******************************************************************************
+ * Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi                             *
+ *                                                                            *
+ * This project is free to use.                                               *
+ * All the right is reserved to the author of this project.                   *
+ ******************************************************************************/
+
+import type {Nullable}         from "../general type"
+import type {CollectionHolder} from "../CollectionHolder"
+
+import {CollectionConstants} from "../CollectionConstants"
+
+/**
+ * Convert the {@link collection} to an {@link ReadonlySet set}
+ *
+ * @param collection The {@link CollectionHolder} to convert
+ *
+ * @extensionFunction
+ */
+export function toSet<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlySet<T> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_SET
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_SET
+
+    const set = new Set<T>(),
+        size = collection.size
+    let index = -1
+    while (++index < size)
+        set.add(collection.get(index,),)
+    return Object.freeze(set,)
+}
