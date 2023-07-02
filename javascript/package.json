@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Javascript implementation of a collection based on Array (from Javascript), Set (from Javascript), List (from Java/Kotlin) and Enumerable (from C#)",
 
   "scripts": {
@@ -98,10 +98,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joooKiwi/lazy.git"
+    "url": "git+https://github.com/joooKiwi/collection.git"
   },
   "bugs": {
-    "url": "https://github.com/joooKiwi/lazy/issues"
+    "url": "https://github.com/joooKiwi/collection/issues"
   },
 
   "keywords": [
