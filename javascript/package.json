@@ -1,7 +1,7 @@
 {
   "name": "@joookiwi/collection",
-  "version": "0.1.0",
-  "description": "A Javascript implementation of the Kotlin lazy",
+  "version": "1.0.0",
+  "description": "A Javascript implementation of a collection based on Array (from Javascript), Set (from Javascript), List (from Java/Kotlin) and Enumerable (from C#)",
 
   "scripts": {
     "prebuild-all": "del-cli dist/",
