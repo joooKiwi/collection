@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Javascript implementation of a collection based on Array (from Javascript), Set (from Javascript), List (from Java/Kotlin) and Enumerable (from C#)",
 
   "scripts": {
