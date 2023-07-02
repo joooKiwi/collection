@@ -98,10 +98,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joooKiwi/lazy.git"
+    "url": "git+https://github.com/joooKiwi/collection.git"
   },
   "bugs": {
-    "url": "https://github.com/joooKiwi/lazy/issues"
+    "url": "https://github.com/joooKiwi/collection/issues"
   },
 
   "keywords": [
