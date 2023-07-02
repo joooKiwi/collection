@@ -2,11 +2,8 @@
 
 ## Table of content
 * [Installation](#installation)
-* [Publication location](#publication-location)
 * [Usage](#usage)
-* [Related projects](#related-projects)
 * [Contribution](#contribution)
-* [Version history](#version-history)
 
 The implementation originated from the [@joooKiwi/enumeration](https://github.com/joooKiwi/enumeration)
 and is now a standalone implementation.
@@ -31,19 +28,6 @@ npm i -S @joookiwi/lazy
 npm install --save-dev @joookiwi/collection
 npm i -D @joookiwi/lazy
 ```
-
-## Publication location
-This project has only the Javascript / Typescript version uploaded.
-
-But other languages will have different features based on how they can handle it.
-
-| Language                  |                               Published                                |
-|:--------------------------|:----------------------------------------------------------------------:|
-| Javascript<br/>Typescript | [Published to npm](https://www.npmjs.com/package/@joookiwi/collection) |
-| Java                      |                                 Maven                                  |
-| Kotlin                    |                                 Maven                                  |
-| PHP                       |                                Composer                                |
-| C#                        |                                 Nugget                                 |
 
 ## Usage
 
@@ -114,21 +98,7 @@ and `isEmpty` with its inverse `isNotEmpty`.
 The alias methods are not part of the extension function.
 It includes `includesNull`, `containsNull`, `atOrElse`, `atOrDefault`,
 `includesOne`, `containsOne`, `includesAll` & `containsAll`.
-
-## Related projects
-
-Here is a list of the related projects made by me
- - lazy [GitHub](https://github.com/joooKiwi/lazy) / [NPM](https://www.npmjs.com/package/@joookiwi/enumerable)
- - enumeration [GitHub](https://github.com/joooKiwi/enumeration) / [NPM](https://www.npmjs.com/package/@joookiwi/lazy)
-
 ## Contribution
 You can contribute to great simple packages.
 All with similar behaviour across different languages (like Java, Kotlin, C# and PHP).
 It can be done via my [GitHub sponsor](https://github.com/sponsors/joooKiwi).
-
-## Version history
-
-| JS/TS | Date           | Quick note                                                                                                    |
-|-------|----------------|:--------------------------------------------------------------------------------------------------------------|
-| 1.0.0 | July 1st, 2023 | The first version<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project |
-
