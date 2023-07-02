@@ -996,8 +996,9 @@ export interface CollectionHolder<out T = unknown, >
      * Give an output for the call from {@link ObjectConstructor.toString.call} [object CollectionHolder] instead of [object Object]
      *
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag
+     * @readonly
      */
-    readonly [Symbol.toStringTag]: CollectionHolderName
+    [Symbol.toStringTag]: CollectionHolderName
 
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
