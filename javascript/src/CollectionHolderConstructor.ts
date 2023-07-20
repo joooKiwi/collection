@@ -50,7 +50,7 @@ export interface CollectionHolderConstructor<T = unknown, > {
     /**
      * Create a new {@link CollectionHolder} from an {@link CollectionHolder} callback
      *
-     * @param lateCollectionHolder The callback returning an {@link Iterable iterable} to retrieve its values
+     * @param lateCollectionHolder The callback returning a {@link CollectionHolder collection} to retrieve its values
      */
     new(lateCollectionHolder: () => CollectionHolder<T>,): CollectionHolder<T>
 
