@@ -10,6 +10,8 @@ import type {CollectionHolder} from "./CollectionHolder"
 /** The general description of a simple {@link CollectionHolder} constructor */
 export interface CollectionHolderConstructor<T = unknown, > {
 
+    //#region -------------------- new(array) --------------------
+
     /**
      * Create a new {@link CollectionHolder} from an {@link ReadonlyArray array}
      *
@@ -24,6 +26,8 @@ export interface CollectionHolderConstructor<T = unknown, > {
      */
     new(lateArray: () => readonly T[],): CollectionHolder<T>
 
+    //#endregion -------------------- new(array) --------------------
+    //#region -------------------- new(set) --------------------
 
     /**
      * Create a new {@link CollectionHolder} from a {@link ReadonlySet set}
@@ -39,6 +43,8 @@ export interface CollectionHolderConstructor<T = unknown, > {
      */
     new(lateSet: () => ReadonlySet<T>,): CollectionHolder<T>
 
+    //#endregion -------------------- new(set) --------------------
+    //#region -------------------- new(collection) --------------------
 
     /**
      * Create a new {@link CollectionHolder} from an {@link CollectionHolder}
@@ -54,6 +60,8 @@ export interface CollectionHolderConstructor<T = unknown, > {
      */
     new(lateCollectionHolder: () => CollectionHolder<T>,): CollectionHolder<T>
 
+    //#endregion -------------------- new(collection) --------------------
+    //#region -------------------- new(iterable) --------------------
 
     /**
      * Create a new {@link CollectionHolder} from an {@link Iterable iterable}
@@ -75,5 +83,7 @@ export interface CollectionHolderConstructor<T = unknown, > {
      * @param iterable The callback returning an {@link Iterable iterable} or the {@link Iterable iterable} itself to loop over its values
      */
     new(iterable: | Iterable<T> | (() => Iterable<T>),): CollectionHolder<T>
+
+    //#endregion -------------------- new(iterable) --------------------
 
 }
