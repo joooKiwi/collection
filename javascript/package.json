@@ -29,8 +29,7 @@
   },
 
   "directories": {
-    "example": "./example",
-    "lib": "./src/util/enumerable",
+    "lib": "./src",
     "test": "./test"
   },
   "main": "./dist/common javascript/index.js",
