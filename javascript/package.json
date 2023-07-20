@@ -13,8 +13,7 @@
     "build-types": "tsc --project tsconfig.types.json",
 
     "test": "jest",
-    "test-initiazed": "jest --testNamePattern=InitializedLazyTest",
-    "test-implementation": "jest --testNamePattern=LazyImplementationTest",
+    "test-collection": "jest --testNamePattern=CollectionHolderTest",
 
     "test-pack":    "npm pack --dry-run",
     "test-publish": "npm publish --@access=public --dry-run",
