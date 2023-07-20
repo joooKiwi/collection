@@ -20,13 +20,13 @@ to implement almost everything that the other languages have (if it is possible)
 ## Installation
 ```
 npm install @joookiwi/collection
-npm i @joookiwi/lazy
+npm i @joookiwi/collection
 
 npm install --save @joookiwi/collection
-npm i -S @joookiwi/lazy
+npm i -S @joookiwi/collection
 
 npm install --save-dev @joookiwi/collection
-npm i -D @joookiwi/lazy
+npm i -D @joookiwi/collection
 ```
 
 ## Usage
