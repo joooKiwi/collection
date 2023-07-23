@@ -38,4 +38,3 @@ export type ObjectOf<T, > =
     | (T extends undefined ? (& {} & { valueOf(): {}, }) : never)
     | (T extends symbol ? (& Symbol & { valueOf(): T, }) : never)
     | (& T & object & { valueOf(): T, })
-
