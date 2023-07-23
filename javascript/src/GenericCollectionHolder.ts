@@ -53,6 +53,17 @@ import {toMap}               from "./method/toMap"
 import {toReverse}           from "./method/toReverse"
 import {toWeakSet}           from "./method/toWeakSet"
 
+/**
+ * A simple {@link CollectionHolder} having the values eagerly retrieved.
+ *
+ * Meaning that every value is retrieved during the construction,
+ * and it will never change after the initialization.
+ *
+ * But it does not make it {@link Object.isFrozen frozen}
+ *
+ * @see LazyGenericCollectionHolder
+ * @see EmptyCollectionHolder
+ */
 export class GenericCollectionHolder<const T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, >
     implements CollectionHolder<T> {
 

@@ -10,6 +10,7 @@ import type {CollectionHolder} from "../CollectionHolder"
 import {AbstractCollectionHandler} from "./AbstractCollection.handler"
 import {ValueHolder}               from "./ValueHolder"
 
+/** A simple implementation of a {@link CollectionHandler} for a {@link CollectionHolder} */
 export class CollectionCollectionHandler<out T = unknown, const REFERENCE extends CollectionHolder<T> = CollectionHolder<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 

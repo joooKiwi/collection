@@ -12,6 +12,13 @@ import type {Nullable, NumberOrNumberInString}                                  
 
 import {CollectionConstants} from "./CollectionConstants"
 
+/**
+ * A simple {@link CollectionHolder} with no values (as a singleton instance)
+ *
+ * @see GenericCollectionHolder
+ * @see LazyGenericCollectionHolder
+ * @singleton
+ */
 export class EmptyCollectionHolder
     implements CollectionHolder<never> {
 

@@ -68,6 +68,8 @@ import {isCollectionHolder}          from "./method/isCollectionHolder"
 /**
  * A simple {@link CollectionHolder} having the values associated to it, but lazily retrieved.
  *
+ * @see GenericCollectionHolder
+ * @see EmptyCollectionHolder
  * @beta
  */
 export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, >
