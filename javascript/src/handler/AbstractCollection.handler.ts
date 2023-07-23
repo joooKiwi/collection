@@ -10,7 +10,7 @@ import type {CollectionHandler} from "./Collection.handler"
 import type {ValueHolder}       from "./ValueHolder"
 
 export abstract class AbstractCollectionHandler<out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
-    implements CollectionHandler<T, REFERENCE> {
+    implements CollectionHandler<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -29,7 +29,7 @@ export abstract class AbstractCollectionHandler<out T = unknown, const REFERENCE
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter & setter methods --------------------
 
-    public get reference(): REFERENCE {
+    protected get _reference(): REFERENCE {
         return this.#reference
     }
 

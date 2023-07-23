@@ -80,7 +80,7 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
 
 
     protected get _iterator(): Iterator<T> {
-        return this.#iterator ??= this.reference[Symbol.iterator]()
+        return this.#iterator ??= this._reference[Symbol.iterator]()
     }
 
     /** The amount of element retrieved */

@@ -8,20 +8,16 @@
 import type {ValueHolder} from "./ValueHolder"
 
 /** A simple definition of a handler for the {@link LazyGenericCollectionHolder} */
-export interface CollectionHandler<out T = unknown, REFERENCE extends Iterable<T> = Iterable<T>, > {
-
-    /** The reference to iterate over or to retrieve a value */
-    get reference(): REFERENCE
-
+export interface CollectionHandler<out T = unknown, > {
 
     /**
-     * Get the size of the {@link reference}.
+     * Get the size of the {@link CollectionHandler handler}.
      *
      * Note that it can take a while if the collection is huge.
      */
     get size(): number
 
-    /** Tell if the {@link reference} is empty */
+    /** Tell if the {@link CollectionHandler handler} is empty */
     get isEmpty(): boolean
 
     /** Tell if the {@link CollectionHandler handler} has finished processing the values */
@@ -29,7 +25,7 @@ export interface CollectionHandler<out T = unknown, REFERENCE extends Iterable<T
 
 
     /**
-     * Get the value associated to the {@link reference}
+     * Get the value associated to the {@link CollectionHandler handler}
      *
      * @param index The index to retrieve
      */

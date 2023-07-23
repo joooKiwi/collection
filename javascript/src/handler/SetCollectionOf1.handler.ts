@@ -45,7 +45,7 @@ export class SetCollectionOf1Handler<const out T = unknown, const REFERENCE exte
         if (0 in collection)
             return { value: collection[0] as T, cause: null, }
 
-        const value = collection[0] = this.reference[Symbol.iterator]().next().value
+        const value = collection[0] = this._reference[Symbol.iterator]().next().value
         this._hasFinished = true
         return { value: value, cause: null, }
     }

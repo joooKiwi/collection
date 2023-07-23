@@ -19,15 +19,15 @@ export class CollectionCollectionHandler<out T = unknown, const REFERENCE extend
     }
 
     public get isEmpty(): REFERENCE["isEmpty"] {
-        return this.reference.isEmpty
+        return this._reference.isEmpty
     }
 
     public get size(): REFERENCE["size"] {
-        return this.reference.size
+        return this._reference.size
     }
 
     public get(index: number,): ValueHolder<T> {
-        const reference = this.reference,
+        const reference = this._reference,
             value = reference.getOrNull(index,)
         if (value == null) {
             if ((index < 0 ? this.size + index : index) in reference)
