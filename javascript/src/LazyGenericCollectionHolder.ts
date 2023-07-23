@@ -9,6 +9,7 @@ import type {Lazy}    from "@joookiwi/lazy"
 import {lazy, lazyOf} from "@joookiwi/lazy"
 
 import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                                            from "./general type"
+import type {PossibleIterable}                                                                                                                                                                                                                                                                                 from "./iterable/types"
 import type {CollectionHolder}                                                                                                                                                                                                                                                                                 from "./CollectionHolder"
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
 import type {CollectionHandler}                                                                                                                                                                                                                                                                                from "./handler/Collection.handler"
@@ -77,7 +78,7 @@ import {isCollectionHolder}          from "./method/isCollectionHolder"
  * @see EmptyCollectionHolder
  * @beta
  */
-export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, >
+export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE extends PossibleIterable<T> = PossibleIterable<T>, >
     implements CollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
