@@ -1,4 +1,5 @@
 # Collection (javascript version)
+[![downloads](https://img.shields.io/npm/dt/@joookiwi/collection.svg)](https://npm-stat.com/charts.html?package=@joookiwi/collection)
 
 ## Table of content
 * [Installation](#installation)
