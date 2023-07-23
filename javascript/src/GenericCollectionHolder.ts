@@ -124,7 +124,10 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             if (size == 0) {
                 this.#isEmpty = true
                 this.#hasNull = false
-                this.#array = Object.freeze(CollectionConstants.EMPTY_ARRAY,)
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -149,7 +152,10 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             if (size == 0) {
                 this.#isEmpty = true
                 this.#hasNull = false
-                this.#array = Object.freeze(CollectionConstants.EMPTY_ARRAY,)
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -186,7 +192,10 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             this.#size = 0
             this.#isEmpty = true
             this.#hasNull = false
-            this.#array = Object.freeze(CollectionConstants.EMPTY_ARRAY,)
+            this.#array = CollectionConstants.EMPTY_ARRAY
+            this.#set = CollectionConstants.EMPTY_SET
+            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
             return
         }
 
