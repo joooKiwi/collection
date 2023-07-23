@@ -8,6 +8,7 @@
 import type {CollectionHolder}                                                                                                                                                                                                                                                                       from "./CollectionHolder"
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
 import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                                       from "./general type"
+import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/EmptyCollectionIterator"
 
 import {CollectionConstants} from "./CollectionConstants"
 
@@ -335,7 +336,8 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------
 
-    public* [Symbol.iterator](): IterableIterator<never> {
+    public [Symbol.iterator](): EmptyCollectionIterator {
+        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
     }
 
     public get [Symbol.toStringTag](): CollectionHolderName {
@@ -350,7 +352,7 @@ export class EmptyCollectionHolder
     }
 
 
-    public toIterator(): IterableIterator<never> {
+    public toIterator(): EmptyCollectionIterator {
         return this[Symbol.iterator]()
     }
 
