@@ -10,7 +10,7 @@ import type {ValueHolder}      from "./ValueHolder"
 
 import {AbstractCollectionHandler} from "./AbstractCollection.handler"
 
-/** A simple implementation of a {@link CollectionHolder} for an {@link Iterable} */
+/** A simple implementation of a {@link CollectionHandler} for an {@link Iterable} */
 export class IterableCollectionHandler<const out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
@@ -127,8 +127,6 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
             return { value: null, get cause() { return new ReferenceError(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`,) }, }
         return { value: collection[iteratorIndex - 1] as T, cause: null, }
     }
-
-    //#endregion -------------------- Get property methods --------------------
 
     //#endregion -------------------- Methods --------------------
 
