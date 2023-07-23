@@ -15,49 +15,50 @@ import type {IterableWithPossibleSize}                                          
 import type {IterableWithSize}                                                                                                                                                                                                                                                                                 from "./iterable/IterableWithSize"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                               from "./iterator/CollectionIterator"
 
-import {CollectionConstants} from "./CollectionConstants"
-import {all}                 from "./method/all"
-import {any}                 from "./method/any"
-import {filter}              from "./method/filter"
-import {filterIndexed}       from "./method/filterIndexed"
-import {filterIndexedNot}    from "./method/filterIndexedNot"
-import {filterNot}           from "./method/filterNot"
-import {filterNotNull}       from "./method/filterNotNull"
-import {find}                from "./method/find"
-import {findIndexed}         from "./method/findIndexed"
-import {findLast}            from "./method/findLast"
-import {findLastIndexed}     from "./method/findLastIndexed"
-import {first}               from "./method/first"
-import {firstOrNull}         from "./method/firstOrNull"
-import {forEach}             from "./method/forEach"
-import {forEachIndexed}      from "./method/forEachIndexed"
-import {hasAll}              from "./method/hasAll"
-import {hasNull}             from "./method/hasNull"
-import {hasOne}              from "./method/hasOne"
-import {indexOf}             from "./method/indexOf"
-import {indexOfFirst}        from "./method/indexOfFirst"
-import {indexOfFirstIndexed} from "./method/indexOfFirstIndexed"
-import {indexOfLast}         from "./method/indexOfLast"
-import {indexOfLastIndexed}  from "./method/indexOfLastIndexed"
-import {isCollectionHolder}  from "./method/isCollectionHolder"
-import {join}                from "./method/join"
-import {last}                from "./method/last"
-import {lastIndexOf}         from "./method/lastIndexOf"
-import {lastOrNull}          from "./method/lastOrNull"
-import {none}                from "./method/none"
-import {map}                 from "./method/map"
-import {mapIndexed}          from "./method/mapIndexed"
-import {objectValuesMap}     from "./method/objectValuesMap"
-import {requireNoNulls}      from "./method/requireNoNulls"
-import {toIterator}          from "./method/toIterator"
-import {toMutableArray}      from "./method/toMutableArray"
-import {toMutableSet}        from "./method/toMutableSet"
-import {toMutableMap}        from "./method/toMutableMap"
-import {toMutableWeakSet}    from "./method/toMutableWeakSet"
-import {toSet}               from "./method/toSet"
-import {toMap}               from "./method/toMap"
-import {toReverse}           from "./method/toReverse"
-import {toWeakSet}           from "./method/toWeakSet"
+import {CollectionConstants}  from "./CollectionConstants"
+import {all}                  from "./method/all"
+import {any}                  from "./method/any"
+import {filter}               from "./method/filter"
+import {filterIndexed}        from "./method/filterIndexed"
+import {filterIndexedNot}     from "./method/filterIndexedNot"
+import {filterNot}            from "./method/filterNot"
+import {filterNotNull}        from "./method/filterNotNull"
+import {find}                 from "./method/find"
+import {findIndexed}          from "./method/findIndexed"
+import {findLast}             from "./method/findLast"
+import {findLastIndexed}      from "./method/findLastIndexed"
+import {first}                from "./method/first"
+import {firstOrNull}          from "./method/firstOrNull"
+import {forEach}              from "./method/forEach"
+import {forEachIndexed}       from "./method/forEachIndexed"
+import {hasAll}               from "./method/hasAll"
+import {hasNull}              from "./method/hasNull"
+import {hasOne}               from "./method/hasOne"
+import {indexOf}              from "./method/indexOf"
+import {indexOfFirst}         from "./method/indexOfFirst"
+import {indexOfFirstIndexed}  from "./method/indexOfFirstIndexed"
+import {indexOfLast}          from "./method/indexOfLast"
+import {indexOfLastIndexed}   from "./method/indexOfLastIndexed"
+import {isCollectionHolder}   from "./method/isCollectionHolder"
+import {isCollectionIterator} from "./method/isCollectionIterator"
+import {join}                 from "./method/join"
+import {last}                 from "./method/last"
+import {lastIndexOf}          from "./method/lastIndexOf"
+import {lastOrNull}           from "./method/lastOrNull"
+import {none}                 from "./method/none"
+import {map}                  from "./method/map"
+import {mapIndexed}           from "./method/mapIndexed"
+import {objectValuesMap}      from "./method/objectValuesMap"
+import {requireNoNulls}       from "./method/requireNoNulls"
+import {toIterator}           from "./method/toIterator"
+import {toMutableArray}       from "./method/toMutableArray"
+import {toMutableSet}         from "./method/toMutableSet"
+import {toMutableMap}         from "./method/toMutableMap"
+import {toMutableWeakSet}     from "./method/toMutableWeakSet"
+import {toSet}                from "./method/toSet"
+import {toMap}                from "./method/toMap"
+import {toReverse}            from "./method/toReverse"
+import {toWeakSet}            from "./method/toWeakSet"
 
 /**
  * A simple {@link CollectionHolder} having the values eagerly retrieved.
@@ -183,6 +184,57 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             let index = size
             while (index-- > 0)
                 this[index] = reference[index]
+            return
+        }
+
+        if (isCollectionIterator<T>(reference,)) {
+            const size = this.#size = reference.size
+            if (this.#isEmpty = size == 0) {
+                this.#hasNull = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            const iterator = reference[Symbol.iterator](),
+                array = []
+            let index = 0
+            while (iterator.hasNext) {
+                this[index] = array[index] = iterator.next().value
+                index++
+            }
+            this.#array = Object.freeze(array,)
+            return
+        }
+
+        sizeIf:if ("size" in reference || "length" in reference || "count" in reference) {
+            // @ts-ignore: We only retrieve the nullable number
+            const size = (reference?.size ?? reference?.length ?? reference?.count) as Nullable<number>
+            if (size == null) // No size is present, we continue as a normal iterable
+                break sizeIf
+            this.#size = size
+
+            if (this.#isEmpty = size == 0) {
+                this.#hasNull = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            const array = [],
+                iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            let index = 0,
+                value = iterator.next()
+            while (!value.done) {
+                this[index] = array[index] = value.value
+                value = iterator.next()
+                index++
+            }
+            this.#array = Object.freeze(array,)
             return
         }
 
