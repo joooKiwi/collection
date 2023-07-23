@@ -8,13 +8,18 @@
 import type {CollectionHolder} from "../CollectionHolder"
 
 import {CollectionConstants}         from "../CollectionConstants"
+import {EmptyCollectionHolder}       from "../EmptyCollectionHolder"
 import {GenericCollectionHolder}     from "../GenericCollectionHolder"
 import {LazyGenericCollectionHolder} from "../LazyGenericCollectionHolder"
 
 /**
- * Tell that the value is a {@link CollectionHolder}
- * (by either a {@link GenericCollectionHolder} or a {@link LazyGenericCollectionHolder})
- * or by its structure (from the {@link CollectionConstants.EVERY_COLLECTION_METHODS})
+ * Tell that the value is a {@link CollectionHolder}.
+ *
+ * It does validate that it is
+ *  - a {@link GenericCollectionHolder}
+ *  - a {@link LazyGenericCollectionHolder}
+ *  - an {@link EmptyCollectionHolder}
+ *  - has the structure from the {@link CollectionConstants.EVERY_COLLECTION_METHODS collection methods}
  *
  * @param value The value to validate if it is a {@link CollectionHolder}
  */
@@ -22,7 +27,12 @@ export function isCollectionHolder<const T, >(value: unknown,): value is Collect
 export function isCollectionHolder(value: unknown,): boolean {
     if (value == null)
         return false
-    if (value instanceof GenericCollectionHolder || value instanceof LazyGenericCollectionHolder)
+
+    if (value instanceof GenericCollectionHolder)
+        return true
+    if (value instanceof LazyGenericCollectionHolder)
+        return true
+    if (value instanceof EmptyCollectionHolder)
         return true
 
     if (typeof value != "object")
