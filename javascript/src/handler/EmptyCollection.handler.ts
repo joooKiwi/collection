@@ -32,7 +32,8 @@ export class EmptyCollectionHandler
 
     //#endregion -------------------- Getter methods --------------------
 
-    public get(_index: number,): ValueHolder<never> {
+    public get(index: number,): ValueHolder<never>
+    public get(): ValueHolder<never> {
         return { value: null, get cause() { return new ReferenceError("No value can exist in an empty collection",) }, }
     }
 
