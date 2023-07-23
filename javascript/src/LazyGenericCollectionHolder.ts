@@ -85,7 +85,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
 
     [index: NumberOrNumberInString]: UndefinedOr<T>
 
-    readonly #handler: Lazy<CollectionHandler<T, REFERENCE>>
+    readonly #handler: Lazy<CollectionHandler<T>>
     readonly #size: Lazy<number>
     readonly #isEmpty: Lazy<boolean>
 
