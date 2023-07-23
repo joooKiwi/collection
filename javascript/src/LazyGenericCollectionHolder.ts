@@ -167,8 +167,28 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
         if (isCollectionHolder<T>(reference)) {
             this.#reference = lazyOf(reference,)
             this.#handler = lazy(() => new CollectionCollectionHandler(this, reference,),)
-            this.#isEmpty = lazy(() => reference.isEmpty,)
-            this.#size = lazy(() => reference.size,)
+            this.#isEmpty = lazy(() => {
+                if (reference.isEmpty) {
+                    this.#hasNull = false
+                    this.#array = CollectionConstants.EMPTY_ARRAY
+                    this.#set = CollectionConstants.EMPTY_SET
+                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                    return true
+                }
+                return false
+            },)
+            this.#size = lazy(() => {
+                const size = reference.size
+                if (size == 0) {
+                    this.#hasNull = false
+                    this.#array = CollectionConstants.EMPTY_ARRAY
+                    this.#set = CollectionConstants.EMPTY_SET
+                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                }
+                return size
+            },)
             return
         }
 
@@ -216,15 +236,80 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                     return new CollectionCollectionHandler(this, referenceFound,)
                 return new IterableCollectionHandler(this, referenceFound,)
             },)
-            this.#isEmpty = lazy(() => this._handler.isEmpty,)
-            this.#size = lazy(() => this._handler.size,)
+            this.#isEmpty = lazy(() => {
+                if (this._handler.isEmpty) {
+                    this.#hasNull = false
+                    this.#array = CollectionConstants.EMPTY_ARRAY
+                    this.#set = CollectionConstants.EMPTY_SET
+                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                    return true
+                }
+                return false
+            },)
+            this.#size = lazy(() => {
+                const size = this._handler.size
+                if (size == 0) {
+                    this.#hasNull = false
+                    this.#array = CollectionConstants.EMPTY_ARRAY
+                    this.#set = CollectionConstants.EMPTY_SET
+                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                }
+                return size
+            },)
             return
         }
 
+        sizeIf:if ("size" in reference || "length" in reference || "count" in reference) {
+            this.#reference = lazyOf(reference,)
+            // @ts-ignore: We only retrieve the nullable number
+            const size = (reference?.size ?? reference?.length ?? reference?.count) as Nullable<number>
+            if (size == null) // No size is present even though there is a value in the reference
+                break sizeIf
+            this.#size = lazyOf(size,)
+
+            if (size == 0) {
+                this.#isEmpty = lazyOf(true,)
+                this.#hasNull = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                this.#handler = lazyOf(EmptyCollectionHandler.get,)
+                return
+            }
+
+            this.#isEmpty = lazyOf(false,)
+            this.#handler = lazyOf(new IterableWithSizeCollectionHandler(this, reference,),)
+            return
+        }
+
+
         this.#reference = lazyOf(reference,)
-        const collectionHandler = this.#handler = lazyOf(new IterableCollectionHandler(this, reference,),)
-        this.#isEmpty = lazy(() => collectionHandler.value.isEmpty,)
-        this.#size = lazy(() => collectionHandler.value.size,)
+        this.#handler = lazyOf(new IterableCollectionHandler(this, reference,),)
+        this.#isEmpty = lazy(() => {
+            if (this._handler.isEmpty) {
+                this.#hasNull = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return true
+            }
+            return false
+        },)
+        this.#size = lazy(() => {
+            const size = this._handler.size
+            if (size == 0) {
+                this.#hasNull = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+            }
+            return size
+        },)
     }
 
     //#endregion -------------------- Constructor --------------------
