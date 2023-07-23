@@ -14,6 +14,7 @@
 
     "test": "jest",
     "test-collection": "jest --testNamePattern=CollectionHolderTest",
+    "test-iterator":   "jest --testNamePattern=CollectionIteratorTest",
 
     "test-pack":    "npm pack --dry-run",
     "test-publish": "npm publish --@access=public --dry-run",
@@ -51,6 +52,11 @@
       "import":  "./dist/ecmascript module/method/index.js",
       "require": "./dist/common javascript/method/index.js"
     },
+    "./iterator": {
+      "types":   "./dist/types/iterator/index.d.ts",
+      "import":  "./dist/ecmascript module/iterator/index.js",
+      "require": "./dist/common javascript/iterator/index.js"
+    },
     "./handler": {
       "types":   "./dist/types/handler/index.d.ts",
       "import":  "./dist/ecmascript module/handler/index.js",
@@ -72,6 +78,11 @@
       "import":  "./dist/ecmascript module/handler/*.js",
       "require": "./dist/common javascript/handler/*.js"
     },
+    "./collection/iterator/*": {
+      "types":   "./dist/types/iterator/*.d.ts",
+      "import":  "./dist/ecmascript module/iterator/*.js",
+      "require": "./dist/common javascript/iterator/*.js"
+    },
     "./collection/method/*": {
       "types":   "./dist/types/method/*.d.ts",
       "import":  "./dist/ecmascript module/method/*.js",
@@ -81,6 +92,11 @@
       "types":   "./dist/types/handler/*.d.ts",
       "import":  "./dist/ecmascript module/handler/*.js",
       "require": "./dist/common javascript/handler/*.js"
+    },
+    "./iterator/*": {
+      "types":   "./dist/types/iterator/*.d.ts",
+      "import":  "./dist/ecmascript module/iterator/*.js",
+      "require": "./dist/common javascript/iterator/*.js"
     },
     "./method/*": {
       "types":   "./dist/types/method/*.d.ts",
