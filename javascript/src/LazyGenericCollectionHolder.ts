@@ -12,6 +12,11 @@ import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}             
 import type {CollectionHolder}                                                                                                                                                                                                                                                                                 from "./CollectionHolder"
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
 import type {CollectionHandler}                                                                                                                                                                                                                                                                                from "./handler/Collection.handler"
+import type {IterableWithCount}                                                                                                                                                                                                                                                                                from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                                                                                                                                                                                                                                                               from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                                                                                                                                                                                                                                                         from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                                                                                                                                                                                                                                                 from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                               from "./iterator/CollectionIterator"
 
 import {CollectionConstants}         from "./CollectionConstants"
 import {EmptyCollectionHandler}      from "./handler/EmptyCollection.handler"
@@ -99,6 +104,16 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
     public constructor(lateArray: () => readonly T[],)
     public constructor(set: ReadonlySet<T>,)
     public constructor(lateSet: () => ReadonlySet<T>,)
+    public constructor(collectionIterable: CollectionIterator<T>,)
+    public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
+    public constructor(iterableWithSize: IterableWithSize<T>,)
+    public constructor(lateIterableWithSize: () => IterableWithSize<T>,)
+    public constructor(iterableWithLength: IterableWithLength<T>,)
+    public constructor(lateIterableWithLength: () => IterableWithLength<T>,)
+    public constructor(iterableWithCount: IterableWithCount<T>,)
+    public constructor(lateIterableWithCount: () => IterableWithCount<T>,)
+    public constructor(iterableWithPossibleSize: IterableWithPossibleSize<T>,)
+    public constructor(lateIterableWithPossibleSize: () => IterableWithPossibleSize<T>,)
     public constructor(iterable: Iterable<T>,)
     public constructor(lateIterable: () => Iterable<T>,)
     public constructor(collectionHolder: CollectionHolder<T>,)
