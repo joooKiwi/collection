@@ -37,8 +37,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         test("size", () => expect(newInstance().size,).toStrictEqual(size,),)
         test("length", () => expect(newInstance().length,).toStrictEqual(size,),)
         test("count", () => expect(newInstance().count,).toStrictEqual(size,),)
-        test("isEmpty", () => expect(newInstance().isEmpty).toBe(size === 0,),)
-        test("isNotEmpty", () => expect(newInstance().isNotEmpty).toBe(size !== 0,),)
+        test("isEmpty", () => expect(newInstance().isEmpty,).toBe(size == 0,),)
+        test("isNotEmpty", () => expect(newInstance().isNotEmpty,).toBe(size != 0,),)
     },) },)
     describe("value", () => {
         describe("get / at", () => {

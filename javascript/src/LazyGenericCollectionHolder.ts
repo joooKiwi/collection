@@ -247,7 +247,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                         this.#array ??= referenceFound
 
                     const size = referenceFound.length
-                    if (size === 0) {
+                    if (size == 0) {
                         this.#hasNull ??= false
                         this.#array ??= CollectionConstants.EMPTY_ARRAY
                         this.#set ??= CollectionConstants.EMPTY_SET
@@ -265,7 +265,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                         this.#set ??= referenceFound
 
                     const size = referenceFound.size
-                    if (size === 0) {
+                    if (size == 0) {
                         this.#hasNull ??= false
                         this.#array ??= CollectionConstants.EMPTY_ARRAY
                         this.#set ??= CollectionConstants.EMPTY_SET
