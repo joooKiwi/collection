@@ -5,10 +5,9 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-import type {CollectionHolder}                                                                                                                                                                                                                               from "./CollectionHolder"
-import type {BooleanCallback, CollectionHolderName, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
-import {IndexValueCallback, ValueIndexCallback}                                                                                                                                                                                                              from "./CollectionHolder.types"
-import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                               from "./general type"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                       from "./CollectionHolder"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
+import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                                       from "./general type"
 
 import {CollectionConstants} from "./CollectionConstants"
 
