@@ -83,6 +83,7 @@ It can be separated in different categories.
 
 <span>4.</span> The **utility** methods _(not part of the `CollectionHolder`)_
  - `isCollectionHolder`
+ - `isCollectionIterator`
  - `endingIndex`
  - `startingIndex`
  - `newInstance`
