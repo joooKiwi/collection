@@ -420,12 +420,13 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
 
     //#endregion -------------------- Has X methods --------------------
 
-    /** The iterable received in the constructor */
+    /** The {@link PossibleIterable iterable} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
     protected get _reference(): REFERENCE {
         return this.#reference.value
     }
 
-    protected get _handler(): CollectionHandler<T, REFERENCE> {
+    /** The {@link CollectionHandler handler} created from the {@link LazyGenericCollectionHolder} {@link LazyGenericCollectionHolder.constructor constructor} */
+    protected get _handler(): CollectionHandler<T> {
         return this.#handler.value
     }
 
