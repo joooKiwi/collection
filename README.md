@@ -11,13 +11,13 @@ This project has only the Javascript / Typescript version uploaded.
 
 But other languages will have different features based on how they can handle it.
 
-| Language                  |                               Published                                |
-|:--------------------------|:----------------------------------------------------------------------:|
-| Javascript<br/>Typescript | [Published to npm](https://www.npmjs.com/package/@joookiwi/collection) |
-| Java                      |                                 Maven                                  |
-| Kotlin                    |                                 Maven                                  |
-| PHP                       |                                Composer                                |
-| C#                        |                                 Nugget                                 |
+| Language                  |                                                                                                    Published                                                                                                     |
+|:--------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Javascript<br/>Typescript | [Published to npm](https://www.npmjs.com/package/@joookiwi/collection)<br/>[![downloads](https://img.shields.io/npm/dt/@joookiwi/collection.svg)](https://npm-stat.com/charts.html?package=@joookiwi/collection) |
+| Java                      |                                                                                                      Maven                                                                                                       |
+| Kotlin                    |                                                                                                      Maven                                                                                                       |
+| PHP                       |                                                                                                     Composer                                                                                                     |
+| C#                        |                                                                                                      Nugget                                                                                                      |
 
 ## Related projects
 
