@@ -7,6 +7,7 @@
 
 import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                                            from "./general type"
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                               from "./iterator/CollectionIterator"
 
 /**
  * A collection to hold another collection and do some generic stuff if applicable.
@@ -990,7 +991,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
      */
-    [Symbol.iterator](): IterableIterator<T>
+    [Symbol.iterator](): CollectionIterator<T>
 
     /**
      * Give an output for the call from {@link ObjectConstructor.toString.call} [object CollectionHolder] instead of [object Object]
@@ -1008,7 +1009,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link IterableIterator} */
-    toIterator(): IterableIterator<T>
+    toIterator(): CollectionIterator<T>
 
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyArray array} */

@@ -668,7 +668,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------
 
-    public [Symbol.iterator](): IterableIterator<T> {
+    public [Symbol.iterator](): CollectionIterator<T> {
         return toIterator(this,)
     }
 
@@ -684,7 +684,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
     }
 
 
-    public toIterator(): IterableIterator<T> {
+    public toIterator(): CollectionIterator<T> {
         return this[Symbol.iterator]()
     }
 
