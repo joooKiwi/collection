@@ -99,6 +99,7 @@ and `isEmpty` with its inverse `isNotEmpty`.
 The alias methods are not part of the extension function.
 It includes `includesNull`, `containsNull`, `atOrElse`, `atOrDefault`,
 `includesOne`, `containsOne`, `includesAll` & `containsAll`.
+
 ## Contribution
 You can contribute to great simple packages.
 All with similar behaviour across different languages (like Java, Kotlin, C# and PHP).
