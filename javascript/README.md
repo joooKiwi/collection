@@ -1,4 +1,5 @@
 # Collection (javascript version)
+[![downloads](https://img.shields.io/npm/dt/@joookiwi/collection.svg)](https://npm-stat.com/charts.html?package=@joookiwi/collection)
 
 ## Table of content
 * [Installation](#installation)
@@ -20,13 +21,13 @@ to implement almost everything that the other languages have (if it is possible)
 ## Installation
 ```
 npm install @joookiwi/collection
-npm i @joookiwi/lazy
+npm i @joookiwi/collection
 
 npm install --save @joookiwi/collection
-npm i -S @joookiwi/lazy
+npm i -S @joookiwi/collection
 
 npm install --save-dev @joookiwi/collection
-npm i -D @joookiwi/lazy
+npm i -D @joookiwi/collection
 ```
 
 ## Usage
@@ -83,6 +84,7 @@ It can be separated in different categories.
 
 <span>4.</span> The **utility** methods _(not part of the `CollectionHolder`)_
  - `isCollectionHolder`
+ - `isCollectionIterator`
  - `endingIndex`
  - `startingIndex`
  - `newInstance`
@@ -98,6 +100,7 @@ and `isEmpty` with its inverse `isNotEmpty`.
 The alias methods are not part of the extension function.
 It includes `includesNull`, `containsNull`, `atOrElse`, `atOrDefault`,
 `includesOne`, `containsOne`, `includesAll` & `containsAll`.
+
 ## Contribution
 You can contribute to great simple packages.
 All with similar behaviour across different languages (like Java, Kotlin, C# and PHP).

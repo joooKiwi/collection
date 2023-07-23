@@ -40,11 +40,11 @@ export function hasOne(collection: Nullable<CollectionHolder>, ...values: readon
     if (collection == null)
         return false
     const size = collection.size
-    if (size === 0)
+    if (size == 0)
         return false
 
     const valueSize = values.length
-    if (valueSize === 0)
+    if (valueSize == 0)
         return true
 
     let valueIndex = -1

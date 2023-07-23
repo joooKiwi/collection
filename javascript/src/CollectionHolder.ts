@@ -7,6 +7,7 @@
 
 import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                                            from "./general type"
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                               from "./iterator/CollectionIterator"
 
 /**
  * A collection to hold another collection and do some generic stuff if applicable.
@@ -111,14 +112,14 @@ export interface CollectionHolder<out T = unknown, >
      * Get the element at the specified index in the {@link CollectionHolder collection}
      *
      * @param index The index to retrieve a value
-     *
-     * @canReceiveNegativeValue
      * @throws {ReferenceError} The index calculated is under 0 or over the {@link size} (after calculation)
      * @see ReadonlyArray.at
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html Kotlin get(index)
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/element-at.html Kotlin elementAt(index)
      * @see getOrElse
      * @see getOrNull
+     *
+     * @canReceiveNegativeValue
      */
     get(index: number,): T
 
@@ -709,11 +710,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param limit The maximum amount of values in the join (null by default)
      * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED "…"} by default)
      * @param transform A callback to transform into a {@link String}
-     *
-     * @canReceiveNegativeValue
      * @see ReadonlyArray.join
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
      * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
+     *
+     * @canReceiveNegativeValue
      */
     join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<ValueWithStringReturnCallback<T>>,): string
 
@@ -990,7 +991,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
      */
-    [Symbol.iterator](): IterableIterator<T>
+    [Symbol.iterator](): CollectionIterator<T>
 
     /**
      * Give an output for the call from {@link ObjectConstructor.toString.call} [object CollectionHolder] instead of [object Object]
@@ -1008,7 +1009,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link IterableIterator} */
-    toIterator(): IterableIterator<T>
+    toIterator(): CollectionIterator<T>
 
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyArray array} */

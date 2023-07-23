@@ -1,0 +1,118 @@
+/******************************************************************************
+ * Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi                             *
+ *                                                                            *
+ * This project is free to use.                                               *
+ * All the right is reserved to the author of this project.                   *
+ ******************************************************************************/
+
+import type {IndexValueCallback, ValueIndexCallback} from "../CollectionHolder.types"
+import type {EmptyCollectionHolder}                  from "../EmptyCollectionHolder"
+import type {CollectionIterator}                     from "./CollectionIterator"
+import type {CollectionIteratorName}                 from "./CollectionIterator.types"
+
+import {CollectionConstants} from "../CollectionConstants"
+
+export class EmptyCollectionIterator
+    implements CollectionIterator<never> {
+
+    //#region -------------------- Singleton usage --------------------
+
+    static #instance?: EmptyCollectionIterator
+
+    protected constructor() {
+    }
+
+    public static get get(): EmptyCollectionIterator {
+        return EmptyCollectionIterator.#instance ??= new EmptyCollectionIterator()
+    }
+
+    //#endregion -------------------- Singleton usage --------------------
+    //#region -------------------- Getter methods --------------------
+
+    public get collection(): EmptyCollectionHolder {
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    }
+
+    public get size(): 0 {
+        return 0
+    }
+
+    public get length(): 0 {
+        return 0
+    }
+
+    public get count(): 0 {
+        return 0
+    }
+
+
+    public get index(): 0 {
+        return 0
+    }
+
+    public get nextIndex(): 0 {
+        return 0
+    }
+
+    public get previousIndex(): 0 {
+        return 0
+    }
+
+
+    public get hasNext(): false {
+        return false
+    }
+
+    public get hasPrevious(): false {
+        return false
+    }
+
+    //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
+
+    public next(): IteratorReturnResult<never> {
+        return {
+            done: true,
+            get value(): never {
+                throw new ReferenceError("No next value exist in an empty CollectionIterator.",)
+            },
+        }
+    }
+
+    public previous(): IteratorReturnResult<never> {
+        return {
+            done: true,
+            get value(): never {
+                throw new ReferenceError("No previous value exist in an empty CollectionIterator.",)
+            },
+        }
+    }
+
+    //#region -------------------- Loop methods --------------------
+
+    public forEach(operation: ValueIndexCallback<never>,): this
+    public forEach(): this {
+        return this
+    }
+
+    public forEachIndexed(operation: IndexValueCallback<never>,): this
+    public forEachIndexed(): this {
+        return this
+    }
+
+    //#endregion -------------------- Loop methods --------------------
+    //#region -------------------- Javascript methods --------------------
+
+    public [Symbol.iterator](): this {
+        return this
+    }
+
+    public get [Symbol.toStringTag](): CollectionIteratorName {
+        return CollectionConstants.COLLECTION_ITERATOR_TO_STRING_TAG
+    }
+
+    //#endregion -------------------- Javascript methods --------------------
+
+    //#endregion -------------------- Methods --------------------
+
+}

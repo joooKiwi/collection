@@ -62,11 +62,11 @@ export class ArrayCollectionHandler<const out T = unknown, REFERENCE extends rea
             return { value: null, get cause() { return new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is over the size of the collection (${size}).`,) }, }
 
         if (this._hasFinished)
-            return { value: collection[index] as T, cause: null, }
+            return { value: collection[indexToRetrieve] as T, cause: null, }
 
         if (size - 1 === this._elementRetrieved++)
             this._hasFinished = true
-        return { value: collection[index] = this.reference[index] as T, cause: null, }
+        return { value: collection[indexToRetrieve] = this._reference[indexToRetrieve] as T, cause: null, }
     }
 
 }

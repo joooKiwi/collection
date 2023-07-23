@@ -10,7 +10,7 @@ import type {ValueHolder}      from "./ValueHolder"
 
 import {AbstractCollectionHandler} from "./AbstractCollection.handler"
 
-/** A simple implementation of a {@link CollectionHolder} for an {@link Iterable} */
+/** A simple implementation of a {@link CollectionHandler} for an {@link Iterable} */
 export class IterableCollectionHandler<const out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
@@ -22,7 +22,6 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
     #size?: number
 
     #amountOfElementRetrieved: number
-    #hasFinished: boolean
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -30,7 +29,7 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
     public constructor(collection: COLLECTION, reference: REFERENCE,) {
         super(collection, reference,)
         this.#amountOfElementRetrieved = 0
-        this.#hasFinished = false
+        this._hasFinished = false
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -80,7 +79,7 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
 
 
     protected get _iterator(): Iterator<T> {
-        return this.#iterator ??= this.reference[Symbol.iterator]()
+        return this.#iterator ??= this._reference[Symbol.iterator]()
     }
 
     /** The amount of element retrieved */
@@ -93,14 +92,6 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
         this.#amountOfElementRetrieved = value
     }
 
-    public override get hasFinished(): boolean {
-        return this.#hasFinished
-    }
-
-    protected override set _hasFinished(value: boolean,) {
-        this.#hasFinished = value
-    }
-
     //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
 
@@ -111,7 +102,7 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
         if (index < 0)
             return { value: null, get cause() { return new ReferenceError(`The index ${index} could not be retrieved from a value under 0.`,) }, }
 
-        if (this._hasFinished)
+        if (this.hasFinished)
             return { value: collection[this._amountOfElementRetrieved - 1] as T, cause: null, }
 
         const amountOfElementRetrieved = this._amountOfElementRetrieved,
@@ -136,8 +127,6 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
             return { value: null, get cause() { return new ReferenceError(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`,) }, }
         return { value: collection[iteratorIndex - 1] as T, cause: null, }
     }
-
-    //#endregion -------------------- Get property methods --------------------
 
     //#endregion -------------------- Methods --------------------
 

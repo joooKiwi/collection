@@ -46,7 +46,7 @@ export class ArrayCollectionOf1Handler<const out T = unknown, const REFERENCE ex
         if (0 in collection)
             return { value: collection[0] as T, cause: null, }
 
-        const value = collection[0] = this.reference[0] as T
+        const value = collection[0] = this._reference[0] as T
         this._hasFinished = true
         return { value: value, cause: null, }
     }

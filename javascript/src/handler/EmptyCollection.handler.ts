@@ -26,17 +26,14 @@ export class EmptyCollectionHandler
     //#endregion -------------------- Singleton usage --------------------
     //#region -------------------- Getter methods --------------------
 
-    public get reference(): never {
-        throw new ReferenceError("No reference can exist on an empty collection handler",)
-    }
-
     public readonly size = 0
     public readonly isEmpty = true
     public readonly hasFinished = true
 
     //#endregion -------------------- Getter methods --------------------
 
-    public get(_index: number,): ValueHolder<never> {
+    public get(index: number,): ValueHolder<never>
+    public get(): ValueHolder<never> {
         return { value: null, get cause() { return new ReferenceError("No value can exist in an empty collection",) }, }
     }
 

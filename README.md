@@ -11,13 +11,13 @@ This project has only the Javascript / Typescript version uploaded.
 
 But other languages will have different features based on how they can handle it.
 
-| Language                  |                               Published                                |
-|:--------------------------|:----------------------------------------------------------------------:|
-| Javascript<br/>Typescript | [Published to npm](https://www.npmjs.com/package/@joookiwi/collection) |
-| Java                      |                                 Maven                                  |
-| Kotlin                    |                                 Maven                                  |
-| PHP                       |                                Composer                                |
-| C#                        |                                 Nugget                                 |
+| Language                  |                                                                                                    Published                                                                                                     |
+|:--------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Javascript<br/>Typescript | [Published to npm](https://www.npmjs.com/package/@joookiwi/collection)<br/>[![downloads](https://img.shields.io/npm/dt/@joookiwi/collection.svg)](https://npm-stat.com/charts.html?package=@joookiwi/collection) |
+| Java                      |                                                                                                      Maven                                                                                                       |
+| Kotlin                    |                                                                                                      Maven                                                                                                       |
+| PHP                       |                                                                                                     Composer                                                                                                     |
+| C#                        |                                                                                                      Nugget                                                                                                      |
 
 ## Related projects
 
@@ -27,11 +27,12 @@ Here is a list of the related projects made by me
 
 ## Version history
 
-| JS/TS | Date           | Quick note                                                                                                                                                                                                                                                                 |
-|-------|----------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.0.4 | July 2nd, 2023 | The were recursive import for the [EmptyCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/EmptyCollectionHolder.ts) from the [CollectionConstants](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionConstants.ts) |
-| 1.0.3 | July 1st, 2023 | For some reason, the file [CollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionHolder.ts) had a Symbol not declared                                                                                                                |
-| 1.0.2 | July 1st, 2023 | Small fix on the [package.json](https://github.com/joooKiwi/collection/blob/main/javascript/package.json)                                                                                                                                                                  |
-| 1.0.1 | July 1st, 2023 | An update based on the new [lazy version](https://github.com/joookiwi/lazy)                                                                                                                                                                                                |
-| 1.0.0 | July 1st, 2023 | The first version<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project                                                                                                                                                              |
+| JS/TS                                                                       | Date            | Quick note                                                                                                                                                                                                                                                                 |
+|-----------------------------------------------------------------------------|-----------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [1.1.0](https://github.com/joooKiwi/collection/releases/tag/v1.1.0-js)      | July 23rd, 2023 | Addition of a new [CollectionIterator](https://github.com/joooKiwi/collection/blob/main/javascript/src/iterator/CollectionIterator.ts)                                                                                                                                     |
+| 1.0.4                                                                       | July 2nd, 2023  | The were recursive import for the [EmptyCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/EmptyCollectionHolder.ts) from the [CollectionConstants](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionConstants.ts) |
+| 1.0.3                                                                       | July 1st, 2023  | For some reason, the file [CollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionHolder.ts) had a Symbol not declared                                                                                                                |
+| 1.0.2                                                                       | July 1st, 2023  | Small fix on the [package.json](https://github.com/joooKiwi/collection/blob/main/javascript/package.json)                                                                                                                                                                  |
+| 1.0.1                                                                       | July 1st, 2023  | An update based on the new [lazy version](https://github.com/joookiwi/lazy)                                                                                                                                                                                                |
+| [1.0.0](https://github.com/joooKiwi/collection/releases/tag/v1.0.0-JS%26TS) | July 1st, 2023  | The first version<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project                                                                                                                                                              |
 

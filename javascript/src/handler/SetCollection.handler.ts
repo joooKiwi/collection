@@ -41,7 +41,7 @@ export class SetCollectionHandler<const out T = unknown, const REFERENCE extends
     }
 
     protected get _iterator(): IterableIterator<T> {
-        return this.#iterator ??= this.reference[Symbol.iterator]()
+        return this.#iterator ??= this._reference[Symbol.iterator]()
     }
 
     /** The last index retrieved from the value */

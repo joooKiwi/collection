@@ -5,55 +5,40 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-import type {CollectionHolder} from "../src"
-
 import {A, A_NULL_B_UNDEFINED, AB, AB12, AB_OBJECT, AB_AB, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, ABCDEFGHIJ, EMPTY, NULL_ABCD, SINGULAR_A_OBJECT, SINGULAR_B_OBJECT, UNDEFINED_ABCD} from "./constantCollections"
 import {iterableCreation, everyInstances, nonPresentItem, sizeValues, TEMPLATE_ITEMS}                                                                                                      from "./constantValues"
+import {newCollectionInstance}                                                                                                                                                             from "./newCollectionInstance"
 
-describe("CollectionHolderTest", () => { describe.each(everyInstances,)("%s", ({value: instance,},) => { describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
+describe("CollectionHolderTest", () => {
+describe.each(everyInstances,)("%s", ({value: instance,},) => {
+describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
     //#region -------------------- Instances --------------------
 
-    // @ts-ignore
-    const EMPTY_INSTANCE = () => new instance(arrayOrSetCreation(EMPTY,),) as CollectionHolder<typeof EMPTY[number]>,
-        // @ts-ignore
-        A_INSTANCE = () => new instance(arrayOrSetCreation(A,),) as CollectionHolder<typeof A[number]>,
-        // @ts-ignore
-        AB_INSTANCE = () => new instance(arrayOrSetCreation(AB,),) as CollectionHolder<typeof AB[number]>,
-        // @ts-ignore
-        AB_OBJECT_INSTANCE = () => new instance(arrayOrSetCreation(AB_OBJECT,),) as CollectionHolder<typeof AB_OBJECT[number]>,
-        // @ts-ignore
-        A_NULL_B_UNDEFINED_INSTANCE = () => new instance(arrayOrSetCreation(A_NULL_B_UNDEFINED,),) as CollectionHolder<typeof A_NULL_B_UNDEFINED[number]>,
-        // @ts-ignore
-        AB12_INSTANCE = () => new instance(arrayOrSetCreation(AB12,),) as CollectionHolder<typeof AB12[number]>,
-        // @ts-ignore
-        ABCD_INSTANCE = () => new instance(arrayOrSetCreation(ABCD,),) as CollectionHolder<typeof ABCD[number]>,
-        // @ts-ignore
-        AB_AB_INSTANCE = () => new instance(arrayOrSetCreation(AB_AB,),) as CollectionHolder<typeof AB_AB[number]>,
-        // @ts-ignore
-        ABCDEFGHIJ_INSTANCE = () => new instance(arrayOrSetCreation(ABCDEFGHIJ,),) as CollectionHolder<typeof ABCDEFGHIJ[number]>,
-        // @ts-ignore
-        ABCD_ABCD_INSTANCE = () => new instance(arrayOrSetCreation(ABCD_ABCD,),) as CollectionHolder<typeof ABCD_ABCD[number]>,
-        // @ts-ignore
-        NULL_ABCD_INSTANCE = () => new instance(arrayOrSetCreation(NULL_ABCD,),) as CollectionHolder<typeof NULL_ABCD[number]>,
-        // @ts-ignore
-        ABCD_NULL_INSTANCE = () => new instance(arrayOrSetCreation(ABCD_NULL,),) as CollectionHolder<typeof ABCD_NULL[number]>,
-        // @ts-ignore
-        UNDEFINED_ABCD_INSTANCE = () => new instance(arrayOrSetCreation(UNDEFINED_ABCD,),) as CollectionHolder<typeof UNDEFINED_ABCD[number]>,
-        // @ts-ignore
-        ABCD_UNDEFINED_INSTANCE = () => new instance(arrayOrSetCreation(ABCD_UNDEFINED,),) as CollectionHolder<typeof ABCD_UNDEFINED[number]>,
-        // @ts-ignore
-        TEMPLATE_ITEMS_INSTANCE = () => new instance(arrayOrSetCreation(TEMPLATE_ITEMS,),) as CollectionHolder<typeof TEMPLATE_ITEMS[number]>
+    const EMPTY_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, EMPTY,),
+        A_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, A,),
+        AB_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, AB,),
+        AB_OBJECT_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, AB_OBJECT,),
+        A_NULL_B_UNDEFINED_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, A_NULL_B_UNDEFINED,),
+        AB12_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, AB12,),
+        ABCD_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, ABCD,),
+        AB_AB_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, AB_AB,),
+        ABCDEFGHIJ_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, ABCDEFGHIJ,),
+        ABCD_ABCD_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, ABCD_ABCD,),
+        NULL_ABCD_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, NULL_ABCD,),
+        ABCD_NULL_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, ABCD_NULL,),
+        UNDEFINED_ABCD_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, UNDEFINED_ABCD,),
+        ABCD_UNDEFINED_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, ABCD_UNDEFINED,),
+        TEMPLATE_ITEMS_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, TEMPLATE_ITEMS,)
 
     //#endregion -------------------- Instances --------------------
 
     describe("size", () => { describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
-        // @ts-ignore
-        const newInstance = () => new instance(arrayOrSetCreation(array,),) as CollectionHolder<typeof array[number]>
+        const newInstance = () => newCollectionInstance(instance, arrayOrSetCreation, array,)
         test("size", () => expect(newInstance().size,).toStrictEqual(size,),)
         test("length", () => expect(newInstance().length,).toStrictEqual(size,),)
         test("count", () => expect(newInstance().count,).toStrictEqual(size,),)
-        test("isEmpty", () => expect(newInstance().isEmpty).toBe(size === 0,),)
-        test("isNotEmpty", () => expect(newInstance().isNotEmpty).toBe(size !== 0,),)
+        test("isEmpty", () => expect(newInstance().isEmpty,).toBe(size == 0,),)
+        test("isNotEmpty", () => expect(newInstance().isNotEmpty,).toBe(size != 0,),)
     },) },)
     describe("value", () => {
         describe("get / at", () => {

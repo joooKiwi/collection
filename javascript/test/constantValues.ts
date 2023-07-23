@@ -5,8 +5,14 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
+import type {IterableWithCount}        from "../src/iterable/IterableWithCount"
+import type {IterableWithLength}       from "../src/iterable/IterableWithLength"
+import type {IterableWithPossibleSize} from "../src/iterable/IterableWithPossibleSize"
+import type {IterableWithSize}         from "../src/iterable/IterableWithSize"
+
 import {GenericCollectionHolder}     from "../src/GenericCollectionHolder"
 import {LazyGenericCollectionHolder} from "../src/LazyGenericCollectionHolder"
+import {GenericCollectionIterator}   from "../src/iterator/GenericCollectionIterator"
 
 import {Holder} from "./Holder"
 
@@ -29,10 +35,30 @@ export const sizeValues = () => [
         new Holder(LazyGenericCollectionHolder, LazyGenericCollectionHolder.name,),
     ] as const,
     iterableCreation = [
-        new Holder(<T>(iterable:Iterable<T>,) => Array.from(iterable,), "array",),
-        new Holder(<T>(iterable: Iterable<T>,) => new Set(iterable,), "set",),
-        new Holder(<T>(iterable: Iterable<T>,) => iterable[Symbol.iterator]() as IterableIterator<T>, "iterable",),
-        new Holder(<T>(iterable: Iterable<T>,) => new GenericCollectionHolder(iterable,), "generic collection holder",),
-        new Holder(<T>(iterable: Iterable<T>,) => new LazyGenericCollectionHolder(iterable,), "lazy generic collection holder",),
+        new Holder(<T>(array: readonly T[],) => Array.from(array,), "array",),
+        new Holder(<T>(array: readonly T[],) => new Set(array,), "set",),
+        new Holder(<T>(array: readonly T[],) => array[Symbol.iterator]() as IterableIterator<T>, "iterable reference",),
+        new Holder(<T>(array: readonly T[],) => ({
+            [Symbol.iterator](): IterableIterator<T> { return array[Symbol.iterator]() },
+            size: array.length,
+        }) as IterableWithSize<T>, "iterable with size",),
+        new Holder(<T>(array: readonly T[],) => ({
+            [Symbol.iterator](): IterableIterator<T> { return array[Symbol.iterator]() },
+            length: array.length,
+        }) as IterableWithLength<T>, "iterable with length",),
+        new Holder(<T>(array: readonly T[],) => ({
+            [Symbol.iterator](): IterableIterator<T> { return array[Symbol.iterator]() },
+            count: array.length,
+        }) as IterableWithCount<T>, "iterable with count",),
+        new Holder(<T>(array: readonly T[],) => ({
+            [Symbol.iterator](): IterableIterator<T> { return array[Symbol.iterator]() },
+            size: null,
+            length: null,
+            count: null,
+        }) as IterableWithPossibleSize<T>, "iterable with null size, length and count",),
+        new Holder(<T>(array: readonly T[],) => new GenericCollectionIterator(new GenericCollectionHolder(array,),), "collection iterable with generic",),
+        new Holder(<T>(array: readonly T[],) => new GenericCollectionIterator(new LazyGenericCollectionHolder(array,),), "collection iterable with lazy generic",),
+        new Holder(<T>(array: readonly T[],) => new GenericCollectionHolder(array,), "generic collection holder",),
+        new Holder(<T>(array: readonly T[],) => new LazyGenericCollectionHolder(array,), "lazy generic collection holder",),
     ],
     nonPresentItem = Symbol()

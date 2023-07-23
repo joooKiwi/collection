@@ -5,13 +5,20 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-import type {CollectionHolder}                                                                                                                                                                                                                               from "./CollectionHolder"
-import type {BooleanCallback, CollectionHolderName, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
-import {IndexValueCallback, ValueIndexCallback}                                                                                                                                                                                                              from "./CollectionHolder.types"
-import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                               from "./general type"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                       from "./CollectionHolder"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
+import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                                       from "./general type"
+import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/EmptyCollectionIterator"
 
 import {CollectionConstants} from "./CollectionConstants"
 
+/**
+ * A simple {@link CollectionHolder} with no values (as a singleton instance)
+ *
+ * @see GenericCollectionHolder
+ * @see LazyGenericCollectionHolder
+ * @singleton
+ */
 export class EmptyCollectionHolder
     implements CollectionHolder<never> {
 
@@ -329,7 +336,8 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------
 
-    public* [Symbol.iterator](): IterableIterator<never> {
+    public [Symbol.iterator](): EmptyCollectionIterator {
+        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
     }
 
     public get [Symbol.toStringTag](): CollectionHolderName {
@@ -344,7 +352,7 @@ export class EmptyCollectionHolder
     }
 
 
-    public toIterator(): IterableIterator<never> {
+    public toIterator(): EmptyCollectionIterator {
         return this[Symbol.iterator]()
     }
 

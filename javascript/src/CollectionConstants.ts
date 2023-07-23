@@ -5,9 +5,11 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-import type {CollectionHolder} from "./CollectionHolder"
+import type {CollectionHolder}   from "./CollectionHolder"
+import type {CollectionIterator} from "./iterator/CollectionIterator"
 
-import {EmptyCollectionHolder} from "./EmptyCollectionHolder"
+import {EmptyCollectionHolder}   from "./EmptyCollectionHolder"
+import {EmptyCollectionIterator} from "./iterator/EmptyCollectionIterator"
 
 /**
  * A simple utility class containing every field used by any {@link CollectionHolder} instances.
@@ -23,6 +25,7 @@ export class CollectionConstants {
     }
 
     static #EMPTY_COLLECTION_HOLDER?: EmptyCollectionHolder
+    static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
 
     /** A simple empty {@link ReadonlyArray array} */
     public static readonly EMPTY_ARRAY = Object.freeze([],)
@@ -35,6 +38,10 @@ export class CollectionConstants {
     /** A simple {@link EmptyCollectionHolder} instance */
     public static get EMPTY_COLLECTION_HOLDER(): EmptyCollectionHolder {
         return CollectionConstants.#EMPTY_COLLECTION_HOLDER ??= Object.freeze(EmptyCollectionHolder.get,)
+    }
+    /** A simple {@link EmptyCollectionIterator} instance */
+    public static get EMPTY_COLLECTION_ITERATOR(): EmptyCollectionIterator {
+        return CollectionConstants.#EMPTY_COLLECTION_ITERATOR ??= Object.freeze(EmptyCollectionIterator.get,)
     }
     /** A simple empty {@link String} */
     public static readonly EMPTY_STRING = Object.freeze('',) as ''
@@ -54,6 +61,12 @@ export class CollectionConstants {
      * @uniqueJavascriptVariable
      */
     public static readonly COLLECTION_HOLDER_TO_STRING_TAG = "CollectionHolder"
+    /**
+     * The simple {@link Symbol.toStringTag} of an {@link CollectionIterator}
+     *
+     * @uniqueJavascriptVariable
+     */
+    public static readonly COLLECTION_ITERATOR_TO_STRING_TAG = "CollectionIterator"
     /** Every method applicable to a {@link CollectionHolder} */
     public static readonly EVERY_COLLECTION_METHODS = Object.freeze([
         "size", "length", "count",
@@ -79,6 +92,15 @@ export class CollectionConstants {
         "toMap", "toMutableMap",
         "toReversed",
         "toString", "toLocaleString",
-    ] as const satisfies readonly (keyof CollectionHolder | symbol)[],)
+    ] as const satisfies readonly (keyof CollectionHolder)[],)
+    /** Every method applicable to a {@link CollectionIterator} */
+    public static readonly EVERY_ITERATOR_METHODS = Object.freeze([
+        "size", "length",
+        "index", "nextIndex", "previousIndex",
+        "hasNext", "hasPrevious",
+        "next", "previous",
+        "forEach", "forEachIndexed",
+        Symbol.iterator, Symbol.toStringTag,
+    ] as const satisfies readonly (keyof CollectionIterator)[],)
 
 }

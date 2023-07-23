@@ -30,11 +30,11 @@ export type ValueWithStringReturnCallback<T, > = (value: T,) => string
 
 /** A simple object encapsulation of a value */
 export type ObjectOf<T, > =
-    | (T extends string ? String : never)
-    | (T extends boolean ? Boolean : never)
-    | (T extends number ? Number : never)
-    | (T extends bigint ? BigInt : never)
-    | (T extends null ? {} : never)
-    | (T extends undefined ? {} : never)
-    | (T extends symbol ? Symbol : never)
-    | (& T & object)
+    | (T extends string ? (& String & { valueOf(): T, }) : never)
+    | (T extends boolean ? (& Boolean & { valueOf(): T, }) : never)
+    | (T extends number ? (& Number & { valueOf(): T, }) : never)
+    | (T extends bigint ? (& BigInt & { valueOf(): T, }) : never)
+    | (T extends null ? (& {} & { valueOf(): {}, }) : never)
+    | (T extends undefined ? (& {} & { valueOf(): {}, }) : never)
+    | (T extends symbol ? (& Symbol & { valueOf(): T, }) : never)
+    | (& T & object & { valueOf(): T, })

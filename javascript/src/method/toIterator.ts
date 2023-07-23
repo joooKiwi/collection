@@ -5,22 +5,25 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-import type {CollectionHolder} from "../CollectionHolder"
-import type {Nullable}         from "../general type"
+import type {CollectionHolder}   from "../CollectionHolder"
+import type {Nullable}           from "../general type"
+import type {CollectionIterator} from "../iterator/CollectionIterator"
+
+import {CollectionConstants}       from "../CollectionConstants"
+import {GenericCollectionIterator} from "../iterator/GenericCollectionIterator"
 
 /**
- * Convert the {@link collection} to a new {@link IterableIterator}
+ * Convert the {@link collection} to a new {@link CollectionIterator}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  *
  * @extensionFunction
  */
-export function* toIterator<const T, >(collection: Nullable<CollectionHolder<T>>,): IterableIterator<T> {
+export function toIterator<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionIterator<T> {
     if (collection == null)
-        return
+        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
 
-    const size = collection.size
-    let index = -1
-    while (++index < size)
-        yield collection.get(index,)
+    return new GenericCollectionIterator(collection,)
 }

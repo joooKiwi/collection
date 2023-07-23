@@ -25,11 +25,11 @@ import {CollectionConstants} from "../CollectionConstants"
  * @param limit The maximum amount of values in the join (null by default)
  * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED "…"} by default)
  * @param transform A callback to transform into a {@link String}
- *
- * @canReceiveNegativeValue
  * @see ReadonlyArray.join
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
+ *
+ * @canReceiveNegativeValue
  */
 export function join<const T, >(collection: Nullable<CollectionHolder<T>>, separator: Nullable<string> = null, prefix: Nullable<string> = null, postfix: Nullable<string> = null, limit: Nullable<number> = null, truncated: Nullable<string> = null, transform: Nullable<ValueWithStringReturnCallback<T>> = null,): string {
     if (collection == null)
