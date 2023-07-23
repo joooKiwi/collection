@@ -278,7 +278,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                         return new SetCollectionOf1Handler(this, referenceFound,)
                     return new SetCollectionHandler(this, referenceFound,)
                 }
-                if (isCollectionHolder<T>(referenceFound))
+                if (isCollectionHolder<T>(referenceFound,))
                     return new CollectionCollectionHandler(this, referenceFound,)
                 if (isCollectionIterator<T>(referenceFound,))
                     return new CollectionCollectionHandler(this, referenceFound.collection,)
