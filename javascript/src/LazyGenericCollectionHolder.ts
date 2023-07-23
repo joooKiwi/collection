@@ -107,7 +107,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
     public constructor(lateReference: () => REFERENCE,)
     public constructor(reference: | REFERENCE | (() => REFERENCE),)
     public constructor(reference: | REFERENCE | (() => REFERENCE),) {
-        // README: The lazy instantiation has some weird shenanigan in order to keep its laziness nature.
+        // README: The lazy instantiation has some weird shenanigan in order to keep its laziness nature pure.
         //         Also, in order to be efficient, there is some duplicate code in the constructor.
 
         if (reference instanceof Array) {

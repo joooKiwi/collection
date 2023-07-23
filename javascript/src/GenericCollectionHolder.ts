@@ -98,7 +98,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public constructor(lateReference: () => REFERENCE,)
     public constructor(reference: | REFERENCE | (() => REFERENCE),)
     public constructor(reference: | REFERENCE | (() => REFERENCE),) {
-        // README: The eager instantiation has some weird shenanigan in order to keep its laziness nature.
+        // README: The eager instantiation has some weird shenanigan in order to keep its nature pure.
         //         Also, in order to be efficient, there is some duplicate code in the constructor.
 
         reference = this.#reference = reference instanceof Function ? reference() : reference
