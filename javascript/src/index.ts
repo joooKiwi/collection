@@ -5,7 +5,7 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-export type {CollectionConstants}         from "./CollectionConstants"
+export {CollectionConstants}              from "./CollectionConstants"
 export type {CollectionHolder}            from "./CollectionHolder"
 export type *                             from "./CollectionHolder.types"
 export type {CollectionHolderConstructor} from "./CollectionHolderConstructor"
