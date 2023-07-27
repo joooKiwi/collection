@@ -63,6 +63,7 @@ describe("CollectionIteratorTest", () => {
             },)
         },)
         test("iterator", () => expect(instance[Symbol.iterator](),).toBe(instance,),)
+        test("for‥of", () => expect(() => { for (const _ of instance); },).not.toThrow(),)
     },)
     describe("GenericCollectionIterator", () => {
         const EMPTY_CALLBACK = () => {}
@@ -456,6 +457,10 @@ describe("CollectionIteratorTest", () => {
                 const instance = newInstance()
                 expect(instance[Symbol.iterator](),).not.toBe(instance,)
             },)
+            test("for‥of", () => expect(() => {
+                const instance = newInstance()
+                for (const _ of instance);
+            },).not.toThrow(),)
         },) },)
     },)
 
