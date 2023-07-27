@@ -5,12 +5,15 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-import type {CollectionHolder}                       from "../CollectionHolder"
-import type {IndexValueCallback, ValueIndexCallback} from "../CollectionHolder.types"
-import type {CollectionIterator}                     from "./CollectionIterator"
-import type {CollectionIteratorName}                 from "./CollectionIterator.types"
+import type {CollectionHolder}                                                                                             from "../CollectionHolder"
+import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
+import type {CollectionIterator}                                                                                           from "./CollectionIterator"
+import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
-import {CollectionConstants} from "../CollectionConstants"
+import {CollectionConstants}             from "../CollectionConstants"
+import {GenericAfterLastIteratorValue}   from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue} from "./value/GenericBeforeFirstIteratorValue"
+import {GenericIteratorValue}            from "./value/GenericIteratorValue"
 
 export class GenericCollectionIterator<const out T = unknown, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     implements CollectionIterator<T> {
@@ -73,46 +76,16 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
-    public next(): IteratorResult<T, never> {
-        const $this = this
-
-        if (!this.hasNext) {
-            return {
-                done: true,
-                get value(): never {
-                    throw new ReferenceError(`No value exist after the last element (after the index ${$this.size - 1}).`,)
-                },
-            } satisfies IteratorReturnResult<never>
-        }
-
-        const indexToRetrieve = this.#index++
-        return {
-            done: false,
-            get value() {
-                return $this.collection.get(indexToRetrieve,)
-            },
-        } satisfies IteratorYieldResult<T>
+    public next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol> {
+        if (this.hasNext)
+            return new GenericIteratorValue(this.collection, this.#index++,)
+        return GenericAfterLastIteratorValue.get
     }
 
-    public previous(): IteratorResult<T, never> {
-        const $this = this
-
-        if (!this.hasPrevious) {
-            return {
-                done: true,
-                get value(): never {
-                    throw new ReferenceError(`No value exist before the first element`,)
-                },
-            } satisfies IteratorReturnResult<never>
-        }
-
-        const indexToRetrieve = --this.#index
-        return {
-            done: false,
-            get value() {
-                return $this.collection.get(indexToRetrieve,)
-            },
-        } satisfies IteratorYieldResult<T>
+    public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> {
+        if (this.hasPrevious)
+            return new GenericIteratorValue(this.collection, --this.#index,)
+        return GenericBeforeFirstIteratorValue.get
     }
 
     //#region -------------------- Loop methods --------------------

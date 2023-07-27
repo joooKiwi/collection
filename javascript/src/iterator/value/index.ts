@@ -5,8 +5,7 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-export type {CollectionIterator}   from "./CollectionIterator"
-export type *                      from "./CollectionIterator.types"
-export {EmptyCollectionIterator}   from "./EmptyCollectionIterator"
-export {GenericCollectionIterator} from "./GenericCollectionIterator"
-export *                           from "./value/index"
+export {GenericAfterLastIteratorValue}   from "./GenericAfterLastIteratorValue"
+export {GenericBeforeFirstIteratorValue} from "./GenericBeforeFirstIteratorValue"
+export type {IteratorValue}              from "./IteratorValue"
+export {GenericIteratorValue}            from "./GenericIteratorValue"

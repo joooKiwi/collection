@@ -199,10 +199,10 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             }
 
             const iterator = reference[Symbol.iterator](),
-                array = []
+                array = [] as T[]
             let index = 0
             while (iterator.hasNext) {
-                this[index] = array[index] = iterator.next().value
+                this[index] = array[index] = iterator.next().value as T
                 index++
             }
             this.#array = Object.freeze(array,)

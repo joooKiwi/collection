@@ -102,5 +102,9 @@ export class CollectionConstants {
         "forEach", "forEachIndexed",
         Symbol.iterator, Symbol.toStringTag,
     ] as const satisfies readonly (keyof CollectionIterator)[],)
+    /** The value before the first value in a {@link CollectionIterator} */
+    public static readonly BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL = Symbol("Before first CollectionIterator value",)
+    /** The value after the last value in a {@link CollectionIterator} */
+    public static readonly AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL = Symbol("After last CollectionIterator value",)
 
 }
