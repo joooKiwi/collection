@@ -5,9 +5,9 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-import type {CollectionHolder}                       from "../CollectionHolder"
-import type {IndexValueCallback, ValueIndexCallback} from "../CollectionHolder.types"
-import type {CollectionIteratorName}                 from "./CollectionIterator.types"
+import type {CollectionHolder}                                                                                             from "../CollectionHolder"
+import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
+import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
 /**
  * A simple {@link Iterator} with a known {@link CollectionHolder} {@link CollectionHolder.size size}
@@ -61,10 +61,10 @@ export interface CollectionIterator<out T = unknown, >
     //#region -------------------- Methods --------------------
 
     /** Retrieve the next value in the line */
-    next(): IteratorResult<T, never>
+    next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol>
 
     /** Retrieve the previous value in the line */
-    previous(): IteratorResult<T, never>
+    previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol>
 
     //#region -------------------- Loop methods --------------------
 

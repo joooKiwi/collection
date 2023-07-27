@@ -5,12 +5,14 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
-import type {IndexValueCallback, ValueIndexCallback} from "../CollectionHolder.types"
-import type {EmptyCollectionHolder}                  from "../EmptyCollectionHolder"
-import type {CollectionIterator}                     from "./CollectionIterator"
-import type {CollectionIteratorName}                 from "./CollectionIterator.types"
+import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
+import type {EmptyCollectionHolder}                                                                                        from "../EmptyCollectionHolder"
+import type {CollectionIterator}                                                                                           from "./CollectionIterator"
+import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
-import {CollectionConstants} from "../CollectionConstants"
+import {CollectionConstants}             from "../CollectionConstants"
+import {GenericAfterLastIteratorValue}   from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue} from "./value/GenericBeforeFirstIteratorValue"
 
 export class EmptyCollectionIterator
     implements CollectionIterator<never> {
@@ -70,22 +72,12 @@ export class EmptyCollectionIterator
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
-    public next(): IteratorReturnResult<never> {
-        return {
-            done: true,
-            get value(): never {
-                throw new ReferenceError("No next value exist in an empty CollectionIterator.",)
-            },
-        }
+    public next(): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol> {
+        return GenericAfterLastIteratorValue.get
     }
 
-    public previous(): IteratorReturnResult<never> {
-        return {
-            done: true,
-            get value(): never {
-                throw new ReferenceError("No previous value exist in an empty CollectionIterator.",)
-            },
-        }
+    public previous(): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol> {
+        return GenericBeforeFirstIteratorValue.get
     }
 
     //#region -------------------- Loop methods --------------------

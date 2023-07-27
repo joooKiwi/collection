@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A Javascript implementation of a collection based on Array (from Javascript), Set (from Javascript), List (from Java/Kotlin) and Enumerable (from C#)",
 
   "scripts": {
@@ -62,6 +62,11 @@
       "import":  "./dist/ecmascript module/iterator/index.js",
       "require": "./dist/common javascript/iterator/index.js"
     },
+    "./iterator/value": {
+      "types":   "./dist/types/iterator/value/index.d.ts",
+      "import":  "./dist/ecmascript module/iterator/value/index.js",
+      "require": "./dist/common javascript/iterator/value/index.js"
+    },
     "./handler": {
       "types":   "./dist/types/handler/index.d.ts",
       "import":  "./dist/ecmascript module/handler/index.js",
@@ -93,6 +98,11 @@
       "import":  "./dist/ecmascript module/iterator/*.js",
       "require": "./dist/common javascript/iterator/*.js"
     },
+    "./collection/iterator/value/*": {
+      "types":   "./dist/types/iterator/value/*.d.ts",
+      "import":  "./dist/ecmascript module/iterator/value/*.js",
+      "require": "./dist/common javascript/iterator/value/*.js"
+    },
     "./collection/method/*": {
       "types":   "./dist/types/method/*.d.ts",
       "import":  "./dist/ecmascript module/method/*.js",
@@ -112,6 +122,11 @@
       "types":   "./dist/types/iterator/*.d.ts",
       "import":  "./dist/ecmascript module/iterator/*.js",
       "require": "./dist/common javascript/iterator/*.js"
+    },
+    "./iterator/value/*": {
+      "types":   "./dist/types/iterator/value/*.d.ts",
+      "import":  "./dist/ecmascript module/iterator/value/*.js",
+      "require": "./dist/common javascript/iterator/value/*.js"
     },
     "./method/*": {
       "types":   "./dist/types/method/*.d.ts",
@@ -152,9 +167,9 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
-    "@types/node": "^20.4.4",
+    "@types/node": "^20.4.5",
     "del-cli": "^5.0.0",
-    "jest-environment-jsdom": "^29.6.1",
+    "jest-environment-jsdom": "^29.6.2",
     "jest-extended": "^4.0.0",
     "npm-run-all": "^4.1.5",
     "ts-jest": "^29.1.1",

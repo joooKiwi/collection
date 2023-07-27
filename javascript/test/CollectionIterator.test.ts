@@ -5,6 +5,7 @@
  * All the right is reserved to the author of this project.                   *
  ******************************************************************************/
 
+import {CollectionConstants}       from "../src/CollectionConstants"
 import {EmptyCollectionHolder}     from "../src/EmptyCollectionHolder"
 import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
 
@@ -39,13 +40,13 @@ describe("CollectionIteratorTest", () => {
                 const it = instance.next()
 
                 test("done", () => expect(it.done,).toBeTrue(),)
-                test("value", () => expect(() => it.value,).toThrow(ReferenceError,),)
+                test("value", () => expect(it.value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
             describe("previous", () => {
                 const it = instance.previous()
 
                 test("done", () => expect(it.done,).toBeTrue(),)
-                test("value", () => expect(() => it.value,).toThrow(ReferenceError,),)
+                test("value", () => expect(it.value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
         },)
         describe("forEach", () => {
@@ -63,11 +64,12 @@ describe("CollectionIteratorTest", () => {
             },)
         },)
         test("iterator", () => expect(instance[Symbol.iterator](),).toBe(instance,),)
+        test("for‥of", () => expect(() => { for (const _ of instance); },).not.toThrow(),)
     },)
     describe("GenericCollectionIterator", () => {
         const EMPTY_CALLBACK = () => {}
 
-        describe.each(everyInstances,)("%s", ({value: collectionInstance,},) => { describe.each(iterableCreation,)("%s", ({value: iterableCreation,},) => {
+        describe.each(everyInstances,)("%s", ({value: collectionInstance,},) => {describe.each(iterableCreation,)("%s", ({value: iterableCreation,},) => {
             const maxSize = ABCDEFGHIJ.length,
                 newInstance = () => new GenericCollectionIterator<typeof ABCDEFGHIJ[number]>(newCollectionInstance(collectionInstance, iterableCreation, ABCDEFGHIJ,))
 
@@ -418,14 +420,14 @@ describe("CollectionIteratorTest", () => {
                     },)
                     describe("at the end", () => {
                         const it = newInstance().forEach(EMPTY_CALLBACK,).next()
-                        test("value", () => expect(() => it.value,).toThrow(ReferenceError,),)
+                        test("value", () => expect(it.value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
                         test("done", () => expect(it.done,).toBeTrue(),)
                     },)
                 },)
                 describe("previous", () => {
                     describe("at the start", () => {
                         const it = newInstance().previous()
-                        test("value", () => expect(() => it.value,).toThrow(ReferenceError,),)
+                        test("value", () => expect(it.value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
                         test("done", () => expect(it.done,).toBeTrue(),)
                     },)
                     describe("at the end", () => {
@@ -456,6 +458,10 @@ describe("CollectionIteratorTest", () => {
                 const instance = newInstance()
                 expect(instance[Symbol.iterator](),).not.toBe(instance,)
             },)
+            test("for‥of", () => expect(() => {
+                const instance = newInstance()
+                for (const _ of instance);
+            },).not.toThrow(),)
         },) },)
     },)
 
