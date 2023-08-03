@@ -20,7 +20,7 @@ import type {Nullable, NullOr}                           from "../general type"
  *
  * @extensionFunction
  */
-export function find<const T, const S extends T, >(collection: Nullable<CollectionHolder>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+export function find<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Get the first element found or <b>null</b> if nothing was found
  *
@@ -32,7 +32,7 @@ export function find<const T, const S extends T, >(collection: Nullable<Collecti
  *
  * @extensionFunction
  */
-export function find<const T, >(collection: Nullable<CollectionHolder>, predicate: BooleanCallback<T>,): NullOr<T>
+export function find<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T>
 export function find<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | BooleanCallback<T> | RestrainedBooleanCallback<T, S>,): NullOr<| T | S> {
     if (collection == null)
         return null

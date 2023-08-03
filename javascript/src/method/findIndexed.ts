@@ -20,7 +20,7 @@ import type {Nullable, NullOr}                                         from "../
  *
  * @extensionFunction
  */
-export function findIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder>, predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+export function findIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Get the first element found or <b>null</b> if nothing was found
  *
@@ -32,7 +32,7 @@ export function findIndexed<const T, const S extends T, >(collection: Nullable<C
  *
  * @extensionFunction
  */
-export function findIndexed<const T, >(collection: Nullable<CollectionHolder>, predicate: ReverseBooleanCallback<T>,): NullOr<T>
+export function findIndexed<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T>
 export function findIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | ReverseBooleanCallback<T> | ReverseRestrainedBooleanCallback<T, S>,): NullOr<| T | S> {
     if (collection == null)
         return null
