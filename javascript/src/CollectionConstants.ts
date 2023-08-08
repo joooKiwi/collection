@@ -95,7 +95,7 @@ export class CollectionConstants {
     ] as const satisfies readonly (keyof CollectionHolder)[],)
     /** Every method applicable to a {@link CollectionIterator} */
     public static readonly EVERY_ITERATOR_METHODS = Object.freeze([
-        "size", "length",
+        "size", "length", "count",
         "index", "nextIndex", "previousIndex",
         "hasNext", "hasPrevious",
         "next", "previous",
