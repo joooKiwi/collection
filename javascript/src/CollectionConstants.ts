@@ -99,6 +99,7 @@ export class CollectionConstants {
         "index", "nextIndex", "previousIndex",
         "hasNext", "hasPrevious",
         "next", "previous",
+        "nextValue", "previousValue",
         "forEach", "forEachIndexed",
         Symbol.iterator, Symbol.toStringTag,
     ] as const satisfies readonly (keyof CollectionIterator)[],)

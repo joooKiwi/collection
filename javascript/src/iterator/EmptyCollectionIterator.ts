@@ -76,8 +76,17 @@ export class EmptyCollectionIterator
         return GenericAfterLastIteratorValue.get
     }
 
+    public get nextValue(): never {
+        throw new ReferenceError("An empty collection iterator has no value to retrieve",)
+    }
+
+
     public previous(): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol> {
         return GenericBeforeFirstIteratorValue.get
+    }
+
+    public get previousValue(): never {
+        throw new ReferenceError("An empty collection iterator has no value to retrieve",)
     }
 
     //#region -------------------- Loop methods --------------------
