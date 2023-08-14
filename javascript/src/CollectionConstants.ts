@@ -9,6 +9,7 @@ import type {CollectionHolder}   from "./CollectionHolder"
 import type {CollectionIterator} from "./iterator/CollectionIterator"
 
 import {EmptyCollectionHolder}   from "./EmptyCollectionHolder"
+import {GenericCollectionHolder} from "./GenericCollectionHolder"
 import {EmptyCollectionIterator} from "./iterator/EmptyCollectionIterator"
 
 /**
@@ -26,9 +27,11 @@ export class CollectionConstants {
 
     static #EMPTY_COLLECTION_HOLDER?: EmptyCollectionHolder
     static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
+    static #EVERY_COLLECTION_METHODS?: CollectionHolder<keyof CollectionHolder>
+    static #EVERY_ITERATOR_METHODS?: CollectionHolder<keyof CollectionIterator>
 
     /** A simple empty {@link ReadonlyArray array} */
-    public static readonly EMPTY_ARRAY = Object.freeze([],)
+    public static readonly EMPTY_ARRAY = Object.freeze([] as const,)
     /** A simple empty {@link ReadonlySet set} */
     public static readonly EMPTY_SET = Object.freeze(new Set<never>(),)
     /** A simple empty {@link WeakSet weak set} */
@@ -68,41 +71,45 @@ export class CollectionConstants {
      */
     public static readonly COLLECTION_ITERATOR_TO_STRING_TAG = "CollectionIterator"
     /** Every method applicable to a {@link CollectionHolder} */
-    public static readonly EVERY_COLLECTION_METHODS = Object.freeze([
-        "size", "length", "count",
-        "isEmpty", "isNotEmpty",
-        "hasNull", "includesNull", "containsNull",
-        "get", "getOrElse", "getOrNull", "at", "atOrElse", "atOrNull",
-        "indexOf", "lastIndexOf", "indexOfFirst", "indexOfFirstIndexed", "indexOfLast", "indexOfLastIndexed",
-        "first", "firstOrNull",
-        "last", "lastOrNull",
-        "all", "any", "none",
-        "hasOne", "includesOne", "containsOne", "hasAll", "includesAll", "containsAll",
-        "join",
-        "filter", "filterIndexed", "filterNot", "filterIndexedNot", "filterNotNull", "requireNoNulls",
-        "find", "findIndexed", "findLast", "findLastIndexed",
-        "map", "mapIndexed",
-        "forEach", "forEachIndexed",
-        Symbol.iterator, Symbol.toStringTag,
-        "objectValuesMap",
-        "toIterator",
-        "toArray", "toMutableArray",
-        "toSet", "toMutableSet",
-        "toWeakSet", "toMutableWeakSet",
-        "toMap", "toMutableMap",
-        "toReversed",
-        "toString", "toLocaleString",
-    ] as const satisfies readonly (keyof CollectionHolder)[],)
+    public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> {
+        return CollectionConstants.#EVERY_COLLECTION_METHODS ??= Object.freeze(new GenericCollectionHolder([
+            "size", "length", "count",
+            "isEmpty", "isNotEmpty",
+            "hasNull", "includesNull", "containsNull",
+            "get", "getOrElse", "getOrNull", "at", "atOrElse", "atOrNull",
+            "indexOf", "lastIndexOf", "indexOfFirst", "indexOfFirstIndexed", "indexOfLast", "indexOfLastIndexed",
+            "first", "firstOrNull",
+            "last", "lastOrNull",
+            "all", "any", "none",
+            "hasOne", "includesOne", "containsOne", "hasAll", "includesAll", "containsAll",
+            "join",
+            "filter", "filterIndexed", "filterNot", "filterIndexedNot", "filterNotNull", "requireNoNulls",
+            "find", "findIndexed", "findLast", "findLastIndexed",
+            "map", "mapIndexed",
+            "forEach", "forEachIndexed",
+            Symbol.iterator, Symbol.toStringTag,
+            "objectValuesMap",
+            "toIterator",
+            "toArray", "toMutableArray",
+            "toSet", "toMutableSet",
+            "toWeakSet", "toMutableWeakSet",
+            "toMap", "toMutableMap",
+            "toReversed",
+            "toString", "toLocaleString",
+        ] as const,),)
+    }
     /** Every method applicable to a {@link CollectionIterator} */
-    public static readonly EVERY_ITERATOR_METHODS = Object.freeze([
-        "size", "length", "count",
-        "index", "nextIndex", "previousIndex",
-        "hasNext", "hasPrevious",
-        "next", "previous",
-        "nextValue", "previousValue",
-        "forEach", "forEachIndexed",
-        Symbol.iterator, Symbol.toStringTag,
-    ] as const satisfies readonly (keyof CollectionIterator)[],)
+    public static get EVERY_ITERATOR_METHODS(): CollectionHolder<keyof CollectionIterator> {
+        return CollectionConstants.#EVERY_ITERATOR_METHODS ??= Object.freeze(new GenericCollectionHolder([
+            "size", "length", "count",
+            "index", "nextIndex", "previousIndex",
+            "hasNext", "hasPrevious",
+            "next", "previous",
+            "nextValue", "previousValue",
+            "forEach", "forEachIndexed",
+            Symbol.iterator, Symbol.toStringTag,
+        ] as const,),)
+    }
     /** The value before the first value in a {@link CollectionIterator} */
     public static readonly BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL = Symbol("Before first CollectionIterator value",)
     /** The value after the last value in a {@link CollectionIterator} */
