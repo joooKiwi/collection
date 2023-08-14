@@ -1,8 +1,8 @@
-/******************************************************************************
- * Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi                             *
- *                                                                            *
- * This project is free to use.                                               *
- * All the right is reserved to the author of this project.                   *
+/*******************************************************************************
+ Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+
+ This project is free to use.
+ All the right is reserved to the author of this project.
  ******************************************************************************/
 
 import type {CollectionHolder}                           from "../CollectionHolder"
@@ -20,7 +20,7 @@ import type {Nullable, NullOr}                           from "../general type"
  *
  * @extensionFunction
  */
-export function find<const T, const S extends T, >(collection: Nullable<CollectionHolder>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+export function find<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Get the first element found or <b>null</b> if nothing was found
  *
@@ -32,7 +32,7 @@ export function find<const T, const S extends T, >(collection: Nullable<Collecti
  *
  * @extensionFunction
  */
-export function find<const T, >(collection: Nullable<CollectionHolder>, predicate: BooleanCallback<T>,): NullOr<T>
+export function find<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T>
 export function find<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | BooleanCallback<T> | RestrainedBooleanCallback<T, S>,): NullOr<| T | S> {
     if (collection == null)
         return null

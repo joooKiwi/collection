@@ -1,8 +1,8 @@
-/******************************************************************************
- * Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi                             *
- *                                                                            *
- * This project is free to use.                                               *
- * All the right is reserved to the author of this project.                   *
+/*******************************************************************************
+ Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+
+ This project is free to use.
+ All the right is reserved to the author of this project.
  ******************************************************************************/
 
 import type {CollectionHolder}                                                                                             from "../CollectionHolder"
@@ -82,10 +82,25 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
         return GenericAfterLastIteratorValue.get
     }
 
+    public get nextValue(): T {
+        const nextValue = this.next().value
+        if (nextValue === CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL)
+            throw new ReferenceError("The collection iterator is at or after the end of the line.",)
+        return nextValue
+    }
+
+
     public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> {
         if (this.hasPrevious)
             return new GenericIteratorValue(this.collection, --this.#index,)
         return GenericBeforeFirstIteratorValue.get
+    }
+
+    public get previousValue(): T {
+        const nextValue = this.previous().value
+        if (nextValue === CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL)
+            throw new ReferenceError("The collection iterator is at or before the start of the line.",)
+        return nextValue
     }
 
     //#region -------------------- Loop methods --------------------

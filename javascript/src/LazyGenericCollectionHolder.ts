@@ -1,8 +1,8 @@
-/******************************************************************************
- * Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi                             *
- *                                                                            *
- * This project is free to use.                                               *
- * All the right is reserved to the author of this project.                   *
+/*******************************************************************************
+ Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+
+ This project is free to use.
+ All the right is reserved to the author of this project.
  ******************************************************************************/
 
 import type {Lazy}    from "@joookiwi/lazy"
@@ -144,12 +144,12 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             }
 
             this.#isEmpty = lazyOf(false,)
+            if (Object.isFrozen(reference))
+                this.#array = reference
             if (size == 1) {
                 this.#handler = lazyOf(new ArrayCollectionOf1Handler(this, reference as unknown as (& REFERENCE & readonly [T,]),),)
                 return
             }
-            if (Object.isFrozen(reference))
-                this.#array = reference
 
             this.#handler = lazyOf(new ArrayCollectionHandler(this, reference as (& REFERENCE & readonly T[]),),)
             return
@@ -169,10 +169,10 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                 this.#handler = lazyOf(EmptyCollectionHandler.get,)
                 return
             }
-            if (Object.isFrozen(reference,))
-                this.#set = reference
 
             this.#isEmpty = lazyOf(false,)
+            if (Object.isFrozen(reference,))
+                this.#set = reference
             if (size == 1) {
                 this.#handler = lazyOf(new SetCollectionOf1Handler(this, reference as (& REFERENCE & ReadonlySet<T>),),)
                 return
@@ -243,9 +243,6 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             this.#handler = lazy(() => {
                 const referenceFound = reference()
                 if (referenceFound instanceof Array) {
-                    if (Object.isFrozen(referenceFound,))
-                        this.#array ??= referenceFound
-
                     const size = referenceFound.length
                     if (size == 0) {
                         this.#hasNull ??= false
@@ -256,14 +253,14 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                         this.#objectValuesMap ??= CollectionConstants.EMPTY_MAP
                         return EmptyCollectionHandler.get
                     }
+
+                    if (Object.isFrozen(referenceFound,))
+                        this.#array ??= referenceFound
                     if (size === 1)
                         return new ArrayCollectionOf1Handler(this, referenceFound as unknown as (& REFERENCE & readonly [T,]),)
                     return new ArrayCollectionHandler(this, referenceFound,)
                 }
                 if (referenceFound instanceof Set) {
-                    if (Object.isFrozen(referenceFound,))
-                        this.#set ??= referenceFound
-
                     const size = referenceFound.size
                     if (size == 0) {
                         this.#hasNull ??= false
@@ -274,6 +271,9 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                         this.#objectValuesMap ??= CollectionConstants.EMPTY_MAP
                         return EmptyCollectionHandler.get
                     }
+
+                    if (Object.isFrozen(referenceFound,))
+                        this.#set ??= referenceFound
                     if (size === 1)
                         return new SetCollectionOf1Handler(this, referenceFound,)
                     return new SetCollectionHandler(this, referenceFound,)

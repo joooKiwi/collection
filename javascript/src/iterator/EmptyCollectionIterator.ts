@@ -1,8 +1,8 @@
-/******************************************************************************
- * Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi                             *
- *                                                                            *
- * This project is free to use.                                               *
- * All the right is reserved to the author of this project.                   *
+/*******************************************************************************
+ Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+
+ This project is free to use.
+ All the right is reserved to the author of this project.
  ******************************************************************************/
 
 import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
@@ -76,8 +76,17 @@ export class EmptyCollectionIterator
         return GenericAfterLastIteratorValue.get
     }
 
+    public get nextValue(): never {
+        throw new ReferenceError("An empty collection iterator has no value to retrieve",)
+    }
+
+
     public previous(): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol> {
         return GenericBeforeFirstIteratorValue.get
+    }
+
+    public get previousValue(): never {
+        throw new ReferenceError("An empty collection iterator has no value to retrieve",)
     }
 
     //#region -------------------- Loop methods --------------------
