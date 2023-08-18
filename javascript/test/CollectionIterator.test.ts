@@ -51,6 +51,7 @@ describe("CollectionIteratorTest", () => {
                 test("done", () => expect(it.done,).toBeTrue(),)
                 test("value", () => expect(it.value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
+            test("previousValue", () => expect(() => instance.previousValue,).toThrow(ReferenceError,),)
         },)
         describe("forEach", () => {
             test("regular", () => {
