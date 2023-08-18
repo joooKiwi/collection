@@ -25,6 +25,7 @@ describe("CollectionIteratorTest", () => {
         describe("size", () => {
             test("size", () => expect(instance.size,).toBe(0,),)
             test("length", () => expect(instance.length,).toBe(0,),)
+            test("count", () => expect(instance.length,).toBe(0,),)
         },)
         describe("index", () => {
             test("index", () => expect(instance.index,).toBe(0,),)
@@ -76,6 +77,7 @@ describe("CollectionIteratorTest", () => {
             describe("size", () => {
                 test("size", () => expect(newInstance().size,).toBe(maxSize,),)
                 test("length", () => expect(newInstance().length,).toBe(maxSize,),)
+                test("count", () => expect(newInstance().count,).toBe(maxSize,),)
             },)
             describe("index", () => {
                 describe("index", () => {
