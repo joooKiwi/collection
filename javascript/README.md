@@ -51,9 +51,9 @@ It can be separated in different categories.
  - `size`, `length` & `count`
  - `isEmpty` & `isNotEmpty`
  - `hasNull`, `includesNull` & `containsNull`
- - `get` & `at`
- - `getOrElse` & `atOrElse`
- - `getOrNull` & `atOrNull`
+ - `get`, `at` & `elementAt`
+ - `getOrElse`, `atOrElse` & `elementAtOrElse`
+ - `getOrNull`, `atOrNull` & `elementAtOrNull`
  - `indexOf` & `lastIndexOf`
  - `indexOfFirst` & `indexOfFirstIndexed`
  - `indexOfLast` & `indexOfLastIndexed`
@@ -98,7 +98,8 @@ The non-implemented methods are `size` (with its alias `length` & `count`)
 and `isEmpty` with its inverse `isNotEmpty`.
 
 The alias methods are not part of the extension function.
-It includes `includesNull`, `containsNull`, `atOrElse`, `atOrDefault`,
+It includes `includesNull`, `containsNull`, `atOrElse`,
+`elementAtOrElse`, `atOrDefault`, `elementAtOrDefault`,
 `includesOne`, `containsOne`, `includesAll` & `containsAll`.
 
 ## Contribution

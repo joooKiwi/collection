@@ -41,42 +41,49 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         test("isNotEmpty", () => expect(newInstance().isNotEmpty,).toBe(size != 0,),)
     },) },)
     describe("value", () => {
-        describe("get / at", () => {
+        describe("get / at / element at", () => {
             describe("simple", () => {
                 describe("[](0)", () => {
                     test("index", () => expect(EMPTY_INSTANCE()[0],).toBeUndefined(),)
                     test("get", () => expect(() => EMPTY_INSTANCE().get(0,),).toThrow(ReferenceError,),)
                     test("at", () => expect(() => EMPTY_INSTANCE().at(0,),).toThrow(ReferenceError,),)
+                    test("element at", () => expect(() => EMPTY_INSTANCE().elementAt(0,),).toThrow(ReferenceError,),)
                 },)
                 describe("[a,b](0)", () => {
                     test.skip("index", () => expect(AB_INSTANCE()[0],).toEqual('a',),)
                     test("get", () => expect(AB_INSTANCE().get(0,),).toEqual('a',),)
                     test("at", () => expect(AB_INSTANCE().at(0,),).toEqual('a',),)
+                    test("element at", () => expect(AB_INSTANCE().elementAt(0,),).toEqual('a',),)
                 },)
                 describe("[a,b](3)", () => {
                     test.skip("index", () => expect(AB_INSTANCE()[3],).toBeUndefined(),)
                     test("get", () => expect(() => AB_INSTANCE().get(3,),).toThrow(ReferenceError,),)
                     test("at", () => expect(() => AB_INSTANCE().at(3,),).toThrow(ReferenceError,),)
+                    test("element at", () => expect(() => AB_INSTANCE().elementAt(3,),).toThrow(ReferenceError,),)
                 },)
                 describe("[a,b,c,d](1)", () => {
                     test.skip("index", () => expect(ABCD_INSTANCE()[1],).toEqual('b',),)
                     test("get", () => expect(ABCD_INSTANCE().get(1,),).toEqual('b',),)
                     test("at", () => expect(ABCD_INSTANCE().at(1,),).toEqual('b',),)
+                    test("element at", () => expect(ABCD_INSTANCE().elementAt(1,),).toEqual('b',),)
                 },)
                 describe("[a,b,c,d](-1)", () => {
                     test("index", () => expect(ABCD_INSTANCE()[-1],).toBeUndefined(),)
                     test("get", () => expect(ABCD_INSTANCE().get(-1,),).toEqual('d',),)
                     test("at", () => expect(ABCD_INSTANCE().at(-1,),).toEqual('d',),)
+                    test("element at", () => expect(ABCD_INSTANCE().elementAt(-1,),).toEqual('d',),)
                 },)
                 describe("[a,b,c,d](-4)", () => {
                     test("index", () => expect(ABCD_INSTANCE()[-4],).toBeUndefined(),)
                     test("get", () => expect(ABCD_INSTANCE().get(-4,),).toEqual('a',),)
                     test("at", () => expect(ABCD_INSTANCE().at(-4,),).toEqual('a',),)
+                    test("element at", () => expect(ABCD_INSTANCE().elementAt(-4,),).toEqual('a',),)
                 },)
                 describe("[a,b,c,d](-5)", () => {
                     test("index", () => expect(ABCD_INSTANCE()[-5],).toBeUndefined(),)
                     test("get", () => expect(() => ABCD_INSTANCE().get(-5,),).toThrow(ReferenceError,),)
                     test("at", () => expect(() => ABCD_INSTANCE().at(-5,),).toThrow(ReferenceError,),)
+                    test("element at", () => expect(() => ABCD_INSTANCE().elementAt(-5,),).toThrow(ReferenceError,),)
                 },)
             },)
             describe("or else", () => {
@@ -86,52 +93,64 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
                 describe("[].orElse(0, () => ∞)", () => {
                     test("get", () => expect(EMPTY_INSTANCE().getOrElse(0, callback,),).toEqual(value,),)
                     test("at", () => expect(EMPTY_INSTANCE().atOrElse(0, callback,),).toEqual(value,),)
+                    test("element at", () => expect(EMPTY_INSTANCE().elementAtOrElse(0, callback,),).toEqual(value,),)
                 },)
                 describe("[a,b].orElse(0, () => ∞)", () => {
                     test("get", () => expect(AB_INSTANCE().getOrElse(0, callback,),).toEqual('a',),)
                     test("at", () => expect(AB_INSTANCE().atOrElse(0, callback,),).toEqual('a',),)
+                    test("element at", () => expect(AB_INSTANCE().elementAtOrElse(0, callback,),).toEqual('a',),)
                 },)
                 describe("[a,b].orElse(3, () => ∞)", () => {
                     test("get", () => expect(AB_INSTANCE().getOrElse(3, callback,),).toEqual(value,),)
                     test("at", () => expect(AB_INSTANCE().atOrElse(3, callback,),).toEqual(value,),)
+                    test("element at", () => expect(AB_INSTANCE().elementAtOrElse(3, callback,),).toEqual(value,),)
                 },)
                 describe("[a,b,c,d].orElse(1, () => ∞)", () => {
                     test("get", () => expect(ABCD_INSTANCE().getOrElse(1, callback,),).toEqual('b',),)
                     test("at", () => expect(ABCD_INSTANCE().atOrElse(1, callback,),).toEqual('b',),)
+                    test("element at", () => expect(ABCD_INSTANCE().elementAtOrElse(1, callback,),).toEqual('b',),)
                 },)
                 describe("[a,b,c,d].orElse(-1, () => ∞)", () => {
                     test("get", () => expect(ABCD_INSTANCE().getOrElse(-1, callback,),).toEqual('d',),)
                     test("at", () => expect(ABCD_INSTANCE().atOrElse(-1, callback,),).toEqual('d',),)
+                    test("element at", () => expect(ABCD_INSTANCE().elementAtOrElse(-1, callback,),).toEqual('d',),)
                 },)
                 describe("[a,b,c,d].orElse(-5, () => ∞)", () => {
                     test("get", () => expect(ABCD_INSTANCE().getOrElse(-5, callback,),).toEqual(value,),)
                     test("at", () => expect(ABCD_INSTANCE().atOrElse(-5, callback,),).toEqual(value,),)
+                    test("element at", () => expect(ABCD_INSTANCE().elementAtOrElse(-5, callback,),).toEqual(value,),)
                 },)
             },)
             describe("or null", () => {
                 describe("[].orNull(0)", () => {
                     test("get", () => expect(EMPTY_INSTANCE().getOrNull(0,),).toBeNull(),)
                     test("at", () => expect(EMPTY_INSTANCE().atOrNull(0,),).toBeNull(),)
+                    test("element at", () => expect(EMPTY_INSTANCE().elementAtOrNull(0,),).toBeNull(),)
                 },)
                 describe("[a,b].orNull(0)", () => {
                     test("get", () => expect(AB_INSTANCE().getOrNull(0,),).toEqual('a',),)
                     test("at", () => expect(AB_INSTANCE().atOrNull(0,),).toEqual('a',),)
+                    test("element at", () => expect(AB_INSTANCE().elementAtOrNull(0,),).toEqual('a',),)
                 },)
                 describe("[a,b].orNull(3)", () => {
                     test("get", () => expect(AB_INSTANCE().getOrNull(3,),).toBeNull(),)
                     test("at", () => expect(AB_INSTANCE().atOrNull(3,),).toBeNull(),)
+                    test("element at", () => expect(AB_INSTANCE().elementAtOrNull(3,),).toBeNull(),)
                 },)
                 describe("[a,b,c,d].orNull(1)", () => {
                     test("get", () => expect(ABCD_INSTANCE().getOrNull(1,),).toEqual('b',),)
                     test("at", () => expect(ABCD_INSTANCE().atOrNull(1,),).toEqual('b',),)
+                    test("element at", () => expect(ABCD_INSTANCE().elementAtOrNull(1,),).toEqual('b',),)
                 },)
                 describe("[a,b,c,d].orNull(-1)", () => {
                     test("get", () => expect(ABCD_INSTANCE().getOrNull(-1,),).toEqual('d',),)
                     test("at", () => expect(ABCD_INSTANCE().atOrNull(-1,),).toEqual('d',),)
+                    test("element at", () => expect(ABCD_INSTANCE().elementAtOrNull(-1,),).toEqual('d',),)
                 },)
                 describe("[a,b,c,d].orNull(-5)", () => {
                     test("get", () => expect(ABCD_INSTANCE().getOrNull(-5,),).toBeNull(),)
                     test("at", () => expect(ABCD_INSTANCE().atOrNull(-5,),).toBeNull(),)
+                    test("element at", () => expect(ABCD_INSTANCE().elementAtOrNull(-5,),).toBeNull(),)
                 },)
             },)
         },)

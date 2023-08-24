@@ -106,7 +106,7 @@ export interface CollectionHolder<out T = unknown, >
     //#endregion -------------------- Has null methods --------------------
     //#region -------------------- Value methods --------------------
 
-    //#region -------------------- Get / at methods --------------------
+    //#region -------------------- Get / at / "element at" methods --------------------
 
     /**
      * Get the element at the specified index in the {@link CollectionHolder collection}
@@ -131,6 +131,15 @@ export interface CollectionHolder<out T = unknown, >
      * @alias {@link get}
      */
     at(index: number,): T
+
+    /**
+     * Get the element at the specified index in the {@link CollectionHolder collection}
+     *
+     * @param index The index to retrieve a value
+     *
+     * @alias {@link get}
+     */
+    elementAt(index: number,): T
 
 
     /**
@@ -168,6 +177,18 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param index The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
+     *
+     * @alias {@link getOrElse}
+     */
+    elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
+
+    /**
+     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
+     *
+     * @param index The index to retrieve a value
+     * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-else.html Kotlin elementAtOrElse(key, defaultValue)
      * @see get
@@ -188,6 +209,18 @@ export interface CollectionHolder<out T = unknown, >
      * @alias {@link getOrElse}
      */
     atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+
+    /**
+     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
+     *
+     * @param index The index to retrieve a value
+     * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
+     *
+     * @alias {@link getOrElse}
+     */
+    elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
 
     /**
@@ -214,7 +247,17 @@ export interface CollectionHolder<out T = unknown, >
      */
     atOrNull(index: number,): NullOr<T>
 
-    //#endregion -------------------- Get / at methods --------------------
+    /**
+     * Get the element at the specified index in the {@link CollectionHolder collection}
+     * or <b>null</b> if it is over the {@link size}
+     *
+     * @param index The index to retrieve a value
+     *
+     * @alias {@link getOrNull}
+     */
+    elementAtOrNull(index: number,): NullOr<T>
+
+    //#endregion -------------------- Get / at / "element at" methods --------------------
     //#region -------------------- Index of methods --------------------
 
     /**

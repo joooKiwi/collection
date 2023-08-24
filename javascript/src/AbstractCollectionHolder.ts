@@ -127,6 +127,10 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.get(index,)
     }
 
+    public elementAt(index: number,): T {
+        return this.get(index,)
+    }
+
 
     public abstract getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public abstract getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -137,10 +141,20 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.getOrElse(index, defaultValue,)
     }
 
+    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
+        return this.getOrElse(index, defaultValue,)
+    }
+
 
     public abstract getOrNull(index: number,): NullOr<T>
 
     public atOrNull(index: number,): NullOr<T> {
+        return this.getOrNull(index,)
+    }
+
+    public elementAtOrNull(index: number,): NullOr<T> {
         return this.getOrNull(index,)
     }
 
