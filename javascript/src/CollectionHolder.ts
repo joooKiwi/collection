@@ -115,7 +115,6 @@ export interface CollectionHolder<out T = unknown, >
      * @throws {ReferenceError} The index calculated is under 0 or over the {@link size} (after calculation)
      * @see ReadonlyArray.at
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html Kotlin get(index)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/element-at.html Kotlin elementAt(index)
      * @see getOrElse
      * @see getOrNull
      *
