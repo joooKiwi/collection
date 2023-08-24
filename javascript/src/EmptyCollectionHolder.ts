@@ -73,6 +73,11 @@ export class EmptyCollectionHolder
         this.get()
     }
 
+    public elementAt(index?: number,): never
+    public elementAt(): never {
+        this.get()
+    }
+
 
     public getOrElse(index: number,): never
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
@@ -89,6 +94,13 @@ export class EmptyCollectionHolder
     }
 
 
+    public elementAtOrElse(index: number,): never
+    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
+    public elementAtOrElse<const U, >(index: number, defaultValue?: IndexWithReturnCallback<U>,): U {
+        return defaultValue == null ? this.getOrElse(index,) : this.getOrElse(index, defaultValue,)
+    }
+
+
     public getOrNull(index?: number,): null
     public getOrNull(): null {
         return null
@@ -96,6 +108,11 @@ export class EmptyCollectionHolder
 
     public atOrNull(index?: number,): null
     public atOrNull(): null {
+        return this.getOrNull()
+    }
+
+    public elementAtOrNull(index?: number,): null
+    public elementAtOrNull(): null {
         return this.getOrNull()
     }
 
