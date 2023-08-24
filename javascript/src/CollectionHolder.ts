@@ -48,14 +48,14 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the length ({@link CollectionHolder.size size} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder collection}
      *
-     * @alias {@link size}
+     * @alias size
      */
     get length(): this["size"]
 
     /**
      * Get the count ({@link CollectionHolder.length length} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder collection}
      *
-     * @alias {@link size}
+     * @alias size
      */
     get count(): this["size"]
 
@@ -90,7 +90,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
      *
-     * @alias {@link hasNull}
+     * @alias hasNull
      * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
      */
     get includesNull(): this["hasNull"]
@@ -98,7 +98,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
      *
-     * @alias {@link hasNull}
+     * @alias hasNull
      * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
      */
     get containsNull(): this["hasNull"]
@@ -128,7 +128,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param index The index to retrieve a value
      *
-     * @alias {@link get}
+     * @alias get
      */
     at(index: number,): T
 
@@ -137,7 +137,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param index The index to retrieve a value
      *
-     * @alias {@link get}
+     * @alias get
      */
     elementAt(index: number,): T
 
@@ -166,7 +166,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param index The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
      *
-     * @alias {@link getOrElse}
+     * @alias getOrElse
      */
     atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
 
@@ -178,7 +178,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param index The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
      *
-     * @alias {@link getOrElse}
+     * @alias getOrElse
      */
     elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
 
@@ -206,7 +206,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param index The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
      *
-     * @alias {@link getOrElse}
+     * @alias getOrElse
      */
     atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
@@ -218,7 +218,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param index The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
      *
-     * @alias {@link getOrElse}
+     * @alias getOrElse
      */
     elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
@@ -243,7 +243,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param index The index to retrieve a value
      *
-     * @alias {@link getOrNull}
+     * @alias getOrNull
      */
     atOrNull(index: number,): NullOr<T>
 
@@ -253,7 +253,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param index The index to retrieve a value
      *
-     * @alias {@link getOrNull}
+     * @alias getOrNull
      */
     elementAtOrNull(index: number,): NullOr<T>
 
@@ -633,7 +633,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @returns {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      *
-     * @alias {@link hasOne}
+     * @alias hasOne
      */
     includesOne(...values: readonly T[]): boolean
 
@@ -643,7 +643,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @returns {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      *
-     * @alias {@link hasOne}
+     * @alias hasOne
      */
     includesOne(...values: readonly unknown[]): boolean
 
@@ -654,7 +654,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @returns {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      *
-     * @alias {@link hasOne}
+     * @alias hasOne
      */
     containsOne(...values: readonly T[]): boolean
 
@@ -664,7 +664,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @returns {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      *
-     * @alias {@link hasOne}
+     * @alias hasOne
      */
     containsOne(...values: readonly unknown[]): boolean
 
@@ -702,7 +702,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      *
-     * @alias {@link hasAll}
+     * @alias hasAll
      */
     includesAll(...values: readonly T[]): boolean
 
@@ -712,7 +712,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      *
-     * @alias {@link hasAll}
+     * @alias hasAll
      */
     includesAll(...values: readonly unknown[]): boolean
 
@@ -723,7 +723,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      *
-     * @alias {@link hasAll}
+     * @alias hasAll
      */
     containsAll(...values: readonly T[]): boolean
 
@@ -733,7 +733,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      *
-     * @alias {@link hasAll}
+     * @alias hasAll
      */
     containsAll(...values: readonly unknown[]): boolean
 
