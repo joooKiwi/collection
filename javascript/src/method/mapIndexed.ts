@@ -34,7 +34,7 @@ export function mapIndexed<const T, const U, >(collection: Nullable<CollectionHo
 
     return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<U>, () => {
         const size = collection.size,
-            newArray = new Array(size,)
+            newArray = new Array<U>(size,)
         let index = -1
         while (++index < size)
             newArray[index] = transform(index, collection.get(index,),)
