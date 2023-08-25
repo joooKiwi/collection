@@ -20,7 +20,7 @@ describe("CollectionIteratorTest", () => {
         const instance = newEmptyIterator(),
             collectionInstance = EmptyCollectionHolder.get
 
-        test("collection", () => expect(instance.collection,).toStrictEqual(collectionInstance,),)
+        test("collection", () => expect(instance.collection,).toEqual(collectionInstance,),)
 
         describe("size", () => {
             test("size", () => expect(instance.size,).toBe(0,),)

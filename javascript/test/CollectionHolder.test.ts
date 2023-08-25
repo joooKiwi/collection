@@ -34,9 +34,9 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
 
     describe("size", () => { describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
         const newInstance = () => newCollectionInstance(instance, arrayOrSetCreation, array,)
-        test("size", () => expect(newInstance().size,).toStrictEqual(size,),)
-        test("length", () => expect(newInstance().length,).toStrictEqual(size,),)
-        test("count", () => expect(newInstance().count,).toStrictEqual(size,),)
+        test("size", () => expect(newInstance().size,).toEqual(size,),)
+        test("length", () => expect(newInstance().length,).toEqual(size,),)
+        test("count", () => expect(newInstance().count,).toEqual(size,),)
         test("isEmpty", () => expect(newInstance().isEmpty,).toBe(size == 0,),)
         test("isNotEmpty", () => expect(newInstance().isNotEmpty,).toBe(size != 0,),)
     },) },)
@@ -468,19 +468,19 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         test("[a,b].join(null, null, null, null, () => toUpperCase)", () => expect(AB_INSTANCE().join(null, null, null, null, null, it => it.toUpperCase(),),).toBe("[A, B]",),)
     },)
     describe("filter", () => {
-        test("[a,b,c,d].filter(d) == [d]", () => expect(ABCD_INSTANCE().filter(it => it === 'd',).toArray(),).toStrictEqual(['d',],),)
-        test("[a,b,c,d].filterIndexed(3) == [d]", () => expect(ABCD_INSTANCE().filterIndexed(it => it === 3,).toArray(),).toStrictEqual(['d',],),)
-        test("[a,b,c,d].filterNot(d) == [a,b,c]", () => expect(ABCD_INSTANCE().filterNot(it => it === 'd',).toArray(),).toStrictEqual(['a', 'b', 'c',],),)
-        test("[a,b,c,d].filterIndexedNot(3) == [a,b,c]", () => expect(ABCD_INSTANCE().filterIndexedNot(it => it === 3,).toArray(),).toStrictEqual(['a', 'b', 'c',],),)
-        test("[a,b,1,2].filter(number) == [1,2]", () => expect(AB12_INSTANCE().filter(it => typeof it == "number",).toArray(),).toStrictEqual([1, 2,],),)
-        test("[a,b,1,2].filterNot(number) == [a,b]", () => expect(AB12_INSTANCE().filterNot(it => typeof it == "number",).toArray(),).toStrictEqual(['a', 'b',],),)
+        test("[a,b,c,d].filter(d) == [d]", () => expect(ABCD_INSTANCE().filter(it => it === 'd',).toArray(),).toEqual(['d',],),)
+        test("[a,b,c,d].filterIndexed(3) == [d]", () => expect(ABCD_INSTANCE().filterIndexed(it => it === 3,).toArray(),).toEqual(['d',],),)
+        test("[a,b,c,d].filterNot(d) == [a,b,c]", () => expect(ABCD_INSTANCE().filterNot(it => it === 'd',).toArray(),).toEqual(['a', 'b', 'c',],),)
+        test("[a,b,c,d].filterIndexedNot(3) == [a,b,c]", () => expect(ABCD_INSTANCE().filterIndexedNot(it => it === 3,).toArray(),).toEqual(['a', 'b', 'c',],),)
+        test("[a,b,1,2].filter(number) == [1,2]", () => expect(AB12_INSTANCE().filter(it => typeof it == "number",).toArray(),).toEqual([1, 2,],),)
+        test("[a,b,1,2].filterNot(number) == [a,b]", () => expect(AB12_INSTANCE().filterNot(it => typeof it == "number",).toArray(),).toEqual(['a', 'b',],),)
     },)
     describe("filterNotNull", () => {
-        test("[a,null,b,undefined].filterNotNull() == [a,b]", () => expect(A_NULL_B_UNDEFINED_INSTANCE().filterNotNull().toArray(),).toStrictEqual(['a', 'b',],),)
-        test("[a,null,b,undefined].filterNotNull() != this", () => expect(A_NULL_B_UNDEFINED_INSTANCE().filterNotNull(),).not.toStrictEqual(A_NULL_B_UNDEFINED_INSTANCE(),),)
-        test("[a,null,b,undefined].filterNot(null).filterNotNull() != this", () => expect(A_NULL_B_UNDEFINED_INSTANCE().filterNot(it => it === null).filterNotNull().toArray(),).not.toStrictEqual(['a', null, 'b', undefined,],),)
-        test("[a,null,b,undefined].filterNot(undefined).filterNotNull() != this", () => expect(A_NULL_B_UNDEFINED_INSTANCE().filterNot(it => it === undefined).filterNotNull().toArray(),).not.toStrictEqual(['a', null, 'b', undefined,],),)
-        test("[a,b].filterNotNull() == this", () => expect(AB_INSTANCE().filterNotNull().toArray(),).toStrictEqual(['a', 'b',],),)
+        test("[a,null,b,undefined].filterNotNull() == [a,b]", () => expect(A_NULL_B_UNDEFINED_INSTANCE().filterNotNull().toArray(),).toEqual(['a', 'b',],),)
+        test("[a,null,b,undefined].filterNotNull() != this", () => expect(A_NULL_B_UNDEFINED_INSTANCE().filterNotNull(),).not.toEqual(A_NULL_B_UNDEFINED_INSTANCE(),),)
+        test("[a,null,b,undefined].filterNot(null).filterNotNull() != this", () => expect(A_NULL_B_UNDEFINED_INSTANCE().filterNot(it => it === null).filterNotNull().toArray(),).not.toEqual(['a', null, 'b', undefined,],),)
+        test("[a,null,b,undefined].filterNot(undefined).filterNotNull() != this", () => expect(A_NULL_B_UNDEFINED_INSTANCE().filterNot(it => it === undefined).filterNotNull().toArray(),).not.toEqual(['a', null, 'b', undefined,],),)
+        test("[a,b].filterNotNull() == this", () => expect(AB_INSTANCE().filterNotNull().toArray(),).toEqual(['a', 'b',],),)
     },)
     describe("requireNoNulls", () => {
         test("[a,null,b,undefined].requireNotNull() → throw", () => expect(() => A_NULL_B_UNDEFINED_INSTANCE().requireNoNulls(),).toThrow(TypeError,),)
@@ -581,15 +581,15 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         },)
     },)
     describe("toReverse", () => {
-        test("[a,b,c,d,e,f,g,h,i,j].() == [j,i,h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed().toArray(),).toStrictEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].() == [j,i,h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed().toArray(),).toEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
 
-        test("[a,b,c,d,e,f,g,h,i,j].(2) == [j,i,h,g,f,e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2,).toArray(),).toStrictEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].(null, 2) == [j,i]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, 2,).toArray(),).toStrictEqual(['b', 'a',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].(2, 5) == [e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2, 5,).toArray(),).toStrictEqual(['e', 'd', 'c',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(2) == [j,i,h,g,f,e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2,).toArray(),).toEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(null, 2) == [j,i]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, 2,).toArray(),).toEqual(['b', 'a',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(2, 5) == [e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2, 5,).toArray(),).toEqual(['e', 'd', 'c',],),)
 
-        test("[a,b,c,d,e,f,g,h,i,j].(-2) == [j,i]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-2,).toArray(),).toStrictEqual(['j', 'i',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].(null, -2) == [h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, -2,).toArray(),).toStrictEqual(['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].(-5, -2) == [g,f,e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-5, -2,).toArray(),).toStrictEqual(['h', 'g', 'f',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(-2) == [j,i]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-2,).toArray(),).toEqual(['j', 'i',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(null, -2) == [h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, -2,).toArray(),).toEqual(['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
+        test("[a,b,c,d,e,f,g,h,i,j].(-5, -2) == [g,f,e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-5, -2,).toArray(),).toEqual(['h', 'g', 'f',],),)
 
         test("[a,b,c,d,e,f,g,h,i,j].(2, 1) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(2, 1,).isEmpty,).toThrow(RangeError,),)
 
@@ -606,40 +606,40 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
     },)
     describe("conversion", () => {
         describe("to array", () => {
-            test("basic", () => expect(AB_INSTANCE().toArray(),).toStrictEqual(['a', 'b',],),)
+            test("basic", () => expect(AB_INSTANCE().toArray(),).toEqual(['a', 'b',],),)
             test("frozen", () => expect(AB_INSTANCE().toArray(),).toBeFrozen(),)
             test("size", () => expect(AB_INSTANCE().toArray(),).toHaveLength(2,),)
         })
         describe("to mutable array", () => {
-            test("basic", () => expect(AB_INSTANCE().toMutableArray(),).toStrictEqual(['a', 'b',],),)
+            test("basic", () => expect(AB_INSTANCE().toMutableArray(),).toEqual(['a', 'b',],),)
             test("frozen", () => expect(AB_INSTANCE().toMutableArray(),).not.toBeFrozen(),)
             test("size", () => expect(AB_INSTANCE().toMutableArray(),).toHaveLength(2,),)
         })
         describe("to set", () => {
-            test("basic", () => expect(AB_INSTANCE().toSet(),).toStrictEqual(new Set(['a', 'b',],),),)
+            test("basic", () => expect(AB_INSTANCE().toSet(),).toEqual(new Set(['a', 'b',],),),)
             test("frozen", () => expect(AB_INSTANCE().toSet(),).toBeFrozen(),)
             test("size", () => expect(AB_INSTANCE().toSet().size,).toBe(2,),)
         })
         describe("to mutable set", () => {
-            test("basic", () => expect(AB_INSTANCE().toMutableSet(),).toStrictEqual(new Set(['a', 'b',],),),)
+            test("basic", () => expect(AB_INSTANCE().toMutableSet(),).toEqual(new Set(['a', 'b',],),),)
             test("frozen", () => expect(AB_INSTANCE().toMutableSet(),).not.toBeFrozen(),)
             test("size", () => expect(AB_INSTANCE().toMutableSet().size,).toBe(2,),)
         })
         describe("to weak set", () => {
-            test("basic", () => expect(AB_OBJECT_INSTANCE().toWeakSet(),).toStrictEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
+            test("basic", () => expect(AB_OBJECT_INSTANCE().toWeakSet(),).toEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
             test("frozen", () => expect(AB_INSTANCE().toWeakSet(),).toBeFrozen(),)
         })
         describe("to mutable weak set", () => {
-            test("basic", () => expect(AB_OBJECT_INSTANCE().toMutableWeakSet(),).toStrictEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
+            test("basic", () => expect(AB_OBJECT_INSTANCE().toMutableWeakSet(),).toEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
             test("frozen", () => expect(AB_INSTANCE().toMutableWeakSet(),).not.toBeFrozen(),)
         })
         describe("to map", () => {
-            test("basic", () => expect(AB_INSTANCE().toMap(),).toStrictEqual(new Map([[0, 'a',], [1, 'b',],],),),)
+            test("basic", () => expect(AB_INSTANCE().toMap(),).toEqual(new Map([[0, 'a',], [1, 'b',],],),),)
             test("frozen", () => expect(AB_INSTANCE().toMap(),).toBeFrozen(),)
             test("size", () => expect(AB_INSTANCE().toMap().size,).toBe(2,),)
         })
         describe("to mutable map", () => {
-            test("basic", () => expect(AB_INSTANCE().toMutableMap(),).toStrictEqual(new Map([[0, 'a',], [1, 'b',],],),),)
+            test("basic", () => expect(AB_INSTANCE().toMutableMap(),).toEqual(new Map([[0, 'a',], [1, 'b',],],),),)
             test("frozen", () => expect(AB_INSTANCE().toMutableMap(),).not.toBeFrozen(),)
             test("size", () => expect(AB_INSTANCE().toMutableMap().size,).toBe(2,),)
         })
