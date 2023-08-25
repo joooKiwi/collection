@@ -530,6 +530,56 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         test("[a,b,c,d,A,B,C,D].findLastIndexIndexed(7) == 7", () => expect(ABCD_ABCD_INSTANCE().indexOfLastIndexed(it => it === 7,),).toBe(7,),)
         test("[a,b,c,d,A,B,C,D].findLastIndexIndexed(26) == null", () => expect(ABCD_ABCD_INSTANCE().indexOfLastIndexed(it => it === 26,),).toBeNull(),)
     },)
+    describe("map", () => {
+        describe("map", () => {
+            test("() => {}", () => expect(ABCD_INSTANCE().map(() => {},).toArray(),).toEqual([undefined, undefined, undefined, undefined,],),)
+            test("undefined", () => expect(ABCD_INSTANCE().map(() => undefined,).toArray(),).toEqual([undefined, undefined, undefined, undefined,],),)
+            test("null", () => expect(ABCD_INSTANCE().map(() => null,).toArray(),).toEqual([null, null, null, null,],),)
+
+            test("value 'a' only", () => expect(ABCD_INSTANCE().map(it => it === 'a' ? it : null,).toArray(),).toEqual(['a', null, null, null,],),)
+            test("index 0 only", () => expect(ABCD_INSTANCE().map((value, index,) => index === 0 ? value : null,).toArray(),).toEqual(['a', null, null, null,],),)
+
+            test("NaN", () => expect(ABCD_INSTANCE().map(() => NaN,).toArray(),).toEqual([NaN, NaN, NaN, NaN,],),)
+            test("value", () => expect(ABCD_INSTANCE().map(it => it,).toArray(),).toEqual(['a', 'b', 'c', 'd',],),)
+            test("index", () => expect(ABCD_INSTANCE().map((_, it,) => it,).toArray(),).toEqual([0, 1, 2, 3,],),)
+        },)
+        describe("mapIndexed", () => {
+            test("() => {}", () => expect(ABCD_INSTANCE().mapIndexed(() => {},).toArray(),).toEqual([undefined, undefined, undefined, undefined,],),)
+            test("undefined", () => expect(ABCD_INSTANCE().mapIndexed(() => undefined,).toArray(),).toEqual([undefined, undefined, undefined, undefined,],),)
+            test("null", () => expect(ABCD_INSTANCE().mapIndexed(() => null,).toArray(),).toEqual([null, null, null, null,],),)
+
+            test("value 'a' only", () => expect(ABCD_INSTANCE().mapIndexed((_, it) => it === 'a' ? it : null,).toArray(),).toEqual(['a', null, null, null,],),)
+            test("index 0 only", () => expect(ABCD_INSTANCE().mapIndexed((index, value,) => index === 0 ? value : null,).toArray(),).toEqual(['a', null, null, null,],),)
+
+            test("NaN", () => expect(ABCD_INSTANCE().mapIndexed(() => NaN,).toArray(),).toEqual([NaN, NaN, NaN, NaN,],),)
+            test("value", () => expect(ABCD_INSTANCE().mapIndexed((_, it,) => it,).toArray(),).toEqual(['a', 'b', 'c', 'd',],),)
+            test("index", () => expect(ABCD_INSTANCE().mapIndexed(it => it,).toArray(),).toEqual([0, 1, 2, 3,],),)
+        },)
+        describe("mapNotNull", () => {
+            test("() => {}", () => expect(ABCD_INSTANCE().mapNotNull(() => {},).toArray(),).toEqual([],),)
+            test("undefined", () => expect(ABCD_INSTANCE().mapNotNull(() => undefined,).toArray(),).toEqual([],),)
+            test("null", () => expect(ABCD_INSTANCE().mapNotNull(() => null,).toArray(),).toEqual([],),)
+
+            test("value 'a' only", () => expect(ABCD_INSTANCE().mapNotNull(it => it === 'a' ? it : null,).toArray(),).toEqual(['a',],),)
+            test("index 0 only", () => expect(ABCD_INSTANCE().mapNotNull((value, index,) => index === 0 ? value : null,).toArray(),).toEqual(['a',],),)
+
+            test("NaN", () => expect(ABCD_INSTANCE().mapNotNull(() => NaN,).toArray(),).toEqual([NaN, NaN, NaN, NaN,],),)
+            test("value", () => expect(ABCD_INSTANCE().mapNotNull(it => it,).toArray(),).toEqual(['a', 'b', 'c', 'd',],),)
+            test("index", () => expect(ABCD_INSTANCE().mapNotNull((_, it,) => it,).toArray(),).toEqual([0, 1, 2, 3,],),)
+        },)
+        describe("mapNotNullIndexed", () => {
+            test("() => {}", () => expect(ABCD_INSTANCE().mapNotNullIndexed(() => {},).toArray(),).toEqual([],),)
+            test("undefined", () => expect(ABCD_INSTANCE().mapNotNullIndexed(() => undefined,).toArray(),).toEqual([],),)
+            test("null", () => expect(ABCD_INSTANCE().mapNotNullIndexed(() => null,).toArray(),).toEqual([],),)
+
+            test("value 'a' only", () => expect(ABCD_INSTANCE().mapNotNullIndexed((_, it,) => it === 'a' ? it : null,).toArray(),).toEqual(['a',],),)
+            test("index 0 only", () => expect(ABCD_INSTANCE().mapNotNullIndexed((index, value,) => index === 0 ? value : null,).toArray(),).toEqual(['a',],),)
+
+            test("NaN", () => expect(ABCD_INSTANCE().mapNotNullIndexed(() => NaN,).toArray(),).toEqual([NaN, NaN, NaN, NaN,],),)
+            test("value", () => expect(ABCD_INSTANCE().mapNotNullIndexed((_, it,) => it,).toArray(),).toEqual(['a', 'b', 'c', 'd',],),)
+            test("index", () => expect(ABCD_INSTANCE().mapNotNullIndexed(it => it,).toArray(),).toEqual([0, 1, 2, 3,],),)
+        },)
+    },)
     describe("toReverse", () => {
         test("[a,b,c,d,e,f,g,h,i,j].() == [j,i,h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed().toArray(),).toStrictEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
 

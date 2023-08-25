@@ -982,6 +982,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.map
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html Kotlin map(transform)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+     * @see mapNotNull
      */
     map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U>
 
@@ -993,8 +994,34 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.map
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html Kotlin mapIndexed(transform)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+     * @see mapNotNullIndexed
      */
     mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U>
+
+
+    /**
+     * Create a new {@link CollectionHolder} applying a {@link transform} function
+     * on each non-null element of the current {@link CollectionHolder collection}
+     *
+     * @param transform The given transform
+     * @see ReadonlyArray.map
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+     * @see map
+     */
+    mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U>
+
+    /**
+     * Create a new {@link CollectionHolder} applying a {@link transform} function
+     * on each non-null element of the current {@link CollectionHolder collection}
+     *
+     * @param transform The given transform
+     * @see ReadonlyArray.map
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+     * @see mapIndexed
+     */
+    mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U>
 
     //#endregion -------------------- Map methods --------------------
     //#region -------------------- ForEach methods --------------------

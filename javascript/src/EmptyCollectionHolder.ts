@@ -335,6 +335,16 @@ export class EmptyCollectionHolder
         return this as unknown as CollectionHolder<never>
     }
 
+    public mapNotNull<const U extends NonNullable<unknown>, >(transform?: ValueIndexWithReturnCallback<never, Nullable<U>>,): CollectionHolder<U>
+    public mapNotNull<const U extends NonNullable<unknown>, >(): CollectionHolder<U> {
+        return this as unknown as CollectionHolder<U>
+    }
+
+    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform?: IndexValueWithReturnCallback<never, Nullable<U>>,): CollectionHolder<U>
+    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(): CollectionHolder<U> {
+        return this as unknown as CollectionHolder<U>
+    }
+
     //#endregion -------------------- Map methods --------------------
     //#region -------------------- ForEach methods --------------------
 

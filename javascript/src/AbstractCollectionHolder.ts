@@ -41,6 +41,8 @@ import {lastOrNull}          from "./method/lastOrNull"
 import {none}                from "./method/none"
 import {map}                 from "./method/map"
 import {mapIndexed}          from "./method/mapIndexed"
+import {mapNotNull}          from "./method/mapNotNull"
+import {mapNotNullIndexed}   from "./method/mapNotNullIndexed"
 import {objectValuesMap}     from "./method/objectValuesMap"
 import {requireNoNulls}      from "./method/requireNoNulls"
 import {toArray}             from "./method/toArray"
@@ -368,6 +370,14 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     public mapIndexed<const U, >(callback: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
         return mapIndexed(this, callback,)
+    }
+
+    public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+        return mapNotNull(this, transform,)
+    }
+
+    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+        return mapNotNullIndexed(this, transform,)
     }
 
     //#endregion -------------------- Map methods --------------------

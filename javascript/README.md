@@ -71,6 +71,7 @@ It can be separated in different categories.
  - `find` & `findIndexed`
  - `findLast` & `findLastIndexed`
  - `map` & `mapIndexed`
+ - `mapNotNull` & `mapNotNullIndexed`
  - `forEach` & `forEachIndexed`
 
 <span>3.</span> The **conversion** methods
