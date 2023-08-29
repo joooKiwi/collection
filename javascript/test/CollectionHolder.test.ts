@@ -597,7 +597,7 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         test("(null, 400)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 400,).toString(),).toThrow(RangeError,),)
         test("(null, -400)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -400,).toString(),).toThrow(RangeError,),)
     },)
-    describe("iterator", () => {
+    describe("Symbol.iterator", () => {
         const iterator = AB_INSTANCE()[Symbol.iterator]()
         test("1st: a", () => expect(iterator.next().value,).toBe('a',),)
         test("2nd: b", () => expect(iterator.next().value,).toBe('b',),)
