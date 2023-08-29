@@ -37,7 +37,9 @@ export const sizeValues = () => [
     iterableCreation = [
         new Holder(<T>(array: readonly T[],) => Array.from(array,), "array",),
         new Holder(<T>(array: readonly T[],) => new Set(array,), "set",),
-        new Holder(<T>(array: readonly T[],) => array[Symbol.iterator]() as IterableIterator<T>, "iterable reference",),
+        new Holder(<T>(array: readonly T[],) => ({
+            [Symbol.iterator](): IterableIterator<T> { return array[Symbol.iterator]() },
+        }) as Iterable<T>, "iterable",),
         new Holder(<T>(array: readonly T[],) => ({
             [Symbol.iterator](): IterableIterator<T> { return array[Symbol.iterator]() },
             size: array.length,
@@ -56,9 +58,9 @@ export const sizeValues = () => [
             length: null,
             count: null,
         }) as IterableWithPossibleSize<T>, "iterable with null size, length and count",),
-        new Holder(<T>(array: readonly T[],) => new GenericCollectionIterator(new GenericCollectionHolder(array,),), "collection iterable with generic",),
-        new Holder(<T>(array: readonly T[],) => new GenericCollectionIterator(new LazyGenericCollectionHolder(array,),), "collection iterable with lazy generic",),
-        new Holder(<T>(array: readonly T[],) => new GenericCollectionHolder(array,), "generic collection holder",),
-        new Holder(<T>(array: readonly T[],) => new LazyGenericCollectionHolder(array,), "lazy generic collection holder",),
+        new Holder(<T>(array: readonly T[],) => new GenericCollectionIterator(new GenericCollectionHolder(array,),), "collection iterator + generic collection",),
+        new Holder(<T>(array: readonly T[],) => new GenericCollectionIterator(new LazyGenericCollectionHolder(array,),), "collection iterator + lazy collection",),
+        new Holder(<T>(array: readonly T[],) => new GenericCollectionHolder(array,), "generic collection",),
+        new Holder(<T>(array: readonly T[],) => new LazyGenericCollectionHolder(array,), "lazy collection",),
     ],
     nonPresentItem = Symbol()
