@@ -581,22 +581,21 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         },)
     },)
     describe("toReverse", () => {
-        test("[a,b,c,d,e,f,g,h,i,j].() == [j,i,h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed().toArray(),).toEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
+        test("empty", () => expect(ABCDEFGHIJ_INSTANCE().toReversed().toArray(),).toEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
 
-        test("[a,b,c,d,e,f,g,h,i,j].(2) == [j,i,h,g,f,e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2,).toArray(),).toEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].(null, 2) == [j,i]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, 2,).toArray(),).toEqual(['b', 'a',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].(2, 5) == [e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2, 5,).toArray(),).toEqual(['e', 'd', 'c',],),)
+        test("(2)", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2,).toArray(),).toEqual(['j', 'i', 'h', 'g', 'f', 'e', 'd', 'c',],),)
+        test("(null, 2)", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, 2,).toArray(),).toEqual(['b', 'a',],),)
+        test("(2, 5)", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(2, 5,).toArray(),).toEqual(['e', 'd', 'c',],),)
 
-        test("[a,b,c,d,e,f,g,h,i,j].(-2) == [j,i]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-2,).toArray(),).toEqual(['j', 'i',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].(null, -2) == [h,g,f,e,d,c,b,a]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, -2,).toArray(),).toEqual(['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
-        test("[a,b,c,d,e,f,g,h,i,j].(-5, -2) == [g,f,e,d,c]", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-5, -2,).toArray(),).toEqual(['h', 'g', 'f',],),)
+        test("(-2)", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-2,).toArray(),).toEqual(['j', 'i',],),)
+        test("(null, -2)", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(null, -2,).toArray(),).toEqual(['h', 'g', 'f', 'e', 'd', 'c', 'b', 'a',],),)
+        test("(-5, -2)", () => expect(ABCDEFGHIJ_INSTANCE().toReversed(-5, -2,).toArray(),).toEqual(['h', 'g', 'f',],),)
 
-        test("[a,b,c,d,e,f,g,h,i,j].(2, 1) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(2, 1,).isEmpty,).toThrow(RangeError,),)
-
-        test("[a,b,c,d,e,f,g,h,i,j].(400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(400,).isEmpty,).toThrow(RangeError,),)
-        test("[a,b,c,d,e,f,g,h,i,j].(-400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-400,).isEmpty,).toThrow(RangeError,),)
-        test("[a,b,c,d,e,f,g,h,i,j].(null, 400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 400,).isEmpty,).toThrow(RangeError,),)
-        test("[a,b,c,d,e,f,g,h,i,j].(null, -400) => error", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -400,).isEmpty,).toThrow(RangeError,),)
+        test("(2, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(2, 1,).toString(),).toThrow(RangeError,),)
+        test("(400)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(400,).toString(),).toThrow(RangeError,),)
+        test("(-400)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-400,).toString(),).toThrow(RangeError,),)
+        test("(null, 400)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 400,).toString(),).toThrow(RangeError,),)
+        test("(null, -400)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -400,).toString(),).toThrow(RangeError,),)
     },)
     describe("iterator", () => {
         const iterator = AB_INSTANCE()[Symbol.iterator]()
