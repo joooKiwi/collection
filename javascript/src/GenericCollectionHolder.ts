@@ -143,7 +143,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
         if (isCollectionHolder<T>(reference)) {
             const size = this.#size = reference.size
-            if(this.#isEmpty = reference.isEmpty) {
+            if (this.#isEmpty = reference.isEmpty) {
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
