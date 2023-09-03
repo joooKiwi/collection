@@ -266,6 +266,11 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                         this.#weakSet ??= CollectionConstants.EMPTY_WEAK_SET
                         this.#map ??= CollectionConstants.EMPTY_MAP
                         this.#objectValuesMap ??= CollectionConstants.EMPTY_MAP
+                        this.#hasNull = false
+                        this.#array = CollectionConstants.EMPTY_ARRAY
+                        this.#set = CollectionConstants.EMPTY_SET
+                        this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                        this.#map = this.#objectValuesMap = CollectionConstants.EMPTY_MAP
                         return CollectionConstants.EMPTY_COLLECTION_HANDLER
                     }
 
@@ -273,7 +278,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                     //#region -------------------- Late-initialization (non-empty) --------------------
 
                     if (Object.isFrozen(referenceFound,))
-                        this.#array ??= referenceFound
+                        this.#array = referenceFound
 
                     //#region -------------------- Late-initialization (size = 1) --------------------
 
@@ -297,6 +302,11 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                         this.#weakSet ??= CollectionConstants.EMPTY_WEAK_SET
                         this.#map ??= CollectionConstants.EMPTY_MAP
                         this.#objectValuesMap ??= CollectionConstants.EMPTY_MAP
+                        this.#hasNull = false
+                        this.#array = CollectionConstants.EMPTY_ARRAY
+                        this.#set = CollectionConstants.EMPTY_SET
+                        this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                        this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                         return CollectionConstants.EMPTY_COLLECTION_HANDLER
                     }
 
@@ -304,7 +314,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                     //#region -------------------- Late-initialization (non-empty) --------------------
 
                     if (Object.isFrozen(referenceFound,))
-                        this.#set ??= referenceFound
+                        this.#set = referenceFound
 
                     //#region -------------------- Late-initialization (size = 1) --------------------
 
@@ -335,6 +345,11 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                         this.#weakSet ??= CollectionConstants.EMPTY_WEAK_SET
                         this.#map ??= CollectionConstants.EMPTY_MAP
                         this.#objectValuesMap ??= CollectionConstants.EMPTY_MAP
+                        this.#hasNull = false
+                        this.#array = CollectionConstants.EMPTY_ARRAY
+                        this.#set = CollectionConstants.EMPTY_SET
+                        this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                        this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                         return CollectionConstants.EMPTY_COLLECTION_HANDLER
                     }
 
