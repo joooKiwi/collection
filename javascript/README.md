@@ -70,6 +70,7 @@ It can be separated in different categories.
  - `filterNotNull` & `requireNotNull`
  - `find` & `findIndexed`
  - `findLast` & `findLastIndexed`
+ - `slice`
  - `map` & `mapIndexed`
  - `mapNotNull` & `mapNotNullIndexed`
  - `forEach` & `forEachIndexed`
