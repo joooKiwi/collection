@@ -113,7 +113,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#region -------------------- Initialization (non-empty) --------------------
 
             this.#isEmpty = CommonLazy.FALSE
-            if (Object.isFrozen(reference))
+            if (Object.isFrozen(reference,))
                 this.#array = reference
 
             //#region -------------------- Initialization (size = 1) --------------------
@@ -181,7 +181,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
-        if (isCollectionHolder<T>(reference)) {
+        if (isCollectionHolder<T>(reference,)) {
             this.#reference = lazyOf(reference,)
             this.#handler = lazy(() => new CollectionCollectionHandler(this, reference,),)
             this.#isEmpty = lazy(() => {
