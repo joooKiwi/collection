@@ -20,15 +20,23 @@ import {EmptyCollectionIterator} from "./iterator/EmptyCollectionIterator"
  */
 export class CollectionConstants {
 
+    //#region -------------------- Thrown constructor --------------------
+
     /** @throws {EvalError} The class cannot be created */
     private constructor() {
         throw new EvalError("The CollectionConstants cannot be created.",)
     }
+    //#endregion -------------------- Thrown constructor --------------------
+    //#region -------------------- Fields held --------------------
 
     static #EMPTY_COLLECTION_HOLDER?: EmptyCollectionHolder
     static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
     static #EVERY_COLLECTION_METHODS?: CollectionHolder<keyof CollectionHolder>
     static #EVERY_ITERATOR_METHODS?: CollectionHolder<keyof CollectionIterator>
+
+    //#endregion -------------------- Fields held --------------------
+
+    //#region -------------------- Empty references --------------------
 
     /** A simple empty {@link ReadonlyArray array} */
     public static readonly EMPTY_ARRAY = Object.freeze([] as const,)
@@ -38,6 +46,7 @@ export class CollectionConstants {
     public static readonly EMPTY_WEAK_SET = Object.freeze(new WeakSet<never>(),)
     /** A simple empty {@link ReadonlyMap map} */
     public static readonly EMPTY_MAP = Object.freeze(new Map<never, never>(),)
+
     /** A simple {@link EmptyCollectionHolder} instance */
     public static get EMPTY_COLLECTION_HOLDER(): EmptyCollectionHolder {
         return CollectionConstants.#EMPTY_COLLECTION_HOLDER ??= Object.freeze(EmptyCollectionHolder.get,)
@@ -46,8 +55,12 @@ export class CollectionConstants {
     public static get EMPTY_COLLECTION_ITERATOR(): EmptyCollectionIterator {
         return CollectionConstants.#EMPTY_COLLECTION_ITERATOR ??= Object.freeze(EmptyCollectionIterator.get,)
     }
+
     /** A simple empty {@link String} */
     public static readonly EMPTY_STRING = Object.freeze('',) as ''
+
+    //#endregion -------------------- Empty references --------------------
+    //#region -------------------- Default references --------------------
 
     /** The default value for the separator {@link String string} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
     public static readonly DEFAULT_JOIN_SEPARATOR = ", "
@@ -57,6 +70,9 @@ export class CollectionConstants {
     public static readonly DEFAULT_JOIN_TRUNCATED = '…'
     /** The default value for the postfix {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
     public static readonly DEFAULT_JOIN_POSTFIX = ']'
+
+    //#endregion -------------------- Default references --------------------
+    //#region -------------------- Symbol.toString references --------------------
 
     /**
      * The simple {@link Symbol.toStringTag} of an {@link CollectionHolder}
@@ -70,6 +86,10 @@ export class CollectionConstants {
      * @uniqueJavascriptVariable
      */
     public static readonly COLLECTION_ITERATOR_TO_STRING_TAG = "CollectionIterator"
+
+    //#endregion -------------------- Symbol.toString references --------------------
+    //#region -------------------- "Every methods" references --------------------
+
     /** Every method applicable to a {@link CollectionHolder} */
     public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> {
         return CollectionConstants.#EVERY_COLLECTION_METHODS ??= Object.freeze(new GenericCollectionHolder([
@@ -110,9 +130,15 @@ export class CollectionConstants {
             Symbol.iterator, Symbol.toStringTag,
         ] as const,),)
     }
+
+    //#endregion -------------------- "Every methods" references --------------------
+    //#region -------------------- Symbol references --------------------
+
     /** The value before the first value in a {@link CollectionIterator} */
     public static readonly BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL = Symbol("Before first CollectionIterator value",)
     /** The value after the last value in a {@link CollectionIterator} */
     public static readonly AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL = Symbol("After last CollectionIterator value",)
+
+    //#endregion -------------------- Symbol references --------------------
 
 }
