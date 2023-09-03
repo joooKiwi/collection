@@ -71,19 +71,19 @@ export interface CollectionHolderConstructor<T = unknown, > {
     //#region -------------------- new(collection iterable) --------------------
 
     /**
-     * Create a new {@link CollectionHolder} from an {@link CollectionIterator iterable}
+     * Create a new {@link CollectionHolder} from an {@link CollectionIterator iterator}
      * made for a {@link CollectionHolder collection}
      *
-     * @param collectionIterable The iterable to loop over its values
+     * @param collectionIterator The iterator to loop over its values
      */
-    new(collectionIterable: CollectionIterator<T>,): CollectionHolder<T>
+    new(collectionIterator: CollectionIterator<T>,): CollectionHolder<T>
 
     /**
-     * Create a new {@link CollectionHolder} from an {@link CollectionIterator iterable} callback
+     * Create a new {@link CollectionHolder} from an {@link CollectionIterator iterator} callback
      *
-     * @param lateCollectionIterable The callback returning an {@link CollectionIterator iterable} to loop over its values
+     * @param lateCollectionIterator The callback returning an {@link CollectionIterator iterator} to loop over its values
      */
-    new(lateCollectionIterable: () => CollectionIterator<T>,): CollectionHolder<T>
+    new(lateCollectionIterator: () => CollectionIterator<T>,): CollectionHolder<T>
 
     //#endregion -------------------- new(collection iterable) --------------------
     //#region -------------------- new(iterable with size) --------------------
@@ -178,6 +178,7 @@ export interface CollectionHolderConstructor<T = unknown, > {
      * Create a new {@link CollectionHolder} from an {@link Iterable iterable} callback
      *
      * @param iterable The callback returning an {@link Iterable iterable} or the {@link Iterable iterable} itself to loop over its values
+     * @typescriptDefinition
      */
     new(iterable: | Iterable<T> | (() => Iterable<T>),): CollectionHolder<T>
 
