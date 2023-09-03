@@ -5,12 +5,16 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}   from "./CollectionHolder"
-import type {CollectionIterator} from "./iterator/CollectionIterator"
+import type {Lazy} from "@joookiwi/lazy"
+import {lazyOf}    from "@joookiwi/lazy"
+
+import type {CollectionHolder}         from "./CollectionHolder"
+import type {CollectionIterator}       from "./iterator/CollectionIterator"
 
 import {EmptyCollectionHolder}   from "./EmptyCollectionHolder"
 import {GenericCollectionHolder} from "./GenericCollectionHolder"
 import {EmptyCollectionIterator} from "./iterator/EmptyCollectionIterator"
+import {EmptyCollectionHandler}  from "./handler/EmptyCollection.handler"
 
 /**
  * A simple utility class containing every field used by any {@link CollectionHolder} instances.
@@ -30,7 +34,12 @@ export class CollectionConstants {
     //#region -------------------- Fields held --------------------
 
     static #EMPTY_COLLECTION_HOLDER?: EmptyCollectionHolder
+    static #LAZY_EMPTY_COLLECTION_HOLDER?: Lazy<EmptyCollectionHolder>
+    static #EMPTY_COLLECTION_HANDLER?: EmptyCollectionHandler
+    static #LAZY_EMPTY_COLLECTION_HANDLER?: Lazy<EmptyCollectionHandler>
     static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
+    static #LAZY_EMPTY_COLLECTION_ITERATOR?: Lazy<EmptyCollectionIterator>
+
     static #EVERY_COLLECTION_METHODS?: CollectionHolder<keyof CollectionHolder>
     static #EVERY_ITERATOR_METHODS?: CollectionHolder<keyof CollectionIterator>
 
@@ -47,13 +56,32 @@ export class CollectionConstants {
     /** A simple empty {@link ReadonlyMap map} */
     public static readonly EMPTY_MAP = Object.freeze(new Map<never, never>(),)
 
+
     /** A simple {@link EmptyCollectionHolder} instance */
     public static get EMPTY_COLLECTION_HOLDER(): EmptyCollectionHolder {
         return CollectionConstants.#EMPTY_COLLECTION_HOLDER ??= Object.freeze(EmptyCollectionHolder.get,)
     }
+    /** A simple {@link EmptyCollectionHolder} instance in a {@link Lazy} */
+    public static get LAZY_EMPTY_COLLECTION_HOLDER(): Lazy<EmptyCollectionHolder> {
+        return this.#LAZY_EMPTY_COLLECTION_HOLDER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HOLDER,)
+    }
+
+    /** A simple {@link EmptyCollectionHandler} instance */
+    public static get EMPTY_COLLECTION_HANDLER(): EmptyCollectionHandler {
+        return CollectionConstants.#EMPTY_COLLECTION_HANDLER ??= Object.freeze(EmptyCollectionHandler.get,)
+    }
+    /** A simple {@link EmptyCollectionHandler} instance in a {@link Lazy} */
+    public static get LAZY_EMPTY_COLLECTION_HANDLER(): Lazy<EmptyCollectionHandler> {
+        return this.#LAZY_EMPTY_COLLECTION_HANDLER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HANDLER,)
+    }
+
     /** A simple {@link EmptyCollectionIterator} instance */
     public static get EMPTY_COLLECTION_ITERATOR(): EmptyCollectionIterator {
         return CollectionConstants.#EMPTY_COLLECTION_ITERATOR ??= Object.freeze(EmptyCollectionIterator.get,)
+    }
+    /** A simple {@link EmptyCollectionIterator} instance in a {@link Lazy} */
+    public static get LAZY_EMPTY_COLLECTION_ITERATOR(): Lazy<EmptyCollectionIterator> {
+        return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_ITERATOR,)
     }
 
     /** A simple empty {@link String} */
