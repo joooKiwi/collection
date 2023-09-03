@@ -187,12 +187,26 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             //#endregion -------------------- Initialization (empty) --------------------
             //#region -------------------- Initialization (non-empty) --------------------
 
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = reference.get(0,)
+                this.#hasNull = value == null
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
             const array = [] as T[]
             let index = size
             while (index-- > 0)
                 this[index] = array[index] = reference.get(index,)
             this.#array = Object.freeze(array,)
             return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
@@ -213,12 +227,26 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             //#endregion -------------------- Initialization (empty) --------------------
             //#region -------------------- Initialization (non-empty) --------------------
 
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = reference.nextValue
+                this.#hasNull = value == null
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
             const array = [] as T[]
             let index = -1
             while (++index < size)
                 this[index] = array[index] = reference.nextValue
             this.#array = Object.freeze(array,)
             return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
@@ -244,6 +272,17 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             //#endregion -------------------- Initialization (empty) --------------------
             //#region -------------------- Initialization (non-empty) --------------------
 
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = reference[Symbol.iterator]().next().value
+                this.#hasNull = value == null
+                this.#array = Object.freeze([value,],)
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
             const array = [] as T[],
                 iterator = reference[Symbol.iterator]() as IterableIterator<T>
             let index = -1,
@@ -252,6 +291,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 this[index] = array[index] = iteratorResult.value
             this.#array = Object.freeze(array,)
             return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
