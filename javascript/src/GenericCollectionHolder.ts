@@ -104,7 +104,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 return
             }
 
-            const array = new Array(size,)
+            const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
                 this[index] = array[index] = reference[index]
@@ -132,7 +132,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 return
             }
 
-            const array = new Array(size,)
+            const array = new Array<T>(size,)
             const iterator = reference[Symbol.iterator]() as IterableIterator<T>
             let index = -1
             while (++index < size)
@@ -143,11 +143,20 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
         if (isCollectionHolder<T>(reference)) {
             const size = this.#size = reference.size
-            this.#isEmpty = reference.isEmpty
-            this.#array = reference.toArray()
+            if(this.#isEmpty = reference.isEmpty) {
+                this.#hasNull = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            const array = [] as T[]
             let index = size
             while (index-- > 0)
-                this[index] = reference[index]
+                this[index] = array[index] = reference.get(index,)
+            this.#array = Object.freeze(array,)
             return
         }
 
@@ -162,13 +171,10 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 return
             }
 
-            const iterator = reference[Symbol.iterator](),
-                array = [] as T[]
-            let index = 0
-            while (iterator.hasNext) {
-                this[index] = array[index] = iterator.next().value as T
-                index++
-            }
+            const array = [] as T[]
+            let index = -1
+            while (++index < size)
+                this[index] = array[index] = reference.nextValue
             this.#array = Object.freeze(array,)
             return
         }
@@ -189,22 +195,19 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 return
             }
 
-            const array = [],
+            const array = [] as T[],
                 iterator = reference[Symbol.iterator]() as IterableIterator<T>
-            let index = 0,
-                value = iterator.next()
-            while (!value.done) {
-                this[index] = array[index] = value.value
-                value = iterator.next()
-                index++
-            }
+            let index = -1,
+                iteratorResult: IteratorResult<T, T>
+            while (++index, !(iteratorResult = iterator.next()).done)
+                this[index] = array[index] = iteratorResult.value
             this.#array = Object.freeze(array,)
             return
         }
 
         const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-        let value = iterator.next()
-        if (value.done) {
+        let iteratorResult = iterator.next() as IteratorResult<T, T>
+        if (iteratorResult.done) {
             this.#size = 0
             this.#isEmpty = true
             this.#hasNull = false
@@ -215,14 +218,12 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             return
         }
 
-        const array = []
+        const array = [] as T[]
         this.#isEmpty = false
+        this[0] = array[0] = iteratorResult.value
         let size = 0
-        while (!value.done) {
-            this[size] = array[size] = value.value
-            value = iterator.next()
-            size++
-        }
+        while (++size, !(iteratorResult = iterator.next()).done)
+            this[size] = array[size] = iteratorResult.value
         this.#size = size
         this.#array = Object.freeze(array,)
     }
