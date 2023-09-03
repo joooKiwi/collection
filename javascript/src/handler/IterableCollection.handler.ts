@@ -118,8 +118,11 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
         if (index < 0)
             return { value: null, get cause() { return new ReferenceError(`The index ${index} could not be retrieved from a value under 0.`,) }, }
 
-        if (this.hasFinished)
+        if (this.hasFinished) {
+            if (index > this._amountOfElementRetrieved - 1)
+                return { value: null, get cause() { return new ReferenceError(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`,) }, }
             return { value: collection[this._amountOfElementRetrieved - 1] as T, cause: null, }
+        }
 
         const amountOfElementRetrieved = this._amountOfElementRetrieved,
             iterator = this._iterator
