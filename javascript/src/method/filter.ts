@@ -19,7 +19,6 @@ import {newInstance}         from "./newInstance"
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate The given predicate
- * @param constructorInstance The class to create (the {@link collection} constructor by default)
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
@@ -28,14 +27,13 @@ import {newInstance}         from "./newInstance"
  * @typescriptDefinition
  * @extensionFunction
  */
-export function filter<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>, constructorInstance: Nullable<CollectionHolderConstructor<T>>,): CollectionHolder<S>
+export function filter<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder }
  * matching only the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate The given predicate
- * @param constructorInstance The class to create (the {@link collection} constructor by default)
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
@@ -44,15 +42,15 @@ export function filter<const T, const S extends T, >(collection: Nullable<Collec
  * @typescriptDefinition
  * @extensionFunction
  */
-export function filter<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, constructorInstance?: Nullable<CollectionHolderConstructor<T>>,): CollectionHolder<T>
-export function filter<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>, constructorInstance: Nullable<CollectionHolderConstructor<T>> = null,) {
+export function filter<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
+export function filter<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
 
-    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<T>, () => {
+    return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
         const newArray = [] as T[],
             size = collection.size
         let index = -1

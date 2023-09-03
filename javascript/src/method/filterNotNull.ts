@@ -16,14 +16,13 @@ import {newInstance}         from "./newInstance"
  * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param constructorInstance The class to create (the {@link collection} constructor by default)
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
  * @see requireNoNulls
  *
  * @extensionFunction
  */
-export function filterNotNull<const T, >(collection: Nullable<CollectionHolder<T>>, constructorInstance: Nullable<CollectionHolderConstructor<NonNullable<T>>> = null,): CollectionHolder<NonNullable<T>> {
+export function filterNotNull<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
@@ -31,7 +30,7 @@ export function filterNotNull<const T, >(collection: Nullable<CollectionHolder<T
     if (!collection.hasNull)
         return collection as CollectionHolder<NonNullable<T>>
 
-    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<NonNullable<T>>, () => {
+    return newInstance(collection.constructor as CollectionHolderConstructor<NonNullable<T>>, () => {
         const newArray = [] as NonNullable<T>[],
             size = collection.size
         let index = -1

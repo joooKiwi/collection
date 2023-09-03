@@ -19,20 +19,19 @@ import {newInstance}         from "./newInstance"
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param transform The given transform
- * @param constructorInstance The class to create (the {@link collection} constructor by default)
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html Kotlin map(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
  *
  * @extensionFunction
  */
-export function map<const T, const U, >(collection: Nullable<CollectionHolder<T>>, transform: ValueIndexWithReturnCallback<T, U>, constructorInstance: Nullable<CollectionHolderConstructor<U>> = null,): CollectionHolder<U> {
+export function map<const T, const U, >(collection: Nullable<CollectionHolder<T>>, transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<U>, () => {
+    return newInstance(collection.constructor as CollectionHolderConstructor<U>, () => {
         const size = collection.size,
             newArray = new Array<U>(size,)
         let index = -1

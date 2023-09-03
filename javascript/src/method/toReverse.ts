@@ -21,20 +21,19 @@ import {newInstance}                            from "./newInstance"
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The inclusive starting index
  * @param toIndex The exclusive ending index
- * @param constructorInstance The class to create (the {@link collection} constructor by default)
  * @throws {RangeError} The indexes "from" and "to" are not within a valid range
  * @see Array.reverse
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html Kotlin reverse()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, constructorInstance: Nullable<CollectionHolderConstructor<T>> = null,): CollectionHolder<T> {
+export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    return newInstance(constructorInstance ?? collection.constructor as CollectionHolderConstructor<T>, () => {
+    return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
         const size = collection.size,
             startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
             endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
