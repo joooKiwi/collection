@@ -23,7 +23,6 @@ import {newInstance}         from "./newInstance"
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filter
- *
  * @typescriptDefinition
  * @extensionFunction
  */
@@ -38,7 +37,6 @@ export function filterNot<const T, const S extends T, >(collection: Nullable<Col
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filter
- *
  * @extensionFunction
  */
 export function filterNot<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>

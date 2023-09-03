@@ -22,7 +22,6 @@ import {newInstance}         from "./newInstance"
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html Kotlin map(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
- *
  * @extensionFunction
  */
 export function map<const T, const U, >(collection: Nullable<CollectionHolder<T>>, transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {

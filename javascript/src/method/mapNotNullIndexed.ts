@@ -22,7 +22,6 @@ import {newInstance}         from "./newInstance"
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
- *
  * @extensionFunction
  */
 export function mapNotNullIndexed<const T, const U extends NonNullable<unknown>, >(collection: Nullable<CollectionHolder<T>>, transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {

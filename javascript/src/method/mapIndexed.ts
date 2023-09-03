@@ -22,7 +22,6 @@ import {newInstance}         from "./newInstance"
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html Kotlin mapIndexed(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
- *
  * @extensionFunction
  */
 export function mapIndexed<const T, const U, >(collection: Nullable<CollectionHolder<T>>, transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {

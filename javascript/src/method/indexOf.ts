@@ -21,10 +21,10 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @param fromIndex The inclusive starting index
  * @param toIndex The exclusive ending index
  * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws {RangeError} The indexes "from" and "to" are not within a valid range
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item)
- *
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -39,10 +39,10 @@ export function indexOf<const T, >(collection: Nullable<CollectionHolder<T>>, el
  * @param fromIndex The inclusive starting index
  * @param toIndex The exclusive ending index
  * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws {RangeError} The indexes "from" and "to" are not within a valid range
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item)
- *
  * @canReceiveNegativeValue
  * @extensionFunction
  */

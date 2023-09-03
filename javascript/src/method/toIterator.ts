@@ -16,7 +16,6 @@ import {GenericCollectionIterator} from "../iterator/GenericCollectionIterator"
  * Convert the {@link collection} to a new {@link CollectionIterator}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- *
  * @extensionFunction
  */
 export function toIterator<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionIterator<T> {

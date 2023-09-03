@@ -17,7 +17,6 @@ import {CollectionConstants} from "../CollectionConstants"
  * @throws {TypeError} There is <b>null</b> or <b>undefined</b> value in the current collection
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
- *
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {

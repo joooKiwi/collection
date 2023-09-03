@@ -19,7 +19,6 @@ import {newInstance}         from "./newInstance"
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
  * @see requireNoNulls
- *
  * @extensionFunction
  */
 export function filterNotNull<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {

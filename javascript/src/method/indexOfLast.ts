@@ -22,9 +22,9 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @param fromIndex The inclusive starting index
  * @param toIndex The exclusive ending index
  * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+ * @throws {RangeError} The indexes "from" and "to" are not within a valid range
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
- *
  * @canReceiveNegativeValue
  * @extensionFunction
  */

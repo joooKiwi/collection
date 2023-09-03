@@ -12,7 +12,6 @@ import type {Nullable}         from "../general type"
  * Convert the {@link collection} to an {@link Array mutable array}
  *
  * @param collection The {@link CollectionHolder} to convert
- *
  * @extensionFunction
  */
 export function toMutableArray<const T, >(collection: Nullable<CollectionHolder<T>>,): T[] {

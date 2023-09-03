@@ -14,7 +14,6 @@ import {CollectionConstants} from "../CollectionConstants"
  * Convert the {@link collection} to an {@link ReadonlyArray array}
  *
  * @param collection The {@link CollectionHolder} to convert
- *
  * @extensionFunction
  */
 export function toArray<const T, >(collection: Nullable<CollectionHolder<T>>,): readonly T[] {

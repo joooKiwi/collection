@@ -17,7 +17,6 @@ import type {Nullable, NullOr}                                         from "../
  * @see ReadonlyArray.findLast
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
- *
  * @typescriptDefinition
  * @extensionFunction
  */
@@ -30,7 +29,6 @@ export function findLastIndexed<const T, const S extends T, >(collection: Nullab
  * @see ReadonlyArray.findLast
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
- *
  * @extensionFunction
  */
 export function findLastIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T>

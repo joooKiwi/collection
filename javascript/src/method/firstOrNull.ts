@@ -16,7 +16,6 @@ import type {Nullable, NullOr}                           from "../general type"
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
- *
  * @extensionFunction
  */
 export function firstOrNull<const T, >(collection: Nullable<CollectionHolder<T>>,): NullOr<T>
@@ -29,7 +28,6 @@ export function firstOrNull<const T, >(collection: Nullable<CollectionHolder<T>>
  * @param predicate The matching predicate
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
- *
  * @extensionFunction
  */
 export function firstOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
@@ -42,7 +40,6 @@ export function firstOrNull<const T, const S extends T, >(collection: Nullable<C
  * @param predicate The matching predicate
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
- *
  * @extensionFunction
  */
 export function firstOrNull<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>

@@ -16,7 +16,6 @@ import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHold
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
- *
  * @extensionFunction
  */
 export function lastOrNull<const T, >(collection: Nullable<CollectionHolder<T>>,): NullOr<T>
@@ -29,7 +28,6 @@ export function lastOrNull<const T, >(collection: Nullable<CollectionHolder<T>>,
  * @param predicate The matching predicate
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
- *
  * @extensionFunction
  */
 export function lastOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
@@ -42,7 +40,6 @@ export function lastOrNull<const T, const S extends T, >(collection: Nullable<Co
  * @param predicate The matching predicate
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
- *
  * @extensionFunction
  */
 export function lastOrNull<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>

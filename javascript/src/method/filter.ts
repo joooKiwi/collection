@@ -23,7 +23,6 @@ import {newInstance}         from "./newInstance"
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filterNot
- *
  * @typescriptDefinition
  * @extensionFunction
  */
@@ -38,7 +37,6 @@ export function filter<const T, const S extends T, >(collection: Nullable<Collec
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filterNot
- *
  * @typescriptDefinition
  * @extensionFunction
  */
@@ -48,7 +46,6 @@ export function filter<const T, const S extends T, >(collection: Nullable<Collec
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
 
     return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
         const newArray = [] as T[],

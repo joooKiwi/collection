@@ -23,7 +23,6 @@ import {newInstance}         from "./newInstance"
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filterIndexedNot
- *
  * @typescriptDefinition
  * @extensionFunction
  */
@@ -38,7 +37,6 @@ export function filterIndexed<const T, const S extends T, >(collection: Nullable
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filterIndexedNot
- *
  * @extensionFunction
  */
 export function filterIndexed<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>

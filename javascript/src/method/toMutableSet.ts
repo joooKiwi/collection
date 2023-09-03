@@ -12,7 +12,6 @@ import type {CollectionHolder} from "../CollectionHolder"
  * Convert the {@link collection} to an {@link Set mutable set}
  *
  * @param collection The {@link CollectionHolder} to convert
- *
  * @extensionFunction
  */
 export function toMutableSet<const T, >(collection: Nullable<CollectionHolder<T>>,): Set<T> {

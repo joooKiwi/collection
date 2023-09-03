@@ -18,7 +18,6 @@ import type {ValueIndexCallback} from "../CollectionHolder.types"
  * @see ReadonlySet.forEach
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
- *
  * @extensionFunction
  */
 export function forEach<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: ValueIndexCallback<T>,): COLLECTION {

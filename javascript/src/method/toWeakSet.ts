@@ -15,7 +15,6 @@ import {CollectionConstants} from "../CollectionConstants"
  * Convert the {@link collection} to an {@link WeakSet weak set}
  *
  * @param collection The {@link CollectionHolder} to convert
- *
  * @extensionFunction
  */
 export function toWeakSet<const T, >(collection: Nullable<CollectionHolder<T>>,): Readonly<WeakSet<ObjectOf<T>>> {

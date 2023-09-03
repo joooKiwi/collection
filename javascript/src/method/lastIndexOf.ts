@@ -21,10 +21,10 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @param fromIndex The inclusive starting index
  * @param toIndex The exclusive ending index
  * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws {RangeError} The indexes "from" and "to" are not within a valid range
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
- *
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -39,10 +39,10 @@ export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>
  * @param fromIndex The inclusive starting index
  * @param toIndex The exclusive ending index
  * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws {RangeError} The indexes "from" and "to" are not within a valid range
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
- *
  * @canReceiveNegativeValue
  * @extensionFunction
  */

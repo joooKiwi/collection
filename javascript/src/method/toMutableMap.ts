@@ -12,7 +12,6 @@ import type {Nullable}         from "../general type"
  * Convert the {@link collection} to an {@link Map mutable map}
  *
  * @param collection The {@link CollectionHolder} to convert
- *
  * @extensionFunction
  */
 export function toMutableMap<const T, >(collection: Nullable<CollectionHolder<T>>,): Map<number, T> {

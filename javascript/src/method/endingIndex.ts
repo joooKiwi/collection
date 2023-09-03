@@ -10,27 +10,27 @@ import type {Nullable, NullOr}         from "../general type"
 import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
 
 /**
- * Get the ending index from a value between 0 and the {@link collection} {@link CollectionHolder.size size}
+ * Get the ending index from a value between 0
+ * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param toIndex The ending index (or {@link CollectionHolder.size size} by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
- *
+ * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
- * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
  */
 export function endingIndex(collection: NonEmptyCollectionHolder, toIndex?: Nullable<number>, size?: Nullable<number>,): number
 /**
- * Get the ending index from a value between 0 and the {@link collection} {@link CollectionHolder.size size}
+ * Get the ending index from a value between 0
+ * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param toIndex The ending index (or {@link CollectionHolder.size size} by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
- *
+ * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
- * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
  */
 export function endingIndex(collection: Nullable<CollectionHolder>, toIndex?: Nullable<number>, size?: Nullable<number>,): NullOr<number>
 export function endingIndex(collection: Nullable<CollectionHolder>, toIndex: Nullable<number> = null, size: Nullable<number> = null,): NullOr<number> {

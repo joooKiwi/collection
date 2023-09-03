@@ -19,7 +19,6 @@ import {firstOrNull} from "./firstOrNull"
  * @throws {ReferenceError} The first element was <b>null</b> or <b>undefined</b>
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
- *
  * @extensionFunction
  */
 export function first<const T, >(collection: Nullable<CollectionHolder<T>>,): NonNullable<T>
@@ -29,12 +28,11 @@ export function first<const T, >(collection: Nullable<CollectionHolder<T>>,): No
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate The matching predicate
- *
- * @extensionFunction
- * @throws {TypeError} The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws {ReferenceError}  The first element found was <b>null</b> or <b>undefined</b>
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+ * @throws {TypeError} The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws {ReferenceError}  The first element found was <b>null</b> or <b>undefined</b>
+ * @extensionFunction
  */
 export function first<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
 /**
@@ -43,12 +41,11 @@ export function first<const T, const S extends T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate The matching predicate
- *
- * @extensionFunction
  * @throws {TypeError} The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws {ReferenceError}  The first element found was <b>null</b> or <b>undefined</b>
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+ * @extensionFunction
  */
 export function first<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
 export function first<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
