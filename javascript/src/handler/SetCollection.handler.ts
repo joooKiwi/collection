@@ -61,8 +61,8 @@ export class SetCollectionHandler<const out T = unknown, const REFERENCE extends
         if (index in collection)
             return { value: collection[index] as T, cause: null, }
 
-        const size = this.size
-        const indexToRetrieve = index < 0 ? size + index : index
+        const size = this.size,
+            indexToRetrieve = index < 0 ? size + index : index
         if (indexToRetrieve < 0)
             return { value: null, get cause() { return new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is under 0.`,) }, }
         if (indexToRetrieve > size)
