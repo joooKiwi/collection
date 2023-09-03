@@ -26,7 +26,6 @@ import {newInstance}                            from "./newInstance"
  * @see Array.reverse
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html Kotlin reverse()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
- *
  * @canReceiveNegativeValue
  */
 export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, constructorInstance: Nullable<CollectionHolderConstructor<T>> = null,): CollectionHolder<T> {
