@@ -9,6 +9,7 @@ import type {CollectionHolder}                                                  
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
 import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                                       from "./general type"
 import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/EmptyCollectionIterator"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                     from "./iterator/CollectionIterator"
 
 import {CollectionConstants} from "./CollectionConstants"
 
@@ -345,6 +346,20 @@ export class EmptyCollectionHolder
     }
 
     //#endregion -------------------- Find methods --------------------
+    //#region -------------------- Slice methods --------------------
+
+    public slice(indices?: readonly number[],): this
+    public slice(indices?: ReadonlySet<number>,): this
+    public slice(indices?: CollectionHolder<number>,): this
+    public slice(indices?: CollectionIterator<number>,): this
+    public slice(indices?: Iterable<number>,): this
+    public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
+    public slice(): this {
+        return this
+    }
+
+    //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
 
     public map<const U, >(transform?: ValueIndexWithReturnCallback<never, U>,): CollectionHolder<U>

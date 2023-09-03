@@ -972,6 +972,102 @@ export interface CollectionHolder<out T = unknown, >
     findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
 
     //#endregion -------------------- Find methods --------------------
+    //#region -------------------- Slice methods --------------------
+
+    /**
+     * Create a new {@link CollectionHolder} from the {@link indices}
+     * in the current {@link CollectionHolder collection}
+     *
+     * @param indices The given indices
+     * @see ReadonlyArray.slice
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
+     * @throws ReferenceError
+     */
+    slice(indices: readonly number[],): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder} from the {@link indices}
+     * in the current {@link CollectionHolder collection}
+     *
+     * @param indices The given indices
+     * @see ReadonlyArray.slice
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
+     * @throws ReferenceError
+     */
+    slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder} from the {@link indices}
+     * in the current {@link CollectionHolder collection}
+     *
+     * @param indices The given indices
+     * @see ReadonlyArray.slice
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
+     * @throws ReferenceError
+     */
+    slice(indices: CollectionHolder<number>,): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder} from the {@link indices}
+     * in the current {@link CollectionHolder collection}
+     *
+     * @param indices The given indices
+     * @see ReadonlyArray.slice
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
+     * @throws ReferenceError
+     */
+    slice(indices: CollectionIterator<number>,): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder} from the {@link indices}
+     * in the current {@link CollectionHolder collection}
+     *
+     * @param indices The given indices
+     * @see ReadonlyArray.slice
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
+     * @throws ReferenceError
+     */
+    slice(indices: Iterable<number>,): CollectionHolder<T>
+
+
+    /**
+     * Create a new {@link CollectionHolder} from the {@link indices}
+     * in the current {@link CollectionHolder collection}
+     *
+     * @param fromIndex The starting index
+     * @param toIndex The ending index
+     * @param limit The maximum amount of elements
+     * @see ReadonlyArray.slice
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
+     * @throws RangeError
+     * @throws ReferenceError
+     */
+    slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+
+
+    /**
+     * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex}
+     * in the current {@link CollectionHolder collection}
+     *
+     * @param indicesOrFromIndex The given indices (or starting index)
+     * @param toIndex The ending index
+     * @param limit The maximum amount of elements
+     * @see ReadonlyArray.slice
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
+     * @throws RangeError
+     * @throws ReferenceError
+     * @typescriptDefinition
+     */
+    slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+
+    //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
 
     /**

@@ -45,6 +45,7 @@ import {mapNotNull}          from "./method/mapNotNull"
 import {mapNotNullIndexed}   from "./method/mapNotNullIndexed"
 import {objectValuesMap}     from "./method/objectValuesMap"
 import {requireNoNulls}      from "./method/requireNoNulls"
+import {slice}               from "./method/slice"
 import {toArray}             from "./method/toArray"
 import {toIterator}          from "./method/toIterator"
 import {toMutableArray}      from "./method/toMutableArray"
@@ -362,6 +363,20 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
     //#endregion -------------------- Find methods --------------------
+    //#region -------------------- Slice methods --------------------
+
+    public slice(indices: readonly number[],): CollectionHolder<T>
+    public slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public slice(indices: CollectionHolder<number>,): CollectionHolder<T>
+    public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
+    public slice(indices: Iterable<number>,): CollectionHolder<T>
+    public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+        return slice(this, indicesOrFromIndex, toIndex, limit,)
+    }
+
+    //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
 
     public map<const U, >(callback: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
