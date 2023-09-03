@@ -199,34 +199,34 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- First methods --------------------
 
     public first(): NonNullable<T>
-    public first<const S extends T, >(callback: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public first(callback: Nullable<BooleanCallback<T>>,): NonNullable<T>
-    public first<const S extends T, >(callback?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return first(this, callback,)
+    public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
+    public first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
+    public first<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+        return first(this, predicate,)
     }
 
     public firstOrNull(): NullOr<T>
-    public firstOrNull<const S extends T, >(callback: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public firstOrNull(callback: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public firstOrNull<const S extends T, >(callback?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return firstOrNull(this, callback,)
+    public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+    public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+    public firstOrNull<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+        return firstOrNull(this, predicate,)
     }
 
     //#endregion -------------------- First methods --------------------
     //#region -------------------- Last methods --------------------
 
     public last(): NonNullable<T>
-    public last<const S extends T, >(callback: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public last(callback: Nullable<BooleanCallback<T>>,): NonNullable<T>
-    public last<const S extends T, >(callback?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return last(this, callback,)
+    public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
+    public last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
+    public last<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+        return last(this, predicate,)
     }
 
     public lastOrNull(): NullOr<T>
-    public lastOrNull<const S extends T, >(callback: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public lastOrNull(callback: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public lastOrNull<const S extends T, >(callback?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return lastOrNull(this, callback,)
+    public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+    public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+    public lastOrNull<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+        return lastOrNull(this, predicate,)
     }
 
     //#endregion -------------------- Last methods --------------------
@@ -236,20 +236,20 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     //#region -------------------- All / any / none methods --------------------
 
-    public all(callback: BooleanCallback<T>,): boolean {
-        return all(this, callback,)
+    public all(predicate: BooleanCallback<T>,): boolean {
+        return all(this, predicate,)
     }
 
     public any(): this["isNotEmpty"]
-    public any(callback: Nullable<BooleanCallback<T>>,): boolean
-    public any(callback?: Nullable<BooleanCallback<T>>,): boolean {
-        return any(this, callback,)
+    public any(predicate: Nullable<BooleanCallback<T>>,): boolean
+    public any(predicate?: Nullable<BooleanCallback<T>>,): boolean {
+        return any(this, predicate,)
     }
 
     public none(): this["isEmpty"]
-    public none(callback: Nullable<BooleanCallback<T>>,): boolean
-    public none(callback?: Nullable<BooleanCallback<T>>,): boolean {
-        return none(this, callback,)
+    public none(predicate: Nullable<BooleanCallback<T>>,): boolean
+    public none(predicate?: Nullable<BooleanCallback<T>>,): boolean {
+        return none(this, predicate,)
     }
 
     //#endregion -------------------- All / any / none methods --------------------
@@ -302,29 +302,29 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Join methods --------------------
     //#region -------------------- Filter methods --------------------
 
-    public filter<const S extends T, >(callback: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filter(callback: BooleanCallback<T>,): CollectionHolder<T>
-    public filter<const S extends T, >(callback: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return filter(this, callback,)
+    public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public filter<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
+        return filter(this, predicate,)
     }
 
-    public filterIndexed<const S extends T, >(callback: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filterIndexed(callback: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexed<const S extends T, >(callback: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
-        return filterIndexed(this, callback,)
+    public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public filterIndexed<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
+        return filterIndexed(this, predicate,)
     }
 
 
-    public filterNot<const S extends T, >(callback: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public filterNot(callback: BooleanCallback<T>,): CollectionHolder<T>
-    public filterNot<const S extends T, >(callback: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return filterNot(this, callback,)
+    public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
+    public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public filterNot<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
+        return filterNot(this, predicate,)
     }
 
-    public filterIndexedNot<const S extends T, >(callback: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filterIndexedNot(callback: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexedNot<const S extends T, >(callback: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
-        return filterIndexedNot(this, callback,)
+    public filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public filterIndexedNot<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
+        return filterIndexedNot(this, predicate,)
     }
 
 
@@ -339,27 +339,27 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Filter methods --------------------
     //#region -------------------- Find methods --------------------
 
-    public find<const S extends T, >(callback: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public find(callback: BooleanCallback<T>,): NullOr<T>
-    public find<const S extends T, >(callback: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return find(this, callback,)
+    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public find(predicate: BooleanCallback<T>,): NullOr<T>
+    public find<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
+        return find(this, predicate,)
     }
 
-    public findIndexed<const S extends T, >(callback: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findIndexed(callback: ReverseBooleanCallback<T>,): NullOr<T>
-    public findIndexed<const S extends T, >(callback: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
-        return findIndexed(this, callback,)
+    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findIndexed<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
+        return findIndexed(this, predicate,)
     }
 
 
-    public findLast<const S extends T, >(callback: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLast(callback: BooleanCallback<T>,): NullOr<T>
-    public findLast<const S extends T, >(callback: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return findLast(this, callback,)
+    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLast(predicate: BooleanCallback<T>,): NullOr<T>
+    public findLast<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
+        return findLast(this, predicate,)
     }
 
-    public findLastIndexed(callback: ReverseBooleanCallback<T>,): NullOr<T> {
-        return findLastIndexed(this, callback,)
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T> {
+        return findLastIndexed(this, predicate,)
     }
 
     //#endregion -------------------- Find methods --------------------
@@ -379,12 +379,12 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
 
-    public map<const U, >(callback: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
-        return map(this, callback,)
+    public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
+        return map(this, transform,)
     }
 
-    public mapIndexed<const U, >(callback: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
-        return mapIndexed(this, callback,)
+    public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
+        return mapIndexed(this, transform,)
     }
 
     public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
@@ -398,12 +398,12 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Map methods --------------------
     //#region -------------------- ForEach methods --------------------
 
-    public forEach(callback: ValueIndexCallback<T>,): this {
-        return forEach(this, callback,)
+    public forEach(action: ValueIndexCallback<T>,): this {
+        return forEach(this, action,)
     }
 
-    public forEachIndexed(callback: IndexValueCallback<T>,): this {
-        return forEachIndexed(this, callback,)
+    public forEachIndexed(action: IndexValueCallback<T>,): this {
+        return forEachIndexed(this, action,)
     }
 
     //#endregion -------------------- ForEach methods --------------------
