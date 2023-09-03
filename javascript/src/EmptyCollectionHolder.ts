@@ -40,19 +40,41 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Size methods --------------------
 
-    public readonly size = 0
-    public readonly length = 0
-    public readonly count = 0
+    public get size(): 0 {
+        return 0
+    }
 
-    public readonly isEmpty = true
-    public readonly isNotEmpty = false
+    public get length(): 0 {
+        return 0
+    }
+
+    public get count(): 0 {
+        return 0
+    }
+
+
+    public get isEmpty(): true {
+        return true
+    }
+
+    public get isNotEmpty(): false {
+        return false
+    }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Has X methods --------------------
 
-    public readonly hasNull = false
-    public readonly includesNull = false
-    public readonly containsNull = false
+    public get hasNull(): false {
+        return false
+    }
+
+    public get includesNull(): false {
+        return false
+    }
+
+    public get containsNull(): false {
+        return false
+    }
 
     //#endregion -------------------- Has X methods --------------------
 
