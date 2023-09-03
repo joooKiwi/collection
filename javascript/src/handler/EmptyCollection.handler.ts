@@ -26,9 +26,17 @@ export class EmptyCollectionHandler
     //#endregion -------------------- Singleton usage --------------------
     //#region -------------------- Getter methods --------------------
 
-    public readonly size = 0
-    public readonly isEmpty = true
-    public readonly hasFinished = true
+    public get size(): 0 {
+        return 0
+    }
+
+    public get isEmpty(): true {
+        return true
+    }
+
+    public get hasFinished(): true {
+        return true
+    }
 
     //#endregion -------------------- Getter methods --------------------
 
