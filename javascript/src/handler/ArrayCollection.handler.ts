@@ -18,7 +18,7 @@ export class ArrayCollectionHandler<const out T = unknown, REFERENCE extends rea
 
     readonly #size: number
     readonly #isEmpty: boolean
-    #elementRetrieved?: number
+    #amountOfElementRetrieved?: number
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -39,14 +39,15 @@ export class ArrayCollectionHandler<const out T = unknown, REFERENCE extends rea
         return this.#isEmpty
     }
 
-    protected get _elementRetrieved(): number {
-        return this.#elementRetrieved ?? 0
+    /** The amount of element that was retrieved so far */
+    protected get _amountOfElementRetrieved(): number {
+        return this.#amountOfElementRetrieved ?? 0
     }
 
-    protected set _elementRetrieved(value: number,) {
-        this.#elementRetrieved = value
+    /** Set the amount of element that was retrieved so far */
+    protected set _amountOfElementRetrieved(value: number,) {
+        this.#amountOfElementRetrieved = value
     }
-
     //#endregion -------------------- Getter methods --------------------
 
     public get(index: number,): ValueHolder<T> {
@@ -54,8 +55,8 @@ export class ArrayCollectionHandler<const out T = unknown, REFERENCE extends rea
         if (index in collection)
             return { value: collection[index] as T, cause: null, }
 
-        const size = this.size
-        const indexToRetrieve = index < 0 ? size + index : index
+        const size = this.size,
+            indexToRetrieve = index < 0 ? size + index : index
         if (indexToRetrieve < 0)
             return { value: null, get cause() { return new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is under 0.`,) }, }
         if (indexToRetrieve > size)
@@ -63,8 +64,10 @@ export class ArrayCollectionHandler<const out T = unknown, REFERENCE extends rea
 
         if (this._hasFinished)
             return { value: collection[indexToRetrieve] as T, cause: null, }
+        if (indexToRetrieve in collection)
+            return { value: collection[indexToRetrieve] as T, cause: null, }
 
-        if (size - 1 === this._elementRetrieved++)
+        if (size - 1 === this._amountOfElementRetrieved++)
             this._hasFinished = true
         return { value: collection[indexToRetrieve] = this._reference[indexToRetrieve] as T, cause: null, }
     }
