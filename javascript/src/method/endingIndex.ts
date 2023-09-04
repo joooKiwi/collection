@@ -10,7 +10,7 @@ import type {Nullable, NullOr}         from "../general type"
 import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
 
 /**
- * Get the ending index from a value between 0
+ * Get the ending index from a value between zero
  * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -20,9 +20,9 @@ import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
-export function endingIndex(collection: NonEmptyCollectionHolder, toIndex?: Nullable<number>, size?: Nullable<number>,): number
+export function endingIndex<const T, >(collection: NonEmptyCollectionHolder<T>, toIndex?: Nullable<number>, size?: Nullable<number>,): number
 /**
- * Get the ending index from a value between 0
+ * Get the ending index from a value between zero
  * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -32,7 +32,7 @@ export function endingIndex(collection: NonEmptyCollectionHolder, toIndex?: Null
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
-export function endingIndex(collection: Nullable<CollectionHolder>, toIndex?: Nullable<number>, size?: Nullable<number>,): NullOr<number>
+export function endingIndex<const T, >(collection: Nullable<CollectionHolder<T>>, toIndex?: Nullable<number>, size?: Nullable<number>,): NullOr<number>
 export function endingIndex(collection: Nullable<CollectionHolder>, toIndex: Nullable<number> = null, size: Nullable<number> = null,): NullOr<number> {
     if (collection == null)
         return null

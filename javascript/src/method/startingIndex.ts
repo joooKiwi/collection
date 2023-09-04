@@ -10,7 +10,8 @@ import type {Nullable, NullOr}         from "../general type"
 import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
 
 /**
- * Get the starting index from a value between 0 and the {@link collection} {@link CollectionHolder.size size}
+ * Get the starting index from a value between zero
+ * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The starting index (or 0 by default)
@@ -19,9 +20,10 @@ import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
-export function startingIndex(collection: NonEmptyCollectionHolder, fromIndex?: Nullable<number>, size?: Nullable<number>,): number
+export function startingIndex<const T, >(collection: NonEmptyCollectionHolder<T>, fromIndex?: Nullable<number>, size?: Nullable<number>,): number
 /**
- * Get the starting index from a value between 0 and the {@link collection} {@link CollectionHolder.size size}
+ * Get the starting index from a value between zero
+ * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The starting index (or 0 by default)
@@ -30,7 +32,7 @@ export function startingIndex(collection: NonEmptyCollectionHolder, fromIndex?: 
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
-export function startingIndex(collection: Nullable<CollectionHolder>, fromIndex?: Nullable<number>, size?: Nullable<number>,): NullOr<number>
+export function startingIndex<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex?: Nullable<number>, size?: Nullable<number>,): NullOr<number>
 export function startingIndex(collection: Nullable<CollectionHolder>, fromIndex: Nullable<number> = null, size: Nullable<number> = null,): NullOr<number> {
     if (collection == null)
         return null
