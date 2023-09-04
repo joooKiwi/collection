@@ -142,35 +142,35 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Get / at methods --------------------
     //#region -------------------- Index of methods --------------------
 
-    public indexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public indexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public indexOf(): null {
         return null
     }
 
 
-    public lastIndexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public lastIndexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public lastIndexOf(): null {
         return null
     }
 
 
-    public indexOfFirst(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public indexOfFirst(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public indexOfFirst(): null {
         return null
     }
 
-    public indexOfFirstIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public indexOfFirstIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public indexOfFirstIndexed(): null {
         return null
     }
 
 
-    public indexOfLast(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public indexOfLast(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public indexOfLast(): null {
         return null
     }
 
-    public indexOfLastIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public indexOfLastIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public indexOfLastIndexed(): null {
         return null
     }
@@ -457,7 +457,7 @@ export class EmptyCollectionHolder
     }
 
 
-    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): CollectionHolder<never>
+    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
     public toReversed(): CollectionHolder<never> {
         return this as unknown as CollectionHolder<never>
     }

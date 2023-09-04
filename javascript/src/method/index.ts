@@ -6,6 +6,7 @@
  ******************************************************************************/
 
 export {all}                                                                                                                from "./all"
+export {amountOfItem}                                                                                                       from "./amountOfItem"
 export {any}                                                                                                                from "./any"
 export {filter}                                                                                                             from "./filter"
 export {filterIndexed}                                                                                                      from "./filterIndexed"

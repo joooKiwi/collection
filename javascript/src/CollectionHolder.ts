@@ -255,15 +255,16 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param element The element to find
      * @param fromIndex The inclusive starting index
-     * @param toIndex The exclusive ending index
+     * @param toIndex The inclusive ending index
+     * @param limit The maximum amount of elements
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
+     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item)
      * @canReceiveNegativeValue
      */
-    indexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
+    indexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
@@ -272,15 +273,16 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param element The element to find
      * @param fromIndex The inclusive starting index
-     * @param toIndex The exclusive ending index
+     * @param toIndex The inclusive ending index
+     * @param limit The maximum amount of elements
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
+     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item)
      * @canReceiveNegativeValue
      */
-    indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
+    indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
 
 
     /**
@@ -290,15 +292,16 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param element The element to find
      * @param fromIndex The inclusive starting index
-     * @param toIndex The exclusive ending index
+     * @param toIndex The inclusive ending index
+     * @param limit The maximum amount of elements
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
+     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
      * @canReceiveNegativeValue
      */
-    lastIndexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
+    lastIndexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
 
     /**
      * Get the <b>last</b> occurrence equivalent to the value received
@@ -307,15 +310,16 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param element The element to find
      * @param fromIndex The inclusive starting index
-     * @param toIndex The exclusive ending index
+     * @param toIndex The inclusive ending index
+     * @param limit The maximum amount of elements
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
+     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
      * @canReceiveNegativeValue
      */
-    lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
+    lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
 
 
     /**
@@ -325,14 +329,15 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
-     * @param toIndex The exclusive ending index
-     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
+     * @param toIndex The inclusive ending index
+     * @param limit The maximum amount of elements
+     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
      */
-    indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
+    indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
 
     /**
      * Get the first index matching the {@link predicate}
@@ -341,14 +346,15 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
-     * @param toIndex The exclusive ending index
+     * @param toIndex The inclusive ending index
+     * @param limit The maximum amount of elements
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
+     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
      */
-    indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
+    indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
 
 
     /**
@@ -358,14 +364,15 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
-     * @param toIndex The exclusive ending index
+     * @param toIndex The inclusive ending index
+     * @param limit The maximum amount of elements
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
+     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
      */
-    indexOfLast(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
+    indexOfLast(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
 
     /**
      * Get the last index matching the {@link predicate}
@@ -374,14 +381,15 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
-     * @param toIndex The exclusive ending index
+     * @param toIndex The inclusive ending index
+     * @param limit The maximum amount of elements
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
+     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
      */
-    indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
+    indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
 
     //#endregion -------------------- Index of methods --------------------
     //#region -------------------- First methods --------------------
@@ -1173,14 +1181,15 @@ export interface CollectionHolder<out T = unknown, >
      * Reverse the current {@link CollectionHolder collection} from a range (if provided)
      *
      * @param fromIndex The inclusive starting index
-     * @param toIndex The exclusive ending index
-     * @throws {RangeError} The indexes "from" and "to" are not within a valid range
+     * @param toIndex The inclusive ending index
+     * @param limit The maximum amount of elements
+     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed Array.toReverse()
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reversed.html Kotlin reversed()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
      * @canReceiveNegativeValue
      */
-    toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): CollectionHolder<T>
+    toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
 
 
     /**

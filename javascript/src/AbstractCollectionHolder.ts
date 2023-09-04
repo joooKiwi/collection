@@ -164,35 +164,35 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Get / at methods --------------------
     //#region -------------------- Index of methods --------------------
 
-    public indexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
-    public indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
-    public indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return indexOf(this, element, fromIndex, toIndex,)
+    public indexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    public indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    public indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+        return indexOf(this, element, fromIndex, toIndex, limit,)
     }
 
 
-    public lastIndexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
-    public lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
-    public lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return lastIndexOf(this, element, fromIndex, toIndex,)
+    public lastIndexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    public lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    public lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+        return lastIndexOf(this, element, fromIndex, toIndex, limit,)
     }
 
 
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return indexOfFirst(this, predicate, fromIndex, toIndex,)
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+        return indexOfFirst(this, predicate, fromIndex, toIndex, limit,)
     }
 
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return indexOfFirstIndexed(this, predicate, fromIndex, toIndex,)
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+        return indexOfFirstIndexed(this, predicate, fromIndex, toIndex, limit,)
     }
 
 
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return indexOfLast(this, predicate, fromIndex, toIndex,)
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+        return indexOfLast(this, predicate, fromIndex, toIndex, limit,)
     }
 
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return indexOfLastIndexed(this, predicate, fromIndex, toIndex,)
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+        return indexOfLastIndexed(this, predicate, fromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Index of methods --------------------
@@ -468,8 +468,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
 
-    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): CollectionHolder<T> {
-        return toReverse(this, fromIndex, toIndex,)
+    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+        return toReverse(this, fromIndex, toIndex, limit,)
     }
 
 
