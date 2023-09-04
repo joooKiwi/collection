@@ -12,6 +12,7 @@ import type {Nullable}                    from "../general type"
 import type {CollectionIterator}          from "../iterator/CollectionIterator"
 
 import {CollectionConstants}                    from "../CollectionConstants"
+import {amountOfItem as amountOfItemFunction}   from "./amountOfItem"
 import {endingIndex as endingIndexFunction}     from "./endingIndex"
 import {isCollectionHolder}                     from "./isCollectionHolder"
 import {isCollectionIterator}                   from "./isCollectionIterator"
@@ -309,8 +310,8 @@ export function sliceByIterable<const T, >(collection: Nullable<CollectionHolder
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param fromIndex The starting index
- * @param toIndex The ending index
+ * @param fromIndex The inclusive starting index
+ * @param toIndex The inclusive ending index
  * @param limit The maximum amount of elements
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -320,6 +321,8 @@ export function sliceByIterable<const T, >(collection: Nullable<CollectionHolder
  * @extensionFunction
  */
 export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
+    //#region -------------------- Early returns --------------------
+
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
@@ -330,14 +333,20 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
     if (limit === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
+    //#endregion -------------------- Early returns --------------------
+
     if (limit == null)
         return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
+            //#region -------------------- Initialization (starting/ending index) --------------------
+
             const size = collection.size,
                 startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
                 endingIndex = toIndex == null ? size - 1 : endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
             if (endingIndex < startingIndex)
                 throw new RangeError(`The ending index "${toIndex}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`,)
+
+            //#endregion -------------------- Initialization (starting/ending index) --------------------
 
             const newArray = [] as T[]
             let index = startingIndex - 1
@@ -348,6 +357,8 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
 
 
     return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
+        //#region -------------------- Initialization (starting/ending index) --------------------
+
         const size = collection.size,
             startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
             endingIndex = toIndex == null ? size - 1 : endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
@@ -355,14 +366,15 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
         if (endingIndex < startingIndex)
             throw new RangeError(`The ending index "${toIndex ?? ''}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex ?? ''}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`,)
 
-        const amountOfItem = limit < 0 ? size + limit : limit
-        if (amountOfItem > size)
-            throw new RangeError(`The limit "${limit}"${limit == amountOfItem ? '' : `("${amountOfItem}" after calculation)`} cannot over the size "${size}".`,)
-        if (amountOfItem < 0)
-            throw new RangeError(`The limit "${limit}"${limit == amountOfItem ? '' : `("${amountOfItem}" after calculation)`} cannot under 0.`,)
+        //#endregion -------------------- Initialization (starting/ending index) --------------------
+        //#region -------------------- Initialization (amount of item) --------------------
+
+        const amountOfItem = amountOfItemFunction(collection as NonEmptyCollectionHolder<T>, limit, size,)
 
         if (endingIndex - startingIndex < amountOfItem - 1)
             throw new RangeError(`The limit "${limit}"${limit == amountOfItem ? '' : `("${amountOfItem}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`,)
+
+        //#endregion -------------------- Initialization (amount of item) --------------------
 
         const newArray = [] as T[]
         let index = startingIndex - 1
