@@ -35,7 +35,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
 
     //#endregion -------------------- Instances --------------------
 
-    describe("size", () => { describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
+    describe("size", () => {
+    describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
         const newInstance = () => newCollectionInstance(instance, arrayOrSetCreation, array,)
         test("size", () => expect(newInstance().size,).toEqual(size,),)
         test("length", () => expect(newInstance().length,).toEqual(size,),)
