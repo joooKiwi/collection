@@ -154,7 +154,8 @@
     "collection",
     "list",
     "array",
-    "set"
+    "set",
+    "indices"
   ],
   "funding": {
     "type": "github",
