@@ -73,10 +73,10 @@
       "import":  "./dist/ecmascript module/*.js",
       "require": "./dist/common javascript/*.js"
     },
-    "./handler/*": {
-      "types":   "./dist/types/handler/*.d.ts",
-      "import":  "./dist/ecmascript module/handler/*.js",
-      "require": "./dist/common javascript/handler/*.js"
+    "./method/*": {
+      "types":   "./dist/types/method/*.d.ts",
+      "import":  "./dist/ecmascript module/method/*.js",
+      "require": "./dist/common javascript/method/*.js"
     },
     "./iterable/*": {
       "types":   "./dist/types/iterable/*.d.ts",
@@ -93,10 +93,10 @@
       "import":  "./dist/ecmascript module/iterator/value/*.js",
       "require": "./dist/common javascript/iterator/value/*.js"
     },
-    "./method/*": {
-      "types":   "./dist/types/method/*.d.ts",
-      "import":  "./dist/ecmascript module/method/*.js",
-      "require": "./dist/common javascript/method/*.js"
+    "./handler/*": {
+      "types":   "./dist/types/handler/*.d.ts",
+      "import":  "./dist/ecmascript module/handler/*.js",
+      "require": "./dist/common javascript/handler/*.js"
     }
   },
 
