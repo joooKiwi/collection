@@ -8,8 +8,8 @@
 import type {CollectionHolder} from "../CollectionHolder"
 import type {Nullable, NullOr} from "../general type"
 
-import {amountOfItem as amountOfItemFunction}   from "./amountOfItem"
 import {endingIndex as endingIndexFunction}     from "./endingIndex"
+import {maximumIndex as maximumIndexFunction}   from "./maximumIndex"
 import {startingIndex as startingIndexFunction} from "./startingIndex"
 
 /**
@@ -21,7 +21,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @param element The element to find
  * @param fromIndex The inclusive starting index
  * @param toIndex The inclusive ending index
- * @param limit The maximum amount of elements
+ * @param limit The maximum index
  * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
  * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.lastIndexOf
@@ -40,7 +40,7 @@ export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>
  * @param element The element to find
  * @param fromIndex The inclusive starting index
  * @param toIndex The inclusive ending index
- * @param limit The maximum amount of elements
+ * @param limit The maximum index
  * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
  * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.lastIndexOf
@@ -84,34 +84,34 @@ export function lastIndexOf(collection: Nullable<CollectionHolder>, element: unk
     if (limit == null)
         return withoutALimit(collection, element, startingIndex, endingIndex,)
 
-    const amountOfItem = amountOfItemFunction(collection, limit, size,)
-    if (amountOfItem == size)
+    const maximumIndex = maximumIndexFunction(collection, limit, size,)
+    if (maximumIndex == size)
         return withoutALimit(collection, element, startingIndex, endingIndex,)
 
-    if (amountOfItem == null)
+    if (maximumIndex == null)
         return null
-    if (endingIndex - startingIndex < amountOfItem - 1)
+    if (endingIndex - startingIndex < maximumIndex - 1)
         return null
 
-    return withALimit(collection, element, startingIndex, endingIndex, amountOfItem,)
+    return withALimit(collection, element, startingIndex, endingIndex, maximumIndex,)
 
     //#endregion -------------------- Return index --------------------
 }
 
 function withoutALimit(collection: CollectionHolder, element: unknown, startingIndex: number, endingIndex: number,): NullOr<number> {
-    let index = endingIndex
-    while (index-- > startingIndex)
+    let index = endingIndex + 1
+    while (--index >= startingIndex)
         if (collection.get(index,) === element)
             return index
     return null
 }
 
-function withALimit(collection: CollectionHolder, element: unknown, startingIndex: number, endingIndex: number, amountOfItem: number,): NullOr<number> {
-    let index = endingIndex
-    while (index-- > startingIndex)
-        if (index >= amountOfItem)
-            return null
-        else if (collection.get(index,) === element)
+function withALimit(collection: CollectionHolder, element: unknown, startingIndex: number, endingIndex: number, maximumIndex: number,): NullOr<number> {
+    let index = endingIndex + 1
+    if (index >= maximumIndex)
+        index = maximumIndex
+    while (--index >= startingIndex)
+        if (collection.get(index,) === element)
             return index
     return null
 }

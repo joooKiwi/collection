@@ -9,8 +9,8 @@ import type {CollectionHolder} from "../CollectionHolder"
 import type {BooleanCallback}  from "../CollectionHolder.types"
 import type {Nullable, NullOr} from "../general type"
 
-import {amountOfItem as amountOfItemFunction}   from "./amountOfItem"
 import {endingIndex as endingIndexFunction}     from "./endingIndex"
+import {maximumIndex as maximumIndexFunction}   from "./maximumIndex"
 import {startingIndex as startingIndexFunction} from "./startingIndex"
 
 /**
@@ -22,7 +22,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @param predicate The given predicate
  * @param fromIndex The inclusive starting index
  * @param toIndex The inclusive ending index
- * @param limit The maximum amount of elements
+ * @param limit The maximum index
  * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
  * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.findLastIndex
@@ -64,34 +64,34 @@ export function indexOfLast<const T, >(collection: Nullable<CollectionHolder<T>>
     if (limit == null)
         return withoutALimit(collection, predicate, startingIndex, endingIndex,)
 
-    const amountOfItem = amountOfItemFunction(collection, limit, size,)
-    if (amountOfItem == size)
+    const maximumIndex = maximumIndexFunction(collection, limit, size,)
+    if (maximumIndex == size)
         return withoutALimit(collection, predicate, startingIndex, endingIndex,)
 
-    if (amountOfItem == null)
+    if (maximumIndex == null)
         return null
-    if (endingIndex - startingIndex < amountOfItem - 1)
+    if (endingIndex - startingIndex < maximumIndex - 1)
         return null
 
-    return withALimit(collection, predicate, startingIndex, endingIndex, amountOfItem,)
+    return withALimit(collection, predicate, startingIndex, endingIndex, maximumIndex,)
 
     //#endregion -------------------- Return index --------------------
 }
 
 function withoutALimit<const T, >(collection: CollectionHolder<T>, predicate: BooleanCallback<T>, startingIndex: number, endingIndex: number,): NullOr<number> {
-    let index = endingIndex
-    while (index-- > startingIndex)
+    let index = endingIndex + 1
+    while (--index >= startingIndex)
         if (predicate(collection.get(index,), index,))
             return index
     return null
 }
 
-function withALimit<const T, >(collection: CollectionHolder<T>, predicate: BooleanCallback<T>, startingIndex: number, endingIndex: number, amountOfItem: number,): NullOr<number> {
-    let index = endingIndex
-    while (index-- > startingIndex)
-        if (index >= amountOfItem)
-            return null
-        else if (predicate(collection.get(index,), index,))
+function withALimit<const T, >(collection: CollectionHolder<T>, predicate: BooleanCallback<T>, startingIndex: number, endingIndex: number, maximumIndex: number,): NullOr<number> {
+    let index = endingIndex + 1
+    if (index >= maximumIndex)
+        index = maximumIndex
+    while (--index >= startingIndex)
+        if (predicate(collection.get(index,), index,))
             return index
     return null
 }

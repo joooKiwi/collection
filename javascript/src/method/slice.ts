@@ -12,10 +12,10 @@ import type {Nullable}                    from "../general type"
 import type {CollectionIterator}          from "../iterator/CollectionIterator"
 
 import {CollectionConstants}                    from "../CollectionConstants"
-import {amountOfItem as amountOfItemFunction}   from "./amountOfItem"
 import {endingIndex as endingIndexFunction}     from "./endingIndex"
 import {isCollectionHolder}                     from "./isCollectionHolder"
 import {isCollectionIterator}                   from "./isCollectionIterator"
+import {maximumIndex as maximumIndexFunction}   from "./maximumIndex"
 import {newInstance}                            from "./newInstance"
 import {startingIndex as startingIndexFunction} from "./startingIndex"
 
@@ -97,7 +97,7 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The starting index
  * @param toIndex The ending index
- * @param limit The maximum amount of elements
+ * @param limit The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -113,7 +113,7 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, from
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param indicesOrFromIndex The given indices (or starting index)
  * @param toIndex The ending index
- * @param limit The maximum amount of elements
+ * @param limit The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -312,7 +312,7 @@ export function sliceByIterable<const T, >(collection: Nullable<CollectionHolder
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The inclusive starting index
  * @param toIndex The inclusive ending index
- * @param limit The maximum amount of elements
+ * @param limit The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -341,18 +341,14 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
 
             const size = collection.size,
                 startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
-                endingIndex = toIndex == null ? size - 1 : endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
+                endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
             if (endingIndex < startingIndex)
                 throw new RangeError(`The ending index "${toIndex}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`,)
 
             //#endregion -------------------- Initialization (starting/ending index) --------------------
 
-            const newArray = [] as T[]
-            let index = startingIndex - 1
-            while (++index <= endingIndex)
-                newArray.push(collection.get(index,),)
-            return newArray
+            return withoutALimit(collection, startingIndex, endingIndex,)
         },)
 
 
@@ -361,28 +357,40 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
 
         const size = collection.size,
             startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
-            endingIndex = toIndex == null ? size - 1 : endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
+            endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
         if (endingIndex < startingIndex)
             throw new RangeError(`The ending index "${toIndex ?? ''}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex ?? ''}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`,)
 
         //#endregion -------------------- Initialization (starting/ending index) --------------------
-        //#region -------------------- Initialization (amount of item) --------------------
+        //#region -------------------- Initialization (maximum index) --------------------
 
-        const amountOfItem = amountOfItemFunction(collection as NonEmptyCollectionHolder<T>, limit, size,)
+        const maximumIndex = maximumIndexFunction(collection as NonEmptyCollectionHolder<T>, limit, size,)
 
-        if (endingIndex - startingIndex < amountOfItem - 1)
-            throw new RangeError(`The limit "${limit}"${limit == amountOfItem ? '' : `("${amountOfItem}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`,)
+        if (endingIndex - startingIndex < maximumIndex - 1)
+            throw new RangeError(`The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`,)
 
-        //#endregion -------------------- Initialization (amount of item) --------------------
+        //#endregion -------------------- Initialization (maximum index) --------------------
 
-        const newArray = [] as T[]
-        let index = startingIndex - 1
-        while (++index <= endingIndex) {
-            if (newArray.length >= amountOfItem)
-                return newArray
-            newArray.push(collection.get(index,),)
-        }
-        return newArray
+        return withALimit(collection, startingIndex, endingIndex, maximumIndex,)
     },)
+}
+
+function withoutALimit<const T, >(collection: CollectionHolder<T>, startingIndex: number, endingIndex: number,): T[] {
+    const newArray = [] as T[]
+    let index = startingIndex - 1
+    while (++index <= endingIndex)
+        newArray.push(collection.get(index,),)
+    return newArray
+}
+
+function withALimit<const T, >(collection: CollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,): T[] {
+    const newArray = [] as T[]
+    let index = startingIndex - 1
+    while (++index <= endingIndex) {
+        if (newArray.length >= maximumIndex)
+            return newArray
+        newArray.push(collection.get(index,),)
+    }
+    return newArray
 }

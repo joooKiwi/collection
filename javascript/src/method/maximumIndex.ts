@@ -20,7 +20,7 @@ import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
-export function amountOfItem<const T, >(collection: Nullable<NonEmptyCollectionHolder<T>>, limit: Nullable<number>, size?: Nullable<number>,): number
+export function maximumIndex<const T, >(collection: Nullable<NonEmptyCollectionHolder<T>>, limit: Nullable<number>, size?: Nullable<number>,): number
 /**
  * Get a limit from a value between zero
  * and the {@link collection} {@link CollectionHolder.size size}
@@ -32,8 +32,8 @@ export function amountOfItem<const T, >(collection: Nullable<NonEmptyCollectionH
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
-export function amountOfItem<const T, >(collection: Nullable<CollectionHolder<T>>, limit: Nullable<number>, size?: Nullable<number>,): NullOr<number>
-export function amountOfItem(collection: Nullable<CollectionHolder>, limit: Nullable<number>, size: Nullable<number> = null,): NullOr<number> {
+export function maximumIndex<const T, >(collection: Nullable<CollectionHolder<T>>, limit: Nullable<number>, size?: Nullable<number>,): NullOr<number>
+export function maximumIndex(collection: Nullable<CollectionHolder>, limit: Nullable<number>, size: Nullable<number> = null,): NullOr<number> {
     if (collection == null)
         return null
     if (collection.isEmpty)

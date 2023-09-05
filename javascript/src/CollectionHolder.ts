@@ -256,7 +256,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param element The element to find
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
      * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.indexOf
@@ -274,7 +274,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param element The element to find
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
      * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.indexOf
@@ -293,7 +293,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param element The element to find
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
      * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.lastIndexOf
@@ -311,7 +311,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param element The element to find
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
      * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.lastIndexOf
@@ -330,7 +330,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
      * @see ReadonlyArray.findIndex
@@ -347,7 +347,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
      * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findIndex
@@ -365,7 +365,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
      * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findLastIndex
@@ -382,7 +382,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
      * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findLastIndex
@@ -1014,7 +1014,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param fromIndex The starting index
      * @param toIndex The ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @throws RangeError
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -1029,7 +1029,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param indicesOrFromIndex The given indices (or starting index)
      * @param toIndex The ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @throws RangeError
      * @throws ReferenceError
      * @see ReadonlyArray.slice
@@ -1182,7 +1182,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
-     * @param limit The maximum amount of elements
+     * @param limit The maximum index
      * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed Array.toReverse()
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reversed.html Kotlin reversed()

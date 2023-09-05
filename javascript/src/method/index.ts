@@ -6,7 +6,6 @@
  ******************************************************************************/
 
 export {all}                                                                                                                from "./all"
-export {amountOfItem}                                                                                                       from "./amountOfItem"
 export {any}                                                                                                                from "./any"
 export {filter}                                                                                                             from "./filter"
 export {filterIndexed}                                                                                                      from "./filterIndexed"
@@ -40,6 +39,7 @@ export {map}                                                                    
 export {mapIndexed}                                                                                                         from "./mapIndexed"
 export {mapNotNull}                                                                                                         from "./mapNotNull"
 export {mapNotNullIndexed}                                                                                                  from "./mapNotNullIndexed"
+export {maximumIndex}                                                                                                       from "./maximumIndex"
 export {none}                                                                                                               from "./none"
 export {objectValuesMap}                                                                                                    from "./objectValuesMap"
 export {requireNoNulls}                                                                                                     from "./requireNoNulls"
