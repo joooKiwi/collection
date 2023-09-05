@@ -44,11 +44,15 @@ export function startingIndex(collection: Nullable<CollectionHolder>, fromIndex:
     const collectionSize = size ?? collection.size
 
     let startingIndex = fromIndex
+    if (startingIndex == collectionSize)
+        throw new RangeError(`The starting index "${fromIndex}" is the collection size "${collectionSize}".`,)
     if (startingIndex > collectionSize)
         throw new RangeError(`The starting index "${fromIndex}" is over the collection size "${collectionSize}".`,)
     if (startingIndex < 0)
         startingIndex += collectionSize
+    if (startingIndex == collectionSize)
+        throw new RangeError(`The ending index "${fromIndex}" is the collection size after calculation from "${collectionSize} - ${Math.abs(fromIndex,)}".`,)
     if (startingIndex < 0)
-        throw new RangeError(`The starting index "${fromIndex}" is under 0 after calculation from "${collectionSize} - ${Math.abs(fromIndex)}".`,)
+        throw new RangeError(`The starting index "${fromIndex}" is under 0 after calculation from "${collectionSize} - ${Math.abs(fromIndex,)}".`,)
     return startingIndex
 }

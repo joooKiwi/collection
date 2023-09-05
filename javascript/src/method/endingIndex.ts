@@ -16,7 +16,7 @@ import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param toIndex The ending index (or {@link CollectionHolder.size size} by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
- * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws {RangeError} The index is under 0 or over or equal to the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
@@ -26,9 +26,9 @@ export function endingIndex<const T, >(collection: NonEmptyCollectionHolder<T>, 
  * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param toIndex The ending index (or {@link CollectionHolder.size size} by default)
+ * @param toIndex The ending index (or {@link CollectionHolder.size size} minus 1 by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
- * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws {RangeError} The index is under 0 or over or equal to the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
@@ -39,15 +39,19 @@ export function endingIndex(collection: Nullable<CollectionHolder>, toIndex: Nul
     if (collection.isEmpty)
         return null
     if (toIndex == null)
-        return size ?? collection.size
+        return (size ?? collection.size) - 1
 
     const collectionSize = size ?? collection.size
 
     let endingIndex = toIndex
+    if (endingIndex == collectionSize)
+        throw new RangeError(`The ending index "${toIndex}" is the collection size "${collectionSize}".`,)
     if (endingIndex < 0)
         endingIndex += collectionSize
     if (endingIndex < 0)
-        throw new RangeError(`The ending index "${toIndex}" is under 0 after calculation from "${collectionSize} - ${Math.abs(toIndex)}".`,)
+        throw new RangeError(`The ending index "${toIndex}" is under 0 after calculation from "${collectionSize} - ${Math.abs(toIndex,)}".`,)
+    if (endingIndex == collectionSize)
+        throw new RangeError(`The ending index "${toIndex}" is the collection size after calculation from "${collectionSize} - ${Math.abs(toIndex,)}".`,)
     if (endingIndex > collectionSize)
         throw new RangeError(`The ending index "${toIndex}" is over the collection size "${collectionSize}".`,)
     return endingIndex
