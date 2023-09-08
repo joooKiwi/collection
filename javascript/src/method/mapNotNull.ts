@@ -38,7 +38,7 @@ export function mapNotNull<const T, const U extends NonNullable<unknown>, >(coll
             const value = transform(collection.get(index,), index,)
             if (value == null)
                 continue
-            newArray[index] = value
+            newArray.push(value,)
         }
         return newArray
     },)
