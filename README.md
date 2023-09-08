@@ -4,6 +4,8 @@ This project has the sole purpose to have methods in a collection (list, array, 
 
 It retrieves notions from `Javascript`, `Java`, `Kotlin`, `PHP` and `C#`.
 
+Also, all the features are based on immutability.
+
 _(Maybe other languages will be integrated, only the future will tell it)_
 
 ## Publication location
