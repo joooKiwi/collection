@@ -1455,7 +1455,13 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test("null", () => expect(ABCD_INSTANCE().map(() => null,).toArray(),).toEqual([null, null, null, null,],),)
 
             test("value 'a' only", () => expect(ABCD_INSTANCE().map(it => it === 'a' ? it : null,).toArray(),).toEqual(['a', null, null, null,],),)
+            test("value 'b' only", () => expect(ABCD_INSTANCE().map(it => it === 'b' ? it : null,).toArray(),).toEqual([null, 'b', null, null,],),)
+            test("value 'c' only", () => expect(ABCD_INSTANCE().map(it => it === 'c' ? it : null,).toArray(),).toEqual([null, null, 'c', null,],),)
+            test("value 'd' only", () => expect(ABCD_INSTANCE().map(it => it === 'd' ? it : null,).toArray(),).toEqual([null, null, null, 'd',],),)
             test("index 0 only", () => expect(ABCD_INSTANCE().map((value, index,) => index === 0 ? value : null,).toArray(),).toEqual(['a', null, null, null,],),)
+            test("index 1 only", () => expect(ABCD_INSTANCE().map((value, index,) => index === 1 ? value : null,).toArray(),).toEqual([null, 'b', null, null,],),)
+            test("index 2 only", () => expect(ABCD_INSTANCE().map((value, index,) => index === 2 ? value : null,).toArray(),).toEqual([null, null, 'c', null,],),)
+            test("index 3 only", () => expect(ABCD_INSTANCE().map((value, index,) => index === 3 ? value : null,).toArray(),).toEqual([null, null, null, 'd',],),)
 
             test("NaN", () => expect(ABCD_INSTANCE().map(() => NaN,).toArray(),).toEqual([NaN, NaN, NaN, NaN,],),)
             test("value", () => expect(ABCD_INSTANCE().map(it => it,).toArray(),).toEqual(['a', 'b', 'c', 'd',],),)
@@ -1467,7 +1473,13 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test("null", () => expect(ABCD_INSTANCE().mapIndexed(() => null,).toArray(),).toEqual([null, null, null, null,],),)
 
             test("value 'a' only", () => expect(ABCD_INSTANCE().mapIndexed((_, it) => it === 'a' ? it : null,).toArray(),).toEqual(['a', null, null, null,],),)
+            test("value 'b' only", () => expect(ABCD_INSTANCE().mapIndexed((_, it) => it === 'b' ? it : null,).toArray(),).toEqual([null, 'b', null, null,],),)
+            test("value 'c' only", () => expect(ABCD_INSTANCE().mapIndexed((_, it) => it === 'c' ? it : null,).toArray(),).toEqual([null, null, 'c', null,],),)
+            test("value 'd' only", () => expect(ABCD_INSTANCE().mapIndexed((_, it) => it === 'd' ? it : null,).toArray(),).toEqual([null, null, null, 'd',],),)
             test("index 0 only", () => expect(ABCD_INSTANCE().mapIndexed((index, value,) => index === 0 ? value : null,).toArray(),).toEqual(['a', null, null, null,],),)
+            test("index 1 only", () => expect(ABCD_INSTANCE().mapIndexed((index, value,) => index === 1 ? value : null,).toArray(),).toEqual([null, 'b', null, null,],),)
+            test("index 2 only", () => expect(ABCD_INSTANCE().mapIndexed((index, value,) => index === 2 ? value : null,).toArray(),).toEqual([null, null, 'c', null,],),)
+            test("index 3 only", () => expect(ABCD_INSTANCE().mapIndexed((index, value,) => index === 3 ? value : null,).toArray(),).toEqual([null, null, null, 'd',],),)
 
             test("NaN", () => expect(ABCD_INSTANCE().mapIndexed(() => NaN,).toArray(),).toEqual([NaN, NaN, NaN, NaN,],),)
             test("value", () => expect(ABCD_INSTANCE().mapIndexed((_, it,) => it,).toArray(),).toEqual(['a', 'b', 'c', 'd',],),)
@@ -1479,7 +1491,13 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test("null", () => expect(ABCD_INSTANCE().mapNotNull(() => null,).toArray(),).toEqual([],),)
 
             test("value 'a' only", () => expect(ABCD_INSTANCE().mapNotNull(it => it === 'a' ? it : null,).toArray(),).toEqual(['a',],),)
+            test("value 'b' only", () => expect(ABCD_INSTANCE().mapNotNull(it => it === 'b' ? it : null,).toArray(),).toEqual(['b',],),)
+            test("value 'c' only", () => expect(ABCD_INSTANCE().mapNotNull(it => it === 'c' ? it : null,).toArray(),).toEqual(['c',],),)
+            test("value 'd' only", () => expect(ABCD_INSTANCE().mapNotNull(it => it === 'd' ? it : null,).toArray(),).toEqual(['d',],),)
             test("index 0 only", () => expect(ABCD_INSTANCE().mapNotNull((value, index,) => index === 0 ? value : null,).toArray(),).toEqual(['a',],),)
+            test("index 1 only", () => expect(ABCD_INSTANCE().mapNotNull((value, index,) => index === 1 ? value : null,).toArray(),).toEqual(['b',],),)
+            test("index 2 only", () => expect(ABCD_INSTANCE().mapNotNull((value, index,) => index === 2 ? value : null,).toArray(),).toEqual(['c',],),)
+            test("index 3 only", () => expect(ABCD_INSTANCE().mapNotNull((value, index,) => index === 3 ? value : null,).toArray(),).toEqual(['d',],),)
 
             test("NaN", () => expect(ABCD_INSTANCE().mapNotNull(() => NaN,).toArray(),).toEqual([NaN, NaN, NaN, NaN,],),)
             test("value", () => expect(ABCD_INSTANCE().mapNotNull(it => it,).toArray(),).toEqual(['a', 'b', 'c', 'd',],),)
@@ -1491,7 +1509,13 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test("null", () => expect(ABCD_INSTANCE().mapNotNullIndexed(() => null,).toArray(),).toEqual([],),)
 
             test("value 'a' only", () => expect(ABCD_INSTANCE().mapNotNullIndexed((_, it,) => it === 'a' ? it : null,).toArray(),).toEqual(['a',],),)
+            test("value 'b' only", () => expect(ABCD_INSTANCE().mapNotNullIndexed((_, it,) => it === 'b' ? it : null,).toArray(),).toEqual(['b',],),)
+            test("value 'c' only", () => expect(ABCD_INSTANCE().mapNotNullIndexed((_, it,) => it === 'c' ? it : null,).toArray(),).toEqual(['c',],),)
+            test("value 'd' only", () => expect(ABCD_INSTANCE().mapNotNullIndexed((_, it,) => it === 'd' ? it : null,).toArray(),).toEqual(['d',],),)
             test("index 0 only", () => expect(ABCD_INSTANCE().mapNotNullIndexed((index, value,) => index === 0 ? value : null,).toArray(),).toEqual(['a',],),)
+            test("index 1 only", () => expect(ABCD_INSTANCE().mapNotNullIndexed((index, value,) => index === 1 ? value : null,).toArray(),).toEqual(['b',],),)
+            test("index 2 only", () => expect(ABCD_INSTANCE().mapNotNullIndexed((index, value,) => index === 2 ? value : null,).toArray(),).toEqual(['c',],),)
+            test("index 3 only", () => expect(ABCD_INSTANCE().mapNotNullIndexed((index, value,) => index === 3 ? value : null,).toArray(),).toEqual(['d',],),)
 
             test("NaN", () => expect(ABCD_INSTANCE().mapNotNullIndexed(() => NaN,).toArray(),).toEqual([NaN, NaN, NaN, NaN,],),)
             test("value", () => expect(ABCD_INSTANCE().mapNotNullIndexed((_, it,) => it,).toArray(),).toEqual(['a', 'b', 'c', 'd',],),)
