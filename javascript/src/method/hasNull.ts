@@ -12,9 +12,8 @@ import type {Nullable}         from "../general type"
  * The {@link collection} has at least one <b>null</b> or <b>undefined</b>
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- *
- * @extensionFunction
  * @returns {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+ * @extensionFunction
  */
 export function hasNull(collection: Nullable<CollectionHolder>,): boolean {
     if (collection == null)

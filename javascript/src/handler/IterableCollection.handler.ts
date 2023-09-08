@@ -40,13 +40,19 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
             return this.#isEmpty
 
         if (this.hasFinished)
-            return this.#isEmpty = this._amountOfElementRetrieved === 0
+            return this.#isEmpty = this._isTheFirstElementRetrieved
 
-        const iteratorValue = this._iterator.next()
+        const iteratorValue = this._iterator.next() as IteratorResult<T, T>
         if (iteratorValue.done) {
-            this._amountOfElementRetrieved = 0
-            return this.#isEmpty = this._hasFinished = true
+            this._hasFinished = true
+            if (this._isTheFirstElementRetrieved) {
+                this.#size = this._amountOfElementRetrieved = 0
+                return this.#isEmpty = true
+            }
+            this.#size = 1
+            return this.#isEmpty = false
         }
+
         this._collection[0] = iteratorValue.value
         this._amountOfElementRetrieved = 1
         return this.#isEmpty = false
@@ -60,10 +66,15 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
             return this.#size = this._amountOfElementRetrieved + 1
 
         const iterator = this._iterator
-        let iteratorValue = iterator.next()
+        let iteratorValue = iterator.next() as IteratorResult<T, T>
         if (iteratorValue.done) {
             this._hasFinished = true
-            return this.#size = this._amountOfElementRetrieved = 0
+            if (this._isTheFirstElementRetrieved) {
+                this.#isEmpty = true
+                return this.#size = this._amountOfElementRetrieved = 0
+            }
+            this.#isEmpty = false
+            return this.#size = 1
         }
 
         const collection = this._collection
@@ -80,6 +91,11 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
 
     protected get _iterator(): Iterator<T> {
         return this.#iterator ??= this._reference[Symbol.iterator]()
+    }
+
+    /** Tell that the {@link _amountOfElementRetrieved} is equal to 0 */
+    protected get _isTheFirstElementRetrieved(): boolean {
+        return this._amountOfElementRetrieved === 0
     }
 
     /** The amount of element retrieved */
@@ -102,8 +118,11 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
         if (index < 0)
             return { value: null, get cause() { return new ReferenceError(`The index ${index} could not be retrieved from a value under 0.`,) }, }
 
-        if (this.hasFinished)
+        if (this.hasFinished) {
+            if (index > this._amountOfElementRetrieved - 1)
+                return { value: null, get cause() { return new ReferenceError(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`,) }, }
             return { value: collection[this._amountOfElementRetrieved - 1] as T, cause: null, }
+        }
 
         const amountOfElementRetrieved = this._amountOfElementRetrieved,
             iterator = this._iterator

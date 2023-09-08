@@ -15,7 +15,6 @@ import type {Nullable}         from "../general type"
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @returns {boolean} <b>true</b> if null is received or {@link CollectionHolder.isNotEmpty} otherwise
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none()
- *
  * @extensionFunction
  */
 export function none<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: Nullable<COLLECTION>,): COLLECTION["isEmpty"]
@@ -27,7 +26,6 @@ export function none<const T, const COLLECTION extends CollectionHolder<T> = Col
  * @param predicate The given predicate
  * @returns {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the {@link collection}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none(predicate)
- *
  * @extensionFunction
  */
 export function none<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean

@@ -7,10 +7,9 @@
 
 import type {CollectionHolder} from "../CollectionHolder"
 
+import {AbstractCollectionHolder}    from "../AbstractCollectionHolder"
 import {CollectionConstants}         from "../CollectionConstants"
 import {EmptyCollectionHolder}       from "../EmptyCollectionHolder"
-import {GenericCollectionHolder}     from "../GenericCollectionHolder"
-import {LazyGenericCollectionHolder} from "../LazyGenericCollectionHolder"
 
 /**
  * Tell that the value is a {@link CollectionHolder}.
@@ -28,9 +27,7 @@ export function isCollectionHolder(value: unknown,): boolean {
     if (value == null)
         return false
 
-    if (value instanceof GenericCollectionHolder)
-        return true
-    if (value instanceof LazyGenericCollectionHolder)
+    if (value instanceof AbstractCollectionHolder)
         return true
     if (value instanceof EmptyCollectionHolder)
         return true

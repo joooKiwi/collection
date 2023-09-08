@@ -9,6 +9,7 @@ import type {CollectionHolder}                                                  
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
 import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                                       from "./general type"
 import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/EmptyCollectionIterator"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                     from "./iterator/CollectionIterator"
 
 import {CollectionConstants} from "./CollectionConstants"
 
@@ -40,19 +41,41 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Size methods --------------------
 
-    public readonly size = 0
-    public readonly length = 0
-    public readonly count = 0
+    public get size(): 0 {
+        return 0
+    }
 
-    public readonly isEmpty = true
-    public readonly isNotEmpty = false
+    public get length(): 0 {
+        return 0
+    }
+
+    public get count(): 0 {
+        return 0
+    }
+
+
+    public get isEmpty(): true {
+        return true
+    }
+
+    public get isNotEmpty(): false {
+        return false
+    }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Has X methods --------------------
 
-    public readonly hasNull = false
-    public readonly includesNull = false
-    public readonly containsNull = false
+    public get hasNull(): false {
+        return false
+    }
+
+    public get includesNull(): false {
+        return false
+    }
+
+    public get containsNull(): false {
+        return false
+    }
 
     //#endregion -------------------- Has X methods --------------------
 
@@ -73,6 +96,11 @@ export class EmptyCollectionHolder
         this.get()
     }
 
+    public elementAt(index?: number,): never
+    public elementAt(): never {
+        this.get()
+    }
+
 
     public getOrElse(index: number,): never
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
@@ -89,6 +117,13 @@ export class EmptyCollectionHolder
     }
 
 
+    public elementAtOrElse(index: number,): never
+    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
+    public elementAtOrElse<const U, >(index: number, defaultValue?: IndexWithReturnCallback<U>,): U {
+        return defaultValue == null ? this.getOrElse(index,) : this.getOrElse(index, defaultValue,)
+    }
+
+
     public getOrNull(index?: number,): null
     public getOrNull(): null {
         return null
@@ -99,38 +134,43 @@ export class EmptyCollectionHolder
         return this.getOrNull()
     }
 
+    public elementAtOrNull(index?: number,): null
+    public elementAtOrNull(): null {
+        return this.getOrNull()
+    }
+
     //#endregion -------------------- Get / at methods --------------------
     //#region -------------------- Index of methods --------------------
 
-    public indexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public indexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public indexOf(): null {
         return null
     }
 
 
-    public lastIndexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public lastIndexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public lastIndexOf(): null {
         return null
     }
 
 
-    public indexOfFirst(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public indexOfFirst(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public indexOfFirst(): null {
         return null
     }
 
-    public indexOfFirstIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public indexOfFirstIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public indexOfFirstIndexed(): null {
         return null
     }
 
 
-    public indexOfLast(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public indexOfLast(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public indexOfLast(): null {
         return null
     }
 
-    public indexOfLastIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): null
+    public indexOfLastIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
     public indexOfLastIndexed(): null {
         return null
     }
@@ -306,6 +346,20 @@ export class EmptyCollectionHolder
     }
 
     //#endregion -------------------- Find methods --------------------
+    //#region -------------------- Slice methods --------------------
+
+    public slice(indices?: readonly number[],): this
+    public slice(indices?: ReadonlySet<number>,): this
+    public slice(indices?: CollectionHolder<number>,): this
+    public slice(indices?: CollectionIterator<number>,): this
+    public slice(indices?: Iterable<number>,): this
+    public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
+    public slice(): this {
+        return this
+    }
+
+    //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
 
     public map<const U, >(transform?: ValueIndexWithReturnCallback<never, U>,): CollectionHolder<U>
@@ -316,6 +370,16 @@ export class EmptyCollectionHolder
     public mapIndexed<const U, >(transform?: IndexValueWithReturnCallback<never, U>,): CollectionHolder<U>
     public mapIndexed(): CollectionHolder<never> {
         return this as unknown as CollectionHolder<never>
+    }
+
+    public mapNotNull<const U extends NonNullable<unknown>, >(transform?: ValueIndexWithReturnCallback<never, Nullable<U>>,): CollectionHolder<U>
+    public mapNotNull<const U extends NonNullable<unknown>, >(): CollectionHolder<U> {
+        return this as unknown as CollectionHolder<U>
+    }
+
+    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform?: IndexValueWithReturnCallback<never, Nullable<U>>,): CollectionHolder<U>
+    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(): CollectionHolder<U> {
+        return this as unknown as CollectionHolder<U>
     }
 
     //#endregion -------------------- Map methods --------------------
@@ -393,7 +457,7 @@ export class EmptyCollectionHolder
     }
 
 
-    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): CollectionHolder<never>
+    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
     public toReversed(): CollectionHolder<never> {
         return this as unknown as CollectionHolder<never>
     }

@@ -18,7 +18,6 @@ import type {Nullable}         from "../general type"
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
- *
  * @extensionFunction
  */
 export function hasOne<const T, >(collection: Nullable<CollectionHolder<T>>, ...values: readonly T[]): boolean
@@ -32,7 +31,6 @@ export function hasOne<const T, >(collection: Nullable<CollectionHolder<T>>, ...
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
- *
  * @extensionFunction
  */
 export function hasOne(collection: Nullable<CollectionHolder>, ...values: readonly unknown[]): boolean

@@ -17,7 +17,6 @@ import type {Nullable}         from "../general type"
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
- *
  * @extensionFunction
  */
 export function hasAll<const T, >(collection: Nullable<CollectionHolder<T>>, ...values: readonly T[]): boolean
@@ -30,7 +29,6 @@ export function hasAll<const T, >(collection: Nullable<CollectionHolder<T>>, ...
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
- *
  * @extensionFunction
  */
 export function hasAll(collection: Nullable<CollectionHolder>, ...values: readonly unknown[]): boolean

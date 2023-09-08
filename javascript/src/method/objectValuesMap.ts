@@ -14,7 +14,7 @@ import {CollectionConstants} from "../CollectionConstants"
 /**
  * Get an every object associated to the typed value
  *
- * @param collection
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  */
 export function objectValuesMap<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlyMap<T, ObjectOf<T>> {
     if (collection == null)

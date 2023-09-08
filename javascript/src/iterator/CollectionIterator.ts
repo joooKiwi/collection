@@ -29,14 +29,14 @@ export interface CollectionIterator<out T = unknown, >
     /**
      * The {@link collection} {@link CollectionHolder.size size}
      *
-     * @alias {@link size}
+     * @alias size
      */
     get length(): this["collection"]["size"]
 
     /**
      * The {@link collection} {@link CollectionHolder.size size}
      *
-     * @alias {@link size}
+     * @alias size
      */
     get count(): this["collection"]["size"]
 

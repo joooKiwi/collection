@@ -19,7 +19,6 @@ import {lastOrNull} from "./lastOrNull"
  * @throws {ReferenceError} The element was <b>null</b> or <b>undefined</b>
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
- *
  * @extensionFunction
  */
 export function last<const T, >(collection: CollectionHolder<T>,): NonNullable<T>
@@ -33,7 +32,6 @@ export function last<const T, >(collection: CollectionHolder<T>,): NonNullable<T
  * @throws {ReferenceError} The element was <b>null</b> or <b>undefined</b>
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
- *
  * @extensionFunction
  */
 export function last<const T, const S extends T, >(collection: CollectionHolder<T>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
@@ -47,7 +45,6 @@ export function last<const T, const S extends T, >(collection: CollectionHolder<
  * @throws {ReferenceError} The element was <b>null</b> or <b>undefined</b>
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
- *
  * @extensionFunction
  */
 export function last<const T, >(collection: CollectionHolder<T>, predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>

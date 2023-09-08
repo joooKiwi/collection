@@ -9,6 +9,7 @@ import type {CollectionHolder} from "../CollectionHolder"
 import type {Nullable, NullOr} from "../general type"
 
 import {endingIndex as endingIndexFunction}     from "./endingIndex"
+import {maximumIndex as maximumIndexFunction}   from "./maximumIndex"
 import {startingIndex as startingIndexFunction} from "./startingIndex"
 
 /**
@@ -19,16 +20,17 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param element The element to find
  * @param fromIndex The inclusive starting index
- * @param toIndex The exclusive ending index
+ * @param toIndex The inclusive ending index
+ * @param limit The maximum index
  * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
- *
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
+export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
 /**
  * Get the <b>last</b> occurrence equivalent to the value received
  * or <b>null</b> if it was not in the current {@link collection}
@@ -37,21 +39,31 @@ export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param element The element to find
  * @param fromIndex The inclusive starting index
- * @param toIndex The exclusive ending index
+ * @param toIndex The inclusive ending index
+ * @param limit The maximum index
  * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
- *
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function lastIndexOf(collection: Nullable<CollectionHolder>, element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
-export function lastIndexOf(collection: Nullable<CollectionHolder>, element: unknown, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null,): NullOr<number> {
+export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+export function lastIndexOf(collection: Nullable<CollectionHolder>, element: unknown, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): NullOr<number> {
+    //#region -------------------- Early returns --------------------
+
     if (collection == null)
         return null
     if (collection.isEmpty)
         return null
+    if (fromIndex === 0 && toIndex === 0)
+        return null
+    if (limit === 0)
+        return null
+
+    //#endregion -------------------- Early returns --------------------
+    //#region -------------------- Initialization (starting/ending index) --------------------
 
     const size = collection.size
 
@@ -66,8 +78,39 @@ export function lastIndexOf(collection: Nullable<CollectionHolder>, element: unk
     if (endingIndex < startingIndex)
         return null
 
-    let index = endingIndex
-    while (index-- > startingIndex)
+    //#endregion -------------------- Initialization (starting/ending index) --------------------
+    //#region -------------------- Return index --------------------
+
+    if (limit == null)
+        return withoutALimit(collection, element, startingIndex, endingIndex,)
+
+    const maximumIndex = maximumIndexFunction(collection, limit, size,)
+    if (maximumIndex == size)
+        return withoutALimit(collection, element, startingIndex, endingIndex,)
+
+    if (maximumIndex == null)
+        return null
+    if (endingIndex - startingIndex < maximumIndex - 1)
+        return null
+
+    return withALimit(collection, element, startingIndex, endingIndex, maximumIndex,)
+
+    //#endregion -------------------- Return index --------------------
+}
+
+function withoutALimit(collection: CollectionHolder, element: unknown, startingIndex: number, endingIndex: number,): NullOr<number> {
+    let index = endingIndex + 1
+    while (--index >= startingIndex)
+        if (collection.get(index,) === element)
+            return index
+    return null
+}
+
+function withALimit(collection: CollectionHolder, element: unknown, startingIndex: number, endingIndex: number, maximumIndex: number,): NullOr<number> {
+    let index = endingIndex + 1
+    if (index >= maximumIndex)
+        index = maximumIndex
+    while (--index >= startingIndex)
         if (collection.get(index,) === element)
             return index
     return null

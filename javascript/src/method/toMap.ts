@@ -14,7 +14,6 @@ import {CollectionConstants} from "../CollectionConstants"
  * Convert the {@link collection} to an {@link ReadonlyMap map}
  *
  * @param collection The {@link CollectionHolder} to convert
- *
  * @extensionFunction
  */
 export function toMap<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlyMap<number, T> {

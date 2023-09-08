@@ -14,7 +14,6 @@ import {CollectionConstants} from "../CollectionConstants"
  * Convert the {@link collection} to an {@link ReadonlySet set}
  *
  * @param collection The {@link CollectionHolder} to convert
- *
  * @extensionFunction
  */
 export function toSet<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlySet<T> {

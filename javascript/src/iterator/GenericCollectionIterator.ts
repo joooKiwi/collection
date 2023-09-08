@@ -32,7 +32,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Getter & setter methods --------------------
 
     public get collection(): COLLECTION {
         return this.#collection
@@ -55,30 +55,44 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
         return this.#index
     }
 
+    /** Get the index that the {@link GenericCollectionIterator} is at */
+    protected get _index(): number {
+        return this.#index
+    }
+
+    /**
+     * Set the index that the {@link GenericCollectionIterator} is at
+     *
+     * @param value The value to set
+     */
+    protected set _index(value: number,) {
+        this.#index = value
+    }
+
     public get nextIndex(): number {
-        return this.index + 1
+        return this._index + 1
     }
 
     public get previousIndex(): number {
-        return this.index - 1
+        return this._index - 1
     }
 
 
     public get hasPrevious(): boolean {
-        const index = this.index
+        const index = this._index
         return index > 0 && index <= this.size
     }
 
     public get hasNext(): boolean {
-        return this.index < this.size
+        return this._index < this.size
     }
 
-    //#endregion -------------------- Getter methods --------------------
+    //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
 
     public next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol> {
         if (this.hasNext)
-            return new GenericIteratorValue(this.collection, this.#index++,)
+            return new GenericIteratorValue(this.collection, this._index++,)
         return GenericAfterLastIteratorValue.get
     }
 
@@ -92,7 +106,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
 
     public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> {
         if (this.hasPrevious)
-            return new GenericIteratorValue(this.collection, --this.#index,)
+            return new GenericIteratorValue(this.collection, --this._index,)
         return GenericBeforeFirstIteratorValue.get
     }
 
@@ -109,10 +123,10 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
         const collection = this.collection,
             size = this.size
 
-        let index = this.index - 1
+        let index = this._index - 1
         while (++index < size)
             operation(collection.get(index,), index,)
-        this.#index = index
+        this._index = index
         return this
     }
 
@@ -120,10 +134,10 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
         const collection = this.collection,
             size = this.size
 
-        let index = this.index - 1
+        let index = this._index - 1
         while (++index < size)
             operation(index, collection.get(index,),)
-        this.#index = index
+        this._index = index
         return this
     }
 

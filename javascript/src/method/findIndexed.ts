@@ -17,7 +17,6 @@ import type {Nullable, NullOr}                                         from "../
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
- *
  * @extensionFunction
  */
 export function findIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -29,7 +28,6 @@ export function findIndexed<const T, const S extends T, >(collection: Nullable<C
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
- *
  * @extensionFunction
  */
 export function findIndexed<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T>

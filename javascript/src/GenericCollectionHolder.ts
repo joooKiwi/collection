@@ -5,60 +5,25 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                                            from "./general type"
-import type {PossibleIterable}                                                                                                                                                                                                                                                                                 from "./iterable/types"
-import type {CollectionHolder}                                                                                                                                                                                                                                                                                 from "./CollectionHolder"
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
-import type {IterableWithCount}                                                                                                                                                                                                                                                                                from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                                                                                                                                                                                                                                                               from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                                                                                                                                                                                                                                                         from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                                                                                                                                                                                                                                                 from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                               from "./iterator/CollectionIterator"
+import type {Nullable, NullOr}                  from "./general type"
+import type {PossibleIterable}                  from "./iterable/types"
+import type {CollectionHolder}                  from "./CollectionHolder"
+import type {IndexWithReturnCallback, ObjectOf} from "./CollectionHolder.types"
+import type {IterableWithCount}                 from "./iterable/IterableWithCount"
+import type {IterableWithLength}                from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}          from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                  from "./iterable/IterableWithSize"
+import type {CollectionIterator}                from "./iterator/CollectionIterator"
 
-import {CollectionConstants}  from "./CollectionConstants"
-import {all}                  from "./method/all"
-import {any}                  from "./method/any"
-import {filter}               from "./method/filter"
-import {filterIndexed}        from "./method/filterIndexed"
-import {filterIndexedNot}     from "./method/filterIndexedNot"
-import {filterNot}            from "./method/filterNot"
-import {filterNotNull}        from "./method/filterNotNull"
-import {find}                 from "./method/find"
-import {findIndexed}          from "./method/findIndexed"
-import {findLast}             from "./method/findLast"
-import {findLastIndexed}      from "./method/findLastIndexed"
-import {first}                from "./method/first"
-import {firstOrNull}          from "./method/firstOrNull"
-import {forEach}              from "./method/forEach"
-import {forEachIndexed}       from "./method/forEachIndexed"
-import {hasAll}               from "./method/hasAll"
-import {hasNull}              from "./method/hasNull"
-import {hasOne}               from "./method/hasOne"
-import {indexOf}              from "./method/indexOf"
-import {indexOfFirst}         from "./method/indexOfFirst"
-import {indexOfFirstIndexed}  from "./method/indexOfFirstIndexed"
-import {indexOfLast}          from "./method/indexOfLast"
-import {indexOfLastIndexed}   from "./method/indexOfLastIndexed"
-import {isCollectionHolder}   from "./method/isCollectionHolder"
-import {isCollectionIterator} from "./method/isCollectionIterator"
-import {join}                 from "./method/join"
-import {last}                 from "./method/last"
-import {lastIndexOf}          from "./method/lastIndexOf"
-import {lastOrNull}           from "./method/lastOrNull"
-import {none}                 from "./method/none"
-import {map}                  from "./method/map"
-import {mapIndexed}           from "./method/mapIndexed"
-import {objectValuesMap}      from "./method/objectValuesMap"
-import {requireNoNulls}       from "./method/requireNoNulls"
-import {toIterator}           from "./method/toIterator"
-import {toMutableArray}       from "./method/toMutableArray"
-import {toMutableSet}         from "./method/toMutableSet"
-import {toMutableMap}         from "./method/toMutableMap"
-import {toMutableWeakSet}     from "./method/toMutableWeakSet"
-import {toSet}                from "./method/toSet"
-import {toMap}                from "./method/toMap"
-import {toReverse}            from "./method/toReverse"
-import {toWeakSet}            from "./method/toWeakSet"
+import {AbstractCollectionHolder} from "./AbstractCollectionHolder"
+import {CollectionConstants}      from "./CollectionConstants"
+import {hasNull}                  from "./method/hasNull"
+import {isCollectionHolder}       from "./method/isCollectionHolder"
+import {isCollectionIterator}     from "./method/isCollectionIterator"
+import {objectValuesMap}          from "./method/objectValuesMap"
+import {toMap}                    from "./method/toMap"
+import {toSet}                    from "./method/toSet"
+import {toWeakSet}                from "./method/toWeakSet"
 
 /**
  * A simple {@link CollectionHolder} having the values eagerly retrieved.
@@ -72,11 +37,9 @@ import {toWeakSet}            from "./method/toWeakSet"
  * @see EmptyCollectionHolder
  */
 export class GenericCollectionHolder<const T = unknown, const REFERENCE extends PossibleIterable<T> = PossibleIterable<T>, >
-    implements CollectionHolder<T> {
+    extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
-
-    [index: NumberOrNumberInString]: UndefinedOr<T>
 
     readonly #size: number
     readonly #isEmpty: boolean
@@ -115,6 +78,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public constructor(lateReference: () => REFERENCE,)
     public constructor(reference: | REFERENCE | (() => REFERENCE),)
     public constructor(reference: | REFERENCE | (() => REFERENCE),) {
+        super()
         // README: The eager instantiation has some weird shenanigan in order to keep its nature pure.
         //         Also, in order to be efficient, there is some duplicate code in the constructor.
 
@@ -122,6 +86,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
         if (reference instanceof Array) {
             const size = this.#size = reference.length
+            //#region -------------------- Initialization (empty) --------------------
+
             if (size == 0) {
                 this.#isEmpty = true
                 this.#hasNull = false
@@ -132,7 +98,13 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 return
             }
 
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (non-empty) --------------------
+
             this.#isEmpty = false
+
+            //#region -------------------- Initialization (size = 1) --------------------
+
             if (size == 1) {
                 const value = this[0] = reference[0]
                 this.#hasNull = value == null
@@ -140,16 +112,25 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 return
             }
 
-            const array = new Array(size,)
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
+            const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
                 this[index] = array[index] = reference[index]
             this.#array = Object.freeze(array,)
             return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
+
+            //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
         if (reference instanceof Set) {
             const size = this.#size = reference.size
+            //#region -------------------- Initialization (empty) --------------------
+
             if (size == 0) {
                 this.#isEmpty = true
                 this.#hasNull = false
@@ -160,7 +141,13 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 return
             }
 
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (non-empty) --------------------
+
             this.#isEmpty = false
+
+            //#region -------------------- Initialization (size = 1) --------------------
+
             if (size == 1) {
                 const value = this[0] = reference[Symbol.iterator]().next().value
                 this.#hasNull = value == null
@@ -168,27 +155,66 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 return
             }
 
-            const array = new Array(size,)
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
+            const array = new Array<T>(size,)
             const iterator = reference[Symbol.iterator]() as IterableIterator<T>
             let index = -1
             while (++index < size)
                 this[index] = array[index] = iterator.next().value
             this.#array = Object.freeze(array,)
             return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
+
+            //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
         if (isCollectionHolder<T>(reference)) {
             const size = this.#size = reference.size
-            this.#isEmpty = reference.isEmpty
-            this.#array = reference.toArray()
+            //#region -------------------- Initialization (empty) --------------------
+
+            if (this.#isEmpty = reference.isEmpty) {
+                this.#hasNull = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (non-empty) --------------------
+
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = reference.get(0,)
+                this.#hasNull = value == null
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
+            const array = [] as T[]
             let index = size
             while (index-- > 0)
-                this[index] = reference[index]
+                this[index] = array[index] = reference.get(index,)
+            this.#array = Object.freeze(array,)
             return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
+
+            //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
         if (isCollectionIterator<T>(reference,)) {
             const size = this.#size = reference.size
+            //#region -------------------- Initialization (empty) --------------------
+
             if (this.#isEmpty = size == 0) {
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
@@ -198,15 +224,31 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 return
             }
 
-            const iterator = reference[Symbol.iterator](),
-                array = [] as T[]
-            let index = 0
-            while (iterator.hasNext) {
-                this[index] = array[index] = iterator.next().value as T
-                index++
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (non-empty) --------------------
+
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = reference.nextValue
+                this.#hasNull = value == null
+                this.#array = Object.freeze([value,],)
+                return
             }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
+            const array = [] as T[]
+            let index = -1
+            while (++index < size)
+                this[index] = array[index] = reference.nextValue
             this.#array = Object.freeze(array,)
             return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
+
+            //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
         sizeIf:if ("size" in reference || "length" in reference || "count" in reference) {
@@ -216,6 +258,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 break sizeIf
             this.#size = size
 
+            //#region -------------------- Initialization (empty) --------------------
+
             if (this.#isEmpty = size == 0) {
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
@@ -225,22 +269,39 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
                 return
             }
 
-            const array = [],
-                iterator = reference[Symbol.iterator]() as IterableIterator<T>
-            let index = 0,
-                value = iterator.next()
-            while (!value.done) {
-                this[index] = array[index] = value.value
-                value = iterator.next()
-                index++
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (non-empty) --------------------
+
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = reference[Symbol.iterator]().next().value
+                this.#hasNull = value == null
+                this.#array = Object.freeze([value,],)
             }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
+            const array = [] as T[],
+                iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            let index = -1,
+                iteratorResult: IteratorResult<T, T>
+            while (++index, !(iteratorResult = iterator.next()).done)
+                this[index] = array[index] = iteratorResult.value
             this.#array = Object.freeze(array,)
             return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
+
+            //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
         const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-        let value = iterator.next()
-        if (value.done) {
+        let iteratorResult = iterator.next() as IteratorResult<T, T>
+        //#region -------------------- Initialization (empty) --------------------
+
+        if (iteratorResult.done) {
             this.#size = 0
             this.#isEmpty = true
             this.#hasNull = false
@@ -251,16 +312,19 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             return
         }
 
-        const array = []
+        //#endregion -------------------- Initialization (empty) --------------------
+        //#region -------------------- Initialization (non-empty) --------------------
+
+        const array = [] as T[]
         this.#isEmpty = false
+        this[0] = array[0] = iteratorResult.value
         let size = 0
-        while (!value.done) {
-            this[size] = array[size] = value.value
-            value = iterator.next()
-            size++
-        }
+        while (++size, !(iteratorResult = iterator.next()).done)
+            this[size] = array[size] = iteratorResult.value
         this.#size = size
         this.#array = Object.freeze(array,)
+
+        //#endregion -------------------- Initialization (non-empty) --------------------
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -268,40 +332,20 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
     //#region -------------------- Size methods --------------------
 
-    public get size(): number {
+    public override get size(): number {
         return this.#size
     }
 
-    public get length(): this["size"] {
-        return this.size
-    }
 
-    public get count(): this["size"] {
-        return this.size
-    }
-
-
-    public get isEmpty(): boolean {
+    public override get isEmpty(): boolean {
         return this.#isEmpty
-    }
-
-    public get isNotEmpty(): boolean {
-        return !this.isEmpty
     }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Has X methods --------------------
 
-    public get hasNull(): boolean {
+    public override get hasNull(): boolean {
         return this.#hasNull ??= hasNull(this,)
-    }
-
-    public get includesNull(): this["hasNull"] {
-        return this.hasNull
-    }
-
-    public get containsNull(): this["hasNull"] {
-        return this.hasNull
     }
 
     //#endregion -------------------- Has X methods --------------------
@@ -323,7 +367,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
     //#region -------------------- Get / at methods --------------------
 
-    public get(index: number,): T {
+    public override get(index: number,): T {
         if (this.isEmpty)
             throw new ReferenceError("No element at any index could be found since it it empty.",)
         const size = this.size,
@@ -335,14 +379,10 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
         return this[indexToRetrieve] as T
     }
 
-    public at(index: number,): T {
-        return this.get(index,)
-    }
 
-
-    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
+    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
         if (this.isEmpty)
             return defaultValue(index < 0 ? this.size + index : index,)
 
@@ -355,14 +395,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
         return this.get(indexToRetrieve,)
     }
 
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
-        return this.getOrElse(index, defaultValue,)
-    }
 
-
-    public getOrNull(index: number,): NullOr<T> {
+    public override getOrNull(index: number,): NullOr<T> {
         if (this.isEmpty)
             return null
         const size = this.size,
@@ -374,306 +408,29 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
         return this[indexToRetrieve] as T
     }
 
-    public atOrNull(index: number,): NullOr<T> {
-        return this.getOrNull(index,)
-    }
-
     //#endregion -------------------- Get / at methods --------------------
-    //#region -------------------- Index of methods --------------------
-
-    public indexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
-    public indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
-    public indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return indexOf(this, element, fromIndex, toIndex,)
-    }
-
-
-    public lastIndexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
-    public lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number>
-    public lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return lastIndexOf(this, element, fromIndex, toIndex,)
-    }
-
-
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return indexOfFirst(this, predicate, fromIndex, toIndex,)
-    }
-
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return indexOfFirstIndexed(this, predicate, fromIndex, toIndex,)
-    }
-
-
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return indexOfLast(this, predicate, fromIndex, toIndex,)
-    }
-
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): NullOr<number> {
-        return indexOfLastIndexed(this, predicate, fromIndex, toIndex,)
-    }
-
-    //#endregion -------------------- Index of methods --------------------
-    //#region -------------------- First methods --------------------
-
-    public first(): NonNullable<T>
-    public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
-    public first<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return first(this, predicate,)
-    }
-
-    public firstOrNull(): NullOr<T>
-    public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
-    public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public firstOrNull<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return firstOrNull(this, predicate,)
-    }
-
-    //#endregion -------------------- First methods --------------------
-    //#region -------------------- Last methods --------------------
-
-    public last(): NonNullable<T>
-    public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
-    public last<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return last(this, predicate,)
-    }
-
-    public lastOrNull(): NullOr<T>
-    public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public lastOrNull<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return lastOrNull(this, predicate,)
-    }
-
-    //#endregion -------------------- Last methods --------------------
 
     //#endregion -------------------- Value methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    //#region -------------------- All / any / none methods --------------------
-
-    public all(predicate: BooleanCallback<T>,): boolean {
-        return all(this, predicate,)
-    }
-
-    public any(): this["isNotEmpty"]
-    public any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public any(predicate?: Nullable<BooleanCallback<T>>,): boolean {
-        return any(this, predicate,)
-    }
-
-    public none(): this["isEmpty"]
-    public none(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public none(predicate?: Nullable<BooleanCallback<T>>,): boolean {
-        return none(this, predicate,)
-    }
-
-    //#endregion -------------------- All / any / none methods --------------------
-    //#region -------------------- Has / includes / contains methods --------------------
-
-    public hasOne(...values: readonly T[]): boolean
-    public hasOne(...values: readonly unknown[]): boolean
-    public hasOne(...values: readonly unknown[]): boolean {
-        return hasOne(this, ...values,)
-    }
-
-    public includesOne(...values: readonly T[]): boolean
-    public includesOne(...values: readonly unknown[]): boolean
-    public includesOne(...values: readonly unknown[]): boolean {
-        return this.hasOne(...values,)
-    }
-
-    public containsOne(...values: readonly T[]): boolean
-    public containsOne(...values: readonly unknown[]): boolean
-    public containsOne(...values: readonly unknown[]): boolean {
-        return this.hasOne(...values,)
-    }
-
-
-    public hasAll(...values: readonly T[]): boolean
-    public hasAll(...values: readonly unknown[]): boolean
-    public hasAll(...values: readonly unknown[]): boolean {
-        return hasAll(this, ...values,)
-    }
-
-    public includesAll(...values: readonly T[]): boolean
-    public includesAll(...values: readonly unknown[]): boolean
-    public includesAll(...values: readonly unknown[]): boolean {
-        return this.hasAll(...values,)
-    }
-
-    public containsAll(...values: readonly T[]): boolean
-    public containsAll(...values: readonly unknown[]): boolean
-    public containsAll(...values: readonly unknown[]): boolean {
-        return this.hasAll(...values,)
-    }
-
-    //#endregion -------------------- Has / includes / contains methods --------------------
-    //#region -------------------- Join methods --------------------
-
-    public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<ValueWithStringReturnCallback<T>>,): string {
-        return join(this, separator, prefix, postfix, limit, truncated, transform,)
-    }
-
-    //#endregion -------------------- Join methods --------------------
-    //#region -------------------- Filter methods --------------------
-
-    public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public filter<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return filter(this, predicate,)
-    }
-
-    public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexed<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
-        return filterIndexed(this, predicate,)
-    }
-
-
-    public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public filterNot<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return filterNot(this, predicate,)
-    }
-
-    public filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexedNot<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
-        return filterIndexedNot(this, predicate,)
-    }
-
-
-    public filterNotNull(): CollectionHolder<NonNullable<T>> {
-        return filterNotNull(this,)
-    }
-
-    public requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNulls(this,)
-    }
-
-    //#endregion -------------------- Filter methods --------------------
-    //#region -------------------- Find methods --------------------
-
-    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public find(predicate: BooleanCallback<T>,): NullOr<T>
-    public find<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return find(this, predicate,)
-    }
-
-    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findIndexed<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
-        return findIndexed(this, predicate,)
-    }
-
-
-    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLast(predicate: BooleanCallback<T>,): NullOr<T>
-    public findLast<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return findLast(this, predicate,)
-    }
-
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T> {
-        return findLastIndexed(this, predicate,)
-    }
-
-    //#endregion -------------------- Find methods --------------------
-    //#region -------------------- Map methods --------------------
-
-    public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
-        return map(this, transform,)
-    }
-
-    public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
-        return mapIndexed(this, transform,)
-    }
-
-    //#endregion -------------------- Map methods --------------------
-    //#region -------------------- ForEach methods --------------------
-
-    public forEach(action: ValueIndexCallback<T>,): this {
-        return forEach(this, action,)
-    }
-
-    public forEachIndexed(action: IndexValueCallback<T>,): this {
-        return forEachIndexed(this, action,)
-    }
-
-    //#endregion -------------------- ForEach methods --------------------
-
-    //#endregion -------------------- Loop methods --------------------
-    //#region -------------------- Javascript methods --------------------
-
-    public [Symbol.iterator](): CollectionIterator<T> {
-        return toIterator(this,)
-    }
-
-    public get [Symbol.toStringTag](): CollectionHolderName {
-        return CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG
-    }
-
-    //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
+    public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
         return this.#objectValuesMap ??= objectValuesMap(this,)
     }
 
-
-    public toIterator(): CollectionIterator<T> {
-        return this[Symbol.iterator]()
-    }
-
-
-    public toArray(): readonly T[] {
+    public override toArray(): readonly T[] {
         return this.#array
     }
 
-    public toMutableArray(): T[] {
-        return toMutableArray(this,)
-    }
-
-
-    public toSet(): ReadonlySet<T> {
+    public override toSet(): ReadonlySet<T> {
         return this.#set ??= toSet(this,)
     }
 
-    public toMutableSet(): Set<T> {
-        return toMutableSet(this,)
-    }
-
-
-    public toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
+    public override toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
         return this.#weakSet ??= toWeakSet(this,)
     }
 
-    public toMutableWeakSet(): WeakSet<ObjectOf<T>> {
-        return toMutableWeakSet(this,)
-    }
-
-
-    public toMap(): ReadonlyMap<number, T> {
+    public override toMap(): ReadonlyMap<number, T> {
         return this.#map ??= toMap(this,)
-    }
-
-    public toMutableMap(): Map<number, T> {
-        return toMutableMap(this,)
-    }
-
-
-    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>,): CollectionHolder<T> {
-        return toReverse(this, fromIndex, toIndex,)
-    }
-
-
-    public toString(): string {
-        return this.join()
-    }
-
-    public toLocaleString(): string {
-        return this.join(null, null, null, null, null, it => it?.toLocaleString() ?? `${it}`,)
     }
 
     //#endregion -------------------- Conversion methods --------------------

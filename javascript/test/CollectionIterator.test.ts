@@ -20,11 +20,12 @@ describe("CollectionIteratorTest", () => {
         const instance = newEmptyIterator(),
             collectionInstance = EmptyCollectionHolder.get
 
-        test("collection", () => expect(instance.collection,).toStrictEqual(collectionInstance,),)
+        test("collection", () => expect(instance.collection,).toEqual(collectionInstance,),)
 
         describe("size", () => {
             test("size", () => expect(instance.size,).toBe(0,),)
             test("length", () => expect(instance.length,).toBe(0,),)
+            test("count", () => expect(instance.length,).toBe(0,),)
         },)
         describe("index", () => {
             test("index", () => expect(instance.index,).toBe(0,),)
@@ -42,12 +43,15 @@ describe("CollectionIteratorTest", () => {
                 test("done", () => expect(it.done,).toBeTrue(),)
                 test("value", () => expect(it.value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
+            test("nextValue", () => expect(() => instance.nextValue,).toThrow(ReferenceError,),)
+
             describe("previous", () => {
                 const it = instance.previous()
 
                 test("done", () => expect(it.done,).toBeTrue(),)
                 test("value", () => expect(it.value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
+            test("previousValue", () => expect(() => instance.previousValue,).toThrow(ReferenceError,),)
         },)
         describe("forEach", () => {
             test("regular", () => {
@@ -76,6 +80,7 @@ describe("CollectionIteratorTest", () => {
             describe("size", () => {
                 test("size", () => expect(newInstance().size,).toBe(maxSize,),)
                 test("length", () => expect(newInstance().length,).toBe(maxSize,),)
+                test("count", () => expect(newInstance().count,).toBe(maxSize,),)
             },)
             describe("index", () => {
                 describe("index", () => {
@@ -424,6 +429,32 @@ describe("CollectionIteratorTest", () => {
                         test("done", () => expect(it.done,).toBeTrue(),)
                     },)
                 },)
+                describe("next x2", () => {
+                    describe("at the start", () => {
+                        const instance = newInstance()
+                        instance.next()
+                        const it = instance.next()
+                        test("value", () => expect(it.value,).toBe('b',),)
+                        test("done", () => expect(it.done,).toBeFalse(),)
+                    },)
+                    describe("at the end", () => {
+                        const instance = newInstance().forEach(EMPTY_CALLBACK,)
+                        instance.next()
+                        const it = instance.next()
+                        test("value", () => expect(it.value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
+                        test("done", () => expect(it.done,).toBeTrue(),)
+                    },)
+                },)
+                describe("nextValue", () => {
+                    test("at the start", () => expect(newInstance().nextValue,).toBe('a',),)
+                    test("at the end", () => expect(() => newInstance().forEach(EMPTY_CALLBACK,).nextValue,).toThrow(ReferenceError,),)
+                },)
+                test("nextValue x2", () => {
+                    const instance = newInstance()
+                    instance.nextValue
+                    expect(instance.nextValue,).toBe('b',)
+                },)
+
                 describe("previous", () => {
                     describe("at the start", () => {
                         const it = newInstance().previous()
@@ -435,6 +466,31 @@ describe("CollectionIteratorTest", () => {
                         test("value", () => expect(it.value,).toBe('j',),)
                         test("done", () => expect(it.done,).toBeFalse(),)
                     },)
+                },)
+                describe("previous x2", () => {
+                    describe("at the start", () => {
+                        const instance = newInstance()
+                        instance.previous()
+                        const it = instance.previous()
+                        test("value", () => expect(it.value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
+                        test("done", () => expect(it.done,).toBeTrue(),)
+                    },)
+                    describe("at the end", () => {
+                        const instance = newInstance().forEach(EMPTY_CALLBACK,)
+                        instance.previous()
+                        const it = instance.previous()
+                        test("value", () => expect(it.value,).toBe('i',),)
+                        test("done", () => expect(it.done,).toBeFalse(),)
+                    },)
+                },)
+                describe("previousValue", () => {
+                    test("at the start", () => expect(() => newInstance().previousValue,).toThrow(ReferenceError,),)
+                    test("at the end", () => expect(newInstance().forEach(EMPTY_CALLBACK,).previousValue,).toBe('j',),)
+                },)
+                test("previousValue x2", () => {
+                    const instance = newInstance().forEach(EMPTY_CALLBACK,)
+                    instance.previousValue
+                    expect(instance.previousValue,).toBe('i',)
                 },)
             },)
             describe("forEach", () => {
