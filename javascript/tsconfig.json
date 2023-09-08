@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
     "target": "ES2021",
-    "module": "ESNext",
-    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "lib": [
       "DOM",

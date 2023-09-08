@@ -1,6 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "removeComments": false,
 
     "declaration": true,
@@ -9,7 +11,5 @@
 
     "outDir": "dist/types",
   },
-  "include": [
-    "src",
-  ],
+  "include": ["src",],
 }

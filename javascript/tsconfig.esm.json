@@ -1,12 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ES2022",
+    "module": "NodeNext",
 
     "outDir": "dist/ecmascript module",
   },
-  "include": [
-    "src",
-  ],
+  "include": ["src",],
 }

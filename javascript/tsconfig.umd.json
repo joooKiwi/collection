@@ -2,11 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "UMD",
-    "target": "ES2022",
+    "moduleResolution": "Node",
 
     "outDir": "dist/universal module definition",
   },
-  "include": [
-    "src",
-  ],
+  "include": ["src",],
 }
