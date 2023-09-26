@@ -42,10 +42,10 @@
       "require": "./dist/common javascript/index.js"
     },
 
-    "./method": {
-      "types":   "./dist/types/method/index.d.ts",
-      "import":  "./dist/ecmascript module/method/index.js",
-      "require": "./dist/common javascript/method/index.js"
+    "./handler": {
+      "types":   "./dist/types/handler/index.d.ts",
+      "import":  "./dist/ecmascript module/handler/index.js",
+      "require": "./dist/common javascript/handler/index.js"
     },
     "./iterable": {
       "types":   "./dist/types/iterable/index.d.ts",
@@ -62,10 +62,10 @@
       "import":  "./dist/ecmascript module/iterator/value/index.js",
       "require": "./dist/common javascript/iterator/value/index.js"
     },
-    "./handler": {
-      "types":   "./dist/types/handler/index.d.ts",
-      "import":  "./dist/ecmascript module/handler/index.js",
-      "require": "./dist/common javascript/handler/index.js"
+    "./method": {
+      "types":   "./dist/types/method/index.d.ts",
+      "import":  "./dist/ecmascript module/method/index.js",
+      "require": "./dist/common javascript/method/index.js"
     },
 
     "./*": {
@@ -73,10 +73,10 @@
       "import":  "./dist/ecmascript module/*.js",
       "require": "./dist/common javascript/*.js"
     },
-    "./method/*": {
-      "types":   "./dist/types/method/*.d.ts",
-      "import":  "./dist/ecmascript module/method/*.js",
-      "require": "./dist/common javascript/method/*.js"
+    "./handler/*": {
+      "types":   "./dist/types/handler/*.d.ts",
+      "import":  "./dist/ecmascript module/handler/*.js",
+      "require": "./dist/common javascript/handler/*.js"
     },
     "./iterable/*": {
       "types":   "./dist/types/iterable/*.d.ts",
@@ -93,10 +93,10 @@
       "import":  "./dist/ecmascript module/iterator/value/*.js",
       "require": "./dist/common javascript/iterator/value/*.js"
     },
-    "./handler/*": {
-      "types":   "./dist/types/handler/*.d.ts",
-      "import":  "./dist/ecmascript module/handler/*.js",
-      "require": "./dist/common javascript/handler/*.js"
+    "./method/*": {
+      "types":   "./dist/types/method/*.d.ts",
+      "import":  "./dist/ecmascript module/method/*.js",
+      "require": "./dist/common javascript/method/*.js"
     }
   },
 
