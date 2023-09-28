@@ -25,7 +25,7 @@ import {startingIndex as startingIndexFunction}    from "./startingIndex"
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -39,7 +39,7 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -53,7 +53,7 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -67,7 +67,7 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -81,7 +81,7 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -96,9 +96,9 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param fromIndex The starting index
- * @param toIndex The ending index
- * @param limit The maximum index
+ * @param fromIndex  The starting index
+ * @param toIndex    The ending index
+ * @param limit      The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -111,10 +111,10 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, from
  * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex}
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection         The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param indicesOrFromIndex The given indices (or starting index)
- * @param toIndex The ending index
- * @param limit The maximum index
+ * @param toIndex            The ending index
+ * @param limit              The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -147,7 +147,7 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -179,7 +179,7 @@ export function sliceByArray<const T, >(collection: Nullable<CollectionHolder<T>
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -213,7 +213,7 @@ export function sliceBySet<const T, >(collection: Nullable<CollectionHolder<T>>,
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -245,7 +245,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -312,8 +312,8 @@ export function sliceByIterable<const T, >(collection: Nullable<CollectionHolder
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The inclusive starting index
- * @param toIndex The inclusive ending index
- * @param limit The maximum index
+ * @param toIndex   The inclusive ending index
+ * @param limit     The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
