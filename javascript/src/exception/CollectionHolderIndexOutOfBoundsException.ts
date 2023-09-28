@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {NullOr, PossibleNumeric} from "../general type"
+import type {Nullable, NullOr, PossibleNumeric} from "../general type"
 
 /**
  * A simple {@link Error exception} that tell there is an invalid index that was received
@@ -14,20 +14,28 @@ import type {NullOr, PossibleNumeric} from "../general type"
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-index-out-of-bounds-exception Kotlin IndexOutOfBoundsException
  * @see https://learn.microsoft.com/dotnet/api/system.indexoutofrangeexception C# IndexOutOfRangeException
  */
-export class CollectionHolderIndexOutOfBoundsException<const T extends NullOr<PossibleNumeric> = NullOr<PossibleNumeric>, >
+export class CollectionHolderIndexOutOfBoundsException<const T extends NullOr<PossibleNumeric> = NullOr<PossibleNumeric>,
+    const out CAUSE extends Error = never, >
     extends RangeError {
 
+    public override readonly name = this.constructor.name
     readonly #invalidIndex: T
+    readonly #cause
 
-    public constructor(message: string, invalidIndex: T,) {
+    public constructor(message: string, invalidIndex: T, cause?: Nullable<CAUSE>,) {
         super(message,)
-        this.name = this.constructor.name
         this.#invalidIndex = invalidIndex
+        this.#cause = cause ?? null
     }
 
     /** The invalid index */
     public get invalidIndex(): T {
         return this.#invalidIndex
+    }
+
+    /** The cause of the {@link Error exception} */
+    public override get cause(): NullOr<CAUSE> {
+        return this.#cause
     }
 
 }

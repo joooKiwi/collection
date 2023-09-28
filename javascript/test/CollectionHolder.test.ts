@@ -11,6 +11,7 @@ import {newCollectionInstance}                                                  
 
 import {CollectionConstants}                       from "../src/CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../src/exception/EmptyCollectionHolderException"
 import {GenericCollectionIterator}                 from "../src/iterator/GenericCollectionIterator"
 
 describe("CollectionHolderTest", () => {
@@ -50,9 +51,9 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             describe("simple", () => {
                 describe("[](0)", () => {
                     test("index", () => expect(EMPTY_INSTANCE()[0],).toBeUndefined(),)
-                    test("get", () => expect(() => EMPTY_INSTANCE().get(0,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                    test("at", () => expect(() => EMPTY_INSTANCE().at(0,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                    test("element at", () => expect(() => EMPTY_INSTANCE().elementAt(0,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test("get", () => expect(() => EMPTY_INSTANCE().get(0,),).toThrow(EmptyCollectionHolderException,),)
+                    test("at", () => expect(() => EMPTY_INSTANCE().at(0,),).toThrow(EmptyCollectionHolderException,),)
+                    test("element at", () => expect(() => EMPTY_INSTANCE().elementAt(0,),).toThrow(EmptyCollectionHolderException,),)
                 },)
                 describe("[a,b](0)", () => {
                     test.skip("index", () => expect(AB_INSTANCE()[0],).toEqual('a',),)
@@ -1092,7 +1093,7 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         },)
         describe("first", () => {
             describe("[].first() == throw|null", () => {
-                test("direct", () => expect(() => EMPTY_INSTANCE().first(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("direct", () => expect(() => EMPTY_INSTANCE().first(),).toThrow(EmptyCollectionHolderException,),)
                 test("or null", () => expect(EMPTY_INSTANCE().firstOrNull(),).toBeNull(),)
             },)
 
@@ -1122,7 +1123,7 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         },)
         describe("last", () => {
             describe("[]", () => {
-                test("direct", () => expect(() => EMPTY_INSTANCE().last(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("direct", () => expect(() => EMPTY_INSTANCE().last(),).toThrow(EmptyCollectionHolderException,),)
                 test("or null", () => expect(EMPTY_INSTANCE().lastOrNull(),).toBeNull(),)
             },)
 
@@ -1370,8 +1371,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test('1', () => expect(ABCD_INSTANCE().slice([1,],).toArray(),).toEqual(['b',],),)
             test("-1", () => expect(ABCD_INSTANCE().slice([-1,],).toArray(),).toEqual(['d',],),)
             test("-2", () => expect(ABCD_INSTANCE().slice([-2,],).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice([10,],).toString(),).toThrow(ReferenceError,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice([-10,],).toString(),).toThrow(ReferenceError,),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice([10,],).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice([-10,],).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by set", () => {
             test("empty", () => expect(AB_INSTANCE().slice(new Set<never>(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -1379,8 +1380,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test('1', () => expect(ABCD_INSTANCE().slice(new Set([1,],),).toArray(),).toEqual(['b',],),)
             test("-1", () => expect(ABCD_INSTANCE().slice(new Set([-1,],),).toArray(),).toEqual(['d',],),)
             test("-2", () => expect(ABCD_INSTANCE().slice(new Set([-2,],),).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice(new Set([10,],),).toString(),).toThrow(ReferenceError,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice(new Set([-10,],),).toString(),).toThrow(ReferenceError,),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice(new Set([10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice(new Set([-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by collection", () => {
             test("empty", () => expect(AB_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [],),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -1388,8 +1389,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test('1', () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [1,],),).toArray(),).toEqual(['b',],),)
             test("-1", () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-1,],),).toArray(),).toEqual(['d',],),)
             test("-2", () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-2,],),).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [10,],),).toString(),).toThrow(ReferenceError,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-10,],),).toString(),).toThrow(ReferenceError,),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by collection iterator", () => {
             test("empty", () => expect(AB_INSTANCE().slice(new GenericCollectionIterator<never>(newCollectionInstance(instance, arrayOrSetCreation, [],),),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -1397,8 +1398,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test('1', () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<1>(newCollectionInstance(instance, arrayOrSetCreation, [1,],),),).toArray(),).toEqual(['b',],),)
             test("-1", () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<-1>(newCollectionInstance(instance, arrayOrSetCreation, [-1,],),),).toArray(),).toEqual(['d',],),)
             test("-2", () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<-2>(newCollectionInstance(instance, arrayOrSetCreation, [-2,],),),).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<10>(newCollectionInstance(instance, arrayOrSetCreation, [10,],),),).toString(),).toThrow(ReferenceError,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<-10>(newCollectionInstance(instance, arrayOrSetCreation, [-10,],),),).toString(),).toThrow(ReferenceError,),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<10>(newCollectionInstance(instance, arrayOrSetCreation, [10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<-10>(newCollectionInstance(instance, arrayOrSetCreation, [-10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by iterable", () => {
             test("empty", () => expect(AB_INSTANCE().slice({ [Symbol.iterator]() { return [][Symbol.iterator]() }, },),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -1406,8 +1407,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test('1', () => expect(ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [1,][Symbol.iterator]() }, },).toArray(),).toEqual(['b',],),)
             test("-1", () => expect(ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [-1,][Symbol.iterator]() }, },).toArray(),).toEqual(['d',],),)
             test("-2", () => expect(ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [-2,][Symbol.iterator]() }, },).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [10,][Symbol.iterator]() }, },).toString(),).toThrow(ReferenceError,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [-10,][Symbol.iterator]() }, },).toString(),).toThrow(ReferenceError,),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [10,][Symbol.iterator]() }, },).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [-10,][Symbol.iterator]() }, },).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
 
         describe("by range", () => {

@@ -11,7 +11,7 @@ import type {Nullable, NumberOrNumberInString}                                  
 import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/EmptyCollectionIterator"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                     from "./iterator/CollectionIterator"
 
-import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {CollectionConstants}                       from "./CollectionConstants"
 
 /**
@@ -87,16 +87,19 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Get / at methods --------------------
 
-    public get(index: number = NaN,): never {
-        throw new CollectionHolderIndexOutOfBoundsException("No element at any index could be found since it it empty.", index,)
+    public get(index?: number,): never
+    public get(): never {
+        throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",)
     }
 
-    public at(index?: number,): never {
-        this.get(index,)
+    public at(index?: number,): never
+    public at(): never {
+        this.get()
     }
 
-    public elementAt(index?: number,): never {
-        this.get(index,)
+    public elementAt(index?: number,): never
+    public elementAt(): never {
+        this.get()
     }
 
 

@@ -6,3 +6,5 @@
  ******************************************************************************/
 
 export {CollectionHolderIndexOutOfBoundsException} from "./CollectionHolderIndexOutOfBoundsException"
+export {EmptyCollectionHolderException}            from "./EmptyCollectionHolderException"
+export {NoElementFoundInCollectionHolderException} from "./NoElementFoundInCollectionHolderException"

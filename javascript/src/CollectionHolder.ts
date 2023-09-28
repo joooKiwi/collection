@@ -405,7 +405,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the first element in the current {@link CollectionHolder collection}
      *
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
      */
@@ -416,7 +416,8 @@ export interface CollectionHolder<out T = unknown, >
      * matching the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      */
@@ -427,7 +428,8 @@ export interface CollectionHolder<out T = unknown, >
      * matching the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      */
@@ -471,7 +473,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the last element in the current {@link CollectionHolder collection}
      *
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
      */
@@ -482,7 +484,8 @@ export interface CollectionHolder<out T = unknown, >
      * matching the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      */
@@ -493,7 +496,8 @@ export interface CollectionHolder<out T = unknown, >
      * matching the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      */

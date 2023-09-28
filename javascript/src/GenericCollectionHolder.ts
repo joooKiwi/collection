@@ -18,6 +18,7 @@ import type {CollectionIterator}                from "./iterator/CollectionItera
 import {AbstractCollectionHolder}                  from "./AbstractCollectionHolder"
 import {CollectionConstants}                       from "./CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {hasNull}                                   from "./method/hasNull"
 import {isCollectionHolder}                        from "./method/isCollectionHolder"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
@@ -370,7 +371,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
     public override get(index: number,): T {
         if (this.isEmpty)
-            throw new CollectionHolderIndexOutOfBoundsException("No element at any index could be found since it it empty.", index,)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
 
         const size = this.size
         if (index > size)
