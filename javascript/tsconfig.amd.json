@@ -3,11 +3,9 @@
   "compilerOptions": {
     "isolatedModules": false,
     "module": "AMD",
-    "target": "ES2022",
+    "moduleResolution": "Node",
 
     "outFile": "dist/asynchronous module definition/index.js",
   },
-  "include": [
-    "src",
-  ],
+  "include": ["src",],
 }

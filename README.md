@@ -65,95 +65,1303 @@ The methods to validate one type of value
 |-------------------------------------------------------------|-------------------------|-----------------------------|--------|-----|--------------------------------------------------------------------------------|
 | `get hasNull`<br/>`get includesNull`<br/>`get containsNull` | `array.includes(null)`  | `collection.contains(null)` | _N/A_  |     | `enumerable.Contains(null)`<br/>`list.Contains(null)`<br/>`set.Contains(null)` |
 
-
 ### Value methods
 The methods associated to a value or index
 
-| Methods                                                                                                                   | Javascript                                                                                                                                                                                                | Java                                                                                                                                                 | Kotlin                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | PHP | C#                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `get(index)`<br/>`at(index)`<br/>`elementAt(index)`                                                                       | <pre lang="javascript">if (index in array)<br/>    return array[index]<br/>throw                                                                                                                          | [List.get(index)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html#get(int))                                         | [Array.elementAt(index)<br/>Iterable.elementAt(index)<br/>List.elementAt(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at.html)<br/>[List.get(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html)                                                                                                                                                                                                                         |     | [Enumerable.ElementAt(index)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.elementat)<br/>[IList[index]](https://learn.microsoft.com/dotnet/api/system.collections.ilist.item)                                                                                                                                                                                                                                        |
-| `getOrElse(index, defaultValue)`<br/>`atOrElse(index, defaultValue)`<br/>`elementAtOrElse(index, defaultValue)`           | <pre lang="javascript">if (index in array)<br/>    return array[index]<br/>return defaultValue()                                                                                                          | <pre lang="java">if (index < list.size())<br/>    return list.get(index);<br/>return defaultValue();                                                 | [Array.elementAtOrElse(index, defaultValue)<br/>Iterable.elementAtOrElse(index, defaultValue)<br/>List.elementAtOrElse(index, defaultValue)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-else.html)<br/>[Array.getOrElse(index, defaultValue)<br/>List.getOrElse(index, defaultValue)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html)                                                                                      |     | `enumerable.ElementAtOrDefault(index) ?? defaultValue()`                                                                                                                                                                                                                                                                                                                                                                               |
-| `getOrNull(index)`<br/>`atOrNull(index)`<br/>`elementAtOrNull(index)`                                                     | <pre lang="javascript">if (index in array)<br/>    return array[index]<br/>return null                                                                                                                    | <pre lang="java">if (index<= list.size())<br/>    return list.get(index);<br/>return null;                                                           | [Array.elementAtOrNull(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html)<br/>[Iterable.elementAtOrNull(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html)<br/>[List.elementAtOrNull(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html)<br/>[List.getOrNull(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-null.html) |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.elementatordefault#system-linq-enumerable-elementatordefault-1(system-collections-generic-ienumerable((-0))-system-index)">Enumerable.ElementAtOrDefault(index)                                                                                                                                                                                                 |
-|                                                                                                                           |                                                                                                                                                                                                           |                                                                                                                                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |     |                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `indexOf(element, fromIndex, toIndex, limit)`                                                                             | [Array.indexOf(element, fromIndex)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)                                                                             | `list.indexOf(element)`                                                                                                                              | [Array.indexOf(element)<br/>Iterable.indexOf(element)<br/>List.indexOf(element)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of.html)                                                                                                                                                                                                                                                                                                                                 |     | [IndexOf(array, element, fromIndex, limit)](https://learn.microsoft.com/dotnet/api/system.array.indexof)<br/>[IList.IndexOf(element)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-indexof)<br/>[List.IndexOf(element, fromIndex, limit)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof)                                                       |
-| `lastIndexOf(element, fromIndex, toIndex, limit)`                                                                         | [Array.lastIndexOf(element, fromIndex)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf)                                                                     | `list.lastIndexOf(element)`                                                                                                                          | [Array.lastIndexOf(element)<br/>Iterable.lastIndexOf(element)<br/>List.lastIndexOf(element)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-index-of.html)                                                                                                                                                                                                                                                                                                                |     | [LastIndexOf(array, element, startIndex, limit)](https://learn.microsoft.com/dotnet/api/system.array.lastindexof)<br/>[List.LastIndexOf(element, startIndex, limit)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof)                                                                                                                                                                             |
-| `indexOfFirst(predicate, fromIndex, toIndex, limit)`<br/><br/>`indexOfFirstIndexed(predicate, fromIndex, toIndex, limit)` | [Array.findIndex(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)                                                                                  | <pre lang="java">var index = startingIndex - 1;<br/>while (++index <= endingIndex)<br/>    if (predicate)<br/>        return index;<br/>return null; | [Array.indexOfFirst(predicate)<br/>Iterable.indexOfFirst(predicate)<br/>List.indexOfFirst(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html)                                                                                                                                                                                                                                                                                                      |     | [FindIndex(array, predicate)<br/>FindIndex(array, fromIndex, predicate)<br/>FindIndex(array, fromIndex, limit, predicate)](https://learn.microsoft.com/dotnet/api/system.array.findindex)<br/>[List.FindIndex(predicate)<br/>List.FindPredicate(fromIndex, predicate)<br/>List.FindPredicate(fromIndex, limit, predicate)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex)                         |
-| `indexOfLast(predicate, fromIndex, toIndex, limit)`<br/><br/>`indexOfLastIndexed(predicate, fromIndex, toIndex, limit)`   | [Array.findLastIndex(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex)                                                                          | <pre lang="java">var index = endingIndex + 1;<br/>while (--index >= startingIndex)<br/>    if (predicate)<br/>        return index;<br/>return null; | [Array.indexOfLast(predicate)<br/>Iterable.indexOfLast(predicate)<br/>List.indexOfLast(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html)                                                                                                                                                                                                                                                                                                          |     | [FindLastIndex(array, predicate)<br/>FindLastIndex(array, fromIndex, predicate)<br/>FindLastIndex(array, fromIndex, limit, predicate)](https://learn.microsoft.com/dotnet/api/system.array.findlastindex)<br/>[List.FindLastIndex(predicate)<br/>List.FindLastIndex(fromIndex, predicate)<br/>List.FindLastIndex(fromIndex, limit, predicate)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex) |
-|                                                                                                                           |                                                                                                                                                                                                           |                                                                                                                                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |     |                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `first()`                                                                                                                 | <pre lang="javascript">if (0 in array)<br/>    return array[0]<br/>throw                                                                                                                                  | `collection.stream().findFirst().orElseThrow()`                                                                                                      | [Array.first()<br/>Iterable.first()<br/>List.first()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html)                                                                                                                                                                                                                                                                                                                                                               |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first#system-linq-enumerable-first-1(system-collections-generic-ienumerable((-0)))">IEnumerable.First()                                                                                                                                                                                                                                                         |
-| `first(predicate)`                                                                                                        | <pre lang="javascript">const size = array.length<br/>let index = -1<br/>while (++index < size) {<br/>    const value = array[index]<br/>    if (predicate)<br/>        return value<br/>}<br/>throw       | `collection.stream().findFirst().or(predicate).orElseThrow()`                                                                                        | [Array.first(predicate)<br/>Iterable.first(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html)                                                                                                                                                                                                                                                                                                                                                              |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first#system-linq-enumerable-first-1(system-collections-generic-ienumerable((-0))-system-func((-0-system-boolean)))">IEnumerable.First(predicate)                                                                                                                                                                                                               |
-| `firstOrNull()`                                                                                                           | <pre lang="javascript">if (0 in array)<br/>    return array[0]<br/>return null                                                                                                                            | `collection.stream().findFirst().orElse(null)`                                                                                                       | [Array.firstOrNull()<br/>Iterable.firstOrNull()<br/>List.firstOrNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html)                                                                                                                                                                                                                                                                                                                                     |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault#system-linq-enumerable-firstordefault-1(system-collections-generic-ienumerable((-0)))">IEnumerable.FirstOrDefault()                                                                                                                                                                                                                              |
-| `firstOrNull(predicate)`                                                                                                  | <pre lang="javascript">const size = array.length<br/>let index = -1<br/>while (++index < size) {<br/>    const value = array[index]<br/>    if (predicate)<br/>        return value<br/>}<br/>return null | `collection.stream().findFirst().or(predicate).orElse(null)`                                                                                         | [Array.firstOrNull(predicate)<br/>Iterable.firstOrNull(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html)                                                                                                                                                                                                                                                                                                                                          |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first#system-linq-enumerable-first-1(system-collections-generic-ienumerable((-0))-system-func((-0-system-boolean)))">IEnumerable.FirstOrDefault(predicate)                                                                                                                                                                                                      |
-|                                                                                                                           |                                                                                                                                                                                                           |                                                                                                                                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |     |                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `last()`                                                                                                                  | <pre lang="javascript">const size = array.length<br/>if (size > 0)<br/>    return array[size - 1]<br/>throw                                                                                               | `collection.stream().reduce((_, it) -> it).orElseThrow()`                                                                                            | [Array.last()<br/>Iterable.last()<br/>List.last()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html)                                                                                                                                                                                                                                                                                                                                                                   |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last#system-linq-enumerable-last-1(system-collections-generic-ienumerable((-0)))">IEnumerable.Last()                                                                                                                                                                                                                                                            |
-| `last(predicate)`                                                                                                         | <pre lang="javascript">let index = array.length<br/>while (index-- > 0) {<br/>    const value = array[index]<br/>    if (predicate)<br/>        return value<br/>}<br/>throw                              | `collection.stream().reduce((_, it) -> it).or(predicate).orElseThrow()`                                                                              | [Array.last(predicate)<br/>Iterable.last(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html)                                                                                                                                                                                                                                                                                                                                                                 |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last#system-linq-enumerable-last-1(system-collections-generic-ienumerable((-0))-system-func((-0-system-boolean)))">IEnumerable.Last(predicate)                                                                                                                                                                                                                  |
-| `lastOrNull()`                                                                                                            | <pre lang="javascript">const size = array.length<br/>if (size > 0)<br/>    return array[size - 1]<br/>return null                                                                                         | `collection.stream().reduce((_, it) -> it).orElse(null)`                                                                                             | [Array.lastOrNull()<br/>Iterable.lastOrNull()<br/>List.lastOrNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html)                                                                                                                                                                                                                                                                                                                                         |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault#system-linq-enumerable-lastordefault-1(system-collections-generic-ienumerable((-0)))">IEnumerable.LastOrDefault()                                                                                                                                                                                                                                 |
-| `lastOrNull(predicate)`                                                                                                   | <pre lang="javascript">let index = array.length<br/>while (index-- > 0) {<br/>    const value = array[index]<br/>    if (predicate)<br/>        return value<br/>}<br/>return null                        | `collection.stream().reduce((_, it) -> it).or(predicate).orElse(null)`                                                                               | [Array.lastOrNull(predicate)<br/>Iterable.lastOrNull(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html)                                                                                                                                                                                                                                                                                                                                             |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault#system-linq-enumerable-lastordefault-1(system-collections-generic-ienumerable((-0))-system-func((-0-system-boolean)))">IEnumerable.LastOrDefault(predicate)                                                                                                                                                                                       |
+<details><summary>get(index) / at(index) / elementAt(index)</summary>
+
+**Javascript**
+```javascript
+if (index in array)
+    return array[index]
+throw
+```
+
+**Java**
+ - [List.get(index)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html#get(int))
+
+**Kotlin**
+ - [Array.elementAt(index)<br/>Iterable.elementAt(index)<br/>List.elementAt(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at.html)
+ - [List.get(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html)
+
+**PHP**
+
+**C#**
+ - [Enumerable.ElementAt(index)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.elementat)
+ - [IList[index]](https://learn.microsoft.com/dotnet/api/system.collections.ilist.item)
+
+</details>
+<details><summary>getOrElse(index, defaultValue) / atOrElse(index, defaultValue) / elementAtOrElse(index, defaultValue)</summary>
+
+**Javascript**
+```javascript
+if (index in array)
+    return array[index]
+return defaultValue()
+```
+
+**Java**
+```java
+if (index < list.size())
+    return list.get(index);
+return defaultValue();
+```
+
+**Kotlin**
+ - [Array.elementAtOrElse(index, defaultValue)<br/>Iterable.elementAtOrElse(index, defaultValue)<br/>List.elementAtOrElse(index, defaultValue)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-else.html)
+ - [Array.getOrElse(index, defaultValue)<br/>List.getOrElse(index, defaultValue)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html)
+
+**PHP**
+
+**C#**
+ - `enumerable.ElementAtOrDefault(index) ?? defaultValue()`
+
+</details>
+<details><summary>getOrNull(index) / atOrNull(index) / elementAtOrNull(index)</summary>
+
+**Javascript**
+```javascript
+if (index in array)
+    return array[index]
+return null
+```
+
+**Java**
+```java
+if (index<= list.size())
+    return list.get(index);
+return null;
+```
+
+**Kotlin**
+ - [Array.elementAtOrNull(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html)
+ - [Iterable.elementAtOrNull(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html)
+ - [List.elementAtOrNull(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html)
+ - [List.getOrNull(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-null.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.elementatordefault#system-linq-enumerable-elementatordefault-1(system-collections-generic-ienumerable((-0))-system-index)">Enumerable.ElementAtOrDefault(index)</a>
+
+</details>
+<br/>
+<details><summary>indexOf(element, fromIndex, toIndex, limit)</summary>
+
+**Javascript**
+ - [Array.indexOf(element, fromIndex)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
+
+**Java**
+ - [List.indexOf(element)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object))
+
+**Kotlin**
+ - [Array.indexOf(element)<br/>Iterable.indexOf(element)<br/>List.indexOf(element)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of.html)
+
+**PHP**
+
+**C#**
+ - [IndexOf(array, element, fromIndex, limit)](https://learn.microsoft.com/dotnet/api/system.array.indexof)
+ - [IList.IndexOf(element)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.system-collections-ilist-indexof)
+ - [List.IndexOf(element, fromIndex, limit)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof)
+
+</details>
+<details><summary>lastIndexOf(element, fromIndex, toIndex, limit)</summary>
+
+**Javascript**
+ - [Array.lastIndexOf(element, fromIndex)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf)
+
+**Java**
+ - [List.lastIndexOf(element)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object))
+
+**Kotlin**
+ - [Array.lastIndexOf(element)<br/>Iterable.lastIndexOf(element)<br/>List.lastIndexOf(element)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-index-of.html)
+
+**PHP**
+
+**C#**
+ - [LastIndexOf(array, element, startIndex, limit)](https://learn.microsoft.com/dotnet/api/system.array.lastindexof)
+ - [List.LastIndexOf(element, startIndex, limit)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof)
+
+</details>
+<details><summary>indexOfFirst(predicate, fromIndex, toIndex, limit)<br/>indexOfFirstIndexed(predicate, fromIndex, toIndex, limit)</summary>
+
+**Javascript**
+ - [Array.findIndex(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+
+**Java**
+```java
+var index = startingIndex - 1;
+while (++index <= endingIndex)
+    if (predicate)
+            return index;
+return null;
+```
+
+**Kotlin**
+ - [Array.indexOfFirst(predicate)<br/>Iterable.indexOfFirst(predicate)<br/>List.indexOfFirst(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html)
+
+**PHP**
+
+**C#**
+ - [FindIndex(array, predicate)<br/>FindIndex(array, fromIndex, predicate)<br/>FindIndex(array, fromIndex, limit, predicate)](https://learn.microsoft.com/dotnet/api/system.array.findindex)
+ - [List.FindIndex(predicate)<br/>List.FindPredicate(fromIndex, predicate)<br/>List.FindPredicate(fromIndex, limit, predicate)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex)
+
+</details>
+<details><summary>indexOfLast(predicate, fromIndex, toIndex, limit)<br/>indexOfLastIndexed(predicate, fromIndex, toIndex, limit))</summary>
+
+**Javascript**
+ - [Array.findLastIndex(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex)
+
+**Java**
+```java
+var index = endingIndex + 1;
+while (--index >= startingIndex)
+    if (predicate)
+            return index;
+return null;
+```
+
+**Kotlin**
+ - [Array.indexOfLast(predicate)<br/>Iterable.indexOfLast(predicate)<br/>List.indexOfLast(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html)
+
+**PHP**
+
+**C#**
+ - [FindLastIndex(array, predicate)<br/>FindLastIndex(array, fromIndex, predicate)<br/>FindLastIndex(array, fromIndex, limit, predicate)](https://learn.microsoft.com/dotnet/api/system.array.findlastindex)
+ - [List.FindLastIndex(predicate)<br/>List.FindLastIndex(fromIndex, predicate)<br/>List.FindLastIndex(fromIndex, limit, predicate)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex)
+
+</details>
+<br/>
+<details><summary>first()</summary>
+
+**Javascript**
+```javascript
+if (0 in array)
+    return array[0]
+throw
+```
+
+**Java**
+ - `collection.stream().findFirst().orElseThrow()`
+
+**Kotlin**
+ - [Array.first()<br/>Iterable.first()<br/>List.first()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first#system-linq-enumerable-first-1(system-collections-generic-ienumerable((-0)))">IEnumerable.First()</a>
+
+</details>
+<details><summary>first(predicate)</summary>
+
+**Javascript**
+```javascript
+const size = array.length
+let index = -1
+while (++index < size) {
+    const value = array[index]
+    if (predicate)
+        return value
+}
+throw
+```
+
+**Java**
+ - `collection.stream().findFirst().or(predicate).orElseThrow()`
+
+**Kotlin**
+ - [Array.first(predicate)<br/>Iterable.first(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first#system-linq-enumerable-first-1(system-collections-generic-ienumerable((-0))-system-func((-0-system-boolean)))">IEnumerable.First(predicate)</a>
+
+</details>
+<details><summary>firstOrNull()</summary>
+
+**Javascript**
+```javascript
+if (0 in array)
+    return array[0]
+return null
+```
+
+**Java**
+ - `collection.stream().findFirst().orElse(null)`
+
+**Kotlin**
+ - [Array.firstOrNull()<br/>Iterable.firstOrNull()<br/>List.firstOrNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault#system-linq-enumerable-firstordefault-1(system-collections-generic-ienumerable((-0)))">IEnumerable.FirstOrDefault()</a>
+
+</details>
+<details><summary>firstOrNull(predicate)</summary>
+
+**Javascript**
+```javascript
+const size = array.length
+let index = -1
+while (++index < size) {
+    const value = array[index]
+    if (predicate)
+        return value
+}
+return null 
+```
+
+**Java**
+ - `collection.stream().findFirst().or(predicate).orElse(null)`
+
+**Kotlin**
+ - [Array.firstOrNull(predicate)<br/>Iterable.firstOrNull(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first#system-linq-enumerable-first-1(system-collections-generic-ienumerable((-0))-system-func((-0-system-boolean)))">IEnumerable.FirstOrDefault(predicate)</a>
+
+</details>
+<br/>
+<details><summary>last()</summary>
+
+**Javascript**
+```javascript
+const size = array.length
+if (size > 0)
+    return array[size - 1]
+throw
+```
+
+**Java**
+ - `collection.stream().reduce((_, it) -> it).orElseThrow()`
+```java
+var size = list.size();
+if (size > 0)
+    return list.get(size - 1);
+throw
+```
+
+**Kotlin**
+ - [Array.last()<br/>Iterable.last()<br/>List.last()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last#system-linq-enumerable-last-1(system-collections-generic-ienumerable((-0)))">IEnumerable.Last()</a>
+
+</details>
+<details><summary>last(predicate)</summary>
+
+**Javascript**
+```javascript
+let index = array.length
+while (index-- > 0) {
+    const value = array[index]
+    if (predicate)
+        return value
+}
+throw
+```
+
+**Java**
+ - `collection.stream().reduce((_, it) -> it).or(predicate).orElseThrow()`
+```java
+var index = list.size();
+while (index-- > 0) {
+    var value = list.get(index);
+    if (predicate)
+        return value;
+}
+throw
+```
+
+**Kotlin**
+ - [Array.last(predicate)<br/>Iterable.last(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last#system-linq-enumerable-last-1(system-collections-generic-ienumerable((-0))-system-func((-0-system-boolean)))">IEnumerable.Last(predicate)</a>
+
+</details>
+<details><summary>lastOrNull()</summary>
+
+**Javascript**
+```javascript
+const size = array.length
+if (size > 0)
+    return array[size - 1]
+return null
+```
+
+**Java**
+ - `collection.stream().reduce((_, it) -> it).orElse(null)`
+```java
+var size = list.size();
+if (size > 0)
+    return list.get(size - 1);
+return null;
+```
+
+**Kotlin**
+ - [Array.lastOrNull()<br/>Iterable.lastOrNull()<br/>List.lastOrNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault#system-linq-enumerable-lastordefault-1(system-collections-generic-ienumerable((-0)))">IEnumerable.LastOrDefault()</a>
+
+</details>
+<details><summary>lastOrNull(predicate)</summary>
+
+**Javascript**
+```javascript
+let index = array.length
+while (index-- > 0) {
+    const value = array[index]
+    if (predicate)
+        return value
+}
+return null
+```
+
+**Java**
+ - `collection.stream().reduce((_, it) -> it).or(predicate).orElse(null)`
+```java
+var index = list.size();
+while (index-- > 0) {
+    const value = list.get(index);
+    if (predicate)
+        return value;
+}
+return null;
+```
+
+**Kotlin**
+ - [Array.lastOrNull(predicate)<br/>Iterable.lastOrNull(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault#system-linq-enumerable-lastordefault-1(system-collections-generic-ienumerable((-0))-system-func((-0-system-boolean)))">IEnumerable.LastOrDefault(predicate)</a>
+
+</details>
 
 ### Loop methods
-The methods utilizing a loop in its behaviour
+The methods utilizing a loop in their behaviour
 
-| Methods                                                              | Javascript                                                                                                                                                                                                                                                   | Java                                                                                                                                                                                                                            | Kotlin                                                                                                                                                                                                                                                | PHP | C#                                                                                                                                                                                                                                                                 |
-|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `all(predicate)`                                                     | <pre lang="javascript">const size = array.length<br/>let index = -1<br/>while (++index < size)<br/>    if (!predicate)<br/>        return false<br/>return true                                                                                              | `collection.stream().allMatch(predicate)`                                                                                                                                                                                       | [Array.all(predicate)<br/>Iterable.all(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html)                                                                                                                          |     | [IEnumerable.All()](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all)                                                                                                                                                                             |
-| `any()`                                                              | `array.length !== 0`<br/>`set.size !== 0`                                                                                                                                                                                                                    | `array.length == 0`<br/>`collection.isEmpty()`                                                                                                                                                                                  | [Array.any()<br/>Iterable.any()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html)                                                                                                                                            |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any#system-linq-enumerable-any-1(system-collections-generic-ienumerable((-0)))">IEnumerable.Any()                                                                                           |
-| `any(predicate)`                                                     | <pre lang="javascript">const size = array.length<br/>let index = -1<br/>while (++index < size)<br/>    if (predicate)<br/>        return true<br/>return false                                                                                               | `collection.stream().anyMatch(predicate)`                                                                                                                                                                                       | [Array.any(predicate)<br/>Iterable.any(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html)                                                                                                                          |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any#system-linq-enumerable-any-1(system-collections-generic-ienumerable((-0))-system-func((-0-system-boolean)))">IEnumerable.Any(predicate)                                                 |
-| `none()`                                                             | `array.length === 0`<br/>`set.size === 0`                                                                                                                                                                                                                    | `array.length == 0`<br/>`!collection.isEmpty()`                                                                                                                                                                                 | [Array.none()<br/>Iterable.none()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html)                                                                                                                                         |     | `!enumerable.Any()`                                                                                                                                                                                                                                                |
-| `none(predicate)`                                                    | <pre lang="javascript">const size = array.length<br/>let index = -1<br/>while (++index < size)<br/>    if (predicate)<br/>        return false<br/>return true                                                                                               | `collection.stream().noneMatch(predicate)`                                                                                                                                                                                      | [Array.none(predicate)<br/>Iterable.none(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html)                                                                                                                       |     | `!enumerable.Any(predicate)`                                                                                                                                                                                                                                       |
-|                                                                      |                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                       |     |                                                                                                                                                                                                                                                                    |
-| `hasOne(values)`<br/>`includesOne(values)`<br/>`containsOne(values)` | <pre lang="javascript">const size = array.length<br/>let index = -1<br/>while (++index < size)<br/>    if (array.includes(values[index])<br/>        return true<br/>return false                                                                            | <pre lang="java">var size = list.size();<br/>var index = -1;<br/>while (++index < size)<br/>    if (list.contains(values[index]))<br/>        return true;<br/>return false;                                                    | <pre lang="kotlin">val size = list.size()<br/>var index = -1<br/>while (++index < size)<br/>    if (values[index] in list)<br/>        return true<br/>return false                                                                                   |     | <pre lang="csharp">var size = enumerable.Count();<br/>var index = -1;<br/>while (++index < size)<br/>        if (enumerable.Contains(values.ElementAt(index)))<br/>            return true;<br/>return false;                                                      |
-| `hasAll(values)`<br/>`includesAll(values)`<br/>`containsAll(values)` | <pre lang="javascript">const size = values.length<br/>let index = -1<br/>while (++index < size)<br/>    if (!array.includes(values[index]))<br/>        return false<br/>return true                                                                         | <pre lang="java">var size = list.size();<br/>var index = -1;<br/>while (++index < size)<br/>    if (!list.contains(values[index]))<br/>        return false;<br/>return true;                                                   | <pre lang="kotlin">val size = values.size()<br/>var index = -1<br/>while (++index < size)<br/>    if (values[index] !in array)<br/>        return false<br/>return true                                                                               |     | <pre lang="csharp">var size = enumerable.Count();<br/>var index = -1;<br/>while (++index < size)<br/>        if (!enumerable.Contains(values.ElementAt(index)))<br/>            return false;<br/>return true;                                                     |
-|                                                                      |                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                       |     |                                                                                                                                                                                                                                                                    |
-| `join(separator, prefix, postfix, limit, truncated, transform)`      | [Array.join(separator)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/join)                                                                                                                                               | [String.join(separator, iterable)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable))                                                          | [Array.joinToString(separator, prefix, postfix, limit, truncated, transform)<br/>Iterable.joinToString(separator, prefix, postfix, limit, truncated, transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html) |     | [string.Join(separator, array, fromIndex, limit)<br/>Join(separator, enumerable)](https://learn.microsoft.com/dotnet/api/system.string.join)                                                                                                                       |
-|                                                                      |                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                       |     |                                                                                                                                                                                                                                                                    |
-| `filter(predicate)`                                                  | [Array.filter(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)                                                                                                                                           | `collection.stream().filter(predicate).toList()`                                                                                                                                                                                | [Array.filter(predicate)<br/>Iterable.filter(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html)                                                                                                                 |     | [IEnumerable.Where(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where)                                                                                                                                                                |
-| `filterIndexed(predicate)`                                           | [Array.filter(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)                                                                                                                                           | `collection.stream().filter(predicate).toList()`                                                                                                                                                                                | [Array.filterIndexed(predicate)<br/>Iterable.filterIndexed(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html)                                                                                           |     | [IEnumerable.Where(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where)                                                                                                                                                                |
-| `filterNot(predicate)`                                               | `!array.filter(predicate)`                                                                                                                                                                                                                                   | `collection.stream().filter(!predicate).toList()`                                                                                                                                                                               | [Array.filterNot(predicate)<br/>Iterable.filterNot(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html)                                                                                                       |     | `!enumerable.Where(predicate)`                                                                                                                                                                                                                                     |
-| `filterIndexedNot(predicate)`                                        | `!array.filter(predicate)`                                                                                                                                                                                                                                   | `collection.stream().filter(!predicate).toList()`                                                                                                                                                                               | [Array.filterNot(predicate)<br/>Iterable.filterNot(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html)                                                                                                       |     | `!enumerable.Where(predicate)`                                                                                                                                                                                                                                     |
-| `filterNotNull()`                                                    | `array.filter(it => it != null)`                                                                                                                                                                                                                             | `collection.stream().filter(it -> it != null)`                                                                                                                                                                                  | [Array.filterNotNull()<br/>Iterable.filterNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html)                                                                                                            |     | `!enumerable.Where(it => it != null)`                                                                                                                                                                                                                              |
-| `requireNoNulls()`                                                   | <pre lang="javascript">const size = array.length<br/>let index = -1<br/>while (++index < size)<br/>    if (array[index] == null)<br/>        throw                                                                                                           | <pre lang="java">var size = list.size();<br/>var index = -1;<br/>while (++index < size)<br/>    if (list.get(index) == null)<br/>        throw                                                                                  | [Array.requireNoNulls()<br/>Iterable.requireNoNulls()<br/>List.requireNoNulls()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html)                                                                               |     | <pre lang="csharp">var size = enumerable.Count();<br/>var index = -1;<br/>while (++index < size)<br/>    if (enumerable.ElementAt(index) == null)<br/>        throw                                                                                                |
-|                                                                      |                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                       |     |                                                                                                                                                                                                                                                                    |
-| `find(predicate)`<br/><br/>`findIndexed(predicate)`                  | [Array.find(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find)                                                                                                                                               | `collection.stream().filter(predicate).findFirst().orElse(null)`                                                                                                                                                                | [Array.find(predicate)<br/>Iterable.find(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html)                                                                                                                       |     | [Find(array, predicate)](https://learn.microsoft.com/dotnet/api/system.array.find)<br/>[List.Find(predicate)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.find)                                                                       |
-| `findLast(predicate)`<br/><br/>`findLastIndexed(predicate)`          | [Array.findLast(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast)                                                                                                                                       | `collection.stream().filter(predicate).reduce((_, it) -> it).orElse(null)`                                                                                                                                                      | [Array.findLast(predicate)<br/>Iterable.findLast(predicate)<br/>List.findLast(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html)                                                                             |     | [FindLast(array, predicate)](https://learn.microsoft.com/dotnet/api/system.array.findlast)<br/>[List.FindLast(predicate)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlast)                                                       |
-|                                                                      |                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                       |     |                                                                                                                                                                                                                                                                    |
-| `slice(indices)`                                                     | <pre lang="javascript">const indiceSize = indices.length<br/>const newArray = new Array(indiceSize)<br/>let index = indiceSize<br/>while (index-- > 0)<br/>    newArray[index] = this[indices[index]]<br/>return newArray                                    | <pre lang="java">var indiceSize = indices.length;<br/>var newArray = (T[]) new Object[indiceSize];<br/>var index = indiceSize;<br/>while (index-- > 0)<br/>    newArray[index] = this.get(indices[index]);<br/>return newArray; | [Array.slice(indices)<br/>List.slice(indices)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html)                                                                                                                            |     | <pre lang="csharp">var indiceSize = indices.Count();<br/>var newArray = new T[indiceSize];<br/>var index = indiceSize;<br/>while (index-- > 0)<br/>    newArray[index] = this.ElementAt(indices[index]);<br/>return newArray;                                      |
-| `slice(fromIndex, toIndex, limit)`                                   | [Array.slice(fromIndex, toIndex)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)                                                                                                                                    | `copyOfRange(array, fromIndex, toIndex)`                                                                                                                                                                                        | [Array.slice(indices)<br/>List.slice(indices)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html)                                                                                                                            |     | `enumerable.Skip(fromIndex).Take(toIndex)`                                                                                                                                                                                                                         |
-|                                                                      |                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                       |     |                                                                                                                                                                                                                                                                    |
-| `map(transform)`                                                     | [Array.map(transform)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map)                                                                                                                                                 | `collection.stream().map(predicate).toList()`                                                                                                                                                                                   | [Array.map(transform)<br/>Iterable.map(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html)                                                                                                                          |     | [IEnumerable.Select(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select)                                                                                                                                                              |
-| `mapIndexed(transform)`                                              | [Array.map(transform)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map)                                                                                                                                                 | `collection.stream().map(predicate).toList()`                                                                                                                                                                                   | [Array.mapIndexed(transform)<br/>Iterable.mapIndexed(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html)                                                                                                    |     | [IEnumerable.Select(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select)                                                                                                                                                              |
-| `mapNotNull(transform)`                                              | <pre lang="javascript">const size = this.size<br/>const newArray = []<br/>let index = -1<br/>while (++index < size) {<br/>    const value = transform<br/>    if (value == null)<br/>        continue<br/>    newArray.push(value)<br/>}<br/>return newArray | `collection.stream().map(Objects::nonNull).toList()`                                                                                                                                                                            | [Array.mapNotNull(transform)<br/>Iterable.mapNotNull(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html)                                                                                                   |     | `enumerable.Select(it => it != null)`                                                                                                                                                                                                                              |
-| `mapNotNullIndexed(transform)`                                       | <pre lang="javascript">const size = this.size<br/>const newArray = []<br/>let index = -1<br/>while (++index < size) {<br/>    const value = transform<br/>    if (value == null)<br/>        continue<br/>    newArray.push(value)<br/>}<br/>return newArray | `collection.stream().map(Objects::nonNull).toList()`                                                                                                                                                                            | [Array.mapIndexedNotNull(transform)<br/>Iterable.mapIndexedNotNull(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html)                                                                             |     | <pre lang="csharp">var size = this.Count();<br/>const newArray = new T[];<br/>var index = -1;<br/>while (++index < size) {<br/>    var value = transform;<br/>    if (value == null)<br/>        continue;<br/>    newArray.Add(value);<br/>}<br/>return newArray; |
-|                                                                      |                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                       |     |                                                                                                                                                                                                                                                                    |
-| `forEach(action)`                                                    | [Array.forEach(action)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)<br/>[Set.forEach(action)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach)                          | `iterable.forEach(action)`                                                                                                                                                                                                      | [Array.forEach(action)<br/>Iterable.forEach(action)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html)                                                                                                                   |     | [List.forEach(action)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach)                                                                                                                                                           |
-| `forEachIndexed(action)`                                             | [Array.forEach(action)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)<br/>[Set.forEach(action)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach)                          | `iterable.forEach(action)`                                                                                                                                                                                                      | [Array.forEachIndexed(action)<br/>Iterable.forEachIndexed(action)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each-indexed.html)                                                                                             |     | [List.forEach(action)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach)                                                                                                                                                           |
+<details><summary>all(predicate)</summary>
+
+**Javascript**
+```javascript
+const size = array.length
+let index = -1
+while (++index < size)
+    if (!predicate)
+        return false
+return true
+```
+
+**Java**
+ - `collection.stream().allMatch(predicate)`
+```java
+var size = list.size();
+var index = -1;
+while (++index < size)
+    if (!predicate)
+        return false;
+return true;
+```
+
+**Kotlin**
+ - [Array.all(predicate)<br/>Iterable.all(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html)
+
+**PHP**
+
+**C#**
+ - [IEnumerable.All()](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all)
+
+</details>
+<details><summary>any()</summary>
+
+**Javascript**
+ - `array.length !== 0`
+ - `set.size !== 0`
+
+**Java**
+ - `array.length == 0`
+ - `collection.isEmpty()`
+
+**Kotlin**
+ - [Array.any()<br/>Iterable.any()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any#system-linq-enumerable-any-1(system-collections-generic-ienumerable((-0)))">IEnumerable.Any()</a>
+
+</details>
+<details><summary>any(predicate)</summary>
+
+**Javascript**
+```javascript
+const size = array.length
+let index = -1
+while (++index < size)
+    if (predicate)
+        return true
+return false
+```
+
+**Java**
+ - `collection.stream().anyMatch(predicate)`
+```java
+var size = array.size();
+var index = -1;
+while (++index < size)
+    if (predicate)
+        return true;
+return false;
+```
+
+**Kotlin**
+ - [Array.any(predicate)<br/>Iterable.any(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any#system-linq-enumerable-any-1(system-collections-generic-ienumerable((-0))-system-func((-0-system-boolean)))">IEnumerable.Any(predicate)</a>
+
+</details>
+<details><summary>none()</summary>
+
+**Javascript**
+ - `array.length === 0`
+ - `set.size === 0`
+
+**Java**
+ - `array.length == 0`
+ - `!collection.isEmpty()`
+
+**Kotlin**
+ - [Array.none()<br/>Iterable.none()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html)
+
+**PHP**
+
+**C#**
+ - `!enumerable.Any()`
+
+</details>
+<details><summary>none(predicate)</summary>
+
+**Javascript**
+```javascript
+const size = array.length
+let index = -1
+while (++index < size)
+    if (predicate)
+        return false
+return true
+```
+
+**Java**
+ - `collection.stream().noneMatch(predicate)`
+```java
+var size = array.size();
+var index = -1;
+while (++index < size)
+    if (predicate)
+        return false;
+return true;
+```
+
+**Kotlin**
+ - [Array.none(predicate)<br/>Iterable.none(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html)
+
+**PHP**
+
+**C#**
+ - `!enumerable.Any(predicate)`
+
+</details>
+<br/>
+<details><summary>hasOne(values) / includesOne(values) / containsOne(values)</summary>
+
+**Javascript**
+```javascript
+const size = array.length
+let index = -1
+while (++index < size)
+    if (array.includes(values[index]))
+        return true
+return false
+```
+
+**Java**
+```java
+var size = list.size();
+var index = -1;
+while (++index < size)
+    if (list.contains(values[index]))
+        return true;
+return false;
+```
+
+**Kotlin**
+```kotlin
+val size = list.size()
+var index = -1
+while (++index < size)
+    if (values[index] in list)
+            return true
+return false
+```
+
+**PHP**
+
+**C#**
+```csharp
+var size = enumerable.Count();
+var index = -1;
+while (++index < size)
+    if (enumerable.Contains(values.ElementAt(index)))
+        return true;
+return false;
+```
+
+</details>
+<details><summary>hasAll(values) / includesAll(values) / containsAll(values)</summary>
+
+**Javascript**
+```javascript
+const size = values.length
+let index = -1
+while (++index < size)
+    if (!array.includes(values[index]))
+        return false
+return true
+```
+
+**Java**
+```java
+var size = list.size();
+var index = -1;
+while (++index < size)
+    if (!list.contains(values[index]))
+            return false;
+return true;
+```
+
+**Kotlin**
+```kotlin
+val size = values.size()
+var index = -1
+while (++index < size)
+    if (values[index] !in array)
+            return false
+return true
+```
+
+**PHP**
+
+**C#**
+```csharp
+var size = enumerable.Count();
+var index = -1;
+while (++index < size)
+    if (!enumerable.Contains(values.ElementAt(index)))
+        return false;
+return true;
+```
+
+</details>
+<br/>
+<details><summary>join(separator, prefix, postfix, limit, truncated, transform)</summary>
+
+**Javascript**
+ - [Array.join(separator)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+
+**Java**
+ - [String.join(separator, iterable)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable))
+
+**Kotlin**
+ - [Array.joinToString(separator, prefix, postfix, limit, truncated, transform)<br/>Iterable.joinToString(separator, prefix, postfix, limit, truncated, transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html)
+
+**PHP**
+
+**C#**
+ - [string.Join(separator, array, fromIndex, limit)<br/>Join(separator, enumerable)](https://learn.microsoft.com/dotnet/api/system.string.join)
+
+</details>
+<br/>
+<details><summary>filter(predicate)</summary>
+
+**Javascript**
+ - [Array.filter(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+**Java**
+ - `collection.stream().filter(predicate).toList()`
+
+**Kotlin**
+ - [Array.filter(predicate)<br/>Iterable.filter(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html)
+
+**PHP**
+
+**C#**
+ - [IEnumerable.Where(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where)
+
+</details>
+<details><summary>filterIndexed(predicate)</summary>
+
+**Javascript**
+ - [Array.filter(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+**Java**
+ - `collection.stream().filter(predicate).toList()`
+
+**Kotlin**
+ - [Array.filterIndexed(predicate)<br/>Iterable.filterIndexed(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html)
+
+**PHP**
+
+**C#**
+ - [IEnumerable.Where(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where)
+
+</details>
+<details><summary>filterNot(predicate)<br/>filterIndexedNot(predicate)</summary>
+
+**Javascript**
+ - `!array.filter(predicate)`
+
+**Java**
+ - `collection.stream().filter(!predicate).toList()`
+
+**Kotlin**
+ - [Array.filterNot(predicate)<br/>Iterable.filterNot(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html)
+
+**PHP**
+
+**C#**
+ - `!enumerable.Where(predicate)`
+
+</details>
+<details><summary>filterNotNull()</summary>
+
+**Javascript**
+ - `array.filter(it => it != null)`
+
+**Java**
+ - `collection.stream().filter(it -> it != null).toList()`
+
+**Kotlin**
+ - [Array.filterNotNull()<br/>Iterable.filterNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html)
+
+**PHP**
+
+**C#**
+ - `!enumerable.Where(it => it != null)`
+
+</details>
+<details><summary>requireNoNulls()</summary>
+
+**Javascript**
+```javascript
+const size = array.length
+let index = -1
+while (++index < size)
+    if (array[index] == null)
+        throw
+```
+
+**Java**
+```java
+var size = list.size();
+var index = -1;
+while (++index < size)
+    if (list.get(index) == null)
+        throw
+```
+
+**Kotlin**
+ - [Array.requireNoNulls()<br/>Iterable.requireNoNulls()<br/>List.requireNoNulls()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html)
+
+**PHP**
+
+**C#**
+```csharp
+var size = enumerable.Count();
+var index = -1;
+while (++index < size)
+    if (enumerable.ElementAt(index) == null)
+        throw
+```
+
+</details>
+<br/>
+<details><summary>find(predicate)<br/>findIndexed(predicate)</summary>
+
+**Javascript**
+ - [Array.find(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+
+**Java**
+ - `collection.stream().filter(predicate).findFirst().orElse(null)`
+
+**Kotlin**
+ - [Array.find(predicate)<br/>Iterable.find(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html)
+
+**PHP**
+
+**C#**
+ - [Find(array, predicate)](https://learn.microsoft.com/dotnet/api/system.array.find)
+ - [List.Find(predicate)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.find)
+
+</details>
+<details><summary>findLast(predicate)<br/>findLastIndexed(predicate)</summary>
+
+**Javascript**
+ - [Array.findLast(predicate)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast)
+
+**Java**
+ - `collection.stream().filter(predicate).reduce((_, it) -> it).orElse(null)`
+
+**Kotlin**
+ - [Array.findLast(predicate)<br/>Iterable.findLast(predicate)<br/>List.findLast(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html)
+
+**PHP**
+
+**C#**
+ - [FindLast(array, predicate)](https://learn.microsoft.com/dotnet/api/system.array.findlast)
+ - [List.FindLast(predicate)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlast)
+
+</details>
+<br/>
+<details><summary>slice(indices)</summary>
+
+**Javascript**
+```javascript
+const indiceSize = indices.length
+const newArray = new Array(indiceSize)
+let index = indiceSize
+while (index-- > 0)
+    newArray[index] = this[indices[index]]
+return newArray
+```
+
+**Java**
+```java
+var indiceSize = indices.length;
+var newArray = (T[]) new Object[indiceSize];
+>var index = indiceSize;
+while (index-- > 0)
+    newArray[index] = this.get(indices[index]);
+return newArray;
+```
+
+**Kotlin**
+ - [Array.slice(indices)<br/>List.slice(indices)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html)
+
+**PHP**
+
+**C#**
+```csharp
+var indiceSize = indices.Count();
+var newArray = new T[indiceSize];
+var index = indiceSize;
+while (index-- > 0)
+    newArray[index] = this.ElementAt(indices[index]);
+return newArray;
+```
+
+</details>
+<details><summary>slice(fromIndex, toIndex, limit)</summary>
+
+**Javascript**
+ - [Array.slice(fromIndex, toIndex)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+
+**Java**
+ - `Arrays.copyOfRange(array, fromIndex, toIndex)`
+
+**Kotlin**
+ - [Array.slice(indices)<br/>List.slice(indices)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html)
+
+**PHP**
+
+**C#**
+ - `enumerable.Skip(fromIndex).Take(toIndex)`
+
+</details>
+<br/>
+<details><summary>map(transform)</summary>
+
+**Javascript**
+ - [Array.map(transform)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+**Java**
+ - `collection.stream().map(transform).toList()`
+
+**Kotlin**
+ - [Array.map(transform)<br/>Iterable.map(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html)
+
+**PHP**
+
+**C#**
+ - [IEnumerable.Select(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select)
+
+</details>
+<details><summary>mapIndexed(transform)</summary>
+
+**Javascript**
+ - [Array.map(transform)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+**Java**
+ - `collection.stream().map(transform).toList()`
+
+**Kotlin**
+ - [Array.mapIndexed(transform)<br/>Iterable.mapIndexed(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html)
+
+**PHP**
+
+**C#**
+ - [IEnumerable.Select(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select)
+
+</details>
+<details><summary>mapNotNull(transform)</summary>
+
+**Javascript**
+```javascript
+const size = this.size
+const newArray = []
+let index = -1
+while (++index < size) {
+    const value = transform
+    if (value == null)
+        continue
+    newArray.push(value)
+}
+return newArray
+```
+
+**Java**
+```java
+var size = this.size();
+var newList = new LinkedList<T>();
+var index = -1;
+while (++index < size) {
+    const value = transform;
+    if (value == null)
+        continue
+    newList.add(value);
+}
+return newList.toArray((T[]) new Object[newList.size()]);
+```
+
+**Kotlin**
+ - [Array.mapNotNull(transform)<br/>Iterable.mapNotNull(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html)
+
+**PHP**
+
+**C#**
+
+```csharp
+var size = this.Count();
+const newArray = new T[];
+var index = -1;
+while (++index < size) {
+    var value = transform;
+        if (value == null)
+            continue;
+        newArray.Add(value);
+}
+return newArray;
+```
+
+</details>
+<details><summary>mapNotNullIndexed(transform)</summary>
+
+**Javascript**
+```javascript
+const size = this.size
+const newArray = []
+let index = -1
+while (++index < size) {
+    const value = transform
+    if (value == null)
+        continue
+    newArray.push(value)
+}
+return newArray
+```
+
+**Java**
+```java
+var size = this.size();
+var newList = new LinkedList<T>();
+var index = -1;
+while (++index < size) {
+    const value = transform;
+    if (value == null)
+        continue
+    newList.add(value);
+}
+return newList.toArray((T[]) new Object[newList.size()]);
+```
+
+**Kotlin**
+ - [Array.mapIndexedNotNull(transform)<br/>Iterable.mapIndexedNotNull(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html)
+
+**PHP**
+
+**C#**
+```csharp
+var size = this.Count();
+const newArray = new T[];
+var index = -1;
+while (++index < size) {
+    var value = transform;
+        if (value == null)
+            continue;
+        newArray.Add(value);
+}
+return newArray;
+```
+
+</details>
+<br/>
+<details><summary>forEach(action)</summary>
+
+**Javascript**
+ - [Array.forEach(action)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+ - [Set.forEach(action)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach)
+
+**Java**
+ - [Iterable.forEach(action)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer))
+
+**Kotlin**
+ - [Array.forEach(action)<br/>Iterable.forEach(action)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html)
+
+**PHP**
+
+**C#**
+ - [List.forEach(action)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach)
+
+</details>
+<details><summary>forEachIndexed(action)</summary>
+
+**Javascript**
+ - [Array.forEach(action)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+ - [Set.forEach(action)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach)
+
+**Java**
+ - [Iterable.forEach(action)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer))
+
+**Kotlin**
+ - [Array.forEachIndexed(action)<br/>Iterable.forEachIndexed(action)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each-indexed.html)
+
+**PHP**
+
+**C#**
+ - [List.forEach(action)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach)
+
+</details>
 
 ### Conversion methods
 A method made to convert it to another value
 
-| Methods                                       | Javascript                                                                                                                                                                                                                                      | Java                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Kotlin                                                                                                                                                                                                                                                                                                                                                                                                                                                    | PHP | C#                                                                                                                                                                                                                                                                                                             |
-|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `toIterator()`                                | [Array[Symbol.iterator]()](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/@@iterator)<br/>[Set[Symbol.iterator]()](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/@@iterator) | [Iterable.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Iterable.html#iterator())<br/>[Collection.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#iterator())<br/>[List.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html#iterator())<br/>[Set,iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Set.html#iterator()) | [Iterable.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/iterator.html)<br/>[Collection.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/iterator.html)<br/>[List.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/iterator.html)<br/>[Set.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/iterator.html) |     | [IEnumerable.GetEnumerator()](https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator)                                                                                                                                                                                             |
-|                                               |                                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                           |     |                                                                                                                                                                                                                                                                                                                |
-| `toArray()`                                   | <pre lang="javascript">Object.freeze([...iterable])                                                                                                                                                                                             | [Collection.toArray(T[] array)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#toArray(T%5B%5D))                                                                                                                                                                                                                                                                                                                                                  | [Collection.toTypedArray()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-typed-array.html)                                                                                                                                                                                                                                                                                                                                          |     | `new ReadOnlyCollection<T>(enumerable)`                                                                                                                                                                                                                                                                        |
-| `toMutableArray()`                            | <pre lang="javascript">[...iterable]                                                                                                                                                                                                            | _N/A_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | _N/A_                                                                                                                                                                                                                                                                                                                                                                                                                                                     |     | [IEnumerable.ToArray()](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.toarray)                                                                                                                                                                                                                 |
-|                                               |                                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                           |     |                                                                                                                                                                                                                                                                                                                |
-| `toCollection()`                              | _N/A_                                                                                                                                                                                                                                           | [Collections.unmodifiableCollection(collection)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collections.html#unmodifiableCollection(java.util.Collection))                                                                                                                                                                                                                                                                                                    | [Array.toCollection()<br/>Iterable.toCollection()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-collection.html)                                                                                                                                                                                                                                                                                                                    |     | `new ReadOnlyCollection<T>(enumerable)`                                                                                                                                                                                                                                                                        |
-| `toMutableCollection()`                       | _N/A_                                                                                                                                                                                                                                           | [Collections.addAll(collection)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collections.html#addAll(java.util.Collection,T...))                                                                                                                                                                                                                                                                                                                               | `mutableArrayOf(*iterable)`<br/>`mutableSetOf(*iterable)`                                                                                                                                                                                                                                                                                                                                                                                                 |     | `enumerable.toList()`<br/>`enumerable.toHashSet()`                                                                                                                                                                                                                                                             |
-|                                               |                                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                           |     |                                                                                                                                                                                                                                                                                                                |
-| `toList()`                                    | _N/A_                                                                                                                                                                                                                                           | [Collections.unmodifiableList(list)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collections.html#unmodifiableList(java.util.List))                                                                                                                                                                                                                                                                                                                            | [Array.toList()<br/>Iterable.toList()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html)                                                                                                                                                                                                                                                                                                                                      |     | `new ReadOnlyCollection<T>(enumerable)`                                                                                                                                                                                                                                                                        |
-| `toMutableList()`                             | _N/A_                                                                                                                                                                                                                                           | `new ArrayList(collection)`                                                                                                                                                                                                                                                                                                                                                                                                                                                               | [Array.toMutableList()<br/>Iterable.toMutableList()<br/>Collection.toMutableList()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html)                                                                                                                                                                                                                                                                                 |     | [IEnumerable.ToList()](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.tolist)                                                                                                                                                                                                                   |
-|                                               |                                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                           |     |                                                                                                                                                                                                                                                                                                                |
-| `toSet()`                                     | <pre lang="javascript">Object.freeze(new Set(iterable))                                                                                                                                                                                         | [Collections.unmodifiableSet(set)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collections.html#unmodifiableSet(java.util.Set))                                                                                                                                                                                                                                                                                                                                | [Array.toSet()<br/>Iterable.toSet()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html)                                                                                                                                                                                                                                                                                                                                         |     | `new ReadOnlyCollection<T>(enumerable)`                                                                                                                                                                                                                                                                        |
-| `toMutableSet()`                              | <pre lang="javascript">new Set(iterable)                                                                                                                                                                                                        | `new HashSet(collection)`                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | [Array.toMutableSet()<br/>Iterable.toMutableSet()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-set.html)                                                                                                                                                                                                                                                                                                                   |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.tohashset#system-linq-enumerable-tohashset-1(system-collections-generic-ienumerable((-0)))">IEnumerable.toHashSet()                                                                                                                     |
-|                                               |                                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                           |     |                                                                                                                                                                                                                                                                                                                |
-| `toWeakSet()`                                 | <pre lang="javascript">Object.freeze(new WeakSet(array.map(it => Object(it))))                                                                                                                                                                  | _N/A_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | _N/A_                                                                                                                                                                                                                                                                                                                                                                                                                                                     |     | _N/A_                                                                                                                                                                                                                                                                                                          |
-| `toMutableWeakSet()`                          | <pre lang="javascript">new WeakSet(array.map(it => Object(it)))                                                                                                                                                                                 | _N/A_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | _N/A_                                                                                                                                                                                                                                                                                                                                                                                                                                                     |     | _N/A_                                                                                                                                                                                                                                                                                                          |
-|                                               |                                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                           |     |                                                                                                                                                                                                                                                                                                                |
-| `toMap()`<br/>`toDictionary()`                | <pre lang="javascript">Object.freeze(new Map(array.map((it, index) => [it, index])))                                                                                                                                                            | `list.stream().collect(Collectors.toUnmodifiableMap(list::indexOf, it -> it))`                                                                                                                                                                                                                                                                                                                                                                                                            | <pre lang="kotlin">iterable.mapIndexed { index, i -> index to i }.toMap()                                                                                                                                                                                                                                                                                                                                                                                 |     | `new ReadOnlyCollection<T>(enumerable)`                                                                                                                                                                                                                                                                        |
-| `toMutableMap()`<br/>`toMutableDictionnary()` | <pre lang="javascript">new Map(array.map((it, index) => [it, index]))                                                                                                                                                                           | `list.stream().collect(Collectors.toMap(list::indexOf, it -> it))`                                                                                                                                                                                                                                                                                                                                                                                                                        | <pre lang="kotlin">iterable.mapIndexed { index, i -> index to i }.toMap().toMutableMap()                                                                                                                                                                                                                                                                                                                                                                  |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.todictionary#system-linq-enumerable-todictionary-3(system-collections-generic-ienumerable((-0))-system-func((-0-1))-system-func((-0-2)))">IEnumerable.ToDictionnary()                                                                   |
-|                                               |                                                                                                                                                                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                           |     |                                                                                                                                                                                                                                                                                                                |
-| `toReverse(fromIndex, toIndex, limit)`        | [Array.toReversed()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed)                                                                                                                         | <pre lang="java">var size = list.size();<br/>var newArray = (T[]) new Object[size];<br/>var index = size;<br/>var indexToSet = 0;<br/>while (--index > 0)<br/>    newArray[indexToSet++] = list.get(index);<br/>return newArray;                                                                                                                                                                                                                                                          | [Array.reversed()<br/>Iterable.reversed()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reversed.html)                                                                                                                                                                                                                                                                                                                                 |     | [Reverse(array, fromIndex, limit)](https://learn.microsoft.com/dotnet/api/system.array.reverse)<br/>[IEnumerable.Reverse()](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse)<br/>[List.Reverse(fromIndex, limit)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse) |
+<details><summary>toIterator()</summary>
 
+**Javascript**
+ - [Array\[Symbol.iterator\]()](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/@@iterator)
+ - [Set\[Symbol.iterator\]()](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/@@iterator)
+
+**Java**
+ - [Iterable.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Iterable.html#iterator())
+ - [Collection.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#iterator())
+ - [List.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html#iterator())
+ - [Set,iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Set.html#iterator())
+
+**Kotlin**
+ - [Iterable.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/iterator.html)
+ - [Collection.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/iterator.html)
+ - [List.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/iterator.html)
+ - [Set.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/iterator.html)
+
+**PHP**
+
+**C#**
+ - [IEnumerable.GetEnumerator()](https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator)
+
+</details>
+<br/>
+<details><summary>toArray()</summary>
+
+**Javascript**
+```javascript
+Object.freeze([...iterable])
+```
+
+**Java**
+ - [Collection.toArray(T[] array)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#toArray(T%5B%5D))
+
+**Kotlin**
+ - [Collection.toTypedArray()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-typed-array.html)
+
+**PHP**
+
+**C#**
+```csharp
+new ReadOnlyCollection<T>(enumerable)
+```
+
+</details>
+<details><summary>toMutableArray()</summary>
+
+**Javascript**
+```javascript
+[...iterable]
+```
+
+~~**Java**~~
+
+~~**Kotlin**~~
+
+**PHP**
+
+**C#**
+ - [IEnumerable.ToArray()](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.toarray)
+
+</details>
+<br/>
+<details><summary>toCollection()</summary>
+
+~~**Javascript**~~
+
+**Java**
+ - [Collections.unmodifiableCollection(collection)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collections.html#unmodifiableCollection(java.util.Collection))
+
+**Kotlin**
+ - [Array.toCollection()<br/>Iterable.toCollection()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-collection.html)
+
+**PHP**
+
+**C#**
+```csharp
+new ReadOnlyCollection<T>(enumerable)
+```
+
+</details>
+<details><summary>toMutableCollection()</summary>
+
+~~**Javascript**~~
+
+**Java**
+ - [Collections.addAll(collection)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collections.html#addAll(java.util.Collection,T...))
+
+**Kotlin**
+ - `mutableArrayOf(*iterable)`
+ - `mutableSetOf(*iterable)`
+
+**PHP**
+
+**C#**
+ - `enumerable.toList()`
+ - `enumerable.toHashSet()`
+
+</details>
+<br/>
+<details><summary>toList()</summary>
+
+~~**Javascript**~~
+
+**Java**
+ - [Collections.unmodifiableList(list)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collections.html#unmodifiableList(java.util.List))
+
+**Kotlin**
+ - [Array.toList()<br/>Iterable.toList()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html)
+
+**PHP**
+
+**C#**
+```csharp
+new ReadOnlyCollection<T>(enumerable)
+```
+
+</details>
+<details><summary>toMutableList()</summary>
+
+~~**Javascript**~~
+
+**Java**
+```java
+new ArrayList<>(collection)
+```
+
+**Kotlin**
+ - [Array.toMutableList()<br/>Iterable.toMutableList()<br/>Collection.toMutableList()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-list.html)
+
+**PHP**
+
+**C#**
+ - [IEnumerable.ToList()](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.tolist)
+
+</details>
+<br/>
+<details><summary>toSet()</summary>
+
+**Javascript**
+```javascript
+Object.freeze(new Set(iterable))
+```
+
+**Java**
+ - [Collections.unmodifiableSet(set)](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collections.html#unmodifiableSet(java.util.Set))
+
+**Kotlin**
+ - [Array.toSet()<br/>Iterable.toSet()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-set.html)
+
+**PHP**
+
+**C#**
+```csharp
+new ReadOnlyCollection<T>(enumerable)
+```
+
+</details>
+<details><summary>toMutableSet()</summary>
+
+**Javascript**
+```javascript
+new Set(iterable)
+```
+
+**Java**
+```java
+new HashSet<>(collection)
+```
+
+**Kotlin**
+ - [Array.toMutableSet()<br/>Iterable.toMutableSet()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-mutable-set.html)
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.tohashset#system-linq-enumerable-tohashset-1(system-collections-generic-ienumerable((-0)))">IEnumerable.toHashSet()</a>
+
+</details>
+<br/>
+<details><summary>toWeakSet()</summary>
+
+**Javascript**
+```javascript
+Object.freeze(new WeakSet(array.map(it => Object(it))))
+```
+
+~~**Java**~~
+
+~~**Kotlin**~~
+
+**PHP**
+
+~~**C#**~~
+
+</details>
+<details><summary>toMutableWeakSet()</summary>
+
+**Javascript**
+```javascript
+new WeakSet(array.map(it => Object(it)))
+```
+
+~~**Java**~~
+
+~~**Kotlin**~~
+
+**PHP**
+
+~~**C#**~~
+
+</details>
+<br/>
+<details><summary>toMap()<br/>toDictionary()</summary>
+
+**Javascript**
+```javascript
+Object.freeze(new Map(array.map((it, index) => [it, index]))) 
+```
+
+**Java**
+```java
+list.stream().collect(Collectors.toUnmodifiableMap(list::indexOf, it -> it))
+```
+
+**Kotlin**
+```kotlin
+iterable.mapIndexed { index, i -> index to i }.toMap()
+```
+
+**PHP**
+
+**C#**
+```csharp
+new ReadOnlyCollection<T>(enumerable)
+```
+
+</details>
+<details><summary>toMutableMap()<br/>toMutableDictionary()</summary>
+
+**Javascript**
+```javascript
+new Map(array.map((it, index) => [it, index]))
+```
+
+**Java**
+```java
+list.stream().collect(Collectors.toMap(list::indexOf, it -> it))
+```
+
+**Kotlin**
+```kotlin
+iterable.mapIndexed { index, i -> index to i }.toMap().toMutableMap()
+```
+
+**PHP**
+
+**C#**
+ - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.todictionary#system-linq-enumerable-todictionary-3(system-collections-generic-ienumerable((-0))-system-func((-0-1))-system-func((-0-2)))">IEnumerable.ToDictionary()</a>
+
+</details>
+<br/>
+<details><summary>toReverse()</summary>
+
+**Javascript**
+ - [Array.toReversed()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed)
+
+**Java**
+```java
+var size = list.size();
+var newArray = (T[]) new Object[size];
+var index = size;
+var indexToSet = 0;
+while (--index > 0)
+    newArray[indexToSet++] = list.get(index);
+return newArray;
+```
+
+**Kotlin**
+ - [Array.reversed()<br/>Iterable.reversed()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reversed.html)
+
+**PHP**
+
+**C#**
+ - [Reverse(array, fromIndex, limit)](https://learn.microsoft.com/dotnet/api/system.array.reverse)
+ - [IEnumerable.Reverse()](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse)
+ - [List.Reverse(fromIndex, limit)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse)
+
+</details>
 
 ## Version history
 
