@@ -72,7 +72,7 @@ export class IterableWithSizeCollectionHandler<const out T = unknown, REFERENCE 
             return this.#isEmpty
 
         if (!this._hasNoNumberSize)
-            this.#isEmpty = super.isEmpty
+            return this.#isEmpty = super.isEmpty
 
         const size = this.size
         if (size == 0)
