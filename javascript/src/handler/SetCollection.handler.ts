@@ -8,7 +8,9 @@
 import type {CollectionHolder} from "../CollectionHolder"
 import type {ValueHolder}      from "./ValueHolder"
 
-import {AbstractCollectionHandler} from "./AbstractCollection.handler"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+import {AbstractCollectionHandler}                 from "./AbstractCollection.handler"
 
 /** A simple implementation of a {@link CollectionHolder} for an {@link ReadonlySet set} */
 export class SetCollectionHandler<const out T = unknown, const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
@@ -57,22 +59,44 @@ export class SetCollectionHandler<const out T = unknown, const REFERENCE extends
     //#endregion -------------------- Getter & setter methods --------------------
 
     public override get(index: number,): ValueHolder<T> {
+        if (this.isEmpty)
+            return { value: null, get cause() { return new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }, }
+
         const collection = this._collection
         if (index in collection)
             return { value: collection[index] as T, cause: null, }
 
-        const size = this.size,
-            indexToRetrieve = index < 0 ? size + index : index
+        const size = this.size
+        if (index > size)
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} is over the size of the collection (${size}).`, index,) }, }
+
+        if (index >= 0) {
+            if (this._hasFinished)
+                return { value: collection[index] as T, cause: null, }
+
+            const iterator = this._iterator
+            const indexPlus1 = index + 1
+            let indexToFind = this._lastIndex - 1
+            while (++indexToFind < indexPlus1)
+                collection[indexToFind] = iterator.next().value
+
+            if (indexToFind == size)
+                this._hasFinished = true
+
+            return { value: collection[(this._lastIndex = indexToFind) - 1] as T, cause: null, }
+        }
+
+        const indexToRetrieve = index < 0 ? size + index : index
         if (indexToRetrieve < 0)
-            return { value: null, get cause() { return new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is under 0.`,) }, }
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is under 0.`, index,) }, }
         if (indexToRetrieve > size)
-            return { value: null, get cause() { return new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is over the size of the collection (${size}).`,) }, }
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,) }, }
 
         if (this._hasFinished)
             return { value: collection[this._lastIndex - 1] as T, cause: null, }
 
-        const iterator = this._iterator,
-            indexToRetrievePlus1 = indexToRetrieve + 1
+        const iterator = this._iterator
+        const indexToRetrievePlus1 = indexToRetrieve + 1
         let indexToFind = this._lastIndex - 1
         while (++indexToFind < indexToRetrievePlus1)
             collection[indexToFind] = iterator.next().value

@@ -22,8 +22,8 @@ export function toArray<const T, >(collection: Nullable<CollectionHolder<T>>,): 
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_ARRAY
 
-    const size = collection.size,
-        array = new Array<T>(size,)
+    const size = collection.size
+    const array = new Array<T>(size,)
     let index = size
     while (index-- > 0)
         array[index] = collection.get(index,)

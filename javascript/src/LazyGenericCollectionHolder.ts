@@ -605,13 +605,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
     //#region -------------------- Get / at methods --------------------
 
     public override get(index: number,): T {
-        if (this.isEmpty)
-            throw new ReferenceError("No element at any index could be found since it it empty.",)
-        const indexToRetrieve = index < 0 ? this.size + index : index
-        if (indexToRetrieve < 0)
-            throw new ReferenceError(`The index ${index}${index === indexToRetrieve ? "" : ` (${indexToRetrieve} after calculation)`} is under 0.`,)
-
-        const valueFound = this._handler.get(indexToRetrieve,)
+        const valueFound = this._handler.get(index,)
         if (valueFound.cause != null)
             throw valueFound.cause
         return valueFound.value as T
@@ -621,25 +615,18 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
     public override getOrElse<U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) {
-        if (this.isEmpty)
-            return defaultValue(index < 0 ? this.size + index : index,)
+        const valueFound = this._handler.get(index,).value
+        if (valueFound != null)
+            return valueFound
 
-        const indexToRetrieve = index < 0 ? this.size + index : index
-        if (indexToRetrieve < 0)
-            return defaultValue(indexToRetrieve,)
-
-        return this._handler.get(indexToRetrieve,).value ?? defaultValue(indexToRetrieve,)
+        if (index < 0)
+            return defaultValue(this.size + index,)
+        return defaultValue(index,)
     }
 
 
     public override getOrNull(index: number,): NullOr<T> {
-        if (this.isEmpty)
-            return null
-        const indexToRetrieve = index < 0 ? this.size + index : index
-        if (indexToRetrieve < 0)
-            return null
-
-        return this._handler.get(indexToRetrieve,).value
+        return this._handler.get(index,).value
     }
 
     //#endregion -------------------- Get / at methods --------------------

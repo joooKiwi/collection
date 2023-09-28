@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {CollectionConstants}       from "../src/CollectionConstants"
-import {EmptyCollectionHolder}     from "../src/EmptyCollectionHolder"
-import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
+import {CollectionConstants}                       from "../src/CollectionConstants"
+import {EmptyCollectionHolder}                     from "../src/EmptyCollectionHolder"
+import {NoElementFoundInCollectionHolderException} from "../src/exception/NoElementFoundInCollectionHolderException"
+import {GenericCollectionIterator}                 from "../src/iterator/GenericCollectionIterator"
 
 import {ABCDEFGHIJ}                       from "./constantCollections"
 import {everyInstances, iterableCreation} from "./constantValues"
@@ -43,7 +44,7 @@ describe("CollectionIteratorTest", () => {
                 test("done", () => expect(it.done,).toBeTrue(),)
                 test("value", () => expect(it.value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
-            test("nextValue", () => expect(() => instance.nextValue,).toThrow(ReferenceError,),)
+            test("nextValue", () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionHolderException,),)
 
             describe("previous", () => {
                 const it = instance.previous()
@@ -51,7 +52,7 @@ describe("CollectionIteratorTest", () => {
                 test("done", () => expect(it.done,).toBeTrue(),)
                 test("value", () => expect(it.value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
-            test("previousValue", () => expect(() => instance.previousValue,).toThrow(ReferenceError,),)
+            test("previousValue", () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionHolderException,),)
         },)
         describe("forEach", () => {
             test("regular", () => {
@@ -447,7 +448,7 @@ describe("CollectionIteratorTest", () => {
                 },)
                 describe("nextValue", () => {
                     test("at the start", () => expect(newInstance().nextValue,).toBe('a',),)
-                    test("at the end", () => expect(() => newInstance().forEach(EMPTY_CALLBACK,).nextValue,).toThrow(ReferenceError,),)
+                    test("at the end", () => expect(() => newInstance().forEach(EMPTY_CALLBACK,).nextValue,).toThrow(NoElementFoundInCollectionHolderException,),)
                 },)
                 test("nextValue x2", () => {
                     const instance = newInstance()
@@ -484,7 +485,7 @@ describe("CollectionIteratorTest", () => {
                     },)
                 },)
                 describe("previousValue", () => {
-                    test("at the start", () => expect(() => newInstance().previousValue,).toThrow(ReferenceError,),)
+                    test("at the start", () => expect(() => newInstance().previousValue,).toThrow(NoElementFoundInCollectionHolderException,),)
                     test("at the end", () => expect(newInstance().forEach(EMPTY_CALLBACK,).previousValue,).toBe('j',),)
                 },)
                 test("previousValue x2", () => {

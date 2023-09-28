@@ -23,7 +23,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @param toIndex The inclusive ending index
  * @param limit The maximum index
  * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
- * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
@@ -42,7 +42,7 @@ export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>
  * @param toIndex The inclusive ending index
  * @param limit The maximum index
  * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
- * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)

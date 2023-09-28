@@ -11,7 +11,8 @@ import type {Nullable, NumberOrNumberInString}                                  
 import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/EmptyCollectionIterator"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                     from "./iterator/CollectionIterator"
 
-import {CollectionConstants} from "./CollectionConstants"
+import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
+import {CollectionConstants}                       from "./CollectionConstants"
 
 /**
  * A simple {@link CollectionHolder} with no values (as a singleton instance)
@@ -86,9 +87,9 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Get / at methods --------------------
 
-    public get(index?: number): never
+    public get(index?: number,): never
     public get(): never {
-        throw new ReferenceError("No element at any index could be found since it it empty.",)
+        throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",)
     }
 
     public at(index?: number,): never
@@ -106,7 +107,7 @@ export class EmptyCollectionHolder
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
     public getOrElse<const U, >(index: number, defaultValue?: IndexWithReturnCallback<U>,): U {
         if (defaultValue == null)
-            this.get(index,)
+            this.get()
         return defaultValue(index,)
     }
 

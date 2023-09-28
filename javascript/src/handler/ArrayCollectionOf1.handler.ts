@@ -8,7 +8,9 @@
 import type {CollectionHolder} from "../CollectionHolder"
 import type {ValueHolder}      from "./ValueHolder"
 
-import {ArrayCollectionHandler} from "./ArrayCollection.handler"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+import {ArrayCollectionHandler}                    from "./ArrayCollection.handler"
 
 /** A simple implementation of a {@link CollectionHolder} for an {@link ReadonlyArray array} of 1 element */
 export class ArrayCollectionOf1Handler<const out T = unknown, const REFERENCE extends readonly [T,] = readonly [T,], const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
@@ -37,10 +39,12 @@ export class ArrayCollectionOf1Handler<const out T = unknown, const REFERENCE ex
     //#region -------------------- Methods --------------------
 
     public override get(index: number,): ValueHolder<T> {
-        if (index !== 0 && index !== -1) {
-            const indexToRetrieve = index < 0 ? this.size + index : index
-            return { value: null, get cause() { return new ReferenceError(`The index ${index}${index === indexToRetrieve ? "" : ` (${indexToRetrieve} after calculation)`} was not 1.`,) }, }
-        }
+        if (this.isEmpty)
+            return { value: null, get cause() { return new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }, }
+        if (index > 0)
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} was not 0 or -1.`, index,) }, }
+        if (index < -1)
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${index + 1} after calculation) was not 0 or -1.`, index,) }, }
 
         const collection = this._collection
         if (0 in collection)

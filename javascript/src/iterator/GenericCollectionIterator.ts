@@ -10,10 +10,11 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {CollectionIterator}                                                                                           from "./CollectionIterator"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
-import {CollectionConstants}             from "../CollectionConstants"
-import {GenericAfterLastIteratorValue}   from "./value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue} from "./value/GenericBeforeFirstIteratorValue"
-import {GenericIteratorValue}            from "./value/GenericIteratorValue"
+import {CollectionConstants}                       from "../CollectionConstants"
+import {NoElementFoundInCollectionHolderException} from "../exception/NoElementFoundInCollectionHolderException"
+import {GenericAfterLastIteratorValue}             from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}           from "./value/GenericBeforeFirstIteratorValue"
+import {GenericIteratorValue}                      from "./value/GenericIteratorValue"
 
 export class GenericCollectionIterator<const out T = unknown, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     implements CollectionIterator<T> {
@@ -79,8 +80,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
 
 
     public get hasPrevious(): boolean {
-        const index = this._index
-        return index > 0 && index <= this.size
+        return this._index > 0
     }
 
     public get hasNext(): boolean {
@@ -99,7 +99,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     public get nextValue(): T {
         const nextValue = this.next().value
         if (nextValue === CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL)
-            throw new ReferenceError("The collection iterator is at or after the end of the line.",)
+            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
         return nextValue
     }
 
@@ -113,15 +113,15 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     public get previousValue(): T {
         const nextValue = this.previous().value
         if (nextValue === CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL)
-            throw new ReferenceError("The collection iterator is at or before the start of the line.",)
+            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
         return nextValue
     }
 
     //#region -------------------- Loop methods --------------------
 
     public forEach(operation: ValueIndexCallback<T>,): this {
-        const collection = this.collection,
-            size = this.size
+        const collection = this.collection
+        const size = this.size
 
         let index = this._index - 1
         while (++index < size)
@@ -131,8 +131,8 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     }
 
     public forEachIndexed(operation: IndexValueCallback<T>,): this {
-        const collection = this.collection,
-            size = this.size
+        const collection = this.collection
+        const size = this.size
 
         let index = this._index - 1
         while (++index < size)

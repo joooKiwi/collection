@@ -15,15 +15,17 @@ import type {IterableWithPossibleSize}          from "./iterable/IterableWithPos
 import type {IterableWithSize}                  from "./iterable/IterableWithSize"
 import type {CollectionIterator}                from "./iterator/CollectionIterator"
 
-import {AbstractCollectionHolder} from "./AbstractCollectionHolder"
-import {CollectionConstants}      from "./CollectionConstants"
-import {hasNull}                  from "./method/hasNull"
-import {isCollectionHolder}       from "./method/isCollectionHolder"
-import {isCollectionIterator}     from "./method/isCollectionIterator"
-import {objectValuesMap}          from "./method/objectValuesMap"
-import {toMap}                    from "./method/toMap"
-import {toSet}                    from "./method/toSet"
-import {toWeakSet}                from "./method/toWeakSet"
+import {AbstractCollectionHolder}                  from "./AbstractCollectionHolder"
+import {CollectionConstants}                       from "./CollectionConstants"
+import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
+import {hasNull}                                   from "./method/hasNull"
+import {isCollectionHolder}                        from "./method/isCollectionHolder"
+import {isCollectionIterator}                      from "./method/isCollectionIterator"
+import {objectValuesMap}                           from "./method/objectValuesMap"
+import {toMap}                                     from "./method/toMap"
+import {toSet}                                     from "./method/toSet"
+import {toWeakSet}                                 from "./method/toWeakSet"
 
 /**
  * A simple {@link CollectionHolder} having the values eagerly retrieved.
@@ -369,13 +371,21 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
     public override get(index: number,): T {
         if (this.isEmpty)
-            throw new ReferenceError("No element at any index could be found since it it empty.",)
-        const size = this.size,
-            indexToRetrieve = index < 0 ? size + index : index
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        if (index in this)
+            return this[index] as T
+
+        const size = this.size
+        if (index > size)
+            throw new CollectionHolderIndexOutOfBoundsException(`The index "${index}" is over the size of the collection (${size}).`, index,)
+        if (index >= 0)
+            return this[index] as T
+
+        const indexToRetrieve = size + index
         if (indexToRetrieve < 0)
-            throw new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is under 0.`,)
+            throw new CollectionHolderIndexOutOfBoundsException(`The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
         if (indexToRetrieve > size)
-            throw new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is over the size of the collection (${size}).`,)
+            throw new CollectionHolderIndexOutOfBoundsException(`The index "${index}" (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,)
         return this[indexToRetrieve] as T
     }
 

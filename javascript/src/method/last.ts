@@ -9,56 +9,69 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {Nullable}                                   from "../general type"
 
-import {lastOrNull} from "./lastOrNull"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
 
 /**
  * Get the last element in the current {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @throws {ReferenceError} The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
- * @throws {ReferenceError} The element was <b>null</b> or <b>undefined</b>
+ * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
-export function last<const T, >(collection: CollectionHolder<T>,): NonNullable<T>
+export function last<const T, >(collection: Nullable<CollectionHolder<T>>,): T
 /**
  * Get the last element in the current {@link collection}
  * matching the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate The matching predicate
- * @throws {ReferenceError} The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
- * @throws {ReferenceError} The element was <b>null</b> or <b>undefined</b>
+ * @param predicate  The matching predicate
+ * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
-export function last<const T, const S extends T, >(collection: CollectionHolder<T>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
+export function last<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the last element in the current {@link collection}
  * matching the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate The matching predicate
- * @throws {ReferenceError} The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
- * @throws {ReferenceError} The element was <b>null</b> or <b>undefined</b>
+ * @param predicate  The matching predicate
+ * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
-export function last<const T, >(collection: CollectionHolder<T>, predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
-export function last<const T, const S extends T, >(collection: CollectionHolder<T>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-    if (collection.isEmpty)
-        throw new ReferenceError("No element at the index 0 could be found since it it empty.",)
-    if (predicate == null) {
-        const element = lastOrNull(collection,)
-        if (element == null)
-            throw new ReferenceError("The last element is null in the collection.",)
-        return element
+export function last<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T
+export function last<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+    if (collection == null)
+        throw new TypeError("No element could be retrieved from a null value.",)
+    if (collection.isEmpty) {
+        const size = collection.size
+        throw new EmptyCollectionHolderException(`No element at the index ${size} could be found since it it empty.`,)
     }
-    const element = lastOrNull(collection, predicate,)
-    if (element == null)
-        throw new ReferenceError("The last element (with filter) is null in the collection.",)
-    return element
+
+    if (predicate == null) {
+        const lastIndex = collection.size - 1
+        if (lastIndex in collection)
+            return collection[lastIndex]
+        return collection.get(lastIndex,)
+    }
+
+    const size = collection.size
+    let index = size
+    while (index-- > 0) {
+        const value = collection.get(index,)
+        if (predicate(value, index,))
+            return value
+    }
+    throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", size,)
 }

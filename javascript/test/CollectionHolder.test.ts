@@ -9,8 +9,10 @@ import {A, A_NULL_B_UNDEFINED, AB, AB12, AB_OBJECT, AB_AB, ABCD, ABCD_ABCD, ABCD
 import {iterableCreation, everyInstances, nonPresentItem, sizeValues, TEMPLATE_ITEMS}                                                                                                      from "./constantValues"
 import {newCollectionInstance}                                                                                                                                                             from "./newCollectionInstance"
 
-import {CollectionConstants}       from "../src/CollectionConstants"
-import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
+import {CollectionConstants}                       from "../src/CollectionConstants"
+import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../src/exception/EmptyCollectionHolderException"
+import {GenericCollectionIterator}                 from "../src/iterator/GenericCollectionIterator"
 
 describe("CollectionHolderTest", () => {
 describe.each(everyInstances,)("%s", ({value: instance,},) => {
@@ -49,9 +51,9 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             describe("simple", () => {
                 describe("[](0)", () => {
                     test("index", () => expect(EMPTY_INSTANCE()[0],).toBeUndefined(),)
-                    test("get", () => expect(() => EMPTY_INSTANCE().get(0,),).toThrow(ReferenceError,),)
-                    test("at", () => expect(() => EMPTY_INSTANCE().at(0,),).toThrow(ReferenceError,),)
-                    test("element at", () => expect(() => EMPTY_INSTANCE().elementAt(0,),).toThrow(ReferenceError,),)
+                    test("get", () => expect(() => EMPTY_INSTANCE().get(0,),).toThrow(EmptyCollectionHolderException,),)
+                    test("at", () => expect(() => EMPTY_INSTANCE().at(0,),).toThrow(EmptyCollectionHolderException,),)
+                    test("element at", () => expect(() => EMPTY_INSTANCE().elementAt(0,),).toThrow(EmptyCollectionHolderException,),)
                 },)
                 describe("[a,b](0)", () => {
                     test.skip("index", () => expect(AB_INSTANCE()[0],).toEqual('a',),)
@@ -61,9 +63,9 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
                 },)
                 describe("[a,b](3)", () => {
                     test.skip("index", () => expect(AB_INSTANCE()[3],).toBeUndefined(),)
-                    test("get", () => expect(() => AB_INSTANCE().get(3,),).toThrow(ReferenceError,),)
-                    test("at", () => expect(() => AB_INSTANCE().at(3,),).toThrow(ReferenceError,),)
-                    test("element at", () => expect(() => AB_INSTANCE().elementAt(3,),).toThrow(ReferenceError,),)
+                    test("get", () => expect(() => AB_INSTANCE().get(3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test("at", () => expect(() => AB_INSTANCE().at(3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test("element at", () => expect(() => AB_INSTANCE().elementAt(3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 },)
                 describe("[a,b,c,d](1)", () => {
                     test.skip("index", () => expect(ABCD_INSTANCE()[1],).toEqual('b',),)
@@ -85,9 +87,9 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
                 },)
                 describe("[a,b,c,d](-5)", () => {
                     test("index", () => expect(ABCD_INSTANCE()[-5],).toBeUndefined(),)
-                    test("get", () => expect(() => ABCD_INSTANCE().get(-5,),).toThrow(ReferenceError,),)
-                    test("at", () => expect(() => ABCD_INSTANCE().at(-5,),).toThrow(ReferenceError,),)
-                    test("element at", () => expect(() => ABCD_INSTANCE().elementAt(-5,),).toThrow(ReferenceError,),)
+                    test("get", () => expect(() => ABCD_INSTANCE().get(-5,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test("at", () => expect(() => ABCD_INSTANCE().at(-5,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test("element at", () => expect(() => ABCD_INSTANCE().elementAt(-5,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 },)
             },)
             describe("or else", () => {
@@ -241,40 +243,40 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
                 },)
                 describe("error", () => {
                     describe("from index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOf('a', 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOf('a', 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOf('a', 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOf('a', 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOf('a', 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOf('a', 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOf('a', -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOf('a', -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOf('a', -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOf('a', -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOf('a', -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOf('a', -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOf('a', 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOf('a', -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOf('a', 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOf('a', -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("to index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOf('a', null, 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOf('a', null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOf('a', null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOf('a', null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOf('a', null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOf('a', null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOf('a', null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOf('a', null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOf('a', null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOf('a', null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOf('a', null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOf('a', null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOf('a', null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOf('a', null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOf('a', null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOf('a', null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("limit", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOf('a', null, null, 2,),).not.toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOf('a', null, null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOf('a', null, null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOf('a', null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOf('a', null, null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOf('a', null, null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOf('a', null, null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOf('a', null, null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOf('a', null, null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOf('a', null, null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOf('a', null, null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOf('a', null, null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOf('a', null, null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOf('a', null, null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOf('a', null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOf('a', null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                 },)
                 describe("negative values", () => {
@@ -380,40 +382,40 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
                 },)
                 describe("error", () => {
                     describe("from index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().lastIndexOf('a', 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().lastIndexOf('a', 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().lastIndexOf('a', 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().lastIndexOf('a', 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().lastIndexOf('a', 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().lastIndexOf('a', 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().lastIndexOf('a', -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().lastIndexOf('a', -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().lastIndexOf('a', -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().lastIndexOf('a', -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().lastIndexOf('a', -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().lastIndexOf('a', -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().lastIndexOf('a', 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().lastIndexOf('a', -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().lastIndexOf('a', 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().lastIndexOf('a', -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("to index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("limit", () => {
-                        test('2', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, 2,),).not.toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().lastIndexOf('a', null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                 },)
                 describe("negative values", () => {
@@ -518,40 +520,40 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
                 },)
                 describe("error", () => {
                     describe("from index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("to index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, -4,),).toThrow(RangeError,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("limit", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, 2,),).not.toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirst(() => fail(), null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                 },)
                 describe("negative values", () => {
@@ -679,40 +681,40 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
                 },)
                 describe("error", () => {
                     describe("from index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("to index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("limit", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, 2,),).not.toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfFirstIndexed(() => fail(), null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                 },)
                 describe("negative values", () => {
@@ -843,40 +845,40 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
                 },)
                 describe("error", () => {
                     describe("from index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("to index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("limit", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, 2,),).not.toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfLast(() => fail(), null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                 },)
                 describe("negative values", () => {
@@ -1004,40 +1006,40 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
                 },)
                 describe("error", () => {
                     describe("from index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("to index", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, 2,),).toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                     describe("limit", () => {
-                        test('2', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, 2,),).not.toThrow(RangeError,),)
-                        test('3', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, 3,),).toThrow(RangeError,),)
-                        test('4', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, 4,),).toThrow(RangeError,),)
+                        test('2', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('3', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test('4', () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("-2", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, -2,),).not.toThrow(RangeError,),)
-                        test("-3", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, -3,),).toThrow(RangeError,),)
-                        test("-4", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, -4,),).toThrow(RangeError,),)
+                        test("-2", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, -2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-3", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-4", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, -4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                        test("500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, 500,),).toThrow(RangeError,),)
-                        test("-500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, -500,),).toThrow(RangeError,),)
+                        test("500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                        test("-500", () => expect(() => AB_INSTANCE().indexOfLastIndexed(() => fail(), null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                     },)
                 },)
                 describe("negative values", () => {
@@ -1091,61 +1093,61 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         },)
         describe("first", () => {
             describe("[].first() == throw|null", () => {
-                test("throw", () => expect(() => EMPTY_INSTANCE().first(),).toThrow(ReferenceError,),)
+                test("direct", () => expect(() => EMPTY_INSTANCE().first(),).toThrow(EmptyCollectionHolderException,),)
                 test("or null", () => expect(EMPTY_INSTANCE().firstOrNull(),).toBeNull(),)
             },)
 
-            test("[a,b,c,d].first() == a", () => expect(ABCD_INSTANCE().first(),).toBe('a',),)
-            describe("[null,a,b,c,d].first() == throw|null", () => {
-                test("throw", () => expect(() => NULL_ABCD_INSTANCE().first(),).toThrow(ReferenceError,),)
+            test("[a,b,c,d].first()", () => expect(ABCD_INSTANCE().first(),).toBe('a',),)
+            describe("[null,a,b,c,d].first()", () => {
+                test("direct", () => expect(NULL_ABCD_INSTANCE().first(),).toBeNull(),)
                 test("or null", () => expect(NULL_ABCD_INSTANCE().firstOrNull(),).toBeNull(),)
             },)
-            test("[a,b,c,d,null].first() == a", () => expect(ABCD_NULL_INSTANCE().first(),).toBe('a',),)
-            describe("[undefined,a,b,c,d].first() == throw|null", () => {
-                test("throw", () => expect(() => UNDEFINED_ABCD_INSTANCE().first(),).toThrow(ReferenceError,),)
+            test("[a,b,c,d,null].first()", () => expect(ABCD_NULL_INSTANCE().first(),).toBe('a',),)
+            describe("[undefined,a,b,c,d].first()", () => {
+                test("direct", () => expect(UNDEFINED_ABCD_INSTANCE().first(),).toBeUndefined(),)
                 test("or null", () => expect(UNDEFINED_ABCD_INSTANCE().firstOrNull(),).toBeUndefined(),)
             },)
-            test("[a,b,c,d,undefined].first() == a", () => expect(ABCD_UNDEFINED_INSTANCE().first(),).toBe('a',),)
+            test("[a,b,c,d,undefined].first()", () => expect(ABCD_UNDEFINED_INSTANCE().first(),).toBe('a',),)
 
-            test("[a,b,c,d].first(!a) == b", () => expect(ABCD_INSTANCE().first(it => it !== 'a',),).toBe('b',),)
-            describe("[null,a,b,c,d].first(!a) == throw|null", () => {
-                test("throw", () => expect(() => NULL_ABCD_INSTANCE().first(it => it !== 'a',),).toThrow(ReferenceError,),)
+            test("[a,b,c,d].first(!a)", () => expect(ABCD_INSTANCE().first(it => it !== 'a',),).toBe('b',),)
+            describe("[null,a,b,c,d].first(!a) ", () => {
+                test("direct", () => expect(NULL_ABCD_INSTANCE().first(it => it !== 'a',),).toBeNull(),)
                 test("or null", () => expect(NULL_ABCD_INSTANCE().firstOrNull(it => it !== 'a',),).toBeNull(),)
             },)
-            test("[a,b,c,d,null].first(!a) == b", () => expect(ABCD_NULL_INSTANCE().first(it => it !== 'a',),).toBe('b',),)
-            describe("[undefined,a,b,c,d].first(!a) == throw|null", () => {
-                test("throw", () => expect(() => UNDEFINED_ABCD_INSTANCE().first(it => it !== 'a',),).toThrow(ReferenceError,),)
+            test("[a,b,c,d,null].first(!a)", () => expect(ABCD_NULL_INSTANCE().first(it => it !== 'a',),).toBe('b',),)
+            describe("[undefined,a,b,c,d].first(!a)", () => {
+                test("direct", () => expect(UNDEFINED_ABCD_INSTANCE().first(it => it !== 'a',),).toBeUndefined(),)
                 test("or null", () => expect(UNDEFINED_ABCD_INSTANCE().firstOrNull(it => it !== 'a',),).toBeUndefined(),)
             },)
-            test("[a,b,c,d,undefined].first(!a) == b", () => expect(ABCD_UNDEFINED_INSTANCE().first(it => it !== 'a',),).toBe('b',),)
+            test("[a,b,c,d,undefined].first(!a)", () => expect(ABCD_UNDEFINED_INSTANCE().first(it => it !== 'a',),).toBe('b',),)
         },)
         describe("last", () => {
             describe("[]", () => {
-                test("throw", () => expect(() => EMPTY_INSTANCE().last(),).toThrow(ReferenceError,),)
+                test("direct", () => expect(() => EMPTY_INSTANCE().last(),).toThrow(EmptyCollectionHolderException,),)
                 test("or null", () => expect(EMPTY_INSTANCE().lastOrNull(),).toBeNull(),)
             },)
 
-            test("[a,b,c,d].last() == d", () => expect(ABCD_INSTANCE().last(),).toBe('d',),)
-            test("[null,a,b,c,d].last() == d", () => expect(NULL_ABCD_INSTANCE().last(),).toBe('d',),)
-            describe("[a,b,c,d,null].last() == throw|null", () => {
-                test("throw", () => expect(() => ABCD_NULL_INSTANCE().last(),).toThrow(ReferenceError,),)
+            test("[a,b,c,d].last()", () => expect(ABCD_INSTANCE().last(),).toBe('d',),)
+            test("[null,a,b,c,d].last()", () => expect(NULL_ABCD_INSTANCE().last(),).toBe('d',),)
+            describe("[a,b,c,d,null].last()", () => {
+                test("direct", () => expect(ABCD_NULL_INSTANCE().last(),).toBeNull(),)
                 test("or null", () => expect(ABCD_NULL_INSTANCE().lastOrNull(),).toBeNull(),)
             },)
-            test("[undefined,a,b,c,d].last() == d", () => expect(UNDEFINED_ABCD_INSTANCE().last(),).toBe('d',),)
-            describe("[a,b,c,d,undefined].last() == throw|null", () => {
-                test("throw", () => expect(() => ABCD_UNDEFINED_INSTANCE().last(),).toThrow(ReferenceError,),)
+            test("[undefined,a,b,c,d].last()", () => expect(UNDEFINED_ABCD_INSTANCE().last(),).toBe('d',),)
+            describe("[a,b,c,d,undefined].last()", () => {
+                test("direct", () => expect(ABCD_UNDEFINED_INSTANCE().last(),).toBeUndefined(),)
                 test("or null", () => expect(ABCD_UNDEFINED_INSTANCE().lastOrNull(),).toBeUndefined(),)
             },)
 
-            test("[a,b,c,d].last(!d) == c", () => expect(ABCD_INSTANCE().last(it => it !== 'd',),).toBe('c',),)
-            test("[null,a,b,c,d].last(!d) == c", () => expect(NULL_ABCD_INSTANCE().last(it => it !== 'd',),).toBe('c',),)
-            describe("[a,b,c,d,null].last(!d) == throw|null", () => {
-                test("throw", () => expect(() => ABCD_NULL_INSTANCE().last(it => it !== 'd',),).toThrow(ReferenceError,),)
+            test("[a,b,c,d].last(!d)", () => expect(ABCD_INSTANCE().last(it => it !== 'd',),).toBe('c',),)
+            test("[null,a,b,c,d].last(!d)", () => expect(NULL_ABCD_INSTANCE().last(it => it !== 'd',),).toBe('c',),)
+            describe("[a,b,c,d,null].last(!d)", () => {
+                test("direct", () => expect(ABCD_NULL_INSTANCE().last(it => it !== 'd',),).toBeNull(),)
                 test("or null", () => expect(ABCD_NULL_INSTANCE().lastOrNull(it => it !== 'd',),).toBeNull(),)
             },)
-            test("[undefined,a,b,c,d].last(!d) == c", () => expect(UNDEFINED_ABCD_INSTANCE().last(it => it !== 'd',),).toBe('c',),)
-            describe("[a,b,c,d,undefined].last(!d) == throw|null", () => {
-                test("throw", () => expect(() => ABCD_UNDEFINED_INSTANCE().last(it => it !== 'd',),).toThrow(ReferenceError,),)
+            test("[undefined,a,b,c,d].last(!d)", () => expect(UNDEFINED_ABCD_INSTANCE().last(it => it !== 'd',),).toBe('c',),)
+            describe("[a,b,c,d,undefined].last(!d)", () => {
+                test("direct", () => expect(ABCD_UNDEFINED_INSTANCE().last(it => it !== 'd',),).toBeUndefined(),)
                 test("or null", () => expect(ABCD_UNDEFINED_INSTANCE().lastOrNull(it => it !== 'd',),).toBeUndefined(),)
             },)
         },)
@@ -1369,8 +1371,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test('1', () => expect(ABCD_INSTANCE().slice([1,],).toArray(),).toEqual(['b',],),)
             test("-1", () => expect(ABCD_INSTANCE().slice([-1,],).toArray(),).toEqual(['d',],),)
             test("-2", () => expect(ABCD_INSTANCE().slice([-2,],).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice([10,],).toString(),).toThrow(ReferenceError,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice([-10,],).toString(),).toThrow(ReferenceError,),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice([10,],).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice([-10,],).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by set", () => {
             test("empty", () => expect(AB_INSTANCE().slice(new Set<never>(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -1378,8 +1380,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test('1', () => expect(ABCD_INSTANCE().slice(new Set([1,],),).toArray(),).toEqual(['b',],),)
             test("-1", () => expect(ABCD_INSTANCE().slice(new Set([-1,],),).toArray(),).toEqual(['d',],),)
             test("-2", () => expect(ABCD_INSTANCE().slice(new Set([-2,],),).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice(new Set([10,],),).toString(),).toThrow(ReferenceError,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice(new Set([-10,],),).toString(),).toThrow(ReferenceError,),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice(new Set([10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice(new Set([-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by collection", () => {
             test("empty", () => expect(AB_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [],),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -1387,8 +1389,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test('1', () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [1,],),).toArray(),).toEqual(['b',],),)
             test("-1", () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-1,],),).toArray(),).toEqual(['d',],),)
             test("-2", () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-2,],),).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [10,],),).toString(),).toThrow(ReferenceError,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-10,],),).toString(),).toThrow(ReferenceError,),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by collection iterator", () => {
             test("empty", () => expect(AB_INSTANCE().slice(new GenericCollectionIterator<never>(newCollectionInstance(instance, arrayOrSetCreation, [],),),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -1396,8 +1398,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test('1', () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<1>(newCollectionInstance(instance, arrayOrSetCreation, [1,],),),).toArray(),).toEqual(['b',],),)
             test("-1", () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<-1>(newCollectionInstance(instance, arrayOrSetCreation, [-1,],),),).toArray(),).toEqual(['d',],),)
             test("-2", () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<-2>(newCollectionInstance(instance, arrayOrSetCreation, [-2,],),),).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<10>(newCollectionInstance(instance, arrayOrSetCreation, [10,],),),).toString(),).toThrow(ReferenceError,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<-10>(newCollectionInstance(instance, arrayOrSetCreation, [-10,],),),).toString(),).toThrow(ReferenceError,),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<10>(newCollectionInstance(instance, arrayOrSetCreation, [10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<-10>(newCollectionInstance(instance, arrayOrSetCreation, [-10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by iterable", () => {
             test("empty", () => expect(AB_INSTANCE().slice({ [Symbol.iterator]() { return [][Symbol.iterator]() }, },),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -1405,8 +1407,8 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test('1', () => expect(ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [1,][Symbol.iterator]() }, },).toArray(),).toEqual(['b',],),)
             test("-1", () => expect(ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [-1,][Symbol.iterator]() }, },).toArray(),).toEqual(['d',],),)
             test("-2", () => expect(ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [-2,][Symbol.iterator]() }, },).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [10,][Symbol.iterator]() }, },).toString(),).toThrow(ReferenceError,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [-10,][Symbol.iterator]() }, },).toString(),).toThrow(ReferenceError,),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [10,][Symbol.iterator]() }, },).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice({ [Symbol.iterator]() { return [-10,][Symbol.iterator]() }, },).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
 
         describe("by range", () => {
@@ -1437,15 +1439,15 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test("(null, null, -3)", () => expect(ABCD_INSTANCE().slice(null, null, -3,).toArray(),).toEqual(['a',],),)
             test("(null, null, 2)", () => expect(ABCD_INSTANCE().slice(null, null, 2,).toArray(),).toEqual(['a', 'b',],),)
 
-            test("(2, 1)", () => expect(() => ABCD_INSTANCE().slice(2, 1,).toString(),).toThrow(RangeError,),)
-            test("(1, null, 4)", () => expect(() => ABCD_INSTANCE().slice(1, null, 4,).toString(),).toThrow(RangeError,),)
-            test("(null, 1, 4)", () => expect(() => ABCD_INSTANCE().slice(null, 1, 4,).toString(),).toThrow(RangeError,),)
-            test("(10)", () => expect(() => ABCD_INSTANCE().slice(10, null,).toString(),).toThrow(RangeError,),)
-            test("(null, 10)", () => expect(() => ABCD_INSTANCE().slice(null, 10,).toString(),).toThrow(RangeError,),)
-            test("(null, null, 10)", () => expect(() => ABCD_INSTANCE().slice(null, null, 10,).toString(),).toThrow(RangeError,),)
-            test("(-10)", () => expect(() => ABCD_INSTANCE().slice(-10, null,).toString(),).toThrow(RangeError,),)
-            test("(null, -10)", () => expect(() => ABCD_INSTANCE().slice(null, -10,).toString(),).toThrow(RangeError,),)
-            test("(null, null, -10)", () => expect(() => ABCD_INSTANCE().slice(null, null, -10,).toString(),).toThrow(RangeError,),)
+            test("(2, 1)", () => expect(() => ABCD_INSTANCE().slice(2, 1,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("(1, null, 4)", () => expect(() => ABCD_INSTANCE().slice(1, null, 4,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("(null, 1, 4)", () => expect(() => ABCD_INSTANCE().slice(null, 1, 4,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("(10)", () => expect(() => ABCD_INSTANCE().slice(10, null,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("(null, 10)", () => expect(() => ABCD_INSTANCE().slice(null, 10,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("(null, null, 10)", () => expect(() => ABCD_INSTANCE().slice(null, null, 10,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("(-10)", () => expect(() => ABCD_INSTANCE().slice(-10, null,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("(null, -10)", () => expect(() => ABCD_INSTANCE().slice(null, -10,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("(null, null, -10)", () => expect(() => ABCD_INSTANCE().slice(null, null, -10,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
     },)
     describe("map", () => {
@@ -1589,52 +1591,52 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
         },)
         describe("error", () => {
             describe("from > to", () => {
-                test("(0, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(0, 1,).toString(),).not.toThrow(RangeError,),)
-                test("(1, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(1, 1,).toString(),).not.toThrow(RangeError,),)
-                test("(2, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(2, 1,).toString(),).toThrow(RangeError,),)
-                test("(3, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(3, 1,).toString(),).toThrow(RangeError,),)
-                test("(4, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(4, 1,).toString(),).toThrow(RangeError,),)
-                test("(5, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(5, 1,).toString(),).toThrow(RangeError,),)
-                test("(6, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(6, 1,).toString(),).toThrow(RangeError,),)
-                test("(7, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(7, 1,).toString(),).toThrow(RangeError,),)
-                test("(8, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(8, 1,).toString(),).toThrow(RangeError,),)
-                test("(9, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(9, 1,).toString(),).toThrow(RangeError,),)
+                test("(0, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(0, 1,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("(1, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(1, 1,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("(2, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(2, 1,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("(3, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(3, 1,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("(4, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(4, 1,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("(5, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(5, 1,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("(6, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(6, 1,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("(7, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(7, 1,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("(8, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(8, 1,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("(9, 1)", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(9, 1,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
             },)
             describe("from index", () => {
-                test('9', () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(9,).toString(),).not.toThrow(RangeError,),)
-                test("10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(10,).toString(),).toThrow(RangeError,),)
-                test("11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(11,).toString(),).toThrow(RangeError,),)
+                test('9', () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(9,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(10,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(11,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                test("-9", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-9,).toString(),).not.toThrow(RangeError,),)
-                test("-10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-10,).toString(),).not.toThrow(RangeError,),)
-                test("-11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-11,).toString(),).toThrow(RangeError,),)
+                test("-9", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-9,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-10,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-11,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                test("400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(400,).toString(),).toThrow(RangeError,),)
-                test("-400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-400,).toString(),).toThrow(RangeError,),)
+                test("400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(400,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(-400,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
             },)
             describe("to index", () => {
-                test('9', () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 9,).toString(),).not.toThrow(RangeError,),)
-                test("10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 10,).toString(),).toThrow(RangeError,),)
-                test("11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 11,).toString(),).toThrow(RangeError,),)
+                test('9', () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 9,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 10,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 11,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                test("-9", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -9,).toString(),).not.toThrow(RangeError,),)
-                test("-10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -10,).toString(),).not.toThrow(RangeError,),)
-                test("-11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -11,).toString(),).toThrow(RangeError,),)
+                test("-9", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -9,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -10,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -11,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                test("400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 400,).toString(),).toThrow(RangeError,),)
-                test("-400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -400,).toString(),).toThrow(RangeError,),)
+                test("400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, 400,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, -400,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
             },)
             describe("limit", () => {
-                test('9', () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, 9,).toString(),).not.toThrow(RangeError,),)
-                test("10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, 10,).toString(),).not.toThrow(RangeError,),)
-                test("11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, 11,).toString(),).toThrow(RangeError,),)
+                test('9', () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, 9,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, 10,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, 11,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                test("-9", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, -9,).toString(),).not.toThrow(RangeError,),)
-                test("-10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, -10,).toString(),).not.toThrow(RangeError,),)
-                test("-11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, -11,).toString(),).toThrow(RangeError,),)
+                test("-9", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, -9,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-10", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, -10,).toString(),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-11", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, -11,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                test("400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, 400,).toString(),).toThrow(RangeError,),)
-                test("-400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, -400,).toString(),).toThrow(RangeError,),)
+                test("400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, 400,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-400", () => expect(() => ABCDEFGHIJ_INSTANCE().toReversed(null, null, -400,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
             },)
         },)
     },)

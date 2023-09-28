@@ -11,24 +11,25 @@ import type {NonEmptyCollectionHolder}    from "../NonEmptyCollectionHolder"
 import type {Nullable}                    from "../general type"
 import type {CollectionIterator}          from "../iterator/CollectionIterator"
 
-import {CollectionConstants}                    from "../CollectionConstants"
-import {endingIndex as endingIndexFunction}     from "./endingIndex"
-import {isCollectionHolder}                     from "./isCollectionHolder"
-import {isCollectionIterator}                   from "./isCollectionIterator"
-import {maximumIndex as maximumIndexFunction}   from "./maximumIndex"
-import {newInstance}                            from "./newInstance"
-import {startingIndex as startingIndexFunction} from "./startingIndex"
+import {CollectionConstants}                       from "../CollectionConstants"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {endingIndex as endingIndexFunction}        from "./endingIndex"
+import {isCollectionHolder}                        from "./isCollectionHolder"
+import {isCollectionIterator}                      from "./isCollectionIterator"
+import {maximumIndex as maximumIndexFunction}      from "./maximumIndex"
+import {newInstance}                               from "./newInstance"
+import {startingIndex as startingIndexFunction}    from "./startingIndex"
 
 /**
  * Create a new {@link CollectionHolder} from the {@link indices}
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -38,11 +39,11 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -52,11 +53,11 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -66,11 +67,11 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -80,11 +81,11 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -95,13 +96,13 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param fromIndex The starting index
- * @param toIndex The ending index
- * @param limit The maximum index
+ * @param fromIndex  The starting index
+ * @param toIndex    The ending index
+ * @param limit      The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -110,15 +111,15 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, from
  * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex}
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection         The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param indicesOrFromIndex The given indices (or starting index)
- * @param toIndex The ending index
- * @param limit The maximum index
+ * @param toIndex            The ending index
+ * @param limit              The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws {RangeError} The {@link indicesOrFromIndex}, {@link toIndex} and {@link limit} are not within a valid range
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  * @typescriptDefinition
@@ -146,11 +147,11 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -178,11 +179,11 @@ export function sliceByArray<const T, >(collection: Nullable<CollectionHolder<T>
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -212,11 +213,11 @@ export function sliceBySet<const T, >(collection: Nullable<CollectionHolder<T>>,
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -244,11 +245,11 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices The given indices
+ * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -280,7 +281,7 @@ export function sliceByCollectionIterator<const T, >(collection: Nullable<Collec
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws ReferenceError An index is not in the {@link collection}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -311,12 +312,12 @@ export function sliceByIterable<const T, >(collection: Nullable<CollectionHolder
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The inclusive starting index
- * @param toIndex The inclusive ending index
- * @param limit The maximum index
+ * @param toIndex   The inclusive ending index
+ * @param limit     The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -339,12 +340,12 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
         return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
             //#region -------------------- Initialization (starting/ending index) --------------------
 
-            const size = collection.size,
-                startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
-                endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
+            const size = collection.size
+            const startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,)
+            const endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
             if (endingIndex < startingIndex)
-                throw new RangeError(`The ending index "${toIndex}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`,)
+                throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`, toIndex,)
 
             //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -355,12 +356,12 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
     return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
         //#region -------------------- Initialization (starting/ending index) --------------------
 
-        const size = collection.size,
-            startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
-            endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
+        const size = collection.size
+        const startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,)
+        const endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
         if (endingIndex < startingIndex)
-            throw new RangeError(`The ending index "${toIndex ?? ''}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex ?? ''}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`,)
+            throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex ?? ''}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex ?? ''}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`, toIndex,)
 
         //#endregion -------------------- Initialization (starting/ending index) --------------------
         //#region -------------------- Initialization (maximum index) --------------------
@@ -368,7 +369,7 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
         const maximumIndex = maximumIndexFunction(collection as NonEmptyCollectionHolder<T>, limit, size,)
 
         if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new RangeError(`The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`,)
+            throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`, limit,)
 
         //#endregion -------------------- Initialization (maximum index) --------------------
 

@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A Javascript implementation of a collection based on Array (from Javascript), Set (from Javascript), List (from Java/Kotlin) and Enumerable (from C#)",
 
   "scripts": {
@@ -42,10 +42,15 @@
       "require": "./dist/common javascript/index.js"
     },
 
-    "./method": {
-      "types":   "./dist/types/method/index.d.ts",
-      "import":  "./dist/ecmascript module/method/index.js",
-      "require": "./dist/common javascript/method/index.js"
+    "./exception": {
+      "types":   "./dist/types/exception/index.d.ts",
+      "import":  "./dist/ecmascript module/exception/index.js",
+      "require": "./dist/common javascript/exception/index.js"
+    },
+     "./handler": {
+      "types":   "./dist/types/handler/index.d.ts",
+      "import":  "./dist/ecmascript module/handler/index.js",
+      "require": "./dist/common javascript/handler/index.js"
     },
     "./iterable": {
       "types":   "./dist/types/iterable/index.d.ts",
@@ -62,10 +67,10 @@
       "import":  "./dist/ecmascript module/iterator/value/index.js",
       "require": "./dist/common javascript/iterator/value/index.js"
     },
-    "./handler": {
-      "types":   "./dist/types/handler/index.d.ts",
-      "import":  "./dist/ecmascript module/handler/index.js",
-      "require": "./dist/common javascript/handler/index.js"
+    "./method": {
+      "types":   "./dist/types/method/index.d.ts",
+      "import":  "./dist/ecmascript module/method/index.js",
+      "require": "./dist/common javascript/method/index.js"
     },
 
     "./*": {
@@ -73,10 +78,15 @@
       "import":  "./dist/ecmascript module/*.js",
       "require": "./dist/common javascript/*.js"
     },
-    "./method/*": {
-      "types":   "./dist/types/method/*.d.ts",
-      "import":  "./dist/ecmascript module/method/*.js",
-      "require": "./dist/common javascript/method/*.js"
+    "./exception/*": {
+      "types":   "./dist/types/exception/*.d.ts",
+      "import":  "./dist/ecmascript module/exception/*.js",
+      "require": "./dist/common javascript/exception/*.js"
+    },
+    "./handler/*": {
+      "types":   "./dist/types/handler/*.d.ts",
+      "import":  "./dist/ecmascript module/handler/*.js",
+      "require": "./dist/common javascript/handler/*.js"
     },
     "./iterable/*": {
       "types":   "./dist/types/iterable/*.d.ts",
@@ -93,10 +103,10 @@
       "import":  "./dist/ecmascript module/iterator/value/*.js",
       "require": "./dist/common javascript/iterator/value/*.js"
     },
-    "./handler/*": {
-      "types":   "./dist/types/handler/*.d.ts",
-      "import":  "./dist/ecmascript module/handler/*.js",
-      "require": "./dist/common javascript/handler/*.js"
+    "./method/*": {
+      "types":   "./dist/types/method/*.d.ts",
+      "import":  "./dist/ecmascript module/method/*.js",
+      "require": "./dist/common javascript/method/*.js"
     }
   },
 
@@ -129,13 +139,13 @@
   "author": "JóôòKiwi",
   "license": "MIT",
   "dependencies": {
-    "@joookiwi/lazy": "^1.1.1"
+    "@joookiwi/lazy": "^1.2.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.4",
-    "@types/node": "^20.5.9",
+    "@types/jest": "^29.5.5",
+    "@types/node": "^20.7.1",
     "del-cli": "^5.1.0",
-    "jest-environment-jsdom": "^29.6.4",
+    "jest-environment-jsdom": "^29.7.0",
     "jest-extended": "^4.0.1",
     "npm-run-all": "^4.1.5",
     "ts-jest": "^29.1.1",

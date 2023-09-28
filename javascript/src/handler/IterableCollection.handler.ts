@@ -8,7 +8,9 @@
 import type {CollectionHolder} from "../CollectionHolder"
 import type {ValueHolder}      from "./ValueHolder"
 
-import {AbstractCollectionHandler} from "./AbstractCollection.handler"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+import {AbstractCollectionHandler}                 from "./AbstractCollection.handler"
 
 /** A simple implementation of a {@link CollectionHandler} for an {@link Iterable} */
 export class IterableCollectionHandler<const out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
@@ -112,38 +114,68 @@ export class IterableCollectionHandler<const out T = unknown, const REFERENCE ex
     //#region -------------------- Methods --------------------
 
     public get(index: number,): ValueHolder<T> {
+        if (this.isEmpty)
+            return { value: null, get cause() { return new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }, }
+
         const collection = this._collection
         if (index in collection)
             return { value: collection[index] as T, cause: null, }
-        if (index < 0)
-            return { value: null, get cause() { return new ReferenceError(`The index ${index} could not be retrieved from a value under 0.`,) }, }
 
-        if (this.hasFinished) {
-            if (index > this._amountOfElementRetrieved - 1)
-                return { value: null, get cause() { return new ReferenceError(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`,) }, }
-            return { value: collection[this._amountOfElementRetrieved - 1] as T, cause: null, }
+        if (index < 0) {
+            if (this.hasFinished){
+                const size = this._amountOfElementRetrieved
+                const indexToRetrieve = size + index
+                if (indexToRetrieve < 0)
+                    return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is under 0.`, index,) }, }
+                if (indexToRetrieve > size)
+                    return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is under over the size of the collection (${size}).`, index,) }, }
+                return { value: collection.get(indexToRetrieve,), cause: null, }
+            }
+
+            const amountOfElementRetrieved = this._amountOfElementRetrieved
+            const iterator = this._iterator
+            let iteratorIndex = amountOfElementRetrieved - 1
+            let iteratorResult: IteratorResult<T, unknown>
+            while (!(iteratorResult = iterator.next()).done)
+                collection[++iteratorIndex] = iteratorResult.value
+
+            const size = (this._amountOfElementRetrieved = iteratorIndex) + 1
+            const indexToRetrieve = size + index
+            if (indexToRetrieve < 0)
+                return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is under 0.`, index,) }, }
+            if (indexToRetrieve > size)
+                return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is under over the size of the collection (${size}).`, index,) }, }
+            return { value: collection.get(indexToRetrieve,), cause: null, }
         }
 
-        const amountOfElementRetrieved = this._amountOfElementRetrieved,
-            iterator = this._iterator
-        let iteratorIndex = amountOfElementRetrieved - 1,
-            iteratorValue = iterator.next() as IteratorResult<T>
-        while (!iteratorValue.done) {
-            collection[++iteratorIndex] = iteratorValue.value
+        if (this.hasFinished) {
+            const amountOfElementRetrieved = this._amountOfElementRetrieved
+            const amountOfElementRetrievedMinus1 = amountOfElementRetrieved - 1
+            if (index > amountOfElementRetrievedMinus1)
+                return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} cannot be over the size of the collection (${amountOfElementRetrieved}).`, index,) }, }
+            return { value: collection[amountOfElementRetrievedMinus1] as T, cause: null, }
+        }
+
+        const amountOfElementRetrieved = this._amountOfElementRetrieved
+        const iterator = this._iterator
+        let iteratorIndex = amountOfElementRetrieved - 1
+        let iteratorResult = iterator.next() as IteratorResult<T, unknown>
+        while (!iteratorResult.done) {
+            collection[++iteratorIndex] = iteratorResult.value
             if (iteratorIndex !== index) {
-                iteratorValue = iterator.next() as IteratorResult<T>
+                iteratorResult = iterator.next() as IteratorResult<T>
                 continue
             }
 
             this._amountOfElementRetrieved = iteratorIndex
             if (index > iteratorIndex)
-                return { value: null, get cause() { return new ReferenceError(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`,) }, }
+                return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`, index,) }, }
             return { value: collection[index] as T, cause: null, }
         }
         this._hasFinished = true
 
         if (index > iteratorIndex)
-            return { value: null, get cause() { return new ReferenceError(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`,) }, }
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`, index,) }, }
         return { value: collection[iteratorIndex - 1] as T, cause: null, }
     }
 

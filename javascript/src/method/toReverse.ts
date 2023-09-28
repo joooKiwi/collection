@@ -10,11 +10,12 @@ import type {CollectionHolderConstructor} from "../CollectionHolderConstructor"
 import type {Nullable}                    from "../general type"
 import type {NonEmptyCollectionHolder}    from "../NonEmptyCollectionHolder"
 
-import {CollectionConstants}                    from "../CollectionConstants"
-import {endingIndex as endingIndexFunction}     from "./endingIndex"
-import {newInstance}                            from "./newInstance"
-import {maximumIndex as maximumIndexFunction}   from "./maximumIndex"
-import {startingIndex as startingIndexFunction} from "./startingIndex"
+import {CollectionConstants}                       from "../CollectionConstants"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {endingIndex as endingIndexFunction}        from "./endingIndex"
+import {newInstance}                               from "./newInstance"
+import {maximumIndex as maximumIndexFunction}      from "./maximumIndex"
+import {startingIndex as startingIndexFunction}    from "./startingIndex"
 
 /**
  * Reverse the {@link collection} from a range (if provided)
@@ -23,7 +24,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @param fromIndex The inclusive starting index
  * @param toIndex The inclusive ending index
  * @param limit The maximum index
- * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see Array.reverse
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html Kotlin reverse()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
@@ -47,12 +48,12 @@ export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, 
         return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
             //#region -------------------- Initialization (starting/ending index) --------------------
 
-            const size = collection.size,
-                startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
-                endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
+            const size = collection.size
+            const startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,)
+            const endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
             if (endingIndex < startingIndex)
-                throw new RangeError(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`,)
+                throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, toIndex,)
 
             //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -62,12 +63,12 @@ export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, 
     return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
         //#region -------------------- Initialization (starting/ending index) --------------------
 
-        const size = collection.size,
-            startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
-            endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
+        const size = collection.size
+        const startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,)
+        const endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
         if (endingIndex < startingIndex)
-            throw new RangeError(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`,)
+            throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, limit,)
 
         //#endregion -------------------- Initialization (starting/ending index) --------------------
         //#region -------------------- Initialization (maximum index) --------------------
@@ -75,7 +76,7 @@ export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, 
         const maximumIndex = maximumIndexFunction(collection as NonEmptyCollectionHolder<T>, limit, size,)
 
         if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new RangeError(`The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`,)
+            throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`, limit,)
 
         //#endregion -------------------- Initialization (maximum index) --------------------
 

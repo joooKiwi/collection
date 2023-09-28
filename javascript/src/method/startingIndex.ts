@@ -9,6 +9,8 @@ import type {CollectionHolder}         from "../CollectionHolder"
 import type {Nullable, NullOr}         from "../general type"
 import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
 
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+
 /**
  * Get the starting index from a value between zero
  * and the {@link collection} {@link CollectionHolder.size size}
@@ -16,7 +18,7 @@ import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The starting index (or 0 by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
- * @throws {RangeError} The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
@@ -28,7 +30,7 @@ export function startingIndex<const T, >(collection: NonEmptyCollectionHolder<T>
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex The starting index (or 0 by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
- * @throws {RangeError} The index is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
@@ -43,16 +45,17 @@ export function startingIndex(collection: Nullable<CollectionHolder>, fromIndex:
 
     const collectionSize = size ?? collection.size
 
+    if (fromIndex == collectionSize)
+        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" is the collection size "${collectionSize}".`, fromIndex,)
+    if (fromIndex > collectionSize)
+        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" is over the collection size "${collectionSize}".`, fromIndex,)
+
     let startingIndex = fromIndex
-    if (startingIndex == collectionSize)
-        throw new RangeError(`The starting index "${fromIndex}" is the collection size "${collectionSize}".`,)
-    if (startingIndex > collectionSize)
-        throw new RangeError(`The starting index "${fromIndex}" is over the collection size "${collectionSize}".`,)
     if (startingIndex < 0)
         startingIndex += collectionSize
     if (startingIndex == collectionSize)
-        throw new RangeError(`The ending index "${fromIndex}" is the collection size after calculation from "${collectionSize} - ${Math.abs(fromIndex,)}".`,)
+        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" (${startingIndex} after calculation) is the collection size "${collectionSize}".`, fromIndex,)
     if (startingIndex < 0)
-        throw new RangeError(`The starting index "${fromIndex}" is under 0 after calculation from "${collectionSize} - ${Math.abs(fromIndex,)}".`,)
+        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" (${startingIndex} after calculation) is under 0.`, fromIndex,)
     return startingIndex
 }

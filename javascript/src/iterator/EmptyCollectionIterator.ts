@@ -10,9 +10,10 @@ import type {EmptyCollectionHolder}                                             
 import type {CollectionIterator}                                                                                           from "./CollectionIterator"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
-import {CollectionConstants}             from "../CollectionConstants"
-import {GenericAfterLastIteratorValue}   from "./value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue} from "./value/GenericBeforeFirstIteratorValue"
+import {CollectionConstants}                       from "../CollectionConstants"
+import {NoElementFoundInCollectionHolderException} from "../exception/NoElementFoundInCollectionHolderException"
+import {GenericAfterLastIteratorValue}             from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}           from "./value/GenericBeforeFirstIteratorValue"
 
 export class EmptyCollectionIterator
     implements CollectionIterator<never> {
@@ -77,7 +78,7 @@ export class EmptyCollectionIterator
     }
 
     public get nextValue(): never {
-        throw new ReferenceError("An empty collection iterator has no value to retrieve",)
+        throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",)
     }
 
 
@@ -86,7 +87,7 @@ export class EmptyCollectionIterator
     }
 
     public get previousValue(): never {
-        throw new ReferenceError("An empty collection iterator has no value to retrieve",)
+        throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",)
     }
 
     //#region -------------------- Loop methods --------------------

@@ -8,6 +8,8 @@
 import type {CollectionHandler} from "./Collection.handler"
 import type {ValueHolder}       from "./ValueHolder"
 
+import {EmptyCollectionHolderException} from "../exception/EmptyCollectionHolderException"
+
 /** A simple implementation of an empty {@link CollectionHandler} */
 export class EmptyCollectionHandler
     implements CollectionHandler<never> {
@@ -40,9 +42,8 @@ export class EmptyCollectionHandler
 
     //#endregion -------------------- Getter methods --------------------
 
-    public get(index: number,): ValueHolder<never>
-    public get(): ValueHolder<never> {
-        return { value: null, get cause() { return new ReferenceError("No value can exist in an empty collection",) }, }
+    public get(index: number,): ValueHolder<never> {
+        return { value: null, get cause() { return new EmptyCollectionHolderException("No value can exist in an empty collection", index,) }, }
     }
 
 }

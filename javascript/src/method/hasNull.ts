@@ -18,6 +18,8 @@ import type {Nullable}         from "../general type"
 export function hasNull(collection: Nullable<CollectionHolder>,): boolean {
     if (collection == null)
         return false
+    if (collection.isEmpty)
+        return false
 
     const size = collection.size
     let index = -1

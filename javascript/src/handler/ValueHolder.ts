@@ -5,12 +5,13 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {NullOr} from "../general type"
+import type {NullOr}                                    from "../general type"
+import type {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 
 export interface ValueHolder<out T = unknown, > {
 
     readonly value: NullOr<T>
 
-    get cause(): NullOr<ReferenceError>
+    get cause(): NullOr<CollectionHolderIndexOutOfBoundsException>
 
 }
