@@ -9,7 +9,7 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {Nullable}                                   from "../general type"
 
-import {firstOrNull} from "./firstOrNull"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 
 /**
  * Get the first element in the {@link collection}
@@ -21,7 +21,7 @@ import {firstOrNull} from "./firstOrNull"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
  * @extensionFunction
  */
-export function first<const T, >(collection: Nullable<CollectionHolder<T>>,): NonNullable<T>
+export function first<const T, >(collection: Nullable<CollectionHolder<T>>,): T
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -34,7 +34,7 @@ export function first<const T, >(collection: Nullable<CollectionHolder<T>>,): No
  * @throws {ReferenceError}  The first element found was <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */
-export function first<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
+export function first<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -47,20 +47,25 @@ export function first<const T, const S extends T, >(collection: Nullable<Collect
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @extensionFunction
  */
-export function first<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
+export function first<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T
 export function first<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
     if (collection == null)
         throw new TypeError("No element could be retrieved from a null value.",)
     if (collection.isEmpty)
-        throw new ReferenceError("No element at the index 0 could be found since it it empty.",)
+        throw new CollectionHolderIndexOutOfBoundsException("No element at the index 0 could be found since it it empty.", 0,)
+
     if (predicate == null) {
-        const element = firstOrNull(collection,)
-        if (element == null)
-            throw new ReferenceError("The first element is null in the collection.",)
-        return element
+        if (0 in collection)
+            return collection[0]
+        return collection.get(0,)
     }
-    const element = firstOrNull(collection, predicate,)
-    if (element == null)
-        throw new ReferenceError("The first element (with filter) is null in the collection.",)
-    return element
+
+    const size = collection.size
+    let index = -1
+    while (++index < size) {
+        const value = collection.get(index,)
+        if (predicate(value, index,))
+            return value
+    }
+    throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0,)
 }

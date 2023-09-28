@@ -42,7 +42,12 @@
       "require": "./dist/common javascript/index.js"
     },
 
-    "./handler": {
+    "./exception": {
+      "types":   "./dist/types/exception/index.d.ts",
+      "import":  "./dist/ecmascript module/exception/index.js",
+      "require": "./dist/common javascript/exception/index.js"
+    },
+     "./handler": {
       "types":   "./dist/types/handler/index.d.ts",
       "import":  "./dist/ecmascript module/handler/index.js",
       "require": "./dist/common javascript/handler/index.js"
@@ -72,6 +77,11 @@
       "types":   "./dist/types/*.d.ts",
       "import":  "./dist/ecmascript module/*.js",
       "require": "./dist/common javascript/*.js"
+    },
+    "./exception/*": {
+      "types":   "./dist/types/exception/*.d.ts",
+      "import":  "./dist/ecmascript module/exception/*.js",
+      "require": "./dist/common javascript/exception/*.js"
     },
     "./handler/*": {
       "types":   "./dist/types/handler/*.d.ts",

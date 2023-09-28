@@ -9,6 +9,8 @@ import type {CollectionHolder}         from "../CollectionHolder"
 import type {Nullable, NullOr}         from "../general type"
 import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
 
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+
 /**
  * Get a limit from a value between zero
  * and the {@link collection} {@link CollectionHolder.size size}
@@ -16,7 +18,7 @@ import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param limit The limit (or {@link CollectionHolder.size size} by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
- * @throws {RangeError} The limit is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
@@ -28,7 +30,7 @@ export function maximumIndex<const T, >(collection: Nullable<NonEmptyCollectionH
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param limit The limit (or {@link CollectionHolder.size size} by default)
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
- * @throws {RangeError} The limit is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyReturnsPositiveValue
  */
@@ -43,14 +45,15 @@ export function maximumIndex(collection: Nullable<CollectionHolder>, limit: Null
 
     const collectionSize = size ?? collection.size
 
-    let amountOfItem = limit
-    if (amountOfItem > collectionSize)
-        throw new RangeError(`The limit "${limit}"${limit} cannot over the collection size "${collectionSize}".`,)
-    if (amountOfItem < 0)
-        amountOfItem += collectionSize
-    if (amountOfItem < 0)
-        throw new RangeError(`The limit "${limit}" cannot under 0 after calculation from "${collectionSize} - ${Math.abs(limit)}".`,)
+    if (limit > collectionSize)
+        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" cannot over the collection size "${collectionSize}".`, limit,)
 
-    return amountOfItem
+    let maximumIndex = limit
+    if (maximumIndex < 0)
+        maximumIndex += collectionSize
+    if (maximumIndex < 0)
+        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" (${maximumIndex} after calculation) cannot under 0.`, limit,)
+
+    return maximumIndex
 
 }

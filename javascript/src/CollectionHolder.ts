@@ -112,8 +112,8 @@ export interface CollectionHolder<out T = unknown, >
      * Get the element at the specified index in the {@link CollectionHolder collection}
      *
      * @param index The index to retrieve a value
-     * @throws {ReferenceError} The index calculated is under zero
-     *         or over the {@link size} (after calculation)
+     * @throws CollectionHolderIndexOutOfBoundsException The index calculated is under zero
+     *             or over the {@link size} (after calculation)
      * @see ReadonlyArray.at
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html Kotlin get(index)
      * @see getOrElse
@@ -258,7 +258,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param toIndex The inclusive ending index
      * @param limit The maximum index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex},
+     *             {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item)
@@ -276,7 +277,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param toIndex The inclusive ending index
      * @param limit The maximum index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex},
+     *             {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item)
@@ -295,7 +297,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param toIndex The inclusive ending index
      * @param limit The maximum index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex},
+     *             {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
@@ -313,7 +316,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param toIndex The inclusive ending index
      * @param limit The maximum index
      * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex},
+     *             {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
@@ -331,7 +335,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
      * @param limit The maximum index
-     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex},
+     *             {@link toIndex} and {@link limit} are not within a valid range
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -349,7 +354,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param toIndex The inclusive ending index
      * @param limit The maximum index
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex},
+     *             {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
@@ -367,7 +373,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param toIndex The inclusive ending index
      * @param limit The maximum index
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex},
+     *             {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
@@ -384,7 +391,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param toIndex The inclusive ending index
      * @param limit The maximum index
      * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex},
+     *             {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
@@ -397,8 +405,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the first element in the current {@link CollectionHolder collection}
      *
-     * @throws {ReferenceError} The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws {ReferenceError} The element was <b>null</b> or <b>undefined</b>
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
      */
@@ -409,7 +416,7 @@ export interface CollectionHolder<out T = unknown, >
      * matching the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @throws {ReferenceError} The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      */
@@ -420,7 +427,7 @@ export interface CollectionHolder<out T = unknown, >
      * matching the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @throws {ReferenceError} The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      */
@@ -464,8 +471,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the last element in the current {@link CollectionHolder collection}
      *
-     * @throws {ReferenceError} The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws {ReferenceError} The element was <b>null</b> or <b>undefined</b>
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
      */
@@ -476,7 +482,7 @@ export interface CollectionHolder<out T = unknown, >
      * matching the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @throws {ReferenceError} The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      */
@@ -487,7 +493,7 @@ export interface CollectionHolder<out T = unknown, >
      * matching the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @throws {ReferenceError} The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      */
@@ -952,7 +958,7 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws ReferenceError
+     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -964,7 +970,7 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws ReferenceError
+     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -976,7 +982,7 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws ReferenceError
+     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -988,7 +994,7 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws ReferenceError
+     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -1000,7 +1006,7 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws ReferenceError
+     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -1015,7 +1021,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The starting index
      * @param toIndex The ending index
      * @param limit The maximum index
-     * @throws RangeError
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex},
+     *             {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -1030,8 +1037,9 @@ export interface CollectionHolder<out T = unknown, >
      * @param indicesOrFromIndex The given indices (or starting index)
      * @param toIndex The ending index
      * @param limit The maximum index
-     * @throws RangeError
-     * @throws ReferenceError
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex},
+     *             {@link toIndex} and {@link limit} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -1183,7 +1191,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex The inclusive ending index
      * @param limit The maximum index
-     * @throws {RangeError} The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed Array.toReverse()
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reversed.html Kotlin reversed()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
