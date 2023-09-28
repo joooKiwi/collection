@@ -106,7 +106,9 @@ export interface CollectionHolder<out T = unknown, >
     //#endregion -------------------- Has null methods --------------------
     //#region -------------------- Value methods --------------------
 
-    //#region -------------------- Get / at / "element at" methods --------------------
+    //#region -------------------- Get methods --------------------
+
+    //#region -------------------- Get methods --------------------
 
     /**
      * Get the element at the specified index in the {@link CollectionHolder collection}
@@ -138,6 +140,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     elementAt(index: number,): T
 
+    //#endregion -------------------- Get methods --------------------
+    //#region -------------------- Get or else methods --------------------
 
     /**
      * Get the element at the specified index in the current {@link CollectionHolder collection}
@@ -213,6 +217,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
+    //#endregion -------------------- Get or else methods --------------------
+    //#region -------------------- Get or null methods --------------------
 
     /**
      * Get the element at the specified index in the {@link CollectionHolder collection}
@@ -245,7 +251,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     elementAtOrNull(index: number,): NullOr<T>
 
-    //#endregion -------------------- Get / at / "element at" methods --------------------
+    //#endregion -------------------- Get or null methods --------------------
+
+    //#endregion -------------------- Get methods --------------------
     //#region -------------------- Index of methods --------------------
 
     /**
@@ -594,7 +602,7 @@ export interface CollectionHolder<out T = unknown, >
     none(predicate: Nullable<BooleanCallback<T>>,): boolean
 
     //#endregion -------------------- All / any / none methods --------------------
-    //#region -------------------- Has / includes / contains methods --------------------
+    //#region -------------------- Has methods --------------------
 
     /**
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
@@ -727,7 +735,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     containsAll(...values: readonly unknown[]): boolean
 
-    //#endregion -------------------- Has / includes / contains methods --------------------
+    //#endregion -------------------- Has methods --------------------
     //#region -------------------- Join methods --------------------
 
     /**
