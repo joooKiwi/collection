@@ -98,7 +98,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#region -------------------- Initialization (empty) --------------------
 
             if (size == 0) {
-                this.#size = CommonLazy.ZERO
+                this.#size = CommonLazy.ZERO_NUMBER
                 this.#isEmpty = CommonLazy.TRUE
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
@@ -119,7 +119,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                this.#size = CommonLazy.ONE
+                this.#size = CommonLazy.ONE_NUMBER
                 this.#handler = lazyOf(new ArrayCollectionOf1Handler(this, reference as unknown as (& REFERENCE & readonly [T,]),),)
                 return
             }
@@ -143,7 +143,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#region -------------------- Initialization (empty) --------------------
 
             if (size == 0) {
-                this.#size = CommonLazy.ZERO
+                this.#size = CommonLazy.ZERO_NUMBER
                 this.#isEmpty = CommonLazy.TRUE
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
@@ -164,7 +164,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                this.#size = CommonLazy.ONE
+                this.#size = CommonLazy.ONE_NUMBER
                 this.#handler = lazyOf(new SetCollectionOf1Handler(this, reference as (& REFERENCE & ReadonlySet<T>),),)
                 return
             }
@@ -188,7 +188,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                 //#region -------------------- Late-initialization (empty) --------------------
 
                 if (reference.isEmpty) {
-                    this.#size = CommonLazy.ZERO
+                    this.#size = CommonLazy.ZERO_NUMBER
                     this.#isEmpty = CommonLazy.TRUE
                     this.#hasNull = false
                     this.#array = CollectionConstants.EMPTY_ARRAY
@@ -212,7 +212,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                 //#region -------------------- Late-initialization (empty) --------------------
 
                 if (size == 0) {
-                    this.#size = CommonLazy.ZERO
+                    this.#size = CommonLazy.ZERO_NUMBER
                     this.#isEmpty = CommonLazy.TRUE
                     this.#hasNull = false
                     this.#array = CollectionConstants.EMPTY_ARRAY
@@ -228,7 +228,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
 
                 this.#isEmpty = CommonLazy.FALSE
                 if (size == 1)
-                    this.#size = CommonLazy.ONE
+                    this.#size = CommonLazy.ONE_NUMBER
                 return size
 
                 //#endregion -------------------- Late-initialization (non-empty) --------------------
@@ -243,7 +243,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                 //#region -------------------- Late-initialization (empty) --------------------
 
                 if (reference.collection.isEmpty) {
-                    this.#size = CommonLazy.ZERO
+                    this.#size = CommonLazy.ZERO_NUMBER
                     this.#isEmpty = CommonLazy.TRUE
                     this.#hasNull = false
                     this.#array = CollectionConstants.EMPTY_ARRAY
@@ -267,7 +267,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                 //#region -------------------- Late-initialization (empty) --------------------
 
                 if (size == 0) {
-                    this.#size = CommonLazy.ZERO
+                    this.#size = CommonLazy.ZERO_NUMBER
                     this.#isEmpty = CommonLazy.TRUE
                     this.#hasNull = false
                     this.#array = CollectionConstants.EMPTY_ARRAY
@@ -283,7 +283,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
 
                 this.#isEmpty = CommonLazy.FALSE
                 if (size == 1)
-                    this.#size = CommonLazy.ONE
+                    this.#size = CommonLazy.ONE_NUMBER
                 return size
 
                 //#endregion -------------------- Late-initialization (non-empty) --------------------
@@ -300,7 +300,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                     //#region -------------------- Late-initialization (empty) --------------------
 
                     if (size == 0) {
-                        this.#size = CommonLazy.ZERO
+                        this.#size = CommonLazy.ZERO_NUMBER
                         this.#isEmpty = CommonLazy.TRUE
                         this.#hasNull = false
                         this.#array = CollectionConstants.EMPTY_ARRAY
@@ -321,7 +321,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                     //#region -------------------- Late-initialization (size = 1) --------------------
 
                     if (size == 1) {
-                        this.#size = CommonLazy.ONE
+                        this.#size = CommonLazy.ONE_NUMBER
                         return new ArrayCollectionOf1Handler(this, referenceFound as unknown as (& REFERENCE & readonly [T,]),)
                     }
 
@@ -339,7 +339,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                     //#region -------------------- Late-initialization (empty) --------------------
 
                     if (size == 0) {
-                        this.#size = CommonLazy.ZERO
+                        this.#size = CommonLazy.ZERO_NUMBER
                         this.#isEmpty = CommonLazy.TRUE
                         this.#hasNull = false
                         this.#array = CollectionConstants.EMPTY_ARRAY
@@ -360,7 +360,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                     //#region -------------------- Late-initialization (size = 1) --------------------
 
                     if (size == 1) {
-                        this.#size = CommonLazy.ONE
+                        this.#size = CommonLazy.ONE_NUMBER
                         return new SetCollectionOf1Handler(this, referenceFound,)
                     }
 
@@ -386,7 +386,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                     //#region -------------------- Late-initialization (empty) --------------------
 
                     if (size == 0) {
-                        this.#size = CommonLazy.ZERO
+                        this.#size = CommonLazy.ZERO_NUMBER
                         this.#isEmpty = CommonLazy.TRUE
                         this.#hasNull = false
                         this.#array = CollectionConstants.EMPTY_ARRAY
@@ -405,7 +405,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                     //#region -------------------- Late-initialization (size = 1) --------------------
 
                     if (size == 1) {
-                        this.#size = CommonLazy.ONE
+                        this.#size = CommonLazy.ONE_NUMBER
                         return new IterableWithSizeCollectionHandler(this, referenceFound,)
                     }
 
@@ -425,7 +425,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                 //#region -------------------- Late-initialization (empty) --------------------
 
                 if (this._handler.isEmpty) {
-                    this.#size = CommonLazy.ZERO
+                    this.#size = CommonLazy.ZERO_NUMBER
                     this.#isEmpty = CommonLazy.TRUE
                     this.#hasNull = false
                     this.#array = CollectionConstants.EMPTY_ARRAY
@@ -449,7 +449,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
                 //#region -------------------- Late-initialization (empty) --------------------
 
                 if (size == 0) {
-                    this.#size = CommonLazy.ZERO
+                    this.#size = CommonLazy.ZERO_NUMBER
                     this.#isEmpty = CommonLazy.TRUE
                     this.#hasNull = false
                     this.#array = CollectionConstants.EMPTY_ARRAY
@@ -465,7 +465,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
 
                 this.#isEmpty = CommonLazy.FALSE
                 if (size == 1)
-                    this.#size = CommonLazy.ONE
+                    this.#size = CommonLazy.ONE_NUMBER
                 return size
 
                 //#endregion -------------------- Late-initialization (non-empty) --------------------
@@ -483,7 +483,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#region -------------------- Initialization (empty) --------------------
 
             if (size == 0) {
-                this.#size = CommonLazy.ZERO
+                this.#size = CommonLazy.ZERO_NUMBER
                 this.#isEmpty = CommonLazy.TRUE
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
@@ -501,7 +501,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             this.#handler = lazyOf(new IterableWithSizeCollectionHandler(this, reference,),)
 
             if (size == 1) {
-                this.#size = CommonLazy.ONE
+                this.#size = CommonLazy.ONE_NUMBER
                 return
             }
 
@@ -518,7 +518,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#region -------------------- Late-initialization (empty) --------------------
 
             if (this._handler.isEmpty) {
-                this.#size = CommonLazy.ZERO
+                this.#size = CommonLazy.ZERO_NUMBER
                 this.#isEmpty = CommonLazy.TRUE
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
@@ -542,7 +542,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#region -------------------- Late-initialization (empty) --------------------
 
             if (size == 0) {
-                this.#size = CommonLazy.ZERO
+                this.#size = CommonLazy.ZERO_NUMBER
                 this.#isEmpty = CommonLazy.TRUE
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
@@ -558,7 +558,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
 
             this.#isEmpty = CommonLazy.FALSE
             if (size == 1)
-                this.#size = CommonLazy.ONE
+                this.#size = CommonLazy.ONE_NUMBER
             return size
 
             //#endregion -------------------- Late-initialization (non-empty) --------------------
