@@ -28,3 +28,6 @@ export type Nullable<T, > = | T | null | undefined
 
 /** A simple type for the {@link Number} as itself or included in a {@link String} directly */
 export type NumberOrNumberInString = | number | `${number}`
+
+/** A simple type for the possible numeric data ({@link Number} or {@link BigInt} */
+export type PossibleNumeric = | number | Number | bigint | BigInt
