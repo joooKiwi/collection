@@ -53,7 +53,7 @@ export interface CollectionHolder<out T = unknown, >
     get length(): this["size"]
 
     /**
-     * Get the count ({@link CollectionHolder.length length} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder collection}
+     * Get the count ({@link CollectionHolder.size size} or {@link CollectionHolder.length length}) of the current {@link CollectionHolder collection}
      *
      * @alias size
      */
@@ -672,7 +672,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Tell that {@link values} are in the current {@link CollectionHolder collection}
+     * Tell that every value received is in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
@@ -685,7 +685,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(...values: readonly T[]): boolean
 
     /**
-     * Tell that {@link values} are in the current {@link CollectionHolder collection}
+     * Tell that every value received are in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
