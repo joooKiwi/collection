@@ -80,8 +80,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
 
 
     public get hasPrevious(): boolean {
-        const index = this._index
-        return index > 0 && index <= this.size
+        return this._index > 0
     }
 
     public get hasNext(): boolean {
