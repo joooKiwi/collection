@@ -8,7 +8,9 @@
 import type {CollectionHolder} from "../CollectionHolder"
 import type {ValueHolder}      from "./ValueHolder"
 
-import {AbstractCollectionHandler} from "./AbstractCollection.handler"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+import {AbstractCollectionHandler}                 from "./AbstractCollection.handler"
 
 /** A simple implementation of a {@link CollectionHolder} for an {@link ReadonlyArray array} */
 export class ArrayCollectionHandler<const out T = unknown, REFERENCE extends readonly T[] = readonly T[], const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
@@ -48,19 +50,35 @@ export class ArrayCollectionHandler<const out T = unknown, REFERENCE extends rea
     protected set _amountOfElementRetrieved(value: number,) {
         this.#amountOfElementRetrieved = value
     }
+
     //#endregion -------------------- Getter methods --------------------
 
     public get(index: number,): ValueHolder<T> {
+        if (this.isEmpty)
+            return { value: null, get cause() { return new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }, }
+
         const collection = this._collection
         if (index in collection)
             return { value: collection[index] as T, cause: null, }
 
-        const size = this.size,
-            indexToRetrieve = index < 0 ? size + index : index
+        const size = this.size
+        if (index > size)
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} is over the size of the collection (${size}).`, index,) }, }
+
+        if (index >= 0) {
+            if (this._hasFinished)
+                return { value: collection[index] as T, cause: null, }
+
+            if (size - 1 === this._amountOfElementRetrieved++)
+                this._hasFinished = true
+            return { value: collection[index] = this._reference[index] as T, cause: null, }
+        }
+
+        const indexToRetrieve = size + index
         if (indexToRetrieve < 0)
-            return { value: null, get cause() { return new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is under 0.`,) }, }
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is under 0.`, index,) }, }
         if (indexToRetrieve > size)
-            return { value: null, get cause() { return new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is over the size of the collection (${size}).`,) }, }
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,) }, }
 
         if (this._hasFinished)
             return { value: collection[indexToRetrieve] as T, cause: null, }

@@ -12,7 +12,9 @@ import type {IterableWithLength}       from "../iterable/IterableWithLength"
 import type {IterableWithPossibleSize} from "../iterable/IterableWithPossibleSize"
 import type {IterableWithSize}         from "../iterable/IterableWithSize"
 
-import {IterableCollectionHandler} from "./IterableCollection.handler"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+import {IterableCollectionHandler}                 from "./IterableCollection.handler"
 
 /**
  * A simple implementation of a {@link CollectionHandler} for an iterable with
@@ -101,6 +103,9 @@ export class IterableWithSizeCollectionHandler<const out T = unknown, REFERENCE 
     //#region -------------------- Methods --------------------
 
     public override get(index: number,): ValueHolder<T> {
+        if (this.isEmpty)
+            return { value: null, get cause() { return new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }, }
+
         if (!this._hasNoNumberSize)
             return super.get(index,)
 
@@ -109,19 +114,45 @@ export class IterableWithSizeCollectionHandler<const out T = unknown, REFERENCE 
             return { value: collection[index] as T, cause: null, }
 
         const size = this.size
-        const indexToRetrieve = index < 0 ? size + index : index
+        if (index > size)
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} is over the size of the collection (${size}).`, index,) }, }
+
+        if (index >= 0) {
+            if (this.hasFinished)
+                return { value: collection[index] as T, cause: null, }
+
+            const amountOfElementRetrieved = this._amountOfElementRetrieved
+            const iterator = this._iterator
+            let iteratorIndex = amountOfElementRetrieved - 1
+            let iteratorValue = iterator.next() as IteratorResult<T, unknown>
+            while (!iteratorValue.done) {
+                collection[++iteratorIndex] = iteratorValue.value
+                if (iteratorIndex !== index) {
+                    iteratorValue = iterator.next() as IteratorResult<T>
+                    continue
+                }
+
+                this._amountOfElementRetrieved = iteratorIndex + 1
+                return { value: collection[index] as T, cause: null, }
+            }
+            this._hasFinished = true
+
+            return { value: collection[iteratorIndex - 1] as T, cause: null, }
+        }
+
+        const indexToRetrieve = size + index
         if (indexToRetrieve < 0)
-            return { value: null, get cause() { return new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is under 0.`,) }, }
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is under 0.`, index,) }, }
         if (indexToRetrieve > size)
-            return { value: null, get cause() { return new ReferenceError(`The index ${index}${index === indexToRetrieve ? '' : ` (${indexToRetrieve} after calculation)`} is over the size of the collection (${size}).`,) }, }
+            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,) }, }
 
         if (this.hasFinished)
             return { value: collection[indexToRetrieve] as T, cause: null, }
 
-        const amountOfElementRetrieved = this._amountOfElementRetrieved,
-            iterator = this._iterator
-        let iteratorIndex = amountOfElementRetrieved - 1,
-            iteratorValue = iterator.next() as IteratorResult<T>
+        const amountOfElementRetrieved = this._amountOfElementRetrieved
+        const iterator = this._iterator
+        let iteratorIndex = amountOfElementRetrieved - 1
+        let iteratorValue = iterator.next() as IteratorResult<T, unknown>
         while (!iteratorValue.done) {
             collection[++iteratorIndex] = iteratorValue.value
             if (iteratorIndex !== indexToRetrieve) {
@@ -131,7 +162,7 @@ export class IterableWithSizeCollectionHandler<const out T = unknown, REFERENCE 
 
             this._amountOfElementRetrieved = iteratorIndex + 1
             if (indexToRetrieve > iteratorIndex)
-                return { value: null, get cause() { return new ReferenceError(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`,) }, }
+                return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} cannot be over the size of the collection (${iteratorIndex}).`, index,) }, }
             return { value: collection[indexToRetrieve] as T, cause: null, }
         }
         this._hasFinished = true
