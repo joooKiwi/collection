@@ -39,19 +39,30 @@ export class IterableWithSizeCollectionHandler<const out T = unknown, REFERENCE 
         const reference = this._reference
         if ("size" in reference) {
             const size = reference.size
-            if (size != null)
+            if (size != null) {
+                this.#isEmpty = size === 0
+                this.#hasNoNumberSize = false
                 return this.#size = size
+            }
         }
         if ("length" in reference) {
             const size = reference.length
-            if (size != null)
+            if (size != null) {
+                this.#isEmpty = size === 0
+                this.#hasNoNumberSize = false
                 return this.#size = size
+            }
         }
         if ("count" in reference) {
             const size = reference.count
-            if (size != null)
+            if (size != null) {
+                this.#isEmpty = size === 0
+                this.#hasNoNumberSize = false
                 return this.#size = size
+            }
         }
+
+        this.#isEmpty = true
         this.#hasNoNumberSize = true
         return this.#size = super.size
     }
@@ -78,6 +89,7 @@ export class IterableWithSizeCollectionHandler<const out T = unknown, REFERENCE 
         if ("size" in reference) {
             const size = reference.size
             if (size != null) {
+                this.#isEmpty = size === 0
                 this.#size = size
                 return this.#hasNoNumberSize = true
             }
@@ -85,6 +97,7 @@ export class IterableWithSizeCollectionHandler<const out T = unknown, REFERENCE 
         if ("length" in reference) {
             const size = reference.length
             if (size != null) {
+                this.#isEmpty = size === 0
                 this.#size = size
                 return this.#hasNoNumberSize = true
             }
@@ -92,6 +105,7 @@ export class IterableWithSizeCollectionHandler<const out T = unknown, REFERENCE 
         if ("count" in reference) {
             const size = reference.count
             if (size != null) {
+                this.#isEmpty = size === 0
                 this.#size = size
                 return this.#hasNoNumberSize = true
             }
