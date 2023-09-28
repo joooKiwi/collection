@@ -107,7 +107,7 @@ export class EmptyCollectionHolder
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
     public getOrElse<const U, >(index: number, defaultValue?: IndexWithReturnCallback<U>,): U {
         if (defaultValue == null)
-            this.get(index,)
+            this.get()
         return defaultValue(index,)
     }
 
