@@ -372,6 +372,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public override get(index: number,): T {
         if (this.isEmpty)
             throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        if (index in this)
+            return this[index] as T
 
         const size = this.size
         if (index > size)
