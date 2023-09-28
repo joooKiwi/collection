@@ -121,8 +121,8 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     //#region -------------------- Loop methods --------------------
 
     public forEach(operation: ValueIndexCallback<T>,): this {
-        const collection = this.collection,
-            size = this.size
+        const collection = this.collection
+        const size = this.size
 
         let index = this._index - 1
         while (++index < size)
@@ -132,8 +132,8 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     }
 
     public forEachIndexed(operation: IndexValueCallback<T>,): this {
-        const collection = this.collection,
-            size = this.size
+        const collection = this.collection
+        const size = this.size
 
         let index = this._index - 1
         while (++index < size)

@@ -340,9 +340,9 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
         return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
             //#region -------------------- Initialization (starting/ending index) --------------------
 
-            const size = collection.size,
-                startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
-                endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
+            const size = collection.size
+            const startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,)
+            const endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
             if (endingIndex < startingIndex)
                 throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`, toIndex,)
@@ -356,9 +356,9 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
     return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
         //#region -------------------- Initialization (starting/ending index) --------------------
 
-        const size = collection.size,
-            startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,),
-            endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
+        const size = collection.size
+        const startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,)
+        const endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
         if (endingIndex < startingIndex)
             throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex ?? ''}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex ?? ''}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`, toIndex,)
