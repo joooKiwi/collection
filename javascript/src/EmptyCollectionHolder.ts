@@ -226,39 +226,27 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Join methods --------------------
     //#region -------------------- Filter methods --------------------
 
-    public filter<const S extends never>(predicate?: RestrainedBooleanCallback<never, S>): CollectionHolder<S>
-    public filter(predicate?: BooleanCallback<never>): CollectionHolder<never>
-    public filter(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public filter<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>): this
+    public filter(predicate?: BooleanCallback<never>): this
+    public filter() { return this }
 
     public filterIndexed<const S extends never, >(predicate?: ReverseRestrainedBooleanCallback<never, S>,): CollectionHolder<S>
     public filterIndexed(predicate?: ReverseBooleanCallback<never>,): CollectionHolder<never>
-    public filterIndexed(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public filterIndexed() { return this }
 
 
-    public filterNot<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): CollectionHolder<Exclude<never, S>>
-    public filterNot(predicate?: BooleanCallback<never>,): CollectionHolder<never>
-    public filterNot(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public filterNot<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): this
+    public filterNot(predicate?: BooleanCallback<never>,): this
+    public filterNot() { return this }
 
-    public filterIndexedNot<const S extends never, >(predicate?: ReverseRestrainedBooleanCallback<never, S>,): CollectionHolder<S>
-    public filterIndexedNot(predicate?: ReverseBooleanCallback<never>,): CollectionHolder<never>
-    public filterIndexedNot(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public filterIndexedNot<const S extends never, >(predicate?: ReverseRestrainedBooleanCallback<never, S>,): this
+    public filterIndexedNot(predicate?: ReverseBooleanCallback<never>,): this
+    public filterIndexedNot() { return this }
 
 
-    public filterNotNull(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public filterNotNull(): this { return this }
 
-    public requireNoNulls(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public requireNoNulls(): this { return this }
 
     //#endregion -------------------- Filter methods --------------------
     //#region -------------------- Find methods --------------------
@@ -295,24 +283,16 @@ export class EmptyCollectionHolder
     //#region -------------------- Map methods --------------------
 
     public map<const U, >(transform?: ValueIndexWithReturnCallback<never, U>,): CollectionHolder<U>
-    public map(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public map() { return this }
 
     public mapIndexed<const U, >(transform?: IndexValueWithReturnCallback<never, U>,): CollectionHolder<U>
-    public mapIndexed(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public mapIndexed() { return this }
 
     public mapNotNull<const U extends NonNullable<unknown>, >(transform?: ValueIndexWithReturnCallback<never, Nullable<U>>,): CollectionHolder<U>
-    public mapNotNull<const U extends NonNullable<unknown>, >(): CollectionHolder<U> {
-        return this as unknown as CollectionHolder<U>
-    }
+    public mapNotNull() { return this }
 
     public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform?: IndexValueWithReturnCallback<never, Nullable<U>>,): CollectionHolder<U>
-    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(): CollectionHolder<U> {
-        return this as unknown as CollectionHolder<U>
-    }
+    public mapNotNullIndexed() { return this }
 
     //#endregion -------------------- Map methods --------------------
     //#region -------------------- ForEach methods --------------------
