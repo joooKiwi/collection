@@ -5,9 +5,12 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder} from "../CollectionHolder"
-import type {BooleanCallback}  from "../CollectionHolder.types"
-import type {Nullable}         from "../general type"
+import type {CollectionHolder}         from "../CollectionHolder"
+import type {BooleanCallback}          from "../CollectionHolder.types"
+import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
+import type {Nullable}                 from "../general type"
+
+//#region -------------------- Facade method --------------------
 
 /**
  * Check if <b>every</b> element in the {@link collection}
@@ -26,7 +29,35 @@ export function all<const T, >(collection: Nullable<CollectionHolder<T>>, predic
     if (collection.isEmpty)
         return false
 
+    if (predicate.length === 1)
+        return __with1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection as NonEmptyCollectionHolder<T>, predicate,)
+    return __with0Argument(collection as NonEmptyCollectionHolder<T>, predicate as () => boolean,)
+}
 
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Loop methods --------------------
+
+function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: () => boolean,) {
+    const size = collection.size
+    let index = -1
+    while (++index < size)
+        if (!predicate())
+            return false
+    return true
+}
+
+function __with1Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T,) => boolean,) {
+    const size = collection.size
+    let index = -1
+    while (++index < size)
+        if (!predicate(collection.get(index,),))
+            return false
+    return true
+}
+
+function __with2Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T, index: number,) => boolean,) {
     const size = collection.size
     let index = -1
     while (++index < size)
@@ -34,3 +65,5 @@ export function all<const T, >(collection: Nullable<CollectionHolder<T>>, predic
             return false
     return true
 }
+
+//#endregion -------------------- Loop methods --------------------
