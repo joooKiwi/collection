@@ -114,37 +114,37 @@ export class EmptyCollectionHolder
 
 
     public getOrNull(index?: number,): null
-    public getOrNull(): null { return null }
+    public getOrNull() { return null }
 
     public atOrNull(index?: number,): null
-    public atOrNull(): null { return null }
+    public atOrNull() { return null }
 
     public elementAtOrNull(index?: number,): null
-    public elementAtOrNull(): null { return null }
+    public elementAtOrNull() { return null }
 
     //#endregion -------------------- Get / at methods --------------------
     //#region -------------------- Index of methods --------------------
 
     public indexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOf(): null { return null }
+    public indexOf() { return null }
 
 
     public lastIndexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public lastIndexOf(): null { return null }
+    public lastIndexOf() { return null }
 
 
     public indexOfFirst(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfFirst(): null { return null }
+    public indexOfFirst() { return null }
 
     public indexOfFirstIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfFirstIndexed(): null { return null }
+    public indexOfFirstIndexed() { return null }
 
 
     public indexOfLast(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfLast(): null { return null }
+    public indexOfLast() { return null }
 
     public indexOfLastIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfLastIndexed(): null { return null }
+    public indexOfLastIndexed() { return null }
 
     //#endregion -------------------- Index of methods --------------------
     //#region -------------------- First methods --------------------
@@ -180,43 +180,43 @@ export class EmptyCollectionHolder
     //#region -------------------- All / any / none methods --------------------
 
     public all(predicate?: BooleanCallback<never>,): false
-    public all(): false { return false }
+    public all() { return false }
 
     public any(): this["isNotEmpty"]
     public any(predicate?: Nullable<BooleanCallback<never>>,): this["isNotEmpty"]
-    public any(): this["isNotEmpty"] { return false }
+    public any() { return false }
 
     public none(): this["isEmpty"]
     public none(predicate?: Nullable<BooleanCallback<never>>,): this["isEmpty"]
-    public none(): this["isEmpty"] { return true }
+    public none() { return true }
 
     //#endregion -------------------- All / any / none methods --------------------
     //#region -------------------- Has / includes / contains methods --------------------
 
     public hasOne(...values: readonly never[]): false
     public hasOne(...values: readonly unknown[]): false
-    public hasOne(): false { return false }
+    public hasOne() { return false }
 
     public includesOne(...values: readonly never[]): false
     public includesOne(...values: readonly unknown[]): false
-    public includesOne(): false { return false }
+    public includesOne() { return false }
 
     public containsOne(...values: readonly never[]): false
     public containsOne(...values: readonly unknown[]): false
-    public containsOne(): false { return false }
+    public containsOne() { return false }
 
 
     public hasAll(...values: readonly never[]): false
     public hasAll(...values: readonly unknown[]): false
-    public hasAll(): false { return false }
+    public hasAll() { return false }
 
     public includesAll(...values: readonly never[]): false
     public includesAll(...values: readonly unknown[]): false
-    public includesAll(): false { return false }
+    public includesAll() { return false }
 
     public containsAll(...values: readonly never[]): false
     public containsAll(...values: readonly unknown[]): false
-    public containsAll(): false { return false }
+    public containsAll() { return false }
 
     //#endregion -------------------- Has / includes / contains methods --------------------
     //#region -------------------- Join methods --------------------
@@ -256,19 +256,19 @@ export class EmptyCollectionHolder
 
     public find<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): null
     public find(predicate?: BooleanCallback<never>,): never
-    public find(): null { return null }
+    public find() { return null }
 
     public findIndexed<const S extends never, >(callback?: ReverseRestrainedBooleanCallback<never, S>,): null
     public findIndexed(predicate?: ReverseBooleanCallback<never>,): null
-    public findIndexed(): null { return null }
+    public findIndexed() { return null }
 
 
     public findLast<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): null
     public findLast(predicate?: BooleanCallback<never>,): null
-    public findLast(): null { return null }
+    public findLast() { return null }
 
     public findLastIndexed(predicate?: ReverseBooleanCallback<never>,): null
-    public findLastIndexed(): null { return null }
+    public findLastIndexed() { return null }
 
     //#endregion -------------------- Find methods --------------------
     //#region -------------------- Slice methods --------------------
