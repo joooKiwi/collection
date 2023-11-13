@@ -6,19 +6,20 @@
  ******************************************************************************/
 
 import type {CollectionHolder}                           from "../CollectionHolder"
-import type {CollectionHolderConstructor}                from "../CollectionHolderConstructor"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {Nullable}                                   from "../general type"
 
-import {CollectionConstants} from "../CollectionConstants"
-import {newInstance}         from "./newInstance"
+import {CollectionConstants}      from "../CollectionConstants"
+import {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
+
+//#region -------------------- Facade method --------------------
 
 /**
  * Get a new {@link CollectionHolder }
  * matching only the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate The given predicate
+ * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
@@ -32,12 +33,11 @@ export function filter<const T, const S extends T, >(collection: Nullable<Collec
  * matching only the given {@link predicate}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate The given predicate
+ * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filterNot
- * @typescriptDefinition
  * @extensionFunction
  */
 export function filter<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -47,15 +47,48 @@ export function filter<const T, const S extends T, >(collection: Nullable<Collec
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
-        const newArray = [] as T[],
-            size = collection.size
-        let index = -1
-        while (++index < size) {
-            const value = collection.get(index,)
-            if (predicate(value, index,))
-                newArray.push(value,)
-        }
-        return newArray
-    },)
+    if (predicate.length === 1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean,),)
+    if (predicate.length >= 2)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection as NonEmptyCollectionHolder<T>, predicate,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection as NonEmptyCollectionHolder<T>, predicate as () => boolean,),)
 }
+
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Loop methods --------------------
+
+function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: () => boolean,) {
+    const newArray = [] as T[]
+    const size = collection.size
+    let index = -1
+    while (++index < size)
+        if (predicate())
+            newArray.push(collection.get(index,),)
+    return newArray
+}
+
+function __with1Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T,) => boolean,) {
+    const newArray = [] as T[]
+    const size = collection.size
+    let index = -1
+    while (++index < size) {
+        const value = collection.get(index,)
+        if (predicate(value,))
+            newArray.push(value,)
+    }
+    return newArray
+}
+
+function __with2Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T, index: number,) => boolean,) {
+    const newArray = [] as T[]
+    const size = collection.size
+    let index = -1
+    while (++index < size) {
+        const value = collection.get(index,)
+        if (predicate(value, index,))
+            newArray.push(value,)
+    }
+    return newArray
+}
+
+//#endregion -------------------- Loop methods --------------------
