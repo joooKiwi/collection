@@ -989,6 +989,16 @@ export interface CollectionHolder<out T = unknown, >
     //#endregion -------------------- Find last methods --------------------
     //#region -------------------- Find last indexed methods --------------------
 
+    /**
+     * Get the last element found or <b>null</b> if nothing was found
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.findLast
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     * @typescriptDefinition
+     */
+    findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
      * Get the last element found or <b>null</b> if nothing was found

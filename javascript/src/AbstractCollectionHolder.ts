@@ -401,6 +401,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Find last methods --------------------
     //#region -------------------- Find last indexed methods --------------------
 
+    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T> {
         return findLastIndexed(this, predicate,)
     }

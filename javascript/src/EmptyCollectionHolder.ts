@@ -267,6 +267,7 @@ export class EmptyCollectionHolder
     public findLast(predicate?: BooleanCallback<never>,): null
     public findLast() { return null }
 
+    public findLastIndexed<const S extends never, >(callback?: ReverseRestrainedBooleanCallback<never, S>,): null
     public findLastIndexed(predicate?: ReverseBooleanCallback<never>,): null
     public findLastIndexed() { return null }
 
