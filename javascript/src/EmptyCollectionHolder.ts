@@ -92,36 +92,40 @@ export class EmptyCollectionHolder
         throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",)
     }
 
-    public at(index?: number,): never
-    public at(): never {
-        this.get()
-    }
+    public at(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }
 
-    public elementAt(index?: number,): never
-    public elementAt(): never {
-        this.get()
-    }
+    public elementAt(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }
 
 
     public getOrElse(index: number,): never
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
     public getOrElse<const U, >(index: number, defaultValue?: IndexWithReturnCallback<U>,): U {
         if (defaultValue == null)
-            this.get()
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        if (index == null)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
         return defaultValue(index,)
     }
 
     public atOrElse(index: number,): never
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
     public atOrElse<const U, >(index: number, defaultValue?: IndexWithReturnCallback<U>,): U {
-        return defaultValue == null ? this.getOrElse(index,) : this.getOrElse(index, defaultValue,)
+        if (defaultValue == null)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        if (index == null)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        return defaultValue(index,)
     }
 
 
     public elementAtOrElse(index: number,): never
     public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
     public elementAtOrElse<const U, >(index: number, defaultValue?: IndexWithReturnCallback<U>,): U {
-        return defaultValue == null ? this.getOrElse(index,) : this.getOrElse(index, defaultValue,)
+        if (defaultValue == null)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        if (index == null)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        return defaultValue(index,)
     }
 
 
@@ -131,14 +135,10 @@ export class EmptyCollectionHolder
     }
 
     public atOrNull(index?: number,): null
-    public atOrNull(): null {
-        return this.getOrNull()
-    }
+    public atOrNull(): null { return null }
 
     public elementAtOrNull(index?: number,): null
-    public elementAtOrNull(): null {
-        return this.getOrNull()
-    }
+    public elementAtOrNull(): null { return null }
 
     //#endregion -------------------- Get / at methods --------------------
     //#region -------------------- Index of methods --------------------
@@ -182,9 +182,7 @@ export class EmptyCollectionHolder
     public first(): never
     public first<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): never
     public first(predicate?: Nullable<BooleanCallback<never>>,): never
-    public first() {
-        this.get()
-    }
+    public first() { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",) }
 
     public firstOrNull(): null
     public firstOrNull<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): null
@@ -199,9 +197,7 @@ export class EmptyCollectionHolder
     public last(): never
     public last<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): never
     public last(predicate?: Nullable<BooleanCallback<never>>,): never
-    public last() {
-        this.get()
-    }
+    public last() { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",) }
 
     public lastOrNull(): null
     public lastOrNull<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): null
@@ -245,15 +241,11 @@ export class EmptyCollectionHolder
 
     public includesOne(...values: readonly never[]): false
     public includesOne(...values: readonly unknown[]): false
-    public includesOne(): false {
-        return this.hasOne()
-    }
+    public includesOne(): false { return false }
 
     public containsOne(...values: readonly never[]): false
     public containsOne(...values: readonly unknown[]): false
-    public containsOne(): false {
-        return this.hasOne()
-    }
+    public containsOne(): false { return false }
 
 
     public hasAll(...values: readonly never[]): false
@@ -264,15 +256,11 @@ export class EmptyCollectionHolder
 
     public includesAll(...values: readonly never[]): false
     public includesAll(...values: readonly unknown[]): false
-    public includesAll(): false {
-        return this.hasAll()
-    }
+    public includesAll(): false { return false }
 
     public containsAll(...values: readonly never[]): false
     public containsAll(...values: readonly unknown[]): false
-    public containsAll(): false {
-        return this.hasAll()
-    }
+    public containsAll(): false { return false }
 
     //#endregion -------------------- Has / includes / contains methods --------------------
     //#region -------------------- Join methods --------------------
