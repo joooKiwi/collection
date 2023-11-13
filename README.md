@@ -128,7 +128,7 @@ return null
 
 **Java**
 ```java
-if (index<= list.size())
+if (index <= list.size())
     return list.get(index);
 return null;
 ```
