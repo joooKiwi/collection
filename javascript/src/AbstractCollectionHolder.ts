@@ -236,9 +236,14 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     //#region -------------------- All / any / none methods --------------------
 
+    //#region -------------------- All methods --------------------
+
     public all(predicate: BooleanCallback<T>,): boolean {
         return all(this, predicate,)
     }
+
+    //#endregion -------------------- All methods --------------------
+    //#region -------------------- Any methods --------------------
 
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -246,14 +251,21 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return any(this, predicate,)
     }
 
+    //#endregion -------------------- Any methods --------------------
+    //#region -------------------- None methods --------------------
+
     public none(): this["isEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public none(predicate?: Nullable<BooleanCallback<T>>,): boolean {
         return none(this, predicate,)
     }
 
+    //#endregion -------------------- None methods --------------------
+
     //#endregion -------------------- All / any / none methods --------------------
-    //#region -------------------- Has / includes / contains methods --------------------
+    //#region -------------------- Has methods --------------------
+
+    //#region -------------------- Has one methods --------------------
 
     public hasOne(...values: readonly T[]): boolean
     public hasOne(...values: readonly unknown[]): boolean
@@ -273,6 +285,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.hasOne(...values,)
     }
 
+    //#endregion -------------------- Has one methods --------------------
+    //#region -------------------- Has all methods --------------------
 
     public hasAll(...values: readonly T[]): boolean
     public hasAll(...values: readonly unknown[]): boolean
@@ -292,7 +306,9 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.hasAll(...values,)
     }
 
-    //#endregion -------------------- Has / includes / contains methods --------------------
+    //#endregion -------------------- Has all methods --------------------
+
+    //#endregion -------------------- Has methods --------------------
     //#region -------------------- Join methods --------------------
 
     public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<ValueWithStringReturnCallback<T>>,): string {
@@ -302,11 +318,16 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Join methods --------------------
     //#region -------------------- Filter methods --------------------
 
+    //#region -------------------- Filter methods --------------------
+
     public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public filter<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
         return filter(this, predicate,)
     }
+
+    //#endregion -------------------- Filter methods --------------------
+    //#region -------------------- Filter indexed methods --------------------
 
     public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
@@ -314,6 +335,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return filterIndexed(this, predicate,)
     }
 
+    //#endregion -------------------- Filter indexed methods --------------------
+    //#region -------------------- Filter not methods --------------------
 
     public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -321,22 +344,34 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return filterNot(this, predicate,)
     }
 
+    //#endregion -------------------- Filter not methods --------------------
+    //#region -------------------- Filter indexed not methods --------------------
+
     public filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public filterIndexedNot<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
         return filterIndexedNot(this, predicate,)
     }
 
+    //#endregion -------------------- Filter indexed not methods --------------------
+    //#region -------------------- Filter not null methods --------------------
 
     public filterNotNull(): CollectionHolder<NonNullable<T>> {
         return filterNotNull(this,)
     }
 
+    //#endregion -------------------- Filter not null methods --------------------
+    //#region -------------------- Require not nulls methods --------------------
+
     public requireNoNulls(): CollectionHolder<NonNullable<T>> {
         return requireNoNulls(this,)
     }
 
+    //#endregion -------------------- Require not nulls methods --------------------
+
     //#endregion -------------------- Filter methods --------------------
+    //#region -------------------- Find methods --------------------
+
     //#region -------------------- Find methods --------------------
 
     public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
@@ -345,12 +380,17 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return find(this, predicate,)
     }
 
+    //#endregion -------------------- Find methods --------------------
+    //#region -------------------- Find indexed methods --------------------
+
     public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public findIndexed<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
         return findIndexed(this, predicate,)
     }
 
+    //#endregion -------------------- Find indexed methods --------------------
+    //#region -------------------- Find last methods --------------------
 
     public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public findLast(predicate: BooleanCallback<T>,): NullOr<T>
@@ -358,9 +398,14 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return findLast(this, predicate,)
     }
 
+    //#endregion -------------------- Find last methods --------------------
+    //#region -------------------- Find last indexed methods --------------------
+
     public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T> {
         return findLastIndexed(this, predicate,)
     }
+
+    //#endregion -------------------- Find last indexed methods --------------------
 
     //#endregion -------------------- Find methods --------------------
     //#region -------------------- Slice methods --------------------
@@ -379,34 +424,54 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
 
+    //#region -------------------- Map methods --------------------
+
     public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
         return map(this, transform,)
     }
+
+    //#endregion -------------------- Map methods --------------------
+    //#region -------------------- Map indexed methods --------------------
 
     public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
         return mapIndexed(this, transform,)
     }
 
+    //#endregion -------------------- Map indexed methods --------------------
+    //#region -------------------- Map not null methods --------------------
+
     public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return mapNotNull(this, transform,)
     }
+
+    //#endregion -------------------- Map not null methods --------------------
+    //#region -------------------- Map not null indexed methods --------------------
 
     public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return mapNotNullIndexed(this, transform,)
     }
 
+    //#endregion -------------------- Map not null indexed methods --------------------
+
     //#endregion -------------------- Map methods --------------------
-    //#region -------------------- ForEach methods --------------------
+    //#region -------------------- For each methods --------------------
+
+    //#region -------------------- For each methods --------------------
 
     public forEach(action: ValueIndexCallback<T>,): this {
         return forEach(this, action,)
     }
 
+    //#endregion -------------------- For each methods --------------------
+    //#region -------------------- For each indexed methods --------------------
+
     public forEachIndexed(action: IndexValueCallback<T>,): this {
         return forEachIndexed(this, action,)
     }
 
-    //#endregion -------------------- ForEach methods --------------------
+    //#endregion -------------------- For each indexed methods --------------------
+
+    //#endregion -------------------- For each methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------

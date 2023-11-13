@@ -550,6 +550,8 @@ export interface CollectionHolder<out T = unknown, >
 
     //#region -------------------- All / any / none methods --------------------
 
+    //#region -------------------- All methods --------------------
+
     /**
      * Check if <b>every</b> element in the current {@link CollectionHolder collection}
      * match the given {@link predicate}
@@ -561,6 +563,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     all(predicate: BooleanCallback<T>,): boolean
 
+    //#endregion -------------------- All methods --------------------
+    //#region -------------------- Any methods --------------------
 
     /**
      * Tell if the current {@link CollectionHolder collection} {@link CollectionHolder.isNotEmpty is not empty}
@@ -583,6 +587,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     any(predicate: Nullable<BooleanCallback<T>>,): boolean
 
+    //#endregion -------------------- All methods --------------------
+    //#region -------------------- None methods --------------------
 
     /**
      * Tell if the current {@link CollectionHolder collection} {@link isEmpty is empty}
@@ -601,8 +607,12 @@ export interface CollectionHolder<out T = unknown, >
      */
     none(predicate: Nullable<BooleanCallback<T>>,): boolean
 
+    //#endregion -------------------- None methods --------------------
+
     //#endregion -------------------- All / any / none methods --------------------
     //#region -------------------- Has methods --------------------
+
+    //#region -------------------- Has one methods --------------------
 
     /**
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
@@ -670,6 +680,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     containsOne(...values: readonly unknown[]): boolean
 
+    //#endregion -------------------- Has one methods --------------------
+    //#region -------------------- Has all methods --------------------
 
     /**
      * Tell that every value received is in the current {@link CollectionHolder collection}
@@ -735,6 +747,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     containsAll(...values: readonly unknown[]): boolean
 
+    //#endregion -------------------- Has all methods --------------------
+
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- Join methods --------------------
 
@@ -759,6 +773,8 @@ export interface CollectionHolder<out T = unknown, >
     join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<ValueWithStringReturnCallback<T>>,): string
 
     //#endregion -------------------- Join methods --------------------
+    //#region -------------------- Filter methods --------------------
+
     //#region -------------------- Filter methods --------------------
 
     /**
@@ -786,6 +802,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
+    //#endregion -------------------- Filter methods --------------------
+    //#region -------------------- Filter indexed methods --------------------
 
     /**
      * Get a new {@link CollectionHolder collection}
@@ -812,6 +830,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
+    //#endregion -------------------- Filter indexed methods --------------------
+    //#region -------------------- Filter not methods --------------------
 
     /**
      * Get a new {@link CollectionHolder}
@@ -838,6 +858,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
+    //#endregion -------------------- Filter not methods --------------------
+    //#region -------------------- Filter indexed not methods --------------------
 
     /**
      * Get a new {@link CollectionHolder}
@@ -864,6 +886,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
+    //#endregion -------------------- Filter indexed not methods --------------------
+    //#region -------------------- Filter not null methods --------------------
 
     /**
      * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
@@ -874,6 +898,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     filterNotNull(): CollectionHolder<NonNullable<T>>
 
+    //#endregion -------------------- Filter not null methods --------------------
+    //#region -------------------- Require not nulls methods --------------------
+
     /**
      * Require that no items are <b>null</b> or <b>undefined</b> in the current {@link CollectionHolder collection}
      *
@@ -883,7 +910,11 @@ export interface CollectionHolder<out T = unknown, >
      */
     requireNoNulls(): CollectionHolder<NonNullable<T>>
 
+    //#endregion -------------------- Require not nulls methods --------------------
+
     //#endregion -------------------- Filter methods --------------------
+    //#region -------------------- Find methods --------------------
+
     //#region -------------------- Find methods --------------------
 
     /**
@@ -907,6 +938,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     find(predicate: BooleanCallback<T>,): NullOr<T>
 
+    //#endregion -------------------- Find methods --------------------
+    //#region -------------------- Find indexed methods --------------------
 
     /**
      * Get the first element found or <b>null</b> if nothing was found
@@ -929,6 +962,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
 
+    //#endregion -------------------- Find indexed methods --------------------
+    //#region -------------------- Find last methods --------------------
 
     /**
      * Get the last element found or <b>null</b> if nothing was found
@@ -951,6 +986,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     findLast(predicate: BooleanCallback<T>,): NullOr<T>
 
+    //#endregion -------------------- Find last methods --------------------
+    //#region -------------------- Find last indexed methods --------------------
+
 
     /**
      * Get the last element found or <b>null</b> if nothing was found
@@ -962,8 +1000,12 @@ export interface CollectionHolder<out T = unknown, >
      */
     findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
 
+    //#endregion -------------------- Find last indexed methods --------------------
+
     //#endregion -------------------- Find methods --------------------
     //#region -------------------- Slice methods --------------------
+
+    //#region -------------------- Slice (indice) methods --------------------
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
@@ -1025,6 +1067,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     slice(indices: Iterable<number>,): CollectionHolder<T>
 
+    //#endregion -------------------- Slice (indice) methods --------------------
+    //#region -------------------- Slice (from, to, limit) methods --------------------
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
@@ -1041,6 +1085,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
 
+    //#endregion -------------------- Slice (from, to, limit) methods --------------------
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex}
@@ -1062,6 +1107,8 @@ export interface CollectionHolder<out T = unknown, >
     //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
 
+    //#region -------------------- Map methods --------------------
+
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
      * on each element of the current {@link CollectionHolder collection}
@@ -1073,6 +1120,9 @@ export interface CollectionHolder<out T = unknown, >
      * @see mapNotNull
      */
     map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U>
+
+    //#endregion -------------------- Map methods --------------------
+    //#region -------------------- Map indexed methods --------------------
 
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
@@ -1086,6 +1136,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U>
 
+    //#endregion -------------------- Map indexed methods --------------------
+    //#region -------------------- Map not null methods --------------------
 
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
@@ -1099,6 +1151,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U>
 
+    //#endregion -------------------- Map not null methods --------------------
+    //#region -------------------- Map not null indexed methods --------------------
+
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
      * on each non-null element of the current {@link CollectionHolder collection}
@@ -1111,8 +1166,12 @@ export interface CollectionHolder<out T = unknown, >
      */
     mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U>
 
+    //#endregion -------------------- Map not null indexed methods --------------------
+
     //#endregion -------------------- Map methods --------------------
-    //#region -------------------- ForEach methods --------------------
+    //#region -------------------- For each methods --------------------
+
+    //#region -------------------- For each methods --------------------
 
     /**
      * Perform a given {@link action} on each element
@@ -1126,6 +1185,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     forEach(action: ValueIndexCallback<T>,): this
 
+    //#endregion -------------------- For each methods --------------------
+    //#region -------------------- For each indexed methods --------------------
+
     /**
      * Perform a given {@link action} on each element
      * and return the current {@link CollectionHolder collection} afterwards
@@ -1138,7 +1200,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     forEachIndexed(action: IndexValueCallback<T>,): this
 
-    //#endregion -------------------- ForEach methods --------------------
+    //#endregion -------------------- For each indexed methods --------------------
+
+    //#endregion -------------------- For each methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------
