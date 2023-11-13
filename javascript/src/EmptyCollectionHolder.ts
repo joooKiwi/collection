@@ -42,41 +42,25 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Size methods --------------------
 
-    public get size(): 0 {
-        return 0
-    }
+    public get size(): 0 { return 0 }
 
-    public get length(): 0 {
-        return 0
-    }
+    public get length(): 0 { return 0 }
 
-    public get count(): 0 {
-        return 0
-    }
+    public get count(): 0 { return 0 }
 
 
-    public get isEmpty(): true {
-        return true
-    }
+    public get isEmpty(): true { return true }
 
-    public get isNotEmpty(): false {
-        return false
-    }
+    public get isNotEmpty(): false { return false }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Has X methods --------------------
 
-    public get hasNull(): false {
-        return false
-    }
+    public get hasNull(): false { return false }
 
-    public get includesNull(): false {
-        return false
-    }
+    public get includesNull(): false { return false }
 
-    public get containsNull(): false {
-        return false
-    }
+    public get containsNull(): false { return false }
 
     //#endregion -------------------- Has X methods --------------------
 
@@ -87,10 +71,7 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Get / at methods --------------------
 
-    public get(index?: number,): never
-    public get(): never {
-        throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",)
-    }
+    public get(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }
 
     public at(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }
 
@@ -130,9 +111,7 @@ export class EmptyCollectionHolder
 
 
     public getOrNull(index?: number,): null
-    public getOrNull(): null {
-        return null
-    }
+    public getOrNull(): null { return null }
 
     public atOrNull(index?: number,): null
     public atOrNull(): null { return null }
@@ -144,37 +123,25 @@ export class EmptyCollectionHolder
     //#region -------------------- Index of methods --------------------
 
     public indexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOf(): null {
-        return null
-    }
+    public indexOf(): null { return null }
 
 
     public lastIndexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public lastIndexOf(): null {
-        return null
-    }
+    public lastIndexOf(): null { return null }
 
 
     public indexOfFirst(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfFirst(): null {
-        return null
-    }
+    public indexOfFirst(): null { return null }
 
     public indexOfFirstIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfFirstIndexed(): null {
-        return null
-    }
+    public indexOfFirstIndexed(): null { return null }
 
 
     public indexOfLast(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfLast(): null {
-        return null
-    }
+    public indexOfLast(): null { return null }
 
     public indexOfLastIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfLastIndexed(): null {
-        return null
-    }
+    public indexOfLastIndexed(): null { return null }
 
     //#endregion -------------------- Index of methods --------------------
     //#region -------------------- First methods --------------------
@@ -187,9 +154,7 @@ export class EmptyCollectionHolder
     public firstOrNull(): null
     public firstOrNull<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): null
     public firstOrNull(predicate?: Nullable<BooleanCallback<never>>,): null
-    public firstOrNull() {
-        return null
-    }
+    public firstOrNull() { return null }
 
     //#endregion -------------------- First methods --------------------
     //#region -------------------- Last methods --------------------
@@ -202,9 +167,7 @@ export class EmptyCollectionHolder
     public lastOrNull(): null
     public lastOrNull<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): null
     public lastOrNull(predicate?: Nullable<BooleanCallback<never>>,): null
-    public lastOrNull() {
-        return null
-    }
+    public lastOrNull() { return null }
 
     //#endregion -------------------- Last methods --------------------
 
@@ -214,30 +177,22 @@ export class EmptyCollectionHolder
     //#region -------------------- All / any / none methods --------------------
 
     public all(predicate?: BooleanCallback<never>,): false
-    public all(): false {
-        return false
-    }
+    public all(): false { return false }
 
     public any(): this["isNotEmpty"]
     public any(predicate?: Nullable<BooleanCallback<never>>,): this["isNotEmpty"]
-    public any(): this["isNotEmpty"] {
-        return false
-    }
+    public any(): this["isNotEmpty"] { return false }
 
     public none(): this["isEmpty"]
     public none(predicate?: Nullable<BooleanCallback<never>>,): this["isEmpty"]
-    public none(): this["isEmpty"] {
-        return true
-    }
+    public none(): this["isEmpty"] { return true }
 
     //#endregion -------------------- All / any / none methods --------------------
     //#region -------------------- Has / includes / contains methods --------------------
 
     public hasOne(...values: readonly never[]): false
     public hasOne(...values: readonly unknown[]): false
-    public hasOne(): false {
-        return false
-    }
+    public hasOne(): false { return false }
 
     public includesOne(...values: readonly never[]): false
     public includesOne(...values: readonly unknown[]): false
@@ -250,9 +205,7 @@ export class EmptyCollectionHolder
 
     public hasAll(...values: readonly never[]): false
     public hasAll(...values: readonly unknown[]): false
-    public hasAll(): false {
-        return false
-    }
+    public hasAll(): false { return false }
 
     public includesAll(...values: readonly never[]): false
     public includesAll(...values: readonly unknown[]): false
@@ -312,27 +265,19 @@ export class EmptyCollectionHolder
 
     public find<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): null
     public find(predicate?: BooleanCallback<never>,): never
-    public find(): null {
-        return null
-    }
+    public find(): null { return null }
 
     public findIndexed<const S extends never, >(callback?: ReverseRestrainedBooleanCallback<never, S>,): null
     public findIndexed(predicate?: ReverseBooleanCallback<never>,): null
-    public findIndexed(): null {
-        return null
-    }
+    public findIndexed(): null { return null }
 
 
     public findLast<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): null
     public findLast(predicate?: BooleanCallback<never>,): null
-    public findLast(): null {
-        return null
-    }
+    public findLast(): null { return null }
 
     public findLastIndexed(predicate?: ReverseBooleanCallback<never>,): null
-    public findLastIndexed(): null {
-        return null
-    }
+    public findLastIndexed(): null { return null }
 
     //#endregion -------------------- Find methods --------------------
     //#region -------------------- Slice methods --------------------
@@ -344,9 +289,7 @@ export class EmptyCollectionHolder
     public slice(indices?: Iterable<number>,): this
     public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
     public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
-    public slice(): this {
-        return this
-    }
+    public slice(): this { return this }
 
     //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
@@ -375,75 +318,47 @@ export class EmptyCollectionHolder
     //#region -------------------- ForEach methods --------------------
 
     public forEach(action?: ValueIndexCallback<never>,): this
-    public forEach(): this {
-        return this
-    }
+    public forEach(): this { return this }
 
     public forEachIndexed(action?: IndexValueCallback<never>,): this
-    public forEachIndexed(): this {
-        return this
-    }
+    public forEachIndexed(): this { return this }
 
     //#endregion -------------------- ForEach methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------
 
-    public [Symbol.iterator](): EmptyCollectionIterator {
-        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
-    }
+    public [Symbol.iterator](): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
-    public get [Symbol.toStringTag](): CollectionHolderName {
-        return CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG
-    }
+    public get [Symbol.toStringTag](): CollectionHolderName { return CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG }
 
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public get objectValuesMap(): ReadonlyMap<never, never> {
-        return CollectionConstants.EMPTY_MAP
-    }
+    public get objectValuesMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP }
 
 
-    public toIterator(): EmptyCollectionIterator {
-        return this[Symbol.iterator]()
-    }
+    public toIterator(): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
 
-    public toArray(): readonly never[] {
-        return CollectionConstants.EMPTY_ARRAY
-    }
+    public toArray(): readonly never[] { return CollectionConstants.EMPTY_ARRAY }
 
-    public toMutableArray(): never[] {
-        return []
-    }
+    public toMutableArray(): never[] { return [] }
 
 
-    public toSet(): ReadonlySet<never> {
-        return CollectionConstants.EMPTY_SET
-    }
+    public toSet(): ReadonlySet<never> { return CollectionConstants.EMPTY_SET }
 
-    public toMutableSet(): Set<never> {
-        return new Set()
-    }
+    public toMutableSet(): Set<never> { return new Set() }
 
 
-    public toWeakSet(): Readonly<WeakSet<never>> {
-        return CollectionConstants.EMPTY_WEAK_SET
-    }
+    public toWeakSet(): Readonly<WeakSet<never>> { return CollectionConstants.EMPTY_WEAK_SET }
 
-    public toMutableWeakSet(): WeakSet<never> {
-        return new WeakSet()
-    }
+    public toMutableWeakSet(): WeakSet<never> { return new WeakSet() }
 
 
-    public toMap(): ReadonlyMap<never, never> {
-        return CollectionConstants.EMPTY_MAP
-    }
+    public toMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP }
 
-    public toMutableMap(): Map<never, never> {
-        return new Map<never, never>()
-    }
+    public toMutableMap(): Map<never, never> { return new Map<never, never>() }
 
 
     public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
@@ -452,13 +367,9 @@ export class EmptyCollectionHolder
     }
 
 
-    public toString(): "[]" {
-        return "[]"
-    }
+    public toString(): "[]" { return "[]" }
 
-    public toLocaleString(): "[]" {
-        return "[]"
-    }
+    public toLocaleString(): "[]" { return "[]" }
 
     //#endregion -------------------- Conversion methods --------------------
 
