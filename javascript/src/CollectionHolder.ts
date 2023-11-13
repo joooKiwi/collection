@@ -1239,7 +1239,7 @@ export interface CollectionHolder<out T = unknown, >
     get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>>
 
 
-    /** Convert the current {@link CollectionHolder collection} to a new {@link IterableIterator} */
+    /** Convert the current {@link CollectionHolder collection} to a new {@link CollectionIterator} */
     toIterator(): CollectionIterator<T>
 
 
