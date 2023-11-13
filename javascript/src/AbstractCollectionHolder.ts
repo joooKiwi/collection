@@ -5,10 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
-import type {CollectionHolder}                                                                                                                                                                                                                                                                                 from "./CollectionHolder"
-import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                                            from "./general type"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                               from "./iterator/CollectionIterator"
+import type {BooleanCallback, CollectionHolderName, IndexWithReturnCallback, IndexValueCallback, IndexValueWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                  from "./CollectionHolder"
+import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                             from "./general type"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 
 import {CollectionConstants} from "./CollectionConstants"
 import {all}                 from "./method/all"
@@ -311,7 +311,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- Join methods --------------------
 
-    public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<ValueWithStringReturnCallback<T>>,): string {
+    public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<StringCallback<T>>,): string {
         return join(this, separator, prefix, postfix, limit, truncated, transform,)
     }
 

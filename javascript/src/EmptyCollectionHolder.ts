@@ -5,11 +5,11 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                                       from "./CollectionHolder"
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
-import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                                       from "./general type"
-import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/EmptyCollectionIterator"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                     from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                                                                                                                                                                                        from "./CollectionHolder"
+import type {BooleanCallback, CollectionHolderName, IndexWithReturnCallback, IndexValueCallback, IndexValueWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
+import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                        from "./general type"
+import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                 from "./iterator/EmptyCollectionIterator"
+import type {CollectionIterator}                                                                                                                                                                                                                                                      from "./iterator/CollectionIterator"
 
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {CollectionConstants}                       from "./CollectionConstants"
@@ -221,7 +221,7 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Has / includes / contains methods --------------------
     //#region -------------------- Join methods --------------------
 
-    public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<ValueWithStringReturnCallback<never>>,): string
+    public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<StringCallback<never>>,): string
     public join(_separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>,): string {
         return `${prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX}${postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX}`
     }
