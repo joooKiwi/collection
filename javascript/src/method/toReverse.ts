@@ -5,15 +5,13 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}            from "../CollectionHolder"
-import type {CollectionHolderConstructor} from "../CollectionHolderConstructor"
-import type {Nullable}                    from "../general type"
-import type {NonEmptyCollectionHolder}    from "../NonEmptyCollectionHolder"
+import type {CollectionHolder}         from "../CollectionHolder"
+import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
+import type {Nullable}                 from "../general type"
 
 import {CollectionConstants}                       from "../CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {endingIndex as endingIndexFunction}        from "./endingIndex"
-import {newInstance}                               from "./newInstance"
 import {maximumIndex as maximumIndexFunction}      from "./maximumIndex"
 import {startingIndex as startingIndexFunction}    from "./startingIndex"
 
@@ -21,9 +19,9 @@ import {startingIndex as startingIndexFunction}    from "./startingIndex"
  * Reverse the {@link collection} from a range (if provided)
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param fromIndex The inclusive starting index
- * @param toIndex The inclusive ending index
- * @param limit The maximum index
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The maximum index
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see Array.reverse
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html Kotlin reverse()
@@ -37,7 +35,7 @@ export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, 
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if(fromIndex === 0 && toIndex === 0)
+    if (fromIndex === 0 && toIndex === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (limit === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -45,7 +43,7 @@ export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, 
     //#endregion -------------------- Early returns --------------------
 
     if (limit == null)
-        return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
+        return new CollectionConstants.LazyGenericCollectionHolder(() => {
             //#region -------------------- Initialization (starting/ending index) --------------------
 
             const size = collection.size
@@ -53,15 +51,14 @@ export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, 
             const endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
             if (endingIndex < startingIndex)
-                throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, toIndex,)
+                throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`}.`, toIndex,)
 
             //#endregion -------------------- Initialization (starting/ending index) --------------------
 
-            return withoutALimit(collection as NonEmptyCollectionHolder<T>, startingIndex, endingIndex,)
+            return __withoutALimit(collection as NonEmptyCollectionHolder<T>, startingIndex, endingIndex,)
         },)
-
-    return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
-        //#region -------------------- Initialization (starting/ending index) --------------------
+    return new CollectionConstants.LazyGenericCollectionHolder(() => {
+        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
         const size = collection.size
         const startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,)
@@ -70,29 +67,26 @@ export function toReverse<const T, >(collection: Nullable<CollectionHolder<T>>, 
         if (endingIndex < startingIndex)
             throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, limit,)
 
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-        //#region -------------------- Initialization (maximum index) --------------------
-
         const maximumIndex = maximumIndexFunction(collection as NonEmptyCollectionHolder<T>, limit, size,)
-
         if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`, limit,)
+            throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}"${limit == maximumIndex ? "" : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ""}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`} to "${toIndex ?? ""}"${toIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}`, limit,)
 
-        //#endregion -------------------- Initialization (maximum index) --------------------
+        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
 
-        return withALimit(collection as NonEmptyCollectionHolder<T>, startingIndex, endingIndex, maximumIndex,)
+        return __withALimit(collection as NonEmptyCollectionHolder<T>, startingIndex, endingIndex, maximumIndex,)
     },)
 }
 
-function withoutALimit<const T, >(collection: NonEmptyCollectionHolder<T>, startingIndex: number, endingIndex: number,): T[] {
-    const newArray = [] as T[]
+function __withoutALimit<const T, >(collection: NonEmptyCollectionHolder<T>, startingIndex: number, endingIndex: number,) {
+    const newArray = new Array<T>(endingIndex - startingIndex,)
+    let indexAdded = -1
     let index = endingIndex + 1
     while (--index >= startingIndex)
-        newArray.push(collection.get(index,),)
+        newArray[++indexAdded] = collection.get(index,)
     return newArray
 }
 
-function withALimit<const T,>(collection: NonEmptyCollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,):T[] {
+function __withALimit<const T, >(collection: NonEmptyCollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,) {
     const newArray = [] as T[]
     let index = endingIndex + 1
     while (--index >= startingIndex) {
