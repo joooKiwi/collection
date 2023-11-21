@@ -7,7 +7,7 @@
 
 import {A, A_NULL_B_UNDEFINED, AB, AB12, AB_OBJECT, AB_AB, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, ABCDEFGHIJ, EMPTY, NULL_ABCD, SINGULAR_A_OBJECT, SINGULAR_B_OBJECT, UNDEFINED_ABCD} from "./constantCollections"
 import {iterableCreation, everyInstances, nonPresentItem, sizeValues, TEMPLATE_ITEMS}                                                                                                      from "./constantValues"
-import {newCollectionInstance}                                                                                                                                                             from "./newCollectionInstance"
+import {newCollectionInstance, newCollectionInstanceFromCallback}                                                                                                                          from "./newCollectionInstance"
 
 import {CollectionConstants}                       from "../src/CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
@@ -16,30 +16,46 @@ import {GenericCollectionIterator}                 from "../src/iterator/Generic
 
 describe("CollectionHolderTest", () => {
 describe.each(everyInstances,)("%s", ({value: instance,},) => {
-describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
     //#region -------------------- Instances --------------------
 
-    const EMPTY_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, EMPTY,),
-        A_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, A,),
-        AB_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, AB,),
-        AB_OBJECT_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, AB_OBJECT,),
-        A_NULL_B_UNDEFINED_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, A_NULL_B_UNDEFINED,),
-        AB12_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, AB12,),
-        ABCD_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, ABCD,),
-        AB_AB_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, AB_AB,),
-        ABCDEFGHIJ_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, ABCDEFGHIJ,),
-        ABCD_ABCD_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, ABCD_ABCD,),
-        NULL_ABCD_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, NULL_ABCD,),
-        ABCD_NULL_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, ABCD_NULL,),
-        UNDEFINED_ABCD_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, UNDEFINED_ABCD,),
-        ABCD_UNDEFINED_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, ABCD_UNDEFINED,),
-        TEMPLATE_ITEMS_INSTANCE = () => newCollectionInstance(instance, arrayOrSetCreation, TEMPLATE_ITEMS,)
+    const EMPTY_INSTANCE = () => newCollectionInstance(instance, EMPTY,),
+        A_INSTANCE = () => newCollectionInstance(instance, A,),
+        AB_INSTANCE = () => newCollectionInstance(instance, AB,),
+        AB_OBJECT_INSTANCE = () => newCollectionInstance(instance, AB_OBJECT,),
+        A_NULL_B_UNDEFINED_INSTANCE = () => newCollectionInstance(instance, A_NULL_B_UNDEFINED,),
+        AB12_INSTANCE = () => newCollectionInstance(instance, AB12,),
+        ABCD_INSTANCE = () => newCollectionInstance(instance, ABCD,),
+        AB_AB_INSTANCE = () => newCollectionInstance(instance, AB_AB,),
+        ABCDEFGHIJ_INSTANCE = () => newCollectionInstance(instance, ABCDEFGHIJ,),
+        ABCD_ABCD_INSTANCE = () => newCollectionInstance(instance, ABCD_ABCD,),
+        NULL_ABCD_INSTANCE = () => newCollectionInstance(instance, NULL_ABCD,),
+        ABCD_NULL_INSTANCE = () => newCollectionInstance(instance, ABCD_NULL,),
+        UNDEFINED_ABCD_INSTANCE = () => newCollectionInstance(instance, UNDEFINED_ABCD,),
+        ABCD_UNDEFINED_INSTANCE = () => newCollectionInstance(instance, ABCD_UNDEFINED,),
+        TEMPLATE_ITEMS_INSTANCE = () => newCollectionInstance(instance, TEMPLATE_ITEMS,)
 
     //#endregion -------------------- Instances --------------------
 
+    describe("constructor", () => describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
+        test("empty",                        () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, EMPTY,).toArray(),).toEqual(EMPTY,),)
+        test("a",                            () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, A,).toArray(),).toEqual(A,),)
+        test("a, b",                         () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, AB,).toArray(),).toEqual(AB,),)
+        test("a, b (as object)",             () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, AB_OBJECT,).toArray(),).toEqual(AB_OBJECT,),)
+        test("a, nul, b, undefined",         () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, A_NULL_B_UNDEFINED,).toArray(),).toEqual(A_NULL_B_UNDEFINED,),)
+        test("a, b, 1, 2",                   () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, AB12,).toArray(),).toEqual(AB12,),)
+        test("a, b, c, d",                   () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, ABCD,).toArray(),).toEqual(ABCD,),)
+        test("a, b, A, B",                   () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, AB_AB,).toArray(),).toEqual(AB_AB,),)
+        test("a, b, c, d, e, f, g, h, i, j", () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, ABCDEFGHIJ,).toArray(),).toEqual(ABCDEFGHIJ,),)
+        test("a, b, c, d, A, B, C, D",       () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, ABCD_ABCD,).toArray(),).toEqual(ABCD_ABCD,),)
+        test("null, a, b, c, d",             () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, NULL_ABCD,).toArray(),).toEqual(NULL_ABCD,),)
+        test("a, b, c, d, null",             () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, ABCD_NULL,).toArray(),).toEqual(ABCD_NULL,),)
+        test("undefined, a, b, c, d",        () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, UNDEFINED_ABCD,).toArray(),).toEqual(UNDEFINED_ABCD,),)
+        test("a, b, c, d, undefined",        () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, ABCD_UNDEFINED,).toArray(),).toEqual(ABCD_UNDEFINED,),)
+        test("[template items]",             () => expect(newCollectionInstanceFromCallback(instance, arrayOrSetCreation, TEMPLATE_ITEMS,).toArray(),).toEqual(TEMPLATE_ITEMS,),)
+    },),)
     describe("size", () => {
     describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
-        const newInstance = () => newCollectionInstance(instance, arrayOrSetCreation, array,)
+        const newInstance = () => newCollectionInstance(instance, array,)
         test("size", () => expect(newInstance().size,).toEqual(size,),)
         test("length", () => expect(newInstance().length,).toEqual(size,),)
         test("count", () => expect(newInstance().count,).toEqual(size,),)
@@ -1384,22 +1400,22 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test("-10", () => expect(() => ABCD_INSTANCE().slice(new Set([-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by collection", () => {
-            test("empty", () => expect(AB_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [],),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test('0', () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [0,],),).toArray(),).toEqual(['a',],),)
-            test('1', () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [1,],),).toArray(),).toEqual(['b',],),)
-            test("-1", () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-1,],),).toArray(),).toEqual(['d',],),)
-            test("-2", () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-2,],),).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, arrayOrSetCreation, [-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("empty", () => expect(AB_INSTANCE().slice(newCollectionInstance(instance, [],),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test('0', () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, [0,],),).toArray(),).toEqual(['a',],),)
+            test('1', () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, [1,],),).toArray(),).toEqual(['b',],),)
+            test("-1", () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, [-1,],),).toArray(),).toEqual(['d',],),)
+            test("-2", () => expect(ABCD_INSTANCE().slice(newCollectionInstance(instance, [-2,],),).toArray(),).toEqual(['c',],),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, [10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice(newCollectionInstance(instance, [-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by collection iterator", () => {
-            test("empty", () => expect(AB_INSTANCE().slice(new GenericCollectionIterator<never>(newCollectionInstance(instance, arrayOrSetCreation, [],),),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test('0', () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<0>(newCollectionInstance(instance, arrayOrSetCreation, [0,],),),).toArray(),).toEqual(['a',],),)
-            test('1', () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<1>(newCollectionInstance(instance, arrayOrSetCreation, [1,],),),).toArray(),).toEqual(['b',],),)
-            test("-1", () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<-1>(newCollectionInstance(instance, arrayOrSetCreation, [-1,],),),).toArray(),).toEqual(['d',],),)
-            test("-2", () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<-2>(newCollectionInstance(instance, arrayOrSetCreation, [-2,],),),).toArray(),).toEqual(['c',],),)
-            test("10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<10>(newCollectionInstance(instance, arrayOrSetCreation, [10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-            test("-10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<-10>(newCollectionInstance(instance, arrayOrSetCreation, [-10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("empty", () => expect(AB_INSTANCE().slice(new GenericCollectionIterator<never>(newCollectionInstance(instance, [],),),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test('0', () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<0>(newCollectionInstance(instance, [0,],),),).toArray(),).toEqual(['a',],),)
+            test('1', () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<1>(newCollectionInstance(instance, [1,],),),).toArray(),).toEqual(['b',],),)
+            test("-1", () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<-1>(newCollectionInstance(instance, [-1,],),),).toArray(),).toEqual(['d',],),)
+            test("-2", () => expect(ABCD_INSTANCE().slice(new GenericCollectionIterator<-2>(newCollectionInstance(instance, [-2,],),),).toArray(),).toEqual(['c',],),)
+            test("10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<10>(newCollectionInstance(instance, [10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => ABCD_INSTANCE().slice(new GenericCollectionIterator<-10>(newCollectionInstance(instance, [-10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         },)
         describe("by iterable", () => {
             test("empty", () => expect(AB_INSTANCE().slice({ [Symbol.iterator]() { return [][Symbol.iterator]() }, },),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -1686,4 +1702,4 @@ describe.each(iterableCreation,)("%s", ({value: arrayOrSetCreation,},) => {
             test("size", () => expect(AB_INSTANCE().toMutableMap().size,).toBe(2,),)
         })
     },)
-},) },) },)
+},) },)
