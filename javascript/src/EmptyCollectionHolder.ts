@@ -357,6 +357,8 @@ export class EmptyCollectionHolder
     public toLocaleString(locale?: Nullable<string>,): "[]"
     public toLocaleString(): "[]" { return "[]" }
 
+    public toLowerCaseString(): "[]" { return "[]" }
+
     //#endregion -------------------- Conversion methods --------------------
 
     //#endregion -------------------- Methods --------------------

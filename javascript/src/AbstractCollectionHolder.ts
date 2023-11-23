@@ -552,6 +552,10 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return toLocaleString(this, locale,)
     }
 
+    public toLowerCaseString(): string {
+        return toLowerCaseString(this,)
+    }
+
     }
 
     //#endregion -------------------- Conversion methods (toString) --------------------
