@@ -11,6 +11,15 @@ import type {Nullable}                 from "../general type"
 
 import {asLocaleUpperCaseString} from "./asString"
 
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toLocaleUpperCase toLocaleUpperCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param locale     The possible locale to apply on each value
+ * @see String.toLocaleUpperCase
+ * @extensionFunction
+ */
 export function toLocaleUpperCaseString<const T, >(collection: Nullable<CollectionHolder<T>>, locale?: Nullable<string>,): string {
     if (collection == null)
         return "[]"

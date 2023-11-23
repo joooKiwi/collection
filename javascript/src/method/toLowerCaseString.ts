@@ -10,6 +10,14 @@ import type {Nullable}         from "../general type"
 
 import {asLowerCaseString} from "./asString"
 
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toLowerCase toLowerCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @see String.toLowerCase
+ * @extensionFunction
+ */
 export function toLowerCaseString<const T, >(collection: Nullable<CollectionHolder<T>>,): string {
     if (collection == null)
         return "[]"
