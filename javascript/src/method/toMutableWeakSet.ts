@@ -21,11 +21,11 @@ export function toMutableWeakSet<const T, >(collection: Nullable<CollectionHolde
     if (collection.isEmpty)
         return new WeakSet()
 
-    const weakSet = new WeakSet<ObjectOf<T>>,
-        size = collection.size,
-        objectValues = collection.objectValuesMap
+    const size = collection.size
+    const weakSet = new WeakSet<ObjectOf<T>>
+    const objectValues = collection.objectValuesMap
     let index = -1
     while (++index < size)
-        weakSet.add(objectValues.get(collection.get(index,),) as ObjectOf<T>,)
+        weakSet.add(objectValues.get(collection.get(index,),)!,)
     return weakSet
 }

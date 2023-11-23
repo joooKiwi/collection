@@ -34,8 +34,8 @@ export function isCollectionIterator(value: unknown,): boolean {
     if (typeof value != "object")
         return false
 
-    const everyMethods = CollectionConstants.EVERY_ITERATOR_METHODS,
-        size = everyMethods.length
+    const everyMethods = CollectionConstants.EVERY_ITERATOR_METHODS
+    const size = everyMethods.length
     let index = -1
     while (++index < size)
         if (!(everyMethods[index]! in value))
