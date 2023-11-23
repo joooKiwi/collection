@@ -1288,23 +1288,26 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Conversion methods (toString) --------------------
 
     /**
-     * Convert the current {@link CollectionHolder collection} to {@link String} using the {@link join} method
+     * Convert the current {@link CollectionHolder collection} to a {@link String} for every value
+     * by calling its "<i>{@link Object.toString toString()}</i>" method
      *
      * @see Array.toString
+     * @see Object.toString
      */
     toString(): string
 
     /**
-     * Convert the current {@link CollectionHolder collection} to {@link String} using the {@link join} method
-     * and calling its "<i>{@link Object.toLocaleString toLocaleString()}</i>" method.
+     * Convert the current {@link CollectionHolder collection} to a {@link String} for every value
+     * by calling its "<i>{@link Object.toLocaleString toLocaleString()}</i>" method
      *
      * @param locale The possible locale to apply on each value
      * @see Array.toLocaleString
+     * @see Object.toLocaleString
      * @see Date.toLocaleString
      * @see Number.toLocaleString
      * @see BigInt.toLocaleString
      */
-    toLocaleString(): string
+    toLocaleString(locale?: Nullable<string>,): string
 
 
     /**
