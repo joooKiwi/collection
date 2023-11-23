@@ -48,6 +48,7 @@ import {requireNoNulls}      from "./method/requireNoNulls"
 import {slice}               from "./method/slice"
 import {toArray}             from "./method/toArray"
 import {toIterator}          from "./method/toIterator"
+import {toLocaleString}      from "./method/toLocaleString"
 import {toMutableArray}      from "./method/toMutableArray"
 import {toMutableSet}        from "./method/toMutableSet"
 import {toMutableMap}        from "./method/toMutableMap"
@@ -542,10 +543,10 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     public toString(): string {
         return this.join()
+    public toLocaleString(locale?: Nullable<string>,): string {
+        return toLocaleString(this, locale,)
     }
 
-    public toLocaleString(): string {
-        return this.join(null, null, null, null, null, it => it?.toLocaleString() ?? `${it}`,)
     }
 
     //#endregion -------------------- Conversion methods --------------------
