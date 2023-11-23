@@ -1,14 +1,18 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Every test on CollectionHolder" type="JavaScriptTestRunnerJest">
-    <node-interpreter value="project" />
-    <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-    <working-dir value="$PROJECT_DIR$" />
-    <envs />
-    <scope-kind value="SUITE" />
-    <test-file value="$PROJECT_DIR$/test/CollectionHolder.test.ts" />
-    <test-names>
-      <test-name value="CollectionHolderTest" />
-    </test-names>
+  <configuration default="false" name="Every test on CollectionHolder" type="CompoundRunConfigurationType">
+    <toRun name="all / any / none" type="JavaScriptTestRunnerJest" />
+    <toRun name="constructor" type="JavaScriptTestRunnerJest" />
+    <toRun name="conversion" type="JavaScriptTestRunnerJest" />
+    <toRun name="filter" type="JavaScriptTestRunnerJest" />
+    <toRun name="find" type="JavaScriptTestRunnerJest" />
+    <toRun name="has" type="JavaScriptTestRunnerJest" />
+    <toRun name="javascript exclusive" type="JavaScriptTestRunnerJest" />
+    <toRun name="join" type="JavaScriptTestRunnerJest" />
+    <toRun name="map" type="JavaScriptTestRunnerJest" />
+    <toRun name="reverse" type="JavaScriptTestRunnerJest" />
+    <toRun name="size" type="JavaScriptTestRunnerJest" />
+    <toRun name="slice" type="JavaScriptTestRunnerJest" />
+    <toRun name="value" type="JavaScriptTestRunnerJest" />
     <method v="2" />
   </configuration>
 </component>
