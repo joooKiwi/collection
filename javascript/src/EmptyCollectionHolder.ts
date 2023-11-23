@@ -351,6 +351,8 @@ export class EmptyCollectionHolder
     }
 
 
+    //#region -------------------- Conversion methods (toString) --------------------
+
     public toString(): "[]" { return "[]" }
 
 
@@ -366,6 +368,9 @@ export class EmptyCollectionHolder
 
     public toLocaleUpperCaseString(locale?: Nullable<string>,): "[]"
     public toLocaleUpperCaseString(): "[]" { return "[]" }
+
+    //#endregion -------------------- Conversion methods (toString) --------------------
+
     //#endregion -------------------- Conversion methods --------------------
 
     //#endregion -------------------- Methods --------------------

@@ -1285,6 +1285,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
 
+    //#region -------------------- Conversion methods (toString) --------------------
 
     /**
      * Convert the current {@link CollectionHolder collection} to {@link String} using the {@link join} method
@@ -1340,6 +1341,8 @@ export interface CollectionHolder<out T = unknown, >
      * @see String.toLocaleUpperCase
      */
     toLocaleUpperCaseString(locale?: Nullable<string>,): string
+
+    //#endregion -------------------- Conversion methods (toString) --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 
