@@ -1332,6 +1332,15 @@ export interface CollectionHolder<out T = unknown, >
      */
     toUpperCaseString(): string
 
+    /**
+     * Convert the current {@link CollectionHolder collection} to a {@link String} for every value
+     * by calling its "<i>{@link String.toLocaleUpperCase toLocaleUpperCase()}</i>" method
+     *
+     * @param locale The possible locale to apply on each value
+     * @see String.toLocaleUpperCase
+     */
+    toLocaleUpperCaseString(locale?: Nullable<string>,): string
+
     //#endregion -------------------- Conversion methods --------------------
 
 }

@@ -564,6 +564,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return toUpperCaseString(this,)
     }
 
+    public toLocaleUpperCaseString(locale?: Nullable<string>,): string {
+        return toLocaleUpperCaseString(this, locale,)
     }
 
     //#endregion -------------------- Conversion methods (toString) --------------------
