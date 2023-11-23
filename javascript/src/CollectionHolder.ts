@@ -1314,6 +1314,15 @@ export interface CollectionHolder<out T = unknown, >
      */
     toLowerCaseString(): string
 
+    /**
+     * Convert the current {@link CollectionHolder collection} to a {@link String} for every value
+     * by calling its "<i>{@link String.toLocaleLowerCase toLocaleLowerCase()}</i>" method
+     *
+     * @param locale The possible locale to apply on each value
+     * @see String.toLocaleLowerCase
+     */
+    toLocaleLowerCaseString(locale?: Nullable<string>,): string
+
     //#endregion -------------------- Conversion methods --------------------
 
 }
