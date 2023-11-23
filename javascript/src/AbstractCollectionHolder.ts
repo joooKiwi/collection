@@ -54,6 +54,7 @@ import {toMutableSet}        from "./method/toMutableSet"
 import {toMutableMap}        from "./method/toMutableMap"
 import {toMutableWeakSet}    from "./method/toMutableWeakSet"
 import {toSet}               from "./method/toSet"
+import {toString}            from "./method/toString"
 import {toMap}               from "./method/toMap"
 import {toReverse}           from "./method/toReverse"
 import {toWeakSet}           from "./method/toWeakSet"
@@ -541,13 +542,19 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
 
+    //#region -------------------- Conversion methods (toString) --------------------
+
     public toString(): string {
-        return this.join()
+        return toString(this,)
+    }
+
     public toLocaleString(locale?: Nullable<string>,): string {
         return toLocaleString(this, locale,)
     }
 
     }
+
+    //#endregion -------------------- Conversion methods (toString) --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 
