@@ -8,14 +8,14 @@
 import {Nullable} from "../general type"
 
 /**
- * Convert the primitive value to a {@link String} while keeping its content intact
+ * Convert the {@link value primitive value} to a {@link String} while keeping its type content intact
  *
  * @param value The value to convert
  * @typescriptDefinition
  */
 export function asString<T extends Nullable<| number | bigint | string | boolean>, >(value: T,): T extends string ? T : `${T}`
 /**
- * Convert the primitive value to a {@link String}
+ * Convert the {@link value} to a {@link String}
  *
  * @param value The value to convert
  */
