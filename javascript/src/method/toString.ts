@@ -10,6 +10,8 @@ import type {Nullable}         from "../general type"
 
 import {asString} from "./asString"
 
+//#region -------------------- Facade method --------------------
+
 /**
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toString toString()}</i>" method
@@ -32,3 +34,5 @@ export function toString<const T, >(collection: Nullable<CollectionHolder<T>>,):
         string += `${asString(collection.get(index,),)}, `
     return `[${string}${asString(collection.get(index),)}]`
 }
+
+//#endregion -------------------- Facade method --------------------

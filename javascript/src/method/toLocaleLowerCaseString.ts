@@ -11,6 +11,8 @@ import type {Nullable}                 from "../general type"
 
 import {asLocaleLowerCaseString} from "./asString"
 
+//#region -------------------- Facade method --------------------
+
 /**
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toLocaleLowerCase toLocaleLowerCase()}</i>" method
@@ -31,6 +33,8 @@ export function toLocaleLowerCaseString<const T, >(collection: Nullable<Collecti
     return __withLocale(collection as NonEmptyCollectionHolder<T>, locale,)
 }
 
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Locale method --------------------
 
 function __withNoLocale<const T, >(collection: NonEmptyCollectionHolder<T>,) {
     let string = ""
@@ -49,3 +53,5 @@ function __withLocale<const T, >(collection: NonEmptyCollectionHolder<T>, locale
         string += `${asLocaleLowerCaseString(collection.get(index,), locale,)}, `
     return `[${string}${asLocaleLowerCaseString(collection.get(index,), locale,)}]`
 }
+
+//#endregion -------------------- Locale method --------------------

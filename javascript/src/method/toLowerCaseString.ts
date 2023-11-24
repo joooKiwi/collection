@@ -10,6 +10,8 @@ import type {Nullable}         from "../general type"
 
 import {asLowerCaseString} from "./asString"
 
+//#region -------------------- Facade method --------------------
+
 /**
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toLowerCase toLowerCase()}</i>" method
@@ -31,3 +33,5 @@ export function toLowerCaseString<const T, >(collection: Nullable<CollectionHold
         string += `${asLowerCaseString(collection.get(index,),)}, `
     return `[${string}${asLowerCaseString(collection.get(index,),)}]`
 }
+
+//#endregion -------------------- Facade method --------------------

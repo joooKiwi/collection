@@ -11,6 +11,8 @@ import type {Nullable}                 from "../general type"
 
 import {asLocaleString} from "./asString"
 
+//#region -------------------- Facade method --------------------
+
 /**
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toLocaleString toLocaleString()}</i>" method
@@ -35,6 +37,8 @@ export function toLocaleString<const T, >(collection: Nullable<CollectionHolder<
     return __withLocale(collection as NonEmptyCollectionHolder<T>, locale,)
 }
 
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Locale method --------------------
 
 function __withNoLocale<const T, >(collection: NonEmptyCollectionHolder<T>,) {
     let string = ""
@@ -53,3 +57,5 @@ function __withLocale<const T, >(collection: NonEmptyCollectionHolder<T>, locale
         string += `${asLocaleString(collection.get(index,), locale,)}, `
     return `[${string}${asLocaleString(collection.get(index,), locale,)}]`
 }
+
+//#endregion -------------------- Locale method --------------------

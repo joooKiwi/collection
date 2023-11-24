@@ -33,7 +33,7 @@ export function asString(value: unknown,): string {
 
 
 /**
- * Convert the primitive value to a {@link String} while handling the {@link locale}
+ * Convert the {@link value} to a {@link String} while handling the {@link locale}
  *
  * @param value The value to convert
  * @param locale The locale to possibly apply
@@ -57,14 +57,14 @@ export function asLocaleString(value: unknown, locale?: Nullable<string>,): stri
 
 
 /**
- * Convert the primitive value to a {@link Lowercase} {@link String} while keeping its content intact
+ * Convert the {@link value primitive value} to a {@link Lowercase} {@link String} while keeping its type content intact
  *
  * @param value The value to convert
  * @typescriptDefinition
  */
 export function asLowerCaseString<T extends Nullable<| number | bigint | string | boolean>, >(value: T,): Lowercase<T extends string ? T : `${T}`>
 /**
- * Convert the primitive value to a {@link Lowercase} {@link String}
+ * Convert the {@link value} to a {@link Lowercase} {@link String}
  *
  * @param value The value to convert
  */
@@ -84,9 +84,9 @@ export function asLowerCaseString(value: unknown,): string {
 
 
 /**
- * Convert the primitive value to a {@link Lowercase} {@link String} while handling the {@link locale}
+ * Convert the {@link value} to a {@link Lowercase} {@link String} while handling the {@link locale}
  *
- * @param value The value to convert
+ * @param value  The value to convert
  * @param locale The locale to possibly apply
  */
 export function asLocaleLowerCaseString(value: unknown, locale?: Nullable<string>,): string {
@@ -144,14 +144,14 @@ export function asLocaleLowerCaseString(value: unknown, locale?: Nullable<string
 
 
 /**
- * Convert the primitive value to a {@link Uppercase} {@link String} while keeping its content intact
+ * Convert the {@link value primitive value} to an {@link Uppercase} {@link String} while keeping its type content intact
  *
  * @param value The value to convert
  * @typescriptDefinition
  */
 export function asUpperCaseString<T extends Nullable<| number | bigint | string | boolean>, >(value: T,): Uppercase<T extends string ? T : `${T}`>
 /**
- * Convert the primitive value to a {@link Uppercase} {@link String}
+ * Convert the {@link value} to an {@link Uppercase} {@link String}
  *
  * @param value The value to convert
  */
@@ -170,9 +170,9 @@ export function asUpperCaseString(value: unknown,): string {
 }
 
 /**
- * Convert the primitive value to a {@link Uppercase} {@link String} while handling the {@link locale}
+ * Convert the {@link value} to an {@link Uppercase} {@link String} while handling the {@link locale}
  *
- * @param value The value to convert
+ * @param value  The value to convert
  * @param locale The locale to possibly apply
  */
 export function asLocaleUpperCaseString(value: unknown, locale?: Nullable<string>,): string {

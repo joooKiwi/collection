@@ -9,6 +9,8 @@ import type {CollectionHolder} from "../CollectionHolder"
 import type {Nullable}         from "../general type"
 import {asUpperCaseString}     from "./asString"
 
+//#region -------------------- Facade method --------------------
+
 /**
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toUpperCase toUpperCase()}</i>" method
@@ -30,3 +32,5 @@ export function toUpperCaseString<const T, >(collection: Nullable<CollectionHold
         string += `${asUpperCaseString(collection.get(index,))}, `
     return `[${string}${asUpperCaseString(collection.get(index,))}]`
 }
+
+//#endregion -------------------- Facade method --------------------
