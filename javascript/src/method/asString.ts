@@ -90,55 +90,66 @@ export function asLowerCaseString(value: unknown,): string {
  * @param locale The locale to possibly apply
  */
 export function asLocaleLowerCaseString(value: unknown, locale?: Nullable<string>,): string {
-    if (value === null) {
-        if (locale == null)
+    if (locale == null) {
+        if (value === null)
             return "null".toLocaleLowerCase()
-        return "null".toLocaleLowerCase(locale,)
-    }
-    if (value === undefined) {
-        if (locale == null)
+        if (value === undefined)
             return "undefined".toLocaleLowerCase()
-        return "undefined".toLocaleLowerCase(locale,)
+        switch (typeof value) {
+            case "string":
+                return value.toLocaleLowerCase()
+            case "number":
+                return value.toLocaleString().toLowerCase()
+            case "bigint":
+                return value.toLocaleString().toLowerCase()
+            case "boolean":
+                return value.toLocaleString()
+            case "symbol":
+                return value.toLocaleString().toLowerCase()
+        }
+        if (value instanceof String)
+            return value.toLocaleLowerCase()
+        if (value instanceof Boolean)
+            return value.toLocaleString()
+        if (value instanceof Symbol)
+            return value.toLocaleString().toLowerCase()
+        if (value instanceof Date)
+            return value.toLocaleString().toLowerCase()
+
+        if (typeof value == "object" && "toLocaleLowerCase" in value && (typeof value.toLocaleLowerCase == "function" || value.toLocaleLowerCase instanceof Function))
+            return value.toLocaleLowerCase()
+        return value.toLocaleString().toLowerCase() // TODO: Validate that the string definitely has no way to be converted from a locale
     }
+
+    if (value === null)
+        return "null".toLocaleLowerCase(locale,)
+    if (value === undefined)
+        return "undefined".toLocaleLowerCase(locale,)
+
 
     switch (typeof value) {
         case "string":
-            if (locale == null)
-                return value.toLocaleLowerCase()
             return value.toLocaleLowerCase(locale,)
         case "number":
-            if (locale == null)
-                return value.toLocaleString().toLowerCase()
             return value.toLocaleString(locale,).toLowerCase()
         case "bigint":
-            if (locale == null)
-                return value.toLocaleString().toLowerCase()
             return value.toLocaleString(locale,).toLowerCase()
         case "boolean":
             return value.toLocaleString()
         case "symbol":
             return value.toLocaleString().toLowerCase()
     }
-    if (value instanceof String) {
-        if (locale == null)
-            return value.toLocaleLowerCase()
+    if (value instanceof String)
         return value.toLocaleLowerCase(locale,)
-    }
     if (value instanceof Boolean)
         return value.toLocaleString()
     if (value instanceof Symbol)
         return value.toLocaleString().toLowerCase()
-    if (value instanceof Date) {
-        if (locale == null)
-            return value.toLocaleString().toLowerCase()
+    if (value instanceof Date)
         return value.toLocaleString(locale,).toLowerCase()
-    }
 
-    if (typeof value == "object" && "toLocaleLowerCase" in value && (typeof value.toLocaleLowerCase == "function" || value.toLocaleLowerCase instanceof Function)) {
-        if (locale == null)
-            return value.toLocaleLowerCase()
+    if (typeof value == "object" && "toLocaleLowerCase" in value && (typeof value.toLocaleLowerCase == "function" || value.toLocaleLowerCase instanceof Function))
         return value.toLocaleLowerCase(locale,)
-    }
     return value.toLocaleString().toLowerCase() // TODO: Validate that the string definitely has no way to be converted from a locale
 }
 
@@ -176,54 +187,65 @@ export function asUpperCaseString(value: unknown,): string {
  * @param locale The locale to possibly apply
  */
 export function asLocaleUpperCaseString(value: unknown, locale?: Nullable<string>,): string {
-    if (value === null) {
-        if (locale == null)
+    if (locale == null) {
+        if (value === null)
             return "null".toLocaleUpperCase()
-        return "null".toLocaleUpperCase(locale,)
-    }
-    if (value === undefined) {
-        if (locale == null)
+        if (value === undefined)
             return "undefined".toLocaleUpperCase()
-        return "undefined".toLocaleUpperCase(locale,)
+
+        switch (typeof value) {
+            case "string":
+                return value.toLocaleUpperCase()
+            case "number":
+                return value.toLocaleString().toUpperCase()
+            case "bigint":
+                return value.toLocaleString().toUpperCase()
+            case "boolean":
+                return value.toLocaleString().toUpperCase()
+            case "symbol":
+                return value.toLocaleString().toUpperCase()
+        }
+        if (value instanceof String)
+            return value.toLocaleUpperCase()
+        if (value instanceof Boolean)
+            return value.toLocaleString().toUpperCase()
+        if (value instanceof Symbol)
+            return value.toLocaleString().toUpperCase()
+        if (value instanceof Date)
+            return value.toLocaleString().toUpperCase()
+
+        if (typeof value == "object" && "toLocaleUpperCase" in value && (typeof value.toLocaleUpperCase == "function" || value.toLocaleUpperCase instanceof Function))
+            return value.toLocaleUpperCase()
+        return value.toLocaleString().toUpperCase() // TODO: Validate that the string definitely has no way to be converted from a locale
     }
+
+    if (value === null)
+        return "null".toLocaleUpperCase(locale,)
+    if (value === undefined)
+        return "undefined".toLocaleUpperCase(locale,)
 
     switch (typeof value) {
         case "string":
-            if (locale == null)
-                return value.toLocaleUpperCase()
             return value.toLocaleUpperCase(locale,)
         case "number":
-            if (locale == null)
-                return value.toLocaleString().toUpperCase()
             return value.toLocaleString(locale,).toUpperCase()
         case "bigint":
-            if (locale == null)
-                return value.toLocaleString().toUpperCase()
             return value.toLocaleString(locale,).toUpperCase()
         case "boolean":
             return value.toLocaleString().toUpperCase()
         case "symbol":
             return value.toLocaleString().toUpperCase()
     }
-    if (value instanceof String) {
-        if (locale == null)
-            return value.toLocaleUpperCase()
+    if (value instanceof String)
         return value.toLocaleUpperCase(locale,)
-    }
     if (value instanceof Boolean)
         return value.toLocaleString().toUpperCase()
     if (value instanceof Symbol)
         return value.toLocaleString().toUpperCase()
-    if (value instanceof Date) {
-        if (locale == null)
-            return value.toLocaleString().toUpperCase()
+    if (value instanceof Date)
         return value.toLocaleString(locale,).toUpperCase()
-    }
 
-    if (typeof value == "object" && "toLocaleUpperCase" in value && (typeof value.toLocaleUpperCase == "function" || value.toLocaleUpperCase instanceof Function)) {
-        if (locale == null)
-            return value.toLocaleUpperCase()
+    if (typeof value == "object" && "toLocaleUpperCase" in value && (typeof value.toLocaleUpperCase == "function" || value.toLocaleUpperCase instanceof Function))
         return value.toLocaleUpperCase(locale,)
-    }
     return value.toLocaleString().toUpperCase() // TODO: Validate that the string definitely has no way to be converted from a locale
 }
