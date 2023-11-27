@@ -56,7 +56,22 @@ jobs:
       - name: Installation of the dependencies (for NPM)
         run: npm --prefix ${{matrix.path}} ci
 
+      - name: "dist/" file deletion
+        run: npm del-cli dist/
+
+      - name: Build ECMAScript module
+        run: npm --prefix ${{matrix.path}} run build-esm
+
+      - name: Build CommonJS module
+        run: npm --prefix ${{matrix.path}} run build-cjs
+
+      - name: Build Universal module definition
+        run: npm --prefix ${{matrix.path}} run build-umd
+
+      - name: Build types
+        run: npm --prefix ${{matrix.path}} run build-types
+
       - name: Publishing to NPM
-        run: npm --prefix ${{matrix.path}} run publish-to-npm
+        run: npm --prefix ${{matrix.path}} run publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
