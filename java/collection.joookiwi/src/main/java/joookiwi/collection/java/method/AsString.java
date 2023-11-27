@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Formatter;
 import java.util.Locale;
 
 public final class AsString
@@ -22,8 +23,6 @@ public final class AsString
     public static @NotNull String asString(@Nullable Object value) {
         if (value == null)
             return "null";
-        if (value instanceof String)
-            return (String) value;
         return value.toString();
     }
 
@@ -35,8 +34,8 @@ public final class AsString
      */
     public static @NotNull String asLocaleString(@Nullable Object value) {
         if (value == null)
-            return String.format(Locale.getDefault(), "%s", "null");
-        return String.format(Locale.getDefault(), "%s", value);
+            return new Formatter(Locale.getDefault()).format("%s", "null").toString();
+        return new Formatter(Locale.getDefault()).format("%s", value).toString();
     }
 
     /**
@@ -48,13 +47,13 @@ public final class AsString
     public static @NotNull String asLocaleString(@Nullable Object value, @Nullable Locale locale) {
         if (locale == null) {
             if (value == null)
-                return String.format(Locale.getDefault(), "%s", "null");
-            return String.format(Locale.getDefault(), "%s", value);
+                return new Formatter(Locale.getDefault()).format("%s", "null").toString();
+            return new Formatter(Locale.getDefault()).format("%s", value).toString();
         }
 
         if (value == null)
-            return String.format(locale, "%s", "null");
-        return String.format(locale, "%s", value);
+            return new Formatter(locale).format("%s", "null").toString();
+        return new Formatter(locale).format("%s", value).toString();
     }
 
 
@@ -67,8 +66,8 @@ public final class AsString
         if (value == null)
             return "null";
         if (value instanceof String)
-            return ((String) value).toLowerCase();
-        return value.toString().toLowerCase();
+            return ((String) value).toLowerCase(Locale.ROOT);
+        return value.toString().toLowerCase(Locale.ROOT);
     }
 
 
@@ -81,10 +80,10 @@ public final class AsString
         var currentLocale = Locale.getDefault();
 
         if (value == null)
-            return String.format(currentLocale, "%s", "null").toLowerCase(currentLocale);
+            return new Formatter(currentLocale).format("%s", "null").toString().toLowerCase(currentLocale);
         if (value instanceof String)
             return ((String) value).toLowerCase(currentLocale);
-        return String.format(currentLocale, "%s", value).toLowerCase(currentLocale);
+        return new Formatter(currentLocale).format("%s", value).toString().toLowerCase(currentLocale);
     }
 
     /**
@@ -98,17 +97,17 @@ public final class AsString
             var currentLocale = Locale.getDefault();
 
             if (value == null)
-                return String.format(currentLocale, "%s", "null").toLowerCase(currentLocale);
+                return new Formatter(currentLocale).format("%s", "null").toString().toLowerCase(currentLocale);
             if (value instanceof String)
                 return ((String) value).toLowerCase(currentLocale);
-            return String.format(currentLocale, "%s", value).toLowerCase(currentLocale);
+            return new Formatter(currentLocale).format("%s", value).toString().toLowerCase(currentLocale);
         }
 
         if (value == null)
-            return String.format(locale, "%s", "null").toLowerCase(locale);
+            return new Formatter(locale).format("%s", "null").toString().toLowerCase(locale);
         if (value instanceof String)
             return ((String) value).toLowerCase(locale);
-        return String.format(locale, "%s", value).toLowerCase(locale);
+        return new Formatter(locale).format("%s", value).toString().toLowerCase(locale);
     }
 
 
@@ -121,8 +120,8 @@ public final class AsString
         if (value == null)
             return "NULL";
         if (value instanceof String)
-            return ((String) value).toUpperCase();
-        return value.toString().toUpperCase();
+            return ((String) value).toUpperCase(Locale.ROOT);
+        return value.toString().toUpperCase(Locale.ROOT);
     }
 
 
@@ -135,10 +134,10 @@ public final class AsString
         var currentLocale = Locale.getDefault();
 
         if (value == null)
-            return String.format(currentLocale, "%s", "NULL").toUpperCase(currentLocale);
+            return new Formatter(currentLocale).format("%s", "NULL").toString().toUpperCase(currentLocale);
         if (value instanceof String)
             return ((String) value).toUpperCase(currentLocale);
-        return String.format(currentLocale, "%s", value).toUpperCase(currentLocale);
+        return new Formatter(currentLocale).format("%s", value).toString().toUpperCase(currentLocale);
     }
 
     /**
@@ -152,17 +151,17 @@ public final class AsString
             var currentLocale = Locale.getDefault();
 
             if (value == null)
-                return String.format(currentLocale, "%s", "NULL").toUpperCase(currentLocale);
+                return new Formatter(currentLocale).format("%s", "NULL").toString().toUpperCase(currentLocale);
             if (value instanceof String)
                 return ((String) value).toUpperCase(currentLocale);
-            return String.format(currentLocale, "%s", value).toUpperCase(currentLocale);
+            return new Formatter(currentLocale).format("%s", value).toString().toUpperCase(currentLocale);
         }
 
         if (value == null)
-            return String.format(locale, "%s", "NULL").toUpperCase(locale);
+            return new Formatter(locale).format("%s", "NULL").toString().toUpperCase(locale);
         if (value instanceof String)
             return ((String) value).toUpperCase(locale);
-        return String.format(locale, "%s", value).toUpperCase(locale);
+        return new Formatter(locale).format("%s", value).toString().toUpperCase(locale);
     }
 
 }
