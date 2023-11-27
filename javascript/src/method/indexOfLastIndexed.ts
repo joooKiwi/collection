@@ -5,13 +5,16 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}       from "../CollectionHolder"
-import type {ReverseBooleanCallback} from "../CollectionHolder.types"
-import type {Nullable, NullOr}       from "../general type"
+import type {CollectionHolder}         from "../CollectionHolder"
+import type {ReverseBooleanCallback}   from "../CollectionHolder.types"
+import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
+import type {Nullable, NullOr}         from "../general type"
 
 import {endingIndex as endingIndexFunction}     from "./endingIndex"
 import {maximumIndex as maximumIndexFunction}   from "./maximumIndex"
 import {startingIndex as startingIndexFunction} from "./startingIndex"
+
+//#region -------------------- Facade method --------------------
 
 /**
  * Get the last index matching the {@link predicate}
@@ -59,26 +62,61 @@ export function indexOfLastIndexed<const T, >(collection: Nullable<CollectionHol
         return null
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
-    //#region -------------------- Return index --------------------
 
-    if (limit == null)
-        return withoutALimit(collection, predicate, startingIndex, endingIndex,)
+    if (limit == null) {
+        if (predicate.length === 1)
+            return __withoutALimitAnd1Argument(predicate as (index: number,) => boolean, startingIndex, endingIndex,)
+        if (predicate.length >= 2)
+            return __withoutALimitAnd2Argument(collection as NonEmptyCollectionHolder<T>, predicate, startingIndex, endingIndex,)
+        return __withoutALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex,)
+    }
+
+    //#region -------------------- Initialization (maximum index) --------------------
 
     const maximumIndex = maximumIndexFunction(collection, limit, size,)
-    if (maximumIndex == size)
-        return withoutALimit(collection, predicate, startingIndex, endingIndex,)
-
     if (maximumIndex == null)
         return null
+    if (maximumIndex == size) {
+        if (predicate.length === 1)
+            return __withoutALimitAnd1Argument(predicate as (index: number,) => boolean, startingIndex, endingIndex,)
+        if (predicate.length >= 2)
+            return __withoutALimitAnd2Argument(collection as NonEmptyCollectionHolder<T>, predicate, startingIndex, endingIndex,)
+        return __withoutALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex,)
+    }
     if (endingIndex - startingIndex < maximumIndex - 1)
         return null
 
-    return withALimit(collection, predicate, startingIndex, endingIndex, maximumIndex,)
+    //#endregion -------------------- Initialization (maximum index) --------------------
+
+    if (predicate.length === 1)
+        return __withALimitAnd1Argument(predicate as (index: number,) => boolean, startingIndex, endingIndex, maximumIndex,)
+    if (predicate.length >= 2)
+        return __withALimitAnd2Argument(collection as NonEmptyCollectionHolder<T>, predicate, startingIndex, endingIndex, maximumIndex,)
+    return __withALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex, maximumIndex,)
 
     //#endregion -------------------- Return index --------------------
 }
 
-function withoutALimit<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, startingIndex: number, endingIndex: number,): NullOr<number> {
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Loop methods --------------------
+
+function __withoutALimitAnd0Argument(predicate: () => boolean, startingIndex: number, endingIndex: number,) {
+    let index = endingIndex + 1
+    while (--index >= startingIndex)
+        if (predicate())
+            return index
+    return null
+}
+
+function __withoutALimitAnd1Argument(predicate: (index: number,) => boolean, startingIndex: number, endingIndex: number,) {
+    let index = endingIndex + 1
+    while (--index >= startingIndex)
+        if (predicate(index,))
+            return index
+    return null
+}
+
+function __withoutALimitAnd2Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (index: number, value: T,) => boolean, startingIndex: number, endingIndex: number,) {
     let index = endingIndex + 1
     while (--index >= startingIndex)
         if (predicate(index, collection.get(index,),))
@@ -86,7 +124,28 @@ function withoutALimit<const T, >(collection: CollectionHolder<T>, predicate: Re
     return null
 }
 
-function withALimit<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, startingIndex: number, endingIndex: number, maximumIndex: number,): NullOr<number> {
+
+function __withALimitAnd0Argument(predicate: () => boolean, startingIndex: number, endingIndex: number, maximumIndex: number,) {
+    let index = endingIndex + 1
+    if (index >= maximumIndex)
+        index = maximumIndex
+    while (--index >= startingIndex)
+        if (predicate())
+            return index
+    return null
+}
+
+function __withALimitAnd1Argument(predicate: (index: number,) => boolean, startingIndex: number, endingIndex: number, maximumIndex: number,) {
+    let index = endingIndex + 1
+    if (index >= maximumIndex)
+        index = maximumIndex
+    while (--index >= startingIndex)
+        if (predicate(index,))
+            return index
+    return null
+}
+
+function __withALimitAnd2Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (index: number, value: T,) => boolean, startingIndex: number, endingIndex: number, maximumIndex: number,) {
     let index = endingIndex + 1
     if (index >= maximumIndex)
         index = maximumIndex
@@ -95,3 +154,5 @@ function withALimit<const T, >(collection: CollectionHolder<T>, predicate: Rever
             return index
     return null
 }
+
+//#endregion -------------------- Loop methods --------------------
