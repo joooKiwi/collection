@@ -56,7 +56,7 @@ export function first<const T, const S extends T, >(collection: Nullable<Collect
 export function first<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T
 export function first<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
     if (collection == null)
-        throw new TypeError("No element could be retrieved from a null value.",)
+        throw new TypeError("No element could be retrieved from a null collection.",) // TODO change to custom exception
     if (collection.isEmpty)
         throw new EmptyCollectionHolderException("No element at the index 0 could be found since it it empty.",)
 
