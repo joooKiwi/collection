@@ -8,7 +8,7 @@
 import type {CollectionConstants} from "./CollectionConstants"
 import type {CollectionHolder}    from "./CollectionHolder"
 
-/** A simple {@link Symbol.toStringTag} of a {@link CollectionHolder} */
+/** An alias-type of {@link CollectionHolder}[{@link Symbol.toStringTag}] */
 export type CollectionHolderName = typeof CollectionConstants["COLLECTION_HOLDER_TO_STRING_TAG"]
 
 
