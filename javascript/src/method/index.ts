@@ -7,6 +7,7 @@
 
 export {all}                                                                                                                from "./all"
 export {any}                                                                                                                from "./any"
+export {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString}   from "./asString"
 export {filter}                                                                                                             from "./filter"
 export {filterIndexed}                                                                                                      from "./filterIndexed"
 export {filterIndexedNot}                                                                                                   from "./filterIndexedNot"
@@ -30,7 +31,7 @@ export {indexOfLast}                                                            
 export {indexOfLastIndexed}                                                                                                 from "./indexOfLastIndexed"
 export {isCollectionHolder}                                                                                                 from "./isCollectionHolder"
 export {isCollectionIterator}                                                                                               from "./isCollectionIterator"
-export {join}                                                                                                               from "./join"
+export {join, prefixAndPostfixOnly}                                                                                         from "./join"
 export {last}                                                                                                               from "./last"
 export {lastIndexOf}                                                                                                        from "./lastIndexOf"
 export {lastOrNull}                                                                                                         from "./lastOrNull"
