@@ -11,8 +11,9 @@ import type {Nullable, NumberOrNumberInString}                                  
 import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                 from "./iterator/EmptyCollectionIterator"
 import type {CollectionIterator}                                                                                                                                                                                                                                                      from "./iterator/CollectionIterator"
 
-import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
-import {CollectionConstants}                       from "./CollectionConstants"
+import {EmptyCollectionHolderException} from "./exception/EmptyCollectionHolderException"
+import {CollectionConstants}            from "./CollectionConstants"
+import {prefixAndPostfixOnly}           from "./method/join"
 
 /**
  * A simple {@link CollectionHolder} with no values (as a singleton instance)
@@ -223,7 +224,7 @@ export class EmptyCollectionHolder
 
     public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<StringCallback<never>>,): string
     public join(_separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>,): string {
-        return `${prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX}${postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX}`
+        return prefixAndPostfixOnly(prefix, postfix,)
     }
 
     //#endregion -------------------- Join methods --------------------
