@@ -12,7 +12,7 @@ import type {Nullable}         from "../general type"
  * Tell that the {@link values} are in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values The values to compare
+ * @param values     The values to compare
  * @returns {boolean} Every {@link values} are in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
@@ -24,7 +24,7 @@ export function hasAll<const T, >(collection: Nullable<CollectionHolder<T>>, ...
  * Tell that the {@link values} are in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values The values to compare
+ * @param values     The values to compare
  * @returns {boolean} Every {@link values} are in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
@@ -33,21 +33,27 @@ export function hasAll<const T, >(collection: Nullable<CollectionHolder<T>>, ...
  */
 export function hasAll(collection: Nullable<CollectionHolder>, ...values: readonly unknown[]): boolean
 export function hasAll(collection: Nullable<CollectionHolder>, ...values: readonly unknown[]): boolean {
+    //#region -------------------- Early returns --------------------
+
     if (collection == null)
-        return false
-    const size = collection.size
-    if (size == 0)
         return false
 
     const valueSize = values.length
     if (valueSize == 0)
         return true
 
+    if(collection.isEmpty)
+        return false
+
+    //#endregion -------------------- Early returns --------------------
+
+    const size = collection.size
     let valueIndex = -1
     valueLoop: while (++valueIndex < valueSize) {
         let index = -1
+        const value = values[valueIndex]
         while (++index < size)
-            if (collection.get(index,) === values[valueIndex])
+            if (collection.get(index,) === value)
                 continue valueLoop
         return false
     }
