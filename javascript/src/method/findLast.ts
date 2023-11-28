@@ -16,7 +16,7 @@ import type {Nullable, NullOr}                           from "../general type"
  * Get the last element found or <b>null</b> if nothing was found
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate The given predicate
+ * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
@@ -34,8 +34,8 @@ export function findLast<const T, const S extends T, >(collection: Nullable<Coll
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */
-export function findLast<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T>
-export function findLast<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,): NullOr<| T | S> {
+export function findLast<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T>
+export function findLast<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T> {
     if (collection == null)
         return null
     if (collection.isEmpty)

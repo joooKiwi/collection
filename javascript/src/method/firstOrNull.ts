@@ -33,7 +33,7 @@ export function firstOrNull<const T, >(collection: Nullable<CollectionHolder<T>>
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
  * @extensionFunction
  */
-export function firstOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+export function firstOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -46,7 +46,7 @@ export function firstOrNull<const T, const S extends T, >(collection: Nullable<C
  * @extensionFunction
  */
 export function firstOrNull<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-export function firstOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+export function firstOrNull<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (collection == null)
         return null
     if (collection.isEmpty)

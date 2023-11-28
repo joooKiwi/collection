@@ -35,7 +35,7 @@ export function findIndexed<const T, const S extends T, >(collection: Nullable<C
  * @extensionFunction
  */
 export function findIndexed<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T>
-export function findIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | ReverseBooleanCallback<T> | ReverseRestrainedBooleanCallback<T, S>,): NullOr<| T | S> {
+export function findIndexed<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T> {
     if (collection == null)
         return null
     if (collection.isEmpty)

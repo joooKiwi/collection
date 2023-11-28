@@ -34,8 +34,8 @@ export function findLastIndexed<const T, const S extends T, >(collection: Nullab
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */
-export function findLastIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T>
-export function findLastIndexed<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,): NullOr<| T | S> {
+export function findLastIndexed<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T>
+export function findLastIndexed<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T> {
     if (collection == null)
         return null
     if (collection.isEmpty)
