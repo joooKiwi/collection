@@ -104,6 +104,8 @@ export class CollectionConstants {
     public static readonly DEFAULT_JOIN_TRUNCATED = '…'
     /** The default value for the postfix {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
     public static readonly DEFAULT_JOIN_POSTFIX = ']'
+    /** The default {@link String} value for an empty {@link CollectionHolder} */
+    public static readonly DEFAULT_EMPTY_COLLECTION = "[]"
 
     //#endregion -------------------- Default references --------------------
     //#region -------------------- Symbol.toString references --------------------
