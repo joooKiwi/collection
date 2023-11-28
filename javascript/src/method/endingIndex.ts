@@ -20,7 +20,7 @@ import {CollectionHolderIndexOutOfBoundsException} from "../exception/Collection
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over or equal to the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
- * @onlyReturnsPositiveValue
+ * @onlyGivePositiveValue
  */
 export function endingIndex<const T, >(collection: NonEmptyCollectionHolder<T>, toIndex?: Nullable<number>, size?: Nullable<number>,): number
 /**
@@ -32,7 +32,7 @@ export function endingIndex<const T, >(collection: NonEmptyCollectionHolder<T>, 
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over or equal to the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
- * @onlyReturnsPositiveValue
+ * @onlyGivePositiveValue
  */
 export function endingIndex<const T, >(collection: Nullable<CollectionHolder<T>>, toIndex?: Nullable<number>, size?: Nullable<number>,): NullOr<number>
 export function endingIndex(collection: Nullable<CollectionHolder>, toIndex: Nullable<number> = null, size: Nullable<number> = null,): NullOr<number> {
@@ -52,10 +52,10 @@ export function endingIndex(collection: Nullable<CollectionHolder>, toIndex: Nul
     if (endingIndex < 0)
         endingIndex += collectionSize
     if (endingIndex < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" (${endingIndex} after calculation) is under 0.`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is under 0.`, toIndex,)
     if (endingIndex == collectionSize)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" (${endingIndex} after calculation) is the collection size "${collectionSize}".`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is the collection size "${collectionSize}".`, toIndex,)
     if (endingIndex > collectionSize)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" (${endingIndex} after calculation) is over the collection size "${collectionSize}".`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is over the collection size "${collectionSize}".`, toIndex,)
     return endingIndex
 }

@@ -20,9 +20,9 @@ import {CollectionHolderIndexOutOfBoundsException} from "../exception/Collection
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
- * @onlyReturnsPositiveValue
+ * @onlyGivePositiveValue
  */
-export function maximumIndex<const T, >(collection: Nullable<NonEmptyCollectionHolder<T>>, limit: Nullable<number>, size?: Nullable<number>,): number
+export function maximumIndex<const T, >(collection: NonEmptyCollectionHolder<T>, limit: Nullable<number>, size?: Nullable<number>,): number
 /**
  * Get a limit from a value between zero
  * and the {@link collection} {@link CollectionHolder.size size}
@@ -32,7 +32,7 @@ export function maximumIndex<const T, >(collection: Nullable<NonEmptyCollectionH
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
- * @onlyReturnsPositiveValue
+ * @onlyGivePositiveValue
  */
 export function maximumIndex<const T, >(collection: Nullable<CollectionHolder<T>>, limit: Nullable<number>, size?: Nullable<number>,): NullOr<number>
 export function maximumIndex(collection: Nullable<CollectionHolder>, limit: Nullable<number>, size: Nullable<number> = null,): NullOr<number> {
@@ -52,7 +52,7 @@ export function maximumIndex(collection: Nullable<CollectionHolder>, limit: Null
     if (maximumIndex < 0)
         maximumIndex += collectionSize
     if (maximumIndex < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" (${maximumIndex} after calculation) cannot under 0.`, limit,)
+        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" ("${maximumIndex}" after calculation) cannot under 0.`, limit,)
 
     return maximumIndex
 
