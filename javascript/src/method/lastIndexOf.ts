@@ -31,6 +31,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
  * @extensionFunction
  */
 export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
@@ -50,6 +51,7 @@ export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
  * @extensionFunction
  */
 export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>

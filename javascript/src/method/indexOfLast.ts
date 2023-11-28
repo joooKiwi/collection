@@ -31,6 +31,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
  * @extensionFunction
  */
 export function indexOfLast<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): NullOr<number> {

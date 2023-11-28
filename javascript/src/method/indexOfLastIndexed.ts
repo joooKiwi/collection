@@ -18,19 +18,20 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
 
 /**
  * Get the last index matching the {@link predicate}
- * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+ * or <b>null</b> if it was not in the {@link collection}
  * from a range (if provided)
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate The given predicate
- * @param fromIndex The inclusive starting index
- * @param toIndex The inclusive ending index
- * @param limit The maximum index
+ * @param predicate  The given predicate
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The maximum index
  * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
  * @extensionFunction
  */
 export function indexOfLastIndexed<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): NullOr<number> {

@@ -18,7 +18,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
 
 /**
  * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+ * or <b>null</b> if it was not in the {@link collection}
  * from a range (if provided)
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -31,6 +31,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @see ReadonlyArray.findIndex
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
  * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
  * @extensionFunction
  */
 export function indexOfFirstIndexed<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): NullOr<number> {
