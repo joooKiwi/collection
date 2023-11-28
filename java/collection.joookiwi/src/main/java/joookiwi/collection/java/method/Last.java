@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException;
 import joookiwi.collection.java.exception.EmptyCollectionHolderException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
@@ -29,8 +30,8 @@ public final class Last
      * @throws EmptyCollectionHolderException The {@code collection} {@link CollectionHolder#isEmpty is empty}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html">Kotlin last()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null -> fail")
     public static <T> @NotNull T last(@Nullable CollectionHolder<T> collection) {
         if (collection == null)
@@ -53,8 +54,8 @@ public final class Last
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html">Kotlin last()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> fail")
     public static <T> @NotNull T last(@Nullable CollectionHolder<T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -86,8 +87,8 @@ public final class Last
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html">Kotlin last()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> fail")
     public static <T> @NotNull T last(@Nullable CollectionHolder<T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -119,8 +120,8 @@ public final class Last
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html">Kotlin last()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> fail")
     public static <T> @NotNull T last(@Nullable CollectionHolder<T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
         if (collection == null)

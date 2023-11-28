@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -26,8 +27,8 @@ public final class LastOrNull
      * @param <T>        The {@code collection} type
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null -> null")
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<T> collection) {
         if (collection == null)
@@ -48,8 +49,8 @@ public final class LastOrNull
      * @param <T>        The {@code collection} type
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> null")
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -78,8 +79,8 @@ public final class LastOrNull
      * @param <T>        The {@code collection} type
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> null")
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -108,8 +109,8 @@ public final class LastOrNull
      * @param <T>        The {@code collection} type
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> null")
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
         if (collection == null)

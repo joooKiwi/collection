@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -26,8 +27,8 @@ public final class Any
      * @return <b>false</b> if null is received or {@link CollectionHolder#isNotEmpty} otherwise
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html">Kotlin any()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null -> false")
     public static <T> boolean any(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
@@ -46,8 +47,8 @@ public final class Any
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> false")
     public static <T> boolean any(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -76,8 +77,8 @@ public final class Any
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> false")
     public static <T> boolean any(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -106,8 +107,8 @@ public final class Any
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> false")
     public static <T> boolean any(@Nullable CollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
         if (collection == null)

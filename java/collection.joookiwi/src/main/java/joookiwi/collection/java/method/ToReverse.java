@@ -4,6 +4,7 @@ import joookiwi.collection.java.CollectionConstants;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
@@ -31,6 +32,7 @@ public final class ToReverse
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
      */
+    @ExtensionFunction
     public static <T> @NotNull CollectionHolder<T> toReverse(@Nullable CollectionHolder<T> collection) {
         if (collection == null)
             return CollectionConstants.emptyCollectionHolder();
@@ -49,6 +51,7 @@ public final class ToReverse
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
     public static <T> @NotNull CollectionHolder<T> toReverse(@Nullable CollectionHolder<T> collection, @Nullable Integer fromIndex) {
         if (collection == null)
@@ -79,6 +82,7 @@ public final class ToReverse
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
     public static <T> @NotNull CollectionHolder<T> toReverse(@Nullable CollectionHolder<T> collection, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
         if (collection == null)
@@ -116,6 +120,7 @@ public final class ToReverse
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
     public static <T> @NotNull CollectionHolder<T> toReverse(@Nullable CollectionHolder<T> collection, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
         if (collection == null)

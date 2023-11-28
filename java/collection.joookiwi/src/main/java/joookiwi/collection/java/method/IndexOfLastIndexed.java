@@ -2,6 +2,8 @@ package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
+import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.annotation.OnlyGivePositiveValue;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -37,8 +39,9 @@ public final class IndexOfLastIndexed
      * @return The index matching the {@code predicate} within the range or <b>null</b>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
+    @OnlyGivePositiveValue
     @Contract("null, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
         //#region -------------------- Early returns --------------------
@@ -63,8 +66,9 @@ public final class IndexOfLastIndexed
      * @return The index matching the {@code predicate} within the range or <b>null</b>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
+    @OnlyGivePositiveValue
     @Contract("null, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<@NotNull Integer, @NotNull Boolean> predicate) {
         //#region -------------------- Early returns --------------------
@@ -89,8 +93,9 @@ public final class IndexOfLastIndexed
      * @return The index matching the {@code predicate} within the range or <b>null</b>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
+    @OnlyGivePositiveValue
     @Contract("null, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
         //#region -------------------- Early returns --------------------
@@ -120,9 +125,10 @@ public final class IndexOfLastIndexed
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract("null, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, @Nullable Integer fromIndex) {
         //#region -------------------- Intelligent returns --------------------
@@ -163,9 +169,10 @@ public final class IndexOfLastIndexed
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract("null, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<@NotNull Integer, @NotNull Boolean> predicate, @Nullable Integer fromIndex) {
         //#region -------------------- Intelligent returns --------------------
@@ -206,9 +213,10 @@ public final class IndexOfLastIndexed
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract("null, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate, @Nullable Integer fromIndex) {
         //#region -------------------- Intelligent returns --------------------
@@ -253,9 +261,10 @@ public final class IndexOfLastIndexed
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} and {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract("null, _, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
         //#region -------------------- Intelligent returns --------------------
@@ -306,9 +315,10 @@ public final class IndexOfLastIndexed
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} and {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract("null, _, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<@NotNull Integer, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
         //#region -------------------- Intelligent returns --------------------
@@ -359,9 +369,10 @@ public final class IndexOfLastIndexed
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} and {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract("null, _, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
         //#region -------------------- Intelligent returns --------------------
@@ -416,9 +427,10 @@ public final class IndexOfLastIndexed
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract("null, _, _, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
         //#region -------------------- Intelligent returns --------------------
@@ -482,9 +494,10 @@ public final class IndexOfLastIndexed
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract("null, _, _, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<@NotNull Integer, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
         //#region -------------------- Intelligent returns --------------------
@@ -548,9 +561,10 @@ public final class IndexOfLastIndexed
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract("null, _, _, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
         //#region -------------------- Intelligent returns --------------------

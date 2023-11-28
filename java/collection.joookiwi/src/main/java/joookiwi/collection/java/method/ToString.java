@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -23,8 +24,8 @@ public final class ToString
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @see Object#toString()
-     * @extensionFunction
      */
+    @ExtensionFunction
     public static <T> @NotNull String toString(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;

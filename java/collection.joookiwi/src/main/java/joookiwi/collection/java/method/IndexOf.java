@@ -2,6 +2,7 @@ package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -34,8 +35,8 @@ public final class IndexOf
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOf(@Nullable CollectionHolder<? extends T> collection, @Nullable Object element) {
         //#region -------------------- Early returns --------------------
@@ -64,8 +65,8 @@ public final class IndexOf
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract("null, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOf(@Nullable CollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex) {
@@ -110,8 +111,8 @@ public final class IndexOf
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract("null, _, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOf(@Nullable CollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
@@ -166,8 +167,8 @@ public final class IndexOf
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract("null, _, _, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOf(@Nullable CollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {

@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -25,8 +26,8 @@ public final class None
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if null is received or {@link CollectionHolder#isNotEmpty} otherwise
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none()</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null -> true")
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
@@ -43,8 +44,8 @@ public final class None
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> true")
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -71,8 +72,8 @@ public final class None
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> true")
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -99,8 +100,8 @@ public final class None
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> true")
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
         if (collection == null)

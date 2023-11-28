@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -24,12 +25,12 @@ public final class All
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param predicate  The matching predicate
-     * @extensionFunction
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
+    @ExtensionFunction
     @Contract("null, _ -> false")
     public static <T> boolean all(@Nullable CollectionHolder<? extends T> collection, @NotNull BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -56,6 +57,7 @@ public final class All
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
+    @ExtensionFunction
     @Contract("null, _ -> false")
     public static <T> boolean all(@Nullable CollectionHolder<? extends T> collection, @NotNull Function<T, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -82,6 +84,7 @@ public final class All
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
+    @ExtensionFunction
     @Contract("null, _ -> false")
     public static <T> boolean all(@Nullable CollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate) {
         if (collection == null)

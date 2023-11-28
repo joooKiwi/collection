@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException;
 import joookiwi.collection.java.exception.EmptyCollectionHolderException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
@@ -29,8 +30,8 @@ public final class First
      * @throws EmptyCollectionHolderException The {@code collection} {@link CollectionHolder#isEmpty is empty}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html">Kotlin first()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null -> fail")
     public static <T> @NotNull T first(@Nullable CollectionHolder<T> collection) {
         if (collection == null)
