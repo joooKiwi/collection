@@ -4,6 +4,7 @@ import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
@@ -28,6 +29,7 @@ public final class LastIndexOf
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param element    The element to find
+     * @param <T>        The {@code collection} type
      * @return The index associated to the {@code element} or <b>null</b>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -56,6 +58,7 @@ public final class LastIndexOf
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
+     * @param <T>        The {@code collection} type
      * @return The index associated to the {@code element} within the range or <b>null</b>
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
@@ -101,6 +104,7 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
+     * @param <T>        The {@code collection} type
      * @return The index associated to the {@code element} within the range or <b>null</b>
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} and {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
@@ -156,6 +160,7 @@ public final class LastIndexOf
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
+     * @param <T>        The {@code collection} type
      * @return The index associated to the {@code element} within the range or <b>null</b>
      * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
@@ -214,7 +219,7 @@ public final class LastIndexOf
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withoutALimit(CollectionHolder<?> collection, Object element, int startingIndex, int endingIndex) {
+    private static @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withoutALimit(@NotNull CollectionHolder<?> collection, @Nullable Object element, int startingIndex, int endingIndex) {
         var index = endingIndex + 1;
         if (element == null) {
             while (++index >= startingIndex)
@@ -228,7 +233,7 @@ public final class LastIndexOf
         return null;
     }
 
-    private static @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withALimit(CollectionHolder<?> collection, Object element, int startingIndex, int endingIndex, int maximumIndex) {
+    private static @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withALimit(@NotNull CollectionHolder<?> collection, @Nullable Object element, int startingIndex, int endingIndex, int maximumIndex) {
         var index = endingIndex + 1;
         if (index >= maximumIndex)
             index = maximumIndex;

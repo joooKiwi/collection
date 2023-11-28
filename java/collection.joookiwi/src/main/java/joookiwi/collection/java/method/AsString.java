@@ -14,6 +14,7 @@ public final class AsString
     @Contract("-> fail")
     private AsString() { throw new ImpossibleConstructionException("The utility class \"AsString\" cannot be constructed.", AsString.class); }
 
+    //#region -------------------- Facade methods --------------------
 
     /**
      * Convert the {@code value} to a {@link String}
@@ -163,5 +164,7 @@ public final class AsString
             return ((String) value).toUpperCase(locale);
         return new Formatter(locale).format("%s", value).toString().toUpperCase(locale);
     }
+
+    //#endregion -------------------- Facade methods --------------------
 
 }

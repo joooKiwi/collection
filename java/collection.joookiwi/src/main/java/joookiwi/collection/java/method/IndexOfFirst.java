@@ -29,7 +29,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -56,7 +56,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -83,7 +83,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -113,7 +113,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -157,7 +157,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -201,7 +201,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -248,7 +248,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -302,7 +302,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -356,7 +356,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -413,7 +413,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -480,7 +480,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
@@ -547,7 +547,7 @@ public final class IndexOfFirst
 
     /**
      * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@code collection}
      * from a range (if provided)
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}

@@ -16,6 +16,8 @@ public final class None
     @Contract("-> fail")
     private None() { throw new ImpossibleConstructionException("The utility class \"None\" cannot be constructed.", None.class); }
 
+    //#region -------------------- Facade methods --------------------
+
     /**
      * Tell if the {@code collection} {@link CollectionHolder#isEmpty is empty}
      *
@@ -116,5 +118,6 @@ public final class None
         return true;
     }
 
+    //#endregion -------------------- Facade methods --------------------
 
 }

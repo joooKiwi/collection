@@ -16,11 +16,14 @@ public final class FirstOrNull
     @Contract("-> fail")
     private FirstOrNull() { throw new ImpossibleConstructionException("The utility class \"FirstOrNull\" cannot be constructed.", FirstOrNull.class); }
 
+    //#region -------------------- Facade methods --------------------
+
     /**
      * Get the first element in the {@code collection}
      * or <b>null</b> if the {@code collection} {@link CollectionHolder#isEmpty is empty}
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+     * @param <T>        The {@code collection} type
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault()</a>
      * @extensionFunction
@@ -42,6 +45,7 @@ public final class FirstOrNull
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param predicate  The matching predicate
+     * @param <T>        The {@code collection} type
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
      * @extensionFunction
@@ -72,6 +76,7 @@ public final class FirstOrNull
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param predicate  The matching predicate
+     * @param <T>        The {@code collection} type
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
      * @extensionFunction
@@ -102,6 +107,7 @@ public final class FirstOrNull
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param predicate  The matching predicate
+     * @param <T>        The {@code collection} type
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
      * @extensionFunction
@@ -122,5 +128,7 @@ public final class FirstOrNull
                 return collection.get(index);
         return null;
     }
+
+    //#endregion -------------------- Facade methods --------------------
 
 }

@@ -18,6 +18,8 @@ public final class Last
     @Contract("-> fail")
     private Last() { throw new ImpossibleConstructionException("The utility class \"Last\" cannot be constructed.", Last.class); }
 
+    //#region -------------------- Facade methods --------------------
+
     /**
      * Get the last element in the current {@code collection}
      *
@@ -29,6 +31,7 @@ public final class Last
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
      * @extensionFunction
      */
+    @Contract("null -> fail")
     public static <T> @NotNull T last(@Nullable CollectionHolder<T> collection) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
@@ -52,6 +55,7 @@ public final class Last
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
      * @extensionFunction
      */
+    @Contract("null, _ -> fail")
     public static <T> @NotNull T last(@Nullable CollectionHolder<T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
@@ -84,6 +88,7 @@ public final class Last
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
      * @extensionFunction
      */
+    @Contract("null, _ -> fail")
     public static <T> @NotNull T last(@Nullable CollectionHolder<T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
@@ -116,6 +121,7 @@ public final class Last
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
      * @extensionFunction
      */
+    @Contract("null, _ -> fail")
     public static <T> @NotNull T last(@Nullable CollectionHolder<T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
@@ -131,5 +137,7 @@ public final class Last
                 return collection.get(index);
         throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", size - 1);
     }
+
+    //#endregion -------------------- Facade methods --------------------
 
 }

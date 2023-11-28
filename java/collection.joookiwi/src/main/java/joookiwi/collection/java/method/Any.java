@@ -16,15 +16,19 @@ public final class Any
     @Contract("-> fail")
     private Any() { throw new ImpossibleConstructionException("The utility class \"Any\" cannot be constructed.", Any.class); }
 
+    //#region -------------------- Facade methods --------------------
+
     /**
      * Tell if the {@code collection} {@link CollectionHolder#isNotEmpty is not empty}
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+     * @param <T>        The {@code collection} type
      * @return <b>false</b> if null is received or {@link CollectionHolder#isNotEmpty} otherwise
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html">Kotlin any()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
      * @extensionFunction
      */
+    @Contract("null -> false")
     public static <T> boolean any(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return false;
@@ -37,12 +41,14 @@ public final class Any
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param predicate  The matching predicate
+     * @param <T>        The {@code collection} type
      * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
      * @extensionFunction
      */
+    @Contract("null, _ -> false")
     public static <T> boolean any(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return false;
@@ -65,12 +71,14 @@ public final class Any
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param predicate  The matching predicate
+     * @param <T>        The {@code collection} type
      * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
      * @extensionFunction
      */
+    @Contract("null, _ -> false")
     public static <T> boolean any(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
         if (collection == null)
             return false;
@@ -93,12 +101,14 @@ public final class Any
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param predicate  The matching predicate
+     * @param <T>        The {@code collection} type
      * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
      * @extensionFunction
      */
+    @Contract("null, _ -> false")
     public static <T> boolean any(@Nullable CollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
         if (collection == null)
             return false;
@@ -114,5 +124,7 @@ public final class Any
                 return true;
         return false;
     }
+
+    //#endregion -------------------- Facade methods --------------------
 
 }

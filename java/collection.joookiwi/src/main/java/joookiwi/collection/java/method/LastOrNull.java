@@ -16,6 +16,8 @@ public final class LastOrNull
     @Contract("-> fail")
     private LastOrNull() { throw new ImpossibleConstructionException("The utility class \"LastOrNull\" cannot be constructed.", LastOrNull.class); }
 
+    //#region -------------------- Facade methods --------------------
+
     /**
      * Get the last element in the current {@code collection}
      * or <b>null</b> if the {@code collection} {@link CollectionHolder#isEmpty is empty}
@@ -26,6 +28,7 @@ public final class LastOrNull
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
      * @extensionFunction
      */
+    @Contract("null -> null")
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<T> collection) {
         if (collection == null)
             return null;
@@ -47,6 +50,7 @@ public final class LastOrNull
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
      * @extensionFunction
      */
+    @Contract("null, _ -> null")
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return null;
@@ -76,6 +80,7 @@ public final class LastOrNull
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
      * @extensionFunction
      */
+    @Contract("null, _ -> null")
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
         if (collection == null)
             return null;
@@ -105,6 +110,7 @@ public final class LastOrNull
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
      * @extensionFunction
      */
+    @Contract("null, _ -> null")
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
         if (collection == null)
             return null;
@@ -119,5 +125,7 @@ public final class LastOrNull
                 return collection.get(index);
         return null;
     }
+
+    //#endregion -------------------- Facade methods --------------------
 
 }

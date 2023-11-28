@@ -18,10 +18,13 @@ public final class First
     @Contract("-> fail")
     private First() { throw new ImpossibleConstructionException("The utility class \"First\" cannot be constructed.", First.class); }
 
+    //#region -------------------- Facade methods --------------------
+
     /**
      * Get the first element in the {@code collection}
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+     * @param <T>        The {@code collection} type
      * @throws NullPointerException           The {@code collection} was <b>null</b> or <b>undefined</b>
      * @throws EmptyCollectionHolderException The {@code collection} {@link CollectionHolder#isEmpty is empty}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html">Kotlin first()</a>
@@ -44,13 +47,14 @@ public final class First
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param predicate  The matching predicate
+     * @param <T>        The {@code collection} type
      * @throws NullPointerException                      The {@code collection} was <b>null</b> or <b>undefined</b>
      * @throws EmptyCollectionHolderException            The {@code collection} {@link CollectionHolder#isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> fail")
     public static <T> @NotNull T first(@Nullable CollectionHolder<T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -76,13 +80,14 @@ public final class First
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param predicate  The matching predicate
+     * @param <T>        The {@code collection} type
      * @throws NullPointerException                      The {@code collection} was <b>null</b> or <b>undefined</b>
      * @throws EmptyCollectionHolderException            The {@code collection} {@link CollectionHolder#isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> fail")
     public static <T> @NotNull T first(@Nullable CollectionHolder<T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
         if (collection == null)
@@ -108,13 +113,14 @@ public final class First
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param predicate  The matching predicate
+     * @param <T>        The {@code collection} type
      * @throws NullPointerException                      The {@code collection} was <b>null</b> or <b>undefined</b>
      * @throws EmptyCollectionHolderException            The {@code collection} {@link CollectionHolder#isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
      * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
-     * @extensionFunction
      */
+    @ExtensionFunction
     @Contract("null, _ -> fail")
     public static <T> @NotNull T first(@Nullable CollectionHolder<T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
         if (collection == null)
@@ -131,5 +137,7 @@ public final class First
                 return collection.get(index);
         throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
+
+    //#endregion -------------------- Facade methods --------------------
 
 }
