@@ -5,12 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}            from "../CollectionHolder"
-import type {CollectionHolderConstructor} from "../CollectionHolderConstructor"
-import type {Nullable}                    from "../general type"
+import type {CollectionHolder} from "../CollectionHolder"
+import type {Nullable}         from "../general type"
 
 import {CollectionConstants} from "../CollectionConstants"
-import {newInstance}         from "./newInstance"
 
 /**
  * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
@@ -29,9 +27,9 @@ export function filterNotNull<const T, >(collection: Nullable<CollectionHolder<T
     if (!collection.hasNull)
         return collection as CollectionHolder<NonNullable<T>>
 
-    return newInstance(collection.constructor as CollectionHolderConstructor<NonNullable<T>>, () => {
-        const newArray = [] as NonNullable<T>[],
-            size = collection.size
+    return new CollectionConstants.LazyGenericCollectionHolder(() => {
+        const newArray = [] as NonNullable<T>[]
+        const size = collection.size
         let index = -1
         while (++index < size) {
             const value = collection.get(index,)
