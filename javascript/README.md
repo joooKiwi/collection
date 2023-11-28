@@ -80,16 +80,19 @@ It can be separated in different categories.
  - `toIterator`
  - `toArray` & `toMutableArray`
  - `toSet` & `toMutableSet`
+ - `toWeakSet` & `toMutableWeakSet`
  - `toMap` & `toMutableMap`
  - `toReversed`
- - `toString` & `toLocaleString`
+ - `toString`, `toLocaleString`, `toLowerCaseString`, `toLocaleLowerCaseString`, `toUpperCaseString` & `toLocaleUpperCaseString`
 
 <span>4.</span> The **utility** methods _(not part of the `CollectionHolder`)_
+ - `asString`, `asLocaleString`, `asLowerCaseString`, `asLocaleLowerCaseString`, `asUpperCaseString` & `asLocaleUpperCaseString`
+   _(These methods will be eventually moved in another project)_
  - `isCollectionHolder`
  - `isCollectionIterator`
  - `endingIndex`
  - `startingIndex`
- - `newInstance`
+ - ~~`newInstance`~~ _(deprecated, it will be removed in the next version)_
 
 ---
 Almost every method is present in the `src/methods` at the exception of
