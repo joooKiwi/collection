@@ -29,8 +29,7 @@ export class EmptyCollectionHolder
 
     static #instance?: EmptyCollectionHolder
 
-    protected constructor() {
-    }
+    protected constructor() {}
 
     public static get get(): EmptyCollectionHolder {
         return EmptyCollectionHolder.#instance ??= new EmptyCollectionHolder()
