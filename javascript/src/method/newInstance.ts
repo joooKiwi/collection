@@ -18,7 +18,7 @@ import type {CollectionIterator}          from "../iterator/CollectionIterator"
  *
  * @param constructorInstance The constructor instance
  * @param array The {@link ReadonlyArray array} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, array: readonly T[],): CollectionHolder<T>
 /**
@@ -26,7 +26,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param lateArray The callback returning an {@link ReadonlyArray array} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, lateArray: () => readonly T[],): CollectionHolder<T>
 /**
@@ -34,7 +34,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param set The {@link ReadonlySet set} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, set: ReadonlySet<T>,): CollectionHolder<T>
 /**
@@ -42,7 +42,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param lateSet The callback returning a {@link ReadonlySet set} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, lateSet: () => ReadonlySet<T>,): CollectionHolder<T>
 /**
@@ -50,7 +50,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param collectionIterator The {@link CollectionIterator iterator} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, collectionIterator: CollectionIterator<T>,): CollectionHolder<T>
 /**
@@ -58,7 +58,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param lateCollectionIterator The callback returning {@link CollectionIterator iterator} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, lateCollectionIterator: () => CollectionIterator<T>,): CollectionHolder<T>
 /**
@@ -66,7 +66,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param iterable The {@link IterableWithSize iterable} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, iterable: IterableWithSize<T>,): CollectionHolder<T>
 /**
@@ -74,7 +74,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param iterable The {@link IterableWithLength iterable} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, iterable: IterableWithLength<T>,): CollectionHolder<T>
 /**
@@ -82,7 +82,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param iterable The {@link IterableWithCount iterable} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, iterable: IterableWithCount<T>,): CollectionHolder<T>
 /**
@@ -90,7 +90,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param iterable The {@link IterableWithPossibleSize iterable} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, iterable: IterableWithPossibleSize<T>,): CollectionHolder<T>
 /**
@@ -98,7 +98,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param iterable The {@link Iterable iterable} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, iterable: Iterable<T>,): CollectionHolder<T>
 /**
@@ -106,7 +106,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param lateIterable The callback returning an {@link IterableWithSize iterable} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, lateIterable: () => IterableWithSize<T>,): CollectionHolder<T>
 /**
@@ -114,7 +114,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param lateIterable The callback returning an {@link IterableWithLength iterable} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, lateIterable: () => IterableWithLength<T>,): CollectionHolder<T>
 /**
@@ -122,7 +122,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param lateIterable The callback returning an {@link IterableWithCount iterable} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, lateIterable: () => IterableWithCount<T>,): CollectionHolder<T>
 /**
@@ -130,7 +130,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param lateIterable The callback returning an {@link IterableWithPossibleSize iterable} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, lateIterable: () => IterableWithPossibleSize<T>,): CollectionHolder<T>
 /**
@@ -138,7 +138,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  *
  * @param constructorInstance The constructor instance
  * @param lateIterable The callback returning an {@link Iterable} to send
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, lateIterable: () => Iterable<T>,): CollectionHolder<T>
 /**
@@ -148,7 +148,7 @@ export function newInstance<const T, >(constructorInstance: CollectionHolderCons
  * @param constructorInstance The constructor instance
  * @param iterable The callback returning an {@link Iterable} or the {@link Iterable} directly to send
  * @typescriptDefinition
- * @deprecated Use the direct construction instead
+ * @deprecated Use the direct construction instead (this will be removed in the next version)
  */
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, iterable: | Iterable<T> | (() => Iterable<T>),): CollectionHolder<T>
 export function newInstance<const T, >(constructorInstance: CollectionHolderConstructor<T>, iterable: | Iterable<T> | (() => Iterable<T>),): CollectionHolder<T> {
