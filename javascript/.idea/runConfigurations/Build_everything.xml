@@ -1,12 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Build everything" type="js.build_tools.npm" folderName="Build">
-    <package-json value="$PROJECT_DIR$/package.json" />
-    <command value="run" />
-    <scripts>
-      <script value="build" />
-    </scripts>
-    <node-interpreter value="project" />
-    <envs />
+  <configuration default="false" name="Build everything" type="CompoundRunConfigurationType">
+    <toRun name="Build (Asychronous module definition)" type="js.build_tools.npm" />
+    <toRun name="Build (Common Javascript)" type="js.build_tools.npm" />
+    <toRun name="Build (ECMAScript module)" type="js.build_tools.npm" />
+    <toRun name="Build (Types)" type="js.build_tools.npm" />
+    <toRun name="Build (Universal module definition)" type="js.build_tools.npm" />
     <method v="2" />
   </configuration>
 </component>
