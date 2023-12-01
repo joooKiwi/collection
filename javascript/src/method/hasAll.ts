@@ -13,7 +13,7 @@ import type {Nullable}         from "../general type"
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @returns {boolean} Every {@link values} are in the {@link collection}
+ * @return {boolean} Every {@link values} are in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
@@ -25,7 +25,7 @@ export function hasAll<const T, >(collection: Nullable<CollectionHolder<T>>, ...
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @returns {boolean} Every {@link values} are in the {@link collection}
+ * @return {boolean} Every {@link values} are in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)

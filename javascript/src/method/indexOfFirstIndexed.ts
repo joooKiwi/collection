@@ -26,7 +26,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
- * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+ * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.findIndex
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)

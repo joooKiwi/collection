@@ -13,7 +13,7 @@ import type {Nullable}         from "../general type"
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @returns {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+ * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
@@ -26,7 +26,7 @@ export function hasOne<const T, >(collection: Nullable<CollectionHolder<T>>, ...
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @returns {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+ * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)

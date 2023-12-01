@@ -16,7 +16,7 @@ import type {Nullable}                 from "../general type"
  * Tell if the {@link collection} {@link CollectionHolder.isNotEmpty is not empty}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @returns {boolean} <b>false</b> if null is received or {@link CollectionHolder.isNotEmpty} otherwise
+ * @return {boolean} <b>false</b> if null is received or {@link CollectionHolder.isNotEmpty} otherwise
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html Kotlin any()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
  * @extensionFunction
@@ -28,7 +28,7 @@ export function any<const T, const COLLECTION extends CollectionHolder<T> = Coll
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The matching predicate
- * @returns {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
+ * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
  * @see ReadonlyArray.some
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html Kotlin any(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)

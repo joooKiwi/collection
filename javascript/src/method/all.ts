@@ -18,7 +18,7 @@ import type {Nullable}                 from "../general type"
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The matching predicate
- * @returns {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction

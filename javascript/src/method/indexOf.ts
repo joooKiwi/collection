@@ -25,7 +25,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
- * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
@@ -45,7 +45,7 @@ export function indexOf<const T, >(collection: Nullable<CollectionHolder<T>>, el
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
- * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)

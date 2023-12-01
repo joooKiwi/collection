@@ -265,7 +265,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
@@ -284,7 +284,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
@@ -304,7 +304,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
@@ -323,7 +323,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
@@ -344,7 +344,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
-     * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
@@ -361,7 +361,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -380,7 +380,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -398,7 +398,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @returns {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -557,7 +557,7 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @returns {boolean} <b>true</b> only if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
+     * @return {boolean} <b>true</b> only if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html Kotlin all()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All()
      */
@@ -569,7 +569,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Tell if the current {@link CollectionHolder collection} {@link CollectionHolder.isNotEmpty is not empty}
      *
-     * @returns {boolean} {@link isNotEmpty}
+     * @return {boolean} {@link isNotEmpty}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html Kotlin any()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
      * @alias isNotEmpty
@@ -581,7 +581,7 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The condition to check on each value
-     * @returns {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
      * @see ReadonlyArray.some
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html Kotlin any(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
@@ -604,7 +604,7 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The condition to check on each value
-     * @returns {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
+     * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none(predicate)
      */
     none(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -620,7 +620,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @see includesOne
      * @see containsOne
      * @see ReadonlyArray.includes
@@ -634,7 +634,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @see includesOne
      * @see containsOne
      * @see ReadonlyArray.includes
@@ -650,7 +650,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias hasOne
      */
     includesOne(...values: readonly T[]): boolean
@@ -659,7 +659,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias hasOne
      */
     includesOne(...values: readonly unknown[]): boolean
@@ -669,7 +669,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias hasOne
      */
     containsOne(...values: readonly T[]): boolean
@@ -678,7 +678,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias hasOne
      */
     containsOne(...values: readonly unknown[]): boolean
@@ -692,7 +692,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell that every value received is in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
+     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      * @see includesAll
      * @see containsAll
      * @see ReadonlyArray.includes
@@ -705,7 +705,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell that every value received are in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
+     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      * @see includesAll
      * @see containsAll
      * @see ReadonlyArray.includes
@@ -720,7 +720,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell that every value received is in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
+     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      * @alias hasAll
      */
     includesAll(...values: readonly T[]): boolean
@@ -729,7 +729,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell that every value received is in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
+     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      * @alias hasAll
      */
     includesAll(...values: readonly unknown[]): boolean
@@ -739,7 +739,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell that every value received is in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
+     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      * @alias hasAll
      */
     containsAll(...values: readonly T[]): boolean
@@ -748,7 +748,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell that every value received is in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
-     * @returns {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
+     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      * @alias hasAll
      */
     containsAll(...values: readonly unknown[]): boolean
