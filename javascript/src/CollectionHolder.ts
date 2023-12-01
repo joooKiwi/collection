@@ -773,6 +773,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param limit     The maximum amount of values in the join (null by default)
      * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED "…"} by default)
      * @param transform A callback to transform into a {@link String}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
      * @see ReadonlyArray.join
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
      * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
