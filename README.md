@@ -52,18 +52,18 @@ _Another note: Some parts may be incomplete due to some research that has to be 
 ### Size methods
 The getter methods associated to a size
 
-| Method                                      | Javascript                                                                                                                                                                                                  | Java                                                                                                                                             | Kotlin                                                                                                                    | PHP | C#                                                                                                                                                                                                                                                                                     |
-|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `get size`<br/>`get length`<br/>`get count` | [Array.length](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/length)<br/>[Set.size](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/size) | `array.length`<br/>[Collection.size()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#size())            | `array.size`<br/>[Collection.size](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/size.html) |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count#system-linq-enumerable-count-1(system-collections-generic-ienumerable((-0)))">Enumerable.Count()</a><br/>[ICollection.Count](https://learn.microsoft.com/dotnet/api/system.collections.icollection.count) |
-| `get isEmpty`                               | `array.length === 0`<br/>`set.size === 0`                                                                                                                                                                   | `array.length == 0`<br/>[Collection.isEmpty()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#isEmpty()) | [Collection.isEmpty()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/is-empty.html)         |     | `collection.Any()`                                                                                                                                                                                                                                                                     |
-| `get isNotEmpty`                            | `array.length !== 0`<br/>`set.size !== 0`                                                                                                                                                                   | `array.length == 0`<br/>`!collection.isEmpty()`                                                                                                  | `iterable.isNotEmpty`                                                                                                     |     | `!collection.Any()`                                                                                                                                                                                                                                                                    |
+| Method                                      | Javascript                                                                                                                                                                                                  | Java                                                                                                                                             | Kotlin                                                                                                                    | PHP              | C#                                                                                                                                                                                                                                                                                     |
+|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `get size`<br/>`get length`<br/>`get count` | [Array.length](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/length)<br/>[Set.size](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/size) | `array.length`<br/>[Collection.size()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#size())            | `array.size`<br/>[Collection.size](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/size.html) | `sizeof($array)` | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count#system-linq-enumerable-count-1(system-collections-generic-ienumerable((-0)))">Enumerable.Count()</a><br/>[ICollection.Count](https://learn.microsoft.com/dotnet/api/system.collections.icollection.count) |
+| `get isEmpty`                               | `array.length === 0`<br/>`set.size === 0`                                                                                                                                                                   | `array.length == 0`<br/>[Collection.isEmpty()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#isEmpty()) | [Collection.isEmpty()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/is-empty.html)         | `empty($array)`  | `collection.Any()`                                                                                                                                                                                                                                                                     |
+| `get isNotEmpty`                            | `array.length !== 0`<br/>`set.size !== 0`                                                                                                                                                                   | `array.length == 0`<br/>`!collection.isEmpty()`                                                                                                  | `iterable.isNotEmpty`                                                                                                     | `!empty($array)` | `!collection.Any()`                                                                                                                                                                                                                                                                    |
 
 ### Has ... methods
 The methods to validate one type of value
 
-| Methods                                                     | Javascript              | Java                        | Kotlin | PHP | C#                                                                             |
-|-------------------------------------------------------------|-------------------------|-----------------------------|--------|-----|--------------------------------------------------------------------------------|
-| `get hasNull`<br/>`get includesNull`<br/>`get containsNull` | `array.includes(null)`  | `collection.contains(null)` | _N/A_  |     | `enumerable.Contains(null)`<br/>`list.Contains(null)`<br/>`set.Contains(null)` |
+| Methods                                                     | Javascript              | Java                        | Kotlin | PHP                            | C#                                                                             |
+|-------------------------------------------------------------|-------------------------|-----------------------------|--------|--------------------------------|--------------------------------------------------------------------------------|
+| `get hasNull`<br/>`get includesNull`<br/>`get containsNull` | `array.includes(null)`  | `collection.contains(null)` | _N/A_  | `in_array(null, $array, true)` | `enumerable.Contains(null)`<br/>`list.Contains(null)`<br/>`set.Contains(null)` |
 
 ### Value methods
 The methods associated to a value or index
@@ -85,6 +85,11 @@ throw
  - [List.get(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html)
 
 **PHP**
+```php
+if (array_key_exists($index, $array))
+    return $array[index];
+throw
+```
 
 **C#**
  - [Enumerable.ElementAt(index)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.elementat)
@@ -112,6 +117,11 @@ return defaultValue();
  - [Array.getOrElse(index, defaultValue)<br/>List.getOrElse(index, defaultValue)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html)
 
 **PHP**
+```php
+if (array_key_exists($index, $array))
+    return $array[$index];
+return defaultValue();
+```
 
 **C#**
  - `enumerable.ElementAtOrDefault(index) ?? defaultValue()`
@@ -140,6 +150,9 @@ return null;
  - [List.getOrNull(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-null.html)
 
 **PHP**
+```php
+return $array?[$index];
+```
 
 **C#**
  - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.elementatordefault#system-linq-enumerable-elementatordefault-1(system-collections-generic-ienumerable((-0))-system-index)">Enumerable.ElementAtOrDefault(index)</a>
@@ -711,6 +724,7 @@ return true;
  - [Array.filter(predicate)<br/>Iterable.filter(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html)
 
 **PHP**
+ - [array_filter($array, $predicate)](https://www.php.net/manual/function.array-filter.php)
 
 **C#**
  - [IEnumerable.Where(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where)
@@ -728,6 +742,7 @@ return true;
  - [Array.filterIndexed(predicate)<br/>Iterable.filterIndexed(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html)
 
 **PHP**
+ - [array_filter($array, $predicate)](https://www.php.net/manual/function.array-filter.php)
 
 **C#**
  - [IEnumerable.Where(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where)
@@ -745,6 +760,7 @@ return true;
  - [Array.filterNot(predicate)<br/>Iterable.filterNot(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html)
 
 **PHP**
+- `array_filter($array, !$predicate)`
 
 **C#**
  - `!enumerable.Where(predicate)`
@@ -762,6 +778,7 @@ return true;
  - [Array.filterNotNull()<br/>Iterable.filterNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html)
 
 **PHP**
+ - `array_filter($array, fn(it) { $array[$it] != null },)`
 
 **C#**
  - `!enumerable.Where(it => it != null)`
@@ -791,6 +808,13 @@ while (++index < size)
  - [Array.requireNoNulls()<br/>Iterable.requireNoNulls()<br/>List.requireNoNulls()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html)
 
 **PHP**
+```php
+$size = sizeof($array);
+$index = -1;
+while (++$index < $size)
+    if ($array[$index] == null)
+        throw
+```
 
 **C#**
 ```csharp
@@ -908,6 +932,7 @@ return newArray;
  - [Array.map(transform)<br/>Iterable.map(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html)
 
 **PHP**
+ - [array_map($transform, $array)](https://www.php.net/manual/function.array-map.php)
 
 **C#**
  - [IEnumerable.Select(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select)
@@ -925,6 +950,7 @@ return newArray;
  - [Array.mapIndexed(transform)<br/>Iterable.mapIndexed(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html)
 
 **PHP**
+ - [array_map($transform, $array)](https://www.php.net/manual/function.array-map.php)
 
 **C#**
  - [IEnumerable.Select(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select)
@@ -964,6 +990,18 @@ return newList.toArray((T[]) new Object[newList.size()]);
  - [Array.mapNotNull(transform)<br/>Iterable.mapNotNull(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html)
 
 **PHP**
+```php
+$size = sizeof($this);
+$newArray = [];
+$index = -1;
+while (++$index < $size) {
+    $value = transform;
+    if ($value == null)
+        continue;
+    $newArray[] = $value;
+}
+return $newArray;
+```
 
 **C#**
 
@@ -1015,6 +1053,18 @@ return newList.toArray((T[]) new Object[newList.size()]);
  - [Array.mapIndexedNotNull(transform)<br/>Iterable.mapIndexedNotNull(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html)
 
 **PHP**
+```php
+$size = sizeof($this);
+$newArray = [];
+$index = -1;
+while (++$index < $size) {
+    $value = transform;
+    if ($value == null)
+        continue;
+    $newArray[] = $value;
+}
+return $newArray;
+```
 
 **C#**
 ```csharp
@@ -1045,6 +1095,7 @@ return newArray;
  - [Array.forEach(action)<br/>Iterable.forEach(action)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html)
 
 **PHP**
+ - [array_walk(&$array, $action)](https://www.php.net/manual/function.array-walk.php)
 
 **C#**
  - [List.forEach(action)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach)
@@ -1063,6 +1114,7 @@ return newArray;
  - [Array.forEachIndexed(action)<br/>Iterable.forEachIndexed(action)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each-indexed.html)
 
 **PHP**
+ - [array_walk(&$array, $action)](https://www.php.net/manual/function.array-walk.php)
 
 **C#**
  - [List.forEach(action)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach)
@@ -1355,6 +1407,7 @@ return newArray;
  - [Array.reversed()<br/>Iterable.reversed()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reversed.html)
 
 **PHP**
+ - [array_reverse($array)](https://www.php.net/manual/function.array-reverse.php)
 
 **C#**
  - [Reverse(array, fromIndex, limit)](https://learn.microsoft.com/dotnet/api/system.array.reverse)
