@@ -8,7 +8,7 @@
     <toRun name="has" type="JavaScriptTestRunnerJest" />
     <toRun name="javascript exclusive" type="JavaScriptTestRunnerJest" />
     <toRun name="join" type="JavaScriptTestRunnerJest" />
-    <toRun name="map" type="JavaScriptTestRunnerJest" />
+    <toRun name="map / forEach" type="JavaScriptTestRunnerJest" />
     <toRun name="reverse" type="JavaScriptTestRunnerJest" />
     <toRun name="size" type="JavaScriptTestRunnerJest" />
     <toRun name="slice" type="JavaScriptTestRunnerJest" />
