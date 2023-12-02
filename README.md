@@ -1165,9 +1165,8 @@ Object.freeze([...iterable])
 **PHP**
 
 **C#**
-```csharp
-new ReadOnlyCollection<T>(enumerable)
-```
+ - `new ReadOnlyCollection<T>(enumerable)`
+ - [enumerable.ToImmutableArray()](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray.toimmutablearray#system-collections-immutable-immutablearray-toimmutablearray-1%28system-collections-generic-ienumerable%28%28-0%29%29%29)
 
 </details>
 <details><summary>toMutableArray()</summary>
@@ -1238,9 +1237,8 @@ new ReadOnlyCollection<T>(enumerable)
 **PHP**
 
 **C#**
-```csharp
-new ReadOnlyCollection<T>(enumerable)
-```
+ - `new ReadOnlyCollection<T>(enumerable)`
+ - [enumerable.toImmutableList()](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablelist.toimmutablelist?#system-collections-immutable-immutablelist-toimmutablelist-1%28system-collections-generic-ienumerable%28%28-0%29%29%29)
 
 </details>
 <details><summary>toMutableList()</summary>
