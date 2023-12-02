@@ -5,14 +5,20 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {AB}                    from "./constantCollections"
-import {everyInstances,}       from "./constantValues"
-import {newCollectionInstance} from "./newCollectionInstance"
+import {CollectionHolderThatCannotRetrieveByGet} from "./CollectionHolderThatCannotRetrieveByGet"
+import {AB}                                      from "./constantCollections"
+import {everyInstances,}                         from "./constantValues"
+import {newCollectionInstance}                   from "./newCollectionInstance"
 
 describe("CollectionHolderTest (join)", () =>
 describe.each(everyInstances,)("%s", ({value: instance,},) => {
     const INSTANCE = () => newCollectionInstance(instance, AB,)
 
+    describe("get() being called", () => {
+        test("transform = () => {}",    () => expect(() => new CollectionHolderThatCannotRetrieveByGet(INSTANCE(),).join(null, null, null, null, null, () => '',),).not.toThrow(),)
+        test("transform = (1) => {}",   () => expect(() => new CollectionHolderThatCannotRetrieveByGet(INSTANCE(),).join(null, null, null, null, null, _ => '',),).toThrow(),)
+        test("transform = (1,2) => {}", () => expect(() => new CollectionHolderThatCannotRetrieveByGet(INSTANCE(),).join(null, null, null, null, null, (_1, _2,) => '',),).toThrow(),)
+    },)
 
     test("nothing",                        () => expect(INSTANCE().join(),).toBe("[a, b]",),)
     test("separator = ;",                  () => expect(INSTANCE().join(";",),).toBe("[a;b]",),)

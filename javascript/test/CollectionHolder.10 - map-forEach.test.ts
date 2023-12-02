@@ -5,13 +5,56 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {ABCD}                  from "./constantCollections"
-import {everyInstances}        from "./constantValues"
-import {newCollectionInstance} from "./newCollectionInstance"
+import type {CollectionHolder} from "../src/CollectionHolder"
 
-describe("CollectionHolderTest (map)", () =>
+import {CollectionHolderThatCannotRetrieveByGet} from "./CollectionHolderThatCannotRetrieveByGet"
+import {AB, ABCD}                                from "./constantCollections"
+import {everyInstances}                          from "./constantValues"
+import {newCollectionInstance}                   from "./newCollectionInstance"
+
+describe("CollectionHolderTest (map / forEach)", () =>
 describe.each(everyInstances,)("%s", ({value: instance,},) => {
+    //#region -------------------- Instances --------------------
+
     const INSTANCE = () => newCollectionInstance(instance, ABCD,)
+
+    const  newFailInstanceThatExpectToThrow = (action: (collection: CollectionHolder,) => CollectionHolder,) => action(new CollectionHolderThatCannotRetrieveByGet(newCollectionInstance(instance, AB,),),).get(0,)
+    const newFailInstanceThatExpectToNotThrow = (action: (collection: CollectionHolder,) => CollectionHolder,) => action(newCollectionInstance(instance, AB,),).get(0,)
+
+    //#region -------------------- Instances --------------------
+
+    describe("get() being called", () => {
+        describe("map", () => {
+            test("0 arguments", () => expect(() => newFailInstanceThatExpectToNotThrow(it => it.map(() => {},),),).not.toThrow(),)
+            test("1 arguments", () => expect(() => newFailInstanceThatExpectToThrow(it => it.map(_ => {},),),).toThrow(),)
+            test("2 arguments", () => expect(() => newFailInstanceThatExpectToThrow(it => it.map((_1,_2,) => {},),),).toThrow(),)
+        },)
+        describe("mapIndexed", () => {
+            test("() => {}",    () => expect(() => newFailInstanceThatExpectToNotThrow(it => it.mapIndexed(() => {},),),).not.toThrow(),)
+            test("(1) => {}",   () => expect(() => newFailInstanceThatExpectToNotThrow(it => it.mapIndexed(_ => {},),),).not.toThrow(),)
+            test("(1,2) => {}", () => expect(() => newFailInstanceThatExpectToThrow(it => it.mapIndexed((_1,_2,) => {},),),).toThrow(),)
+        },)
+        describe("mapNotNull", () => {
+            test("() => {}",    () => expect(() => newFailInstanceThatExpectToNotThrow(it => it.mapNotNull(() => '',),),).not.toThrow(),)
+            test("(1) => {}",   () => expect(() => newFailInstanceThatExpectToThrow(it => it.mapNotNull(_ => '',),),).toThrow(),)
+            test("(1,2) => {}", () => expect(() => newFailInstanceThatExpectToThrow(it => it.mapNotNull((_1,_2,) => '',),),).toThrow(),)
+        },)
+        describe("mapNotNullIndexed", () => {
+            test("() => {}",    () => expect(() => newFailInstanceThatExpectToNotThrow(it => it.mapNotNullIndexed(() => '',),),).not.toThrow(),)
+            test("(1) => {}",   () => expect(() => newFailInstanceThatExpectToNotThrow(it => it.mapNotNullIndexed(_ => '',),),).not.toThrow(),)
+            test("(1,2) => {}", () => expect(() => newFailInstanceThatExpectToThrow(it => it.mapNotNullIndexed((_1,_2,) => '',),),).toThrow(),)
+        },)
+        describe("forEach", () => {
+            test("() => {}",    () => expect(() => newFailInstanceThatExpectToNotThrow(it => it.forEach(() => {},),),).not.toThrow(),)
+            test("(1) => {}",   () => expect(() => newFailInstanceThatExpectToThrow(it => it.forEach(_ => {},),),).toThrow(),)
+            test("(1,2) => {}", () => expect(() => newFailInstanceThatExpectToThrow(it => it.forEach((_1,_2,) => {},),),).toThrow(),)
+        },)
+        describe("forEachIndexed", () => {
+            test("() => {}",    () => expect(() => newFailInstanceThatExpectToNotThrow(it => it.forEachIndexed(() => {},),),).not.toThrow(),)
+            test("(1) => {}",   () => expect(() => newFailInstanceThatExpectToNotThrow(it => it.forEachIndexed(_ => {},),),).not.toThrow(),)
+            test("(1,2) => {}", () => expect(() => newFailInstanceThatExpectToThrow(it => it.forEachIndexed((_1,_2,) => {},),),).toThrow(),)
+        },)
+    },)
 
 
     describe("map", () => {
