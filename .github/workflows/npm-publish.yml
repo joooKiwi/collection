@@ -56,8 +56,8 @@ jobs:
       - name: Installation of the dependencies (for NPM)
         run: npm --prefix ${{matrix.path}} ci
 
-      - name: "dist/" file deletion
-        run: npm del-cli dist/
+      - name: "dist/" folder deletion
+        run: npm --prefix ${{matrix.path}} run clear-dist-folder
 
       - name: Build ECMAScript module
         run: npm --prefix ${{matrix.path}} run build-esm
