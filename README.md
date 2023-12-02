@@ -1134,7 +1134,7 @@ A method made to convert it to another value
  - [Iterable.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Iterable.html#iterator())
  - [Collection.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#iterator())
  - [List.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html#iterator())
- - [Set,iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Set.html#iterator())
+ - [Set.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Set.html#iterator())
 
 **Kotlin**
  - [Iterable.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/iterator.html)
