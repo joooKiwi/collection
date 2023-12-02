@@ -778,7 +778,7 @@ return true;
  - [Array.filterNotNull()<br/>Iterable.filterNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html)
 
 **PHP**
- - `array_filter($array, fn(it) { $array[$it] != null },)`
+ - `array_filter($array, fn(it) => $array[$it] != null,)`
 
 **C#**
  - `!enumerable.Where(it => it != null)`
