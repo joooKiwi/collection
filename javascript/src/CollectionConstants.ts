@@ -12,7 +12,7 @@ import type {CollectionHolder}   from "./CollectionHolder"
 import type {CollectionIterator} from "./iterator/CollectionIterator"
 
 import {EmptyCollectionHolder}            from "./EmptyCollectionHolder"
-import {GenericCollectionHolder}          from "./GenericCollectionHolder"
+import type {GenericCollectionHolder}     from "./GenericCollectionHolder"
 import type {LazyGenericCollectionHolder} from "./LazyGenericCollectionHolder"
 import {EmptyCollectionIterator}          from "./iterator/EmptyCollectionIterator"
 import {EmptyCollectionHandler}           from "./handler/EmptyCollection.handler"
@@ -128,7 +128,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link CollectionHolder} */
     public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> {
-        return CollectionConstants.#EVERY_COLLECTION_METHODS ??= Object.freeze(new GenericCollectionHolder([
+        return CollectionConstants.#EVERY_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
             "hasNull", "includesNull", "containsNull",
@@ -156,7 +156,7 @@ export class CollectionConstants {
     }
     /** Every method applicable to a {@link CollectionIterator} */
     public static get EVERY_ITERATOR_METHODS(): CollectionHolder<keyof CollectionIterator> {
-        return CollectionConstants.#EVERY_ITERATOR_METHODS ??= Object.freeze(new GenericCollectionHolder([
+        return CollectionConstants.#EVERY_ITERATOR_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
             "index", "nextIndex", "previousIndex",
             "hasNext", "hasPrevious",
@@ -177,7 +177,7 @@ export class CollectionConstants {
 
     /** The {@link Object.constructor constructor} reference of a {@link GenericCollectionHolder} */
     public static get GenericCollectionHolder(): typeof GenericCollectionHolder {
-        return CollectionConstants.#GenericCollectionHolder ??= GenericCollectionHolder
+        return CollectionConstants.#GenericCollectionHolder ??= require("./GenericCollectionHolder").GenericCollectionHolder
     }
 
     /** The {@link Object.constructor constructor} reference of a {@link LazyGenericCollectionHolder} */
