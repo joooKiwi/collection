@@ -81,7 +81,7 @@ export class EmptyCollectionHolder
     public getOrElse(index?: Nullable<number>,): never
     public getOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,): U
     public getOrElse(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<never>>,): never
-    public getOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,): U {
+    public getOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,) {
         if (defaultValue == null)
             throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
         if (index == null)
@@ -92,7 +92,7 @@ export class EmptyCollectionHolder
     public atOrElse(index?: Nullable<number>,): never
     public atOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,): U
     public atOrElse(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<never>>,): never
-    public atOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<| U | never>>,): U {
+    public atOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<| U | never>>,) {
         if (defaultValue == null)
             throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
         if (index == null)
@@ -104,7 +104,7 @@ export class EmptyCollectionHolder
     public elementAtOrElse(index?: Nullable<number>,): never
     public elementAtOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,): U
     public elementAtOrElse(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<never>>,): never
-    public elementAtOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<| U | never>>,): U {
+    public elementAtOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<| U | never>>,) {
         if (defaultValue == null)
             throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
         if (index == null)
@@ -222,7 +222,7 @@ export class EmptyCollectionHolder
     //#region -------------------- Join methods --------------------
 
     public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<StringCallback<never>>,): string
-    public join(_separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>,): string {
+    public join(_separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>,) {
         return prefixAndPostfixOnly(prefix, postfix,)
     }
 
@@ -281,7 +281,7 @@ export class EmptyCollectionHolder
     public slice(indices?: Iterable<number>,): this
     public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
     public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
-    public slice(): this { return this }
+    public slice() { return this }
 
     //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
@@ -302,10 +302,10 @@ export class EmptyCollectionHolder
     //#region -------------------- ForEach methods --------------------
 
     public forEach(action?: ValueIndexCallback<never>,): this
-    public forEach(): this { return this }
+    public forEach() { return this }
 
     public forEachIndexed(action?: IndexValueCallback<never>,): this
-    public forEachIndexed(): this { return this }
+    public forEachIndexed() { return this }
 
     //#endregion -------------------- ForEach methods --------------------
 
@@ -346,7 +346,7 @@ export class EmptyCollectionHolder
 
 
     public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
-    public toReversed(): CollectionHolder<never> {
+    public toReversed() {
         return this as unknown as CollectionHolder<never>
     }
 
@@ -357,17 +357,17 @@ export class EmptyCollectionHolder
 
 
     public toLocaleString(locale?: Nullable<string>,): "[]"
-    public toLocaleString(): "[]" { return "[]" }
+    public toLocaleString() { return "[]" }
 
     public toLowerCaseString(): "[]" { return "[]" }
 
     public toLocaleLowerCaseString(locale?: Nullable<string>,): "[]"
-    public toLocaleLowerCaseString(): "[]" { return "[]" }
+    public toLocaleLowerCaseString() { return "[]" }
 
     public toUpperCaseString(): "[]" { return "[]" }
 
     public toLocaleUpperCaseString(locale?: Nullable<string>,): "[]"
-    public toLocaleUpperCaseString(): "[]" { return "[]" }
+    public toLocaleUpperCaseString() { return "[]" }
 
     //#endregion -------------------- Conversion methods (toString) --------------------
 
