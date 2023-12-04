@@ -19,13 +19,13 @@ But other languages will have different features based on how they can handle it
 | Java                      |                                                                                                      Maven                                                                                                       |
 | Kotlin                    |                                                                                                      Maven                                                                                                       |
 | PHP                       |                                                                                                     Composer                                                                                                     |
-| C#                        |                                                                                                      Nugget                                                                                                      |
+| C#                        |                                                                                                      Nuget                                                                                                       |
 
 ## Related projects
 
 Here is a list of the related projects made by me
-- lazy [GitHub](https://github.com/joooKiwi/lazy) / [NPM](https://www.npmjs.com/package/@joookiwi/lazy)
-- enumeration [GitHub](https://github.com/joooKiwi/enumeration) / [NPM](https://www.npmjs.com/package/@joookiwi/enumerable)
+- lazy ([GitHub](https://github.com/joooKiwi/lazy) | [NPM](https://www.npmjs.com/package/@joookiwi/lazy))
+- enumeration ([GitHub](https://github.com/joooKiwi/enumeration) | [NPM](https://www.npmjs.com/package/@joookiwi/enumerable))
 
 ## Functionality equivalent from language to language
 
@@ -778,7 +778,7 @@ return true;
  - [Array.filterNotNull()<br/>Iterable.filterNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html)
 
 **PHP**
- - `array_filter($array, fn(it) { $array[$it] != null },)`
+ - `array_filter($array, fn(it) => $array[$it] != null,)`
 
 **C#**
  - `!enumerable.Where(it => it != null)`
@@ -1134,7 +1134,7 @@ A method made to convert it to another value
  - [Iterable.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Iterable.html#iterator())
  - [Collection.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#iterator())
  - [List.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html#iterator())
- - [Set,iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Set.html#iterator())
+ - [Set.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Set.html#iterator())
 
 **Kotlin**
  - [Iterable.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/iterator.html)
@@ -1165,9 +1165,8 @@ Object.freeze([...iterable])
 **PHP**
 
 **C#**
-```csharp
-new ReadOnlyCollection<T>(enumerable)
-```
+ - `new ReadOnlyCollection<T>(enumerable)`
+ - [enumerable.ToImmutableArray()](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray.toimmutablearray#system-collections-immutable-immutablearray-toimmutablearray-1%28system-collections-generic-ienumerable%28%28-0%29%29%29)
 
 </details>
 <details><summary>toMutableArray()</summary>
@@ -1238,9 +1237,8 @@ new ReadOnlyCollection<T>(enumerable)
 **PHP**
 
 **C#**
-```csharp
-new ReadOnlyCollection<T>(enumerable)
-```
+ - `new ReadOnlyCollection<T>(enumerable)`
+ - [enumerable.toImmutableList()](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablelist.toimmutablelist?#system-collections-immutable-immutablelist-toimmutablelist-1%28system-collections-generic-ienumerable%28%28-0%29%29%29)
 
 </details>
 <details><summary>toMutableList()</summary>
@@ -1418,16 +1416,16 @@ return newArray;
 
 ## Version history
 
-| JS/TS                                                                       | Date                | Quick note                                                                                                                                                                                                                                                                             |
-|-----------------------------------------------------------------------------|---------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [1.5.0](https://github.com/joooKiwi/collection/releases/tag/v1.5.0-js)      | September 28, 2023  | The `RangeError` and `ReferenceError` has been changed to custom exceptions<br/>The [lazy](https://github.com/joookiwi/lazy) dependency has been updated from 1.1.0 to [1.2.0](https://github.com/joooKiwi/lazy/releases/tag/v1.2.0-js)                                                |
-| [1.4.0](https://github.com/joooKiwi/collection/releases/tag/v1.4.0-js)      | September 8th, 2023 | Addition of a `limit` on every methods where it has `fromIndex` and `toIndex`<br/>Change on the `toIndex` to be inclusive instead of exclusive<br/>Addition of `elementAt`, `elementAtOrNull`, `elementAtOrElse`, `mapNotNull`, `mapNotNullIndexed`, `slice` to the `CollectionHolder` |
-| [1.3.0](https://github.com/joooKiwi/collection/releases/tag/v1.3.0-js)      | August 14th, 2023   | Small changes on some utility methods<br/>Addition of `nextValue` and `previousValue` to the `CollectionIterator`                                                                                                                                                                      |
-| [1.2.0](https://github.com/joooKiwi/collection/releases/tag/v1.2.0-js)      | July 27th, 2023     | Fix on a "for‥of" not working properly                                                                                                                                                                                                                                                 |
-| [1.1.0](https://github.com/joooKiwi/collection/releases/tag/v1.1.0-js)      | July 23rd, 2023     | Addition of a new [CollectionIterator](https://github.com/joooKiwi/collection/blob/main/javascript/src/iterator/CollectionIterator.ts)                                                                                                                                                 |
-| 1.0.4                                                                       | July 2nd, 2023      | There were recursive import for the [EmptyCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/EmptyCollectionHolder.ts) from the [CollectionConstants](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionConstants.ts)           |
-| 1.0.3                                                                       | July 1st, 2023      | For some reason, the file [CollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionHolder.ts) had a Symbol not declared                                                                                                                            |
-| 1.0.2                                                                       | July 1st, 2023      | Small fix on the [package.json](https://github.com/joooKiwi/collection/blob/main/javascript/package.json)                                                                                                                                                                              |
-| 1.0.1                                                                       | July 1st, 2023      | An update based on the new [lazy version](https://github.com/joookiwi/lazy)                                                                                                                                                                                                            |
-| [1.0.0](https://github.com/joooKiwi/collection/releases/tag/v1.0.0-JS%26TS) | July 1st, 2023      | The first version<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project                                                                                                                                                                          |
-
+| JS/TS                                                                       | Date                 | Quick note                                                                                                                                                                                                                                                                             |
+|-----------------------------------------------------------------------------|----------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [1.6.0](https://github.com/joooKiwi/collection/releases/tag/v1.6.0-js)      | December 2nd, 2023   | New implementation based on the amount of arguments received in a callback<br/>Addition of `toString` variants methods to the `CollectionHolder`<br/>Deprecation (for removal) of the `newInstance`                                                                                    |
+| [1.5.0](https://github.com/joooKiwi/collection/releases/tag/v1.5.0-js)      | September 28th, 2023 | The `RangeError` and `ReferenceError` has been changed to custom exceptions<br/>The [lazy](https://github.com/joookiwi/lazy) dependency has been updated from 1.1.0 to [1.2.0](https://github.com/joooKiwi/lazy/releases/tag/v1.2.0-js)                                                |
+| [1.4.0](https://github.com/joooKiwi/collection/releases/tag/v1.4.0-js)      | September 8th, 2023  | Addition of a `limit` on every methods where it has `fromIndex` and `toIndex`<br/>Change on the `toIndex` to be inclusive instead of exclusive<br/>Addition of `elementAt`, `elementAtOrNull`, `elementAtOrElse`, `mapNotNull`, `mapNotNullIndexed`, `slice` to the `CollectionHolder` |
+| [1.3.0](https://github.com/joooKiwi/collection/releases/tag/v1.3.0-js)      | August 14th, 2023    | Small changes on some utility methods<br/>Addition of `nextValue` and `previousValue` to the `CollectionIterator`                                                                                                                                                                      |
+| [1.2.0](https://github.com/joooKiwi/collection/releases/tag/v1.2.0-js)      | July 27th, 2023      | Fix on a "for‥of" not working properly                                                                                                                                                                                                                                                 |
+| [1.1.0](https://github.com/joooKiwi/collection/releases/tag/v1.1.0-js)      | July 23rd, 2023      | Addition of a new [CollectionIterator](https://github.com/joooKiwi/collection/blob/main/javascript/src/iterator/CollectionIterator.ts)                                                                                                                                                 |
+| 1.0.4                                                                       | July 2nd, 2023       | There were recursive import for the [EmptyCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/EmptyCollectionHolder.ts) from the [CollectionConstants](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionConstants.ts)           |
+| 1.0.3                                                                       | July 1st, 2023       | For some reason, the file [CollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionHolder.ts) had a Symbol not declared                                                                                                                            |
+| 1.0.2                                                                       | July 1st, 2023       | Small fix on the [package.json](https://github.com/joooKiwi/collection/blob/main/javascript/package.json)                                                                                                                                                                              |
+| 1.0.1                                                                       | July 1st, 2023       | An update based on the new [lazy version](https://github.com/joookiwi/lazy)                                                                                                                                                                                                            |
+| [1.0.0](https://github.com/joooKiwi/collection/releases/tag/v1.0.0-JS%26TS) | July 1st, 2023       | The first version<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project                                                                                                                                                                          |

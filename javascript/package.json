@@ -1,16 +1,17 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.5.0",
-  "description": "A Javascript implementation of a collection based on Array (from Javascript), Set (from Javascript), List (from Java/Kotlin) and Enumerable (from C#)",
+  "version": "1.5.1",
+  "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin), List (from Java/Kotlin/C#) and Enumerable (from C#)",
 
   "scripts": {
-    "prebuild-all": "del-cli dist/",
-    "build": "npm-run-all --parallel build-*",
-    "build-esm":   "tsc --project tsconfig.esm.json",
-    "build-cjs":   "tsc --project tsconfig.cjs.json",
-    "build-amd":   "tsc --project tsconfig.amd.json",
-    "build-umd":   "tsc --project tsconfig.umd.json",
-    "build-types": "tsc --project tsconfig.types.json",
+    "clear-dist-folder": "del-cli dist/",
+    "prebuild-all":      "del-cli dist/",
+    "build":             "npm-run-all --parallel build-*",
+    "build-esm":         "tsc --project tsconfig.esm.json",
+    "build-cjs":         "tsc --project tsconfig.cjs.json",
+    "build-amd":         "tsc --project tsconfig.amd.json",
+    "build-umd":         "tsc --project tsconfig.umd.json",
+    "build-types":       "tsc --project tsconfig.types.json",
 
     "test": "jest",
     "test-collection": "jest --testNamePattern=CollectionHolderTest",
@@ -136,14 +137,14 @@
   "author": "JóôòKiwi",
   "license": "MIT",
   "dependencies": {
-    "@joookiwi/lazy": "^1.2.0"
+    "@joookiwi/lazy": "^1.2.1"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.5",
-    "@types/node": "^20.7.1",
+    "@types/jest": "^29.5.10",
+    "@types/node": "^20.10.3",
     "del-cli": "^5.1.0",
     "jest-environment-jsdom": "^29.7.0",
-    "jest-extended": "^4.0.1",
+    "jest-extended": "^4.0.2",
     "npm-run-all": "^4.1.5",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",

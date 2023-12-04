@@ -44,7 +44,7 @@ It can be separated in different categories.
 1. The **value** methods
 2. The **loop** methods
 3. The **conversion** methods
-4. Some hasNull **utility** methods _(not part of the `CollectionHolder`)_
+4. Some **utility** methods _(not part of the `CollectionHolder`)_
 
 ---
 <span>1.</span> The **value** methods are:
@@ -95,8 +95,8 @@ It can be separated in different categories.
  - ~~`newInstance`~~ _(deprecated, it will be removed in the next version)_
 
 ---
-Almost every method is present in the `src/methods` at the exception of
-`get(index)`, `getOrNull(index)` and `getOrElse(index,defaultValue)`
+Almost every method is present in the `src/method` at the exception of
+`get(index)`, `getOrNull(index)` and `getOrElse(index, defaultValue)`
 that is handled differently based on the type of instance.
 
 The non-implemented methods are `size` (with its alias `length` & `count`)
