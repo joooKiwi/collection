@@ -19,7 +19,7 @@ But other languages will have different features based on how they can handle it
 | Java                      |                                                                                                      Maven                                                                                                       |
 | Kotlin                    |                                                                                                      Maven                                                                                                       |
 | PHP                       |                                                                                                     Composer                                                                                                     |
-| C#                        |                                                                                                      Nugget                                                                                                      |
+| C#                        |                                                                                                      Nuget                                                                                                       |
 
 ## Related projects
 
