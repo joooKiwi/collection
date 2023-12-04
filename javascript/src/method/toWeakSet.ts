@@ -23,11 +23,11 @@ export function toWeakSet<const T, >(collection: Nullable<CollectionHolder<T>>,)
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_WEAK_SET as Readonly<WeakSet<ObjectOf<T>>>
 
-    const weakSet = new WeakSet<ObjectOf<T>>,
-        size = collection.size,
-        objectValues = collection.objectValuesMap
+    const size = collection.size
+    const weakSet = new WeakSet<ObjectOf<T>>
+    const objectValues = collection.objectValuesMap
     let index = -1
     while (++index < size)
-        weakSet.add(objectValues.get(collection.get(index,),) as ObjectOf<T>,)
+        weakSet.add(objectValues.get(collection.get(index,),)!,)
     return Object.freeze(weakSet,)
 }

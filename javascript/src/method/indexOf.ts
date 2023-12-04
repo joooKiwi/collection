@@ -5,29 +5,33 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder} from "../CollectionHolder"
-import type {Nullable, NullOr} from "../general type"
+import type {CollectionHolder}         from "../CollectionHolder"
+import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
+import type {Nullable, NullOr}         from "../general type"
 
 import {endingIndex as endingIndexFunction}     from "./endingIndex"
 import {maximumIndex as maximumIndexFunction}   from "./maximumIndex"
 import {startingIndex as startingIndexFunction} from "./startingIndex"
+
+//#region -------------------- Facade method --------------------
 
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * or <b>null</b> if it was not in the {@link collection}
  * from a range (if provided)
  *
- * @param collection the {@link Nullable nullable} {@link CollectionHolder collection}
- * @param element The element to find
- * @param fromIndex The inclusive starting index
- * @param toIndex The inclusive ending index
- * @param limit The maximum index
- * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param element    The element to find
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The maximum index
+ * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item)
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
  * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
  * @extensionFunction
  */
 export function indexOf<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
@@ -36,17 +40,18 @@ export function indexOf<const T, >(collection: Nullable<CollectionHolder<T>>, el
  * or <b>null</b> if it was not in the {@link collection}
  * from a range (if provided)
  *
- * @param collection the {@link Nullable nullable} {@link CollectionHolder collection}
- * @param element The element to find
- * @param fromIndex The inclusive starting index
- * @param toIndex The inclusive ending index
- * @param limit The maximum index
- * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param element    The element to find
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The maximum index
+ * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item)
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
  * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
  * @extensionFunction
  */
 export function indexOf<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
@@ -79,26 +84,29 @@ export function indexOf(collection: Nullable<CollectionHolder>, element: unknown
         return null
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
-    //#region -------------------- Return index --------------------
 
     if (limit == null)
-        return withoutALimit(collection, element, startingIndex, endingIndex,)
+        return __withoutALimit(collection as NonEmptyCollectionHolder, element, startingIndex, endingIndex,)
+
+    //#region -------------------- Initialization (maximum index) --------------------
 
     const maximumIndex = maximumIndexFunction(collection, limit, size,)
-    if (maximumIndex == size)
-        return withoutALimit(collection, element, startingIndex, endingIndex,)
-
     if (maximumIndex == null)
         return null
+    if (maximumIndex == size)
+        return __withoutALimit(collection as NonEmptyCollectionHolder, element, startingIndex, endingIndex,)
     if (endingIndex - startingIndex < maximumIndex - 1)
         return null
 
-    return withALimit(collection, element, startingIndex, endingIndex, maximumIndex,)
+    //#endregion -------------------- Initialization (maximum index) --------------------
 
-    //#endregion -------------------- Return index --------------------
+    return __withALimit(collection as NonEmptyCollectionHolder, element, startingIndex, endingIndex, maximumIndex,)
 }
 
-function withoutALimit(collection: CollectionHolder, element: unknown, startingIndex: number, endingIndex: number,): NullOr<number> {
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Loop methods --------------------
+
+function __withoutALimit(collection: NonEmptyCollectionHolder, element: unknown, startingIndex: number, endingIndex: number,): NullOr<number> {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (collection.get(index,) === element)
@@ -106,7 +114,7 @@ function withoutALimit(collection: CollectionHolder, element: unknown, startingI
     return null
 }
 
-function withALimit(collection: CollectionHolder, element: unknown, startingIndex: number, endingIndex: number, maximumIndex: number,): NullOr<number> {
+function __withALimit(collection: NonEmptyCollectionHolder, element: unknown, startingIndex: number, endingIndex: number, maximumIndex: number,): NullOr<number> {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (index >= maximumIndex)
@@ -115,3 +123,5 @@ function withALimit(collection: CollectionHolder, element: unknown, startingInde
             return index
     return null
 }
+
+//#endregion -------------------- Loop methods --------------------

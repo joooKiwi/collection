@@ -10,10 +10,10 @@ import {EmptyCollectionHolder}                     from "../src/EmptyCollectionH
 import {NoElementFoundInCollectionHolderException} from "../src/exception/NoElementFoundInCollectionHolderException"
 import {GenericCollectionIterator}                 from "../src/iterator/GenericCollectionIterator"
 
-import {ABCDEFGHIJ}                       from "./constantCollections"
-import {everyInstances, iterableCreation} from "./constantValues"
-import {newCollectionInstance}            from "./newCollectionInstance"
-import {newEmptyIterator}                 from "./newEmptyIterator"
+import {ABCDEFGHIJ}                        from "./constantCollections"
+import {everyInstances, iterableCreation}  from "./constantValues"
+import {newCollectionInstanceFromCallback} from "./newCollectionInstance"
+import {newEmptyIterator}                  from "./newEmptyIterator"
 
 describe("CollectionIteratorTest", () => {
 
@@ -76,7 +76,7 @@ describe("CollectionIteratorTest", () => {
 
         describe.each(everyInstances,)("%s", ({value: collectionInstance,},) => {describe.each(iterableCreation,)("%s", ({value: iterableCreation,},) => {
             const maxSize = ABCDEFGHIJ.length,
-                newInstance = () => new GenericCollectionIterator<typeof ABCDEFGHIJ[number]>(newCollectionInstance(collectionInstance, iterableCreation, ABCDEFGHIJ,))
+                newInstance = () => new GenericCollectionIterator<typeof ABCDEFGHIJ[number]>(newCollectionInstanceFromCallback(collectionInstance, iterableCreation, ABCDEFGHIJ,))
 
             describe("size", () => {
                 test("size", () => expect(newInstance().size,).toBe(maxSize,),)

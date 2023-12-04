@@ -5,11 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}            from "../CollectionHolder"
-import type {CollectionHolderConstructor} from "../CollectionHolderConstructor"
-import type {NonEmptyCollectionHolder}    from "../NonEmptyCollectionHolder"
-import type {Nullable}                    from "../general type"
-import type {CollectionIterator}          from "../iterator/CollectionIterator"
+import type {CollectionHolder}         from "../CollectionHolder"
+import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
+import type {Nullable}                 from "../general type"
+import type {CollectionIterator}       from "../iterator/CollectionIterator"
 
 import {CollectionConstants}                       from "../CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
@@ -17,8 +16,9 @@ import {endingIndex as endingIndexFunction}        from "./endingIndex"
 import {isCollectionHolder}                        from "./isCollectionHolder"
 import {isCollectionIterator}                      from "./isCollectionIterator"
 import {maximumIndex as maximumIndexFunction}      from "./maximumIndex"
-import {newInstance}                               from "./newInstance"
 import {startingIndex as startingIndexFunction}    from "./startingIndex"
+
+//#region -------------------- Facade method --------------------
 
 /**
  * Create a new {@link CollectionHolder} from the {@link indices}
@@ -141,6 +141,8 @@ export function slice<const T, >(collection: Nullable<CollectionHolder<T>>, indi
     return sliceByIterable(collection, indicesOrFromIndex,)
 }
 
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- By indices --------------------
 
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} (as an {@link ReadonlyArray array})
@@ -165,7 +167,7 @@ export function sliceByArray<const T, >(collection: Nullable<CollectionHolder<T>
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
+    return new CollectionConstants.LazyGenericCollectionHolder(() => {
         const newArray = new Array<T>(size,)
         let index = size
         while (index-- > 0)
@@ -197,9 +199,9 @@ export function sliceBySet<const T, >(collection: Nullable<CollectionHolder<T>>,
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
-        const newArray = new Array<T>(size,),
-            iterator = indices[Symbol.iterator]() as IterableIterator<number>
+    return new CollectionConstants.LazyGenericCollectionHolder(() => {
+        const newArray = new Array<T>(size,)
+        const iterator = indices[Symbol.iterator]() as IterableIterator<number>
         let index = 0,
             iteratorResult: IteratorResult<number, number>
         while (!(iteratorResult = iterator.next()).done)
@@ -230,9 +232,9 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
     if (indices.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
-        const size = indices.size,
-            newArray = new Array<T>(size,)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => {
+        const size = indices.size
+        const newArray = new Array<T>(size,)
         let index = size
         while (index-- > 0)
             newArray[index] = collection.get(indices.get(index,),)
@@ -263,7 +265,7 @@ export function sliceByCollectionIterator<const T, >(collection: Nullable<Collec
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
+    return new CollectionConstants.LazyGenericCollectionHolder(() => {
         const newArray = new Array<T>(size,)
         let index = size
         while (index-- > 0)
@@ -296,7 +298,7 @@ export function sliceByIterable<const T, >(collection: Nullable<CollectionHolder
     if (iteratorResult.done)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
+    return new CollectionConstants.LazyGenericCollectionHolder(() => {
         const newArray = [collection.get(iteratorResult.value,),]
         while (!(iteratorResult = iterator.next()).done)
             newArray.push(collection.get(iteratorResult.value,),)
@@ -304,6 +306,10 @@ export function sliceByIterable<const T, >(collection: Nullable<CollectionHolder
     },)
 }
 
+//#endregion -------------------- By indices --------------------
+//#region -------------------- By range --------------------
+
+//#region -------------------- Facade method --------------------
 
 /**
  * Create a new {@link CollectionHolder} from the {@link fromIndex starting}
@@ -337,7 +343,7 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
     //#endregion -------------------- Early returns --------------------
 
     if (limit == null)
-        return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
+        return new CollectionConstants.LazyGenericCollectionHolder(() => {
             //#region -------------------- Initialization (starting/ending index) --------------------
 
             const size = collection.size
@@ -345,39 +351,39 @@ export function sliceByRange<const T, >(collection: Nullable<CollectionHolder<T>
             const endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
             if (endingIndex < startingIndex)
-                throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`, toIndex,)
+                throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, toIndex,)
 
             //#endregion -------------------- Initialization (starting/ending index) --------------------
 
-            return withoutALimit(collection, startingIndex, endingIndex,)
+            return __withoutALimit(collection, startingIndex, endingIndex,)
         },)
 
 
-    return newInstance(collection.constructor as CollectionHolderConstructor<T>, () => {
-        //#region -------------------- Initialization (starting/ending index) --------------------
+    return new CollectionConstants.LazyGenericCollectionHolder(() => {
+        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
         const size = collection.size
         const startingIndex = startingIndexFunction(collection as NonEmptyCollectionHolder<T>, fromIndex, size,)
         const endingIndex = endingIndexFunction(collection as NonEmptyCollectionHolder<T>, toIndex, size,)
 
         if (endingIndex < startingIndex)
-            throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex ?? ''}"${toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex ?? ''}"${fromIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`, toIndex,)
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-        //#region -------------------- Initialization (maximum index) --------------------
+            throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex ?? ""}"${toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex ?? ""}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, toIndex,)
 
         const maximumIndex = maximumIndexFunction(collection as NonEmptyCollectionHolder<T>, limit, size,)
-
+        if (maximumIndex == size - 1)
+            return __withoutALimit(collection, startingIndex, endingIndex,)
         if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`, limit,)
+            throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}"${limit == maximumIndex ? "" : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ""}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`} to "${toIndex ?? ""}"${toIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, limit,)
 
-        //#endregion -------------------- Initialization (maximum index) --------------------
+        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
 
-        return withALimit(collection, startingIndex, endingIndex, maximumIndex,)
+        return __withALimit(collection, startingIndex, endingIndex, maximumIndex,)
     },)
 }
 
-function withoutALimit<const T, >(collection: CollectionHolder<T>, startingIndex: number, endingIndex: number,): T[] {
+//#endregion -------------------- Facade method --------------------
+
+function __withoutALimit<const T, >(collection: CollectionHolder<T>, startingIndex: number, endingIndex: number,) {
     const newArray = [] as T[]
     let index = startingIndex - 1
     while (++index <= endingIndex)
@@ -385,7 +391,7 @@ function withoutALimit<const T, >(collection: CollectionHolder<T>, startingIndex
     return newArray
 }
 
-function withALimit<const T, >(collection: CollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,): T[] {
+function __withALimit<const T, >(collection: CollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,) {
     const newArray = [] as T[]
     let index = startingIndex - 1
     while (++index <= endingIndex) {
@@ -395,3 +401,5 @@ function withALimit<const T, >(collection: CollectionHolder<T>, startingIndex: n
     }
     return newArray
 }
+
+//#endregion -------------------- By range --------------------

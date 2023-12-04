@@ -20,7 +20,7 @@ import {CollectionHolderIndexOutOfBoundsException} from "../exception/Collection
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
- * @onlyReturnsPositiveValue
+ * @onlyGivePositiveValue
  */
 export function startingIndex<const T, >(collection: NonEmptyCollectionHolder<T>, fromIndex?: Nullable<number>, size?: Nullable<number>,): number
 /**
@@ -32,7 +32,7 @@ export function startingIndex<const T, >(collection: NonEmptyCollectionHolder<T>
  * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
- * @onlyReturnsPositiveValue
+ * @onlyGivePositiveValue
  */
 export function startingIndex<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex?: Nullable<number>, size?: Nullable<number>,): NullOr<number>
 export function startingIndex(collection: Nullable<CollectionHolder>, fromIndex: Nullable<number> = null, size: Nullable<number> = null,): NullOr<number> {
@@ -54,8 +54,8 @@ export function startingIndex(collection: Nullable<CollectionHolder>, fromIndex:
     if (startingIndex < 0)
         startingIndex += collectionSize
     if (startingIndex == collectionSize)
-        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" (${startingIndex} after calculation) is the collection size "${collectionSize}".`, fromIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" ("${startingIndex}" after calculation) is the collection size "${collectionSize}".`, fromIndex,)
     if (startingIndex < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" (${startingIndex} after calculation) is under 0.`, fromIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" ("${startingIndex}" after calculation) is under 0.`, fromIndex,)
     return startingIndex
 }

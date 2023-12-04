@@ -19,13 +19,13 @@ But other languages will have different features based on how they can handle it
 | Java                      |                                                                                                      Maven                                                                                                       |
 | Kotlin                    |                                                                                                      Maven                                                                                                       |
 | PHP                       |                                                                                                     Composer                                                                                                     |
-| C#                        |                                                                                                      Nugget                                                                                                      |
+| C#                        |                                                                                                      Nuget                                                                                                       |
 
 ## Related projects
 
 Here is a list of the related projects made by me
-- lazy [GitHub](https://github.com/joooKiwi/lazy) / [NPM](https://www.npmjs.com/package/@joookiwi/lazy)
-- enumeration [GitHub](https://github.com/joooKiwi/enumeration) / [NPM](https://www.npmjs.com/package/@joookiwi/enumerable)
+- lazy ([GitHub](https://github.com/joooKiwi/lazy) | [NPM](https://www.npmjs.com/package/@joookiwi/lazy))
+- enumeration ([GitHub](https://github.com/joooKiwi/enumeration) | [NPM](https://www.npmjs.com/package/@joookiwi/enumerable))
 
 ## Functionality equivalent from language to language
 
@@ -37,13 +37,13 @@ And keep in mind that methods may not really be exactly the definition or optimi
 
 Here is a quick reference of the variables with their associated type:
 
-| variable in a template | Javascript                                                                                                                                                                            | Java                                                                                                 | Kotlin                                                                                                                                                                                               | PHP                                                                         | C#                                                                                                                                                                 |
-|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| iterable               | Object with a [[Symbol.iterator]](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator)                                                   | [Iterable](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Iterable.html)     | [Iterable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable) / [MutableIterable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterable)         | [IteratorAggregate](https://www.php.net/manual/class.iteratoraggregate.php) | [IEnumerable](https://learn.microsoft.com/dotnet/api/system.collections.ienumerable) / [Enumerable](https://learn.microsoft.com/dotnet/api/system.linq.enumerable) |
-| array                  | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)                                                                                             | Array                                                                                                | Array                                                                                                                                                                                                | [Array](https://www.php.net/manual/language.types.array.php)                | [Array](https://learn.microsoft.com/dotnet/api/system.array)                                                                                                       |
-| collection             | _N/A_                                                                                                                                                                                 | [Collection](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html) | [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection) / [MutableCollection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection) | [Collection](https://www.php.net/manual/class.ds-collection.php)            | [ICollection](https://learn.microsoft.com/dotnet/api/system.collections.icollection)                                                                               |
-| list                   | _N/A_                                                                                                                                                                                 | [List](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html)             | [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list) / [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list)                         | _N/A_                                                                       | [IList](https://learn.microsoft.com/dotnet/api/system.collections.ilist) / [List](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1)        |
-| set                    | [Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set) / [WeakSet](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet) | [Set](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Set.html)               | [Set](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set) / [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set)                             | [Set](https://www.php.net/manual/class.ds-set.php)                          | [ISet](https://learn.microsoft.com/dotnet/api/system.collections.generic.iset-1)                                                                                   |
+| variable in a template | Javascript                                                                                                                                                                            | Java                                                                                                 | Kotlin                                                                                                                                                                                               | PHP                                                                         | C#                                                                                                                                                                                                    |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| iterable               | Object with a [[Symbol.iterator]](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator)                                                   | [Iterable](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Iterable.html)     | [Iterable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable) / [MutableIterable](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterable)         | [IteratorAggregate](https://www.php.net/manual/class.iteratoraggregate.php) | [IEnumerable](https://learn.microsoft.com/dotnet/api/system.collections.ienumerable) / [Enumerable](https://learn.microsoft.com/dotnet/api/system.linq.enumerable)                                    |
+| array                  | [Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)                                                                                             | Array                                                                                                | Array                                                                                                                                                                                                | [Array](https://www.php.net/manual/language.types.array.php)                | [ImmutableArray](https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1) / [Array](https://learn.microsoft.com/dotnet/api/system.array)                                 |
+| collection             | _N/A_                                                                                                                                                                                 | [Collection](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html) | [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection) / [MutableCollection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection) | [Collection](https://www.php.net/manual/class.ds-collection.php)            | [IReadOnlyCollection](https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1) / [ICollection](https://learn.microsoft.com/dotnet/api/system.collections.icollection) |
+| list                   | _N/A_                                                                                                                                                                                 | [List](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html)             | [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list) / [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list)                         | _N/A_                                                                       | [IImmutableList](https://learn.microsoft.com/dotnet/api/system.collections.immutable.iimmutablelist-1) / [IList](https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1)           |
+| set                    | [Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set) / [WeakSet](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet) | [Set](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Set.html)               | [Set](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set) / [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set)                             | [Set](https://www.php.net/manual/class.ds-set.php)                          | [IImmutableSet](https://learn.microsoft.com/dotnet/api/system.collections.immutable.iimmutableset-1) / [ISet](https://learn.microsoft.com/dotnet/api/system.collections.generic.iset-1)               |
  
 _Quick note: For the `C#`, no external library other than the `.NET` is used (even though `MoreLINQ` is a fantastic library) ._
 
@@ -52,18 +52,18 @@ _Another note: Some parts may be incomplete due to some research that has to be 
 ### Size methods
 The getter methods associated to a size
 
-| Method                                      | Javascript                                                                                                                                                                                                  | Java                                                                                                                                             | Kotlin                                                                                                                    | PHP | C#                                                                                                                                                                                                                                                                                     |
-|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `get size`<br/>`get length`<br/>`get count` | [Array.length](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/length)<br/>[Set.size](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/size) | `array.length`<br/>[Collection.size()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#size())            | `array.size`<br/>[Collection.size](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/size.html) |     | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count#system-linq-enumerable-count-1(system-collections-generic-ienumerable((-0)))">Enumerable.Count()</a><br/>[ICollection.Count](https://learn.microsoft.com/dotnet/api/system.collections.icollection.count) |
-| `get isEmpty`                               | `array.length === 0`<br/>`set.size === 0`                                                                                                                                                                   | `array.length == 0`<br/>[Collection.isEmpty()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#isEmpty()) | [Collection.isEmpty()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/is-empty.html)         |     | `collection.Any()`                                                                                                                                                                                                                                                                     |
-| `get isNotEmpty`                            | `array.length !== 0`<br/>`set.size !== 0`                                                                                                                                                                   | `array.length == 0`<br/>`!collection.isEmpty()`                                                                                                  | `iterable.isNotEmpty`                                                                                                     |     | `!collection.Any()`                                                                                                                                                                                                                                                                    |
+| Method                                      | Javascript                                                                                                                                                                                                  | Java                                                                                                                                             | Kotlin                                                                                                                    | PHP              | C#                                                                                                                                                                                                                                                                                     |
+|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `get size`<br/>`get length`<br/>`get count` | [Array.length](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/length)<br/>[Set.size](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/size) | `array.length`<br/>[Collection.size()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#size())            | `array.size`<br/>[Collection.size](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/size.html) | `sizeof($array)` | <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count#system-linq-enumerable-count-1(system-collections-generic-ienumerable((-0)))">Enumerable.Count()</a><br/>[ICollection.Count](https://learn.microsoft.com/dotnet/api/system.collections.icollection.count) |
+| `get isEmpty`                               | `array.length === 0`<br/>`set.size === 0`                                                                                                                                                                   | `array.length == 0`<br/>[Collection.isEmpty()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#isEmpty()) | [Collection.isEmpty()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/is-empty.html)         | `empty($array)`  | `collection.Any()`                                                                                                                                                                                                                                                                     |
+| `get isNotEmpty`                            | `array.length !== 0`<br/>`set.size !== 0`                                                                                                                                                                   | `array.length == 0`<br/>`!collection.isEmpty()`                                                                                                  | `iterable.isNotEmpty`                                                                                                     | `!empty($array)` | `!collection.Any()`                                                                                                                                                                                                                                                                    |
 
 ### Has ... methods
 The methods to validate one type of value
 
-| Methods                                                     | Javascript              | Java                        | Kotlin | PHP | C#                                                                             |
-|-------------------------------------------------------------|-------------------------|-----------------------------|--------|-----|--------------------------------------------------------------------------------|
-| `get hasNull`<br/>`get includesNull`<br/>`get containsNull` | `array.includes(null)`  | `collection.contains(null)` | _N/A_  |     | `enumerable.Contains(null)`<br/>`list.Contains(null)`<br/>`set.Contains(null)` |
+| Methods                                                     | Javascript              | Java                        | Kotlin | PHP                            | C#                                                                             |
+|-------------------------------------------------------------|-------------------------|-----------------------------|--------|--------------------------------|--------------------------------------------------------------------------------|
+| `get hasNull`<br/>`get includesNull`<br/>`get containsNull` | `array.includes(null)`  | `collection.contains(null)` | _N/A_  | `in_array(null, $array, true)` | `enumerable.Contains(null)`<br/>`list.Contains(null)`<br/>`set.Contains(null)` |
 
 ### Value methods
 The methods associated to a value or index
@@ -85,6 +85,11 @@ throw
  - [List.get(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html)
 
 **PHP**
+```php
+if (array_key_exists($index, $array))
+    return $array[index];
+throw
+```
 
 **C#**
  - [Enumerable.ElementAt(index)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.elementat)
@@ -112,6 +117,11 @@ return defaultValue();
  - [Array.getOrElse(index, defaultValue)<br/>List.getOrElse(index, defaultValue)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html)
 
 **PHP**
+```php
+if (array_key_exists($index, $array))
+    return $array[$index];
+return defaultValue();
+```
 
 **C#**
  - `enumerable.ElementAtOrDefault(index) ?? defaultValue()`
@@ -128,7 +138,7 @@ return null
 
 **Java**
 ```java
-if (index<= list.size())
+if (index <= list.size())
     return list.get(index);
 return null;
 ```
@@ -140,6 +150,9 @@ return null;
  - [List.getOrNull(index)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-null.html)
 
 **PHP**
+```php
+return $array?[$index];
+```
 
 **C#**
  - <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.elementatordefault#system-linq-enumerable-elementatordefault-1(system-collections-generic-ienumerable((-0))-system-index)">Enumerable.ElementAtOrDefault(index)</a>
@@ -711,6 +724,7 @@ return true;
  - [Array.filter(predicate)<br/>Iterable.filter(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html)
 
 **PHP**
+ - [array_filter($array, $predicate)](https://www.php.net/manual/function.array-filter.php)
 
 **C#**
  - [IEnumerable.Where(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where)
@@ -728,6 +742,7 @@ return true;
  - [Array.filterIndexed(predicate)<br/>Iterable.filterIndexed(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html)
 
 **PHP**
+ - [array_filter($array, $predicate)](https://www.php.net/manual/function.array-filter.php)
 
 **C#**
  - [IEnumerable.Where(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where)
@@ -745,6 +760,7 @@ return true;
  - [Array.filterNot(predicate)<br/>Iterable.filterNot(predicate)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html)
 
 **PHP**
+- `array_filter($array, !$predicate)`
 
 **C#**
  - `!enumerable.Where(predicate)`
@@ -762,6 +778,7 @@ return true;
  - [Array.filterNotNull()<br/>Iterable.filterNotNull()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html)
 
 **PHP**
+ - `array_filter($array, fn(it) => $array[$it] != null,)`
 
 **C#**
  - `!enumerable.Where(it => it != null)`
@@ -791,6 +808,13 @@ while (++index < size)
  - [Array.requireNoNulls()<br/>Iterable.requireNoNulls()<br/>List.requireNoNulls()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html)
 
 **PHP**
+```php
+$size = sizeof($array);
+$index = -1;
+while (++$index < $size)
+    if ($array[$index] == null)
+        throw
+```
 
 **C#**
 ```csharp
@@ -908,6 +932,7 @@ return newArray;
  - [Array.map(transform)<br/>Iterable.map(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html)
 
 **PHP**
+ - [array_map($transform, $array)](https://www.php.net/manual/function.array-map.php)
 
 **C#**
  - [IEnumerable.Select(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select)
@@ -925,6 +950,7 @@ return newArray;
  - [Array.mapIndexed(transform)<br/>Iterable.mapIndexed(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html)
 
 **PHP**
+ - [array_map($transform, $array)](https://www.php.net/manual/function.array-map.php)
 
 **C#**
  - [IEnumerable.Select(predicate)](https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select)
@@ -964,6 +990,18 @@ return newList.toArray((T[]) new Object[newList.size()]);
  - [Array.mapNotNull(transform)<br/>Iterable.mapNotNull(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html)
 
 **PHP**
+```php
+$size = sizeof($this);
+$newArray = [];
+$index = -1;
+while (++$index < $size) {
+    $value = transform;
+    if ($value == null)
+        continue;
+    $newArray[] = $value;
+}
+return $newArray;
+```
 
 **C#**
 
@@ -1015,6 +1053,18 @@ return newList.toArray((T[]) new Object[newList.size()]);
  - [Array.mapIndexedNotNull(transform)<br/>Iterable.mapIndexedNotNull(transform)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed-not-null.html)
 
 **PHP**
+```php
+$size = sizeof($this);
+$newArray = [];
+$index = -1;
+while (++$index < $size) {
+    $value = transform;
+    if ($value == null)
+        continue;
+    $newArray[] = $value;
+}
+return $newArray;
+```
 
 **C#**
 ```csharp
@@ -1045,6 +1095,7 @@ return newArray;
  - [Array.forEach(action)<br/>Iterable.forEach(action)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html)
 
 **PHP**
+ - [array_walk(&$array, $action)](https://www.php.net/manual/function.array-walk.php)
 
 **C#**
  - [List.forEach(action)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach)
@@ -1063,6 +1114,7 @@ return newArray;
  - [Array.forEachIndexed(action)<br/>Iterable.forEachIndexed(action)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each-indexed.html)
 
 **PHP**
+ - [array_walk(&$array, $action)](https://www.php.net/manual/function.array-walk.php)
 
 **C#**
  - [List.forEach(action)](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach)
@@ -1082,7 +1134,7 @@ A method made to convert it to another value
  - [Iterable.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/lang/Iterable.html#iterator())
  - [Collection.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Collection.html#iterator())
  - [List.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/List.html#iterator())
- - [Set,iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Set.html#iterator())
+ - [Set.iterator()](https://docs.oracle.com/en/java/javase/20/docs/api/java.base/java/util/Set.html#iterator())
 
 **Kotlin**
  - [Iterable.iterator()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/iterator.html)
@@ -1113,9 +1165,8 @@ Object.freeze([...iterable])
 **PHP**
 
 **C#**
-```csharp
-new ReadOnlyCollection<T>(enumerable)
-```
+ - `new ReadOnlyCollection<T>(enumerable)`
+ - [enumerable.ToImmutableArray()](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablearray.toimmutablearray#system-collections-immutable-immutablearray-toimmutablearray-1%28system-collections-generic-ienumerable%28%28-0%29%29%29)
 
 </details>
 <details><summary>toMutableArray()</summary>
@@ -1186,9 +1237,8 @@ new ReadOnlyCollection<T>(enumerable)
 **PHP**
 
 **C#**
-```csharp
-new ReadOnlyCollection<T>(enumerable)
-```
+ - `new ReadOnlyCollection<T>(enumerable)`
+ - [enumerable.toImmutableList()](https://learn.microsoft.com/en-us/dotnet/api/system.collections.immutable.immutablelist.toimmutablelist?#system-collections-immutable-immutablelist-toimmutablelist-1%28system-collections-generic-ienumerable%28%28-0%29%29%29)
 
 </details>
 <details><summary>toMutableList()</summary>
@@ -1355,6 +1405,7 @@ return newArray;
  - [Array.reversed()<br/>Iterable.reversed()](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reversed.html)
 
 **PHP**
+ - [array_reverse($array)](https://www.php.net/manual/function.array-reverse.php)
 
 **C#**
  - [Reverse(array, fromIndex, limit)](https://learn.microsoft.com/dotnet/api/system.array.reverse)
@@ -1365,16 +1416,16 @@ return newArray;
 
 ## Version history
 
-| JS/TS                                                                       | Date                | Quick note                                                                                                                                                                                                                                                                             |
-|-----------------------------------------------------------------------------|---------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [1.5.0](https://github.com/joooKiwi/collection/releases/tag/v1.5.0-js)      | September 28, 2023  | The `RangeError` and `ReferenceError` has been changed to custom exceptions<br/>The [lazy](https://github.com/joookiwi/lazy) dependency has been updated from 1.1.0 to [1.2.0](https://github.com/joooKiwi/lazy/releases/tag/v1.2.0-js)                                                |
-| [1.4.0](https://github.com/joooKiwi/collection/releases/tag/v1.4.0-js)      | September 8th, 2023 | Addition of a `limit` on every methods where it has `fromIndex` and `toIndex`<br/>Change on the `toIndex` to be inclusive instead of exclusive<br/>Addition of `elementAt`, `elementAtOrNull`, `elementAtOrElse`, `mapNotNull`, `mapNotNullIndexed`, `slice` to the `CollectionHolder` |
-| [1.3.0](https://github.com/joooKiwi/collection/releases/tag/v1.3.0-js)      | August 14th, 2023   | Small changes on some utility methods<br/>Addition of `nextValue` and `previousValue` to the `CollectionIterator`                                                                                                                                                                      |
-| [1.2.0](https://github.com/joooKiwi/collection/releases/tag/v1.2.0-js)      | July 27th, 2023     | Fix on a "for‥of" not working properly                                                                                                                                                                                                                                                 |
-| [1.1.0](https://github.com/joooKiwi/collection/releases/tag/v1.1.0-js)      | July 23rd, 2023     | Addition of a new [CollectionIterator](https://github.com/joooKiwi/collection/blob/main/javascript/src/iterator/CollectionIterator.ts)                                                                                                                                                 |
-| 1.0.4                                                                       | July 2nd, 2023      | There were recursive import for the [EmptyCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/EmptyCollectionHolder.ts) from the [CollectionConstants](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionConstants.ts)           |
-| 1.0.3                                                                       | July 1st, 2023      | For some reason, the file [CollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionHolder.ts) had a Symbol not declared                                                                                                                            |
-| 1.0.2                                                                       | July 1st, 2023      | Small fix on the [package.json](https://github.com/joooKiwi/collection/blob/main/javascript/package.json)                                                                                                                                                                              |
-| 1.0.1                                                                       | July 1st, 2023      | An update based on the new [lazy version](https://github.com/joookiwi/lazy)                                                                                                                                                                                                            |
-| [1.0.0](https://github.com/joooKiwi/collection/releases/tag/v1.0.0-JS%26TS) | July 1st, 2023      | The first version<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project                                                                                                                                                                          |
-
+| JS/TS                                                                       | Date                 | Quick note                                                                                                                                                                                                                                                                             |
+|-----------------------------------------------------------------------------|----------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [1.6.0](https://github.com/joooKiwi/collection/releases/tag/v1.6.0-js)      | December 2nd, 2023   | New implementation based on the amount of arguments received in a callback<br/>Addition of `toString` variants methods to the `CollectionHolder`<br/>Deprecation (for removal) of the `newInstance`                                                                                    |
+| [1.5.0](https://github.com/joooKiwi/collection/releases/tag/v1.5.0-js)      | September 28th, 2023 | The `RangeError` and `ReferenceError` has been changed to custom exceptions<br/>The [lazy](https://github.com/joookiwi/lazy) dependency has been updated from 1.1.0 to [1.2.0](https://github.com/joooKiwi/lazy/releases/tag/v1.2.0-js)                                                |
+| [1.4.0](https://github.com/joooKiwi/collection/releases/tag/v1.4.0-js)      | September 8th, 2023  | Addition of a `limit` on every methods where it has `fromIndex` and `toIndex`<br/>Change on the `toIndex` to be inclusive instead of exclusive<br/>Addition of `elementAt`, `elementAtOrNull`, `elementAtOrElse`, `mapNotNull`, `mapNotNullIndexed`, `slice` to the `CollectionHolder` |
+| [1.3.0](https://github.com/joooKiwi/collection/releases/tag/v1.3.0-js)      | August 14th, 2023    | Small changes on some utility methods<br/>Addition of `nextValue` and `previousValue` to the `CollectionIterator`                                                                                                                                                                      |
+| [1.2.0](https://github.com/joooKiwi/collection/releases/tag/v1.2.0-js)      | July 27th, 2023      | Fix on a "for‥of" not working properly                                                                                                                                                                                                                                                 |
+| [1.1.0](https://github.com/joooKiwi/collection/releases/tag/v1.1.0-js)      | July 23rd, 2023      | Addition of a new [CollectionIterator](https://github.com/joooKiwi/collection/blob/main/javascript/src/iterator/CollectionIterator.ts)                                                                                                                                                 |
+| 1.0.4                                                                       | July 2nd, 2023       | There were recursive import for the [EmptyCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/EmptyCollectionHolder.ts) from the [CollectionConstants](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionConstants.ts)           |
+| 1.0.3                                                                       | July 1st, 2023       | For some reason, the file [CollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionHolder.ts) had a Symbol not declared                                                                                                                            |
+| 1.0.2                                                                       | July 1st, 2023       | Small fix on the [package.json](https://github.com/joooKiwi/collection/blob/main/javascript/package.json)                                                                                                                                                                              |
+| 1.0.1                                                                       | July 1st, 2023       | An update based on the new [lazy version](https://github.com/joookiwi/lazy)                                                                                                                                                                                                            |
+| [1.0.0](https://github.com/joooKiwi/collection/releases/tag/v1.0.0-JS%26TS) | July 1st, 2023       | The first version<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project                                                                                                                                                                          |

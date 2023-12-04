@@ -6,19 +6,20 @@
  ******************************************************************************/
 
 import type {CollectionHolder}             from "../CollectionHolder"
-import type {CollectionHolderConstructor}  from "../CollectionHolderConstructor"
 import type {ValueIndexWithReturnCallback} from "../CollectionHolder.types"
+import type {NonEmptyCollectionHolder}     from "../NonEmptyCollectionHolder"
 import type {Nullable}                     from "../general type"
 
 import {CollectionConstants} from "../CollectionConstants"
-import {newInstance}         from "./newInstance"
+
+//#region -------------------- Facade method --------------------
 
 /**
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each non-null element of the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param transform The given transform
+ * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
@@ -30,16 +31,53 @@ export function mapNotNull<const T, const U extends NonNullable<unknown>, >(coll
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    return newInstance(collection.constructor as CollectionHolderConstructor<U>, () => {
-        const size = collection.size,
-            newArray = [] as U[]
-        let index = -1
-        while (++index < size) {
-            const value = transform(collection.get(index,), index,)
-            if (value == null)
-                continue
-            newArray.push(value,)
-        }
-        return newArray
-    },)
+    if (transform.length === 1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection as NonEmptyCollectionHolder<T>, transform as (value: T,) => Nullable<U>,),)
+    if (transform.length >= 2)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection as NonEmptyCollectionHolder<T>, transform,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection as NonEmptyCollectionHolder<T>, transform as () => Nullable<U>,),)
 }
+
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Loop methods --------------------
+
+function __with0Argument<const T, const U extends NonNullable<unknown>, >(collection: NonEmptyCollectionHolder<T>, transform: () => Nullable<U>,) {
+    const size = collection.size
+    const newArray = [] as U[]
+    let index = -1
+    while (++index < size) {
+        const value = transform()
+        if (value == null)
+            continue
+        newArray.push(value,)
+    }
+    return newArray
+}
+
+function __with1Argument<const T, const U extends NonNullable<unknown>, >(collection: NonEmptyCollectionHolder<T>, transform: (value: T,) => Nullable<U>,) {
+    const size = collection.size
+    const newArray = [] as U[]
+    let index = -1
+    while (++index < size) {
+        const value = transform(collection.get(index,),)
+        if (value == null)
+            continue
+        newArray.push(value,)
+    }
+    return newArray
+}
+
+function __with2Argument<const T, const U extends NonNullable<unknown>, >(collection: NonEmptyCollectionHolder<T>, transform: (value: T, index: number,) => Nullable<U>,) {
+    const size = collection.size
+    const newArray = [] as U[]
+    let index = -1
+    while (++index < size) {
+        const value = transform(collection.get(index,), index,)
+        if (value == null)
+            continue
+        newArray.push(value,)
+    }
+    return newArray
+}
+
+//#endregion -------------------- Loop methods --------------------

@@ -20,8 +20,8 @@ export function toMutableSet<const T, >(collection: Nullable<CollectionHolder<T>
     if (collection.isEmpty)
         return new Set()
 
-    const set = new Set<T>(),
-        size = collection.size
+    const size = collection.size
+    const set = new Set<T>()
     let index = -1
     while (++index < size)
         set.add(collection.get(index,),)

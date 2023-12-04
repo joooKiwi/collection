@@ -8,13 +8,14 @@
 import type {Lazy} from "@joookiwi/lazy"
 import {lazyOf}    from "@joookiwi/lazy"
 
-import type {CollectionHolder}         from "./CollectionHolder"
-import type {CollectionIterator}       from "./iterator/CollectionIterator"
+import type {CollectionHolder}   from "./CollectionHolder"
+import type {CollectionIterator} from "./iterator/CollectionIterator"
 
-import {EmptyCollectionHolder}   from "./EmptyCollectionHolder"
-import {GenericCollectionHolder} from "./GenericCollectionHolder"
-import {EmptyCollectionIterator} from "./iterator/EmptyCollectionIterator"
-import {EmptyCollectionHandler}  from "./handler/EmptyCollection.handler"
+import {EmptyCollectionHolder}            from "./EmptyCollectionHolder"
+import type {GenericCollectionHolder}     from "./GenericCollectionHolder"
+import type {LazyGenericCollectionHolder} from "./LazyGenericCollectionHolder"
+import {EmptyCollectionIterator}          from "./iterator/EmptyCollectionIterator"
+import {EmptyCollectionHandler}           from "./handler/EmptyCollection.handler"
 
 /**
  * A simple utility class containing every field used by any {@link CollectionHolder} instances.
@@ -30,6 +31,7 @@ export class CollectionConstants {
     private constructor() {
         throw new EvalError("The CollectionConstants cannot be created.",)
     }
+
     //#endregion -------------------- Thrown constructor --------------------
     //#region -------------------- Fields held --------------------
 
@@ -42,6 +44,10 @@ export class CollectionConstants {
 
     static #EVERY_COLLECTION_METHODS?: CollectionHolder<keyof CollectionHolder>
     static #EVERY_ITERATOR_METHODS?: CollectionHolder<keyof CollectionIterator>
+
+    static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
+    static #GenericCollectionHolder?: typeof GenericCollectionHolder
+    static #LazyGenericCollectionHolder?: typeof LazyGenericCollectionHolder
 
     //#endregion -------------------- Fields held --------------------
 
@@ -98,6 +104,8 @@ export class CollectionConstants {
     public static readonly DEFAULT_JOIN_TRUNCATED = '…'
     /** The default value for the postfix {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
     public static readonly DEFAULT_JOIN_POSTFIX = ']'
+    /** The default {@link String} value for an empty {@link CollectionHolder} */
+    public static readonly DEFAULT_EMPTY_COLLECTION = "[]"
 
     //#endregion -------------------- Default references --------------------
     //#region -------------------- Symbol.toString references --------------------
@@ -120,7 +128,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link CollectionHolder} */
     public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> {
-        return CollectionConstants.#EVERY_COLLECTION_METHODS ??= Object.freeze(new GenericCollectionHolder([
+        return CollectionConstants.#EVERY_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
             "hasNull", "includesNull", "containsNull",
@@ -148,7 +156,7 @@ export class CollectionConstants {
     }
     /** Every method applicable to a {@link CollectionIterator} */
     public static get EVERY_ITERATOR_METHODS(): CollectionHolder<keyof CollectionIterator> {
-        return CollectionConstants.#EVERY_ITERATOR_METHODS ??= Object.freeze(new GenericCollectionHolder([
+        return CollectionConstants.#EVERY_ITERATOR_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
             "index", "nextIndex", "previousIndex",
             "hasNext", "hasPrevious",
@@ -160,6 +168,24 @@ export class CollectionConstants {
     }
 
     //#endregion -------------------- "Every methods" references --------------------
+    //#region -------------------- Constructor references --------------------
+
+    /** The {@link Object.constructor constructor} reference of an {@link EmptyCollectionHolder} */
+    public static get EmptyCollectionHolder(): typeof EmptyCollectionHolder {
+        return CollectionConstants.#EmptyCollectionHolder ??= EmptyCollectionHolder
+    }
+
+    /** The {@link Object.constructor constructor} reference of a {@link GenericCollectionHolder} */
+    public static get GenericCollectionHolder(): typeof GenericCollectionHolder {
+        return CollectionConstants.#GenericCollectionHolder ??= require("./GenericCollectionHolder").GenericCollectionHolder
+    }
+
+    /** The {@link Object.constructor constructor} reference of a {@link LazyGenericCollectionHolder} */
+    public static get LazyGenericCollectionHolder(): typeof LazyGenericCollectionHolder {
+        return CollectionConstants.#LazyGenericCollectionHolder ??= require("./LazyGenericCollectionHolder").LazyGenericCollectionHolder
+    }
+
+    //#endregion -------------------- Constructor references --------------------
     //#region -------------------- Symbol references --------------------
 
     /** The value before the first value in a {@link CollectionIterator} */

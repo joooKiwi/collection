@@ -22,8 +22,8 @@ export function toSet<const T, >(collection: Nullable<CollectionHolder<T>>,): Re
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_SET
 
-    const set = new Set<T>(),
-        size = collection.size
+    const size = collection.size
+    const set = new Set<T>()
     let index = -1
     while (++index < size)
         set.add(collection.get(index,),)

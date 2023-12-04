@@ -8,12 +8,14 @@
 import type {CollectionHolder}   from "../CollectionHolder"
 import type {ValueIndexCallback} from "../CollectionHolder.types"
 
+//#region -------------------- Facade method --------------------
+
 /**
  * Perform a given {@link action} on each element
  * and return the {@link collection} afterwards
  *
  * @param collection The {@link CollectionHolder collection}
- * @param action The given action
+ * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
@@ -21,9 +23,38 @@ import type {ValueIndexCallback} from "../CollectionHolder.types"
  * @extensionFunction
  */
 export function forEach<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: ValueIndexCallback<T>,): COLLECTION {
+    if (action.length === 1)
+        return __with1Argument(collection, action as (value: T,) => void,)
+    if (action.length >= 2)
+        return __with2Argument(collection, action,)
+    return __with0Argument(collection, action as () => void,)
+}
+
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Loop methods --------------------
+
+function __with0Argument<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: () => void,) {
+    const size = collection.size
+    let index = -1
+    while (++index < size)
+        action()
+    return collection
+}
+
+function __with1Argument<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: (value: T,) => void,) {
+    const size = collection.size
+    let index = -1
+    while (++index < size)
+        action(collection.get(index,),)
+    return collection
+}
+
+function __with2Argument<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: (value: T, index: number,) => void,) {
     const size = collection.size
     let index = -1
     while (++index < size)
         action(collection.get(index,), index,)
     return collection
 }
+
+//#endregion -------------------- Loop methods --------------------

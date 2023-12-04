@@ -7,10 +7,13 @@
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
+import type {NonEmptyCollectionHolder}                   from "../NonEmptyCollectionHolder"
 import type {Nullable}                                   from "../general type"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+
+//#region -------------------- Facade method --------------------
 
 /**
  * Get the first element in the {@link collection}
@@ -53,16 +56,49 @@ export function first<const T, const S extends T, >(collection: Nullable<Collect
 export function first<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T
 export function first<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
     if (collection == null)
-        throw new TypeError("No element could be retrieved from a null value.",)
+        throw new TypeError("No element could be retrieved from a null collection.",) // TODO change to custom exception
     if (collection.isEmpty)
         throw new EmptyCollectionHolderException("No element at the index 0 could be found since it it empty.",)
 
-    if (predicate == null) {
-        if (0 in collection)
-            return collection[0]
-        return collection.get(0,)
-    }
+    if (predicate == null)
+        return __withNoPredicate(collection as NonEmptyCollectionHolder<T>,)
+    if (predicate.length === 1)
+        return __with1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection as NonEmptyCollectionHolder<T>, predicate,)
+    return __with0Argument(collection as NonEmptyCollectionHolder<T>, predicate as () => boolean,)
+}
 
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Loop methods --------------------
+
+function __withNoPredicate<const T, >(collection: NonEmptyCollectionHolder<T>,) {
+    if (0 in collection)
+        return collection[0] as T
+    return collection.get(0,)
+}
+
+function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: () => boolean,) {
+    const size = collection.size
+    let index = -1
+    while (++index < size)
+        if (predicate())
+            return collection.get(index,)
+    throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0,)
+}
+
+function __with1Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T,) => boolean,) {
+    const size = collection.size
+    let index = -1
+    while (++index < size) {
+        const value = collection.get(index,)
+        if (predicate(value,))
+            return value
+    }
+    throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0,)
+}
+
+function __with2Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T, index: number,) => boolean,) {
     const size = collection.size
     let index = -1
     while (++index < size) {
@@ -72,3 +108,5 @@ export function first<const T, const S extends T, >(collection: Nullable<Collect
     }
     throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0,)
 }
+
+//#endregion -------------------- Loop methods --------------------

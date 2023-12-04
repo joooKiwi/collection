@@ -5,14 +5,15 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                                       from "./CollectionHolder"
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, ValueIndexCallback, ValueIndexWithReturnCallback, ValueWithStringReturnCallback} from "./CollectionHolder.types"
-import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                                       from "./general type"
-import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/EmptyCollectionIterator"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                     from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                                                                                                                                                                                        from "./CollectionHolder"
+import type {BooleanCallback, CollectionHolderName, IndexWithReturnCallback, IndexValueCallback, IndexValueWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
+import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                        from "./general type"
+import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                 from "./iterator/EmptyCollectionIterator"
+import type {CollectionIterator}                                                                                                                                                                                                                                                      from "./iterator/CollectionIterator"
 
-import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
-import {CollectionConstants}                       from "./CollectionConstants"
+import {EmptyCollectionHolderException} from "./exception/EmptyCollectionHolderException"
+import {CollectionConstants}            from "./CollectionConstants"
+import {prefixAndPostfixOnly}           from "./method/join"
 
 /**
  * A simple {@link CollectionHolder} with no values (as a singleton instance)
@@ -28,8 +29,7 @@ export class EmptyCollectionHolder
 
     static #instance?: EmptyCollectionHolder
 
-    protected constructor() {
-    }
+    protected constructor() {}
 
     public static get get(): EmptyCollectionHolder {
         return EmptyCollectionHolder.#instance ??= new EmptyCollectionHolder()
@@ -42,41 +42,25 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Size methods --------------------
 
-    public get size(): 0 {
-        return 0
-    }
+    public get size(): 0 { return 0 }
 
-    public get length(): 0 {
-        return 0
-    }
+    public get length(): 0 { return 0 }
 
-    public get count(): 0 {
-        return 0
-    }
+    public get count(): 0 { return 0 }
 
 
-    public get isEmpty(): true {
-        return true
-    }
+    public get isEmpty(): true { return true }
 
-    public get isNotEmpty(): false {
-        return false
-    }
+    public get isNotEmpty(): false { return false }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Has X methods --------------------
 
-    public get hasNull(): false {
-        return false
-    }
+    public get hasNull(): false { return false }
 
-    public get includesNull(): false {
-        return false
-    }
+    public get includesNull(): false { return false }
 
-    public get containsNull(): false {
-        return false
-    }
+    public get containsNull(): false { return false }
 
     //#endregion -------------------- Has X methods --------------------
 
@@ -87,94 +71,80 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Get / at methods --------------------
 
-    public get(index?: number,): never
-    public get(): never {
-        throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",)
-    }
+    public get(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }
 
-    public at(index?: number,): never
-    public at(): never {
-        this.get()
-    }
+    public at(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }
 
-    public elementAt(index?: number,): never
-    public elementAt(): never {
-        this.get()
-    }
+    public elementAt(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }
 
 
-    public getOrElse(index: number,): never
-    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
-    public getOrElse<const U, >(index: number, defaultValue?: IndexWithReturnCallback<U>,): U {
+    public getOrElse(index?: Nullable<number>,): never
+    public getOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,): U
+    public getOrElse(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<never>>,): never
+    public getOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,) {
         if (defaultValue == null)
-            this.get()
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        if (index == null)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
         return defaultValue(index,)
     }
 
-    public atOrElse(index: number,): never
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
-    public atOrElse<const U, >(index: number, defaultValue?: IndexWithReturnCallback<U>,): U {
-        return defaultValue == null ? this.getOrElse(index,) : this.getOrElse(index, defaultValue,)
+    public atOrElse(index?: Nullable<number>,): never
+    public atOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,): U
+    public atOrElse(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<never>>,): never
+    public atOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<| U | never>>,) {
+        if (defaultValue == null)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        if (index == null)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        return defaultValue(index,)
     }
 
 
-    public elementAtOrElse(index: number,): never
-    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
-    public elementAtOrElse<const U, >(index: number, defaultValue?: IndexWithReturnCallback<U>,): U {
-        return defaultValue == null ? this.getOrElse(index,) : this.getOrElse(index, defaultValue,)
+    public elementAtOrElse(index?: Nullable<number>,): never
+    public elementAtOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,): U
+    public elementAtOrElse(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<never>>,): never
+    public elementAtOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<| U | never>>,) {
+        if (defaultValue == null)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        if (index == null)
+            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+        return defaultValue(index,)
     }
 
 
     public getOrNull(index?: number,): null
-    public getOrNull(): null {
-        return null
-    }
+    public getOrNull() { return null }
 
     public atOrNull(index?: number,): null
-    public atOrNull(): null {
-        return this.getOrNull()
-    }
+    public atOrNull() { return null }
 
     public elementAtOrNull(index?: number,): null
-    public elementAtOrNull(): null {
-        return this.getOrNull()
-    }
+    public elementAtOrNull() { return null }
 
     //#endregion -------------------- Get / at methods --------------------
     //#region -------------------- Index of methods --------------------
 
     public indexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOf(): null {
-        return null
-    }
+    public indexOf() { return null }
 
 
     public lastIndexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public lastIndexOf(): null {
-        return null
-    }
+    public lastIndexOf() { return null }
 
 
     public indexOfFirst(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfFirst(): null {
-        return null
-    }
+    public indexOfFirst() { return null }
 
     public indexOfFirstIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfFirstIndexed(): null {
-        return null
-    }
+    public indexOfFirstIndexed() { return null }
 
 
     public indexOfLast(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfLast(): null {
-        return null
-    }
+    public indexOfLast() { return null }
 
     public indexOfLastIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
-    public indexOfLastIndexed(): null {
-        return null
-    }
+    public indexOfLastIndexed() { return null }
 
     //#endregion -------------------- Index of methods --------------------
     //#region -------------------- First methods --------------------
@@ -182,16 +152,12 @@ export class EmptyCollectionHolder
     public first(): never
     public first<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): never
     public first(predicate?: Nullable<BooleanCallback<never>>,): never
-    public first() {
-        this.get()
-    }
+    public first() { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",) }
 
     public firstOrNull(): null
     public firstOrNull<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): null
     public firstOrNull(predicate?: Nullable<BooleanCallback<never>>,): null
-    public firstOrNull() {
-        return null
-    }
+    public firstOrNull() { return null }
 
     //#endregion -------------------- First methods --------------------
     //#region -------------------- Last methods --------------------
@@ -199,16 +165,12 @@ export class EmptyCollectionHolder
     public last(): never
     public last<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): never
     public last(predicate?: Nullable<BooleanCallback<never>>,): never
-    public last() {
-        this.get()
-    }
+    public last() { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",) }
 
     public lastOrNull(): null
     public lastOrNull<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): null
     public lastOrNull(predicate?: Nullable<BooleanCallback<never>>,): null
-    public lastOrNull() {
-        return null
-    }
+    public lastOrNull() { return null }
 
     //#endregion -------------------- Last methods --------------------
 
@@ -218,133 +180,96 @@ export class EmptyCollectionHolder
     //#region -------------------- All / any / none methods --------------------
 
     public all(predicate?: BooleanCallback<never>,): false
-    public all(): false {
-        return false
-    }
+    public all() { return false }
 
     public any(): this["isNotEmpty"]
     public any(predicate?: Nullable<BooleanCallback<never>>,): this["isNotEmpty"]
-    public any(): this["isNotEmpty"] {
-        return false
-    }
+    public any() { return false }
 
     public none(): this["isEmpty"]
     public none(predicate?: Nullable<BooleanCallback<never>>,): this["isEmpty"]
-    public none(): this["isEmpty"] {
-        return true
-    }
+    public none() { return true }
 
     //#endregion -------------------- All / any / none methods --------------------
     //#region -------------------- Has / includes / contains methods --------------------
 
     public hasOne(...values: readonly never[]): false
     public hasOne(...values: readonly unknown[]): false
-    public hasOne(): false {
-        return false
-    }
+    public hasOne() { return false }
 
     public includesOne(...values: readonly never[]): false
     public includesOne(...values: readonly unknown[]): false
-    public includesOne(): false {
-        return this.hasOne()
-    }
+    public includesOne() { return false }
 
     public containsOne(...values: readonly never[]): false
     public containsOne(...values: readonly unknown[]): false
-    public containsOne(): false {
-        return this.hasOne()
-    }
+    public containsOne() { return false }
 
 
     public hasAll(...values: readonly never[]): false
     public hasAll(...values: readonly unknown[]): false
-    public hasAll(): false {
-        return false
-    }
+    public hasAll() { return false }
 
     public includesAll(...values: readonly never[]): false
     public includesAll(...values: readonly unknown[]): false
-    public includesAll(): false {
-        return this.hasAll()
-    }
+    public includesAll() { return false }
 
     public containsAll(...values: readonly never[]): false
     public containsAll(...values: readonly unknown[]): false
-    public containsAll(): false {
-        return this.hasAll()
-    }
+    public containsAll() { return false }
 
     //#endregion -------------------- Has / includes / contains methods --------------------
     //#region -------------------- Join methods --------------------
 
-    public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<ValueWithStringReturnCallback<never>>,): string
-    public join(_separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>,): string {
-        return `${prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX}${postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX}`
+    public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<StringCallback<never>>,): string
+    public join(_separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>,) {
+        return prefixAndPostfixOnly(prefix, postfix,)
     }
 
     //#endregion -------------------- Join methods --------------------
     //#region -------------------- Filter methods --------------------
 
-    public filter<const S extends never>(predicate?: RestrainedBooleanCallback<never, S>): CollectionHolder<S>
-    public filter(predicate?: BooleanCallback<never>): CollectionHolder<never>
-    public filter(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public filter<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>): this
+    public filter(predicate?: BooleanCallback<never>): this
+    public filter() { return this }
 
     public filterIndexed<const S extends never, >(predicate?: ReverseRestrainedBooleanCallback<never, S>,): CollectionHolder<S>
     public filterIndexed(predicate?: ReverseBooleanCallback<never>,): CollectionHolder<never>
-    public filterIndexed(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public filterIndexed() { return this }
 
 
-    public filterNot<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): CollectionHolder<Exclude<never, S>>
-    public filterNot(predicate?: BooleanCallback<never>,): CollectionHolder<never>
-    public filterNot(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public filterNot<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): this
+    public filterNot(predicate?: BooleanCallback<never>,): this
+    public filterNot() { return this }
 
-    public filterIndexedNot<const S extends never, >(predicate?: ReverseRestrainedBooleanCallback<never, S>,): CollectionHolder<S>
-    public filterIndexedNot(predicate?: ReverseBooleanCallback<never>,): CollectionHolder<never>
-    public filterIndexedNot(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public filterIndexedNot<const S extends never, >(predicate?: ReverseRestrainedBooleanCallback<never, S>,): this
+    public filterIndexedNot(predicate?: ReverseBooleanCallback<never>,): this
+    public filterIndexedNot() { return this }
 
 
-    public filterNotNull(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public filterNotNull(): this { return this }
 
-    public requireNoNulls(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public requireNoNulls(): this { return this }
 
     //#endregion -------------------- Filter methods --------------------
     //#region -------------------- Find methods --------------------
 
     public find<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): null
     public find(predicate?: BooleanCallback<never>,): never
-    public find(): null {
-        return null
-    }
+    public find() { return null }
 
     public findIndexed<const S extends never, >(callback?: ReverseRestrainedBooleanCallback<never, S>,): null
     public findIndexed(predicate?: ReverseBooleanCallback<never>,): null
-    public findIndexed(): null {
-        return null
-    }
+    public findIndexed() { return null }
 
 
     public findLast<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): null
     public findLast(predicate?: BooleanCallback<never>,): null
-    public findLast(): null {
-        return null
-    }
+    public findLast() { return null }
 
+    public findLastIndexed<const S extends never, >(callback?: ReverseRestrainedBooleanCallback<never, S>,): null
     public findLastIndexed(predicate?: ReverseBooleanCallback<never>,): null
-    public findLastIndexed(): null {
-        return null
-    }
+    public findLastIndexed() { return null }
 
     //#endregion -------------------- Find methods --------------------
     //#region -------------------- Slice methods --------------------
@@ -356,121 +281,95 @@ export class EmptyCollectionHolder
     public slice(indices?: Iterable<number>,): this
     public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
     public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
-    public slice(): this {
-        return this
-    }
+    public slice() { return this }
 
     //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
 
     public map<const U, >(transform?: ValueIndexWithReturnCallback<never, U>,): CollectionHolder<U>
-    public map(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public map() { return this }
 
     public mapIndexed<const U, >(transform?: IndexValueWithReturnCallback<never, U>,): CollectionHolder<U>
-    public mapIndexed(): CollectionHolder<never> {
-        return this as unknown as CollectionHolder<never>
-    }
+    public mapIndexed() { return this }
 
     public mapNotNull<const U extends NonNullable<unknown>, >(transform?: ValueIndexWithReturnCallback<never, Nullable<U>>,): CollectionHolder<U>
-    public mapNotNull<const U extends NonNullable<unknown>, >(): CollectionHolder<U> {
-        return this as unknown as CollectionHolder<U>
-    }
+    public mapNotNull() { return this }
 
     public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform?: IndexValueWithReturnCallback<never, Nullable<U>>,): CollectionHolder<U>
-    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(): CollectionHolder<U> {
-        return this as unknown as CollectionHolder<U>
-    }
+    public mapNotNullIndexed() { return this }
 
     //#endregion -------------------- Map methods --------------------
     //#region -------------------- ForEach methods --------------------
 
     public forEach(action?: ValueIndexCallback<never>,): this
-    public forEach(): this {
-        return this
-    }
+    public forEach() { return this }
 
     public forEachIndexed(action?: IndexValueCallback<never>,): this
-    public forEachIndexed(): this {
-        return this
-    }
+    public forEachIndexed() { return this }
 
     //#endregion -------------------- ForEach methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------
 
-    public [Symbol.iterator](): EmptyCollectionIterator {
-        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
-    }
+    public [Symbol.iterator](): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
-    public get [Symbol.toStringTag](): CollectionHolderName {
-        return CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG
-    }
+    public get [Symbol.toStringTag](): CollectionHolderName { return CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG }
 
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public get objectValuesMap(): ReadonlyMap<never, never> {
-        return CollectionConstants.EMPTY_MAP
-    }
+    public get objectValuesMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP }
 
 
-    public toIterator(): EmptyCollectionIterator {
-        return this[Symbol.iterator]()
-    }
+    public toIterator(): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
 
-    public toArray(): readonly never[] {
-        return CollectionConstants.EMPTY_ARRAY
-    }
+    public toArray(): readonly never[] { return CollectionConstants.EMPTY_ARRAY }
 
-    public toMutableArray(): never[] {
-        return []
-    }
+    public toMutableArray(): never[] { return [] }
 
 
-    public toSet(): ReadonlySet<never> {
-        return CollectionConstants.EMPTY_SET
-    }
+    public toSet(): ReadonlySet<never> { return CollectionConstants.EMPTY_SET }
 
-    public toMutableSet(): Set<never> {
-        return new Set()
-    }
+    public toMutableSet(): Set<never> { return new Set() }
 
 
-    public toWeakSet(): Readonly<WeakSet<never>> {
-        return CollectionConstants.EMPTY_WEAK_SET
-    }
+    public toWeakSet(): Readonly<WeakSet<never>> { return CollectionConstants.EMPTY_WEAK_SET }
 
-    public toMutableWeakSet(): WeakSet<never> {
-        return new WeakSet()
-    }
+    public toMutableWeakSet(): WeakSet<never> { return new WeakSet() }
 
 
-    public toMap(): ReadonlyMap<never, never> {
-        return CollectionConstants.EMPTY_MAP
-    }
+    public toMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP }
 
-    public toMutableMap(): Map<never, never> {
-        return new Map<never, never>()
-    }
+    public toMutableMap(): Map<never, never> { return new Map<never, never>() }
 
 
     public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
-    public toReversed(): CollectionHolder<never> {
+    public toReversed() {
         return this as unknown as CollectionHolder<never>
     }
 
 
-    public toString(): "[]" {
-        return "[]"
-    }
+    //#region -------------------- Conversion methods (toString) --------------------
 
-    public toLocaleString(): "[]" {
-        return "[]"
-    }
+    public toString(): "[]" { return "[]" }
+
+
+    public toLocaleString(locale?: Nullable<string>,): "[]"
+    public toLocaleString() { return "[]" }
+
+    public toLowerCaseString(): "[]" { return "[]" }
+
+    public toLocaleLowerCaseString(locale?: Nullable<string>,): "[]"
+    public toLocaleLowerCaseString() { return "[]" }
+
+    public toUpperCaseString(): "[]" { return "[]" }
+
+    public toLocaleUpperCaseString(locale?: Nullable<string>,): "[]"
+    public toLocaleUpperCaseString() { return "[]" }
+
+    //#endregion -------------------- Conversion methods (toString) --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 

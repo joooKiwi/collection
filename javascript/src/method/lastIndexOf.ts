@@ -5,12 +5,15 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder} from "../CollectionHolder"
-import type {Nullable, NullOr} from "../general type"
+import type {CollectionHolder}         from "../CollectionHolder"
+import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
+import type {Nullable, NullOr}         from "../general type"
 
 import {endingIndex as endingIndexFunction}     from "./endingIndex"
 import {maximumIndex as maximumIndexFunction}   from "./maximumIndex"
 import {startingIndex as startingIndexFunction} from "./startingIndex"
+
+//#region -------------------- Facade method --------------------
 
 /**
  * Get the <b>last</b> occurrence equivalent to the value received
@@ -18,16 +21,17 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * from a range (if provided)
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param element The element to find
- * @param fromIndex The inclusive starting index
- * @param toIndex The inclusive ending index
- * @param limit The maximum index
- * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @param element    The element to find
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The maximum index
+ * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
  * @extensionFunction
  */
 export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
@@ -37,16 +41,17 @@ export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>
  * from a range (if provided)
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param element The element to find
- * @param fromIndex The inclusive starting index
- * @param toIndex The inclusive ending index
- * @param limit The maximum index
- * @returns {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @param element    The element to find
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The maximum index
+ * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
  * @extensionFunction
  */
 export function lastIndexOf<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
@@ -79,26 +84,29 @@ export function lastIndexOf(collection: Nullable<CollectionHolder>, element: unk
         return null
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
-    //#region -------------------- Return index --------------------
 
     if (limit == null)
-        return withoutALimit(collection, element, startingIndex, endingIndex,)
+        return __withoutALimit(collection as NonEmptyCollectionHolder, element, startingIndex, endingIndex,)
+
+    //#region -------------------- Initialization (maximum index) --------------------
 
     const maximumIndex = maximumIndexFunction(collection, limit, size,)
-    if (maximumIndex == size)
-        return withoutALimit(collection, element, startingIndex, endingIndex,)
-
     if (maximumIndex == null)
         return null
+    if (maximumIndex == size)
+        return __withoutALimit(collection as NonEmptyCollectionHolder, element, startingIndex, endingIndex,)
     if (endingIndex - startingIndex < maximumIndex - 1)
         return null
 
-    return withALimit(collection, element, startingIndex, endingIndex, maximumIndex,)
+    //#endregion -------------------- Initialization (maximum index) --------------------
 
-    //#endregion -------------------- Return index --------------------
+    return __withALimit(collection as NonEmptyCollectionHolder, element, startingIndex, endingIndex, maximumIndex,)
 }
 
-function withoutALimit(collection: CollectionHolder, element: unknown, startingIndex: number, endingIndex: number,): NullOr<number> {
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Loop methods --------------------
+
+function __withoutALimit(collection: NonEmptyCollectionHolder, element: unknown, startingIndex: number, endingIndex: number,): NullOr<number> {
     let index = endingIndex + 1
     while (--index >= startingIndex)
         if (collection.get(index,) === element)
@@ -106,7 +114,7 @@ function withoutALimit(collection: CollectionHolder, element: unknown, startingI
     return null
 }
 
-function withALimit(collection: CollectionHolder, element: unknown, startingIndex: number, endingIndex: number, maximumIndex: number,): NullOr<number> {
+function __withALimit(collection: NonEmptyCollectionHolder, element: unknown, startingIndex: number, endingIndex: number, maximumIndex: number,): NullOr<number> {
     let index = endingIndex + 1
     if (index >= maximumIndex)
         index = maximumIndex
@@ -115,3 +123,5 @@ function withALimit(collection: CollectionHolder, element: unknown, startingInde
             return index
     return null
 }
+
+//#endregion -------------------- Loop methods --------------------
