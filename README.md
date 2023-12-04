@@ -24,8 +24,8 @@ But other languages will have different features based on how they can handle it
 ## Related projects
 
 Here is a list of the related projects made by me
-- lazy [GitHub](https://github.com/joooKiwi/lazy) / [NPM](https://www.npmjs.com/package/@joookiwi/lazy)
-- enumeration [GitHub](https://github.com/joooKiwi/enumeration) / [NPM](https://www.npmjs.com/package/@joookiwi/enumerable)
+- lazy ([GitHub](https://github.com/joooKiwi/lazy) | [NPM](https://www.npmjs.com/package/@joookiwi/lazy))
+- enumeration ([GitHub](https://github.com/joooKiwi/enumeration) | [NPM](https://www.npmjs.com/package/@joookiwi/enumerable))
 
 ## Functionality equivalent from language to language
 
