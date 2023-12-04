@@ -56,7 +56,7 @@ jobs:
       - name: Installation of the dependencies (for NPM)
         run: npm --prefix ${{matrix.path}} ci
 
-      - name: "dist/" folder deletion
+      - name: \"dist/\" folder deletion
         run: npm --prefix ${{matrix.path}} run clear-dist-folder
 
       - name: Build ECMAScript module
@@ -72,6 +72,6 @@ jobs:
         run: npm --prefix ${{matrix.path}} run build-types
 
       - name: Publishing to NPM
-        run: npm --prefix ${{matrix.path}} run publish --access=public
+        run: npm --prefix ${{matrix.path}} run publish-to-npm
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

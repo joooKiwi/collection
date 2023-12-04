@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin), List (from Java/Kotlin/C#) and Enumerable (from C#)",
 
   "scripts": {
@@ -23,7 +23,8 @@
     "pack": "npm pack",
 
     "prelocal-publish": "npm run build",
-    "local-publish":    "npm link"
+    "local-publish":    "npm link",
+    "publish-to-npm": "npm publish --access=public"
   },
 
   "directories": {
