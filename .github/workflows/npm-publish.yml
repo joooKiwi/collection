@@ -72,6 +72,6 @@ jobs:
         run: npm --prefix ${{matrix.path}} run build-types
 
       - name: Publishing to NPM
-        run: npm --prefix ${{matrix.path}} publish --access=public
+        run: npm --prefix ${{matrix.path}} publish-to-npm
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
