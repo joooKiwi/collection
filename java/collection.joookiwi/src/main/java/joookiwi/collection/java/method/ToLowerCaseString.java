@@ -33,7 +33,7 @@ public final class ToLowerCaseString
             return DEFAULT_EMPTY_COLLECTION;
 
         var string = new StringBuilder();
-        var sizeMinus1 = collection.getSize() - 1;
+        var sizeMinus1 = collection.size() - 1;
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLowerCaseString(collection.get(index))).append(DEFAULT_JOIN_SEPARATOR);

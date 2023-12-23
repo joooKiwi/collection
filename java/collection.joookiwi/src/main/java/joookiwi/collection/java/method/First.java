@@ -65,7 +65,7 @@ public final class First
         if (predicate == null)
             return collection.get(0);
 
-        var size = collection.getSize();
+        var size = collection.size();
         var index = -1;
         while (++index < size) {
             var value = collection.get(index);
@@ -98,7 +98,7 @@ public final class First
         if (predicate == null)
             return collection.get(0);
 
-        var size = collection.getSize();
+        var size = collection.size();
         var index = -1;
         while (++index < size) {
             var value = collection.get(index);
@@ -131,7 +131,7 @@ public final class First
         if (predicate == null)
             return collection.get(0);
 
-        var size = collection.getSize();
+        var size = collection.size();
         var index = -1;
         while (++index < size)
             if (predicate.get())

@@ -62,7 +62,7 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> {
             //#region -------------------- Initialization (starting index) --------------------
 
-            var size = collection.getSize();
+            var size = collection.size();
             int startingIndex = Objects.requireNonNull(StartingIndex.startingIndex(collection, fromIndex, size));
 
             //#endregion -------------------- Initialization (starting index) --------------------
@@ -95,7 +95,7 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> {
             //#region -------------------- Initialization (starting/ending index) --------------------
 
-            var size = collection.getSize();
+            var size = collection.size();
             int startingIndex = Objects.requireNonNull(StartingIndex.startingIndex(collection, fromIndex, size));
             int endingIndex = Objects.requireNonNull(EndingIndex.endingIndex(collection, toIndex, size));
 
@@ -136,7 +136,7 @@ public final class ToReverse
             return new GenericCollectionHolder<>(() -> {
                 //#region -------------------- Initialization (starting/ending index) --------------------
 
-                var size = collection.getSize();
+                var size = collection.size();
                 int startingIndex = Objects.requireNonNull(StartingIndex.startingIndex(collection, fromIndex, size));
                 int endingIndex = Objects.requireNonNull(EndingIndex.endingIndex(collection, toIndex, size));
                 if (endingIndex < startingIndex)
@@ -149,7 +149,7 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> {
             //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
-            var size = collection.getSize();
+            var size = collection.size();
             int startingIndex = Objects.requireNonNull(StartingIndex.startingIndex(collection, fromIndex, size));
             int endingIndex = Objects.requireNonNull(EndingIndex.endingIndex(collection, toIndex, size));
             if (endingIndex < startingIndex)
@@ -169,7 +169,7 @@ public final class ToReverse
     //#region -------------------- Loop methods --------------------
 
     private static <T> @NotNull @Unmodifiable List<T> __simpleReverse(@NotNull CollectionHolder<T> collection) {
-        var size = collection.getSize();
+        var size = collection.size();
         @SuppressWarnings("unchecked cast") var newArray = (T[]) new Object[size];
         var index = size;
         while (--index >= 0)

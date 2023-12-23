@@ -36,7 +36,7 @@ public final class LastOrNull
         if (collection.isEmpty())
             return null;
 
-        return collection.get(collection.getSize() - 1);
+        return collection.get(collection.size() - 1);
     }
 
     /**
@@ -60,7 +60,7 @@ public final class LastOrNull
         if (predicate == null)
             return collection.get(-1);
 
-        var index = collection.getSize();
+        var index = collection.size();
         while (index-- > 0) {
             var value = collection.get(index);
             if (predicate.apply(value, index))
@@ -88,9 +88,9 @@ public final class LastOrNull
         if (collection.isEmpty())
             return null;
         if (predicate == null)
-            return collection.get(collection.getSize() - 1);
+            return collection.get(collection.size() - 1);
 
-        var index = collection.getSize();
+        var index = collection.size();
         while (index-- > 0) {
             var value = collection.get(index);
             if (predicate.apply(value))
@@ -118,9 +118,9 @@ public final class LastOrNull
         if (collection.isEmpty())
             return null;
         if (predicate == null)
-            return collection.get(collection.getSize() - 1);
+            return collection.get(collection.size() - 1);
 
-        var index = collection.getSize();
+        var index = collection.size();
         while (index-- > 0)
             if (predicate.get())
                 return collection.get(index);

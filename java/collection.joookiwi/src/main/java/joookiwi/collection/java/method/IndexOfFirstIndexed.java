@@ -51,7 +51,7 @@ public final class IndexOfFirstIndexed
 
         //#endregion -------------------- Early returns --------------------
 
-        return __withoutALimit(collection, predicate, -1, collection.getSize());
+        return __withoutALimit(collection, predicate, -1, collection.size());
     }
 
     /**
@@ -77,7 +77,7 @@ public final class IndexOfFirstIndexed
 
         //#endregion -------------------- Early returns --------------------
 
-        return __withoutALimit(predicate, -1, collection.getSize());
+        return __withoutALimit(predicate, -1, collection.size());
     }
 
     /**
@@ -103,7 +103,7 @@ public final class IndexOfFirstIndexed
 
         //#endregion -------------------- Early returns --------------------
 
-        return __withoutALimit(predicate, -1, collection.getSize());
+        return __withoutALimit(predicate, -1, collection.size());
     }
 
     //#endregion -------------------- indexOfFirstIndexed(collection, predicate) methods --------------------
@@ -141,7 +141,7 @@ public final class IndexOfFirstIndexed
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)
             return null;
@@ -184,7 +184,7 @@ public final class IndexOfFirstIndexed
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)
             return null;
@@ -227,7 +227,7 @@ public final class IndexOfFirstIndexed
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)
             return null;
@@ -278,7 +278,7 @@ public final class IndexOfFirstIndexed
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
 
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)
@@ -331,7 +331,7 @@ public final class IndexOfFirstIndexed
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
 
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)
@@ -384,7 +384,7 @@ public final class IndexOfFirstIndexed
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
 
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)
@@ -445,7 +445,7 @@ public final class IndexOfFirstIndexed
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
 
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)
@@ -510,7 +510,7 @@ public final class IndexOfFirstIndexed
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
 
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)
@@ -576,7 +576,7 @@ public final class IndexOfFirstIndexed
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
 
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)

@@ -55,7 +55,7 @@ public final class None
         if (collection.isEmpty())
             return false;
 
-        var size = collection.getSize();
+        var size = collection.size();
         var index = -1;
         while (++index < size)
             if (predicate.apply(collection.get(index), index))
@@ -83,7 +83,7 @@ public final class None
         if (collection.isEmpty())
             return false;
 
-        var size = collection.getSize();
+        var size = collection.size();
         var index = -1;
         while (++index < size)
             if (predicate.apply(collection.get(index)))
@@ -111,7 +111,7 @@ public final class None
         if (collection.isEmpty())
             return false;
 
-        var size = collection.getSize();
+        var size = collection.size();
         var index = -1;
         while (++index < size)
             if (predicate.get())

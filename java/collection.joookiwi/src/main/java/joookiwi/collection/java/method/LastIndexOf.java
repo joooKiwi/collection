@@ -48,7 +48,7 @@ public final class LastIndexOf
 
         //#endregion -------------------- Early returns --------------------
 
-        return __withoutALimit(collection, element, -1, collection.getSize() -1);
+        return __withoutALimit(collection, element, -1, collection.size() -1);
     }
 
     /**
@@ -86,7 +86,7 @@ public final class LastIndexOf
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)
             return null;
@@ -136,7 +136,7 @@ public final class LastIndexOf
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
 
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)
@@ -196,7 +196,7 @@ public final class LastIndexOf
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
-        var size = collection.getSize();
+        var size = collection.size();
 
         var startingIndex = startingIndex(collection, fromIndex, size);
         if (startingIndex == null)

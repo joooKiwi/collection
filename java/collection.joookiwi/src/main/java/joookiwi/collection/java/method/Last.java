@@ -37,9 +37,9 @@ public final class Last
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
         if (collection.isEmpty())
-            throw new EmptyCollectionHolderException("No element at the index " + (collection.getSize() - 1) + " could be found since it is empty.");
+            throw new EmptyCollectionHolderException("No element at the index " + (collection.size() - 1) + " could be found since it is empty.");
 
-        return collection.get(collection.getSize() - 1);
+        return collection.get(collection.size() - 1);
     }
 
     /**
@@ -61,11 +61,11 @@ public final class Last
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
         if (collection.isEmpty())
-            throw new EmptyCollectionHolderException("No element at the index " + (collection.getSize() - 1) + " could be found since it is empty.");
+            throw new EmptyCollectionHolderException("No element at the index " + (collection.size() - 1) + " could be found since it is empty.");
         if (predicate == null)
-            return collection.get(collection.getSize() - 1);
+            return collection.get(collection.size() - 1);
 
-        var size = collection.getSize();
+        var size = collection.size();
         var index = size;
         while (index-- > 0) {
             var value = collection.get(index);
@@ -94,11 +94,11 @@ public final class Last
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
         if (collection.isEmpty())
-            throw new EmptyCollectionHolderException("No element at the index " + (collection.getSize() - 1) + " could be found since it is empty.");
+            throw new EmptyCollectionHolderException("No element at the index " + (collection.size() - 1) + " could be found since it is empty.");
         if (predicate == null)
-            return collection.get(collection.getSize() - 1);
+            return collection.get(collection.size() - 1);
 
-        var size = collection.getSize();
+        var size = collection.size();
         var index = size;
         while (index-- > 0) {
             var value = collection.get(index);
@@ -127,11 +127,11 @@ public final class Last
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
         if (collection.isEmpty())
-            throw new EmptyCollectionHolderException("No element at the index " + (collection.getSize() - 1) + " could be found since it is empty.");
+            throw new EmptyCollectionHolderException("No element at the index " + (collection.size() - 1) + " could be found since it is empty.");
         if (predicate == null)
-            return collection.get(collection.getSize() - 1);
+            return collection.get(collection.size() - 1);
 
-        var size = collection.getSize();
+        var size = collection.size();
         var index = size;
         while (index-- > 0)
             if (predicate.get())

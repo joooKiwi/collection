@@ -60,7 +60,7 @@ public final class ToLocaleLowerCaseString
 
     private static @NotNull String __withNoLocale(@NotNull CollectionHolder<?> collection) {
         var string = new StringBuilder();
-        var sizeMinus1 = collection.getSize() - 1;
+        var sizeMinus1 = collection.size() - 1;
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLocaleLowerCaseString(collection.get(index))).append(DEFAULT_JOIN_SEPARATOR);
@@ -69,7 +69,7 @@ public final class ToLocaleLowerCaseString
 
     private static @NotNull String __withLocale(@NotNull CollectionHolder<?> collection, @NotNull Locale locale) {
         var string = new StringBuilder();
-        var sizeMinus1 = collection.getSize() - 1;
+        var sizeMinus1 = collection.size() - 1;
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLocaleLowerCaseString(collection.get(index), locale)).append(DEFAULT_JOIN_SEPARATOR);
