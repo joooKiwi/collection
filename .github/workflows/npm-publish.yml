@@ -65,6 +65,9 @@ jobs:
       - name: Build CommonJS module
         run: npm --prefix ${{matrix.path}} run build-cjs
 
+      - name: Build Asynchronous module definition
+        run: npm --prefix ${{matrix.path}} run build-amd
+
       - name: Build Universal module definition
         run: npm --prefix ${{matrix.path}} run build-umd
 
