@@ -5,11 +5,22 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionConstants} from "./CollectionConstants"
-import type {CollectionHolder}    from "./CollectionHolder"
+import type {CollectionConstants}               from "./CollectionConstants"
+import type {CollectionHolder}                  from "./CollectionHolder"
+import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
+import type {GenericSimplisticCollectionHolder} from "./GenericSimplisticCollectionHolder"
+import type {LazyGenericCollectionHolder}       from "./LazyGenericCollectionHolder"
 
 /** An alias-type of {@link CollectionHolder}[{@link Symbol.toStringTag}] */
 export type CollectionHolderName = typeof CollectionConstants["COLLECTION_HOLDER_TO_STRING_TAG"]
+
+/**
+ * The possible {@link Object.constructor constructor} types that are inherited
+ * from a {@link SimplisticCollectionHolder} or a {@link CollectionHolder}
+ */
+export type PossibleCollectionHolderConstructor = | typeof GenericSimplisticCollectionHolder
+                                                  | typeof GenericCollectionHolder
+                                                  | typeof LazyGenericCollectionHolder
 
 
 /**
