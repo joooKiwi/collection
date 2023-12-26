@@ -234,8 +234,8 @@ export class EmptyCollectionHolder
     public filter(predicate?: BooleanCallback<never>): this
     public filter() { return this }
 
-    public filterIndexed<const S extends never, >(predicate?: ReverseRestrainedBooleanCallback<never, S>,): CollectionHolder<S>
-    public filterIndexed(predicate?: ReverseBooleanCallback<never>,): CollectionHolder<never>
+    public filterIndexed<const S extends never, >(predicate?: ReverseRestrainedBooleanCallback<never, S>,): this
+    public filterIndexed(predicate?: ReverseBooleanCallback<never>,): this
     public filterIndexed() { return this }
 
 
