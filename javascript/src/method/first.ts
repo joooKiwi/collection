@@ -37,6 +37,7 @@ export function first<const T, >(collection: Nullable<CollectionHolder<T>>,): T
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+ * @typescriptDefinition
  * @extensionFunction
  */
 export function first<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S

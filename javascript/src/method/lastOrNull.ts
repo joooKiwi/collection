@@ -31,6 +31,7 @@ export function lastOrNull<const T, >(collection: Nullable<CollectionHolder<T>>,
  * @param predicate  The matching predicate
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @typescriptDefinition
  * @extensionFunction
  */
 export function lastOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S

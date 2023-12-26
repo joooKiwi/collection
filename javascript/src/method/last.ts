@@ -37,6 +37,7 @@ export function last<const T, >(collection: Nullable<CollectionHolder<T>>,): T
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+ * @typescriptDefinition
  * @extensionFunction
  */
 export function last<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S

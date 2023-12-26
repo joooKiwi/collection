@@ -31,6 +31,7 @@ export function firstOrNull<const T, >(collection: Nullable<CollectionHolder<T>>
  * @param predicate  The matching predicate
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+ * @typescriptDefinition
  * @extensionFunction
  */
 export function firstOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>

@@ -430,6 +430,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @typescriptDefinition
      */
     first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
 
@@ -463,6 +464,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The matching predicate
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @typescriptDefinition
      */
     firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 
@@ -498,6 +500,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     * @typescriptDefinition
      */
     last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
 
@@ -531,6 +534,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The matching predicate
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     * @typescriptDefinition
      */
     lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 
