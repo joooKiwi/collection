@@ -16,7 +16,7 @@ import {CollectionConstants}            from "./CollectionConstants"
 import {prefixAndPostfixOnly}           from "./method/join"
 
 /**
- * A simple {@link CollectionHolder} with no values (as a singleton instance)
+ * A {@link CollectionHolder} with no values (as a singleton instance)
  *
  * @see GenericCollectionHolder
  * @see LazyGenericCollectionHolder

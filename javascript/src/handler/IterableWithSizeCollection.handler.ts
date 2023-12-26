@@ -17,7 +17,7 @@ import {EmptyCollectionHolderException}            from "../exception/EmptyColle
 import {IterableCollectionHandler}                 from "./IterableCollection.handler"
 
 /**
- * A simple implementation of a {@link CollectionHandler} for an iterable with
+ * An implementation of a {@link CollectionHandler} for an iterable with
  * a {@link IterableWithSize size}, {@link IterableWithLength length} or {@link IterableWithCount count} field
  */
 export class IterableWithSizeCollectionHandler<const out T = unknown, REFERENCE extends (| IterableWithPossibleSize<T> | IterableWithSize<T> | IterableWithLength<T> | IterableWithCount<T>) = (| IterableWithPossibleSize<T> | IterableWithSize<T> | IterableWithLength<T> | IterableWithCount<T>), const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >

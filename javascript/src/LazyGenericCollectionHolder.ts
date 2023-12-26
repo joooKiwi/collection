@@ -38,7 +38,7 @@ import {toSet}                             from "./method/toSet"
 import {toWeakSet}                         from "./method/toWeakSet"
 
 /**
- * A simple {@link CollectionHolder} having the values associated to it, but lazily retrieved.
+ * A {@link CollectionHolder} having the values associated to it, but lazily retrieved.
  *
  * @see GenericCollectionHolder
  * @see EmptyCollectionHolder

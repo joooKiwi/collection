@@ -7,7 +7,7 @@
 
 //TODO move in a separate project
 
-/** A simple {@link Iterable} with a length field */
+/** An {@link Iterable} with a length field */
 export interface IterableWithLength<out T, >
     extends Iterable<T> {
 

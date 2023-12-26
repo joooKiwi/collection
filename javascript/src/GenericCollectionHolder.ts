@@ -28,7 +28,7 @@ import {toSet}                                     from "./method/toSet"
 import {toWeakSet}                                 from "./method/toWeakSet"
 
 /**
- * A simple {@link CollectionHolder} having the values eagerly retrieved.
+ * A {@link CollectionHolder} having the values eagerly retrieved.
  *
  * Meaning that every value is retrieved during the construction,
  * and it will never change after the initialization.

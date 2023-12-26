@@ -7,7 +7,7 @@
 
 import type {ValueHolder} from "./ValueHolder"
 
-/** A simple definition of a handler for the {@link LazyGenericCollectionHolder} */
+/** A definition of a handler for the {@link LazyGenericCollectionHolder} */
 export interface CollectionHandler<out T = unknown, > {
 
     /**

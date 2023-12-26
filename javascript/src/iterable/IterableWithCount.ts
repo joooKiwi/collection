@@ -7,7 +7,7 @@
 
 //TODO move in a separate project
 
-/** A simple {@link Iterable} with a count field */
+/** An {@link Iterable} with a count field */
 export interface IterableWithCount<out T, >
     extends Iterable<T> {
 

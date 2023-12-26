@@ -8,7 +8,7 @@
 import type {CollectionHolder} from "../../CollectionHolder"
 
 /**
- * A simple {@link IteratorYieldResult iterator value} made to retrieve a {@link value}
+ * An {@link IteratorYieldResult iterator value} made to retrieve a {@link value}
  * from a {@link collection} using its {@link index}
  *
  * @see GenericIteratorValue

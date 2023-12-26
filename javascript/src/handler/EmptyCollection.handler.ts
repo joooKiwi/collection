@@ -10,7 +10,7 @@ import type {ValueHolder}       from "./ValueHolder"
 
 import {EmptyCollectionHolderException} from "../exception/EmptyCollectionHolderException"
 
-/** A simple implementation of an empty {@link CollectionHandler} */
+/** An implementation of an empty {@link CollectionHandler} */
 export class EmptyCollectionHandler
     implements CollectionHandler<never> {
 

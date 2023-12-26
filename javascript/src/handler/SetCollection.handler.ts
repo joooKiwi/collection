@@ -12,7 +12,7 @@ import {CollectionHolderIndexOutOfBoundsException} from "../exception/Collection
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
 import {AbstractCollectionHandler}                 from "./AbstractCollection.handler"
 
-/** A simple implementation of a {@link CollectionHolder} for an {@link ReadonlySet set} */
+/** An implementation of a {@link CollectionHolder} for an {@link ReadonlySet set} */
 export class SetCollectionHandler<const out T = unknown, const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 

@@ -12,7 +12,7 @@ import type {IterableWithLength}       from "./IterableWithLength"
 import type {IterableWithPossibleSize} from "./IterableWithPossibleSize"
 import type {IterableWithSize}         from "./IterableWithSize"
 
-/** Every possible simple type of {@link Iterable} in combination with the size field (as size, length or count) */
+/** Every possible type of {@link Iterable} in combination with the size field (as size, length or count) */
 export type PossibleIterable<T, > = | Iterable<T>
                                     | IterableWithPossibleSize<T>
                                     | IterableWithSize<T>

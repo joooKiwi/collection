@@ -13,7 +13,7 @@ export type CollectionHolderName = typeof CollectionConstants["COLLECTION_HOLDER
 
 
 /**
- * A simple callback that receive both a value and an index and return a {@link Boolean}
+ * A callback that receive both a value and an index and return a {@link Boolean}
  *
  * @note The arguments are optionals
  * @see ReverseBooleanCallback
@@ -28,7 +28,7 @@ export type CollectionHolderName = typeof CollectionConstants["COLLECTION_HOLDER
  */
 export type BooleanCallback<T, > = (value: T, index: number,) => boolean
 /**
- * A simple callback that receive both an index and a value and return a {@link Boolean}
+ * A callback that receive both an index and a value and return a {@link Boolean}
  *
  * @note The arguments are optionals
  * @see BooleanCallback
@@ -43,7 +43,7 @@ export type BooleanCallback<T, > = (value: T, index: number,) => boolean
  */
 export type ReverseBooleanCallback<T, > = (index: number, value: T,) => boolean
 /**
- * A simple callback that receive both a value and an index and return a restricting {@link Boolean} of <b>T</b>
+ * A callback that receive both a value and an index and return a restricting {@link Boolean} of <b>T</b>
  *
  * @typescriptExclusive
  * @note The arguments are optionals
@@ -59,7 +59,7 @@ export type ReverseBooleanCallback<T, > = (index: number, value: T,) => boolean
  */
 export type RestrainedBooleanCallback<T, S extends T, > = (value: T, index: number,) => value is S
 /**
- * A simple callback that receive both an index and a value and return a restricting {@link Boolean} of <b>T</b>
+ * A callback that receive both an index and a value and return a restricting {@link Boolean} of <b>T</b>
  *
  * @typescriptExclusive
  * @note The arguments are optionals
@@ -76,7 +76,7 @@ export type RestrainedBooleanCallback<T, S extends T, > = (value: T, index: numb
 export type ReverseRestrainedBooleanCallback<T, S extends T, > = (index: number, value: T,) => value is S
 
 /**
- * A simple callback that receive only an index and return a value <b>R</b>
+ * A callback that receive only an index and return a value <b>R</b>
  *
  * @typescriptExclusive
  * @note The argument is optional
@@ -92,7 +92,7 @@ export type ReverseRestrainedBooleanCallback<T, S extends T, > = (index: number,
 export type IndexWithReturnCallback<R, > = (index: number,) => R
 
 /**
- * A simple callback that receive both a value and an index and return nothing
+ * A callback that receive both a value and an index and return nothing
  *
  * @typescriptExclusive
  * @note The arguments are optionals
@@ -109,7 +109,7 @@ export type IndexWithReturnCallback<R, > = (index: number,) => R
  */
 export type ValueIndexCallback<T, > = (value: T, index: number,) => void
 /**
- * A simple callback that receive both an index and a value and return nothing
+ * A callback that receive both an index and a value and return nothing
  *
  * @typescriptExclusive
  * @note The arguments are optionals
@@ -127,7 +127,7 @@ export type ValueIndexCallback<T, > = (value: T, index: number,) => void
 export type IndexValueCallback<T, > = (index: number, value: T,) => void
 
 /**
- * A simple callback that receive both a value and an index and return a value <b>R</b>
+ * A callback that receive both a value and an index and return a value <b>R</b>
  *
  * @typescriptExclusive
  * @note The arguments are optionals
@@ -144,7 +144,7 @@ export type IndexValueCallback<T, > = (index: number, value: T,) => void
  */
 export type ValueIndexWithReturnCallback<T, R, > = (value: T, index: number,) => R
 /**
- * A simple callback that receive both an index and a value and return a value <b>R</b>
+ * A callback that receive both an index and a value and return a value <b>R</b>
  *
  * @typescriptExclusive
  * @note The arguments are optionals
@@ -162,7 +162,7 @@ export type ValueIndexWithReturnCallback<T, R, > = (value: T, index: number,) =>
 export type IndexValueWithReturnCallback<T, R, > = (index: number, value: T,) => R
 
 /**
- * A simple callback that receive both a value and an index and return a {@link String}
+ * A callback that receive both a value and an index and return a {@link String}
  *
  * @note The arguments are optionals
  * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
@@ -177,7 +177,7 @@ export type StringCallback<T, > = (value: T, index: number,) => string
 /** @deprecated This type has been replaced with {@link StringCallback} */
 export type ValueWithStringReturnCallback<T, > = (value: T,) => string
 
-/** A simple object encapsulation of a value */
+/** An object encapsulation of a value */
 export type ObjectOf<T, > =
     | (T extends string ? (& String & { valueOf(): T, }) : never)
     | (T extends boolean ? (& Boolean & { valueOf(): T, }) : never)

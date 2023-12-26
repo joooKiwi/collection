@@ -7,7 +7,7 @@
 
 import type {CollectionHolder} from "./CollectionHolder"
 
-/** A simple complete declaration of a non-empty {@link CollectionHolder} */
+/** A declaration of a non-empty {@link CollectionHolder} */
 export interface NonEmptyCollectionHolder<out T = unknown, >
     extends CollectionHolder<T> {
 

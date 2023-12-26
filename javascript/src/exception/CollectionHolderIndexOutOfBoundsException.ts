@@ -8,7 +8,7 @@
 import type {Nullable, NullOr, PossibleNumeric} from "../general type"
 
 /**
- * A simple {@link Error exception} that tell there is an invalid index that was received
+ * An {@link Error exception} that tell there is an invalid index that was received
  *
  * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ArrayIndexOutOfBoundsException.html Java ArrayIndexOutOfBoundsException
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-index-out-of-bounds-exception Kotlin IndexOutOfBoundsException

@@ -10,7 +10,7 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
 /**
- * A simple {@link Iterator} with a known {@link CollectionHolder} {@link CollectionHolder.size size}
+ * An {@link Iterator} with a known {@link SimplisticCollectionHolder} {@link SimplisticCollectionHolder.size size}
  *
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator Kotlin Iterator
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator Kotlin ListIterator

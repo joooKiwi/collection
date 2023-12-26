@@ -12,7 +12,7 @@ import {CollectionHolderIndexOutOfBoundsException} from "../exception/Collection
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
 import {ArrayCollectionHandler}                    from "./ArrayCollection.handler"
 
-/** A simple implementation of a {@link CollectionHolder} for an {@link ReadonlyArray array} of 1 element */
+/** An implementation of a {@link CollectionHolder} for an {@link ReadonlyArray array} of 1 element */
 export class ArrayCollectionOf1Handler<const out T = unknown, const REFERENCE extends readonly [T,] = readonly [T,], const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends ArrayCollectionHandler<T, REFERENCE, COLLECTION> {
 

@@ -10,7 +10,7 @@ import type {AfterLastValueInCollectionIteratorSymbol} from "../CollectionIterat
 import {CollectionConstants} from "../../CollectionConstants"
 
 /**
- * A simple implementation of a {@link IteratorReturnResult} for the last element
+ * An implementation of a {@link IteratorReturnResult} for the last element
  * after the last element on a {@link CollectionIterator}
  *
  * @singleton

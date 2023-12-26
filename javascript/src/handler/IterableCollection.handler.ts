@@ -12,7 +12,7 @@ import {CollectionHolderIndexOutOfBoundsException} from "../exception/Collection
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
 import {AbstractCollectionHandler}                 from "./AbstractCollection.handler"
 
-/** A simple implementation of a {@link CollectionHandler} for an {@link Iterable} */
+/** An implementation of a {@link CollectionHandler} for an {@link Iterable} */
 export class IterableCollectionHandler<const out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
