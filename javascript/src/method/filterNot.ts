@@ -7,8 +7,9 @@
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
-import type {NonEmptyCollectionHolder}                   from "../NonEmptyCollectionHolder"
 import type {Nullable}                                   from "../general type"
+import type {NonEmptySimplisticCollectionHolder}         from "../NonEmptySimplisticCollectionHolder"
+import type {SimplisticCollectionHolder}                 from "../SimplisticCollectionHolder"
 
 import {CollectionConstants} from "../CollectionConstants"
 
@@ -17,7 +18,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * Get a new {@link CollectionHolder}
  * not matching the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
@@ -26,12 +27,12 @@ import {CollectionConstants} from "../CollectionConstants"
  * @typescriptDefinition
  * @extensionFunction
  */
-export function filterNot<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function filterNot<const T, const S extends T, >(collection: Nullable<SimplisticCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
  * not matching the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
@@ -39,24 +40,24 @@ export function filterNot<const T, const S extends T, >(collection: Nullable<Col
  * @see filter
  * @extensionFunction
  */
-export function filterNot<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
-export function filterNot<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
+export function filterNot<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
+export function filterNot<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean,),)
     if (predicate.length == 1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection as NonEmptySimplisticCollectionHolder<T>, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection as NonEmptyCollectionHolder<T>, predicate,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection as NonEmptyCollectionHolder<T>, predicate as () => boolean,),)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection as NonEmptySimplisticCollectionHolder<T>, predicate,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection as NonEmptySimplisticCollectionHolder<T>, predicate as () => boolean,),)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: () => boolean,) {
+function __with0Argument<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, predicate: () => boolean,) {
     const newArray = [] as T[]
     const size = collection.size
     let index = -1
@@ -66,7 +67,7 @@ function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, pre
     return newArray
 }
 
-function __with1Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T,) => boolean,) {
+function __with1Argument<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, predicate: (value: T,) => boolean,) {
     const newArray = [] as T[]
     const size = collection.size
     let index = -1
@@ -78,7 +79,7 @@ function __with1Argument<const T, >(collection: NonEmptyCollectionHolder<T>, pre
     return newArray
 }
 
-function __with2Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T, index: number,) => boolean,) {
+function __with2Argument<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, predicate: (value: T, index: number,) => boolean,) {
     const newArray = [] as T[]
     const size = collection.size
     let index = -1

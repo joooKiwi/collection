@@ -5,17 +5,17 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder} from "../CollectionHolder"
-import type {Nullable}         from "../general type"
+import type {Nullable}                   from "../general type"
+import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
 
 /**
  * The {@link collection} has at least one <b>null</b> or <b>undefined</b>
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
  * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */
-export function hasNull(collection: Nullable<CollectionHolder>,): boolean {
+export function hasNull(collection: Nullable<SimplisticCollectionHolder>,): boolean {
     if (collection == null)
         return false
     if (collection.isEmpty)

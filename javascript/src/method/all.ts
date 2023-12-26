@@ -5,10 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}         from "../CollectionHolder"
-import type {BooleanCallback}          from "../CollectionHolder.types"
-import type {NonEmptyCollectionHolder} from "../NonEmptyCollectionHolder"
-import type {Nullable}                 from "../general type"
+import type {BooleanCallback}                    from "../CollectionHolder.types"
+import type {Nullable}                           from "../general type"
+import type {NonEmptySimplisticCollectionHolder} from "../NonEmptySimplisticCollectionHolder"
+import type {SimplisticCollectionHolder}         from "../SimplisticCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -16,30 +16,30 @@ import type {Nullable}                 from "../general type"
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html Kotlin all(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
-export function all<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
+export function all<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
     if (collection == null)
         return false
     if (collection.isEmpty)
         return false
 
-        return __with1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean,)
     if (predicate.length == 1)
+        return __with1Argument(collection as NonEmptySimplisticCollectionHolder<T>, predicate as (value: T,) => boolean,)
     if (predicate.length >= 2)
-        return __with2Argument(collection as NonEmptyCollectionHolder<T>, predicate,)
-    return __with0Argument(collection as NonEmptyCollectionHolder<T>, predicate as () => boolean,)
+        return __with2Argument(collection as NonEmptySimplisticCollectionHolder<T>, predicate,)
+    return __with0Argument(collection as NonEmptySimplisticCollectionHolder<T>, predicate as () => boolean,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: () => boolean,) {
+function __with0Argument<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, predicate: () => boolean,) {
     let index = collection.size
     while (index-- > 0)
         if (!predicate())
@@ -47,7 +47,7 @@ function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, pre
     return true
 }
 
-function __with1Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T,) => boolean,) {
+function __with1Argument<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, predicate: (value: T,) => boolean,) {
     const size = collection.size
     let index = -1
     while (++index < size)
@@ -56,7 +56,7 @@ function __with1Argument<const T, >(collection: NonEmptyCollectionHolder<T>, pre
     return true
 }
 
-function __with2Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T, index: number,) => boolean,) {
+function __with2Argument<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, predicate: (value: T, index: number,) => boolean,) {
     const size = collection.size
     let index = -1
     while (++index < size)

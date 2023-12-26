@@ -6,73 +6,70 @@
  ******************************************************************************/
 
 import type {Nullable, NullOr}                           from "../general type"
-import type {CollectionHolder}                           from "../CollectionHolder"
-import type {NonEmptyCollectionHolder}                   from "../NonEmptyCollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
+import type {NonEmptySimplisticCollectionHolder}         from "../NonEmptySimplisticCollectionHolder"
+import type {SimplisticCollectionHolder}                 from "../SimplisticCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
 /**
  * Get the last element in the current {@link collection}
- * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * or <b>null</b> if the {@link collection} {@link SimplisticCollectionHolder.isEmpty is empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction
  */
-export function lastOrNull<const T, >(collection: Nullable<CollectionHolder<T>>,): NullOr<T>
+export function lastOrNull<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): NullOr<T>
 /**
  * Get the last element in the current {@link collection}
  * matching the given {@link predicate}
- * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * or <b>null</b> if the {@link collection} {@link SimplisticCollectionHolder.isEmpty is empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
  * @param predicate  The matching predicate
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @typescriptDefinition
  * @extensionFunction
  */
-export function lastOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+export function lastOrNull<const T, const S extends T, >(collection: Nullable<SimplisticCollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the last element in the current {@link collection}
  * matching the given {@link predicate}
- * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * or <b>null</b> if the {@link collection} {@link SimplisticCollectionHolder.isEmpty is empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
  * @param predicate  The matching predicate
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */
-export function lastOrNull<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-export function lastOrNull<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+export function lastOrNull<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+export function lastOrNull<const T, const S extends T, >(collection: Nullable<SimplisticCollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
     if (collection == null)
         return null
     if (collection.isEmpty)
         return null
 
     if (predicate == null)
-        return __withNoPredicate(collection as NonEmptyCollectionHolder<T>,)
-        return __with1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean,)
+        return __withNoPredicate(collection as NonEmptySimplisticCollectionHolder<T>,)
     if (predicate.length == 1)
+        return __with1Argument(collection as NonEmptySimplisticCollectionHolder<T>, predicate as (value: T,) => boolean,)
     if (predicate.length >= 2)
-        return __with2Argument(collection as NonEmptyCollectionHolder<T>, predicate,)
-    return __with0Argument(collection as NonEmptyCollectionHolder<T>, predicate as () => boolean,)
+        return __with2Argument(collection as NonEmptySimplisticCollectionHolder<T>, predicate,)
+    return __with0Argument(collection as NonEmptySimplisticCollectionHolder<T>, predicate as () => boolean,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __withNoPredicate<const T, >(collection: NonEmptyCollectionHolder<T>,) {
-    const lastIndex = collection.size - 1
-    if (lastIndex in collection)
-        return collection[lastIndex] as T
-    return collection.getOrNull(lastIndex,)
+function __withNoPredicate<const T, >(collection: NonEmptySimplisticCollectionHolder<T>,) {
+    return collection.get(collection.size - 1,)
 }
 
-function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: () => boolean,) {
+function __with0Argument<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, predicate: () => boolean,) {
     let index = collection.size
     while (index-- > 0)
         if (predicate())
@@ -80,7 +77,7 @@ function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, pre
     return null
 }
 
-function __with1Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T,) => boolean,) {
+function __with1Argument<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, predicate: (value: T,) => boolean,) {
     let index = collection.size
     while (index-- > 0) {
         const value = collection.get(index,)
@@ -90,7 +87,7 @@ function __with1Argument<const T, >(collection: NonEmptyCollectionHolder<T>, pre
     return null
 }
 
-function __with2Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: (value: T, index: number,) => boolean,) {
+function __with2Argument<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, predicate: (value: T, index: number,) => boolean,) {
     let index = collection.size
     while (index-- > 0) {
         const value = collection.get(index,)

@@ -5,18 +5,18 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable}         from "../general type"
-import type {CollectionHolder} from "../CollectionHolder"
+import type {Nullable}                   from "../general type"
+import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
 
 import {CollectionConstants} from "../CollectionConstants"
 
 /**
  * Convert the {@link collection} to an {@link ReadonlyArray array}
  *
- * @param collection The {@link CollectionHolder} to convert
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection} to convert
  * @extensionFunction
  */
-export function toArray<const T, >(collection: Nullable<CollectionHolder<T>>,): readonly T[] {
+export function toArray<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): readonly T[] {
     if (collection == null)
         return CollectionConstants.EMPTY_ARRAY
     if (collection.isEmpty)

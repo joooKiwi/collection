@@ -5,18 +5,18 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder} from "../CollectionHolder"
-import type {ObjectOf}         from "../CollectionHolder.types"
-import type {Nullable}         from "../general type"
+import type {ObjectOf}                   from "../CollectionHolder.types"
+import type {Nullable}                   from "../general type"
+import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
 
 import {CollectionConstants} from "../CollectionConstants"
 
 /**
  * Get an every object associated to the typed value
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
  */
-export function objectValuesMap<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlyMap<T, ObjectOf<T>> {
+export function objectValuesMap<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): ReadonlyMap<T, ObjectOf<T>> {
     if (collection == null)
         return CollectionConstants.EMPTY_MAP as ReadonlyMap<T, ObjectOf<T>>
     if (collection.isEmpty)

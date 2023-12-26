@@ -5,18 +5,18 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder} from "../CollectionHolder"
-import type {Nullable}         from "../general type"
+import type {Nullable}                   from "../general type"
+import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
 
 import {CollectionConstants} from "../CollectionConstants"
 
 /**
  * Convert the {@link collection} to an {@link ReadonlyMap map}
  *
- * @param collection The {@link CollectionHolder} to convert
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection} to convert
  * @extensionFunction
  */
-export function toMap<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlyMap<number, T> {
+export function toMap<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): ReadonlyMap<number, T> {
     if (collection == null)
         return CollectionConstants.EMPTY_MAP
     if (collection.isEmpty)

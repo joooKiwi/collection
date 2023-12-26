@@ -5,16 +5,16 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable}         from "../general type"
-import type {CollectionHolder} from "../CollectionHolder"
+import type {Nullable}                   from "../general type"
+import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
 
 /**
  * Convert the {@link collection} to an {@link Set mutable set}
  *
- * @param collection The {@link CollectionHolder} to convert
+ * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection} to convert
  * @extensionFunction
  */
-export function toMutableSet<const T, >(collection: Nullable<CollectionHolder<T>>,): Set<T> {
+export function toMutableSet<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): Set<T> {
     if (collection == null)
         return new Set()
     if (collection.isEmpty)
