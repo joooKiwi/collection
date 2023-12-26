@@ -6,19 +6,25 @@
  ******************************************************************************/
 
 import {AB, AB_AB, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, EMPTY, NULL_ABCD, UNDEFINED_ABCD} from "./constantCollections"
-import {everyInstances}                                                                          from "./constantValues"
-import {newCollectionInstance}                                                                   from "./newCollectionInstance"
+import {everySimplisticInstances}                                                from "./constantValues"
+import {newCollectionInstance, newSimplisticCollectionInstance}                                  from "./newCollectionInstance"
 
+import {GenericSimplisticCollectionHolder}         from "../src/GenericSimplisticCollectionHolder"
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../src/exception/EmptyCollectionHolderException"
 
 describe("CollectionHolderTest (value)", () =>
-describe.each(everyInstances,)("%s", ({value: instance,},) => {
+describe.each(everySimplisticInstances,)("%s", ({value: instance,},) => {
+    const isSimplistic = instance === GenericSimplisticCollectionHolder
+
     //#region -------------------- Instances --------------------
 
     const EMPTY_INSTANCE = () => newCollectionInstance(instance, EMPTY,)
+    const EMPTY_SIMPLISTIC_INSTANCE = () => newSimplisticCollectionInstance(instance, EMPTY,)
     const AB_INSTANCE = () => newCollectionInstance(instance, AB,)
+    const AB_SIMPLISTIC_INSTANCE = () => newSimplisticCollectionInstance(instance, AB,)
     const ABCD_INSTANCE = () => newCollectionInstance(instance, ABCD,)
+    const ABCD_SIMPLISTIC_INSTANCE = () => newSimplisticCollectionInstance(instance, ABCD,)
     const AB_AB_INSTANCE = () => newCollectionInstance(instance, AB_AB,)
     const ABCD_ABCD_INSTANCE = () => newCollectionInstance(instance, ABCD_ABCD,)
     const NULL_ABCD_INSTANCE = () => newCollectionInstance(instance, NULL_ABCD,)
@@ -28,6 +34,19 @@ describe.each(everyInstances,)("%s", ({value: instance,},) => {
 
     //#endregion -------------------- Instances --------------------
 
+    if (isSimplistic) {
+        //README: Those tests are based on lower tests
+        describe("get",           () => {
+            test("[](0)",         () => expect(() => EMPTY_SIMPLISTIC_INSTANCE().get(0,),).toThrow(EmptyCollectionHolderException,),)
+            test("[a,b](0)",      () => expect(AB_SIMPLISTIC_INSTANCE().get(0,),).toEqual('a',),)
+            test("[a,b](3)",      () => expect(() => AB_SIMPLISTIC_INSTANCE().get(3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("[a,b,c,d](1)",  () => expect(ABCD_SIMPLISTIC_INSTANCE().get(1,),).toEqual('b',),)
+            test("[a,b,c,d](-1)", () => expect(ABCD_SIMPLISTIC_INSTANCE().get(-1,),).toEqual('d',),)
+            test("[a,b,c,d](-4)", () => expect(ABCD_SIMPLISTIC_INSTANCE().get(-4,),).toEqual('a',),)
+            test("[a,b,c,d](-5)", () => expect(() => ABCD_SIMPLISTIC_INSTANCE().get(-5,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+        },)
+        return
+    }
     describe("get / at / element at", () => {
         describe("simple", () => {
             describe("[](0)", () => {
@@ -141,7 +160,6 @@ describe.each(everyInstances,)("%s", ({value: instance,},) => {
             },)
         },)
     },)
-
 
     describe("index", () => {
         describe("index of", () => {
