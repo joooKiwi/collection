@@ -5,11 +5,12 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}  from "../CollectionHolder"
-import type {CollectionHandler} from "./CollectionHandler"
-import type {ValueHolder}       from "./ValueHolder"
+import type {CollectionHolder}           from "../CollectionHolder"
+import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {CollectionHandler}          from "./CollectionHandler"
+import type {ValueHolder}                from "./ValueHolder"
 
-export abstract class AbstractCollectionHandler<out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export abstract class AbstractCollectionHandler<out T = unknown, const REFERENCE extends | Iterable<T> | SimplisticCollectionHolder<T> = | Iterable<T> | SimplisticCollectionHolder<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     implements CollectionHandler<T> {
 
     //#region -------------------- Fields --------------------
