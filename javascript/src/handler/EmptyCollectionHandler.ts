@@ -18,27 +18,18 @@ export class EmptyCollectionHandler
 
     static #instance?: EmptyCollectionHandler
 
-    protected constructor() {
-    }
+    protected constructor() {}
 
-    public static get get(): EmptyCollectionHandler {
-        return EmptyCollectionHandler.#instance ??= new EmptyCollectionHandler()
-    }
+    public static get get(): EmptyCollectionHandler { return EmptyCollectionHandler.#instance ??= new EmptyCollectionHandler() }
 
     //#endregion -------------------- Singleton usage --------------------
     //#region -------------------- Getter methods --------------------
 
-    public get size(): 0 {
-        return 0
-    }
+    public get size(): 0 { return 0 }
 
-    public get isEmpty(): true {
-        return true
-    }
+    public get isEmpty(): true { return true }
 
-    public get hasFinished(): true {
-        return true
-    }
+    public get hasFinished(): true { return true }
 
     //#endregion -------------------- Getter methods --------------------
 
