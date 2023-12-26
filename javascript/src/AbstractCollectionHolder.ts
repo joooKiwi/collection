@@ -10,60 +10,62 @@ import type {CollectionHolder}                                                  
 import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                             from "./general type"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 
-import {CollectionConstants}     from "./CollectionConstants"
-import {all}                     from "./method/all"
-import {any}                     from "./method/any"
-import {filter}                  from "./method/filter"
-import {filterIndexed}           from "./method/filterIndexed"
-import {filterIndexedNot}        from "./method/filterIndexedNot"
-import {filterNot}               from "./method/filterNot"
-import {filterNotNull}           from "./method/filterNotNull"
-import {find}                    from "./method/find"
-import {findIndexed}             from "./method/findIndexed"
-import {findLast}                from "./method/findLast"
-import {findLastIndexed}         from "./method/findLastIndexed"
-import {first}                   from "./method/first"
-import {firstOrNull}             from "./method/firstOrNull"
-import {forEach}                 from "./method/forEach"
-import {forEachIndexed}          from "./method/forEachIndexed"
-import {hasAll}                  from "./method/hasAll"
-import {hasNull}                 from "./method/hasNull"
-import {hasOne}                  from "./method/hasOne"
-import {indexOf}                 from "./method/indexOf"
-import {indexOfFirst}            from "./method/indexOfFirst"
-import {indexOfFirstIndexed}     from "./method/indexOfFirstIndexed"
-import {indexOfLast}             from "./method/indexOfLast"
-import {indexOfLastIndexed}      from "./method/indexOfLastIndexed"
-import {join}                    from "./method/join"
-import {last}                    from "./method/last"
-import {lastIndexOf}             from "./method/lastIndexOf"
-import {lastOrNull}              from "./method/lastOrNull"
-import {none}                    from "./method/none"
-import {map}                     from "./method/map"
-import {mapIndexed}              from "./method/mapIndexed"
-import {mapNotNull}              from "./method/mapNotNull"
-import {mapNotNullIndexed}       from "./method/mapNotNullIndexed"
-import {objectValuesMap}         from "./method/objectValuesMap"
-import {requireNoNulls}          from "./method/requireNoNulls"
-import {slice}                   from "./method/slice"
-import {toArray}                 from "./method/toArray"
-import {toIterator}              from "./method/toIterator"
-import {toLocaleLowerCaseString} from "./method/toLocaleLowerCaseString"
-import {toLocaleString}          from "./method/toLocaleString"
-import {toLocaleUpperCaseString} from "./method/toLocaleUpperCaseString"
-import {toLowerCaseString}       from "./method/toLowerCaseString"
-import {toMap}                   from "./method/toMap"
-import {toMutableArray}          from "./method/toMutableArray"
-import {toMutableSet}            from "./method/toMutableSet"
-import {toMutableMap}            from "./method/toMutableMap"
-import {toMutableWeakSet}        from "./method/toMutableWeakSet"
-import {toReverse}               from "./method/toReverse"
-import {toSet}                   from "./method/toSet"
-import {toString}                from "./method/toString"
-import {toUpperCaseString}       from "./method/toUpperCaseString"
-import {toWeakSet}               from "./method/toWeakSet"
+import {AbstractSimplisticCollectionHolder} from "./AbstractSimplisticCollectionHolder"
+import {CollectionConstants}                from "./CollectionConstants"
+import {all}                                from "./method/all"
+import {any}                                from "./method/any"
+import {filter}                             from "./method/filter"
+import {filterIndexed}                      from "./method/filterIndexed"
+import {filterIndexedNot}                   from "./method/filterIndexedNot"
+import {filterNot}                          from "./method/filterNot"
+import {filterNotNull}                      from "./method/filterNotNull"
+import {find}                               from "./method/find"
+import {findIndexed}                        from "./method/findIndexed"
+import {findLast}                           from "./method/findLast"
+import {findLastIndexed}                    from "./method/findLastIndexed"
+import {first}                              from "./method/first"
+import {firstOrNull}                        from "./method/firstOrNull"
+import {forEach}                            from "./method/forEach"
+import {forEachIndexed}                     from "./method/forEachIndexed"
+import {hasAll}                             from "./method/hasAll"
+import {hasNull}                            from "./method/hasNull"
+import {hasOne}                             from "./method/hasOne"
+import {indexOf}                            from "./method/indexOf"
+import {indexOfFirst}                       from "./method/indexOfFirst"
+import {indexOfFirstIndexed}                from "./method/indexOfFirstIndexed"
+import {indexOfLast}                        from "./method/indexOfLast"
+import {indexOfLastIndexed}                 from "./method/indexOfLastIndexed"
+import {join}                               from "./method/join"
+import {last}                               from "./method/last"
+import {lastIndexOf}                        from "./method/lastIndexOf"
+import {lastOrNull}                         from "./method/lastOrNull"
+import {none}                               from "./method/none"
+import {map}                                from "./method/map"
+import {mapIndexed}                         from "./method/mapIndexed"
+import {mapNotNull}                         from "./method/mapNotNull"
+import {mapNotNullIndexed}                  from "./method/mapNotNullIndexed"
+import {objectValuesMap}                    from "./method/objectValuesMap"
+import {requireNoNulls}                     from "./method/requireNoNulls"
+import {slice}                              from "./method/slice"
+import {toArray}                            from "./method/toArray"
+import {toIterator}                         from "./method/toIterator"
+import {toLocaleLowerCaseString}            from "./method/toLocaleLowerCaseString"
+import {toLocaleString}                     from "./method/toLocaleString"
+import {toLocaleUpperCaseString}            from "./method/toLocaleUpperCaseString"
+import {toLowerCaseString}                  from "./method/toLowerCaseString"
+import {toMap}                              from "./method/toMap"
+import {toMutableArray}                     from "./method/toMutableArray"
+import {toMutableSet}                       from "./method/toMutableSet"
+import {toMutableMap}                       from "./method/toMutableMap"
+import {toMutableWeakSet}                   from "./method/toMutableWeakSet"
+import {toReverse}                          from "./method/toReverse"
+import {toSet}                              from "./method/toSet"
+import {toString}                           from "./method/toString"
+import {toUpperCaseString}                  from "./method/toUpperCaseString"
+import {toWeakSet}                          from "./method/toWeakSet"
 
 export abstract class AbstractCollectionHolder<const out T = unknown, >
+    extends AbstractSimplisticCollectionHolder<T>
     implements CollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -81,15 +83,12 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    protected constructor() {
-    }
+    protected constructor() { super() }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
     //#region -------------------- Size methods --------------------
-
-    public abstract get size(): number
 
     public get length(): this["size"] {
         return this.size
@@ -99,8 +98,6 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.size
     }
 
-
-    public abstract get isEmpty(): boolean
 
     public get isNotEmpty(): boolean {
         return !this.isEmpty
@@ -129,8 +126,6 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Value methods --------------------
 
     //#region -------------------- Get / at methods --------------------
-
-    public abstract get(index: number,): T
 
     public at(index: number,): T {
         return this.get(index,)
@@ -548,11 +543,11 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     //#region -------------------- Conversion methods (toString) --------------------
 
-    public toString(): string {
+    public override toString(): string {
         return toString(this,)
     }
 
-    public toLocaleString(locale?: Nullable<string>,): string {
+    public override toLocaleString(locale?: Nullable<string>,): string {
         return toLocaleString(this, locale,)
     }
 
