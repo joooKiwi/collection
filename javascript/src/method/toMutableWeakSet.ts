@@ -12,7 +12,7 @@ import type {Nullable}         from "../general type"
 /**
  * Convert the {@link collection} to an {@link WeakSet mutable weak set}
  *
- * @param collection The {@link CollectionHolder} to convert
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
  * @extensionFunction
  */
 export function toMutableWeakSet<const T, >(collection: Nullable<CollectionHolder<T>>,): WeakSet<ObjectOf<T>> {
