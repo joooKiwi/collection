@@ -125,7 +125,7 @@ export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder
  * @extensionFunction
  * @typescriptDefinition
  */
-export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indicesOrFromIndex?: Nullable<| Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indicesOrFromIndex?: Nullable<| Iterable<number> | SimplisticCollectionHolder<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
 export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indicesOrFromIndex: Nullable<| Iterable<number> | SimplisticCollectionHolder<number> | number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
     if (indicesOrFromIndex instanceof Array)
         return sliceByArray(collection, indicesOrFromIndex,)
