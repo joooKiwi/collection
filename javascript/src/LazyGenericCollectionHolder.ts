@@ -10,9 +10,9 @@ import {CommonLazy, lazy, lazyOf} from "@joookiwi/lazy"
 
 import type {Nullable, NullOr}                  from "./general type"
 import type {PossibleIterable}                  from "./iterable/types"
-import type {CollectionHolder}                  from "./CollectionHolder"
 import type {IndexWithReturnCallback, ObjectOf} from "./CollectionHolder.types"
-import type {CollectionHandler}                 from "./handler/Collection.handler"
+import type {SimplisticCollectionHolder}        from "./SimplisticCollectionHolder"
+import type {CollectionHandler}                 from "./handler/CollectionHandler"
 import type {IterableWithCount}                 from "./iterable/IterableWithCount"
 import type {IterableWithLength}                from "./iterable/IterableWithLength"
 import type {IterableWithPossibleSize}          from "./iterable/IterableWithPossibleSize"
@@ -29,8 +29,8 @@ import {CollectionHandlerByIterableWithSize} from "./handler/CollectionHandlerBy
 import {CollectionHandlerBySet}              from "./handler/CollectionHandlerBySet"
 import {CollectionHandlerBySetOf1}           from "./handler/CollectionHandlerBySetOf1"
 import {hasNull}                             from "./method/hasNull"
-import {isCollectionHolder}                  from "./method/isCollectionHolder"
 import {isCollectionIterator}                from "./method/isCollectionIterator"
+import {isSimplisticCollectionHolder}        from "./method/isSimplisticCollectionHolder"
 import {objectValuesMap}                     from "./method/objectValuesMap"
 import {toArray}                             from "./method/toArray"
 import {toMap}                               from "./method/toMap"
@@ -44,7 +44,7 @@ import {toWeakSet}                           from "./method/toWeakSet"
  * @see EmptyCollectionHolder
  * @beta
  */
-export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE extends PossibleIterable<T> = PossibleIterable<T>, >
+export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE extends | PossibleIterable<T> | SimplisticCollectionHolder<T> = | PossibleIterable<T> | SimplisticCollectionHolder<T>, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -69,8 +69,8 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
     public constructor(lateArray: () => readonly T[],)
     public constructor(set: ReadonlySet<T>,)
     public constructor(lateSet: () => ReadonlySet<T>,)
-    public constructor(collectionHolder: CollectionHolder<T>,)
-    public constructor(lateCollectionHolder: () => CollectionHolder<T>,)
+    public constructor(collectionHolder: SimplisticCollectionHolder<T>,)
+    public constructor(lateCollectionHolder: () => SimplisticCollectionHolder<T>,)
     public constructor(collectionIterable: CollectionIterator<T>,)
     public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
     public constructor(iterableWithSize: IterableWithSize<T>,)
@@ -181,7 +181,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
-        if (isCollectionHolder<T>(reference,)) {
+        if (isSimplisticCollectionHolder<T>(reference,)) {
             this.#reference = lazyOf(reference,)
             this.#handler = lazy(() => new CollectionHandlerByCollectionHolder(this, reference,),)
             this.#isEmpty = lazy(() => {
@@ -373,7 +373,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
 
                     //#endregion -------------------- Late-initialization (non-empty) --------------------
                 }
-                if (isCollectionHolder<T>(referenceFound,))
+                if (isSimplisticCollectionHolder<T>(referenceFound,))
                     return new CollectionHandlerByCollectionHolder(this, referenceFound,)
                 if (isCollectionIterator<T>(referenceFound,))
                     return new CollectionHandlerByCollectionHolder(this, referenceFound.collection,)
