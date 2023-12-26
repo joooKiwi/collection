@@ -81,8 +81,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public constructor(reference: | REFERENCE | (() => REFERENCE),)
     public constructor(reference: | REFERENCE | (() => REFERENCE),) {
         super()
-        // README: The eager instantiation has some weird shenanigan in order to keep its nature pure.
-        //         Also, in order to be efficient, there is some duplicate code in the constructor.
+        // README: The eager instantiation has some weird shenanigan to keep its nature pure.
+        //         Also, to be efficient, there is some duplicate code in the constructor.
 
         reference = this.#reference = reference instanceof Function ? reference() : reference
 
