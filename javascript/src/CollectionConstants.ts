@@ -8,14 +8,16 @@
 import type {Lazy} from "@joookiwi/lazy"
 import {lazyOf}    from "@joookiwi/lazy"
 
-import type {CollectionHolder}   from "./CollectionHolder"
-import type {CollectionIterator} from "./iterator/CollectionIterator"
+import type {CollectionHolder}           from "./CollectionHolder"
+import type {CollectionIterator}         from "./iterator/CollectionIterator"
+import type {SimplisticCollectionHolder} from "./SimplisticCollectionHolder"
 
-import {EmptyCollectionHolder}            from "./EmptyCollectionHolder"
-import type {GenericCollectionHolder}     from "./GenericCollectionHolder"
-import type {LazyGenericCollectionHolder} from "./LazyGenericCollectionHolder"
-import {EmptyCollectionIterator}          from "./iterator/EmptyCollectionIterator"
-import {EmptyCollectionHandler}           from "./handler/EmptyCollection.handler"
+import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
+import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
+import type {GenericSimplisticCollectionHolder} from "./GenericSimplisticCollectionHolder"
+import type {LazyGenericCollectionHolder}       from "./LazyGenericCollectionHolder"
+import {EmptyCollectionIterator}                from "./iterator/EmptyCollectionIterator"
+import {EmptyCollectionHandler}                 from "./handler/EmptyCollectionHandler"
 
 /**
  * A utility class containing every field used by any {@link CollectionHolder} instances.
@@ -42,11 +44,13 @@ export class CollectionConstants {
     static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
     static #LAZY_EMPTY_COLLECTION_ITERATOR?: Lazy<EmptyCollectionIterator>
 
+    static #EVERY_SIMPLITCIC_COLLECTION_METHODS?: CollectionHolder<keyof SimplisticCollectionHolder>
     static #EVERY_COLLECTION_METHODS?: CollectionHolder<keyof CollectionHolder>
     static #EVERY_ITERATOR_METHODS?: CollectionHolder<keyof CollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
     static #GenericCollectionHolder?: typeof GenericCollectionHolder
+    static #GenericSimplisticCollectionHolder?: typeof GenericSimplisticCollectionHolder
     static #LazyGenericCollectionHolder?: typeof LazyGenericCollectionHolder
 
     //#endregion -------------------- Fields held --------------------
@@ -127,6 +131,10 @@ export class CollectionConstants {
     //#region -------------------- "Every methods" references --------------------
 
     /** Every method applicable to a {@link CollectionHolder} */
+    public static get EVERY_SIMPLISTIC_COLLECTION_METHODS(): CollectionHolder<keyof SimplisticCollectionHolder> {
+        return CollectionConstants.#EVERY_SIMPLITCIC_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "isEmpty", "get",] as const,),)
+    }
+    /** Every method applicable to a {@link CollectionHolder} */
     public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> {
         return CollectionConstants.#EVERY_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
@@ -178,6 +186,12 @@ export class CollectionConstants {
     /** The {@link Object.constructor constructor} reference of a {@link GenericCollectionHolder} */
     public static get GenericCollectionHolder(): typeof GenericCollectionHolder {
         return CollectionConstants.#GenericCollectionHolder ??= require("./GenericCollectionHolder").GenericCollectionHolder
+    }
+
+
+    /** The {@link Object.constructor constructor} reference of a {@link GenericSimplisticCollectionHolder} */
+    public static get GenericSimplisticCollectionHolder(): typeof GenericSimplisticCollectionHolder {
+        return CollectionConstants.#GenericSimplisticCollectionHolder ??= require("./GenericSimplisticCollectionHolder").GenericSimplisticCollectionHolder
     }
 
     /** The {@link Object.constructor constructor} reference of a {@link LazyGenericCollectionHolder} */
