@@ -5,8 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}                                                                                             from "../CollectionHolder"
 import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
+import type {SimplisticCollectionHolder}                                                                                   from "../SimplisticCollectionHolder"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
 /**
@@ -20,8 +20,8 @@ export interface CollectionIterator<out T = unknown, >
 
     //#region -------------------- Getter methods --------------------
 
-    /** The {@link CollectionHolder} to loop over */
-    get collection(): CollectionHolder<T>
+    /** The {@link SimplisticCollectionHolder collection} to loop over */
+    get collection(): SimplisticCollectionHolder<T>
 
     /** The {@link collection} {@link CollectionHolder.size size} */
     get size(): this["collection"]["size"]

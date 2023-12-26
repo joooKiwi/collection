@@ -5,8 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}                                                                                             from "../CollectionHolder"
 import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
+import type {SimplisticCollectionHolder}                                                                                   from "../SimplisticCollectionHolder"
 import type {CollectionIterator}                                                                                           from "./CollectionIterator"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
@@ -16,8 +16,8 @@ import {GenericAfterLastIteratorValue}             from "./value/GenericAfterLas
 import {GenericBeforeFirstIteratorValue}           from "./value/GenericBeforeFirstIteratorValue"
 import {GenericIteratorValue}                      from "./value/GenericIteratorValue"
 
-export class GenericCollectionIterator<const out T = unknown, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
-    implements CollectionIterator<T> {
+export class GenericCollectionIterator<const out T = unknown, const out COLLECTION extends SimplisticCollectionHolder<T> = SimplisticCollectionHolder<T>, >
+    implements CollectionIterator<T> {//TODO add reverse loop on first call
 
     //#region -------------------- Fields --------------------
 
