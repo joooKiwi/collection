@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Build (Asychronous module definition)" type="js.build_tools.npm" folderName="Build">
+  <configuration default="false" name="Build (Asynchronous module definition)" type="js.build_tools.npm" folderName="Build">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
