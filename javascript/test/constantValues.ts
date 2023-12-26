@@ -10,9 +10,10 @@ import type {IterableWithLength}       from "../src/iterable/IterableWithLength"
 import type {IterableWithPossibleSize} from "../src/iterable/IterableWithPossibleSize"
 import type {IterableWithSize}         from "../src/iterable/IterableWithSize"
 
-import {GenericCollectionHolder}     from "../src/GenericCollectionHolder"
-import {LazyGenericCollectionHolder} from "../src/LazyGenericCollectionHolder"
-import {GenericCollectionIterator}   from "../src/iterator/GenericCollectionIterator"
+import {GenericCollectionHolder}           from "../src/GenericCollectionHolder"
+import {GenericSimplisticCollectionHolder} from "../src/GenericSimplisticCollectionHolder"
+import {LazyGenericCollectionHolder}       from "../src/LazyGenericCollectionHolder"
+import {GenericCollectionIterator}         from "../src/iterator/GenericCollectionIterator"
 
 import {Holder} from "./Holder"
 
@@ -30,9 +31,14 @@ export const sizeValues = () => [
         'À', 'Â', 'Á', 'Ä', 'È', 'Ê', 'É', 'Ë', 'Í', 'Î', 'Ì', 'Ï', 'Ó', 'Ô', 'Ò', 'Ö', 'Œ', 'Ú', 'Û', 'Ù', 'Ü', 'Ç',
         true, false,
     ] as const,
+    everySimplisticInstances = [
+        new Holder(GenericSimplisticCollectionHolder, "GenericSimplisticCollectionHolder",),
+        new Holder(GenericCollectionHolder, "GenericCollectionHolder",),
+        new Holder(LazyGenericCollectionHolder, "LazyGenericCollectionHolder",),
+    ] as const,
     everyInstances = [
-        new Holder(GenericCollectionHolder, GenericCollectionHolder.name,),
-        new Holder(LazyGenericCollectionHolder, LazyGenericCollectionHolder.name,),
+        new Holder(GenericCollectionHolder, "GenericCollectionHolder",),
+        new Holder(LazyGenericCollectionHolder, "LazyGenericCollectionHolder",),
     ] as const,
     iterableCreation = [
         new Holder(<T>(array: readonly T[],) => Array.from(array,), "array",),
