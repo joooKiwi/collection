@@ -21,7 +21,7 @@ describe.each(everyInstances,)("%s", ({value: instance,},) => {
     const  newFailInstanceThatExpectToThrow = (action: (collection: CollectionHolder,) => CollectionHolder,) => action(new CollectionHolderThatCannotRetrieveByGet(newCollectionInstance(instance, AB,),),).get(0,)
     const newFailInstanceThatExpectToNotThrow = (action: (collection: CollectionHolder,) => CollectionHolder,) => action(newCollectionInstance(instance, AB,),).get(0,)
 
-    //#region -------------------- Instances --------------------
+    //#endregion -------------------- Instances --------------------
 
     describe("get() being called", () => {
         describe("map", () => {
