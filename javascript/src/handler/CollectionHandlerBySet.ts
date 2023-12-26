@@ -10,10 +10,10 @@ import type {ValueHolder}      from "./ValueHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
-import {AbstractCollectionHandler}                 from "./AbstractCollection.handler"
+import {AbstractCollectionHandler}                 from "./AbstractCollectionHandler"
 
 /** An implementation of a {@link CollectionHolder} for an {@link ReadonlySet set} */
-export class SetCollectionHandler<const out T = unknown, const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerBySet<const out T = unknown, const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------

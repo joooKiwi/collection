@@ -14,14 +14,14 @@ import type {IterableWithSize}         from "../iterable/IterableWithSize"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
-import {IterableCollectionHandler}                 from "./IterableCollection.handler"
+import {CollectionHandlerByIterable}               from "./CollectionHandlerByIterable"
 
 /**
  * An implementation of a {@link CollectionHandler} for an iterable with
  * a {@link IterableWithSize size}, {@link IterableWithLength length} or {@link IterableWithCount count} field
  */
-export class IterableWithSizeCollectionHandler<const out T = unknown, REFERENCE extends (| IterableWithPossibleSize<T> | IterableWithSize<T> | IterableWithLength<T> | IterableWithCount<T>) = (| IterableWithPossibleSize<T> | IterableWithSize<T> | IterableWithLength<T> | IterableWithCount<T>), const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
-    extends IterableCollectionHandler<T, REFERENCE, COLLECTION> {
+export class CollectionHandlerByIterableWithSize<const out T = unknown, REFERENCE extends (| IterableWithPossibleSize<T> | IterableWithSize<T> | IterableWithLength<T> | IterableWithCount<T>) = (| IterableWithPossibleSize<T> | IterableWithSize<T> | IterableWithLength<T> | IterableWithCount<T>), const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+    extends CollectionHandlerByIterable<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------
 

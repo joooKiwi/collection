@@ -10,11 +10,11 @@ import type {ValueHolder}      from "./ValueHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
-import {SetCollectionHandler}                      from "./SetCollection.handler"
+import {CollectionHandlerBySet}                    from "./CollectionHandlerBySet"
 
 /** An implementation of a {@link CollectionHolder} for an {@link ReadonlySet set} or 1 element */
-export class SetCollectionOf1Handler<const out T = unknown, const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
-    extends SetCollectionHandler<T, REFERENCE, COLLECTION> {
+export class CollectionHandlerBySetOf1<const out T = unknown, const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+    extends CollectionHandlerBySet<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Constructor --------------------
     public constructor(collection: COLLECTION, reference: REFERENCE,) {

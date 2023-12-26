@@ -10,10 +10,10 @@ import type {ValueHolder}      from "./ValueHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
-import {AbstractCollectionHandler}                 from "./AbstractCollection.handler"
+import {AbstractCollectionHandler}                 from "./AbstractCollectionHandler"
 
 /** An implementation of a {@link CollectionHandler} for an {@link Iterable} */
-export class IterableCollectionHandler<const out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByIterable<const out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------

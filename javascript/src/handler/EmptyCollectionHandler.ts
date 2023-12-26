@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHandler} from "./Collection.handler"
+import type {CollectionHandler} from "./CollectionHandler"
 import type {ValueHolder}       from "./ValueHolder"
 
 import {EmptyCollectionHolderException} from "../exception/EmptyCollectionHolderException"

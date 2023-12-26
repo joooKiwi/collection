@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 import type {CollectionHolder}  from "../CollectionHolder"
-import type {CollectionHandler} from "./Collection.handler"
+import type {CollectionHandler} from "./CollectionHandler"
 import type {ValueHolder}       from "./ValueHolder"
 
 export abstract class AbstractCollectionHandler<out T = unknown, const REFERENCE extends Iterable<T> = Iterable<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
