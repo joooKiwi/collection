@@ -20,7 +20,7 @@ export class CollectionHolderThatCannotRetrieveByGet<const out T = unknown, >
         super()
         this.#collection = collection
         let index = collection.size
-        while (--index >= 0)
+        while (index-- > 0)
             this[index] = collection.get(index,)
     }
 
