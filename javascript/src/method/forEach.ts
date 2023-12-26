@@ -34,9 +34,8 @@ export function forEach<const T, const COLLECTION extends CollectionHolder<T> = 
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: () => void,) {
-    const size = collection.size
-    let index = -1
-    while (++index < size)
+    let index = collection.size
+    while (index-- > 0)
         action()
     return collection
 }

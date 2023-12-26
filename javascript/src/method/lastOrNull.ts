@@ -73,9 +73,8 @@ function __withNoPredicate<const T, >(collection: NonEmptyCollectionHolder<T>,) 
 }
 
 function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: () => boolean,) {
-    const size = collection.size
-    let index = -1
-    while (++index < size)
+    let index = collection.size
+    while (index-- > 0)
         if (predicate())
             return collection.get(index,)
     return null

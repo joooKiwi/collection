@@ -54,9 +54,8 @@ export function any<const T, >(collection: Nullable<CollectionHolder<T>>, predic
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument<const T, >(collection: NonEmptyCollectionHolder<T>, predicate: () => boolean,) {
-    const size = collection.size
-    let index = -1
-    while (++index < size)
+    let index = collection.size
+    while (index-- > 0)
         if (predicate())
             return true
     return false

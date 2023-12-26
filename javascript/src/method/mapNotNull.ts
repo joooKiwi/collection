@@ -42,10 +42,9 @@ export function mapNotNull<const T, const U extends NonNullable<unknown>, >(coll
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument<const T, const U extends NonNullable<unknown>, >(collection: NonEmptyCollectionHolder<T>, transform: () => Nullable<U>,) {
-    const size = collection.size
     const newArray = [] as U[]
-    let index = -1
-    while (++index < size) {
+    let index = collection.size
+    while (index-- > 0) {
         const value = transform()
         if (value == null)
             continue
