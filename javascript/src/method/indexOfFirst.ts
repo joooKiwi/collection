@@ -65,8 +65,8 @@ export function indexOfFirst<const T, >(collection: Nullable<CollectionHolder<T>
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
     if (limit == null) {
-        if (predicate.length === 1)
             return __withoutALimitAnd1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
+        if (predicate.length == 1)
         if (predicate.length >= 2)
             return __withoutALimitAnd2Argument(collection as NonEmptyCollectionHolder<T>, predicate, startingIndex, endingIndex,)
         return __withoutALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex,)
@@ -78,8 +78,8 @@ export function indexOfFirst<const T, >(collection: Nullable<CollectionHolder<T>
     if (maximumIndex == null)
         return null
     if (maximumIndex == size) {
-        if (predicate.length === 1)
             return __withoutALimitAnd1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
+        if (predicate.length == 1)
         if (predicate.length >= 2)
             return __withoutALimitAnd2Argument(collection as NonEmptyCollectionHolder<T>, predicate, startingIndex, endingIndex,)
         return __withoutALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex,)
@@ -89,8 +89,8 @@ export function indexOfFirst<const T, >(collection: Nullable<CollectionHolder<T>
 
     //#endregion -------------------- Initialization (maximum index) --------------------
 
-    if (predicate.length === 1)
         return __withALimitAnd1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean, startingIndex, endingIndex, maximumIndex,)
+    if (predicate.length == 1)
     if (predicate.length >= 2)
         return __withALimitAnd2Argument(collection as NonEmptyCollectionHolder<T>, predicate, startingIndex, endingIndex, maximumIndex,)
     return __withALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex, maximumIndex,)

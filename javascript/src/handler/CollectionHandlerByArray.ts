@@ -27,7 +27,7 @@ export class CollectionHandlerByArray<const out T = unknown, REFERENCE extends r
 
     public constructor(collection: COLLECTION, reference: REFERENCE,) {
         super(collection, reference,)
-        this.#isEmpty = (this.#size = reference.length) === 0
+        this.#isEmpty = (this.#size = reference.length) == 0
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -69,7 +69,7 @@ export class CollectionHandlerByArray<const out T = unknown, REFERENCE extends r
             if (this._hasFinished)
                 return { value: collection[index] as T, cause: null, }
 
-            if (size - 1 === this._amountOfElementRetrieved++)
+            if (size - 1 == this._amountOfElementRetrieved++)
                 this._hasFinished = true
             return { value: collection[index] = this._reference[index] as T, cause: null, }
         }
@@ -85,7 +85,7 @@ export class CollectionHandlerByArray<const out T = unknown, REFERENCE extends r
         if (indexToRetrieve in collection)
             return { value: collection[indexToRetrieve] as T, cause: null, }
 
-        if (size - 1 === this._amountOfElementRetrieved++)
+        if (size - 1 == this._amountOfElementRetrieved++)
             this._hasFinished = true
         return { value: collection[indexToRetrieve] = this._reference[indexToRetrieve] as T, cause: null, }
     }

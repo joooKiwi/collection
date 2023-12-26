@@ -28,7 +28,7 @@ export class CollectionHandlerBySet<const out T = unknown, const REFERENCE exten
 
     public constructor(collection: COLLECTION, reference: REFERENCE,) {
         super(collection, reference,)
-        this.#isEmpty = (this.#size = reference.size) === 0
+        this.#isEmpty = (this.#size = reference.size) == 0
     }
 
     //#endregion -------------------- Constructor --------------------

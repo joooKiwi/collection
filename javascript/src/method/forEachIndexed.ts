@@ -23,7 +23,7 @@ import type {IndexValueCallback} from "../CollectionHolder.types"
  * @extensionFunction
  */
 export function forEachIndexed<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
-    if (action.length === 1)
+    if (action.length == 1)
         return __with1Argument(collection, action as (index: number,) => void,)
     if (action.length >= 2)
         return __with2Argument(collection, action,)

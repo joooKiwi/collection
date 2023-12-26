@@ -46,8 +46,8 @@ export function filterNot<const T, const S extends T, >(collection: Nullable<Col
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    if (predicate.length === 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean,),)
+    if (predicate.length == 1)
     if (predicate.length >= 2)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection as NonEmptyCollectionHolder<T>, predicate,),)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection as NonEmptyCollectionHolder<T>, predicate as () => boolean,),)

@@ -164,7 +164,7 @@ export function sliceByArray<const T, >(collection: Nullable<CollectionHolder<T>
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const size = indices.length
-    if (size === 0)
+    if (size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     return new CollectionConstants.LazyGenericCollectionHolder(() => {
@@ -196,7 +196,7 @@ export function sliceBySet<const T, >(collection: Nullable<CollectionHolder<T>>,
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const size = indices.size
-    if (size === 0)
+    if (size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     return new CollectionConstants.LazyGenericCollectionHolder(() => {
@@ -262,7 +262,7 @@ export function sliceByCollectionIterator<const T, >(collection: Nullable<Collec
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const size = indices.size
-    if (size === 0)
+    if (size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     return new CollectionConstants.LazyGenericCollectionHolder(() => {

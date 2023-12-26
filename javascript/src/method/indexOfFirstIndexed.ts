@@ -65,7 +65,7 @@ export function indexOfFirstIndexed<const T, >(collection: Nullable<CollectionHo
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
     if (limit == null) {
-        if (predicate.length === 1)
+        if (predicate.length == 1)
             return __withoutALimitAnd1Argument(predicate as (index: number,) => boolean, startingIndex, endingIndex,)
         if (predicate.length >= 2)
             return __withoutALimitAnd2Argument(collection as NonEmptyCollectionHolder<T>, predicate, startingIndex, endingIndex,)
@@ -76,7 +76,7 @@ export function indexOfFirstIndexed<const T, >(collection: Nullable<CollectionHo
 
     const maximumIndex = maximumIndexFunction(collection, limit, size,)
     if (maximumIndex == size) {
-        if (predicate.length === 1)
+        if (predicate.length == 1)
             return __withoutALimitAnd1Argument(predicate as (index: number,) => boolean, startingIndex, endingIndex,)
         if (predicate.length >= 2)
             return __withoutALimitAnd2Argument(collection as NonEmptyCollectionHolder<T>, predicate, startingIndex, endingIndex,)
@@ -89,7 +89,7 @@ export function indexOfFirstIndexed<const T, >(collection: Nullable<CollectionHo
         return null
     //#endregion -------------------- Initialization (maximum index) --------------------
 
-    if (predicate.length === 1)
+    if (predicate.length == 1)
         return __withALimitAnd1Argument(predicate as (index: number,) => boolean, startingIndex, endingIndex, maximumIndex,)
     if (predicate.length >= 2)
         return __withALimitAnd2Argument(collection as NonEmptyCollectionHolder<T>, predicate, startingIndex, endingIndex, maximumIndex,)

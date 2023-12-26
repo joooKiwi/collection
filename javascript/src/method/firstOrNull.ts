@@ -54,8 +54,8 @@ export function firstOrNull<const T, >(collection: Nullable<CollectionHolder<T>>
 
     if (predicate == null)
         return __withNoPredicate(collection as NonEmptyCollectionHolder<T>,)
-    if (predicate.length === 1)
         return __with1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean,)
+    if (predicate.length == 1)
     if (predicate.length >= 2)
         return __with2Argument(collection as NonEmptyCollectionHolder<T>, predicate,)
     return __with0Argument(collection as NonEmptyCollectionHolder<T>, predicate as () => boolean,)

@@ -31,8 +31,8 @@ export function mapNotNull<const T, const U extends NonNullable<unknown>, >(coll
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    if (transform.length === 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection as NonEmptyCollectionHolder<T>, transform as (value: T,) => Nullable<U>,),)
+    if (transform.length == 1)
     if (transform.length >= 2)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection as NonEmptyCollectionHolder<T>, transform,),)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection as NonEmptyCollectionHolder<T>, transform as () => Nullable<U>,),)

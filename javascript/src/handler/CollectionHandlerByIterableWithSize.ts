@@ -40,7 +40,7 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown, REFERENC
         if ("size" in reference) {
             const size = reference.size
             if (size != null) {
-                this.#isEmpty = size === 0
+                this.#isEmpty = size == 0
                 this.#hasNoNumberSize = false
                 return this.#size = size
             }
@@ -48,7 +48,7 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown, REFERENC
         if ("length" in reference) {
             const size = reference.length
             if (size != null) {
-                this.#isEmpty = size === 0
+                this.#isEmpty = size == 0
                 this.#hasNoNumberSize = false
                 return this.#size = size
             }
@@ -56,7 +56,7 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown, REFERENC
         if ("count" in reference) {
             const size = reference.count
             if (size != null) {
-                this.#isEmpty = size === 0
+                this.#isEmpty = size == 0
                 this.#hasNoNumberSize = false
                 return this.#size = size
             }
@@ -89,7 +89,7 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown, REFERENC
         if ("size" in reference) {
             const size = reference.size
             if (size != null) {
-                this.#isEmpty = size === 0
+                this.#isEmpty = size == 0
                 this.#size = size
                 return this.#hasNoNumberSize = true
             }
@@ -97,7 +97,7 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown, REFERENC
         if ("length" in reference) {
             const size = reference.length
             if (size != null) {
-                this.#isEmpty = size === 0
+                this.#isEmpty = size == 0
                 this.#size = size
                 return this.#hasNoNumberSize = true
             }
@@ -105,7 +105,7 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown, REFERENC
         if ("count" in reference) {
             const size = reference.count
             if (size != null) {
-                this.#isEmpty = size === 0
+                this.#isEmpty = size == 0
                 this.#size = size
                 return this.#hasNoNumberSize = true
             }

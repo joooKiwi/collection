@@ -31,8 +31,8 @@ export function map<const T, const U, >(collection: Nullable<CollectionHolder<T>
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    if (transform.length === 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection as NonEmptyCollectionHolder<T>, transform as (value: T,) => U,),)
+    if (transform.length == 1)
     if (transform.length >= 2)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection as NonEmptyCollectionHolder<T>, transform,),)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection as NonEmptyCollectionHolder<T>, transform as () => U,),)

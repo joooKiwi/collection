@@ -97,7 +97,7 @@ export class CollectionHandlerByIterable<const out T = unknown, const REFERENCE 
 
     /** Tell that the {@link _amountOfElementRetrieved} is equal to 0 */
     protected get _isTheFirstElementRetrieved(): boolean {
-        return this._amountOfElementRetrieved === 0
+        return this._amountOfElementRetrieved == 0
     }
 
     /** The amount of element retrieved */

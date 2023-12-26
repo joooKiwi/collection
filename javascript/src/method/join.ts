@@ -52,8 +52,8 @@ export function join<const T, >(collection: Nullable<CollectionHolder<T>>, separ
     }
 
     if (limit == null) {
-        if (transform.length === 1)
             return __with1Argument(collection as NonEmptyCollectionHolder<T>, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size, transform as (value: T,) => string,)
+        if (transform.length == 1)
         if (transform.length >= 2)
             return __with2Argument(collection as NonEmptyCollectionHolder<T> as NonEmptyCollectionHolder<T>, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size, transform,)
         return __with0Argument(separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size, transform as () => string,)
@@ -61,15 +61,15 @@ export function join<const T, >(collection: Nullable<CollectionHolder<T>>, separ
 
     const size = collection.size
     if (size === limit) {
-        if (transform.length === 1)
             return __with1Argument(collection as NonEmptyCollectionHolder<T>, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size, transform as (value: T,) => string,)
+        if (transform.length == 1)
         if (transform.length >= 2)
             return __with2Argument(collection as NonEmptyCollectionHolder<T> as NonEmptyCollectionHolder<T>, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size, transform,)
         return __with0Argument(separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size, transform as () => string,)
     }
 
-    if (transform.length === 1)
         return __withTruncatedAnd1Argument(collection as NonEmptyCollectionHolder<T>, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, maximumIndex(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED, transform as (value: T,) => string,)
+    if (transform.length == 1)
     if (transform.length >= 2)
         return __withTruncatedAnd2Argument(collection as NonEmptyCollectionHolder<T> as NonEmptyCollectionHolder<T>, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, maximumIndex(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED, transform,)
     return __withTruncatedAnd0Argument(separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, maximumIndex(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED, transform as () => string,)

@@ -41,8 +41,8 @@ export function find<const T, >(collection: Nullable<CollectionHolder<T>>, predi
     if (collection.isEmpty)
         return null
 
-    if (predicate.length === 1)
         return __with1Argument(collection as NonEmptyCollectionHolder<T>, predicate as (value: T,) => boolean,)
+    if (predicate.length == 1)
     if (predicate.length >= 2)
         return __with2Argument(collection as NonEmptyCollectionHolder<T>, predicate,)
     return __with0Argument(collection as NonEmptyCollectionHolder<T>, predicate as () => boolean,)

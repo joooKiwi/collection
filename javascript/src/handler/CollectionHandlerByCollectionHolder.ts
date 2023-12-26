@@ -66,7 +66,7 @@ export class CollectionHandlerByCollectionHolder<out T = unknown, const REFERENC
             if (this._hasFinished)
                 return { value: collection[index] as T, cause: null, }
 
-            if (size - 1 === this._amountOfElementRetrieved++)
+            if (size - 1 == this._amountOfElementRetrieved++)
                 this._hasFinished = true
             return { value: collection[index] = this._reference.get(index,), cause: null, }
         }
@@ -82,7 +82,7 @@ export class CollectionHandlerByCollectionHolder<out T = unknown, const REFERENC
         if (indexToRetrieve in collection)
             return { value: collection[indexToRetrieve] as T, cause: null, }
 
-        if (size - 1 === this._amountOfElementRetrieved++)
+        if (size - 1 == this._amountOfElementRetrieved++)
             this._hasFinished = true
         return { value: collection[indexToRetrieve] = this._reference.get(indexToRetrieve,), cause: null, }
     }

@@ -26,7 +26,7 @@ export function asString(value: unknown,): string {
     if (value === undefined)
         return "undefined"
 
-    if (typeof value === "string")
+    if (typeof value == "string")
         return value
     return value.toString()
 }
@@ -173,7 +173,7 @@ export function asUpperCaseString(value: unknown,): string {
     if (value === undefined)
         return "UNDEFINED"
 
-    if (typeof value === "string")
+    if (typeof value == "string")
         return value.toUpperCase()
     if (value instanceof String)
         return value.toUpperCase()
