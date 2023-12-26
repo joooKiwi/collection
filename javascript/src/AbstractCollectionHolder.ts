@@ -8,6 +8,7 @@
 import type {BooleanCallback, CollectionHolderName, IndexWithReturnCallback, IndexValueCallback, IndexValueWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
 import type {CollectionHolder}                                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                             from "./general type"
+import type {SimplisticCollectionHolder}                                                                                                                                                                                                                                                        from "./SimplisticCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 
 import {AbstractSimplisticCollectionHolder} from "./AbstractSimplisticCollectionHolder"
@@ -423,12 +424,12 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     public slice(indices: readonly number[],): CollectionHolder<T>
     public slice(indices: ReadonlySet<number>,): CollectionHolder<T>
-    public slice(indices: CollectionHolder<number>,): CollectionHolder<T>
+    public slice(indices: SimplisticCollectionHolder<number>,): CollectionHolder<T>
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public slice(indices: Iterable<number>,): CollectionHolder<T>
     public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | SimplisticCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | SimplisticCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
         return slice(this, indicesOrFromIndex, toIndex, limit,)
     }
 

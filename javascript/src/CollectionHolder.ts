@@ -1066,7 +1066,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
-    slice(indices: CollectionHolder<number>,): CollectionHolder<T>
+    slice(indices: SimplisticCollectionHolder<number>,): CollectionHolder<T>
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
@@ -1127,7 +1127,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      * @typescriptDefinition
      */
-    slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | SimplisticCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
 
     //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
