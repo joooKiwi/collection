@@ -35,7 +35,6 @@ export {join, prefixAndPostfixOnly}                                             
 export {last}                                                                                                               from "./last"
 export {lastIndexOf}                                                                                                        from "./lastIndexOf"
 export {lastOrNull}                                                                                                         from "./lastOrNull"
-export {newInstance}                                                                                                        from "./newInstance"
 export {map}                                                                                                                from "./map"
 export {mapIndexed}                                                                                                         from "./mapIndexed"
 export {mapNotNull}                                                                                                         from "./mapNotNull"
