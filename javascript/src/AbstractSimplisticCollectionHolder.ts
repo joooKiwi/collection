@@ -7,6 +7,13 @@
 
 import type {SimplisticCollectionHolder} from "./SimplisticCollectionHolder"
 
+/**
+ * A definition of a {@link SimplisticCollectionHolder} to have a common ancestor.
+ *
+ * @note This class should be inherited if new classes are being made to be more usable by the tools
+ * @see EmptyCollectionHolder
+ * @see GenericSimplisticCollectionHolder
+ */
 export abstract class AbstractSimplisticCollectionHolder<const out T = unknown, >
     implements SimplisticCollectionHolder<T> {
 

@@ -64,6 +64,14 @@ import {toString}                           from "./method/toString"
 import {toUpperCaseString}                  from "./method/toUpperCaseString"
 import {toWeakSet}                          from "./method/toWeakSet"
 
+/**
+ * A definition of a {@link CollectionHolder} to have a common ancestor.
+ *
+ * @note This class should be inherited if new classes are being made to be more usable by the tools
+ * @see EmptyCollectionHolder
+ * @see GenericCollectionHolder
+ * @see LazyGenericCollectionHolder
+ */
 export abstract class AbstractCollectionHolder<const out T = unknown, >
     extends AbstractSimplisticCollectionHolder<T>
     implements CollectionHolder<T> {
