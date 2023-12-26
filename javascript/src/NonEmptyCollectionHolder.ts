@@ -11,8 +11,8 @@ import type {CollectionHolder} from "./CollectionHolder"
 export interface NonEmptyCollectionHolder<out T = unknown, >
     extends CollectionHolder<T> {
 
-    get isEmpty(): true
+    get isEmpty(): false
 
-    get isNotEmpty(): false
+    get isNotEmpty(): true
 
 }
