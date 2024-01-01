@@ -7,7 +7,7 @@
 
 import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                             from "./general type"
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
-import type {SimplisticCollectionHolder}                                                                                                                                                                                                                                                        from "./SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 
 /**
@@ -22,7 +22,7 @@ import type {CollectionIterator}                                                
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable C# Enumerable
  */
 export interface CollectionHolder<out T = unknown, >
-    extends SimplisticCollectionHolder<T>,
+    extends MinimalistCollectionHolder<T>,
             Iterable<T> {
 
     /**
@@ -1066,7 +1066,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
-    slice(indices: SimplisticCollectionHolder<number>,): CollectionHolder<T>
+    slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
@@ -1127,7 +1127,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      * @typescriptDefinition
      */
-    slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | SimplisticCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
 
     //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------

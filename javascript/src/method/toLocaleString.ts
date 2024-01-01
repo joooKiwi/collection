@@ -6,8 +6,8 @@
  ******************************************************************************/
 
 import type {Nullable}                           from "../general type"
-import type {NonEmptySimplisticCollectionHolder} from "../NonEmptySimplisticCollectionHolder"
-import type {SimplisticCollectionHolder}         from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}         from "../MinimalistCollectionHolder"
+import type {NonEmptyMinimalistCollectionHolder} from "../NonEmptyMinimalistCollectionHolder"
 
 import {asLocaleString} from "./asString"
 
@@ -17,7 +17,7 @@ import {asLocaleString} from "./asString"
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toLocaleString toLocaleString()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param locale     The possible locale to apply on each value
  * @see Array.toLocaleString
  * @see Object.toLocaleString
@@ -26,21 +26,21 @@ import {asLocaleString} from "./asString"
  * @see BigInt.toLocaleString
  * @extensionFunction
  */
-export function toLocaleString<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, locale?: Nullable<string>,): string {
+export function toLocaleString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: Nullable<string>,): string {
     if (collection == null)
         return "[]"
     if (collection.isEmpty)
         return "[]"
 
     if (locale == null)
-        return __withNoLocale(collection as NonEmptySimplisticCollectionHolder<T>,)
-    return __withLocale(collection as NonEmptySimplisticCollectionHolder<T>, locale,)
+        return __withNoLocale(collection as NonEmptyMinimalistCollectionHolder<T>,)
+    return __withLocale(collection as NonEmptyMinimalistCollectionHolder<T>, locale,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Locale method --------------------
 
-function __withNoLocale<const T, >(collection: NonEmptySimplisticCollectionHolder<T>,) {
+function __withNoLocale<const T, >(collection: NonEmptyMinimalistCollectionHolder<T>,) {
     let string = ""
     const sizeMinus1 = collection.size - 1
     let index = -1
@@ -49,7 +49,7 @@ function __withNoLocale<const T, >(collection: NonEmptySimplisticCollectionHolde
     return `[${string}${asLocaleString(collection.get(index,),)}]`
 }
 
-function __withLocale<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, locale: string,) {
+function __withLocale<const T, >(collection: NonEmptyMinimalistCollectionHolder<T>, locale: string,) {
     let string = ""
     const sizeMinus1 = collection.size - 1
     let index = -1

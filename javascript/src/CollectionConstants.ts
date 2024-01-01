@@ -9,12 +9,12 @@ import type {Lazy} from "@joookiwi/lazy"
 import {lazyOf}    from "@joookiwi/lazy"
 
 import type {CollectionHolder}           from "./CollectionHolder"
+import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
 import type {CollectionIterator}         from "./iterator/CollectionIterator"
-import type {SimplisticCollectionHolder} from "./SimplisticCollectionHolder"
 
 import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
-import type {GenericSimplisticCollectionHolder} from "./GenericSimplisticCollectionHolder"
+import type {GenericMinimalistCollectionHolder} from "./GenericMinimalistCollectionHolder"
 import type {LazyGenericCollectionHolder}       from "./LazyGenericCollectionHolder"
 import {EmptyCollectionIterator}                from "./iterator/EmptyCollectionIterator"
 import {EmptyCollectionHandler}                 from "./handler/EmptyCollectionHandler"
@@ -44,13 +44,13 @@ export class CollectionConstants {
     static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
     static #LAZY_EMPTY_COLLECTION_ITERATOR?: Lazy<EmptyCollectionIterator>
 
-    static #EVERY_SIMPLITCIC_COLLECTION_METHODS?: CollectionHolder<keyof SimplisticCollectionHolder>
+    static #EVERY_MINIMALIST_COLLECTION_METHODS?: CollectionHolder<keyof MinimalistCollectionHolder>
     static #EVERY_COLLECTION_METHODS?: CollectionHolder<keyof CollectionHolder>
     static #EVERY_ITERATOR_METHODS?: CollectionHolder<keyof CollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
     static #GenericCollectionHolder?: typeof GenericCollectionHolder
-    static #GenericSimplisticCollectionHolder?: typeof GenericSimplisticCollectionHolder
+    static #GenericMinimalistCollectionHolder?: typeof GenericMinimalistCollectionHolder
     static #LazyGenericCollectionHolder?: typeof LazyGenericCollectionHolder
 
     //#endregion -------------------- Fields held --------------------
@@ -130,9 +130,9 @@ export class CollectionConstants {
     //#endregion -------------------- Symbol.toString references --------------------
     //#region -------------------- "Every methods" references --------------------
 
-    /** Every method applicable to a {@link CollectionHolder} */
-    public static get EVERY_SIMPLISTIC_COLLECTION_METHODS(): CollectionHolder<keyof SimplisticCollectionHolder> {
-        return CollectionConstants.#EVERY_SIMPLITCIC_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "isEmpty", "get",] as const,),)
+    /** Every method applicable to a {@link MinimalistCollectionHolder} */
+    public static get EVERY_MINIMALIST_COLLECTION_METHODS(): CollectionHolder<keyof MinimalistCollectionHolder> {
+        return CollectionConstants.#EVERY_MINIMALIST_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "isEmpty", "get",] as const,),)
     }
     /** Every method applicable to a {@link CollectionHolder} */
     public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> {
@@ -189,9 +189,9 @@ export class CollectionConstants {
     }
 
 
-    /** The {@link Object.constructor constructor} reference of a {@link GenericSimplisticCollectionHolder} */
-    public static get GenericSimplisticCollectionHolder(): typeof GenericSimplisticCollectionHolder {
-        return CollectionConstants.#GenericSimplisticCollectionHolder ??= require("./GenericSimplisticCollectionHolder").GenericSimplisticCollectionHolder
+    /** The {@link Object.constructor constructor} reference of a {@link GenericMinimalistCollectionHolder} */
+    public static get GenericMinimalistCollectionHolder(): typeof GenericMinimalistCollectionHolder {
+        return CollectionConstants.#GenericMinimalistCollectionHolder ??= require("./GenericMinimalistCollectionHolder").GenericMinimalistCollectionHolder
     }
 
     /** The {@link Object.constructor constructor} reference of a {@link LazyGenericCollectionHolder} */

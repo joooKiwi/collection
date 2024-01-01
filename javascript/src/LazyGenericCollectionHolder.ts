@@ -9,15 +9,15 @@ import type {Lazy}                from "@joookiwi/lazy"
 import {CommonLazy, lazy, lazyOf} from "@joookiwi/lazy"
 
 import type {Nullable, NullOr}                  from "./general type"
-import type {PossibleIterable}                  from "./iterable/types"
 import type {IndexWithReturnCallback, ObjectOf} from "./CollectionHolder.types"
-import type {SimplisticCollectionHolder}        from "./SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}        from "./MinimalistCollectionHolder"
 import type {CollectionHandler}                 from "./handler/CollectionHandler"
 import type {IterableWithCount}                 from "./iterable/IterableWithCount"
 import type {IterableWithLength}                from "./iterable/IterableWithLength"
 import type {IterableWithPossibleSize}          from "./iterable/IterableWithPossibleSize"
 import type {IterableWithSize}                  from "./iterable/IterableWithSize"
 import type {CollectionIterator}                from "./iterator/CollectionIterator"
+import type {PossibleIterable}                  from "./iterable/types"
 
 import {AbstractCollectionHolder}            from "./AbstractCollectionHolder"
 import {CollectionConstants}                 from "./CollectionConstants"
@@ -30,7 +30,7 @@ import {CollectionHandlerBySet}              from "./handler/CollectionHandlerBy
 import {CollectionHandlerBySetOf1}           from "./handler/CollectionHandlerBySetOf1"
 import {hasNull}                             from "./method/hasNull"
 import {isCollectionIterator}                from "./method/isCollectionIterator"
-import {isSimplisticCollectionHolder}        from "./method/isSimplisticCollectionHolder"
+import {isMinimalistCollectionHolder}        from "./method/isMinimalistCollectionHolder"
 import {objectValuesMap}                     from "./method/objectValuesMap"
 import {toArray}                             from "./method/toArray"
 import {toMap}                               from "./method/toMap"
@@ -44,7 +44,7 @@ import {toWeakSet}                           from "./method/toWeakSet"
  * @see EmptyCollectionHolder
  * @beta
  */
-export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE extends | PossibleIterable<T> | SimplisticCollectionHolder<T> = | PossibleIterable<T> | SimplisticCollectionHolder<T>, >
+export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE extends | PossibleIterable<T> | MinimalistCollectionHolder<T> = | PossibleIterable<T> | MinimalistCollectionHolder<T>, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -69,8 +69,8 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
     public constructor(lateArray: () => readonly T[],)
     public constructor(set: ReadonlySet<T>,)
     public constructor(lateSet: () => ReadonlySet<T>,)
-    public constructor(collectionHolder: SimplisticCollectionHolder<T>,)
-    public constructor(lateCollectionHolder: () => SimplisticCollectionHolder<T>,)
+    public constructor(collectionHolder: MinimalistCollectionHolder<T>,)
+    public constructor(lateCollectionHolder: () => MinimalistCollectionHolder<T>,)
     public constructor(collectionIterable: CollectionIterator<T>,)
     public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
     public constructor(iterableWithSize: IterableWithSize<T>,)
@@ -181,7 +181,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
-        if (isSimplisticCollectionHolder<T>(reference,)) {
+        if (isMinimalistCollectionHolder<T>(reference,)) {
             this.#reference = lazyOf(reference,)
             this.#handler = lazy(() => new CollectionHandlerByCollectionHolder(this, reference,),)
             this.#isEmpty = lazy(() => {
@@ -373,7 +373,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const REFERENCE 
 
                     //#endregion -------------------- Late-initialization (non-empty) --------------------
                 }
-                if (isSimplisticCollectionHolder<T>(referenceFound,))
+                if (isMinimalistCollectionHolder<T>(referenceFound,))
                     return new CollectionHandlerByCollectionHolder(this, referenceFound,)
                 if (isCollectionIterator<T>(referenceFound,))
                     return new CollectionHandlerByCollectionHolder(this, referenceFound.collection,)

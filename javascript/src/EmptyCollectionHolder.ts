@@ -8,7 +8,7 @@
 import type {CollectionHolder}                                                                                                                                                                                                                                                        from "./CollectionHolder"
 import type {BooleanCallback, CollectionHolderName, IndexWithReturnCallback, IndexValueCallback, IndexValueWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
 import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                        from "./general type"
-import type {SimplisticCollectionHolder}                                                                                                                                                                                                                                              from "./SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                              from "./MinimalistCollectionHolder"
 import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                 from "./iterator/EmptyCollectionIterator"
 import type {CollectionIterator}                                                                                                                                                                                                                                                      from "./iterator/CollectionIterator"
 
@@ -277,11 +277,11 @@ export class EmptyCollectionHolder
 
     public slice(indices?: readonly number[],): this
     public slice(indices?: ReadonlySet<number>,): this
-    public slice(indices?: SimplisticCollectionHolder<number>,): this
+    public slice(indices?: MinimalistCollectionHolder<number>,): this
     public slice(indices?: CollectionIterator<number>,): this
     public slice(indices?: Iterable<number>,): this
     public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
-    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | SimplisticCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
     public slice() { return this }
 
     //#endregion -------------------- Slice methods --------------------

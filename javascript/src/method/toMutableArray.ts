@@ -6,15 +6,15 @@
  ******************************************************************************/
 
 import type {Nullable}                   from "../general type"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 /**
  * Convert the {@link collection} to an {@link Array mutable array}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection} to convert
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
  * @extensionFunction
  */
-export function toMutableArray<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): T[] {
+export function toMutableArray<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): T[] {
     if (collection == null)
         return []
     if (collection.isEmpty)

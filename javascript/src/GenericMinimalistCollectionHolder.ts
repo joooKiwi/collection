@@ -13,17 +13,17 @@ import type {IterableWithPossibleSize} from "./iterable/IterableWithPossibleSize
 import type {IterableWithSize}         from "./iterable/IterableWithSize"
 import type {CollectionIterator}       from "./iterator/CollectionIterator"
 
-import {AbstractSimplisticCollectionHolder}        from "./AbstractSimplisticCollectionHolder"
+import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
 import {CollectionConstants}                       from "./CollectionConstants"
-import {SimplisticCollectionHolder}                from "./SimplisticCollectionHolder"
+import {MinimalistCollectionHolder}                from "./MinimalistCollectionHolder"
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
-import {isSimplisticCollectionHolder}              from "./method/isSimplisticCollectionHolder"
+import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
 
 
-export class GenericSimplisticCollectionHolder<const out T = unknown, const REFERENCE extends PossibleIterable<T> = PossibleIterable<T>, >
-    extends AbstractSimplisticCollectionHolder<T> {
+export class GenericMinimalistCollectionHolder<const out T = unknown, const REFERENCE extends PossibleIterable<T> = PossibleIterable<T>, >
+    extends AbstractMinimalistCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -40,8 +40,8 @@ export class GenericSimplisticCollectionHolder<const out T = unknown, const REFE
     public constructor(lateArray: () => readonly T[],)
     public constructor(set: ReadonlySet<T>,)
     public constructor(lateSet: () => ReadonlySet<T>,)
-    public constructor(collectionHolder: SimplisticCollectionHolder<T>,)
-    public constructor(lateCollectionHolder: () => SimplisticCollectionHolder<T>,)
+    public constructor(collectionHolder: MinimalistCollectionHolder<T>,)
+    public constructor(lateCollectionHolder: () => MinimalistCollectionHolder<T>,)
     public constructor(collectionIterable: CollectionIterator<T>,)
     public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
     public constructor(iterableWithSize: IterableWithSize<T>,)
@@ -140,7 +140,7 @@ export class GenericSimplisticCollectionHolder<const out T = unknown, const REFE
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
-        if (isSimplisticCollectionHolder<T>(reference)) {
+        if (isMinimalistCollectionHolder<T>(reference)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 

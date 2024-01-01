@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {SimplisticCollectionHolder} from "../../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../../MinimalistCollectionHolder"
 
 /**
  * An {@link IteratorYieldResult iterator value} made to retrieve a {@link value}
@@ -16,8 +16,8 @@ import type {SimplisticCollectionHolder} from "../../SimplisticCollectionHolder"
 export interface IteratorValue<out T = unknown, >
     extends IteratorYieldResult<T> {
 
-    /** The {@link SimplisticCollectionHolder collection} to use in the {@link value get value} */
-    get collection(): SimplisticCollectionHolder<T>
+    /** The {@link MinimalistCollectionHolder collection} to use in the {@link value get value} */
+    get collection(): MinimalistCollectionHolder<T>
 
     /** The index to retrieve in the {@link collection} by the {@link value get value} */
     get index(): number

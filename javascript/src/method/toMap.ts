@@ -6,17 +6,17 @@
  ******************************************************************************/
 
 import type {Nullable}                   from "../general type"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants} from "../CollectionConstants"
 
 /**
  * Convert the {@link collection} to an {@link ReadonlyMap map}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection} to convert
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
  * @extensionFunction
  */
-export function toMap<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): ReadonlyMap<number, T> {
+export function toMap<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): ReadonlyMap<number, T> {
     if (collection == null)
         return CollectionConstants.EMPTY_MAP
     if (collection.isEmpty)

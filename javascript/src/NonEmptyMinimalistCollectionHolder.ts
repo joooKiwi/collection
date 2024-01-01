@@ -5,11 +5,11 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {SimplisticCollectionHolder} from "./SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
 
-/** A declaration of a non-empty {@link SimplisticCollectionHolder} */
-export interface NonEmptySimplisticCollectionHolder<out T = unknown, >
-    extends SimplisticCollectionHolder<T> {
+/** A declaration of a non-empty {@link MinimalistCollectionHolder} */
+export interface NonEmptyMinimalistCollectionHolder<out T = unknown, >
+    extends MinimalistCollectionHolder<T> {
 
     get isEmpty(): false
 

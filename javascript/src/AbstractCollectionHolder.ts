@@ -5,13 +5,13 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {BooleanCallback, CollectionHolderName, IndexWithReturnCallback, IndexValueCallback, IndexValueWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
 import type {CollectionHolder}                                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                             from "./general type"
-import type {SimplisticCollectionHolder}                                                                                                                                                                                                                                                        from "./SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 
-import {AbstractSimplisticCollectionHolder} from "./AbstractSimplisticCollectionHolder"
+import {AbstractMinimalistCollectionHolder} from "./AbstractMinimalistCollectionHolder"
 import {CollectionConstants}                from "./CollectionConstants"
 import {all}                                from "./method/all"
 import {any}                                from "./method/any"
@@ -74,7 +74,7 @@ import {toWeakSet}                          from "./method/toWeakSet"
  * @see LazyGenericCollectionHolder
  */
 export abstract class AbstractCollectionHolder<const out T = unknown, >
-    extends AbstractSimplisticCollectionHolder<T>
+    extends AbstractMinimalistCollectionHolder<T>
     implements CollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -424,12 +424,12 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     public slice(indices: readonly number[],): CollectionHolder<T>
     public slice(indices: ReadonlySet<number>,): CollectionHolder<T>
-    public slice(indices: SimplisticCollectionHolder<number>,): CollectionHolder<T>
+    public slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public slice(indices: Iterable<number>,): CollectionHolder<T>
     public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | SimplisticCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | SimplisticCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
         return slice(this, indicesOrFromIndex, toIndex, limit,)
     }
 

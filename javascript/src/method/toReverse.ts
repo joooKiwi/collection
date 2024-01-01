@@ -7,8 +7,8 @@
 
 import type {CollectionHolder}                   from "../CollectionHolder"
 import type {Nullable}                           from "../general type"
-import type {NonEmptySimplisticCollectionHolder} from "../NonEmptySimplisticCollectionHolder"
-import type {SimplisticCollectionHolder}         from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}         from "../MinimalistCollectionHolder"
+import type {NonEmptyMinimalistCollectionHolder} from "../NonEmptyMinimalistCollectionHolder"
 
 import {CollectionConstants}                       from "../CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
@@ -19,7 +19,7 @@ import {startingIndex as startingIndexFunction}    from "./startingIndex"
 /**
  * Reverse the {@link collection} from a range (if provided)
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
@@ -29,7 +29,7 @@ import {startingIndex as startingIndexFunction}    from "./startingIndex"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
+export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -48,37 +48,37 @@ export function toReverse<const T, >(collection: Nullable<SimplisticCollectionHo
             //#region -------------------- Initialization (starting/ending index) --------------------
 
             const size = collection.size
-            const startingIndex = startingIndexFunction(collection as NonEmptySimplisticCollectionHolder<T>, fromIndex, size,)
-            const endingIndex = endingIndexFunction(collection as NonEmptySimplisticCollectionHolder<T>, toIndex, size,)
+            const startingIndex = startingIndexFunction(collection as NonEmptyMinimalistCollectionHolder<T>, fromIndex, size,)
+            const endingIndex = endingIndexFunction(collection as NonEmptyMinimalistCollectionHolder<T>, toIndex, size,)
 
             if (endingIndex < startingIndex)
                 throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`}.`, toIndex,)
 
             //#endregion -------------------- Initialization (starting/ending index) --------------------
 
-            return __withoutALimit(collection as NonEmptySimplisticCollectionHolder<T>, startingIndex, endingIndex,)
+            return __withoutALimit(collection as NonEmptyMinimalistCollectionHolder<T>, startingIndex, endingIndex,)
         },)
     return new CollectionConstants.LazyGenericCollectionHolder(() => {
         //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
         const size = collection.size
-        const startingIndex = startingIndexFunction(collection as NonEmptySimplisticCollectionHolder<T>, fromIndex, size,)
-        const endingIndex = endingIndexFunction(collection as NonEmptySimplisticCollectionHolder<T>, toIndex, size,)
+        const startingIndex = startingIndexFunction(collection as NonEmptyMinimalistCollectionHolder<T>, fromIndex, size,)
+        const endingIndex = endingIndexFunction(collection as NonEmptyMinimalistCollectionHolder<T>, toIndex, size,)
 
         if (endingIndex < startingIndex)
             throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, limit,)
 
-        const maximumIndex = maximumIndexFunction(collection as NonEmptySimplisticCollectionHolder<T>, limit, size,)
+        const maximumIndex = maximumIndexFunction(collection as NonEmptyMinimalistCollectionHolder<T>, limit, size,)
         if (endingIndex - startingIndex < maximumIndex - 1)
             throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}"${limit == maximumIndex ? "" : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ""}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`} to "${toIndex ?? ""}"${toIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}`, limit,)
 
         //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
 
-        return __withALimit(collection as NonEmptySimplisticCollectionHolder<T>, startingIndex, endingIndex, maximumIndex,)
+        return __withALimit(collection as NonEmptyMinimalistCollectionHolder<T>, startingIndex, endingIndex, maximumIndex,)
     },)
 }
 
-function __withoutALimit<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, startingIndex: number, endingIndex: number,) {
+function __withoutALimit<const T, >(collection: NonEmptyMinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number,) {
     const newArray = new Array<T>(endingIndex - startingIndex,)
     let indexAdded = -1
     let index = endingIndex + 1
@@ -87,7 +87,7 @@ function __withoutALimit<const T, >(collection: NonEmptySimplisticCollectionHold
     return newArray
 }
 
-function __withALimit<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,) {
+function __withALimit<const T, >(collection: NonEmptyMinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,) {
     const newArray = [] as T[]
     let index = endingIndex + 1
     while (--index >= startingIndex) {

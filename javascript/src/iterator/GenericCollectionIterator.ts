@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
-import type {SimplisticCollectionHolder}                                                                                   from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                   from "../MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                           from "./CollectionIterator"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
@@ -16,7 +16,7 @@ import {GenericAfterLastIteratorValue}             from "./value/GenericAfterLas
 import {GenericBeforeFirstIteratorValue}           from "./value/GenericBeforeFirstIteratorValue"
 import {GenericIteratorValue}                      from "./value/GenericIteratorValue"
 
-export class GenericCollectionIterator<const out T = unknown, const out COLLECTION extends SimplisticCollectionHolder<T> = SimplisticCollectionHolder<T>, >
+export class GenericCollectionIterator<const out T = unknown, const out COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
     implements CollectionIterator<T> {//TODO add reverse loop on first call
 
     //#region -------------------- Fields --------------------

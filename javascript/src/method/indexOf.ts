@@ -6,8 +6,8 @@
  ******************************************************************************/
 
 import type {Nullable, NullOr}                   from "../general type"
-import type {NonEmptySimplisticCollectionHolder} from "../NonEmptySimplisticCollectionHolder"
-import type {SimplisticCollectionHolder}         from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}         from "../MinimalistCollectionHolder"
+import type {NonEmptyMinimalistCollectionHolder} from "../NonEmptyMinimalistCollectionHolder"
 
 import {endingIndex as endingIndexFunction}     from "./endingIndex"
 import {maximumIndex as maximumIndexFunction}   from "./maximumIndex"
@@ -20,7 +20,7 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * or <b>null</b> if it was not in the {@link collection}
  * from a range (if provided)
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param element    The element to find
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
@@ -34,13 +34,13 @@ import {startingIndex as startingIndexFunction} from "./startingIndex"
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOf<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * or <b>null</b> if it was not in the {@link collection}
  * from a range (if provided)
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param element    The element to find
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
@@ -54,8 +54,8 @@ export function indexOf<const T, >(collection: Nullable<SimplisticCollectionHold
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOf<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-export function indexOf(collection: Nullable<SimplisticCollectionHolder>, element: unknown, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): NullOr<number> {
+export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+export function indexOf(collection: Nullable<MinimalistCollectionHolder>, element: unknown, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): NullOr<number> {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -86,7 +86,7 @@ export function indexOf(collection: Nullable<SimplisticCollectionHolder>, elemen
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
     if (limit == null)
-        return __withoutALimit(collection as NonEmptySimplisticCollectionHolder, element, startingIndex, endingIndex,)
+        return __withoutALimit(collection as NonEmptyMinimalistCollectionHolder, element, startingIndex, endingIndex,)
 
     //#region -------------------- Initialization (maximum index) --------------------
 
@@ -94,19 +94,19 @@ export function indexOf(collection: Nullable<SimplisticCollectionHolder>, elemen
     if (maximumIndex == null)
         return null
     if (maximumIndex == size)
-        return __withoutALimit(collection as NonEmptySimplisticCollectionHolder, element, startingIndex, endingIndex,)
+        return __withoutALimit(collection as NonEmptyMinimalistCollectionHolder, element, startingIndex, endingIndex,)
     if (endingIndex - startingIndex < maximumIndex - 1)
         return null
 
     //#endregion -------------------- Initialization (maximum index) --------------------
 
-    return __withALimit(collection as NonEmptySimplisticCollectionHolder, element, startingIndex, endingIndex, maximumIndex,)
+    return __withALimit(collection as NonEmptyMinimalistCollectionHolder, element, startingIndex, endingIndex, maximumIndex,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __withoutALimit(collection: NonEmptySimplisticCollectionHolder, element: unknown, startingIndex: number, endingIndex: number,): NullOr<number> {
+function __withoutALimit(collection: NonEmptyMinimalistCollectionHolder, element: unknown, startingIndex: number, endingIndex: number,): NullOr<number> {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (collection.get(index,) === element)
@@ -114,7 +114,7 @@ function __withoutALimit(collection: NonEmptySimplisticCollectionHolder, element
     return null
 }
 
-function __withALimit(collection: NonEmptySimplisticCollectionHolder, element: unknown, startingIndex: number, endingIndex: number, maximumIndex: number,): NullOr<number> {
+function __withALimit(collection: NonEmptyMinimalistCollectionHolder, element: unknown, startingIndex: number, endingIndex: number, maximumIndex: number,): NullOr<number> {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (index >= maximumIndex)

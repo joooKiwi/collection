@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 import type {IndexValueCallback}         from "../CollectionHolder.types"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -14,7 +14,7 @@ import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
  * Perform a given {@link action} on each element
  * and return the {@link collection} afterwards
  *
- * @param collection The {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link MinimalistCollectionHolder collection}
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
@@ -22,7 +22,7 @@ import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
  * @extensionFunction
  */
-export function forEachIndexed<const T, const COLLECTION extends SimplisticCollectionHolder<T> = SimplisticCollectionHolder<T>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
+export function forEachIndexed<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
     if (action.length == 1)
         return __with1Argument(collection, action as (index: number,) => void,)
     if (action.length >= 2)
@@ -33,14 +33,14 @@ export function forEachIndexed<const T, const COLLECTION extends SimplisticColle
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __with0Argument<const T, const COLLECTION extends SimplisticCollectionHolder<T> = SimplisticCollectionHolder<T>, >(collection: COLLECTION, action: () => void,) {
+function __with0Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: () => void,) {
     let index = collection.size
     while (index-- > 0)
         action()
     return collection
 }
 
-function __with1Argument<const T, const COLLECTION extends SimplisticCollectionHolder<T> = SimplisticCollectionHolder<T>, >(collection: COLLECTION, action: (index: number,) => void,) {
+function __with1Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (index: number,) => void,) {
     const size = collection.size
     let index = -1
     while (++index < size)
@@ -48,7 +48,7 @@ function __with1Argument<const T, const COLLECTION extends SimplisticCollectionH
     return collection
 }
 
-function __with2Argument<const T, const COLLECTION extends SimplisticCollectionHolder<T> = SimplisticCollectionHolder<T>, >(collection: COLLECTION, action: (index: number, value: T,) => void,) {
+function __with2Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (index: number, value: T,) => void,) {
     const size = collection.size
     let index = -1
     while (++index < size)

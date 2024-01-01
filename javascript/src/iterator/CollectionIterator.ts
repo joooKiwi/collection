@@ -6,11 +6,11 @@
  ******************************************************************************/
 
 import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
-import type {SimplisticCollectionHolder}                                                                                   from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                   from "../MinimalistCollectionHolder"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
 /**
- * An {@link Iterator} with a known {@link SimplisticCollectionHolder} {@link SimplisticCollectionHolder.size size}
+ * An {@link Iterator} with a known {@link MinimalistCollectionHolder} {@link MinimalistCollectionHolder.size size}
  *
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator Kotlin Iterator
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator Kotlin ListIterator
@@ -20,8 +20,8 @@ export interface CollectionIterator<out T = unknown, >
 
     //#region -------------------- Getter methods --------------------
 
-    /** The {@link SimplisticCollectionHolder collection} to loop over */
-    get collection(): SimplisticCollectionHolder<T>
+    /** The {@link MinimalistCollectionHolder collection} to loop over */
+    get collection(): MinimalistCollectionHolder<T>
 
     /** The {@link collection} {@link CollectionHolder.size size} */
     get size(): this["collection"]["size"]

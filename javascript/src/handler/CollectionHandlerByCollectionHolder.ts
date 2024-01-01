@@ -6,15 +6,15 @@
  ******************************************************************************/
 
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {ValueHolder}                from "./ValueHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
 import {AbstractCollectionHandler}                 from "./AbstractCollectionHandler"
 
-/** An implementation of a {@link CollectionHandler} for a {@link SimplisticCollectionHolder} */
-export class CollectionHandlerByCollectionHolder<out T = unknown, const REFERENCE extends SimplisticCollectionHolder<T> = SimplisticCollectionHolder<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+/** An implementation of a {@link CollectionHandler} for a {@link MinimalistCollectionHolder} */
+export class CollectionHandlerByCollectionHolder<out T = unknown, const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------

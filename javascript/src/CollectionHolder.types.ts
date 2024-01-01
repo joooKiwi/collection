@@ -8,7 +8,7 @@
 import type {CollectionConstants}               from "./CollectionConstants"
 import type {CollectionHolder}                  from "./CollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
-import type {GenericSimplisticCollectionHolder} from "./GenericSimplisticCollectionHolder"
+import type {GenericMinimalistCollectionHolder} from "./GenericMinimalistCollectionHolder"
 import type {LazyGenericCollectionHolder}       from "./LazyGenericCollectionHolder"
 
 /** An alias-type of {@link CollectionHolder}[{@link Symbol.toStringTag}] */
@@ -16,9 +16,9 @@ export type CollectionHolderName = typeof CollectionConstants["COLLECTION_HOLDER
 
 /**
  * The possible {@link Object.constructor constructor} types that are inherited
- * from a {@link SimplisticCollectionHolder} or a {@link CollectionHolder}
+ * from a {@link MinimalistCollectionHolder} or a {@link CollectionHolder}
  */
-export type PossibleCollectionHolderConstructor = | typeof GenericSimplisticCollectionHolder
+export type PossibleCollectionHolderConstructor = | typeof GenericMinimalistCollectionHolder
                                                   | typeof GenericCollectionHolder
                                                   | typeof LazyGenericCollectionHolder
 

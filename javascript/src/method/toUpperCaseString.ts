@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 import type {Nullable}                   from "../general type"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {asUpperCaseString} from "./asString"
 
@@ -16,11 +16,11 @@ import {asUpperCaseString} from "./asString"
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toUpperCase toUpperCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @see String.toUpperCase
  * @extensionFunction
  */
-export function toUpperCaseString<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): string {
+export function toUpperCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): string {
     if (collection == null)
         return "[]"
     if (collection.isEmpty)

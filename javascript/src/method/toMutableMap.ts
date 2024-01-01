@@ -6,15 +6,15 @@
  ******************************************************************************/
 
 import type {Nullable}                   from "../general type"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 /**
  * Convert the {@link collection} to an {@link Map mutable map}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection} to convert
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
  * @extensionFunction
  */
-export function toMutableMap<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): Map<number, T> {
+export function toMutableMap<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Map<number, T> {
     if (collection == null)
         return new Map()
     if (collection.isEmpty)

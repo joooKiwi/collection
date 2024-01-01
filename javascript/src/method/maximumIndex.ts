@@ -6,36 +6,36 @@
  ******************************************************************************/
 
 import type {Nullable, NullOr}                   from "../general type"
-import type {NonEmptySimplisticCollectionHolder} from "../NonEmptySimplisticCollectionHolder"
-import type {SimplisticCollectionHolder}         from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}         from "../MinimalistCollectionHolder"
+import type {NonEmptyMinimalistCollectionHolder} from "../NonEmptyMinimalistCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 
 /**
  * Get a limit from a value between zero
- * and the {@link collection} {@link SimplisticCollectionHolder.size size}
+ * and the {@link collection} {@link MinimalistCollectionHolder.size size}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
- * @param limit The limit (or {@link SimplisticCollectionHolder.size size} by default)
- * @param size The size compared (or the {@link collection} {@link SimplisticCollectionHolder.size size} by default)
- * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link SimplisticCollectionHolder.size size} after calculation
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param limit The limit (or {@link MinimalistCollectionHolder.size size} by default)
+ * @param size The size compared (or the {@link collection} {@link MinimalistCollectionHolder.size size} by default)
+ * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link MinimalistCollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  */
-export function maximumIndex<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, limit: Nullable<number>, size?: Nullable<number>,): number
+export function maximumIndex<const T, >(collection: NonEmptyMinimalistCollectionHolder<T>, limit: Nullable<number>, size?: Nullable<number>,): number
 /**
  * Get a limit from a value between zero
- * and the {@link collection} {@link SimplisticCollectionHolder.size size}
+ * and the {@link collection} {@link MinimalistCollectionHolder.size size}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
- * @param limit The limit (or {@link SimplisticCollectionHolder.size size} by default)
- * @param size The size compared (or the {@link collection} {@link SimplisticCollectionHolder.size size} by default)
- * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link SimplisticCollectionHolder.size size} after calculation
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param limit The limit (or {@link MinimalistCollectionHolder.size size} by default)
+ * @param size The size compared (or the {@link collection} {@link MinimalistCollectionHolder.size size} by default)
+ * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link MinimalistCollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  */
-export function maximumIndex<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, limit: Nullable<number>, size?: Nullable<number>,): NullOr<number>
-export function maximumIndex(collection: Nullable<SimplisticCollectionHolder>, limit: Nullable<number>, size: Nullable<number> = null,): NullOr<number> {
+export function maximumIndex<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, limit: Nullable<number>, size?: Nullable<number>,): NullOr<number>
+export function maximumIndex(collection: Nullable<MinimalistCollectionHolder>, limit: Nullable<number>, size: Nullable<number> = null,): NullOr<number> {
     if (collection == null)
         return null
     if (collection.isEmpty)

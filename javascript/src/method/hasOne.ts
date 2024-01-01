@@ -6,12 +6,12 @@
  ******************************************************************************/
 
 import type {Nullable}                   from "../general type"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 /**
  * Tell whenever at least one value exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see ReadonlyArray.includes
@@ -20,11 +20,11 @@ import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  * @extensionFunction
  */
-export function hasOne<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, ...values: readonly T[]): boolean
+export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, ...values: readonly T[]): boolean
 /**
  * Tell whenever at least one value exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see ReadonlyArray.includes
@@ -33,8 +33,8 @@ export function hasOne<const T, >(collection: Nullable<SimplisticCollectionHolde
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  * @extensionFunction
  */
-export function hasOne(collection: Nullable<SimplisticCollectionHolder>, ...values: readonly unknown[]): boolean
-export function hasOne(collection: Nullable<SimplisticCollectionHolder>, ...values: readonly unknown[]): boolean {
+export function hasOne(collection: Nullable<MinimalistCollectionHolder>, ...values: readonly unknown[]): boolean
+export function hasOne(collection: Nullable<MinimalistCollectionHolder>, ...values: readonly unknown[]): boolean {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)

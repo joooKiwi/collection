@@ -7,7 +7,7 @@
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {Nullable}                   from "../general type"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants} from "../CollectionConstants"
 import {isCollectionHolder}  from "./isCollectionHolder"
@@ -25,14 +25,14 @@ export function requireNoNulls<const T, >(collection: Nullable<CollectionHolder<
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @throws {TypeError} There is <b>null</b> or <b>undefined</b> value in the current collection
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
-export function requireNoNulls<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): SimplisticCollectionHolder<NonNullable<T>>
-export function requireNoNulls<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,) {
+export function requireNoNulls<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): MinimalistCollectionHolder<NonNullable<T>>
+export function requireNoNulls<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)

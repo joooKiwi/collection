@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {SimplisticCollectionHolder} from "../../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../../MinimalistCollectionHolder"
 import type {IteratorValue}              from "./IteratorValue"
 
 export class GenericIteratorValue<const out T = unknown, >
@@ -14,12 +14,12 @@ export class GenericIteratorValue<const out T = unknown, >
     readonly #collection
     readonly #index
 
-    public constructor(collection: SimplisticCollectionHolder<T>, index: number,) {
+    public constructor(collection: MinimalistCollectionHolder<T>, index: number,) {
         this.#collection = collection
         this.#index = index
     }
 
-    public get collection(): SimplisticCollectionHolder<T> {
+    public get collection(): MinimalistCollectionHolder<T> {
         return this.#collection
     }
 

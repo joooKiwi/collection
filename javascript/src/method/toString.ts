@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 import type {Nullable}                   from "../general type"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {asString} from "./asString"
 
@@ -16,12 +16,12 @@ import {asString} from "./asString"
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toString toString()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @see Array.toString
  * @see Object.toString
  * @extensionFunction
  */
-export function toString<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): string {
+export function toString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): string {
     if (collection == null)
         return "[]"
     if (collection.isEmpty)

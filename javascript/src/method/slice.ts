@@ -8,14 +8,14 @@
 import type {CollectionHolder}                   from "../CollectionHolder"
 import type {Nullable}                           from "../general type"
 import type {CollectionIterator}                 from "../iterator/CollectionIterator"
-import type {NonEmptySimplisticCollectionHolder} from "../NonEmptySimplisticCollectionHolder"
-import type {SimplisticCollectionHolder}         from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}         from "../MinimalistCollectionHolder"
+import type {NonEmptyMinimalistCollectionHolder} from "../NonEmptyMinimalistCollectionHolder"
 
 import {CollectionConstants}                       from "../CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {endingIndex as endingIndexFunction}        from "./endingIndex"
 import {isCollectionIterator}                      from "./isCollectionIterator"
-import {isSimplisticCollectionHolder}              from "./isSimplisticCollectionHolder"
+import {isMinimalistCollectionHolder}              from "./isMinimalistCollectionHolder"
 import {maximumIndex as maximumIndexFunction}      from "./maximumIndex"
 import {startingIndex as startingIndexFunction}    from "./startingIndex"
 
@@ -25,7 +25,7 @@ import {startingIndex as startingIndexFunction}    from "./startingIndex"
  * Create a new {@link CollectionHolder} from the {@link indices}
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -34,12 +34,12 @@ import {startingIndex as startingIndexFunction}    from "./startingIndex"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indices: readonly number[],): CollectionHolder<T>
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: readonly number[],): CollectionHolder<T>
 /**
  * Create a new {@link CollectionHolder} from the {@link indices}
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -48,12 +48,12 @@ export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indices: ReadonlySet<number>,): CollectionHolder<T>
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: ReadonlySet<number>,): CollectionHolder<T>
 /**
  * Create a new {@link CollectionHolder} from the {@link indices}
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -62,12 +62,12 @@ export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indices: SimplisticCollectionHolder<number>,): CollectionHolder<T>
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
 /**
  * Create a new {@link CollectionHolder} from the {@link indices}
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -76,12 +76,12 @@ export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indices: CollectionIterator<number>,): CollectionHolder<T>
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: CollectionIterator<number>,): CollectionHolder<T>
 /**
  * Create a new {@link CollectionHolder} from the {@link indices}
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -90,13 +90,13 @@ export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indices: Iterable<number>,): CollectionHolder<T>
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: Iterable<number>,): CollectionHolder<T>
 /**
  * Create a new {@link CollectionHolder} from the {@link fromIndex starting}
  * to the {@link toIndex ending} index with a {@link limit} applied
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param fromIndex  The starting index
  * @param toIndex    The ending index
  * @param limit      The maximum index
@@ -107,12 +107,12 @@ export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
 /**
  * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex}
  * in the {@link collection}
  *
- * @param collection         The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection         The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indicesOrFromIndex The given indices (or starting index)
  * @param toIndex            The ending index
  * @param limit              The maximum index
@@ -125,13 +125,13 @@ export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder
  * @extensionFunction
  * @typescriptDefinition
  */
-export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indicesOrFromIndex?: Nullable<| Iterable<number> | SimplisticCollectionHolder<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indicesOrFromIndex: Nullable<| Iterable<number> | SimplisticCollectionHolder<number> | number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex?: Nullable<| Iterable<number> | MinimalistCollectionHolder<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex: Nullable<| Iterable<number> | MinimalistCollectionHolder<number> | number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
     if (indicesOrFromIndex instanceof Array)
         return sliceByArray(collection, indicesOrFromIndex,)
     if (indicesOrFromIndex instanceof Set)
         return sliceBySet(collection, indicesOrFromIndex,)
-    if (isSimplisticCollectionHolder(indicesOrFromIndex,))
+    if (isMinimalistCollectionHolder(indicesOrFromIndex,))
         return sliceByCollectionHolder(collection, indicesOrFromIndex,)
     if (isCollectionIterator<number>(indicesOrFromIndex,))
         return sliceByCollectionIterator(collection, indicesOrFromIndex,)
@@ -149,7 +149,7 @@ export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder
  * Create a new {@link CollectionHolder} from the {@link indices} (as an {@link ReadonlyArray array})
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -158,7 +158,7 @@ export function slice<const T, >(collection: Nullable<SimplisticCollectionHolder
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceByArray<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indices: readonly number[],): CollectionHolder<T> {
+export function sliceByArray<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: readonly number[],): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
@@ -181,7 +181,7 @@ export function sliceByArray<const T, >(collection: Nullable<SimplisticCollectio
  * Create a new {@link CollectionHolder} from the {@link indices} (as a {@link ReadonlySet set})
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -190,7 +190,7 @@ export function sliceByArray<const T, >(collection: Nullable<SimplisticCollectio
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceBySet<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indices: ReadonlySet<number>,): CollectionHolder<T> {
+export function sliceBySet<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: ReadonlySet<number>,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
@@ -212,10 +212,10 @@ export function sliceBySet<const T, >(collection: Nullable<SimplisticCollectionH
 }
 
 /**
- * Create a new {@link CollectionHolder} from the {@link indices} (as a {@link SimplisticCollectionHolder})
+ * Create a new {@link CollectionHolder} from the {@link indices} (as a {@link MinimalistCollectionHolder})
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -224,7 +224,7 @@ export function sliceBySet<const T, >(collection: Nullable<SimplisticCollectionH
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceByCollectionHolder<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indices: SimplisticCollectionHolder<number>,): CollectionHolder<T> {
+export function sliceByCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
@@ -247,7 +247,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Simplist
  * Create a new {@link CollectionHolder} from the {@link indices} (as a {@link CollectionIterator})
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -256,7 +256,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Simplist
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceByCollectionIterator<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indices: CollectionIterator<number>,): CollectionHolder<T> {
+export function sliceByCollectionIterator<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: CollectionIterator<number>,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
@@ -279,7 +279,7 @@ export function sliceByCollectionIterator<const T, >(collection: Nullable<Simpli
  * Create a new {@link CollectionHolder} from the {@link indices} (as an {@link Iterable})
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -288,7 +288,7 @@ export function sliceByCollectionIterator<const T, >(collection: Nullable<Simpli
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceByIterable<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, indices: Iterable<number>,): CollectionHolder<T> {
+export function sliceByIterable<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: Iterable<number>,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
@@ -317,7 +317,7 @@ export function sliceByIterable<const T, >(collection: Nullable<SimplisticCollec
  * to the {@link toIndex ending} index with a {@link limit} applied
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param fromIndex The inclusive starting index
  * @param toIndex   The inclusive ending index
  * @param limit     The maximum index
@@ -328,7 +328,7 @@ export function sliceByIterable<const T, >(collection: Nullable<SimplisticCollec
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceByRange<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
+export function sliceByRange<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -348,15 +348,15 @@ export function sliceByRange<const T, >(collection: Nullable<SimplisticCollectio
             //#region -------------------- Initialization (starting/ending index) --------------------
 
             const size = collection.size
-            const startingIndex = startingIndexFunction(collection as NonEmptySimplisticCollectionHolder<T>, fromIndex, size,)
-            const endingIndex = endingIndexFunction(collection as NonEmptySimplisticCollectionHolder<T>, toIndex, size,)
+            const startingIndex = startingIndexFunction(collection as NonEmptyMinimalistCollectionHolder<T>, fromIndex, size,)
+            const endingIndex = endingIndexFunction(collection as NonEmptyMinimalistCollectionHolder<T>, toIndex, size,)
 
             if (endingIndex < startingIndex)
                 throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, toIndex,)
 
             //#endregion -------------------- Initialization (starting/ending index) --------------------
 
-            return __withoutALimit(collection as NonEmptySimplisticCollectionHolder<T>, startingIndex, endingIndex,)
+            return __withoutALimit(collection as NonEmptyMinimalistCollectionHolder<T>, startingIndex, endingIndex,)
         },)
 
 
@@ -364,27 +364,27 @@ export function sliceByRange<const T, >(collection: Nullable<SimplisticCollectio
         //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
         const size = collection.size
-        const startingIndex = startingIndexFunction(collection as NonEmptySimplisticCollectionHolder<T>, fromIndex, size,)
-        const endingIndex = endingIndexFunction(collection as NonEmptySimplisticCollectionHolder<T>, toIndex, size,)
+        const startingIndex = startingIndexFunction(collection as NonEmptyMinimalistCollectionHolder<T>, fromIndex, size,)
+        const endingIndex = endingIndexFunction(collection as NonEmptyMinimalistCollectionHolder<T>, toIndex, size,)
 
         if (endingIndex < startingIndex)
             throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex ?? ""}"${toIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`} is over the starting index "${fromIndex ?? ""}"${fromIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, toIndex,)
 
-        const maximumIndex = maximumIndexFunction(collection as NonEmptySimplisticCollectionHolder<T>, limit, size,)
+        const maximumIndex = maximumIndexFunction(collection as NonEmptyMinimalistCollectionHolder<T>, limit, size,)
         if (maximumIndex == size - 1)
-            return __withoutALimit(collection as NonEmptySimplisticCollectionHolder<T>, startingIndex, endingIndex,)
+            return __withoutALimit(collection as NonEmptyMinimalistCollectionHolder<T>, startingIndex, endingIndex,)
         if (endingIndex - startingIndex < maximumIndex - 1)
             throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}"${limit == maximumIndex ? "" : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ""}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`} to "${toIndex ?? ""}"${toIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, limit,)
 
         //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
 
-        return __withALimit(collection as NonEmptySimplisticCollectionHolder<T>, startingIndex, endingIndex, maximumIndex,)
+        return __withALimit(collection as NonEmptyMinimalistCollectionHolder<T>, startingIndex, endingIndex, maximumIndex,)
     },)
 }
 
 //#endregion -------------------- Facade method --------------------
 
-function __withoutALimit<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, startingIndex: number, endingIndex: number,) {
+function __withoutALimit<const T, >(collection: NonEmptyMinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number,) {
     const newArray = [] as T[]
     let index = startingIndex - 1
     while (++index <= endingIndex)
@@ -392,7 +392,7 @@ function __withoutALimit<const T, >(collection: NonEmptySimplisticCollectionHold
     return newArray
 }
 
-function __withALimit<const T, >(collection: NonEmptySimplisticCollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,) {
+function __withALimit<const T, >(collection: NonEmptyMinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,) {
     const newArray = [] as T[]
     let index = startingIndex - 1
     while (++index <= endingIndex) {

@@ -8,7 +8,7 @@
 import type {Nullable, NullOr}                  from "./general type"
 import type {PossibleIterable}                  from "./iterable/types"
 import type {IndexWithReturnCallback, ObjectOf} from "./CollectionHolder.types"
-import type {SimplisticCollectionHolder}        from "./SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder}        from "./MinimalistCollectionHolder"
 import type {IterableWithCount}                 from "./iterable/IterableWithCount"
 import type {IterableWithLength}                from "./iterable/IterableWithLength"
 import type {IterableWithPossibleSize}          from "./iterable/IterableWithPossibleSize"
@@ -21,7 +21,7 @@ import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionH
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {hasNull}                                   from "./method/hasNull"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
-import {isSimplisticCollectionHolder}              from "./method/isSimplisticCollectionHolder"
+import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
 import {objectValuesMap}                           from "./method/objectValuesMap"
 import {toMap}                                     from "./method/toMap"
 import {toSet}                                     from "./method/toSet"
@@ -38,7 +38,7 @@ import {toWeakSet}                                 from "./method/toWeakSet"
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
  */
-export class GenericCollectionHolder<const T = unknown, const REFERENCE extends | PossibleIterable<T> | SimplisticCollectionHolder<T> = | PossibleIterable<T> | SimplisticCollectionHolder<T>, >
+export class GenericCollectionHolder<const T = unknown, const REFERENCE extends | PossibleIterable<T> | MinimalistCollectionHolder<T> = | PossibleIterable<T> | MinimalistCollectionHolder<T>, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -62,8 +62,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public constructor(lateArray: () => readonly T[],)
     public constructor(set: ReadonlySet<T>,)
     public constructor(lateSet: () => ReadonlySet<T>,)
-    public constructor(collectionHolder: SimplisticCollectionHolder<T>,)
-    public constructor(lateCollectionHolder: () => SimplisticCollectionHolder<T>,)
+    public constructor(collectionHolder: MinimalistCollectionHolder<T>,)
+    public constructor(lateCollectionHolder: () => MinimalistCollectionHolder<T>,)
     public constructor(collectionIterable: CollectionIterator<T>,)
     public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
     public constructor(iterableWithSize: IterableWithSize<T>,)
@@ -173,7 +173,7 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
-        if (isSimplisticCollectionHolder<T>(reference)) {
+        if (isMinimalistCollectionHolder<T>(reference)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 

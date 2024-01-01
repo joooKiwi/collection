@@ -6,11 +6,11 @@
  ******************************************************************************/
 
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionHandler}          from "./CollectionHandler"
 import type {ValueHolder}                from "./ValueHolder"
 
-export abstract class AbstractCollectionHandler<out T = unknown, const REFERENCE extends | Iterable<T> | SimplisticCollectionHolder<T> = | Iterable<T> | SimplisticCollectionHolder<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export abstract class AbstractCollectionHandler<out T = unknown, const REFERENCE extends | Iterable<T> | MinimalistCollectionHolder<T> = | Iterable<T> | MinimalistCollectionHolder<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     implements CollectionHandler<T> {
 
     //#region -------------------- Fields --------------------

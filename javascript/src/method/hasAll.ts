@@ -6,12 +6,12 @@
  ******************************************************************************/
 
 import type {Nullable}                   from "../general type"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 /**
  * Tell that the {@link values} are in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
  * @return {boolean} Every {@link values} are in the {@link collection}
  * @see ReadonlyArray.includes
@@ -19,11 +19,11 @@ import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
  * @extensionFunction
  */
-export function hasAll<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>, ...values: readonly T[]): boolean
+export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, ...values: readonly T[]): boolean
 /**
  * Tell that the {@link values} are in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
  * @return {boolean} Every {@link values} are in the {@link collection}
  * @see ReadonlyArray.includes
@@ -31,8 +31,8 @@ export function hasAll<const T, >(collection: Nullable<SimplisticCollectionHolde
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
  * @extensionFunction
  */
-export function hasAll(collection: Nullable<SimplisticCollectionHolder>, ...values: readonly unknown[]): boolean
-export function hasAll(collection: Nullable<SimplisticCollectionHolder>, ...values: readonly unknown[]): boolean {
+export function hasAll(collection: Nullable<MinimalistCollectionHolder>, ...values: readonly unknown[]): boolean
+export function hasAll(collection: Nullable<MinimalistCollectionHolder>, ...values: readonly unknown[]): boolean {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)

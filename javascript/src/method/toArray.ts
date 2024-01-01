@@ -6,17 +6,17 @@
  ******************************************************************************/
 
 import type {Nullable}                   from "../general type"
-import type {SimplisticCollectionHolder} from "../SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants} from "../CollectionConstants"
 
 /**
  * Convert the {@link collection} to an {@link ReadonlyArray array}
  *
- * @param collection The {@link Nullable nullable} {@link SimplisticCollectionHolder collection} to convert
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
  * @extensionFunction
  */
-export function toArray<const T, >(collection: Nullable<SimplisticCollectionHolder<T>>,): readonly T[] {
+export function toArray<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): readonly T[] {
     if (collection == null)
         return CollectionConstants.EMPTY_ARRAY
     if (collection.isEmpty)

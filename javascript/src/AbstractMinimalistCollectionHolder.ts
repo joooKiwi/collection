@@ -5,17 +5,17 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {SimplisticCollectionHolder} from "./SimplisticCollectionHolder"
+import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
 
 /**
- * A definition of a {@link SimplisticCollectionHolder} to have a common ancestor.
+ * A definition of a {@link MinimalistCollectionHolder} to have a common ancestor.
  *
  * @note This class should be inherited if new classes are being made to be more usable by the tools
  * @see EmptyCollectionHolder
- * @see GenericSimplisticCollectionHolder
+ * @see GenericMinimalistCollectionHolder
  */
-export abstract class AbstractSimplisticCollectionHolder<const out T = unknown, >
-    implements SimplisticCollectionHolder<T> {
+export abstract class AbstractMinimalistCollectionHolder<const out T = unknown, >
+    implements MinimalistCollectionHolder<T> {
 
     //#region -------------------- Fields & constructor --------------------
 
