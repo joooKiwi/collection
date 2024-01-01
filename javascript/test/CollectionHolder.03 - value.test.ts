@@ -9,13 +9,13 @@ import {AB, AB_AB, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, EMPTY, NULL_ABCD,
 import {everySimplisticInstances}                                                from "./constantValues"
 import {newCollectionInstance, newSimplisticCollectionInstance}                                  from "./newCollectionInstance"
 
-import {GenericSimplisticCollectionHolder}         from "../src/GenericSimplisticCollectionHolder"
+import {GenericMinimalistCollectionHolder}         from "../src/GenericMinimalistCollectionHolder"
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../src/exception/EmptyCollectionHolderException"
 
 describe("CollectionHolderTest (value)", () =>
 describe.each(everySimplisticInstances,)("%s", ({value: instance,},) => {
-    const isSimplistic = instance === GenericSimplisticCollectionHolder
+    const isSimplistic = instance === GenericMinimalistCollectionHolder
 
     //#region -------------------- Instances --------------------
 

@@ -11,7 +11,7 @@ import type {IterableWithPossibleSize} from "../src/iterable/IterableWithPossibl
 import type {IterableWithSize}         from "../src/iterable/IterableWithSize"
 
 import {GenericCollectionHolder}           from "../src/GenericCollectionHolder"
-import {GenericSimplisticCollectionHolder} from "../src/GenericSimplisticCollectionHolder"
+import {GenericMinimalistCollectionHolder} from "../src/GenericMinimalistCollectionHolder"
 import {LazyGenericCollectionHolder}       from "../src/LazyGenericCollectionHolder"
 import {GenericCollectionIterator}         from "../src/iterator/GenericCollectionIterator"
 
@@ -32,9 +32,9 @@ export const sizeValues = () => [
         true, false,
     ] as const,
     everySimplisticInstances = [
-        new Holder(GenericSimplisticCollectionHolder, "GenericSimplisticCollectionHolder",),
-        new Holder(GenericCollectionHolder, "GenericCollectionHolder",),
-        new Holder(LazyGenericCollectionHolder, "LazyGenericCollectionHolder",),
+        new Holder(GenericMinimalistCollectionHolder, "minimalist",),
+        new Holder(GenericCollectionHolder, "normal",),
+        new Holder(LazyGenericCollectionHolder, "lazy (normal)",),
     ] as const,
     everyInstances = [
         new Holder(GenericCollectionHolder, "GenericCollectionHolder",),
