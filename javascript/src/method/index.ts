@@ -31,6 +31,7 @@ export {indexOfLast}                                                            
 export {indexOfLastIndexed}                                                                                                 from "./indexOfLastIndexed"
 export {isCollectionHolder}                                                                                                 from "./isCollectionHolder"
 export {isCollectionIterator}                                                                                               from "./isCollectionIterator"
+export {isMinimalistCollectionHolder}                                                                                       from "./isMinimalistCollectionHolder"
 export {join, prefixAndPostfixOnly}                                                                                         from "./join"
 export {last}                                                                                                               from "./last"
 export {lastIndexOf}                                                                                                        from "./lastIndexOf"
