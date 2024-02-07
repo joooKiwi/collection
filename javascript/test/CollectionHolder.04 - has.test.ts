@@ -8,130 +8,249 @@
 import {A, A_NULL_B_UNDEFINED, AB, AB12, ABCD_NULL, ABCD_UNDEFINED, NULL_ABCD, UNDEFINED_ABCD} from "./constantCollections"
 import {everyInstances, nonPresentItem, TEMPLATE_ITEMS}                                        from "./constantValues"
 import {newCollectionInstance}                                                                 from "./newCollectionInstance"
+import {LazyGenericCollectionHolder}          from "../src/LazyGenericCollectionHolder"
+import {GenericCollectionHolder}              from "../src/GenericCollectionHolder"
 
-describe("CollectionHolderTest (has)", () =>
-describe.each(everyInstances,)("%s", ({value: instance,},) => {
-    //#region -------------------- Instances --------------------
+describe("CollectionHolderTest (has)", () => {
 
-    const A_INSTANCE = () => newCollectionInstance(instance, A,)
-    const AB_INSTANCE = () => newCollectionInstance(instance, AB,)
-    const A_NULL_B_UNDEFINED_INSTANCE = () => newCollectionInstance(instance, A_NULL_B_UNDEFINED,)
-    const AB12_INSTANCE = () => newCollectionInstance(instance, AB12,)
-    const NULL_ABCD_INSTANCE = () => newCollectionInstance(instance, NULL_ABCD,)
-    const ABCD_NULL_INSTANCE = () => newCollectionInstance(instance, ABCD_NULL,)
-    const UNDEFINED_ABCD_INSTANCE = () => newCollectionInstance(instance, UNDEFINED_ABCD,)
-    const ABCD_UNDEFINED_INSTANCE = () => newCollectionInstance(instance, ABCD_UNDEFINED,)
-    const TEMPLATE_ITEMS_INSTANCE = () => newCollectionInstance(instance, TEMPLATE_ITEMS,)
+    describe("aliases", () => {
+        describe("GenericCollectionHolder", () => {
+            test("includesOne", () => {
+                const instance = new class GenericCollectionHolder_IncludesOneTest
+                    extends GenericCollectionHolder {
 
-    //#endregion -------------------- Instances --------------------
+                    public amountOfCall = 0
 
+                    public override includesOne(...values: readonly unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.includesOne(...values,)
+                    }
 
-    describe("one", () => {
-        describe("singular item", () => {
-            describe('a', () => {
-                test("has",      () => expect(A_INSTANCE().hasOne('a',),).toBeTrue(),)
-                test("includes", () => expect(A_INSTANCE().includesOne('a',),).toBeTrue(),)
-                test("contains", () => expect(A_INSTANCE().containsOne('a',),).toBeTrue(),)
+                }([],)
+                instance.includesOne()
+                expect(instance.amountOfCall,).toBe(1,)
             },)
-            describe('b', () => {
-                test("has",      () => expect(A_INSTANCE().hasOne('b',),).toBeFalse(),)
-                test("includes", () => expect(A_INSTANCE().includesOne('b',),).toBeFalse(),)
-                test("contains", () => expect(A_INSTANCE().containsOne('b',),).toBeFalse(),)
+            test("includesAll", () => {
+                const instance = new class GenericCollectionHolder_IncludesAllTest
+                    extends GenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override includesAll(...values: readonly unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.includesAll(...values,)
+                    }
+
+                }([],)
+                instance.includesAll()
+                expect(instance.amountOfCall,).toBe(1,)
             },)
-            describe("a,b", () => {
-                test("has",      () => expect(A_INSTANCE().hasOne('a', 'b',),).toBeTrue(),)
-                test("includes", () => expect(A_INSTANCE().includesOne('a', 'b',),).toBeTrue(),)
-                test("contains", () => expect(A_INSTANCE().containsOne('a', 'b',),).toBeTrue(),)
+            test("includesNull", () => {
+                const instance = new class GenericCollectionHolder_IncludesNullTest
+                    extends GenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override get includesNull(): this["hasNull"] {
+                        this.amountOfCall++
+                        return super.includesNull
+                    }
+
+                }([],)
+                instance.includesNull
+                expect(instance.amountOfCall,).toBe(1,)
             },)
-            describe("b,a", () => {
-                test("has",      () => expect(A_INSTANCE().hasOne('b', 'a',),).toBeTrue(),)
-                test("includes", () => expect(A_INSTANCE().includesOne('b', 'a',),).toBeTrue(),)
-                test("contains", () => expect(A_INSTANCE().containsOne('b', 'a',),).toBeTrue(),)
+            test("containsOne", () => {
+                const instance = new class GenericCollectionHolder_ContainsOneTest
+                    extends GenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override containsOne(...values: unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.containsOne(...values,)
+                    }
+
+                }([],)
+                instance.containsOne()
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+            test("containsAll", () => {
+                const instance = new class GenericCollectionHolder_ContainsAllTest
+                    extends GenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override containsAll(...values: unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.containsAll(...values,)
+                    }
+
+                }([],)
+                instance.containsAll()
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+            test("containsNull", () => {
+                const instance = new class GenericCollectionHolder_ContainsNullTest
+                    extends GenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override get containsNull(): this["hasNull"] {
+                        this.amountOfCall++
+                        return super.containsNull
+                    }
+
+                }([],)
+                instance.containsNull
+                expect(instance.amountOfCall,).toBe(1,)
             },)
         },)
-        describe.each(TEMPLATE_ITEMS,)("%s", it => {
-            test("has",      () => expect(TEMPLATE_ITEMS_INSTANCE().hasOne(it,),).toBeTrue(),)
-            test("includes", () => expect(TEMPLATE_ITEMS_INSTANCE().includesOne(it,),).toBeTrue(),)
-            test("contains", () => expect(TEMPLATE_ITEMS_INSTANCE().containsOne(it,),).toBeTrue(),)
+        describe("LazyGenericCollectionHolder", () => {
+            test("includesOne", () => {
+                const instance = new class LazyGenericCollectionHolder_IncludesOneTest
+                    extends LazyGenericCollectionHolder {
 
-            describe("value + nonPresentItem", () => {
-                test("has",      () => expect(TEMPLATE_ITEMS_INSTANCE().hasOne(it, nonPresentItem,),).toBeTrue(),)
-                test("includes", () => expect(TEMPLATE_ITEMS_INSTANCE().includesOne(it, nonPresentItem,),).toBeTrue(),)
-                test("contains", () => expect(TEMPLATE_ITEMS_INSTANCE().containsOne(it, nonPresentItem,),).toBeTrue(),)
+                    public amountOfCall = 0
+
+                    public override includesOne(...values: readonly unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.includesOne(...values,)
+                    }
+
+                }([],)
+                instance.includesOne()
+                expect(instance.amountOfCall,).toBe(1,)
             },)
-            describe("Object(value)", () => {
-                test("has",      () => expect(TEMPLATE_ITEMS_INSTANCE().hasOne(Object(it,),),).toBeFalse(),)
-                test("includes", () => expect(TEMPLATE_ITEMS_INSTANCE().includesOne(Object(it,),),).toBeFalse(),)
-                test("contains", () => expect(TEMPLATE_ITEMS_INSTANCE().containsOne(Object(it,),),).toBeFalse(),)
+            test("includesAll", () => {
+                const instance = new class LazyGenericCollectionHolder_IncludesAllTest
+                    extends LazyGenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override includesAll(...values: readonly unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.includesAll(...values,)
+                    }
+
+                }([],)
+                instance.includesAll()
+                expect(instance.amountOfCall,).toBe(1,)
             },)
-            describe("[value]", () => {
-                test("has",      () => expect(TEMPLATE_ITEMS_INSTANCE().hasOne([it,],),).toBeFalse(),)
-                test("includes", () => expect(TEMPLATE_ITEMS_INSTANCE().includesOne([it,],),).toBeFalse(),)
-                test("contains", () => expect(TEMPLATE_ITEMS_INSTANCE().containsOne([it,],),).toBeFalse(),)
+            test("includesNull", () => {
+                const instance = new class LazyGenericCollectionHolder_IncludesNullTest
+                    extends LazyGenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override get includesNull(): this["hasNull"] {
+                        this.amountOfCall++
+                        return super.includesNull
+                    }
+
+                }([],)
+                instance.includesNull
+                expect(instance.amountOfCall,).toBe(1,)
             },)
-            describe("{value}", () => {
-                test("has",      () => expect(TEMPLATE_ITEMS_INSTANCE().hasOne({it,},),).toBeFalse(),)
-                test("includes", () => expect(TEMPLATE_ITEMS_INSTANCE().includesOne({it,},),).toBeFalse(),)
-                test("contains", () => expect(TEMPLATE_ITEMS_INSTANCE().containsOne({it,},),).toBeFalse(),)
+            test("containsOne", () => {
+                const instance = new class LazyGenericCollectionHolder_ContainsOneTest
+                    extends LazyGenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override containsOne(...values: unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.containsOne(...values,)
+                    }
+
+                }([],)
+                instance.containsOne()
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+            test("containsAll", () => {
+                const instance = new class LazyGenericCollectionHolder_ContainsAllTest
+                    extends LazyGenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override containsAll(...values: unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.containsAll(...values,)
+                    }
+
+                }([],)
+                instance.containsAll()
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+            test("containsNull", () => {
+                const instance = new class LazyGenericCollectionHolder_ContainsNullTest
+                    extends LazyGenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override get containsNull(): this["hasNull"] {
+                        this.amountOfCall++
+                        return super.containsNull
+                    }
+
+                }([],)
+                instance.containsNull
+                expect(instance.amountOfCall,).toBe(1,)
             },)
         },)
     },)
-    describe("all", () => {
-        describe("singular item", () => {
+
+    describe.each(everyInstances,)("%s", ({value: instance,},) => {
+        //#region -------------------- Instances --------------------
+
+        const A_INSTANCE = () => newCollectionInstance(instance, A,)
+        const AB_INSTANCE = () => newCollectionInstance(instance, AB,)
+        const A_NULL_B_UNDEFINED_INSTANCE = () => newCollectionInstance(instance, A_NULL_B_UNDEFINED,)
+        const AB12_INSTANCE = () => newCollectionInstance(instance, AB12,)
+        const NULL_ABCD_INSTANCE = () => newCollectionInstance(instance, NULL_ABCD,)
+        const ABCD_NULL_INSTANCE = () => newCollectionInstance(instance, ABCD_NULL,)
+        const UNDEFINED_ABCD_INSTANCE = () => newCollectionInstance(instance, UNDEFINED_ABCD,)
+        const ABCD_UNDEFINED_INSTANCE = () => newCollectionInstance(instance, ABCD_UNDEFINED,)
+        const TEMPLATE_ITEMS_INSTANCE = () => newCollectionInstance(instance, TEMPLATE_ITEMS,)
+
+        //#endregion -------------------- Instances --------------------
+
+
+        describe("one", () => {
             describe("singular item", () => {
-                describe('a', () => {
-                    test("has",      () => expect(A_INSTANCE().hasAll('a',),).toBeTrue(),)
-                    test("includes", () => expect(A_INSTANCE().includesAll('a',),).toBeTrue(),)
-                    test("contains", () => expect(A_INSTANCE().containsAll('a',),).toBeTrue(),)
-                },)
-                describe('b', () => {
-                    test("has",      () => expect(A_INSTANCE().hasAll('b',),).toBeFalse(),)
-                    test("includes", () => expect(A_INSTANCE().includesAll('b',),).toBeFalse(),)
-                    test("contains", () => expect(A_INSTANCE().containsAll('b',),).toBeFalse(),)
-                },)
-                describe("a,b", () => {
-                    test("has",      () => expect(A_INSTANCE().hasAll('a', 'b',),).toBeFalse(),)
-                    test("includes", () => expect(A_INSTANCE().includesAll('a', 'b',),).toBeFalse(),)
-                    test("contains", () => expect(A_INSTANCE().containsAll('a', 'b',),).toBeFalse(),)
-                },)
-                describe("b,a", () => {
-                    test("has",      () => expect(A_INSTANCE().hasAll('b', 'a',),).toBeFalse(),)
-                    test("includes", () => expect(A_INSTANCE().includesAll('b', 'a',),).toBeFalse(),)
-                    test("contains", () => expect(A_INSTANCE().containsAll('b', 'a',),).toBeFalse(),)
-                },)
+                test('a',   () => expect(A_INSTANCE().hasOne('a',),).toBeTrue(),)
+                test('b',   () => expect(A_INSTANCE().hasOne('b',),).toBeFalse(),)
+                test("a,b", () => expect(A_INSTANCE().hasOne('a', 'b',),).toBeTrue(),)
+                test("b,a", () => expect(A_INSTANCE().hasOne('b', 'a',),).toBeTrue(),)
+            },)
+            describe.each(TEMPLATE_ITEMS,)("%s", it => {
+                test("[template items]",       () => expect(TEMPLATE_ITEMS_INSTANCE().hasOne(it,),).toBeTrue(),)
+                test("value + nonPresentItem", () => expect(TEMPLATE_ITEMS_INSTANCE().hasOne(it, nonPresentItem,),).toBeTrue(),)
+                test("Object(value)",          () => expect(TEMPLATE_ITEMS_INSTANCE().hasOne(Object(it,),),).toBeFalse(),)
+                test("[value]",                () => expect(TEMPLATE_ITEMS_INSTANCE().hasOne([it,],),).toBeFalse(),)
+                test("{value}",                () => expect(TEMPLATE_ITEMS_INSTANCE().hasOne({it,},),).toBeFalse(),)
             },)
         },)
-        describe.each(TEMPLATE_ITEMS,)("%s", it => {
-            test("has",      () => expect(TEMPLATE_ITEMS_INSTANCE().hasAll(it,),).toBeTrue(),)
-            test("includes", () => expect(TEMPLATE_ITEMS_INSTANCE().includesAll(it,),).toBeTrue(),)
-            test("contains", () => expect(TEMPLATE_ITEMS_INSTANCE().containsAll(it,),).toBeTrue(),)
-
-            describe("value + nonPresentItem", () => {
-                test("has",      () => expect(TEMPLATE_ITEMS_INSTANCE().hasAll(it, nonPresentItem,),).toBeFalse(),)
-                test("includes", () => expect(TEMPLATE_ITEMS_INSTANCE().includesAll(it, nonPresentItem,),).toBeFalse(),)
-                test("contains", () => expect(TEMPLATE_ITEMS_INSTANCE().containsAll(it, nonPresentItem,),).toBeFalse(),)
+        describe("all", () => {
+            describe("singular item", () => {
+                describe("singular item", () => {
+                    test('a',   () => expect(A_INSTANCE().hasAll('a',),).toBeTrue(),)
+                    test('b',   () => expect(A_INSTANCE().hasAll('b',),).toBeFalse(),)
+                    test("a,b", () => expect(A_INSTANCE().hasAll('a', 'b',),).toBeFalse(),)
+                    test("b,a", () => expect(A_INSTANCE().hasAll('b', 'a',),).toBeFalse(),)
+                },)
             },)
-            describe("Object(value)", () => {
-                test("has",      () => expect(TEMPLATE_ITEMS_INSTANCE().hasAll(Object(it,),),).toBeFalse(),)
-                test("includes", () => expect(TEMPLATE_ITEMS_INSTANCE().includesAll(Object(it,),),).toBeFalse(),)
-                test("contains", () => expect(TEMPLATE_ITEMS_INSTANCE().containsAll(Object(it,),),).toBeFalse(),)
-            },)
-            describe("[value]", () => {
-                test("has",      () => expect(TEMPLATE_ITEMS_INSTANCE().hasAll([it,],),).toBeFalse(),)
-                test("includes", () => expect(TEMPLATE_ITEMS_INSTANCE().includesAll([it,],),).toBeFalse(),)
-                test("contains", () => expect(TEMPLATE_ITEMS_INSTANCE().containsAll([it,],),).toBeFalse(),)
-            },)
-            describe("{value}", () => {
-                test("has",      () => expect(TEMPLATE_ITEMS_INSTANCE().hasAll({it,},),).toBeFalse(),)
-                test("includes", () => expect(TEMPLATE_ITEMS_INSTANCE().includesAll({it,},),).toBeFalse(),)
-                test("contains", () => expect(TEMPLATE_ITEMS_INSTANCE().containsAll({it,},),).toBeFalse(),)
+            describe.each(TEMPLATE_ITEMS,)("%s", it => {
+                test("[template items]",       () => expect(TEMPLATE_ITEMS_INSTANCE().hasAll(it,),).toBeTrue(),)
+                test("value + nonPresentItem", () => expect(TEMPLATE_ITEMS_INSTANCE().hasAll(it, nonPresentItem,),).toBeFalse(),)
+                test("Object(value)",          () => expect(TEMPLATE_ITEMS_INSTANCE().hasAll(Object(it,),),).toBeFalse(),)
+                test("[value]",                () => expect(TEMPLATE_ITEMS_INSTANCE().hasAll([it,],),).toBeFalse(),)
+                test("{value}",                () => expect(TEMPLATE_ITEMS_INSTANCE().hasAll({it,},),).toBeFalse(),)
             },)
         },)
-    },)
 
 
-    describe("null", () => {
-        describe("has", () => {
+        describe("null", () => {
             test("[a,b] == false",                   () => expect(AB_INSTANCE().hasNull,).toBeFalse(),)
             test("[a,b,null,c,d,undefined] == true", () => expect(A_NULL_B_UNDEFINED_INSTANCE().hasNull,).toBeTrue(),)
             test("[a,b,1,2] == false",               () => expect(AB12_INSTANCE().hasNull,).toBeFalse(),)
@@ -140,23 +259,6 @@ describe.each(everyInstances,)("%s", ({value: instance,},) => {
             test("[undefined,a,b,c,d] == true",      () => expect(UNDEFINED_ABCD_INSTANCE().hasNull,).toBeTrue(),)
             test("[a,b,c,d,undefined] == true",      () => expect(ABCD_UNDEFINED_INSTANCE().hasNull,).toBeTrue(),)
         },)
-        describe("includes", () => {
-            test("[a,b] == false",                   () => expect(AB_INSTANCE().includesNull,).toBeFalse(),)
-            test("[a,b,null,c,d,undefined] == true", () => expect(A_NULL_B_UNDEFINED_INSTANCE().includesNull,).toBeTrue(),)
-            test("[a,b,1,2] == false",               () => expect(AB12_INSTANCE().includesNull,).toBeFalse(),)
-            test("[null,a,b,c,d] == true",           () => expect(NULL_ABCD_INSTANCE().includesNull,).toBeTrue(),)
-            test("[a,b,c,d,null] == true",           () => expect(ABCD_NULL_INSTANCE().includesNull,).toBeTrue(),)
-            test("[undefined,a,b,c,d] == true",      () => expect(UNDEFINED_ABCD_INSTANCE().includesNull,).toBeTrue(),)
-            test("[a,b,c,d,undefined] == true",      () => expect(ABCD_UNDEFINED_INSTANCE().includesNull,).toBeTrue(),)
-        },)
-        describe("contains", () => {
-            test("[a,b] == false",                   () => expect(AB_INSTANCE().containsNull,).toBeFalse(),)
-            test("[a,b,null,c,d,undefined] == true", () => expect(A_NULL_B_UNDEFINED_INSTANCE().containsNull,).toBeTrue(),)
-            test("[a,b,1,2] == false",               () => expect(AB12_INSTANCE().containsNull,).toBeFalse(),)
-            test("[null,a,b,c,d] == true",           () => expect(NULL_ABCD_INSTANCE().containsNull,).toBeTrue(),)
-            test("[a,b,c,d,null] == true",           () => expect(ABCD_NULL_INSTANCE().containsNull,).toBeTrue(),)
-            test("[undefined,a,b,c,d] == true",      () => expect(UNDEFINED_ABCD_INSTANCE().containsNull,).toBeTrue(),)
-            test("[a,b,c,d,undefined] == true",      () => expect(ABCD_UNDEFINED_INSTANCE().containsNull,).toBeTrue(),)
-        },)
     },)
-},),)
+
+},)
