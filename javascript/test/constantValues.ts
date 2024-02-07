@@ -22,13 +22,32 @@ export const sizeValues = () => [
     new Holder({array: [Symbol(),], size: 1,}, "1",),
     new Holder({array: [Symbol(), Symbol(),], size: 2,}, "2",),
 ] as const
+/**
+ * An array containing multiple items ranging from
+ * - numbers (0 to 10 in {@link Number}, {@link BigInt}, space-even {@link String})
+ * - letters ('a' to 'j' with and without accents)
+ * - space character (tab, enter, space)
+ * - slash (slash, vertical bar, backslash)
+ * - open/close characters (curly, parenthesis, square, angle)
+ * - quotes characters
+ *
+ * And some characters even have a differentiation between the space-even and space-uneven characters
+ */
 export const TEMPLATE_ITEMS = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 0,
     1n, 2n, 3n, 4n, 5n, 6n, 7n, 8n, 9n, 0n,
+    '１', '２', '３', '４', '５', '６', '７', '８', '９', '０',
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
     'à', 'â', 'á', 'ä', 'è', 'ê', 'é', 'ë', 'í', 'î', 'ì', 'ï', 'ó', 'ô', 'ò', 'ö', 'œ', 'ú', 'û', 'ù', 'ü', 'ç',
     'À', 'Â', 'Á', 'Ä', 'È', 'Ê', 'É', 'Ë', 'Í', 'Î', 'Ì', 'Ï', 'Ó', 'Ô', 'Ò', 'Ö', 'Œ', 'Ú', 'Û', 'Ù', 'Ü', 'Ç',
+    'ａ', 'ｂ', 'ｃ', 'ｄ', 'ｅ', 'ｆ', 'ｇ', 'ｈ', 'ｉ', 'ｊ',
+    'Ａ', 'Ｂ', 'Ｃ', 'Ｄ', 'Ｅ', 'Ｆ', 'Ｇ', 'Ｈ', 'Ｉ', 'Ｊ',
+    '\t', '\n', ' ',
+    '/', '／', '|', '｜', '\\',
+    ':', '：', ';',  '；', ',', '，', '.', '．',
+    '{', '}', '｛', '｝', '(', ')', '[', ']', '［', '］', '⟨', '⟩', '⟪', '⟫', '<', '>',
+    '«', '»', '"', '\'',
     true, false,
 ] as const
 export const everySimplisticInstances = [
