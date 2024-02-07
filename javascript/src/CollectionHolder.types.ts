@@ -10,6 +10,8 @@ import type {CollectionHolder}                  from "./CollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
 import type {GenericMinimalistCollectionHolder} from "./GenericMinimalistCollectionHolder"
 import type {LazyGenericCollectionHolder}       from "./LazyGenericCollectionHolder"
+import type {MinimalistCollectionHolder}        from "./MinimalistCollectionHolder"
+import type {PossibleIterable}                  from "./iterable/types"
 
 /** An alias-type of {@link CollectionHolder}[{@link Symbol.toStringTag}] */
 export type CollectionHolderName = typeof CollectionConstants["COLLECTION_HOLDER_TO_STRING_TAG"]
@@ -21,6 +23,18 @@ export type CollectionHolderName = typeof CollectionConstants["COLLECTION_HOLDER
 export type PossibleCollectionHolderConstructor = | typeof GenericMinimalistCollectionHolder
                                                   | typeof GenericCollectionHolder
                                                   | typeof LazyGenericCollectionHolder
+
+
+/**
+ * Every possible type of {@link Iterable} with the size field
+ * (size, length or count) or the {@link MinimalistCollectionHolder}
+ *
+ * @see PossibleIterable
+ * @see PossibleIterableWithSize
+ * @see CollectionHolder
+ * @see MinimalistCollectionHolder
+ */
+export type PossibleIterableOrCollection<T, > = | PossibleIterable<T> | MinimalistCollectionHolder<T>
 
 
 /**
