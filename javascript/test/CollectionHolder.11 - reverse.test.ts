@@ -21,7 +21,8 @@ describe("CollectionHolderTest (reverse)", () => {
     describe("aliases", () => {
         describe("GenericCollectionHolder", () => {
             test("toReversed", () => {
-                const instance = new class GenericCollectionHolder_ToReversedTest extends GenericCollectionHolder {
+                const instance = new class GenericCollectionHolder_ToReversedTest
+                    extends GenericCollectionHolder {
 
                     public amountOfCall = 0
                     public override toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<unknown> {
@@ -34,7 +35,8 @@ describe("CollectionHolderTest (reverse)", () => {
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("reversed", () => {
-                const instance = new class GenericCollectionHolder_ReversedTest extends GenericCollectionHolder {
+                const instance = new class GenericCollectionHolder_ReversedTest
+                    extends GenericCollectionHolder {
 
                     public amountOfCall = 0
                     public override reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<unknown> {
@@ -49,7 +51,8 @@ describe("CollectionHolderTest (reverse)", () => {
         },)
         describe("LazyGenericCollectionHolder", () => {
             test("toReversed", () => {
-                const instance = new class LazyGenericCollectionHolder_ToReversedTest extends LazyGenericCollectionHolder {
+                const instance = new class LazyGenericCollectionHolder_ToReversedTest
+                    extends LazyGenericCollectionHolder {
 
                     public amountOfCall = 0
                     public override toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<unknown> {
@@ -62,7 +65,8 @@ describe("CollectionHolderTest (reverse)", () => {
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("reversed", () => {
-                const instance = new class LazyGenericCollectionHolder_ReversedTest extends LazyGenericCollectionHolder {
+                const instance = new class LazyGenericCollectionHolder_ReversedTest
+                    extends LazyGenericCollectionHolder {
 
                     public amountOfCall = 0
                     public override reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<unknown> {
