@@ -8,8 +8,8 @@
 import {everySimplisticInstances, sizeValues} from "./constantValues"
 import {newCollectionInstance}                from "./newCollectionInstance"
 import {GenericMinimalistCollectionHolder}    from "../src/GenericMinimalistCollectionHolder"
-import {LazyGenericCollectionHolder}          from "../src/LazyGenericCollectionHolder"
 import {GenericCollectionHolder}              from "../src/GenericCollectionHolder"
+import {LazyGenericCollectionHolder}          from "../src/LazyGenericCollectionHolder"
 
 describe("CollectionHolderTest (size)", () => {
 

@@ -13,8 +13,8 @@ import type {Nullable}         from "../src/general type"
 import type {CollectionHolder} from "../src/CollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
-import {LazyGenericCollectionHolder}               from "../src/LazyGenericCollectionHolder"
 import {GenericCollectionHolder}                   from "../src/GenericCollectionHolder"
+import {LazyGenericCollectionHolder}               from "../src/LazyGenericCollectionHolder"
 
 describe("CollectionHolderTest (reverse)", () => {
 
