@@ -30,6 +30,7 @@ export const sizeValues = () => [
  * - slash (slash, vertical bar, backslash)
  * - open/close characters (curly, parenthesis, square, angle)
  * - quotes characters
+ * - booleans (true and false)
  *
  * And some characters even have a differentiation between the space-even and space-uneven characters
  */
