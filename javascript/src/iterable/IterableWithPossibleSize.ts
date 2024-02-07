@@ -18,7 +18,7 @@ import type {Nullable} from "../general type"
  * @see IterableWithLength
  * @see IterableWithCount
  */
-export interface IterableWithPossibleSize<T, >
+export interface IterableWithPossibleSize<out T, >
     extends Iterable<T> {
 
     /** The value equivalent to the amount of iteration to do */

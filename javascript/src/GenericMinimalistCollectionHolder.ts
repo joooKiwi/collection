@@ -5,13 +5,13 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable}                 from "./general type"
-import type {PossibleIterable}         from "./iterable/types"
-import type {IterableWithCount}        from "./iterable/IterableWithCount"
-import type {IterableWithLength}       from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize} from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}         from "./iterable/IterableWithSize"
-import type {CollectionIterator}       from "./iterator/CollectionIterator"
+import type {PossibleIterableOrCollection} from "./CollectionHolder.types"
+import type {Nullable}                     from "./general type"
+import type {IterableWithCount}            from "./iterable/IterableWithCount"
+import type {IterableWithLength}           from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}     from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}             from "./iterable/IterableWithSize"
+import type {CollectionIterator}           from "./iterator/CollectionIterator"
 
 import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
 import {CollectionConstants}                       from "./CollectionConstants"
@@ -22,7 +22,7 @@ import {isCollectionIterator}                      from "./method/isCollectionIt
 import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
 
 
-export class GenericMinimalistCollectionHolder<const out T = unknown, const REFERENCE extends PossibleIterable<T> = PossibleIterable<T>, >
+export class GenericMinimalistCollectionHolder<const out T = unknown, const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>, >
     extends AbstractMinimalistCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------

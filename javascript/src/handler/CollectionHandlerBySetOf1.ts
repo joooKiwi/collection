@@ -13,7 +13,7 @@ import {EmptyCollectionHolderException}            from "../exception/EmptyColle
 import {CollectionHandlerBySet}                    from "./CollectionHandlerBySet"
 
 /** An implementation of a {@link CollectionHolder} for an {@link ReadonlySet set} or one element */
-export class CollectionHandlerBySetOf1<const out T = unknown, const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerBySetOf1<const out T = unknown, const out REFERENCE extends ReadonlySet<T> = ReadonlySet<T>, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends CollectionHandlerBySet<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Constructor --------------------

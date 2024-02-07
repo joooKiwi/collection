@@ -5,15 +5,14 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullOr}                  from "./general type"
-import type {PossibleIterable}                  from "./iterable/types"
-import type {IndexWithReturnCallback, ObjectOf} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}        from "./MinimalistCollectionHolder"
-import type {IterableWithCount}                 from "./iterable/IterableWithCount"
-import type {IterableWithLength}                from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}          from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                  from "./iterable/IterableWithSize"
-import type {CollectionIterator}                from "./iterator/CollectionIterator"
+import type {Nullable, NullOr}                                                from "./general type"
+import type {IndexWithReturnCallback, ObjectOf, PossibleIterableOrCollection} from "./CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                      from "./MinimalistCollectionHolder"
+import type {IterableWithCount}                                               from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                              from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                        from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                              from "./iterator/CollectionIterator"
 
 import {AbstractCollectionHolder}                  from "./AbstractCollectionHolder"
 import {CollectionConstants}                       from "./CollectionConstants"
@@ -38,7 +37,7 @@ import {toWeakSet}                                 from "./method/toWeakSet"
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
  */
-export class GenericCollectionHolder<const T = unknown, const REFERENCE extends | PossibleIterable<T> | MinimalistCollectionHolder<T> = | PossibleIterable<T> | MinimalistCollectionHolder<T>, >
+export class GenericCollectionHolder<const out T = unknown, const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------

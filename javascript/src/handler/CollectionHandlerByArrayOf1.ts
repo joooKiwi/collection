@@ -13,7 +13,7 @@ import {EmptyCollectionHolderException}            from "../exception/EmptyColle
 import {CollectionHandlerByArray}                  from "./CollectionHandlerByArray"
 
 /** An implementation of a {@link CollectionHolder} for an {@link ReadonlyArray array} of one element */
-export class CollectionHandlerByArrayOf1<const out T = unknown, const REFERENCE extends readonly [T,] = readonly [T,], const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByArrayOf1<const out T = unknown, const out REFERENCE extends readonly [T,] = readonly [T,], const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends CollectionHandlerByArray<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Constructor --------------------

@@ -5,12 +5,12 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}           from "../CollectionHolder"
-import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
-import type {CollectionHandler}          from "./CollectionHandler"
-import type {ValueHolder}                from "./ValueHolder"
+import type {CollectionHolder}             from "../CollectionHolder"
+import type {PossibleIterableOrCollection} from "../CollectionHolder.types"
+import type {CollectionHandler}            from "./CollectionHandler"
+import type {ValueHolder}                  from "./ValueHolder"
 
-export abstract class AbstractCollectionHandler<out T = unknown, const REFERENCE extends | Iterable<T> | MinimalistCollectionHolder<T> = | Iterable<T> | MinimalistCollectionHolder<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export abstract class AbstractCollectionHandler<const out T = unknown, const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     implements CollectionHandler<T> {
 
     //#region -------------------- Fields --------------------

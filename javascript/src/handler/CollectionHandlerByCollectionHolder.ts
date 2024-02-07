@@ -14,7 +14,7 @@ import {EmptyCollectionHolderException}            from "../exception/EmptyColle
 import {AbstractCollectionHandler}                 from "./AbstractCollectionHandler"
 
 /** An implementation of a {@link CollectionHandler} for a {@link MinimalistCollectionHolder} */
-export class CollectionHandlerByCollectionHolder<out T = unknown, const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByCollectionHolder<const out T = unknown, const out REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------
