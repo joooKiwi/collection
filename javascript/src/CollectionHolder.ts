@@ -1302,12 +1302,37 @@ export interface CollectionHolder<out T = unknown, >
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
-     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed Array.toReverse()
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse MutableArray.reverse()
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed Array.toReversed()
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reversed.html Kotlin reversed()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
      * @canReceiveNegativeValue
      */
+    toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+
+    /**
+     * Reverse the current {@link CollectionHolder collection} from a range (if provided)
+     *
+     * @alias toReverse
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @canReceiveNegativeValue
+     */
     toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+
+    /**
+     * Reverse the current {@link CollectionHolder collection} from a range (if provided)
+     *
+     * @alias toReverse
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+     * @canReceiveNegativeValue
+     */
+    reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
 
     //#endregion -------------------- Conversion methods (toReverse) --------------------
     //#region -------------------- Conversion methods (toString) --------------------

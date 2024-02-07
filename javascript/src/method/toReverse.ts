@@ -25,6 +25,7 @@ import {startingIndex as startingIndexFunction}    from "./startingIndex"
  * @param limit      The maximum index
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @see Array.reverse
+ * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reverse.html Kotlin reverse()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue

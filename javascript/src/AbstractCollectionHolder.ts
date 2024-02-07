@@ -545,8 +545,16 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
 
-    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+    public toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
         return toReverse(this, fromIndex, toIndex, limit,)
+    }
+
+    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+        return this.toReverse(fromIndex, toIndex, limit,)
+    }
+
+    public reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+        return this.toReverse(fromIndex, toIndex, limit,)
     }
 
 

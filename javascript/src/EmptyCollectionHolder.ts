@@ -346,11 +346,14 @@ export class EmptyCollectionHolder
     public toMutableMap(): Map<never, never> { return new Map<never, never>() }
 
 
-    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
-    public toReversed() {
-        return this as unknown as CollectionHolder<never>
-    }
+    public toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
+    public toReverse() { return this as unknown as CollectionHolder<never> }
 
+    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
+    public toReversed() { return this as unknown as CollectionHolder<never> }
+
+    public reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
+    public reversed() { return this as unknown as CollectionHolder<never> }
 
     //#region -------------------- Conversion methods (toString) --------------------
 
