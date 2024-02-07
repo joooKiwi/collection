@@ -6,8 +6,8 @@
  ******************************************************************************/
 
 import {AB, AB_AB, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, EMPTY, NULL_ABCD, UNDEFINED_ABCD} from "./constantCollections"
-import {everySimplisticInstances}                                                from "./constantValues"
-import {newCollectionInstance, newSimplisticCollectionInstance}                                  from "./newCollectionInstance"
+import {everySimplisticInstances}                                                                from "./constantValues"
+import {newCollectionInstance, newMinimalistCollectionInstance}                                  from "./newCollectionInstance"
 
 import {GenericMinimalistCollectionHolder}         from "../src/GenericMinimalistCollectionHolder"
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
@@ -20,11 +20,11 @@ describe.each(everySimplisticInstances,)("%s", ({value: instance,},) => {
     //#region -------------------- Instances --------------------
 
     const EMPTY_INSTANCE = () => newCollectionInstance(instance, EMPTY,)
-    const EMPTY_SIMPLISTIC_INSTANCE = () => newSimplisticCollectionInstance(instance, EMPTY,)
+    const EMPTY_SIMPLISTIC_INSTANCE = () => newMinimalistCollectionInstance(instance, EMPTY,)
     const AB_INSTANCE = () => newCollectionInstance(instance, AB,)
-    const AB_SIMPLISTIC_INSTANCE = () => newSimplisticCollectionInstance(instance, AB,)
+    const AB_SIMPLISTIC_INSTANCE = () => newMinimalistCollectionInstance(instance, AB,)
     const ABCD_INSTANCE = () => newCollectionInstance(instance, ABCD,)
-    const ABCD_SIMPLISTIC_INSTANCE = () => newSimplisticCollectionInstance(instance, ABCD,)
+    const ABCD_SIMPLISTIC_INSTANCE = () => newMinimalistCollectionInstance(instance, ABCD,)
     const AB_AB_INSTANCE = () => newCollectionInstance(instance, AB_AB,)
     const ABCD_ABCD_INSTANCE = () => newCollectionInstance(instance, ABCD_ABCD,)
     const NULL_ABCD_INSTANCE = () => newCollectionInstance(instance, NULL_ABCD,)

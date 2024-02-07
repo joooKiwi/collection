@@ -50,7 +50,7 @@ export function newCollectionInstance<const T = unknown, >(instance: PossibleCol
  * @param instance The instance to create to receive the {@link array}
  * @param array The array to send to the {@link instance}
  */
-export function newSimplisticCollectionInstance<const T = unknown, >(instance: PossibleCollectionHolderConstructor,
+export function newMinimalistCollectionInstance<const T = unknown, >(instance: PossibleCollectionHolderConstructor,
                                                                      array: readonly T[],): MinimalistCollectionHolder<T> {
     // @ts-ignore
     return new instance(array,)

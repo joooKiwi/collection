@@ -6,15 +6,15 @@
  ******************************************************************************/
 
 import {everySimplisticInstances, sizeValues}                   from "./constantValues"
-import {newCollectionInstance, newSimplisticCollectionInstance} from "./newCollectionInstance"
+import {newCollectionInstance, newMinimalistCollectionInstance} from "./newCollectionInstance"
 import {GenericMinimalistCollectionHolder}                      from "../src/GenericMinimalistCollectionHolder"
 
 describe("CollectionHolderTest (size)", () =>
 describe.each(everySimplisticInstances,)("%s", ({value: instance,},) =>
 describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
     if (instance === GenericMinimalistCollectionHolder) {
-        test("size",       () => expect(newSimplisticCollectionInstance(instance, array,).size,).toEqual(size,),)
-        test("isEmpty",    () => expect(newSimplisticCollectionInstance(instance, array,).isEmpty,).toBe(size == 0,),)
+        test("size",       () => expect(newMinimalistCollectionInstance(instance, array,).size,).toEqual(size,),)
+        test("isEmpty",    () => expect(newMinimalistCollectionInstance(instance, array,).isEmpty,).toBe(size == 0,),)
         return
     }
     test("size",       () => expect(newCollectionInstance(instance, array,).size,).toEqual(size,),)
