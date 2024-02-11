@@ -87,6 +87,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     #weakSet?: Readonly<WeakSet<ObjectOf<T>>>
     #map?: ReadonlyMap<number, T>
 
+    #isEmpty?: boolean
     #hasNull?: boolean
 
     //#endregion -------------------- Fields --------------------
@@ -107,6 +108,10 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.size
     }
 
+
+    public get isEmpty(): boolean {
+        return this.#isEmpty ??= this.size == 0
+    }
 
     public get isNotEmpty(): boolean {
         return !this.isEmpty
