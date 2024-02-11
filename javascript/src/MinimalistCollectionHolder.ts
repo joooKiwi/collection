@@ -20,13 +20,6 @@ export interface MinimalistCollectionHolder<out T = unknown, > {
     get size(): number
 
     /**
-     * The {@link MinimalistCollectionHolder collection} has no values
-     *
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/is-empty.html Kotlin isEmpty()
-     */
-    get isEmpty(): boolean
-
-    /**
      * Get the element at the specified index in the {@link MinimalistCollectionHolder collection}
      *
      * @param index The index to retrieve a value

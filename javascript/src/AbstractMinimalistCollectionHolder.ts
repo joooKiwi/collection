@@ -17,23 +17,10 @@ import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
 export abstract class AbstractMinimalistCollectionHolder<const out T = unknown, >
     implements MinimalistCollectionHolder<T> {
 
-    //#region -------------------- Fields & constructor --------------------
-
-    #isEmpty?: boolean
-
     protected constructor() {}
-
-    //#endregion -------------------- Fields & constructor --------------------
-    //#region -------------------- Methods & getter methods --------------------
 
     public abstract get size(): number
 
-    public get isEmpty(): boolean {
-        return this.#isEmpty ??= this.size !== 0
-    }
-
     public abstract get(index: number,): T
-
-    //#endregion -------------------- Methods & getter methods --------------------
 
 }
