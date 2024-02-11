@@ -132,7 +132,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link MinimalistCollectionHolder} */
     public static get EVERY_MINIMALIST_COLLECTION_METHODS(): CollectionHolder<keyof MinimalistCollectionHolder> {
-        return CollectionConstants.#EVERY_MINIMALIST_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "isEmpty", "get",] as const,),)
+        return CollectionConstants.#EVERY_MINIMALIST_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "get",],),)
     }
     /** Every method applicable to a {@link CollectionHolder} */
     public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> {
