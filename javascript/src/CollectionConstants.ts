@@ -71,28 +71,34 @@ export class CollectionConstants {
     public static get EMPTY_COLLECTION_HOLDER(): EmptyCollectionHolder {
         return CollectionConstants.#EMPTY_COLLECTION_HOLDER ??= Object.freeze(EmptyCollectionHolder.get,)
     }
+
     /** An {@link EmptyCollectionHolder} instance in a {@link Lazy} */
     public static get LAZY_EMPTY_COLLECTION_HOLDER(): Lazy<EmptyCollectionHolder> {
         return this.#LAZY_EMPTY_COLLECTION_HOLDER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HOLDER,)
     }
 
+
     /** An {@link EmptyCollectionHandler} instance */
     public static get EMPTY_COLLECTION_HANDLER(): EmptyCollectionHandler {
         return CollectionConstants.#EMPTY_COLLECTION_HANDLER ??= Object.freeze(EmptyCollectionHandler.get,)
     }
+
     /** An {@link EmptyCollectionHandler} instance in a {@link Lazy} */
     public static get LAZY_EMPTY_COLLECTION_HANDLER(): Lazy<EmptyCollectionHandler> {
         return this.#LAZY_EMPTY_COLLECTION_HANDLER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HANDLER,)
     }
 
+
     /** An {@link EmptyCollectionIterator} instance */
     public static get EMPTY_COLLECTION_ITERATOR(): EmptyCollectionIterator {
         return CollectionConstants.#EMPTY_COLLECTION_ITERATOR ??= Object.freeze(EmptyCollectionIterator.get,)
     }
+
     /** An {@link EmptyCollectionIterator} instance in a {@link Lazy} */
     public static get LAZY_EMPTY_COLLECTION_ITERATOR(): Lazy<EmptyCollectionIterator> {
         return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_ITERATOR,)
     }
+
 
     /** An empty {@link String} */
     public static readonly EMPTY_STRING = Object.freeze('',) as ''
@@ -134,6 +140,7 @@ export class CollectionConstants {
     public static get EVERY_MINIMALIST_COLLECTION_METHODS(): CollectionHolder<keyof MinimalistCollectionHolder> {
         return CollectionConstants.#EVERY_MINIMALIST_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "get",],),)
     }
+
     /** Every method applicable to a {@link CollectionHolder} */
     public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> {
         return CollectionConstants.#EVERY_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
@@ -162,6 +169,7 @@ export class CollectionConstants {
             "toString", "toLocaleString",
         ] as const,),)
     }
+
     /** Every method applicable to a {@link CollectionIterator} */
     public static get EVERY_ITERATOR_METHODS(): CollectionHolder<keyof CollectionIterator> {
         return CollectionConstants.#EVERY_ITERATOR_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
@@ -185,18 +193,17 @@ export class CollectionConstants {
 
     /** The {@link Object.constructor constructor} reference of a {@link GenericCollectionHolder} */
     public static get GenericCollectionHolder(): typeof GenericCollectionHolder {
-        return CollectionConstants.#GenericCollectionHolder ??= require("./GenericCollectionHolder").GenericCollectionHolder
+        return CollectionConstants.#GenericCollectionHolder ??= require("./GenericCollectionHolder",).GenericCollectionHolder
     }
-
 
     /** The {@link Object.constructor constructor} reference of a {@link GenericMinimalistCollectionHolder} */
     public static get GenericMinimalistCollectionHolder(): typeof GenericMinimalistCollectionHolder {
-        return CollectionConstants.#GenericMinimalistCollectionHolder ??= require("./GenericMinimalistCollectionHolder").GenericMinimalistCollectionHolder
+        return CollectionConstants.#GenericMinimalistCollectionHolder ??= require("./GenericMinimalistCollectionHolder",).GenericMinimalistCollectionHolder
     }
 
     /** The {@link Object.constructor constructor} reference of a {@link LazyGenericCollectionHolder} */
     public static get LazyGenericCollectionHolder(): typeof LazyGenericCollectionHolder {
-        return CollectionConstants.#LazyGenericCollectionHolder ??= require("./LazyGenericCollectionHolder").LazyGenericCollectionHolder
+        return CollectionConstants.#LazyGenericCollectionHolder ??= require("./LazyGenericCollectionHolder",).LazyGenericCollectionHolder
     }
 
     //#endregion -------------------- Constructor references --------------------
