@@ -315,7 +315,7 @@ export class EmptyCollectionHolder
 
     public [Symbol.iterator](): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
-    public get [Symbol.toStringTag](): CollectionHolderName { return CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG }
+    public get [Symbol.toStringTag](): CollectionHolderName { return "CollectionHolder" }
 
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------

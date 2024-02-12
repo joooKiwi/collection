@@ -65,7 +65,7 @@ export class EmptyCollectionIterator
 
     public [Symbol.iterator](): this { return this }
 
-    public get [Symbol.toStringTag](): CollectionIteratorName { return CollectionConstants.COLLECTION_ITERATOR_TO_STRING_TAG }
+    public get [Symbol.toStringTag](): CollectionIteratorName { return "CollectionIterator" }
 
     //#endregion -------------------- Javascript methods --------------------
 

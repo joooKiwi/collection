@@ -149,7 +149,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     }
 
     public get [Symbol.toStringTag](): CollectionIteratorName {
-        return CollectionConstants.COLLECTION_ITERATOR_TO_STRING_TAG
+        return "CollectionIterator"
     }
 
     //#endregion -------------------- Javascript methods --------------------

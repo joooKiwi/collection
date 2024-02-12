@@ -11,7 +11,6 @@ import type {Nullable}                   from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {NonEmptyCollectionHolder}   from "../NonEmptyCollectionHolder"
 
-import {CollectionConstants}                          from "../CollectionConstants"
 import {maximumIndex, maximumIndexByCollectionHolder} from "./maximumIndex"
 
 //#region -------------------- Facade method --------------------
@@ -46,34 +45,34 @@ export function join<const T, >(collection: Nullable<MinimalistCollectionHolder<
 
     if (transform == null) {
         if (limit == null)
-            return __withNothing(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size,)
+            return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size,)
 
         if (size === limit)
-            return __withNothing(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size,)
-        return __withTruncated(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, limit, truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED,)
+            return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
+        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', limit, truncated ?? '…',)
     }
 
     if (limit == null) {
         if (transform.length == 1)
-            return __with1Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size, transform as (value: T,) => string,)
+            return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as (value: T,) => string,)
         if (transform.length >= 2)
-            return __with2Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size, transform,)
-        return __with0Argument(separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size, transform as () => string,)
+            return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform,)
+        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as () => string,)
     }
 
     if (size === limit) {
         if (transform.length == 1)
-            return __with1Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size, transform as (value: T,) => string,)
+            return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
         if (transform.length >= 2)
-            return __with2Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size, transform,)
-        return __with0Argument(separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size, transform as () => string,)
+            return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform,)
+        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
     }
 
     if (transform.length == 1)
-        return __withTruncatedAnd1Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, maximumIndex(collection, limit, size,) ?? size, truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED, transform as (value: T,) => string,)
+        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex(collection, limit, size,) ?? size, truncated ?? '…', transform as (value: T,) => string,)
     if (transform.length >= 2)
-        return __withTruncatedAnd2Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, maximumIndex(collection, limit, size,) ?? size, truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED, transform,)
-    return __withTruncatedAnd0Argument(separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, maximumIndex(collection, limit, size,) ?? size, truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED, transform as () => string,)
+        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex(collection, limit, size,) ?? size, truncated ?? '…', transform,)
+    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex(collection, limit, size,) ?? size, truncated ?? '…', transform as () => string,)
 }
 
 /**
@@ -104,36 +103,36 @@ export function joinByCollectionHolder<const T, >(collection: Nullable<Collectio
 
     if (transform == null) {
         if (limit == null)
-            return __withNothing(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size,)
+            return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size,)
 
         const size = collection.size
         if (size === limit)
-            return __withNothing(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size,)
-        return __withTruncated(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, limit, truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED,)
+            return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
+        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', limit, truncated ?? '…',)
     }
 
     if (limit == null) {
         if (transform.length == 1)
-            return __with1Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size, transform as (value: T,) => string,)
+            return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as (value: T,) => string,)
         if (transform.length >= 2)
-            return __with2Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size, transform,)
-        return __with0Argument(separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, collection.size, transform as () => string,)
+            return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform,)
+        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as () => string,)
     }
 
     const size = collection.size
     if (size === limit) {
         if (transform.length == 1)
-            return __with1Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size, transform as (value: T,) => string,)
+            return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
         if (transform.length >= 2)
-            return __with2Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size, transform,)
-        return __with0Argument(separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, size, transform as () => string,)
+            return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform,)
+        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
     }
 
     if (transform.length == 1)
-        return __withTruncatedAnd1Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, maximumIndexByCollectionHolder(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED, transform as (value: T,) => string,)
+        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndexByCollectionHolder(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? '…', transform as (value: T,) => string,)
     if (transform.length >= 2)
-        return __withTruncatedAnd2Argument(collection, separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, maximumIndexByCollectionHolder(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED, transform,)
-    return __withTruncatedAnd0Argument(separator ?? CollectionConstants.DEFAULT_JOIN_SEPARATOR, prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX, postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX, maximumIndexByCollectionHolder(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? CollectionConstants.DEFAULT_JOIN_TRUNCATED, transform as () => string,)
+        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndexByCollectionHolder(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? '…', transform,)
+    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndexByCollectionHolder(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? '…', transform as () => string,)
 }
 
 //#endregion -------------------- Facade method --------------------
@@ -148,7 +147,7 @@ export function joinByCollectionHolder<const T, >(collection: Nullable<Collectio
  * @see joinByCollectionHolder
  */
 export function prefixAndPostfixOnly(prefix: Nullable<string> = null, postfix: Nullable<string> = null,): string {
-    return `${prefix ?? CollectionConstants.DEFAULT_JOIN_PREFIX}${postfix ?? CollectionConstants.DEFAULT_JOIN_POSTFIX}`
+    return `${prefix ?? '['}${postfix ?? ']'}`
 }
 
 //#endregion -------------------- Prefix & postfix method --------------------
