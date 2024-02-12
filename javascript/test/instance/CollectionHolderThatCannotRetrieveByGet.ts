@@ -1,15 +1,15 @@
 /*******************************************************************************
- Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
 
  This project is free to use.
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}        from "../src/CollectionHolder"
-import type {IndexWithReturnCallback} from "../src/CollectionHolder.types"
-import type {NullOr}                  from "../src/general type"
+import type {CollectionHolder}        from "../../src/CollectionHolder"
+import type {IndexWithReturnCallback} from "../../src/CollectionHolder.types"
+import type {NullOr}                  from "../../src/general type"
 
-import {AbstractCollectionHolder} from "../src/AbstractCollectionHolder"
+import {AbstractCollectionHolder} from "../../src/AbstractCollectionHolder"
 
 export class CollectionHolderThatCannotRetrieveByGet<const out T = unknown, >
     extends AbstractCollectionHolder<T> {

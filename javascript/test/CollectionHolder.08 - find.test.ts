@@ -7,10 +7,10 @@
 
 import type {CollectionHolder} from "../src/CollectionHolder"
 
-import {CollectionHolderThatCannotRetrieveByGet} from "./CollectionHolderThatCannotRetrieveByGet"
 import {AB, ABCD_ABCD}                           from "./constantCollections"
 import {everyInstances}                          from "./constantValues"
 import {newCollectionInstance}                   from "./newCollectionInstance"
+import {CollectionHolderThatCannotRetrieveByGet} from "./instance/CollectionHolderThatCannotRetrieveByGet"
 
 describe("CollectionHolderTest (find)", () =>
 describe.each(everyInstances,)("%s", ({value: instance,},) => {

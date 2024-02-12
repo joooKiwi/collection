@@ -5,10 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {CollectionHolderThatCannotRetrieveByGet} from "./CollectionHolderThatCannotRetrieveByGet"
 import {AB, ABCD, EMPTY}                         from "./constantCollections"
 import {everyInstances}                          from "./constantValues"
 import {newCollectionInstance}                   from "./newCollectionInstance"
+import {CollectionHolderThatCannotRetrieveByGet} from "./instance/CollectionHolderThatCannotRetrieveByGet"
 
 describe("CollectionHolderTest (all / any / none)", () =>
 describe.each(everyInstances,)("%s", ({value: instance,},) => {
