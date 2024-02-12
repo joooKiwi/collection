@@ -300,7 +300,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
             this.#reference = lazyOf(reference,)
             this.#handler = lazy(() => {
                 const collection = reference.collection
-                if (isCollectionHolder(collection,))
+                if (isCollectionHolder<T>(collection,))
                     return new CollectionHandlerByCollectionHolder(this, collection,)
                 return new CollectionHandlerByMinimalistCollectionHolder(this, collection,)
             },)
@@ -470,7 +470,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
                     return new CollectionHandlerByMinimalistCollectionHolder(this, referenceFound,)
                 if (isCollectionIterator<T>(referenceFound,)) {
                     const collection = referenceFound.collection
-                    if (isCollectionHolder(collection,))
+                    if (isCollectionHolder<T>(collection,))
                         return new CollectionHandlerByCollectionHolder(this, collection,)
                     return new CollectionHandlerByMinimalistCollectionHolder(this, collection,)
                 }
