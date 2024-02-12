@@ -19,23 +19,25 @@ import type {IterableWithPossibleSize}                                        fr
 import type {IterableWithSize}                                                from "./iterable/IterableWithSize"
 import type {CollectionIterator}                                              from "./iterator/CollectionIterator"
 
-import {AbstractCollectionHolder}            from "./AbstractCollectionHolder"
-import {CollectionConstants}                 from "./CollectionConstants"
-import {CollectionHandlerByArrayOf1}         from "./handler/CollectionHandlerByArrayOf1"
-import {CollectionHandlerByArray}            from "./handler/CollectionHandlerByArray"
-import {CollectionHandlerByCollectionHolder} from "./handler/CollectionHandlerByCollectionHolder"
-import {CollectionHandlerByIterable}         from "./handler/CollectionHandlerByIterable"
-import {CollectionHandlerByIterableWithSize} from "./handler/CollectionHandlerByIterableWithSize"
-import {CollectionHandlerBySet}              from "./handler/CollectionHandlerBySet"
-import {CollectionHandlerBySetOf1}           from "./handler/CollectionHandlerBySetOf1"
-import {hasNull}                             from "./method/hasNull"
-import {isCollectionIterator}                from "./method/isCollectionIterator"
-import {isMinimalistCollectionHolder}        from "./method/isMinimalistCollectionHolder"
-import {objectValuesMap}                     from "./method/objectValuesMap"
-import {toArray}                             from "./method/toArray"
-import {toMap}                               from "./method/toMap"
-import {toSet}                               from "./method/toSet"
-import {toWeakSet}                           from "./method/toWeakSet"
+import {AbstractCollectionHolder}                      from "./AbstractCollectionHolder"
+import {CollectionConstants}                           from "./CollectionConstants"
+import {CollectionHandlerByArrayOf1}                   from "./handler/CollectionHandlerByArrayOf1"
+import {CollectionHandlerByArray}                      from "./handler/CollectionHandlerByArray"
+import {CollectionHandlerByCollectionHolder}           from "./handler/CollectionHandlerByCollectionHolder"
+import {CollectionHandlerByIterable}                   from "./handler/CollectionHandlerByIterable"
+import {CollectionHandlerByIterableWithSize}           from "./handler/CollectionHandlerByIterableWithSize"
+import {CollectionHandlerByMinimalistCollectionHolder} from "./handler/CollectionHandlerByMinimalistCollectionHolder"
+import {CollectionHandlerBySet}                        from "./handler/CollectionHandlerBySet"
+import {CollectionHandlerBySetOf1}                     from "./handler/CollectionHandlerBySetOf1"
+import {hasNull}                                       from "./method/hasNull"
+import {isCollectionHolder}                            from "./method/isCollectionHolder"
+import {isCollectionIterator}                          from "./method/isCollectionIterator"
+import {isMinimalistCollectionHolder}                  from "./method/isMinimalistCollectionHolder"
+import {objectValuesMap}                               from "./method/objectValuesMap"
+import {toArray}                                       from "./method/toArray"
+import {toMapBy}                                       from "./method/toMap"
+import {toSetBy}                                       from "./method/toSet"
+import {toWeakSet}                                     from "./method/toWeakSet"
 
 /**
  * A {@link CollectionHolder} having the values associated to it, but lazily retrieved.
@@ -183,7 +185,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
-        if (isMinimalistCollectionHolder<T>(reference,)) {
+        if (isCollectionHolder<T>(reference,)) {
             this.#reference = lazyOf(reference,)
             this.#handler = lazy(() => new CollectionHandlerByCollectionHolder(this, reference,),)
             this.#isEmpty = lazy(() => {
@@ -238,13 +240,100 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
             return
         }
 
-        if (isCollectionIterator<T>(reference)) {
+        if (isMinimalistCollectionHolder<T>(reference,)) {
             this.#reference = lazyOf(reference,)
-            this.#handler = lazy(() => new CollectionHandlerByCollectionHolder(this, reference.collection,),)
+            this.#handler = lazy(() => new CollectionHandlerByMinimalistCollectionHolder(this, reference,),)
             this.#isEmpty = lazy(() => {
+                const size = reference.size
                 //#region -------------------- Late-initialization (empty) --------------------
 
-                if (reference.collection.isEmpty) {
+                if (size == 0) {
+                    this.#size = CommonLazy.ZERO_NUMBER
+                    this.#isEmpty = CommonLazy.TRUE
+                    this.#hasNull = false
+                    this.#array = CollectionConstants.EMPTY_ARRAY
+                    this.#set = CollectionConstants.EMPTY_SET
+                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                    this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
+                    return true
+                }
+
+                //#endregion -------------------- Late-initialization (empty) --------------------
+                //#region -------------------- Late-initialization (non-empty) --------------------
+
+                this.#isEmpty = CommonLazy.FALSE
+                return false
+
+                //#endregion -------------------- Late-initialization (non-empty) --------------------
+            },)
+            this.#size = lazy(() => {
+                const size = reference.size
+                //#region -------------------- Late-initialization (empty) --------------------
+
+                if (size == 0) {
+                    this.#size = CommonLazy.ZERO_NUMBER
+                    this.#isEmpty = CommonLazy.TRUE
+                    this.#hasNull = false
+                    this.#array = CollectionConstants.EMPTY_ARRAY
+                    this.#set = CollectionConstants.EMPTY_SET
+                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                    this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
+                    return 0
+                }
+
+                //#endregion -------------------- Late-initialization (empty) --------------------
+                //#region -------------------- Late-initialization (non-empty) --------------------
+
+                this.#isEmpty = CommonLazy.FALSE
+                if (size == 1)
+                    this.#size = CommonLazy.ONE_NUMBER
+                return size
+
+                //#endregion -------------------- Late-initialization (non-empty) --------------------
+            },)
+            return
+        }
+
+        if (isCollectionIterator<T>(reference,)) {
+            this.#reference = lazyOf(reference,)
+            this.#handler = lazy(() => {
+                const collection = reference.collection
+                if (isCollectionHolder(collection,))
+                    return new CollectionHandlerByCollectionHolder(this, collection,)
+                return new CollectionHandlerByMinimalistCollectionHolder(this, collection,)
+            },)
+            this.#isEmpty = lazy(() => {
+                const collection = reference.collection
+                if (isCollectionHolder(collection,)) {
+                    //#region -------------------- Late-initialization (empty) --------------------
+
+                    if (collection.isEmpty) {
+                        this.#size = CommonLazy.ZERO_NUMBER
+                        this.#isEmpty = CommonLazy.TRUE
+                        this.#hasNull = false
+                        this.#array = CollectionConstants.EMPTY_ARRAY
+                        this.#set = CollectionConstants.EMPTY_SET
+                        this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                        this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                        this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
+                        return true
+                    }
+
+                    //#endregion -------------------- Late-initialization (empty) --------------------
+                    //#region -------------------- Late-initialization (non-empty) --------------------
+
+                    this.#isEmpty = CommonLazy.FALSE
+                    return false
+
+                    //#endregion -------------------- Late-initialization (non-empty) --------------------
+                }
+
+                const size = collection.size
+                //#region -------------------- Late-initialization (empty) --------------------
+
+                if (size == 0) {
                     this.#size = CommonLazy.ZERO_NUMBER
                     this.#isEmpty = CommonLazy.TRUE
                     this.#hasNull = false
@@ -375,10 +464,16 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
 
                     //#endregion -------------------- Late-initialization (non-empty) --------------------
                 }
-                if (isMinimalistCollectionHolder<T>(referenceFound,))
+                if (isCollectionHolder<T>(referenceFound,))
                     return new CollectionHandlerByCollectionHolder(this, referenceFound,)
-                if (isCollectionIterator<T>(referenceFound,))
-                    return new CollectionHandlerByCollectionHolder(this, referenceFound.collection,)
+                if (isMinimalistCollectionHolder<T>(referenceFound,))
+                    return new CollectionHandlerByMinimalistCollectionHolder(this, referenceFound,)
+                if (isCollectionIterator<T>(referenceFound,)) {
+                    const collection = referenceFound.collection
+                    if (isCollectionHolder(collection,))
+                        return new CollectionHandlerByCollectionHolder(this, collection,)
+                    return new CollectionHandlerByMinimalistCollectionHolder(this, collection,)
+                }
                 if ("size" in referenceFound || "length" in referenceFound || "count" in referenceFound) {
                     // @ts-ignore: We only retrieve the nullable number
                     const size = (referenceFound?.size ?? referenceFound?.length ?? referenceFound?.count) as Nullable<number>

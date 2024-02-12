@@ -20,6 +20,7 @@ import {CollectionConstants}                       from "./CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {hasNull}                                   from "./method/hasNull"
+import {isCollectionHolder}                        from "./method/isCollectionHolder"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
 import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
 import {objectValuesMap}                           from "./method/objectValuesMap"
@@ -175,11 +176,51 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
-        if (isMinimalistCollectionHolder<T>(reference)) {
+        if (isCollectionHolder<T>(reference,)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 
             if (this.#isEmpty = reference.isEmpty) {
+                this.#hasNull = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (non-empty) --------------------
+
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = reference.get(0,)
+                this.#hasNull = value == null
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
+            const array = [] as T[]
+            let index = size
+            while (index-- > 0)
+                this[index] = array[index] = reference.get(index,)
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
+
+            //#endregion -------------------- Initialization (non-empty) --------------------
+        }
+
+        if (isMinimalistCollectionHolder<T>(reference,)) {
+            const size = this.#size = reference.size
+            //#region -------------------- Initialization (empty) --------------------
+
+            if (this.#isEmpty = size == 0) {
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET

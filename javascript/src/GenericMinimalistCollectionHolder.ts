@@ -19,9 +19,9 @@ import {CollectionConstants}                       from "./CollectionConstants"
 import {MinimalistCollectionHolder}                from "./MinimalistCollectionHolder"
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
+import {isCollectionHolder}                        from "./method/isCollectionHolder"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
 import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
-
 
 export class GenericMinimalistCollectionHolder<const out T = unknown, const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>, >
     extends AbstractMinimalistCollectionHolder<T> {
@@ -128,6 +128,40 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
             let index = -1
             while (++index < size)
                 array[index] = iterator.next().value
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
+
+            //#endregion -------------------- Initialization (non-empty) --------------------
+        }
+
+        if (isCollectionHolder<T>(reference,)) {
+            const size = this.#size = reference.size
+            //#region -------------------- Initialization (empty) --------------------
+
+            if (reference.isEmpty) {
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                return
+            }
+
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (non-empty) --------------------
+
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                this.#array = Object.freeze([reference.get(0,),],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
+            const array = [] as T[]
+            let index = size
+            while (index-- > 0)
+                array[index] = reference.get(index,)
             this.#array = Object.freeze(array,)
             return
 
