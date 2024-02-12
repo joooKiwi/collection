@@ -5,9 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable}                           from "../general type"
-import type {MinimalistCollectionHolder}         from "../MinimalistCollectionHolder"
-import type {NonEmptyMinimalistCollectionHolder} from "../NonEmptyMinimalistCollectionHolder"
+import type {CollectionHolder}           from "../CollectionHolder"
+import type {Nullable}                   from "../general type"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {asLocaleLowerCaseString} from "./asString"
 
@@ -25,33 +25,55 @@ import {asLocaleLowerCaseString} from "./asString"
 export function toLocaleLowerCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: Nullable<string>,): string {
     if (collection == null)
         return "[]"
+
+    const size = collection.size
+    if (size == 0)
+        return "[]"
+
+    if (locale == null)
+        return __withNoLocale(collection, size,)
+    return __withLocale(collection, locale, size,)
+}
+
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toLocaleLowerCase toLocaleLowerCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param locale     The possible locale to apply on each value
+ * @see String.toLocaleLowerCase
+ * @extensionFunction
+ */
+export function toLocaleLowerCaseStringByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, locale?: Nullable<string>,): string {
+    if (collection == null)
+        return "[]"
     if (collection.isEmpty)
         return "[]"
 
     if (locale == null)
-        return __withNoLocale(collection as NonEmptyMinimalistCollectionHolder<T>,)
-    return __withLocale(collection as NonEmptyMinimalistCollectionHolder<T>, locale,)
+        return __withNoLocale(collection, collection.size,)
+    return __withLocale(collection, locale, collection.size,)
 }
 
 //#endregion -------------------- Facade method --------------------
-//#region -------------------- Locale method --------------------
+//#region -------------------- Loop method --------------------
 
-function __withNoLocale<const T, >(collection: NonEmptyMinimalistCollectionHolder<T>,) {
+function __withNoLocale(collection: MinimalistCollectionHolder, size: number,) {
     let string = ""
-    const sizeMinus1 = collection.size - 1
+    const sizeMinus1 = size - 1
     let index = -1
     while (++index < sizeMinus1)
         string += `${asLocaleLowerCaseString(collection.get(index,),)}, `
     return `[${string}${asLocaleLowerCaseString(collection.get(index,),)}]`
 }
 
-function __withLocale<const T, >(collection: NonEmptyMinimalistCollectionHolder<T>, locale: string,) {
+function __withLocale(collection: MinimalistCollectionHolder, locale: string, size: number,) {
     let string = ""
-    const sizeMinus1 = collection.size - 1
+    const sizeMinus1 = size - 1
     let index = -1
     while (++index < sizeMinus1)
         string += `${asLocaleLowerCaseString(collection.get(index,), locale,)}, `
     return `[${string}${asLocaleLowerCaseString(collection.get(index,), locale,)}]`
 }
 
-//#endregion -------------------- Locale method --------------------
+//#endregion -------------------- Loop method --------------------
