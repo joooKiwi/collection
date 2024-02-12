@@ -79,37 +79,22 @@ export class EmptyCollectionHolder
     public elementAt(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException(null, index,) }
 
 
-    public getOrElse(index?: Nullable<number>,): never
-    public getOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,): U
-    public getOrElse(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<never>>,): never
-    public getOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,) {
-        if (defaultValue == null)
-            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
-        if (index == null)
-            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<never>,): never
+    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,) {
         return defaultValue(index,)
     }
 
-    public atOrElse(index?: Nullable<number>,): never
-    public atOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,): U
-    public atOrElse(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<never>>,): never
-    public atOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<| U | never>>,) {
-        if (defaultValue == null)
-            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
-        if (index == null)
-            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
+    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<never>,): never
+    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| U | never>,) {
         return defaultValue(index,)
     }
 
 
-    public elementAtOrElse(index?: Nullable<number>,): never
-    public elementAtOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<U>>,): U
-    public elementAtOrElse(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<never>>,): never
-    public elementAtOrElse<const U, >(index?: Nullable<number>, defaultValue?: Nullable<IndexWithReturnCallback<| U | never>>,) {
-        if (defaultValue == null)
-            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
-        if (index == null)
-            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
+    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<never>,): never
+    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| U | never>,) {
         return defaultValue(index,)
     }
 
