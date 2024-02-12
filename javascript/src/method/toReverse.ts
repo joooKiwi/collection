@@ -8,13 +8,9 @@
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {Nullable}                   from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
-import type {NonEmptyCollectionHolder}   from "../NonEmptyCollectionHolder"
 
-import {CollectionConstants}                                                     from "../CollectionConstants"
-import {CollectionHolderIndexOutOfBoundsException}                               from "../exception/CollectionHolderIndexOutOfBoundsException"
-import {endingIndex as endingIndexFunction, endingIndexByCollectionHolder}       from "./endingIndex"
-import {maximumIndex as maximumIndexFunction, maximumIndexByCollectionHolder}    from "./maximumIndex"
-import {startingIndex as startingIndexFunction, startingIndexByCollectionHolder} from "./startingIndex"
+import {CollectionConstants}                       from "../CollectionConstants"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 
 //#region -------------------- Facade method --------------------
 
@@ -48,11 +44,11 @@ export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHo
     //#endregion -------------------- Early returns --------------------
     //#region -------------------- Initialization (starting/ending index) --------------------
 
-    const startingIndex = startingIndexFunction(collection, fromIndex, size,) ?? 0
-    const endingIndex = endingIndexFunction(collection, toIndex, size,) ?? (size - 1)
+    const startingIndex = __startingIndex(fromIndex, size,)
+    const endingIndex = __endingIndex(toIndex, size,)
 
     if (endingIndex < startingIndex)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? '' : ` ("${endingIndex}" after calculation)`}.`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == endingIndex ? '' : ` ("${endingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`}.`, toIndex,)
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -61,7 +57,9 @@ export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHo
 
     //#region -------------------- Initialization (maximum index) --------------------
 
-    const maximumIndex = maximumIndexFunction(collection, limit, size,) ?? size
+    const maximumIndex = __maximumIndex(limit, size,)
+    if (maximumIndex == size)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __withoutALimit(collection, startingIndex, endingIndex,),)
     if (endingIndex - startingIndex < maximumIndex - 1)
         throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`, limit,)
 
@@ -100,11 +98,11 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
     //#region -------------------- Initialization (starting/ending index) --------------------
 
     const size = collection.size
-    const startingIndex = startingIndexByCollectionHolder(collection as NonEmptyCollectionHolder, fromIndex, size,)
-    const endingIndex = endingIndexByCollectionHolder(collection as NonEmptyCollectionHolder, toIndex, size,)
+    const startingIndex = __startingIndex(fromIndex, size,)
+    const endingIndex = __endingIndex(toIndex, size,)
 
     if (endingIndex < startingIndex)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == endingIndex ? '' : ` ("${endingIndex}" after calculation)`}.`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}"${(toIndex == endingIndex ? '' : ` ("${endingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`}.`, toIndex,)
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -113,7 +111,9 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
 
     //#region -------------------- Initialization (maximum index) --------------------
 
-    const maximumIndex = maximumIndexByCollectionHolder(collection as NonEmptyCollectionHolder, limit, size,)
+    const maximumIndex = __maximumIndex(limit, size,)
+    if (maximumIndex == size)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __withoutALimit(collection, startingIndex, endingIndex,),)
     if (endingIndex - startingIndex < maximumIndex - 1)
         throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`, limit,)
 
@@ -122,7 +122,61 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
     return new CollectionConstants.LazyGenericCollectionHolder(() => __withALimit(collection, startingIndex, endingIndex, maximumIndex,),)
 }
 
-//#region -------------------- Facade method --------------------
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Utility methods --------------------
+
+function __startingIndex(fromIndex: Nullable<number>, size: number,) {
+    if (fromIndex == null)
+        return 0
+
+    if (fromIndex == size)
+        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" is the collection size "${size}".`, fromIndex,)
+    if (fromIndex > size)
+        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" is over the collection size "${size}".`, fromIndex,)
+
+    let startingIndex = fromIndex
+    if (startingIndex < 0)
+        startingIndex += size
+    if (startingIndex == size)
+        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" ("${startingIndex}" after calculation) is the collection size "${size}".`, fromIndex,)
+    if (startingIndex < 0)
+        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" ("${startingIndex}" after calculation) is under 0.`, fromIndex,)
+    return startingIndex
+}
+
+function __endingIndex(toIndex: Nullable<number>, size: number,) {
+    if (toIndex == null)
+        return size - 1
+
+    if (toIndex == size)
+        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" is the collection size "${size}".`, toIndex,)
+
+    let endingIndex = toIndex
+    if (endingIndex < 0)
+        endingIndex += size
+    if (endingIndex < 0)
+        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is under 0.`, toIndex,)
+    if (endingIndex == size)
+        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is the collection size "${size}".`, toIndex,)
+    if (endingIndex > size)
+        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is over the collection size "${size}".`, toIndex,)
+    return endingIndex
+}
+
+function __maximumIndex(limit: number, size: number,) {
+    if (limit > size)
+        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" cannot over the collection size "${size}".`, limit,)
+
+    let maximumIndex = limit
+    if (maximumIndex < 0)
+        maximumIndex += size
+    if (maximumIndex < 0)
+        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" ("${maximumIndex}" after calculation) cannot under 0.`, limit,)
+
+    return maximumIndex
+}
+
+//#endregion -------------------- Utility methods --------------------
 //#region -------------------- Loop method --------------------
 
 function __withoutALimit<const T, >(collection: MinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number,) {
