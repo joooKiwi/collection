@@ -100,7 +100,10 @@ export class CollectionConstants {
     }
 
 
-    /** An empty {@link String} */
+    /**
+     * An empty {@link String}
+     * @deprecated This reference is no longer used in the project and will be removed in the version 1.8
+     */
     public static readonly EMPTY_STRING = Object.freeze('',) as ''
 
     //#endregion -------------------- Empty references --------------------
