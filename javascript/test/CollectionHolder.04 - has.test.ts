@@ -15,6 +15,36 @@ describe("CollectionHolderTest (has)", () => {
 
     describe("aliases", () => {
         describe("GenericCollectionHolder", () => {
+            test("has", () => {
+                const instance = new class GenericCollectionHolder_HasTest
+                    extends GenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override has(...values: readonly unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.has(...values,)
+                    }
+
+                }([],)
+                instance.has()
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+            test("includes", () => {
+                const instance = new class GenericCollectionHolder_IncludesTest
+                    extends GenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override includes(...values: readonly unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.includes(...values,)
+                    }
+
+                }([],)
+                instance.includes()
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
             test("includesOne", () => {
                 const instance = new class GenericCollectionHolder_IncludesOneTest
                     extends GenericCollectionHolder {
@@ -58,6 +88,21 @@ describe("CollectionHolderTest (has)", () => {
 
                 }([],)
                 instance.includesNull
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+            test("contains", () => {
+                const instance = new class GenericCollectionHolder_ContainsTest
+                    extends GenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override contains(...values: unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.contains(...values,)
+                    }
+
+                }([],)
+                instance.contains()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("containsOne", () => {
@@ -107,6 +152,36 @@ describe("CollectionHolderTest (has)", () => {
             },)
         },)
         describe("LazyGenericCollectionHolder", () => {
+            test("has", () => {
+                const instance = new class LazyGenericCollectionHolder_HasTest
+                    extends LazyGenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override has(...values: readonly unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.has(...values,)
+                    }
+
+                }([],)
+                instance.has()
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+            test("includes", () => {
+                const instance = new class LazyGenericCollectionHolder_IncludesTest
+                    extends LazyGenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override includes(...values: readonly unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.includes(...values,)
+                    }
+
+                }([],)
+                instance.includes()
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
             test("includesOne", () => {
                 const instance = new class LazyGenericCollectionHolder_IncludesOneTest
                     extends LazyGenericCollectionHolder {
@@ -150,6 +225,21 @@ describe("CollectionHolderTest (has)", () => {
 
                 }([],)
                 instance.includesNull
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+            test("contains", () => {
+                const instance = new class LazyGenericCollectionHolder_ContainsTest
+                    extends LazyGenericCollectionHolder {
+
+                    public amountOfCall = 0
+
+                    public override contains(...values: unknown[]): boolean {
+                        this.amountOfCall++
+                        return super.contains(...values,)
+                    }
+
+                }([],)
+                instance.contains()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("containsOne", () => {

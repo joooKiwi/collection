@@ -198,13 +198,25 @@ export class EmptyCollectionHolder
     public hasOne(...values: readonly unknown[]): false
     public hasOne() { return false }
 
+    public has(...values: readonly never[]): false
+    public has(...values: readonly unknown[]): false
+    public has() { return false }
+
     public includesOne(...values: readonly never[]): false
     public includesOne(...values: readonly unknown[]): false
     public includesOne() { return false }
 
+    public includes(...values: readonly never[]): false
+    public includes(...values: readonly unknown[]): false
+    public includes() { return false }
+
     public containsOne(...values: readonly never[]): false
     public containsOne(...values: readonly unknown[]): false
     public containsOne() { return false }
+
+    public contains(...values: readonly never[]): false
+    public contains(...values: readonly unknown[]): false
+    public contains() { return false }
 
 
     public hasAll(...values: readonly never[]): false

@@ -287,15 +287,33 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return hasOneByCollectionHolder(this, ...values,)
     }
 
+    public has(...values: readonly T[]): boolean
+    public has(...values: readonly unknown[]): boolean
+    public has(...values: readonly unknown[]): boolean {
+        return this.hasOne(...values,)
+    }
+
     public includesOne(...values: readonly T[]): boolean
     public includesOne(...values: readonly unknown[]): boolean
     public includesOne(...values: readonly unknown[]): boolean {
         return this.hasOne(...values,)
     }
 
+    public includes(...values: readonly T[]): boolean
+    public includes(...values: readonly unknown[]): boolean
+    public includes(...values: readonly unknown[]): boolean {
+        return this.hasOne(...values,)
+    }
+
     public containsOne(...values: readonly T[]): boolean
     public containsOne(...values: readonly unknown[]): boolean
     public containsOne(...values: readonly unknown[]): boolean {
+        return this.hasOne(...values,)
+    }
+
+    public contains(...values: readonly T[]): boolean
+    public contains(...values: readonly unknown[]): boolean
+    public contains(...values: readonly unknown[]): boolean {
         return this.hasOne(...values,)
     }
 

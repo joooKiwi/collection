@@ -659,6 +659,25 @@ export interface CollectionHolder<out T = unknown, >
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias hasOne
      */
+    has(...values: readonly T[]): boolean
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasOne
+     */
+    has(...values: readonly unknown[]): boolean
+
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasOne
+     */
     includesOne(...values: readonly T[]): boolean
 
     /**
@@ -678,6 +697,25 @@ export interface CollectionHolder<out T = unknown, >
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias hasOne
      */
+    includes(...values: readonly T[]): boolean
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasOne
+     */
+    includes(...values: readonly unknown[]): boolean
+
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasOne
+     */
     containsOne(...values: readonly T[]): boolean
 
     /**
@@ -688,6 +726,25 @@ export interface CollectionHolder<out T = unknown, >
      * @alias hasOne
      */
     containsOne(...values: readonly unknown[]): boolean
+
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasOne
+     */
+    contains(...values: readonly T[]): boolean
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasOne
+     */
+    contains(...values: readonly unknown[]): boolean
 
     //#endregion -------------------- Has one methods (aliases) --------------------
 
