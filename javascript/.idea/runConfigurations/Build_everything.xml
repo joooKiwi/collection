@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Build everything" type="CompoundRunConfigurationType">
-    <toRun name="Build (Asychronous module definition)" type="js.build_tools.npm" />
+    <toRun name="Build (Asynchronous module definition)" type="js.build_tools.npm" />
     <toRun name="Build (Common Javascript)" type="js.build_tools.npm" />
     <toRun name="Build (ECMAScript module)" type="js.build_tools.npm" />
     <toRun name="Build (Types)" type="js.build_tools.npm" />
