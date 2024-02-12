@@ -264,10 +264,10 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = over 1) --------------------
 
-            const array = [] as T[],
-                iterator = reference[Symbol.iterator]() as IterableIterator<T>
-            let index = -1,
-                iteratorResult: IteratorResult<T, T>
+            const array = [] as T[]
+            const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            let index = -1
+            let iteratorResult: IteratorResult<T, T>
             while (++index, !(iteratorResult = iterator.next()).done)
                 array[index] = iteratorResult.value
             this.#array = Object.freeze(array,)

@@ -280,8 +280,8 @@ describe("CollectionHolderTest (value)", () => {
                 },)
             },)
             describe("or else", () => {
-                const value = Infinity,
-                    callback = () => Infinity
+                const value = Infinity
+                const callback = () => Infinity
 
                 test("[].orElse(0, () => ∞)",         () => expect(EMPTY_INSTANCE().getOrElse(0, callback,),).toEqual(value,),)
                 test("[a,b].orElse(0, () => ∞)",      () => expect(AB_INSTANCE().getOrElse(0, callback,),).toEqual('a',),)

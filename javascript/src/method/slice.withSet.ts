@@ -69,8 +69,8 @@ export function sliceByCollectionHolderWithSet<const T, >(collection: Nullable<C
 function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indices: ReadonlySet<number>, indicesSize: number,) {
     const newArray = new Array<T>(indicesSize,)
     const iterator = indices[Symbol.iterator]() as IterableIterator<number>
-    let index = 0,
-        iteratorResult: IteratorResult<number, number>
+    let index = 0
+    let iteratorResult: IteratorResult<number, number>
     while (!(iteratorResult = iterator.next()).done)
         newArray[index++] = collection.get(iteratorResult.value,)
     return Object.freeze(newArray,)

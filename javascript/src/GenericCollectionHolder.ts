@@ -329,10 +329,10 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = over 1) --------------------
 
-            const array = [] as T[],
-                iterator = reference[Symbol.iterator]() as IterableIterator<T>
-            let index = -1,
-                iteratorResult: IteratorResult<T, T>
+            const array = [] as T[]
+            const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            let index = -1
+            let iteratorResult: IteratorResult<T, T>
             while (++index, !(iteratorResult = iterator.next()).done)
                 this[index] = array[index] = iteratorResult.value
             this.#array = Object.freeze(array,)
@@ -454,8 +454,8 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
         if (this.isEmpty)
             return defaultValue(index < 0 ? this.size + index : index,)
 
-        const size = this.size,
-            indexToRetrieve = index < 0 ? size + index : index
+        const size = this.size
+        const indexToRetrieve = index < 0 ? size + index : index
         if (indexToRetrieve < 0)
             return defaultValue(indexToRetrieve,)
         if (indexToRetrieve > size)
@@ -474,8 +474,8 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
         if (this.isEmpty)
             return null
 
-        const size = this.size,
-            indexToRetrieve = index < 0 ? size + index : index
+        const size = this.size
+        const indexToRetrieve = index < 0 ? size + index : index
         if (indexToRetrieve < 0)
             return null
         if (indexToRetrieve > size)
