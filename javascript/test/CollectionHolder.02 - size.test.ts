@@ -83,9 +83,10 @@ describe("CollectionHolderTest (size)", () => {
     describe.each(everySimplisticInstances,)("%s", ({value: instance,},) =>
         describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
             test("size", () => expect(newCollectionInstance(instance, array,).size,).toEqual(size,),)
-            test("isEmpty", () => expect(newCollectionInstance(instance, array,).isEmpty,).toBe(size == 0,),)
-            if (instance !== GenericMinimalistCollectionHolder)
+            if (instance !== GenericMinimalistCollectionHolder) {
+                test("isEmpty", () => expect(newCollectionInstance(instance, array,).isEmpty,).toBe(size == 0,),)
                 test("isNotEmpty", () => expect(newCollectionInstance(instance, array,).isNotEmpty,).toBe(size != 0,),)
+            }
         },),)
 
 },)
