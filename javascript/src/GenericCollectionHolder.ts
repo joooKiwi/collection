@@ -429,15 +429,15 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
 
         const size = this.size
         if (index > size)
-            throw new CollectionHolderIndexOutOfBoundsException(`The index "${index}" is over the size of the collection (${size}).`, index,)
+            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is over the size of the collection (${size}).`, index,)
         if (index >= 0)
             return this[index] as T
 
         const indexToRetrieve = size + index
         if (indexToRetrieve < 0)
-            throw new CollectionHolderIndexOutOfBoundsException(`The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
+            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
         if (indexToRetrieve > size)
-            throw new CollectionHolderIndexOutOfBoundsException(`The index "${index}" (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,)
+            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,)
         return this[indexToRetrieve] as T
     }
 

@@ -156,7 +156,7 @@ export function prefixAndPostfixOnly(prefix: Nullable<string> = null, postfix: N
 
 function __maximumIndex(limit: number, size: number,) {
     if (limit > size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" cannot over the collection size "${size}".`, limit,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}" cannot over the collection size "${size}".`, limit,)
 
     if (Number.isNaN(limit,))
         throw new ForbiddenIndexException("Forbidden index. The limit cannot be NaN.", limit,)
@@ -169,7 +169,7 @@ function __maximumIndex(limit: number, size: number,) {
     if (maximumIndex < 0)
         maximumIndex += size
     if (maximumIndex < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" ("${maximumIndex}" after calculation) cannot under 0.`, limit,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bount. The limit "${limit}" ("${maximumIndex}" after calculation) cannot under 0.`, limit,)
 
     return maximumIndex
 }

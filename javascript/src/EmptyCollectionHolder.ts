@@ -72,11 +72,11 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Get / at methods --------------------
 
-    public get(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }
+    public get(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException(null, index,) }
 
-    public at(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }
+    public at(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException(null, index,) }
 
-    public elementAt(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }
+    public elementAt(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException(null, index,) }
 
 
     public getOrElse(index?: Nullable<number>,): never
@@ -153,7 +153,7 @@ export class EmptyCollectionHolder
     public first(): never
     public first<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): never
     public first(predicate?: Nullable<BooleanCallback<never>>,): never
-    public first() { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",) }
+    public first() { throw new EmptyCollectionHolderException() }
 
     public firstOrNull(): null
     public firstOrNull<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): null
@@ -166,7 +166,7 @@ export class EmptyCollectionHolder
     public last(): never
     public last<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): never
     public last(predicate?: Nullable<BooleanCallback<never>>,): never
-    public last() { throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.",) }
+    public last() { throw new EmptyCollectionHolderException() }
 
     public lastOrNull(): null
     public lastOrNull<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): null
@@ -358,13 +358,13 @@ export class EmptyCollectionHolder
     public toMutableMap(): Map<never, never> { return new Map<never, never>() }
 
 
-    public toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
+    public toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
     public toReverse() { return this as unknown as CollectionHolder<never> }
 
-    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
+    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
     public toReversed() { return this as unknown as CollectionHolder<never> }
 
-    public reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<never>
+    public reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
     public reversed() { return this as unknown as CollectionHolder<never> }
 
     //#region -------------------- Conversion methods (toString) --------------------

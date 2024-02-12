@@ -189,17 +189,17 @@ function __startingIndex(fromIndex: Nullable<number>, size: number,) {
         throw new ForbiddenIndexException("Forbidden index. The starting index cannot be +∞.", fromIndex,)
 
     if (fromIndex == size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" is the collection size "${size}".`, fromIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" is the collection size "${size}".`, fromIndex,)
     if (fromIndex > size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" is over the collection size "${size}".`, fromIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" is over the collection size "${size}".`, fromIndex,)
 
     let startingIndex = fromIndex
     if (startingIndex < 0)
         startingIndex += size
     if (startingIndex == size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" ("${startingIndex}" after calculation) is the collection size "${size}".`, fromIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" ("${startingIndex}" after calculation) is the collection size "${size}".`, fromIndex,)
     if (startingIndex < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" ("${startingIndex}" after calculation) is under 0.`, fromIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" ("${startingIndex}" after calculation) is under 0.`, fromIndex,)
     return startingIndex
 }
 
@@ -215,17 +215,17 @@ function __endingIndex(toIndex: Nullable<number>, size: number,) {
         throw new ForbiddenIndexException("Forbidden index. The ending index cannot be +∞.", toIndex,)
 
     if (toIndex == size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" is the collection size "${size}".`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" is the collection size "${size}".`, toIndex,)
 
     let endingIndex = toIndex
     if (endingIndex < 0)
         endingIndex += size
     if (endingIndex < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is under 0.`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is under 0.`, toIndex,)
     if (endingIndex == size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is the collection size "${size}".`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is the collection size "${size}".`, toIndex,)
     if (endingIndex > size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is over the collection size "${size}".`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is over the collection size "${size}".`, toIndex,)
     return endingIndex
 }
 

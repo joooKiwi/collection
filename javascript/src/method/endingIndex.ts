@@ -88,16 +88,16 @@ export function endingIndexByCollectionHolder(collection: Nullable<CollectionHol
 
 function __endingIndex(toIndex: number, size: number,): number {
     if (toIndex == size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" is the collection size "${size}".`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" is the collection size "${size}".`, toIndex,)
 
     let endingIndex = toIndex
     if (endingIndex < 0)
         endingIndex += size
     if (endingIndex < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is under 0.`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is under 0.`, toIndex,)
     if (endingIndex == size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is the collection size "${size}".`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is the collection size "${size}".`, toIndex,)
     if (endingIndex > size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" ("${endingIndex}" after calculation) is over the collection size "${size}".`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is over the collection size "${size}".`, toIndex,)
     return endingIndex
 }

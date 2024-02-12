@@ -86,13 +86,13 @@ export function maximumIndexByCollectionHolder(collection: Nullable<CollectionHo
 
 function __maximumIndex(limit: number, size: number,): number {
     if (limit > size)
-        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" cannot over the collection size "${size}".`, limit,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}" cannot over the collection size "${size}".`, limit,)
 
     let maximumIndex = limit
     if (maximumIndex < 0)
         maximumIndex += size
     if (maximumIndex < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" ("${maximumIndex}" after calculation) cannot under 0.`, limit,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}" ("${maximumIndex}" after calculation) cannot under 0.`, limit,)
 
     return maximumIndex
 }

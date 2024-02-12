@@ -62,7 +62,7 @@ export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<
 
     const size = collection.size
     if (size == 0)
-        throw new EmptyCollectionHolderException(`No element at the index ${size - 1} could be found since it it empty.`,)
+        throw new EmptyCollectionHolderException()
 
     if (predicate == null)
         return collection.get(size - 1,)
@@ -117,7 +117,7 @@ export function lastByCollectionHolder<const T, >(collection: Nullable<Collectio
     if (collection == null)
         throw new TypeError("No element could be retrieved from a null value.",)
     if (collection.isEmpty)
-        throw new EmptyCollectionHolderException(`No element at the index ${collection.size - 1} could be found since it it empty.`,)
+        throw new EmptyCollectionHolderException()
 
     if (predicate == null)
         return __withNoPredicate(collection as NonEmptyCollectionHolder<T>, collection.size,)
@@ -143,7 +143,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     while (index-- > 0)
         if (predicate())
             return collection.get(index,)
-    throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", size - 1,)
+    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", size - 1,)
 }
 
 function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, size: number,) {
@@ -153,7 +153,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
         if (predicate(value,))
             return value
     }
-    throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", size - 1,)
+    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", size - 1,)
 }
 
 function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
@@ -163,7 +163,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
         if (predicate(value, index,))
             return value
     }
-    throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", size - 1,)
+    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", size - 1,)
 }
 
 //#endregion -------------------- Loop methods --------------------
