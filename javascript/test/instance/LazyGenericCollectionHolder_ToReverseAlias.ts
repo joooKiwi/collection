@@ -20,6 +20,7 @@ export class LazyGenericCollectionHolder_ToReverseAlias
     public constructor() { super(ABCDEFGHIJ,) }
 
     public override toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder {
+        this.amountOfCall++
         return super.toReverse(fromIndex, toIndex, limit,)
     }
 }

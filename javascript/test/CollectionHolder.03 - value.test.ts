@@ -72,7 +72,7 @@ describe("CollectionHolderTest (value)", () => {
             },)
             test("elementAt", () => {
                 const instance = new LazyGenericCollectionHolder_GetAlias()
-                instance.elementAt(NaN,)
+                instance.elementAt(5,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("elementAtOrElse", () => {
