@@ -9,9 +9,8 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {StringCallback}             from "../CollectionHolder.types"
 import type {Nullable}                   from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
-import type {NonEmptyCollectionHolder}   from "../NonEmptyCollectionHolder"
 
-import {maximumIndex, maximumIndexByCollectionHolder} from "./maximumIndex"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 
 //#region -------------------- Facade method --------------------
 
@@ -60,7 +59,8 @@ export function join<const T, >(collection: Nullable<MinimalistCollectionHolder<
         return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as () => string,)
     }
 
-    if (size === limit) {
+    const maximumIndex = __maximumIndex(limit, size,)
+    if (maximumIndex == size) {
         if (transform.length == 1)
             return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
         if (transform.length >= 2)
@@ -69,10 +69,10 @@ export function join<const T, >(collection: Nullable<MinimalistCollectionHolder<
     }
 
     if (transform.length == 1)
-        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex(collection, limit, size,) ?? size, truncated ?? '…', transform as (value: T,) => string,)
+        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as (value: T,) => string,)
     if (transform.length >= 2)
-        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex(collection, limit, size,) ?? size, truncated ?? '…', transform,)
-    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex(collection, limit, size,) ?? size, truncated ?? '…', transform as () => string,)
+        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform,)
+    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as () => string,)
 }
 
 /**
@@ -129,10 +129,10 @@ export function joinByCollectionHolder<const T, >(collection: Nullable<Collectio
     }
 
     if (transform.length == 1)
-        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndexByCollectionHolder(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? '…', transform as (value: T,) => string,)
+        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', __maximumIndex(limit, size,), truncated ?? '…', transform as (value: T,) => string,)
     if (transform.length >= 2)
-        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndexByCollectionHolder(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? '…', transform,)
-    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndexByCollectionHolder(collection as NonEmptyCollectionHolder, limit, size,), truncated ?? '…', transform as () => string,)
+        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', __maximumIndex(limit, size,), truncated ?? '…', transform,)
+    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', __maximumIndex(limit, size,), truncated ?? '…', transform as () => string,)
 }
 
 //#endregion -------------------- Facade method --------------------
@@ -151,6 +151,22 @@ export function prefixAndPostfixOnly(prefix: Nullable<string> = null, postfix: N
 }
 
 //#endregion -------------------- Prefix & postfix method --------------------
+//#region -------------------- Utility methods --------------------
+
+function __maximumIndex(limit: number, size: number,) {
+    if (limit > size)
+        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" cannot over the collection size "${size}".`, limit,)
+
+    let maximumIndex = limit
+    if (maximumIndex < 0)
+        maximumIndex += size
+    if (maximumIndex < 0)
+        throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" ("${maximumIndex}" after calculation) cannot under 0.`, limit,)
+
+    return maximumIndex
+}
+
+//#endregion -------------------- Utility methods --------------------
 //#region -------------------- Loop methods --------------------
 
 function __withNothing(collection: MinimalistCollectionHolder, separator: string, prefix: string, postfix: string, lastIndex: number,) {
