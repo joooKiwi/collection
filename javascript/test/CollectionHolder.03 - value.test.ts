@@ -5,16 +5,17 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {AB, AB_AB, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, ABCDEFGHIJ, EMPTY, NULL_ABCD, UNDEFINED_ABCD} from "./constantCollections"
-import {everySimplisticInstances}                                                                            from "./constantValues"
-import {newCollectionInstance, newMinimalistCollectionInstance}                                              from "./newCollectionInstance"
-
-import type {IndexWithReturnCallback} from "../src/CollectionHolder.types"
-import type {NullOr}                  from "../src/general type"
+import {AB, AB_AB, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, EMPTY, NULL_ABCD, UNDEFINED_ABCD} from "./constantCollections"
+import {everySimplisticInstances}                                                                from "./constantValues"
+import {newCollectionInstance, newMinimalistCollectionInstance}                                  from "./newCollectionInstance"
+import {GenericCollectionHolder_GetAlias}                                                        from "./instance/GenericCollectionHolder_GetAlias"
+import {GenericCollectionHolder_GetOrElseAlias}                                                  from "./instance/GenericCollectionHolder_GetOrElseAlias"
+import {GenericCollectionHolder_GetOrNullAlias}                                                  from "./instance/GenericCollectionHolder_GetOrNullAlias"
+import {LazyGenericCollectionHolder_GetAlias}                                                    from "./instance/LazyGenericCollectionHolder_GetAlias"
+import {LazyGenericCollectionHolder_GetOrElseAlias}                                              from "./instance/LazyGenericCollectionHolder_GetOrElseAlias"
+import {LazyGenericCollectionHolder_GetOrNullAlias}                                              from "./instance/LazyGenericCollectionHolder_GetOrNullAlias"
 
 import {GenericMinimalistCollectionHolder}         from "../src/GenericMinimalistCollectionHolder"
-import {GenericCollectionHolder}                   from "../src/GenericCollectionHolder"
-import {LazyGenericCollectionHolder}               from "../src/LazyGenericCollectionHolder"
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../src/exception/EmptyCollectionHolderException"
 
@@ -23,192 +24,64 @@ describe("CollectionHolderTest (value)", () => {
     describe("aliases", () => {
         describe("GenericCollectionHolder", () => {
             test("at", () => {
-                const instance = new class GenericCollectionHolder_AtTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override at(index: number,): unknown {
-                        this.amountOfCall++
-                        return super.at(index,)
-                    }
-
-                }(ABCDEFGHIJ,)
-                instance.at(NaN,)
+                const instance = new GenericCollectionHolder_GetAlias()
+                instance.at(5,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("atOrElse", () => {
-                const instance = new class GenericCollectionHolder_AtOrElseTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
-                    public override atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
-                    public override atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U {
-                        this.amountOfCall++
-                        return super.atOrElse(index, defaultValue,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new GenericCollectionHolder_GetOrElseAlias()
                 instance.atOrElse(NaN, () => null,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("atOrNull", () => {
-                const instance = new class GenericCollectionHolder_AtOrNullTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override atOrNull(index: number,): NullOr<unknown> {
-                        this.amountOfCall++
-                        return super.atOrNull(index,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new GenericCollectionHolder_GetOrNullAlias()
                 instance.atOrNull(NaN,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("elementAt", () => {
-                const instance = new class GenericCollectionHolder_ElementAtTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override elementAt(index: number,): unknown {
-                        this.amountOfCall++
-                        return super.elementAt(index,)
-                    }
-
-                }(ABCDEFGHIJ,)
-                instance.elementAt(NaN,)
+                const instance = new GenericCollectionHolder_GetAlias()
+                instance.elementAt(5,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("elementAtOrElse", () => {
-                const instance = new class GenericCollectionHolder_ElementAtOrElseTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
-                    public override elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
-                    public override elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U {
-                        this.amountOfCall++
-                        return super.elementAtOrElse(index, defaultValue,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new GenericCollectionHolder_GetOrElseAlias()
                 instance.elementAtOrElse(NaN, () => null,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("elementAtOrNull", () => {
-                const instance = new class GenericCollectionHolder_ElementAtOrNullTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override elementAtOrNull(index: number,): NullOr<unknown> {
-                        this.amountOfCall++
-                        return super.elementAtOrNull(index,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new GenericCollectionHolder_GetOrNullAlias()
                 instance.elementAtOrNull(NaN,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
         },)
         describe("LazyGenericCollectionHolder", () => {
             test("at", () => {
-                const instance = new class LazyGenericCollectionHolder_AtTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override at(index: number,): unknown {
-                        this.amountOfCall++
-                        return super.at(index,)
-                    }
-
-                }(ABCDEFGHIJ,)
-                instance.at(NaN,)
+                const instance = new LazyGenericCollectionHolder_GetAlias()
+                instance.at(5,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("atOrElse", () => {
-                const instance = new class LazyGenericCollectionHolder_AtOrElseTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
-                    public override atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
-                    public override atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U {
-                        this.amountOfCall++
-                        return super.atOrElse(index, defaultValue,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new LazyGenericCollectionHolder_GetOrElseAlias()
                 instance.atOrElse(NaN, () => null,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("atOrNull", () => {
-                const instance = new class LazyGenericCollectionHolder_AtOrNullTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override atOrNull(index: number,): NullOr<unknown> {
-                        this.amountOfCall++
-                        return super.atOrNull(index,)
-                    }
-
-                }(ABCDEFGHIJ,)
-                instance.atOrNull(NaN,)
+                const instance = new LazyGenericCollectionHolder_GetOrNullAlias()
+                instance.atOrNull(5,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("elementAt", () => {
-                const instance = new class LazyGenericCollectionHolder_ElementAtTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override elementAt(index: number,): unknown {
-                        this.amountOfCall++
-                        return super.elementAt(index,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new LazyGenericCollectionHolder_GetAlias()
                 instance.elementAt(NaN,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("elementAtOrElse", () => {
-                const instance = new class LazyGenericCollectionHolder_ElementAtOrElseTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
-                    public override elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
-                    public override elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U {
-                        this.amountOfCall++
-                        return super.elementAtOrElse(index, defaultValue,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new LazyGenericCollectionHolder_GetOrElseAlias()
                 instance.elementAtOrElse(NaN, () => null,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("elementAtOrNull", () => {
-                const instance = new class LazyGenericCollectionHolder_ElementAtOrNullTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override elementAtOrNull(index: number,): NullOr<unknown> {
-                        this.amountOfCall++
-                        return super.elementAtOrNull(index,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new LazyGenericCollectionHolder_GetOrNullAlias()
                 instance.elementAtOrNull(NaN,)
                 expect(instance.amountOfCall,).toBe(1,)
             },)

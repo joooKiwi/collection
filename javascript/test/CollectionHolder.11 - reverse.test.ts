@@ -5,76 +5,37 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {ABCDEFGHIJ}            from "./constantCollections"
-import {everyInstances}        from "./constantValues"
-import {newCollectionInstance} from "./newCollectionInstance"
-
-import type {Nullable}         from "../src/general type"
-import type {CollectionHolder} from "../src/CollectionHolder"
+import {ABCDEFGHIJ}                                 from "./constantCollections"
+import {everyInstances}                             from "./constantValues"
+import {newCollectionInstance}                      from "./newCollectionInstance"
+import {GenericCollectionHolder_ToReverseAlias}     from "./instance/GenericCollectionHolder_ToReverseAlias"
+import {LazyGenericCollectionHolder_ToReverseAlias} from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
-import {GenericCollectionHolder}                   from "../src/GenericCollectionHolder"
-import {LazyGenericCollectionHolder}               from "../src/LazyGenericCollectionHolder"
 
 describe("CollectionHolderTest (reverse)", () => {
 
     describe("aliases", () => {
         describe("GenericCollectionHolder", () => {
             test("toReversed", () => {
-                const instance = new class GenericCollectionHolder_ToReversedTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-                    public override toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<unknown> {
-                        this.amountOfCall++
-                        return super.toReversed(fromIndex, toIndex, limit,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new GenericCollectionHolder_ToReverseAlias()
                 instance.toReversed()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("reversed", () => {
-                const instance = new class GenericCollectionHolder_ReversedTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-                    public override reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<unknown> {
-                        this.amountOfCall++
-                        return super.reversed(fromIndex, toIndex, limit,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new GenericCollectionHolder_ToReverseAlias()
                 instance.reversed()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
         },)
         describe("LazyGenericCollectionHolder", () => {
             test("toReversed", () => {
-                const instance = new class LazyGenericCollectionHolder_ToReversedTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-                    public override toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<unknown> {
-                        this.amountOfCall++
-                        return super.toReversed(fromIndex, toIndex, limit,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new LazyGenericCollectionHolder_ToReverseAlias()
                 instance.toReversed()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("reversed", () => {
-                const instance = new class LazyGenericCollectionHolder_ReversedTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-                    public override reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<unknown> {
-                        this.amountOfCall++
-                        return super.reversed(fromIndex, toIndex, limit,)
-                    }
-
-                }(ABCDEFGHIJ,)
+                const instance = new LazyGenericCollectionHolder_ToReverseAlias()
                 instance.reversed()
                 expect(instance.amountOfCall,).toBe(1,)
             },)

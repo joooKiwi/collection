@@ -8,282 +8,106 @@
 import {A, A_NULL_B_UNDEFINED, AB, AB12, ABCD_NULL, ABCD_UNDEFINED, NULL_ABCD, UNDEFINED_ABCD} from "./constantCollections"
 import {everyInstances, nonPresentItem, TEMPLATE_ITEMS}                                        from "./constantValues"
 import {newCollectionInstance}                                                                 from "./newCollectionInstance"
-import {LazyGenericCollectionHolder}          from "../src/LazyGenericCollectionHolder"
-import {GenericCollectionHolder}              from "../src/GenericCollectionHolder"
+import {GenericCollectionHolder_HasAllAlias}                                                   from "./instance/GenericCollectionHolder_HasAllAlias"
+import {GenericCollectionHolder_HasNullAlias}                                                  from "./instance/GenericCollectionHolder_HasNullAlias"
+import {GenericCollectionHolder_HasOneAlias}                                                   from "./instance/GenericCollectionHolder_HasOneAlias"
+import {LazyGenericCollectionHolder_HasAllAlias}                                               from "./instance/LazyGenericCollectionHolder_HasAllAlias"
+import {LazyGenericCollectionHolder_HasNullAlias}                                              from "./instance/LazyGenericCollectionHolder_HasNullAlias"
+import {LazyGenericCollectionHolder_HasOneAlias}                                               from "./instance/LazyGenericCollectionHolder_HasOneAlias"
 
 describe("CollectionHolderTest (has)", () => {
 
     describe("aliases", () => {
         describe("GenericCollectionHolder", () => {
             test("has", () => {
-                const instance = new class GenericCollectionHolder_HasTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override has(...values: readonly unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.has(...values,)
-                    }
-
-                }([],)
+                const instance = new GenericCollectionHolder_HasOneAlias()
                 instance.has()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("includes", () => {
-                const instance = new class GenericCollectionHolder_IncludesTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override includes(...values: readonly unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.includes(...values,)
-                    }
-
-                }([],)
+                const instance = new GenericCollectionHolder_HasOneAlias()
                 instance.includes()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("includesOne", () => {
-                const instance = new class GenericCollectionHolder_IncludesOneTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override includesOne(...values: readonly unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.includesOne(...values,)
-                    }
-
-                }([],)
+                const instance = new GenericCollectionHolder_HasOneAlias()
                 instance.includesOne()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("includesAll", () => {
-                const instance = new class GenericCollectionHolder_IncludesAllTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override includesAll(...values: readonly unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.includesAll(...values,)
-                    }
-
-                }([],)
+                const instance = new GenericCollectionHolder_HasAllAlias()
                 instance.includesAll()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("includesNull", () => {
-                const instance = new class GenericCollectionHolder_IncludesNullTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override get includesNull(): this["hasNull"] {
-                        this.amountOfCall++
-                        return super.includesNull
-                    }
-
-                }([],)
+                const instance = new GenericCollectionHolder_HasNullAlias()
                 instance.includesNull
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("contains", () => {
-                const instance = new class GenericCollectionHolder_ContainsTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override contains(...values: unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.contains(...values,)
-                    }
-
-                }([],)
+                const instance = new GenericCollectionHolder_HasOneAlias()
                 instance.contains()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("containsOne", () => {
-                const instance = new class GenericCollectionHolder_ContainsOneTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override containsOne(...values: unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.containsOne(...values,)
-                    }
-
-                }([],)
+                const instance = new GenericCollectionHolder_HasOneAlias()
                 instance.containsOne()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("containsAll", () => {
-                const instance = new class GenericCollectionHolder_ContainsAllTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override containsAll(...values: unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.containsAll(...values,)
-                    }
-
-                }([],)
+                const instance = new GenericCollectionHolder_HasAllAlias()
                 instance.containsAll()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("containsNull", () => {
-                const instance = new class GenericCollectionHolder_ContainsNullTest
-                    extends GenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override get containsNull(): this["hasNull"] {
-                        this.amountOfCall++
-                        return super.containsNull
-                    }
-
-                }([],)
+                const instance = new GenericCollectionHolder_HasNullAlias()
                 instance.containsNull
                 expect(instance.amountOfCall,).toBe(1,)
             },)
         },)
         describe("LazyGenericCollectionHolder", () => {
             test("has", () => {
-                const instance = new class LazyGenericCollectionHolder_HasTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override has(...values: readonly unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.has(...values,)
-                    }
-
-                }([],)
+                const instance = new LazyGenericCollectionHolder_HasOneAlias()
                 instance.has()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("includes", () => {
-                const instance = new class LazyGenericCollectionHolder_IncludesTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override includes(...values: readonly unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.includes(...values,)
-                    }
-
-                }([],)
+                const instance = new LazyGenericCollectionHolder_HasOneAlias()
                 instance.includes()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("includesOne", () => {
-                const instance = new class LazyGenericCollectionHolder_IncludesOneTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override includesOne(...values: readonly unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.includesOne(...values,)
-                    }
-
-                }([],)
+                const instance = new LazyGenericCollectionHolder_HasOneAlias()
                 instance.includesOne()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("includesAll", () => {
-                const instance = new class LazyGenericCollectionHolder_IncludesAllTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override includesAll(...values: readonly unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.includesAll(...values,)
-                    }
-
-                }([],)
+                const instance = new LazyGenericCollectionHolder_HasAllAlias()
                 instance.includesAll()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("includesNull", () => {
-                const instance = new class LazyGenericCollectionHolder_IncludesNullTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override get includesNull(): this["hasNull"] {
-                        this.amountOfCall++
-                        return super.includesNull
-                    }
-
-                }([],)
+                const instance = new LazyGenericCollectionHolder_HasNullAlias()
                 instance.includesNull
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("contains", () => {
-                const instance = new class LazyGenericCollectionHolder_ContainsTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override contains(...values: unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.contains(...values,)
-                    }
-
-                }([],)
+                const instance = new LazyGenericCollectionHolder_HasOneAlias()
                 instance.contains()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("containsOne", () => {
-                const instance = new class LazyGenericCollectionHolder_ContainsOneTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override containsOne(...values: unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.containsOne(...values,)
-                    }
-
-                }([],)
+                const instance = new LazyGenericCollectionHolder_HasOneAlias()
                 instance.containsOne()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("containsAll", () => {
-                const instance = new class LazyGenericCollectionHolder_ContainsAllTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override containsAll(...values: unknown[]): boolean {
-                        this.amountOfCall++
-                        return super.containsAll(...values,)
-                    }
-
-                }([],)
+                const instance = new LazyGenericCollectionHolder_HasAllAlias()
                 instance.containsAll()
                 expect(instance.amountOfCall,).toBe(1,)
             },)
             test("containsNull", () => {
-                const instance = new class LazyGenericCollectionHolder_ContainsNullTest
-                    extends LazyGenericCollectionHolder {
-
-                    public amountOfCall = 0
-
-                    public override get containsNull(): this["hasNull"] {
-                        this.amountOfCall++
-                        return super.containsNull
-                    }
-
-                }([],)
+                const instance = new LazyGenericCollectionHolder_HasNullAlias()
                 instance.containsNull
                 expect(instance.amountOfCall,).toBe(1,)
             },)
