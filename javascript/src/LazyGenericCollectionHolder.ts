@@ -29,14 +29,14 @@ import {CollectionHandlerByIterableWithSize}           from "./handler/Collectio
 import {CollectionHandlerByMinimalistCollectionHolder} from "./handler/CollectionHandlerByMinimalistCollectionHolder"
 import {CollectionHandlerBySet}                        from "./handler/CollectionHandlerBySet"
 import {CollectionHandlerBySetOf1}                     from "./handler/CollectionHandlerBySetOf1"
-import {hasNull}                                       from "./method/hasNull"
+import {hasNullByCollectionHolder}                     from "./method/hasNull"
 import {isCollectionHolder}                            from "./method/isCollectionHolder"
 import {isCollectionIterator}                          from "./method/isCollectionIterator"
 import {isMinimalistCollectionHolder}                  from "./method/isMinimalistCollectionHolder"
-import {objectValuesMap}                               from "./method/objectValuesMap"
-import {toArray}                                       from "./method/toArray"
-import {toMapBy}                                       from "./method/toMap"
-import {toSetBy}                                       from "./method/toSet"
+import {objectValuesMapByCollectionHolder}             from "./method/objectValuesMap"
+import {toArrayByCollectionHolder}                     from "./method/toArray"
+import {toMapByCollectionHolder}                       from "./method/toMap"
+import {toSetByCollectionHolder}                       from "./method/toSet"
 import {toWeakSet}                                     from "./method/toWeakSet"
 
 /**
@@ -679,7 +679,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
     //#region -------------------- Has X methods --------------------
 
     public override get hasNull(): boolean {
-        return this.#hasNull ??= hasNull(this,)
+        return this.#hasNull ??= hasNullByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Has X methods --------------------
@@ -732,15 +732,15 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
     //#region -------------------- Conversion methods --------------------
 
     public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
-        return this.#objectValuesMap ??= objectValuesMap(this,)
+        return this.#objectValuesMap ??= objectValuesMapByCollectionHolder(this,)
     }
 
     public override toArray(): readonly T[] {
-        return this.#array ??= toArray(this,)
+        return this.#array ??= toArrayByCollectionHolder(this,)
     }
 
     public override toSet(): ReadonlySet<T> {
-        return this.#set ??= toSet(this,)
+        return this.#set ??= toSetByCollectionHolder(this,)
     }
 
     public override toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
@@ -748,7 +748,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
     }
 
     public override toMap(): ReadonlyMap<number, T> {
-        return this.#map ??= toMap(this,)
+        return this.#map ??= toMapByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Conversion methods --------------------

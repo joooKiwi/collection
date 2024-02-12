@@ -11,59 +11,58 @@ import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}             
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 
-import {AbstractMinimalistCollectionHolder} from "./AbstractMinimalistCollectionHolder"
-import {CollectionConstants}                from "./CollectionConstants"
-import {all}                                from "./method/all"
-import {any}                                from "./method/any"
-import {filter}                             from "./method/filter"
-import {filterIndexed}                      from "./method/filterIndexed"
-import {filterIndexedNot}                   from "./method/filterIndexedNot"
-import {filterNot}                          from "./method/filterNot"
-import {filterNotNull}                      from "./method/filterNotNull"
-import {find}                               from "./method/find"
-import {findIndexed}                        from "./method/findIndexed"
-import {findLast}                           from "./method/findLast"
-import {findLastIndexed}                    from "./method/findLastIndexed"
-import {first}                              from "./method/first"
-import {firstOrNull}                        from "./method/firstOrNull"
-import {forEach}                            from "./method/forEach"
-import {forEachIndexed}                     from "./method/forEachIndexed"
-import {hasAll}                             from "./method/hasAll"
-import {hasNull}                            from "./method/hasNull"
-import {hasOne}                             from "./method/hasOne"
-import {indexOf}                            from "./method/indexOf"
-import {indexOfFirst}                       from "./method/indexOfFirst"
-import {indexOfFirstIndexed}                from "./method/indexOfFirstIndexed"
-import {indexOfLast}                        from "./method/indexOfLast"
-import {indexOfLastIndexed}                 from "./method/indexOfLastIndexed"
-import {join}                               from "./method/join"
-import {last}                               from "./method/last"
-import {lastIndexOf}                        from "./method/lastIndexOf"
-import {lastOrNull}                         from "./method/lastOrNull"
-import {none}                               from "./method/none"
-import {map}                                from "./method/map"
-import {mapIndexed}                         from "./method/mapIndexed"
-import {mapNotNull}                         from "./method/mapNotNull"
-import {mapNotNullIndexed}                  from "./method/mapNotNullIndexed"
-import {objectValuesMap}                    from "./method/objectValuesMap"
-import {requireNoNulls}                     from "./method/requireNoNulls"
-import {slice}                              from "./method/slice"
-import {toArray}                            from "./method/toArray"
-import {toIterator}                         from "./method/toIterator"
-import {toLocaleLowerCaseString}            from "./method/toLocaleLowerCaseString"
-import {toLocaleString}                     from "./method/toLocaleString"
-import {toLocaleUpperCaseString}            from "./method/toLocaleUpperCaseString"
-import {toLowerCaseString}                  from "./method/toLowerCaseString"
-import {toMap}                              from "./method/toMap"
-import {toMutableArray}                     from "./method/toMutableArray"
-import {toMutableSet}                       from "./method/toMutableSet"
-import {toMutableMap}                       from "./method/toMutableMap"
-import {toMutableWeakSet}                   from "./method/toMutableWeakSet"
-import {toReverse}                          from "./method/toReverse"
-import {toSet}                              from "./method/toSet"
-import {toString}                           from "./method/toString"
-import {toUpperCaseString}                  from "./method/toUpperCaseString"
-import {toWeakSet}                          from "./method/toWeakSet"
+import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
+import {allByCollectionHolder}                     from "./method/all"
+import {anyByCollectionHolder}                     from "./method/any"
+import {filterByCollectionHolder}                  from "./method/filter"
+import {filterIndexedByCollectionHolder}           from "./method/filterIndexed"
+import {filterIndexedNotByCollectionHolder}        from "./method/filterIndexedNot"
+import {filterNotByCollectionHolder}               from "./method/filterNot"
+import {filterNotNullByCollectionHolder}           from "./method/filterNotNull"
+import {findByCollectionHolder}                    from "./method/find"
+import {findIndexedByCollectionHolder}             from "./method/findIndexed"
+import {findLastByCollectionHolder}                from "./method/findLast"
+import {findLastIndexedByCollectionHolder}         from "./method/findLastIndexed"
+import {firstByCollectionHolder}                   from "./method/first"
+import {firstOrNullByCollectionHolder}             from "./method/firstOrNull"
+import {forEach}                                   from "./method/forEach"
+import {forEachIndexed}                            from "./method/forEachIndexed"
+import {hasAllByCollectionHolder}                  from "./method/hasAll"
+import {hasNullByCollectionHolder}                 from "./method/hasNull"
+import {hasOneByCollectionHolder}                  from "./method/hasOne"
+import {indexOfByCollectionHolder}                 from "./method/indexOf"
+import {indexOfFirstByCollectionHolder}            from "./method/indexOfFirst"
+import {indexOfFirstIndexedByCollectionHolder}     from "./method/indexOfFirstIndexed"
+import {indexOfLastByCollectionHolder}             from "./method/indexOfLast"
+import {indexOfLastIndexedByCollectionHolder}      from "./method/indexOfLastIndexed"
+import {joinByCollectionHolder}                    from "./method/join"
+import {lastByCollectionHolder}                    from "./method/last"
+import {lastIndexOfByCollectionHolder}             from "./method/lastIndexOf"
+import {lastOrNullByCollectionHolder}              from "./method/lastOrNull"
+import {noneByCollectionHolder}                    from "./method/none"
+import {mapByCollectionHolder}                     from "./method/map"
+import {mapIndexedByCollectionHolder}              from "./method/mapIndexed"
+import {mapNotNullByCollectionHolder}              from "./method/mapNotNull"
+import {mapNotNullIndexedByCollectionHolder}       from "./method/mapNotNullIndexed"
+import {objectValuesMapByCollectionHolder}         from "./method/objectValuesMap"
+import {requireNoNullsByCollectionHolder}          from "./method/requireNoNulls"
+import {sliceByCollectionHolder}                   from "./method/slice"
+import {toArrayByCollectionHolder}                 from "./method/toArray"
+import {toIteratorByCollectionHolder}              from "./method/toIterator"
+import {toLocaleLowerCaseStringByCollectionHolder} from "./method/toLocaleLowerCaseString"
+import {toLocaleStringByCollectionHolder}          from "./method/toLocaleString"
+import {toLocaleUpperCaseStringByCollectionHolder} from "./method/toLocaleUpperCaseString"
+import {toLowerCaseStringByCollectionHolder}       from "./method/toLowerCaseString"
+import {toMapByCollectionHolder}                   from "./method/toMap"
+import {toMutableArrayByCollectionHolder}          from "./method/toMutableArray"
+import {toMutableSetByCollectionHolder}            from "./method/toMutableSet"
+import {toMutableMapByCollectionHolder}            from "./method/toMutableMap"
+import {toMutableWeakSet}                          from "./method/toMutableWeakSet"
+import {toReverseByCollectionHolder}               from "./method/toReverse"
+import {toSetByCollectionHolder}                   from "./method/toSet"
+import {toStringByCollectionHolder}                from "./method/toString"
+import {toUpperCaseStringByCollectionHolder}       from "./method/toUpperCaseString"
+import {toWeakSet}                                 from "./method/toWeakSet"
 
 /**
  * A definition of a {@link CollectionHolder} to have a common ancestor.
@@ -121,7 +120,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Has X methods --------------------
 
     public get hasNull(): boolean {
-        return this.#hasNull ??= hasNull(this,)
+        return this.#hasNull ??= hasNullByCollectionHolder(this,)
     }
 
     public get includesNull(): this["hasNull"] {
@@ -182,32 +181,32 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public indexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
     public indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
     public indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
-        return indexOf(this, element, fromIndex, toIndex, limit,)
+        return indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
 
     public lastIndexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
     public lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
     public lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
-        return lastIndexOf(this, element, fromIndex, toIndex, limit,)
+        return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
 
     public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
-        return indexOfFirst(this, predicate, fromIndex, toIndex, limit,)
+        return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
     public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
-        return indexOfFirstIndexed(this, predicate, fromIndex, toIndex, limit,)
+        return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
 
     public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
-        return indexOfLast(this, predicate, fromIndex, toIndex, limit,)
+        return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
     public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
-        return indexOfLastIndexed(this, predicate, fromIndex, toIndex, limit,)
+        return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Index of methods --------------------
@@ -217,14 +216,14 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
     public first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
     public first<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return first(this, predicate,)
+        return firstByCollectionHolder(this, predicate,)
     }
 
     public firstOrNull(): NullOr<T>
     public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public firstOrNull<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return firstOrNull(this, predicate,)
+        return firstOrNullByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- First methods --------------------
@@ -234,14 +233,14 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
     public last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
     public last<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return last(this, predicate,)
+        return lastByCollectionHolder(this, predicate,)
     }
 
     public lastOrNull(): NullOr<T>
     public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public lastOrNull<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
-        return lastOrNull(this, predicate,)
+        return lastOrNullByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Last methods --------------------
@@ -254,7 +253,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- All methods --------------------
 
     public all(predicate: BooleanCallback<T>,): boolean {
-        return all(this, predicate,)
+        return allByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- All methods --------------------
@@ -263,7 +262,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public any(predicate?: Nullable<BooleanCallback<T>>,): boolean {
-        return any(this, predicate,)
+        return anyByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Any methods --------------------
@@ -272,7 +271,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public none(): this["isEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public none(predicate?: Nullable<BooleanCallback<T>>,): boolean {
-        return none(this, predicate,)
+        return noneByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- None methods --------------------
@@ -285,7 +284,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public hasOne(...values: readonly T[]): boolean
     public hasOne(...values: readonly unknown[]): boolean
     public hasOne(...values: readonly unknown[]): boolean {
-        return hasOne(this, ...values,)
+        return hasOneByCollectionHolder(this, ...values,)
     }
 
     public includesOne(...values: readonly T[]): boolean
@@ -306,7 +305,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public hasAll(...values: readonly T[]): boolean
     public hasAll(...values: readonly unknown[]): boolean
     public hasAll(...values: readonly unknown[]): boolean {
-        return hasAll(this, ...values,)
+        return hasAllByCollectionHolder(this, ...values,)
     }
 
     public includesAll(...values: readonly T[]): boolean
@@ -327,7 +326,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Join methods --------------------
 
     public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<StringCallback<T>>,): string {
-        return join(this, separator, prefix, postfix, limit, truncated, transform,)
+        return joinByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
     }
 
     //#endregion -------------------- Join methods --------------------
@@ -338,7 +337,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public filter<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return filter(this, predicate,)
+        return filterByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter methods --------------------
@@ -347,7 +346,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public filterIndexed<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
-        return filterIndexed(this, predicate,)
+        return filterIndexedByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter indexed methods --------------------
@@ -356,7 +355,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public filterNot<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return filterNot(this, predicate,)
+        return filterNotByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter not methods --------------------
@@ -365,21 +364,21 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public filterIndexedNot<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
-        return filterIndexedNot(this, predicate,)
+        return filterIndexedNotByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter indexed not methods --------------------
     //#region -------------------- Filter not null methods --------------------
 
     public filterNotNull(): CollectionHolder<NonNullable<T>> {
-        return filterNotNull(this,)
+        return filterNotNullByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Filter not null methods --------------------
     //#region -------------------- Require not nulls methods --------------------
 
     public requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNulls(this,)
+        return requireNoNullsByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Require not nulls methods --------------------
@@ -392,7 +391,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public find(predicate: BooleanCallback<T>,): NullOr<T>
     public find<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return find(this, predicate,)
+        return findByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find methods --------------------
@@ -401,7 +400,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public findIndexed<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
-        return findIndexed(this, predicate,)
+        return findIndexedByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find indexed methods --------------------
@@ -410,7 +409,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public findLast(predicate: BooleanCallback<T>,): NullOr<T>
     public findLast<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
-        return findLast(this, predicate,)
+        return findLastByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find last methods --------------------
@@ -419,7 +418,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T> {
-        return findLastIndexed(this, predicate,)
+        return findLastIndexedByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find last indexed methods --------------------
@@ -435,7 +434,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
     public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
     public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
-        return slice(this, indicesOrFromIndex, toIndex, limit,)
+        return sliceByCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Slice methods --------------------
@@ -444,28 +443,28 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Map methods --------------------
 
     public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
-        return map(this, transform,)
+        return mapByCollectionHolder(this, transform,)
     }
 
     //#endregion -------------------- Map methods --------------------
     //#region -------------------- Map indexed methods --------------------
 
     public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
-        return mapIndexed(this, transform,)
+        return mapIndexedByCollectionHolder(this, transform,)
     }
 
     //#endregion -------------------- Map indexed methods --------------------
     //#region -------------------- Map not null methods --------------------
 
     public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
-        return mapNotNull(this, transform,)
+        return mapNotNullByCollectionHolder(this, transform,)
     }
 
     //#endregion -------------------- Map not null methods --------------------
     //#region -------------------- Map not null indexed methods --------------------
 
     public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
-        return mapNotNullIndexed(this, transform,)
+        return mapNotNullIndexedByCollectionHolder(this, transform,)
     }
 
     //#endregion -------------------- Map not null indexed methods --------------------
@@ -494,18 +493,18 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Javascript methods --------------------
 
     public [Symbol.iterator](): CollectionIterator<T> {
-        return toIterator(this,)
+        return toIteratorByCollectionHolder(this,)
     }
 
     public get [Symbol.toStringTag](): CollectionHolderName {
-        return CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG
+        return "CollectionHolder"
     }
 
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     public get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
-        return this.#objectValuesMap ??= objectValuesMap(this,)
+        return this.#objectValuesMap ??= objectValuesMapByCollectionHolder(this,)
     }
 
 
@@ -515,20 +514,20 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
 
     public toArray(): readonly T[] {
-        return this.#array ??= toArray(this,)
+        return this.#array ??= toArrayByCollectionHolder(this,)
     }
 
     public toMutableArray(): T[] {
-        return toMutableArray(this,)
+        return toMutableArrayByCollectionHolder(this,)
     }
 
 
     public toSet(): ReadonlySet<T> {
-        return this.#set ??= toSet(this,)
+        return this.#set ??= toSetByCollectionHolder(this,)
     }
 
     public toMutableSet(): Set<T> {
-        return toMutableSet(this,)
+        return toMutableSetByCollectionHolder(this,)
     }
 
 
@@ -542,16 +541,16 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
 
     public toMap(): ReadonlyMap<number, T> {
-        return this.#map ??= toMap(this,)
+        return this.#map ??= toMapByCollectionHolder(this,)
     }
 
     public toMutableMap(): Map<number, T> {
-        return toMutableMap(this,)
+        return toMutableMapByCollectionHolder(this,)
     }
 
 
     public toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
-        return toReverse(this, fromIndex, toIndex, limit,)
+        return toReverseByCollectionHolder(this, fromIndex, toIndex, limit,)
     }
 
     public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
@@ -566,27 +565,27 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Conversion methods (toString) --------------------
 
     public override toString(): string {
-        return toString(this,)
+        return toStringByCollectionHolder(this,)
     }
 
     public override toLocaleString(locale?: Nullable<string>,): string {
-        return toLocaleString(this, locale,)
+        return toLocaleStringByCollectionHolder(this, locale,)
     }
 
     public toLowerCaseString(): string {
-        return toLowerCaseString(this,)
+        return toLowerCaseStringByCollectionHolder(this,)
     }
 
     public toLocaleLowerCaseString(locale?: Nullable<string>,): string {
-        return toLocaleLowerCaseString(this, locale,)
+        return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
     }
 
     public toUpperCaseString(): string {
-        return toUpperCaseString(this,)
+        return toUpperCaseStringByCollectionHolder(this,)
     }
 
     public toLocaleUpperCaseString(locale?: Nullable<string>,): string {
-        return toLocaleUpperCaseString(this, locale,)
+        return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
     }
 
     //#endregion -------------------- Conversion methods (toString) --------------------
