@@ -5,8 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullOr}                                                from "./general type"
+import type {CollectionHolder}                                                from "./CollectionHolder"
 import type {IndexWithReturnCallback, ObjectOf, PossibleIterableOrCollection} from "./CollectionHolder.types"
+import type {Nullable, NullOr}                                                from "./general type"
 import type {MinimalistCollectionHolder}                                      from "./MinimalistCollectionHolder"
 import type {IterableWithCount}                                               from "./iterable/IterableWithCount"
 import type {IterableWithLength}                                              from "./iterable/IterableWithLength"
@@ -61,8 +62,10 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
     public constructor(lateArray: () => readonly T[],)
     public constructor(set: ReadonlySet<T>,)
     public constructor(lateSet: () => ReadonlySet<T>,)
-    public constructor(collectionHolder: MinimalistCollectionHolder<T>,)
-    public constructor(lateCollectionHolder: () => MinimalistCollectionHolder<T>,)
+    public constructor(collectionHolder: CollectionHolder<T>,)
+    public constructor(lateCollectionHolder: () => CollectionHolder<T>,)
+    public constructor(minimalistCollectionHolder: MinimalistCollectionHolder<T>,)
+    public constructor(lateMinimalistCollectionHolder: () => MinimalistCollectionHolder<T>,)
     public constructor(collectionIterable: CollectionIterator<T>,)
     public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
     public constructor(iterableWithSize: IterableWithSize<T>,)

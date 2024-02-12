@@ -5,6 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {CollectionHolder}             from "./CollectionHolder"
 import type {PossibleIterableOrCollection} from "./CollectionHolder.types"
 import type {Nullable}                     from "./general type"
 import type {IterableWithCount}            from "./iterable/IterableWithCount"
@@ -40,8 +41,10 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
     public constructor(lateArray: () => readonly T[],)
     public constructor(set: ReadonlySet<T>,)
     public constructor(lateSet: () => ReadonlySet<T>,)
-    public constructor(collectionHolder: MinimalistCollectionHolder<T>,)
-    public constructor(lateCollectionHolder: () => MinimalistCollectionHolder<T>,)
+    public constructor(collectionHolder: CollectionHolder<T>,)
+    public constructor(lateCollectionHolder: () => CollectionHolder<T>,)
+    public constructor(minimalistCollectionHolder: MinimalistCollectionHolder<T>,)
+    public constructor(lateMinimalistCollectionHolder: () => MinimalistCollectionHolder<T>,)
     public constructor(collectionIterable: CollectionIterator<T>,)
     public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
     public constructor(iterableWithSize: IterableWithSize<T>,)
