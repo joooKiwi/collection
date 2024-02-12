@@ -29,7 +29,6 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
     //#region -------------------- Fields --------------------
 
     readonly #size: number
-    readonly #isEmpty: boolean
 
     readonly #reference: REFERENCE
     readonly #array: readonly T[]
@@ -73,15 +72,12 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
             //#region -------------------- Initialization (empty) --------------------
 
             if (size == 0) {
-                this.#isEmpty = true
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
 
             //#endregion -------------------- Initialization (empty) --------------------
             //#region -------------------- Initialization (non-empty) --------------------
-
-            this.#isEmpty = false
 
             //#region -------------------- Initialization (size = 1) --------------------
 
@@ -110,15 +106,12 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
             //#region -------------------- Initialization (empty) --------------------
 
             if (size == 0) {
-                this.#isEmpty = true
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
 
             //#endregion -------------------- Initialization (empty) --------------------
             //#region -------------------- Initialization (non-empty) --------------------
-
-            this.#isEmpty = false
 
             //#region -------------------- Initialization (size = 1) --------------------
 
@@ -143,11 +136,11 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
-        if (isMinimalistCollectionHolder<T>(reference)) {
+        if (isMinimalistCollectionHolder<T>(reference,)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 
-            if (this.#isEmpty = reference.isEmpty) {
+            if (size == 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -181,7 +174,7 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (size == 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -220,7 +213,7 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
 
             //#region -------------------- Initialization (empty) --------------------
 
-            if (this.#isEmpty = size == 0) {
+            if (size == 0) {
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -256,7 +249,6 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
 
         if (iteratorResult.done) {
             this.#size = 0
-            this.#isEmpty = true
             this.#array = CollectionConstants.EMPTY_ARRAY
             return
         }
@@ -265,7 +257,6 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
         //#region -------------------- Initialization (non-empty) --------------------
 
         const array = [] as T[]
-        this.#isEmpty = false
         array[0] = iteratorResult.value
         let size = 0
         while (++size, !(iteratorResult = iterator.next()).done)
@@ -293,19 +284,15 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
         return this.#size
     }
 
-    public override get isEmpty(): boolean {
-        return this.#isEmpty
-    }
-
     public override get(index: number,): T {
-        if (this.isEmpty)
+        const size = this.size
+        if (size == 0)
             throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
 
         const array = this._array
         if (index in array)
             return array[index] as T
 
-        const size = this.size
         if (index > size)
             throw new CollectionHolderIndexOutOfBoundsException(`The index "${index}" is over the size of the collection (${size}).`, index,)
         if (index >= 0)
