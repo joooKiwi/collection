@@ -19,6 +19,7 @@ import {CollectionConstants}                       from "./CollectionConstants"
 import {MinimalistCollectionHolder}                from "./MinimalistCollectionHolder"
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
+import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
 import {isCollectionHolder}                        from "./method/isCollectionHolder"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
 import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
@@ -321,7 +322,14 @@ export class GenericMinimalistCollectionHolder<const out T = unknown, const out 
     public override get(index: number,): T {
         const size = this.size
         if (size == 0)
-            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+            throw new EmptyCollectionHolderException(null, index,)
+
+        if (Number.isNaN(index,))
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
+        if (index == Number.NEGATIVE_INFINITY)
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
+        if (index == Number.POSITIVE_INFINITY)
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
 
         const array = this._array
         if (index in array)

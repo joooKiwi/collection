@@ -11,6 +11,7 @@ import type {Nullable, NullOr}           from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
 
 //#region -------------------- Facade method --------------------
 
@@ -168,6 +169,13 @@ function __startingIndex(fromIndex: Nullable<number>, size: number,) {
     if (fromIndex == null)
         return 0
 
+    if (Number.isNaN(fromIndex,))
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be NaN.", fromIndex,)
+    if (fromIndex == Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be -∞.", fromIndex,)
+    if (fromIndex == Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be +∞.", fromIndex,)
+
     if (fromIndex == size)
         throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" is the collection size "${size}".`, fromIndex,)
     if (fromIndex > size)
@@ -187,6 +195,13 @@ function __endingIndex(toIndex: Nullable<number>, size: number,) {
     if (toIndex == null)
         return size - 1
 
+    if (Number.isNaN(toIndex,))
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be NaN.", toIndex,)
+    if (toIndex == Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be -∞.", toIndex,)
+    if (toIndex == Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be +∞.", toIndex,)
+
     if (toIndex == size)
         throw new CollectionHolderIndexOutOfBoundsException(`The ending index "${toIndex}" is the collection size "${size}".`, toIndex,)
 
@@ -205,6 +220,13 @@ function __endingIndex(toIndex: Nullable<number>, size: number,) {
 function __maximumIndex(limit: number, size: number,) {
     if (limit > size)
         throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" cannot over the collection size "${size}".`, limit,)
+
+    if (Number.isNaN(limit,))
+        throw new ForbiddenIndexException("Forbidden index. The limit cannot be NaN.", limit,)
+    if (limit == Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The limit cannot be -∞.", limit,)
+    if (limit == Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The limit cannot be +∞.", limit,)
 
     let maximumIndex = limit
     if (maximumIndex < 0)

@@ -19,6 +19,7 @@ import {AbstractCollectionHolder}                  from "./AbstractCollectionHol
 import {CollectionConstants}                       from "./CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
+import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
 import {hasNull}                                   from "./method/hasNull"
 import {isCollectionHolder}                        from "./method/isCollectionHolder"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
@@ -414,7 +415,15 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
 
     public override get(index: number,): T {
         if (this.isEmpty)
-            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+            throw new EmptyCollectionHolderException(null, index,)
+
+        if (Number.isNaN(index,))
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
+        if (index == Number.NEGATIVE_INFINITY)
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
+        if (index == Number.POSITIVE_INFINITY)
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
+
         if (index in this)
             return this[index] as T
 
@@ -436,6 +445,12 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
+        if (Number.isNaN(index,))
+            return defaultValue(index,)
+        if (index == Number.NEGATIVE_INFINITY)
+            return defaultValue(index,)
+        if (index == Number.POSITIVE_INFINITY)
+            return defaultValue(index,)
         if (this.isEmpty)
             return defaultValue(index < 0 ? this.size + index : index,)
 
@@ -450,8 +465,15 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
 
 
     public override getOrNull(index: number,): NullOr<T> {
+        if (Number.isNaN(index,))
+            return null
+        if (index == Number.NEGATIVE_INFINITY)
+            return null
+        if (index == Number.POSITIVE_INFINITY)
+            return null
         if (this.isEmpty)
             return null
+
         const size = this.size,
             indexToRetrieve = index < 0 ? size + index : index
         if (indexToRetrieve < 0)

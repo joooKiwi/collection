@@ -34,7 +34,7 @@ export class EmptyCollectionHandler
     //#endregion -------------------- Getter methods --------------------
 
     public get(index: number,): ValueHolder<never> {
-        return { value: null, get cause() { return new EmptyCollectionHolderException("No value can exist in an empty collection", index,) }, }
+        return { value: null, get isForbidden() { return Number.isNaN(index,) || index == Number.POSITIVE_INFINITY || index == Number.NEGATIVE_INFINITY }, get cause() { return new EmptyCollectionHolderException(null, index,) }, }
     }
 
 }

@@ -7,4 +7,5 @@
 
 export {CollectionHolderIndexOutOfBoundsException} from "./CollectionHolderIndexOutOfBoundsException"
 export {EmptyCollectionHolderException}            from "./EmptyCollectionHolderException"
+export {ForbiddenIndexException}                   from "./ForbiddenIndexException"
 export {NoElementFoundInCollectionHolderException} from "./NoElementFoundInCollectionHolderException"

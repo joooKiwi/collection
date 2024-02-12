@@ -10,6 +10,7 @@ import type {ValueHolder}      from "./ValueHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+import {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
 import {CollectionHandlerByArray}                  from "./CollectionHandlerByArray"
 
 /** An implementation of a {@link CollectionHolder} for an {@link ReadonlyArray array} of one element */
@@ -40,19 +41,27 @@ export class CollectionHandlerByArrayOf1<const out T = unknown, const out REFERE
 
     public override get(index: number,): ValueHolder<T> {
         if (this.isEmpty)
-            return { value: null, get cause() { return new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }, }
+            return { value: null, get isForbidden() { return Number.isNaN(index,) || index == Number.NEGATIVE_INFINITY || index == Number.POSITIVE_INFINITY }, get cause() { return new EmptyCollectionHolderException(null, index,) }, }
+
+        if (Number.isNaN(index,))
+            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,) }, }
+        if (index == Number.NEGATIVE_INFINITY)
+            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,) }, }
+        if (index == Number.POSITIVE_INFINITY)
+            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,) }, }
+
         if (index > 0)
-            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} was not 0 or -1.`, index,) }, }
+            return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} was not 0 or -1.`, index,) }, }
         if (index < -1)
-            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${index + 1} after calculation) was not 0 or -1.`, index,) }, }
+            return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${index + 1} after calculation) was not 0 or -1.`, index,) }, }
 
         const collection = this._collection
         if (0 in collection)
-            return { value: collection[0] as T, cause: null, }
+            return { value: collection[0] as T, isForbidden: false, cause: null, }
 
         const value = collection[0] = this._reference[0] as T
         this._hasFinished = true
-        return { value: value, cause: null, }
+        return { value: value, isForbidden: false, cause: null, }
     }
 
     //#endregion -------------------- Methods --------------------

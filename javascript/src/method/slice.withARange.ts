@@ -134,6 +134,13 @@ function __startingIndex(fromIndex: Nullable<number>, size: number,) {
     if (fromIndex == null)
         return 0
 
+    if (Number.isNaN(fromIndex,))
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be NaN.", fromIndex,)
+    if (fromIndex == Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be -∞.", fromIndex,)
+    if (fromIndex == Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be +∞.", fromIndex,)
+
     if (fromIndex == size)
         throw new CollectionHolderIndexOutOfBoundsException(`The starting index "${fromIndex}" is the collection size "${size}".`, fromIndex,)
     if (fromIndex > size)

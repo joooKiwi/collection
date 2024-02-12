@@ -11,6 +11,7 @@ import type {Nullable}                   from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
 
 //#region -------------------- Facade method --------------------
 
@@ -156,6 +157,13 @@ export function prefixAndPostfixOnly(prefix: Nullable<string> = null, postfix: N
 function __maximumIndex(limit: number, size: number,) {
     if (limit > size)
         throw new CollectionHolderIndexOutOfBoundsException(`The limit "${limit}" cannot over the collection size "${size}".`, limit,)
+
+    if (Number.isNaN(limit,))
+        throw new ForbiddenIndexException("Forbidden index. The limit cannot be NaN.", limit,)
+    if (limit == Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The limit cannot be -∞.", limit,)
+    if (limit == Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The limit cannot be +∞.", limit,)
 
     let maximumIndex = limit
     if (maximumIndex < 0)

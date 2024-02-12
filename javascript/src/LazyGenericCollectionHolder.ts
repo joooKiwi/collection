@@ -712,10 +712,13 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
     public override getOrElse<U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) {
-        const valueFound = this._handler.get(index,).value
+        const valueHolder = this._handler.get(index,)
+        const valueFound = valueHolder.value
         if (valueFound != null)
             return valueFound
 
+        if (valueHolder.isForbidden)
+            return defaultValue(index,)
         if (index < 0)
             return defaultValue(this.size + index,)
         return defaultValue(index,)

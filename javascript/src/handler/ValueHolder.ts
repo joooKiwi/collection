@@ -7,11 +7,14 @@
 
 import type {NullOr}                                    from "../general type"
 import type {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import type {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
 
 export interface ValueHolder<out T = unknown, > {
 
     readonly value: NullOr<T>
 
-    get cause(): NullOr<CollectionHolderIndexOutOfBoundsException>
+    readonly isForbidden: boolean
+
+    get cause(): NullOr<| CollectionHolderIndexOutOfBoundsException | ForbiddenIndexException>
 
 }

@@ -10,6 +10,7 @@ import type {ValueHolder}      from "./ValueHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+import {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
 import {AbstractCollectionHandler}                 from "./AbstractCollectionHandler"
 
 /** An implementation of a {@link CollectionHolder} for an {@link ReadonlySet set} */
@@ -60,19 +61,26 @@ export class CollectionHandlerBySet<const out T = unknown, const out REFERENCE e
 
     public override get(index: number,): ValueHolder<T> {
         if (this.isEmpty)
-            return { value: null, get cause() { return new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,) }, }
+            return { value: null, get isForbidden() { return Number.isNaN(index,) || index == Number.NEGATIVE_INFINITY || index == Number.POSITIVE_INFINITY }, get cause() { return new EmptyCollectionHolderException(null, index,) }, }
+
+        if (Number.isNaN(index,))
+            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,) }, }
+        if (index == Number.NEGATIVE_INFINITY)
+            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,) }, }
+        if (index == Number.POSITIVE_INFINITY)
+            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,) }, }
 
         const collection = this._collection
         if (index in collection)
-            return { value: collection[index] as T, cause: null, }
+            return { value: collection[index] as T, isForbidden: false, cause: null, }
 
         const size = this.size
         if (index > size)
-            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} is over the size of the collection (${size}).`, index,) }, }
+            return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} is over the size of the collection (${size}).`, index,) }, }
 
         if (index >= 0) {
             if (this._hasFinished)
-                return { value: collection[index] as T, cause: null, }
+                return { value: collection[index] as T, isForbidden: false, cause: null, }
 
             const iterator = this._iterator
             const indexPlus1 = index + 1
@@ -83,17 +91,17 @@ export class CollectionHandlerBySet<const out T = unknown, const out REFERENCE e
             if (indexToFind == size)
                 this._hasFinished = true
 
-            return { value: collection[(this._lastIndex = indexToFind) - 1] as T, cause: null, }
+            return { value: collection[(this._lastIndex = indexToFind) - 1] as T, isForbidden: false, cause: null, }
         }
 
         const indexToRetrieve = index < 0 ? size + index : index
         if (indexToRetrieve < 0)
-            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is under 0.`, index,) }, }
+            return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${indexToRetrieve} after calculation) is under 0.`, index,) }, }
         if (indexToRetrieve > size)
-            return { value: null, get cause() { return new CollectionHolderIndexOutOfBoundsException(`The index ${index} (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,) }, }
+            return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,) }, }
 
         if (this._hasFinished)
-            return { value: collection[this._lastIndex - 1] as T, cause: null, }
+            return { value: collection[this._lastIndex - 1] as T, isForbidden: false, cause: null, }
 
         const iterator = this._iterator
         const indexToRetrievePlus1 = indexToRetrieve + 1
@@ -104,7 +112,7 @@ export class CollectionHandlerBySet<const out T = unknown, const out REFERENCE e
         if (indexToFind == size)
             this._hasFinished = true
 
-        return { value: collection[(this._lastIndex = indexToFind) - 1] as T, cause: null, }
+        return { value: collection[(this._lastIndex = indexToFind) - 1] as T, isForbidden: false, cause: null, }
     }
 
 }
