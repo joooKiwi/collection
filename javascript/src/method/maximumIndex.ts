@@ -22,6 +22,7 @@ import {CollectionHolderIndexOutOfBoundsException} from "../exception/Collection
  * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link MinimalistCollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
+ * @deprecated This utility function is no longer used and will be removed in version 1.8.
  */
 export function maximumIndex<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, limit: Nullable<number>, size?: Nullable<number>,): NullOr<number> {
     if (collection == null)
@@ -51,6 +52,7 @@ export function maximumIndex<const T, >(collection: Nullable<MinimalistCollectio
  * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
+ * @deprecated This utility function is no longer used and will be removed in version 1.8.
  */
 export function maximumIndexByCollectionHolder<const T, >(collection: NonEmptyCollectionHolder<T>, limit: Nullable<number>, size?: Nullable<number>,): number
 /**
@@ -63,6 +65,7 @@ export function maximumIndexByCollectionHolder<const T, >(collection: NonEmptyCo
  * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
+ * @deprecated This utility function is no longer used and will be removed in version 1.8.
  */
 export function maximumIndexByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, limit: Nullable<number>, size?: Nullable<number>,): NullOr<number>
 export function maximumIndexByCollectionHolder(collection: Nullable<CollectionHolder>, limit: Nullable<number>, size: Nullable<number> = null,) {

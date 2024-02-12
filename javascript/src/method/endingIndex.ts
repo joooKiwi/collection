@@ -22,6 +22,7 @@ import {CollectionHolderIndexOutOfBoundsException} from "../exception/Collection
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over or equal to the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
+ * @deprecated This utility function is no longer used and will be removed in version 1.8.
  */
 export function endingIndex<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, toIndex?: Nullable<number>, size?: Nullable<number>,): NullOr<number> {
     if (collection == null)
@@ -51,6 +52,7 @@ export function endingIndex<const T, >(collection: Nullable<MinimalistCollection
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over or equal to the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
+ * @deprecated This utility function is no longer used and will be removed in version 1.8.
  */
 export function endingIndexByCollectionHolder<const T, >(collection: NonEmptyCollectionHolder<T>, toIndex?: Nullable<number>, size?: Nullable<number>,): number
 /**
@@ -63,6 +65,7 @@ export function endingIndexByCollectionHolder<const T, >(collection: NonEmptyCol
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over or equal to the {@link collection} {@link CollectionHolder.size size} after calculation
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
+ * @deprecated This utility function is no longer used and will be removed in version 1.8.
  */
 export function endingIndexByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, toIndex?: Nullable<number>, size?: Nullable<number>,): NullOr<number>
 export function endingIndexByCollectionHolder(collection: Nullable<CollectionHolder>, toIndex: Nullable<number> = null, size: Nullable<number> = null,) {
