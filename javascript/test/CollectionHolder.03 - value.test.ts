@@ -46,6 +46,7 @@ describe("CollectionHolderTest (value)", () => {
                     public override atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
                     public override atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
                     public override atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U {
+                        this.amountOfCall++
                         return super.atOrElse(index, defaultValue,)
                     }
 
@@ -92,6 +93,7 @@ describe("CollectionHolderTest (value)", () => {
                     public override elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
                     public override elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
                     public override elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U {
+                        this.amountOfCall++
                         return super.elementAtOrElse(index, defaultValue,)
                     }
 
@@ -140,6 +142,7 @@ describe("CollectionHolderTest (value)", () => {
                     public override atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
                     public override atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
                     public override atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U {
+                        this.amountOfCall++
                         return super.atOrElse(index, defaultValue,)
                     }
 
@@ -186,6 +189,7 @@ describe("CollectionHolderTest (value)", () => {
                     public override elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
                     public override elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
                     public override elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U {
+                        this.amountOfCall++
                         return super.elementAtOrElse(index, defaultValue,)
                     }
 
