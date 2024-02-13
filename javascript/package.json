@@ -13,9 +13,10 @@
     "build-umd":         "tsc --project tsconfig.umd.json",
     "build-types":       "tsc --project tsconfig.types.json",
 
-    "test": "jest",
-    "test-collection": "jest --testNamePattern=CollectionHolderTest",
-    "test-iterator":   "jest --testNamePattern=CollectionIteratorTest",
+    "test":               "jest",
+    "test-with-coverage": "jest --coverage",
+    "test-collection":    "jest --testNamePattern=CollectionHolderTest",
+    "test-iterator":      "jest --testNamePattern=CollectionIteratorTest",
 
     "test-pack":    "npm pack --dry-run",
     "test-publish": "npm publish --@access=public --dry-run",
