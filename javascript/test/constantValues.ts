@@ -84,8 +84,10 @@ export const iterableCreation = [
         length: null,
         count: null,
     }) as IterableWithPossibleSize<T>, "iterable with null size, length and count",),
+    new Holder(<T>(array: readonly T[],) => new GenericCollectionIterator(new GenericMinimalistCollectionHolder(array,),), "collection iterator + generic minimalist collection",),
     new Holder(<T>(array: readonly T[],) => new GenericCollectionIterator(new GenericCollectionHolder(array,),), "collection iterator + generic collection",),
     new Holder(<T>(array: readonly T[],) => new GenericCollectionIterator(new LazyGenericCollectionHolder(array,),), "collection iterator + lazy collection",),
+    new Holder(<T>(array: readonly T[],) => new GenericMinimalistCollectionHolder(array,), "generic minimalist collection",),
     new Holder(<T>(array: readonly T[],) => new GenericCollectionHolder(array,), "generic collection",),
     new Holder(<T>(array: readonly T[],) => new LazyGenericCollectionHolder(array,), "lazy collection",),
 ]

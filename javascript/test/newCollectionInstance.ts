@@ -7,13 +7,12 @@
 
 import type {CollectionHolder}                    from "../src/CollectionHolder"
 import type {PossibleCollectionHolderConstructor} from "../src/CollectionHolder.types"
-import {GenericMinimalistCollectionHolder}        from "../src/GenericMinimalistCollectionHolder"
 import type {MinimalistCollectionHolder}          from "../src/MinimalistCollectionHolder"
 import type {PossibleIterable}                    from "../src/iterable/types"
 import type {CollectionIterator}                  from "../src/iterator/CollectionIterator"
 
 /** A type to create the possible {@link Iterable} for the {@link newCollectionInstanceFromCallback} method */
-type IterableCreation = (array: readonly any[],) => | Array<any> | Set<any> | PossibleIterable<any> | CollectionIterator<any> | CollectionHolder<any>
+type IterableCreation = (array: readonly any[],) => | Array<any> | Set<any> | PossibleIterable<any> | CollectionIterator<any> | MinimalistCollectionHolder<any> | CollectionHolder<any>
 
 /**
  * Create a new {@link CollectionHolder} based on the {@link instance},
