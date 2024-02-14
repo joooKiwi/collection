@@ -51,7 +51,7 @@ export const TEMPLATE_ITEMS = [
     '«', '»', '"', '\'',
     true, false,
 ] as const
-export const everySimplisticInstances = [
+export const everyMinimalistInstances = [
     new Holder(GenericMinimalistCollectionHolder, "minimalist",),
     new Holder(GenericCollectionHolder, "normal",),
     new Holder(LazyGenericCollectionHolder, "lazy (normal)",),

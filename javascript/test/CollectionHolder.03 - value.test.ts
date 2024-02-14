@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 import {AB, AB_AB, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, EMPTY, NULL_ABCD, UNDEFINED_ABCD} from "./constantCollections"
-import {everySimplisticInstances}                                                                from "./constantValues"
+import {everyMinimalistInstances}                                                                from "./constantValues"
 import {newCollectionInstance, newMinimalistCollectionInstance}                                  from "./newCollectionInstance"
 import {GenericCollectionHolder_GetAlias}                                                        from "./instance/GenericCollectionHolder_GetAlias"
 import {GenericCollectionHolder_GetOrElseAlias}                                                  from "./instance/GenericCollectionHolder_GetOrElseAlias"
@@ -88,7 +88,7 @@ describe("CollectionHolderTest (value)", () => {
         },)
     },)
 
-    describe.each(everySimplisticInstances,)("%s", ({value: instance,},) => {
+    describe.each(everyMinimalistInstances,)("%s", ({value: instance,},) => {
         const isSimplistic = instance === GenericMinimalistCollectionHolder
 
         //#region -------------------- Instances --------------------
