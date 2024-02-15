@@ -218,15 +218,15 @@ function __endingIndex(toIndex: Nullable<number>, size: number,) {
 }
 
 function __maximumIndex(limit: number, size: number,) {
-    if (limit > size)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}" cannot over the collection size "${size}".`, limit,)
-
     if (Number.isNaN(limit,))
         throw new ForbiddenIndexException("Forbidden index. The limit cannot be NaN.", limit,)
     if (limit == Number.NEGATIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The limit cannot be -∞.", limit,)
     if (limit == Number.POSITIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The limit cannot be +∞.", limit,)
+
+    if (limit > size)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}" cannot over the collection size "${size}".`, limit,)
 
     let maximumIndex = limit
     if (maximumIndex < 0)
