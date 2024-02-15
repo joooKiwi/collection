@@ -22,9 +22,9 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
     test("nothing",                        () => expect(newInstance(AB,).join(),).toBe("[a, b]",),)
     test("separator = ;",                  () => expect(newInstance(AB,).join(";",),).toBe("[a;b]",),)
-    test("prefix =  <",                    () => expect(newInstance(AB,).join(null, "<",),).toBe("<a, b]",),)
-    test("postfix =  >",                   () => expect(newInstance(AB,).join(null, null, ">",),).toBe("[a, b>",),)
-    test("limit =  1",                     () => expect(newInstance(AB,).join(null, null, null, 1,),).toBe("[a, …]",),)
+    test("prefix = <",                     () => expect(newInstance(AB,).join(null, "<",),).toBe("<a, b]",),)
+    test("postfix = >",                    () => expect(newInstance(AB,).join(null, null, ">",),).toBe("[a, b>",),)
+    test("limit = 1",                      () => expect(newInstance(AB,).join(null, null, null, 1,),).toBe("[a, …]",),)
     test("truncated = \"...\"",            () => expect(newInstance(AB,).join(null, null, null, null, "...",),).toBe("[a, b]",),)
     test("limit = 1, truncated = \"...\"", () => expect(newInstance(AB,).join(null, null, null, 1, "...",),).toBe("[a, ...]",),)
     test("transform = it => toUpperCase",  () => expect(newInstance(AB,).join(null, null, null, null, null, it => it.toUpperCase(),),).toBe("[A, B]",),)

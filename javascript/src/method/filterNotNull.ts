@@ -30,6 +30,7 @@ export function filterNotNull<const T, >(collection: Nullable<MinimalistCollecti
     const size = collection.size
     if (size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
+
     return __fromMinimalist(collection, size,)
 }
 
