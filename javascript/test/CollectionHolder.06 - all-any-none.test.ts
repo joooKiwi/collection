@@ -6,11 +6,11 @@
  ******************************************************************************/
 
 import {AB, ABCD, EMPTY}                         from "./constantCollections"
-import {everyCollectionInstance}                 from "./constantValues"
+import {everyInstance}                           from "./constantValues"
 import {CollectionHolderThatCountGetBeingCalled} from "./instance/CollectionHolderThatCountGetBeingCalled"
 
 describe("CollectionHolderTest (all / any / none)", () => {
-describe.each(everyCollectionInstance,)("%s", ({value: {newInstance,},},) => {
+describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist, isExtensionOnly,},},) => {
     describe("get() being called", () => {
         describe("all", () => {
             test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.all(() => true,),).amountOfCall,).toBe(0,),)
@@ -36,10 +36,11 @@ describe.each(everyCollectionInstance,)("%s", ({value: {newInstance,},},) => {
     },)
 
     describe("any", () => {
-        describe("no parameter", () => {
-            test("[]",    () => expect(newInstance(EMPTY,).any(),).toBeFalse(),)
-            test("[a,b]", () => expect(newInstance(AB,).any(),).toBeTrue(),)
-        },)
+        if (!isExtensionOnly || isMinimalist) // The method "isNotEmpty" should not be tested for the "CollectionHolder_FromExtensionFunction".
+            describe("no parameter", () => {
+                test("[]",    () => expect(newInstance(EMPTY,).any(),).toBeFalse(),)
+                test("[a,b]", () => expect(newInstance(AB,).any(),).toBeTrue(),)
+            },)
         describe("predicate", () => {
             test("a|b on [a,b]",     () => expect(newInstance(AB,).any(it => it === "a" || it === "b"),).toBeTrue(),)
             test("c|d on [a,b]",     () => expect(newInstance(AB,).any((it: string) => it === 'c' || it === 'd'),).toBeFalse(),)
