@@ -60,4 +60,29 @@ describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist,},},) =>
         test("frozen", () => expect(newInstance(AB,).toMutableMap(),).not.toBeFrozen(),)
         test("size",   () => expect(newInstance(AB,).toMutableMap().size,).toBe(2,),)
     },)
+
+    describe("to string", () => {
+        test("empty", () => expect(newInstance(EMPTY,).toString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("basic", () => expect(newInstance(AB,).toString(),).toBe("[a, b]"),)
+    },)
+    describe("to locale string", () => {
+        test("empty",        () => expect(newInstance(EMPTY,).toLocaleString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("no arguments", () => expect(newInstance(AB,).toLocaleString(),).toBe("[a, b]"),)
+    },)
+    describe("to lower case string", () => {
+        test("empty", () => expect(newInstance(EMPTY,).toLowerCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("basic", () => expect(newInstance(AB_AB,).toLowerCaseString(),).toBe("[a, b, a, b]"),)
+    },)
+    describe("to locale lower case string", () => {
+        test("empty",        () => expect(newInstance(EMPTY,).toLocaleLowerCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("no arguments", () => expect(newInstance(AB_AB,).toLocaleLowerCaseString(),).toBe("[a, b, a, b]"),)
+    },)
+    describe("to upper case string", () => {
+        test("empty", () => expect(newInstance(EMPTY,).toUpperCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("basic", () => expect(newInstance(AB_AB,).toUpperCaseString(),).toBe("[A, B, A, B]"),)
+    },)
+    describe("to locale upper case string", () => {
+        test("empty",        () => expect(newInstance(EMPTY,).toLocaleUpperCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("no arguments", () => expect(newInstance(AB_AB,).toLocaleUpperCaseString(),).toBe("[A, B, A, B]"),)
+    },)
 },)},)
