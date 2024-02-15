@@ -15,9 +15,9 @@ import {ForbiddenIndexException}                   from "../src/exception/Forbid
 describe("CollectionHolderTest (join)", () => {
 describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
     describe("get() being called", () => {
-        test("transform = () => {}",    () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.join(null, null, null, null, null, () => '',),).amountOfCall,).toBe(0,),)
-        test("transform = (1) => {}",   () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.join(null, null, null, null, null, _ => '',),).amountOfCall,).toBe(2.),)
-        test("transform = (1,2) => {}", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.join(null, null, null, null, null, (_1, _2,) => '',),).amountOfCall,).toBe(2,),)
+        test("transform = 0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.join(null, null, null, null, null, () => '',),).amountOfCall,).toBe(0,),)
+        test("transform = 1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.join(null, null, null, null, null, _ => '',),).amountOfCall,).toBe(2.),)
+        test("transform = 2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.join(null, null, null, null, null, (_1, _2,) => '',),).amountOfCall,).toBe(2,),)
     },)
 
     test("nothing",                        () => expect(newInstance(AB,).join(),).toBe("[a, b]",),)

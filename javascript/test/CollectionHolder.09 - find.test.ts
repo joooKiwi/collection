@@ -13,24 +13,24 @@ describe("CollectionHolderTest (find)", () => {
 describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
     describe("get() being called", () => {
         describe("find", () => {
-            test("() => {}",    () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.find(() => false,),).amountOfCall,).toBe(0,),)
-            test("(1) => {}",   () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.find(_ => false,),).amountOfCall,).toBe(2,),)
-            test("(1,2) => {}", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.find((_1,_2,) => false,),).amountOfCall,).toBe(2,),)
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.find(() => false,),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.find(_ => false,),).amountOfCall,).toBe(2,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.find((_1,_2,) => false,),).amountOfCall,).toBe(2,),)
         },)
         describe("findIndexed", () => {
-            test("() => {}",    () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findIndexed(() => false,),).amountOfCall,).toBe(0,),)
-            test("(1) => {}",   () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findIndexed(_ => false,),).amountOfCall,).toBe(0,),)
-            test("(1,2) => {}", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findIndexed((_1,_2,) => false,),).amountOfCall,).toBe(2,),)
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findIndexed(() => false,),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findIndexed(_ => false,),).amountOfCall,).toBe(0,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findIndexed((_1,_2,) => false,),).amountOfCall,).toBe(2,),)
         },)
         describe("findLast", () => {
-            test("() => {}",    () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLast(() => false,),).amountOfCall,).toBe(0,),)
-            test("(1) => {}",   () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLast(_ => false,),).amountOfCall,).toBe(2,),)
-            test("(1,2) => {}", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLast((_1,_2,) => false,),).amountOfCall,).toBe(2,),)
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLast(() => false,),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLast(_ => false,),).amountOfCall,).toBe(2,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLast((_1,_2,) => false,),).amountOfCall,).toBe(2,),)
         },)
         describe("findLastIndexed", () => {
-            test("() => {}",    () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLastIndexed(() => false,),).amountOfCall,).toBe(0,),)
-            test("(1) => {}",   () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLastIndexed(_ => false,),).amountOfCall,).toBe(0,),)
-            test("(1,2) => {}", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLastIndexed((_1,_2,) => false,),).amountOfCall,).toBe(2,),)
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLastIndexed(() => false,),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLastIndexed(_ => false,),).amountOfCall,).toBe(0,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.findLastIndexed((_1,_2,) => false,),).amountOfCall,).toBe(2,),)
         },)
     },)
 
