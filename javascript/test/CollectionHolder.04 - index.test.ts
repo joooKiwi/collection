@@ -5,14 +5,38 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {AB, AB_AB, ABCD, ABCD_ABCD, EMPTY} from "./constantCollections"
-import {everyInstance}                     from "./constantValues"
+import {AB, AB_AB, ABCD, ABCD_ABCD, EMPTY}       from "./constantCollections"
+import {everyInstance}                           from "./constantValues"
+import {CollectionHolderThatCountGetBeingCalled} from "./instance/CollectionHolderThatCountGetBeingCalled"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
 import {ForbiddenIndexException}                   from "../src/exception/ForbiddenIndexException"
 
 describe("CollectionHolderTest (index)", () => {
 describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
+    describe("get() being called", () => {
+        describe("index of first", () => {
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfFirst(() => false,),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfFirst(_ => false,),).amountOfCall,).toBe(2,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfFirst((_1, _2,) => false,),).amountOfCall,).toBe(2,),)
+        },)
+        describe("index of first indexed", () => {
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfFirstIndexed(() => false,),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfFirstIndexed(_ => false,),).amountOfCall,).toBe(0,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfFirstIndexed((_1, _2,) => false,),).amountOfCall,).toBe(2,),)
+        },)
+        describe("index of last", () => {
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfLast(() => false,),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfLast(_ => false,),).amountOfCall,).toBe(2,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfLast((_1, _2,) => false,),).amountOfCall,).toBe(2,),)
+        },)
+        describe("index of last indexed", () => {
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfLastIndexed(() => false,),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfLastIndexed(_ => false,),).amountOfCall,).toBe(0,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.indexOfLastIndexed((_1, _2,) => false,),).amountOfCall,).toBe(2,),)
+        },)
+    },)
+
     describe("index of", () => {
         describe("known null return", () => {
             test("empty",                 () => expect(newInstance(EMPTY,).indexOf('a',),).toBeNull(),)
