@@ -49,7 +49,7 @@ export function join<const T, >(collection: Nullable<MinimalistCollectionHolder<
 
         if (size === limit)
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
-        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', limit, truncated ?? '…',)
+        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', __maximumIndex(limit, size,), truncated ?? '…',)
     }
 
     if (limit == null) {
@@ -109,7 +109,7 @@ export function joinByCollectionHolder<const T, >(collection: Nullable<Collectio
         const size = collection.size
         if (size === limit)
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
-        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', limit, truncated ?? '…',)
+        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', __maximumIndex(limit, size,), truncated ?? '…',)
     }
 
     if (limit == null) {
