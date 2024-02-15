@@ -12,7 +12,6 @@ import type {CollectionIterator}         from "../iterator/CollectionIterator"
 
 import {CollectionConstants}       from "../CollectionConstants"
 import {GenericCollectionIterator} from "../iterator/GenericCollectionIterator"
-import {isCollectionHolder}        from "./isCollectionHolder"
 
 /**
  * Convert the {@link collection} to a new {@link CollectionIterator}
@@ -23,12 +22,6 @@ import {isCollectionHolder}        from "./isCollectionHolder"
 export function toIterator<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionIterator<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_ITERATOR
-    if (isCollectionHolder(collection,)) {
-        if (collection.isEmpty)
-            return CollectionConstants.EMPTY_COLLECTION_ITERATOR
-        return new GenericCollectionIterator(collection,)
-    }
-
     if (collection.size == 0)
         return CollectionConstants.EMPTY_COLLECTION_ITERATOR
     return new GenericCollectionIterator(collection,)
