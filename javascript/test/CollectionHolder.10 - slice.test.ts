@@ -5,8 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {AB, ABCD, EMPTY}         from "./constantCollections"
-import {everyCollectionInstance} from "./constantValues"
+import {AB, ABCD, EMPTY}                        from "./constantCollections"
+import {everyCollectionInstance, everyInstance} from "./constantValues"
 
 import {CollectionConstants}                       from "../src/CollectionConstants"
 import {GenericCollectionIterator}                 from "../src/iterator/GenericCollectionIterator"
@@ -14,51 +14,64 @@ import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/Collec
 import {ForbiddenIndexException}                   from "../src/exception/ForbiddenIndexException"
 
 describe("CollectionHolderTest (slice)", () => {
-describe.each(everyCollectionInstance,)("%s", ({value: {newInstance,},},) => {
+describe.each(everyInstance,)("%s", ({value: {newInstance, isExtensionOnly,},},) => {
+    //README: The "extension only methods" instances only handle the values from a ReadonlyArray
     describe("by array", () => {
-        test("empty", () => expect(newInstance(AB,).slice([],),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        test('0',     () => expect(newInstance(ABCD,).slice([0,],).toArray(),).toEqual(['a',],),)
-        test('1',     () => expect(newInstance(ABCD,).slice([1,],).toArray(),).toEqual(['b',],),)
-        test("-1",    () => expect(newInstance(ABCD,).slice([-1,],).toArray(),).toEqual(['d',],),)
-        test("-2",    () => expect(newInstance(ABCD,).slice([-2,],).toArray(),).toEqual(['c',],),)
-        test("10",    () => expect(() => newInstance(ABCD,).slice([10,],).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-        test("-10",   () => expect(() => newInstance(ABCD,).slice([-10,],).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+        test("empty",   () => expect(newInstance(AB,).slice([],),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        test('0',       () => expect(newInstance(ABCD,).slice([0,],).toArray(),).toEqual(['a',],),)
+        test('1',       () => expect(newInstance(ABCD,).slice([1,],).toArray(),).toEqual(['b',],),)
+        if (!isExtensionOnly) {
+            test("-1",  () => expect(newInstance(ABCD,).slice([-1,],).toArray(),).toEqual(['d',],),)
+            test("-2",  () => expect(newInstance(ABCD,).slice([-2,],).toArray(),).toEqual(['c',],),)
+            test("10",  () => expect(() => newInstance(ABCD,).slice([10,],).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => newInstance(ABCD,).slice([-10,],).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+        }
     },)
     describe("by set", () => {
-        test("empty", () => expect(newInstance(AB,).slice(new Set<never>(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        test('0',     () => expect(newInstance(ABCD,).slice(new Set([0,],),).toArray(),).toEqual(['a',],),)
-        test('1',     () => expect(newInstance(ABCD,).slice(new Set([1,],),).toArray(),).toEqual(['b',],),)
-        test("-1",    () => expect(newInstance(ABCD,).slice(new Set([-1,],),).toArray(),).toEqual(['d',],),)
-        test("-2",    () => expect(newInstance(ABCD,).slice(new Set([-2,],),).toArray(),).toEqual(['c',],),)
-        test("10",    () => expect(() => newInstance(ABCD,).slice(new Set([10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-        test("-10",   () => expect(() => newInstance(ABCD,).slice(new Set([-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+        test("empty",   () => expect(newInstance(AB,).slice(new Set<never>(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        test('0',       () => expect(newInstance(ABCD,).slice(new Set([0,],),).toArray(),).toEqual(['a',],),)
+        test('1',       () => expect(newInstance(ABCD,).slice(new Set([1,],),).toArray(),).toEqual(['b',],),)
+        if (!isExtensionOnly) {
+            test("-1",  () => expect(newInstance(ABCD,).slice(new Set([-1,],),).toArray(),).toEqual(['d',],),)
+            test("-2",  () => expect(newInstance(ABCD,).slice(new Set([-2,],),).toArray(),).toEqual(['c',],),)
+            test("10",  () => expect(() => newInstance(ABCD,).slice(new Set([10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => newInstance(ABCD,).slice(new Set([-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+        }
     },)
     describe("by collection", () => {
-        test("empty", () => expect(newInstance(AB,).slice(newInstance([],),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        test('0',     () => expect(newInstance(ABCD,).slice(newInstance([0,],),).toArray(),).toEqual(['a',],),)
-        test('1',     () => expect(newInstance(ABCD,).slice(newInstance([1,],),).toArray(),).toEqual(['b',],),)
-        test("-1",    () => expect(newInstance(ABCD,).slice(newInstance([-1,],),).toArray(),).toEqual(['d',],),)
-        test("-2",    () => expect(newInstance(ABCD,).slice(newInstance([-2,],),).toArray(),).toEqual(['c',],),)
-        test("10",    () => expect(() => newInstance(ABCD,).slice(newInstance([10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-        test("-10",   () => expect(() => newInstance(ABCD,).slice(newInstance([-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-    },)
+    describe.each(everyCollectionInstance,)("%s", ({value: {newInstance: newCollectionInstance,}}) => {
+        test("empty", () => expect(newInstance(AB,).slice(newCollectionInstance([],),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        test('0', () => expect(newInstance(ABCD,).slice(newCollectionInstance([0,],),).toArray(),).toEqual(['a',],),)
+        test('1', () => expect(newInstance(ABCD,).slice(newCollectionInstance([1,],),).toArray(),).toEqual(['b',],),)
+        if (!isExtensionOnly) {
+            test("-1", () => expect(newInstance(ABCD,).slice(newCollectionInstance([-1,],),).toArray(),).toEqual(['d',],),)
+            test("-2", () => expect(newInstance(ABCD,).slice(newCollectionInstance([-2,],),).toArray(),).toEqual(['c',],),)
+            test("10", () => expect(() => newInstance(ABCD,).slice(newCollectionInstance([10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => newInstance(ABCD,).slice(newCollectionInstance([-10,],),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+        }
+    },)},)
     describe("by collection iterator", () => {
-        test("empty", () => expect(newInstance(AB,).slice(new GenericCollectionIterator<never>(newInstance([],),),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        test('0',     () => expect(newInstance(ABCD,).slice(new GenericCollectionIterator<0>(newInstance([0,],),),).toArray(),).toEqual(['a',],),)
-        test('1',     () => expect(newInstance(ABCD,).slice(new GenericCollectionIterator<1>(newInstance([1,],),),).toArray(),).toEqual(['b',],),)
-        test("-1",    () => expect(newInstance(ABCD,).slice(new GenericCollectionIterator<-1>(newInstance([-1,],),),).toArray(),).toEqual(['d',],),)
-        test("-2",    () => expect(newInstance(ABCD,).slice(new GenericCollectionIterator<-2>(newInstance([-2,],),),).toArray(),).toEqual(['c',],),)
-        test("10",    () => expect(() => newInstance(ABCD,).slice(new GenericCollectionIterator<10>(newInstance([10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-        test("-10",   () => expect(() => newInstance(ABCD,).slice(new GenericCollectionIterator<-10>(newInstance([-10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-    },)
+    describe.each(everyCollectionInstance,)("%s", ({value: {newInstance: newCollectionInstance,}}) => {
+        test("empty",   () => expect(newInstance(AB,).slice(new GenericCollectionIterator<never>(newCollectionInstance([],),),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        test('0',       () => expect(newInstance(ABCD,).slice(new GenericCollectionIterator<0>(newCollectionInstance([0,],),),).toArray(),).toEqual(['a',],),)
+        test('1',       () => expect(newInstance(ABCD,).slice(new GenericCollectionIterator<1>(newCollectionInstance([1,],),),).toArray(),).toEqual(['b',],),)
+        if (!isExtensionOnly) {
+            test("-1",  () => expect(newInstance(ABCD,).slice(new GenericCollectionIterator<-1>(newCollectionInstance([-1,],),),).toArray(),).toEqual(['d',],),)
+            test("-2",  () => expect(newInstance(ABCD,).slice(new GenericCollectionIterator<-2>(newCollectionInstance([-2,],),),).toArray(),).toEqual(['c',],),)
+            test("10",  () => expect(() => newInstance(ABCD,).slice(new GenericCollectionIterator<10>(newCollectionInstance([10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => newInstance(ABCD,).slice(new GenericCollectionIterator<-10>(newCollectionInstance([-10,],),),).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+        }
+    },)},)
     describe("by iterable", () => {
-        test("empty", () => expect(newInstance(AB,).slice({ [Symbol.iterator]() { return [][Symbol.iterator]() }, },),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        test('0',     () => expect(newInstance(ABCD,).slice({ [Symbol.iterator]() { return [0,][Symbol.iterator]() }, },).toArray(),).toEqual(['a',],),)
-        test('1',     () => expect(newInstance(ABCD,).slice({ [Symbol.iterator]() { return [1,][Symbol.iterator]() }, },).toArray(),).toEqual(['b',],),)
-        test("-1",    () => expect(newInstance(ABCD,).slice({ [Symbol.iterator]() { return [-1,][Symbol.iterator]() }, },).toArray(),).toEqual(['d',],),)
-        test("-2",    () => expect(newInstance(ABCD,).slice({ [Symbol.iterator]() { return [-2,][Symbol.iterator]() }, },).toArray(),).toEqual(['c',],),)
-        test("10",    () => expect(() => newInstance(ABCD,).slice({ [Symbol.iterator]() { return [10,][Symbol.iterator]() }, },).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-        test("-10",   () => expect(() => newInstance(ABCD,).slice({ [Symbol.iterator]() { return [-10,][Symbol.iterator]() }, },).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+        test("empty",   () => expect(newInstance(AB,).slice({ [Symbol.iterator]() { return [][Symbol.iterator]() }, },),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        test('0',       () => expect(newInstance(ABCD,).slice({ [Symbol.iterator]() { return [0,][Symbol.iterator]() }, },).toArray(),).toEqual(['a',],),)
+        test('1',       () => expect(newInstance(ABCD,).slice({ [Symbol.iterator]() { return [1,][Symbol.iterator]() }, },).toArray(),).toEqual(['b',],),)
+        if (!isExtensionOnly) {
+            test("-1",  () => expect(newInstance(ABCD,).slice({ [Symbol.iterator]() { return [-1,][Symbol.iterator]() }, },).toArray(),).toEqual(['d',],),)
+            test("-2",  () => expect(newInstance(ABCD,).slice({ [Symbol.iterator]() { return [-2,][Symbol.iterator]() }, },).toArray(),).toEqual(['c',],),)
+            test("10",  () => expect(() => newInstance(ABCD,).slice({ [Symbol.iterator]() { return [10,][Symbol.iterator]() }, },).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-10", () => expect(() => newInstance(ABCD,).slice({ [Symbol.iterator]() { return [-10,][Symbol.iterator]() }, },).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+        }
     },)
 
     describe("by range", () => {
