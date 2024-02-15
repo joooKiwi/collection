@@ -1,11 +1,11 @@
- <component name="ProjectRunConfigurationManager">
+<component name="ProjectRunConfigurationManager">
   <configuration default="false" name="conversion" type="JavaScriptTestRunnerJest" folderName="Every test on CollectionHolder">
     <node-interpreter value="project" />
     <jest-package value="$PROJECT_DIR$/node_modules/jest" />
     <working-dir value="$PROJECT_DIR$" />
     <envs />
     <scope-kind value="SUITE" />
-    <test-file value="$PROJECT_DIR$/test/CollectionHolder.13 - conversion.test.ts" />
+    <test-file value="$PROJECT_DIR$/test/CollectionHolder.14 - conversion.test.ts" />
     <test-names>
       <test-name value="CollectionHolderTest (conversion)" />
     </test-names>
