@@ -55,8 +55,8 @@ function __toString(collection: MinimalistCollectionHolder, size: number,) {
     const sizeMinus1 = size - 1
     let index = -1
     while (++index < sizeMinus1)
-        string += `${asUpperCaseString(collection.get(index,))}, `
-    return `[${string}${asUpperCaseString(collection.get(index,))}]`
+        string += `${asUpperCaseString(collection.get(index,),)}, `
+    return `[${string}${asUpperCaseString(collection.get(index,),)}]`
 }
 
 //#endregion -------------------- Loop method --------------------

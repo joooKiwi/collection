@@ -35,7 +35,7 @@ export function sliceWithSet<const T, >(collection: Nullable<MinimalistCollectio
     const indicesSize = indices.size
     if (indicesSize == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indicesSize,))
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
 
 /**
@@ -60,7 +60,7 @@ export function sliceByCollectionHolderWithSet<const T, >(collection: Nullable<C
     const indicesSize = indices.size
     if (indicesSize == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indicesSize,))
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
 
 //#endregion -------------------- Facade method --------------------
