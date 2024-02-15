@@ -62,7 +62,7 @@ It can be separated in different categories.
 
 <span>2.</span> The **loop** methods are:
  - `all`, `any` & `none`
- - `hasOne`, `includesOne` & `containsOne`
+ - `hasOne`, `has`, `includesOne`, `includes`, `containsOne` & `contains`
  - `hasAll`, `includesAll` & `containsAll`
  - `join`
  - `filter` & `filterIndexed`
@@ -82,17 +82,18 @@ It can be separated in different categories.
  - `toSet` & `toMutableSet`
  - `toWeakSet` & `toMutableWeakSet`
  - `toMap` & `toMutableMap`
- - `toReversed`
+ - `toReverse`, `toReversed`, `reversed`
  - `toString`, `toLocaleString`, `toLowerCaseString`, `toLocaleLowerCaseString`, `toUpperCaseString` & `toLocaleUpperCaseString`
 
 <span>4.</span> The **utility** methods _(not part of the `CollectionHolder`)_
  - `asString`, `asLocaleString`, `asLowerCaseString`, `asLocaleLowerCaseString`, `asUpperCaseString` & `asLocaleUpperCaseString`
    _(These methods will be eventually moved in another project)_
+ - `isMinimalistCollectionHolder`
  - `isCollectionHolder`
  - `isCollectionIterator`
- - `endingIndex`
- - `startingIndex`
- - ~~`newInstance`~~ _(deprecated, it will be removed in the next version)_
+ - ~~`endingIndex`~~ (deprecated, it will be removed in version 1.8)
+ - ~~`startingIndex`~~ (deprecated, it will be removed in version 1.8)
+ - ~~`maximumIndex`~~ (deprecated, it will be removed in version 1.8)
 
 ---
 Almost every method is present in the `src/method` at the exception of
@@ -105,7 +106,10 @@ and `isEmpty` with its inverse `isNotEmpty`.
 The alias methods are not part of the extension function.
 It includes `includesNull`, `containsNull`, `atOrElse`,
 `elementAtOrElse`, `atOrDefault`, `elementAtOrDefault`,
-`includesOne`, `containsOne`, `includesAll` & `containsAll`.
+`has`,
+`includes`, `includesOne`, `includesAll`,
+`contains`, `containsOne`, `containsAll`,
+`toReversed` & `reversed`.
 
 ## Contribution
 You can contribute to great simple packages.
