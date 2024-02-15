@@ -9,6 +9,9 @@ import {AB}                                      from "./constantCollections"
 import {everyInstance,}                          from "./constantValues"
 import {CollectionHolderThatCountGetBeingCalled} from "./instance/CollectionHolderThatCountGetBeingCalled"
 
+import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
+import {ForbiddenIndexException}                   from "../src/exception/ForbiddenIndexException"
+
 describe("CollectionHolderTest (join)", () => {
 describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
     describe("get() being called", () => {
@@ -25,4 +28,13 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
     test("truncated = \"...\"",            () => expect(newInstance(AB,).join(null, null, null, null, "...",),).toBe("[a, b]",),)
     test("limit = 1, truncated = \"...\"", () => expect(newInstance(AB,).join(null, null, null, 1, "...",),).toBe("[a, ...]",),)
     test("transform = it => toUpperCase",  () => expect(newInstance(AB,).join(null, null, null, null, null, it => it.toUpperCase(),),).toBe("[A, B]",),)
+
+    describe("invalid numbers", () => {
+        test("limit = -3",  () => expect(() => newInstance(AB,).join(null, null, null, -3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+        test("limit = 3",   () => expect(() => newInstance(AB,).join(null, null, null, 3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+        test("limit = NaN", () => expect(() => newInstance(AB,).join(null, null, null, NaN,),).toThrow(ForbiddenIndexException,),)
+        test("limit = +∞",  () => expect(() => newInstance(AB,).join(null, null, null, Infinity,),).toThrow(ForbiddenIndexException,),)
+        test("limit = -∞",  () => expect(() => newInstance(AB,).join(null, null, null, -Infinity,),).toThrow(ForbiddenIndexException,),)
+    },)
 },)},)

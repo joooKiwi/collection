@@ -9,8 +9,9 @@ import {AB, AB_AB, ABCD, ABCD_ABCD, EMPTY} from "./constantCollections"
 import {everyInstance}                     from "./constantValues"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
+import {ForbiddenIndexException}                   from "../src/exception/ForbiddenIndexException"
 
-describe("CollectionHolderTest (value)", () => {
+describe("CollectionHolderTest (index)", () => {
 describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
     describe("index of", () => {
         describe("known null return", () => {
@@ -104,6 +105,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOf('a', 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOf('a', -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOf('a', NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOf('a', Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOf('a', -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("to index", () => {
                 test('2',    () => expect(() => newInstance(AB,).indexOf('a', null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -116,6 +121,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOf('a', null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOf('a', null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOf('a', null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOf('a', null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOf('a', null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("limit", () => {
                 test('2',    () => expect(() => newInstance(AB,).indexOf('a', null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -128,6 +137,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOf('a', null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOf('a', null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOf('a', null, null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOf('a', null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOf('a', null, null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
         },)
         describe("negative values", () => {
@@ -243,6 +256,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).lastIndexOf('a', 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).lastIndexOf('a', -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).lastIndexOf('a', NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).lastIndexOf('a', Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).lastIndexOf('a', -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("to index", () => {
                 test('2',    () => expect(() => newInstance(AB,).lastIndexOf('a', null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -255,6 +272,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).lastIndexOf('a', null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).lastIndexOf('a', null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).lastIndexOf('a', null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).lastIndexOf('a', null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).lastIndexOf('a', null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("limit", () => {
                 test('2',    () => expect(() => newInstance(AB,).lastIndexOf('a', null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -267,6 +288,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).lastIndexOf('a', null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).lastIndexOf('a', null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).lastIndexOf('a', null, null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).lastIndexOf('a', null, null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).lastIndexOf('a', null, null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
         },)
         describe("negative values", () => {
@@ -381,6 +406,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("to index", () => {
                 test('2',    () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -393,6 +422,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("limit", () => {
                 test('2',    () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -405,6 +438,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfFirst(() => fail(), null, null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
         },)
         describe("negative values", () => {
@@ -542,6 +579,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("to index", () => {
                 test('2',    () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -554,6 +595,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("limit", () => {
                 test('2',    () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -566,6 +611,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfFirstIndexed(() => fail(), null, null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
         },)
         describe("negative values", () => {
@@ -706,6 +755,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfLast(() => fail(), 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfLast(() => fail(), -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfLast(() => fail(), NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfLast(() => fail(), Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfLast(() => fail(), -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("to index", () => {
                 test('2',    () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -718,6 +771,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("limit", () => {
                 test('2',    () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -730,6 +787,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfLast(() => fail(), null, null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
         },)
         describe("negative values", () => {
@@ -867,6 +928,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("to index", () => {
                 test('2',    () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, 2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -879,6 +944,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("limit", () => {
                 test('2',    () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, null, 2,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -891,6 +960,10 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
 
                 test("500",  () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("-500", () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+
+                test("NaN",  () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, null, NaN,),).toThrow(ForbiddenIndexException,),)
+                test("+∞",   () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, null, Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",   () => expect(() => newInstance(AB,).indexOfLastIndexed(() => fail(), null, null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
         },)
         describe("negative values", () => {

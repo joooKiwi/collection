@@ -9,8 +9,9 @@ import {AB, ABCD, EMPTY}         from "./constantCollections"
 import {everyCollectionInstance} from "./constantValues"
 
 import {CollectionConstants}                       from "../src/CollectionConstants"
-import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
 import {GenericCollectionIterator}                 from "../src/iterator/GenericCollectionIterator"
+import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
+import {ForbiddenIndexException}                   from "../src/exception/ForbiddenIndexException"
 
 describe("CollectionHolderTest (slice)", () => {
 describe.each(everyCollectionInstance,)("%s", ({value: {newInstance,},},) => {
@@ -97,5 +98,19 @@ describe.each(everyCollectionInstance,)("%s", ({value: {newInstance,},},) => {
         test("(-10)",             () => expect(() => newInstance(ABCD,).slice(-10, null,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         test("(null, -10)",       () => expect(() => newInstance(ABCD,).slice(null, -10,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
         test("(null, null, -10)", () => expect(() => newInstance(ABCD,).slice(null, null, -10,).toString(),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+    },)
+
+    describe("invalid numbers", () => {
+        test("(NaN)",             () => expect(() => newInstance(ABCD,).slice(NaN,),).toThrow(ForbiddenIndexException,),)
+        test("(+∞)",              () => expect(() => newInstance(ABCD,).slice(Infinity,),).toThrow(ForbiddenIndexException,),)
+        test("(-∞)",              () => expect(() => newInstance(ABCD,).slice(-Infinity,),).toThrow(ForbiddenIndexException,),)
+
+        test("(null, NaN)",       () => expect(() => newInstance(ABCD,).slice(null, NaN,),).toThrow(ForbiddenIndexException,),)
+        test("(null, +∞)",        () => expect(() => newInstance(ABCD,).slice(null, Infinity,),).toThrow(ForbiddenIndexException,),)
+        test("(null, -∞)",        () => expect(() => newInstance(ABCD,).slice(null, -Infinity,),).toThrow(ForbiddenIndexException,),)
+
+        test("(null, null, NaN)", () => expect(() => newInstance(ABCD,).slice(null, null, NaN,),).toThrow(ForbiddenIndexException,),)
+        test("(null, null, +∞)",  () => expect(() => newInstance(ABCD,).slice(null, null, Infinity,),).toThrow(ForbiddenIndexException,),)
+        test("(null, null, -∞)",  () => expect(() => newInstance(ABCD,).slice(null, null, -Infinity,),).toThrow(ForbiddenIndexException,),)
     },)
 },)},)
