@@ -5,12 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {everyMinimalistInstances, sizeValues}  from "./constantValues"
-import {newCollectionInstance}                 from "./newCollectionInstance"
+import {everyCollectionInstance, sizeValues}   from "./constantValues"
 import {GenericCollectionHolder_SizeAlias}     from "./instance/GenericCollectionHolder_SizeAlias"
 import {LazyGenericCollectionHolder_SizeAlias} from "./instance/LazyGenericCollectionHolder_SizeAlias"
-
-import {GenericMinimalistCollectionHolder} from "../src/GenericMinimalistCollectionHolder"
 
 describe("CollectionHolderTest (size)", () => {
 
@@ -41,13 +38,13 @@ describe("CollectionHolderTest (size)", () => {
         },)
     },)
 
-    describe.each(everyMinimalistInstances,)("%s", ({value: instance,},) =>
-        describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
-            test("size", () => expect(newCollectionInstance(instance, array,).size,).toEqual(size,),)
-            if (instance !== GenericMinimalistCollectionHolder) {
-                test("isEmpty", () => expect(newCollectionInstance(instance, array,).isEmpty,).toBe(size == 0,),)
-                test("isNotEmpty", () => expect(newCollectionInstance(instance, array,).isNotEmpty,).toBe(size != 0,),)
-            }
-        },),)
+    describe.each(everyCollectionInstance,)("%s", ({value: {isMinimalist, newInstance,},},) => {
+    describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
+        test("size", () => expect(newInstance(array,).size,).toEqual(size,),)
+        if (!isMinimalist) {
+            test("isEmpty", () => expect(newInstance(array,).isEmpty,).toBe(size == 0,),)
+            test("isNotEmpty", () => expect(newInstance(array,).isNotEmpty,).toBe(size != 0,),)
+        }
+    },)},)
 
 },)

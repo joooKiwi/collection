@@ -6,67 +6,56 @@
  ******************************************************************************/
 
 import {AB, ABCD, EMPTY}                         from "./constantCollections"
-import {everyInstances}                          from "./constantValues"
-import {newCollectionInstance}                   from "./newCollectionInstance"
-import {CollectionHolderThatCannotRetrieveByGet} from "./instance/CollectionHolderThatCannotRetrieveByGet"
+import {everyCollectionInstance}                 from "./constantValues"
+import {CollectionHolderThatCountGetBeingCalled} from "./instance/CollectionHolderThatCountGetBeingCalled"
 
-describe("CollectionHolderTest (all / any / none)", () =>
-describe.each(everyInstances,)("%s", ({value: instance,},) => {
-    //#region -------------------- Instances --------------------
-
-    const EMPTY_INSTANCE = () => newCollectionInstance(instance, EMPTY,)
-    const AB_INSTANCE = () => newCollectionInstance(instance, AB,)
-    const ABCD_INSTANCE = () => newCollectionInstance(instance, ABCD,)
-
-    //#endregion -------------------- Instances --------------------
-
+describe("CollectionHolderTest (all / any / none)", () => {
+describe.each(everyCollectionInstance,)("%s", ({value: {newInstance,},},) => {
     describe("all", () => {
         describe("get() being called", () => {
-            test("() => {}",    () => expect(() => new CollectionHolderThatCannotRetrieveByGet(AB_INSTANCE(),).all(() => false,),).not.toThrow(),)
-            test("(1) => {}",   () => expect(() => new CollectionHolderThatCannotRetrieveByGet(AB_INSTANCE(),).all(_ => false,),).toThrow(),)
-            test("(1,2) => {}", () => expect(() => new CollectionHolderThatCannotRetrieveByGet(AB_INSTANCE(),).all((_1, _2,) => false,),).toThrow(),)
+            test("() => {}",    () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.all(() => true,),).amountOfCall,).toBe(0,),)
+            test("(1) => {}",   () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.all(_ => true,),).amountOfCall,).toBe(2,),)
+            test("(1,2) => {}", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.all((_1, _2,) => true,),).amountOfCall,).toBe(2,),)
         },)
 
-        test("a|b on [a,b]",     () => expect(AB_INSTANCE().all(it => it === 'a' || it === 'b'),).toBeTrue(),)
-        test("c|d on [a,b]",     () => expect(AB_INSTANCE().all((it: string) => it === 'c' || it === 'd'),).toBeFalse(),)
-        test("a|b on [a,b,c,d]", () => expect(ABCD_INSTANCE().all(it => it === 'a' || it === 'b'),).toBeFalse(),)
+        test("a|b on [a,b]",     () => expect(newInstance(AB,).all(it => it === 'a' || it === 'b'),).toBeTrue(),)
+        test("c|d on [a,b]",     () => expect(newInstance(AB,).all((it: string) => it === 'c' || it === 'd'),).toBeFalse(),)
+        test("a|b on [a,b,c,d]", () => expect(newInstance(ABCD,).all(it => it === 'a' || it === 'b'),).toBeFalse(),)
     },)
-
 
     describe("any", () => {
         describe("no parameter", () => {
-            test("[]",    () => expect(EMPTY_INSTANCE().any(),).toBeFalse(),)
-            test("[a,b]", () => expect(AB_INSTANCE().any(),).toBeTrue(),)
+            test("[]",    () => expect(newInstance(EMPTY,).any(),).toBeFalse(),)
+            test("[a,b]", () => expect(newInstance(AB,).any(),).toBeTrue(),)
         },)
         describe("predicate", () => {
             describe("get() being called", () => {
-                test("() => {}",    () => expect(() => new CollectionHolderThatCannotRetrieveByGet(AB_INSTANCE(),).any(() => false,),).not.toThrow(),)
-                test("(1) => {}",   () => expect(() => new CollectionHolderThatCannotRetrieveByGet(AB_INSTANCE(),).any(_ => false,),).toThrow(),)
-                test("(1,2) => {}", () => expect(() => new CollectionHolderThatCannotRetrieveByGet(AB_INSTANCE(),).any((_1, _2,) => false,),).toThrow(),)
+                test("() => {}",    () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.any(() => false,),).amountOfCall,).toBe(0,),)
+                test("(1) => {}",   () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.any(_ => false,),).amountOfCall,).toBe(2,),)
+                test("(1,2) => {}", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.any((_1, _2,) => false,),).amountOfCall,).toBe(2,),)
             },)
 
-            test("a|b on [a,b]",     () => expect(AB_INSTANCE().any(it => it === "a" || it === "b"),).toBeTrue(),)
-            test("c|d on [a,b]",     () => expect(AB_INSTANCE().any((it: string) => it === 'c' || it === 'd'),).toBeFalse(),)
-            test("a|b on [a,b,c,d]", () => expect(ABCD_INSTANCE().any(it => it === 'a' || it === 'b'),).toBeTrue(),)
+            test("a|b on [a,b]",     () => expect(newInstance(AB,).any(it => it === "a" || it === "b"),).toBeTrue(),)
+            test("c|d on [a,b]",     () => expect(newInstance(AB,).any((it: string) => it === 'c' || it === 'd'),).toBeFalse(),)
+            test("a|b on [a,b,c,d]", () => expect(newInstance(ABCD,).any(it => it === 'a' || it === 'b'),).toBeTrue(),)
         },)
     },)
-
 
     describe("none", () => {
         describe("no parameter", () => {
-            test("[]",    () => expect(EMPTY_INSTANCE().none(),).toBeTrue(),)
-            test("[a,b]", () => expect(AB_INSTANCE().none(),).toBeFalse(),)
+            test("[]",    () => expect(newInstance(EMPTY,).none(),).toBeTrue(),)
+            test("[a,b]", () => expect(newInstance(AB,).none(),).toBeFalse(),)
         },)
         describe("predicate", () => {
             describe("get() being called", () => {
-                test("() => {}",    () => expect(() => new CollectionHolderThatCannotRetrieveByGet(AB_INSTANCE(),).none(() => false,),).not.toThrow(),)
-                test("(1) => {}",   () => expect(() => new CollectionHolderThatCannotRetrieveByGet(AB_INSTANCE(),).none(_ => false,),).toThrow(),)
-                test("(1,2) => {}", () => expect(() => new CollectionHolderThatCannotRetrieveByGet(AB_INSTANCE(),).none((_1, _2,) => false,),).toThrow(),)
+                test("() => {}",    () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.none(() => false,),).amountOfCall,).toBe(0,),)
+                test("(1) => {}",   () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.none(_ => false,),).amountOfCall,).toBe(2,),)
+                test("(1,2) => {}", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.none((_1, _2,) => false,),).amountOfCall,).toBe(2,),)
             },)
 
-            test("a|b on [a,b]",     () => expect(AB_INSTANCE().none(it => it === 'a' || it === 'b'),).toBeFalse(),)
-            test("c|d on [a,b]",     () => expect(AB_INSTANCE().none((it: string) => it === 'c' || it === 'd'),).toBeTrue(),)
-            test("a|b on [a,b,c,d]", () => expect(ABCD_INSTANCE().none(it => it === 'a' || it === 'b'),).toBeFalse(),)
+            test("a|b on [a,b]",     () => expect(newInstance(AB,).none(it => it === 'a' || it === 'b'),).toBeFalse(),)
+            test("c|d on [a,b]",     () => expect(newInstance(AB,).none((it: string) => it === 'c' || it === 'd'),).toBeTrue(),)
+            test("a|b on [a,b,c,d]", () => expect(newInstance(ABCD,).none(it => it === 'a' || it === 'b'),).toBeFalse(),)
         },)
     },)
-},),)
+},)},)

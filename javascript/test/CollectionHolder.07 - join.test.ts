@@ -6,26 +6,23 @@
  ******************************************************************************/
 
 import {AB}                                      from "./constantCollections"
-import {everyInstances,}                         from "./constantValues"
-import {newCollectionInstance}                   from "./newCollectionInstance"
-import {CollectionHolderThatCannotRetrieveByGet} from "./instance/CollectionHolderThatCannotRetrieveByGet"
+import {everyInstance,}                          from "./constantValues"
+import {CollectionHolderThatCountGetBeingCalled} from "./instance/CollectionHolderThatCountGetBeingCalled"
 
-describe("CollectionHolderTest (join)", () =>
-describe.each(everyInstances,)("%s", ({value: instance,},) => {
-    const INSTANCE = () => newCollectionInstance(instance, AB,)
-
+describe("CollectionHolderTest (join)", () => {
+describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
     describe("get() being called", () => {
-        test("transform = () => {}",    () => expect(() => new CollectionHolderThatCannotRetrieveByGet(INSTANCE(),).join(null, null, null, null, null, () => '',),).not.toThrow(),)
-        test("transform = (1) => {}",   () => expect(() => new CollectionHolderThatCannotRetrieveByGet(INSTANCE(),).join(null, null, null, null, null, _ => '',),).toThrow(),)
-        test("transform = (1,2) => {}", () => expect(() => new CollectionHolderThatCannotRetrieveByGet(INSTANCE(),).join(null, null, null, null, null, (_1, _2,) => '',),).toThrow(),)
+        test("transform = () => {}",    () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.join(null, null, null, null, null, () => '',),).amountOfCall,).toBe(0,),)
+        test("transform = (1) => {}",   () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.join(null, null, null, null, null, _ => '',),).amountOfCall,).toBe(2.),)
+        test("transform = (1,2) => {}", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.join(null, null, null, null, null, (_1, _2,) => '',),).amountOfCall,).toBe(2,),)
     },)
 
-    test("nothing",                        () => expect(INSTANCE().join(),).toBe("[a, b]",),)
-    test("separator = ;",                  () => expect(INSTANCE().join(";",),).toBe("[a;b]",),)
-    test("prefix =  <",                    () => expect(INSTANCE().join(null, "<",),).toBe("<a, b]",),)
-    test("postfix =  >",                   () => expect(INSTANCE().join(null, null, ">",),).toBe("[a, b>",),)
-    test("limit =  1",                     () => expect(INSTANCE().join(null, null, null, 1,),).toBe("[a, …]",),)
-    test("truncated = \"...\"",            () => expect(INSTANCE().join(null, null, null, null, "...",),).toBe("[a, b]",),)
-    test("limit = 1, truncated = \"...\"", () => expect(INSTANCE().join(null, null, null, 1, "...",),).toBe("[a, ...]",),)
-    test("transform = it => toUpperCase",  () => expect(INSTANCE().join(null, null, null, null, null, it => it.toUpperCase(),),).toBe("[A, B]",),)
-},),)
+    test("nothing",                        () => expect(newInstance(AB,).join(),).toBe("[a, b]",),)
+    test("separator = ;",                  () => expect(newInstance(AB,).join(";",),).toBe("[a;b]",),)
+    test("prefix =  <",                    () => expect(newInstance(AB,).join(null, "<",),).toBe("<a, b]",),)
+    test("postfix =  >",                   () => expect(newInstance(AB,).join(null, null, ">",),).toBe("[a, b>",),)
+    test("limit =  1",                     () => expect(newInstance(AB,).join(null, null, null, 1,),).toBe("[a, …]",),)
+    test("truncated = \"...\"",            () => expect(newInstance(AB,).join(null, null, null, null, "...",),).toBe("[a, b]",),)
+    test("limit = 1, truncated = \"...\"", () => expect(newInstance(AB,).join(null, null, null, 1, "...",),).toBe("[a, ...]",),)
+    test("transform = it => toUpperCase",  () => expect(newInstance(AB,).join(null, null, null, null, null, it => it.toUpperCase(),),).toBe("[A, B]",),)
+},)},)

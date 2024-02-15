@@ -10,10 +10,9 @@ import {EmptyCollectionHolder}                     from "../src/EmptyCollectionH
 import {NoElementFoundInCollectionHolderException} from "../src/exception/NoElementFoundInCollectionHolderException"
 import {GenericCollectionIterator}                 from "../src/iterator/GenericCollectionIterator"
 
-import {ABCDEFGHIJ}                        from "./constantCollections"
-import {everyInstances, iterableCreation}  from "./constantValues"
-import {newCollectionInstanceFromCallback} from "./newCollectionInstance"
-import {newEmptyIterator}                  from "./newEmptyIterator"
+import {ABCDEFGHIJ}                                          from "./constantCollections"
+import {everyCollectionInstanceByIterable, iterableCreation} from "./constantValues"
+import {newEmptyIterator}                                    from "./newEmptyIterator"
 
 describe("CollectionIteratorTest", () => {
 
@@ -74,9 +73,11 @@ describe("CollectionIteratorTest", () => {
     describe("GenericCollectionIterator", () => {
         const EMPTY_CALLBACK = () => {}
 
-        describe.each(everyInstances,)("%s", ({value: collectionInstance,},) => {describe.each(iterableCreation,)("%s", ({value: iterableCreation,},) => {
-            const maxSize = ABCDEFGHIJ.length,
-                newInstance = () => new GenericCollectionIterator<typeof ABCDEFGHIJ[number]>(newCollectionInstanceFromCallback(collectionInstance, iterableCreation, ABCDEFGHIJ,))
+        describe.each(everyCollectionInstanceByIterable,)("%s", ({value: {newInstance: newCollectionInstance,},},) => {
+        describe.each(iterableCreation,)("%s", ({value: iterableCreation,},) => {
+            const maxSize = ABCDEFGHIJ.length
+
+            const newInstance = () => new GenericCollectionIterator(newCollectionInstance(iterableCreation, ABCDEFGHIJ,)) as unknown as GenericCollectionIterator<typeof ABCDEFGHIJ[number]>
 
             describe("size", () => {
                 test("size", () => expect(newInstance().size,).toBe(maxSize,),)
@@ -519,7 +520,7 @@ describe("CollectionIteratorTest", () => {
                 const instance = newInstance()
                 for (const _ of instance);
             },).not.toThrow(),)
-        },) },)
+        },)},)
     },)
 
 },)

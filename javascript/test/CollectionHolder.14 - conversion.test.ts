@@ -6,62 +6,58 @@
  ******************************************************************************/
 
 import {AB, AB_OBJECT, SINGULAR_A_OBJECT, SINGULAR_B_OBJECT} from "./constantCollections"
-import {everyInstances}                                      from "./constantValues"
-import {newCollectionInstance}                               from "./newCollectionInstance"
+import {everyInstance}                                       from "./constantValues"
 
-describe("CollectionHolderTest (conversion)", () =>
-describe.each(everyInstances,)("%s", ({value: instance,},) => {
-    const INSTANCE = () => newCollectionInstance(instance, AB,)
-    const OBJECT_INSTANCE = () => newCollectionInstance(instance, AB_OBJECT,)
-
-
+describe("CollectionHolderTest (conversion)", () => {
+describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist,},},) => {
     describe("to iterator", () => {
-        const iterator = INSTANCE()[Symbol.iterator]()
+        const iterator = newInstance(AB,).toIterator()
         test("1st: a",    () => expect(iterator.next().value,).toBe('a',),)
         test("2nd: b",    () => expect(iterator.next().value,).toBe('b',),)
         test("3rd: done", () => expect(iterator.next().done,).toBe(true,),)
     })
 
     describe("to array", () => {
-        test("basic",  () => expect(INSTANCE().toArray(),).toEqual(['a', 'b',],),)
-        test("frozen", () => expect(INSTANCE().toArray(),).toBeFrozen(),)
-        test("size",   () => expect(INSTANCE().toArray(),).toHaveLength(2,),)
-    })
+        test("basic",  () => expect(newInstance(AB,).toArray(),).toEqual(['a', 'b',],),)
+        test("frozen", () => expect(newInstance(AB,).toArray(),).toBeFrozen(),)
+        test("size",   () => expect(newInstance(AB,).toArray(),).toHaveLength(2,),)
+    },)
     describe("to mutable array", () => {
-        test("basic",  () => expect(INSTANCE().toMutableArray(),).toEqual(['a', 'b',],),)
-        test("frozen", () => expect(INSTANCE().toMutableArray(),).not.toBeFrozen(),)
-        test("size",   () => expect(INSTANCE().toMutableArray(),).toHaveLength(2,),)
-    })
-
+        test("basic",  () => expect(newInstance(AB,).toMutableArray(),).toEqual(['a', 'b',],),)
+        test("frozen", () => expect(newInstance(AB,).toMutableArray(),).not.toBeFrozen(),)
+        test("size",   () => expect(newInstance(AB,).toMutableArray(),).toHaveLength(2,),)
+    },)
 
     describe("to set", () => {
-        test("basic",  () => expect(INSTANCE().toSet(),).toEqual(new Set(['a', 'b',],),),)
-        test("frozen", () => expect(INSTANCE().toSet(),).toBeFrozen(),)
-        test("size",   () => expect(INSTANCE().toSet().size,).toBe(2,),)
-    })
+        test("basic",  () => expect(newInstance(AB,).toSet(),).toEqual(new Set(['a', 'b',],),),)
+        test("frozen", () => expect(newInstance(AB,).toSet(),).toBeFrozen(),)
+        test("size",   () => expect(newInstance(AB,).toSet().size,).toBe(2,),)
+    },)
     describe("to mutable set", () => {
-        test("basic",  () => expect(INSTANCE().toMutableSet(),).toEqual(new Set(['a', 'b',],),),)
-        test("frozen", () => expect(INSTANCE().toMutableSet(),).not.toBeFrozen(),)
-        test("size",   () => expect(INSTANCE().toMutableSet().size,).toBe(2,),)
-    })
-    describe("to weak set", () => {
-        test("basic",  () => expect(OBJECT_INSTANCE().toWeakSet(),).toEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
-        test("frozen", () => expect(INSTANCE().toWeakSet(),).toBeFrozen(),)
-    })
-    describe("to mutable weak set", () => {
-        test("basic",  () => expect(OBJECT_INSTANCE().toMutableWeakSet(),).toEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
-        test("frozen", () => expect(INSTANCE().toMutableWeakSet(),).not.toBeFrozen(),)
-    })
+        test("basic",  () => expect(newInstance(AB,).toMutableSet(),).toEqual(new Set(['a', 'b',],),),)
+        test("frozen", () => expect(newInstance(AB,).toMutableSet(),).not.toBeFrozen(),)
+        test("size",   () => expect(newInstance(AB,).toMutableSet().size,).toBe(2,),)
+    },)
 
+    if (!isMinimalist) {
+        describe("to weak set", () => {
+            test("basic", () => expect(newInstance(AB_OBJECT,).toWeakSet(),).toEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
+            test("frozen", () => expect(newInstance(AB,).toWeakSet(),).toBeFrozen(),)
+        },)
+        describe("to mutable weak set", () => {
+            test("basic", () => expect(newInstance(AB_OBJECT,).toMutableWeakSet(),).toEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
+            test("frozen", () => expect(newInstance(AB,).toMutableWeakSet(),).not.toBeFrozen(),)
+        },)
+    }
 
     describe("to map", () => {
-        test("basic",  () => expect(INSTANCE().toMap(),).toEqual(new Map([[0, 'a',], [1, 'b',],],),),)
-        test("frozen", () => expect(INSTANCE().toMap(),).toBeFrozen(),)
-        test("size",   () => expect(INSTANCE().toMap().size,).toBe(2,),)
-    })
+        test("basic",  () => expect(newInstance(AB,).toMap(),).toEqual(new Map([[0, 'a',], [1, 'b',],],),),)
+        test("frozen", () => expect(newInstance(AB,).toMap(),).toBeFrozen(),)
+        test("size",   () => expect(newInstance(AB,).toMap().size,).toBe(2,),)
+    },)
     describe("to mutable map", () => {
-        test("basic",  () => expect(INSTANCE().toMutableMap(),).toEqual(new Map([[0, 'a',], [1, 'b',],],),),)
-        test("frozen", () => expect(INSTANCE().toMutableMap(),).not.toBeFrozen(),)
-        test("size",   () => expect(INSTANCE().toMutableMap().size,).toBe(2,),)
-    })
-},),)
+        test("basic",  () => expect(newInstance(AB,).toMutableMap(),).toEqual(new Map([[0, 'a',], [1, 'b',],],),),)
+        test("frozen", () => expect(newInstance(AB,).toMutableMap(),).not.toBeFrozen(),)
+        test("size",   () => expect(newInstance(AB,).toMutableMap().size,).toBe(2,),)
+    },)
+},)},)

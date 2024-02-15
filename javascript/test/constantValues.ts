@@ -5,17 +5,26 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {IterableWithCount}        from "../src/iterable/IterableWithCount"
-import type {IterableWithLength}       from "../src/iterable/IterableWithLength"
-import type {IterableWithPossibleSize} from "../src/iterable/IterableWithPossibleSize"
-import type {IterableWithSize}         from "../src/iterable/IterableWithSize"
+import type {CollectionHolder}           from "../src/CollectionHolder"
+import type {MinimalistCollectionHolder} from "../src/MinimalistCollectionHolder"
+import type {IterableWithCount}          from "../src/iterable/IterableWithCount"
+import type {IterableWithLength}         from "../src/iterable/IterableWithLength"
+import type {IterableWithPossibleSize}   from "../src/iterable/IterableWithPossibleSize"
+import type {IterableWithSize}           from "../src/iterable/IterableWithSize"
+import type {PossibleIterable}           from "../src/iterable/types"
+import type {CollectionIterator}         from "../src/iterator/CollectionIterator"
 
 import {GenericCollectionHolder}           from "../src/GenericCollectionHolder"
 import {GenericMinimalistCollectionHolder} from "../src/GenericMinimalistCollectionHolder"
 import {LazyGenericCollectionHolder}       from "../src/LazyGenericCollectionHolder"
 import {GenericCollectionIterator}         from "../src/iterator/GenericCollectionIterator"
 
-import {Holder} from "./Holder"
+import {Holder}                                           from "./Holder"
+import {CollectionHolder_ByGenericMinimalistCollection}   from "./instance/CollectionHolder_ByGenericMinimalistCollection"
+import {CollectionHolder_ByGenericCollection}             from "./instance/CollectionHolder_ByGenericCollection"
+import {CollectionHolder_ByLazyCollection}                from "./instance/CollectionHolder_ByLazyCollection"
+import {CollectionHolder_FromExtensionFunction}           from "./instance/CollectionHolder_FromExtensionFunction"
+import {CollectionHolder_FromMinimalistExtensionFunction} from "./instance/CollectionHolder_FromMinimalistExtensionFunction"
 
 export const sizeValues = () => [
     new Holder({array: [], size: 0,}, "0",),
@@ -51,15 +60,44 @@ export const TEMPLATE_ITEMS = [
     '«', '»', '"', '\'',
     true, false,
 ] as const
-export const everyMinimalistInstances = [
-    new Holder(GenericMinimalistCollectionHolder, "minimalist",),
-    new Holder(GenericCollectionHolder, "normal",),
-    new Holder(LazyGenericCollectionHolder, "lazy (normal)",),
+
+type IterableCreation<T,> = (array: readonly T[],) => | Array<T> | Set<T> | PossibleIterable<T> | CollectionIterator<T> | MinimalistCollectionHolder<T> | CollectionHolder<T>
+/**
+ * The possible instance creation from a {@link IterableCreation} and a {@link ReadonlyArray} of from
+ * {@link GenericMinimalistCollectionHolder}, {@link GenericCollectionHolder} or {@link LazyGenericCollectionHolder}
+ */
+export const everyCollectionInstanceByIterable = [
+    new Holder({ isMinimalist: true,  isLazy: false, newInstance: <const T, >(iterableCreation: IterableCreation<T>, array: readonly T[],): MinimalistCollectionHolder<T> => new GenericMinimalistCollectionHolder(iterableCreation(array,),), }, "minimalist",),
+    new Holder({ isMinimalist: false, isLazy: false, newInstance: <const T, >(iterableCreation: IterableCreation<T>, array: readonly T[],): CollectionHolder<T> => new GenericCollectionHolder(iterableCreation(array,),), },                     "normal",),
+    new Holder({ isMinimalist: false, isLazy: true,  newInstance: <const T, >(iterableCreation: IterableCreation<T>, array: readonly T[],): CollectionHolder<T> => new LazyGenericCollectionHolder(iterableCreation(array,),), },                 "lazy",),
 ] as const
-export const everyInstances = [
-    new Holder(GenericCollectionHolder, "GenericCollectionHolder",),
-    new Holder(LazyGenericCollectionHolder, "LazyGenericCollectionHolder",),
+/**
+ * The possible instance for a {@link CollectionHolder} via a
+ *  - {@link AbstractCollectionHolder}
+ *  - {@link AbstractMinimalistCollectionHolder}
+ *  - {@link GenericMinimalistCollectionHolder}
+ *  - {@link GenericCollectionHolder}
+ *  - {@link LazyGenericCollectionHolder}
+ */
+export const everyInstance = [
+    new Holder({ isMinimalist: true,  isLazy: false, newInstance: <const T, >(array: readonly T[],): CollectionHolder<T> => new CollectionHolder_FromMinimalistExtensionFunction(array,), }, "collection (from minimalist extension function)",),
+    new Holder({ isMinimalist: false, isLazy: false, newInstance: <const T, >(array: readonly T[],): CollectionHolder<T> => new CollectionHolder_FromExtensionFunction(array,), },           "collection (from extension function)",),
+    new Holder({ isMinimalist: true,  isLazy: false, newInstance: <const T, >(array: readonly T[],): CollectionHolder<T> => new CollectionHolder_ByGenericMinimalistCollection(array,), },   "collection (by generic minimalist collection)",),
+    new Holder({ isMinimalist: false, isLazy: false, newInstance: <const T, >(array: readonly T[],): CollectionHolder<T> => new CollectionHolder_ByGenericCollection(array,), },             "collection (by generic collection)",),
+    new Holder({ isMinimalist: false, isLazy: true,  newInstance: <const T, >(array: readonly T[],): CollectionHolder<T> => new CollectionHolder_ByLazyCollection(array,), },                "collection (by lazy collection)",),
 ] as const
+/**
+ * The possible instance for a {@link CollectionHolder} (from a known instance) via a
+ *  - {@link GenericMinimalistCollectionHolder}
+ *  - {@link GenericCollectionHolder}
+ *  - {@link LazyGenericCollectionHolder}
+ */
+export const everyCollectionInstance = [
+    new Holder({ isMinimalist: true,  isLazy: false, newInstance: <const T, >(array: readonly T[],): CollectionHolder<T> => new CollectionHolder_ByGenericMinimalistCollection(array,), },   "collection (by generic minimalist collection)",),
+    new Holder({ isMinimalist: false, isLazy: false, newInstance: <const T, >(array: readonly T[],): CollectionHolder<T> => new CollectionHolder_ByGenericCollection(array,), },             "collection (by generic collection)",),
+    new Holder({ isMinimalist: false, isLazy: true,  newInstance: <const T, >(array: readonly T[],): CollectionHolder<T> => new CollectionHolder_ByLazyCollection(array,), },                "collection (by lazy collection)",),
+] as const
+
 export const iterableCreation = [
     new Holder(<T>(array: readonly T[],) => Array.from(array,), "array",),
     new Holder(<T>(array: readonly T[],) => new Set(array,), "set",),
@@ -91,4 +129,5 @@ export const iterableCreation = [
     new Holder(<T>(array: readonly T[],) => new GenericCollectionHolder(array,), "generic collection",),
     new Holder(<T>(array: readonly T[],) => new LazyGenericCollectionHolder(array,), "lazy collection",),
 ]
-export const nonPresentItem = Symbol()
+
+export const nonPresentItem = Symbol("Non present item",)
