@@ -1,12 +1,11 @@
 package joookiwi.collection.java.method;
 
+import java.util.Formatter;
+import java.util.Locale;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Formatter;
-import java.util.Locale;
 
 public final class AsString
         extends Utility {
