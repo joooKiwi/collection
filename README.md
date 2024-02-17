@@ -603,7 +603,7 @@ return true;
 
 </details>
 <br/>
-<details><summary>hasOne(values) / includesOne(values) / containsOne(values)</summary>
+<details><summary>hasOne(values) / has(values) / includesOne(values) / includes(values) / containsOne(values) / contains(values)</summary>
 
 **Javascript**
 ```javascript
@@ -1385,7 +1385,7 @@ iterable.mapIndexed { index, i -> index to i }.toMap().toMutableMap()
 
 </details>
 <br/>
-<details><summary>toReverse()</summary>
+<details><summary>toReverse() / toReversed() / reversed()</summary>
 
 **Javascript**
  - [Array.toReversed()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed)
