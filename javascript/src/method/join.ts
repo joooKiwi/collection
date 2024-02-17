@@ -217,39 +217,35 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
 
 function __withTruncated(collection: MinimalistCollectionHolder, separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string,) {
     let string = ""
-    const lastIndexMinus1 = lastIndex - 1
     let index = -1
-    while (++index < lastIndexMinus1)
+    while (++index < lastIndex)
         string += `${collection.get(index,)}${separator}`
-    return `${prefix}${string}${collection.get(index,)}${separator}${truncated}${postfix}`
+    return `${prefix}${string}${truncated}${postfix}`
 }
 
 
 function __withTruncatedAnd0Argument(separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: () => string,) {
     let string = ""
-    const lastIndexMinus1 = lastIndex - 1
     let index = -1
-    while (++index < lastIndexMinus1)
+    while (++index < lastIndex)
         string += `${transform()}${separator}`
-    return `${prefix}${string}${transform()}${separator}${truncated}${postfix}`
+    return `${prefix}${string}${truncated}${postfix}`
 }
 
 function __withTruncatedAnd1Argument<const T, >(collection: MinimalistCollectionHolder<T>, separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: (value: T,) => string,) {
     let string = ""
-    const lastIndexMinus1 = lastIndex - 1
     let index = -1
-    while (++index < lastIndexMinus1)
+    while (++index < lastIndex)
         string += `${transform(collection.get(index,),)}${separator}`
-    return `${prefix}${string}${transform(collection.get(index,),)}${separator}${truncated}${postfix}`
+    return `${prefix}${string}${truncated}${postfix}`
 }
 
 function __withTruncatedAnd2Argument<const T, >(collection: MinimalistCollectionHolder<T>, separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: (value: T, index: number,) => string,) {
     let string = ""
-    const lastIndexMinus1 = lastIndex - 1
     let index = -1
-    while (++index < lastIndexMinus1)
+    while (++index < lastIndex)
         string += `${transform(collection.get(index,), index,)}${separator}`
-    return `${prefix}${string}${transform(collection.get(index,), index,)}${separator}${truncated}${postfix}`
+    return `${prefix}${string}${truncated}${postfix}`
 }
 
 //#endregion -------------------- Loop methods --------------------
