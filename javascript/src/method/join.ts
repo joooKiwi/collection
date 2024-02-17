@@ -47,9 +47,10 @@ export function join<const T, >(collection: Nullable<MinimalistCollectionHolder<
         if (limit == null)
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size,)
 
-        if (size === limit)
+        const maximumIndex = __maximumIndex(limit, size,)
+        if (maximumIndex == size)
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
-        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', __maximumIndex(limit, size,), truncated ?? '…',)
+        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…',)
     }
 
     if (limit == null) {
@@ -107,9 +108,10 @@ export function joinByCollectionHolder<const T, >(collection: Nullable<Collectio
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size,)
 
         const size = collection.size
-        if (size === limit)
+        const maximumIndex = __maximumIndex(limit, size,)
+        if (maximumIndex == size)
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
-        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', __maximumIndex(limit, size,), truncated ?? '…',)
+        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…',)
     }
 
     if (limit == null) {
@@ -121,7 +123,8 @@ export function joinByCollectionHolder<const T, >(collection: Nullable<Collectio
     }
 
     const size = collection.size
-    if (size === limit) {
+    const maximumIndex = __maximumIndex(limit, size,)
+    if (maximumIndex == size) {
         if (transform.length == 1)
             return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
         if (transform.length >= 2)
@@ -130,10 +133,10 @@ export function joinByCollectionHolder<const T, >(collection: Nullable<Collectio
     }
 
     if (transform.length == 1)
-        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', __maximumIndex(limit, size,), truncated ?? '…', transform as (value: T,) => string,)
+        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as (value: T,) => string,)
     if (transform.length >= 2)
-        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', __maximumIndex(limit, size,), truncated ?? '…', transform,)
-    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', __maximumIndex(limit, size,), truncated ?? '…', transform as () => string,)
+        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform,)
+    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as () => string,)
 }
 
 //#endregion -------------------- Facade method --------------------
