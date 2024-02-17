@@ -47,6 +47,15 @@ describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist,},},) =>
         test("size",   () => expect(newInstance(AB,).toMutableSet().size,).toBe(2,),)
     },)
 
+    describe("object values map", () => {
+        test("empty",  () => expect(newInstance(EMPTY,).objectValuesMap,).toBe(CollectionConstants.EMPTY_MAP,),)
+        test("basic",  () => {
+            const map = newInstance(AB,).objectValuesMap
+            expect(map,).toEqual(new Map(AB.map(it => [it, map.get(it,),],)),)
+        },)
+        test("frozen", () => expect(newInstance(AB,).objectValuesMap,).toBeFrozen(),)
+    },)
+
     if (!isMinimalist) {
         describe("to weak set", () => {
             test("empty",  () => expect(newInstance(EMPTY,).toWeakSet(),).toBe(CollectionConstants.EMPTY_WEAK_SET,),)
