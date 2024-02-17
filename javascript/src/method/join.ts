@@ -30,6 +30,7 @@ import {ForbiddenIndexException}                   from "../exception/ForbiddenI
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED "…"} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
+ * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.join
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
@@ -92,6 +93,7 @@ export function join<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED "…"} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
+ * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.join
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()

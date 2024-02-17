@@ -120,6 +120,7 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -137,6 +138,7 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @extensionFunction
  * @typescriptDefinition
@@ -257,6 +259,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -274,6 +277,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @extensionFunction
  * @typescriptDefinition
