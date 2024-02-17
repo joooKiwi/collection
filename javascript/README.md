@@ -15,7 +15,7 @@ all in one standalone structure.
 
 But, with a possible functional approach using the collections.
 
-The structure is and will be in continuous change in order
+The structure is and will be in continuous change
 to implement almost everything that the other languages have (if it is possible).
 
 ## Installation
