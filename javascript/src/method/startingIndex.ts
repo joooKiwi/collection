@@ -11,15 +11,17 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {NonEmptyCollectionHolder}   from "../NonEmptyCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
 
 /**
  * Get the starting index from a value between zero
  * and the {@link collection} {@link MinimalistCollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param fromIndex The starting index (or 0 by default)
- * @param size The size compared (or the {@link collection} {@link MinimalistCollectionHolder.size size} by default)
+ * @param fromIndex  The starting index (or 0 by default)
+ * @param size       The size compared (or the {@link collection} {@link MinimalistCollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over the {@link collection} {@link MinimalistCollectionHolder.size size} after calculation
+ * @throws ForbiddenIndexException                   The index is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @deprecated This utility function is no longer used and will be removed in version 1.8.
@@ -44,9 +46,10 @@ export function startingIndex<const T, >(collection: Nullable<MinimalistCollecti
  * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param fromIndex The starting index (or 0 by default)
- * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @param fromIndex  The starting index (or 0 by default)
+ * @param size       The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws ForbiddenIndexException                   The index is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @deprecated This utility function is no longer used and will be removed in version 1.8.
@@ -57,9 +60,10 @@ export function startingIndexByCollectionHolder<const T, >(collection: NonEmptyC
  * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param fromIndex The starting index (or 0 by default)
- * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @param fromIndex  The starting index (or 0 by default)
+ * @param size       The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws ForbiddenIndexException                   The index is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @deprecated This utility function is no longer used and will be removed in version 1.8.
@@ -79,6 +83,13 @@ export function startingIndexByCollectionHolder(collection: Nullable<CollectionH
 }
 
 function __startingIndex(fromIndex: number, size: number,): number {
+    if (Number.isNaN(fromIndex,))
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be NaN.", fromIndex,)
+    if (fromIndex == Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be -∞.", fromIndex,)
+    if (fromIndex == Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be +∞.", fromIndex,)
+
     if (fromIndex == size)
         throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" is the collection size "${size}".`, fromIndex,)
     if (fromIndex > size)

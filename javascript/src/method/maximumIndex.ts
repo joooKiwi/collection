@@ -11,15 +11,17 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {NonEmptyCollectionHolder}   from "../NonEmptyCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
 
 /**
  * Get a limit from a value between zero
  * and the {@link collection} {@link MinimalistCollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param limit The limit (or {@link MinimalistCollectionHolder.size size} by default)
- * @param size The size compared (or the {@link collection} {@link MinimalistCollectionHolder.size size} by default)
- * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link MinimalistCollectionHolder.size size} after calculation
+ * @param limit      The limit (or {@link MinimalistCollectionHolder.size size} by default)
+ * @param size       The size compared (or the {@link collection} {@link MinimalistCollectionHolder.size size} by default)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is under 0 or over the {@link collection} {@link MinimalistCollectionHolder.size size} after calculation
+ * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @deprecated This utility function is no longer used and will be removed in version 1.8.
@@ -47,9 +49,10 @@ export function maximumIndex<const T, >(collection: Nullable<MinimalistCollectio
  * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param limit The limit (or {@link CollectionHolder.size size} by default)
- * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
- * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @param limit      The limit (or {@link CollectionHolder.size size} by default)
+ * @param size       The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @deprecated This utility function is no longer used and will be removed in version 1.8.
@@ -60,9 +63,10 @@ export function maximumIndexByCollectionHolder<const T, >(collection: NonEmptyCo
  * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param limit The limit (or {@link CollectionHolder.size size} by default)
- * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
- * @throws CollectionHolderIndexOutOfBoundsException The limit is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @param limit      The limit (or {@link CollectionHolder.size size} by default)
+ * @param size       The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is under 0 or over the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @deprecated This utility function is no longer used and will be removed in version 1.8.
@@ -85,6 +89,13 @@ export function maximumIndexByCollectionHolder(collection: Nullable<CollectionHo
 }
 
 function __maximumIndex(limit: number, size: number,): number {
+    if (Number.isNaN(limit,))
+        throw new ForbiddenIndexException("Forbidden index. The limit cannot be NaN.", limit,)
+    if (limit == Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The limit cannot be -∞.", limit,)
+    if (limit == Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The limit cannot be +∞.", limit,)
+
     if (limit > size)
         throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}" cannot over the collection size "${size}".`, limit,)
 

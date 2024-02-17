@@ -11,15 +11,17 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {NonEmptyCollectionHolder}   from "../NonEmptyCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
 
 /**
  * Get the ending index from a value between zero
  * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param toIndex The ending index (or {@link CollectionHolder.size size} minus 1 by default)
- * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @param toIndex    The ending index (or {@link CollectionHolder.size size} minus 1 by default)
+ * @param size       The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over or equal to the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws ForbiddenIndexException                   The index is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @deprecated This utility function is no longer used and will be removed in version 1.8.
@@ -47,9 +49,10 @@ export function endingIndex<const T, >(collection: Nullable<MinimalistCollection
  * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param toIndex The ending index (or {@link CollectionHolder.size size} by default)
- * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @param toIndex    The ending index (or {@link CollectionHolder.size size} by default)
+ * @param size       The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over or equal to the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws ForbiddenIndexException                   The index is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @deprecated This utility function is no longer used and will be removed in version 1.8.
@@ -60,9 +63,10 @@ export function endingIndexByCollectionHolder<const T, >(collection: NonEmptyCol
  * and the {@link collection} {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param toIndex The ending index (or {@link CollectionHolder.size size} minus 1 by default)
- * @param size The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
+ * @param toIndex    The ending index (or {@link CollectionHolder.size size} minus 1 by default)
+ * @param size       The size compared (or the {@link collection} {@link CollectionHolder.size size} by default)
  * @throws CollectionHolderIndexOutOfBoundsException The index is under 0 or over or equal to the {@link collection} {@link CollectionHolder.size size} after calculation
+ * @throws ForbiddenIndexException                   The index is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @deprecated This utility function is no longer used and will be removed in version 1.8.
@@ -87,6 +91,13 @@ export function endingIndexByCollectionHolder(collection: Nullable<CollectionHol
 
 
 function __endingIndex(toIndex: number, size: number,): number {
+    if (Number.isNaN(toIndex,))
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be NaN.", toIndex,)
+    if (toIndex == Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be -∞.", toIndex,)
+    if (toIndex == Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be +∞.", toIndex,)
+
     if (toIndex == size)
         throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" is the collection size "${size}".`, toIndex,)
 
