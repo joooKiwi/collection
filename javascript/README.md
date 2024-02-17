@@ -114,4 +114,6 @@ It includes `includesNull`, `containsNull`, `atOrElse`,
 ## Contribution
 You can contribute to great simple packages.
 All with similar behaviour across different languages (like Java, Kotlin, C# and PHP).
-It can be done via my [GitHub sponsor](https://github.com/sponsors/joooKiwi).
+It can be done 2 different ways:
+ - [GitHub sponsor](https://github.com/sponsors/joooKiwi) or
+ - [!["Buy me a Coffee"](https://img.buymeacoffee.com/button-api/?&button_colour=40DCA5&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00)](https://www.buymeacoffee.com/joookiwi)
