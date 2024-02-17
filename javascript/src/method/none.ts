@@ -16,7 +16,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
  * Tell if the {@link collection} <b>is empty</b>
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @return {boolean} <b>true</b> if null is received or the {@link MinimalistCollectionHolder collection} <b>is empty</b> otherwise
+ * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
  */
@@ -53,7 +53,7 @@ export function none<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * Tell if the {@link collection} {@link CollectionHolder.isEmpty is empty}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @return {boolean} <b>true</b> if null is received or {@link CollectionHolder.isEmpty} otherwise
+ * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
  */
