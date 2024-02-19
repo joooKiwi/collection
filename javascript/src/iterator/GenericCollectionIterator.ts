@@ -98,7 +98,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
 
     public get nextValue(): T {
         const nextValue = this.next().value
-        if (nextValue == CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL)
+        if (nextValue === CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL)
             throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
         return nextValue
     }
@@ -112,7 +112,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
 
     public get previousValue(): T {
         const nextValue = this.previous().value
-        if (nextValue == CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL)
+        if (nextValue === CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL)
             throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
         return nextValue
     }
