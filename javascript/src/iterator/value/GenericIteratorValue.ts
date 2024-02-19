@@ -1,12 +1,12 @@
 /*******************************************************************************
- Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
 
  This project is free to use.
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder} from "../../CollectionHolder"
-import type {IteratorValue}    from "./IteratorValue"
+import type {MinimalistCollectionHolder} from "../../MinimalistCollectionHolder"
+import type {IteratorValue}              from "./IteratorValue"
 
 export class GenericIteratorValue<const out T = unknown, >
     implements IteratorValue<T> {
@@ -14,12 +14,12 @@ export class GenericIteratorValue<const out T = unknown, >
     readonly #collection
     readonly #index
 
-    public constructor(collection: CollectionHolder<T>, index: number,) {
+    public constructor(collection: MinimalistCollectionHolder<T>, index: number,) {
         this.#collection = collection
         this.#index = index
     }
 
-    public get collection(): CollectionHolder<T> {
+    public get collection(): MinimalistCollectionHolder<T> {
         return this.#collection
     }
 

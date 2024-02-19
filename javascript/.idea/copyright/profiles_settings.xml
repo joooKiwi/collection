@@ -1,8 +1,5 @@
 <component name="CopyrightManager">
   <settings default="Jonathan Bédard">
-    <module2copyright>
-      <element module="Source &amp; test files" copyright="Jonathan Bédard" />
-    </module2copyright>
     <LanguageOptions name="__TEMPLATE__">
       <option name="separateBefore" value="true" />
       <option name="separateAfter" value="true" />

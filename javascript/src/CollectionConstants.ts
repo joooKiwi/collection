@@ -1,5 +1,5 @@
 /*******************************************************************************
- Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
 
  This project is free to use.
  All the right is reserved to the author of this project.
@@ -8,17 +8,19 @@
 import type {Lazy} from "@joookiwi/lazy"
 import {lazyOf}    from "@joookiwi/lazy"
 
-import type {CollectionHolder}   from "./CollectionHolder"
-import type {CollectionIterator} from "./iterator/CollectionIterator"
+import type {CollectionHolder}           from "./CollectionHolder"
+import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
+import type {CollectionIterator}         from "./iterator/CollectionIterator"
 
-import {EmptyCollectionHolder}            from "./EmptyCollectionHolder"
-import type {GenericCollectionHolder}     from "./GenericCollectionHolder"
-import type {LazyGenericCollectionHolder} from "./LazyGenericCollectionHolder"
-import {EmptyCollectionIterator}          from "./iterator/EmptyCollectionIterator"
-import {EmptyCollectionHandler}           from "./handler/EmptyCollection.handler"
+import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
+import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
+import type {GenericMinimalistCollectionHolder} from "./GenericMinimalistCollectionHolder"
+import type {LazyGenericCollectionHolder}       from "./LazyGenericCollectionHolder"
+import {EmptyCollectionIterator}                from "./iterator/EmptyCollectionIterator"
+import {EmptyCollectionHandler}                 from "./handler/EmptyCollectionHandler"
 
 /**
- * A simple utility class containing every field used by any {@link CollectionHolder} instances.
+ * A utility class containing every field used by any {@link CollectionHolder} instances.
  *
  * Note that attempting to create it will result in a {@link EvalError}
  * due to being a utility class and not a namespace.
@@ -42,55 +44,66 @@ export class CollectionConstants {
     static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
     static #LAZY_EMPTY_COLLECTION_ITERATOR?: Lazy<EmptyCollectionIterator>
 
+    static #EVERY_MINIMALIST_COLLECTION_METHODS?: CollectionHolder<keyof MinimalistCollectionHolder>
     static #EVERY_COLLECTION_METHODS?: CollectionHolder<keyof CollectionHolder>
     static #EVERY_ITERATOR_METHODS?: CollectionHolder<keyof CollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
     static #GenericCollectionHolder?: typeof GenericCollectionHolder
+    static #GenericMinimalistCollectionHolder?: typeof GenericMinimalistCollectionHolder
     static #LazyGenericCollectionHolder?: typeof LazyGenericCollectionHolder
 
     //#endregion -------------------- Fields held --------------------
 
     //#region -------------------- Empty references --------------------
 
-    /** A simple empty {@link ReadonlyArray array} */
+    /** An empty {@link ReadonlyArray array} */
     public static readonly EMPTY_ARRAY = Object.freeze([] as const,)
-    /** A simple empty {@link ReadonlySet set} */
+    /** An empty {@link ReadonlySet set} */
     public static readonly EMPTY_SET = Object.freeze(new Set<never>(),)
-    /** A simple empty {@link WeakSet weak set} */
+    /** An empty {@link WeakSet weak set} */
     public static readonly EMPTY_WEAK_SET = Object.freeze(new WeakSet<never>(),)
-    /** A simple empty {@link ReadonlyMap map} */
+    /** An empty {@link ReadonlyMap map} */
     public static readonly EMPTY_MAP = Object.freeze(new Map<never, never>(),)
 
 
-    /** A simple {@link EmptyCollectionHolder} instance */
+    /** An {@link EmptyCollectionHolder} instance */
     public static get EMPTY_COLLECTION_HOLDER(): EmptyCollectionHolder {
         return CollectionConstants.#EMPTY_COLLECTION_HOLDER ??= Object.freeze(EmptyCollectionHolder.get,)
     }
-    /** A simple {@link EmptyCollectionHolder} instance in a {@link Lazy} */
+
+    /** An {@link EmptyCollectionHolder} instance in a {@link Lazy} */
     public static get LAZY_EMPTY_COLLECTION_HOLDER(): Lazy<EmptyCollectionHolder> {
         return this.#LAZY_EMPTY_COLLECTION_HOLDER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HOLDER,)
     }
 
-    /** A simple {@link EmptyCollectionHandler} instance */
+
+    /** An {@link EmptyCollectionHandler} instance */
     public static get EMPTY_COLLECTION_HANDLER(): EmptyCollectionHandler {
         return CollectionConstants.#EMPTY_COLLECTION_HANDLER ??= Object.freeze(EmptyCollectionHandler.get,)
     }
-    /** A simple {@link EmptyCollectionHandler} instance in a {@link Lazy} */
+
+    /** An {@link EmptyCollectionHandler} instance in a {@link Lazy} */
     public static get LAZY_EMPTY_COLLECTION_HANDLER(): Lazy<EmptyCollectionHandler> {
         return this.#LAZY_EMPTY_COLLECTION_HANDLER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HANDLER,)
     }
 
-    /** A simple {@link EmptyCollectionIterator} instance */
+
+    /** An {@link EmptyCollectionIterator} instance */
     public static get EMPTY_COLLECTION_ITERATOR(): EmptyCollectionIterator {
         return CollectionConstants.#EMPTY_COLLECTION_ITERATOR ??= Object.freeze(EmptyCollectionIterator.get,)
     }
-    /** A simple {@link EmptyCollectionIterator} instance in a {@link Lazy} */
+
+    /** An {@link EmptyCollectionIterator} instance in a {@link Lazy} */
     public static get LAZY_EMPTY_COLLECTION_ITERATOR(): Lazy<EmptyCollectionIterator> {
         return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_ITERATOR,)
     }
 
-    /** A simple empty {@link String} */
+
+    /**
+     * An empty {@link String}
+     * @deprecated This reference is no longer used in the project and will be removed in the version 1.8
+     */
     public static readonly EMPTY_STRING = Object.freeze('',) as ''
 
     //#endregion -------------------- Empty references --------------------
@@ -111,13 +124,13 @@ export class CollectionConstants {
     //#region -------------------- Symbol.toString references --------------------
 
     /**
-     * The simple {@link Symbol.toStringTag} of an {@link CollectionHolder}
+     * The {@link Symbol.toStringTag} of an {@link CollectionHolder}
      *
      * @uniqueJavascriptVariable
      */
     public static readonly COLLECTION_HOLDER_TO_STRING_TAG = "CollectionHolder"
     /**
-     * The simple {@link Symbol.toStringTag} of an {@link CollectionIterator}
+     * The {@link Symbol.toStringTag} of an {@link CollectionIterator}
      *
      * @uniqueJavascriptVariable
      */
@@ -125,6 +138,11 @@ export class CollectionConstants {
 
     //#endregion -------------------- Symbol.toString references --------------------
     //#region -------------------- "Every methods" references --------------------
+
+    /** Every method applicable to a {@link MinimalistCollectionHolder} */
+    public static get EVERY_MINIMALIST_COLLECTION_METHODS(): CollectionHolder<keyof MinimalistCollectionHolder> {
+        return CollectionConstants.#EVERY_MINIMALIST_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "get",],),)
+    }
 
     /** Every method applicable to a {@link CollectionHolder} */
     public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> {
@@ -154,6 +172,7 @@ export class CollectionConstants {
             "toString", "toLocaleString",
         ] as const,),)
     }
+
     /** Every method applicable to a {@link CollectionIterator} */
     public static get EVERY_ITERATOR_METHODS(): CollectionHolder<keyof CollectionIterator> {
         return CollectionConstants.#EVERY_ITERATOR_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
@@ -177,12 +196,17 @@ export class CollectionConstants {
 
     /** The {@link Object.constructor constructor} reference of a {@link GenericCollectionHolder} */
     public static get GenericCollectionHolder(): typeof GenericCollectionHolder {
-        return CollectionConstants.#GenericCollectionHolder ??= require("./GenericCollectionHolder").GenericCollectionHolder
+        return CollectionConstants.#GenericCollectionHolder ??= require("./GenericCollectionHolder",).GenericCollectionHolder
+    }
+
+    /** The {@link Object.constructor constructor} reference of a {@link GenericMinimalistCollectionHolder} */
+    public static get GenericMinimalistCollectionHolder(): typeof GenericMinimalistCollectionHolder {
+        return CollectionConstants.#GenericMinimalistCollectionHolder ??= require("./GenericMinimalistCollectionHolder",).GenericMinimalistCollectionHolder
     }
 
     /** The {@link Object.constructor constructor} reference of a {@link LazyGenericCollectionHolder} */
     public static get LazyGenericCollectionHolder(): typeof LazyGenericCollectionHolder {
-        return CollectionConstants.#LazyGenericCollectionHolder ??= require("./LazyGenericCollectionHolder").LazyGenericCollectionHolder
+        return CollectionConstants.#LazyGenericCollectionHolder ??= require("./LazyGenericCollectionHolder",).LazyGenericCollectionHolder
     }
 
     //#endregion -------------------- Constructor references --------------------

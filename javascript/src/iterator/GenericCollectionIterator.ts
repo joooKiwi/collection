@@ -1,12 +1,12 @@
 /*******************************************************************************
- Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
 
  This project is free to use.
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}                                                                                             from "../CollectionHolder"
 import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                                                                   from "../MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                           from "./CollectionIterator"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
@@ -16,8 +16,8 @@ import {GenericAfterLastIteratorValue}             from "./value/GenericAfterLas
 import {GenericBeforeFirstIteratorValue}           from "./value/GenericBeforeFirstIteratorValue"
 import {GenericIteratorValue}                      from "./value/GenericIteratorValue"
 
-export class GenericCollectionIterator<const out T = unknown, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
-    implements CollectionIterator<T> {
+export class GenericCollectionIterator<const out T = unknown, const out COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
+    implements CollectionIterator<T> {//TODO add reverse loop on first call
 
     //#region -------------------- Fields --------------------
 
@@ -98,7 +98,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
 
     public get nextValue(): T {
         const nextValue = this.next().value
-        if (nextValue === CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL)
+        if (nextValue == CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL)
             throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
         return nextValue
     }
@@ -112,7 +112,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
 
     public get previousValue(): T {
         const nextValue = this.previous().value
-        if (nextValue === CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL)
+        if (nextValue == CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL)
             throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
         return nextValue
     }
@@ -149,7 +149,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     }
 
     public get [Symbol.toStringTag](): CollectionIteratorName {
-        return CollectionConstants.COLLECTION_ITERATOR_TO_STRING_TAG
+        return "CollectionIterator"
     }
 
     //#endregion -------------------- Javascript methods --------------------

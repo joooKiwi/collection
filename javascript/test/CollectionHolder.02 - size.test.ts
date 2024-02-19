@@ -1,21 +1,50 @@
 /*******************************************************************************
- Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
 
  This project is free to use.
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {everyInstances, sizeValues} from "./constantValues"
-import {newCollectionInstance}      from "./newCollectionInstance"
+import {everyCollectionInstance, sizeValues}   from "./constantValues"
+import {GenericCollectionHolder_SizeAlias}     from "./instance/GenericCollectionHolder_SizeAlias"
+import {LazyGenericCollectionHolder_SizeAlias} from "./instance/LazyGenericCollectionHolder_SizeAlias"
 
-describe("CollectionHolderTest (size)", () =>
-describe.each(everyInstances,)("%s", ({value: instance,},) =>
-describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
-    const newInstance = () => newCollectionInstance(instance, array,)
+describe("CollectionHolderTest (size)", () => {
 
-    test("size",       () => expect(newInstance().size,).toEqual(size,),)
-    test("length",     () => expect(newInstance().length,).toEqual(size,),)
-    test("count",      () => expect(newInstance().count,).toEqual(size,),)
-    test("isEmpty",    () => expect(newInstance().isEmpty,).toBe(size == 0,),)
-    test("isNotEmpty", () => expect(newInstance().isNotEmpty,).toBe(size != 0,),)
-},),),)
+    describe("aliases", () => {
+        describe("GenericCollectionHolder", () => {
+            test("length", () => {
+                const instance = new GenericCollectionHolder_SizeAlias()
+                instance.length
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+            test("count", () => {
+                const instance = new GenericCollectionHolder_SizeAlias()
+                instance.count
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+        },)
+        describe("LazyGenericCollectionHolder", () => {
+            test("length", () => {
+                const instance = new LazyGenericCollectionHolder_SizeAlias()
+                instance.length
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+            test("count", () => {
+                const instance = new LazyGenericCollectionHolder_SizeAlias()
+                instance.count
+                expect(instance.amountOfCall,).toBe(1,)
+            },)
+        },)
+    },)
+
+    describe.each(everyCollectionInstance,)("%s", ({value: {isMinimalist, newInstance,},},) => {
+    describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
+        test("size", () => expect(newInstance(array,).size,).toEqual(size,),)
+        if (!isMinimalist) {
+            test("isEmpty", () => expect(newInstance(array,).isEmpty,).toBe(size == 0,),)
+            test("isNotEmpty", () => expect(newInstance(array,).isNotEmpty,).toBe(size != 0,),)
+        }
+    },)},)
+
+},)

@@ -6,6 +6,7 @@
     <toRun name="filter" type="JavaScriptTestRunnerJest" />
     <toRun name="find" type="JavaScriptTestRunnerJest" />
     <toRun name="has" type="JavaScriptTestRunnerJest" />
+    <toRun name="index" type="JavaScriptTestRunnerJest" />
     <toRun name="javascript exclusive" type="JavaScriptTestRunnerJest" />
     <toRun name="join" type="JavaScriptTestRunnerJest" />
     <toRun name="map / forEach" type="JavaScriptTestRunnerJest" />

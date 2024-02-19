@@ -1,18 +1,18 @@
 /*******************************************************************************
- Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
 
  This project is free to use.
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {AbstractCollectionHandler}         from "./AbstractCollection.handler"
-export {ArrayCollectionHandler}            from "./ArrayCollection.handler"
-export {ArrayCollectionOf1Handler}         from "./ArrayCollectionOf1.handler"
-export {CollectionCollectionHandler}       from "./CollectionCollection.handler"
-export type {CollectionHandler}            from "./Collection.handler"
-export {EmptyCollectionHandler}            from "./EmptyCollection.handler"
-export {IterableCollectionHandler}         from "./IterableCollection.handler"
-export {IterableWithSizeCollectionHandler} from "./IterableWithSizeCollection.handler"
-export {SetCollectionHandler}              from "./SetCollection.handler"
-export {SetCollectionOf1Handler}           from "./SetCollectionOf1.handler"
-export type {ValueHolder}                  from "./ValueHolder"
+export {AbstractCollectionHandler}           from "./AbstractCollectionHandler"
+export type {CollectionHandler}              from "./CollectionHandler"
+export {CollectionHandlerByArray}            from "./CollectionHandlerByArray"
+export {CollectionHandlerByArrayOf1}         from "./CollectionHandlerByArrayOf1"
+export {CollectionHandlerByCollectionHolder} from "./CollectionHandlerByCollectionHolder"
+export {CollectionHandlerByIterable}         from "./CollectionHandlerByIterable"
+export {CollectionHandlerByIterableWithSize} from "./CollectionHandlerByIterableWithSize"
+export {CollectionHandlerBySet}              from "./CollectionHandlerBySet"
+export {CollectionHandlerBySetOf1}           from "./CollectionHandlerBySetOf1"
+export {EmptyCollectionHandler}              from "./EmptyCollectionHandler"
+export type {ValueHolder}                    from "./ValueHolder"

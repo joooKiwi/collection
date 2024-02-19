@@ -1,12 +1,12 @@
 /*******************************************************************************
- Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
 
  This project is free to use.
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}   from "../CollectionHolder"
-import type {IndexValueCallback} from "../CollectionHolder.types"
+import type {IndexValueCallback}         from "../CollectionHolder.types"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -14,7 +14,7 @@ import type {IndexValueCallback} from "../CollectionHolder.types"
  * Perform a given {@link action} on each element
  * and return the {@link collection} afterwards
  *
- * @param collection The {@link CollectionHolder collection}
+ * @param collection The {@link MinimalistCollectionHolder collection}
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
@@ -22,25 +22,25 @@ import type {IndexValueCallback} from "../CollectionHolder.types"
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
  * @extensionFunction
  */
-export function forEachIndexed<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
-    if (action.length === 1)
+export function forEachIndexed<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
+    if (action.length == 1)
         return __with1Argument(collection, action as (index: number,) => void,)
     if (action.length >= 2)
         return __with2Argument(collection, action,)
     return __with0Argument(collection, action as () => void,)
 }
+
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __with0Argument<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: () => void,) {
-    const size = collection.size
-    let index = -1
-    while (++index < size)
+function __with0Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: () => void,) {
+    let index = collection.size
+    while (index-- > 0)
         action()
     return collection
 }
 
-function __with1Argument<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: (index: number,) => void,) {
+function __with1Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (index: number,) => void,) {
     const size = collection.size
     let index = -1
     while (++index < size)
@@ -48,11 +48,11 @@ function __with1Argument<const T, const COLLECTION extends CollectionHolder<T> =
     return collection
 }
 
-function __with2Argument<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION, action: (index: number,value: T, ) => void,) {
+function __with2Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (index: number, value: T,) => void,) {
     const size = collection.size
     let index = -1
     while (++index < size)
-        action(index,collection.get(index,), )
+        action(index, collection.get(index,),)
     return collection
 }
 

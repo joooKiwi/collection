@@ -5,7 +5,7 @@
     <working-dir value="$PROJECT_DIR$" />
     <envs />
     <scope-kind value="SUITE" />
-    <test-file value="$PROJECT_DIR$/test/CollectionHolder.09 - slice.test.ts" />
+    <test-file value="$PROJECT_DIR$/test/CollectionHolder.10 - slice.test.ts" />
     <test-names>
       <test-name value="CollectionHolderTest (slice)" />
     </test-names>

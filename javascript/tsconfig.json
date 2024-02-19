@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
+    "target": "ES2022",
     "esModuleInterop": true,
     "lib": [
       "DOM",
       "ESNext",
     ],
+    "noErrorTruncation": true,
     "pretty": true,
 
     "allowUnusedLabels": false,
@@ -15,11 +16,12 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitOverride": true,
-    "noImplicitThis": true,
     "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
-    "noUnusedParameters": true,
     "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,

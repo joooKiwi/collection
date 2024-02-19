@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
@@ -22,6 +23,24 @@ public final class ToLowerCaseString
      * Convert the {@code collection} to a {@link String} on every value
      * by calling its "<i>{@link String#toLowerCase()} toLowerCase()}</i>" method
      *
+     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+     * @see String#toLowerCase()
+     */
+    @ExtensionFunction
+    public static <T> @NotNull String toLowerCaseString(@Nullable MinimalistCollectionHolder<? extends T> collection) {
+        if (collection == null)
+            return DEFAULT_EMPTY_COLLECTION;
+
+        var size = collection.size();
+        if (size == 0)
+            return DEFAULT_EMPTY_COLLECTION;
+        return __toString(collection, size);
+    }
+
+    /**
+     * Convert the {@code collection} to a {@link String} on every value
+     * by calling its "<i>{@link String#toLowerCase()} toLowerCase()}</i>" method
+     *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @see String#toLowerCase()
      */
@@ -31,15 +50,21 @@ public final class ToLowerCaseString
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
             return DEFAULT_EMPTY_COLLECTION;
+        return __toString(collection, collection.size());
+    }
 
+    //#endregion -------------------- Facade method --------------------
+    //#region -------------------- Loop method --------------------
+
+    private static @NotNull String __toString(@NotNull MinimalistCollectionHolder<?> collection, int size) {
         var string = new StringBuilder();
-        var sizeMinus1 = collection.getSize() - 1;
+        var sizeMinus1 = size - 1;
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLowerCaseString(collection.get(index))).append(DEFAULT_JOIN_SEPARATOR);
         return DEFAULT_JOIN_POSTFIX_STRING + string + asLowerCaseString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
     }
 
-    //#endregion -------------------- Facade method --------------------
+    //#endregion -------------------- Loop method --------------------
 
 }

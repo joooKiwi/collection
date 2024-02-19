@@ -1,34 +1,36 @@
 /*******************************************************************************
- Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
 
  This project is free to use.
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullOr}                  from "./general type"
-import type {PossibleIterable}                  from "./iterable/types"
-import type {CollectionHolder}                  from "./CollectionHolder"
-import type {IndexWithReturnCallback, ObjectOf} from "./CollectionHolder.types"
-import type {IterableWithCount}                 from "./iterable/IterableWithCount"
-import type {IterableWithLength}                from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}          from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                  from "./iterable/IterableWithSize"
-import type {CollectionIterator}                from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                from "./CollectionHolder"
+import type {IndexWithReturnCallback, ObjectOf, PossibleIterableOrCollection} from "./CollectionHolder.types"
+import type {Nullable, NullOr}                                                from "./general type"
+import type {MinimalistCollectionHolder}                                      from "./MinimalistCollectionHolder"
+import type {IterableWithCount}                                               from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                              from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                        from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                              from "./iterator/CollectionIterator"
 
 import {AbstractCollectionHolder}                  from "./AbstractCollectionHolder"
 import {CollectionConstants}                       from "./CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
+import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
 import {hasNull}                                   from "./method/hasNull"
 import {isCollectionHolder}                        from "./method/isCollectionHolder"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
+import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
 import {objectValuesMap}                           from "./method/objectValuesMap"
 import {toMap}                                     from "./method/toMap"
 import {toSet}                                     from "./method/toSet"
 import {toWeakSet}                                 from "./method/toWeakSet"
 
 /**
- * A simple {@link CollectionHolder} having the values eagerly retrieved.
+ * A {@link CollectionHolder} having the values eagerly retrieved.
  *
  * Meaning that every value is retrieved during the construction,
  * and it will never change after the initialization.
@@ -38,7 +40,7 @@ import {toWeakSet}                                 from "./method/toWeakSet"
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
  */
-export class GenericCollectionHolder<const T = unknown, const REFERENCE extends PossibleIterable<T> = PossibleIterable<T>, >
+export class GenericCollectionHolder<const out T = unknown, const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -64,6 +66,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public constructor(lateSet: () => ReadonlySet<T>,)
     public constructor(collectionHolder: CollectionHolder<T>,)
     public constructor(lateCollectionHolder: () => CollectionHolder<T>,)
+    public constructor(minimalistCollectionHolder: MinimalistCollectionHolder<T>,)
+    public constructor(lateMinimalistCollectionHolder: () => MinimalistCollectionHolder<T>,)
     public constructor(collectionIterable: CollectionIterator<T>,)
     public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
     public constructor(iterableWithSize: IterableWithSize<T>,)
@@ -81,8 +85,8 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public constructor(reference: | REFERENCE | (() => REFERENCE),)
     public constructor(reference: | REFERENCE | (() => REFERENCE),) {
         super()
-        // README: The eager instantiation has some weird shenanigan in order to keep its nature pure.
-        //         Also, in order to be efficient, there is some duplicate code in the constructor.
+        // README: The eager instantiation has some weird shenanigan to keep its nature pure.
+        //         Also, to be efficient, there is some duplicate code in the constructor.
 
         reference = this.#reference = reference instanceof Function ? reference() : reference
 
@@ -173,11 +177,51 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
-        if (isCollectionHolder<T>(reference)) {
+        if (isCollectionHolder<T>(reference,)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 
             if (this.#isEmpty = reference.isEmpty) {
+                this.#hasNull = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (non-empty) --------------------
+
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = reference.get(0,)
+                this.#hasNull = value == null
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 1) --------------------
+
+            const array = [] as T[]
+            let index = size
+            while (index-- > 0)
+                this[index] = array[index] = reference.get(index,)
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 1) --------------------
+
+            //#endregion -------------------- Initialization (non-empty) --------------------
+        }
+
+        if (isMinimalistCollectionHolder<T>(reference,)) {
+            const size = this.#size = reference.size
+            //#region -------------------- Initialization (empty) --------------------
+
+            if (this.#isEmpty = size == 0) {
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -285,10 +329,10 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = over 1) --------------------
 
-            const array = [] as T[],
-                iterator = reference[Symbol.iterator]() as IterableIterator<T>
-            let index = -1,
-                iteratorResult: IteratorResult<T, T>
+            const array = [] as T[]
+            const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            let index = -1
+            let iteratorResult: IteratorResult<T, T>
             while (++index, !(iteratorResult = iterator.next()).done)
                 this[index] = array[index] = iteratorResult.value
             this.#array = Object.freeze(array,)
@@ -371,21 +415,29 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
     public override get(index: number,): T {
         if (this.isEmpty)
-            throw new EmptyCollectionHolderException("No element at any index could be found since it it empty.", index,)
+            throw new EmptyCollectionHolderException(null, index,)
+
+        if (Number.isNaN(index,))
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
+        if (index == Number.NEGATIVE_INFINITY)
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,)
+        if (index == Number.POSITIVE_INFINITY)
+            throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
+
         if (index in this)
             return this[index] as T
 
         const size = this.size
         if (index > size)
-            throw new CollectionHolderIndexOutOfBoundsException(`The index "${index}" is over the size of the collection (${size}).`, index,)
+            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is over the size of the collection (${size}).`, index,)
         if (index >= 0)
             return this[index] as T
 
         const indexToRetrieve = size + index
         if (indexToRetrieve < 0)
-            throw new CollectionHolderIndexOutOfBoundsException(`The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
+            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
         if (indexToRetrieve > size)
-            throw new CollectionHolderIndexOutOfBoundsException(`The index "${index}" (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,)
+            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,)
         return this[indexToRetrieve] as T
     }
 
@@ -393,11 +445,17 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
+        if (Number.isNaN(index,))
+            return defaultValue(index,)
+        if (index == Number.NEGATIVE_INFINITY)
+            return defaultValue(index,)
+        if (index == Number.POSITIVE_INFINITY)
+            return defaultValue(index,)
         if (this.isEmpty)
             return defaultValue(index < 0 ? this.size + index : index,)
 
-        const size = this.size,
-            indexToRetrieve = index < 0 ? size + index : index
+        const size = this.size
+        const indexToRetrieve = index < 0 ? size + index : index
         if (indexToRetrieve < 0)
             return defaultValue(indexToRetrieve,)
         if (indexToRetrieve > size)
@@ -407,10 +465,17 @@ export class GenericCollectionHolder<const T = unknown, const REFERENCE extends 
 
 
     public override getOrNull(index: number,): NullOr<T> {
+        if (Number.isNaN(index,))
+            return null
+        if (index == Number.NEGATIVE_INFINITY)
+            return null
+        if (index == Number.POSITIVE_INFINITY)
+            return null
         if (this.isEmpty)
             return null
-        const size = this.size,
-            indexToRetrieve = index < 0 ? size + index : index
+
+        const size = this.size
+        const indexToRetrieve = index < 0 ? size + index : index
         if (indexToRetrieve < 0)
             return null
         if (indexToRetrieve > size)

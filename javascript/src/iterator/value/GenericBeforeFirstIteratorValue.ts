@@ -1,5 +1,5 @@
 /*******************************************************************************
- Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
 
  This project is free to use.
  All the right is reserved to the author of this project.
@@ -10,7 +10,7 @@ import type {BeforeFirstValueInCollectionIteratorSymbol} from "../CollectionIter
 import {CollectionConstants} from "../../CollectionConstants"
 
 /**
- * A simple implementation of a {@link IteratorReturnResult} for the element
+ * An implementation of a {@link IteratorReturnResult} for the element
  * before the first element on a {@link CollectionIterator}
  *
  * @singleton

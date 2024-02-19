@@ -1,5 +1,5 @@
 /*******************************************************************************
- Copyright (c) 2023. Jonathan Bédard ~ JóôòKiwi
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
 
  This project is free to use.
  All the right is reserved to the author of this project.
@@ -17,8 +17,8 @@ export class EmptyCollectionHolderException<const T extends NullOr<PossibleNumer
     const out CAUSE extends Error = never, >
     extends CollectionHolderIndexOutOfBoundsException<T, CAUSE> {
 
-    public constructor(message: string, invalidIndex: T = null as T, cause?: Nullable<CAUSE>,) {
-        super(message, invalidIndex, cause,)
+    public constructor(message?: Nullable<string>, invalidIndex: T = null as T, cause?: Nullable<CAUSE>,) {
+        super(message ?? "Empty collection. No element at any index could be found since it it empty.", invalidIndex, cause,)
     }
 
 }
