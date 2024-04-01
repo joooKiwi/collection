@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableNumber, NullOrNumber} from "@joookiwi/type"
+
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {ReverseBooleanCallback}     from "../CollectionHolder.types"
-import type {Nullable, NullOr}           from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
@@ -25,7 +26,7 @@ import {ForbiddenIndexException}                   from "../exception/ForbiddenI
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
- * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+ * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.findIndex
@@ -34,7 +35,7 @@ import {ForbiddenIndexException}                   from "../exception/ForbiddenI
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexed<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): NullOr<number> {
+export function indexOfFirstIndexed<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -98,7 +99,7 @@ export function indexOfFirstIndexed<const T, >(collection: Nullable<MinimalistCo
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
- * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+ * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.findIndex
@@ -107,7 +108,7 @@ export function indexOfFirstIndexed<const T, >(collection: Nullable<MinimalistCo
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): NullOr<number> {
+export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -163,7 +164,7 @@ export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nul
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Utility methods --------------------
 
-function __startingIndex(fromIndex: Nullable<number>, size: number,) {
+function __startingIndex(fromIndex: NullableNumber, size: number,) {
     if (fromIndex == null)
         return 0
 
@@ -189,7 +190,7 @@ function __startingIndex(fromIndex: Nullable<number>, size: number,) {
     return startingIndex
 }
 
-function __endingIndex(toIndex: Nullable<number>, size: number,) {
+function __endingIndex(toIndex: NullableNumber, size: number,) {
     if (toIndex == null)
         return size - 1
 

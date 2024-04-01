@@ -5,8 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Lazy} from "@joookiwi/lazy"
-import {lazyOf}    from "@joookiwi/lazy"
+import type {Lazy}                                         from "@joookiwi/lazy"
+import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakSet} from "@joookiwi/type"
+import {lazyOf}                                            from "@joookiwi/lazy"
 
 import type {CollectionHolder}           from "./CollectionHolder"
 import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
@@ -58,13 +59,13 @@ export class CollectionConstants {
     //#region -------------------- Empty references --------------------
 
     /** An empty {@link ReadonlyArray array} */
-    public static readonly EMPTY_ARRAY = Object.freeze([] as const,)
+    public static readonly EMPTY_ARRAY = Object.freeze([],) as EmptyArray
     /** An empty {@link ReadonlySet set} */
-    public static readonly EMPTY_SET = Object.freeze(new Set<never>(),)
+    public static readonly EMPTY_SET = Object.freeze(new Set<never>(),) as EmptySet
     /** An empty {@link WeakSet weak set} */
-    public static readonly EMPTY_WEAK_SET = Object.freeze(new WeakSet<never>(),)
+    public static readonly EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet
     /** An empty {@link ReadonlyMap map} */
-    public static readonly EMPTY_MAP = Object.freeze(new Map<never, never>(),)
+    public static readonly EMPTY_MAP = Object.freeze(new Map<any, never>(),) as EmptyMap
 
 
     /** An {@link EmptyCollectionHolder} instance */
@@ -98,13 +99,6 @@ export class CollectionConstants {
     public static get LAZY_EMPTY_COLLECTION_ITERATOR(): Lazy<EmptyCollectionIterator> {
         return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_ITERATOR,)
     }
-
-
-    /**
-     * An empty {@link String}
-     * @deprecated This reference is no longer used in the project and will be removed in the version 1.8
-     */
-    public static readonly EMPTY_STRING = Object.freeze('',) as ''
 
     //#endregion -------------------- Empty references --------------------
     //#region -------------------- Default references --------------------

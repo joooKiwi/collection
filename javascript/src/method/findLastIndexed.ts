@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullOr} from "@joookiwi/type"
+
 import type {CollectionHolder}                                         from "../CollectionHolder"
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../CollectionHolder.types"
-import type {Nullable, NullOr}                                         from "../general type"
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------

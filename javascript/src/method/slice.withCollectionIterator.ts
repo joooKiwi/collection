@@ -5,8 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable} from "@joookiwi/type"
+
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {Nullable}                   from "../general type"
 import type {CollectionIterator}         from "../iterator/CollectionIterator"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 

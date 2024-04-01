@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable} from "@joookiwi/type"
+
 import type {CollectionHolder}                                         from "../CollectionHolder"
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../CollectionHolder.types"
-import type {Nullable}                                                 from "../general type"
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
 
 import {CollectionConstants} from "../CollectionConstants"

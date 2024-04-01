@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {Nullable} from "../general type"
+import type {Nullable, NullableString, Template} from "@joookiwi/type"
 
 /**
  * Convert the {@link value primitive value} to a {@link String} while keeping its type content intact
@@ -13,7 +13,7 @@ import {Nullable} from "../general type"
  * @param value The value to convert
  * @typescriptDefinition
  */
-export function asString<T extends Nullable<| number | bigint | string | boolean>, >(value: T,): T extends string ? T : `${T}`
+export function asString<T extends Nullable<| number | bigint | string | boolean>, >(value: T,): Template<T>
 /**
  * Convert the {@link value} to a {@link String}
  *
@@ -38,7 +38,7 @@ export function asString(value: unknown,): string {
  * @param value The value to convert
  * @param locale The locale to possibly apply
  */
-export function asLocaleString(value: unknown, locale?: Nullable<string>,): string {
+export function asLocaleString(value: unknown, locale?: NullableString,): string {
     if (value === null)
         return "null" // TODO: Validate that the string definitely has no way to be converted from a locale
     if (value === undefined)
@@ -62,7 +62,7 @@ export function asLocaleString(value: unknown, locale?: Nullable<string>,): stri
  * @param value The value to convert
  * @typescriptDefinition
  */
-export function asLowerCaseString<T extends Nullable<| number | bigint | string | boolean>, >(value: T,): Lowercase<T extends string ? T : `${T}`>
+export function asLowerCaseString<T extends Nullable<| number | bigint | string | boolean>, >(value: T,): Lowercase<Template<T>>
 /**
  * Convert the {@link value} to a {@link Lowercase} {@link String}
  *
@@ -89,7 +89,7 @@ export function asLowerCaseString(value: unknown,): string {
  * @param value  The value to convert
  * @param locale The locale to possibly apply
  */
-export function asLocaleLowerCaseString(value: unknown, locale?: Nullable<string>,): string {
+export function asLocaleLowerCaseString(value: unknown, locale?: NullableString,): string {
     if (locale == null) {
         if (value === null)
             return "null".toLocaleLowerCase()
@@ -160,7 +160,7 @@ export function asLocaleLowerCaseString(value: unknown, locale?: Nullable<string
  * @param value The value to convert
  * @typescriptDefinition
  */
-export function asUpperCaseString<T extends Nullable<| number | bigint | string | boolean>, >(value: T,): Uppercase<T extends string ? T : `${T}`>
+export function asUpperCaseString<T extends Nullable<| number | bigint | string | boolean>, >(value: T,): Uppercase<Template<T>>
 /**
  * Convert the {@link value} to an {@link Uppercase} {@link String}
  *
@@ -186,7 +186,7 @@ export function asUpperCaseString(value: unknown,): string {
  * @param value  The value to convert
  * @param locale The locale to possibly apply
  */
-export function asLocaleUpperCaseString(value: unknown, locale?: Nullable<string>,): string {
+export function asLocaleUpperCaseString(value: unknown, locale?: NullableString,): string {
     if (locale == null) {
         if (value === null)
             return "null".toLocaleUpperCase()

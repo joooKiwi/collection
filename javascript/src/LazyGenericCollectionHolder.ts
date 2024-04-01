@@ -5,12 +5,12 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Lazy}                from "@joookiwi/lazy"
-import {CommonLazy, lazy, lazyOf} from "@joookiwi/lazy"
+import type {Lazy}                   from "@joookiwi/lazy"
+import type {NullableNumber, NullOr} from "@joookiwi/type"
+import {CommonLazy, lazy, lazyOf}    from "@joookiwi/lazy"
 
 import type {CollectionHolder}                                                from "./CollectionHolder"
 import type {IndexWithReturnCallback, ObjectOf, PossibleIterableOrCollection} from "./CollectionHolder.types"
-import type {Nullable, NullOr}                                                from "./general type"
 import type {MinimalistCollectionHolder}                                      from "./MinimalistCollectionHolder"
 import type {CollectionHandler}                                               from "./handler/CollectionHandler"
 import type {IterableWithCount}                                               from "./iterable/IterableWithCount"
@@ -476,7 +476,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
                 }
                 if ("size" in referenceFound || "length" in referenceFound || "count" in referenceFound) {
                     // @ts-ignore: We only retrieve the nullable number
-                    const size = (referenceFound?.size ?? referenceFound?.length ?? referenceFound?.count) as Nullable<number>
+                    const size = (referenceFound?.size ?? referenceFound?.length ?? referenceFound?.count) as NullableNumber
                     if (size == null)
                         return new CollectionHandlerByIterable(this, referenceFound,)
 
@@ -573,7 +573,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
         sizeIf:if ("size" in reference || "length" in reference || "count" in reference) {
             this.#reference = lazyOf(reference,)
             // @ts-ignore: We only retrieve the nullable number
-            const size = (reference?.size ?? reference?.length ?? reference?.count) as Nullable<number>
+            const size = (reference?.size ?? reference?.length ?? reference?.count) as NullableNumber
             if (size == null) // No size is present even though there is a value in the reference
                 break sizeIf
 

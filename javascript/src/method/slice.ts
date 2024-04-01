@@ -5,8 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableNumber} from "@joookiwi/type"
+
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {Nullable}                   from "../general type"
 import type {CollectionIterator}         from "../iterator/CollectionIterator"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
@@ -124,7 +125,7 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 /**
  * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex}
  * in the {@link collection}
@@ -143,8 +144,8 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @extensionFunction
  * @typescriptDefinition
  */
-export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number> = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
     if (indicesOrFromIndex instanceof Array)
         return sliceWithArray(collection, indicesOrFromIndex,)
     if (indicesOrFromIndex instanceof Set)
@@ -263,7 +264,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 /**
  * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex}
  * in the {@link collection}
@@ -282,8 +283,8 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @extensionFunction
  * @typescriptDefinition
  */
-export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indicesOrFromIndex: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
+export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indicesOrFromIndex: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number> = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
     if (indicesOrFromIndex instanceof Array)
         return sliceWithArrayByCollectionHolder(collection, indicesOrFromIndex,)
     if (indicesOrFromIndex instanceof Set)

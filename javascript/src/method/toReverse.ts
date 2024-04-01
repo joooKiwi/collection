@@ -5,8 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableNumber} from "@joookiwi/type"
+
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {Nullable}                   from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}                       from "../CollectionConstants"
@@ -30,7 +31,7 @@ import {ForbiddenIndexException}                   from "../exception/ForbiddenI
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
+export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
     //#region -------------------- Early returns --------------------
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -50,7 +51,7 @@ export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHo
     const endingIndex = __endingIndex(toIndex, size,)
 
     if (endingIndex < startingIndex)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}"${(toIndex == endingIndex ? '' : ` ("${endingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`}.`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}"${(toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`}.`, toIndex,)
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -63,7 +64,7 @@ export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHo
     if (maximumIndex == size)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __withoutALimit(collection, startingIndex, endingIndex,),)
     if (endingIndex - startingIndex < maximumIndex - 1)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`, limit,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}"${limit == maximumIndex ? "" : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ""}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`} to "${toIndex ?? ""}"${toIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}`, limit,)
 
     //#endregion -------------------- Initialization (maximum index) --------------------
 
@@ -85,7 +86,7 @@ export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHo
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
+export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -105,7 +106,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
     const endingIndex = __endingIndex(toIndex, size,)
 
     if (endingIndex < startingIndex)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}"${(toIndex == endingIndex ? '' : ` ("${endingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? '' : ` ("${startingIndex}" after calculation)`}.`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}"${(toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`}.`, toIndex,)
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -118,7 +119,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
     if (maximumIndex == size)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __withoutALimit(collection, startingIndex, endingIndex,),)
     if (endingIndex - startingIndex < maximumIndex - 1)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}`, limit,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}"${limit == maximumIndex ? "" : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ""}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`} to "${toIndex ?? ""}"${toIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}`, limit,)
 
     //#endregion -------------------- Initialization (maximum index) --------------------
 
@@ -128,7 +129,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Utility methods --------------------
 
-function __startingIndex(fromIndex: Nullable<number>, size: number,) {
+function __startingIndex(fromIndex: NullableNumber, size: number,) {
     if (fromIndex == null)
         return 0
 
@@ -154,7 +155,7 @@ function __startingIndex(fromIndex: Nullable<number>, size: number,) {
     return startingIndex
 }
 
-function __endingIndex(toIndex: Nullable<number>, size: number,) {
+function __endingIndex(toIndex: NullableNumber, size: number,) {
     if (toIndex == null)
         return size - 1
 

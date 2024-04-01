@@ -199,16 +199,14 @@ export type IndexValueWithReturnCallback<T, R, > = (index: number, value: T,) =>
  */
 export type StringCallback<T, > = (value: T, index: number,) => string
 
-/** @deprecated This type has been replaced with {@link StringCallback} and will be removed in version 1.8 */
-export type ValueWithStringReturnCallback<T, > = (value: T,) => string
-
 /** An object encapsulation of a value */
-export type ObjectOf<T, > =
-    | (T extends string ? (& String & { valueOf(): T, }) : never)
-    | (T extends boolean ? (& Boolean & { valueOf(): T, }) : never)
-    | (T extends number ? (& Number & { valueOf(): T, }) : never)
-    | (T extends bigint ? (& BigInt & { valueOf(): T, }) : never)
-    | (T extends null ? (& {} & { valueOf(): {}, }) : never)
-    | (T extends undefined ? (& {} & { valueOf(): {}, }) : never)
-    | (T extends symbol ? (& Symbol & { valueOf(): T, }) : never)
-    | (& T & object & { valueOf(): T, })
+export type ObjectOf<T, > = T & object
+//TODO fix the typing to properly tell the conversion without error on its part.
+    // | (T extends string ? (& String & { valueOf(): T, }) : never)
+    // | (T extends boolean ? (& Boolean & { valueOf(): T, }) : never)
+    // | (T extends number ? (& Number & { valueOf(): T, }) : never)
+    // | (T extends bigint ? (& BigInt & { valueOf(): T, }) : never)
+    // | (T extends null ? (& {} & { valueOf(): {}, }) : never)
+    // | (T extends undefined ? (& {} & { valueOf(): {}, }) : never)
+    // | (T extends symbol ? (& Symbol & { valueOf(): T, }) : never)
+    // | (& T & object & { valueOf(): T, })

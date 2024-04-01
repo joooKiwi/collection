@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable} from "../general type"
+import type {Nullable} from "@joookiwi/type"
 
 /**
  * Tell that the {@link CollectionHolder} could not find an element

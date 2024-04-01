@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableNumber, NullableString} from "@joookiwi/type"
+
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {StringCallback}             from "../CollectionHolder.types"
-import type {Nullable}                   from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
@@ -36,7 +37,7 @@ import {ForbiddenIndexException}                   from "../exception/ForbiddenI
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
  * @canReceiveNegativeValue
  */
-export function join<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, separator: Nullable<string> = null, prefix: Nullable<string> = null, postfix: Nullable<string> = null, limit: Nullable<number> = null, truncated: Nullable<string> = null, transform: Nullable<StringCallback<T>> = null,): string {
+export function join<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
     if (collection == null)
         return prefixAndPostfixOnly(prefix, postfix,)
 
@@ -46,36 +47,36 @@ export function join<const T, >(collection: Nullable<MinimalistCollectionHolder<
 
     if (transform == null) {
         if (limit == null)
-            return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size,)
+            return __withNothing(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", collection.size,)
 
         const maximumIndex = __maximumIndex(limit, size,)
         if (maximumIndex == size)
-            return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
-        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…',)
+            return __withNothing(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", size,)
+        return __withTruncated(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", maximumIndex, truncated ?? "…",)
     }
 
     if (limit == null) {
         if (transform.length == 1)
-            return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as (value: T,) => string,)
+            return __with1Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", collection.size, transform as (value: T,) => string,)
         if (transform.length >= 2)
-            return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform,)
-        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as () => string,)
+            return __with2Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", collection.size, transform,)
+        return __with0Argument(separator ?? ", ", prefix ?? "[", postfix ?? "]", collection.size, transform as () => string,)
     }
 
     const maximumIndex = __maximumIndex(limit, size,)
     if (maximumIndex == size) {
         if (transform.length == 1)
-            return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
+            return __with1Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", size, transform as (value: T,) => string,)
         if (transform.length >= 2)
-            return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform,)
-        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
+            return __with2Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", size, transform,)
+        return __with0Argument(separator ?? ", ", prefix ?? "[", postfix ?? "]", size, transform as () => string,)
     }
 
     if (transform.length == 1)
-        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as (value: T,) => string,)
+        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", maximumIndex, truncated ?? "…", transform as (value: T,) => string,)
     if (transform.length >= 2)
-        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform,)
-    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as () => string,)
+        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", maximumIndex, truncated ?? "…", transform,)
+    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? "[", postfix ?? "]", maximumIndex, truncated ?? "…", transform as () => string,)
 }
 
 /**
@@ -99,7 +100,7 @@ export function join<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
  * @canReceiveNegativeValue
  */
-export function joinByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, separator: Nullable<string> = null, prefix: Nullable<string> = null, postfix: Nullable<string> = null, limit: Nullable<number> = null, truncated: Nullable<string> = null, transform: Nullable<StringCallback<T>> = null,): string {
+export function joinByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
     if (collection == null)
         return prefixAndPostfixOnly(prefix, postfix,)
     if (collection.isEmpty)
@@ -107,38 +108,38 @@ export function joinByCollectionHolder<const T, >(collection: Nullable<Collectio
 
     if (transform == null) {
         if (limit == null)
-            return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size,)
+            return __withNothing(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", collection.size,)
 
         const size = collection.size
         const maximumIndex = __maximumIndex(limit, size,)
         if (maximumIndex == size)
-            return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
-        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…',)
+            return __withNothing(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", size,)
+        return __withTruncated(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", maximumIndex, truncated ?? "…",)
     }
 
     if (limit == null) {
         if (transform.length == 1)
-            return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as (value: T,) => string,)
+            return __with1Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", collection.size, transform as (value: T,) => string,)
         if (transform.length >= 2)
-            return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform,)
-        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as () => string,)
+            return __with2Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", collection.size, transform,)
+        return __with0Argument(separator ?? ", ", prefix ?? "[", postfix ?? "]", collection.size, transform as () => string,)
     }
 
     const size = collection.size
     const maximumIndex = __maximumIndex(limit, size,)
     if (maximumIndex == size) {
         if (transform.length == 1)
-            return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
+            return __with1Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", size, transform as (value: T,) => string,)
         if (transform.length >= 2)
-            return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform,)
-        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
+            return __with2Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", size, transform,)
+        return __with0Argument(separator ?? ", ", prefix ?? "[", postfix ?? "]", size, transform as () => string,)
     }
 
     if (transform.length == 1)
-        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as (value: T,) => string,)
+        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", maximumIndex, truncated ?? "…", transform as (value: T,) => string,)
     if (transform.length >= 2)
-        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform,)
-    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as () => string,)
+        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? "[", postfix ?? "]", maximumIndex, truncated ?? "…", transform,)
+    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? "[", postfix ?? "]", maximumIndex, truncated ?? "…", transform as () => string,)
 }
 
 //#endregion -------------------- Facade method --------------------
@@ -152,8 +153,8 @@ export function joinByCollectionHolder<const T, >(collection: Nullable<Collectio
  * @see join
  * @see joinByCollectionHolder
  */
-export function prefixAndPostfixOnly(prefix: Nullable<string> = null, postfix: Nullable<string> = null,): string {
-    return `${prefix ?? '['}${postfix ?? ']'}`
+export function prefixAndPostfixOnly(prefix: NullableString = null, postfix: NullableString = null,): string {
+    return `${prefix ?? "["}${postfix ?? "]"}`
 }
 
 //#endregion -------------------- Prefix & postfix method --------------------

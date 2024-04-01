@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullOr} from "../general type"
+import type {Nullable, NullOr} from "@joookiwi/type"
 
 /**
  * An exception to tell that an edge case {@link Number} (±∞ / {@link Number.NaN NaN}) was used

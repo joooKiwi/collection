@@ -5,8 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {IndexWithReturnCallback}      from "../../src/CollectionHolder.types"
-import type {NullOr}                       from "../../src/general type"
+import type {NullOr} from "@joookiwi/type"
+
+import type {IndexWithReturnCallback} from "../../src/CollectionHolder.types"
 
 import {AbstractCollectionHolder}          from "../../src/AbstractCollectionHolder"
 import {GenericMinimalistCollectionHolder} from "../../src/GenericMinimalistCollectionHolder"

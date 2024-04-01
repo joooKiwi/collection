@@ -5,8 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullOr} from "@joookiwi/type"
+
 import type {CollectionHolder}                           from "../CollectionHolder"
-import type {Nullable, NullOr}                           from "../general type"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 import type {NonEmptyCollectionHolder}                   from "../NonEmptyCollectionHolder"
