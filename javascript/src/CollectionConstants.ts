@@ -99,13 +99,6 @@ export class CollectionConstants {
         return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_ITERATOR,)
     }
 
-
-    /**
-     * An empty {@link String}
-     * @deprecated This reference is no longer used in the project and will be removed in the version 1.8
-     */
-    public static readonly EMPTY_STRING = Object.freeze('',) as ''
-
     //#endregion -------------------- Empty references --------------------
     //#region -------------------- Default references --------------------
 
