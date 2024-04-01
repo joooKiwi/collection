@@ -318,7 +318,7 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public get objectValuesMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP }
+    public get objectValuesMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP as ReadonlyMap<never, never> }
 
 
     public toIterator(): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
@@ -339,7 +339,7 @@ export class EmptyCollectionHolder
     public toMutableWeakSet(): WeakSet<never> { return new WeakSet() }
 
 
-    public toMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP }
+    public toMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP as ReadonlyMap<never, never> }
 
     public toMutableMap(): Map<never, never> { return new Map<never, never>() }
 
