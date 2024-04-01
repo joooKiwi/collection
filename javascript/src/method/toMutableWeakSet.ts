@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable} from "@joookiwi/type"
+
 import type {CollectionHolder} from "../CollectionHolder"
 import type {ObjectOf}         from "../CollectionHolder.types"
-import type {Nullable}         from "../general type"
 
 /**
  * Convert the {@link collection} to an {@link WeakSet mutable weak set}

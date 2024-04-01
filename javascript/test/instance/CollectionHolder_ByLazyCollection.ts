@@ -5,11 +5,12 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {IndexWithReturnCallback}      from "../../src/CollectionHolder.types"
-import type {NullOr}                       from "../../src/general type"
+import type {NullOr} from "@joookiwi/type"
 
-import {AbstractCollectionHolder}          from "../../src/AbstractCollectionHolder"
-import {LazyGenericCollectionHolder}       from "../../src/LazyGenericCollectionHolder"
+import type {IndexWithReturnCallback} from "../../src/CollectionHolder.types"
+
+import {AbstractCollectionHolder}    from "../../src/AbstractCollectionHolder"
+import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
 
 export class CollectionHolder_ByLazyCollection<const out T, >
     extends AbstractCollectionHolder<T> {

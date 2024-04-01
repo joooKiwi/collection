@@ -7,7 +7,7 @@
 
 //TODO move in a separate project
 
-import type {Nullable} from "../general type"
+import type {NullableNumber} from "@joookiwi/type"
 
 /**
  * The possible {@link Iterable} with a possible {@link IterableWithSize size},
@@ -22,20 +22,20 @@ export interface IterableWithPossibleSize<out T, >
     extends Iterable<T> {
 
     /** The value equivalent to the amount of iteration to do */
-    readonly size?: Nullable<number>
+    readonly size?: NullableNumber
 
     /**
      * The value equivalent to the amount of iteration to do
      *
      * @note Useless if {@link IterableWithPossibleSize.size} is a {@link Number}
      */
-    readonly length?: Nullable<number>
+    readonly length?: NullableNumber
 
     /**
      * The value equivalent to the amount of iteration to do
      *
      * @note Useless if {@link IterableWithPossibleSize.length} is a {@link Number}
      */
-    readonly count?: Nullable<number>
+    readonly count?: NullableNumber
 
 }

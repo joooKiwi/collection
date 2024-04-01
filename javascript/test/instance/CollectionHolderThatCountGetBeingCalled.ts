@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber} from "@joookiwi/type"
+
 import type {CollectionHolder}                                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/CollectionHolder.types"
-import type {Nullable, NullOr, NumberOrNumberInString}                                                                                                                                                                                                                                          from "../../src/general type"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 
@@ -68,7 +69,8 @@ import {toWeakSet}                                                          from
 export class CollectionHolderThatCountGetBeingCalled<const out T, >
     implements CollectionHolder<T> {
 
-    [index: NumberOrNumberInString]: undefined
+    [index: TemplateOrNumber]: undefined
+
     readonly #instance
     /** The instance is specifically a child of {@link AbstractCollectionHolder} */
     readonly #isCollectionHolder
@@ -183,44 +185,44 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public indexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-    public indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-    public indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return this.#isCollectionHolder
             ? indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
             : indexOf(this, element, fromIndex, toIndex, limit,)
     }
 
 
-    public lastIndexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-    public lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-    public lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return this.#isCollectionHolder
             ? lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
             : lastIndexOf(this, element, fromIndex, toIndex, limit,)
     }
 
 
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return this.#isCollectionHolder
             ? indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
             : indexOfFirst(this, predicate, fromIndex, toIndex, limit,)
     }
 
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return this.#isCollectionHolder
             ? indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
             : indexOfFirstIndexed(this, predicate, fromIndex, toIndex, limit,)
     }
 
 
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return this.#isCollectionHolder
             ? indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
             : indexOfLast(this, predicate, fromIndex, toIndex, limit,)
     }
 
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return this.#isCollectionHolder
             ? indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
             : indexOfLastIndexed(this, predicate, fromIndex, toIndex, limit,)
@@ -368,7 +370,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- Join methods --------------------
 
-    public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<StringCallback<T>>,): string {
+    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return this.#isCollectionHolder
             ? joinByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
             : join(this, separator, prefix, postfix, limit, truncated, transform,)
@@ -464,9 +466,9 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public slice(indices: Iterable<number>,): CollectionHolder<T>
-    public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
         return this.#isCollectionHolder
             ? sliceByCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
             : slice(this, indicesOrFromIndex, toIndex, limit,)
@@ -590,18 +592,18 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     }
 
 
-    public toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
         return this.#isCollectionHolder
             ? toReverseByCollectionHolder(this, fromIndex, toIndex, limit,)
             : toReverse(this, fromIndex, toIndex, limit,)
     }
 
-    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public toReversed(): never {
         throw new Error("The method \"toReversed\" was not expected to be called.",)
     }
 
-    public reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public reversed(): never {
         throw new Error("The method \"reversed\" was not expected to be called.",)
     }
@@ -614,7 +616,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
             : toString(this,)
     }
 
-    public toLocaleString(locale?: Nullable<string>,): string {
+    public toLocaleString(locale?: NullableString,): string {
         return this.#isCollectionHolder
             ? toLocaleStringByCollectionHolder(this,)
             : toLocaleString(this, locale,)
@@ -626,7 +628,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
             : toLowerCaseString(this,)
     }
 
-    public toLocaleLowerCaseString(locale?: Nullable<string>,): string {
+    public toLocaleLowerCaseString(locale?: NullableString,): string {
         return this.#isCollectionHolder
             ? toLocaleLowerCaseStringByCollectionHolder(this,)
             : toLocaleLowerCaseString(this, locale,)
@@ -638,7 +640,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
             : toUpperCaseString(this,)
     }
 
-    public toLocaleUpperCaseString(locale?: Nullable<string>,): string {
+    public toLocaleUpperCaseString(locale?: NullableString,): string {
         return this.#isCollectionHolder
             ? toLocaleUpperCaseStringByCollectionHolder(this,)
             : toLocaleUpperCaseString(this, locale,)

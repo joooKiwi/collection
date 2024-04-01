@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {NullableNumber, NullOr} from "@joookiwi/type"
+
 import type {CollectionHolder}                                                from "./CollectionHolder"
 import type {IndexWithReturnCallback, ObjectOf, PossibleIterableOrCollection} from "./CollectionHolder.types"
-import type {Nullable, NullOr}                                                from "./general type"
 import type {MinimalistCollectionHolder}                                      from "./MinimalistCollectionHolder"
 import type {IterableWithCount}                                               from "./iterable/IterableWithCount"
 import type {IterableWithLength}                                              from "./iterable/IterableWithLength"
@@ -299,7 +300,7 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
 
         sizeIf:if ("size" in reference || "length" in reference || "count" in reference) {
             // @ts-ignore: We only retrieve the nullable number
-            const size = (reference?.size ?? reference?.length ?? reference?.count) as Nullable<number>
+            const size = (reference?.size ?? reference?.length ?? reference?.count) as NullableNumber
             if (size == null) // No size is present, we continue as a normal iterable
                 break sizeIf
             this.#size = size

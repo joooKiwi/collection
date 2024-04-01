@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullOr, PossibleNumeric} from "../general type"
+import type {Nullable, NullOr, NumericOrObject} from "@joookiwi/type"
 
 /**
  * An {@link Error exception} that tell there is an invalid index that was received
@@ -14,7 +14,7 @@ import type {Nullable, NullOr, PossibleNumeric} from "../general type"
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-index-out-of-bounds-exception Kotlin IndexOutOfBoundsException
  * @see https://learn.microsoft.com/dotnet/api/system.indexoutofrangeexception C# IndexOutOfRangeException
  */
-export class CollectionHolderIndexOutOfBoundsException<const T extends NullOr<PossibleNumeric> = NullOr<PossibleNumeric>,
+export class CollectionHolderIndexOutOfBoundsException<const T extends NullOr<NumericOrObject> = NullOr<NumericOrObject>,
     const out CAUSE extends Error = never, >
     extends RangeError {
 

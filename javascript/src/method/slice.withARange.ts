@@ -5,8 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableNumber} from "@joookiwi/type"
+
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {Nullable}                   from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}                       from "../CollectionConstants"
@@ -32,7 +33,7 @@ import {ForbiddenIndexException}                   from "../exception/ForbiddenI
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithARange<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
+export function sliceWithARange<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -53,7 +54,7 @@ export function sliceWithARange<const T, >(collection: Nullable<MinimalistCollec
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}"${toIndex == endingIndex ? '' : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`}.`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, toIndex,)
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -66,7 +67,7 @@ export function sliceWithARange<const T, >(collection: Nullable<MinimalistCollec
     if (maximumIndex == size - 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __withoutALimit(collection, startingIndex, endingIndex,),)
     if (endingIndex - startingIndex < maximumIndex - 1)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`, limit,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}"${limit == maximumIndex ? "" : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ""}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`} to "${toIndex ?? ""}"${toIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, limit,)
 
     //#endregion -------------------- Initialization (maximum index) --------------------
 
@@ -90,7 +91,7 @@ export function sliceWithARange<const T, >(collection: Nullable<MinimalistCollec
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): CollectionHolder<T> {
+export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -110,7 +111,7 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}"${toIndex == endingIndex ? '' : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`}.`, toIndex,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, toIndex,)
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -123,7 +124,7 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
     if (maximumIndex == size - 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __withoutALimit(collection, startingIndex, endingIndex,),)
     if (endingIndex - startingIndex < maximumIndex - 1)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}"${limit == maximumIndex ? '' : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ''}"${fromIndex == startingIndex ? '' : `("${startingIndex}" after calculation)`} to "${toIndex ?? ''}"${toIndex == endingIndex ? '' : `("${endingIndex}" after calculation)`}.`, limit,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}"${limit == maximumIndex ? "" : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ""}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`} to "${toIndex ?? ""}"${toIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, limit,)
 
     //#endregion -------------------- Initialization (maximum index) --------------------
 
@@ -133,7 +134,7 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Utility methods --------------------
 
-function __startingIndex(fromIndex: Nullable<number>, size: number,) {
+function __startingIndex(fromIndex: NullableNumber, size: number,) {
     if (fromIndex == null)
         return 0
 
@@ -159,7 +160,7 @@ function __startingIndex(fromIndex: Nullable<number>, size: number,) {
     return startingIndex
 }
 
-function __endingIndex(toIndex: Nullable<number>, size: number,) {
+function __endingIndex(toIndex: NullableNumber, size: number,) {
     if (toIndex == null)
         return size - 1
 

@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableNumber, NullableString, TemplateOrNumber} from "@joookiwi/type"
+
 import type {CollectionHolder}                                                                                                                                                                                                                                                        from "./CollectionHolder"
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
-import type {Nullable, NumberOrNumberInString}                                                                                                                                                                                                                                        from "./general type"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                              from "./MinimalistCollectionHolder"
 import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                 from "./iterator/EmptyCollectionIterator"
 import type {CollectionIterator}                                                                                                                                                                                                                                                      from "./iterator/CollectionIterator"
@@ -39,7 +40,7 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Singleton usage --------------------
     //#region -------------------- Getter methods --------------------
 
-    [index: NumberOrNumberInString]: undefined
+    [index: TemplateOrNumber]: undefined
 
     //#region -------------------- Size methods --------------------
 
@@ -72,11 +73,11 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Get / at methods --------------------
 
-    public get(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException(null, index,) }
+    public get(index?: NullableNumber,): never { throw new EmptyCollectionHolderException(null, index,) }
 
-    public at(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException(null, index,) }
+    public at(index?: NullableNumber,): never { throw new EmptyCollectionHolderException(null, index,) }
 
-    public elementAt(index?: Nullable<number>,): never { throw new EmptyCollectionHolderException(null, index,) }
+    public elementAt(index?: NullableNumber,): never { throw new EmptyCollectionHolderException(null, index,) }
 
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
@@ -111,25 +112,25 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Get / at methods --------------------
     //#region -------------------- Index of methods --------------------
 
-    public indexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
+    public indexOf(element?: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
     public indexOf() { return null }
 
 
-    public lastIndexOf(element?: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
+    public lastIndexOf(element?: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
     public lastIndexOf() { return null }
 
 
-    public indexOfFirst(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
+    public indexOfFirst(predicate?: BooleanCallback<never>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
     public indexOfFirst() { return null }
 
-    public indexOfFirstIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
+    public indexOfFirstIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
     public indexOfFirstIndexed() { return null }
 
 
-    public indexOfLast(predicate?: BooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
+    public indexOfLast(predicate?: BooleanCallback<never>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
     public indexOfLast() { return null }
 
-    public indexOfLastIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): null
+    public indexOfLastIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
     public indexOfLastIndexed() { return null }
 
     //#endregion -------------------- Index of methods --------------------
@@ -219,8 +220,8 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Has / includes / contains methods --------------------
     //#region -------------------- Join methods --------------------
 
-    public join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<StringCallback<never>>,): string
-    public join(_separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>,) {
+    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<never>>,): string
+    public join(_separator?: NullableString, prefix?: NullableString, postfix?: NullableString,) {
         return prefixAndPostfixOnly(prefix, postfix,)
     }
 
@@ -277,8 +278,8 @@ export class EmptyCollectionHolder
     public slice(indices?: MinimalistCollectionHolder<number>,): this
     public slice(indices?: CollectionIterator<number>,): this
     public slice(indices?: Iterable<number>,): this
-    public slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
-    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
+    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
+    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): this
     public slice() { return this }
 
     //#endregion -------------------- Slice methods --------------------
@@ -343,13 +344,13 @@ export class EmptyCollectionHolder
     public toMutableMap(): Map<never, never> { return new Map<never, never>() }
 
 
-    public toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
     public toReverse() { return this as unknown as CollectionHolder<never> }
 
-    public toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
     public toReversed() { return this as unknown as CollectionHolder<never> }
 
-    public reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): this
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
     public reversed() { return this as unknown as CollectionHolder<never> }
 
     //#region -------------------- Conversion methods (toString) --------------------
@@ -357,17 +358,17 @@ export class EmptyCollectionHolder
     public toString(): "[]" { return "[]" }
 
 
-    public toLocaleString(locale?: Nullable<string>,): "[]"
+    public toLocaleString(locale?: NullableString,): "[]"
     public toLocaleString() { return "[]" }
 
     public toLowerCaseString(): "[]" { return "[]" }
 
-    public toLocaleLowerCaseString(locale?: Nullable<string>,): "[]"
+    public toLocaleLowerCaseString(locale?: NullableString,): "[]"
     public toLocaleLowerCaseString() { return "[]" }
 
     public toUpperCaseString(): "[]" { return "[]" }
 
-    public toLocaleUpperCaseString(locale?: Nullable<string>,): "[]"
+    public toLocaleUpperCaseString(locale?: NullableString,): "[]"
     public toLocaleUpperCaseString() { return "[]" }
 
     //#endregion -------------------- Conversion methods (toString) --------------------

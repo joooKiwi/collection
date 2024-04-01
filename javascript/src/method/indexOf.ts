@@ -5,8 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableNumber, NullOrNumber} from "@joookiwi/type"
+
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {Nullable, NullOr}           from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
@@ -24,7 +25,7 @@ import {ForbiddenIndexException}                   from "../exception/ForbiddenI
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
- * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
@@ -34,7 +35,7 @@ import {ForbiddenIndexException}                   from "../exception/ForbiddenI
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * or <b>null</b> if it was not in the {@link collection}
@@ -45,7 +46,7 @@ export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHold
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
- * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
@@ -55,8 +56,8 @@ export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHold
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-export function indexOf(collection: Nullable<MinimalistCollectionHolder>, element: unknown, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): NullOr<number> {
+export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+export function indexOf(collection: Nullable<MinimalistCollectionHolder>, element: unknown, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -106,7 +107,7 @@ export function indexOf(collection: Nullable<MinimalistCollectionHolder>, elemen
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
- * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
@@ -116,7 +117,7 @@ export function indexOf(collection: Nullable<MinimalistCollectionHolder>, elemen
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * or <b>null</b> if it was not in the {@link collection}
@@ -127,7 +128,7 @@ export function indexOfByCollectionHolder<const T, >(collection: Nullable<Collec
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
- * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+ * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
  * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
@@ -137,8 +138,8 @@ export function indexOfByCollectionHolder<const T, >(collection: Nullable<Collec
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-export function indexOfByCollectionHolder(collection: Nullable<CollectionHolder>, element: unknown, fromIndex: Nullable<number> = null, toIndex: Nullable<number> = null, limit: Nullable<number> = null,): NullOr<number> {
+export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+export function indexOfByCollectionHolder(collection: Nullable<CollectionHolder>, element: unknown, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -180,7 +181,7 @@ export function indexOfByCollectionHolder(collection: Nullable<CollectionHolder>
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Utility methods --------------------
 
-function __startingIndex(fromIndex: Nullable<number>, size: number,) {
+function __startingIndex(fromIndex: NullableNumber, size: number,) {
     if (fromIndex == null)
         return 0
 
@@ -206,7 +207,7 @@ function __startingIndex(fromIndex: Nullable<number>, size: number,) {
     return startingIndex
 }
 
-function __endingIndex(toIndex: Nullable<number>, size: number,) {
+function __endingIndex(toIndex: NullableNumber, size: number,) {
     if (toIndex == null)
         return size - 1
 

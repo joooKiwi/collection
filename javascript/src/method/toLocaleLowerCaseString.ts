@@ -5,8 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableString} from "@joookiwi/type"
+
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {Nullable}                   from "../general type"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {asLocaleLowerCaseString} from "./asString"
@@ -22,7 +23,7 @@ import {asLocaleLowerCaseString} from "./asString"
  * @see String.toLocaleLowerCase
  * @extensionFunction
  */
-export function toLocaleLowerCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: Nullable<string>,): string {
+export function toLocaleLowerCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
 
@@ -44,7 +45,7 @@ export function toLocaleLowerCaseString<const T, >(collection: Nullable<Minimali
  * @see String.toLocaleLowerCase
  * @extensionFunction
  */
-export function toLocaleLowerCaseStringByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, locale?: Nullable<string>,): string {
+export function toLocaleLowerCaseStringByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
     if (collection.isEmpty)

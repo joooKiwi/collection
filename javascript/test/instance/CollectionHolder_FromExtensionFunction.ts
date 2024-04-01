@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber} from "@joookiwi/type"
+
 import type {CollectionHolder}                                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/CollectionHolder.types"
-import type {Nullable, NullOr, NumberOrNumberInString}                                                                                                                                                                                                                                          from "../../src/general type"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 
@@ -68,7 +69,8 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     extends AbstractCollectionHolder<T>
     implements CollectionHolder<T> {
 
-    [index: NumberOrNumberInString]: undefined
+    [index: TemplateOrNumber]: undefined
+
     readonly #array
 
     public constructor(array: readonly T[],) {
@@ -167,34 +169,34 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override indexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-    public override indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-    public override indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public override indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public override indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
 
-    public override lastIndexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-    public override lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
-    public override lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public override lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public override lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
 
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number> {
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
@@ -322,7 +324,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- Join methods --------------------
 
-    public override join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<StringCallback<T>>,): string {
+    public override join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return joinByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
     }
 
@@ -396,9 +398,9 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public override slice(indices: Iterable<number>,): CollectionHolder<T>
-    public override slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+    public override slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public override slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public override slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
         return sliceByCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
     }
 
@@ -494,16 +496,16 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     }
 
 
-    public override toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T> {
+    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
         return toReverseByCollectionHolder(this, fromIndex, toIndex, limit,)
     }
 
-    public override toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    public override toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public override toReversed(): never {
         throw new Error("The method \"toReversed\" was not expected to be called.",)
     }
 
-    public override reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    public override reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public override reversed(): never {
         throw new Error("The method \"reversed\" was not expected to be called.",)
     }
@@ -514,7 +516,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
         return toStringByCollectionHolder(this,)
     }
 
-    public override toLocaleString(locale?: Nullable<string>,): string {
+    public override toLocaleString(locale?: NullableString,): string {
         return toLocaleStringByCollectionHolder(this, locale,)
     }
 
@@ -522,7 +524,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
         return toLowerCaseStringByCollectionHolder(this,)
     }
 
-    public override toLocaleLowerCaseString(locale?: Nullable<string>,): string {
+    public override toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
     }
 
@@ -530,7 +532,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
         return toUpperCaseStringByCollectionHolder(this,)
     }
 
-    public override toLocaleUpperCaseString(locale?: Nullable<string>,): string {
+    public override toLocaleUpperCaseString(locale?: NullableString,): string {
         return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
     }
 

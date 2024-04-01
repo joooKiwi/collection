@@ -5,7 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullOr, NumberOrNumberInString, UndefinedOr}                                                                                                                                                                                                                             from "./general type"
+import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
+
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
@@ -30,7 +31,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @see get
      */
-    [index: NumberOrNumberInString]: UndefinedOr<T>
+    [index: TemplateOrNumber]: UndefinedOr<T>
 
     //#region -------------------- Size methods --------------------
 
@@ -267,7 +268,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.indexOf
@@ -276,7 +277,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
@@ -287,7 +288,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.indexOf
@@ -296,7 +297,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
 
     /**
@@ -308,7 +309,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.lastIndexOf
@@ -317,7 +318,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    lastIndexOf(element: T, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
     /**
      * Get the <b>last</b> occurrence equivalent to the value received
@@ -328,7 +329,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @return {NullOr<number>} The index associated to the {@link element} within the range or <b>null</b>
+     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.lastIndexOf
@@ -337,7 +338,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    lastIndexOf(element: unknown, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
 
     /**
@@ -351,13 +352,13 @@ export interface CollectionHolder<out T = unknown, >
      * @param limit     The maximum index
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
     /**
      * Get the first index matching the {@link predicate}
@@ -368,7 +369,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findIndex
@@ -376,7 +377,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
 
     /**
@@ -388,7 +389,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findLastIndex
@@ -396,7 +397,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfLast(predicate: BooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
     /**
      * Get the last index matching the {@link predicate}
@@ -407,7 +408,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @return {NullOr<number>} The index matching the {@link predicate} within the range or <b>null</b>
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findLastIndex
@@ -415,7 +416,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): NullOr<number>
+    indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Index of methods --------------------
     //#region -------------------- First methods --------------------
@@ -851,7 +852,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
      * @canReceiveNegativeValue
      */
-    join(separator?: Nullable<string>, prefix?: Nullable<string>, postfix?: Nullable<string>, limit?: Nullable<number>, truncated?: Nullable<string>, transform?: Nullable<StringCallback<T>>,): string
+    join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
 
     //#endregion -------------------- Join methods --------------------
     //#region -------------------- Filter methods --------------------
@@ -1179,7 +1180,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
-    slice(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice (from, to, limit) methods --------------------
 
@@ -1198,7 +1199,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      * @typescriptDefinition
      */
-    slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice methods --------------------
     //#region -------------------- Map methods --------------------
@@ -1380,7 +1381,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
      * @canReceiveNegativeValue
      */
-    toReverse(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
     /**
      * Reverse the current {@link CollectionHolder collection} from a range (if provided)
@@ -1393,7 +1394,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @canReceiveNegativeValue
      */
-    toReversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
     /**
      * Reverse the current {@link CollectionHolder collection} from a range (if provided)
@@ -1406,7 +1407,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @canReceiveNegativeValue
      */
-    reversed(fromIndex?: Nullable<number>, toIndex?: Nullable<number>, limit?: Nullable<number>,): CollectionHolder<T>
+    reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Conversion methods (toReverse) --------------------
     //#region -------------------- Conversion methods (toString) --------------------
@@ -1431,7 +1432,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see Number.toLocaleString
      * @see BigInt.toLocaleString
      */
-    toLocaleString(locale?: Nullable<string>,): string
+    toLocaleString(locale?: NullableString,): string
 
 
     /**
@@ -1449,7 +1450,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param locale The possible locale to apply on each value
      * @see String.toLocaleLowerCase
      */
-    toLocaleLowerCaseString(locale?: Nullable<string>,): string
+    toLocaleLowerCaseString(locale?: NullableString,): string
 
 
     /**
@@ -1467,7 +1468,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param locale The possible locale to apply on each value
      * @see String.toLocaleUpperCase
      */
-    toLocaleUpperCaseString(locale?: Nullable<string>,): string
+    toLocaleUpperCaseString(locale?: NullableString,): string
 
     //#endregion -------------------- Conversion methods (toString) --------------------
 
