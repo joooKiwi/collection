@@ -91,9 +91,6 @@ It can be separated in different categories.
  - `isMinimalistCollectionHolder`
  - `isCollectionHolder`
  - `isCollectionIterator`
- - ~~`endingIndex`~~ (deprecated, it will be removed in version 1.8)
- - ~~`startingIndex`~~ (deprecated, it will be removed in version 1.8)
- - ~~`maximumIndex`~~ (deprecated, it will be removed in version 1.8)
 
 ---
 Almost every method is present in the `src/method` at the exception of
