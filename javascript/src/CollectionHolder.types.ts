@@ -199,9 +199,6 @@ export type IndexValueWithReturnCallback<T, R, > = (index: number, value: T,) =>
  */
 export type StringCallback<T, > = (value: T, index: number,) => string
 
-/** @deprecated This type has been replaced with {@link StringCallback} and will be removed in version 1.8 */
-export type ValueWithStringReturnCallback<T, > = (value: T,) => string
-
 /** An object encapsulation of a value */
 export type ObjectOf<T, > =
     | (T extends string ? (& String & { valueOf(): T, }) : never)
