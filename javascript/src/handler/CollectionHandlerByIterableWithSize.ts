@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 import type {CollectionHolder}         from "../CollectionHolder"
-import type {ValueHolder}              from "./ValueHolder"
+import type {ValueHolder}              from "./value/ValueHolder"
 import type {PossibleIterableWithSize} from "../iterable/types"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"

@@ -15,4 +15,4 @@ export {CollectionHandlerByIterableWithSize} from "./CollectionHandlerByIterable
 export {CollectionHandlerBySet}              from "./CollectionHandlerBySet"
 export {CollectionHandlerBySetOf1}           from "./CollectionHandlerBySetOf1"
 export {EmptyCollectionHandler}              from "./EmptyCollectionHandler"
-export type {ValueHolder}                    from "./ValueHolder"
+export *                                     from "./value/index"

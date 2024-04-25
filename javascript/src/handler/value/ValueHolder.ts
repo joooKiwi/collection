@@ -7,15 +7,18 @@
 
 import type {NullOr} from "@joookiwi/type"
 
-import type {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
-import type {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
+import type {CollectionHolderIndexOutOfBoundsException} from "../../exception/CollectionHolderIndexOutOfBoundsException"
+import type {ForbiddenIndexException}                   from "../../exception/ForbiddenIndexException"
 
 export interface ValueHolder<out T = unknown, > {
 
-    readonly value: NullOr<T>
+    /** The value held */
+    get value(): NullOr<T>
 
-    readonly isForbidden: boolean
+    /** Tell that the {@link value} is forbidden. Normally with a {@link ForbiddenIndexException} */
+    get isForbidden(): boolean
 
+    /** The cause to be thrown in a case of an invalid {@link value} */
     get cause(): NullOr<| CollectionHolderIndexOutOfBoundsException | ForbiddenIndexException>
 
 }

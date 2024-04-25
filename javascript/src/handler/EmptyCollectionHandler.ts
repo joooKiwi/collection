@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 import type {CollectionHandler} from "./CollectionHandler"
-import type {ValueHolder}       from "./ValueHolder"
+import type {ValueHolder}       from "./value/ValueHolder"
 
 import {EmptyCollectionHolderException} from "../exception/EmptyCollectionHolderException"
 

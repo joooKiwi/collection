@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {ValueHolder} from "./ValueHolder"
+import type {ValueHolder} from "./value/ValueHolder"
 
 /** A definition of a handler for the {@link LazyGenericCollectionHolder} */
 export interface CollectionHandler<out T = unknown, > {
