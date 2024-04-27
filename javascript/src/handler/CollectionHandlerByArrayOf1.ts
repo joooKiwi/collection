@@ -28,13 +28,9 @@ export class CollectionHandlerByArrayOf1<const out T = unknown, const out REFERE
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    public override get size(): 1 {
-        return 1
-    }
+    public override get size(): 1 { return 1 }
 
-    public override get isEmpty(): false {
-        return false
-    }
+    public override get isEmpty(): false { return false }
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------

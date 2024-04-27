@@ -18,6 +18,7 @@ export class CollectionHandlerBySetOf1<const out T = unknown, const out REFERENC
     extends CollectionHandlerBySet<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Constructor --------------------
+
     public constructor(collection: COLLECTION, reference: REFERENCE,) {
         super(collection, reference,)
         if (reference.size !== 1)
@@ -27,13 +28,9 @@ export class CollectionHandlerBySetOf1<const out T = unknown, const out REFERENC
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    public override get size(): 1 {
-        return 1
-    }
+    public override get size(): 1 { return 1 }
 
-    public override get isEmpty(): false {
-        return false
-    }
+    public override get isEmpty(): false { return false }
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------

@@ -34,13 +34,9 @@ export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    public override get size(): REFERENCE["length"] {
-        return this.#size
-    }
+    public override get size(): REFERENCE["length"] { return this.#size }
 
-    public override get isEmpty(): boolean {
-        return this.#isEmpty
-    }
+    public override get isEmpty(): boolean { return this.#isEmpty }
 
     /** The amount of element that was retrieved so far */
     protected get _amountOfElementRetrieved(): number {

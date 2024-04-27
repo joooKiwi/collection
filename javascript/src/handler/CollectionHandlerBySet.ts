@@ -35,27 +35,17 @@ export class CollectionHandlerBySet<const out T = unknown, const out REFERENCE e
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter & setter methods --------------------
 
-    public get size(): REFERENCE["size"] {
-        return this.#size
-    }
+    public get size(): REFERENCE["size"] { return this.#size }
 
-    public override get isEmpty(): boolean {
-        return this.#isEmpty
-    }
+    public override get isEmpty(): boolean { return this.#isEmpty }
 
-    protected get _iterator(): IterableIterator<T> {
-        return this.#iterator ??= this._reference[Symbol.iterator]()
-    }
+    protected get _iterator(): IterableIterator<T> { return this.#iterator ??= this._reference[Symbol.iterator]() }
 
     /** The last index retrieved from the value */
-    protected get _lastIndex(): number {
-        return this.#lastIndex ?? 0
-    }
+    protected get _lastIndex(): number { return this.#lastIndex ?? 0 }
 
     /** Set the last index retrieved from the value */
-    protected set _lastIndex(value: number,) {
-        this.#lastIndex = value
-    }
+    protected set _lastIndex(value: number,) { this.#lastIndex = value }
 
     //#endregion -------------------- Getter & setter methods --------------------
 

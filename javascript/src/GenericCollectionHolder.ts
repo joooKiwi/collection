@@ -298,7 +298,7 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
             //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
-        sizeIf:if ("size" in reference || "length" in reference || "count" in reference) {
+        sizeIf: if ("size" in reference || "length" in reference || "count" in reference) {
             // @ts-ignore: We only retrieve the nullable number
             const size = (reference?.size ?? reference?.length ?? reference?.count) as NullableNumber
             if (size == null) // No size is present, we continue as a normal iterable

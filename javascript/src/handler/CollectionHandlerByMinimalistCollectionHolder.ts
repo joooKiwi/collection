@@ -26,30 +26,20 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(collection: COLLECTION, reference: REFERENCE,) {
-        super(collection, reference,)
-    }
+    public constructor(collection: COLLECTION, reference: REFERENCE,) { super(collection, reference,) }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    public get isEmpty(): boolean {
-        return this.#isEmpty ??= this._reference.size == 0
-    }
+    public get isEmpty(): boolean { return this.#isEmpty ??= this._reference.size == 0 }
 
-    public get size(): REFERENCE["size"] {
-        return this._reference.size
-    }
+    public get size(): REFERENCE["size"] { return this._reference.size }
 
     /** The amount of element that was retrieved so far */
-    protected get _amountOfElementRetrieved(): number {
-        return this.#amountOfElementRetrieved ?? 0
-    }
+    protected get _amountOfElementRetrieved(): number { return this.#amountOfElementRetrieved ?? 0 }
 
     /** Set the amount of element that was retrieved so far */
-    protected set _amountOfElementRetrieved(value: number,) {
-        this.#amountOfElementRetrieved = value
-    }
+    protected set _amountOfElementRetrieved(value: number,) { this.#amountOfElementRetrieved = value }
 
     //#endregion -------------------- Getter methods --------------------
 

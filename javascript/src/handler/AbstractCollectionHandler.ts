@@ -30,28 +30,20 @@ export abstract class AbstractCollectionHandler<const out T = unknown, const out
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter & setter methods --------------------
 
-    protected get _reference(): REFERENCE {
-        return this.#reference
-    }
+    protected get _reference(): REFERENCE { return this.#reference }
 
     /** The {@link CollectionHolder} reference */
-    protected get _collection(): COLLECTION {
-        return this.#collection
-    }
+    protected get _collection(): COLLECTION { return this.#collection }
 
 
     public abstract get size(): number
 
     public abstract get isEmpty(): boolean
 
-    public get hasFinished(): boolean {
-        return this.#hasFinished ??= false
-    }
+    public get hasFinished(): boolean { return this.#hasFinished ??= false }
 
     /** Set the {@link hasFinished} to the value received */
-    protected set _hasFinished(value: boolean,) {
-        this.#hasFinished = value
-    }
+    protected set _hasFinished(value: boolean,) { this.#hasFinished = value }
 
     //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
