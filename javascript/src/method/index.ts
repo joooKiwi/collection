@@ -22,6 +22,7 @@ export {firstOrNull,                         firstOrNullByCollectionHolder}     
 export {forEach}                                                                                                          from "./forEach"
 export {forEachIndexed}                                                                                                   from "./forEachIndexed"
 export {hasAll,                              hasAllByCollectionHolder}                                                    from "./hasAll"
+export {hasDuplicate,                        hasDuplicateByCollectionHolder}                                              from "./hasDuplicate"
 export {hasNull,                             hasNullByCollectionHolder}                                                   from "./hasNull"
 export {hasOne,                              hasOneByCollectionHolder}                                                    from "./hasOne"
 export {indexOf,                             indexOfByCollectionHolder}                                                   from "./indexOf"

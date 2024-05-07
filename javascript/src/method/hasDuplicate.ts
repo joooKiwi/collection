@@ -1,0 +1,84 @@
+/*******************************************************************************
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
+
+ This project is free to use.
+ All the right is reserved to the author of this project.
+ ******************************************************************************/
+
+import type {Nullable} from "@joookiwi/type"
+
+import type {CollectionHolder}           from "../CollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
+
+//#region -------------------- Facade method --------------------
+
+/**
+ * The {@link collection} has at least one duplicate value
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+ * @extensionFunction
+ */
+export function hasDuplicate<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+    if (collection == null)
+        return false
+
+    const size = collection.size
+    if (size == 0)
+        return false
+    return __hasDuplicate(collection, size,)
+}
+
+/**
+ * The {@link collection} has at least one duplicate value
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+ * @extensionFunction
+ */
+export function hasDuplicateByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): boolean {
+    if (collection == null)
+        return false
+    if (collection.isEmpty)
+        return false
+    return __hasDuplicate(collection, collection.size,)
+}
+
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Loop methods --------------------
+
+function __hasDuplicate<T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+    const temporaryArray = new Array<T>(size,)
+    temporaryArray[0] = collection.get(0,)
+    let amountOfItemAdded = 1
+    let index = 0
+    while (++index < size) {
+        const value = collection.get(index,)
+        let index2 = -1
+
+        if (value === null) {
+            while (++index2 < amountOfItemAdded)
+                if (temporaryArray[index2] === null)
+                    return true
+            temporaryArray[amountOfItemAdded++] = null as T
+            continue
+        }
+
+        if (value === undefined) {
+            while (++index2 < amountOfItemAdded)
+                if (temporaryArray[index2] === undefined)
+                    return true
+            temporaryArray[amountOfItemAdded++] = undefined as T
+            continue
+        }
+
+        while (++index2 < amountOfItemAdded)
+            if (temporaryArray[index2] === value)
+                return true
+        temporaryArray[amountOfItemAdded++] = value
+    }
+
+    return false
+}
+
+//#endregion -------------------- Loop methods --------------------
