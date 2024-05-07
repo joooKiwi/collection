@@ -120,7 +120,11 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
     //#endregion -------------------- Size methods --------------------
-    //#region -------------------- Has X methods --------------------
+    //#region -------------------- Has null methods --------------------
+
+    public get hasNull(): boolean { return this.#hasNull ??= hasNullByCollectionHolder(this,) }
+    public get includesNull(): this["hasNull"] { return this.hasNull }
+    public get containsNull(): this["hasNull"] { return this.hasNull }
 
     public get hasNull(): boolean {
         return this.#hasNull ??= hasNullByCollectionHolder(this,)
@@ -134,14 +138,14 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.hasNull
     }
 
-    //#endregion -------------------- Has X methods --------------------
+    //#endregion -------------------- Has null methods --------------------
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
     //#region -------------------- Value methods --------------------
 
-    //#region -------------------- Get / at methods --------------------
+    //#region -------------------- Get methods --------------------
 
     public at(index: number,): T {
         return this.get(index,)
@@ -151,6 +155,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.get(index,)
     }
 
+    //#endregion -------------------- Get methods --------------------
+    //#region -------------------- Get or else methods --------------------
 
     public abstract getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public abstract getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -167,6 +173,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.getOrElse(index, defaultValue,)
     }
 
+    //#endregion -------------------- Get or else methods --------------------
+    //#region -------------------- Get or null methods --------------------
 
     public abstract getOrNull(index: number,): NullOr<T>
 
@@ -178,7 +186,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.getOrNull(index,)
     }
 
-    //#endregion -------------------- Get / at methods --------------------
+    //#endregion -------------------- Get or null methods --------------------
+
     //#region -------------------- Index of methods --------------------
 
     public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
@@ -187,6 +196,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
+    //#endregion -------------------- Index of methods --------------------
+    //#region -------------------- Last index of methods --------------------
 
     public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
     public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
@@ -194,25 +205,36 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
+    //#endregion -------------------- Last index of methods --------------------
+    //#region -------------------- Index of first methods --------------------
 
     public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
+    //#endregion -------------------- Index of first methods --------------------
+    //#region -------------------- Index of first indexed methods --------------------
+
     public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
+    //#endregion -------------------- Index of first indexed methods --------------------
+    //#region -------------------- Index of last methods --------------------
 
     public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
+    //#endregion -------------------- Index of last methods --------------------
+    //#region -------------------- Index of last indexed methods --------------------
+
     public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
-    //#endregion -------------------- Index of methods --------------------
+    //#endregion -------------------- Index of last indexed methods --------------------
+
     //#region -------------------- First methods --------------------
 
     public first(): NonNullable<T>
@@ -222,6 +244,9 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return firstByCollectionHolder(this, predicate,)
     }
 
+    //#endregion -------------------- First methods --------------------
+    //#region -------------------- First or null methods --------------------
+
     public firstOrNull(): NullOr<T>
     public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
@@ -229,7 +254,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return firstOrNullByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- First methods --------------------
+    //#endregion -------------------- First or null methods --------------------
+
     //#region -------------------- Last methods --------------------
 
     public last(): NonNullable<T>
@@ -239,6 +265,9 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return lastByCollectionHolder(this, predicate,)
     }
 
+    //#endregion -------------------- Last methods --------------------
+    //#region -------------------- Last or null methods --------------------
+
     public lastOrNull(): NullOr<T>
     public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
@@ -246,12 +275,10 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return lastOrNullByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Last methods --------------------
+    //#endregion -------------------- Last or null methods --------------------
 
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- Loop methods --------------------
-
-    //#region -------------------- All / any / none methods --------------------
 
     //#region -------------------- All methods --------------------
 
@@ -278,9 +305,6 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
     //#endregion -------------------- None methods --------------------
-
-    //#endregion -------------------- All / any / none methods --------------------
-    //#region -------------------- Has methods --------------------
 
     //#region -------------------- Has one methods --------------------
 
@@ -343,7 +367,6 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     //#endregion -------------------- Has all methods --------------------
 
-    //#endregion -------------------- Has methods --------------------
     //#region -------------------- Join methods --------------------
 
     public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
@@ -351,7 +374,6 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
     //#endregion -------------------- Join methods --------------------
-    //#region -------------------- Filter methods --------------------
 
     //#region -------------------- Filter methods --------------------
 
@@ -396,16 +418,13 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
     //#endregion -------------------- Filter not null methods --------------------
-    //#region -------------------- Require not nulls methods --------------------
+    //#region -------------------- Require no nulls methods --------------------
 
     public requireNoNulls(): CollectionHolder<NonNullable<T>> {
         return requireNoNullsByCollectionHolder(this,)
     }
 
-    //#endregion -------------------- Require not nulls methods --------------------
-
-    //#endregion -------------------- Filter methods --------------------
-    //#region -------------------- Find methods --------------------
+    //#endregion -------------------- Require no nulls methods --------------------
 
     //#region -------------------- Find methods --------------------
 
@@ -444,7 +463,6 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     //#endregion -------------------- Find last indexed methods --------------------
 
-    //#endregion -------------------- Find methods --------------------
     //#region -------------------- Slice methods --------------------
 
     public slice(indices: readonly number[],): CollectionHolder<T>
@@ -459,7 +477,6 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
     //#endregion -------------------- Slice methods --------------------
-    //#region -------------------- Map methods --------------------
 
     //#region -------------------- Map methods --------------------
 
@@ -490,9 +507,6 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     //#endregion -------------------- Map not null indexed methods --------------------
 
-    //#endregion -------------------- Map methods --------------------
-    //#region -------------------- For each methods --------------------
-
     //#region -------------------- For each methods --------------------
 
     public forEach(action: ValueIndexCallback<T>,): this {
@@ -507,8 +521,6 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
     //#endregion -------------------- For each indexed methods --------------------
-
-    //#endregion -------------------- For each methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------
@@ -528,11 +540,14 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.#objectValuesMap ??= objectValuesMapByCollectionHolder(this,)
     }
 
+    //#region -------------------- Conversion methods (iterator) --------------------
 
     public toIterator(): CollectionIterator<T> {
         return this[Symbol.iterator]()
     }
 
+    //#endregion -------------------- Conversion methods (iterator) --------------------
+    //#region -------------------- Conversion methods (array) --------------------
 
     public toArray(): readonly T[] {
         return this.#array ??= toArrayByCollectionHolder(this,)
@@ -542,6 +557,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return toMutableArrayByCollectionHolder(this,)
     }
 
+    //#endregion -------------------- Conversion methods (array) --------------------
+    //#region -------------------- Conversion methods (set) --------------------
 
     public toSet(): ReadonlySet<T> {
         return this.#set ??= toSetByCollectionHolder(this,)
@@ -551,6 +568,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return toMutableSetByCollectionHolder(this,)
     }
 
+    //#endregion -------------------- Conversion methods (set) --------------------
+    //#region -------------------- Conversion methods (weak set) --------------------
 
     public toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
         return this.#weakSet ??= toWeakSet(this,)
@@ -560,6 +579,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return toMutableWeakSet(this,)
     }
 
+    //#endregion -------------------- Conversion methods (weak set) --------------------
+    //#region -------------------- Conversion methods (map) --------------------
 
     public toMap(): ReadonlyMap<number, T> {
         return this.#map ??= toMapByCollectionHolder(this,)
@@ -569,6 +590,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return toMutableMapByCollectionHolder(this,)
     }
 
+    //#endregion -------------------- Conversion methods (map) --------------------
+    //#region -------------------- Conversion methods (reverse) --------------------
 
     public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
         return toReverseByCollectionHolder(this, fromIndex, toIndex, limit,)
@@ -582,8 +605,8 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return this.toReverse(fromIndex, toIndex, limit,)
     }
 
-
-    //#region -------------------- Conversion methods (toString) --------------------
+    //#endregion -------------------- Conversion methods (reverse) --------------------
+    //#region -------------------- Conversion methods (string) --------------------
 
     public override toString(): string {
         return toStringByCollectionHolder(this,)
@@ -593,6 +616,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return toLocaleStringByCollectionHolder(this, locale,)
     }
 
+
     public toLowerCaseString(): string {
         return toLowerCaseStringByCollectionHolder(this,)
     }
@@ -600,6 +624,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
     }
+
 
     public toUpperCaseString(): string {
         return toUpperCaseStringByCollectionHolder(this,)
@@ -609,7 +634,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
         return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
     }
 
-    //#endregion -------------------- Conversion methods (toString) --------------------
+    //#endregion -------------------- Conversion methods (string) --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 

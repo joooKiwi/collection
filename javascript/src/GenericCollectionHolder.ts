@@ -377,8 +377,6 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    //#region -------------------- Size methods --------------------
-
     public override get size(): number {
         return this.#size
     }
@@ -388,14 +386,10 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
         return this.#isEmpty
     }
 
-    //#endregion -------------------- Size methods --------------------
-    //#region -------------------- Has X methods --------------------
 
     public override get hasNull(): boolean {
         return this.#hasNull ??= hasNull(this,)
     }
-
-    //#endregion -------------------- Has X methods --------------------
 
     /** The iterable received in the constructor */
     protected get _reference(): REFERENCE {
@@ -409,10 +403,6 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
-
-    //#region -------------------- Value methods --------------------
-
-    //#region -------------------- Get / at methods --------------------
 
     public override get(index: number,): T {
         if (this.isEmpty)
@@ -442,7 +432,6 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
         return this[indexToRetrieve] as T
     }
 
-
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
@@ -464,7 +453,6 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
         return this.get(indexToRetrieve,)
     }
 
-
     public override getOrNull(index: number,): NullOr<T> {
         if (Number.isNaN(index,))
             return null
@@ -484,11 +472,6 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
         return this[indexToRetrieve] as T
     }
 
-    //#endregion -------------------- Get / at methods --------------------
-
-    //#endregion -------------------- Value methods --------------------
-    //#region -------------------- Conversion methods --------------------
-
     public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
         return this.#objectValuesMap ??= objectValuesMap(this,)
     }
@@ -501,15 +484,14 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
         return this.#set ??= toSet(this,)
     }
 
-    public override toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
-        return this.#weakSet ??= toWeakSet(this,)
+    public override toArray(): readonly T[] {
+        return this.#array
     }
 
     public override toMap(): ReadonlyMap<number, T> {
         return this.#map ??= toMap(this,)
     }
 
-    //#endregion -------------------- Conversion methods --------------------
 
     //#endregion -------------------- Methods --------------------
 

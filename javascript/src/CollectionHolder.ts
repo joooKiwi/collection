@@ -111,8 +111,6 @@ export interface CollectionHolder<out T = unknown, >
 
     //#region -------------------- Get methods --------------------
 
-    //#region -------------------- Get methods --------------------
-
     /**
      * Get the element at the specified index in the current {@link CollectionHolder collection}
      *
@@ -256,7 +254,6 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Get or null methods --------------------
 
-    //#endregion -------------------- Get methods --------------------
     //#region -------------------- Index of methods --------------------
 
     /**
@@ -299,6 +296,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
+    //#endregion -------------------- Index of methods --------------------
+    //#region -------------------- Last index of methods --------------------
 
     /**
      * Get the <b>last</b> occurrence equivalent to the value received
@@ -340,6 +339,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
+    //#endregion -------------------- Last index of methods --------------------
+    //#region -------------------- Index of first methods --------------------
 
     /**
      * Get the first index matching the {@link predicate}
@@ -379,6 +380,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
+    //#endregion -------------------- Index of first methods --------------------
+    //#region -------------------- Index of last methods --------------------
 
     /**
      * Get the last index matching the {@link predicate}
@@ -418,7 +421,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Index of methods --------------------
+    //#endregion -------------------- Index of last methods --------------------
+
     //#region -------------------- First methods --------------------
 
     /**
@@ -455,6 +459,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
 
+    //#endregion -------------------- First methods --------------------
+    //#region -------------------- First or null methods --------------------
 
     /**
      * Get the first element in the current {@link CollectionHolder collection}
@@ -488,7 +494,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
 
-    //#endregion -------------------- First methods --------------------
+    //#endregion -------------------- First or null methods --------------------
+
     //#region -------------------- Last methods --------------------
 
     /**
@@ -525,6 +532,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
 
+    //#endregion -------------------- Last methods --------------------
+    //#region -------------------- Last or null methods --------------------
 
     /**
      * Get the last element in the current {@link CollectionHolder collection}
@@ -558,12 +567,10 @@ export interface CollectionHolder<out T = unknown, >
      */
     lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
 
-    //#endregion -------------------- Last methods --------------------
+    //#endregion -------------------- Last or null methods --------------------
 
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- Loop methods --------------------
-
-    //#region -------------------- All / any / none methods --------------------
 
     //#region -------------------- All methods --------------------
 
@@ -625,9 +632,6 @@ export interface CollectionHolder<out T = unknown, >
     none(predicate: Nullable<BooleanCallback<T>>,): boolean
 
     //#endregion -------------------- None methods --------------------
-
-    //#endregion -------------------- All / any / none methods --------------------
-    //#region -------------------- Has methods --------------------
 
     //#region -------------------- Has one methods --------------------
 
@@ -829,7 +833,6 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Has all methods --------------------
 
-    //#endregion -------------------- Has methods --------------------
     //#region -------------------- Join methods --------------------
 
     /**
@@ -855,7 +858,6 @@ export interface CollectionHolder<out T = unknown, >
     join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
 
     //#endregion -------------------- Join methods --------------------
-    //#region -------------------- Filter methods --------------------
 
     //#region -------------------- Filter methods --------------------
 
@@ -994,9 +996,6 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Require not nulls methods --------------------
 
-    //#endregion -------------------- Filter methods --------------------
-    //#region -------------------- Find methods --------------------
-
     //#region -------------------- Find methods --------------------
 
     /**
@@ -1094,7 +1093,6 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Find last indexed methods --------------------
 
-    //#endregion -------------------- Find methods --------------------
     //#region -------------------- Slice methods --------------------
 
     //#region -------------------- Slice (indice) methods --------------------
@@ -1202,7 +1200,6 @@ export interface CollectionHolder<out T = unknown, >
     slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice methods --------------------
-    //#region -------------------- Map methods --------------------
 
     //#region -------------------- Map methods --------------------
 
@@ -1265,9 +1262,6 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Map not null indexed methods --------------------
 
-    //#endregion -------------------- Map methods --------------------
-    //#region -------------------- For each methods --------------------
-
     //#region -------------------- For each methods --------------------
 
     /**
@@ -1298,8 +1292,6 @@ export interface CollectionHolder<out T = unknown, >
     forEachIndexed(action: IndexValueCallback<T>,): this
 
     //#endregion -------------------- For each indexed methods --------------------
-
-    //#endregion -------------------- For each methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------

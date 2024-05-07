@@ -56,7 +56,7 @@ export class EmptyCollectionHolder
     public get isNotEmpty(): false { return false }
 
     //#endregion -------------------- Size methods --------------------
-    //#region -------------------- Has X methods --------------------
+    //#region -------------------- Has null methods --------------------
 
     public get hasNull(): false { return false }
 
@@ -64,7 +64,8 @@ export class EmptyCollectionHolder
 
     public get containsNull(): false { return false }
 
-    //#endregion -------------------- Has X methods --------------------
+    //#endregion -------------------- Has null methods --------------------
+    //#region -------------------- Has duplicate methods --------------------
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
