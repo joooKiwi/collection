@@ -665,29 +665,20 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    public override get size(): number {
-        return this.#size.value
-    }
+    public override get size(): number { return this.#size.value }
 
-    public override get isEmpty(): boolean {
-        return this.#isEmpty.value
-    }
+    public override get isEmpty(): boolean { return this.#isEmpty.value }
 
 
     public override get hasNull(): boolean {
         return this.#hasNull ??= hasNullByCollectionHolder(this,)
     }
 
-
-    /** The {@link PossibleIterable iterable} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
-    protected get _reference(): REFERENCE {
-        return this.#reference.value
-    }
+    /** The {@link PossibleIterableOrCollection iterable or collection} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
+    protected get _reference(): REFERENCE { return this.#reference.value }
 
     /** The {@link CollectionHandler handler} created from the {@link LazyGenericCollectionHolder} {@link LazyGenericCollectionHolder.constructor constructor} */
-    protected get _handler(): CollectionHandler<T> {
-        return this.#handler.value
-    }
+    protected get _handler(): CollectionHandler<T> { return this.#handler.value }
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
@@ -714,9 +705,6 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
         return defaultValue(index,)
     }
 
-    public override getOrNull(index: number,): NullOr<T> {
-        return this._handler.get(index,).value
-    }
 
     public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
         return this.#objectValuesMap ??= objectValuesMapByCollectionHolder(this,)
@@ -737,6 +725,7 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
     public override toMap(): ReadonlyMap<number, T> {
         return this.#map ??= toMapByCollectionHolder(this,)
     }
+    public override getOrNull(index: number,): NullOr<T> { return this._handler.get(index,).value }
 
     //#endregion -------------------- Methods --------------------
 

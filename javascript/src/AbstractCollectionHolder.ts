@@ -93,9 +93,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    protected constructor() {
-        super()
-    }
+    protected constructor() { super() }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------

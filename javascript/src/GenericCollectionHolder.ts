@@ -377,14 +377,9 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    public override get size(): number {
-        return this.#size
-    }
+    public override get size(): number { return this.#size }
 
-
-    public override get isEmpty(): boolean {
-        return this.#isEmpty
-    }
+    public override get isEmpty(): boolean { return this.#isEmpty }
 
 
     public override get hasNull(): boolean {
@@ -392,14 +387,10 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
     }
 
     /** The iterable received in the constructor */
-    protected get _reference(): REFERENCE {
-        return this.#reference
-    }
+    protected get _reference(): REFERENCE { return this.#reference }
 
     /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder collection} */
-    protected get _array(): readonly T[] {
-        return this.#array
-    }
+    protected override get _array(): readonly T[] { return this.#array }
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
