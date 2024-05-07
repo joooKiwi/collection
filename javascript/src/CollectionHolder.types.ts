@@ -51,7 +51,7 @@ export type PossibleIterableOrCollection<T, > = | PossibleIterable<T> | Minimali
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
  */
-export type BooleanCallback<T, > = (value: T, index: number,) => boolean
+export type BooleanCallback<in T, > = (value: T, index: number,) => boolean
 /**
  * A callback that receive both an index and a value and return a {@link Boolean}
  *
@@ -66,7 +66,7 @@ export type BooleanCallback<T, > = (value: T, index: number,) => boolean
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
  */
-export type ReverseBooleanCallback<T, > = (index: number, value: T,) => boolean
+export type ReverseBooleanCallback<in T, > = (index: number, value: T,) => boolean
 /**
  * A callback that receive both a value and an index and return a restricting {@link Boolean} of <b>T</b>
  *
@@ -82,7 +82,7 @@ export type ReverseBooleanCallback<T, > = (index: number, value: T,) => boolean
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
  */
-export type RestrainedBooleanCallback<T, S extends T, > = (value: T, index: number,) => value is S
+export type RestrainedBooleanCallback<in T, out S extends T, > = (value: T, index: number,) => value is S
 /**
  * A callback that receive both an index and a value and return a restricting {@link Boolean} of <b>T</b>
  *
@@ -98,7 +98,7 @@ export type RestrainedBooleanCallback<T, S extends T, > = (value: T, index: numb
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
  */
-export type ReverseRestrainedBooleanCallback<T, S extends T, > = (index: number, value: T,) => value is S
+export type ReverseRestrainedBooleanCallback<in T, out S extends T, > = (index: number, value: T,) => value is S
 
 /**
  * A callback that receive only an index and return a value <b>R</b>
@@ -114,7 +114,7 @@ export type ReverseRestrainedBooleanCallback<T, S extends T, > = (index: number,
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
  */
-export type IndexWithReturnCallback<R, > = (index: number,) => R
+export type IndexWithReturnCallback<out R, > = (index: number,) => R
 
 /**
  * A callback that receive both a value and an index and return nothing
@@ -132,7 +132,7 @@ export type IndexWithReturnCallback<R, > = (index: number,) => R
  * @see https://learn.microsoft.com/dotnet/api/system.action-1 C# Action&lt;T&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.action C# Action
  */
-export type ValueIndexCallback<T, > = (value: T, index: number,) => void
+export type ValueIndexCallback<in T, > = (value: T, index: number,) => void
 /**
  * A callback that receive both an index and a value and return nothing
  *
@@ -149,7 +149,7 @@ export type ValueIndexCallback<T, > = (value: T, index: number,) => void
  * @see https://learn.microsoft.com/dotnet/api/system.action-1 C# Action&lt;T&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.action C# Action
  */
-export type IndexValueCallback<T, > = (index: number, value: T,) => void
+export type IndexValueCallback<in T, > = (index: number, value: T,) => void
 
 /**
  * A callback that receive both a value and an index and return a value <b>R</b>
@@ -167,7 +167,7 @@ export type IndexValueCallback<T, > = (index: number, value: T,) => void
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
  */
-export type ValueIndexWithReturnCallback<T, R, > = (value: T, index: number,) => R
+export type ValueIndexWithReturnCallback<in T, out R, > = (value: T, index: number,) => R
 /**
  * A callback that receive both an index and a value and return a value <b>R</b>
  *
@@ -184,7 +184,7 @@ export type ValueIndexWithReturnCallback<T, R, > = (value: T, index: number,) =>
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
  */
-export type IndexValueWithReturnCallback<T, R, > = (index: number, value: T,) => R
+export type IndexValueWithReturnCallback<in T, out R, > = (index: number, value: T,) => R
 
 /**
  * A callback that receive both a value and an index and return a {@link String}
@@ -197,7 +197,7 @@ export type IndexValueWithReturnCallback<T, R, > = (index: number, value: T,) =>
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
  */
-export type StringCallback<T, > = (value: T, index: number,) => string
+export type StringCallback<in T, > = (value: T, index: number,) => string
 
 /** An object encapsulation of a value */
 export type ObjectOf<T, > = T & object
