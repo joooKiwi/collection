@@ -346,13 +346,13 @@ export class EmptyCollectionHolder
 
 
     public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
-    public toReverse() { return this as unknown as CollectionHolder<never> }
+    public toReverse() { return this }
 
     public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
-    public toReversed() { return this as unknown as CollectionHolder<never> }
+    public toReversed() { return this }
 
     public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
-    public reversed() { return this as unknown as CollectionHolder<never> }
+    public reversed() { return this }
 
     //#region -------------------- Conversion methods (toString) --------------------
 
