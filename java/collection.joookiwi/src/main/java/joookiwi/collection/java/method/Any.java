@@ -218,7 +218,7 @@ public final class Any
     //#endregion -------------------- predicate () → boolean --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Comparison methods --------------------
+    //#region -------------------- Loop methods --------------------
 
     private static boolean __with0Argument(@NotNull MinimalistCollectionHolder<?> collection, @NotNull Supplier<@NotNull Boolean> predicate) {
         var size = collection.size();
@@ -247,6 +247,6 @@ public final class Any
         return false;
     }
 
-    //#endregion -------------------- Comparison methods --------------------
+    //#endregion -------------------- Loop methods --------------------
 
 }
