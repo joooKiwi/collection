@@ -2,7 +2,6 @@ package joookiwi.collection.java.method;
 
 import java.util.ArrayList;
 import java.util.List;
-import joookiwi.collection.java.CollectionConstants;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
@@ -14,6 +13,8 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder;
 
 public final class ToReverse
         extends UtilityWithIndex {
@@ -38,11 +39,11 @@ public final class ToReverse
         //#region -------------------- Early returns --------------------
 
         if (collection == null)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         var size = collection.size();
         if (size == 0)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         //#endregion -------------------- Early returns --------------------
 
@@ -62,9 +63,9 @@ public final class ToReverse
         //#region -------------------- Early returns --------------------
 
         if (collection == null)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
         if (collection.isEmpty())
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         //#endregion -------------------- Early returns --------------------
 
@@ -96,11 +97,11 @@ public final class ToReverse
         //#region -------------------- Early returns --------------------
 
         if (collection == null)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         var size = collection.size();
         if (size == 0)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         //#endregion -------------------- Early returns --------------------
 
@@ -130,9 +131,9 @@ public final class ToReverse
         //#region -------------------- Early returns --------------------
 
         if (collection == null)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
         if (collection.isEmpty())
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         //#endregion -------------------- Early returns --------------------
 
@@ -169,13 +170,13 @@ public final class ToReverse
         //#region -------------------- Early returns --------------------
 
         if (collection == null)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         var size = collection.size();
         if (size == 0)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
         if (fromIndex == 0 && toIndex == 0)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending index) --------------------
@@ -215,11 +216,11 @@ public final class ToReverse
         //#region -------------------- Early returns --------------------
 
         if (collection == null)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
         if (collection.isEmpty())
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
         if (fromIndex == 0 && toIndex == 0)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending index) --------------------
@@ -266,15 +267,15 @@ public final class ToReverse
         //#region -------------------- Early returns --------------------
 
         if (collection == null)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         var size = collection.size();
         if (size == 0)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
         if (fromIndex == 0 && toIndex == 0)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
         if (limit == 0)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending/maximum index) --------------------
@@ -321,13 +322,13 @@ public final class ToReverse
         //#region -------------------- Early returns --------------------
 
         if (collection == null)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
         if (collection.isEmpty())
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
         if (fromIndex == 0 && toIndex == 0)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
         if (limit == 0)
-            return CollectionConstants.emptyCollectionHolder();
+            return emptyCollectionHolder();
 
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending/maximum index) --------------------
