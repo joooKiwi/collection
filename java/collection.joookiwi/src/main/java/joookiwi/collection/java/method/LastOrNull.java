@@ -77,7 +77,7 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract("null, _ -> null")
-    public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
+    public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return null;
 
@@ -102,7 +102,7 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract("null, _ -> null")
-    public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
+    public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -128,7 +128,7 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract("null, _ -> null")
-    public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
+    public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Function<? super T, @NotNull Boolean> predicate) {
         if (collection == null)
             return null;
 
@@ -153,7 +153,7 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract("null, _ -> null")
-    public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
+    public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<? super T, @NotNull Boolean> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -231,7 +231,7 @@ public final class LastOrNull
         return null;
     }
 
-    private static <T> @Nullable T __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Function<T, @NotNull Boolean> predicate, int size) {
+    private static <T> @Nullable T __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Function<? super T, @NotNull Boolean> predicate, int size) {
         var index = size;
         while (index-- > 0) {
             var value = collection.get(index);
@@ -241,7 +241,7 @@ public final class LastOrNull
         return null;
     }
 
-    private static <T> @Nullable T __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate, int size) {
+    private static <T> @Nullable T __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate, int size) {
         var index = size;
         while (index-- > 0) {
             var value = collection.get(index);

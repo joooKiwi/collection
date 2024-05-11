@@ -68,7 +68,7 @@ public final class None
      */
     @ExtensionFunction
     @Contract("null, _ -> true")
-    public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
+    public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
@@ -92,7 +92,7 @@ public final class None
      */
     @ExtensionFunction
     @Contract("null, _ -> true")
-    public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
+    public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
@@ -117,7 +117,7 @@ public final class None
      */
     @ExtensionFunction
     @Contract("null, _ -> true")
-    public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
+    public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Function<? super T, @NotNull Boolean> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
@@ -141,7 +141,7 @@ public final class None
      */
     @ExtensionFunction
     @Contract("null, _ -> true")
-    public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
+    public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<? super T, @NotNull Boolean> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
@@ -213,7 +213,7 @@ public final class None
         return true;
     }
 
-    private static <T> boolean __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Function<T, @NotNull Boolean> predicate, int size) {
+    private static <T> boolean __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Function<? super T, @NotNull Boolean> predicate, int size) {
         var index = -1;
         while (++index < size)
             if (predicate.apply(collection.get(index)))
@@ -221,7 +221,7 @@ public final class None
         return true;
     }
 
-    private static <T> boolean __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate, int size) {
+    private static <T> boolean __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate, int size) {
         var index = -1;
         while (++index < size)
             if (predicate.apply(collection.get(index), index))

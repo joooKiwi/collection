@@ -35,7 +35,7 @@ public final class First
      */
     @ExtensionFunction
     @Contract("null -> fail")
-    public static <T> @NotNull T first(@Nullable MinimalistCollectionHolder<T> collection) {
+    public static <T> @NotNull T first(@Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection."); // TODO change to custom exception
         if (collection.size() == 0)
@@ -55,7 +55,7 @@ public final class First
      */
     @ExtensionFunction
     @Contract("null -> fail")
-    public static <T> @NotNull T first(@Nullable CollectionHolder<T> collection) {
+    public static <T> @NotNull T first(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection."); // TODO change to custom exception
         if (collection.isEmpty())
@@ -81,7 +81,7 @@ public final class First
      */
     @ExtensionFunction
     @Contract("null, _ -> fail")
-    public static <T> @NotNull T first(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
+    public static <T> @NotNull T first(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
 
@@ -108,7 +108,7 @@ public final class First
      */
     @ExtensionFunction
     @Contract("null, _ -> fail")
-    public static <T> @NotNull T first(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
+    public static <T> @NotNull T first(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
         if (collection.isEmpty())
@@ -136,7 +136,7 @@ public final class First
      */
     @ExtensionFunction
     @Contract("null, _ -> fail")
-    public static <T> @NotNull T first(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
+    public static <T> @NotNull T first(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Function<? super T, @NotNull Boolean> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection."); // TODO change to custom exception
 
@@ -163,7 +163,7 @@ public final class First
      */
     @ExtensionFunction
     @Contract("null, _ -> fail")
-    public static <T> @NotNull T first(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
+    public static <T> @NotNull T first(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<? super T, @NotNull Boolean> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection."); // TODO change to custom exception
         if (collection.isEmpty())
@@ -242,7 +242,7 @@ public final class First
         throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
-    private static <T> @NotNull T __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Function<T, @NotNull Boolean> predicate, int size) {
+    private static <T> @NotNull T __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Function<? super T, @NotNull Boolean> predicate, int size) {
         var index = -1;
         while (++index < size) {
             var value = collection.get(index);
@@ -252,7 +252,7 @@ public final class First
         throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
-    private static <T> @NotNull T __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate, int size) {
+    private static <T> @NotNull T __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate, int size) {
         var index = -1;
         while (++index < size) {
             var value = collection.get(index);
