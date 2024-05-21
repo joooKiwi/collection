@@ -10,6 +10,12 @@ import type {NullOr} from "@joookiwi/type"
 import type {CollectionHolderIndexOutOfBoundsException} from "../../exception/CollectionHolderIndexOutOfBoundsException"
 import type {ForbiddenIndexException}                   from "../../exception/ForbiddenIndexException"
 
+/**
+ * A holder to have a singular {@link value}
+ * and tell if it is valid via its {@link isForbidden} or {@link cause} getter methods
+ *
+ * @beta
+ */
 export interface ValueHolder<out T = unknown, > {
 
     /** The value held */
