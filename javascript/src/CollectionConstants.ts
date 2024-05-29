@@ -45,9 +45,9 @@ export class CollectionConstants {
     static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
     static #LAZY_EMPTY_COLLECTION_ITERATOR?: Lazy<EmptyCollectionIterator>
 
-    static #EVERY_MINIMALIST_COLLECTION_METHODS?: CollectionHolder<keyof MinimalistCollectionHolder>
-    static #EVERY_COLLECTION_METHODS?: CollectionHolder<keyof CollectionHolder>
-    static #EVERY_ITERATOR_METHODS?: CollectionHolder<keyof CollectionIterator>
+    static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<keyof MinimalistCollectionHolder>
+    static #COLLECTION_MEMBERS?: CollectionHolder<keyof CollectionHolder>
+    static #ITERATOR_MEMBERS?: CollectionHolder<keyof CollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
     static #GenericCollectionHolder?: typeof GenericCollectionHolder
@@ -131,16 +131,24 @@ export class CollectionConstants {
     public static readonly COLLECTION_ITERATOR_TO_STRING_TAG = "CollectionIterator"
 
     //#endregion -------------------- Symbol.toString references --------------------
-    //#region -------------------- "Every methods" references --------------------
+    //#region -------------------- Members references --------------------
 
     /** Every method applicable to a {@link MinimalistCollectionHolder} */
-    public static get EVERY_MINIMALIST_COLLECTION_METHODS(): CollectionHolder<keyof MinimalistCollectionHolder> {
-        return CollectionConstants.#EVERY_MINIMALIST_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "get",],),)
+    public static get MINIMALIST_COLLECTION_MEMBERS(): CollectionHolder<keyof MinimalistCollectionHolder> {
+        return CollectionConstants.#MINIMALIST_COLLECTION_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "get",],),)
     }
 
+    /**
+     * Every method applicable to a {@link MinimalistCollectionHolder}
+     *
+     * @deprecated Use CollectionConstants.MINIMALIST_COLLECTION_MEMBERS instead. It will be removed in version 1.10
+     */
+    public static get EVERY_MINIMALIST_COLLECTION_METHODS(): CollectionHolder<keyof MinimalistCollectionHolder> { return CollectionConstants.MINIMALIST_COLLECTION_MEMBERS }
+
+
     /** Every method applicable to a {@link CollectionHolder} */
-    public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> {
-        return CollectionConstants.#EVERY_COLLECTION_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+    public static get COLLECTION_MEMBERS(): CollectionHolder<keyof CollectionHolder> {
+        return CollectionConstants.#COLLECTION_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
             "hasNull", "includesNull", "containsNull",
@@ -167,9 +175,17 @@ export class CollectionConstants {
         ] as const,),)
     }
 
+    /**
+     * Every method applicable to a {@link CollectionHolder}
+     *
+     * @deprecated Use CollectionConstants.COLLECTION_MEMBERS instead. It will be removed in version 1.10
+     */
+    public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> { return CollectionConstants.COLLECTION_MEMBERS }
+
+
     /** Every method applicable to a {@link CollectionIterator} */
-    public static get EVERY_ITERATOR_METHODS(): CollectionHolder<keyof CollectionIterator> {
-        return CollectionConstants.#EVERY_ITERATOR_METHODS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+    public static get ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
+        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
             "index", "nextIndex", "previousIndex",
             "hasNext", "hasPrevious",
@@ -180,7 +196,14 @@ export class CollectionConstants {
         ] as const,),)
     }
 
-    //#endregion -------------------- "Every methods" references --------------------
+    /**
+     * Every method applicable to a {@link CollectionIterator}
+     *
+     * @deprecated Use CollectionConstants.ITERATOR_MEMBERS instead. It will be removed in version 1.10
+     */
+    public static get EVERY_ITERATOR_METHODS(): CollectionHolder<keyof CollectionIterator> { return CollectionConstants.ITERATOR_MEMBERS }
+
+    //#endregion -------------------- Members references --------------------
     //#region -------------------- Constructor references --------------------
 
     /** The {@link Object.constructor constructor} reference of an {@link EmptyCollectionHolder} */
