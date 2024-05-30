@@ -36,7 +36,8 @@ export class EmptyCollectionIterator
     public get length(): 0 { return 0 }
     public get count(): 0 { return 0 }
 
-    public get index(): 0 { return 0 }
+    public get index(): null { return null }
+    public get currentIndex(): null { return null }
     public get nextIndex(): 0 { return 0 }
     public get previousIndex(): 0 { return 0 }
 

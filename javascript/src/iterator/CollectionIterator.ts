@@ -5,6 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {NullOrNumber} from "@joookiwi/type"
+
 import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                                                                                   from "../MinimalistCollectionHolder"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
@@ -42,7 +44,14 @@ export interface CollectionIterator<out T = unknown, >
 
 
     /** Get the index that the {@link CollectionIterator} is at */
-    get index(): number
+    get currentIndex(): NullOrNumber
+
+    /**
+     * Get the index that the {@link CollectionIterator} is at
+     *
+     * @alias currentIndex
+     */
+    get index(): NullOrNumber
 
     /** Get the index that will be called to a subsequent {@link next} call */
     get nextIndex(): number
@@ -83,6 +92,9 @@ export interface CollectionIterator<out T = unknown, >
      */
     get previousValue(): T
 
+
+    /** Reset the index to the initial state (current {@link currentIndex index} / {@link currentValue value} at <b>null</b>) */
+    reset(): this
     //#region -------------------- Loop methods --------------------
 
     /**

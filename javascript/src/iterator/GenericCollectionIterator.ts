@@ -22,14 +22,14 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     //#region -------------------- Fields --------------------
 
     readonly #collection: COLLECTION
-    #index: number
+    #currentIndex: NullOrNumber
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
     public constructor(collection: COLLECTION,) {
         this.#collection = collection
-        this.#index = 0
+        this.#currentIndex = null
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -39,40 +39,29 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
         return this.#collection
     }
 
-    public get size(): this["collection"]["size"] {
-        return this.collection.size
-    }
 
-    public get length(): this["collection"]["size"] {
-        return this.size
-    }
-
-    public get count(): this["collection"]["size"] {
-        return this.size
-    }
+    public get size(): COLLECTION["size"] { return this.#size ??= this.collection.size }
+    public get length(): this["size"] { return this.size }
+    public get count(): this["size"] { return this.size }
 
 
-    public get index(): number {
-        return this.#index
-    }
+    public get currentIndex(): NullOrNumber { return this._currentIndex }
 
     /** Get the index that the {@link GenericCollectionIterator} is at */
-    protected get _index(): number {
-        return this.#index
-    }
+    protected get _currentIndex(): NullOrNumber { return this.#currentIndex }
 
     /**
      * Set the index that the {@link GenericCollectionIterator} is at
      *
      * @param value The value to set
      */
-    protected set _index(value: number,) {
-        this.#index = value
-    }
+    protected set _currentIndex(value: NullOrNumber,) { this.#currentIndex = value }
+
 
     public get nextIndex(): number {
         return this._index + 1
     }
+    public get index(): NullOrNumber { return this.currentIndex }
 
     public get previousIndex(): number {
         return this._index - 1
@@ -115,6 +104,12 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
         if (nextValue === CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL)
             throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
         return nextValue
+    }
+
+
+    public reset(): this {
+        this._currentIndex = null
+        return this
     }
 
     //#region -------------------- Loop methods --------------------
