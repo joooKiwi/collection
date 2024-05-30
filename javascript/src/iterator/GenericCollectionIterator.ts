@@ -5,6 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {NullOrNumber} from "@joookiwi/type"
+
 import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                                                                                   from "../MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                           from "./CollectionIterator"
@@ -22,6 +24,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     //#region -------------------- Fields --------------------
 
     readonly #collection: COLLECTION
+    #size?: COLLECTION["size"]
     #currentIndex: NullOrNumber
 
     //#endregion -------------------- Fields --------------------
@@ -58,52 +61,55 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     protected set _currentIndex(value: NullOrNumber,) { this.#currentIndex = value }
 
 
-    public get nextIndex(): number {
-        return this._index + 1
-    }
     public get index(): NullOrNumber { return this.currentIndex }
 
-    public get previousIndex(): number {
-        return this._index - 1
-    }
+
+    protected get _currentIndexFromStart(): number { return this._currentIndex ?? 0 }
+
+    protected set _currentIndexFromStart(value: number,) { this._currentIndex = value }
+
+    protected get _indexFromEnd(): number { return this._currentIndex ?? this.size - 1 }
+
+    protected set _indexFromEnd(value: number,) { this._currentIndex = value }
 
 
-    public get hasPrevious(): boolean {
-        return this._index > 0
-    }
+    public get nextIndex(): number { return this._currentIndexFromStart + 1 }
 
-    public get hasNext(): boolean {
-        return this._index < this.size
-    }
+    public get previousIndex(): number { return this._indexFromEnd - 1 }
+
+
+    public get hasNext(): boolean { return this._currentIndexFromStart < this.size }
+
+    public get hasPrevious(): boolean { return this._indexFromEnd > 0 }
+
+    //#endregion -------------------- Preview methods --------------------
 
     //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
 
     public next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol> {
         if (this.hasNext)
-            return new GenericIteratorValue(this.collection, this._index++,)
+            return new GenericIteratorValue(this.collection, this._currentIndexFromStart++,)
         return GenericAfterLastIteratorValue.get
     }
 
     public get nextValue(): T {
-        const nextValue = this.next().value
-        if (nextValue === CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL)
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
-        return nextValue
+        if (this.hasNext)
+            return this.collection.get(this._currentIndexFromStart++,)
+        throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
     }
 
 
     public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> {
         if (this.hasPrevious)
-            return new GenericIteratorValue(this.collection, --this._index,)
+            return new GenericIteratorValue(this.collection, --this._indexFromEnd,)
         return GenericBeforeFirstIteratorValue.get
     }
 
     public get previousValue(): T {
-        const nextValue = this.previous().value
-        if (nextValue === CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL)
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
-        return nextValue
+        if (this.hasPrevious)
+            return this.collection.get(--this._indexFromEnd,)
+        throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
     }
 
 
@@ -118,10 +124,10 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
         const collection = this.collection
         const size = this.size
 
-        let index = this._index - 1
+        let index = this._currentIndexFromStart - 1
         while (++index < size)
             operation(collection.get(index,), index,)
-        this._index = index
+        this._currentIndex = index
         return this
     }
 
@@ -129,10 +135,10 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
         const collection = this.collection
         const size = this.size
 
-        let index = this._index - 1
+        let index = this._currentIndexFromStart - 1
         while (++index < size)
             operation(index, collection.get(index,),)
-        this._index = index
+        this._currentIndex = index
         return this
     }
 
