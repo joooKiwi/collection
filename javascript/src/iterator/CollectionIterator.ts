@@ -35,14 +35,14 @@ export interface CollectionIterator<out T = unknown, >
      *
      * @alias size
      */
-    get length(): this["collection"]["size"]
+    get length(): this["size"]
 
     /**
      * The {@link collection} {@link CollectionHolder.size size}
      *
      * @alias size
      */
-    get count(): this["collection"]["size"]
+    get count(): this["size"]
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Current index methods --------------------
@@ -57,22 +57,22 @@ export interface CollectionIterator<out T = unknown, >
      */
     get index(): NullOrNumber
 
-    /** Get the index that will be called to a subsequent {@link next} call */
     //#endregion -------------------- Current index methods --------------------
     //#region -------------------- Sibling index methods --------------------
 
+    /** Get the index that will be used at a later {@link nextValue} or {@link next} call */
     get nextIndex(): number
 
-    /** Get the index that will be called to a subsequent {@link previous} call */
+    /** Get the index that will be used at a later {@link previousValue} or {@link previous} call */
     get previousIndex(): number
 
     //#endregion -------------------- Sibling index methods --------------------
     //#region -------------------- Preview methods --------------------
 
-    /** Tell if the iteration has more elements */
+    /** Tell if the iteration has more elements <b>after</b> the current element */
     get hasNext(): boolean
 
-    /** Tell if the iteration has more elements before the current element */
+    /** Tell if the iteration has more elements <b>before</b> the current element */
     get hasPrevious(): boolean
 
     //#endregion -------------------- Preview methods --------------------
