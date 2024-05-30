@@ -5,7 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
 import type {EmptyCollectionHolder}                                                                                        from "../EmptyCollectionHolder"
 import type {CollectionIterator}                                                                                           from "./CollectionIterator"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
@@ -45,18 +44,26 @@ export class EmptyCollectionIterator
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
+    public next(... _: readonly unknown[]): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol>
     public next(): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol> { return GenericAfterLastIteratorValue.get }
+
     public get nextValue(): never { throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",) }
 
+    public previous(... _: readonly unknown[]): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol>
     public previous(): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol> { return GenericBeforeFirstIteratorValue.get }
+
     public get previousValue(): never { throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",) }
+
+    public reset(... _: readonly unknown[]): this
+    public reset(): this { return this }
+
 
     //#region -------------------- Loop methods --------------------
 
-    public forEach(operation?: ValueIndexCallback<never>,): this
+    public forEach(... _: readonly unknown[]): this
     public forEach() { return this }
 
-    public forEachIndexed(operation?: IndexValueCallback<never>,): this
+    public forEachIndexed(... _: readonly unknown[]): this
     public forEachIndexed() { return this }
 
     //#endregion -------------------- Loop methods --------------------
