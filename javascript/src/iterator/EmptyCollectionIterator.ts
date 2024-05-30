@@ -29,12 +29,14 @@ export class EmptyCollectionIterator
     //#region -------------------- Getter methods --------------------
 
     public get collection(): EmptyCollectionHolder { return CollectionConstants.EMPTY_COLLECTION_HOLDER }
+
     public get size(): 0 { return 0 }
     public get length(): 0 { return 0 }
     public get count(): 0 { return 0 }
 
     public get index(): null { return null }
     public get currentIndex(): null { return null }
+
     public get nextIndex(): 0 { return 0 }
     public get previousIndex(): 0 { return 0 }
 
@@ -44,19 +46,28 @@ export class EmptyCollectionIterator
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
+    //#region -------------------- Next methods --------------------
+
     public next(... _: readonly unknown[]): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol>
     public next(): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol> { return GenericAfterLastIteratorValue.get }
 
     public get nextValue(): never { throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",) }
+
+    //#endregion -------------------- Next methods --------------------
+    //#region -------------------- Previous methods --------------------
 
     public previous(... _: readonly unknown[]): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol>
     public previous(): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol> { return GenericBeforeFirstIteratorValue.get }
 
     public get previousValue(): never { throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",) }
 
+    //#endregion -------------------- Previous methods --------------------
+    //#region -------------------- Reset methods --------------------
+
     public reset(... _: readonly unknown[]): this
     public reset(): this { return this }
 
+    //#endregion -------------------- Reset methods --------------------
 
     //#region -------------------- Loop methods --------------------
 
