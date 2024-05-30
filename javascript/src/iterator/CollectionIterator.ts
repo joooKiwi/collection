@@ -25,6 +25,8 @@ export interface CollectionIterator<out T = unknown, >
     /** The {@link MinimalistCollectionHolder collection} to loop over */
     get collection(): MinimalistCollectionHolder<T>
 
+    //#region -------------------- Size methods --------------------
+
     /** The {@link collection} {@link CollectionHolder.size size} */
     get size(): this["collection"]["size"]
 
@@ -42,6 +44,8 @@ export interface CollectionIterator<out T = unknown, >
      */
     get count(): this["collection"]["size"]
 
+    //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Current index methods --------------------
 
     /** Get the index that the {@link CollectionIterator} is at */
     get currentIndex(): NullOrNumber
@@ -54,11 +58,16 @@ export interface CollectionIterator<out T = unknown, >
     get index(): NullOrNumber
 
     /** Get the index that will be called to a subsequent {@link next} call */
+    //#endregion -------------------- Current index methods --------------------
+    //#region -------------------- Sibling index methods --------------------
+
     get nextIndex(): number
 
     /** Get the index that will be called to a subsequent {@link previous} call */
     get previousIndex(): number
 
+    //#endregion -------------------- Sibling index methods --------------------
+    //#region -------------------- Preview methods --------------------
 
     /** Tell if the iteration has more elements */
     get hasNext(): boolean
@@ -66,8 +75,12 @@ export interface CollectionIterator<out T = unknown, >
     /** Tell if the iteration has more elements before the current element */
     get hasPrevious(): boolean
 
+    //#endregion -------------------- Preview methods --------------------
+
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
+
+    //#region -------------------- Next methods --------------------
 
     /** Retrieve the next value in the line */
     next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol>
@@ -80,6 +93,8 @@ export interface CollectionIterator<out T = unknown, >
      */
     get nextValue(): T
 
+    //#endregion -------------------- Next methods --------------------
+    //#region -------------------- Previous methods --------------------
 
     /** Retrieve the previous value in the line */
     previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol>
@@ -92,9 +107,13 @@ export interface CollectionIterator<out T = unknown, >
      */
     get previousValue(): T
 
+    //#endregion -------------------- Previous methods --------------------
+    //#region -------------------- Reset methods --------------------
 
     /** Reset the index to the initial state (current {@link currentIndex index} / {@link currentValue value} at <b>null</b>) */
     reset(): this
+
+    //#endregion -------------------- Reset methods --------------------
     //#region -------------------- Loop methods --------------------
 
     /**

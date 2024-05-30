@@ -29,9 +29,7 @@ export class EmptyCollectionIterator
     //#endregion -------------------- Singleton usage --------------------
     //#region -------------------- Getter methods --------------------
 
-    public get collection(): EmptyCollectionHolder {
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    }
+    public get collection(): EmptyCollectionHolder { return CollectionConstants.EMPTY_COLLECTION_HOLDER }
     public get size(): 0 { return 0 }
     public get length(): 0 { return 0 }
     public get count(): 0 { return 0 }

@@ -12,14 +12,14 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                           from "./CollectionIterator"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
 
-import {CollectionConstants}                       from "../CollectionConstants"
 import {NoElementFoundInCollectionHolderException} from "../exception/NoElementFoundInCollectionHolderException"
 import {GenericAfterLastIteratorValue}             from "./value/GenericAfterLastIteratorValue"
 import {GenericBeforeFirstIteratorValue}           from "./value/GenericBeforeFirstIteratorValue"
 import {GenericIteratorValue}                      from "./value/GenericIteratorValue"
 
-export class GenericCollectionIterator<const out T = unknown, const out COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
-    implements CollectionIterator<T> {//TODO add reverse loop on first call
+export class GenericCollectionIterator<const out T = unknown,
+    const out COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
+    implements CollectionIterator<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -38,15 +38,16 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter & setter methods --------------------
 
-    public get collection(): COLLECTION {
-        return this.#collection
-    }
+    public get collection(): COLLECTION { return this.#collection }
 
+    //#region -------------------- Size methods --------------------
 
     public get size(): COLLECTION["size"] { return this.#size ??= this.collection.size }
     public get length(): this["size"] { return this.size }
     public get count(): this["size"] { return this.size }
 
+    //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Current index methods --------------------
 
     public get currentIndex(): NullOrNumber { return this._currentIndex }
 
@@ -63,6 +64,8 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
 
     public get index(): NullOrNumber { return this.currentIndex }
 
+    //#endregion -------------------- Current index methods --------------------
+    //#region -------------------- Current index or default methods --------------------
 
     protected get _currentIndexFromStart(): number { return this._currentIndex ?? 0 }
 
@@ -72,11 +75,15 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
 
     protected set _indexFromEnd(value: number,) { this._currentIndex = value }
 
+    //#endregion -------------------- Current index or default methods --------------------
+    //#region -------------------- Sibling index methods --------------------
 
     public get nextIndex(): number { return this._currentIndexFromStart + 1 }
 
     public get previousIndex(): number { return this._indexFromEnd - 1 }
 
+    //#endregion -------------------- Sibling index methods --------------------
+    //#region -------------------- Preview methods --------------------
 
     public get hasNext(): boolean { return this._currentIndexFromStart < this.size }
 
@@ -86,6 +93,8 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
 
     //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
+
+    //#region -------------------- Next methods --------------------
 
     public next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol> {
         if (this.hasNext)
@@ -99,6 +108,8 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
         throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
     }
 
+    //#endregion -------------------- Next methods --------------------
+    //#region -------------------- Previous methods --------------------
 
     public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> {
         if (this.hasPrevious)
@@ -112,6 +123,7 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
         throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
     }
 
+    //#endregion -------------------- Previous methods --------------------
 
     public reset(): this {
         this._currentIndex = null
@@ -145,13 +157,9 @@ export class GenericCollectionIterator<const out T = unknown, const out COLLECTI
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------
 
-    public [Symbol.iterator](): CollectionIterator<T> {
-        return new GenericCollectionIterator(this.collection,)
-    }
+    public [Symbol.iterator](): CollectionIterator<T> { return new GenericCollectionIterator(this.collection,) }
 
-    public get [Symbol.toStringTag](): CollectionIteratorName {
-        return "CollectionIterator"
-    }
+    public get [Symbol.toStringTag](): CollectionIteratorName { return "CollectionIterator" }
 
     //#endregion -------------------- Javascript methods --------------------
 

@@ -19,20 +19,12 @@ export class GenericIteratorValue<const out T = unknown, >
         this.#index = index
     }
 
-    public get collection(): MinimalistCollectionHolder<T> {
-        return this.#collection
-    }
+    public get collection(): MinimalistCollectionHolder<T> { return this.#collection }
 
-    public get index(): number {
-        return this.#index
-    }
+    public get index(): number { return this.#index }
 
-    public get done(): false {
-        return false
-    }
+    public get done(): false { return false }
 
-    public get value(): T {
-        return this.collection.get(this.index,)
-    }
+    public get value(): T { return this.collection.get(this.index,) }
 
 }
