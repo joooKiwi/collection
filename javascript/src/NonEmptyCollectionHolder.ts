@@ -7,7 +7,11 @@
 
 import type {CollectionHolder} from "./CollectionHolder"
 
-/** A declaration of a non-empty {@link CollectionHolder} */
+/**
+ * A declaration of a non-empty {@link CollectionHolder}
+ *
+ * @deprecated This declaration is now unused and has no effect on the CollectionHolder. It will be removed in version 1.10
+ */
 export interface NonEmptyCollectionHolder<out T = unknown, >
     extends CollectionHolder<T> {
 

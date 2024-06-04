@@ -10,7 +10,6 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
-import type {NonEmptyCollectionHolder}                   from "../NonEmptyCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
@@ -121,7 +120,7 @@ export function firstByCollectionHolder<const T, >(collection: Nullable<Collecti
         throw new EmptyCollectionHolderException()
 
     if (predicate == null)
-        return __withNoPredicate(collection as NonEmptyCollectionHolder<T>,)
+        return __withNoPredicate(collection,)
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
@@ -132,7 +131,7 @@ export function firstByCollectionHolder<const T, >(collection: Nullable<Collecti
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __withNoPredicate<const T, >(collection: NonEmptyCollectionHolder<T>,) {
+function __withNoPredicate<const T, >(collection: CollectionHolder<T>,) {
     if (0 in collection)
         return collection[0] as T
     return collection.get(0,)

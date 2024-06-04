@@ -10,7 +10,6 @@ import type {Nullable, NullOr} from "@joookiwi/type"
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
-import type {NonEmptyCollectionHolder}                   from "../NonEmptyCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -108,7 +107,7 @@ export function lastOrNullByCollectionHolder<const T, const S extends T, >(colle
         return null
 
     if (predicate == null)
-        return __withNoPredicate(collection as NonEmptyCollectionHolder<T>, collection.size,)
+        return __withNoPredicate(collection, collection.size,)
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
@@ -119,7 +118,7 @@ export function lastOrNullByCollectionHolder<const T, const S extends T, >(colle
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __withNoPredicate<const T, >(collection: NonEmptyCollectionHolder<T>, size: number,) {
+function __withNoPredicate<const T, >(collection: CollectionHolder<T>, size: number,) {
     const lastIndex = size - 1
     if (lastIndex in collection)
         return collection[lastIndex] as T
