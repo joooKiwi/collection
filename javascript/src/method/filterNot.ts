@@ -66,7 +66,7 @@ export function filterNot<const T, >(collection: Nullable<MinimalistCollectionHo
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
- * @see filter
+ * @see filterByCollectionHolder
  * @typescriptDefinition
  * @extensionFunction
  */
@@ -80,7 +80,7 @@ export function filterNotByCollectionHolder<const T, const S extends T, >(collec
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
- * @see filter
+ * @see filterByCollectionHolder
  * @extensionFunction
  */
 export function filterNotByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
