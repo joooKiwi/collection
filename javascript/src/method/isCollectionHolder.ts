@@ -7,39 +7,23 @@
 
 import type {CollectionHolder} from "../CollectionHolder"
 
-import {AbstractCollectionHolder}    from "../AbstractCollectionHolder"
-import {CollectionConstants}         from "../CollectionConstants"
-import {EmptyCollectionHolder}       from "../EmptyCollectionHolder"
+import {AbstractCollectionHolder} from "../AbstractCollectionHolder"
+import {EmptyCollectionHolder}    from "../EmptyCollectionHolder"
 
 /**
- * Tell that the value is a {@link CollectionHolder}.
+ * Tell that the value is a {@link CollectionHolder}
+ * if it is an {@link AbstractCollectionHolder} or an {@link EmptyCollectionHolder}
  *
- * It does validate that it is
- *  - a {@link GenericCollectionHolder}
- *  - a {@link LazyGenericCollectionHolder}
- *  - an {@link EmptyCollectionHolder}
- *  - has the structure from the {@link CollectionConstants.EVERY_COLLECTION_METHODS collection methods}
- *
- * @param value The value to validate if it is a {@link CollectionHolder}
+ * @param value The value to identify
+ * @see isCollectionHolderByStructure
  */
 export function isCollectionHolder<const T, >(value: unknown,): value is CollectionHolder<T>
-export function isCollectionHolder(value: unknown,): boolean {
+export function isCollectionHolder(value: unknown,) {
     if (value == null)
         return false
-
     if (value instanceof AbstractCollectionHolder)
         return true
     if (value instanceof EmptyCollectionHolder)
         return true
-
-    if (typeof value != "object")
-        return false
-
-    const everyMethods = CollectionConstants.EVERY_COLLECTION_METHODS
-    const size = everyMethods.length
-    let index = -1
-    while (++index < size)
-        if (!(everyMethods[index]! in value))
-            return false
-    return true
+    return false
 }
