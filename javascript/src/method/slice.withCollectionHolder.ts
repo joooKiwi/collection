@@ -32,7 +32,6 @@ export function sliceWithCollectionHolder<const T, >(collection: Nullable<Minima
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
     if (indices.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indices.size,),)
@@ -56,7 +55,6 @@ export function sliceWithCollectionHolderByCollectionHolder<const T, >(collectio
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
     if (indices.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indices.size,),)

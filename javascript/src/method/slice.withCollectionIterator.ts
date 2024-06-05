@@ -8,8 +8,8 @@
 import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {CollectionIterator}         from "../iterator/CollectionIterator"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
+import type {CollectionIterator}         from "../iterator/CollectionIterator"
 
 import {CollectionConstants} from "../CollectionConstants"
 

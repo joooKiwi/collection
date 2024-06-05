@@ -32,7 +32,12 @@ export function sliceWithIterable<const T, >(collection: Nullable<MinimalistColl
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return __newArray(collection, indices,)
+
+    const iterator = indices[Symbol.iterator]() as Iterator<number, number>
+    const iteratorResult: IteratorResult<number, number> = iterator.next()
+    if (iteratorResult.done)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, iterator, iteratorResult,),)
 }
 
 /**
@@ -53,24 +58,22 @@ export function sliceWithIterableByCollectionHolder<const T, >(collection: Nulla
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return __newArray(collection, indices,)
+
+    const iterator = indices[Symbol.iterator]() as Iterator<number, number>
+    const iteratorResult: IteratorResult<number, number> = iterator.next()
+    if (iteratorResult.done)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, iterator, iteratorResult,),)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indices: Iterable<number>,) {
-    const iterator = indices[Symbol.iterator]() as Iterator<number, number>
-    let iteratorResult: IteratorResult<number, number> = iterator.next()
-    if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
-    return new CollectionConstants.LazyGenericCollectionHolder(() => {
-        const newArray = [collection.get(iteratorResult.value,),]
-        while (!(iteratorResult = iterator.next()).done)
-            newArray.push(collection.get(iteratorResult.value,),)
-        return newArray
-    },)
+function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<number, number>, iteratorResult: IteratorResult<number, number>,) {
+    const newArray = [collection.get(iteratorResult.value,),]
+    while (!(iteratorResult = iterator.next()).done)
+        newArray.push(collection.get(iteratorResult.value,),)
+    return newArray
 }
 
 //#endregion -------------------- Loop methods --------------------

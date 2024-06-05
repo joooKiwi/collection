@@ -36,7 +36,6 @@ export function sliceWithArray<const T, >(collection: Nullable<MinimalistCollect
     const indicesSize = indices.length
     if (indicesSize == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
     return new CollectionConstants.LazyGenericCollectionHolder(() => _newArray(collection, indices, indicesSize,),)
 }
 
@@ -62,7 +61,6 @@ export function sliceWithArrayByCollectionHolder<const T, >(collection: Nullable
     const indicesSize = indices.length
     if (indicesSize == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
     return new CollectionConstants.LazyGenericCollectionHolder(() => _newArray(collection, indices, indicesSize,),)
 }
 
