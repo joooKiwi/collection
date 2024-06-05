@@ -50,6 +50,7 @@ export {isCollectionIteratorByStructure}                                        
 export {isMinimalistCollectionHolder}                                                                                     from "./isMinimalistCollectionHolder"
 export {isMinimalistCollectionHolderByStructure}                                                                          from "./isMinimalistCollectionHolderByStructure"
 export {join,                                 joinByCollectionHolder}                                                     from "./join"
+export {joinToString,                         joinToStringByCollectionHolder, prefixAndPostfixOnly}                       from "./joinToString"
 export {last,                                 lastByCollectionHolder}                                                     from "./last"
 export {lastIndexOf,                          lastIndexOfByCollectionHolder}                                              from "./lastIndexOf"
 export {lastOrNull,                           lastOrNullByCollectionHolder}                                               from "./lastOrNull"
