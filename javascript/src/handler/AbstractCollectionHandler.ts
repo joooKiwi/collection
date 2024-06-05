@@ -5,12 +5,15 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}             from "../CollectionHolder"
+import type {CollectionHolder}                  from "../CollectionHolder"
 import type {PossibleIterableOrCollection} from "../CollectionHolder.types"
 import type {CollectionHandler}            from "./CollectionHandler"
 import type {ValueHolder}                  from "./value/ValueHolder"
 
-export abstract class AbstractCollectionHandler<const out T = unknown, const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+/** @beta */
+export abstract class AbstractCollectionHandler<const out T = unknown,
+    const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>,
+    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     implements CollectionHandler<T> {
 
     //#region -------------------- Fields --------------------
@@ -30,15 +33,18 @@ export abstract class AbstractCollectionHandler<const out T = unknown, const out
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter & setter methods --------------------
 
+    /** The reference to retrieve the values */
     protected get _reference(): REFERENCE { return this.#reference }
 
-    /** The {@link CollectionHolder} reference */
+    /** The {@link CollectionHolder} reference to set the indices */
     protected get _collection(): COLLECTION { return this.#collection }
 
 
     public abstract get size(): number
 
     public abstract get isEmpty(): boolean
+
+    public abstract get hasDuplicate(): boolean
 
     public get hasFinished(): boolean { return this.#hasFinished ??= false }
 
