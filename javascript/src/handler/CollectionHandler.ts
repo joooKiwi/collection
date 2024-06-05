@@ -7,18 +7,25 @@
 
 import type {ValueHolder} from "./value/ValueHolder"
 
-/** A definition of a handler for the {@link LazyGenericCollectionHolder} */
+/**
+ * A definition of a handler for the {@link LazyGenericCollectionHolder}
+ *
+ * @beta
+ */
 export interface CollectionHandler<out T = unknown, > {
 
     /**
-     * Get the size of the {@link CollectionHandler handler}.
+     * Get the size of the {@link CollectionHandler handler}
      *
-     * Note that it can take a while if the collection is huge.
+     * @note it can take a long time if the reference is huge
      */
     get size(): number
 
     /** Tell if the {@link CollectionHandler handler} is empty */
     get isEmpty(): boolean
+
+    /** Tell if the {@link CollectionHandler handler} has at least one duplicate value */
+    get hasDuplicate(): boolean
 
     /** Tell if the {@link CollectionHandler handler} has finished processing the values */
     get hasFinished(): boolean
