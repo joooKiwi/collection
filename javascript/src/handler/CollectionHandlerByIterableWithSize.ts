@@ -9,136 +9,75 @@ import type {CollectionHolder}         from "../CollectionHolder"
 import type {ValueHolder}              from "./value/ValueHolder"
 import type {PossibleIterableWithSize} from "../iterable/types"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
-import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
-import {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
 import {CollectionHandlerByIterable}               from "./CollectionHandlerByIterable"
+import {EmptyCollectionValueHolder}                from "./value/EmptyCollectionValueHolder"
+import {NaNIndexValueHolder}                       from "./value/NaNIndexValueHolder"
+import {NegativeInfinityIndexValueHolder}          from "./value/NegativeInfinityIndexValueHolder"
+import {OverSizeIndexValueHolder}                  from "./value/OverSizeIndexValueHolder"
+import {OverSizeIndexAfterCalculationValueHolder}  from "./value/OverSizeIndexAfterCalculationValueHolder"
+import {PositiveInfinityIndexValueHolder}          from "./value/PositiveInfinityIndexValueHolder"
+import {ValidValueHolder}                          from "./value/ValidValueHolder"
+import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexAfterCalculationValueHolder"
 
 /**
  * An implementation of a {@link CollectionHandler} for an iterable with
  * a {@link IterableWithSize size}, {@link IterableWithLength length} or {@link IterableWithCount count} field
+ *
+ * @beta
+ * @see CollectionHandlerByIterable
+ * @see CollectionHandlerByIterableWithSizeOf1
+ * @see CollectionHandlerByIterableWithSizeOf2
  */
-export class CollectionHandlerByIterableWithSize<const out T = unknown, const out REFERENCE extends PossibleIterableWithSize<T> = PossibleIterableWithSize<T>, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByIterableWithSize<const out T = unknown,
+    const out REFERENCE extends PossibleIterableWithSize<T> = PossibleIterableWithSize<T>,
+    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends CollectionHandlerByIterable<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------
 
-    #size?: number
-    #isEmpty?: boolean
-    #hasNoNumberSize?: boolean
+    readonly #size: number
+    readonly #isEmpty: boolean
 
     //#endregion -------------------- Fields --------------------
+    //#region -------------------- Constructor --------------------
+
+    public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {
+        super(collection, reference,)
+        this.#isEmpty = (this.#size = size) == 0
+    }
+
+    //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    public override get size(): number {
-        if (this.#size != null)
-            return this.#size
+    public override get size(): number { return this.#size }
 
-        const reference = this._reference
-        if ("size" in reference) {
-            const size = reference.size
-            if (size != null) {
-                this.#isEmpty = size == 0
-                this.#hasNoNumberSize = false
-                return this.#size = size
-            }
-        }
-        if ("length" in reference) {
-            const size = reference.length
-            if (size != null) {
-                this.#isEmpty = size == 0
-                this.#hasNoNumberSize = false
-                return this.#size = size
-            }
-        }
-        if ("count" in reference) {
-            const size = reference.count
-            if (size != null) {
-                this.#isEmpty = size == 0
-                this.#hasNoNumberSize = false
-                return this.#size = size
-            }
-        }
-
-        this.#isEmpty = true
-        this.#hasNoNumberSize = true
-        return this.#size = super.size
-    }
-
-    public override get isEmpty(): boolean {
-        if (this.#isEmpty != null)
-            return this.#isEmpty
-
-        if (!this._hasNoNumberSize)
-            return this.#isEmpty = super.isEmpty
-
-        const size = this.size
-        if (size == 0)
-            this._hasFinished = true
-        return this.#isEmpty ??= size == 0
-    }
-
-    /** Tell if the size retrieved from the {@link CollectionHandler.reference reference} has a retrievable size */
-    protected get _hasNoNumberSize(): boolean {
-        if (this.#hasNoNumberSize != null)
-            return this.#hasNoNumberSize
-
-        const reference = this._reference
-        if ("size" in reference) {
-            const size = reference.size
-            if (size != null) {
-                this.#isEmpty = size == 0
-                this.#size = size
-                return this.#hasNoNumberSize = true
-            }
-        }
-        if ("length" in reference) {
-            const size = reference.length
-            if (size != null) {
-                this.#isEmpty = size == 0
-                this.#size = size
-                return this.#hasNoNumberSize = true
-            }
-        }
-        if ("count" in reference) {
-            const size = reference.count
-            if (size != null) {
-                this.#isEmpty = size == 0
-                this.#size = size
-                return this.#hasNoNumberSize = true
-            }
-        }
-        return this.#hasNoNumberSize = false
-    }
+    public override get isEmpty(): boolean { return this.#isEmpty }
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
     public override get(index: number,): ValueHolder<T> {
         if (this.isEmpty)
-            return { value: null, get isForbidden() { return Number.isNaN(index,) || index == Number.NEGATIVE_INFINITY || index == Number.POSITIVE_INFINITY }, get cause() { return new EmptyCollectionHolderException(null, index,) }, }
+            return new EmptyCollectionValueHolder(index,)
 
         if (Number.isNaN(index,))
-            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,) }, }
+            return new NaNIndexValueHolder(index,)
         if (index == Number.NEGATIVE_INFINITY)
-            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,) }, }
+            return new NegativeInfinityIndexValueHolder(index,)
         if (index == Number.POSITIVE_INFINITY)
-            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,) }, }
-
-        if (!this._hasNoNumberSize)
-            return super.get(index,)
+            return new PositiveInfinityIndexValueHolder(index,)
 
         const collection = this._collection
         if (index in collection)
-            return { value: collection[index] as T, isForbidden: false, cause: null, }
+            return new ValidValueHolder(collection[index] as T,)
 
         const size = this.size
         if (index > size)
-            return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} is over the size of the collection (${size}).`, index,) }, }
+            return new OverSizeIndexValueHolder(index, size,)
 
         if (index >= 0) {
             if (this.hasFinished)
-                return { value: collection[index] as T, isForbidden: false, cause: null, }
+                return new ValidValueHolder(collection[index] as T,)
 
             const amountOfElementRetrieved = this._amountOfElementRetrieved
             const iterator = this._iterator
@@ -152,21 +91,21 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown, const ou
                 }
 
                 this._amountOfElementRetrieved = iteratorIndex + 1
-                return { value: collection[index] as T, isForbidden: false, cause: null, }
+                return new ValidValueHolder(collection[index] as T,)
             }
             this._hasFinished = true
 
-            return { value: collection[iteratorIndex - 1] as T, isForbidden: false, cause: null, }
+            return new ValidValueHolder(collection[iteratorIndex - 1] as T,)
         }
 
         const indexToRetrieve = size + index
         if (indexToRetrieve < 0)
-            return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${indexToRetrieve} after calculation) is under 0.`, index,) }, }
+            return new UnderZeroIndexAfterCalculationValueHolder(index, indexToRetrieve,)
         if (indexToRetrieve > size)
-            return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,) }, }
+            return new OverSizeIndexAfterCalculationValueHolder(index, indexToRetrieve, size,)
 
         if (this.hasFinished)
-            return { value: collection[indexToRetrieve] as T, isForbidden: false, cause: null, }
+            return new ValidValueHolder(collection[indexToRetrieve] as T,)
 
         const amountOfElementRetrieved = this._amountOfElementRetrieved
         const iterator = this._iterator
@@ -181,12 +120,12 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown, const ou
 
             this._amountOfElementRetrieved = iteratorIndex + 1
             if (indexToRetrieve > iteratorIndex)
-                return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. index ${index} cannot be over the size of the collection (${iteratorIndex}).`, index,) }, }
-            return { value: collection[indexToRetrieve] as T, isForbidden: false, cause: null, }
+                return new OverSizeIndexValueHolder(index, iteratorIndex,)
+            return new ValidValueHolder(collection[indexToRetrieve] as T,)
         }
         this._hasFinished = true
 
-        return { value: collection[iteratorIndex - 1] as T, isForbidden: false, cause: null, }
+        return new ValidValueHolder(collection[iteratorIndex - 1] as T,)
     }
 
     //#endregion -------------------- Methods --------------------

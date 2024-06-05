@@ -8,13 +8,27 @@
 import type {CollectionHolder} from "../CollectionHolder"
 import type {ValueHolder}      from "./value/ValueHolder"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
-import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
-import {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
 import {AbstractCollectionHandler}                 from "./AbstractCollectionHandler"
+import {EmptyCollectionValueHolder}                from "./value/EmptyCollectionValueHolder"
+import {NaNIndexValueHolder}                       from "./value/NaNIndexValueHolder"
+import {NegativeInfinityIndexValueHolder}          from "./value/NegativeInfinityIndexValueHolder"
+import {OverSizeIndexValueHolder}                  from "./value/OverSizeIndexValueHolder"
+import {OverSizeIndexAfterCalculationValueHolder}  from "./value/OverSizeIndexAfterCalculationValueHolder"
+import {PositiveInfinityIndexValueHolder}          from "./value/PositiveInfinityIndexValueHolder"
+import {ValidValueHolder}                          from "./value/ValidValueHolder"
+import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexAfterCalculationValueHolder"
 
-/** An implementation of a {@link CollectionHandler} for an {@link Iterable} */
-export class CollectionHandlerByIterable<const out T = unknown, const out REFERENCE extends Iterable<T> = Iterable<T>, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+/**
+ * An implementation of a {@link CollectionHandler} for an {@link Iterable}
+ *
+ * @beta
+ * @see CollectionHandlerByIterableWithSize
+ * @see CollectionHandlerByIterableWithSizeOf1
+ * @see CollectionHandlerByIterableWithSizeOf2
+ */
+export class CollectionHandlerByIterable<const out T = unknown,
+    const out REFERENCE extends Iterable<T> = Iterable<T>,
+    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------
@@ -22,6 +36,7 @@ export class CollectionHandlerByIterable<const out T = unknown, const out REFERE
     #iterator?: Iterator<T>
 
     #isEmpty?: boolean
+    #hasDuplicate?: boolean
     #size?: number
 
     #amountOfElementRetrieved: number
@@ -37,29 +52,6 @@ export class CollectionHandlerByIterable<const out T = unknown, const out REFERE
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter & setter methods --------------------
-
-    public override get isEmpty(): boolean {
-        if (this.#isEmpty != null)
-            return this.#isEmpty
-
-        if (this.hasFinished)
-            return this.#isEmpty = this._isTheFirstElementRetrieved
-
-        const iteratorValue = this._iterator.next() as IteratorResult<T, T>
-        if (iteratorValue.done) {
-            this._hasFinished = true
-            if (this._isTheFirstElementRetrieved) {
-                this.#size = this._amountOfElementRetrieved = 0
-                return this.#isEmpty = true
-            }
-            this.#size = 1
-            return this.#isEmpty = false
-        }
-
-        this._collection[0] = iteratorValue.value
-        this._amountOfElementRetrieved = 1
-        return this.#isEmpty = false
-    }
 
     public override get size(): number {
         if (this.#size != null)
@@ -91,6 +83,109 @@ export class CollectionHandlerByIterable<const out T = unknown, const out REFERE
         return this.#size = this._amountOfElementRetrieved = index
     }
 
+    public override get isEmpty(): boolean {
+        if (this.#isEmpty != null)
+            return this.#isEmpty
+
+        if (this.hasFinished)
+            return this.#isEmpty = this._isTheFirstElementRetrieved
+
+        const iteratorValue = this._iterator.next() as IteratorResult<T, T>
+        if (iteratorValue.done) {
+            this._hasFinished = true
+            if (this._isTheFirstElementRetrieved) {
+                this.#size = this._amountOfElementRetrieved = 0
+                return this.#isEmpty = true
+            }
+            this.#size = 1
+            return this.#isEmpty = false
+        }
+
+        this._collection[0] = iteratorValue.value
+        this._amountOfElementRetrieved = 1
+        return this.#isEmpty = false
+    }
+
+    public override get hasDuplicate(): boolean {
+        if (this.#hasDuplicate != null)
+            return this.#hasDuplicate
+
+        const reference = this._reference
+        const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+        const collection = this._collection
+        const size = this.size //TODO change the implementation to not retrieve the size on the iterator
+        const temporaryArray = new Array<T>(size,)
+        let amountOfItemAdded = 1
+        let index = -1
+        while (++index < size) {
+            const value = collection[index] = iterator.next().value as T
+            let index2 = -1
+
+            if (value === null) {
+                while (++index2 < amountOfItemAdded)
+                    if (temporaryArray[index2] === null) {
+                        //#region -------------------- Iterator held to be at the same point --------------------
+
+                        const amountOfElementRetrieved = this._amountOfElementRetrieved
+                        if (amountOfElementRetrieved < amountOfItemAdded) {
+                            let amountOfTimeToLoop = amountOfItemAdded - amountOfElementRetrieved
+                            const iterator2 = this._iterator
+                            while(amountOfTimeToLoop-- > 0)
+                                iterator2.next()
+                            this._amountOfElementRetrieved = amountOfItemAdded
+                        }
+
+                        //#endregion -------------------- Iterator held to be at the same point --------------------
+                        return this.#hasDuplicate = true
+                    }
+                temporaryArray[amountOfItemAdded++] = null as T
+                continue
+            }
+
+            if (value === undefined) {
+                while (++index2 < amountOfItemAdded)
+                    if (temporaryArray[index2] === undefined) {
+                        //#region -------------------- Iterator held to be at the same point --------------------
+
+                        const amountOfElementRetrieved = this._amountOfElementRetrieved
+                        if (amountOfElementRetrieved < amountOfItemAdded) {
+                            let amountOfTimeToLoop = amountOfItemAdded - amountOfElementRetrieved
+                            const iterator2 = this._iterator
+                            while(amountOfTimeToLoop-- > 0)
+                                iterator2.next()
+                            this._amountOfElementRetrieved = amountOfItemAdded
+                        }
+
+                        //#endregion -------------------- Iterator held to be at the same point --------------------
+                        return this.#hasDuplicate = true
+                    }
+                temporaryArray[amountOfItemAdded++] = undefined as T
+                continue
+            }
+
+            while (++index2 < amountOfItemAdded)
+                if (temporaryArray[index2] === value) {
+                    //#region -------------------- Iterator held to be at the same point --------------------
+
+                    const amountOfElementRetrieved = this._amountOfElementRetrieved
+                    if (amountOfElementRetrieved < amountOfItemAdded) {
+                        let amountOfTimeToLoop = amountOfItemAdded - amountOfElementRetrieved
+                        const iterator2 = this._iterator
+                        while(amountOfTimeToLoop-- > 0)
+                            iterator2.next()
+                        this._amountOfElementRetrieved = amountOfItemAdded
+                    }
+
+                    //#endregion -------------------- Iterator held to be at the same point --------------------
+                    return this.#hasDuplicate = true
+                }
+            temporaryArray[amountOfItemAdded++] = value
+        }
+
+        this._hasFinished = true
+        return this.#hasDuplicate = false
+    }
+
 
     protected get _iterator(): Iterator<T> {
         return this.#iterator ??= this._reference[Symbol.iterator]()
@@ -116,28 +211,28 @@ export class CollectionHandlerByIterable<const out T = unknown, const out REFERE
 
     public get(index: number,): ValueHolder<T> {
         if (this.isEmpty)
-            return { value: null, get isForbidden() { return Number.isNaN(index,) || index == Number.NEGATIVE_INFINITY || index == Number.POSITIVE_INFINITY }, get cause() { return new EmptyCollectionHolderException(null, index,) }, }
+            return new EmptyCollectionValueHolder(index,)
 
         if (Number.isNaN(index,))
-            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,) }, }
+            return new NaNIndexValueHolder(index,)
         if (index == Number.NEGATIVE_INFINITY)
-            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be -∞.", index,) }, }
+            return new NegativeInfinityIndexValueHolder(index,)
         if (index == Number.POSITIVE_INFINITY)
-            return { value: null, isForbidden: true, get cause() { return new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,) }, }
+            return new PositiveInfinityIndexValueHolder(index,)
 
         const collection = this._collection
         if (index in collection)
-            return { value: collection[index] as T, isForbidden: false, cause: null, }
+            return new ValidValueHolder(collection[index] as T,)
 
         if (index < 0) {
-            if (this.hasFinished){
+            if (this.hasFinished) {
                 const size = this._amountOfElementRetrieved
                 const indexToRetrieve = size + index
                 if (indexToRetrieve < 0)
-                    return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${indexToRetrieve} after calculation) is under 0.`, index,) }, }
+                    return new UnderZeroIndexAfterCalculationValueHolder(index, indexToRetrieve,)
                 if (indexToRetrieve > size)
-                    return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${indexToRetrieve} after calculation) is under over the size of the collection (${size}).`, index,) }, }
-                return { value: collection.get(indexToRetrieve,), isForbidden: false, cause: null, }
+                    return new OverSizeIndexAfterCalculationValueHolder(index, indexToRetrieve, size,)
+                return new ValidValueHolder(collection.get(indexToRetrieve,),)
             }
 
             const amountOfElementRetrieved = this._amountOfElementRetrieved
@@ -150,18 +245,18 @@ export class CollectionHandlerByIterable<const out T = unknown, const out REFERE
             const size = (this._amountOfElementRetrieved = iteratorIndex) + 1
             const indexToRetrieve = size + index
             if (indexToRetrieve < 0)
-                return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${indexToRetrieve} after calculation) is under 0.`, index,) }, }
+                return new UnderZeroIndexAfterCalculationValueHolder(index, indexToRetrieve,)
             if (indexToRetrieve > size)
-                return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${indexToRetrieve} after calculation) is under over the size of the collection (${size}).`, index,) }, }
-            return { value: collection.get(indexToRetrieve,), isForbidden: false, cause: null, }
+                return new OverSizeIndexAfterCalculationValueHolder(index, indexToRetrieve, size,)
+            return new ValidValueHolder(collection.get(indexToRetrieve,),)
         }
 
         if (this.hasFinished) {
             const amountOfElementRetrieved = this._amountOfElementRetrieved
             const amountOfElementRetrievedMinus1 = amountOfElementRetrieved - 1
             if (index > amountOfElementRetrievedMinus1)
-                return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} cannot be over the size of the collection (${amountOfElementRetrieved}).`, index,) }, }
-            return { value: collection[amountOfElementRetrievedMinus1] as T, isForbidden: false, cause: null, }
+                return new OverSizeIndexValueHolder(index, amountOfElementRetrieved,)
+            return new ValidValueHolder(collection[amountOfElementRetrievedMinus1] as T,)
         }
 
         const amountOfElementRetrieved = this._amountOfElementRetrieved
@@ -177,14 +272,14 @@ export class CollectionHandlerByIterable<const out T = unknown, const out REFERE
 
             this._amountOfElementRetrieved = iteratorIndex
             if (index > iteratorIndex)
-                return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} cannot be over the size of the collection (${iteratorIndex}).`, index,) }, }
-            return { value: collection[index] as T, isForbidden: false, cause: null, }
+                return new OverSizeIndexValueHolder(index, iteratorIndex,)
+            return new ValidValueHolder(collection[index] as T,)
         }
         this._hasFinished = true
 
         if (index > iteratorIndex)
-            return { value: null, isForbidden: false, get cause() { return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} cannot be over the size of the collection (${iteratorIndex}).`, index,) }, }
-        return { value: collection[iteratorIndex - 1] as T, isForbidden: false, cause: null, }
+            return new OverSizeIndexValueHolder(index, iteratorIndex,)
+        return new ValidValueHolder(collection[iteratorIndex - 1] as T,)
     }
 
     //#endregion -------------------- Methods --------------------
