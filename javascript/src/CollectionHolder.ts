@@ -33,6 +33,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     [index: TemplateOrNumber]: UndefinedOr<T>
 
+    //#region -------------------- Getter methods --------------------
+
     //#region -------------------- Size methods --------------------
 
     /**
@@ -107,6 +109,36 @@ export interface CollectionHolder<out T = unknown, >
     get containsNull(): this["hasNull"]
 
     //#endregion -------------------- Has null methods --------------------
+    //#region -------------------- Has duplicate methods --------------------
+
+    /**
+     * The {@link CollectionHolder} has at least one duplicate value
+     *
+     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     * @see includesDuplicate
+     * @see containsDuplicate
+     */
+    get hasDuplicate(): boolean
+
+    /**
+     * The {@link CollectionHolder} has at least one duplicate value
+     *
+     * @alias hasDuplicate
+     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     */
+    get includesDuplicate(): this["hasDuplicate"]
+
+    /**
+     * The {@link CollectionHolder} has at least one duplicate value
+     *
+     * @alias hasDuplicate
+     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     */
+    get containsDuplicate(): this["hasDuplicate"]
+
+    //#endregion -------------------- Has duplicate methods --------------------
+
+    //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Value methods --------------------
 
     //#region -------------------- Get methods --------------------
