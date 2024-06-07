@@ -1769,7 +1769,7 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Has all methods --------------------
 
-    //#region -------------------- Join methods --------------------
+    //#region -------------------- Join to string methods --------------------
 
     /**
      * Create a new {@link String} from every element in the current {@link CollectionHolder collection} using a {@link separator}
@@ -1778,11 +1778,34 @@ export interface CollectionHolder<out T = unknown, >
      * Note that if the current {@link CollectionHolder collection} is huge,
      * a {@link limit} can be specified followed by a {@link truncated} value.
      *
-     * @param separator The separator for the result ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
-     * @param prefix    The character before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX "["} by default)
-     * @param postfix   The character after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  "]"} by default)
+     * @param separator The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+     * @param prefix    The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
+     * @param postfix   The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
      * @param limit     The maximum amount of values in the join (null by default)
-     * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED "…"} by default)
+     * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
+     * @param transform A callback to transform into a {@link String}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
+     * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.join
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
+     * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
+     * @canReceiveNegativeValue
+     * @deprecated Use joinToString instead. It will be changed in v1.10
+     */
+    join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
+
+    /**
+     * Create a new {@link String} from every element in the current {@link CollectionHolder collection} using a {@link separator}
+     * utilizing the given {@link prefix} and {@link postfix} if supplied.
+     *
+     * Note that if the current {@link CollectionHolder collection} is huge,
+     * a {@link limit} can be specified followed by a {@link truncated} value.
+     *
+     * @param separator The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+     * @param prefix    The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
+     * @param postfix   The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
+     * @param limit     The maximum amount of values in the join (null by default)
+     * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
      * @param transform A callback to transform into a {@link String}
      * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
      * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1791,9 +1814,9 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
      * @canReceiveNegativeValue
      */
-    join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
+    joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
 
-    //#endregion -------------------- Join methods --------------------
+    //#endregion -------------------- Join to string methods --------------------
 
     //#region -------------------- Filter methods --------------------
 
