@@ -35,6 +35,7 @@ export class CollectionHandlerBySet<const out T = unknown,
     #iterator?: IterableIterator<T>
     readonly #size: REFERENCE["size"]
     readonly #isEmpty: boolean
+    #hasNull?: boolean
     #lastIndex?: number
 
     //#endregion -------------------- Fields --------------------
@@ -51,6 +52,44 @@ export class CollectionHandlerBySet<const out T = unknown,
     public get size(): REFERENCE["size"] { return this.#size }
 
     public override get isEmpty(): boolean { return this.#isEmpty }
+
+    public override get hasNull(): boolean {
+        const value = this.#hasNull
+        if (value != null)
+            return value
+
+        // If it is finished, we just loop over the collection to find any null value
+        if (this.hasFinished) {
+            const collection = this._collection
+            let index = this.size
+            while (--index > 0)
+                if (collection[index] == null)
+                    return this.#hasNull = true
+            return this.#hasNull = true
+        }
+
+        // We first try to find any null in the collection from the values already set
+        const collection = this._collection
+        const lastIndex = this._lastIndex
+        let index = -1
+        while (index++ < lastIndex)
+            if (collection[index] == null)
+                return this.#hasNull = true
+
+        // We continue the process from the followed iterator to starting setting to the collection
+        const iterator = this._iterator
+        const size = this.size
+        while (index++ < size)
+            if ((collection[index] = iterator.next().value as T) == null) {
+                this._lastIndex = index
+                return this.#hasNull = true
+            }
+
+        // We are now at the end, and every value had been retrieved and set to the collection
+        this._lastIndex = index
+        this._hasFinished = true
+        return this.#hasNull = false
+    }
 
     public override get hasDuplicate(): false { return false }
 

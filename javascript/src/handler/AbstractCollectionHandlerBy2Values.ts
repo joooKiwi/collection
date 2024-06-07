@@ -25,6 +25,7 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
 
     //#region -------------------- Fields --------------------
 
+    #hasNull?: boolean
     #hasDuplicate?: boolean
 
     #hasFirstValueRetrieved: boolean
@@ -44,6 +45,8 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
     public override get size(): 2 { return 2 }
 
     public override get isEmpty(): false { return false }
+
+    public override get hasNull(): boolean { return this.#hasNull ??= this._first == null || this._second == null }
 
     public override get hasDuplicate(): boolean { return this.#hasDuplicate ??= this._first === this._second }
 

@@ -23,10 +23,16 @@ export abstract class AbstractCollectionHandlerBy1Value<const out T = unknown,
     const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
+    //#region -------------------- Fields --------------------
+
+    #hasNull?: boolean
+
+    //#endregion -------------------- Fields --------------------
     //#region -------------------- Getter methods --------------------
 
     public override get size(): 1 { return 1 }
     public override get isEmpty(): false { return false }
+    public override get hasNull(): boolean { return this.#hasNull ??= this._first == null }
     public override get hasDuplicate(): false { return false }
 
     /** The first value of the {@link _reference reference} */

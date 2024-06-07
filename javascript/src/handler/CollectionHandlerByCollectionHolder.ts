@@ -24,6 +24,8 @@ export class CollectionHandlerByCollectionHolder<const out T = unknown,
 
     public override get isEmpty(): REFERENCE["isEmpty"] { return this._reference.isEmpty }
 
+    public override get hasNull(): REFERENCE["hasNull"] { return this._reference.hasNull }
+
     public override get hasDuplicate(): REFERENCE["hasDuplicate"] { return this._reference.hasDuplicate }
 
 }

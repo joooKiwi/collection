@@ -33,6 +33,8 @@ export class EmptyCollectionHandler
 
     public get isEmpty(): true { return true }
 
+    public get hasNull(): false { return false }
+
     public get hasDuplicate(): false { return false }
 
     public get hasFinished(): true { return true }

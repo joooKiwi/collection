@@ -33,6 +33,7 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
     //#region -------------------- Fields --------------------
 
     #isEmpty?: boolean
+    #hasNull?: boolean
     #hasDuplicate?: boolean
     #amountOfElementRetrieved?: number
 
@@ -47,8 +48,31 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
     public get size(): REFERENCE["size"] { return this._reference.size }
 
     public get isEmpty(): boolean { return this.#isEmpty ??= this._reference.size == 0 }
+    public override get hasNull(): boolean {
+        const value = this.#hasNull
+        if (value != null)
+            return value
 
     public get hasDuplicate(): boolean {
+        // If it is finished, we just loop over the collection to find any null value
+        if (this.hasFinished) {
+            const collection = this._collection
+            let index = this.size
+            while (--index > 0)
+                if (collection[index] == null)
+                    return this.#hasNull = true
+            return this.#hasNull = true
+        }
+
+        // We loop to find by only the minimalist collection
+        const reference = this._reference
+        let index = this.size
+        while (--index > 0)
+            if (reference.get(index,) == null)
+                return this.#hasNull = true
+        return this.#hasNull = false
+    }
+
         if (this.#hasDuplicate != null)
             return this.#hasDuplicate
 

@@ -32,6 +32,7 @@ export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE
 
     readonly #size: number
     readonly #isEmpty: boolean
+    #hasNull?: boolean
     #hasDuplicate?: boolean
     #amountOfElementRetrieved?: number
 
@@ -49,6 +50,30 @@ export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE
     public override get size(): REFERENCE["length"] { return this.#size }
 
     public override get isEmpty(): boolean { return this.#isEmpty }
+
+    public override get hasNull(): boolean {
+        const value = this.#hasNull
+        if (value != null)
+            return value
+
+        // If it is finished, we just loop over the collection to find any null value
+        if (this.hasFinished) {
+            const collection = this._collection
+            let index = this.size
+            while (--index > 0)
+                if (collection[index] == null)
+                    return this.#hasNull = true
+            return this.#hasNull = true
+        }
+
+        // We loop to find by only the array
+        const reference = this._reference
+        let index = this.size
+        while (--index > 0)
+            if (reference[index] == null)
+                return this.#hasNull = true
+        return this.#hasNull = false
+    }
 
     public get hasDuplicate(): boolean {
         if (this.#hasDuplicate != null)

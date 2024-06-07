@@ -36,6 +36,7 @@ export class CollectionHandlerByIterable<const out T = unknown,
     #iterator?: Iterator<T>
 
     #isEmpty?: boolean
+    #hasNull?: boolean
     #hasDuplicate?: boolean
     #size?: number
 
@@ -104,6 +105,43 @@ export class CollectionHandlerByIterable<const out T = unknown,
         this._collection[0] = iteratorValue.value
         this._amountOfElementRetrieved = 1
         return this.#isEmpty = false
+    }
+
+    public override get hasNull(): boolean {
+        const value = this.#hasNull
+        if (value != null)
+            return value
+
+        // If it is finished, we just loop over the collection to find any null value
+        if (this.hasFinished) {
+            const collection = this._collection
+            let index = this.size
+            while (--index > 0)
+                if (collection[index] == null)
+                    return this.#hasNull = true
+            return this.#hasNull = true
+        }
+
+        // We first try to find any null in the collection from the values already set
+        const collection = this._collection
+        const amountOfElementRetrieved = this._amountOfElementRetrieved
+        let index = -1
+        while (index++ < amountOfElementRetrieved)
+            if (collection[index] == null)
+                return this.#hasNull = true
+
+        // We continue the process from the followed iterator to starting setting to the collection
+        const iterator = this._iterator
+        let iteratorResult: IteratorResult<T, void>
+        while (index++, !(iteratorResult = iterator.next()).done)
+            if ((collection[index] = iteratorResult.value as T) == null) {
+                this._amountOfElementRetrieved = index
+                return this.#hasNull = true
+            }
+
+        // We are now at the end, and every value had been retrieved and set to the collection
+        this._amountOfElementRetrieved = index
+        return this.#hasNull = false
     }
 
     public override get hasDuplicate(): boolean {

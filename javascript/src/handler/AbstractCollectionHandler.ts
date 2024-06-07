@@ -44,6 +44,8 @@ export abstract class AbstractCollectionHandler<const out T = unknown,
 
     public abstract get isEmpty(): boolean
 
+    public abstract get hasNull(): boolean
+
     public abstract get hasDuplicate(): boolean
 
     public get hasFinished(): boolean { return this.#hasFinished ??= false }
