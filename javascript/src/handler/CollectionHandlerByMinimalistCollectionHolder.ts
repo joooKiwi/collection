@@ -45,9 +45,10 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    public get size(): REFERENCE["size"] { return this._reference.size }
+    public override get size(): REFERENCE["size"] { return this._reference.size }
 
-    public get isEmpty(): boolean { return this.#isEmpty ??= this._reference.size == 0 }
+    public override get isEmpty(): boolean { return this.#isEmpty ??= this._reference.size == 0 }
+
     public override get hasNull(): boolean {
         const value = this.#hasNull
         if (value != null)
@@ -126,7 +127,7 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
 
     //#endregion -------------------- Getter methods --------------------
 
-    public get(index: number,): ValueHolder<T> {
+    public override get(index: number,): ValueHolder<T> {
         if (this.isEmpty)
             return new EmptyCollectionValueHolder(index,)
 
