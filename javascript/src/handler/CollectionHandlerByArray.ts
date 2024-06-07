@@ -76,8 +76,9 @@ export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE
     }
 
     public get hasDuplicate(): boolean {
-        if (this.#hasDuplicate != null)
-            return this.#hasDuplicate
+        const hasDuplicate = this.#hasDuplicate
+        if (hasDuplicate != null)
+            return hasDuplicate
 
         const reference = this._reference
         const collection = this._collection

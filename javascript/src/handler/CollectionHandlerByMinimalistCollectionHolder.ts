@@ -53,7 +53,6 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
         if (value != null)
             return value
 
-    public get hasDuplicate(): boolean {
         // If it is finished, we just loop over the collection to find any null value
         if (this.hasFinished) {
             const collection = this._collection
@@ -73,8 +72,10 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
         return this.#hasNull = false
     }
 
-        if (this.#hasDuplicate != null)
-            return this.#hasDuplicate
+    public override get hasDuplicate(): boolean {
+        const hasDuplicate = this.#hasDuplicate
+        if (hasDuplicate != null)
+            return hasDuplicate
 
         const reference = this._reference
         const collection = this._collection

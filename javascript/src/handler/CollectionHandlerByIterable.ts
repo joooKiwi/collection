@@ -55,8 +55,9 @@ export class CollectionHandlerByIterable<const out T = unknown,
     //#region -------------------- Getter & setter methods --------------------
 
     public override get size(): number {
-        if (this.#size != null)
-            return this.#size
+        const value = this.#size
+        if (value != null)
+            return value
 
         if (this.hasFinished)
             return this.#size = this._amountOfElementRetrieved + 1
@@ -85,8 +86,9 @@ export class CollectionHandlerByIterable<const out T = unknown,
     }
 
     public override get isEmpty(): boolean {
-        if (this.#isEmpty != null)
-            return this.#isEmpty
+        const value = this.#isEmpty
+        if (value != null)
+            return value
 
         if (this.hasFinished)
             return this.#isEmpty = this._isTheFirstElementRetrieved
@@ -145,8 +147,9 @@ export class CollectionHandlerByIterable<const out T = unknown,
     }
 
     public override get hasDuplicate(): boolean {
-        if (this.#hasDuplicate != null)
-            return this.#hasDuplicate
+        const hasDuplicate = this.#hasDuplicate
+        if (hasDuplicate != null)
+            return hasDuplicate
 
         const reference = this._reference
         const iterator = reference[Symbol.iterator]() as IterableIterator<T>
