@@ -1969,6 +1969,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws {TypeError} There is <b>null</b> or <b>undefined</b> value in the current collection
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
      * @see filterNotNull
+     * @return {this} The current {@link SortableCollectionHolder collection}
      */
     requireNoNulls(): CollectionHolder<NonNullable<T>>
 
