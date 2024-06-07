@@ -7,13 +7,21 @@
 
 import type {Nullable, NullableString, NumericOrObject, TemplateOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                              from "./CollectionHolder"
-import type {CollectionHolderName, IndexWithReturnCallback} from "./CollectionHolder.types"
-import type {EmptyCollectionIterator}                       from "./iterator/EmptyCollectionIterator"
+import type {CollectionHolder}                                                                          from "./CollectionHolder"
+import type {CollectionHolderName, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder} from "./CollectionHolder.types"
+import type {CollectionIterator}                                                                        from "./iterator/CollectionIterator"
+import type {EmptyCollectionIterator}                                                                   from "./iterator/EmptyCollectionIterator"
+import type {MinimalistCollectionHolder}                                                                from "./MinimalistCollectionHolder"
 
-import {EmptyCollectionHolderException} from "./exception/EmptyCollectionHolderException"
-import {CollectionConstants}            from "./CollectionConstants"
-import {prefixAndPostfixOnly}           from "./method/join"
+import {EmptyCollectionHolderException}          from "./exception/EmptyCollectionHolderException"
+import {CollectionConstants}                     from "./CollectionConstants"
+import {isCollectionIterator}                    from "./method/isCollectionIterator"
+import {isCollectionIteratorByStructure}         from "./method/isCollectionIteratorByStructure"
+import {isCollectionHolder}                      from "./method/isCollectionHolder"
+import {isCollectionHolderByStructure}           from "./method/isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}            from "./method/isMinimalistCollectionHolder"
+import {isMinimalistCollectionHolderByStructure} from "./method/isMinimalistCollectionHolderByStructure"
+import {prefixAndPostfixOnly}                    from "./method/joinToString"
 
 /**
  * A {@link CollectionHolder} with no values (as a singleton instance)
@@ -64,6 +72,14 @@ export class EmptyCollectionHolder
 
     //#endregion -------------------- Has null methods --------------------
     //#region -------------------- Has duplicate methods --------------------
+
+    public get hasDuplicate(): false { return false }
+
+    public get includesDuplicate(): false { return false }
+
+    public get containsDuplicate(): false { return false }
+
+    //#endregion -------------------- Has duplicate methods --------------------
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
@@ -161,7 +177,7 @@ export class EmptyCollectionHolder
 
     //#region -------------------- First methods --------------------
 
-    public first(..._: readonly unknown[]): never
+    public first<const S, >(..._: readonly unknown[]): never
     public first() { throw new EmptyCollectionHolderException() }
 
     //#endregion -------------------- First methods --------------------
@@ -209,48 +225,161 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Has methods --------------------
 
-    public hasOne(...values: readonly never[]): false
-    public hasOne(...values: readonly unknown[]): false
-    public hasOne() { return false }
-
-    public has(...values: readonly never[]): false
-    public has(...values: readonly unknown[]): false
+    public has(..._: readonly unknown[]): false
     public has() { return false }
 
-    public includesOne(...values: readonly never[]): false
-    public includesOne(...values: readonly unknown[]): false
-    public includesOne() { return false }
-
-    public includes(...values: readonly never[]): false
-    public includes(...values: readonly unknown[]): false
+    public includes(..._: readonly unknown[]): false
     public includes() { return false }
 
-    public containsOne(...values: readonly never[]): false
-    public containsOne(...values: readonly unknown[]): false
-    public containsOne() { return false }
-
-    public contains(...values: readonly never[]): false
-    public contains(...values: readonly unknown[]): false
+    public contains(..._: readonly unknown[]): false
     public contains() { return false }
 
+    //#endregion -------------------- Has methods --------------------
+    //#region -------------------- Has one methods --------------------
 
-    public hasAll(...values: readonly never[]): false
-    public hasAll(...values: readonly unknown[]): false
-    public hasAll() { return false }
+    public hasOne(..._: readonly unknown[]): false
+    public hasOne() { return false }
 
-    public includesAll(...values: readonly never[]): false
-    public includesAll(...values: readonly unknown[]): false
-    public includesAll() { return false }
+    public includesOne(..._: readonly unknown[]): false
+    public includesOne() { return false }
 
-    public containsAll(...values: readonly never[]): false
-    public containsAll(...values: readonly unknown[]): false
-    public containsAll() { return false }
+    public containsOne(..._: readonly unknown[]): false
+    public containsOne() { return false }
 
-    //#endregion -------------------- Has / includes / contains methods --------------------
-    //#region -------------------- Join methods --------------------
+    //#endregion -------------------- Has one methods --------------------
+    //#region -------------------- Has all methods --------------------
+
+    public hasAll(values: readonly never[],): boolean
+    public hasAll(values: ReadonlySet<never>,): boolean
+    public hasAll(values: CollectionHolder<never>,): boolean
+    public hasAll(values: MinimalistCollectionHolder<never>,): boolean
+    public hasAll(values: CollectionIterator<never>,): boolean
+    public hasAll(values: Iterable<never>,): boolean
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<never>,): boolean
+    public hasAll(values: readonly unknown[],): boolean
+    public hasAll(values: ReadonlySet<unknown>,): boolean
+    public hasAll(values: CollectionHolder,): boolean
+    public hasAll(values: MinimalistCollectionHolder,): boolean
+    public hasAll(values: CollectionIterator,): boolean
+    public hasAll(values: Iterable<unknown>,): boolean
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    public hasAll(...values: readonly never[]): boolean
+    public hasAll(...values: readonly unknown[]): boolean
+    public hasAll() {
+        const values: PossibleIterableArraySetOrCollectionHolder<unknown> = arguments.length == 1 ? arguments[0] : arguments // TODO Change once the version 1.10 is in progress
+        if (values instanceof Array)
+            return values.length == 0
+        if (values instanceof Set)
+            return values.size == 0
+        if (isCollectionHolder(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolder(values,))
+            return values.size == 0
+        if (isCollectionIterator(values,))
+            return values.size == 0
+
+        if (isCollectionHolderByStructure<unknown>(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolderByStructure<unknown>(values,))
+            //@ts-ignore: This is a MinimalistCollectionHolder by structure
+            return values.size == 0
+        if (isCollectionIteratorByStructure<unknown>(values,))
+            return values.size == 0
+
+        return values[Symbol.iterator]().next().done
+    }
+
+    public includesAll(values: readonly never[],): boolean
+    public includesAll(values: ReadonlySet<never>,): boolean
+    public includesAll(values: CollectionHolder<never>,): boolean
+    public includesAll(values: MinimalistCollectionHolder<never>,): boolean
+    public includesAll(values: CollectionIterator<never>,): boolean
+    public includesAll(values: Iterable<never>,): boolean
+    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<never>,): boolean
+    public includesAll(values: readonly unknown[],): boolean
+    public includesAll(values: ReadonlySet<unknown>,): boolean
+    public includesAll(values: CollectionHolder,): boolean
+    public includesAll(values: MinimalistCollectionHolder,): boolean
+    public includesAll(values: CollectionIterator,): boolean
+    public includesAll(values: Iterable<unknown>,): boolean
+    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    public includesAll(...values: readonly never[]): boolean
+    public includesAll(...values: readonly unknown[]): boolean
+    public includesAll() {
+        const values: PossibleIterableArraySetOrCollectionHolder<unknown> = arguments.length == 1 ? arguments[0] : arguments // TODO Change once the version 1.10 is in progress
+        if (values instanceof Array)
+            return values.length == 0
+        if (values instanceof Set)
+            return values.size == 0
+        if (isCollectionHolder(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolder(values,))
+            return values.size == 0
+        if (isCollectionIterator(values,))
+            return values.size == 0
+
+        if (isCollectionHolderByStructure<unknown>(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolderByStructure<unknown>(values,))
+            //@ts-ignore: This is a MinimalistCollectionHolder by structure
+            return values.size == 0
+        if (isCollectionIteratorByStructure<unknown>(values,))
+            return values.size == 0
+
+        return values[Symbol.iterator]().next().done
+    }
+
+    public containsAll(values: readonly never[],): boolean
+    public containsAll(values: ReadonlySet<never>,): boolean
+    public containsAll(values: CollectionHolder<never>,): boolean
+    public containsAll(values: MinimalistCollectionHolder<never>,): boolean
+    public containsAll(values: CollectionIterator<never>,): boolean
+    public containsAll(values: Iterable<never>,): boolean
+    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<never>,): boolean
+    public containsAll(values: readonly unknown[],): boolean
+    public containsAll(values: ReadonlySet<unknown>,): boolean
+    public containsAll(values: CollectionHolder,): boolean
+    public containsAll(values: MinimalistCollectionHolder,): boolean
+    public containsAll(values: CollectionIterator,): boolean
+    public containsAll(values: Iterable<unknown>,): boolean
+    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    public containsAll(...values: readonly never[]): boolean
+    public containsAll(...values: readonly unknown[]): boolean
+    public containsAll() {
+        const values: PossibleIterableArraySetOrCollectionHolder<unknown> = arguments.length == 1 ? arguments[0] : arguments // TODO Change once the version 1.10 is in progress
+        if (values instanceof Array)
+            return values.length == 0
+        if (values instanceof Set)
+            return values.size == 0
+        if (isCollectionHolder(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolder(values,))
+            return values.size == 0
+        if (isCollectionIterator(values,))
+            return values.size == 0
+
+        if (isCollectionHolderByStructure<unknown>(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolderByStructure<unknown>(values,))
+            //@ts-ignore: This is a MinimalistCollectionHolder by structure
+            return values.size == 0
+        if (isCollectionIteratorByStructure<unknown>(values,))
+            return values.size == 0
+
+        return values[Symbol.iterator]().next().done
+    }
+
+    //#endregion -------------------- Has all methods --------------------
+
+    //#region -------------------- Join to string methods --------------------
 
     public join(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: readonly unknown[]): string
     public join(_separator?: unknown, prefix?: NullableString, postfix?: NullableString,) {
+        return prefixAndPostfixOnly(prefix, postfix,)
+    }
+
+    public joinToString(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: readonly unknown[]): string
+    public joinToString(_separator?: unknown, prefix?: NullableString, postfix?: NullableString,) {
         return prefixAndPostfixOnly(prefix, postfix,)
     }
 
@@ -279,6 +408,8 @@ export class EmptyCollectionHolder
     public filterIndexedNot<const S, >(..._: readonly unknown[]): this
     public filterIndexedNot() { return this }
 
+    public filterNotIndexed<const S, >(..._: readonly unknown[]): this
+    public filterNotIndexed() { return this }
 
     //#endregion -------------------- Filter not indexed methods --------------------
     //#region -------------------- Filter not null methods --------------------
