@@ -671,7 +671,77 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- None methods --------------------
 
-    //#region -------------------- Has one methods --------------------
+    //#region -------------------- Has methods --------------------
+
+    /**
+     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
+     *
+     * @param value The value to compare
+     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
+     * @see includes
+     * @see contains
+     * @see ReadonlyArray.includes
+     * @see ReadonlySet.has
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
+     */
+    has(value: T,): boolean
+
+    /**
+     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
+     *
+     * @param value The value to compare
+     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
+     * @see includes
+     * @see contains
+     * @see ReadonlyArray.includes
+     * @see ReadonlySet.has
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
+     */
+    has(value: unknown,): boolean
+
+    //#region -------------------- Has methods (aliases) --------------------
+
+    /**
+     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
+     *
+     * @param value The value to compare
+     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
+     * @alias has
+     */
+    includes(value: T,): boolean
+
+    /**
+     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
+     *
+     * @param value The value to compare
+     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
+     * @alias has
+     */
+    includes(value: unknown,): boolean
+
+
+    /**
+     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
+     *
+     * @param value The value to compare
+     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
+     * @alias has
+     */
+    contains(value: T,): boolean
+
+    /**
+     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
+     *
+     * @param value The value to compare
+     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
+     * @alias has
+     */
+    contains(value: unknown,): boolean
+
+    //#endregion -------------------- Has methods (aliases) --------------------
+    //#region -------------------- Has methods (deprecated) --------------------
 
     /**
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
@@ -684,31 +754,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
-     */
-    hasOne(...values: readonly T[]): boolean
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see ReadonlyArray.includes
-     * @see ReadonlySet.has
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
-     */
-    hasOne(...values: readonly unknown[]): boolean
-
-    //#region -------------------- Has one methods (aliases) --------------------
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
+     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
      */
     has(...values: readonly T[]): boolean
 
@@ -717,7 +763,13 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
+     * @see includesOne
+     * @see containsOne
+     * @see ReadonlyArray.includes
+     * @see ReadonlySet.has
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
+     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
      */
     has(...values: readonly unknown[]): boolean
 
@@ -727,26 +779,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
-     */
-    includesOne(...values: readonly T[]): boolean
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
-     */
-    includesOne(...values: readonly unknown[]): boolean
-
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
+     * @alias has
+     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
      */
     includes(...values: readonly T[]): boolean
 
@@ -755,7 +789,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
+     * @alias has
+     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
      */
     includes(...values: readonly unknown[]): boolean
 
@@ -765,7 +800,476 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias has
+     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
+     */
+    contains(...values: readonly T[]): boolean
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias has
+     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
+     */
+    contains(...values: readonly unknown[]): boolean
+
+    //#endregion -------------------- Has methods (deprecated) --------------------
+
+    //#endregion -------------------- Has methods --------------------
+    //#region -------------------- Has one methods --------------------
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: readonly T[],): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: ReadonlySet<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: CollectionHolder<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: MinimalistCollectionHolder<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: CollectionIterator<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: Iterable<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     * @typescriptDefinition
+     */
+    hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: readonly unknown[],): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: ReadonlySet<unknown>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: CollectionHolder,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: MinimalistCollectionHolder,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: CollectionIterator,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     * @typescriptDefinition
+     */
+    hasOne(values: Iterable<unknown>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @see includesOne
+     * @see containsOne
+     */
+    hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+
+    //#region -------------------- Has one methods (aliases) --------------------
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
      * @alias hasOne
+     */
+    includesOne(values: readonly T[],): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: ReadonlySet<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: CollectionHolder<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: MinimalistCollectionHolder<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: CollectionIterator<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: Iterable<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     * @typescriptDefinition
+     */
+    includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: readonly unknown[],): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: ReadonlySet<unknown>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: CollectionHolder,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: MinimalistCollectionHolder,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: CollectionIterator,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    includesOne(values: Iterable<unknown>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     * @typescriptDefinition
+     */
+    includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: readonly T[],): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: ReadonlySet<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: CollectionHolder<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: MinimalistCollectionHolder<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: CollectionIterator<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: Iterable<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     * @typescriptDefinition
+     */
+    containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: readonly unknown[],): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: ReadonlySet<unknown>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: CollectionHolder,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: MinimalistCollectionHolder,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: CollectionIterator,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     */
+    containsOne(values: Iterable<unknown>,): boolean
+
+    /**
+     * Tell whenever at least one value in the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
+     * @alias hasOne
+     * @typescriptDefinition
+     */
+    containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+
+    //#endregion -------------------- Has one methods (aliases) --------------------
+    //#region -------------------- Has one methods (deprecated) --------------------
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
+     */
+    hasOne(...values: readonly T[]): boolean
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
+     */
+    hasOne(...values: readonly unknown[]): boolean
+
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasOne
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
+     */
+    includesOne(...values: readonly T[]): boolean
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasOne
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
+     */
+    includesOne(...values: readonly unknown[]): boolean
+
+    /**
+     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasOne
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
      */
     containsOne(...values: readonly T[]): boolean
 
@@ -775,43 +1279,440 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias hasOne
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
      */
     containsOne(...values: readonly unknown[]): boolean
 
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
-     */
-    contains(...values: readonly T[]): boolean
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
-     */
-    contains(...values: readonly unknown[]): boolean
-
-    //#endregion -------------------- Has one methods (aliases) --------------------
+    //#endregion -------------------- Has one methods (deprecated) --------------------
 
     //#endregion -------------------- Has one methods --------------------
     //#region -------------------- Has all methods --------------------
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: readonly T[],): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: ReadonlySet<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: CollectionHolder<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: MinimalistCollectionHolder<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: CollectionIterator<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: Iterable<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @typescriptDefinition
+     */
+    hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: readonly unknown[],): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: ReadonlySet<unknown>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: CollectionHolder,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: MinimalistCollectionHolder,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: CollectionIterator,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     */
+    hasAll(values: Iterable<unknown>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @see includesOne
+     * @see containsOne
+     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @typescriptDefinition
+     */
+    hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+
+    //#region -------------------- Has all methods (aliases) --------------------
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: readonly T[],): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: ReadonlySet<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: CollectionHolder<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: MinimalistCollectionHolder<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: CollectionIterator<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: Iterable<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     * @typescriptDefinition
+     */
+    includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: readonly unknown[],): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: ReadonlySet<unknown>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: CollectionHolder,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: MinimalistCollectionHolder,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: CollectionIterator,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    includesAll(values: Iterable<unknown>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     * @typescriptDefinition
+     */
+    includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: readonly T[],): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: ReadonlySet<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: CollectionHolder<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: MinimalistCollectionHolder<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: CollectionIterator<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: Iterable<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     * @typescriptDefinition
+     */
+    containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: readonly unknown[],): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: ReadonlySet<unknown>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: CollectionHolder,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     * @typescriptDefinition
+     */
+    containsAll(values: MinimalistCollectionHolder,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: CollectionIterator,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     */
+    containsAll(values: Iterable<unknown>,): boolean
+
+    /**
+     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
+     * @alias hasAll
+     * @typescriptDefinition
+     */
+    containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+
+    //#endregion -------------------- Has all methods (aliases) --------------------
+    //#region -------------------- Has all methods (deprecated) --------------------
 
     /**
      * Tell that every value received is in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
-     * @see includesAll
-     * @see containsAll
-     * @see ReadonlyArray.includes
-     * @see ReadonlySet.has
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
      */
     hasAll(...values: readonly T[]): boolean
 
@@ -820,22 +1721,17 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
-     * @see includesAll
-     * @see containsAll
-     * @see ReadonlyArray.includes
-     * @see ReadonlySet.has
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
      */
     hasAll(...values: readonly unknown[]): boolean
 
-    //#region -------------------- Has all methods (aliases) --------------------
 
     /**
      * Tell that every value received is in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
-     * @alias hasAll
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
      */
     includesAll(...values: readonly T[]): boolean
 
@@ -844,7 +1740,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
-     * @alias hasAll
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
      */
     includesAll(...values: readonly unknown[]): boolean
 
@@ -855,6 +1751,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      * @alias hasAll
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
      */
     containsAll(...values: readonly T[]): boolean
 
@@ -864,10 +1761,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
      * @alias hasAll
+     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
      */
     containsAll(...values: readonly unknown[]): boolean
 
-    //#endregion -------------------- Has all methods (aliases) --------------------
+    //#endregion -------------------- Has all methods (deprecated) --------------------
 
     //#endregion -------------------- Has all methods --------------------
 
