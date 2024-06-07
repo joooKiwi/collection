@@ -54,6 +54,8 @@ export class CollectionHandlerBySetOf2<const out T = unknown,
 
     protected override get _second(): T { return this.#second.value }
 
+    public override get hasDuplicate(): false { return false }
+
     //#endregion -------------------- Getter methods --------------------
 
 }
