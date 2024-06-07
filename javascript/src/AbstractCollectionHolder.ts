@@ -67,6 +67,8 @@ import {toWeakSet}                                 from "./method/toWeakSet"
 
 /**
  * A definition of a {@link CollectionHolder} to have a common ancestor.
+ * No state or reference is held in this instance.
+ * It only uses the extension function for the methods implementation
  *
  * @note This class should be inherited if new classes are being made to be more usable by the tools
  * @see EmptyCollectionHolder
@@ -81,15 +83,6 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     [index: TemplateOrNumber]: UndefinedOr<T>
 
-    #objectValuesMap?: ReadonlyMap<T, ObjectOf<T>>
-    #array?: readonly T[]
-    #set?: ReadonlySet<T>
-    #weakSet?: Readonly<WeakSet<ObjectOf<T>>>
-    #map?: ReadonlyMap<number, T>
-
-    #isEmpty?: boolean
-    #hasNull?: boolean
-
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
@@ -100,27 +93,17 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     //#region -------------------- Size methods --------------------
 
-    public get length(): this["size"] {
-        return this.size
-    }
+    public get length(): this["size"] { return this.size }
+    public get count(): this["size"] { return this.size }
 
-    public get count(): this["size"] {
-        return this.size
-    }
+    public get isEmpty(): boolean { return this.size == 0 }
 
-
-    public get isEmpty(): boolean {
-        return this.#isEmpty ??= this.size == 0
-    }
-
-    public get isNotEmpty(): boolean {
-        return !this.isEmpty
-    }
+    public get isNotEmpty(): boolean { return !this.isEmpty }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Has null methods --------------------
 
-    public get hasNull(): boolean { return this.#hasNull ??= hasNullByCollectionHolder(this,) }
+    public get hasNull(): boolean { return hasNullByCollectionHolder(this,) }
     public get includesNull(): this["hasNull"] { return this.hasNull }
     public get containsNull(): this["hasNull"] { return this.hasNull }
 
@@ -548,7 +531,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Conversion methods (array) --------------------
 
     public toArray(): readonly T[] {
-        return this.#array ??= toArrayByCollectionHolder(this,)
+        return toArrayByCollectionHolder<T>(this,)
     }
 
     public toMutableArray(): T[] {
@@ -559,7 +542,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Conversion methods (set) --------------------
 
     public toSet(): ReadonlySet<T> {
-        return this.#set ??= toSetByCollectionHolder(this,)
+        return toSetByCollectionHolder<T>(this,)
     }
 
     public toMutableSet(): Set<T> {
@@ -570,7 +553,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Conversion methods (weak set) --------------------
 
     public toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
-        return this.#weakSet ??= toWeakSet(this,)
+        return toWeakSet(this,)
     }
 
     public toMutableWeakSet(): WeakSet<ObjectOf<T>> {
@@ -581,7 +564,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Conversion methods (map) --------------------
 
     public toMap(): ReadonlyMap<number, T> {
-        return this.#map ??= toMapByCollectionHolder(this,)
+        return toMapByCollectionHolder<T>(this,)
     }
 
     public toMutableMap(): Map<number, T> {
