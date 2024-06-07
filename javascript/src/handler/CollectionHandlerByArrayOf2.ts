@@ -29,13 +29,13 @@ export class CollectionHandlerByArrayOf2<const out T = unknown,
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(collection: COLLECTION, reference: REFERENCE,) {
-        super(collection, reference,)
+    public constructor(collection: COLLECTION, reference: readonly T[],) {
+        super(collection, reference as REFERENCE,)
         if (reference.length !== 2)
             throw new TypeError(`The array received in the "${this.constructor.name}" cannot have a different size than 2.`,)
 
-        this.#first = reference[0]
-        this.#second = reference[1]
+        this.#first = reference[0] as T
+        this.#second = reference[1] as T
     }
 
     //#endregion -------------------- Constructor --------------------
