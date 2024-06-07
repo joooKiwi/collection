@@ -1856,7 +1856,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.filter
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
-     * @see filterIndexedNot
+     * @see filterNotIndexed
      * @typescriptDefinition
      */
     filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<T>
@@ -1869,7 +1869,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.filter
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
-     * @see filterIndexedNot
+     * @see filterNotIndexed
      */
     filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
@@ -1902,7 +1902,26 @@ export interface CollectionHolder<out T = unknown, >
     filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
     //#endregion -------------------- Filter not methods --------------------
-    //#region -------------------- Filter indexed not methods --------------------
+    //#region -------------------- Filter not indexed methods --------------------
+
+    /**
+     * Get a new {@link CollectionHolder}
+     * not matching the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @deprecated Use filterNotIndexed instead. It will be changed in v1.10
+     */
+    filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<T>
+
+    /**
+     * Get a new {@link CollectionHolder}
+     * not matching the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @deprecated Use filterNotIndexed instead. It will be changed in v1.10
+     */
+    filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+
 
     /**
      * Get a new {@link CollectionHolder}
@@ -1915,7 +1934,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see filterIndexed
      * @typescriptDefinition
      */
-    filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<T>
+    filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<T>
 
     /**
      * Get a new {@link CollectionHolder}
@@ -1927,9 +1946,9 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
      * @see filterIndexed
      */
-    filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
-    //#endregion -------------------- Filter indexed not methods --------------------
+    //#endregion -------------------- Filter not indexed methods --------------------
     //#region -------------------- Filter not null methods --------------------
 
     /**
