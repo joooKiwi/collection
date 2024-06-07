@@ -690,19 +690,15 @@ export class GenericCollectionHolder<const out T = unknown,
     //#region -------------------- Getter methods --------------------
 
     public override get size(): number { return this.#size }
-
     public override get isEmpty(): boolean { return this.#isEmpty }
-
-
-    public override get hasNull(): boolean {
-        return this.#hasNull ??= hasNull(this,)
-    }
+    public override get hasNull(): boolean { return this.#hasNull ??= super.hasNull }
+    public override get hasDuplicate(): boolean { return this.#hasDuplicate ??= super.hasDuplicate }
 
     /** The iterable received in the constructor */
     protected get _reference(): REFERENCE { return this.#reference }
 
     /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder collection} */
-    protected override get _array(): readonly T[] { return this.#array }
+    protected get _array(): readonly T[] { return this.#array }
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
@@ -775,25 +771,11 @@ export class GenericCollectionHolder<const out T = unknown,
         return this[indexToRetrieve] as T
     }
 
-    public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
-        return this.#objectValuesMap ??= objectValuesMap(this,)
-    }
-
-    public override toArray(): readonly T[] {
-        return this.#array
-    }
-
-    public override toSet(): ReadonlySet<T> {
-        return this.#set ??= toSet(this,)
-    }
-
-    public override toArray(): readonly T[] {
-        return this.#array
-    }
-
-    public override toMap(): ReadonlyMap<number, T> {
-        return this.#map ??= toMap(this,)
-    }
+    public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> { return this.#objectValuesMap ??= super.objectValuesMap }
+    public override toArray(): readonly T[] { return this.#array }
+    public override toSet(): ReadonlySet<T> { return this.#set ??= super.toSet() }
+    public override toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> { return this.#weakSet ??= super.toWeakSet() }
+    public override toMap(): ReadonlyMap<number, T> { return this.#map ??= super.toMap() }
 
 
     //#endregion -------------------- Methods --------------------
