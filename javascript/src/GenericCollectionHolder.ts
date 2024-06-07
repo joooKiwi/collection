@@ -5,30 +5,28 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {NullableNumber, NullOr} from "@joookiwi/type"
+import type {NullOr} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                from "./CollectionHolder"
-import type {IndexWithReturnCallback, ObjectOf, PossibleIterableOrCollection} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                      from "./MinimalistCollectionHolder"
-import type {IterableWithCount}                                               from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                              from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                        from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                              from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                            from "./CollectionHolder"
+import type {IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                                                                  from "./MinimalistCollectionHolder"
+import type {IterableWithCount}                                                                                           from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                                                                          from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                                                                    from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                                                            from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                                                                          from "./iterator/CollectionIterator"
 
 import {AbstractCollectionHolder}                  from "./AbstractCollectionHolder"
 import {CollectionConstants}                       from "./CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
-import {hasNull}                                   from "./method/hasNull"
-import {isCollectionHolder}                        from "./method/isCollectionHolder"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
+import {isCollectionIteratorByStructure}           from "./method/isCollectionIteratorByStructure"
+import {isCollectionHolder}                        from "./method/isCollectionHolder"
+import {isCollectionHolderByStructure}             from "./method/isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
-import {objectValuesMap}                           from "./method/objectValuesMap"
-import {toMap}                                     from "./method/toMap"
-import {toSet}                                     from "./method/toSet"
-import {toWeakSet}                                 from "./method/toWeakSet"
+import {isMinimalistCollectionHolderByStructure}   from "./method/isMinimalistCollectionHolderByStructure"
 
 /**
  * A {@link CollectionHolder} having the values eagerly retrieved.
@@ -36,12 +34,14 @@ import {toWeakSet}                                 from "./method/toWeakSet"
  * Meaning that every value is retrieved during the construction,
  * and it will never change after the initialization.
  *
- * But it does not make it {@link Object.isFrozen frozen}
+ * But it is not {@link Object.isFrozen frozen} to ensure
+ * the children can do their initialization.
  *
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
  */
-export class GenericCollectionHolder<const out T = unknown, const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>, >
+export class GenericCollectionHolder<const out T = unknown,
+    const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -57,6 +57,7 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
     #map?: ReadonlyMap<number, T>
 
     #hasNull?: boolean
+    #hasDuplicate?: boolean
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -93,11 +94,11 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
 
         if (reference instanceof Array) {
             const size = this.#size = reference.length
-            //#region -------------------- Initialization (empty) --------------------
 
-            if (size == 0) {
-                this.#isEmpty = true
-                this.#hasNull = false
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = size == 0) {
+                this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
                 this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
@@ -105,22 +106,31 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
                 return
             }
 
-            //#endregion -------------------- Initialization (empty) --------------------
-            //#region -------------------- Initialization (non-empty) --------------------
-
-            this.#isEmpty = false
-
+            //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
                 const value = this[0] = reference[0]
                 this.#hasNull = value == null
+                this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
                 return
             }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
-            //#region -------------------- Initialization (size = over 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const firstValue = this[0] = reference[0]
+                const secondValue = this[1] = reference[1]
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
 
             const array = new Array<T>(size,)
             let index = size
@@ -129,17 +139,16 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
             this.#array = Object.freeze(array,)
             return
 
-            //#endregion -------------------- Initialization (size = over 1) --------------------
-
-            //#endregion -------------------- Initialization (non-empty) --------------------
+            //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
         if (reference instanceof Set) {
+            this.#hasDuplicate = false
             const size = this.#size = reference.size
-            //#region -------------------- Initialization (empty) --------------------
 
-            if (size == 0) {
-                this.#isEmpty = true
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = size == 0) {
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
@@ -148,42 +157,48 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
                 return
             }
 
-            //#endregion -------------------- Initialization (empty) --------------------
-            //#region -------------------- Initialization (non-empty) --------------------
-
-            this.#isEmpty = false
-
+            //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                const value = this[0] = reference[Symbol.iterator]().next().value
+                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, void>).next().value as T
                 this.#hasNull = value == null
                 this.#array = Object.freeze([value,],)
                 return
             }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
-            //#region -------------------- Initialization (size = over 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+                const firstValue = this[0] = iterator.next().value as T
+                const secondValue = this[1] = iterator.next().value as T
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
 
             const array = new Array<T>(size,)
-            const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            const iterator = reference[Symbol.iterator]() as Iterator<T, void>
             let index = -1
             while (++index < size)
-                this[index] = array[index] = iterator.next().value
+                this[index] = array[index] = iterator.next().value as T
             this.#array = Object.freeze(array,)
             return
 
-            //#endregion -------------------- Initialization (size = over 1) --------------------
-
-            //#endregion -------------------- Initialization (non-empty) --------------------
+            //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
         if (isCollectionHolder<T>(reference,)) {
-            const size = this.#size = reference.size
-            //#region -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (size = 0) --------------------
 
             if (this.#isEmpty = reference.isEmpty) {
-                this.#hasNull = false
+                this.#size = 0
+                this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
                 this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
@@ -191,39 +206,50 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
                 return
             }
 
-            //#endregion -------------------- Initialization (empty) --------------------
-            //#region -------------------- Initialization (non-empty) --------------------
-
+            //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
+            const size = this.#size = reference.size
             if (size == 1) {
-                const value = this[0] = reference.get(0,)
+                const value = this[0] = reference.first()
                 this.#hasNull = value == null
+                this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
                 return
             }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
-            //#region -------------------- Initialization (size = over 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
 
-            const array = [] as T[]
+            if (size == 2) {
+                const firstValue = this[0] = reference.first()
+                const secondValue = this[1] = reference.last()
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
                 this[index] = array[index] = reference.get(index,)
             this.#array = Object.freeze(array,)
             return
 
-            //#endregion -------------------- Initialization (size = over 1) --------------------
-
-            //#endregion -------------------- Initialization (non-empty) --------------------
+            //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
         if (isMinimalistCollectionHolder<T>(reference,)) {
             const size = this.#size = reference.size
-            //#region -------------------- Initialization (empty) --------------------
+
+            //#region -------------------- Initialization (size = 0) --------------------
 
             if (this.#isEmpty = size == 0) {
-                this.#hasNull = false
+                this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
                 this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
@@ -231,39 +257,48 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
                 return
             }
 
-            //#endregion -------------------- Initialization (empty) --------------------
-            //#region -------------------- Initialization (non-empty) --------------------
-
+            //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
                 const value = this[0] = reference.get(0,)
                 this.#hasNull = value == null
+                this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
                 return
             }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
-            //#region -------------------- Initialization (size = over 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
 
-            const array = [] as T[]
+            if (size == 2) {
+                const firstValue = this[0] = reference.get(0,)
+                const secondValue = this[1] = reference.get(1,)
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
                 this[index] = array[index] = reference.get(index,)
             this.#array = Object.freeze(array,)
             return
 
-            //#endregion -------------------- Initialization (size = over 1) --------------------
-
-            //#endregion -------------------- Initialization (non-empty) --------------------
+            //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
         if (isCollectionIterator<T>(reference,)) {
-            const size = this.#size = reference.size
-            //#region -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = size == 0) {
-                this.#hasNull = false
+            if (this.#isEmpty = reference.hasNext) {
+                this.#size = 0
+                this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
                 this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
@@ -271,44 +306,49 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
                 return
             }
 
-            //#endregion -------------------- Initialization (empty) --------------------
-            //#region -------------------- Initialization (non-empty) --------------------
-
+            //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
+            const size = this.#size = reference.size
             if (size == 1) {
                 const value = this[0] = reference.nextValue
                 this.#hasNull = value == null
+                this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
                 return
             }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
-            //#region -------------------- Initialization (size = over 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
 
-            const array = [] as T[]
-            let index = -1
-            while (++index < size)
+            if (size == 2) {
+                const firstValue = this[0] = reference.nextValue
+                const secondValue = this[1] = reference.nextValue
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            let index = size
+            while (index-- > 0)
                 this[index] = array[index] = reference.nextValue
             this.#array = Object.freeze(array,)
             return
 
-            //#endregion -------------------- Initialization (size = over 1) --------------------
-
-            //#endregion -------------------- Initialization (non-empty) --------------------
+            //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        sizeIf: if ("size" in reference || "length" in reference || "count" in reference) {
-            // @ts-ignore: We only retrieve the nullable number
-            const size = (reference?.size ?? reference?.length ?? reference?.count) as NullableNumber
-            if (size == null) // No size is present, we continue as a normal iterable
-                break sizeIf
-            this.#size = size
+        if (isCollectionHolderByStructure<T>(reference,)) {
+            //#region -------------------- Initialization (size = 0) --------------------
 
-            //#region -------------------- Initialization (empty) --------------------
-
-            if (this.#isEmpty = size == 0) {
-                this.#hasNull = false
+            if (this.#isEmpty = reference.isEmpty) {
+                this.#size = 0
+                this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
                 this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
@@ -316,54 +356,326 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
                 return
             }
 
-            //#endregion -------------------- Initialization (empty) --------------------
-            //#region -------------------- Initialization (non-empty) --------------------
-
+            //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
+            const size = this.#size = reference.size
             if (size == 1) {
-                const value = this[0] = reference[Symbol.iterator]().next().value
+                const value = this[0] = reference.first()
                 this.#hasNull = value == null
+                this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
+                return
             }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
-            //#region -------------------- Initialization (size = over 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
 
-            const array = [] as T[]
-            const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-            let index = -1
-            let iteratorResult: IteratorResult<T, T>
-            while (++index, !(iteratorResult = iterator.next()).done)
-                this[index] = array[index] = iteratorResult.value
+            if (size == 2) {
+                const firstValue = this[0] = reference.first()
+                const secondValue = this[1] = reference.last()
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            let index = size
+            while (index-- > 0)
+                this[index] = array[index] = reference.get(index,)
             this.#array = Object.freeze(array,)
             return
 
-            //#endregion -------------------- Initialization (size = over 1) --------------------
-
-            //#endregion -------------------- Initialization (non-empty) --------------------
+            //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-        let iteratorResult = iterator.next() as IteratorResult<T, T>
-        //#region -------------------- Initialization (empty) --------------------
+        if (isMinimalistCollectionHolderByStructure<T>(reference,)) {
+            const size = this.#size = reference.size
 
-        if (iteratorResult.done) {
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = size == 0) {
+                this.#hasNull = this.#hasDuplicate = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = reference.get(0,)
+                this.#hasNull = value == null
+                this.#hasDuplicate = false
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const firstValue = this[0] = reference.get(0,)
+                const secondValue = this[1] = reference.get(1,)
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            let index = size
+            while (index-- > 0)
+                this[index] = array[index] = reference.get(index,)
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        if (isCollectionIteratorByStructure<T>(reference,)) {
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = reference.hasNext) {
+                this.#size = 0
+                this.#hasNull = this.#hasDuplicate = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            const size = this.#size = reference.size
+            if (size == 1) {
+                const value = this[0] = reference.nextValue
+                this.#hasNull = value == null
+                this.#hasDuplicate = false
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const firstValue = this[0] = reference.nextValue
+                const secondValue = this[1] = reference.nextValue
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            let index = size
+            while (index-- > 0)
+                this[index] = array[index] = reference.nextValue
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        sizeIf: if ("size" in reference) {
+            const size = reference.size
+            if (size == null) // No size is present, we continue as a normal iterable
+                break sizeIf
+            this.#size = size
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = size == 0) {
+                this.#hasNull = this.#hasDuplicate = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, void>).next().value as T
+                this.#hasNull = value == null
+                this.#hasDuplicate = false
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+                const firstValue = this[0] = iterator.next().value as T
+                const secondValue = this[1] = iterator.next().value as T
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+            let index = -1
+            while (++index < size)
+                this[index] = array[index] = iterator.next().value as T
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        lengthIf: if ("length" in reference) {
+            const size = reference.length
+            if (size == null) // No size is present, we continue as a normal iterable
+                break lengthIf
+            this.#size = size
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = size == 0) {
+                this.#hasNull = this.#hasDuplicate = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, void>).next().value as T
+                this.#hasNull = value == null
+                this.#hasDuplicate = false
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+                const firstValue = this[0] = iterator.next().value as T
+                const secondValue = this[1] = iterator.next().value as T
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+            let index = -1
+            while (++index < size)
+                this[index] = array[index] = iterator.next().value as T
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        countIf: if ("count" in reference) {
+            const size = reference.count
+            if (size == null) // No size is present, we continue as a normal iterable
+                break countIf
+            this.#size = size
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = size == 0) {
+                this.#hasNull = this.#hasDuplicate = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, void>).next().value as T
+                this.#hasNull = value == null
+                this.#hasDuplicate = false
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+                const firstValue = this[0] = iterator.next().value as T
+                const secondValue = this[1] = iterator.next().value as T
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+            let index = -1
+            while (++index < size)
+                this[index] = array[index] = iterator.next().value as T
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+        let iteratorResult = iterator.next()
+
+        //#region -------------------- Initialization (size = 0) --------------------
+
+        if (this.#isEmpty = iteratorResult.done === true) {
             this.#size = 0
-            this.#isEmpty = true
-            this.#hasNull = false
+            this.#hasNull = this.#hasDuplicate = false
             this.#array = CollectionConstants.EMPTY_ARRAY
             this.#set = CollectionConstants.EMPTY_SET
             this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
             this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
             return
         }
-
-        //#endregion -------------------- Initialization (empty) --------------------
-        //#region -------------------- Initialization (non-empty) --------------------
+        //#endregion -------------------- Initialization (size = 0) --------------------
+        //#region -------------------- Initialization (size = over 0) --------------------
 
         const array = [] as T[]
-        this.#isEmpty = false
         this[0] = array[0] = iteratorResult.value
         let size = 0
         while (++size, !(iteratorResult = iterator.next()).done)
@@ -371,7 +683,7 @@ export class GenericCollectionHolder<const out T = unknown, const out REFERENCE 
         this.#size = size
         this.#array = Object.freeze(array,)
 
-        //#endregion -------------------- Initialization (non-empty) --------------------
+        //#endregion -------------------- Initialization (size = over 0) --------------------
     }
 
     //#endregion -------------------- Constructor --------------------
