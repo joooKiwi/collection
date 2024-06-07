@@ -70,7 +70,7 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Value methods --------------------
 
-    //#region -------------------- Get / at methods --------------------
+    //#region -------------------- Get methods --------------------
 
     public get(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
     public get(index?: Nullable<NumericOrObject>,): never {
@@ -87,6 +87,8 @@ export class EmptyCollectionHolder
         throw new EmptyCollectionHolderException(null, index,)
     }
 
+    //#endregion -------------------- Get methods --------------------
+    //#region -------------------- Get or else methods --------------------
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
@@ -106,6 +108,8 @@ export class EmptyCollectionHolder
         return defaultValue(index,)
     }
 
+    //#endregion -------------------- Get or else methods --------------------
+    //#region -------------------- Get or null methods --------------------
 
     public getOrNull(..._: readonly unknown[]): null
     public getOrNull() { return null }
@@ -116,66 +120,94 @@ export class EmptyCollectionHolder
     public elementAtOrNull(..._: readonly unknown[]): null
     public elementAtOrNull() { return null }
 
-    //#endregion -------------------- Get / at methods --------------------
+    //#endregion -------------------- Get or null methods --------------------
+
     //#region -------------------- Index of methods --------------------
 
     public indexOf(..._: readonly unknown[]): null
     public indexOf() { return null }
 
+    //#endregion -------------------- Index of methods --------------------
+    //#region -------------------- Last index of methods --------------------
 
     public lastIndexOf(..._: readonly unknown[]): null
     public lastIndexOf() { return null }
 
+    //#endregion -------------------- Last index of methods --------------------
+    //#region -------------------- Index of first methods --------------------
 
     public indexOfFirst(..._: readonly unknown[]): null
     public indexOfFirst() { return null }
 
+    //#endregion -------------------- Index of first methods --------------------
+    //#region -------------------- Index of first indexed methods --------------------
+
     public indexOfFirstIndexed(..._: readonly unknown[]): null
     public indexOfFirstIndexed() { return null }
 
+    //#endregion -------------------- Index of first indexed methods --------------------
+    //#region -------------------- Index of last methods --------------------
 
     public indexOfLast(..._: readonly unknown[]): null
     public indexOfLast() { return null }
 
+    //#endregion -------------------- Index of last methods --------------------
+    //#region -------------------- Index of last indexed methods --------------------
+
     public indexOfLastIndexed(..._: readonly unknown[]): null
     public indexOfLastIndexed() { return null }
 
-    //#endregion -------------------- Index of methods --------------------
+    //#endregion -------------------- Index of last indexed methods --------------------
+
     //#region -------------------- First methods --------------------
 
     public first(..._: readonly unknown[]): never
     public first() { throw new EmptyCollectionHolderException() }
 
-    public firstOrNull(..._: readonly unknown[]): null
+    //#endregion -------------------- First methods --------------------
+    //#region -------------------- First or null methods --------------------
+
+    public firstOrNull<const S, >(..._: readonly unknown[]): null
     public firstOrNull() { return null }
 
-    //#endregion -------------------- First methods --------------------
+    //#endregion -------------------- First or null methods --------------------
+
     //#region -------------------- Last methods --------------------
 
     public last<const S, >(..._: readonly unknown[]): never
     public last() { throw new EmptyCollectionHolderException() }
 
+    //#endregion -------------------- Last methods --------------------
+    //#region -------------------- Last or null methods --------------------
+
     public lastOrNull<const S, >(..._: readonly unknown[]): null
     public lastOrNull() { return null }
 
-    //#endregion -------------------- Last methods --------------------
+    //#endregion -------------------- Last or null methods --------------------
 
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    //#region -------------------- All / any / none methods --------------------
+    //#region -------------------- All methods --------------------
 
     public all(..._: readonly unknown[]): false
     public all() { return false }
 
+    //#endregion -------------------- All methods --------------------
+    //#region -------------------- Any methods --------------------
+
     public any(..._: readonly unknown[]): this["isNotEmpty"]
     public any() { return false }
+
+    //#endregion -------------------- Any methods --------------------
+    //#region -------------------- None methods --------------------
 
     public none(..._: readonly unknown[]): this["isEmpty"]
     public none() { return true }
 
-    //#endregion -------------------- All / any / none methods --------------------
-    //#region -------------------- Has / includes / contains methods --------------------
+    //#endregion -------------------- None methods --------------------
+
+    //#region -------------------- Has methods --------------------
 
     public hasOne(...values: readonly never[]): false
     public hasOne(...values: readonly unknown[]): false
@@ -223,77 +255,114 @@ export class EmptyCollectionHolder
     }
 
     //#endregion -------------------- Join methods --------------------
+
     //#region -------------------- Filter methods --------------------
 
     public filter<const S, >(..._: readonly unknown[]): this
     public filter() { return this }
 
-    public filterIndexed(): this
-    public filterIndexed<const S extends never, >(predicate?: unknown,): this
+    //#endregion -------------------- Filter methods --------------------
+    //#region -------------------- Filter indexed methods --------------------
+
     public filterIndexed<const S, >(..._: readonly unknown[]): this
     public filterIndexed() { return this }
 
+    //#endregion -------------------- Filter indexed methods --------------------
+    //#region -------------------- Filter not methods --------------------
 
     public filterNot<const S, >(..._: readonly unknown[]): this
     public filterNot() { return this }
+
+    //#endregion -------------------- Filter not methods --------------------
+    //#region -------------------- Filter not indexed methods --------------------
 
     public filterIndexedNot<const S, >(..._: readonly unknown[]): this
     public filterIndexedNot() { return this }
 
 
+    //#endregion -------------------- Filter not indexed methods --------------------
+    //#region -------------------- Filter not null methods --------------------
+
     public filterNotNull(..._: readonly unknown[]): this
     public filterNotNull(): this { return this }
+
+    //#endregion -------------------- Filter not null methods --------------------
+    //#region -------------------- Require no nulls methods --------------------
 
     public requireNoNulls(..._: readonly unknown[]): this
     public requireNoNulls(): this { return this }
 
-    //#endregion -------------------- Filter methods --------------------
+    //#endregion -------------------- Require no nulls methods --------------------
+
     //#region -------------------- Find methods --------------------
 
     public find<const S, >(..._: readonly unknown[]): never
     public find() { return null }
 
+    //#endregion -------------------- Find methods --------------------
+    //#region -------------------- Find indexed methods --------------------
+
     public findIndexed<const S, >(..._: readonly unknown[]): null
     public findIndexed() { return null }
 
+    //#endregion -------------------- Find indexed methods --------------------
+    //#region -------------------- Find last methods --------------------
 
     public findLast<const S, >(..._: readonly unknown[]): null
     public findLast() { return null }
 
+    //#endregion -------------------- Find last methods --------------------
+    //#region -------------------- Find last indexed methods --------------------
+
     public findLastIndexed<const S, >(..._: readonly unknown[]): null
     public findLastIndexed() { return null }
 
-    //#endregion -------------------- Find methods --------------------
+    //#endregion -------------------- Find last indexed methods --------------------
+
     //#region -------------------- Slice methods --------------------
 
     public slice(..._: readonly unknown[]): this
     public slice() { return this }
 
     //#endregion -------------------- Slice methods --------------------
+
     //#region -------------------- Map methods --------------------
 
     public map<const U, >(..._: readonly unknown[]): CollectionHolder<U>
     public map() { return this }
 
+    //#endregion -------------------- Map methods --------------------
+    //#region -------------------- Map indexed methods --------------------
+
     public mapIndexed<const U, >(..._: readonly unknown[]): CollectionHolder<U>
     public mapIndexed() { return this }
+
+    //#endregion -------------------- Map indexed methods --------------------
+    //#region -------------------- Map not null methods --------------------
 
     public mapNotNull<const U extends NonNullable<unknown>, >(..._: readonly unknown[]): CollectionHolder<U>
     public mapNotNull() { return this }
 
+    //#endregion -------------------- Map not null methods --------------------
+    //#region -------------------- Map not null indexed methods --------------------
+
     public mapNotNullIndexed<const U extends NonNullable<unknown>, >(..._: readonly unknown[]): CollectionHolder<U>
     public mapNotNullIndexed() { return this }
 
-    //#endregion -------------------- Map methods --------------------
-    //#region -------------------- ForEach methods --------------------
+    //#endregion -------------------- Map not null indexed methods --------------------
+
+    //#region -------------------- For each methods --------------------
 
     public forEach(..._: readonly unknown[]): this
     public forEach() { return this }
 
+    //#endregion -------------------- For each methods --------------------
+    //#region -------------------- For each indexed methods --------------------
+
     public forEachIndexed(..._: readonly unknown[]): this
     public forEachIndexed() { return this }
 
-    //#endregion -------------------- ForEach methods --------------------
+    //#endregion -------------------- For each indexed methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------

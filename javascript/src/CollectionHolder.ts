@@ -361,6 +361,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
+    //#endregion -------------------- Index of first methods --------------------
+    //#region -------------------- Index of first indexed methods --------------------
+
     /**
      * Get the first index matching the {@link predicate}
      * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
@@ -380,7 +383,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Index of first methods --------------------
+    //#endregion -------------------- Index of first indexed methods --------------------
     //#region -------------------- Index of last methods --------------------
 
     /**
@@ -402,6 +405,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
+    //#endregion -------------------- Index of last methods --------------------
+    //#region -------------------- Index of last indexed methods --------------------
+
     /**
      * Get the last index matching the {@link predicate}
      * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
@@ -421,7 +427,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Index of last methods --------------------
+    //#endregion -------------------- Index of last indexed methods --------------------
 
     //#region -------------------- First methods --------------------
 
