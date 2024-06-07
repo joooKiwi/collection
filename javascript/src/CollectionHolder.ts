@@ -1317,13 +1317,13 @@ export interface CollectionHolder<out T = unknown, >
     /** Get an every object associated to the typed value */
     get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>>
 
-    //#region -------------------- Conversion methods (toIterator) --------------------
+    //#region -------------------- Conversion methods (iterator) --------------------
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link CollectionIterator} */
     toIterator(): CollectionIterator<T>
 
-    //#endregion -------------------- Conversion methods (toIterator) --------------------
-    //#region -------------------- Conversion methods (toArray) --------------------
+    //#endregion -------------------- Conversion methods (iterator) --------------------
+    //#region -------------------- Conversion methods (array) --------------------
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyArray array} */
     toArray(): readonly T[]
@@ -1331,8 +1331,8 @@ export interface CollectionHolder<out T = unknown, >
     /** Convert the current {@link CollectionHolder collection} to a new {@link Array mutable array} */
     toMutableArray(): T[]
 
-    //#endregion -------------------- Conversion methods (toArray) --------------------
-    //#region -------------------- Conversion methods (toSet) --------------------
+    //#endregion -------------------- Conversion methods (array) --------------------
+    //#region -------------------- Conversion methods (set) --------------------
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlySet set} */
     toSet(): ReadonlySet<T>
@@ -1340,6 +1340,8 @@ export interface CollectionHolder<out T = unknown, >
     /** Convert the current {@link CollectionHolder collection} to a new {@link Set mutable set} */
     toMutableSet(): Set<T>
 
+    //#endregion -------------------- Conversion methods (set) --------------------
+    //#region -------------------- Conversion methods (weak set) --------------------
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link WeakSet weak set} */
     toWeakSet(): Readonly<WeakSet<ObjectOf<T>>>
@@ -1347,8 +1349,8 @@ export interface CollectionHolder<out T = unknown, >
     /** Convert the current {@link CollectionHolder collection} to a new {@link WeakSet mutable weak set} */
     toMutableWeakSet(): WeakSet<ObjectOf<T>>
 
-    //#endregion -------------------- Conversion methods (toSet) --------------------
-    //#region -------------------- Conversion methods (toMap) --------------------
+    //#endregion -------------------- Conversion methods (weak set) --------------------
+    //#region -------------------- Conversion methods (map) --------------------
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyMap map} */
     toMap(): ReadonlyMap<number, T>
@@ -1356,8 +1358,8 @@ export interface CollectionHolder<out T = unknown, >
     /** Convert the current {@link CollectionHolder collection} to a new {@link Map mutable map} */
     toMutableMap(): Map<number, T>
 
-    //#endregion -------------------- Conversion methods (toMap) --------------------
-    //#region -------------------- Conversion methods (toReverse) --------------------
+    //#endregion -------------------- Conversion methods (map) --------------------
+    //#region -------------------- Conversion methods (reverse) --------------------
 
     /**
      * Reverse the current {@link CollectionHolder collection} from a range (if provided)
@@ -1401,8 +1403,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
-    //#endregion -------------------- Conversion methods (toReverse) --------------------
-    //#region -------------------- Conversion methods (toString) --------------------
+    //#endregion -------------------- Conversion methods (reverse) --------------------
+    //#region -------------------- Conversion methods (string) --------------------
 
     /**
      * Convert the current {@link CollectionHolder collection} to a {@link String} on every value
@@ -1462,7 +1464,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     toLocaleUpperCaseString(locale?: NullableString,): string
 
-    //#endregion -------------------- Conversion methods (toString) --------------------
+    //#endregion -------------------- Conversion methods (string) --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 

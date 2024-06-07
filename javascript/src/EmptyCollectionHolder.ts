@@ -350,7 +350,7 @@ export class EmptyCollectionHolder
     public reversed(..._: readonly unknown[]): this
     public reversed() { return this }
 
-    //#region -------------------- Conversion methods (toString) --------------------
+    //#region -------------------- Conversion methods (string) --------------------
 
     public toString(..._: readonly unknown[]): "[]"
     public toString(): "[]" { return "[]" }
@@ -371,7 +371,7 @@ export class EmptyCollectionHolder
     public toLocaleUpperCaseString(..._: readonly unknown[]): "[]"
     public toLocaleUpperCaseString() { return "[]" }
 
-    //#endregion -------------------- Conversion methods (toString) --------------------
+    //#endregion -------------------- Conversion methods (string) --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 
