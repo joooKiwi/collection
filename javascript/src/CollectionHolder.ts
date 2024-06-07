@@ -7,9 +7,9 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
 
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                    from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "./iterator/CollectionIterator"
 
 /**
  * A collection to hold another collection and do some generic stuff if applicable.
