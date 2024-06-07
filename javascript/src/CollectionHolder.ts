@@ -470,7 +470,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
      */
-    first(): NonNullable<T>
+    first(): T
 
     /**
      * Get the first element in the current {@link CollectionHolder collection}
@@ -483,7 +483,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      * @typescriptDefinition
      */
-    first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
+    first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 
     /**
      * Get the first element in the current {@link CollectionHolder collection}
@@ -495,7 +495,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      */
-    first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
+    first(predicate: Nullable<BooleanCallback<T>>,): T
 
     //#endregion -------------------- First methods --------------------
     //#region -------------------- First or null methods --------------------
@@ -543,7 +543,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
      */
-    last(): NonNullable<T>
+    last(): T
 
     /**
      * Get the last element in the current {@link CollectionHolder collection}
@@ -556,7 +556,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      * @typescriptDefinition
      */
-    last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
+    last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 
     /**
      * Get the last element in the current {@link CollectionHolder collection}
@@ -568,7 +568,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      */
-    last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
+    last(predicate: Nullable<BooleanCallback<T>>,): T
 
     //#endregion -------------------- Last methods --------------------
     //#region -------------------- Last or null methods --------------------
