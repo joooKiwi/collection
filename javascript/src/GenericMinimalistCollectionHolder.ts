@@ -410,7 +410,7 @@ export class GenericMinimalistCollectionHolder<const out T = unknown,
             const array = [] as T[]
             const iterator = reference[Symbol.iterator]() as IterableIterator<T>
             let index = -1
-            let iteratorResult: IteratorResult<T, T>
+            let iteratorResult: IteratorResult<T, unknown>
             while (++index, !(iteratorResult = iterator.next()).done)
                 array[index] = iteratorResult.value
             this.#array = Object.freeze(array,)
@@ -452,7 +452,7 @@ export class GenericMinimalistCollectionHolder<const out T = unknown,
             const array = [] as T[]
             const iterator = reference[Symbol.iterator]() as IterableIterator<T>
             let index = -1
-            let iteratorResult: IteratorResult<T, T>
+            let iteratorResult: IteratorResult<T, unknown>
             while (++index, !(iteratorResult = iterator.next()).done)
                 array[index] = iteratorResult.value
             this.#array = Object.freeze(array,)
@@ -494,7 +494,7 @@ export class GenericMinimalistCollectionHolder<const out T = unknown,
             const array = [] as T[]
             const iterator = reference[Symbol.iterator]() as IterableIterator<T>
             let index = -1
-            let iteratorResult: IteratorResult<T, T>
+            let iteratorResult: IteratorResult<T, unknown>
             while (++index, !(iteratorResult = iterator.next()).done)
                 array[index] = iteratorResult.value
             this.#array = Object.freeze(array,)
@@ -504,7 +504,7 @@ export class GenericMinimalistCollectionHolder<const out T = unknown,
         }
 
         const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-        let iteratorResult = iterator.next() as IteratorResult<T, T>
+        let iteratorResult = iterator.next() as IteratorResult<T, unknown>
         //#region -------------------- Initialization (empty) --------------------
 
         if (iteratorResult.done) {

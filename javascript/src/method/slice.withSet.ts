@@ -71,7 +71,7 @@ function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indice
     const newArray = new Array<T>(indicesSize,)
     const iterator = indices[Symbol.iterator]() as IterableIterator<number>
     let index = 0
-    let iteratorResult: IteratorResult<number, number>
+    let iteratorResult: IteratorResult<number, unknown>
     while (!(iteratorResult = iterator.next()).done)
         newArray[index++] = collection.get(iteratorResult.value,)
     return Object.freeze(newArray,)

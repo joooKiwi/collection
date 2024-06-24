@@ -161,7 +161,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, void>).next().value as T
+                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, unknown>).next().value as T
                 this.#hasNull = value == null
                 this.#array = Object.freeze([value,],)
                 return
@@ -171,7 +171,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+                const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
                 this.#hasNull = firstValue == null || secondValue == null
@@ -183,7 +183,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = over 2) --------------------
 
             const array = new Array<T>(size,)
-            const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+            const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
             let index = -1
             while (++index < size)
                 this[index] = array[index] = iterator.next().value as T
@@ -514,7 +514,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, void>).next().value as T
+                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, unknown>).next().value as T
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -525,7 +525,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+                const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
                 this.#hasNull = firstValue == null || secondValue == null
@@ -538,7 +538,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = over 2) --------------------
 
             const array = new Array<T>(size,)
-            const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+            const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
             let index = -1
             while (++index < size)
                 this[index] = array[index] = iterator.next().value as T
@@ -569,7 +569,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, void>).next().value as T
+                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, unknown>).next().value as T
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -580,7 +580,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+                const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
                 this.#hasNull = firstValue == null || secondValue == null
@@ -593,7 +593,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = over 2) --------------------
 
             const array = new Array<T>(size,)
-            const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+            const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
             let index = -1
             while (++index < size)
                 this[index] = array[index] = iterator.next().value as T
@@ -624,7 +624,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, void>).next().value as T
+                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, unknown>).next().value as T
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -635,7 +635,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+                const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
                 const firstValue = this[0] = iterator.next().value as T
                 const secondValue = this[1] = iterator.next().value as T
                 this.#hasNull = firstValue == null || secondValue == null
@@ -648,7 +648,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = over 2) --------------------
 
             const array = new Array<T>(size,)
-            const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+            const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
             let index = -1
             while (++index < size)
                 this[index] = array[index] = iterator.next().value as T
@@ -658,7 +658,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        const iterator = reference[Symbol.iterator]() as Iterator<T, void>
+        const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
         let iteratorResult = iterator.next()
 
         //#region -------------------- Initialization (size = 0) --------------------
