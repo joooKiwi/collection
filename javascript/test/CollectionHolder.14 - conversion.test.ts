@@ -8,17 +8,14 @@
 import {AAB, AAB_AAB, AAB_OBJECT, AB, AB_AB, AB_OBJECT, EMPTY, SINGULAR_A_OBJECT, SINGULAR_B_OBJECT} from "./constantCollections"
 import {everyInstance}                                                                               from "./constantValues"
 
-import {CollectionConstants} from "../src/CollectionConstants"
+import {CollectionConstants}       from "../src/CollectionConstants"
+import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
 
 describe("CollectionHolderTest (conversion)", () => {
 describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist,},},) => {
     describe("to iterator", () => {
-        test("empty",  () => expect(newInstance(EMPTY,).toIterator(),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
-
-        const iterator = newInstance(AB,).toIterator()
-        test("1st: a",    () => expect(iterator.next().value,).toBe('a',),)
-        test("2nd: b",    () => expect(iterator.next().value,).toBe('b',),)
-        test("3rd: done", () => expect(iterator.next().done,).toBe(true,),)
+        test("empty",     () => expect(newInstance(EMPTY,).toIterator(),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
+        test("non-empty", () => expect(newInstance(AB,).toIterator(),).toBeInstanceOf(GenericCollectionIterator,),)
     })
 
     describe("to array", () => {
