@@ -16,5 +16,6 @@ export {OverSizeIndexAfterCalculationValueHolder}  from "./OverSizeIndexAfterCal
 export {OverSizeIndexValueHolder}                  from "./OverSizeIndexValueHolder"
 export {PositiveInfinityIndexValueHolder}          from "./PositiveInfinityIndexValueHolder"
 export {UnderZeroIndexAfterCalculationValueHolder} from "./UnderZeroIndexAfterCalculationValueHolder"
+export {SizeIndexValueHolder}                      from "./SizeIndexValueHolder"
 export {ValidValueHolder}                          from "./ValidValueHolder"
 export type {ValueHolder}                          from "./ValueHolder"
