@@ -190,10 +190,12 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  */
 export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, ...values: readonly unknown[]): boolean
 export function hasOne(collection: Nullable<MinimalistCollectionHolder>,): boolean {
-    if (arguments.length != 1)
-        return hasOneWithArray(collection, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    if (arguments.length != 2) { // TODO Remove once the version 1.10 is in progress
+        const [, ...variadicArguments] = arguments as unknown as readonly [Nullable<MinimalistCollectionHolder>, ...readonly unknown[],]
+        return hasOneWithArray(collection, variadicArguments,)
+    }
 
-    const values = arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>
+    const values = arguments[1] as PossibleIterableArraySetOrCollectionHolder<unknown>
     if (values instanceof Array)
         return hasOneWithArray(collection, values,)
     if (values instanceof Set)
@@ -385,10 +387,12 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  */
 export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, ...values: readonly unknown[]): boolean
 export function hasOneByCollectionHolder(collection: Nullable<CollectionHolder>,): boolean {
-    if (arguments.length != 1)
-        return hasOneWithArrayByCollectionHolder(collection, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    if (arguments.length != 2) { // TODO Remove once the version 1.10 is in progress
+        const [, ...variadicArguments] = arguments as unknown as readonly [Nullable<CollectionHolder>, ...readonly unknown[],]
+        return hasOneWithArrayByCollectionHolder(collection, variadicArguments,)
+    }
 
-    const values = arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>
+    const values = arguments[1] as PossibleIterableArraySetOrCollectionHolder<unknown>
     if (values instanceof Array)
         return hasOneWithArrayByCollectionHolder(collection, values,)
     if (values instanceof Set)

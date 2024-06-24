@@ -287,8 +287,10 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     //#region -------------------- Has methods --------------------
 
     public has(value: T,): boolean
+    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
     public has(...values: readonly T[]): boolean
     public has(value: unknown,): boolean
+    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
     public has(...values: readonly unknown[]): boolean
     public has() {
         if (arguments.length == 1)
@@ -297,8 +299,10 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
     public includes(value: T,): boolean
+    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
     public includes(...values: readonly T[]): boolean
     public includes(value: unknown,): boolean
+    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
     public includes(...values: readonly unknown[]): boolean
     public includes() {
         if (arguments.length == 1)
@@ -307,8 +311,10 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     }
 
     public contains(value: T,): boolean
+    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
     public contains(...values: readonly T[]): boolean
     public contains(value: unknown,): boolean
+    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
     public contains(...values: readonly unknown[]): boolean
     public contains() {
         if (arguments.length == 1)
@@ -333,7 +339,9 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public hasOne(values: CollectionIterator,): boolean
     public hasOne(values: Iterable<unknown>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public hasOne(...values: readonly T[]): boolean
+    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public hasOne(...values: readonly unknown[]): boolean
     public hasOne() {
         if (arguments.length == 1)
@@ -355,7 +363,9 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public includesOne(values: CollectionIterator,): boolean
     public includesOne(values: Iterable<unknown>,): boolean
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public includesOne(...values: readonly T[]): boolean
+    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public includesOne(...values: readonly unknown[]): boolean
     public includesOne() {
         if (arguments.length == 1)
@@ -377,7 +387,9 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public containsOne(values: CollectionIterator,): boolean
     public containsOne(values: Iterable<unknown>,): boolean
     public containsOne(values: PossibleIterableOrCollection<unknown>,): boolean
+    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public containsOne(...values: readonly T[]): boolean
+    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public containsOne(...values: readonly unknown[]): boolean
     public containsOne() {
         if (arguments.length == 1)
@@ -406,7 +418,7 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
     public hasAll(...values: readonly unknown[]): boolean
     public hasAll() {
         if (arguments.length == 1)
-            return hasAllByCollectionHolder(this, arguments as PossibleIterableArraySetOrCollectionHolder<unknown>,)
+            return hasAllByCollectionHolder(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
         return hasAllByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
     }
 

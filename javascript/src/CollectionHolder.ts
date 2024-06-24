@@ -754,7 +754,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
-     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
+     * @deprecated Replace with non-variadic arguments or hasOneOf. It will be removed in version 1.10
      */
     has(...values: readonly T[]): boolean
 
@@ -769,7 +769,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
-     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
+     * @deprecated Replace with non-variadic arguments or hasOneOf. It will be removed in version 1.10
      */
     has(...values: readonly unknown[]): boolean
 
@@ -780,7 +780,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias has
-     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
+     * @deprecated Replace with non-variadic arguments or hasOneOf. It will be removed in version 1.10
      */
     includes(...values: readonly T[]): boolean
 
@@ -790,7 +790,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias has
-     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
+     * @deprecated Replace with non-variadic arguments or hasOneOf. It will be removed in version 1.10
      */
     includes(...values: readonly unknown[]): boolean
 
@@ -801,7 +801,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias has
-     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
+     * @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10
      */
     contains(...values: readonly T[]): boolean
 
@@ -811,7 +811,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
      * @alias has
-     * @deprecated Replace with has or hasOneOf. It will be removed in version 1.10
+     * @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10
      */
     contains(...values: readonly unknown[]): boolean
 

@@ -204,10 +204,12 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  */
 export function hasAll(collection: Nullable<MinimalistCollectionHolder>, ...values: readonly unknown[]): boolean
 export function hasAll(collection: Nullable<MinimalistCollectionHolder>,): boolean {
-    if (arguments.length != 1)
-        return hasAllWithArray(collection, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    if (arguments.length != 2) { // TODO Remove once the version 1.10 is in progress
+        const [, ...variadicArguments] = arguments as unknown as readonly [Nullable<MinimalistCollectionHolder>, ...readonly unknown[],]
+        return hasAllWithArray(collection, variadicArguments,)
+    }
 
-    const values = arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>
+    const values = arguments[1] as PossibleIterableArraySetOrCollectionHolder<unknown>
     if (values instanceof Array)
         return hasAllWithArray(collection, values,)
     if (values instanceof Set)
@@ -407,10 +409,12 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  */
 export function hasAllByCollectionHolder(collection: Nullable<CollectionHolder>, ...values: readonly unknown[]): boolean
 export function hasAllByCollectionHolder(collection: Nullable<CollectionHolder>,): boolean {
-    if (arguments.length != 1)
-        return hasAllWithArrayByCollectionHolder(collection, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    if (arguments.length != 2) { // TODO Remove once the version 1.10 is in progress
+        const [, ...variadicArguments] = arguments as unknown as readonly [Nullable<CollectionHolder>, ...readonly unknown[],]
+        return hasAllWithArrayByCollectionHolder(collection, variadicArguments,)
+    }
 
-    const values = arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>
+    const values = arguments[1] as PossibleIterableArraySetOrCollectionHolder<unknown>
     if (values instanceof Array)
         return hasAllWithArrayByCollectionHolder(collection, values,)
     if (values instanceof Set)
