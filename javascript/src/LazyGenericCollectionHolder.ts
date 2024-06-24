@@ -214,6 +214,7 @@ export class LazyGenericCollectionHolder<const out T = unknown,
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerByCollectionHolder(reference,),)
             this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
@@ -223,6 +224,7 @@ export class LazyGenericCollectionHolder<const out T = unknown,
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerByMinimalistCollectionHolder(reference,),)
             this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
@@ -232,6 +234,7 @@ export class LazyGenericCollectionHolder<const out T = unknown,
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerByCollectionIterator(reference,),)
             this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
@@ -241,6 +244,7 @@ export class LazyGenericCollectionHolder<const out T = unknown,
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerByCollectionHolder(reference,),)
             this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
@@ -250,14 +254,17 @@ export class LazyGenericCollectionHolder<const out T = unknown,
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerByMinimalistCollectionHolder(reference,),)
             this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
+            return
         }
 
         if (isCollectionIteratorByStructure<T>(reference,)) {
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerByCollectionIterator(reference,),)
             this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
@@ -488,6 +495,7 @@ export class LazyGenericCollectionHolder<const out T = unknown,
                 return handler
             },)
             this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
@@ -503,6 +511,7 @@ export class LazyGenericCollectionHolder<const out T = unknown,
             this.#size = size
             const handler = this.#lazyHandler = lazy(() => this.#handlerByIterableWithSize(reference, size,),)
             this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
@@ -516,6 +525,7 @@ export class LazyGenericCollectionHolder<const out T = unknown,
             this.#size = size
             const handler = this.#lazyHandler = lazy(() => this.#handlerByIterableWithSize(reference, size,),)
             this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
@@ -529,12 +539,17 @@ export class LazyGenericCollectionHolder<const out T = unknown,
             this.#size = size
             const handler = this.#lazyHandler = lazy(() => this.#handlerByIterableWithSize(reference, size,),)
             this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
         }
 
-        this.#lazyHandler = lazyOf(new CollectionHandlerByIterable(this, reference,),)
+        const handler = this.#lazyHandler = lazyOf(new CollectionHandlerByIterable(this, reference,),)
+        this.#lazySize = lazy(() => handler.value.size,)
+        this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+        this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+        this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
     }
 
     //#region -------------------- Constructor helper methods --------------------
@@ -684,7 +699,8 @@ export class LazyGenericCollectionHolder<const out T = unknown,
             if (this.#hasNull != null)
                 this.#lazyHasNull = lazy(() => handler.hasNull,)
             if (this.#hasDuplicate != null)
-            this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+            return handler
         }
 
         //#endregion -------------------- Initialization (size = 2) --------------------
