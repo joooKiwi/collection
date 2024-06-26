@@ -25,6 +25,10 @@ export class GenericCollectionIterator<const out T = unknown,
 
     readonly #collection: COLLECTION
     #size?: COLLECTION["size"]
+    #isEmpty?: boolean
+    #isNotEmpty?: boolean
+    #hasOnly1Element?: boolean
+
     #currentIndex: NullOrNumber
 
     //#endregion -------------------- Fields --------------------
@@ -45,6 +49,27 @@ export class GenericCollectionIterator<const out T = unknown,
     public get size(): COLLECTION["size"] { return this.#size ??= this.collection.size }
     public get length(): this["size"] { return this.size }
     public get count(): this["size"] { return this.size }
+
+    /**
+     * Tell if the {@link collection} is empty by <code>{@link CollectionHolder.size size} == 0</code>
+     *
+     * @initializedOnFirstCall
+     */
+    protected get _isEmpty(): boolean { return this.#isEmpty ??= this.size == 0 }
+
+    /**
+     * Tell if the {@link collection} is not empty by <code>{@link CollectionHolder.size size} != 0</code>
+     *
+     * @initializedOnFirstCall
+     */
+    protected get _isNotEmpty(): boolean { return this.#isNotEmpty ??= !this._isEmpty }
+
+    /**
+     * Tell that the {@link size} is only of <b>1</b>
+     *
+     * @initializedOnFirstCall
+     */
+    protected get _hasOnly1Element(): boolean { return this.#hasOnly1Element ??= this.size == 1 }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Current index methods --------------------
