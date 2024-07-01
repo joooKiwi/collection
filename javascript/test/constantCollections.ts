@@ -7,9 +7,21 @@
 
 export const EMPTY = [] as const
 export const A = ['a',] as const
+export const AA = ['a', 'a',] as const
+export const A_NULL = ['a', null,] as const
+export const NULL_A = [null, 'a',] as const
+export const A_UNDEFINED = ['a', undefined,] as const
+export const UNDEFINED_A = [undefined, 'a',] as const
 export const AB = ['a', 'b',] as const
+export const ABC = ['a', 'b', 'c',] as const
 export const AAB = ['a', 'a', 'b',] as const
 export const ABB = ['a', 'b', 'b',] as const
+export const AB_NULL = ['a', 'b', null,] as const
+export const A_NULL_B = ['a', null, 'b',] as const
+export const NULL_AB = [null, 'a', 'b',] as const
+export const AB_UNDEFINED = ['a', 'b', undefined,] as const
+export const A_UNDEFINED_B = ['a', undefined, 'b',] as const
+export const UNDEFINED_AB = [undefined, 'a', 'b',] as const
 export const SINGULAR_A_OBJECT = new String('a',)
 export const SINGULAR_B_OBJECT = new String('b',)
 export const AB_OBJECT = [SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,] as const
