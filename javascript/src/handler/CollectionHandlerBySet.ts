@@ -15,6 +15,7 @@ import {NegativeInfinityIndexValueHolder}          from "./value/NegativeInfinit
 import {OverSizeIndexValueHolder}                  from "./value/OverSizeIndexValueHolder"
 import {OverSizeIndexAfterCalculationValueHolder}  from "./value/OverSizeIndexAfterCalculationValueHolder"
 import {PositiveInfinityIndexValueHolder}          from "./value/PositiveInfinityIndexValueHolder"
+import {SizeIndexValueHolder}                      from "./value/SizeIndexValueHolder"
 import {ValidValueHolder}                          from "./value/ValidValueHolder"
 import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexAfterCalculationValueHolder"
 
@@ -58,35 +59,35 @@ export class CollectionHandlerBySet<const out T = unknown,
         if (value != null)
             return value
 
-        // If it is finished, we just loop over the collection to find any null value
-        if (this.hasFinished) {
-            const collection = this._collection
-            let index = this.size
-            while (--index > 0)
-                if (collection[index] == null)
-                    return this.#hasNull = true
-            return this.#hasNull = true
+        if (this.hasFinished)
+            return this.#hasNull = this._collection.hasNull
+
+        if (this.isEmpty) {
+            this._lastIndex = 0
+            this._hasFinished = true
+            return this.#hasNull = false
         }
 
         // We first try to find any null in the collection from the values already set
         const collection = this._collection
         const lastIndex = this._lastIndex
         let index = -1
-        while (index++ < lastIndex)
+        while (++index < lastIndex)
             if (collection[index] == null)
                 return this.#hasNull = true
 
         // We continue the process from the followed iterator to starting setting to the collection
+        index--
         const iterator = this._iterator
         const size = this.size
-        while (index++ < size)
+        while (++index < size)
             if ((collection[index] = iterator.next().value as T) == null) {
                 this._lastIndex = index
                 return this.#hasNull = true
             }
 
         // We are now at the end, and every value had been retrieved and set to the collection
-        this._lastIndex = index
+        this._lastIndex = index - 1
         this._hasFinished = true
         return this.#hasNull = false
     }
@@ -119,6 +120,8 @@ export class CollectionHandlerBySet<const out T = unknown,
             return new ValidValueHolder(collection[index] as T,)
 
         const size = this.size
+        if (index == size)
+            return new SizeIndexValueHolder(index, size,)
         if (index > size)
             return new OverSizeIndexValueHolder(index, size,)
 
@@ -145,7 +148,9 @@ export class CollectionHandlerBySet<const out T = unknown,
             return new OverSizeIndexAfterCalculationValueHolder(index, indexToRetrieve, size,)
 
         if (this.hasFinished)
-            return new ValidValueHolder(collection[this._lastIndex - 1] as T,)
+            return new ValidValueHolder(collection[indexToRetrieve] as T,)
+        if (indexToRetrieve in collection)
+            return new ValidValueHolder(collection[indexToRetrieve] as T,)
 
         const iterator = this._iterator
         const indexToRetrievePlus1 = indexToRetrieve + 1

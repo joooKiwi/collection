@@ -16,6 +16,7 @@ import {OverSizeIndexValueHolder}                  from "./value/OverSizeIndexVa
 import {OverSizeIndexAfterCalculationValueHolder}  from "./value/OverSizeIndexAfterCalculationValueHolder"
 import {PositiveInfinityIndexValueHolder}          from "./value/PositiveInfinityIndexValueHolder"
 import {ValidValueHolder}                          from "./value/ValidValueHolder"
+import {SizeIndexValueHolder}                      from "./value/SizeIndexValueHolder"
 import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexAfterCalculationValueHolder"
 
 /**
@@ -56,22 +57,36 @@ export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE
         if (value != null)
             return value
 
-        // If it is finished, we just loop over the collection to find any null value
-        if (this.hasFinished) {
-            const collection = this._collection
-            let index = this.size
-            while (--index > 0)
-                if (collection[index] == null)
-                    return this.#hasNull = true
-            return this.#hasNull = true
+        if (this.hasFinished)
+            return this.#hasNull = this._collection.hasNull
+
+        if (this.isEmpty) {
+            this._amountOfElementRetrieved = 0
+            this._hasFinished = true
+            return this.#hasNull = false
         }
 
-        // We loop to find by only the array
+        // We check if the value exists in the collection,
+        // it compares its nullability
+        // and then, if it does exist in the collection, it is added to the "amountOfElementRetrieved"
         const reference = this._reference
+        const collection = this._collection
         let index = this.size
-        while (--index > 0)
-            if (reference[index] == null)
+        while (--index >= 0) {
+            if (index in collection)
+                if (collection[index] == null)
+                    return this.#hasNull = true
+                else
+                    continue
+
+            const value = reference[index]
+            this._amountOfElementRetrieved++
+            if ((collection[index] = value) == null)
                 return this.#hasNull = true
+        }
+
+        // We are now at the end, and every value had been retrieved and set to the collection
+        this._hasFinished = true
         return this.#hasNull = false
     }
 
@@ -80,6 +95,16 @@ export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE
         if (hasDuplicate != null)
             return hasDuplicate
 
+        if (this.hasFinished)
+            return this.#hasDuplicate = this._collection.hasDuplicate
+
+        if (this.isEmpty) {
+            this._amountOfElementRetrieved = 0
+            this._hasFinished = true
+            return this.#hasDuplicate = false
+        }
+
+        //TODO add logic to compare if it exist and _lastIndex++ logic
         const reference = this._reference
         const collection = this._collection
         const size = this.size
@@ -118,6 +143,10 @@ export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE
                 }
             temporaryArray[amountOfItemAdded++] = value
         }
+
+        // We are now at the end, and every value had been retrieved and set to the collection
+        this._amountOfElementRetrieved = size - 1
+        this._hasFinished = true
         return this.#hasDuplicate = false
     }
 
@@ -145,6 +174,8 @@ export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE
             return new ValidValueHolder(collection[index] as T,)
 
         const size = this.size
+        if (index == size)
+            return new SizeIndexValueHolder(index, size,)
         if (index > size)
             return new OverSizeIndexValueHolder(index, size,)
 

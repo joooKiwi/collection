@@ -16,6 +16,7 @@ import {NegativeInfinityIndexValueHolder}          from "./value/NegativeInfinit
 import {OverSizeIndexValueHolder}                  from "./value/OverSizeIndexValueHolder"
 import {OverSizeIndexAfterCalculationValueHolder}  from "./value/OverSizeIndexAfterCalculationValueHolder"
 import {PositiveInfinityIndexValueHolder}          from "./value/PositiveInfinityIndexValueHolder"
+import {SizeIndexValueHolder}                      from "./value/SizeIndexValueHolder"
 import {ValidValueHolder}                          from "./value/ValidValueHolder"
 import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexAfterCalculationValueHolder"
 
@@ -32,6 +33,7 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
 
     //#region -------------------- Fields --------------------
 
+    #size?: REFERENCE["size"]
     #isEmpty?: boolean
     #hasNull?: boolean
     #hasDuplicate?: boolean
@@ -45,31 +47,46 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    public override get size(): REFERENCE["size"] { return this._reference.size }
+    public override get size(): REFERENCE["size"] { return this.#size ??= this._reference.size }
 
-    public override get isEmpty(): boolean { return this.#isEmpty ??= this._reference.size == 0 }
+    public override get isEmpty(): boolean { return this.#isEmpty ??= this.size == 0 }
 
     public override get hasNull(): boolean {
         const value = this.#hasNull
         if (value != null)
             return value
 
-        // If it is finished, we just loop over the collection to find any null value
-        if (this.hasFinished) {
-            const collection = this._collection
-            let index = this.size
-            while (--index > 0)
-                if (collection[index] == null)
-                    return this.#hasNull = true
-            return this.#hasNull = true
+        if (this.hasFinished)
+            return this.#hasNull = this._collection.hasNull
+
+        if (this.isEmpty) {
+            this._amountOfElementRetrieved = 0
+            this._hasFinished = true
+            return this.#hasNull = false
         }
 
-        // We loop to find by only the minimalist collection
+        // We check if the value exists in the collection,
+        // it compares its nullability
+        // and then, if it does exist in the collection, it is added to the "amountOfElementRetrieved"
+        const collection = this._collection
         const reference = this._reference
-        let index = this.size
-        while (--index > 0)
-            if (reference.get(index,) == null)
+        const size = this.size
+        let index = -1
+        while (++index < size) {
+            if (index in collection)
+                if (collection[index] == null)
+                    return this.#hasNull = true
+                else
+                    continue
+
+            const value = reference.get(index,)
+            this._amountOfElementRetrieved++
+            if ((collection[index] = value) == null)
                 return this.#hasNull = true
+        }
+
+        // We are now at the end, and every value had been retrieved and set to the collection
+        this._hasFinished = true
         return this.#hasNull = false
     }
 
@@ -78,6 +95,16 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
         if (hasDuplicate != null)
             return hasDuplicate
 
+        if (this.hasFinished)
+            return this.#hasDuplicate = this._collection.hasDuplicate
+
+        if (this.isEmpty) {
+            this._amountOfElementRetrieved = 0
+            this._hasFinished = true
+            return this.#hasDuplicate = false
+        }
+
+        //TODO add logic to compare if it exist and _lastIndex++ logic
         const reference = this._reference
         const collection = this._collection
         const size = this.size
@@ -116,6 +143,10 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
                 }
             temporaryArray[amountOfItemAdded++] = value
         }
+
+        // We are now at the end, and every value had been retrieved and set to the collection
+        this._amountOfElementRetrieved = index
+        this._hasFinished = true
         return this.#hasDuplicate = false
     }
 
@@ -143,6 +174,8 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
             return new ValidValueHolder(collection[index] as T,)
 
         const size = this.size
+        if (index == size)
+            return new SizeIndexValueHolder(index, size,)
         if (index > size)
             return new OverSizeIndexValueHolder(index, size,)
 

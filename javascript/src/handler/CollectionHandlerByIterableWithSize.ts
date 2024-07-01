@@ -16,6 +16,7 @@ import {NegativeInfinityIndexValueHolder}          from "./value/NegativeInfinit
 import {OverSizeIndexValueHolder}                  from "./value/OverSizeIndexValueHolder"
 import {OverSizeIndexAfterCalculationValueHolder}  from "./value/OverSizeIndexAfterCalculationValueHolder"
 import {PositiveInfinityIndexValueHolder}          from "./value/PositiveInfinityIndexValueHolder"
+import {SizeIndexValueHolder}                      from "./value/SizeIndexValueHolder"
 import {ValidValueHolder}                          from "./value/ValidValueHolder"
 import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexAfterCalculationValueHolder"
 
@@ -59,19 +60,12 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
         if (value != null)
             return value
 
-        // If it is finished, we just loop over the collection to find any null value
-        if (this.hasFinished) {
-            const collection = this._collection
-            let index = this.size
-            while (--index > 0)
-                if (collection[index] == null)
-                    return this.#hasNull = true
-            return this.#hasNull = true
-        }
+        if (this.hasFinished)
+            return this.#hasNull = this._collection.hasNull
 
         // We first try to find any null in the collection from the values already set
         const collection = this._collection
-        const amountOfElementRetrieved = this._amountOfElementRetrieved
+        const amountOfElementRetrieved = this._lastIndex
         let index = -1
         while (index++ < amountOfElementRetrieved)
             if (collection[index] == null)
@@ -82,12 +76,12 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
         const size = this.size
         while (index++ < size)
             if ((collection[index] = iterator.next().value as T) == null) {
-                this._amountOfElementRetrieved = index
+                this._lastIndex = index
                 return this.#hasNull = true
             }
 
         // We are now at the end, and every value had been retrieved and set to the collection
-        this._amountOfElementRetrieved = index
+        this._lastIndex = index
         this._hasFinished = true
         return this.#hasNull = false
     }
@@ -111,6 +105,8 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
             return new ValidValueHolder(collection[index] as T,)
 
         const size = this.size
+        if (index == size)
+            return new SizeIndexValueHolder(index, size,)
         if (index > size)
             return new OverSizeIndexValueHolder(index, size,)
 
@@ -118,19 +114,17 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
             if (this.hasFinished)
                 return new ValidValueHolder(collection[index] as T,)
 
-            const amountOfElementRetrieved = this._amountOfElementRetrieved
+            const lastIndex = this._lastIndex
             const iterator = this._iterator
-            let iteratorIndex = amountOfElementRetrieved - 1
-            let iteratorValue = iterator.next() as IteratorResult<T, unknown>
-            while (!iteratorValue.done) {
-                collection[++iteratorIndex] = iteratorValue.value
-                if (iteratorIndex !== index) {
-                    iteratorValue = iterator.next() as IteratorResult<T>
+            let iteratorIndex = lastIndex - 1
+            let iteratorValue: IteratorResult<T, unknown>
+            while (!(iteratorValue = iterator.next()).done) {
+                const value = collection[++iteratorIndex] = iteratorValue.value
+                if (iteratorIndex !== index)
                     continue
-                }
 
-                this._amountOfElementRetrieved = iteratorIndex + 1
-                return new ValidValueHolder(collection[index] as T,)
+                this._lastIndex = iteratorIndex + 1
+                return new ValidValueHolder(value,)
             }
             this._hasFinished = true
 
@@ -145,22 +139,22 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
 
         if (this.hasFinished)
             return new ValidValueHolder(collection[indexToRetrieve] as T,)
+        if (indexToRetrieve in collection)
+            return new ValidValueHolder(collection[indexToRetrieve] as T,)
 
-        const amountOfElementRetrieved = this._amountOfElementRetrieved
+        const lastIndex = this._lastIndex
         const iterator = this._iterator
-        let iteratorIndex = amountOfElementRetrieved - 1
-        let iteratorValue = iterator.next() as IteratorResult<T, unknown>
-        while (!iteratorValue.done) {
-            collection[++iteratorIndex] = iteratorValue.value
-            if (iteratorIndex !== indexToRetrieve) {
-                iteratorValue = iterator.next() as IteratorResult<T>
+        let iteratorIndex = lastIndex - 1
+        let iteratorValue: IteratorResult<T, unknown>
+        while (!(iteratorValue = iterator.next()).done) {
+            const value = collection[++iteratorIndex] = iteratorValue.value
+            if (iteratorIndex !== indexToRetrieve)
                 continue
-            }
 
-            this._amountOfElementRetrieved = iteratorIndex + 1
+            this._lastIndex = iteratorIndex + 1
             if (indexToRetrieve > iteratorIndex)
                 return new OverSizeIndexValueHolder(index, iteratorIndex,)
-            return new ValidValueHolder(collection[indexToRetrieve] as T,)
+            return new ValidValueHolder(value,)
         }
         this._hasFinished = true
 
