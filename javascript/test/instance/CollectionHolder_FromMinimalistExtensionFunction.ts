@@ -67,7 +67,7 @@ import {toString}                           from "../../src/method/toString"
 import {toUpperCaseString}                  from "../../src/method/toUpperCaseString"
 import {toWeakSet}                          from "../../src/method/toWeakSet"
 
-export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
+export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     extends AbstractMinimalistCollectionHolder<T>
     implements CollectionHolder<T> {
 
