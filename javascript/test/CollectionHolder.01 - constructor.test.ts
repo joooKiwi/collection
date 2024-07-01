@@ -14,6 +14,7 @@ describe("CollectionHolderTest (constructor)", () => {
 describe.each(everyCollectionInstanceByIterable,)("%s", ({value: {isLazy, isMinimalist, newInstance,},},) => {
 if (isMinimalist)
     return // The minimalist collection doesn't set any index to its instance
+
 describe.each(iterableCreation,)("%s", ({value: iterableCreation,},) => {
     const newCollection = isLazy
         ? (array: readonly unknown[],) => (newInstance(iterableCreation, array,) as CollectionHolder).forEach(_ => {},)
