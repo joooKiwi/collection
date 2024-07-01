@@ -820,7 +820,6 @@ export class LazyGenericCollectionHolder<const out T = unknown,
     public override toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> { return this.#weakSet ??= super.toWeakSet() }
     public override toMap(): ReadonlyMap<number, T> { return this.#map ??= super.toMap() }
 
-
     //#endregion -------------------- Methods --------------------
 
 }

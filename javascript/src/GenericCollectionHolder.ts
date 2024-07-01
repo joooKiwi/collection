@@ -110,7 +110,7 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                const value = this[0] = reference[0]
+                const value = this[0] = reference[0] as T
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -121,8 +121,8 @@ export class GenericCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const firstValue = this[0] = reference[0]
-                const secondValue = this[1] = reference[1]
+                const firstValue = this[0] = reference[0] as T
+                const secondValue = this[1] = reference[1] as T
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -135,7 +135,7 @@ export class GenericCollectionHolder<const out T = unknown,
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
-                this[index] = array[index] = reference[index]
+                this[index] = array[index] = reference[index] as T
             this.#array = Object.freeze(array,)
             return
 
