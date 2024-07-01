@@ -27,6 +27,9 @@ import {CollectionHandlerByArrayOf2}                      from "./handler/Collec
 import {CollectionHandlerByCollectionHolder}              from "./handler/CollectionHandlerByCollectionHolder"
 import {CollectionHandlerByCollectionHolderOf1}           from "./handler/CollectionHandlerByCollectionHolderOf1"
 import {CollectionHandlerByCollectionHolderOf2}           from "./handler/CollectionHandlerByCollectionHolderOf2"
+import {CollectionHandlerByCollectionIterator}            from "./handler/CollectionHandlerByCollectionIterator"
+import {CollectionHandlerByCollectionIteratorOf1}         from "./handler/CollectionHandlerByCollectionIteratorOf1"
+import {CollectionHandlerByCollectionIteratorOf2}         from "./handler/CollectionHandlerByCollectionIteratorOf2"
 import {CollectionHandlerByIterable}                      from "./handler/CollectionHandlerByIterable"
 import {CollectionHandlerByIterableWithSize}              from "./handler/CollectionHandlerByIterableWithSize"
 import {CollectionHandlerByIterableWithSizeOf1}           from "./handler/CollectionHandlerByIterableWithSizeOf1"
@@ -658,14 +661,53 @@ export class LazyGenericCollectionHolder<const out T = unknown,
     }
 
     #handlerByCollectionIterator(reference: CollectionIterator<T>,): CollectionHandler<T> {
-        const collection = reference.collection
-        if (isCollectionHolder<T>(collection,))
-            return this.#handlerByCollectionHolder(collection,)
-        if (isMinimalistCollectionHolder<T>(collection,))
-            return this.#handlerByMinimalistCollectionHolder(collection,)
-        if (isCollectionHolderByStructure(collection,))
-            return this.#handlerByCollectionHolder(collection,)
-        return this.#handlerByMinimalistCollectionHolder(collection,)
+        const size = this.#size = reference.size
+
+        //#region -------------------- Initialization (size = 0) --------------------
+
+        if (this.#isEmpty = size == 0) {
+            this.#hasNull = this.#hasDuplicate = false
+            this.#array = CollectionConstants.EMPTY_ARRAY
+            this.#set = CollectionConstants.EMPTY_SET
+            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+            return CollectionConstants.EMPTY_COLLECTION_HANDLER
+        }
+
+        //#endregion -------------------- Initialization (size = 0) --------------------
+        //#region -------------------- Initialization (size = 1) --------------------
+
+        if (size == 1) {
+            const handler = new CollectionHandlerByCollectionIteratorOf1<T>(this, reference, size,)
+            if (this.#hasNull != null)
+                this.#lazyHasNull = lazy(() => handler.hasNull,)
+            this.#hasDuplicate = false
+            return handler
+        }
+
+        //#endregion -------------------- Initialization (size = 1) --------------------
+        //#region -------------------- Initialization (size = 2) --------------------
+
+        if (size == 2) {
+            const handler = new CollectionHandlerByCollectionIteratorOf2<T>(this, reference, size,)
+            if (this.#hasNull != null)
+                this.#lazyHasNull = lazy(() => handler.hasNull,)
+            if (this.#hasDuplicate != null)
+                this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+            return handler
+        }
+
+        //#endregion -------------------- Initialization (size = 2) --------------------
+        //#region -------------------- Initialization (size = over 2) --------------------
+
+        const handler = new CollectionHandlerByCollectionIterator<T>(this, reference,)
+        if (this.#hasNull != null)
+            this.#lazyHasNull = lazy(() => handler.hasNull,)
+        if (this.#hasDuplicate != null)
+            this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+        return handler
+
+        //#endregion -------------------- Initialization (size = over 2) --------------------
     }
 
     #handlerByIterableWithSize(reference: Iterable<T>, size: number,): CollectionHandler<T> {
