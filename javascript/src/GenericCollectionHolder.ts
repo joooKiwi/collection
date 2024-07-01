@@ -298,7 +298,7 @@ export class GenericCollectionHolder<const out T = unknown,
         if (isCollectionIterator<T>(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = reference.hasNext) {
+            if (this.#isEmpty = !reference.hasNext) {
                 this.#size = 0
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
@@ -448,7 +448,7 @@ export class GenericCollectionHolder<const out T = unknown,
         if (isCollectionIteratorByStructure<T>(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (this.#isEmpty = reference.hasNext) {
+            if (this.#isEmpty = !reference.hasNext) {
                 this.#size = 0
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
