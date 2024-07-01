@@ -61,10 +61,10 @@ export interface CollectionIterator<out T = unknown, >
     //#region -------------------- Sibling index methods --------------------
 
     /** Get the index that will be used at a later {@link nextValue} or {@link next} call */
-    get nextIndex(): number
+    get nextIndex(): NullOrNumber
 
     /** Get the index that will be used at a later {@link previousValue} or {@link previous} call */
-    get previousIndex(): number
+    get previousIndex(): NullOrNumber
 
     //#endregion -------------------- Sibling index methods --------------------
     //#region -------------------- Preview methods --------------------
