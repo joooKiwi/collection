@@ -43,12 +43,44 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
     //#region -------------------- Getter methods --------------------
 
     public override get size(): 2 { return 2 }
-
     public override get isEmpty(): false { return false }
 
-    public override get hasNull(): boolean { return this.#hasNull ??= this._first == null || this._second == null }
+    public override get hasNull(): boolean {
+        const value = this.#hasNull
+        if (value != null)
+            return value
 
-    public override get hasDuplicate(): boolean { return this.#hasDuplicate ??= this._first === this._second }
+        if (this.hasFinished)
+            return this.#hasNull = this._first == null || this._second == null
+
+        const collection = this._collection
+        const firstValue = collection[0] = this._first
+        this._hasFirstValueRetrieved = true
+        if (firstValue == null)
+            return this.#hasNull = true
+
+        const secondValue = collection[1] = this._second
+        this._hasSecondValueRetrieved = true
+        this._hasFinished = true
+        if (secondValue == null)
+            return this.#hasNull = true
+        return this.#hasNull = false
+    }
+
+    public override get hasDuplicate(): boolean {
+        const value = this.#hasDuplicate
+        if (value != null)
+            return value
+
+        if (this.hasFinished)
+            return this.#hasDuplicate = this._first === this._second
+
+        const collection = this._collection
+        const firstValue = collection[0] = this._first
+        const secondValue = collection[1] = this._second
+        this._hasFinished = this._hasFirstValueRetrieved = this._hasSecondValueRetrieved = true
+        return this.#hasDuplicate = firstValue === secondValue
+    }
 
 
     /** The first value of the {@link _reference reference} */

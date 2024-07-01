@@ -32,7 +32,20 @@ export abstract class AbstractCollectionHandlerBy1Value<const out T = unknown,
 
     public override get size(): 1 { return 1 }
     public override get isEmpty(): false { return false }
-    public override get hasNull(): boolean { return this.#hasNull ??= this._first == null }
+
+    public override get hasNull(): boolean {
+        const value = this.#hasNull
+        if (value != null)
+            return value
+
+        if (this.hasFinished)
+            return this.#hasNull = this._first == null
+
+        const firstValue = this._collection[0] = this._first
+        this._hasFinished = true
+        return this.#hasNull = firstValue == null
+    }
+
     public override get hasDuplicate(): false { return false }
 
     /** The first value of the {@link _reference reference} */
