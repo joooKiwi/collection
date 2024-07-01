@@ -57,7 +57,7 @@ describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist,},},) =>
         },)
         test("[a,b].filterNotNull() == this",                                     () => {
             const instance = newInstance(AB,)
-            expect(instance.filterNotNull(),).toEqual(instance,)
+            expect(instance === instance.filterNotNull(),).toBeTrue()
         },)
     }
 
