@@ -157,6 +157,7 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
     protected set _amountOfElementRetrieved(value: number,) { this.#amountOfElementRetrieved = value }
 
     //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
 
     public override get(index: number,): ValueHolder<T> {
         if (this.isEmpty)
@@ -203,5 +204,7 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
             this._hasFinished = true
         return new ValidValueHolder(collection[indexToRetrieve] = this._reference.get(indexToRetrieve,),)
     }
+
+    //#endregion -------------------- Methods --------------------
 
 }

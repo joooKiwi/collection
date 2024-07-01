@@ -103,6 +103,7 @@ export class CollectionHandlerBySet<const out T = unknown,
     protected set _lastIndex(value: number,) { this.#lastIndex = value }
 
     //#endregion -------------------- Getter & setter methods --------------------
+    //#region -------------------- Methods --------------------
 
     public override get(index: number,): ValueHolder<T> {
         if (this.isEmpty)
@@ -163,5 +164,7 @@ export class CollectionHandlerBySet<const out T = unknown,
 
         return new ValidValueHolder(collection[(this._lastIndex = indexToFind) - 1] as T,)
     }
+
+    //#endregion -------------------- Methods --------------------
 
 }

@@ -26,7 +26,9 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @see CollectionHandlerByArrayOf1
  * @see CollectionHandlerByArrayOf2
  */
-export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE extends readonly T[] = readonly T[], const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByArray<const out T = unknown,
+    const out REFERENCE extends readonly T[] = readonly T[],
+    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------
@@ -157,6 +159,7 @@ export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE
     protected set _amountOfElementRetrieved(value: number,) { this.#amountOfElementRetrieved = value }
 
     //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
 
     public get(index: number,): ValueHolder<T> {
         if (this.isEmpty)
@@ -203,5 +206,7 @@ export class CollectionHandlerByArray<const out T = unknown, const out REFERENCE
             this._hasFinished = true
         return new ValidValueHolder(collection[indexToRetrieve] = this._reference[indexToRetrieve] as T,)
     }
+
+    //#endregion -------------------- Methods --------------------
 
 }
