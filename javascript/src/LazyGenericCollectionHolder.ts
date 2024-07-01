@@ -589,7 +589,7 @@ export class LazyGenericCollectionHolder<const out T = unknown,
         //#region -------------------- Initialization (size = 2) --------------------
 
         if (size == 2) {
-            const handler: CollectionHandler<T> = new CollectionHandlerByCollectionHolderOf2(this, reference, size,)
+            const handler = new CollectionHandlerByCollectionHolderOf2<T>(this, reference, size,)
             if (this.#hasNull != null)
                 this.#lazyHasNull = lazy(() => handler.hasNull,)
             if (this.#hasDuplicate != null)
@@ -602,7 +602,7 @@ export class LazyGenericCollectionHolder<const out T = unknown,
 
         if (this.#hasNull != null)
             this.#lazyHasNull = lazy(() => reference.hasNull,)
-        const handler: CollectionHandler<T> = new CollectionHandlerByCollectionHolder(this, reference,)
+        const handler = new CollectionHandlerByCollectionHolder<T>(this, reference,)
         if (this.#hasDuplicate != null)
             this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
         return handler

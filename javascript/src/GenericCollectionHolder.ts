@@ -90,7 +90,9 @@ export class GenericCollectionHolder<const out T = unknown,
         // README: The eager instantiation has some weird shenanigan to keep its nature pure.
         //         Also, to be efficient, there is some duplicate code in the constructor.
 
-        reference = this.#reference = reference instanceof Function ? reference() : reference
+        if (reference instanceof Function)
+            reference = reference()
+        this.#reference = reference
 
         if (reference instanceof Array) {
             const size = this.#size = reference.length

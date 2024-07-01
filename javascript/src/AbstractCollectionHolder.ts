@@ -215,9 +215,9 @@ export abstract class AbstractCollectionHolder<const out T = unknown, >
 
     //#region -------------------- First methods --------------------
 
-    public first(): NonNullable<T>
-    public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
+    public first(): T
+    public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+    public first(predicate: Nullable<BooleanCallback<T>>,): T
     public first(predicate?: Nullable<BooleanCallback<T>>,) {
         return firstByCollectionHolder(this, predicate,)
     }
