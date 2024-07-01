@@ -336,7 +336,7 @@ export class GenericCollectionHolder<const out T = unknown,
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
-                this[index] = array[index] = reference.nextValue
+                this[index] = array[index] = reference.previousValue
             this.#array = Object.freeze(array,)
             return
 
@@ -486,7 +486,7 @@ export class GenericCollectionHolder<const out T = unknown,
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
-                this[index] = array[index] = reference.nextValue
+                this[index] = array[index] = reference.previousValue
             this.#array = Object.freeze(array,)
             return
 

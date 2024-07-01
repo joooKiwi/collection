@@ -254,9 +254,9 @@ export class GenericMinimalistCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = over 2) --------------------
 
             const array = [] as T[]
-            let index = -1
-            while (++index < size)
-                array[index] = reference.nextValue
+            let index = size
+            while (index-- > 0)
+                array[index] = reference.previousValue
             this.#array = Object.freeze(array,)
             return
 
@@ -368,9 +368,9 @@ export class GenericMinimalistCollectionHolder<const out T = unknown,
             //#region -------------------- Initialization (size = over 2) --------------------
 
             const array = [] as T[]
-            let index = -1
-            while (++index < size)
-                array[index] = reference.nextValue
+            let index = size
+            while (index-- > 0)
+                array[index] = reference.previousValue
             this.#array = Object.freeze(array,)
             return
 
