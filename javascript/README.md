@@ -51,6 +51,7 @@ It can be separated in different categories.
  - `size`, `length` & `count`
  - `isEmpty` & `isNotEmpty`
  - `hasNull`, `includesNull` & `containsNull`
+ - `hasDuplicate`, `includesDuplicate` & `containsDuplicate`
  - `get`, `at` & `elementAt`
  - `getOrElse`, `atOrElse` & `elementAtOrElse`
  - `getOrNull`, `atOrNull` & `elementAtOrNull`
@@ -62,9 +63,10 @@ It can be separated in different categories.
 
 <span>2.</span> The **loop** methods are:
  - `all`, `any` & `none`
- - `hasOne`, `has`, `includesOne`, `includes`, `containsOne` & `contains`
+ - `has`, `includes` & `contains`
+ - `hasOne`, `includesOne` &`containsOne`
  - `hasAll`, `includesAll` & `containsAll`
- - `join`
+ - `joinToString` & `join`
  - `filter` & `filterIndexed`
  - `filterNot` & `filterIndexedNot`
  - `filterNotNull` & `requireNotNull`
@@ -88,12 +90,12 @@ It can be separated in different categories.
 <span>4.</span> The **utility** methods _(not part of the `CollectionHolder`)_
  - `asString`, `asLocaleString`, `asLowerCaseString`, `asLocaleLowerCaseString`, `asUpperCaseString` & `asLocaleUpperCaseString`
    _(These methods will be eventually moved in another project)_
- - `isMinimalistCollectionHolder`
- - `isCollectionHolder`
- - `isCollectionIterator`
+ - `isMinimalistCollectionHolder` / `isMinimalistCollectionHoldeByStructure`
+ - `isCollectionHolder` / `isCollectionHolderByStructure`
+ - `isCollectionIterator` / `isCollectionIteratorByStructure`
 
 ---
-Almost every method is present in the `src/method` at the exception of
+Almost every method is present in the `src/method` at the exception to
 `get(index)`, `getOrNull(index)` and `getOrElse(index, defaultValue)`
 that is handled differently based on the type of instance.
 
@@ -101,12 +103,16 @@ The non-implemented methods are `size` (with its alias `length` & `count`)
 and `isEmpty` with its inverse `isNotEmpty`.
 
 The alias methods are not part of the extension function.
-It includes `includesNull`, `containsNull`, `atOrElse`,
-`elementAtOrElse`, `atOrDefault`, `elementAtOrDefault`,
-`has`,
-`includes`, `includesOne`, `includesAll`,
-`contains`, `containsOne`, `containsAll`,
-`toReversed` & `reversed`.
+It includes:
+ - `includesNull` / `containsNull`
+ - `includesDuplicate` / `containsDuplicate`
+ - `atOrElse` / `elementAtOrElse`
+ - `atOrDefault` / `elementAtOrDefault`
+ - `includes` / `contains`
+ - `includesOne` / `containsOne`
+ - `includesAll` / `containsAll`
+ - `join` _(it will removed in version 1.10)_
+ - `toReversed` / `reversed`.
 
 ## Contribution
 You can contribute to great simple packages.
