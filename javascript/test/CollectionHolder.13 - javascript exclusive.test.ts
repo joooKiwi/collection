@@ -16,6 +16,6 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
     describe("Symbol.toStringTag", () => expect(newInstance(EMPTY,)[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
     describe("Symbol.iterator", () => {
         test("empty",     () => expect(newInstance(EMPTY,)[Symbol.iterator](),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
-        test("non-empty", () => expect(newInstance(AB,).toIterator(),).toBeInstanceOf(GenericCollectionIterator,),)
+        test("non-empty", () => expect(newInstance(AB,)[Symbol.iterator](),).toBeInstanceOf(GenericCollectionIterator,),)
     },)
 },)},)
