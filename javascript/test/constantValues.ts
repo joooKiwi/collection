@@ -61,8 +61,6 @@ export const TEMPLATE_ITEMS = [
     '«', '»', '"', '\'',
     true, false,
 ] as const
-export const FORBIDDEN_INDEXES = [Number.NaN, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY,] as const
-export const ZERO_AND_FORBIDDEN_INDEXES = [0, Number.NaN, Number.NEGATIVE_INFINITY, Number.POSITIVE_INFINITY,] as const
 
 type IterableCreation<T,> = (array: readonly T[],) => PossibleIterableArraySetOrCollectionHolder<T>
 /**
