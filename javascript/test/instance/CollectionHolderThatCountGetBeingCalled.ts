@@ -84,7 +84,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
         this.#isCollectionHolder = instance instanceof AbstractCollectionHolder
     }
 
-    public execute(action: (instance: CollectionHolder<T>,) => void,): this {
+    public execute(action: (instance: this,) => void,): this {
         action(this,)
         return this
     }
