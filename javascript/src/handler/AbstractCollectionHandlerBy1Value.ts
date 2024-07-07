@@ -67,21 +67,21 @@ export abstract class AbstractCollectionHandlerBy1Value<const out T = unknown,
     protected set _hasFinished(value: true,) { this.#hasFinished = value }
 
 
-    /** The first value of the {@link _reference reference} */
-    protected abstract get _first(): T
-
     get #__first(): T {
         if (this._hasFirstValueRetrieved)
             return this.#first as T
 
         this._hasFirstValueRetrieved = true
-        return this.#first = this._first
+        return this.#first = this._retrieveFirst()
     }
 
-    /** Tell that the {@link _first first value} has been retrieved and set */
+    /** Retrieve the first value of the {@link _reference reference} */
+    protected abstract _retrieveFirst(): T
+
+    /** Tell that the {@link _retrieveFirst first value} has been retrieved and set */
     protected get _hasFirstValueRetrieved(): boolean { return this.#hasFirstValueRetrieved }
 
-    /** The {@link _first first value} has been retrieved */
+    /** The {@link _retrieveFirst first value} has been retrieved */
     protected set _hasFirstValueRetrieved(value: true,) { this.#hasFirstValueRetrieved = value }
 
 

@@ -91,47 +91,47 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
     protected set _hasFinished(value: true,) { this.#hasFinished = value }
 
 
-    /** The first value of the {@link _reference reference} */
-    protected abstract get _first(): T
-
     get #__first(): T {
         if (this._hasFirstValueRetrieved)
             return this.#first as T
 
         this._hasFirstValueRetrieved = true
-        return this.#first = this._first
+        return this.#first = this._retrieveFirst()
     }
 
+    /** Retrieve the first value of the {@link _reference reference} */
+    protected abstract _retrieveFirst(): T
+
     /**
-     * Tell that the {@link _first first value} has been retrieved and set
+     * Tell that the {@link _retrieveFirst first value} has been retrieved and set
      *
-     * @note This is independent of the {@link _second second value}
+     * @note This is independent of the {@link _retrieveSecond second value}
      */
     protected get _hasFirstValueRetrieved(): boolean { return this.#hasFirstValueRetrieved }
 
-    /** The {@link _first first value} has been retrieved */
+    /** The {@link _retrieveFirst first value} has been retrieved */
     protected set _hasFirstValueRetrieved(value: true,) { this.#hasFirstValueRetrieved = value }
 
-
-    /** The second value of the {@link _reference reference} */
-    protected abstract get _second(): T
 
     get #__second(): T {
         if (this._hasSecondValueRetrieved)
             return this.#second as T
 
         this._hasSecondValueRetrieved = true
-        return this.#second = this._second
+        return this.#second = this._retrieveSecond()
     }
 
+    /** Retrieve the second value of the {@link _reference reference} */
+    protected abstract _retrieveSecond(): T
+
     /**
-     * Tell that the {@link _second second value} has been retrieved and set
+     * Tell that the {@link _retrieveSecond second value} has been retrieved and set
      *
-     * @note This is independent of the {@link _first first value}
+     * @note This is independent of the {@link _retrieveFirst first value}
      */
     protected get _hasSecondValueRetrieved(): boolean { return this.#hasSecondValueRetrieved }
 
-    /** The {@link _second second value} has been retrieved */
+    /** The {@link _retrieveSecond second value} has been retrieved */
     protected set _hasSecondValueRetrieved(value: true,) { this.#hasSecondValueRetrieved = value }
 
     //#endregion -------------------- Getter & setter methods --------------------

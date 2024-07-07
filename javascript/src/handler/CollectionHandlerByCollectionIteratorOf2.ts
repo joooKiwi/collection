@@ -5,9 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Lazy} from "@joookiwi/lazy"
-import {lazy}      from "@joookiwi/lazy"
-
 import type {CollectionHolder}   from "../CollectionHolder"
 import type {CollectionIterator} from "../iterator/CollectionIterator"
 
@@ -25,35 +22,19 @@ export class CollectionHandlerByCollectionIteratorOf2<const out T = unknown,
     const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy2Values<T, REFERENCE, COLLECTION> {
 
-    //#region -------------------- Fields --------------------
-
-    readonly #first: Lazy<T>
-    readonly #second: Lazy<T>
-
-    //#endregion -------------------- Fields --------------------
-    //#region -------------------- Constructor --------------------
-
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {
         super(collection, reference,)
         if (size !== 2)
             throw new TypeError(`The collection iterator received in the "${this.constructor.name}" cannot have a different size than 2.`,)
-
-        const first = this.#first = lazy(() => reference.nextValue,)
-        this.#second = lazy(() => {
-            first.value
-            const value = reference.nextValue
-            this._hasFinished = true
-            return value
-        },)
     }
 
-    //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    protected override _retrieveFirst(): T { return this._reference.nextValue }
 
-    protected override get _first(): T { return this.#first.value }
-
-    protected override get _second(): T { return this.#second.value }
-
-    //#endregion -------------------- Getter methods --------------------
+    protected override _retrieveSecond(): T {
+        this._retrieveFirst()
+        const value = this._reference.nextValue
+        this._hasFinished = true
+        return value
+    }
 
 }

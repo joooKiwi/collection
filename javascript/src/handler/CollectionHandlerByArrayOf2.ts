@@ -20,30 +20,14 @@ export class CollectionHandlerByArrayOf2<const out T = unknown,
     const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy2Values<T, REFERENCE, COLLECTION> {
 
-    //#region -------------------- Fields --------------------
-
-    readonly #first: T
-    readonly #second: T
-
-    //#endregion -------------------- Fields --------------------
-    //#region -------------------- Constructor --------------------
-
     public constructor(collection: COLLECTION, reference: readonly T[],) {
         super(collection, reference as REFERENCE,)
         if (reference.length !== 2)
             throw new TypeError(`The array received in the "${this.constructor.name}" cannot have a different size than 2.`,)
-
-        this.#first = reference[0] as T
-        this.#second = reference[1] as T
     }
 
-    //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    protected override _retrieveFirst(): T { return this._reference[0] }
 
-    protected override get _first(): T { return this.#first }
-
-    protected override get _second(): T { return this.#second }
-
-    //#endregion -------------------- Getter methods --------------------
+    protected override _retrieveSecond(): T { return this._reference[1] }
 
 }

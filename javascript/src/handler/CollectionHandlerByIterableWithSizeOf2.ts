@@ -5,9 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Lazy} from "@joookiwi/lazy"
-import {lazy}      from "@joookiwi/lazy"
-
 import type {CollectionHolder}         from "../CollectionHolder"
 import type {PossibleIterableWithSize} from "../iterable/types"
 
@@ -28,36 +25,23 @@ export class CollectionHandlerByIterableWithSizeOf2<const out T = unknown,
     const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy2Values<T, REFERENCE, COLLECTION> {
 
-    //#region -------------------- Fields --------------------
-
-    readonly #first: Lazy<T>
-    readonly #second: Lazy<T>
-
-    //#endregion -------------------- Fields --------------------
-    //#region -------------------- Constructor --------------------
+    #iterator?: Iterator<T, unknown>
 
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {
         super(collection, reference,)
         if (size !== 2)
             throw new TypeError(`The iterable received in the "${this.constructor.name}" cannot have a different size than 2.`,)
-
-        const iterator = lazy(() => reference[Symbol.iterator](),)
-        const first = this.#first = lazy(() => collection[0] = iterator.value.next().value,)
-        this.#second = lazy(() => {
-            first.value
-            const value = collection[1] = iterator.value.next().value
-            this._hasFinished = true
-            return value
-        },)
     }
 
-    //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    get #__iterator(): Iterator<T, unknown> { return this.#iterator ??= this._reference[Symbol.iterator]() }
 
-    protected override get _first(): T { return this.#first.value }
+    protected override _retrieveFirst(): T { return this.#__iterator.next().value as T }
 
-    protected override get _second(): T { return this.#second.value }
-
-    //#endregion -------------------- Getter methods --------------------
+    protected override _retrieveSecond(): T {
+        this._retrieveFirst()
+        const value = this.#__iterator.next().value as T
+        this._hasFinished = true
+        return value
+    }
 
 }

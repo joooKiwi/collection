@@ -20,16 +20,12 @@ export class CollectionHandlerByArrayOf1<const out T = unknown,
     const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy1Value<T, REFERENCE, COLLECTION> {
 
-    readonly #first: T
-
     public constructor(collection: COLLECTION, reference: readonly T[],) {
         super(collection, reference as REFERENCE,)
         if (reference.length !== 1)
             throw new TypeError(`The array received in the "${this.constructor.name}" cannot have a different size than 1.`,)
-
-        this.#first = reference[0] as T
     }
 
-    protected override get _first(): T { return this.#first }
+    protected override _retrieveFirst(): T { return this._reference[0] }
 
 }
