@@ -22,7 +22,6 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
 /**
  * An implementation of a {@link CollectionHolder} for an {@link ReadonlyArray array}
  *
- * @beta
  * @see CollectionHandlerByArrayOf1
  * @see CollectionHandlerByArrayOf2
  */
@@ -37,6 +36,8 @@ export class CollectionHandlerByArray<const out T = unknown,
     readonly #isEmpty: boolean
     #hasNull?: boolean
     #hasDuplicate?: boolean
+    #hasFinished: boolean
+
     #amountOfElementRetrieved?: number
 
     //#endregion -------------------- Fields --------------------
@@ -44,14 +45,23 @@ export class CollectionHandlerByArray<const out T = unknown,
 
     public constructor(collection: COLLECTION, reference: REFERENCE,) {
         super(collection, reference,)
-        this.#isEmpty = (this.#size = reference.length) == 0
+        const size = this.#size = reference.length
+        if (size == 0) {
+            this.#hasFinished = this.#isEmpty = true
+            this.#hasNull = this.#hasDuplicate = false
+            return
+        }
+
+        this.#hasFinished = this.#isEmpty = false
+        if (size != 1)
+            return
+        this.#hasDuplicate = false
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Getter & setter methods --------------------
 
     public override get size(): REFERENCE["length"] { return this.#size }
-
     public override get isEmpty(): boolean { return this.#isEmpty }
 
     public override get hasNull(): boolean {
@@ -152,13 +162,20 @@ export class CollectionHandlerByArray<const out T = unknown,
         return this.#hasDuplicate = false
     }
 
+    public override get hasFinished(): boolean { return this._hasFinished }
+    /** Tell if the {@link CollectionHandlerByArray handler} has finished processing every single value */
+    protected get _hasFinished(): boolean { return this.#hasFinished }
+    /** The {@link CollectionHandlerByArray handler} has finished processing every single value */
+    protected set _hasFinished(value: true,) { this.#hasFinished = value }
+
+
     /** The amount of element that was retrieved so far */
     protected get _amountOfElementRetrieved(): number { return this.#amountOfElementRetrieved ?? 0 }
 
     /** Set the amount of element that was retrieved so far */
     protected set _amountOfElementRetrieved(value: number,) { this.#amountOfElementRetrieved = value }
 
-    //#endregion -------------------- Getter methods --------------------
+    //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
 
     public get(index: number,): ValueHolder<T> {
