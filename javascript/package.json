@@ -133,6 +133,7 @@
   },
 
   "keywords": [
+    "immutable",
     "iterable",
     "iterator",
     "collection",
