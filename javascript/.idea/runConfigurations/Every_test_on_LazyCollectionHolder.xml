@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Every test on LazyCollectionHolder" type="CompoundRunConfigurationType">
+    <toRun name="LazyCollectionHolder (handler)" type="JavaScriptTestRunnerJest" />
+    <toRun name="LazyCollectionHolder (∞ iterator)" type="JavaScriptTestRunnerJest" />
+    <method v="2" />
+  </configuration>
+</component>
