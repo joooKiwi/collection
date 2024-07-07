@@ -45,6 +45,10 @@ export class CollectionHandlerByCollectionHolderOf2<const out T = unknown,
 
     protected override get _second(): T { return this.#second }
 
+    public override get hasNull(): REFERENCE["hasNull"] { return this._reference.hasNull }
+
+    public override get hasDuplicate(): REFERENCE["hasDuplicate"] { return this._reference.hasDuplicate }
+
     //#endregion -------------------- Getter methods --------------------
 
 }

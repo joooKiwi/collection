@@ -36,4 +36,6 @@ export class CollectionHandlerByCollectionHolderOf1<const out T = unknown,
 
     protected override get _first(): T { return this.#first.value }
 
+    public override get hasNull(): REFERENCE["hasNull"] { return this._reference.hasNull }
+
 }
