@@ -7,6 +7,8 @@
 
 export const EMPTY = [] as const
 export const A = ['a',] as const
+export const NULL = [null,] as const
+export const UNDEFINED = [undefined,] as const
 export const AA = ['a', 'a',] as const
 export const A_NULL = ['a', null,] as const
 export const NULL_A = [null, 'a',] as const
