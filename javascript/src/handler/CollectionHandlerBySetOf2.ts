@@ -34,7 +34,7 @@ export class CollectionHandlerBySetOf2<const out T = unknown,
     protected override _retrieveFirst(): T { return this.#__iterator.next().value as T }
 
     protected override _retrieveSecond(): T {
-        this._retrieveFirst()
+        this._first
         const value = this.#__iterator.next().value as T
         this._hasFinished = true
         return value

@@ -53,15 +53,15 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
             return value
 
         if (this.hasFinished)
-            return this.#hasNull = this.#__first == null || this.#__second == null
+            return this.#hasNull = this._first == null || this._second == null
 
         const collection = this._collection
-        const firstValue = collection[0] = this.#__first
+        const firstValue = collection[0] = this._first
         this._hasFirstValueRetrieved = true
         if (firstValue == null)
             return this.#hasNull = true
 
-        const secondValue = collection[1] = this.#__second
+        const secondValue = collection[1] = this._second
         this._hasSecondValueRetrieved = true
         this._hasFinished = true
         if (secondValue == null)
@@ -75,11 +75,11 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
             return value
 
         if (this.hasFinished)
-            return this.#hasDuplicate = this.#__first === this.#__second
+            return this.#hasDuplicate = this._first === this._second
 
         const collection = this._collection
-        const firstValue = collection[0] = this.#__first
-        const secondValue = collection[1] = this.#__second
+        const firstValue = collection[0] = this._first
+        const secondValue = collection[1] = this._second
         this._hasFinished = this._hasFirstValueRetrieved = this._hasSecondValueRetrieved = true
         return this.#hasDuplicate = firstValue === secondValue
     }
@@ -98,6 +98,9 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
         this._hasFirstValueRetrieved = true
         return this.#first = this._retrieveFirst()
     }
+
+    /** The first value of the {@link _reference reference} */
+    protected get _first(): T { return this.#__first }
 
     /** Retrieve the first value of the {@link _reference reference} */
     protected abstract _retrieveFirst(): T
@@ -120,6 +123,9 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
         this._hasSecondValueRetrieved = true
         return this.#second = this._retrieveSecond()
     }
+
+    /** The second value of the {@link _reference reference} */
+    protected get _second(): T { return this.#__second }
 
     /** Retrieve the second value of the {@link _reference reference} */
     protected abstract _retrieveSecond(): T
@@ -159,7 +165,7 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
             if (0 in collection)
                 return new ValidValueHolder(collection[0] as T,)
 
-            const value = collection[0] = this.#__first
+            const value = collection[0] = this._first
             if (this._hasSecondValueRetrieved)
                 this._hasFinished = true
             this._hasFirstValueRetrieved = true
@@ -170,7 +176,7 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
         if (1 in collection)
             return new ValidValueHolder(collection[1] as T,)
 
-        const value = collection[1] = this.#__second
+        const value = collection[1] = this._second
         if (this._hasFirstValueRetrieved)
             this._hasFinished = true
         this._hasSecondValueRetrieved = true

@@ -31,7 +31,7 @@ export class CollectionHandlerByCollectionIteratorOf2<const out T = unknown,
     protected override _retrieveFirst(): T { return this._reference.nextValue }
 
     protected override _retrieveSecond(): T {
-        this._retrieveFirst()
+        this._first
         const value = this._reference.nextValue
         this._hasFinished = true
         return value
