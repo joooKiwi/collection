@@ -12,7 +12,6 @@ import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1V
 /**
  * An implementation of a {@link CollectionHolder} for an {@link ReadonlyArray array} of one element
  *
- * @beta
  * @see CollectionHandlerByArray
  * @see CollectionHandlerByArrayOf2
  */

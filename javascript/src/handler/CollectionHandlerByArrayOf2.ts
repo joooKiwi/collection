@@ -12,7 +12,6 @@ import {AbstractCollectionHandlerBy2Values} from "./AbstractCollectionHandlerBy2
 /**
  * An implementation of a {@link CollectionHolder} for an {@link ReadonlyArray array} of two elements
  *
- * @beta
  * @see CollectionHandlerByArray
  * @see CollectionHandlerByArrayOf1
  */
