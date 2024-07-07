@@ -17,7 +17,6 @@ import {Not0Or1IndexAfterCalculationValueHolder} from "./value/Not0Or1IndexAfter
 import {PositiveInfinityIndexValueHolder}        from "./value/PositiveInfinityIndexValueHolder"
 import {ValidValueHolder}                        from "./value/ValidValueHolder"
 
-/** @beta */
 export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
     const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>,
     const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
@@ -27,20 +26,23 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
 
     #hasNull?: boolean
     #hasDuplicate?: boolean
+    #hasFinished: boolean
 
     #hasFirstValueRetrieved: boolean
+    #first?: T
     #hasSecondValueRetrieved: boolean
+    #second?: T
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
     protected constructor(collection: COLLECTION, reference: REFERENCE,) {
         super(collection, reference,)
-        this.#hasFirstValueRetrieved = this.#hasSecondValueRetrieved = false
+        this.#hasFinished = this.#hasFirstValueRetrieved = this.#hasSecondValueRetrieved = false
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Getter & setter methods --------------------
 
     public override get size(): 2 { return 2 }
     public override get isEmpty(): false { return false }
@@ -51,15 +53,15 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
             return value
 
         if (this.hasFinished)
-            return this.#hasNull = this._first == null || this._second == null
+            return this.#hasNull = this.#__first == null || this.#__second == null
 
         const collection = this._collection
-        const firstValue = collection[0] = this._first
+        const firstValue = collection[0] = this.#__first
         this._hasFirstValueRetrieved = true
         if (firstValue == null)
             return this.#hasNull = true
 
-        const secondValue = collection[1] = this._second
+        const secondValue = collection[1] = this.#__second
         this._hasSecondValueRetrieved = true
         this._hasFinished = true
         if (secondValue == null)
@@ -73,18 +75,32 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
             return value
 
         if (this.hasFinished)
-            return this.#hasDuplicate = this._first === this._second
+            return this.#hasDuplicate = this.#__first === this.#__second
 
         const collection = this._collection
-        const firstValue = collection[0] = this._first
-        const secondValue = collection[1] = this._second
+        const firstValue = collection[0] = this.#__first
+        const secondValue = collection[1] = this.#__second
         this._hasFinished = this._hasFirstValueRetrieved = this._hasSecondValueRetrieved = true
         return this.#hasDuplicate = firstValue === secondValue
     }
 
+    public override get hasFinished(): boolean { return this._hasFinished }
+    /** Tell if the {@link AbstractCollectionHandlerBy2Values handler} has finished processing both values */
+    protected get _hasFinished(): boolean { return this.#hasFinished }
+    /** The {@link AbstractCollectionHandlerBy2Values handler} has finished processing both values */
+    protected set _hasFinished(value: true,) { this.#hasFinished = value }
+
 
     /** The first value of the {@link _reference reference} */
     protected abstract get _first(): T
+
+    get #__first(): T {
+        if (this._hasFirstValueRetrieved)
+            return this.#first as T
+
+        this._hasFirstValueRetrieved = true
+        return this.#first = this._first
+    }
 
     /**
      * Tell that the {@link _first first value} has been retrieved and set
@@ -93,12 +109,20 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
      */
     protected get _hasFirstValueRetrieved(): boolean { return this.#hasFirstValueRetrieved }
 
-    /** Set trigger to the {@link _first first value} being handle to the {@link value} received */
-    protected set _hasFirstValueRetrieved(value: boolean,) { this.#hasFirstValueRetrieved = value }
+    /** The {@link _first first value} has been retrieved */
+    protected set _hasFirstValueRetrieved(value: true,) { this.#hasFirstValueRetrieved = value }
 
 
     /** The second value of the {@link _reference reference} */
     protected abstract get _second(): T
+
+    get #__second(): T {
+        if (this._hasSecondValueRetrieved)
+            return this.#second as T
+
+        this._hasSecondValueRetrieved = true
+        return this.#second = this._second
+    }
 
     /**
      * Tell that the {@link _second second value} has been retrieved and set
@@ -107,10 +131,10 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
      */
     protected get _hasSecondValueRetrieved(): boolean { return this.#hasSecondValueRetrieved }
 
-    /** Set trigger to the {@link _second second value} being handle to the {@link value} received */
-    protected set _hasSecondValueRetrieved(value: boolean,) { this.#hasSecondValueRetrieved = value }
+    /** The {@link _second second value} has been retrieved */
+    protected set _hasSecondValueRetrieved(value: true,) { this.#hasSecondValueRetrieved = value }
 
-    //#endregion -------------------- Getter methods --------------------
+    //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
 
     public override get(index: number,): ValueHolder<T> {
@@ -135,7 +159,7 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
             if (0 in collection)
                 return new ValidValueHolder(collection[0] as T,)
 
-            const value = collection[0] = this._first
+            const value = collection[0] = this.#__first
             if (this._hasSecondValueRetrieved)
                 this._hasFinished = true
             this._hasFirstValueRetrieved = true
@@ -146,7 +170,7 @@ export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
         if (1 in collection)
             return new ValidValueHolder(collection[1] as T,)
 
-        const value = collection[1] = this._second
+        const value = collection[1] = this.#__second
         if (this._hasFirstValueRetrieved)
             this._hasFinished = true
         this._hasSecondValueRetrieved = true

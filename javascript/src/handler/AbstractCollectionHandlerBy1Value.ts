@@ -17,7 +17,6 @@ import {Not0IndexAfterCalculationValueHolder}      from "./value/Not0IndexAfterC
 import {PositiveInfinityIndexValueHolder}          from "./value/PositiveInfinityIndexValueHolder"
 import {ValidValueHolder}                          from "./value/ValidValueHolder"
 
-/** @beta */
 export abstract class AbstractCollectionHandlerBy1Value<const out T = unknown,
     const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>,
     const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
@@ -25,10 +24,23 @@ export abstract class AbstractCollectionHandlerBy1Value<const out T = unknown,
 
     //#region -------------------- Fields --------------------
 
+
     #hasNull?: boolean
+    #hasFinished: boolean
+
+    #hasFirstValueRetrieved: boolean
+    #first?: T
 
     //#endregion -------------------- Fields --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Constructor --------------------
+
+    protected constructor(collection: COLLECTION, reference: REFERENCE,) {
+        super(collection,reference,)
+        this.#hasFirstValueRetrieved = this.#hasFinished = false
+    }
+
+    //#endregion -------------------- Constructor --------------------
+    //#region -------------------- Getter & setter methods --------------------
 
     public override get size(): 1 { return 1 }
     public override get isEmpty(): false { return false }
@@ -39,19 +51,41 @@ export abstract class AbstractCollectionHandlerBy1Value<const out T = unknown,
             return value
 
         if (this.hasFinished)
-            return this.#hasNull = this._first == null
+            return this.#hasNull = this.#__first == null
 
-        const firstValue = this._collection[0] = this._first
+        const firstValue = this._collection[0] = this.#__first
         this._hasFinished = true
         return this.#hasNull = firstValue == null
     }
 
     public override get hasDuplicate(): false { return false }
 
+    public override get hasFinished(): boolean { return this._hasFinished }
+    /** Tell if the {@link AbstractCollectionHandlerBy1Value handler} has finished processing the single value */
+    protected get _hasFinished(): boolean { return this.#hasFinished }
+    /** The {@link AbstractCollectionHandlerBy1Value handler} has finished processing the single value */
+    protected set _hasFinished(value: true,) { this.#hasFinished = value }
+
+
     /** The first value of the {@link _reference reference} */
     protected abstract get _first(): T
 
-    //#region -------------------- Getter methods --------------------
+    get #__first(): T {
+        if (this._hasFirstValueRetrieved)
+            return this.#first as T
+
+        this._hasFirstValueRetrieved = true
+        return this.#first = this._first
+    }
+
+    /** Tell that the {@link _first first value} has been retrieved and set */
+    protected get _hasFirstValueRetrieved(): boolean { return this.#hasFirstValueRetrieved }
+
+    /** The {@link _first first value} has been retrieved */
+    protected set _hasFirstValueRetrieved(value: true,) { this.#hasFirstValueRetrieved = value }
+
+
+    //#region -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
 
     public override get(index: number,): ValueHolder<T> {
@@ -71,7 +105,7 @@ export abstract class AbstractCollectionHandlerBy1Value<const out T = unknown,
         if (0 in collection)
             return new ValidValueHolder(collection[0] as T,)
 
-        const value = collection[0] = this._first
+        const value = collection[0] = this.#__first
         this._hasFinished = true
         return new ValidValueHolder(value,)
     }
