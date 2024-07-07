@@ -51,9 +51,9 @@ export abstract class AbstractCollectionHandlerBy1Value<const out T = unknown,
             return value
 
         if (this.hasFinished)
-            return this.#hasNull = this.#__first == null
+            return this.#hasNull = this._first == null
 
-        const firstValue = this._collection[0] = this.#__first
+        const firstValue = this._collection[0] = this._first
         this._hasFinished = true
         return this.#hasNull = firstValue == null
     }
@@ -74,6 +74,8 @@ export abstract class AbstractCollectionHandlerBy1Value<const out T = unknown,
         this._hasFirstValueRetrieved = true
         return this.#first = this._retrieveFirst()
     }
+
+    protected get _first(): T { return this.#__first }
 
     /** Retrieve the first value of the {@link _reference reference} */
     protected abstract _retrieveFirst(): T
@@ -105,7 +107,7 @@ export abstract class AbstractCollectionHandlerBy1Value<const out T = unknown,
         if (0 in collection)
             return new ValidValueHolder(collection[0] as T,)
 
-        const value = collection[0] = this.#__first
+        const value = collection[0] = this._first
         this._hasFinished = true
         return new ValidValueHolder(value,)
     }
