@@ -37,22 +37,29 @@ export class CollectionHandlerBySet<const out T = unknown,
     readonly #size: REFERENCE["size"]
     readonly #isEmpty: boolean
     #hasNull?: boolean
-    #lastIndex?: number
     #hasFinished: boolean
+
+    #lastIndexRetrieved?: number
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
     public constructor(collection: COLLECTION, reference: REFERENCE,) {
         super(collection, reference,)
-        this.#isEmpty = (this.#size = reference.size) == 0
+        const size = this.#size = reference.size
+        if (size == 0) {
+            this.#hasFinished = this.#isEmpty = true
+            this.#hasNull = false
+            return
+        }
+
+        this.#hasFinished = this.#isEmpty = false
     }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter & setter methods --------------------
 
     public get size(): REFERENCE["size"] { return this.#size }
-
     public override get isEmpty(): boolean { return this.#isEmpty }
 
     public override get hasNull(): boolean {
@@ -64,16 +71,16 @@ export class CollectionHandlerBySet<const out T = unknown,
             return this.#hasNull = this._collection.hasNull
 
         if (this.isEmpty) {
-            this._lastIndex = 0
+            this._lastIndexRetrieved = 0
             this._hasFinished = true
             return this.#hasNull = false
         }
 
         // We first try to find any null in the collection from the values already set
         const collection = this._collection
-        const lastIndex = this._lastIndex
+        const lastIndexPlus1 = this._lastIndexRetrieved + 1
         let index = -1
-        while (++index < lastIndex)
+        while (++index < lastIndexPlus1)
             if (collection[index] == null)
                 return this.#hasNull = true
 
@@ -83,12 +90,12 @@ export class CollectionHandlerBySet<const out T = unknown,
         const size = this.size
         while (++index < size)
             if ((collection[index] = iterator.next().value as T) == null) {
-                this._lastIndex = index
+                this._lastIndexRetrieved = index
                 return this.#hasNull = true
             }
 
         // We are now at the end, and every value had been retrieved and set to the collection
-        this._lastIndex = index - 1
+        this._lastIndexRetrieved = index - 1
         this._hasFinished = true
         return this.#hasNull = false
     }
@@ -104,11 +111,11 @@ export class CollectionHandlerBySet<const out T = unknown,
 
     protected get _iterator(): IterableIterator<T> { return this.#iterator ??= this._reference[Symbol.iterator]() }
 
-    /** The last index retrieved from the value */
-    protected get _lastIndex(): number { return this.#lastIndex ?? 0 }
+    /** The last index retrieved (<b>-1</b> by default) */
+    protected get _lastIndexRetrieved(): number { return this.#lastIndexRetrieved ?? -1 }
 
-    /** Set the last index retrieved from the value */
-    protected set _lastIndex(value: number,) { this.#lastIndex = value }
+    /** Set the last index retrieved */
+    protected set _lastIndexRetrieved(value: number,) { this.#lastIndexRetrieved = value }
 
     //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
@@ -140,14 +147,15 @@ export class CollectionHandlerBySet<const out T = unknown,
 
             const iterator = this._iterator
             const indexPlus1 = index + 1
-            let indexToFind = this._lastIndex - 1
+            const lastIndexRetrieved = this._lastIndexRetrieved
+            let indexToFind = lastIndexRetrieved == -1 ? -1 : lastIndexRetrieved
             while (++indexToFind < indexPlus1)
                 collection[indexToFind] = iterator.next().value
 
-            if (indexToFind == size)
+            if (lastIndexRetrieved == size)
                 this._hasFinished = true
 
-            return new ValidValueHolder(collection[(this._lastIndex = indexToFind) - 1] as T,)
+            return new ValidValueHolder(collection[this._lastIndexRetrieved = indexToFind - 1] as T,)
         }
 
         const indexToRetrieve = index < 0 ? size + index : index
@@ -163,14 +171,15 @@ export class CollectionHandlerBySet<const out T = unknown,
 
         const iterator = this._iterator
         const indexToRetrievePlus1 = indexToRetrieve + 1
-        let indexToFind = this._lastIndex - 1
+        const lastIndexRetrieved = this._lastIndexRetrieved
+        let indexToFind = lastIndexRetrieved == -1 ? -1 : lastIndexRetrieved
         while (++indexToFind < indexToRetrievePlus1)
             collection[indexToFind] = iterator.next().value
 
         if (indexToFind == size)
             this._hasFinished = true
 
-        return new ValidValueHolder(collection[(this._lastIndex = indexToFind) - 1] as T,)
+        return new ValidValueHolder(collection[this._lastIndexRetrieved = indexToFind - 1] as T,)
     }
 
     //#endregion -------------------- Methods --------------------
