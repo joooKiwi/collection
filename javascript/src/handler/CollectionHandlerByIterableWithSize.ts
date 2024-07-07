@@ -39,6 +39,7 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
     readonly #size: number
     readonly #isEmpty: boolean
     #hasNull?: boolean
+    readonly #hasDuplicate?: boolean
     #hasFinished: boolean
 
     //#endregion -------------------- Fields --------------------
@@ -46,7 +47,17 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
 
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {
         super(collection, reference,)
-        this.#isEmpty = (this.#size = size) == 0
+        this.#size = size
+        if (size == 0) {
+            this.#hasFinished = this.#isEmpty = true
+            this.#hasNull = this.#hasDuplicate = false
+            return
+        }
+
+        this.#hasFinished = this.#isEmpty = false
+        if (size != 1)
+            return
+        this.#hasDuplicate = false
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -66,28 +77,34 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
 
         // We first try to find any null in the collection from the values already set
         const collection = this._collection
-        const amountOfElementRetrieved = this._lastIndex
+        const lastIndexPlus1 = this._lastIndexRetrieved + 1
         let index = -1
-        while (index++ < amountOfElementRetrieved)
+        while (++index < lastIndexPlus1)
             if (collection[index] == null)
                 return this.#hasNull = true
 
         // We continue the process from the followed iterator to starting setting to the collection
+        index--
         const iterator = this._iterator
         const size = this.size
-        while (index++ < size)
+        while (++index < size)
             if ((collection[index] = iterator.next().value as T) == null) {
-                this._lastIndex = index
+                this._lastIndexRetrieved = index
                 return this.#hasNull = true
             }
 
         // We are now at the end, and every value had been retrieved and set to the collection
-        this._lastIndex = index
+        this._lastIndexRetrieved = index
         this._hasFinished = true
         return this.#hasNull = false
     }
 
-    //#endregion -------------------- Getter methods --------------------
+    public override get hasDuplicate(): boolean {
+        const value = this.#hasDuplicate
+        if (value != null)
+            return value
+        return super.hasDuplicate
+    }
 
 
     public override get hasFinished(): boolean { return this._hasFinished }
@@ -124,16 +141,16 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
             if (this.hasFinished)
                 return new ValidValueHolder(collection[index] as T,)
 
-            const lastIndex = this._lastIndex
+            const lastIndexRetrieved = this._lastIndexRetrieved
             const iterator = this._iterator
-            let iteratorIndex = lastIndex - 1
+            let iteratorIndex = lastIndexRetrieved == -1 ? -1 : lastIndexRetrieved
             let iteratorValue: IteratorResult<T, unknown>
             while (!(iteratorValue = iterator.next()).done) {
                 const value = collection[++iteratorIndex] = iteratorValue.value
                 if (iteratorIndex !== index)
                     continue
 
-                this._lastIndex = iteratorIndex + 1
+                this._lastIndexRetrieved = iteratorIndex
                 return new ValidValueHolder(value,)
             }
             this._hasFinished = true
@@ -152,16 +169,16 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
         if (indexToRetrieve in collection)
             return new ValidValueHolder(collection[indexToRetrieve] as T,)
 
-        const lastIndex = this._lastIndex
+        const lastIndexRetrieved = this._lastIndexRetrieved
         const iterator = this._iterator
-        let iteratorIndex = lastIndex - 1
+        let iteratorIndex = lastIndexRetrieved == -1 ? -1 : lastIndexRetrieved
         let iteratorValue: IteratorResult<T, unknown>
         while (!(iteratorValue = iterator.next()).done) {
             const value = collection[++iteratorIndex] = iteratorValue.value
             if (iteratorIndex !== indexToRetrieve)
                 continue
 
-            this._lastIndex = iteratorIndex + 1
+            this._lastIndexRetrieved = iteratorIndex
             if (indexToRetrieve > iteratorIndex)
                 return new OverSizeIndexValueHolder(index, iteratorIndex,)
             return new ValidValueHolder(value,)
