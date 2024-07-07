@@ -44,16 +44,12 @@ describe("CollectionIteratorTest", () => {
         },)
         describe("iterator result", () => {
             describe("next", () => {
-                const it = instance.next()
-
-                test("done",  () => expect(it.done,).toBeTrue(),)
-                test("value", () => expect(it.value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
+                test("done",  () => expect(instance.next().done,).toBeTrue(),)
+                test("value", () => expect(instance.next().value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
             describe("previous", () => {
-                const it = instance.previous()
-
-                test("done",  () => expect(it.done,).toBeTrue(),)
-                test("value", () => expect(it.value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
+                test("done",  () => expect(instance.previous().done,).toBeTrue(),)
+                test("value", () => expect(instance.previous().value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
         },)
         test("for‥of", () => expect(() => { for (const _ of instance); },).not.toThrow(),)
