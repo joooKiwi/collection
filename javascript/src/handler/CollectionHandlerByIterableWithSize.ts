@@ -39,6 +39,7 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
     readonly #size: number
     readonly #isEmpty: boolean
     #hasNull?: boolean
+    #hasFinished: boolean
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -49,7 +50,7 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Getter & setter methods --------------------
 
     public override get size(): number { return this.#size }
 
@@ -87,6 +88,15 @@ export class CollectionHandlerByIterableWithSize<const out T = unknown,
     }
 
     //#endregion -------------------- Getter methods --------------------
+
+
+    public override get hasFinished(): boolean { return this._hasFinished }
+    /** Tell if the {@link CollectionHandlerByIterableWithSize handler} has finished processing every single value */
+    protected override get _hasFinished(): boolean { return this.#hasFinished }
+    /** The {@link CollectionHandlerByIterableWithSize handler} has finished processing every single value */
+    protected override set _hasFinished(value: true,) { this.#hasFinished = value }
+
+    //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
 
     public override get(index: number,): ValueHolder<T> {

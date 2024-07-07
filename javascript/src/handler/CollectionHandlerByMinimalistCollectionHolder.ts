@@ -5,6 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {NullOrBoolean} from "@joookiwi/type"
+
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {ValueHolder}                from "./value/ValueHolder"
@@ -37,6 +39,8 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
     #isEmpty?: boolean
     #hasNull?: boolean
     #hasDuplicate?: boolean
+    #hasFinished?: boolean
+
     #amountOfElementRetrieved?: number
 
     //#endregion -------------------- Fields --------------------
@@ -45,11 +49,11 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
     public constructor(collection: COLLECTION, reference: REFERENCE,) { super(collection, reference,) }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Getter & setter methods --------------------
 
     public override get size(): REFERENCE["size"] { return this.#size ??= this._reference.size }
 
-    public override get isEmpty(): boolean { return this.#isEmpty ??= this.size == 0 }
+    public override get isEmpty(): boolean { return this.#isEmpty ??= super.isEmpty }
 
     public override get hasNull(): boolean {
         const value = this.#hasNull
@@ -150,13 +154,28 @@ export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown
         return this.#hasDuplicate = false
     }
 
+
+    public override get hasFinished(): boolean {
+        const value = this._hasFinished
+        if (value != null)
+            return value
+        return this.#hasFinished = this.isEmpty
+    }
+
+    /** Tell if the {@link CollectionHandlerByMinimalistCollectionHolder handler} might have finished processing every single value */
+    protected get _hasFinished(): NullOrBoolean { return this.#hasFinished ?? null }
+
+    /** Set the state to tell if the {@link CollectionHandlerByArray handler} has finished processing every single value */
+    protected set _hasFinished(value: boolean,) { this.#hasFinished = value }
+
+
     /** The amount of element that was retrieved so far */
     protected get _amountOfElementRetrieved(): number { return this.#amountOfElementRetrieved ?? 0 }
 
     /** Set the amount of element that was retrieved so far */
     protected set _amountOfElementRetrieved(value: number,) { this.#amountOfElementRetrieved = value }
 
-    //#endregion -------------------- Getter methods --------------------
+    //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
 
     public override get(index: number,): ValueHolder<T> {

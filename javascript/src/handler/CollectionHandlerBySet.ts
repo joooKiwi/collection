@@ -38,6 +38,7 @@ export class CollectionHandlerBySet<const out T = unknown,
     readonly #isEmpty: boolean
     #hasNull?: boolean
     #lastIndex?: number
+    #hasFinished: boolean
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -93,6 +94,13 @@ export class CollectionHandlerBySet<const out T = unknown,
     }
 
     public override get hasDuplicate(): false { return false }
+
+    public override get hasFinished(): boolean { return this._hasFinished }
+    /** Tell if the {@link CollectionHandlerBySet handler} has finished processing every single value */
+    protected get _hasFinished(): boolean { return this.#hasFinished }
+    /** The {@link CollectionHandlerBySet handler} has finished processing every single value */
+    protected set _hasFinished(value: true,) { this.#hasFinished = value }
+
 
     protected get _iterator(): IterableIterator<T> { return this.#iterator ??= this._reference[Symbol.iterator]() }
 

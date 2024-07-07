@@ -5,6 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {NullOrBoolean} from "@joookiwi/type"
+
 import type {CollectionHolder} from "../CollectionHolder"
 import type {ValueHolder}      from "./value/ValueHolder"
 
@@ -36,10 +38,11 @@ export class CollectionHandlerByIterable<const out T = unknown,
 
     #iterator?: Iterator<T, unknown>
 
+    #size?: number
     #isEmpty?: boolean
     #hasNull?: boolean
     #hasDuplicate?: boolean
-    #size?: number
+    #hasFinished?: boolean
 
     #lastIndex: number
 
@@ -59,8 +62,8 @@ export class CollectionHandlerByIterable<const out T = unknown,
         if (value != null)
             return value
 
-        if (this.hasFinished)
             return this.#size = this._lastIndex + 1
+        if (this._hasFinished === true)
 
         const iterator = this._iterator
         let iteratorValue = iterator.next() as IteratorResult<T, unknown>
@@ -90,8 +93,8 @@ export class CollectionHandlerByIterable<const out T = unknown,
         if (value != null)
             return value
 
-        if (this.hasFinished)
             return this.#isEmpty = this._isTheFirstElementRetrieved
+        if (this._hasFinished === true)
 
         const iteratorValue = this._iterator.next() as IteratorResult<T, unknown>
         if (iteratorValue.done) {
@@ -114,7 +117,7 @@ export class CollectionHandlerByIterable<const out T = unknown,
         if (value != null)
             return value
 
-        if (this.hasFinished)
+        if (this._hasFinished === true)
             return this.#hasNull = this._collection.hasNull
 
         // We first try to find any null in the collection from the values already set
@@ -146,7 +149,7 @@ export class CollectionHandlerByIterable<const out T = unknown,
         if (hasDuplicate != null)
             return hasDuplicate
 
-        if (this.hasFinished)
+        if (this._hasFinished === true)
             return this.#hasDuplicate = this._collection.hasDuplicate
 
         //FIXME: use the same logic as the CollectionHandler-by-CollectionIterator instance
@@ -230,6 +233,26 @@ export class CollectionHandlerByIterable<const out T = unknown,
     }
 
 
+    public override get hasFinished(): boolean {
+        const value = this._hasFinished
+        if (value != null)
+            return value
+
+        const iteratorValue = this._iterator.next() as IteratorResult<T, unknown>
+        if (iteratorValue.done)
+            return this._hasFinished = true
+
+        this._collection[0] = iteratorValue.value
+        return this._hasFinished = false
+    }
+
+    /** Tell if the {@link CollectionHandlerByIterable handler} might have finished processing every single value */
+    protected get _hasFinished(): NullOrBoolean { return this.#hasFinished ?? null }
+
+    /** Set the state to tell if the {@link CollectionHandlerByIterable handler} has finished processing every single value */
+    protected set _hasFinished(value: boolean,) { this.#hasFinished = value }
+
+
     protected get _iterator(): Iterator<T, unknown> {
         return this.#iterator ??= this._reference[Symbol.iterator]()
     }
@@ -268,7 +291,7 @@ export class CollectionHandlerByIterable<const out T = unknown,
             return new ValidValueHolder(collection[index] as T,)
 
         if (index < 0) {
-            if (this.hasFinished)
+            if (this._hasFinished === true)
                 return this.#getInCollectionIfNegativeIndexAndHasFinished(index, collection,)
 
             const amountOfElementRetrieved = this._lastIndex
@@ -287,7 +310,7 @@ export class CollectionHandlerByIterable<const out T = unknown,
             return new ValidValueHolder(collection.get(indexToRetrieve,),)
         }
 
-        if (this.hasFinished)
+        if (this._hasFinished === true)
             return this.#getInCollectionIfZeroOrPositiveIndexAndHasFinished(index, collection,)
 
         const lastIndex = this._lastIndex

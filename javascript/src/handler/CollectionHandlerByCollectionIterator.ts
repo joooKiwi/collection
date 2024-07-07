@@ -5,6 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {NullOrBoolean} from "@joookiwi/type"
+
 import type {CollectionHolder}   from "../CollectionHolder"
 import type {ValueHolder}        from "./value/ValueHolder"
 import type {CollectionIterator} from "../iterator/CollectionIterator"
@@ -38,6 +40,7 @@ export class CollectionHandlerByCollectionIterator<const out T = unknown,
     #isEmpty?: boolean
     #hasNull?: boolean
     #hasDuplicate?: boolean
+    #hasFinished?: boolean
 
     #lastIndex?: number
 
@@ -150,6 +153,15 @@ export class CollectionHandlerByCollectionIterator<const out T = unknown,
         this._hasFinished = true
         return this.#hasDuplicate = false
     }
+
+
+    public override get hasFinished(): boolean { return this._hasFinished ??= !this._reference.hasNext }
+
+    /** Tell if the {@link CollectionHandlerByCollectionIterator handler} might have finished processing every single value */
+    protected get _hasFinished(): NullOrBoolean { return this.#hasFinished ?? null }
+
+    /** Set the state to tell if the {@link CollectionHandlerByCollectionIterator handler} has finished processing every single value */
+    protected set _hasFinished(value: boolean,) { this.#hasFinished = value }
 
     /** The last index retrieved from the value */
     protected get _lastIndex(): number { return this.#lastIndex ?? 0 }
