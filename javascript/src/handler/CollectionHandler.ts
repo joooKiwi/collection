@@ -30,7 +30,7 @@ export interface CollectionHandler<out T = unknown, > {
     /** Tell if the {@link CollectionHandler handler} has at least one duplicate value */
     get hasDuplicate(): boolean
 
-    /** Tell if the {@link CollectionHandler handler} has finished processing the values */
+    /** Tell if the {@link CollectionHandler handler} has finished processing every single value */
     get hasFinished(): boolean
 
 
