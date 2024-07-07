@@ -47,9 +47,7 @@ export class CollectionHandlerByCollectionIterator<const out T = unknown,
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(collection: COLLECTION, reference: REFERENCE,) {
-        super(collection, reference,)
-    }
+    public constructor(collection: COLLECTION, reference: REFERENCE,) { super(collection, reference,) }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter & setter methods --------------------
