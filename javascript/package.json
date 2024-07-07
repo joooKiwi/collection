@@ -49,6 +49,11 @@
       "import":  "./dist/ecmascript module/handler/index.js",
       "require": "./dist/common javascript/handler/index.js"
     },
+     "./handler/value": {
+      "types":   "./dist/types/handler/value/index.d.ts",
+      "import":  "./dist/ecmascript module/handler/value/index.js",
+      "require": "./dist/common javascript/handler/value/index.js"
+    },
     "./iterable": {
       "types":   "./dist/types/iterable/index.d.ts",
       "import":  "./dist/ecmascript module/iterable/index.js",
@@ -84,6 +89,11 @@
       "types":   "./dist/types/handler/*.d.ts",
       "import":  "./dist/ecmascript module/handler/*.js",
       "require": "./dist/common javascript/handler/*.js"
+    },
+    "./handler/value/*": {
+      "types":   "./dist/types/handler/value/*.d.ts",
+      "import":  "./dist/ecmascript module/handler/value/*.js",
+      "require": "./dist/common javascript/handler/value/*.js"
     },
     "./iterable/*": {
       "types":   "./dist/types/iterable/*.d.ts",
