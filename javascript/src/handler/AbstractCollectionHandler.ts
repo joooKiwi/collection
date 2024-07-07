@@ -5,12 +5,11 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}                  from "../CollectionHolder"
+import type {CollectionHolder}             from "../CollectionHolder"
 import type {PossibleIterableOrCollection} from "../CollectionHolder.types"
 import type {CollectionHandler}            from "./CollectionHandler"
 import type {ValueHolder}                  from "./value/ValueHolder"
 
-/** @beta */
 export abstract class AbstractCollectionHandler<const out T = unknown,
     const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>,
     const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
@@ -20,7 +19,6 @@ export abstract class AbstractCollectionHandler<const out T = unknown,
 
     readonly #collection: COLLECTION
     readonly #reference: REFERENCE
-    #hasFinished?: boolean
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -42,16 +40,13 @@ export abstract class AbstractCollectionHandler<const out T = unknown,
 
     public abstract get size(): number
 
-    public abstract get isEmpty(): boolean
+    public get isEmpty(): boolean { return this.size == 0 }
 
     public abstract get hasNull(): boolean
 
     public abstract get hasDuplicate(): boolean
 
-    public get hasFinished(): boolean { return this.#hasFinished ??= false }
-
-    /** Set the {@link hasFinished} to the value received */
-    protected set _hasFinished(value: boolean,) { this.#hasFinished = value }
+    public abstract get hasFinished(): boolean
 
     //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------
