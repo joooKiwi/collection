@@ -472,7 +472,10 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -524,7 +527,10 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -578,7 +584,10 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -630,7 +639,10 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -684,7 +696,10 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -736,7 +751,10 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -791,9 +809,18 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfFirst(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfFirst(collection, predicate);
+                else
+                    return indexOfFirst(collection, predicate, fromIndex);
+            else
+                return indexOfFirst(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -854,9 +881,18 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfFirst(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfFirst(collection, predicate);
+                else
+                    return indexOfFirst(collection, predicate, fromIndex);
+            else
+                return indexOfFirst(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -919,9 +955,18 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfFirst(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfFirst(collection, predicate);
+                else
+                    return indexOfFirst(collection, predicate, fromIndex);
+            else
+                return indexOfFirst(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -982,9 +1027,18 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfFirst(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfFirst(collection, predicate);
+                else
+                    return indexOfFirst(collection, predicate, fromIndex);
+            else
+                return indexOfFirst(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -1047,9 +1101,18 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfFirst(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfFirst(collection, predicate);
+                else
+                    return indexOfFirst(collection, predicate, fromIndex);
+            else
+                return indexOfFirst(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 
@@ -1110,9 +1173,18 @@ public final class IndexOfFirst
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfFirst(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfFirst(collection, predicate);
+                else
+                    return indexOfFirst(collection, predicate, fromIndex);
+            else
+                return indexOfFirst(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfFirst(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfFirst(collection, predicate);
+            else
+                return indexOfFirst(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfFirst(collection, predicate);
 

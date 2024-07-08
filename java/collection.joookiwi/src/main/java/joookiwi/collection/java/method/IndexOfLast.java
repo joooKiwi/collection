@@ -459,7 +459,10 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -510,7 +513,10 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -563,7 +569,10 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -614,7 +623,10 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -667,7 +679,10 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -718,7 +733,10 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -772,9 +790,18 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfLast(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfLast(collection, predicate);
+                else
+                    return indexOfLast(collection, predicate, fromIndex);
+            else
+                return indexOfLast(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -834,9 +861,18 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfLast(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfLast(collection, predicate);
+                else
+                    return indexOfLast(collection, predicate, fromIndex);
+            else
+                return indexOfLast(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -898,9 +934,18 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfLast(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfLast(collection, predicate);
+                else
+                    return indexOfLast(collection, predicate, fromIndex);
+            else
+                return indexOfLast(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -960,9 +1005,18 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfLast(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfLast(collection, predicate);
+                else
+                    return indexOfLast(collection, predicate, fromIndex);
+            else
+                return indexOfLast(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -1024,9 +1078,18 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfLast(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfLast(collection, predicate);
+                else
+                    return indexOfLast(collection, predicate, fromIndex);
+            else
+                return indexOfLast(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 
@@ -1086,9 +1149,18 @@ public final class IndexOfLast
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOfLast(collection, predicate, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOfLast(collection, predicate);
+                else
+                    return indexOfLast(collection, predicate, fromIndex);
+            else
+                return indexOfLast(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOfLast(collection, predicate, fromIndex);
+            if (fromIndex == null)
+                return indexOfLast(collection, predicate);
+            else
+                return indexOfLast(collection, predicate, fromIndex);
         if (fromIndex == null)
             return indexOfLast(collection, predicate);
 

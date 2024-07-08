@@ -185,7 +185,10 @@ public final class LastIndexOf
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return lastIndexOf(collection, element, fromIndex);
+            if (fromIndex == null)
+                return lastIndexOf(collection, element);
+            else
+                return lastIndexOf(collection, element, fromIndex);
         if (fromIndex == null)
             return lastIndexOf(collection, element);
 
@@ -237,7 +240,10 @@ public final class LastIndexOf
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return lastIndexOf(collection, element, fromIndex);
+            if (fromIndex == null)
+                return lastIndexOf(collection, element);
+            else
+                return lastIndexOf(collection, element, fromIndex);
         if (fromIndex == null)
             return lastIndexOf(collection, element);
 
@@ -292,9 +298,18 @@ public final class LastIndexOf
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return lastIndexOf(collection, element, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return lastIndexOf(collection, element);
+                else
+                    return lastIndexOf(collection, element, fromIndex);
+            else
+                return lastIndexOf(collection, element, fromIndex, toIndex);
         if (toIndex == null)
-            return lastIndexOf(collection, element, fromIndex);
+            if (fromIndex == null)
+                return lastIndexOf(collection, element);
+            else
+                return lastIndexOf(collection, element, fromIndex);
         if (fromIndex == null)
             return lastIndexOf(collection, element);
 
@@ -353,9 +368,18 @@ public final class LastIndexOf
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return lastIndexOf(collection, element, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return lastIndexOf(collection, element);
+                else
+                    return lastIndexOf(collection, element, fromIndex);
+            else
+                return lastIndexOf(collection, element, fromIndex, toIndex);
         if (toIndex == null)
-            return lastIndexOf(collection, element, fromIndex);
+            if (fromIndex == null)
+                return lastIndexOf(collection, element);
+            else
+                return lastIndexOf(collection, element, fromIndex);
         if (fromIndex == null)
             return lastIndexOf(collection, element);
 

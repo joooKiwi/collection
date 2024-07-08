@@ -162,7 +162,10 @@ public final class ToReverse
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return toReverse(collection, fromIndex);
+            if (fromIndex == null)
+                return toReverse(collection);
+            else
+                return toReverse(collection, fromIndex);
         if (fromIndex == null)
             return toReverse(collection);
 
@@ -208,7 +211,10 @@ public final class ToReverse
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return toReverse(collection, fromIndex);
+            if (fromIndex == null)
+                return toReverse(collection);
+            else
+                return toReverse(collection, fromIndex);
         if (fromIndex == null)
             return toReverse(collection);
 
@@ -257,9 +263,18 @@ public final class ToReverse
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return toReverse(collection, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return toReverse(collection);
+                else
+                    return toReverse(collection, fromIndex);
+            else
+                return toReverse(collection, fromIndex, toIndex);
         if (toIndex == null)
-            return toReverse(collection, fromIndex);
+            if (fromIndex == null)
+                return toReverse(collection);
+            else
+                return toReverse(collection, fromIndex);
         if (fromIndex == null)
             return toReverse(collection);
 
@@ -312,9 +327,18 @@ public final class ToReverse
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return toReverse(collection, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return toReverse(collection);
+                else
+                    return toReverse(collection, fromIndex);
+            else
+                return toReverse(collection, fromIndex, toIndex);
         if (toIndex == null)
-            return toReverse(collection, fromIndex);
+            if (fromIndex == null)
+                return toReverse(collection);
+            else
+                return toReverse(collection, fromIndex);
         if (fromIndex == null)
             return toReverse(collection);
 

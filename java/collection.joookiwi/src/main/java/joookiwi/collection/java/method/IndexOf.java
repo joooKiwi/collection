@@ -102,6 +102,12 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @Contract("null, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOf(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex) {
+        //#region -------------------- Intelligent returns --------------------
+
+        if (fromIndex == null)
+            return indexOf(collection, element);
+
+        //#endregion -------------------- Intelligent returns --------------------
         //#region -------------------- Early returns --------------------
 
         if (collection == null)
@@ -135,6 +141,12 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @Contract("null, _, _ -> null")
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOf(@Nullable CollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex) {
+        //#region -------------------- Intelligent returns --------------------
+
+        if (fromIndex == null)
+            return indexOf(collection, element);
+
+        //#endregion -------------------- Intelligent returns --------------------
         //#region -------------------- Early returns --------------------
 
         if (collection == null)
@@ -174,7 +186,10 @@ public final class IndexOf
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOf(collection, element, fromIndex);
+            if (fromIndex == null)
+                return indexOf(collection, element);
+            else
+                return indexOf(collection, element, fromIndex);
         if (fromIndex == null)
             return indexOf(collection, element);
 
@@ -226,7 +241,10 @@ public final class IndexOf
         //#region -------------------- Intelligent returns --------------------
 
         if (toIndex == null)
-            return indexOf(collection, element, fromIndex);
+            if (fromIndex == null)
+                return indexOf(collection, element);
+            else
+                return indexOf(collection, element, fromIndex);
         if (fromIndex == null)
             return indexOf(collection, element);
 
@@ -281,9 +299,18 @@ public final class IndexOf
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOf(collection, element, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOf(collection, element);
+                else
+                    return indexOf(collection, element, fromIndex);
+            else
+                return indexOf(collection, element, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOf(collection, element, fromIndex);
+            if (fromIndex == null)
+                return indexOf(collection, element);
+            else
+                return indexOf(collection, element, fromIndex);
         if (fromIndex == null)
             return indexOf(collection, element);
 
@@ -342,9 +369,18 @@ public final class IndexOf
         //#region -------------------- Intelligent returns --------------------
 
         if (limit == null)
-            return indexOf(collection, element, fromIndex, toIndex);
+            if (toIndex == null)
+                if (fromIndex == null)
+                    return indexOf(collection, element);
+                else
+                    return indexOf(collection, element, fromIndex);
+            else
+                return indexOf(collection, element, fromIndex, toIndex);
         if (toIndex == null)
-            return indexOf(collection, element, fromIndex);
+            if (fromIndex == null)
+                return indexOf(collection, element);
+            else
+                return indexOf(collection, element, fromIndex);
         if (fromIndex == null)
             return indexOf(collection, element);
 
