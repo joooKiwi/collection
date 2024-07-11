@@ -2,6 +2,7 @@ package joookiwi.collection.java.method;
 
 import java.util.Formatter;
 import java.util.Locale;
+import joookiwi.collection.java.CommonContracts;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 public final class AsString
         extends Utility {
 
-    @Contract("-> fail")
+    @Contract(CommonContracts.ALWAYS_FAIL_0)
     private AsString() { throw new ImpossibleConstructionException("The utility class \"AsString\" cannot be constructed.", AsString.class); }
 
     //#region -------------------- Facade methods --------------------
@@ -20,7 +21,7 @@ public final class AsString
      *
      * @param value The value to convert
      */
-    public static @NotNull String asString(@Nullable Object value) {
+    public static @NotNull String asString(final @Nullable Object value) {
         if (value == null)
             return "null";
         return value.toString();
@@ -32,7 +33,7 @@ public final class AsString
      *
      * @param value The value to convert
      */
-    public static @NotNull String asLocaleString(@Nullable Object value) {
+    public static @NotNull String asLocaleString(final @Nullable Object value) {
         if (value == null)
             return new Formatter(Locale.getDefault()).format("%s", "null").toString();
         return new Formatter(Locale.getDefault()).format("%s", value).toString();
@@ -44,7 +45,7 @@ public final class AsString
      * @param value  The value to convert
      * @param locale The locale to possibly apply
      */
-    public static @NotNull String asLocaleString(@Nullable Object value, @Nullable Locale locale) {
+    public static @NotNull String asLocaleString(final @Nullable Object value, final @Nullable Locale locale) {
         if (locale == null) {
             if (value == null)
                 return new Formatter(Locale.getDefault()).format("%s", "null").toString();
@@ -62,7 +63,7 @@ public final class AsString
      *
      * @param value The value to convert
      */
-    public static @NotNull String asLowerCaseString(@Nullable Object value) {
+    public static @NotNull String asLowerCaseString(final @Nullable Object value) {
         if (value == null)
             return "null";
         if (value instanceof String)
@@ -76,7 +77,7 @@ public final class AsString
      *
      * @param value The value to convert
      */
-    public static @NotNull String asLocaleLowerCaseString(@Nullable Object value) {
+    public static @NotNull String asLocaleLowerCaseString(final @Nullable Object value) {
         var currentLocale = Locale.getDefault();
 
         if (value == null)
@@ -92,7 +93,7 @@ public final class AsString
      * @param value  The value to convert
      * @param locale The locale to possibly apply
      */
-    public static @NotNull String asLocaleLowerCaseString(@Nullable Object value, @Nullable Locale locale) {
+    public static @NotNull String asLocaleLowerCaseString(final @Nullable Object value, final @Nullable Locale locale) {
         if (locale == null) {
             var currentLocale = Locale.getDefault();
 
@@ -116,7 +117,7 @@ public final class AsString
      *
      * @param value The value to convert
      */
-    public static @NotNull String asUpperCaseString(@Nullable Object value) {
+    public static @NotNull String asUpperCaseString(final @Nullable Object value) {
         if (value == null)
             return "NULL";
         if (value instanceof String)
@@ -130,7 +131,7 @@ public final class AsString
      *
      * @param value The value to convert
      */
-    public static @NotNull String asLocaleUpperCaseString(@Nullable Object value) {
+    public static @NotNull String asLocaleUpperCaseString(final @Nullable Object value) {
         var currentLocale = Locale.getDefault();
 
         if (value == null)
@@ -146,7 +147,7 @@ public final class AsString
      * @param value  The value to convert
      * @param locale The locale to possibly apply
      */
-    public static @NotNull String asLocaleUpperCaseString(@Nullable Object value, @Nullable Locale locale) {
+    public static @NotNull String asLocaleUpperCaseString(final @Nullable Object value, final @Nullable Locale locale) {
         if (locale == null) {
             var currentLocale = Locale.getDefault();
 
