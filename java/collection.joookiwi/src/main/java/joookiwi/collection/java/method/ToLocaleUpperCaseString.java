@@ -10,12 +10,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CollectionConstants.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asLocaleUpperCaseString;
 
 public final class ToLocaleUpperCaseString
         extends Utility {
 
-    @Contract("-> fail")
+    @Contract(ALWAYS_FAIL_0)
     private ToLocaleUpperCaseString() { throw new ImpossibleConstructionException("The utility class \"ToToLocaleUpperCaseStringSet\" cannot be constructed.", ToLocaleUpperCaseString.class); }
 
     //#region -------------------- Facade method --------------------

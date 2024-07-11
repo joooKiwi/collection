@@ -10,12 +10,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CollectionConstants.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asLocaleString;
 
 public final class ToLocaleString
         extends Utility {
 
-    @Contract("-> fail")
+    @Contract(ALWAYS_FAIL_0)
     private ToLocaleString() { throw new ImpossibleConstructionException("The utility class \"ToToLocaleStringSet\" cannot be constructed.", ToLocaleString.class); }
 
     //#region -------------------- Facade method --------------------
