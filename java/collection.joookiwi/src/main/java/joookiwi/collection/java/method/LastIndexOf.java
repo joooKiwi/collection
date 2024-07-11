@@ -12,11 +12,12 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static java.lang.Integer.MAX_VALUE;
+import static joookiwi.collection.java.CommonContracts.*;
 
 public final class LastIndexOf
         extends UtilityWithIndex {
 
-    @Contract("-> fail")
+    @Contract(ALWAYS_FAIL_0)
     private LastIndexOf() { throw new ImpossibleConstructionException("The utility class \"LastIndexOf\" cannot be constructed.", LastIndexOf.class); }
 
     //#region -------------------- Facade methods --------------------
@@ -36,20 +37,12 @@ public final class LastIndexOf
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, fromIndex?, limit?)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Object element) {
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                     final @Nullable Object element) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(collection, element, -1, size -1);
+        return __lastIndexOf(collection, element);
     }
 
     /**
@@ -65,18 +58,12 @@ public final class LastIndexOf
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, fromIndex?, limit?)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(@Nullable CollectionHolder<? extends T> collection, @Nullable Object element) {
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @Nullable Object element) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(collection, element, -1, collection.size() -1);
+        return __lastIndexOf(collection, element);
     }
 
     //#endregion -------------------- element --------------------
@@ -99,26 +86,15 @@ public final class LastIndexOf
      */
     @ExtensionFunction
     @CanReceiveNegativeValue
-    @Contract("null, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (fromIndex == null)
-            return lastIndexOf(collection, element);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                     final @Nullable Object element,
+                                                                                     final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(collection, element, _startingIndex(fromIndex, size), size - 1);
+        if (fromIndex == null)
+            return __lastIndexOf(collection, element);
+        return __lastIndexOf(collection, element, fromIndex);
     }
 
     /**
@@ -138,25 +114,15 @@ public final class LastIndexOf
      */
     @ExtensionFunction
     @CanReceiveNegativeValue
-    @Contract("null, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(@Nullable CollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (fromIndex == null)
-            return lastIndexOf(collection, element);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @Nullable Object element,
+                                                                                     final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        var size = collection.size();
-        return __withoutALimit(collection, element, _startingIndex(fromIndex, size), size - 1);
+        if (fromIndex == null)
+            return __lastIndexOf(collection, element);
+        return __lastIndexOf(collection, element, fromIndex);
     }
 
     //#endregion -------------------- element, fromIndex --------------------
@@ -180,41 +146,21 @@ public final class LastIndexOf
      */
     @ExtensionFunction
     @CanReceiveNegativeValue
-    @Contract("null, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (toIndex == null)
-            if (fromIndex == null)
-                return lastIndexOf(collection, element);
-            else
-                return lastIndexOf(collection, element, fromIndex);
-        if (fromIndex == null)
-            return lastIndexOf(collection, element);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                     final @Nullable Object element,
+                                                                                     final @Nullable Integer fromIndex,
+                                                                                     final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending index) --------------------
-
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-
-        return __withoutALimit(collection, element, startingIndex, endingIndex);
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __lastIndexOf(collection, element);
+            else
+                return __lastIndexOf(collection, element, fromIndex);
+        if (fromIndex == null)
+            return __lastIndexOf(collection, element, 0, toIndex);
+        return __lastIndexOf(collection, element, fromIndex, toIndex);
     }
 
     /**
@@ -235,40 +181,21 @@ public final class LastIndexOf
      */
     @ExtensionFunction
     @CanReceiveNegativeValue
-    @Contract("null, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(@Nullable CollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (toIndex == null)
-            if (fromIndex == null)
-                return lastIndexOf(collection, element);
-            else
-                return lastIndexOf(collection, element, fromIndex);
-        if (fromIndex == null)
-            return lastIndexOf(collection, element);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @Nullable Object element,
+                                                                                     final @Nullable Integer fromIndex,
+                                                                                     final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending index) --------------------
-
-        var size = collection.size();
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-
-        return __withoutALimit(collection, element, startingIndex, endingIndex);
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __lastIndexOf(collection, element);
+            else
+                return __lastIndexOf(collection, element, fromIndex);
+        if (fromIndex == null)
+            return __lastIndexOf(collection, element, 0, toIndex);
+        return __lastIndexOf(collection, element, fromIndex, toIndex);
     }
 
     //#endregion -------------------- element, fromIndex, toIndex --------------------
@@ -293,55 +220,32 @@ public final class LastIndexOf
      */
     @ExtensionFunction
     @CanReceiveNegativeValue
-    @Contract("null, _, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
-        //#region -------------------- Intelligent returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_5)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                     final @Nullable Object element,
+                                                                                     final @Nullable Integer fromIndex,
+                                                                                     final @Nullable Integer toIndex,
+                                                                                     final @Nullable Integer limit) {
+        if (collection == null)
+            return null;
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return lastIndexOf(collection, element);
+                    return __lastIndexOf(collection, element);
                 else
-                    return lastIndexOf(collection, element, fromIndex);
+                    return __lastIndexOf(collection, element, fromIndex);
+            else if (fromIndex == null)
+                return __lastIndexOf(collection, element, 0, toIndex);
             else
-                return lastIndexOf(collection, element, fromIndex, toIndex);
+                return __lastIndexOf(collection, element, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return lastIndexOf(collection, element);
+                return __lastIndexOf(collection, element); // TODO handle null fromIndex, toIndex with non-null limit
             else
-                return lastIndexOf(collection, element, fromIndex);
+                return __lastIndexOf(collection, element, fromIndex); // TODO handle null toIndex with non-null limit
         if (fromIndex == null)
-            return lastIndexOf(collection, element);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
-        if (collection == null)
-            return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-        if (limit == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        var maximumIndex = _maximumIndex(limit, size);
-        if (endingIndex - startingIndex < maximumIndex - 1)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        return __withALimit(collection, element, startingIndex, endingIndex, maximumIndex);
+            return __lastIndexOf(collection, element, 0, toIndex, limit);
+        return __lastIndexOf(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -363,31 +267,173 @@ public final class LastIndexOf
      */
     @ExtensionFunction
     @CanReceiveNegativeValue
-    @Contract("null, _, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(@Nullable CollectionHolder<? extends T> collection, @Nullable Object element, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
-        //#region -------------------- Intelligent returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_5)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @Nullable Object element,
+                                                                                     final @Nullable Integer fromIndex,
+                                                                                     final @Nullable Integer toIndex,
+                                                                                     final @Nullable Integer limit) {
+        if (collection == null)
+            return null;
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return lastIndexOf(collection, element);
+                    return __lastIndexOf(collection, element);
                 else
-                    return lastIndexOf(collection, element, fromIndex);
+                    return __lastIndexOf(collection, element, fromIndex);
+            else if (fromIndex == null)
+                return __lastIndexOf(collection, element, 0, toIndex);
             else
-                return lastIndexOf(collection, element, fromIndex, toIndex);
+                return __lastIndexOf(collection, element, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return lastIndexOf(collection, element);
+                return __lastIndexOf(collection, element); // TODO handle null fromIndex, toIndex with non-null limit
             else
-                return lastIndexOf(collection, element, fromIndex);
+                return __lastIndexOf(collection, element, fromIndex); // TODO handle null toIndex with non-null limit
         if (fromIndex == null)
-            return lastIndexOf(collection, element);
+            return __lastIndexOf(collection, element, 0, toIndex, limit);
+        return __lastIndexOf(collection, element, fromIndex, toIndex, limit);
+    }
 
-        //#endregion -------------------- Intelligent returns --------------------
+    //#endregion -------------------- element, fromIndex, toIndex, limit) methods --------------------
+
+    //#endregion -------------------- Facade methods --------------------
+    //#region -------------------- Code methods --------------------
+
+    //#region -------------------- element --------------------
+
+    private static <T> @Nullable Integer __lastIndexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                       final @Nullable Object element) {
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+        return __withoutALimit(collection, element, -1, size -1);
+    }
+
+    private static <T> @Nullable Integer __lastIndexOf(final @NotNull CollectionHolder<? extends T> collection,
+                                                       final @Nullable Object element) {
+        if (collection.isEmpty())
+            return null;
+        return __withoutALimit(collection, element, -1, collection.size() -1);
+    }
+
+    //#endregion -------------------- element --------------------
+    //#region -------------------- element, fromIndex --------------------
+
+    private static <T> @Nullable Integer __lastIndexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                       final @Nullable Object element,
+                                                       final int fromIndex) {
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+        return __withoutALimit(collection, element, _startingIndex(fromIndex, size), size - 1);
+    }
+
+    private static <T> @Nullable Integer __lastIndexOf(final @NotNull CollectionHolder<? extends T> collection,
+                                                       final @Nullable Object element,
+                                                       final int fromIndex) {
+        if (collection.isEmpty())
+            return null;
+
+        final var size = collection.size();
+        return __withoutALimit(collection, element, _startingIndex(fromIndex, size), size - 1);
+    }
+
+    //#endregion -------------------- element, fromIndex --------------------
+    //#region -------------------- element, fromIndex, toIndex --------------------
+
+    private static <T> @Nullable Integer __lastIndexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                       final @Nullable Object element,
+                                                       final int fromIndex,
+                                                       final int toIndex) {
         //#region -------------------- Early returns --------------------
 
-        if (collection == null)
+        final var size = collection.size();
+        if (size == 0)
             return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending index) --------------------
+
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending index) --------------------
+
+        return __withoutALimit(collection, element, startingIndex, endingIndex);
+    }
+
+    private static <T> @Nullable Integer __lastIndexOf(final @NotNull CollectionHolder<? extends T> collection,
+                                                       final @Nullable Object element,
+                                                       final int fromIndex,
+                                                       final int toIndex) {
+        //#region -------------------- Early returns --------------------
+
+        if (collection.isEmpty())
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending index) --------------------
+
+        final var size = collection.size();
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending index) --------------------
+
+        return __withoutALimit(collection, element, startingIndex, endingIndex);
+    }
+
+    //#endregion -------------------- element, fromIndex, toIndex --------------------
+    //#region -------------------- element, fromIndex, toIndex, limit --------------------
+
+    private static <T> @Nullable Integer __lastIndexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                       final @Nullable Object element,
+                                                       final int fromIndex,
+                                                       final int toIndex,
+                                                       final int limit) {
+        //#region -------------------- Early returns --------------------
+
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+        if (limit == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        final var maximumIndex = _maximumIndex(limit, size);
+        if (endingIndex - startingIndex < maximumIndex - 1)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        return __withALimit(collection, element, startingIndex, endingIndex, maximumIndex);
+    }
+
+    private static <T> @Nullable Integer __lastIndexOf(final @NotNull CollectionHolder<? extends T> collection,
+                                                       final @Nullable Object element,
+                                                       final int fromIndex,
+                                                       final int toIndex,
+                                                       final int limit) {
+        //#region -------------------- Early returns --------------------
+
         if (collection.isEmpty())
             return null;
         if (fromIndex == 0 && toIndex == 0)
@@ -398,13 +444,13 @@ public final class LastIndexOf
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
-        var size = collection.size();
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
+        final var size = collection.size();
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
             return null;
 
-        var maximumIndex = _maximumIndex(limit, size);
+        final var maximumIndex = _maximumIndex(limit, size);
         if (endingIndex - startingIndex < maximumIndex - 1)
             return null;
 
@@ -415,10 +461,13 @@ public final class LastIndexOf
 
     //#endregion -------------------- element, fromIndex, toIndex, limit) methods --------------------
 
-    //#endregion -------------------- Facade methods --------------------
+    //#endregion -------------------- Code methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withoutALimit(@NotNull MinimalistCollectionHolder<?> collection, @Nullable Object element, int startingIndex, int endingIndex) {
+    private static @Nullable Integer __withoutALimit(final @NotNull MinimalistCollectionHolder<?> collection,
+                                                     final @Nullable Object element,
+                                                     final int startingIndex,
+                                                     final int endingIndex) {
         var index = endingIndex + 1;
         if (element == null) {
             while (++index >= startingIndex)
@@ -432,7 +481,11 @@ public final class LastIndexOf
         return null;
     }
 
-    private static @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withALimit(@NotNull MinimalistCollectionHolder<?> collection, @Nullable Object element, int startingIndex, int endingIndex, int maximumIndex) {
+    private static @Nullable Integer __withALimit(final @NotNull MinimalistCollectionHolder<?> collection,
+                                                  final @Nullable Object element,
+                                                  final int startingIndex,
+                                                  final int endingIndex,
+                                                  final int maximumIndex) {
         var index = endingIndex + 1;
         if (index >= maximumIndex)
             index = maximumIndex;
