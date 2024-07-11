@@ -15,11 +15,12 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static java.lang.Integer.MAX_VALUE;
+import static joookiwi.collection.java.CommonContracts.*;
 
 public final class IndexOfLastIndexed
         extends UtilityWithIndex {
 
-    @Contract("-> fail")
+    @Contract(ALWAYS_FAIL_0)
     private IndexOfLastIndexed() { throw new ImpossibleConstructionException("The utility class \"IndexOfLastIndexed\" cannot be constructed.", IndexOfLastIndexed.class); }
 
     //#region -------------------- Facade methods --------------------
@@ -39,20 +40,12 @@ public final class IndexOfLastIndexed
      */
     @ExtensionFunction
     @OnlyGivePositiveValue
-    @Contract("null, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(collection, predicate, 0, size - 1);
+        return __indexOfLastIndexed(collection, predicate);
     }
 
     /**
@@ -68,18 +61,12 @@ public final class IndexOfLastIndexed
      */
     @ExtensionFunction
     @OnlyGivePositiveValue
-    @Contract("null, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(collection, predicate, -1, collection.size());
+        return __indexOfLastIndexed(collection, predicate);
     }
 
     //#endregion -------------------- predicate (int, T) → boolean --------------------
@@ -98,20 +85,12 @@ public final class IndexOfLastIndexed
      */
     @ExtensionFunction
     @OnlyGivePositiveValue
-    @Contract("null, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate) {
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(predicate, 0, size - 1);
+        return __indexOfLastIndexed(collection, predicate);
     }
 
     /**
@@ -127,18 +106,12 @@ public final class IndexOfLastIndexed
      */
     @ExtensionFunction
     @OnlyGivePositiveValue
-    @Contract("null, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate) {
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(predicate, 0, collection.size() - 1);
+        return __indexOfLastIndexed(collection, predicate);
     }
 
     //#endregion -------------------- predicate (int) → boolean --------------------
@@ -157,20 +130,12 @@ public final class IndexOfLastIndexed
      */
     @ExtensionFunction
     @OnlyGivePositiveValue
-    @Contract("null, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate) {
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Supplier<@NotNull Boolean> predicate) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(predicate, 0, size - 1);
+        return __indexOfLastIndexed(collection, predicate);
     }
 
     /**
@@ -186,18 +151,12 @@ public final class IndexOfLastIndexed
      */
     @ExtensionFunction
     @OnlyGivePositiveValue
-    @Contract("null, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate) {
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Supplier<@NotNull Boolean> predicate) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(predicate, 0, collection.size() - 1);
+        return __indexOfLastIndexed(collection, predicate);
     }
 
     //#endregion -------------------- predicate () → boolean --------------------
@@ -219,26 +178,15 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, @Nullable Integer fromIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate);
+        return __indexOfLastIndexed(collection, predicate, fromIndex);
     }
 
     /**
@@ -257,25 +205,15 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, @Nullable Integer fromIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        var size = collection.size();
-        return __withoutALimit(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate);
+        return __indexOfLastIndexed(collection, predicate, fromIndex);
     }
 
     //#endregion -------------------- predicate (int, T) → boolean, from --------------------
@@ -297,26 +235,15 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate, @Nullable Integer fromIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(predicate, _startingIndex(fromIndex, size), size - 1);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate);
+        return __indexOfLastIndexed(collection, predicate, fromIndex);
     }
 
     /**
@@ -335,25 +262,15 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate, @Nullable Integer fromIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        var size = collection.size();
-        return __withoutALimit(predicate, _startingIndex(fromIndex, size), size - 1);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate);
+        return __indexOfLastIndexed(collection, predicate, fromIndex);
     }
 
     //#endregion -------------------- predicate (int) → boolean,    from --------------------
@@ -375,26 +292,15 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate, @Nullable Integer fromIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        return __withoutALimit(predicate, _startingIndex(fromIndex, size), size - 1);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate);
+        return __indexOfLastIndexed(collection, predicate, fromIndex);
     }
 
     /**
@@ -413,25 +319,15 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate, @Nullable Integer fromIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-
-        var size = collection.size();
-        return __withoutALimit(predicate, _startingIndex(fromIndex, size), size - 1);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate);
+        return __indexOfLastIndexed(collection, predicate, fromIndex);
     }
 
     //#endregion -------------------- predicate () → boolean,       from --------------------
@@ -454,41 +350,21 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (toIndex == null)
-            if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
-            else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending index) --------------------
-
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-
-        return __withoutALimit(collection, predicate, startingIndex, endingIndex);
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate);
+            else
+                return __indexOfLastIndexed(collection, predicate, fromIndex);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
     }
 
     /**
@@ -508,40 +384,21 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (toIndex == null)
-            if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
-            else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending index) --------------------
-
-        var size = collection.size();
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-
-        return __withoutALimit(collection, predicate, startingIndex, endingIndex);
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate);
+            else
+                return __indexOfLastIndexed(collection, predicate, fromIndex);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
     }
 
     //#endregion -------------------- predicate (int, T) → boolean, from, to --------------------
@@ -564,41 +421,21 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (toIndex == null)
-            if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
-            else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending index) --------------------
-
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-
-        return __withoutALimit(predicate, startingIndex, endingIndex);
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate);
+            else
+                return __indexOfLastIndexed(collection, predicate, fromIndex);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
     }
 
     /**
@@ -618,40 +455,21 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (toIndex == null)
-            if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
-            else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending index) --------------------
-
-        var size = collection.size();
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-
-        return __withoutALimit(predicate, startingIndex, endingIndex);
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate);
+            else
+                return __indexOfLastIndexed(collection, predicate, fromIndex);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
     }
 
     //#endregion -------------------- predicate (int) → boolean,    from, to --------------------
@@ -674,41 +492,21 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (toIndex == null)
-            if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
-            else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending index) --------------------
-
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-
-        return __withoutALimit(predicate, startingIndex, endingIndex);
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate);
+            else
+                return __indexOfLastIndexed(collection, predicate, fromIndex);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
     }
 
     /**
@@ -728,40 +526,21 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex) {
-        //#region -------------------- Intelligent returns --------------------
-
-        if (toIndex == null)
-            if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
-            else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
-        if (collection.isEmpty())
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending index) --------------------
-
-        var size = collection.size();
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-
-        return __withoutALimit(predicate, startingIndex, endingIndex);
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate);
+            else
+                return __indexOfLastIndexed(collection, predicate, fromIndex);
+        if (fromIndex == null)
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
     }
 
     //#endregion -------------------- predicate () → boolean,       from, to --------------------
@@ -785,57 +564,32 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
-        //#region -------------------- Intelligent returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_5)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex,
+                                                                                            final @Nullable Integer limit) {
+        if (collection == null)
+            return null;
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return indexOfLastIndexed(collection, predicate);
+                    return __indexOfLastIndexed(collection, predicate);
                 else
-                    return indexOfLastIndexed(collection, predicate, fromIndex);
+                    return __indexOfLastIndexed(collection, predicate, fromIndex);
+            else if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate, 0, toIndex);
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
+                return __indexOfLastIndexed(collection, predicate); // TODO handle null fromIndex, toIndex with non-null limit
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex); // TODO handle null toIndex with non-null limit
         if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
-        if (collection == null)
-            return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-        if (limit == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        var maximumIndex = _maximumIndex(limit, size);
-        if (maximumIndex == size)
-            return __withoutALimit(collection, predicate, fromIndex, toIndex);
-        if (endingIndex - startingIndex < maximumIndex - 1)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        return __withALimit(collection, predicate, startingIndex, endingIndex, maximumIndex);
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex, limit);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex, limit);
     }
 
     /**
@@ -856,56 +610,32 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
-        //#region -------------------- Intelligent returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_5)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex,
+                                                                                            final @Nullable Integer limit) {
+        if (collection == null)
+            return null;
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return indexOfLastIndexed(collection, predicate);
+                    return __indexOfLastIndexed(collection, predicate);
                 else
-                    return indexOfLastIndexed(collection, predicate, fromIndex);
+                    return __indexOfLastIndexed(collection, predicate, fromIndex);
+            else if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate, 0, toIndex);
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
+                return __indexOfLastIndexed(collection, predicate); // TODO handle null fromIndex, toIndex with non-null limit
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex); // TODO handle null toIndex with non-null limit
         if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
-        if (collection == null)
-            return null;
-        if (collection.isEmpty())
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-        if (limit == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        var size = collection.size();
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        var maximumIndex = _maximumIndex(limit, size);
-        if (maximumIndex == size)
-            return __withoutALimit(collection, predicate, fromIndex, toIndex);
-        if (endingIndex - startingIndex < maximumIndex - 1)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        return __withALimit(collection, predicate, startingIndex, endingIndex, maximumIndex);
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex, limit);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex, limit);
     }
 
     //#endregion -------------------- predicate (int, T) → boolean, from, to, limit --------------------
@@ -929,57 +659,32 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
-        //#region -------------------- Intelligent returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_5)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex,
+                                                                                            final @Nullable Integer limit) {
+        if (collection == null)
+            return null;
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return indexOfLastIndexed(collection, predicate);
+                    return __indexOfLastIndexed(collection, predicate);
                 else
-                    return indexOfLastIndexed(collection, predicate, fromIndex);
+                    return __indexOfLastIndexed(collection, predicate, fromIndex);
+            else if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate, 0, toIndex);
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
+                return __indexOfLastIndexed(collection, predicate); // TODO handle null fromIndex, toIndex with non-null limit
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex); // TODO handle null toIndex with non-null limit
         if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
-        if (collection == null)
-            return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-        if (limit == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        var maximumIndex = _maximumIndex(limit, size);
-        if (maximumIndex == size)
-            return __withoutALimit(predicate, fromIndex, toIndex);
-        if (endingIndex - startingIndex < maximumIndex - 1)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        return __withALimit(predicate, startingIndex, endingIndex, maximumIndex);
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex, limit);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex, limit);
     }
 
     /**
@@ -1000,56 +705,32 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
-        //#region -------------------- Intelligent returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_5)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex,
+                                                                                            final @Nullable Integer limit) {
+        if (collection == null)
+            return null;
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return indexOfLastIndexed(collection, predicate);
+                    return __indexOfLastIndexed(collection, predicate);
                 else
-                    return indexOfLastIndexed(collection, predicate, fromIndex);
+                    return __indexOfLastIndexed(collection, predicate, fromIndex);
+            else if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate, 0, toIndex);
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
+                return __indexOfLastIndexed(collection, predicate); // TODO handle null fromIndex, toIndex with non-null limit
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex); // TODO handle null toIndex with non-null limit
         if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
-        if (collection == null)
-            return null;
-        if (collection.isEmpty())
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-        if (limit == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        var size = collection.size();
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        var maximumIndex = _maximumIndex(limit, size);
-        if (maximumIndex == size)
-            return __withoutALimit(predicate, fromIndex, toIndex);
-        if (endingIndex - startingIndex < maximumIndex - 1)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        return __withALimit(predicate, startingIndex, endingIndex, maximumIndex);
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex, limit);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex, limit);
     }
 
     //#endregion -------------------- predicate (int) → boolean,    from, to, limit --------------------
@@ -1073,57 +754,32 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
-        //#region -------------------- Intelligent returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_5)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex,
+                                                                                            final @Nullable Integer limit) {
+        if (collection == null)
+            return null;
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return indexOfLastIndexed(collection, predicate);
+                    return __indexOfLastIndexed(collection, predicate);
                 else
-                    return indexOfLastIndexed(collection, predicate, fromIndex);
+                    return __indexOfLastIndexed(collection, predicate, fromIndex);
+            else if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate, 0, toIndex);
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
+                return __indexOfLastIndexed(collection, predicate); // TODO handle null fromIndex, toIndex with non-null limit
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex); // TODO handle null toIndex with non-null limit
         if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
-
-        //#endregion -------------------- Intelligent returns --------------------
-        //#region -------------------- Early returns --------------------
-
-        if (collection == null)
-            return null;
-
-        var size = collection.size();
-        if (size == 0)
-            return null;
-        if (fromIndex == 0 && toIndex == 0)
-            return null;
-        if (limit == 0)
-            return null;
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            return null;
-
-        var maximumIndex = _maximumIndex(limit, size);
-        if (maximumIndex == size)
-            return __withoutALimit(predicate, fromIndex, toIndex);
-        if (endingIndex - startingIndex < maximumIndex - 1)
-            return null;
-
-        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        return __withALimit(predicate, startingIndex, endingIndex, maximumIndex);
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex, limit);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex, limit);
     }
 
     /**
@@ -1144,31 +800,365 @@ public final class IndexOfLastIndexed
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
-    @Contract("null, _, _, _, _ -> null")
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(@Nullable CollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate, @Nullable Integer fromIndex, @Nullable Integer toIndex, @Nullable Integer limit) {
-        //#region -------------------- Intelligent returns --------------------
-
+    @Contract(IF_1ST_NULL_THEN_NULL_5)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                            final @Nullable Integer fromIndex,
+                                                                                            final @Nullable Integer toIndex,
+                                                                                            final @Nullable Integer limit) {
+        if (collection == null)
+            return null;
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return indexOfLastIndexed(collection, predicate);
+                    return __indexOfLastIndexed(collection, predicate);
                 else
-                    return indexOfLastIndexed(collection, predicate, fromIndex);
+                    return __indexOfLastIndexed(collection, predicate, fromIndex);
+            else if (fromIndex == null)
+                return __indexOfLastIndexed(collection, predicate, 0, toIndex);
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return indexOfLastIndexed(collection, predicate);
+                return __indexOfLastIndexed(collection, predicate); // TODO handle null fromIndex, toIndex with non-null limit
             else
-                return indexOfLastIndexed(collection, predicate, fromIndex);
+                return __indexOfLastIndexed(collection, predicate, fromIndex); // TODO handle null toIndex with non-null limit
         if (fromIndex == null)
-            return indexOfLastIndexed(collection, predicate);
+            return __indexOfLastIndexed(collection, predicate, 0, toIndex, limit);
+        return __indexOfLastIndexed(collection, predicate, fromIndex, toIndex, limit);
+    }
 
-        //#endregion -------------------- Intelligent returns --------------------
+    //#endregion -------------------- predicate () → boolean,       from, to, limit --------------------
+
+    //#endregion -------------------- Facade methods --------------------
+    //#region -------------------- Core methods --------------------
+
+    //#region -------------------- predicate (int, T) → boolean --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+        return __withoutALimit(collection, predicate, 0, size - 1);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
+        if (collection.isEmpty())
+            return null;
+        return __withoutALimit(collection, predicate, -1, collection.size());
+    }
+
+    //#endregion -------------------- predicate (int, T) → boolean --------------------
+    //#region -------------------- predicate (int) → boolean --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate) {
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+        return __withoutALimit(predicate, 0, size - 1);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate) {
+        if (collection.isEmpty())
+            return null;
+        return __withoutALimit(predicate, 0, collection.size() - 1);
+    }
+
+    //#endregion -------------------- predicate (int) → boolean --------------------
+    //#region -------------------- predicate () → boolean --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull Supplier<@NotNull Boolean> predicate) {
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+
+        return __withoutALimit(predicate, 0, size - 1);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull Supplier<@NotNull Boolean> predicate) {
+        if (collection.isEmpty())
+            return null;
+        return __withoutALimit(predicate, 0, collection.size() - 1);
+    }
+
+    //#endregion -------------------- predicate () → boolean --------------------
+    //#region -------------------- predicate (int, T) → boolean, from --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                              final int fromIndex) {
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+
+        return __withoutALimit(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                              final int fromIndex) {
+        if (collection.isEmpty())
+            return null;
+
+        final var size = collection.size();
+        return __withoutALimit(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+    }
+
+    //#endregion -------------------- predicate (int, T) → boolean, from --------------------
+    //#region -------------------- predicate (int) → boolean,    from --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                              final int fromIndex) {
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+
+        return __withoutALimit(predicate, _startingIndex(fromIndex, size), size - 1);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                              final int fromIndex) {
+        if (collection.isEmpty())
+            return null;
+
+        final var size = collection.size();
+        return __withoutALimit(predicate, _startingIndex(fromIndex, size), size - 1);
+    }
+
+    //#endregion -------------------- predicate (int) → boolean,    from --------------------
+    //#region -------------------- predicate () → boolean,       from --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                              final int fromIndex) {
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+
+        return __withoutALimit(predicate, _startingIndex(fromIndex, size), size - 1);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                              final int fromIndex) {
+        if (collection.isEmpty())
+            return null;
+
+        final var size = collection.size();
+        return __withoutALimit(predicate, _startingIndex(fromIndex, size), size - 1);
+    }
+
+    //#endregion -------------------- predicate () → boolean,       from --------------------
+    //#region -------------------- predicate (int, T) → boolean, from, to --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex) {
         //#region -------------------- Early returns --------------------
 
-        if (collection == null)
+        final var size = collection.size();
+        if (size == 0)
             return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending index) --------------------
+
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending index) --------------------
+
+        return __withoutALimit(collection, predicate, startingIndex, endingIndex);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex) {
+        //#region -------------------- Early returns --------------------
+
+        if (collection.isEmpty())
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending index) --------------------
+
+        final var size = collection.size();
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending index) --------------------
+
+        return __withoutALimit(collection, predicate, startingIndex, endingIndex);
+    }
+
+    //#endregion -------------------- predicate (int, T) → boolean, from, to --------------------
+    //#region -------------------- predicate (int) → boolean,    from, to --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex) {
+        //#region -------------------- Early returns --------------------
+
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending index) --------------------
+
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending index) --------------------
+
+        return __withoutALimit(predicate, startingIndex, endingIndex);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex) {
+        //#region -------------------- Early returns --------------------
+
+        if (collection.isEmpty())
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending index) --------------------
+
+        final var size = collection.size();
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending index) --------------------
+
+        return __withoutALimit(predicate, startingIndex, endingIndex);
+    }
+
+    //#endregion -------------------- predicate (int) → boolean,    from, to --------------------
+    //#region -------------------- predicate () → boolean,       from, to --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex) {
+        //#region -------------------- Early returns --------------------
+
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending index) --------------------
+
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending index) --------------------
+
+        return __withoutALimit(predicate, startingIndex, endingIndex);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex) {
+        //#region -------------------- Early returns --------------------
+
+        if (collection.isEmpty())
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending index) --------------------
+
+        final var size = collection.size();
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending index) --------------------
+
+        return __withoutALimit(predicate, startingIndex, endingIndex);
+    }
+
+    //#endregion -------------------- predicate () → boolean,       from, to --------------------
+    //#region -------------------- predicate (int, T) → boolean, from, to, limit --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex,
+                                                              final int limit) {
+        //#region -------------------- Early returns --------------------
+
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+        if (limit == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        final var maximumIndex = _maximumIndex(limit, size);
+        if (maximumIndex == size)
+            return __withoutALimit(collection, predicate, fromIndex, toIndex);
+        if (endingIndex - startingIndex < maximumIndex - 1)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        return __withALimit(collection, predicate, startingIndex, endingIndex, maximumIndex);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex,
+                                                              final int limit) {
+        //#region -------------------- Early returns --------------------
+
         if (collection.isEmpty())
             return null;
         if (fromIndex == 0 && toIndex == 0)
@@ -1179,13 +1169,155 @@ public final class IndexOfLastIndexed
         //#endregion -------------------- Early returns --------------------
         //#region -------------------- Initialization (starting/ending/maximum index) --------------------
 
-        var size = collection.size();
-        var startingIndex = _startingIndex(fromIndex, size);
-        var endingIndex = _endingIndex(toIndex, size);
+        final var size = collection.size();
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
             return null;
 
-        var maximumIndex = _maximumIndex(limit, size);
+        final var maximumIndex = _maximumIndex(limit, size);
+        if (maximumIndex == size)
+            return __withoutALimit(collection, predicate, fromIndex, toIndex);
+        if (endingIndex - startingIndex < maximumIndex - 1)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        return __withALimit(collection, predicate, startingIndex, endingIndex, maximumIndex);
+    }
+
+    //#endregion -------------------- predicate (int, T) → boolean, from, to, limit --------------------
+    //#region -------------------- predicate (int) → boolean,    from, to, limit --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex,
+                                                              final int limit) {
+        //#region -------------------- Early returns --------------------
+
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+        if (limit == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        final var maximumIndex = _maximumIndex(limit, size);
+        if (maximumIndex == size)
+            return __withoutALimit(predicate, fromIndex, toIndex);
+        if (endingIndex - startingIndex < maximumIndex - 1)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        return __withALimit(predicate, startingIndex, endingIndex, maximumIndex);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex,
+                                                              final int limit) {
+        //#region -------------------- Early returns --------------------
+
+        if (collection.isEmpty())
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+        if (limit == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        final var size = collection.size();
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        final var maximumIndex = _maximumIndex(limit, size);
+        if (maximumIndex == size)
+            return __withoutALimit(predicate, fromIndex, toIndex);
+        if (endingIndex - startingIndex < maximumIndex - 1)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        return __withALimit(predicate, startingIndex, endingIndex, maximumIndex);
+    }
+
+    //#endregion -------------------- predicate (int) → boolean,    from, to, limit --------------------
+    //#region -------------------- predicate () → boolean,       from, to, limit --------------------
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex,
+                                                              final int limit) {
+        //#region -------------------- Early returns --------------------
+
+        final var size = collection.size();
+        if (size == 0)
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+        if (limit == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        final var maximumIndex = _maximumIndex(limit, size);
+        if (maximumIndex == size)
+            return __withoutALimit(predicate, fromIndex, toIndex);
+        if (endingIndex - startingIndex < maximumIndex - 1)
+            return null;
+
+        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        return __withALimit(predicate, startingIndex, endingIndex, maximumIndex);
+    }
+
+    private static <T> @Nullable Integer __indexOfLastIndexed(final @NotNull CollectionHolder<? extends T> collection,
+                                                              final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                              final int fromIndex,
+                                                              final int toIndex,
+                                                              final int limit) {
+        //#region -------------------- Early returns --------------------
+
+        if (collection.isEmpty())
+            return null;
+        if (fromIndex == 0 && toIndex == 0)
+            return null;
+        if (limit == 0)
+            return null;
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        final var size = collection.size();
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+
+        final var maximumIndex = _maximumIndex(limit, size);
         if (maximumIndex == size)
             return __withoutALimit(predicate, fromIndex, toIndex);
         if (endingIndex - startingIndex < maximumIndex - 1)
@@ -1198,11 +1330,12 @@ public final class IndexOfLastIndexed
 
     //#endregion -------------------- predicate () → boolean,       from, to, limit --------------------
 
-    //#endregion -------------------- Facade methods --------------------
+    //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    @OnlyGivePositiveValue
-    private static @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withoutALimit(@NotNull Supplier<@NotNull Boolean> predicate, int startingIndex, int endingIndex) {
+    private static @Nullable Integer __withoutALimit(final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                     final int startingIndex,
+                                                     final int endingIndex) {
         var index = endingIndex + 1;
         while (--index >= startingIndex)
             if (predicate.get())
@@ -1210,8 +1343,9 @@ public final class IndexOfLastIndexed
         return null;
     }
 
-    @OnlyGivePositiveValue
-    private static @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withoutALimit(@NotNull Function<@NotNull Integer, @NotNull Boolean> predicate, int startingIndex, int endingIndex) {
+    private static @Nullable Integer __withoutALimit(final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                     final int startingIndex,
+                                                     final int endingIndex) {
         var index = endingIndex + 1;
         while (--index >= startingIndex)
             if (predicate.apply(index))
@@ -1219,8 +1353,10 @@ public final class IndexOfLastIndexed
         return null;
     }
 
-    @OnlyGivePositiveValue
-    private static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withoutALimit(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, int startingIndex, int endingIndex) {
+    private static <T> @Nullable Integer __withoutALimit(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                         final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                         final int startingIndex,
+                                                         final int endingIndex) {
         var index = endingIndex + 1;
         while (--index >= startingIndex)
             if (predicate.apply(index, collection.get(index)))
@@ -1229,8 +1365,10 @@ public final class IndexOfLastIndexed
     }
 
 
-    @OnlyGivePositiveValue
-    private static @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withALimit(@NotNull Supplier<@NotNull Boolean> predicate, int startingIndex, int endingIndex, int maximumIndex) {
+    private static @Nullable Integer __withALimit(final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                  final int startingIndex,
+                                                  final int endingIndex,
+                                                  final int maximumIndex) {
         var index = endingIndex + 1;
         if (index >= maximumIndex)
             index = maximumIndex;
@@ -1240,8 +1378,10 @@ public final class IndexOfLastIndexed
         return null;
     }
 
-    @OnlyGivePositiveValue
-    private static @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withALimit(@NotNull Function<@NotNull Integer, @NotNull Boolean> predicate, int startingIndex, int endingIndex, int maximumIndex) {
+    private static @Nullable Integer __withALimit(final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                  final int startingIndex,
+                                                  final int endingIndex,
+                                                  final int maximumIndex) {
         var index = endingIndex + 1;
         if (index >= maximumIndex)
             index = maximumIndex;
@@ -1251,8 +1391,11 @@ public final class IndexOfLastIndexed
         return null;
     }
 
-    @OnlyGivePositiveValue
-    private static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer __withALimit(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate, int startingIndex, int endingIndex, int maximumIndex) {
+    private static <T> @Nullable Integer __withALimit(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                      final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                      final int startingIndex,
+                                                      final int endingIndex,
+                                                      final int maximumIndex) {
         var index = endingIndex + 1;
         if (index >= maximumIndex)
             index = maximumIndex;
