@@ -66,9 +66,9 @@ export type PossibleIterableArraySetOrCollectionHolder<T, > = | readonly T[] | R
  * @see ReverseBooleanCallback
  * @see RestrainedBooleanCallback
  * @see ReverseRestrainedBooleanCallback
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Predicate.html Java Predicate&lt;T&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BooleanSupplier.html Java BooleanSupplier
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
@@ -81,9 +81,9 @@ export type BooleanCallback<in T, > = (value: T, index: number,) => boolean
  * @see BooleanCallback
  * @see RestrainedBooleanCallback
  * @see ReverseRestrainedBooleanCallback
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/IntPredicate.html Java IntPredicate
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BooleanSupplier.html Java BooleanSupplier
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
@@ -97,9 +97,9 @@ export type ReverseBooleanCallback<in T, > = (index: number, value: T,) => boole
  * @see BooleanCallback
  * @see ReverseBooleanCallback
  * @see ReverseRestrainedBooleanCallback
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Predicate.html Java Predicate&lt;T&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BooleanSupplier.html Java BooleanSupplier
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
@@ -113,9 +113,9 @@ export type RestrainedBooleanCallback<in T, out S extends T, > = (value: T, inde
  * @see BooleanCallback
  * @see RestrainedBooleanCallback
  * @see ReverseBooleanCallback
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/IntPredicate.html Java IntPredicate
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BooleanSupplier.html Java BooleanSupplier
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
@@ -131,10 +131,10 @@ export type ReverseRestrainedBooleanCallback<in T, out S extends T, > = (index: 
  * @see IndexValueCallback
  * @see ValueIndexWithReturnCallback
  * @see IndexValueWithReturnCallback
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
- * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
- * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/IntFunction.html Java IntFunction&lt;R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;R&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, R&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;R&gt;
  */
 export type IndexWithReturnCallback<out R, > = (index: number,) => R
 
@@ -147,10 +147,10 @@ export type IndexWithReturnCallback<out R, > = (index: number,) => R
  * @see IndexValueCallback
  * @see ValueIndexWithReturnCallback
  * @see IndexValueWithReturnCallback
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/BiConsumer.html Java BiConsumer&lt;T, U&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Consumer.html Java Consumer&lt;T&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Runnable.html Java Runnable
- * @see https://learn.microsoft.com/dotnet/api/system.action-2 C# Action&lt;T1, T2&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/ObjIntConsumer.html Java ObjIntConsumer&lt;T&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Consumer.html Java Consumer&lt;T&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Runnable.html Java Runnable
+ * @see https://learn.microsoft.com/dotnet/api/system.action-2 C# Action&lt;T, U&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.action-1 C# Action&lt;T&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.action C# Action
  */
@@ -164,10 +164,10 @@ export type ValueIndexCallback<in T, > = (value: T, index: number,) => void
  * @see ValueIndexCallback
  * @see ValueIndexWithReturnCallback
  * @see IndexValueWithReturnCallback
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/BiConsumer.html Java BiConsumer&lt;T, U&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Consumer.html Java Consumer&lt;T&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Runnable.html Java Runnable
- * @see https://learn.microsoft.com/dotnet/api/system.action-2 C# Action&lt;T1, T2&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/ObjIntConsumer.html Java ObjIntConsumer&lt;T&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Consumer.html Java Consumer&lt;T&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Runnable.html Java Runnable
+ * @see https://learn.microsoft.com/dotnet/api/system.action-2 C# Action&lt;T, U&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.action-1 C# Action&lt;T&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.action C# Action
  */
@@ -182,11 +182,11 @@ export type IndexValueCallback<in T, > = (index: number, value: T,) => void
  * @see ValueIndexCallback
  * @see IndexValueCallback
  * @see IndexValueWithReturnCallback
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
- * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
- * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T, U, R&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, R&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
  */
 export type ValueIndexWithReturnCallback<in T, out R, > = (value: T, index: number,) => R
@@ -199,12 +199,12 @@ export type ValueIndexWithReturnCallback<in T, out R, > = (value: T, index: numb
  * @see ValueIndexCallback
  * @see IndexValueCallback
  * @see ValueIndexWithReturnCallback
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
- * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
- * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
- * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T, U, R&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, R&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;R&gt;
  */
 export type IndexValueWithReturnCallback<in T, out R, > = (index: number, value: T,) => R
 
@@ -212,12 +212,12 @@ export type IndexValueWithReturnCallback<in T, out R, > = (index: number, value:
  * A callback that receive both a value and an index and return a {@link String}
  *
  * @note The arguments are optionals
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
- * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
- * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
- * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/BiFunction.html Java BiFunction&lt;T, U, R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Function.html Java Function&lt;T, R&gt;
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;T&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T, U, R&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, R&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;R&gt;
  */
 export type StringCallback<in T, > = (value: T, index: number,) => string
 
