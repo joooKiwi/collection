@@ -427,7 +427,7 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Find methods --------------------
 
-    public find<const S, >(..._: readonly unknown[]): never
+    public find<const S, >(..._: readonly unknown[]): null
     public find() { return null }
 
     //#endregion -------------------- Find methods --------------------
