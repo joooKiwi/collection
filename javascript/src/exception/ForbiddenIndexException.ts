@@ -11,7 +11,7 @@ import type {Nullable, NullOr} from "@joookiwi/type"
  * An exception to tell that an edge case {@link Number} (±∞ / {@link Number.NaN NaN}) was used
  *
  * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/IllegalArgumentException.html Java IllegalArgumentException
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-illegal-argument-exception Kotlin IllegalArgumentException
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-illegal-argument-exception Kotlin IllegalArgumentException
  * @see https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception C# ArgumentOutOfRangeException
  */
 export class ForbiddenIndexException<const T extends number = number, const ERROR extends Error = never, >

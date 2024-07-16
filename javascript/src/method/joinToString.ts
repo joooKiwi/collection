@@ -33,7 +33,7 @@ import {ForbiddenIndexException}                   from "../exception/ForbiddenI
  * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
  * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.join
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
  * @canReceiveNegativeValue
  */
@@ -96,7 +96,7 @@ export function joinToString<const T, >(collection: Nullable<MinimalistCollectio
  * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
  * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.join
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
  * @canReceiveNegativeValue
  */

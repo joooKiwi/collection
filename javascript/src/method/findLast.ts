@@ -19,7 +19,7 @@ import type {MinimalistCollectionHolder}                 from "../MinimalistColl
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @typescriptDefinition
  * @extensionFunction
@@ -31,7 +31,7 @@ export function findLast<const T, const S extends T, >(collection: Nullable<Mini
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */
@@ -57,7 +57,7 @@ export function findLast<const T, >(collection: Nullable<MinimalistCollectionHol
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @typescriptDefinition
  * @extensionFunction
@@ -69,7 +69,7 @@ export function findLastByCollectionHolder<const T, const S extends T, >(collect
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */

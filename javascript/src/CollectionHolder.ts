@@ -19,7 +19,7 @@ import type {CollectionIterator}                                                
  *
  * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array Javascript Array
  * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set Javascript Set
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/ Kotlin Collection
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/ Kotlin Collection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable C# Enumerable
  */
 export interface CollectionHolder<out T = unknown, >
@@ -43,7 +43,8 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.length
      * @see ReadonlySet.size
      * @see ReadonlyMap.size
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/size.html Kotlin size()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/size.html Kotlin Collection.size()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/size.html Kotlin Map.size()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count C# Count()
      * @see length
      * @see count
@@ -67,7 +68,9 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * The {@link CollectionHolder collection} has no values
      *
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/is-empty.html Kotlin isEmpty()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
      * @see isNotEmpty
      */
     get isEmpty(): boolean
@@ -75,7 +78,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * The {@link CollectionHolder collection} has at least one value
      *
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/is-not-empty.html Kotlin isNotEmpty()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html Kotlin isNotEmpty()
      * @see isEmpty
      */
     get isNotEmpty(): boolean
@@ -150,7 +153,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link index} calculated is under zero or over the {@link size} (after calculation)
      * @throws ForbiddenIndexException                   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.at
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html Kotlin get(index)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/get.html Kotlin get(index)
      * @see getOrElse
      * @see getOrNull
      * @canReceiveNegativeValue
@@ -183,8 +186,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param index        The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size}
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-else.html Kotlin elementAtOrElse(key, defaultValue)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html Kotlin elementAtOrElse(key, defaultValue)
      * @see get
      * @see getOrNull
      * @canReceiveNegativeValue
@@ -220,8 +223,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param index        The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-else.html Kotlin elementAtOrElse(key, defaultValue)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html Kotlin elementAtOrElse(key, defaultValue)
      * @see get
      * @see getOrNull
      * @canReceiveNegativeValue
@@ -258,8 +261,8 @@ export interface CollectionHolder<out T = unknown, >
      * or <b>null</b> if it is over the {@link size}
      *
      * @param index The index to retrieve a value
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/get-or-null.html Kotlin getOrNull(index)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/element-at-or-null.html Kotlin elementAtOrNull(index)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-null.html Kotlin getOrNull(index)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-null.html Kotlin elementAtOrNull(index)
      * @see get
      * @see getOrElse
      * @canReceiveNegativeValue
@@ -301,7 +304,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.indexOf
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -321,7 +324,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.indexOf
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index-of.html Kotlin indexOf(element)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -344,7 +347,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.lastIndexOf
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, limit?)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -364,7 +367,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.lastIndexOf
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, limit?)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -387,7 +390,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
      * @see ReadonlyArray.findIndex
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -409,7 +412,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findIndex
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -431,7 +434,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findLastIndex
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -453,7 +456,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findLastIndex
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -467,7 +470,7 @@ export interface CollectionHolder<out T = unknown, >
      * Get the first element in the current {@link CollectionHolder collection}
      *
      * @throws EmptyCollectionHolderException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
      */
     first(): T
@@ -479,7 +482,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The matching predicate
      * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      * @typescriptDefinition
      */
@@ -492,7 +495,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The matching predicate
      * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      */
     first(predicate: Nullable<BooleanCallback<T>>,): T
@@ -504,7 +507,7 @@ export interface CollectionHolder<out T = unknown, >
      * Get the first element in the current {@link CollectionHolder collection}
      * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      *
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
      */
     firstOrNull(): NullOr<T>
@@ -515,7 +518,7 @@ export interface CollectionHolder<out T = unknown, >
      * if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      *
      * @param predicate The matching predicate
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
      * @typescriptDefinition
      */
@@ -527,7 +530,7 @@ export interface CollectionHolder<out T = unknown, >
      * if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      *
      * @param predicate The matching predicate
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
      */
     firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
@@ -540,7 +543,7 @@ export interface CollectionHolder<out T = unknown, >
      * Get the last element in the current {@link CollectionHolder collection}
      *
      * @throws EmptyCollectionHolderException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
      */
     last(): T
@@ -552,7 +555,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The matching predicate
      * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      * @typescriptDefinition
      */
@@ -565,7 +568,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The matching predicate
      * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      */
     last(predicate: Nullable<BooleanCallback<T>>,): T
@@ -577,7 +580,7 @@ export interface CollectionHolder<out T = unknown, >
      * Get the last element in the current {@link CollectionHolder collection}
      * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      *
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
      */
     lastOrNull(): NullOr<T>
@@ -588,7 +591,7 @@ export interface CollectionHolder<out T = unknown, >
      * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      *
      * @param predicate The matching predicate
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
      * @typescriptDefinition
      */
@@ -600,7 +603,7 @@ export interface CollectionHolder<out T = unknown, >
      * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      *
      * @param predicate The matching predicate
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
      */
     lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
@@ -618,8 +621,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The matching predicate
      * @return {boolean} <b>true</b> only if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html Kotlin all()
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
      */
     all(predicate: BooleanCallback<T>,): boolean
 
@@ -630,7 +633,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell if the current {@link CollectionHolder collection} {@link CollectionHolder.isNotEmpty is not empty}
      *
      * @return {boolean} {@link isNotEmpty}
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html Kotlin any()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
      * @alias isNotEmpty
      */
@@ -643,7 +646,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The condition to check on each value
      * @return {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
      * @see ReadonlyArray.some
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html Kotlin any(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
      */
     any(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -654,7 +657,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Tell if the current {@link CollectionHolder collection} {@link isEmpty is empty}
      *
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
      * @alias isEmpty
      */
     none(): this["isEmpty"]
@@ -665,7 +668,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The condition to check on each value
      * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none(predicate)
      */
     none(predicate: Nullable<BooleanCallback<T>>,): boolean
 
@@ -682,7 +685,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see contains
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
      */
     has(value: T,): boolean
@@ -696,7 +699,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see contains
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
      */
     has(value: unknown,): boolean
@@ -752,7 +755,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see containsOne
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
      * @deprecated Replace with non-variadic arguments or hasOneOf. It will be removed in version 1.10
      */
@@ -767,7 +770,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see containsOne
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
      * @deprecated Replace with non-variadic arguments or hasOneOf. It will be removed in version 1.10
      */
@@ -1293,9 +1296,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: readonly T[],): boolean
 
@@ -1304,9 +1307,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: ReadonlySet<T>,): boolean
 
@@ -1315,9 +1318,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: CollectionHolder<T>,): boolean
 
@@ -1326,9 +1329,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: MinimalistCollectionHolder<T>,): boolean
 
@@ -1337,9 +1340,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: CollectionIterator<T>,): boolean
 
@@ -1348,9 +1351,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: Iterable<T>,): boolean
 
@@ -1359,9 +1362,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @typescriptDefinition
      */
     hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
@@ -1371,9 +1374,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: readonly unknown[],): boolean
 
@@ -1382,9 +1385,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: ReadonlySet<unknown>,): boolean
 
@@ -1393,9 +1396,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: CollectionHolder,): boolean
 
@@ -1404,9 +1407,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: MinimalistCollectionHolder,): boolean
 
@@ -1415,9 +1418,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: CollectionIterator,): boolean
 
@@ -1426,9 +1429,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      */
     hasAll(values: Iterable<unknown>,): boolean
 
@@ -1437,9 +1440,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+     * @see includesAll
+     * @see containsAll
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @typescriptDefinition
      */
     hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
@@ -1787,7 +1790,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
      * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.join
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
      * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
      * @canReceiveNegativeValue
      * @deprecated Use joinToString instead. It will be changed in v1.10
@@ -1810,7 +1813,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
      * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.join
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
      * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
      * @canReceiveNegativeValue
      */
@@ -1826,7 +1829,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
      * @see filterNot
      * @typescriptDefinition
@@ -1839,7 +1842,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
      * @see filterNot
      */
@@ -1854,7 +1857,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
      * @see filterNotIndexed
      * @typescriptDefinition
@@ -1867,7 +1870,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
      * @see filterNotIndexed
      */
@@ -1882,7 +1885,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
      * @see filter
      * @typescriptDefinition
@@ -1895,7 +1898,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
      * @see filter
      */
@@ -1929,7 +1932,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
      * @see filterIndexed
      * @typescriptDefinition
@@ -1942,7 +1945,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
      * @see filterIndexed
      */
@@ -1955,7 +1958,7 @@ export interface CollectionHolder<out T = unknown, >
      * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
      *
      * @see ReadonlyArray.filter
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
      * @see requireNoNulls
      */
     filterNotNull(): CollectionHolder<NonNullable<T>>
@@ -1967,7 +1970,7 @@ export interface CollectionHolder<out T = unknown, >
      * Require that no items are <b>null</b> or <b>undefined</b> in the current {@link CollectionHolder collection}
      *
      * @throws {TypeError} There is <b>null</b> or <b>undefined</b> value in the current collection
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
      * @see filterNotNull
      * @return {this} The current {@link SortableCollectionHolder collection}
      */
@@ -1982,7 +1985,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
      * @typescriptDefinition
      */
@@ -1993,7 +1996,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
      */
     find(predicate: BooleanCallback<T>,): NullOr<T>
@@ -2006,7 +2009,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param callback The given predicate
      * @see ReadonlyArray.find
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
      * @typescriptDefinition
      */
@@ -2017,7 +2020,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
      */
     findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
@@ -2030,7 +2033,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
      * @typescriptDefinition
      */
@@ -2041,7 +2044,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
      */
     findLast(predicate: BooleanCallback<T>,): NullOr<T>
@@ -2054,7 +2057,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
      * @typescriptDefinition
      */
@@ -2065,7 +2068,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
      */
     findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
@@ -2084,7 +2087,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: readonly number[],): CollectionHolder<T>
@@ -2097,7 +2100,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: ReadonlySet<number>,): CollectionHolder<T>
@@ -2110,7 +2113,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: CollectionHolder<number>,): CollectionHolder<T>
@@ -2123,7 +2126,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
@@ -2136,7 +2139,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: CollectionIterator<number>,): CollectionHolder<T>
@@ -2149,7 +2152,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: Iterable<number>,): CollectionHolder<T>
@@ -2162,7 +2165,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      * @typescriptDefinition
      */
@@ -2181,7 +2184,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
@@ -2199,7 +2202,7 @@ export interface CollectionHolder<out T = unknown, >
      * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
      * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      * @typescriptDefinition
      */
@@ -2215,8 +2218,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param transform The given transform
      * @see ReadonlyArray.map
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html Kotlin map(transform)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html Kotlin map(transform)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
      * @see mapNotNull
      */
     map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U>
@@ -2230,8 +2233,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param transform The given transform
      * @see ReadonlyArray.map
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-indexed.html Kotlin mapIndexed(transform)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html Kotlin mapIndexed(transform)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
      * @see mapNotNullIndexed
      */
     mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U>
@@ -2245,8 +2248,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param transform The given transform
      * @see ReadonlyArray.map
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
      * @see map
      */
     mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U>
@@ -2260,8 +2263,8 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param transform The given transform
      * @see ReadonlyArray.map
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
      * @see mapIndexed
      */
     mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U>
@@ -2277,8 +2280,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param action The given action
      * @see ReadonlyArray.forEach
      * @see ReadonlySet.forEach
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
      */
     forEach(action: ValueIndexCallback<T>,): this
 
@@ -2292,8 +2295,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param action The given action
      * @see ReadonlyArray.forEach
      * @see ReadonlySet.forEach
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
      */
     forEachIndexed(action: IndexValueCallback<T>,): this
 
@@ -2375,9 +2378,9 @@ export interface CollectionHolder<out T = unknown, >
      * @param limit     The maximum index
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
      * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse MutableArray.reverse()
-     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed Array.toReversed()
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/reversed.html Kotlin reversed()
+     * @see Array.reverse
+     * @see ReadonlyArray.toReversed
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reversed.html Kotlin reversed()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
      * @canReceiveNegativeValue
      */

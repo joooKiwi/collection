@@ -22,7 +22,7 @@ import {EmptyCollectionHolderException}            from "../exception/EmptyColle
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} <b</b>is empty}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
@@ -36,8 +36,8 @@ export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @typescriptDefinition
  * @extensionFunction
  */
@@ -51,8 +51,8 @@ export function last<const T, const S extends T, >(collection: Nullable<Minimali
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @extensionFunction
  */
 export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T
@@ -79,7 +79,7 @@ export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} {@link CollectionHolder.isEmpty is empty}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
@@ -93,8 +93,8 @@ export function lastByCollectionHolder<const T, >(collection: Nullable<Collectio
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @typescriptDefinition
  * @extensionFunction
  */
@@ -108,8 +108,8 @@ export function lastByCollectionHolder<const T, const S extends T, >(collection:
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @extensionFunction
  */
 export function lastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T

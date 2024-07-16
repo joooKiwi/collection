@@ -18,7 +18,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
  */
 export function none<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: Nullable<COLLECTION>,): COLLECTION["size"] extends 0 ? true : COLLECTION["size"] extends number ? boolean : false
@@ -29,7 +29,7 @@ export function none<const T, const COLLECTION extends MinimalistCollectionHolde
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate The given predicate
  * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the {@link collection}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none(predicate)
  * @extensionFunction
  */
 export function none<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -55,7 +55,7 @@ export function none<const T, >(collection: Nullable<MinimalistCollectionHolder<
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
  */
 export function noneByCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: Nullable<COLLECTION>,): COLLECTION["isEmpty"]
@@ -66,7 +66,7 @@ export function noneByCollectionHolder<const T, const COLLECTION extends Collect
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate The given predicate
  * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the {@link collection}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html Kotlin none(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none(predicate)
  * @extensionFunction
  */
 export function noneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean

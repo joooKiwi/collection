@@ -22,8 +22,8 @@ import {CollectionConstants} from "../CollectionConstants"
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param transform  The given transform
  * @see ReadonlyArray.map
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html Kotlin map(transform)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html Kotlin map(transform)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
 export function map<const T, const U, >(collection: Nullable<MinimalistCollectionHolder<T>>, transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
@@ -48,8 +48,8 @@ export function map<const T, const U, >(collection: Nullable<MinimalistCollectio
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param transform  The given transform
  * @see ReadonlyArray.map
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map.html Kotlin map(transform)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html Kotlin map(transform)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
 export function mapByCollectionHolder<const T, const U, >(collection: Nullable<CollectionHolder<T>>, transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {

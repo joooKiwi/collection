@@ -18,8 +18,8 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
  * @extensionFunction
  */
 export function forEachIndexed<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {

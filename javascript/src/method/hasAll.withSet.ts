@@ -18,7 +18,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
  * @extensionFunction
  */
 export function hasAllWithSet<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<T>,): boolean
@@ -28,7 +28,7 @@ export function hasAllWithSet<const T, >(collection: Nullable<MinimalistCollecti
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
  * @extensionFunction
  */
 export function hasAllWithSet<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<unknown>,): boolean
@@ -51,7 +51,7 @@ export function hasAllWithSet<const T, >(collection: Nullable<MinimalistCollecti
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
  * @extensionFunction
  */
 export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: ReadonlySet<T>,): boolean
@@ -61,7 +61,7 @@ export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains-all.html Kotlin containsAll(elements)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
  * @extensionFunction
  */
 export function hasAllWithSetByCollectionHolder(collection: Nullable<CollectionHolder>, values: ReadonlySet<unknown>,): boolean

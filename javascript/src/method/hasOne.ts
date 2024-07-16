@@ -364,7 +364,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
  * @extensionFunction
@@ -379,7 +379,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
  * @extensionFunction

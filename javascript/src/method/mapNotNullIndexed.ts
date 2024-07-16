@@ -22,8 +22,8 @@ import {CollectionConstants} from "../CollectionConstants"
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param transform  The given transform
  * @see ReadonlyArray.map
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
 export function mapNotNullIndexed<const T, const U extends NonNullable<unknown>, >(collection: Nullable<MinimalistCollectionHolder<T>>, transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
@@ -48,8 +48,8 @@ export function mapNotNullIndexed<const T, const U extends NonNullable<unknown>,
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param transform  The given transform
  * @see ReadonlyArray.map
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(selector)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
 export function mapNotNullIndexedByCollectionHolder<const T, const U extends NonNullable<unknown>, >(collection: Nullable<CollectionHolder<T>>, transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {

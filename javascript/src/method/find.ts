@@ -19,7 +19,7 @@ import type {MinimalistCollectionHolder}                 from "../MinimalistColl
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
  * @see ReadonlyArray.find
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
  * @typescriptDefinition
  * @extensionFunction
@@ -31,7 +31,7 @@ export function find<const T, const S extends T, >(collection: Nullable<Minimali
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
  * @see ReadonlyArray.find
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
  * @extensionFunction
  */
@@ -57,7 +57,7 @@ export function find<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
  * @see ReadonlyArray.find
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
  * @typescriptDefinition
  * @extensionFunction
@@ -69,7 +69,7 @@ export function findByCollectionHolder<const T, const S extends T, >(collection:
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
  * @see ReadonlyArray.find
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html Kotlin find(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
  * @extensionFunction
  */

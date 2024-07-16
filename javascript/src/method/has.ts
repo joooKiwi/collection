@@ -20,7 +20,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
  * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
 export function has<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, value: T,): boolean
@@ -32,7 +32,7 @@ export function has<const T, >(collection: Nullable<MinimalistCollectionHolder<T
  * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
 export function has<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, value: unknown,): boolean
@@ -55,7 +55,7 @@ export function has<const T, >(collection: Nullable<MinimalistCollectionHolder<T
  * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
 export function hasByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, value: T,): boolean
@@ -67,7 +67,7 @@ export function hasByCollectionHolder<const T, >(collection: Nullable<Collection
  * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
 export function hasByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, value: unknown,): boolean

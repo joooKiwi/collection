@@ -14,8 +14,8 @@ import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollect
 /**
  * An {@link Iterator} with a known {@link MinimalistCollectionHolder} {@link MinimalistCollectionHolder.size size}
  *
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator Kotlin Iterator
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator Kotlin ListIterator
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterator Kotlin Iterator
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list-iterator Kotlin ListIterator
  */
 export interface CollectionIterator<out T = unknown, >
     extends IterableIterator<T> {
@@ -119,16 +119,16 @@ export interface CollectionIterator<out T = unknown, >
     /**
      * Do a certain operation for the rest of the elements in the current {@link CollectionIterator iterator}
      *
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html Kotlin forEach(operation)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html Kotlin forEach(operation)
      */
     forEach(operation: ValueIndexCallback<T>,): this
 
     /**
      * Do a certain operation for the rest of the elements in the current {@link CollectionIterator iterator}
      *
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
      */
     forEachIndexed(operation: IndexValueCallback<T>,): this
 

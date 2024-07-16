@@ -19,7 +19,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @return {CollectionHolder<NonNullable<T>>} The {@link collection} or an {@link EmptyCollectionHolder}
  *                                            if it is <b>null</b> or empty
  * @throws {TypeError} There is <b>null</b> or <b>undefined</b> value in the current collection
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
@@ -31,7 +31,7 @@ export function requireNoNulls<const T, >(collection: Nullable<CollectionHolder<
  * @return {CollectionHolder<NonNullable<T>>} The {@link collection} or an {@link EmptyCollectionHolder}
  *                                            if it is <b>null</b> or empty
  * @throws {TypeError} There is <b>null</b> or <b>undefined</b> value in the current collection
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */
@@ -59,7 +59,7 @@ export function requireNoNulls<const T, >(collection: Nullable<MinimalistCollect
  * @return {CollectionHolder<NonNullable<T>>} The {@link collection} or an {@link EmptyCollectionHolder}
  *                                            if it is <b>null</b> or empty
  * @throws {TypeError} There is <b>null</b> or <b>undefined</b> value in the current collection
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
  * @see filterNotNull
  * @extensionFunction
  */

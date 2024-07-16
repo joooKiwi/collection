@@ -19,7 +19,7 @@ import {CollectionConstants} from "../CollectionConstants"
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @see ReadonlyArray.filter
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
  * @see requireNoNulls
  * @extensionFunction
  */
@@ -39,7 +39,7 @@ export function filterNotNull<const T, >(collection: Nullable<MinimalistCollecti
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @see ReadonlyArray.filter
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
  * @see requireNoNulls
  * @extensionFunction
  */
