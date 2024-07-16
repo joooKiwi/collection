@@ -32,6 +32,7 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
@@ -52,6 +53,7 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
@@ -75,6 +77,7 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
@@ -95,6 +98,7 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
@@ -118,6 +122,7 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
@@ -138,6 +143,7 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */

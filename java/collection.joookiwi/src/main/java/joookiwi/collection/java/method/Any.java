@@ -29,6 +29,7 @@ public final class Any
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if null is received or {@link MinimalistCollectionHolder#size size} is not <b>0</b> otherwise
+     * @see java.util.stream.Stream#findAny() Stream.findAny()
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
      */
@@ -46,6 +47,7 @@ public final class Any
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if null is received or {@link CollectionHolder#isNotEmpty isNotEmpty} otherwise
+     * @see java.util.stream.Stream#findAny() Stream.findAny()
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
      */
@@ -68,6 +70,7 @@ public final class Any
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
+     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -91,6 +94,7 @@ public final class Any
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
+     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -117,6 +121,7 @@ public final class Any
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
+     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -140,6 +145,7 @@ public final class Any
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
+     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -166,6 +172,7 @@ public final class Any
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
+     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -189,6 +196,7 @@ public final class Any
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
+     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>

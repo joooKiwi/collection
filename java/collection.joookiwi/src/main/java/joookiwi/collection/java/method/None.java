@@ -66,6 +66,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
@@ -87,6 +88,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
@@ -111,6 +113,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
@@ -132,6 +135,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
@@ -156,6 +160,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
@@ -177,6 +182,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
