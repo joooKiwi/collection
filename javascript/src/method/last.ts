@@ -23,6 +23,7 @@ import {EmptyCollectionHolderException}            from "../exception/EmptyColle
  * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} <b</b>is empty}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
@@ -80,6 +81,7 @@ export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */

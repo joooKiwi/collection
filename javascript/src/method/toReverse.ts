@@ -28,6 +28,7 @@ import {ForbiddenIndexException}                   from "../exception/ForbiddenI
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
@@ -83,6 +84,7 @@ export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHo
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */

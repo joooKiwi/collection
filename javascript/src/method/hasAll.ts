@@ -34,6 +34,7 @@ import {isMinimalistCollectionHolderByStructure}                                
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -45,6 +46,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -56,6 +58,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -67,6 +70,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -78,6 +82,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -89,6 +94,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -100,6 +106,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @typescriptDefinition
  * @extensionFunction
  * @facadeFunction
@@ -112,6 +119,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -123,6 +131,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -134,6 +143,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -145,6 +155,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -156,6 +167,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -167,6 +179,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -178,6 +191,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @typescriptDefinition
  * @extensionFunction
  * @facadeFunction
@@ -239,6 +253,7 @@ export function hasAll(collection: Nullable<MinimalistCollectionHolder>,): boole
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -250,6 +265,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -261,6 +277,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -272,6 +289,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -283,6 +301,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -294,6 +313,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -305,6 +325,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @typescriptDefinition
  * @extensionFunction
  * @facadeFunction
@@ -317,6 +338,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -328,6 +350,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -339,6 +362,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -350,6 +374,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -361,6 +386,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -372,6 +398,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
@@ -383,6 +410,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @typescriptDefinition
  * @extensionFunction
  * @facadeFunction

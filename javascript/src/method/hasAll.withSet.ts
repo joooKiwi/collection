@@ -19,6 +19,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
 export function hasAllWithSet<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<T>,): boolean
@@ -29,6 +30,7 @@ export function hasAllWithSet<const T, >(collection: Nullable<MinimalistCollecti
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
 export function hasAllWithSet<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<unknown>,): boolean
@@ -52,6 +54,7 @@ export function hasAllWithSet<const T, >(collection: Nullable<MinimalistCollecti
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
 export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: ReadonlySet<T>,): boolean
@@ -62,6 +65,7 @@ export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<
  * @param values     The values to compare
  * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
 export function hasAllWithSetByCollectionHolder(collection: Nullable<CollectionHolder>, values: ReadonlySet<unknown>,): boolean

@@ -19,6 +19,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @return {boolean} <b>false</b> if null is received or {@link CollectionHolder.isNotEmpty isNotEmpty} otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
  * @extensionFunction
  */
@@ -29,6 +30,7 @@ export function any<const T, const COLLECTION extends CollectionHolder<T> = Coll
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @return {boolean} <b>false</b> if null is received or !{@link MinimalistCollectionHolder.isEmpty isEmpty} otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
  * @extensionFunction
  */
@@ -42,6 +44,7 @@ export function any<const T, const COLLECTION extends MinimalistCollectionHolder
  * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
  * @see ReadonlyArray.some
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java anyMatch(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
  * @extensionFunction
  */
@@ -69,6 +72,7 @@ export function any<const T, >(collection: Nullable<MinimalistCollectionHolder<T
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @return {boolean} <b>false</b> if null is received or {@link CollectionHolder.isNotEmpty isNotEmpty} otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
  * @extensionFunction
  */
@@ -82,6 +86,7 @@ export function anyByCollectionHolder<const T, const COLLECTION extends Collecti
  * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
  * @see ReadonlyArray.some
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java anyMatch(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
  * @extensionFunction
  */

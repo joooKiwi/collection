@@ -23,6 +23,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filterIndexed
  * @typescriptDefinition
@@ -37,6 +38,7 @@ export function filterNotIndexed<const T, const S extends T, >(collection: Nulla
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filterIndexed
  * @extensionFunction
@@ -65,6 +67,7 @@ export function filterNotIndexed<const T, >(collection: Nullable<MinimalistColle
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filterIndexedByCollectionHolder
  * @typescriptDefinition
@@ -79,6 +82,7 @@ export function filterNotIndexedByCollectionHolder<const T, const S extends T, >
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @see filterIndexedByCollectionHolder
  * @extensionFunction

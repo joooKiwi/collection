@@ -23,6 +23,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html Kotlin map(transform)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java map(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
@@ -49,6 +50,7 @@ export function map<const T, const U, >(collection: Nullable<MinimalistCollectio
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html Kotlin map(transform)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java map(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
