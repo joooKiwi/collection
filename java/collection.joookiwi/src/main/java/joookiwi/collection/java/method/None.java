@@ -29,7 +29,7 @@ public final class None
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if null is received or {@code collection} <b>is empty</b> otherwise
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none()</a>
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none()</a>
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_1)
@@ -45,7 +45,7 @@ public final class None
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if null is received or the {@code collection} {@link CollectionHolder#isEmpty is empty} otherwise
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none()</a>
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none()</a>
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_1)
@@ -66,7 +66,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
@@ -87,7 +87,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
@@ -111,7 +111,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
@@ -132,7 +132,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
@@ -156,7 +156,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
@@ -177,7 +177,7 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
