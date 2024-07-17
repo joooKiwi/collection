@@ -1826,7 +1826,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
      * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
      * @canReceiveNegativeValue
-     * @deprecated Use joinToString instead. It will be changed in v1.10
+     * @alias joinToString
      */
     join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
 
