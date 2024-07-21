@@ -21,7 +21,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices The given indices
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
@@ -32,7 +32,12 @@ export function sliceWithIterable<const T, >(collection: Nullable<MinimalistColl
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return __newArray(collection, indices,)
+
+    const iterator = indices[Symbol.iterator]() as Iterator<number, unknown>
+    const iteratorResult: IteratorResult<number, unknown> = iterator.next()
+    if (iteratorResult.done)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
 }
 
 /**
@@ -42,7 +47,7 @@ export function sliceWithIterable<const T, >(collection: Nullable<MinimalistColl
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param indices The given indices
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
@@ -53,24 +58,23 @@ export function sliceWithIterableByCollectionHolder<const T, >(collection: Nulla
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return __newArray(collection, indices,)
+
+    const iterator = indices[Symbol.iterator]() as Iterator<number, unknown>
+    const iteratorResult: IteratorResult<number, unknown> = iterator.next()
+    if (iteratorResult.done)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indices: Iterable<number>,) {
-    const iterator = indices[Symbol.iterator]() as Iterator<number, number>
-    let iteratorResult: IteratorResult<number, number> = iterator.next()
-    if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
-    return new CollectionConstants.LazyGenericCollectionHolder(() => {
-        const newArray = [collection.get(iteratorResult.value,),]
-        while (!(iteratorResult = iterator.next()).done)
-            newArray.push(collection.get(iteratorResult.value,),)
-        return newArray
-    },)
+function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<number, unknown>, firstValue: number,) {
+    const newArray = [collection.get(firstValue,),]
+    let iteratorResult: IteratorResult<number, unknown>
+    while (!(iteratorResult = iterator.next()).done)
+        newArray.push(collection.get(iteratorResult.value,),)
+    return newArray
 }
 
 //#endregion -------------------- Loop methods --------------------

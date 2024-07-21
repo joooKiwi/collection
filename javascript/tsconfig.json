@@ -30,6 +30,7 @@
 
     "allowJs": false,
     "removeComments": true,
+    "stripInternal": true,
 
     "isolatedModules": true,
     "sourceMap": true,

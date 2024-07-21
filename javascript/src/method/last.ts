@@ -10,7 +10,6 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
-import type {NonEmptyCollectionHolder}                   from "../NonEmptyCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
@@ -23,7 +22,8 @@ import {EmptyCollectionHolderException}            from "../exception/EmptyColle
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} <b</b>is empty}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
@@ -37,8 +37,8 @@ export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @typescriptDefinition
  * @extensionFunction
  */
@@ -52,8 +52,8 @@ export function last<const T, const S extends T, >(collection: Nullable<Minimali
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @extensionFunction
  */
 export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T
@@ -80,7 +80,8 @@ export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} {@link CollectionHolder.isEmpty is empty}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
@@ -94,8 +95,8 @@ export function lastByCollectionHolder<const T, >(collection: Nullable<Collectio
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @typescriptDefinition
  * @extensionFunction
  */
@@ -109,8 +110,8 @@ export function lastByCollectionHolder<const T, const S extends T, >(collection:
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @extensionFunction
  */
 export function lastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T
@@ -121,7 +122,7 @@ export function lastByCollectionHolder<const T, >(collection: Nullable<Collectio
         throw new EmptyCollectionHolderException()
 
     if (predicate == null)
-        return __withNoPredicate(collection as NonEmptyCollectionHolder<T>, collection.size,)
+        return __withNoPredicate(collection, collection.size,)
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
@@ -132,7 +133,7 @@ export function lastByCollectionHolder<const T, >(collection: Nullable<Collectio
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __withNoPredicate<const T, >(collection: NonEmptyCollectionHolder<T>, size: number,) {
+function __withNoPredicate<const T, >(collection: CollectionHolder<T>, size: number,) {
     const lastIndex = size - 1
     if (lastIndex in collection)
         return collection[lastIndex] as T

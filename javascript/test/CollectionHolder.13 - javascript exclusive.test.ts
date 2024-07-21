@@ -8,16 +8,14 @@
 import {AB, EMPTY}     from "./constantCollections"
 import {everyInstance} from "./constantValues"
 
-import {CollectionConstants} from "../src/CollectionConstants"
+import {CollectionConstants}       from "../src/CollectionConstants"
+import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
 
 describe("CollectionHolderTest (javascript exclusive)", () => {
 describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
+    describe("Symbol.toStringTag", () => expect(newInstance(EMPTY,)[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
     describe("Symbol.iterator", () => {
         test("empty",     () => expect(newInstance(EMPTY,)[Symbol.iterator](),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
-
-        const iterator = newInstance(AB,)[Symbol.iterator]()
-        test("1st: a",    () => expect(iterator.next().value,).toBe('a',),)
-        test("2nd: b",    () => expect(iterator.next().value,).toBe('b',),)
-        test("3rd: done", () => expect(iterator.next().done,).toBe(true,),)
+        test("non-empty", () => expect(newInstance(AB,)[Symbol.iterator](),).toBeInstanceOf(GenericCollectionIterator,),)
     },)
 },)},)

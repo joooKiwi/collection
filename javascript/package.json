@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin), List (from Java/Kotlin/C#) and Enumerable (from C#)",
 
   "scripts": {
@@ -11,10 +11,12 @@
     "build-umd":         "tsc --project tsconfig.umd.json",
     "build-types":       "tsc --project tsconfig.types.json",
 
-    "test":               "jest",
-    "test-with-coverage": "jest --coverage",
-    "test-collection":    "jest --testNamePattern=CollectionHolderTest",
-    "test-iterator":      "jest --testNamePattern=CollectionIteratorTest",
+    "test":                 "jest",
+    "test-with-coverage":   "jest --coverage",
+    "test-collection":      "jest --testNamePattern=CollectionHolderTest",
+    "test-lazy-collection": "jest --testNamePattern=LazyCollectionHolderTest",
+    "test-iterator":        "jest --testNamePattern=CollectionIteratorTest",
+    "test-handler":         "jest --testNamePattern=CollectionHandlerTest",
 
     "test-pack":    "npm pack --dry-run",
     "test-publish": "npm publish --@access=public --dry-run",
@@ -48,6 +50,11 @@
       "types":   "./dist/types/handler/index.d.ts",
       "import":  "./dist/ecmascript module/handler/index.js",
       "require": "./dist/common javascript/handler/index.js"
+    },
+     "./handler/value": {
+      "types":   "./dist/types/handler/value/index.d.ts",
+      "import":  "./dist/ecmascript module/handler/value/index.js",
+      "require": "./dist/common javascript/handler/value/index.js"
     },
     "./iterable": {
       "types":   "./dist/types/iterable/index.d.ts",
@@ -85,6 +92,11 @@
       "import":  "./dist/ecmascript module/handler/*.js",
       "require": "./dist/common javascript/handler/*.js"
     },
+    "./handler/value/*": {
+      "types":   "./dist/types/handler/value/*.d.ts",
+      "import":  "./dist/ecmascript module/handler/value/*.js",
+      "require": "./dist/common javascript/handler/value/*.js"
+    },
     "./iterable/*": {
       "types":   "./dist/types/iterable/*.d.ts",
       "import":  "./dist/ecmascript module/iterable/*.js",
@@ -121,6 +133,7 @@
   },
 
   "keywords": [
+    "immutable",
     "iterable",
     "iterator",
     "collection",
@@ -141,12 +154,12 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.19",
+    "@types/node": "^20.14.11",
     "del-cli": "^5.1.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-extended": "^4.0.2",
-    "ts-jest": "^29.1.2",
+    "ts-jest": "^29.2.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.5.3"
   }
 }

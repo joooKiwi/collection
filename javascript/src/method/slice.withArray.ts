@@ -21,7 +21,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
@@ -36,7 +36,6 @@ export function sliceWithArray<const T, >(collection: Nullable<MinimalistCollect
     const indicesSize = indices.length
     if (indicesSize == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
     return new CollectionConstants.LazyGenericCollectionHolder(() => _newArray(collection, indices, indicesSize,),)
 }
 
@@ -47,7 +46,7 @@ export function sliceWithArray<const T, >(collection: Nullable<MinimalistCollect
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
@@ -62,7 +61,6 @@ export function sliceWithArrayByCollectionHolder<const T, >(collection: Nullable
     const indicesSize = indices.length
     if (indicesSize == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
     return new CollectionConstants.LazyGenericCollectionHolder(() => _newArray(collection, indices, indicesSize,),)
 }
 

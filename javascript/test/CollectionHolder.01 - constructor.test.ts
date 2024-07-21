@@ -5,8 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder} from "../src/CollectionHolder"
-
 import {A, A_NULL_B_UNDEFINED, AB, AB12, AB_AB, AB_OBJECT, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, ABCDEFGHIJ, EMPTY, NULL_ABCD, UNDEFINED_ABCD} from "./constantCollections"
 import {everyCollectionInstanceByIterable, iterableCreation, TEMPLATE_ITEMS}                                                                         from "./constantValues"
 
@@ -14,9 +12,10 @@ describe("CollectionHolderTest (constructor)", () => {
 describe.each(everyCollectionInstanceByIterable,)("%s", ({value: {isLazy, isMinimalist, newInstance,},},) => {
 if (isMinimalist)
     return // The minimalist collection doesn't set any index to its instance
+
 describe.each(iterableCreation,)("%s", ({value: iterableCreation,},) => {
     const newCollection = isLazy
-        ? (array: readonly unknown[],) => (newInstance(iterableCreation, array,) as CollectionHolder).forEach(_ => {},)
+        ? (array: readonly unknown[],) => newInstance(iterableCreation, array,).forEach(_ => {},)
         : (array: readonly unknown[],) => newInstance(iterableCreation, array,)
 
     test("empty",                        () => expect(newCollection(EMPTY,),).toBeEmpty(),)

@@ -31,7 +31,7 @@ describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist, isExten
 
     describe("all", () => {
         test("a|b on [a,b]",     () => expect(newInstance(AB,).all(it => it === 'a' || it === 'b'),).toBeTrue(),)
-        test("c|d on [a,b]",     () => expect(newInstance(AB,).all((it: string) => it === 'c' || it === 'd'),).toBeFalse(),)
+        test("c|d on [a,b]",     () => expect(newInstance<string>(AB,).all(it => it === 'c' || it === 'd'),).toBeFalse(),)
         test("a|b on [a,b,c,d]", () => expect(newInstance(ABCD,).all(it => it === 'a' || it === 'b'),).toBeFalse(),)
     },)
 
@@ -43,7 +43,7 @@ describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist, isExten
             },)
         describe("predicate", () => {
             test("a|b on [a,b]",     () => expect(newInstance(AB,).any(it => it === "a" || it === "b"),).toBeTrue(),)
-            test("c|d on [a,b]",     () => expect(newInstance(AB,).any((it: string) => it === 'c' || it === 'd'),).toBeFalse(),)
+            test("c|d on [a,b]",     () => expect(newInstance<string>(AB,).any(it => it === 'c' || it === 'd'),).toBeFalse(),)
             test("a|b on [a,b,c,d]", () => expect(newInstance(ABCD,).any(it => it === 'a' || it === 'b'),).toBeTrue(),)
         },)
     },)
@@ -55,7 +55,7 @@ describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist, isExten
         },)
         describe("predicate", () => {
             test("a|b on [a,b]",     () => expect(newInstance(AB,).none(it => it === 'a' || it === 'b'),).toBeFalse(),)
-            test("c|d on [a,b]",     () => expect(newInstance(AB,).none((it: string) => it === 'c' || it === 'd'),).toBeTrue(),)
+            test("c|d on [a,b]",     () => expect(newInstance<string>(AB,).none(it => it === 'c' || it === 'd'),).toBeTrue(),)
             test("a|b on [a,b,c,d]", () => expect(newInstance(ABCD,).none(it => it === 'a' || it === 'b'),).toBeFalse(),)
         },)
     },)

@@ -8,16 +8,17 @@
 import type {CollectionHolder}             from "../CollectionHolder"
 import type {PossibleIterableOrCollection} from "../CollectionHolder.types"
 import type {CollectionHandler}            from "./CollectionHandler"
-import type {ValueHolder}                  from "./ValueHolder"
+import type {ValueHolder}                  from "./value/ValueHolder"
 
-export abstract class AbstractCollectionHandler<const out T = unknown, const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>, const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export abstract class AbstractCollectionHandler<const T = unknown,
+    const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     implements CollectionHandler<T> {
 
     //#region -------------------- Fields --------------------
 
     readonly #collection: COLLECTION
     readonly #reference: REFERENCE
-    #hasFinished?: boolean
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -30,28 +31,22 @@ export abstract class AbstractCollectionHandler<const out T = unknown, const out
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter & setter methods --------------------
 
-    protected get _reference(): REFERENCE {
-        return this.#reference
-    }
+    /** The reference to retrieve the values */
+    protected get _reference(): REFERENCE { return this.#reference }
 
-    /** The {@link CollectionHolder} reference */
-    protected get _collection(): COLLECTION {
-        return this.#collection
-    }
+    /** The {@link CollectionHolder} reference to set the indices */
+    protected get _collection(): COLLECTION { return this.#collection }
 
 
     public abstract get size(): number
 
-    public abstract get isEmpty(): boolean
+    public get isEmpty(): boolean { return this.size == 0 }
 
-    public get hasFinished(): boolean {
-        return this.#hasFinished ??= false
-    }
+    public abstract get hasNull(): boolean
 
-    /** Set the {@link hasFinished} to the value received */
-    protected set _hasFinished(value: boolean,) {
-        this.#hasFinished = value
-    }
+    public abstract get hasDuplicate(): boolean
+
+    public abstract get hasFinished(): boolean
 
     //#endregion -------------------- Getter & setter methods --------------------
     //#region -------------------- Methods --------------------

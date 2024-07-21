@@ -5,55 +5,73 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Lazy}                   from "@joookiwi/lazy"
-import type {NullableNumber, NullOr} from "@joookiwi/type"
-import {CommonLazy, lazy, lazyOf}    from "@joookiwi/lazy"
+import type {Lazy}    from "@joookiwi/lazy"
+import type {NullOr}  from "@joookiwi/type"
+import {lazy, lazyOf} from "@joookiwi/lazy"
 
-import type {CollectionHolder}                                                from "./CollectionHolder"
-import type {IndexWithReturnCallback, ObjectOf, PossibleIterableOrCollection} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                      from "./MinimalistCollectionHolder"
-import type {CollectionHandler}                                               from "./handler/CollectionHandler"
-import type {IterableWithCount}                                               from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                              from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                        from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                              from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                            from "./CollectionHolder"
+import type {IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                                                                  from "./MinimalistCollectionHolder"
+import type {CollectionHandler}                                                                                           from "./handler/CollectionHandler"
+import type {IterableWithCount}                                                                                           from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                                                                          from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                                                                    from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                                                            from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                                                                          from "./iterator/CollectionIterator"
 
-import {AbstractCollectionHolder}                      from "./AbstractCollectionHolder"
-import {CollectionConstants}                           from "./CollectionConstants"
-import {CollectionHandlerByArrayOf1}                   from "./handler/CollectionHandlerByArrayOf1"
-import {CollectionHandlerByArray}                      from "./handler/CollectionHandlerByArray"
-import {CollectionHandlerByCollectionHolder}           from "./handler/CollectionHandlerByCollectionHolder"
-import {CollectionHandlerByIterable}                   from "./handler/CollectionHandlerByIterable"
-import {CollectionHandlerByIterableWithSize}           from "./handler/CollectionHandlerByIterableWithSize"
-import {CollectionHandlerByMinimalistCollectionHolder} from "./handler/CollectionHandlerByMinimalistCollectionHolder"
-import {CollectionHandlerBySet}                        from "./handler/CollectionHandlerBySet"
-import {CollectionHandlerBySetOf1}                     from "./handler/CollectionHandlerBySetOf1"
-import {hasNullByCollectionHolder}                     from "./method/hasNull"
-import {isCollectionHolder}                            from "./method/isCollectionHolder"
-import {isCollectionIterator}                          from "./method/isCollectionIterator"
-import {isMinimalistCollectionHolder}                  from "./method/isMinimalistCollectionHolder"
-import {objectValuesMapByCollectionHolder}             from "./method/objectValuesMap"
-import {toArrayByCollectionHolder}                     from "./method/toArray"
-import {toMapByCollectionHolder}                       from "./method/toMap"
-import {toSetByCollectionHolder}                       from "./method/toSet"
-import {toWeakSet}                                     from "./method/toWeakSet"
+import {AbstractCollectionHolder}                         from "./AbstractCollectionHolder"
+import {CollectionConstants}                              from "./CollectionConstants"
+import {CollectionHandlerByArray}                         from "./handler/CollectionHandlerByArray"
+import {CollectionHandlerByArrayOf1}                      from "./handler/CollectionHandlerByArrayOf1"
+import {CollectionHandlerByArrayOf2}                      from "./handler/CollectionHandlerByArrayOf2"
+import {CollectionHandlerByCollectionHolder}              from "./handler/CollectionHandlerByCollectionHolder"
+import {CollectionHandlerByCollectionHolderOf1}           from "./handler/CollectionHandlerByCollectionHolderOf1"
+import {CollectionHandlerByCollectionHolderOf2}           from "./handler/CollectionHandlerByCollectionHolderOf2"
+import {CollectionHandlerByCollectionIterator}            from "./handler/CollectionHandlerByCollectionIterator"
+import {CollectionHandlerByCollectionIteratorOf1}         from "./handler/CollectionHandlerByCollectionIteratorOf1"
+import {CollectionHandlerByCollectionIteratorOf2}         from "./handler/CollectionHandlerByCollectionIteratorOf2"
+import {CollectionHandlerByIterable}                      from "./handler/CollectionHandlerByIterable"
+import {CollectionHandlerByIterableWithSize}              from "./handler/CollectionHandlerByIterableWithSize"
+import {CollectionHandlerByIterableWithSizeOf1}           from "./handler/CollectionHandlerByIterableWithSizeOf1"
+import {CollectionHandlerByIterableWithSizeOf2}           from "./handler/CollectionHandlerByIterableWithSizeOf2"
+import {CollectionHandlerByMinimalistCollectionHolder}    from "./handler/CollectionHandlerByMinimalistCollectionHolder"
+import {CollectionHandlerByMinimalistCollectionHolderOf1} from "./handler/CollectionHandlerByMinimalistCollectionHolderOf1"
+import {CollectionHandlerByMinimalistCollectionHolderOf2} from "./handler/CollectionHandlerByMinimalistCollectionHolderOf2"
+import {CollectionHandlerBySet}                           from "./handler/CollectionHandlerBySet"
+import {CollectionHandlerBySetOf1}                        from "./handler/CollectionHandlerBySetOf1"
+import {CollectionHandlerBySetOf2}                        from "./handler/CollectionHandlerBySetOf2"
+import {isCollectionIterator}                             from "./method/isCollectionIterator"
+import {isCollectionIteratorByStructure}                  from "./method/isCollectionIteratorByStructure"
+import {isCollectionHolder}                               from "./method/isCollectionHolder"
+import {isCollectionHolderByStructure}                    from "./method/isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                     from "./method/isMinimalistCollectionHolder"
+import {isMinimalistCollectionHolderByStructure}          from "./method/isMinimalistCollectionHolderByStructure"
 
 /**
  * A {@link CollectionHolder} having the values associated to it, but lazily retrieved.
  *
+ * Meaning that the value in the instance are not retrieved until it is necessary.
+ *
+ * @note The index in the instance may not be initialized if retrieved directly
  * @see GenericCollectionHolder
  * @see EmptyCollectionHolder
  * @beta
  */
-export class LazyGenericCollectionHolder<const out T = unknown, const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>, >
+export class LazyGenericCollectionHolder<const T = unknown,
+    const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
 
-    #handler: Lazy<CollectionHandler<T>>
-    #size: Lazy<number>
-    #isEmpty: Lazy<boolean>
+    #size?: number
+    #isEmpty?: boolean
+    #hasNull?: boolean
+    #hasDuplicate?: boolean
+
+    #lazySize?: Lazy<number>
+    #lazyIsEmpty?: Lazy<boolean>
+    #lazyHasNull?: Lazy<boolean>
+    #lazyHasDuplicate?: Lazy<boolean>
 
     readonly #reference: Lazy<REFERENCE>
     #objectValuesMap?: ReadonlyMap<T, ObjectOf<T>>
@@ -62,7 +80,8 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
     #weakSet?: Readonly<WeakSet<ObjectOf<T>>>
     #map?: ReadonlyMap<number, T>
 
-    #hasNull?: boolean
+    #handler?: CollectionHandler<T>
+    #lazyHandler?: Lazy<CollectionHandler<T>>
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -94,612 +113,723 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
         super()
         // README: The lazy instantiation has some weird shenanigan to keep its laziness nature pure.
         //         Also, to be efficient, there is some duplicate code in the constructor.
+        //         Note that some paths are not fully optimized yet
 
         if (reference instanceof Array) {
             this.#reference = lazyOf(reference as REFERENCE,)
-            const size = reference.length
+            const size = this.#size = reference.length
 
-            //#region -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
-                this.#size = CommonLazy.ZERO_NUMBER
-                this.#isEmpty = CommonLazy.TRUE
-                this.#hasNull = false
+            if (this.#isEmpty = size == 0) {
+                this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
                 this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
                 this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
+                this.#handler = CollectionConstants.EMPTY_COLLECTION_HANDLER
                 return
             }
 
-            //#endregion -------------------- Initialization (empty) --------------------
-            //#region -------------------- Initialization (non-empty) --------------------
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
 
-            this.#isEmpty = CommonLazy.FALSE
             if (Object.isFrozen(reference,))
                 this.#array = reference
 
-            //#region -------------------- Initialization (size = 1) --------------------
-
             if (size == 1) {
-                this.#size = CommonLazy.ONE_NUMBER
-                this.#handler = lazyOf(new CollectionHandlerByArrayOf1(this, reference as unknown as (& REFERENCE & readonly [T,]),),)
+                const handler = this.#lazyHandler = lazy(() => new CollectionHandlerByArrayOf1(this, reference,),)
+                this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+                this.#hasDuplicate = false
                 return
             }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
-            //#region -------------------- Initialization (size = over 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
 
-            this.#size = lazyOf(size,)
-            this.#handler = lazyOf(new CollectionHandlerByArray(this, reference as (& REFERENCE & readonly T[]),),)
+            if (size == 2) {
+                const handler = this.#lazyHandler = lazy(() => new CollectionHandlerByArrayOf2(this, reference,),)
+                this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+                this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const handler = this.#lazyHandler = lazy(() => new CollectionHandlerByArray(this, reference,),)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
 
-            //#endregion -------------------- Initialization (size = over 1) --------------------
-
-            //#endregion -------------------- Initialization (non-empty) --------------------
+            //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
         if (reference instanceof Set) {
             this.#reference = lazyOf(reference as REFERENCE,)
-            const size = reference.size
+            this.#hasDuplicate = false
+            const size = this.#size = reference.size
 
             //#region -------------------- Initialization (empty) --------------------
 
-            if (size == 0) {
-                this.#size = CommonLazy.ZERO_NUMBER
-                this.#isEmpty = CommonLazy.TRUE
+            if (this.#isEmpty = size == 0) {
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
                 this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
                 this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
+                this.#handler = CollectionConstants.EMPTY_COLLECTION_HANDLER
                 return
             }
 
             //#endregion -------------------- Initialization (empty) --------------------
-            //#region -------------------- Initialization (non-empty) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
 
-            this.#isEmpty = CommonLazy.FALSE
             if (Object.isFrozen(reference,))
                 this.#set = reference
 
-            //#region -------------------- Initialization (size = 1) --------------------
-
             if (size == 1) {
-                this.#size = CommonLazy.ONE_NUMBER
-                this.#handler = lazyOf(new CollectionHandlerBySetOf1(this, reference as (& REFERENCE & ReadonlySet<T>),),)
+                const handler = this.#lazyHandler = lazy(() => new CollectionHandlerBySetOf1(this, reference,),)
+                this.#lazyHasNull = lazy(() => handler.value.hasNull,)
                 return
             }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
-            //#region -------------------- Initialization (size = over 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
 
-            this.#size = lazyOf(size,)
-            this.#handler = lazyOf(new CollectionHandlerBySet(this, reference as (& REFERENCE & ReadonlySet<T>),),)
+            if (size == 2) {
+                const handler = this.#lazyHandler = lazy(() => new CollectionHandlerBySetOf2(this, reference,),)
+                this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const handler = this.#lazyHandler = lazy(() => new CollectionHandlerBySet(this, reference,),)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             return
 
-            //#endregion -------------------- Initialization (size = over 1) --------------------
-
-            //#endregion -------------------- Initialization (non-empty) --------------------
+            //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
         if (isCollectionHolder<T>(reference,)) {
             this.#reference = lazyOf(reference,)
-            this.#handler = lazy(() => new CollectionHandlerByCollectionHolder(this, reference,),)
-            this.#isEmpty = lazy(() => {
-                //#region -------------------- Late-initialization (empty) --------------------
-
-                if (reference.isEmpty) {
-                    this.#size = CommonLazy.ZERO_NUMBER
-                    this.#isEmpty = CommonLazy.TRUE
-                    this.#hasNull = false
-                    this.#array = CollectionConstants.EMPTY_ARRAY
-                    this.#set = CollectionConstants.EMPTY_SET
-                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                    this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                    return true
-                }
-
-                //#endregion -------------------- Late-initialization (empty) --------------------
-                //#region -------------------- Late-initialization (non-empty) --------------------
-
-                this.#isEmpty = CommonLazy.FALSE
-                return false
-
-                //#endregion -------------------- Late-initialization (non-empty) --------------------
-            },)
-            this.#size = lazy(() => {
-                const size = reference.size
-                //#region -------------------- Late-initialization (empty) --------------------
-
-                if (size == 0) {
-                    this.#size = CommonLazy.ZERO_NUMBER
-                    this.#isEmpty = CommonLazy.TRUE
-                    this.#hasNull = false
-                    this.#array = CollectionConstants.EMPTY_ARRAY
-                    this.#set = CollectionConstants.EMPTY_SET
-                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                    this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                    return 0
-                }
-
-                //#endregion -------------------- Late-initialization (empty) --------------------
-                //#region -------------------- Late-initialization (non-empty) --------------------
-
-                this.#isEmpty = CommonLazy.FALSE
-                if (size == 1)
-                    this.#size = CommonLazy.ONE_NUMBER
-                return size
-
-                //#endregion -------------------- Late-initialization (non-empty) --------------------
-            },)
+            const handler = this.#lazyHandler = lazy(() => this.#handlerByCollectionHolder(reference,),)
+            this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
         }
 
         if (isMinimalistCollectionHolder<T>(reference,)) {
             this.#reference = lazyOf(reference,)
-            this.#handler = lazy(() => new CollectionHandlerByMinimalistCollectionHolder(this, reference,),)
-            this.#isEmpty = lazy(() => {
-                const size = reference.size
-                //#region -------------------- Late-initialization (empty) --------------------
-
-                if (size == 0) {
-                    this.#size = CommonLazy.ZERO_NUMBER
-                    this.#isEmpty = CommonLazy.TRUE
-                    this.#hasNull = false
-                    this.#array = CollectionConstants.EMPTY_ARRAY
-                    this.#set = CollectionConstants.EMPTY_SET
-                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                    this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                    return true
-                }
-
-                //#endregion -------------------- Late-initialization (empty) --------------------
-                //#region -------------------- Late-initialization (non-empty) --------------------
-
-                this.#isEmpty = CommonLazy.FALSE
-                return false
-
-                //#endregion -------------------- Late-initialization (non-empty) --------------------
-            },)
-            this.#size = lazy(() => {
-                const size = reference.size
-                //#region -------------------- Late-initialization (empty) --------------------
-
-                if (size == 0) {
-                    this.#size = CommonLazy.ZERO_NUMBER
-                    this.#isEmpty = CommonLazy.TRUE
-                    this.#hasNull = false
-                    this.#array = CollectionConstants.EMPTY_ARRAY
-                    this.#set = CollectionConstants.EMPTY_SET
-                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                    this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                    return 0
-                }
-
-                //#endregion -------------------- Late-initialization (empty) --------------------
-                //#region -------------------- Late-initialization (non-empty) --------------------
-
-                this.#isEmpty = CommonLazy.FALSE
-                if (size == 1)
-                    this.#size = CommonLazy.ONE_NUMBER
-                return size
-
-                //#endregion -------------------- Late-initialization (non-empty) --------------------
-            },)
+            const handler = this.#lazyHandler = lazy(() => this.#handlerByMinimalistCollectionHolder(reference,),)
+            this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
         }
 
         if (isCollectionIterator<T>(reference,)) {
             this.#reference = lazyOf(reference,)
-            this.#handler = lazy(() => {
-                const collection = reference.collection
-                if (isCollectionHolder<T>(collection,))
-                    return new CollectionHandlerByCollectionHolder(this, collection,)
-                return new CollectionHandlerByMinimalistCollectionHolder(this, collection,)
-            },)
-            this.#isEmpty = lazy(() => {
-                const collection = reference.collection
-                if (isCollectionHolder(collection,)) {
-                    //#region -------------------- Late-initialization (empty) --------------------
+            const handler = this.#lazyHandler = lazy(() => this.#handlerByCollectionIterator(reference,),)
+            this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
+            return
+        }
 
-                    if (collection.isEmpty) {
-                        this.#size = CommonLazy.ZERO_NUMBER
-                        this.#isEmpty = CommonLazy.TRUE
-                        this.#hasNull = false
-                        this.#array = CollectionConstants.EMPTY_ARRAY
-                        this.#set = CollectionConstants.EMPTY_SET
-                        this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                        this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                        this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                        return true
-                    }
+        if (isCollectionHolderByStructure<T>(reference,)) {
+            this.#reference = lazyOf(reference,)
+            const handler = this.#lazyHandler = lazy(() => this.#handlerByCollectionHolder(reference,),)
+            this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
+            return
+        }
 
-                    //#endregion -------------------- Late-initialization (empty) --------------------
-                    //#region -------------------- Late-initialization (non-empty) --------------------
+        if (isMinimalistCollectionHolderByStructure<T>(reference,)) {
+            this.#reference = lazyOf(reference,)
+            const handler = this.#lazyHandler = lazy(() => this.#handlerByMinimalistCollectionHolder(reference,),)
+            this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
+            return
+        }
 
-                    this.#isEmpty = CommonLazy.FALSE
-                    return false
-
-                    //#endregion -------------------- Late-initialization (non-empty) --------------------
-                }
-
-                const size = collection.size
-                //#region -------------------- Late-initialization (empty) --------------------
-
-                if (size == 0) {
-                    this.#size = CommonLazy.ZERO_NUMBER
-                    this.#isEmpty = CommonLazy.TRUE
-                    this.#hasNull = false
-                    this.#array = CollectionConstants.EMPTY_ARRAY
-                    this.#set = CollectionConstants.EMPTY_SET
-                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                    this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                    return true
-                }
-
-                //#endregion -------------------- Late-initialization (empty) --------------------
-                //#region -------------------- Late-initialization (non-empty) --------------------
-
-                this.#isEmpty = CommonLazy.FALSE
-                return false
-
-                //#endregion -------------------- Late-initialization (non-empty) --------------------
-            },)
-            this.#size = lazy(() => {
-                const size = reference.size
-                //#region -------------------- Late-initialization (empty) --------------------
-
-                if (size == 0) {
-                    this.#size = CommonLazy.ZERO_NUMBER
-                    this.#isEmpty = CommonLazy.TRUE
-                    this.#hasNull = false
-                    this.#array = CollectionConstants.EMPTY_ARRAY
-                    this.#set = CollectionConstants.EMPTY_SET
-                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                    this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                    return 0
-                }
-
-                //#endregion -------------------- Late-initialization (empty) --------------------
-                //#region -------------------- Late-initialization (non-empty) --------------------
-
-                this.#isEmpty = CommonLazy.FALSE
-                if (size == 1)
-                    this.#size = CommonLazy.ONE_NUMBER
-                return size
-
-                //#endregion -------------------- Late-initialization (non-empty) --------------------
-            },)
+        if (isCollectionIteratorByStructure<T>(reference,)) {
+            this.#reference = lazyOf(reference,)
+            const handler = this.#lazyHandler = lazy(() => this.#handlerByCollectionIterator(reference,),)
+            this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
         }
 
         if (reference instanceof Function) {
-            this.#reference = lazy(reference,)
-            this.#handler = lazy(() => {
-                const referenceFound = reference()
-                if (referenceFound instanceof Array) {
-                    const size = referenceFound.length
-                    //#region -------------------- Late-initialization (empty) --------------------
+            const lazyReference = this.#reference = lazy(reference,)
+            const handler = this.#lazyHandler = lazy<CollectionHandler<T>>(() => {
+                const referenceFound = lazyReference.value
 
-                    if (size == 0) {
-                        this.#size = CommonLazy.ZERO_NUMBER
-                        this.#isEmpty = CommonLazy.TRUE
-                        this.#hasNull = false
+                if (referenceFound instanceof Array) {
+                    const size = this.#size = referenceFound.length
+
+                    //#region -------------------- Initialization (size = 0) --------------------
+
+                    if (this.#isEmpty = size == 0) {
+                        this.#hasNull = this.#hasDuplicate = false
                         this.#array = CollectionConstants.EMPTY_ARRAY
                         this.#set = CollectionConstants.EMPTY_SET
                         this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                        this.#map = this.#objectValuesMap = CollectionConstants.EMPTY_MAP
-                        this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
+                        this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                         return CollectionConstants.EMPTY_COLLECTION_HANDLER
                     }
 
-                    //#endregion -------------------- Late-initialization (empty) --------------------
-                    //#region -------------------- Late-initialization (non-empty) --------------------
+                    //#endregion -------------------- Initialization (size = 0) --------------------
+                    //#region -------------------- Initialization (size = 1) --------------------
 
-                    this.#isEmpty = CommonLazy.FALSE
                     if (Object.isFrozen(referenceFound,))
                         this.#array = referenceFound
 
-                    //#region -------------------- Late-initialization (size = 1) --------------------
-
                     if (size == 1) {
-                        this.#size = CommonLazy.ONE_NUMBER
-                        return new CollectionHandlerByArrayOf1(this, referenceFound as unknown as (& REFERENCE & readonly [T,]),)
+                        const handler = new CollectionHandlerByArrayOf1<T>(this, referenceFound,)
+                        if (this.#hasNull != null)
+                            this.#lazyHasNull = lazy(() => handler.hasNull,)
+                        this.#hasDuplicate = false
+                        return handler
                     }
 
-                    //#endregion -------------------- Late-initialization (size = 1) --------------------
-                    //#region -------------------- Late-initialization (size = over 1) --------------------
+                    //#endregion -------------------- Initialization (size = 1) --------------------
+                    //#region -------------------- Initialization (size = 2) --------------------
 
-                    return new CollectionHandlerByArray(this, referenceFound,)
+                    if (size == 2) {
+                        const handler = new CollectionHandlerByArrayOf2<T>(this, referenceFound,)
+                        if (this.#hasNull == null)
+                            this.#lazyHasNull = lazy(() => handler.hasNull,)
+                        if (this.#hasDuplicate == null)
+                            this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                        return handler
+                    }
 
-                    //#endregion -------------------- Late-initialization (size = over 1) --------------------
+                    //#endregion -------------------- Initialization (size = 2) --------------------
+                    //#region -------------------- Initialization (size = over 2) --------------------
 
-                    //#endregion -------------------- Late-initialization (non-empty) --------------------
+                    const handler = new CollectionHandlerByArray<T>(this, referenceFound,)
+                    if (this.#hasNull == null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    if (this.#hasDuplicate == null)
+                        this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                    return handler
+
+                    //#endregion -------------------- Initialization (size = over 2) --------------------
                 }
-                if (referenceFound instanceof Set) {
-                    const size = referenceFound.size
-                    //#region -------------------- Late-initialization (empty) --------------------
 
-                    if (size == 0) {
-                        this.#size = CommonLazy.ZERO_NUMBER
-                        this.#isEmpty = CommonLazy.TRUE
+                if (referenceFound instanceof Set) {
+                    this.#hasDuplicate = false
+                    const size = this.#size = referenceFound.size
+
+                    //#region -------------------- Initialization (empty) --------------------
+
+                    if (this.#isEmpty = size == 0) {
                         this.#hasNull = false
                         this.#array = CollectionConstants.EMPTY_ARRAY
                         this.#set = CollectionConstants.EMPTY_SET
                         this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
                         this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                        this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
                         return CollectionConstants.EMPTY_COLLECTION_HANDLER
                     }
 
-                    //#endregion -------------------- Late-initialization (empty) --------------------
-                    //#region -------------------- Late-initialization (non-empty) --------------------
+                    //#endregion -------------------- Initialization (empty) --------------------
+                    //#region -------------------- Initialization (size = 1) --------------------
 
-                    this.#isEmpty = CommonLazy.FALSE
                     if (Object.isFrozen(referenceFound,))
                         this.#set = referenceFound
 
-                    //#region -------------------- Late-initialization (size = 1) --------------------
-
                     if (size == 1) {
-                        this.#size = CommonLazy.ONE_NUMBER
-                        return new CollectionHandlerBySetOf1(this, referenceFound,)
+                        const handler = new CollectionHandlerBySetOf1<T>(this, referenceFound,)
+                        if (this.#hasNull == null)
+                            this.#lazyHasNull = lazy(() => handler.hasNull,)
+                        return handler
                     }
 
-                    //#endregion -------------------- Late-initialization (size = 1) --------------------
-                    //#region -------------------- Late-initialization (size = over 1) --------------------
+                    //#endregion -------------------- Initialization (size = 1) --------------------
+                    //#region -------------------- Initialization (size = 2) --------------------
 
-                    return new CollectionHandlerBySet(this, referenceFound,)
+                    if (size == 2) {
+                        const handler = new CollectionHandlerBySetOf2<T>(this, referenceFound,)
+                        if (this.#hasNull == null)
+                            this.#lazyHasNull = lazy(() => handler.hasNull,)
+                        return handler
+                    }
 
-                    //#endregion -------------------- Late-initialization (size = over 1) --------------------
+                    //#endregion -------------------- Initialization (size = 2) --------------------
+                    //#region -------------------- Initialization (size = over 2) --------------------
 
-                    //#endregion -------------------- Late-initialization (non-empty) --------------------
+                    const handler = new CollectionHandlerBySet<T>(this, referenceFound,)
+                    if (this.#hasNull == null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    return handler
+
+                    //#endregion -------------------- Initialization (size = over 2) --------------------
                 }
-                if (isCollectionHolder<T>(referenceFound,))
-                    return new CollectionHandlerByCollectionHolder(this, referenceFound,)
-                if (isMinimalistCollectionHolder<T>(referenceFound,))
-                    return new CollectionHandlerByMinimalistCollectionHolder(this, referenceFound,)
+
+                if (isCollectionHolder<T>(referenceFound,)) {
+                    const handler = this.#handler = this.#handlerByCollectionHolder(referenceFound,)
+                    if (this.#size == null)
+                        this.#lazySize = lazy(() => handler.size,)
+                    if (this.#hasNull == null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    if (this.#hasDuplicate == null)
+                        this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                    return handler
+                }
+
+                if (isMinimalistCollectionHolder<T>(referenceFound,)) {
+                    const handler = this.#handler = this.#handlerByMinimalistCollectionHolder(referenceFound,)
+                    if (this.#size == null)
+                        this.#lazySize = lazy(() => handler.size,)
+                    if (this.#hasNull == null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    if (this.#hasDuplicate == null)
+                        this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                    return handler
+                }
+
                 if (isCollectionIterator<T>(referenceFound,)) {
-                    const collection = referenceFound.collection
-                    if (isCollectionHolder<T>(collection,))
-                        return new CollectionHandlerByCollectionHolder(this, collection,)
-                    return new CollectionHandlerByMinimalistCollectionHolder(this, collection,)
+                    const handler = this.#handler = this.#handlerByCollectionIterator(referenceFound,)
+                    if (this.#size != null)
+                        this.#lazySize = lazy(() => handler.size,)
+                    if (this.#hasNull != null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    if (this.#hasDuplicate != null)
+                        this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                    return handler
                 }
-                if ("size" in referenceFound || "length" in referenceFound || "count" in referenceFound) {
-                    // @ts-ignore: We only retrieve the nullable number
-                    const size = (referenceFound?.size ?? referenceFound?.length ?? referenceFound?.count) as NullableNumber
-                    if (size == null)
-                        return new CollectionHandlerByIterable(this, referenceFound,)
 
-                    //#region -------------------- Late-initialization (empty) --------------------
-
-                    if (size == 0) {
-                        this.#size = CommonLazy.ZERO_NUMBER
-                        this.#isEmpty = CommonLazy.TRUE
-                        this.#hasNull = false
-                        this.#array = CollectionConstants.EMPTY_ARRAY
-                        this.#set = CollectionConstants.EMPTY_SET
-                        this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                        this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                        this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                        return CollectionConstants.EMPTY_COLLECTION_HANDLER
-                    }
-
-                    //#endregion -------------------- Late-initialization (empty) --------------------
-                    //#region -------------------- Late-initialization (non-empty) --------------------
-
-                    this.#isEmpty = CommonLazy.FALSE
-
-                    //#region -------------------- Late-initialization (size = 1) --------------------
-
-                    if (size == 1) {
-                        this.#size = CommonLazy.ONE_NUMBER
-                        return new CollectionHandlerByIterableWithSize(this, referenceFound,)
-                    }
-
-                    //#endregion -------------------- Late-initialization (size = 1) --------------------
-                    //#region -------------------- Late-initialization (size = over 1) --------------------
-
-                    this.#size = lazyOf(size,)
-                    return new CollectionHandlerByIterableWithSize(this, referenceFound,)
-
-                    //#endregion -------------------- Late-initialization (size = over 1) --------------------
-
-                    //#endregion -------------------- Late-initialization (non-empty) --------------------
+                if (isCollectionHolderByStructure<T>(referenceFound,)) {
+                    const handler = this.#handler = this.#handlerByMinimalistCollectionHolder(referenceFound,)
+                    if (this.#size == null)
+                        this.#lazySize = lazy(() => handler.size,)
+                    if (this.#hasNull == null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    if (this.#hasDuplicate == null)
+                        this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                    return handler
                 }
-                return new CollectionHandlerByIterable(this, referenceFound,)
+
+                if (isMinimalistCollectionHolderByStructure<T>(referenceFound,)) {
+                    const handler = this.#handler = this.#handlerByMinimalistCollectionHolder(referenceFound,)
+                    if (this.#size == null)
+                        this.#lazySize = lazy(() => handler.size,)
+                    if (this.#hasNull == null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    if (this.#hasDuplicate == null)
+                        this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                    return handler
+                }
+
+                if (isCollectionIteratorByStructure<T>(referenceFound,)) {
+                    const handler = this.#handler = this.#handlerByCollectionIterator(referenceFound,)
+                    if (this.#size != null)
+                        this.#lazySize = lazy(() => handler.size,)
+                    if (this.#hasNull != null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    if (this.#hasDuplicate != null)
+                        this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                    return handler
+                }
+
+                sizeIf: if ("size" in referenceFound) {
+                    const size = referenceFound.size
+                    if (size == null) // No size is present even though there is a value in the reference
+                        break sizeIf
+
+                    this.#size = size
+                    const handler = this.#handler = this.#handlerByIterableWithSize(referenceFound, size,)
+                    if (this.#hasNull != null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    if (this.#hasDuplicate != null)
+                        this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                    return handler
+                }
+
+                lengthIf: if ("length" in referenceFound) {
+                    const size = referenceFound.length
+                    if (size == null) // No size is present even though there is a value in the reference
+                        break lengthIf
+
+                    this.#size = size
+                    const handler = this.#handler = this.#handlerByIterableWithSize(referenceFound, size,)
+                    if (this.#hasNull != null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    if (this.#hasDuplicate != null)
+                        this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                    return handler
+                }
+
+                countIf: if ("count" in referenceFound) {
+                    const size = referenceFound.count
+                    if (size == null) // No size is present even though there is a value in the reference
+                        break countIf
+
+                    this.#size = size
+                    const handler = this.#handler = this.#handlerByIterableWithSize(referenceFound, size,)
+                    if (this.#hasNull != null)
+                        this.#lazyHasNull = lazy(() => handler.hasNull,)
+                    if (this.#hasDuplicate != null)
+                        this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                    return handler
+                }
+
+                const handler = this.#handler = new CollectionHandlerByIterable(this, referenceFound,)
+                if (this.#size != null)
+                    this.#lazySize = lazy(() => handler.size,)
+                if (this.#hasNull != null)
+                    this.#lazyHasNull = lazy(() => handler.hasNull,)
+                if (this.#hasDuplicate != null)
+                    this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+                return handler
             },)
-            this.#isEmpty = lazy(() => {
-                //#region -------------------- Late-initialization (empty) --------------------
-
-                if (this._handler.isEmpty) {
-                    this.#size = CommonLazy.ZERO_NUMBER
-                    this.#isEmpty = CommonLazy.TRUE
-                    this.#hasNull = false
-                    this.#array = CollectionConstants.EMPTY_ARRAY
-                    this.#set = CollectionConstants.EMPTY_SET
-                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                    this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                    return true
-                }
-
-                //#endregion -------------------- Late-initialization (empty) --------------------
-                //#region -------------------- Late-initialization (non-empty) --------------------
-
-                this.#isEmpty = CommonLazy.FALSE
-                return false
-
-                //#endregion -------------------- Late-initialization (non-empty) --------------------
-            },)
-            this.#size = lazy(() => {
-                const size = this._handler.size
-                //#region -------------------- Late-initialization (empty) --------------------
-
-                if (size == 0) {
-                    this.#size = CommonLazy.ZERO_NUMBER
-                    this.#isEmpty = CommonLazy.TRUE
-                    this.#hasNull = false
-                    this.#array = CollectionConstants.EMPTY_ARRAY
-                    this.#set = CollectionConstants.EMPTY_SET
-                    this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                    this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                    this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                    return 0
-                }
-
-                //#endregion -------------------- Late-initialization (empty) --------------------
-                //#region -------------------- Late-initialization (non-empty) --------------------
-
-                this.#isEmpty = CommonLazy.FALSE
-                if (size == 1)
-                    this.#size = CommonLazy.ONE_NUMBER
-                return size
-
-                //#endregion -------------------- Late-initialization (non-empty) --------------------
-            },)
+            this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
         }
 
-        sizeIf:if ("size" in reference || "length" in reference || "count" in reference) {
-            this.#reference = lazyOf(reference,)
-            // @ts-ignore: We only retrieve the nullable number
-            const size = (reference?.size ?? reference?.length ?? reference?.count) as NullableNumber
+        this.#reference = lazyOf(reference,)
+
+        sizeIf: if ("size" in reference) {
+            const size = reference.size
             if (size == null) // No size is present even though there is a value in the reference
                 break sizeIf
 
-            //#region -------------------- Initialization (empty) --------------------
-
-            if (size == 0) {
-                this.#size = CommonLazy.ZERO_NUMBER
-                this.#isEmpty = CommonLazy.TRUE
-                this.#hasNull = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                return
-            }
-
-            //#endregion -------------------- Initialization (empty) --------------------
-            //#region -------------------- Initialization (non-empty) --------------------
-
-            this.#isEmpty = CommonLazy.FALSE
-            this.#handler = lazyOf(new CollectionHandlerByIterableWithSize(this, reference,),)
-
-            if (size == 1) {
-                this.#size = CommonLazy.ONE_NUMBER
-                return
-            }
-
-            this.#size = lazyOf(size,)
+            this.#size = size
+            const handler = this.#lazyHandler = lazy(() => this.#handlerByIterableWithSize(reference, size,),)
+            this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
-
-            //#endregion -------------------- Initialization (non-empty) --------------------
         }
 
+        lengthIf: if ("length" in reference) {
+            const size = reference.length
+            if (size == null) // No size is present even though there is a value in the reference
+                break lengthIf
 
-        this.#reference = lazyOf(reference,)
-        this.#handler = lazyOf(new CollectionHandlerByIterable(this, reference,),)
-        this.#isEmpty = lazy(() => {
-            //#region -------------------- Late-initialization (empty) --------------------
+            this.#size = size
+            const handler = this.#lazyHandler = lazy(() => this.#handlerByIterableWithSize(reference, size,),)
+            this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
+            return
+        }
 
-            if (this._handler.isEmpty) {
-                this.#size = CommonLazy.ZERO_NUMBER
-                this.#isEmpty = CommonLazy.TRUE
-                this.#hasNull = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                return true
-            }
+        countIf: if ("count" in reference) {
+            const size = reference.count
+            if (size == null) // No size is present even though there is a value in the reference
+                break countIf
 
-            //#endregion -------------------- Late-initialization (empty) --------------------
-            //#region -------------------- Late-initialization (non-empty) --------------------
+            this.#size = size
+            const handler = this.#lazyHandler = lazy(() => this.#handlerByIterableWithSize(reference, size,),)
+            this.#lazySize = lazy(() => handler.value.size,)
+            this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+            this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+            this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
+            return
+        }
 
-            this.#isEmpty = CommonLazy.FALSE
-            return false
-
-            //#endregion -------------------- Late-initialization (non-empty) --------------------
-        },)
-        this.#size = lazy(() => {
-            const size = this._handler.size
-            //#region -------------------- Late-initialization (empty) --------------------
-
-            if (size == 0) {
-                this.#size = CommonLazy.ZERO_NUMBER
-                this.#isEmpty = CommonLazy.TRUE
-                this.#hasNull = false
-                this.#array = CollectionConstants.EMPTY_ARRAY
-                this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
-                this.#handler = CollectionConstants.LAZY_EMPTY_COLLECTION_HANDLER
-                return 0
-            }
-
-            //#endregion -------------------- Late-initialization (empty) --------------------
-            //#region -------------------- Late-initialization (non-empty) --------------------
-
-            this.#isEmpty = CommonLazy.FALSE
-            if (size == 1)
-                this.#size = CommonLazy.ONE_NUMBER
-            return size
-
-            //#endregion -------------------- Late-initialization (non-empty) --------------------
-        },)
+        const handler = this.#lazyHandler = lazyOf(new CollectionHandlerByIterable(this, reference,),)
+        this.#lazySize = lazy(() => handler.value.size,)
+        this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
+        this.#lazyHasNull = lazy(() => handler.value.hasNull,)
+        this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
     }
+
+    //#region -------------------- Constructor helper methods --------------------
+
+    //README: Those methods are only called during the construction and are integral part of the constructor.
+    //        The methods should not call other methods.
+    //        They are here to help avoid too much duplication toward the internal fields.
+    //        Also, they don't re-initialize the lazy value if the value is already set.
+
+    #handlerByCollectionHolder(reference: CollectionHolder<T>,): CollectionHandler<T> {
+        //#region -------------------- Initialization (size = 0) --------------------
+
+        if (this.#isEmpty = reference.isEmpty) {
+            this.#size = 0
+            this.#hasNull = this.#hasDuplicate = false
+            this.#array = CollectionConstants.EMPTY_ARRAY
+            this.#set = CollectionConstants.EMPTY_SET
+            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+            return this.#handler = CollectionConstants.EMPTY_COLLECTION_HANDLER
+        }
+
+        //#endregion -------------------- Initialization (size = 0) --------------------
+        //#region -------------------- Initialization (size = 1) --------------------
+
+        const size = this.#size = reference.size
+        if (size == 1) {
+            const handler = new CollectionHandlerByCollectionHolderOf1<T>(this, reference, size,)
+            this.#hasDuplicate = false
+            return handler
+        }
+
+        //#endregion -------------------- Initialization (size = 1) --------------------
+        //#region -------------------- Initialization (size = 2) --------------------
+
+        if (size == 2) {
+            const handler = new CollectionHandlerByCollectionHolderOf2<T>(this, reference, size,)
+            if (this.#hasNull != null)
+                this.#lazyHasNull = lazy(() => handler.hasNull,)
+            if (this.#hasDuplicate != null)
+                this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+            return handler
+        }
+
+        //#endregion -------------------- Initialization (size = 2) --------------------
+        //#region -------------------- Initialization (size = over 2) --------------------
+
+        if (this.#hasNull != null)
+            this.#lazyHasNull = lazy(() => reference.hasNull,)
+        const handler = new CollectionHandlerByCollectionHolder<T>(this, reference,)
+        if (this.#hasDuplicate != null)
+            this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+        return handler
+
+        //#endregion -------------------- Initialization (size = over 2) --------------------
+    }
+
+    #handlerByMinimalistCollectionHolder(reference: MinimalistCollectionHolder<T>,): CollectionHandler<T> {
+        const size = this.#size = reference.size
+
+        //#region -------------------- Initialization (size = 0) --------------------
+
+        if (this.#isEmpty = size == 0) {
+            this.#hasNull = this.#hasDuplicate = false
+            this.#array = CollectionConstants.EMPTY_ARRAY
+            this.#set = CollectionConstants.EMPTY_SET
+            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+            return CollectionConstants.EMPTY_COLLECTION_HANDLER
+        }
+
+        //#endregion -------------------- Initialization (size = 0) --------------------
+        //#region -------------------- Initialization (size = 1) --------------------
+
+        if (size == 1) {
+            const handler = new CollectionHandlerByMinimalistCollectionHolderOf1<T>(this, reference, size,)
+            if (this.#hasNull != null)
+                this.#lazyHasNull = lazy(() => handler.hasNull,)
+            this.#hasDuplicate = false
+            return handler
+        }
+
+        //#endregion -------------------- Initialization (size = 1) --------------------
+        //#region -------------------- Initialization (size = 2) --------------------
+
+        if (size == 2) {
+            const handler = new CollectionHandlerByMinimalistCollectionHolderOf2<T>(this, reference, size,)
+            if (this.#hasNull != null)
+                this.#lazyHasNull = lazy(() => handler.hasNull,)
+            if (this.#hasDuplicate != null)
+                this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+            return handler
+        }
+
+        //#endregion -------------------- Initialization (size = 2) --------------------
+        //#region -------------------- Initialization (size = over 2) --------------------
+
+        const handler = new CollectionHandlerByMinimalistCollectionHolder<T>(this, reference,)
+        if (this.#hasNull != null)
+            this.#lazyHasNull = lazy(() => handler.hasNull,)
+        if (this.#hasDuplicate != null)
+            this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+        return handler
+
+        //#endregion -------------------- Initialization (size = over 2) --------------------
+    }
+
+    #handlerByCollectionIterator(reference: CollectionIterator<T>,): CollectionHandler<T> {
+        const size = this.#size = reference.size
+
+        //#region -------------------- Initialization (size = 0) --------------------
+
+        if (this.#isEmpty = size == 0) {
+            this.#hasNull = this.#hasDuplicate = false
+            this.#array = CollectionConstants.EMPTY_ARRAY
+            this.#set = CollectionConstants.EMPTY_SET
+            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+            return CollectionConstants.EMPTY_COLLECTION_HANDLER
+        }
+
+        //#endregion -------------------- Initialization (size = 0) --------------------
+        //#region -------------------- Initialization (size = 1) --------------------
+
+        if (size == 1) {
+            const handler = new CollectionHandlerByCollectionIteratorOf1<T>(this, reference, size,)
+            if (this.#hasNull != null)
+                this.#lazyHasNull = lazy(() => handler.hasNull,)
+            this.#hasDuplicate = false
+            return handler
+        }
+
+        //#endregion -------------------- Initialization (size = 1) --------------------
+        //#region -------------------- Initialization (size = 2) --------------------
+
+        if (size == 2) {
+            const handler = new CollectionHandlerByCollectionIteratorOf2<T>(this, reference, size,)
+            if (this.#hasNull != null)
+                this.#lazyHasNull = lazy(() => handler.hasNull,)
+            if (this.#hasDuplicate != null)
+                this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+            return handler
+        }
+
+        //#endregion -------------------- Initialization (size = 2) --------------------
+        //#region -------------------- Initialization (size = over 2) --------------------
+
+        const handler = new CollectionHandlerByCollectionIterator<T>(this, reference,)
+        if (this.#hasNull != null)
+            this.#lazyHasNull = lazy(() => handler.hasNull,)
+        if (this.#hasDuplicate != null)
+            this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+        return handler
+
+        //#endregion -------------------- Initialization (size = over 2) --------------------
+    }
+
+    #handlerByIterableWithSize(reference: Iterable<T>, size: number,): CollectionHandler<T> {
+        //#region -------------------- Initialization (size = 0) --------------------
+
+        if (this.#isEmpty = size == 0) {
+            this.#hasNull = this.#hasDuplicate = false
+            this.#array = CollectionConstants.EMPTY_ARRAY
+            this.#set = CollectionConstants.EMPTY_SET
+            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+            return CollectionConstants.EMPTY_COLLECTION_HANDLER
+        }
+
+        //#endregion -------------------- Initialization (size = 0) --------------------
+        //#region -------------------- Initialization (size = 1) --------------------
+
+        if (size == 1) {
+            const handler = new CollectionHandlerByIterableWithSizeOf1<T>(this, reference, size,)
+            if (this.#hasNull != null)
+                this.#lazyHasNull = lazy(() => handler.hasNull,)
+            this.#hasDuplicate = false
+            return handler
+        }
+
+        //#endregion -------------------- Initialization (size = 1) --------------------
+        //#region -------------------- Initialization (size = 2) --------------------
+
+        if (size == 2) {
+            const handler = new CollectionHandlerByIterableWithSizeOf2<T>(this, reference, size,)
+            if (this.#hasNull != null)
+                this.#lazyHasNull = lazy(() => handler.hasNull,)
+            if (this.#hasDuplicate != null)
+                this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+            return handler
+        }
+
+        //#endregion -------------------- Initialization (size = 2) --------------------
+        //#region -------------------- Initialization (size = over 2) --------------------
+
+        const handler = new CollectionHandlerByIterableWithSize<T>(this, reference, size,)
+        if (this.#hasNull != null)
+            this.#lazyHasNull = lazy(() => handler.hasNull,)
+        if (this.#hasDuplicate != null)
+            this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
+        return handler
+
+        //#endregion -------------------- Initialization (size = over 2) --------------------
+    }
+
+    //#endregion -------------------- Constructor helper methods --------------------
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    //#region -------------------- Size methods --------------------
-
     public override get size(): number {
-        return this.#size.value
+        const value = this.#size
+        if (value != null)
+            return value
+
+        const valueFromLazy = this.#lazySize!.value
+        const value2 = this.#size
+        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
+            return this.#size = value2
+        return this.#size = valueFromLazy
     }
 
     public override get isEmpty(): boolean {
-        return this.#isEmpty.value
-    }
+        const value = this.#isEmpty
+        if (value != null)
+            return value
 
-    //#endregion -------------------- Size methods --------------------
-    //#region -------------------- Has X methods --------------------
+        const valueFromLazy = this.#lazyIsEmpty!.value
+        const value2 = this.#isEmpty
+        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
+            return this.#isEmpty = value2
+        return this.#isEmpty = valueFromLazy
+    }
 
     public override get hasNull(): boolean {
-        return this.#hasNull ??= hasNullByCollectionHolder(this,)
+        const value = this.#hasNull
+        if (value != null)
+            return value
+
+        const valueFromLazy = this.#lazyHasNull!.value
+        const value2 = this.#hasNull
+        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
+            return this.#hasNull = value2
+        return this.#hasNull = valueFromLazy
     }
 
-    //#endregion -------------------- Has X methods --------------------
+    public override get hasDuplicate(): boolean {
+        const value = this.#hasDuplicate
+        if (value != null)
+            return value
 
-    /** The {@link PossibleIterable iterable} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
-    protected get _reference(): REFERENCE {
-        return this.#reference.value
+        const valueFromLazy = this.#lazyHasDuplicate!.value
+        const value2 = this.#hasDuplicate
+        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
+            return this.#hasDuplicate = value2
+        return this.#hasDuplicate = valueFromLazy
     }
+
+
+    /** The {@link PossibleIterableOrCollection iterable or collection} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
+    protected get _reference(): REFERENCE { return this.#reference.value }
 
     /** The {@link CollectionHandler handler} created from the {@link LazyGenericCollectionHolder} {@link LazyGenericCollectionHolder.constructor constructor} */
     protected get _handler(): CollectionHandler<T> {
-        return this.#handler.value
+        const value = this.#handler
+        if (value != null)
+            return value
+
+        const valueFromLazy = this.#lazyHandler!.value
+        const value2 = this.#handler
+        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
+            return this.#handler = value2
+        return this.#handler = valueFromLazy
     }
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
-
-    //#region -------------------- Value methods --------------------
-
-    //#region -------------------- Get / at methods --------------------
 
     public override get(index: number,): T {
         const valueFound = this._handler.get(index,)
@@ -707,7 +837,6 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
             throw valueFound.cause
         return valueFound.value as T
     }
-
 
     public override getOrElse<U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -724,37 +853,14 @@ export class LazyGenericCollectionHolder<const out T = unknown, const out REFERE
         return defaultValue(index,)
     }
 
+    public override getOrNull(index: number,): NullOr<T> { return this._handler.get(index,).value }
 
-    public override getOrNull(index: number,): NullOr<T> {
-        return this._handler.get(index,).value
-    }
 
-    //#endregion -------------------- Get / at methods --------------------
-
-    //#endregion -------------------- Value methods --------------------
-    //#region -------------------- Conversion methods --------------------
-
-    public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
-        return this.#objectValuesMap ??= objectValuesMapByCollectionHolder(this,)
-    }
-
-    public override toArray(): readonly T[] {
-        return this.#array ??= toArrayByCollectionHolder(this,)
-    }
-
-    public override toSet(): ReadonlySet<T> {
-        return this.#set ??= toSetByCollectionHolder(this,)
-    }
-
-    public override toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
-        return this.#weakSet ??= toWeakSet(this,)
-    }
-
-    public override toMap(): ReadonlyMap<number, T> {
-        return this.#map ??= toMapByCollectionHolder(this,)
-    }
-
-    //#endregion -------------------- Conversion methods --------------------
+    public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> { return this.#objectValuesMap ??= super.objectValuesMap }
+    public override toArray(): readonly T[] { return this.#array ??= super.toArray() }
+    public override toSet(): ReadonlySet<T> { return this.#set ??= super.toSet() }
+    public override toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> { return this.#weakSet ??= super.toWeakSet() }
+    public override toMap(): ReadonlyMap<number, T> { return this.#map ??= super.toMap() }
 
     //#endregion -------------------- Methods --------------------
 

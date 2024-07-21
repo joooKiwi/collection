@@ -10,7 +10,6 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
-import type {NonEmptyCollectionHolder}                   from "../NonEmptyCollectionHolder"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
@@ -23,7 +22,8 @@ import {EmptyCollectionHolderException}            from "../exception/EmptyColle
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} <b>is empty</b>
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
  * @extensionFunction
  */
@@ -37,7 +37,7 @@ export function first<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @typescriptDefinition
  * @extensionFunction
@@ -52,7 +52,7 @@ export function first<const T, const S extends T, >(collection: Nullable<Minimal
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @extensionFunction
  */
@@ -80,7 +80,8 @@ export function first<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} {@link CollectionHolder.isEmpty is empty}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
  * @extensionFunction
  */
@@ -94,7 +95,7 @@ export function firstByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @typescriptDefinition
  * @extensionFunction
@@ -109,7 +110,7 @@ export function firstByCollectionHolder<const T, const S extends T, >(collection
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/first.html Kotlin first(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @extensionFunction
  */
@@ -121,7 +122,7 @@ export function firstByCollectionHolder<const T, >(collection: Nullable<Collecti
         throw new EmptyCollectionHolderException()
 
     if (predicate == null)
-        return __withNoPredicate(collection as NonEmptyCollectionHolder<T>,)
+        return __withNoPredicate(collection,)
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
@@ -132,7 +133,7 @@ export function firstByCollectionHolder<const T, >(collection: Nullable<Collecti
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __withNoPredicate<const T, >(collection: NonEmptyCollectionHolder<T>,) {
+function __withNoPredicate<const T, >(collection: CollectionHolder<T>,) {
     if (0 in collection)
         return collection[0] as T
     return collection.get(0,)

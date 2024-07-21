@@ -20,7 +20,7 @@ export function asString<T extends Nullable<| number | bigint | string | boolean
  * @param value The value to convert
  */
 export function asString(value: unknown,): string
-export function asString(value: unknown,): string {
+export function asString(value: unknown,) {
     if (value === null)
         return "null"
     if (value === undefined)
@@ -69,7 +69,7 @@ export function asLowerCaseString<T extends Nullable<| number | bigint | string 
  * @param value The value to convert
  */
 export function asLowerCaseString(value: unknown,): string
-export function asLowerCaseString(value: unknown,): string {
+export function asLowerCaseString(value: unknown,) {
     if (value === null)
         return "null"
     if (value === undefined)
@@ -116,8 +116,10 @@ export function asLocaleLowerCaseString(value: unknown, locale?: NullableString,
         if (value instanceof Date)
             return value.toLocaleString().toLowerCase()
 
-        if (typeof value == "object" && "toLocaleLowerCase" in value && (typeof value.toLocaleLowerCase == "function" || value.toLocaleLowerCase instanceof Function))
-            return value.toLocaleLowerCase()
+        if (typeof value == "object")
+            if ("toLocaleLowerCase" in value)
+                if (typeof value.toLocaleLowerCase == "function" || value.toLocaleLowerCase instanceof Function)
+                return value.toLocaleLowerCase()
         return value.toLocaleString().toLowerCase() // TODO: Validate that the string definitely has no way to be converted from a locale
     }
 
@@ -148,8 +150,10 @@ export function asLocaleLowerCaseString(value: unknown, locale?: NullableString,
     if (value instanceof Date)
         return value.toLocaleString(locale,).toLowerCase()
 
-    if (typeof value == "object" && "toLocaleLowerCase" in value && (typeof value.toLocaleLowerCase == "function" || value.toLocaleLowerCase instanceof Function))
-        return value.toLocaleLowerCase(locale,)
+    if (typeof value == "object")
+        if ("toLocaleLowerCase" in value)
+            if (typeof value.toLocaleLowerCase == "function" || value.toLocaleLowerCase instanceof Function)
+                return value.toLocaleLowerCase(locale,)
     return value.toLocaleString().toLowerCase() // TODO: Validate that the string definitely has no way to be converted from a locale
 }
 
@@ -167,7 +171,7 @@ export function asUpperCaseString<T extends Nullable<| number | bigint | string 
  * @param value The value to convert
  */
 export function asUpperCaseString(value: unknown,): string
-export function asUpperCaseString(value: unknown,): string {
+export function asUpperCaseString(value: unknown,) {
     if (value === null)
         return "NULL"
     if (value === undefined)
@@ -214,8 +218,10 @@ export function asLocaleUpperCaseString(value: unknown, locale?: NullableString,
         if (value instanceof Date)
             return value.toLocaleString().toUpperCase()
 
-        if (typeof value == "object" && "toLocaleUpperCase" in value && (typeof value.toLocaleUpperCase == "function" || value.toLocaleUpperCase instanceof Function))
-            return value.toLocaleUpperCase()
+        if (typeof value == "object")
+            if ("toLocaleUpperCase" in value)
+                if (typeof value.toLocaleUpperCase == "function" || value.toLocaleUpperCase instanceof Function)
+                    return value.toLocaleUpperCase()
         return value.toLocaleString().toUpperCase() // TODO: Validate that the string definitely has no way to be converted from a locale
     }
 
@@ -245,7 +251,9 @@ export function asLocaleUpperCaseString(value: unknown, locale?: NullableString,
     if (value instanceof Date)
         return value.toLocaleString(locale,).toUpperCase()
 
-    if (typeof value == "object" && "toLocaleUpperCase" in value && (typeof value.toLocaleUpperCase == "function" || value.toLocaleUpperCase instanceof Function))
-        return value.toLocaleUpperCase(locale,)
+    if (typeof value == "object")
+        if ("toLocaleUpperCase" in value)
+            if (typeof value.toLocaleUpperCase == "function" || value.toLocaleUpperCase instanceof Function)
+                return value.toLocaleUpperCase(locale,)
     return value.toLocaleString().toUpperCase() // TODO: Validate that the string definitely has no way to be converted from a locale
 }

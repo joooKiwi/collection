@@ -5,6 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {NullOrNumber} from "@joookiwi/type"
+
 import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                                                                                   from "../MinimalistCollectionHolder"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
@@ -12,8 +14,8 @@ import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollect
 /**
  * An {@link Iterator} with a known {@link MinimalistCollectionHolder} {@link MinimalistCollectionHolder.size size}
  *
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator Kotlin Iterator
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list-iterator Kotlin ListIterator
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterator Kotlin Iterator
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list-iterator Kotlin ListIterator
  */
 export interface CollectionIterator<out T = unknown, >
     extends IterableIterator<T> {
@@ -23,6 +25,8 @@ export interface CollectionIterator<out T = unknown, >
     /** The {@link MinimalistCollectionHolder collection} to loop over */
     get collection(): MinimalistCollectionHolder<T>
 
+    //#region -------------------- Size methods --------------------
+
     /** The {@link collection} {@link CollectionHolder.size size} */
     get size(): this["collection"]["size"]
 
@@ -31,34 +35,52 @@ export interface CollectionIterator<out T = unknown, >
      *
      * @alias size
      */
-    get length(): this["collection"]["size"]
+    get length(): this["size"]
 
     /**
      * The {@link collection} {@link CollectionHolder.size size}
      *
      * @alias size
      */
-    get count(): this["collection"]["size"]
+    get count(): this["size"]
 
+    //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Current index methods --------------------
 
     /** Get the index that the {@link CollectionIterator} is at */
-    get index(): number
+    get currentIndex(): NullOrNumber
 
-    /** Get the index that will be called to a subsequent {@link next} call */
-    get nextIndex(): number
+    /**
+     * Get the index that the {@link CollectionIterator} is at
+     *
+     * @alias currentIndex
+     */
+    get index(): NullOrNumber
 
-    /** Get the index that will be called to a subsequent {@link previous} call */
-    get previousIndex(): number
+    //#endregion -------------------- Current index methods --------------------
+    //#region -------------------- Sibling index methods --------------------
 
+    /** Get the index that will be used at a later {@link nextValue} or {@link next} call */
+    get nextIndex(): NullOrNumber
 
-    /** Tell if the iteration has more elements */
+    /** Get the index that will be used at a later {@link previousValue} or {@link previous} call */
+    get previousIndex(): NullOrNumber
+
+    //#endregion -------------------- Sibling index methods --------------------
+    //#region -------------------- Preview methods --------------------
+
+    /** Tell if the iteration has more elements <b>after</b> the current element */
     get hasNext(): boolean
 
-    /** Tell if the iteration has more elements before the current element */
+    /** Tell if the iteration has more elements <b>before</b> the current element */
     get hasPrevious(): boolean
+
+    //#endregion -------------------- Preview methods --------------------
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
+
+    //#region -------------------- Next methods --------------------
 
     /** Retrieve the next value in the line */
     next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol>
@@ -71,6 +93,8 @@ export interface CollectionIterator<out T = unknown, >
      */
     get nextValue(): T
 
+    //#endregion -------------------- Next methods --------------------
+    //#region -------------------- Previous methods --------------------
 
     /** Retrieve the previous value in the line */
     previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol>
@@ -83,21 +107,28 @@ export interface CollectionIterator<out T = unknown, >
      */
     get previousValue(): T
 
+    //#endregion -------------------- Previous methods --------------------
+    //#region -------------------- Reset methods --------------------
+
+    /** Reset the index to the initial state (current {@link currentIndex index} / {@link currentValue value} at <b>null</b>) */
+    reset(): this
+
+    //#endregion -------------------- Reset methods --------------------
     //#region -------------------- Loop methods --------------------
 
     /**
      * Do a certain operation for the rest of the elements in the current {@link CollectionIterator iterator}
      *
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each.html Kotlin forEach(operation)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html Kotlin forEach(operation)
      */
     forEach(operation: ValueIndexCallback<T>,): this
 
     /**
      * Do a certain operation for the rest of the elements in the current {@link CollectionIterator iterator}
      *
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
      */
     forEachIndexed(operation: IndexValueCallback<T>,): this
 

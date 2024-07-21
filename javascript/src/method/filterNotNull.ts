@@ -9,7 +9,6 @@ import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
-import type {NonEmptyCollectionHolder}   from "../NonEmptyCollectionHolder"
 
 import {CollectionConstants} from "../CollectionConstants"
 
@@ -20,7 +19,7 @@ import {CollectionConstants} from "../CollectionConstants"
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @see ReadonlyArray.filter
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
  * @see requireNoNulls
  * @extensionFunction
  */
@@ -40,7 +39,7 @@ export function filterNotNull<const T, >(collection: Nullable<MinimalistCollecti
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @see ReadonlyArray.filter
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
  * @see requireNoNulls
  * @extensionFunction
  */
@@ -51,14 +50,14 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     if (collection.hasNull)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __fromComplete(collection as NonEmptyCollectionHolder<T>,),)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __fromComplete(collection,),)
     return collection as CollectionHolder<NonNullable<T>>
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __fromComplete<const T, >(collection: NonEmptyCollectionHolder<T>,): readonly NonNullable<T>[] {
+function __fromComplete<const T, >(collection: MinimalistCollectionHolder<T>,): readonly NonNullable<T>[] {
     const newArray = [] as NonNullable<T>[]
     const size = collection.size
     let index = -1

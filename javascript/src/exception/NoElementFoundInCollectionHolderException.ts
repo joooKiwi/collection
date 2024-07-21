@@ -10,11 +10,11 @@ import type {Nullable} from "@joookiwi/type"
 /**
  * Tell that the {@link CollectionHolder} could not find an element
  *
- * @see https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/NoSuchElementException.html Java NoSuchElementException
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-no-such-element-exception Kotlin NoSuchElementException
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/NoSuchElementException.html Java NoSuchElementException
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-no-such-element-exception Kotlin NoSuchElementException
  * @see https://learn.microsoft.com/dotnet/api/system.invalidoperationexception C# InvalidOperationException
  */
-export class NoElementFoundInCollectionHolderException<const out CAUSE extends Error = never, >
+export class NoElementFoundInCollectionHolderException<const CAUSE extends Error = never, >
     extends ReferenceError {
 
     public override readonly name = this.constructor.name

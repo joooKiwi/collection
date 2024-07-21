@@ -10,7 +10,6 @@ import type {Nullable, NullOr} from "@joookiwi/type"
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
-import type {NonEmptyCollectionHolder}                   from "../NonEmptyCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -19,7 +18,7 @@ import type {NonEmptyCollectionHolder}                   from "../NonEmptyCollec
  * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction
  */
@@ -31,7 +30,7 @@ export function lastOrNull<const T, >(collection: Nullable<MinimalistCollectionH
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @typescriptDefinition
  * @extensionFunction
@@ -44,7 +43,7 @@ export function lastOrNull<const T, const S extends T, >(collection: Nullable<Mi
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */
@@ -71,7 +70,7 @@ export function lastOrNull<const T, const S extends T, >(collection: Nullable<Mi
  * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction
  */
@@ -83,7 +82,7 @@ export function lastOrNullByCollectionHolder<const T, >(collection: Nullable<Col
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The matching predicate
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @typescriptDefinition
  * @extensionFunction
@@ -96,7 +95,7 @@ export function lastOrNullByCollectionHolder<const T, const S extends T, >(colle
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The matching predicate
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */
@@ -108,7 +107,7 @@ export function lastOrNullByCollectionHolder<const T, const S extends T, >(colle
         return null
 
     if (predicate == null)
-        return __withNoPredicate(collection as NonEmptyCollectionHolder<T>, collection.size,)
+        return __withNoPredicate(collection, collection.size,)
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
@@ -119,7 +118,7 @@ export function lastOrNullByCollectionHolder<const T, const S extends T, >(colle
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __withNoPredicate<const T, >(collection: NonEmptyCollectionHolder<T>, size: number,) {
+function __withNoPredicate<const T, >(collection: CollectionHolder<T>, size: number,) {
     const lastIndex = size - 1
     if (lastIndex in collection)
         return collection[lastIndex] as T

@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.CommonContracts;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
@@ -14,7 +15,7 @@ import static joookiwi.collection.java.method.AsString.asUpperCaseString;
 public final class ToUpperCaseString
         extends Utility {
 
-    @Contract("-> fail")
+    @Contract(CommonContracts.ALWAYS_FAIL_0)
     private ToUpperCaseString() { throw new ImpossibleConstructionException("The utility class \"ToUpperCaseString\" cannot be constructed.", ToUpperCaseString.class); }
 
     //#region -------------------- Facade method --------------------

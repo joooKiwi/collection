@@ -5,17 +5,23 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullableNumber, NullableString, TemplateOrNumber} from "@joookiwi/type"
+import type {Nullable, NullableString, NumericOrObject, TemplateOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                        from "./CollectionHolder"
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                              from "./MinimalistCollectionHolder"
-import type {EmptyCollectionIterator}                                                                                                                                                                                                                                                 from "./iterator/EmptyCollectionIterator"
-import type {CollectionIterator}                                                                                                                                                                                                                                                      from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                          from "./CollectionHolder"
+import type {CollectionHolderName, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder} from "./CollectionHolder.types"
+import type {CollectionIterator}                                                                        from "./iterator/CollectionIterator"
+import type {EmptyCollectionIterator}                                                                   from "./iterator/EmptyCollectionIterator"
+import type {MinimalistCollectionHolder}                                                                from "./MinimalistCollectionHolder"
 
-import {EmptyCollectionHolderException} from "./exception/EmptyCollectionHolderException"
-import {CollectionConstants}            from "./CollectionConstants"
-import {prefixAndPostfixOnly}           from "./method/join"
+import {EmptyCollectionHolderException}          from "./exception/EmptyCollectionHolderException"
+import {CollectionConstants}                     from "./CollectionConstants"
+import {isCollectionIterator}                    from "./method/isCollectionIterator"
+import {isCollectionIteratorByStructure}         from "./method/isCollectionIteratorByStructure"
+import {isCollectionHolder}                      from "./method/isCollectionHolder"
+import {isCollectionHolderByStructure}           from "./method/isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}            from "./method/isMinimalistCollectionHolder"
+import {isMinimalistCollectionHolderByStructure} from "./method/isMinimalistCollectionHolderByStructure"
+import {prefixAndPostfixOnly}                    from "./method/joinToString"
 
 /**
  * A {@link CollectionHolder} with no values (as a singleton instance)
@@ -56,7 +62,7 @@ export class EmptyCollectionHolder
     public get isNotEmpty(): false { return false }
 
     //#endregion -------------------- Size methods --------------------
-    //#region -------------------- Has X methods --------------------
+    //#region -------------------- Has null methods --------------------
 
     public get hasNull(): false { return false }
 
@@ -64,253 +70,435 @@ export class EmptyCollectionHolder
 
     public get containsNull(): false { return false }
 
-    //#endregion -------------------- Has X methods --------------------
+    //#endregion -------------------- Has null methods --------------------
+    //#region -------------------- Has duplicate methods --------------------
+
+    public get hasDuplicate(): false { return false }
+
+    public get includesDuplicate(): false { return false }
+
+    public get containsDuplicate(): false { return false }
+
+    //#endregion -------------------- Has duplicate methods --------------------
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
     //#region -------------------- Value methods --------------------
 
-    //#region -------------------- Get / at methods --------------------
+    //#region -------------------- Get methods --------------------
 
-    public get(index?: NullableNumber,): never { throw new EmptyCollectionHolderException(null, index,) }
+    public get(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
+    public get(index?: Nullable<NumericOrObject>,): never {
+        throw new EmptyCollectionHolderException(null, index,)
+    }
 
-    public at(index?: NullableNumber,): never { throw new EmptyCollectionHolderException(null, index,) }
+    public at(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
+    public at(index?: Nullable<NumericOrObject>,): never {
+        throw new EmptyCollectionHolderException(null, index,)
+    }
 
-    public elementAt(index?: NullableNumber,): never { throw new EmptyCollectionHolderException(null, index,) }
+    public elementAt(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
+    public elementAt(index?: Nullable<NumericOrObject>,): never {
+        throw new EmptyCollectionHolderException(null, index,)
+    }
 
+    //#endregion -------------------- Get methods --------------------
+    //#region -------------------- Get or else methods --------------------
 
-    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
-    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<never>,): never
+    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,) {
         return defaultValue(index,)
     }
 
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
-    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<never>,): never
+    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
+    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| U | never>,) {
         return defaultValue(index,)
     }
 
-
-    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): U
-    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<never>,): never
+    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
+    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
     public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| U | never>,) {
         return defaultValue(index,)
     }
 
+    //#endregion -------------------- Get or else methods --------------------
+    //#region -------------------- Get or null methods --------------------
 
-    public getOrNull(index?: number,): null
+    public getOrNull(..._: readonly unknown[]): null
     public getOrNull() { return null }
 
-    public atOrNull(index?: number,): null
+    public atOrNull(..._: readonly unknown[]): null
     public atOrNull() { return null }
 
-    public elementAtOrNull(index?: number,): null
+    public elementAtOrNull(..._: readonly unknown[]): null
     public elementAtOrNull() { return null }
 
-    //#endregion -------------------- Get / at methods --------------------
+    //#endregion -------------------- Get or null methods --------------------
+
     //#region -------------------- Index of methods --------------------
 
-    public indexOf(element?: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
+    public indexOf(..._: readonly unknown[]): null
     public indexOf() { return null }
 
+    //#endregion -------------------- Index of methods --------------------
+    //#region -------------------- Last index of methods --------------------
 
-    public lastIndexOf(element?: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
+    public lastIndexOf(..._: readonly unknown[]): null
     public lastIndexOf() { return null }
 
+    //#endregion -------------------- Last index of methods --------------------
+    //#region -------------------- Index of first methods --------------------
 
-    public indexOfFirst(predicate?: BooleanCallback<never>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
+    public indexOfFirst(..._: readonly unknown[]): null
     public indexOfFirst() { return null }
 
-    public indexOfFirstIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
+    //#endregion -------------------- Index of first methods --------------------
+    //#region -------------------- Index of first indexed methods --------------------
+
+    public indexOfFirstIndexed(..._: readonly unknown[]): null
     public indexOfFirstIndexed() { return null }
 
+    //#endregion -------------------- Index of first indexed methods --------------------
+    //#region -------------------- Index of last methods --------------------
 
-    public indexOfLast(predicate?: BooleanCallback<never>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
+    public indexOfLast(..._: readonly unknown[]): null
     public indexOfLast() { return null }
 
-    public indexOfLastIndexed(predicate?: ReverseBooleanCallback<never>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): null
+    //#endregion -------------------- Index of last methods --------------------
+    //#region -------------------- Index of last indexed methods --------------------
+
+    public indexOfLastIndexed(..._: readonly unknown[]): null
     public indexOfLastIndexed() { return null }
 
-    //#endregion -------------------- Index of methods --------------------
+    //#endregion -------------------- Index of last indexed methods --------------------
+
     //#region -------------------- First methods --------------------
 
-    public first(): never
-    public first<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): never
-    public first(predicate?: Nullable<BooleanCallback<never>>,): never
+    public first<const S, >(..._: readonly unknown[]): never
     public first() { throw new EmptyCollectionHolderException() }
 
-    public firstOrNull(): null
-    public firstOrNull<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): null
-    public firstOrNull(predicate?: Nullable<BooleanCallback<never>>,): null
+    //#endregion -------------------- First methods --------------------
+    //#region -------------------- First or null methods --------------------
+
+    public firstOrNull<const S, >(..._: readonly unknown[]): null
     public firstOrNull() { return null }
 
-    //#endregion -------------------- First methods --------------------
+    //#endregion -------------------- First or null methods --------------------
+
     //#region -------------------- Last methods --------------------
 
-    public last(): never
-    public last<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): never
-    public last(predicate?: Nullable<BooleanCallback<never>>,): never
+    public last<const S, >(..._: readonly unknown[]): never
     public last() { throw new EmptyCollectionHolderException() }
 
-    public lastOrNull(): null
-    public lastOrNull<const S extends never, >(predicate?: Nullable<RestrainedBooleanCallback<never, S>>,): null
-    public lastOrNull(predicate?: Nullable<BooleanCallback<never>>,): null
+    //#endregion -------------------- Last methods --------------------
+    //#region -------------------- Last or null methods --------------------
+
+    public lastOrNull<const S, >(..._: readonly unknown[]): null
     public lastOrNull() { return null }
 
-    //#endregion -------------------- Last methods --------------------
+    //#endregion -------------------- Last or null methods --------------------
 
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    //#region -------------------- All / any / none methods --------------------
+    //#region -------------------- All methods --------------------
 
-    public all(predicate?: BooleanCallback<never>,): false
+    public all(..._: readonly unknown[]): false
     public all() { return false }
 
-    public any(): this["isNotEmpty"]
-    public any(predicate?: Nullable<BooleanCallback<never>>,): this["isNotEmpty"]
+    //#endregion -------------------- All methods --------------------
+    //#region -------------------- Any methods --------------------
+
+    public any(..._: readonly unknown[]): this["isNotEmpty"]
     public any() { return false }
 
-    public none(): this["isEmpty"]
-    public none(predicate?: Nullable<BooleanCallback<never>>,): this["isEmpty"]
+    //#endregion -------------------- Any methods --------------------
+    //#region -------------------- None methods --------------------
+
+    public none(..._: readonly unknown[]): this["isEmpty"]
     public none() { return true }
 
-    //#endregion -------------------- All / any / none methods --------------------
-    //#region -------------------- Has / includes / contains methods --------------------
+    //#endregion -------------------- None methods --------------------
 
-    public hasOne(...values: readonly never[]): false
-    public hasOne(...values: readonly unknown[]): false
-    public hasOne() { return false }
+    //#region -------------------- Has methods --------------------
 
-    public has(...values: readonly never[]): false
-    public has(...values: readonly unknown[]): false
+    public has(..._: readonly unknown[]): false
     public has() { return false }
 
-    public includesOne(...values: readonly never[]): false
-    public includesOne(...values: readonly unknown[]): false
-    public includesOne() { return false }
-
-    public includes(...values: readonly never[]): false
-    public includes(...values: readonly unknown[]): false
+    public includes(..._: readonly unknown[]): false
     public includes() { return false }
 
-    public containsOne(...values: readonly never[]): false
-    public containsOne(...values: readonly unknown[]): false
-    public containsOne() { return false }
-
-    public contains(...values: readonly never[]): false
-    public contains(...values: readonly unknown[]): false
+    public contains(..._: readonly unknown[]): false
     public contains() { return false }
 
+    //#endregion -------------------- Has methods --------------------
+    //#region -------------------- Has one methods --------------------
 
-    public hasAll(...values: readonly never[]): false
-    public hasAll(...values: readonly unknown[]): false
-    public hasAll() { return false }
+    public hasOne(..._: readonly unknown[]): false
+    public hasOne() { return false }
 
-    public includesAll(...values: readonly never[]): false
-    public includesAll(...values: readonly unknown[]): false
-    public includesAll() { return false }
+    public includesOne(..._: readonly unknown[]): false
+    public includesOne() { return false }
 
-    public containsAll(...values: readonly never[]): false
-    public containsAll(...values: readonly unknown[]): false
-    public containsAll() { return false }
+    public containsOne(..._: readonly unknown[]): false
+    public containsOne() { return false }
 
-    //#endregion -------------------- Has / includes / contains methods --------------------
-    //#region -------------------- Join methods --------------------
+    //#endregion -------------------- Has one methods --------------------
+    //#region -------------------- Has all methods --------------------
 
-    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<never>>,): string
-    public join(_separator?: NullableString, prefix?: NullableString, postfix?: NullableString,) {
+    public hasAll(values: readonly never[],): boolean
+    public hasAll(values: ReadonlySet<never>,): boolean
+    public hasAll(values: CollectionHolder<never>,): boolean
+    public hasAll(values: MinimalistCollectionHolder<never>,): boolean
+    public hasAll(values: CollectionIterator<never>,): boolean
+    public hasAll(values: Iterable<never>,): boolean
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<never>,): boolean
+    public hasAll(values: readonly unknown[],): boolean
+    public hasAll(values: ReadonlySet<unknown>,): boolean
+    public hasAll(values: CollectionHolder,): boolean
+    public hasAll(values: MinimalistCollectionHolder,): boolean
+    public hasAll(values: CollectionIterator,): boolean
+    public hasAll(values: Iterable<unknown>,): boolean
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    public hasAll(...values: readonly never[]): boolean
+    public hasAll(...values: readonly unknown[]): boolean
+    public hasAll() {
+        const values: PossibleIterableArraySetOrCollectionHolder<unknown> = arguments.length == 1 ? arguments[0] : arguments // TODO Change once the version 1.10 is in progress
+        if (values instanceof Array)
+            return values.length == 0
+        if (values instanceof Set)
+            return values.size == 0
+        if (isCollectionHolder(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolder(values,))
+            return values.size == 0
+        if (isCollectionIterator(values,))
+            return values.size == 0
+
+        if (isCollectionHolderByStructure<unknown>(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolderByStructure<unknown>(values,))
+            //@ts-ignore: This is a MinimalistCollectionHolder by structure
+            return values.size == 0
+        if (isCollectionIteratorByStructure<unknown>(values,))
+            return values.size == 0
+
+        return values[Symbol.iterator]().next().done
+    }
+
+    public includesAll(values: readonly never[],): boolean
+    public includesAll(values: ReadonlySet<never>,): boolean
+    public includesAll(values: CollectionHolder<never>,): boolean
+    public includesAll(values: MinimalistCollectionHolder<never>,): boolean
+    public includesAll(values: CollectionIterator<never>,): boolean
+    public includesAll(values: Iterable<never>,): boolean
+    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<never>,): boolean
+    public includesAll(values: readonly unknown[],): boolean
+    public includesAll(values: ReadonlySet<unknown>,): boolean
+    public includesAll(values: CollectionHolder,): boolean
+    public includesAll(values: MinimalistCollectionHolder,): boolean
+    public includesAll(values: CollectionIterator,): boolean
+    public includesAll(values: Iterable<unknown>,): boolean
+    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    public includesAll(...values: readonly never[]): boolean
+    public includesAll(...values: readonly unknown[]): boolean
+    public includesAll() {
+        const values: PossibleIterableArraySetOrCollectionHolder<unknown> = arguments.length == 1 ? arguments[0] : arguments // TODO Change once the version 1.10 is in progress
+        if (values instanceof Array)
+            return values.length == 0
+        if (values instanceof Set)
+            return values.size == 0
+        if (isCollectionHolder(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolder(values,))
+            return values.size == 0
+        if (isCollectionIterator(values,))
+            return values.size == 0
+
+        if (isCollectionHolderByStructure<unknown>(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolderByStructure<unknown>(values,))
+            //@ts-ignore: This is a MinimalistCollectionHolder by structure
+            return values.size == 0
+        if (isCollectionIteratorByStructure<unknown>(values,))
+            return values.size == 0
+
+        return values[Symbol.iterator]().next().done
+    }
+
+    public containsAll(values: readonly never[],): boolean
+    public containsAll(values: ReadonlySet<never>,): boolean
+    public containsAll(values: CollectionHolder<never>,): boolean
+    public containsAll(values: MinimalistCollectionHolder<never>,): boolean
+    public containsAll(values: CollectionIterator<never>,): boolean
+    public containsAll(values: Iterable<never>,): boolean
+    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<never>,): boolean
+    public containsAll(values: readonly unknown[],): boolean
+    public containsAll(values: ReadonlySet<unknown>,): boolean
+    public containsAll(values: CollectionHolder,): boolean
+    public containsAll(values: MinimalistCollectionHolder,): boolean
+    public containsAll(values: CollectionIterator,): boolean
+    public containsAll(values: Iterable<unknown>,): boolean
+    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    public containsAll(...values: readonly never[]): boolean
+    public containsAll(...values: readonly unknown[]): boolean
+    public containsAll() {
+        const values: PossibleIterableArraySetOrCollectionHolder<unknown> = arguments.length == 1 ? arguments[0] : arguments // TODO Change once the version 1.10 is in progress
+        if (values instanceof Array)
+            return values.length == 0
+        if (values instanceof Set)
+            return values.size == 0
+        if (isCollectionHolder(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolder(values,))
+            return values.size == 0
+        if (isCollectionIterator(values,))
+            return values.size == 0
+
+        if (isCollectionHolderByStructure<unknown>(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolderByStructure<unknown>(values,))
+            //@ts-ignore: This is a MinimalistCollectionHolder by structure
+            return values.size == 0
+        if (isCollectionIteratorByStructure<unknown>(values,))
+            return values.size == 0
+
+        return values[Symbol.iterator]().next().done
+    }
+
+    //#endregion -------------------- Has all methods --------------------
+
+    //#region -------------------- Join to string methods --------------------
+
+    public join(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: readonly unknown[]): string
+    public join(_separator?: unknown, prefix?: NullableString, postfix?: NullableString,) {
+        return prefixAndPostfixOnly(prefix, postfix,)
+    }
+
+    public joinToString(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: readonly unknown[]): string
+    public joinToString(_separator?: unknown, prefix?: NullableString, postfix?: NullableString,) {
         return prefixAndPostfixOnly(prefix, postfix,)
     }
 
     //#endregion -------------------- Join methods --------------------
+
     //#region -------------------- Filter methods --------------------
 
-    public filter<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>): this
-    public filter(predicate?: BooleanCallback<never>): this
+    public filter<const S, >(..._: readonly unknown[]): this
     public filter() { return this }
 
-    public filterIndexed<const S extends never, >(predicate?: ReverseRestrainedBooleanCallback<never, S>,): this
-    public filterIndexed(predicate?: ReverseBooleanCallback<never>,): this
+    //#endregion -------------------- Filter methods --------------------
+    //#region -------------------- Filter indexed methods --------------------
+
+    public filterIndexed<const S, >(..._: readonly unknown[]): this
     public filterIndexed() { return this }
 
+    //#endregion -------------------- Filter indexed methods --------------------
+    //#region -------------------- Filter not methods --------------------
 
-    public filterNot<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): this
-    public filterNot(predicate?: BooleanCallback<never>,): this
+    public filterNot<const S, >(..._: readonly unknown[]): this
     public filterNot() { return this }
 
-    public filterIndexedNot<const S extends never, >(predicate?: ReverseRestrainedBooleanCallback<never, S>,): this
-    public filterIndexedNot(predicate?: ReverseBooleanCallback<never>,): this
+    //#endregion -------------------- Filter not methods --------------------
+    //#region -------------------- Filter not indexed methods --------------------
+
+    public filterIndexedNot<const S, >(..._: readonly unknown[]): this
     public filterIndexedNot() { return this }
 
+    public filterNotIndexed<const S, >(..._: readonly unknown[]): this
+    public filterNotIndexed() { return this }
 
+    //#endregion -------------------- Filter not indexed methods --------------------
+    //#region -------------------- Filter not null methods --------------------
+
+    public filterNotNull(..._: readonly unknown[]): this
     public filterNotNull(): this { return this }
 
+    //#endregion -------------------- Filter not null methods --------------------
+    //#region -------------------- Require no nulls methods --------------------
+
+    public requireNoNulls(..._: readonly unknown[]): this
     public requireNoNulls(): this { return this }
 
-    //#endregion -------------------- Filter methods --------------------
+    //#endregion -------------------- Require no nulls methods --------------------
+
     //#region -------------------- Find methods --------------------
 
-    public find<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): null
-    public find(predicate?: BooleanCallback<never>,): never
+    public find<const S, >(..._: readonly unknown[]): null
     public find() { return null }
 
-    public findIndexed<const S extends never, >(callback?: ReverseRestrainedBooleanCallback<never, S>,): null
-    public findIndexed(predicate?: ReverseBooleanCallback<never>,): null
+    //#endregion -------------------- Find methods --------------------
+    //#region -------------------- Find indexed methods --------------------
+
+    public findIndexed<const S, >(..._: readonly unknown[]): null
     public findIndexed() { return null }
 
+    //#endregion -------------------- Find indexed methods --------------------
+    //#region -------------------- Find last methods --------------------
 
-    public findLast<const S extends never, >(predicate?: RestrainedBooleanCallback<never, S>,): null
-    public findLast(predicate?: BooleanCallback<never>,): null
+    public findLast<const S, >(..._: readonly unknown[]): null
     public findLast() { return null }
 
-    public findLastIndexed<const S extends never, >(callback?: ReverseRestrainedBooleanCallback<never, S>,): null
-    public findLastIndexed(predicate?: ReverseBooleanCallback<never>,): null
+    //#endregion -------------------- Find last methods --------------------
+    //#region -------------------- Find last indexed methods --------------------
+
+    public findLastIndexed<const S, >(..._: readonly unknown[]): null
     public findLastIndexed() { return null }
 
-    //#endregion -------------------- Find methods --------------------
+    //#endregion -------------------- Find last indexed methods --------------------
+
     //#region -------------------- Slice methods --------------------
 
-    public slice(indices?: readonly number[],): this
-    public slice(indices?: ReadonlySet<number>,): this
-    public slice(indices?: MinimalistCollectionHolder<number>,): this
-    public slice(indices?: CollectionIterator<number>,): this
-    public slice(indices?: Iterable<number>,): this
-    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
-    public slice(indicesOrFromIndex?: Nullable<| readonly number[] | ReadonlySet<number> | MinimalistCollectionHolder<number> | CollectionIterator<number> | Iterable<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): this
+    public slice(..._: readonly unknown[]): this
     public slice() { return this }
 
     //#endregion -------------------- Slice methods --------------------
+
     //#region -------------------- Map methods --------------------
 
-    public map<const U, >(transform?: ValueIndexWithReturnCallback<never, U>,): CollectionHolder<U>
+    public map<const U, >(..._: readonly unknown[]): CollectionHolder<U>
     public map() { return this }
 
-    public mapIndexed<const U, >(transform?: IndexValueWithReturnCallback<never, U>,): CollectionHolder<U>
+    //#endregion -------------------- Map methods --------------------
+    //#region -------------------- Map indexed methods --------------------
+
+    public mapIndexed<const U, >(..._: readonly unknown[]): CollectionHolder<U>
     public mapIndexed() { return this }
 
-    public mapNotNull<const U extends NonNullable<unknown>, >(transform?: ValueIndexWithReturnCallback<never, Nullable<U>>,): CollectionHolder<U>
+    //#endregion -------------------- Map indexed methods --------------------
+    //#region -------------------- Map not null methods --------------------
+
+    public mapNotNull<const U extends NonNullable<unknown>, >(..._: readonly unknown[]): CollectionHolder<U>
     public mapNotNull() { return this }
 
-    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform?: IndexValueWithReturnCallback<never, Nullable<U>>,): CollectionHolder<U>
+    //#endregion -------------------- Map not null methods --------------------
+    //#region -------------------- Map not null indexed methods --------------------
+
+    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(..._: readonly unknown[]): CollectionHolder<U>
     public mapNotNullIndexed() { return this }
 
-    //#endregion -------------------- Map methods --------------------
-    //#region -------------------- ForEach methods --------------------
+    //#endregion -------------------- Map not null indexed methods --------------------
 
-    public forEach(action?: ValueIndexCallback<never>,): this
+    //#region -------------------- For each methods --------------------
+
+    public forEach(..._: readonly unknown[]): this
     public forEach() { return this }
 
-    public forEachIndexed(action?: IndexValueCallback<never>,): this
+    //#endregion -------------------- For each methods --------------------
+    //#region -------------------- For each indexed methods --------------------
+
+    public forEachIndexed(..._: readonly unknown[]): this
     public forEachIndexed() { return this }
 
-    //#endregion -------------------- ForEach methods --------------------
+    //#endregion -------------------- For each indexed methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------
 
+    public [Symbol.iterator](..._: readonly unknown[]): EmptyCollectionIterator
     public [Symbol.iterator](): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
     public get [Symbol.toStringTag](): CollectionHolderName { return "CollectionHolder" }
@@ -321,57 +509,69 @@ export class EmptyCollectionHolder
     public get objectValuesMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP as ReadonlyMap<never, never> }
 
 
+    public toIterator(..._: readonly unknown[]): EmptyCollectionIterator
     public toIterator(): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
 
+    public toArray(..._: readonly unknown[]): readonly never[]
     public toArray(): readonly never[] { return CollectionConstants.EMPTY_ARRAY }
 
+    public toMutableArray(..._: readonly unknown[]): never[]
     public toMutableArray(): never[] { return [] }
 
 
+    public toSet(..._: readonly unknown[]): ReadonlySet<never>
     public toSet(): ReadonlySet<never> { return CollectionConstants.EMPTY_SET }
 
+    public toMutableSet(..._: readonly unknown[]): Set<never>
     public toMutableSet(): Set<never> { return new Set() }
 
 
+    public toWeakSet(..._: readonly unknown[]): Readonly<WeakSet<never>>
     public toWeakSet(): Readonly<WeakSet<never>> { return CollectionConstants.EMPTY_WEAK_SET }
 
+    public toMutableWeakSet(..._: readonly unknown[]): WeakSet<never>
     public toMutableWeakSet(): WeakSet<never> { return new WeakSet() }
 
 
+    public toMap(..._: readonly unknown[]): ReadonlyMap<never, never>
     public toMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP as ReadonlyMap<never, never> }
 
+    public toMutableMap(..._: readonly unknown[]): Map<never, never>
     public toMutableMap(): Map<never, never> { return new Map<never, never>() }
 
 
-    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
-    public toReverse() { return this as unknown as CollectionHolder<never> }
+    public toReverse(..._: readonly unknown[]): this
+    public toReverse() { return this }
 
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
-    public toReversed() { return this as unknown as CollectionHolder<never> }
+    public toReversed(..._: readonly unknown[]): this
+    public toReversed() { return this }
 
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): this
-    public reversed() { return this as unknown as CollectionHolder<never> }
+    public reversed(..._: readonly unknown[]): this
+    public reversed() { return this }
 
-    //#region -------------------- Conversion methods (toString) --------------------
+    //#region -------------------- Conversion methods (string) --------------------
 
+    public toString(..._: readonly unknown[]): "[]"
     public toString(): "[]" { return "[]" }
 
 
-    public toLocaleString(locale?: NullableString,): "[]"
+    public toLocaleString(..._: readonly unknown[]): "[]"
     public toLocaleString() { return "[]" }
 
+    public toLowerCaseString(..._: readonly unknown[]): "[]"
     public toLowerCaseString(): "[]" { return "[]" }
 
-    public toLocaleLowerCaseString(locale?: NullableString,): "[]"
+    public toLocaleLowerCaseString(..._: readonly unknown[]): "[]"
     public toLocaleLowerCaseString() { return "[]" }
 
+    public toUpperCaseString(..._: readonly unknown[]): "[]"
     public toUpperCaseString(): "[]" { return "[]" }
 
-    public toLocaleUpperCaseString(locale?: NullableString,): "[]"
+    public toLocaleUpperCaseString(..._: readonly unknown[]): "[]"
     public toLocaleUpperCaseString() { return "[]" }
 
-    //#endregion -------------------- Conversion methods (toString) --------------------
+    //#endregion -------------------- Conversion methods (string) --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 

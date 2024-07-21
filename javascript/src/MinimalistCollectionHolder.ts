@@ -14,7 +14,10 @@ export interface MinimalistCollectionHolder<out T = unknown, > {
      * @see ReadonlyArray.length
      * @see ReadonlySet.size
      * @see ReadonlyMap.size
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/size.html Kotlin size()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/size.html Kotlin Collection.size()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/size.html Kotlin Map.size()
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#size() Java Collection.size()
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Map.html#size() Java Map.size()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count C# Count()
      */
     get size(): number
@@ -26,7 +29,8 @@ export interface MinimalistCollectionHolder<out T = unknown, > {
      * @throws CollectionHolderIndexOutOfBoundsException The index calculated is under zero
      *             or over the {@link size} (after calculation)
      * @see ReadonlyArray.at
-     * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/get.html Kotlin get(index)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/get.html Kotlin get(index)
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/List.html#get(int) Java get(index)
      * @canReceiveNegativeValue
      */
     get(index: number,): T

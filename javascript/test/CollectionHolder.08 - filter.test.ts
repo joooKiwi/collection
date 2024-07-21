@@ -27,17 +27,17 @@ describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist,},},) =>
             test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.filterNot(_ => true,).toArray(),).amountOfCall,).toBe(2,),)
             test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.filterNot((_1, _2,) => true,).toArray(),).amountOfCall,).toBe(2,),)
         },)
-        describe("filterIndexedNot", () => {
-            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.filterIndexedNot(() => true,).toArray(),).amountOfCall,).toBe(0,),)
-            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.filterIndexedNot(_ => true,).toArray(),).amountOfCall,).toBe(0,),)
-            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.filterIndexedNot((_1, _2,) => true,).toArray(),).amountOfCall,).toBe(2,),)
+        describe("filterNotIndexed", () => {
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.filterNotIndexed(() => true,).toArray(),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.filterNotIndexed(_ => true,).toArray(),).amountOfCall,).toBe(0,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.filterNotIndexed((_1, _2,) => true,).toArray(),).amountOfCall,).toBe(2,),)
         },)
     },)
 
     test("[a,b,c,d].filter(d) == [d]",               () => expect(newInstance(ABCD,).filter(it => it === 'd',).toArray(),).toEqual(['d',],),)
     test("[a,b,c,d].filterIndexed(3) == [d]",        () => expect(newInstance(ABCD,).filterIndexed(it => it === 3,).toArray(),).toEqual(['d',],),)
     test("[a,b,c,d].filterNot(d) == [a,b,c]",        () => expect(newInstance(ABCD,).filterNot(it => it === 'd',).toArray(),).toEqual(['a', 'b', 'c',],),)
-    test("[a,b,c,d].filterIndexedNot(3) == [a,b,c]", () => expect(newInstance(ABCD,).filterIndexedNot(it => it === 3,).toArray(),).toEqual(['a', 'b', 'c',],),)
+    test("[a,b,c,d].filterNotIndexed(3) == [a,b,c]", () => expect(newInstance(ABCD,).filterNotIndexed(it => it === 3,).toArray(),).toEqual(['a', 'b', 'c',],),)
     test("[a,b,1,2].filter(number) == [1,2]",        () => expect(newInstance(AB12,).filter(it => typeof it == "number",).toArray(),).toEqual([1, 2,],),)
     test("[a,b,1,2].filterNot(number) == [a,b]",     () => expect(newInstance(AB12,).filterNot(it => typeof it == "number",).toArray(),).toEqual(['a', 'b',],),)
 
@@ -57,7 +57,7 @@ describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist,},},) =>
         },)
         test("[a,b].filterNotNull() == this",                                     () => {
             const instance = newInstance(AB,)
-            expect(instance.filterNotNull(),).toEqual(instance,)
+            expect(instance === instance.filterNotNull(),).toBeTrue()
         },)
     }
 

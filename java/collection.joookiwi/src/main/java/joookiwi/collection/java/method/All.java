@@ -11,10 +11,13 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_2;
+
 public final class All
         extends Utility {
 
-    @Contract("-> fail")
+    @Contract(ALWAYS_FAIL_0)
     private All() { throw new ImpossibleConstructionException("The utility class \"All\" cannot be constructed.", All.class); }
 
     //#region -------------------- Facade methods --------------------
@@ -29,19 +32,17 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> false")
-    public static <T> boolean all(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                  final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return false;
-
-        var size = collection.size();
-        if (size == 0)
-            return false;
-        return __with2Argument(collection, predicate, size);
+        return __all(collection, predicate);
     }
 
     /**
@@ -52,17 +53,17 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> false")
-    public static <T> boolean all(@Nullable CollectionHolder<? extends T> collection, @NotNull BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
+                                  final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return false;
-        if (collection.isEmpty())
-            return false;
-        return __with2Argument(collection, predicate, collection.size());
+        return __all(collection, predicate);
     }
 
     //#endregion -------------------- predicate (T, int) → boolean --------------------
@@ -76,19 +77,17 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> false")
-    public static <T> boolean all(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull Function<T, @NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                  final @NotNull Function<? super T, @NotNull Boolean> predicate) {
         if (collection == null)
             return false;
-
-        var size = collection.size();
-        if (size == 0)
-            return false;
-        return __with1Argument(collection, predicate, size);
+        return __all(collection, predicate);
     }
 
     /**
@@ -99,17 +98,17 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> false")
-    public static <T> boolean all(@Nullable CollectionHolder<? extends T> collection, @NotNull Function<T, @NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
+                                  final @NotNull Function<? super T, @NotNull Boolean> predicate) {
         if (collection == null)
             return false;
-        if (collection.isEmpty())
-            return false;
-        return __with1Argument(collection, predicate, collection.size());
+        return __all(collection, predicate);
     }
 
     //#endregion -------------------- predicate (T) → boolean --------------------
@@ -123,19 +122,17 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> false")
-    public static <T> boolean all(@Nullable MinimalistCollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                  final @NotNull Supplier<@NotNull Boolean> predicate) {
         if (collection == null)
             return false;
-
-        var size = collection.size();
-        if (size == 0)
-            return false;
-        return __with0Argument(predicate, size);
+        return __all(collection, predicate);
     }
 
     /**
@@ -146,14 +143,72 @@ public final class All
      * @param predicate  The matching predicate
      * @param <T>        The {@code collection} type
      * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
      * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> false")
-    public static <T> boolean all(@Nullable CollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
+                                  final @NotNull Supplier<@NotNull Boolean> predicate) {
         if (collection == null)
             return false;
+        return __all(collection, predicate);
+    }
+
+    //#endregion -------------------- predicate () → boolean --------------------
+
+    //#endregion -------------------- Facade methods --------------------
+    //#region -------------------- Core methods --------------------
+
+    //#region -------------------- predicate (T, int) → boolean --------------------
+
+    private static <T> boolean __all(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                     final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+        final var size = collection.size();
+        if (size == 0)
+            return false;
+        return __with2Argument(collection, predicate, size);
+    }
+
+    private static <T> boolean __all(final @NotNull CollectionHolder<? extends T> collection,
+                                     final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+        if (collection.isEmpty())
+            return false;
+        return __with2Argument(collection, predicate, collection.size());
+    }
+
+    //#endregion -------------------- predicate (T, int) → boolean --------------------
+    //#region -------------------- predicate (T) → boolean --------------------
+
+    private static <T> boolean __all(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                     final @NotNull Function<? super T, @NotNull Boolean> predicate) {
+        final var size = collection.size();
+        if (size == 0)
+            return false;
+        return __with1Argument(collection, predicate, size);
+    }
+
+    private static <T> boolean __all(final @NotNull CollectionHolder<? extends T> collection,
+                                     final @NotNull Function<? super T, @NotNull Boolean> predicate) {
+        if (collection.isEmpty())
+            return false;
+        return __with1Argument(collection, predicate, collection.size());
+    }
+
+    //#endregion -------------------- predicate (T) → boolean --------------------
+    //#region -------------------- predicate () → boolean --------------------
+
+    private static <T> boolean __all(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                     final @NotNull Supplier<@NotNull Boolean> predicate) {
+        final var size = collection.size();
+        if (size == 0)
+            return false;
+        return __with0Argument(predicate, size);
+    }
+
+    private static <T> boolean __all(final @NotNull CollectionHolder<? extends T> collection,
+                                     final @NotNull Supplier<@NotNull Boolean> predicate) {
         if (collection.isEmpty())
             return false;
         return __with0Argument(predicate, collection.size());
@@ -161,10 +216,10 @@ public final class All
 
     //#endregion -------------------- predicate () → boolean --------------------
 
-    //#endregion -------------------- Facade methods --------------------
+    //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static boolean __with0Argument(@NotNull Supplier<@NotNull Boolean> predicate, int size) {
+    private static boolean __with0Argument(final @NotNull Supplier<@NotNull Boolean> predicate, final int size) {
         var index = -1;
         while (++index < size)
             if (!predicate.get())
@@ -172,7 +227,7 @@ public final class All
         return true;
     }
 
-    private static <T> boolean __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Function<T, @NotNull Boolean> predicate, int size) {
+    private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull Function<? super T, @NotNull Boolean> predicate, final int size) {
         var index = -1;
         while (++index < size)
             if (!predicate.apply(collection.get(index)))
@@ -180,7 +235,7 @@ public final class All
         return true;
     }
 
-    private static <T> boolean __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate, int size) {
+    private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate, final int size) {
         var index = -1;
         while (++index < size)
             if (!predicate.apply(collection.get(index), index))

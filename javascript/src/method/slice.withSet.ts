@@ -21,7 +21,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
@@ -46,7 +46,7 @@ export function sliceWithSet<const T, >(collection: Nullable<MinimalistCollectio
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param indices    The given indices
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
@@ -71,7 +71,7 @@ function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indice
     const newArray = new Array<T>(indicesSize,)
     const iterator = indices[Symbol.iterator]() as IterableIterator<number>
     let index = 0
-    let iteratorResult: IteratorResult<number, number>
+    let iteratorResult: IteratorResult<number, unknown>
     while (!(iteratorResult = iterator.next()).done)
         newArray[index++] = collection.get(iteratorResult.value,)
     return Object.freeze(newArray,)

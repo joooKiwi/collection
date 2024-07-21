@@ -14,7 +14,7 @@ import {CollectionHolderIndexOutOfBoundsException} from "./CollectionHolderIndex
  * was empty while not being expected to be empty
  */
 export class EmptyCollectionHolderException<const T extends NullOr<NumericOrObject> = null,
-    const out CAUSE extends Error = never, >
+    const CAUSE extends Error = never, >
     extends CollectionHolderIndexOutOfBoundsException<T, CAUSE> {
 
     public constructor(message?: NullableString, invalidIndex: T = null as T, cause?: Nullable<CAUSE>,) {

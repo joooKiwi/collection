@@ -15,16 +15,24 @@ import type {IterableWithSize}         from "./IterableWithSize"
 /**
  * Every possible type of {@link Iterable} with the size field (size, length or count)
  *
- * @see PossibleIterableWithSize
+ * @deprecated Replace with PossibleIterableWithPossibleSize
  */
 export type PossibleIterable<T, > = | Iterable<T>
                                     | PossibleIterableWithSize<T>
 
 /**
+ * Every possible type of {@link Iterable} with the size field (size, length or count)
+ *
+ * @see PossibleIterableWithSize
+ */
+export type PossibleIterableWithPossibleSize<T, > = | Iterable<T>
+                                                    | PossibleIterableWithSize<T>
+
+/**
  * Every possible type of {@link Iterable} with a required (or close to it)
  * size field (size, length or count)
  *
- * @see PossibleIterable
+ * @see PossibleIterableWithPossibleSize
  */
 export type PossibleIterableWithSize<T, > = | IterableWithPossibleSize<T>
                                             | IterableWithSize<T>

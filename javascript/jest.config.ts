@@ -14,7 +14,11 @@ import type {Config} from "jest"
 export default {
     clearMocks:               true,
     collectCoverage:          true,
-    collectCoverageFrom:      ["./src/**/*.ts", "!./src/exception/**/*", "!**/index.ts", "!**/*.types.ts",],
+    collectCoverageFrom:      ["./src/**/*.ts", "!./src/exception/**/*", "!**/index.ts", "!**/*.types.ts",
+                               "!./src/CollectionHolder.ts", "!./src/CollectionHolder.types.ts", "!./src/MinimalistCollectionHolder.ts",
+                               "!./src/iterator/CollectionIterator.ts", "!./src/iterator/CollectionIterator.type.ts", "!./src/iterator/value/IteratorValue.ts",
+                               "!./src/iterable/**/*.ts",
+                               "!./src/handler/CollectionHandler.ts", "!./src/handler/value/ValueHolder.ts",],
     coverageDirectory:        "./coverage",
     coverageProvider:         "v8",
     coverageReporters:        ["lcov" , ["text", {skipFull: true,},],],

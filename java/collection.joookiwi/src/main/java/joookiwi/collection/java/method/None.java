@@ -11,10 +11,12 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.*;
+
 public final class None
         extends Utility {
 
-    @Contract("-> fail")
+    @Contract(ALWAYS_FAIL_0)
     private None() { throw new ImpossibleConstructionException("The utility class \"None\" cannot be constructed.", None.class); }
 
     //#region -------------------- Facade methods --------------------
@@ -27,14 +29,14 @@ public final class None
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if null is received or {@code collection} <b>is empty</b> otherwise
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none()</a>
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none()</a>
      */
     @ExtensionFunction
-    @Contract("null -> true")
+    @Contract(IF_1ST_NULL_THEN_TRUE_1)
     public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return true;
-        return collection.size() == 0;
+        return __none(collection);
     }
 
     /**
@@ -43,14 +45,14 @@ public final class None
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param <T>        The {@code collection} type
      * @return <b>true</b> if null is received or the {@code collection} {@link CollectionHolder#isEmpty is empty} otherwise
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none()</a>
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none()</a>
      */
     @ExtensionFunction
-    @Contract("null -> true")
+    @Contract(IF_1ST_NULL_THEN_TRUE_1)
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return true;
-        return collection.isEmpty();
+        return __none(collection);
     }
 
     //#endregion -------------------- () --------------------
@@ -64,20 +66,18 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> true")
-    public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection,
+                                   @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
-            return collection.size() == 0;
-
-        var size = collection.size();
-        if (size == 0)
-            return false;
-        return __with2Argument(collection, predicate, size);
+            return __none(collection);
+        return __none(collection, predicate);
     }
 
     /**
@@ -88,18 +88,18 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> true")
-    public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection,
+                                   @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
-            return collection.isEmpty();
-        if (collection.isEmpty())
-            return false;
-        return __with2Argument(collection, predicate, collection.size());
+            return __none(collection);
+        return __none(collection, predicate);
     }
 
     //#endregion -------------------- predicate (T, int) → boolean --------------------
@@ -113,20 +113,18 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> true")
-    public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection,
+                                   @Nullable Function<? super T, @NotNull Boolean> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
-            return collection.size() == 0;
-
-        var size = collection.size();
-        if (size == 0)
-            return false;
-        return __with1Argument(collection, predicate, size);
+            return __none(collection);
+        return __none(collection, predicate);
     }
 
     /**
@@ -137,18 +135,18 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> true")
-    public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<T, @NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection,
+                                   @Nullable Function<? super T, @NotNull Boolean> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
-            return collection.isEmpty();
-        if (collection.isEmpty())
-            return false;
-        return __with1Argument(collection, predicate, collection.size());
+            return __none(collection);
+        return __none(collection, predicate);
     }
 
     //#endregion -------------------- predicate (T) → boolean --------------------
@@ -162,20 +160,18 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> true")
-    public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection,
+                                   @Nullable Supplier<@NotNull Boolean> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
-            return collection.size() == 0;
-
-        var size = collection.size();
-        if (size == 0)
-            return false;
-        return __with0Argument(predicate, size);
+            return __none(collection);
+        return __none(collection, predicate);
     }
 
     /**
@@ -186,15 +182,84 @@ public final class None
      * @param predicate  The given predicate
      * @param <T>        The {@code collection} type
      * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
+     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
      */
     @ExtensionFunction
-    @Contract("null, _ -> true")
-    public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection,
+                                   @Nullable Supplier<@NotNull Boolean> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
-            return collection.isEmpty();
+            return __none(collection);
+        return __none(collection, predicate);
+    }
+
+    //#endregion -------------------- predicate () → boolean --------------------
+
+    //#endregion -------------------- Facade methods --------------------
+    //#region -------------------- Core methods --------------------
+
+    //#region -------------------- () --------------------
+
+    private static <T> boolean __none(final @NotNull MinimalistCollectionHolder<? extends T> collection) {
+        return collection.size() == 0;
+    }
+
+    private static <T> boolean __none(final @NotNull CollectionHolder<? extends T> collection) {
+        return collection.isEmpty();
+    }
+
+    //#endregion -------------------- () --------------------
+    //#region -------------------- predicate (T, int) → boolean --------------------
+
+    private static <T> boolean __none(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                      final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+        final var size = collection.size();
+        if (size == 0)
+            return false;
+        return __with2Argument(collection, predicate, size);
+    }
+
+    private static <T> boolean __none(final @NotNull CollectionHolder<? extends T> collection,
+                                      final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+        if (collection.isEmpty())
+            return false;
+        return __with2Argument(collection, predicate, collection.size());
+    }
+
+    //#endregion -------------------- predicate (T, int) → boolean --------------------
+    //#region -------------------- predicate (T) → boolean --------------------
+
+    private static <T> boolean __none(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                      final @NotNull Function<? super T, @NotNull Boolean> predicate) {
+        final var size = collection.size();
+        if (size == 0)
+            return false;
+        return __with1Argument(collection, predicate, size);
+    }
+
+    private static <T> boolean __none(final @NotNull CollectionHolder<? extends T> collection,
+                                      final @NotNull Function<? super T, @NotNull Boolean> predicate) {
+        if (collection.isEmpty())
+            return false;
+        return __with1Argument(collection, predicate, collection.size());
+    }
+
+    //#endregion -------------------- predicate (T) → boolean --------------------
+    //#region -------------------- predicate () → boolean --------------------
+
+    private static <T> boolean __none(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                      final @NotNull Supplier<@NotNull Boolean> predicate) {
+        final var size = collection.size();
+        if (size == 0)
+            return false;
+        return __with0Argument(predicate, size);
+    }
+
+    private static <T> boolean __none(final @NotNull CollectionHolder<? extends T> collection,
+                                      final @NotNull Supplier<@NotNull Boolean> predicate) {
         if (collection.isEmpty())
             return false;
         return __with0Argument(predicate, collection.size());
@@ -202,10 +267,10 @@ public final class None
 
     //#endregion -------------------- predicate () → boolean --------------------
 
-    //#endregion -------------------- Facade methods --------------------
+    //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> boolean __with0Argument(@NotNull Supplier<@NotNull Boolean> predicate, int size) {
+    private static boolean __with0Argument(final @NotNull Supplier<@NotNull Boolean> predicate, final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.get())
@@ -213,7 +278,7 @@ public final class None
         return true;
     }
 
-    private static <T> boolean __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Function<T, @NotNull Boolean> predicate, int size) {
+    private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull Function<? super T, @NotNull Boolean> predicate, final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.apply(collection.get(index)))
@@ -221,7 +286,7 @@ public final class None
         return true;
     }
 
-    private static <T> boolean __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<T, @NotNull Integer, @NotNull Boolean> predicate, int size) {
+    private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate, final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.apply(collection.get(index), index))

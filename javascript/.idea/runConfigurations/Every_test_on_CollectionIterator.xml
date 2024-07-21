@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Every test on CollectionIterator" type="CompoundRunConfigurationType">
+    <toRun name="CollectionIterator (forEach)" type="JavaScriptTestRunnerJest" />
+    <toRun name="CollectionIterator (javascript exclusive)" type="JavaScriptTestRunnerJest" />
+    <toRun name="CollectionIterator (normal)" type="JavaScriptTestRunnerJest" />
+    <toRun name="CollectionIterator (size)" type="JavaScriptTestRunnerJest" />
+    <method v="2" />
+  </configuration>
+</component>
