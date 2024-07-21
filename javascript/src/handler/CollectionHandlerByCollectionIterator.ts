@@ -29,9 +29,9 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @see CollectionHandlerByCollectionIteratorOf1
  * @see CollectionHandlerByCollectionIteratorOf2
  */
-export class CollectionHandlerByCollectionIterator<const out T = unknown,
-    const out REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByCollectionIterator<const T = unknown,
+    const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------

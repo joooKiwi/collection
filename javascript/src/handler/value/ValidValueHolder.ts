@@ -12,7 +12,7 @@ import type {ValueHolder} from "./ValueHolder"
  *
  * @beta
  */
-export class ValidValueHolder<const out T = unknown, >
+export class ValidValueHolder<const T = unknown, >
     implements ValueHolder<T> {
 
     readonly #value

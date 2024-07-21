@@ -16,9 +16,9 @@ import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1V
  * @see CollectionHandlerByMinimalistCollectionHolder
  * @see CollectionHandlerByMinimalistCollectionHolderOf2
  */
-export class CollectionHandlerByMinimalistCollectionHolderOf1<const out T = unknown,
-    const out REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>,
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByMinimalistCollectionHolderOf1<const T = unknown,
+    const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy1Value<T, REFERENCE, COLLECTION> {
 
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {

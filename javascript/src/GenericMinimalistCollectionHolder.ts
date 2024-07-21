@@ -26,8 +26,8 @@ import {isCollectionIteratorByStructure}           from "./method/isCollectionIt
 import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}   from "./method/isMinimalistCollectionHolderByStructure"
 
-export class GenericMinimalistCollectionHolder<const out T = unknown,
-    const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
+export class GenericMinimalistCollectionHolder<const T = unknown,
+    const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
     extends AbstractMinimalistCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------

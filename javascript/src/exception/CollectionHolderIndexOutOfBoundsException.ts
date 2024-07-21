@@ -15,7 +15,7 @@ import type {Nullable, NullOr, NumericOrObject} from "@joookiwi/type"
  * @see https://learn.microsoft.com/dotnet/api/system.indexoutofrangeexception C# IndexOutOfRangeException
  */
 export class CollectionHolderIndexOutOfBoundsException<const T extends NullOr<NumericOrObject> = NullOr<NumericOrObject>,
-    const out CAUSE extends Error = never, >
+    const CAUSE extends Error = never, >
     extends RangeError {
 
     public override readonly name = this.constructor.name

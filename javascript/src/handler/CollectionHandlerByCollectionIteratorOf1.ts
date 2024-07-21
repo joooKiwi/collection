@@ -18,9 +18,9 @@ import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1V
  * @see CollectionHandlerByCollectionIterator
  * @see CollectionHandlerByCollectionIteratorOf2
  */
-export class CollectionHandlerByCollectionIteratorOf1<const out T = unknown,
-    const out REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByCollectionIteratorOf1<const T = unknown,
+    const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy1Value<T, REFERENCE, COLLECTION> {
 
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {

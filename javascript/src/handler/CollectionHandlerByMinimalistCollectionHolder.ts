@@ -28,9 +28,9 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @beta
  * @see CollectionHandlerByCollectionHolder
  */
-export class CollectionHandlerByMinimalistCollectionHolder<const out T = unknown,
-    const out REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>,
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByMinimalistCollectionHolder<const T = unknown,
+    const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------

@@ -14,7 +14,8 @@ import type {Nullable, NullOr} from "@joookiwi/type"
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-illegal-argument-exception Kotlin IllegalArgumentException
  * @see https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception C# ArgumentOutOfRangeException
  */
-export class ForbiddenIndexException<const T extends number = number, const ERROR extends Error = never, >
+export class ForbiddenIndexException<const T extends number = number,
+    const ERROR extends Error = never, >
     extends ReferenceError {
 
     public override readonly name = this.constructor.name

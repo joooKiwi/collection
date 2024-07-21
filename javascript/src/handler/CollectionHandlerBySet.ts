@@ -26,9 +26,9 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @see CollectionHandlerBySetOf1
  * @see CollectionHandlerBySetOf2
  */
-export class CollectionHandlerBySet<const out T = unknown,
-    const out REFERENCE extends ReadonlySet<T> = ReadonlySet<T>,
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerBySet<const T = unknown,
+    const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------

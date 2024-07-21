@@ -40,8 +40,8 @@ import {isMinimalistCollectionHolderByStructure}   from "./method/isMinimalistCo
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
  */
-export class GenericCollectionHolder<const out T = unknown,
-    const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
+export class GenericCollectionHolder<const T = unknown,
+    const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------

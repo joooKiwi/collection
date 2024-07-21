@@ -17,9 +17,9 @@ import {Not0Or1IndexAfterCalculationValueHolder} from "./value/Not0Or1IndexAfter
 import {PositiveInfinityIndexValueHolder}        from "./value/PositiveInfinityIndexValueHolder"
 import {ValidValueHolder}                        from "./value/ValidValueHolder"
 
-export abstract class AbstractCollectionHandlerBy2Values<const out T = unknown,
-    const out REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>,
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export abstract class AbstractCollectionHandlerBy2Values<const T = unknown,
+    const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
     //#region -------------------- Fields --------------------

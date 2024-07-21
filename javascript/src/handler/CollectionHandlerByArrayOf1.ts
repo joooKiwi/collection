@@ -15,9 +15,9 @@ import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1V
  * @see CollectionHandlerByArray
  * @see CollectionHandlerByArrayOf2
  */
-export class CollectionHandlerByArrayOf1<const out T = unknown,
-    const out REFERENCE extends readonly [T,] = readonly [T,],
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByArrayOf1<const T = unknown,
+    const REFERENCE extends readonly [T,] = readonly [T,],
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy1Value<T, REFERENCE, COLLECTION> {
 
     public constructor(collection: COLLECTION, reference: readonly T[],) {

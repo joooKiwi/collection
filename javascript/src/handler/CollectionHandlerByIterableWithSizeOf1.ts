@@ -20,9 +20,9 @@ import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1V
  * @see CollectionHandlerByIterableWithSize
  * @see CollectionHandlerByIterableWithSizeOf2
  */
-export class CollectionHandlerByIterableWithSizeOf1<const out T = unknown,
-    const out REFERENCE extends PossibleIterableWithSize<T> = PossibleIterableWithSize<T>,
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByIterableWithSizeOf1<const T = unknown,
+    const REFERENCE extends PossibleIterableWithSize<T> = PossibleIterableWithSize<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy1Value<T, REFERENCE, COLLECTION> {
 
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {

@@ -17,8 +17,8 @@ import {GenericAfterLastIteratorValue}             from "./value/GenericAfterLas
 import {GenericBeforeFirstIteratorValue}           from "./value/GenericBeforeFirstIteratorValue"
 import {GenericIteratorValue}                      from "./value/GenericIteratorValue"
 
-export class GenericCollectionIterator<const out T = unknown,
-    const out COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
+export class GenericCollectionIterator<const T = unknown,
+    const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
     implements CollectionIterator<T> {
 
     //#region -------------------- Fields --------------------
@@ -225,12 +225,12 @@ export class GenericCollectionIterator<const out T = unknown,
             if (this._hasOnly1Element) {
                 this._previousIndex = null
                 this._nextIndex = null
-                return new GenericIteratorValue(this.collection, this._currentIndex = 0,)
+                return new GenericIteratorValue<T, COLLECTION, 0>(this.collection, this._currentIndex = 0,)
             }
 
             this._previousIndex = null
             this._nextIndex = 1
-            return new GenericIteratorValue(this.collection, this._currentIndex = 0,)
+            return new GenericIteratorValue<T, COLLECTION, 0>(this.collection, this._currentIndex = 0,)
         }
 
         if (this._hasOnly1Element)
@@ -242,20 +242,20 @@ export class GenericCollectionIterator<const out T = unknown,
         if (this._previousIndex == null) { // At the start of the line
             this._previousIndex = 0
             this._nextIndex = 2
-            return new GenericIteratorValue(this.collection, this._currentIndex = 1,)
+            return new GenericIteratorValue<T, COLLECTION, 1>(this.collection, this._currentIndex = 1,)
         }
 
         if (currentIndex == this.size - 2 ) { // At the end of the line (but no internal value set)
             this._previousIndex = currentIndex
             this._nextIndex = null
             this._currentIndex = currentIndex + 1
-            return new GenericIteratorValue(this.collection, this._currentIndex = currentIndex + 1,)
+            return new GenericIteratorValue<T, COLLECTION>(this.collection, this._currentIndex = currentIndex + 1,)
         }
 
         // Somewhere in the line
         this._previousIndex = currentIndex
         this._nextIndex = currentIndex + 2
-        return new GenericIteratorValue(this.collection, this._currentIndex = currentIndex + 1,)
+        return new GenericIteratorValue<T, COLLECTION>(this.collection, this._currentIndex = currentIndex + 1,)
     }
 
     public get nextValue(): T {
@@ -331,13 +331,13 @@ export class GenericCollectionIterator<const out T = unknown,
             if (this._hasOnly1Element) {
                 this._previousIndex = null
                 this._nextIndex = null
-                return new GenericIteratorValue(this.collection, this._currentIndex = 0,)
+                return new GenericIteratorValue<T, COLLECTION, 0>(this.collection, this._currentIndex = 0,)
             }
 
             const size = this.size
             this._previousIndex = size - 2
             this._nextIndex = null
-            return new GenericIteratorValue(this.collection, this._currentIndex = size - 1,)
+            return new GenericIteratorValue<T, COLLECTION>(this.collection, this._currentIndex = size - 1,)
         }
 
         if (this._hasOnly1Element)
@@ -349,19 +349,19 @@ export class GenericCollectionIterator<const out T = unknown,
         if (this._nextIndex == null) { // At the end of the line
             this._previousIndex = currentIndex - 2
             this._nextIndex = currentIndex
-            return new GenericIteratorValue(this.collection, this._currentIndex = currentIndex - 1,)
+            return new GenericIteratorValue<T, COLLECTION>(this.collection, this._currentIndex = currentIndex - 1,)
         }
 
         if (currentIndex == 1) { // At the 1st index
             this._previousIndex = null
             this._nextIndex = 1
-            return new GenericIteratorValue(this.collection, this._currentIndex = 0,)
+            return new GenericIteratorValue<T, COLLECTION, 0>(this.collection, this._currentIndex = 0,)
         }
 
         // Somewhere in the line
         this._previousIndex = currentIndex - 2
         this._nextIndex = currentIndex
-        return new GenericIteratorValue(this.collection, this._currentIndex = currentIndex - 1,)
+        return new GenericIteratorValue<T, COLLECTION>(this.collection, this._currentIndex = currentIndex - 1,)
     }
 
     public get previousValue(): T {

@@ -16,9 +16,9 @@ import {AbstractCollectionHandlerBy2Values} from "./AbstractCollectionHandlerBy2
  * @see CollectionHandlerBySet
  * @see CollectionHandlerBySetOf1
  */
-export class CollectionHandlerBySetOf2<const out T = unknown,
-    const out REFERENCE extends ReadonlySet<T> = ReadonlySet<T>,
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerBySetOf2<const T = unknown,
+    const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy2Values<T, REFERENCE, COLLECTION> {
 
     #iterator?: Iterator<T, unknown>

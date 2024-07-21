@@ -20,9 +20,9 @@ import {AbstractCollectionHandlerBy2Values} from "./AbstractCollectionHandlerBy2
  * @see CollectionHandlerByIterableWithSize
  * @see CollectionHandlerByIterableWithSizeOf1
  */
-export class CollectionHandlerByIterableWithSizeOf2<const out T = unknown,
-    const out REFERENCE extends PossibleIterableWithSize<T> = PossibleIterableWithSize<T>,
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByIterableWithSizeOf2<const T = unknown,
+    const REFERENCE extends PossibleIterableWithSize<T> = PossibleIterableWithSize<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy2Values<T, REFERENCE, COLLECTION> {
 
     #iterator?: Iterator<T, unknown>

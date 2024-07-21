@@ -77,7 +77,7 @@ import {toWeakSet}                                 from "./method/toWeakSet"
  * @see GenericCollectionHolder
  * @see LazyGenericCollectionHolder
  */
-export abstract class AbstractCollectionHolder<const out T = unknown, >
+export abstract class AbstractCollectionHolder<const T = unknown, >
     extends AbstractMinimalistCollectionHolder<T>
     implements CollectionHolder<T> {
 

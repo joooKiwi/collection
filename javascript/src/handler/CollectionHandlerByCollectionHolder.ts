@@ -15,9 +15,9 @@ import {CollectionHandlerByMinimalistCollectionHolder} from "./CollectionHandler
  * @beta
  * @see CollectionHandlerByMinimalistCollectionHolder
  */
-export class CollectionHandlerByCollectionHolder<const out T = unknown,
-    const out REFERENCE extends CollectionHolder<T> = CollectionHolder<T>,
-    const out COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
+export class CollectionHandlerByCollectionHolder<const T = unknown,
+    const REFERENCE extends CollectionHolder<T> = CollectionHolder<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends CollectionHandlerByMinimalistCollectionHolder<T, REFERENCE, COLLECTION> {
 
     public constructor(collection: COLLECTION, reference: REFERENCE,) { super(collection, reference,) }
