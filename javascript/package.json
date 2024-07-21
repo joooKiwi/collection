@@ -149,7 +149,7 @@
   "author": "JóôòKiwi",
   "license": "MIT",
   "dependencies": {
-    "@joookiwi/lazy": "^1.4.0",
+    "@joookiwi/lazy": "^1.5.0",
     "@joookiwi/type": "^1.0.0"
   },
   "devDependencies": {
