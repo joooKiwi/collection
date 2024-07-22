@@ -414,7 +414,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasAll(values: CollectionIterator,): boolean
     public hasAll(values: Iterable<unknown>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public hasAll(...values: readonly T[]): boolean
+    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public hasAll(...values: readonly unknown[]): boolean
     public hasAll() {
         if (arguments.length == 1)
@@ -436,7 +438,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public includesAll(values: CollectionIterator,): boolean
     public includesAll(values: Iterable<unknown>,): boolean
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public includesAll(...values: readonly T[]): boolean
+    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public includesAll(...values: readonly unknown[]): boolean
     public includesAll() {
         if (arguments.length == 1)
@@ -460,7 +464,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public containsAll(values: CollectionIterator,): boolean
     public containsAll(values: Iterable<unknown>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public containsAll(...values: readonly T[]): boolean
+    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
     public containsAll(...values: readonly unknown[]): boolean
     public containsAll() {
         if (arguments.length == 1)
