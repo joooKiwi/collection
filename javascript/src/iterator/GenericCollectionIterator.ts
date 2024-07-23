@@ -388,7 +388,7 @@ export class GenericCollectionIterator<const T = unknown,
             return new GenericIteratorValue<T, COLLECTION>(this.collection, this._currentIndex = currentIndex - 1,)
         }
 
-        if (currentIndex == 1) { // At the 1st index
+        if (currentIndex == 1) { // At the 2nd index
             this._previousIndex = null
             this._nextIndex = 1
             return new GenericIteratorValue<T, COLLECTION, 0>(this.collection, this._currentIndex = 0,)
@@ -436,7 +436,7 @@ export class GenericCollectionIterator<const T = unknown,
             return this.collection.get(this._currentIndex = currentIndex - 1,)
         }
 
-        if (currentIndex == 1) { // At the 1st index
+        if (currentIndex == 1) { // At the 2nd index
             this._previousIndex = null
             this._nextIndex = 1
             return this.collection.get(this._currentIndex = 0,)
