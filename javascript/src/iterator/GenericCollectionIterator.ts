@@ -264,6 +264,12 @@ export class GenericCollectionIterator<const T = unknown,
             return GenericAfterLastIteratorValue.get
 
         if (this._previousIndex == null) { // At the start of the line
+            if (this._hasOnly2Elements) {
+                this._previousIndex = 0
+                this._nextIndex = null
+                return new GenericIteratorValue<T, COLLECTION, 1>(this.collection, this._currentIndex = 1,)
+            }
+
             this._previousIndex = 0
             this._nextIndex = 2
             return new GenericIteratorValue<T, COLLECTION, 1>(this.collection, this._currentIndex = 1,)
@@ -371,6 +377,12 @@ export class GenericCollectionIterator<const T = unknown,
             return GenericBeforeFirstIteratorValue.get
 
         if (this._nextIndex == null) { // At the end of the line
+            if (this._hasOnly2Elements) {
+                this._previousIndex = null
+                this._nextIndex = 1
+                return new GenericIteratorValue<T, COLLECTION, 0>(this.collection, this._currentIndex = 0,)
+            }
+
             this._previousIndex = currentIndex - 2
             this._nextIndex = currentIndex
             return new GenericIteratorValue<T, COLLECTION>(this.collection, this._currentIndex = currentIndex - 1,)
@@ -413,6 +425,12 @@ export class GenericCollectionIterator<const T = unknown,
             throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
 
         if (this._nextIndex == null) { // At the end of the line
+            if (this._hasOnly2Elements) {
+                this._previousIndex = null
+                this._nextIndex = 1
+                return this.collection.get(this._currentIndex = 0,)
+            }
+
             this._previousIndex = currentIndex - 2
             this._nextIndex = currentIndex
             return this.collection.get(this._currentIndex = currentIndex - 1,)
