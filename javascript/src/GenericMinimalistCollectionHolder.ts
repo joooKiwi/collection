@@ -210,7 +210,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                this.#array = Object.freeze([reference.get(0,), reference.get(2,),],)
+                this.#array = Object.freeze([reference.get(0,), reference.get(1,),],)
                 return
             }
 
