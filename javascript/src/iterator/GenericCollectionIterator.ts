@@ -25,9 +25,12 @@ export class GenericCollectionIterator<const T = unknown,
 
     readonly #collection: COLLECTION
     #size?: COLLECTION["size"]
+    #sizeMinus1?: number
+    #sizeMinus2?: number
     #isEmpty?: boolean
     #isNotEmpty?: boolean
     #hasOnly1Element?: boolean
+    #hasOnly2Elements?: boolean
 
     #previousIndex?: NullOrNumber
     #currentIndex: NullOrNumber
@@ -56,6 +59,20 @@ export class GenericCollectionIterator<const T = unknown,
     public get count(): this["size"] { return this.size }
 
     /**
+     * The {@link size} minus 1
+     *
+     * @initializedOnFirstCall
+     */
+    protected get _sizeMinus1(): number { return this.#sizeMinus1 ??= this.size - 1 }
+
+    /**
+     * The {@link size} minus 2
+     *
+     * @initializedOnFirstCall
+     */
+    protected get _sizeMinus2(): number { return this.#sizeMinus2 ??= this.size - 2 }
+
+    /**
      * Tell if the {@link collection} is empty by <code>{@link CollectionHolder.size size} == 0</code>
      *
      * @initializedOnFirstCall
@@ -75,6 +92,13 @@ export class GenericCollectionIterator<const T = unknown,
      * @initializedOnFirstCall
      */
     protected get _hasOnly1Element(): boolean { return this.#hasOnly1Element ??= this.size == 1 }
+
+    /**
+     * Tell that the {@link size} is only of <b>2</b>
+     *
+     * @initializedOnFirstCall
+     */
+    protected get _hasOnly2Elements(): boolean { return this.#hasOnly2Elements ??= this.size == 2 }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Current index methods --------------------
@@ -245,7 +269,7 @@ export class GenericCollectionIterator<const T = unknown,
             return new GenericIteratorValue<T, COLLECTION, 1>(this.collection, this._currentIndex = 1,)
         }
 
-        if (currentIndex == this.size - 2 ) { // At the end of the line (but no internal value set)
+        if (currentIndex == this._sizeMinus2) { // At the end of the line (but no internal value set)
             this._previousIndex = currentIndex
             this._nextIndex = null
             this._currentIndex = currentIndex + 1
@@ -283,17 +307,18 @@ export class GenericCollectionIterator<const T = unknown,
             throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
 
         if (this._previousIndex == null) { // At the start of the line
-            if (this.size == 2) {
+            if (this._hasOnly2Elements) {
                 this._previousIndex = 0
                 this._nextIndex = null
                 return this.collection.get(this._currentIndex = 1,)
             }
+
             this._previousIndex = 0
             this._nextIndex = 2
             return this.collection.get(this._currentIndex = 1,)
         }
 
-        if (currentIndex == this.size - 2) { // At the end of the line (but no internal value set)
+        if (currentIndex == this._sizeMinus2) { // At the end of the line (but no internal value set)
             this._previousIndex = currentIndex
             this._nextIndex = null
             return this.collection.get(this._currentIndex = currentIndex + 1,)
@@ -334,10 +359,9 @@ export class GenericCollectionIterator<const T = unknown,
                 return new GenericIteratorValue<T, COLLECTION, 0>(this.collection, this._currentIndex = 0,)
             }
 
-            const size = this.size
-            this._previousIndex = size - 2
+            this._previousIndex = this._sizeMinus2
             this._nextIndex = null
-            return new GenericIteratorValue<T, COLLECTION>(this.collection, this._currentIndex = size - 1,)
+            return new GenericIteratorValue<T, COLLECTION>(this.collection, this._currentIndex = this._sizeMinus1,)
         }
 
         if (this._hasOnly1Element)
@@ -377,10 +401,9 @@ export class GenericCollectionIterator<const T = unknown,
                 return this.collection.get(this._currentIndex = 0,)
             }
 
-            const size = this.size
-            this._previousIndex = size - 2
+            this._previousIndex = this._sizeMinus2
             this._nextIndex = null
-            return this.collection.get(this._currentIndex = size - 1,)
+            return this.collection.get(this._currentIndex = this._sizeMinus1,)
         }
 
         if (this._hasOnly1Element)
