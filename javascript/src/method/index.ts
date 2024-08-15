@@ -11,6 +11,7 @@ export {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowe
 export {filter,                               filterByCollectionHolder}                                                   from "./filter"
 export {filterIndexed,                        filterIndexedByCollectionHolder}                                            from "./filterIndexed"
 export {filterNot,                            filterNotByCollectionHolder}                                                from "./filterNot"
+export {filterNotIndexed,                     filterNotIndexedByCollectionHolder}                                         from "./filterNotIndexed"
 export {filterNotNull,                        filterNotNullByCollectionHolder}                                            from "./filterNotNull"
 export {find,                                 findByCollectionHolder}                                                     from "./find"
 export {findIndexed,                          findIndexedByCollectionHolder}                                              from "./findIndexed"
