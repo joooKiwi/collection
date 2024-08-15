@@ -1,11 +1,11 @@
 package joookiwi.collection.java.method;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -78,7 +78,7 @@ public final class FirstOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                              final @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                              final @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -104,7 +104,7 @@ public final class FirstOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                              final @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                              final @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -131,7 +131,7 @@ public final class FirstOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                              final @Nullable Function<? super T, @NotNull Boolean> predicate) {
+                                              final @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -157,7 +157,7 @@ public final class FirstOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                              final @Nullable Function<? super T, @NotNull Boolean> predicate) {
+                                              final @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -184,7 +184,7 @@ public final class FirstOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable MinimalistCollectionHolder<T> collection,
-                                              final @Nullable Supplier<@NotNull Boolean> predicate) {
+                                              final @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return null;
 
@@ -210,7 +210,7 @@ public final class FirstOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable CollectionHolder<T> collection,
-                                              final @Nullable Supplier<@NotNull Boolean> predicate) {
+                                              final @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -231,35 +231,35 @@ public final class FirstOrNull
 
 
     private static <T> @Nullable T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate,
+                                                   final @NotNull ObjIntPredicate<? super T> predicate,
                                                    final int size) {
         var index = -1;
         while (++index < size) {
             var value = collection.get(index);
-            if (predicate.apply(value, index))
+            if (predicate.test(value, index))
                 return value;
         }
         return null;
     }
 
     private static <T> @Nullable T __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull Function<? super T, @NotNull Boolean> predicate,
+                                                   final @NotNull Predicate<? super T> predicate,
                                                    final int size) {
         var index = -1;
         while (++index < size) {
             var value = collection.get(index);
-            if (predicate.apply(value))
+            if (predicate.test(value))
                 return value;
         }
         return null;
     }
 
     private static <T> @Nullable T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                   final @NotNull BooleanSupplier predicate,
                                                    final int size) {
         var index = -1;
         while (++index < size)
-            if (predicate.get())
+            if (predicate.getAsBoolean())
                 return collection.get(index);
         return null;
     }

@@ -1,18 +1,17 @@
 package joookiwi.collection.java.method;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_2;
+import static joookiwi.collection.java.CommonContracts.*;
 
 public final class All
         extends Utility {
@@ -39,7 +38,7 @@ public final class All
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                  final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return false;
         return __all(collection, predicate);
@@ -60,7 +59,7 @@ public final class All
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
-                                  final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                  final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return false;
         return __all(collection, predicate);
@@ -84,7 +83,7 @@ public final class All
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final @NotNull Function<? super T, @NotNull Boolean> predicate) {
+                                  final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
             return false;
         return __all(collection, predicate);
@@ -105,7 +104,7 @@ public final class All
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
-                                  final @NotNull Function<? super T, @NotNull Boolean> predicate) {
+                                  final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
             return false;
         return __all(collection, predicate);
@@ -129,7 +128,7 @@ public final class All
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final @NotNull Supplier<@NotNull Boolean> predicate) {
+                                  final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return false;
         return __all(collection, predicate);
@@ -150,7 +149,7 @@ public final class All
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
-                                  final @NotNull Supplier<@NotNull Boolean> predicate) {
+                                  final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return false;
         return __all(collection, predicate);
@@ -164,7 +163,7 @@ public final class All
     //#region -------------------- predicate (T, int) → boolean --------------------
 
     private static <T> boolean __all(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                     final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                     final @NotNull ObjIntPredicate<? super T> predicate) {
         final var size = collection.size();
         if (size == 0)
             return false;
@@ -172,7 +171,7 @@ public final class All
     }
 
     private static <T> boolean __all(final @NotNull CollectionHolder<? extends T> collection,
-                                     final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                     final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection.isEmpty())
             return false;
         return __with2Argument(collection, predicate, collection.size());
@@ -182,7 +181,7 @@ public final class All
     //#region -------------------- predicate (T) → boolean --------------------
 
     private static <T> boolean __all(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                     final @NotNull Function<? super T, @NotNull Boolean> predicate) {
+                                     final @NotNull Predicate<? super T> predicate) {
         final var size = collection.size();
         if (size == 0)
             return false;
@@ -190,7 +189,7 @@ public final class All
     }
 
     private static <T> boolean __all(final @NotNull CollectionHolder<? extends T> collection,
-                                     final @NotNull Function<? super T, @NotNull Boolean> predicate) {
+                                     final @NotNull Predicate<? super T> predicate) {
         if (collection.isEmpty())
             return false;
         return __with1Argument(collection, predicate, collection.size());
@@ -200,7 +199,7 @@ public final class All
     //#region -------------------- predicate () → boolean --------------------
 
     private static <T> boolean __all(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                     final @NotNull Supplier<@NotNull Boolean> predicate) {
+                                     final @NotNull BooleanSupplier predicate) {
         final var size = collection.size();
         if (size == 0)
             return false;
@@ -208,7 +207,7 @@ public final class All
     }
 
     private static <T> boolean __all(final @NotNull CollectionHolder<? extends T> collection,
-                                     final @NotNull Supplier<@NotNull Boolean> predicate) {
+                                     final @NotNull BooleanSupplier predicate) {
         if (collection.isEmpty())
             return false;
         return __with0Argument(predicate, collection.size());
@@ -219,26 +218,26 @@ public final class All
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static boolean __with0Argument(final @NotNull Supplier<@NotNull Boolean> predicate, final int size) {
+    private static boolean __with0Argument(final @NotNull BooleanSupplier predicate, final int size) {
         var index = -1;
         while (++index < size)
-            if (!predicate.get())
+            if (!predicate.getAsBoolean())
                 return false;
         return true;
     }
 
-    private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull Function<? super T, @NotNull Boolean> predicate, final int size) {
+    private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull Predicate<? super T> predicate, final int size) {
         var index = -1;
         while (++index < size)
-            if (!predicate.apply(collection.get(index)))
+            if (!predicate.test(collection.get(index)))
                 return false;
         return true;
     }
 
-    private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate, final int size) {
+    private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull ObjIntPredicate<? super T> predicate, final int size) {
         var index = -1;
         while (++index < size)
-            if (!predicate.apply(collection.get(index), index))
+            if (!predicate.test(collection.get(index), index))
                 return false;
         return true;
     }

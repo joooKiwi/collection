@@ -1,11 +1,11 @@
 package joookiwi.collection.java.method;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -72,7 +72,7 @@ public final class None
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection,
-                                   @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                   @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
@@ -94,7 +94,7 @@ public final class None
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection,
-                                   @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                   @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
@@ -119,7 +119,7 @@ public final class None
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection,
-                                   @Nullable Function<? super T, @NotNull Boolean> predicate) {
+                                   @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
@@ -141,7 +141,7 @@ public final class None
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection,
-                                   @Nullable Function<? super T, @NotNull Boolean> predicate) {
+                                   @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
@@ -166,7 +166,7 @@ public final class None
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection,
-                                   @Nullable Supplier<@NotNull Boolean> predicate) {
+                                   @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
@@ -188,7 +188,7 @@ public final class None
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection,
-                                   @Nullable Supplier<@NotNull Boolean> predicate) {
+                                   @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return true;
         if (predicate == null)
@@ -215,7 +215,7 @@ public final class None
     //#region -------------------- predicate (T, int) → boolean --------------------
 
     private static <T> boolean __none(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                      final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                      final @NotNull ObjIntPredicate<? super T> predicate) {
         final var size = collection.size();
         if (size == 0)
             return false;
@@ -223,7 +223,7 @@ public final class None
     }
 
     private static <T> boolean __none(final @NotNull CollectionHolder<? extends T> collection,
-                                      final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                      final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection.isEmpty())
             return false;
         return __with2Argument(collection, predicate, collection.size());
@@ -233,7 +233,7 @@ public final class None
     //#region -------------------- predicate (T) → boolean --------------------
 
     private static <T> boolean __none(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                      final @NotNull Function<? super T, @NotNull Boolean> predicate) {
+                                      final @NotNull Predicate<? super T> predicate) {
         final var size = collection.size();
         if (size == 0)
             return false;
@@ -241,7 +241,7 @@ public final class None
     }
 
     private static <T> boolean __none(final @NotNull CollectionHolder<? extends T> collection,
-                                      final @NotNull Function<? super T, @NotNull Boolean> predicate) {
+                                      final @NotNull Predicate<? super T> predicate) {
         if (collection.isEmpty())
             return false;
         return __with1Argument(collection, predicate, collection.size());
@@ -251,7 +251,7 @@ public final class None
     //#region -------------------- predicate () → boolean --------------------
 
     private static <T> boolean __none(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                      final @NotNull Supplier<@NotNull Boolean> predicate) {
+                                      final @NotNull BooleanSupplier predicate) {
         final var size = collection.size();
         if (size == 0)
             return false;
@@ -259,7 +259,7 @@ public final class None
     }
 
     private static <T> boolean __none(final @NotNull CollectionHolder<? extends T> collection,
-                                      final @NotNull Supplier<@NotNull Boolean> predicate) {
+                                      final @NotNull BooleanSupplier predicate) {
         if (collection.isEmpty())
             return false;
         return __with0Argument(predicate, collection.size());
@@ -270,26 +270,26 @@ public final class None
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static boolean __with0Argument(final @NotNull Supplier<@NotNull Boolean> predicate, final int size) {
+    private static boolean __with0Argument(final @NotNull BooleanSupplier predicate, final int size) {
         var index = -1;
         while (++index < size)
-            if (predicate.get())
+            if (predicate.getAsBoolean())
                 return false;
         return true;
     }
 
-    private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull Function<? super T, @NotNull Boolean> predicate, final int size) {
+    private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull Predicate<? super T> predicate, final int size) {
         var index = -1;
         while (++index < size)
-            if (predicate.apply(collection.get(index)))
+            if (predicate.test(collection.get(index)))
                 return false;
         return true;
     }
 
-    private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate, final int size) {
+    private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull ObjIntPredicate<? super T> predicate, final int size) {
         var index = -1;
         while (++index < size)
-            if (predicate.apply(collection.get(index), index))
+            if (predicate.test(collection.get(index), index))
                 return false;
         return true;
     }

@@ -1,11 +1,11 @@
 package joookiwi.collection.java.method;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -80,7 +80,7 @@ public final class LastOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                             @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -106,7 +106,7 @@ public final class LastOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection,
-                                             @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                             @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -133,7 +133,7 @@ public final class LastOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             @Nullable Function<? super T, @NotNull Boolean> predicate) {
+                                             @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -159,7 +159,7 @@ public final class LastOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection,
-                                             @Nullable Function<? super T, @NotNull Boolean> predicate) {
+                                             @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -186,7 +186,7 @@ public final class LastOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             @Nullable Supplier<@NotNull Boolean> predicate) {
+                                             @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return null;
 
@@ -212,7 +212,7 @@ public final class LastOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection,
-                                             @Nullable Supplier<@NotNull Boolean> predicate) {
+                                             @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -227,33 +227,40 @@ public final class LastOrNull
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> T __withNoPredicate(@NotNull MinimalistCollectionHolder<? extends T> collection, int size) {
+    private static <T> T __withNoPredicate(@NotNull MinimalistCollectionHolder<? extends T> collection,
+                                           int size) {
         return collection.get(size - 1);
     }
 
-    private static <T> @Nullable T __with0Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate, int size) {
+    private static <T> @Nullable T __with0Argument(@NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                   @NotNull BooleanSupplier predicate,
+                                                   int size) {
         var index = size;
         while (index-- > 0)
-            if (predicate.get())
+            if (predicate.getAsBoolean())
                 return collection.get(index);
         return null;
     }
 
-    private static <T> @Nullable T __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Function<? super T, @NotNull Boolean> predicate, int size) {
+    private static <T> @Nullable T __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                   @NotNull Predicate<? super T> predicate,
+                                                   int size) {
         var index = size;
         while (index-- > 0) {
             var value = collection.get(index);
-            if (predicate.apply(value))
+            if (predicate.test(value))
                 return value;
         }
         return null;
     }
 
-    private static <T> @Nullable T __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate, int size) {
+    private static <T> @Nullable T __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                   @NotNull ObjIntPredicate<? super T> predicate,
+                                                   int size) {
         var index = size;
         while (index-- > 0) {
             var value = collection.get(index);
-            if (predicate.apply(value, index))
+            if (predicate.test(value, index))
                 return value;
         }
         return null;

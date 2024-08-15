@@ -1,13 +1,13 @@
 package joookiwi.collection.java.method;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
+import java.util.function.IntPredicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.annotation.OnlyGivePositiveValue;
+import joookiwi.collection.java.callback.IntObjPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -42,7 +42,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
+                                                                                             final @NotNull IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         return __indexOfFirstIndexed(collection, predicate);
@@ -63,7 +63,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
+                                                                                             final @NotNull IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         return __indexOfFirstIndexed(collection, predicate);
@@ -87,7 +87,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate) {
+                                                                                             final @NotNull IntPredicate predicate) {
         if (collection == null)
             return null;
         return __indexOfFirstIndexed(collection, predicate);
@@ -108,7 +108,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate) {
+                                                                                             final @NotNull IntPredicate predicate) {
         if (collection == null)
             return null;
         return __indexOfFirstIndexed(collection, predicate);
@@ -132,7 +132,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Supplier<@NotNull Boolean> predicate) {
+                                                                                             final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return null;
         return __indexOfFirstIndexed(collection, predicate);
@@ -153,7 +153,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Supplier<@NotNull Boolean> predicate) {
+                                                                                             final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return null;
         return __indexOfFirstIndexed(collection, predicate);
@@ -180,7 +180,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntObjPredicate<? super T> predicate,
                                                                                              final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
@@ -207,7 +207,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntObjPredicate<? super T> predicate,
                                                                                              final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
@@ -237,7 +237,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntPredicate predicate,
                                                                                              final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
@@ -264,7 +264,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntPredicate predicate,
                                                                                              final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
@@ -294,7 +294,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                             final @NotNull BooleanSupplier predicate,
                                                                                              final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
@@ -321,7 +321,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                             final @NotNull BooleanSupplier predicate,
                                                                                              final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
@@ -352,7 +352,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntObjPredicate<? super T> predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex) {
         if (collection == null)
@@ -386,7 +386,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntObjPredicate<? super T> predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex) {
         if (collection == null)
@@ -423,7 +423,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntPredicate predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex) {
         if (collection == null)
@@ -457,7 +457,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntPredicate predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex) {
         if (collection == null)
@@ -494,7 +494,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                             final @NotNull BooleanSupplier predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex) {
         if (collection == null)
@@ -528,7 +528,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                             final @NotNull BooleanSupplier predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex) {
         if (collection == null)
@@ -566,7 +566,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_5)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntObjPredicate<? super T> predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex,
                                                                                              final @Nullable Integer limit) {
@@ -612,7 +612,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_5)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntObjPredicate<? super T> predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex,
                                                                                              final @Nullable Integer limit) {
@@ -661,7 +661,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_5)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntPredicate predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex,
                                                                                              final @Nullable Integer limit) {
@@ -707,7 +707,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_5)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                                                             final @NotNull IntPredicate predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex,
                                                                                              final @Nullable Integer limit) {
@@ -756,7 +756,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_5)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                             final @NotNull BooleanSupplier predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex,
                                                                                              final @Nullable Integer limit) {
@@ -802,7 +802,7 @@ public final class IndexOfFirstIndexed
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_5)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                             final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                                                             final @NotNull BooleanSupplier predicate,
                                                                                              final @Nullable Integer fromIndex,
                                                                                              final @Nullable Integer toIndex,
                                                                                              final @Nullable Integer limit) {
@@ -836,7 +836,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate (int, T) → boolean --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
+                                                               final @NotNull IntObjPredicate<? super T> predicate) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -844,7 +844,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate) {
+                                                               final @NotNull IntObjPredicate<? super T> predicate) {
         if (collection.isEmpty())
             return null;
         return __withoutALimit(collection, predicate, 0, collection.size() - 1);
@@ -854,7 +854,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate (int) → boolean --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate) {
+                                                               final @NotNull IntPredicate predicate) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -862,7 +862,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate) {
+                                                               final @NotNull IntPredicate predicate) {
         if (collection.isEmpty())
             return null;
         return __withoutALimit(predicate, 0, collection.size() - 1);
@@ -872,7 +872,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate () → boolean --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull Supplier<@NotNull Boolean> predicate) {
+                                                               final @NotNull BooleanSupplier predicate) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -880,7 +880,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull Supplier<@NotNull Boolean> predicate) {
+                                                               final @NotNull BooleanSupplier predicate) {
         if (collection.isEmpty())
             return null;
         return __withoutALimit(predicate, 0, collection.size() - 1);
@@ -890,7 +890,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate (int, T) → boolean, from --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                               final @NotNull IntObjPredicate<? super T> predicate,
                                                                final int fromIndex) {
         final var size = collection.size();
         if (size == 0)
@@ -899,7 +899,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                               final @NotNull IntObjPredicate<? super T> predicate,
                                                                final int fromIndex) {
         if (collection.isEmpty())
             return null;
@@ -912,7 +912,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate (int) → boolean,    from --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                               final @NotNull IntPredicate predicate,
                                                                final int fromIndex) {
         final var size = collection.size();
         if (size == 0)
@@ -921,7 +921,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                               final @NotNull IntPredicate predicate,
                                                                final int fromIndex) {
         if (collection.isEmpty())
             return null;
@@ -934,7 +934,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate () → boolean,       from --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                               final @NotNull BooleanSupplier predicate,
                                                                final int fromIndex) {
         final var size = collection.size();
         if (size == 0)
@@ -943,7 +943,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                               final @NotNull BooleanSupplier predicate,
                                                                final int fromIndex) {
         if (collection.isEmpty())
             return null;
@@ -956,7 +956,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate (int, T) → boolean, from, to --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                               final @NotNull IntObjPredicate<? super T> predicate,
                                                                final int fromIndex,
                                                                final int toIndex) {
         //#region -------------------- Early returns --------------------
@@ -981,7 +981,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                               final @NotNull IntObjPredicate<? super T> predicate,
                                                                final int fromIndex,
                                                                final int toIndex) {
         //#region -------------------- Early returns --------------------
@@ -1009,7 +1009,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate (int) → boolean,    from, to --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                               final @NotNull IntPredicate predicate,
                                                                final int fromIndex,
                                                                final int toIndex) {
         //#region -------------------- Early returns --------------------
@@ -1034,7 +1034,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                               final @NotNull IntPredicate predicate,
                                                                final int fromIndex,
                                                                final int toIndex) {
         //#region -------------------- Early returns --------------------
@@ -1062,7 +1062,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate () → boolean,       from, to --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                               final @NotNull BooleanSupplier predicate,
                                                                final int fromIndex,
                                                                final int toIndex) {
         //#region -------------------- Early returns --------------------
@@ -1087,7 +1087,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                               final @NotNull BooleanSupplier predicate,
                                                                final int fromIndex,
                                                                final int toIndex) {
         //#region -------------------- Early returns --------------------
@@ -1115,7 +1115,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate (int, T) → boolean, from, to, limit --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                               final @NotNull IntObjPredicate<? super T> predicate,
                                                                final int fromIndex,
                                                                final int toIndex,
                                                                final int limit) {
@@ -1149,7 +1149,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                               final @NotNull IntObjPredicate<? super T> predicate,
                                                                final int fromIndex,
                                                                final int toIndex,
                                                                final int limit) {
@@ -1186,7 +1186,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate (int) → boolean,    from, to, limit --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                               final @NotNull IntPredicate predicate,
                                                                final int fromIndex,
                                                                final int toIndex,
                                                                final int limit) {
@@ -1220,7 +1220,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+                                                               final @NotNull IntPredicate predicate,
                                                                final int fromIndex,
                                                                final int toIndex,
                                                                final int limit) {
@@ -1257,7 +1257,7 @@ public final class IndexOfFirstIndexed
     //#region -------------------- predicate () → boolean,       from, to, limit --------------------
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                               final @NotNull BooleanSupplier predicate,
                                                                final int fromIndex,
                                                                final int toIndex,
                                                                final int limit) {
@@ -1291,7 +1291,7 @@ public final class IndexOfFirstIndexed
     }
 
     private static <T> @Nullable Integer __indexOfFirstIndexed(final @NotNull CollectionHolder<? extends T> collection,
-                                                               final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                               final @NotNull BooleanSupplier predicate,
                                                                final int fromIndex,
                                                                final int toIndex,
                                                                final int limit) {
@@ -1329,39 +1329,39 @@ public final class IndexOfFirstIndexed
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static @Nullable Integer __withoutALimit(final @NotNull Supplier<@NotNull Boolean> predicate,
+    private static @Nullable Integer __withoutALimit(final @NotNull BooleanSupplier predicate,
                                                      final int startingIndex,
                                                      final int endingIndex) {
         var index = startingIndex;
         while (++index <= endingIndex)
-            if (predicate.get())
+            if (predicate.getAsBoolean())
                 return index;
         return null;
     }
 
-    private static @Nullable Integer __withoutALimit(final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+    private static @Nullable Integer __withoutALimit(final @NotNull IntPredicate predicate,
                                                      final int startingIndex,
                                                      final int endingIndex) {
         var index = startingIndex;
         while (++index <= endingIndex)
-            if (predicate.apply(index))
+            if (predicate.test(index))
                 return index;
         return null;
     }
 
     private static <T> @Nullable Integer __withoutALimit(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                         final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                         final @NotNull IntObjPredicate<? super T> predicate,
                                                          final int startingIndex,
                                                          final int endingIndex) {
         var index = startingIndex;
         while (++index <= endingIndex)
-            if (predicate.apply(index, collection.get(index)))
+            if (predicate.test(index, collection.get(index)))
                 return index;
         return null;
     }
 
 
-    private static @Nullable Integer __withALimit(final @NotNull Supplier<@NotNull Boolean> predicate,
+    private static @Nullable Integer __withALimit(final @NotNull BooleanSupplier predicate,
                                                   final int startingIndex,
                                                   final int endingIndex,
                                                   final int maximumIndex) {
@@ -1369,12 +1369,12 @@ public final class IndexOfFirstIndexed
         while (++index <= endingIndex)
             if (index >= maximumIndex)
                 return null;
-            else if (predicate.get())
+            else if (predicate.getAsBoolean())
                 return index;
         return null;
     }
 
-    private static @Nullable Integer __withALimit(final @NotNull Function<@NotNull Integer, @NotNull Boolean> predicate,
+    private static @Nullable Integer __withALimit(final @NotNull IntPredicate predicate,
                                                   final int startingIndex,
                                                   final int endingIndex,
                                                   final int maximumIndex) {
@@ -1382,13 +1382,13 @@ public final class IndexOfFirstIndexed
         while (++index <= endingIndex)
             if (index >= maximumIndex)
                 return null;
-            else if (predicate.apply(index))
+            else if (predicate.test(index))
                 return index;
         return null;
     }
 
     private static <T> @Nullable Integer __withALimit(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                      final @NotNull BiFunction<@NotNull Integer, T, @NotNull Boolean> predicate,
+                                                      final @NotNull IntObjPredicate<? super T> predicate,
                                                       final int startingIndex,
                                                       final int endingIndex,
                                                       final int maximumIndex) {
@@ -1396,7 +1396,7 @@ public final class IndexOfFirstIndexed
         while (++index <= endingIndex)
             if (index >= maximumIndex)
                 return null;
-            else if (predicate.apply(index, collection.get(index)))
+            else if (predicate.test(index, collection.get(index)))
                 return index;
         return null;
     }
