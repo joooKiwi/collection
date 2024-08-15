@@ -17,7 +17,7 @@ public final class None
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private None() { throw new ImpossibleConstructionException("The utility class \"None\" cannot be constructed.", None.class); }
+    private None() { throw new ImpossibleConstructionException("The utility class “None” cannot be constructed.", None.class); }
 
     //#region -------------------- Facade methods --------------------
 

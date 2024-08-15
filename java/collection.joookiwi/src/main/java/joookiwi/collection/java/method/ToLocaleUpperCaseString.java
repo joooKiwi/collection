@@ -17,7 +17,7 @@ public final class ToLocaleUpperCaseString
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private ToLocaleUpperCaseString() { throw new ImpossibleConstructionException("The utility class \"ToToLocaleUpperCaseStringSet\" cannot be constructed.", ToLocaleUpperCaseString.class); }
+    private ToLocaleUpperCaseString() { throw new ImpossibleConstructionException("The utility class “ToLocaleUpperCaseString” cannot be constructed.", ToLocaleUpperCaseString.class); }
 
     //#region -------------------- Facade method --------------------
 

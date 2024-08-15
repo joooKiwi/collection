@@ -16,7 +16,7 @@ public final class ToUpperCaseString
         extends Utility {
 
     @Contract(CommonContracts.ALWAYS_FAIL_0)
-    private ToUpperCaseString() { throw new ImpossibleConstructionException("The utility class \"ToUpperCaseString\" cannot be constructed.", ToUpperCaseString.class); }
+    private ToUpperCaseString() { throw new ImpossibleConstructionException("The utility class “ToUpperCaseString” cannot be constructed.", ToUpperCaseString.class); }
 
     //#region -------------------- Facade method --------------------
 

@@ -19,7 +19,7 @@ public final class IndexOf
         extends UtilityWithIndex {
 
     @Contract(ALWAYS_FAIL_0)
-    private IndexOf() { throw new ImpossibleConstructionException("The utility class \"IndexOf\" cannot be constructed.", IndexOf.class); }
+    private IndexOf() { throw new ImpossibleConstructionException("The utility class “IndexOf” cannot be constructed.", IndexOf.class); }
 
     //#region -------------------- Facade methods --------------------
 

@@ -21,7 +21,7 @@ public final class IndexOfLast
         extends UtilityWithIndex {
 
     @Contract(ALWAYS_FAIL_0)
-    private IndexOfLast() { throw new ImpossibleConstructionException("The utility class \"IndexOfLast\" cannot be constructed.", IndexOfLast.class); }
+    private IndexOfLast() { throw new ImpossibleConstructionException("The utility class “IndexOfLast” cannot be constructed.", IndexOfLast.class); }
 
     //#region -------------------- Facade methods --------------------
 

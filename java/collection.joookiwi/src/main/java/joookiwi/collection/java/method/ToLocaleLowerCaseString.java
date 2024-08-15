@@ -17,7 +17,7 @@ public final class ToLocaleLowerCaseString
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private ToLocaleLowerCaseString() { throw new ImpossibleConstructionException("The utility class \"ToToLocaleLowerCaseStringSet\" cannot be constructed.", ToLocaleLowerCaseString.class); }
+    private ToLocaleLowerCaseString() { throw new ImpossibleConstructionException("The utility class “ToLocaleLowerCaseString” cannot be constructed.", ToLocaleLowerCaseString.class); }
 
     //#region -------------------- Facade method --------------------
 

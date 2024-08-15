@@ -17,7 +17,7 @@ public final class ToLocaleString
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private ToLocaleString() { throw new ImpossibleConstructionException("The utility class \"ToToLocaleStringSet\" cannot be constructed.", ToLocaleString.class); }
+    private ToLocaleString() { throw new ImpossibleConstructionException("The utility class “ToLocaleString” cannot be constructed.", ToLocaleString.class); }
 
     //#region -------------------- Facade method --------------------
 

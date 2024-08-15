@@ -17,7 +17,7 @@ public final class FirstOrNull
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private FirstOrNull() { throw new ImpossibleConstructionException("The utility class \"FirstOrNull\" cannot be constructed.", FirstOrNull.class); }
+    private FirstOrNull() { throw new ImpossibleConstructionException("The utility class “FirstOrNull” cannot be constructed.", FirstOrNull.class); }
 
     //#region -------------------- Facade methods --------------------
 

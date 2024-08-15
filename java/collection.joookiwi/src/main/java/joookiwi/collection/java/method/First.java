@@ -19,7 +19,7 @@ public final class First
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private First() { throw new ImpossibleConstructionException("The utility class \"First\" cannot be constructed.", First.class); }
+    private First() { throw new ImpossibleConstructionException("The utility class “First” cannot be constructed.", First.class); }
 
     //#region -------------------- Facade methods --------------------
 

@@ -17,7 +17,7 @@ public final class Any
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private Any() { throw new ImpossibleConstructionException("The utility class \"Any\" cannot be constructed.", Any.class); }
+    private Any() { throw new ImpossibleConstructionException("The utility class “Any” cannot be constructed.", Any.class); }
 
     //#region -------------------- Facade methods --------------------
 

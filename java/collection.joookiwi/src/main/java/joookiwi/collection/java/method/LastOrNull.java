@@ -17,7 +17,7 @@ public final class LastOrNull
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private LastOrNull() { throw new ImpossibleConstructionException("The utility class \"LastOrNull\" cannot be constructed.", LastOrNull.class); }
+    private LastOrNull() { throw new ImpossibleConstructionException("The utility class “LastOrNull” cannot be constructed.", LastOrNull.class); }
 
     //#region -------------------- Facade methods --------------------
 

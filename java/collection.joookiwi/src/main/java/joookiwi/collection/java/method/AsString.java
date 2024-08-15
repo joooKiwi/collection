@@ -12,7 +12,7 @@ public final class AsString
         extends Utility {
 
     @Contract(CommonContracts.ALWAYS_FAIL_0)
-    private AsString() { throw new ImpossibleConstructionException("The utility class \"AsString\" cannot be constructed.", AsString.class); }
+    private AsString() { throw new ImpossibleConstructionException("The utility class “AsString” cannot be constructed.", AsString.class); }
 
     //#region -------------------- Facade methods --------------------
 

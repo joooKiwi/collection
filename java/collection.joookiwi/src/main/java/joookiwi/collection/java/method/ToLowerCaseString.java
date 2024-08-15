@@ -16,7 +16,7 @@ public final class ToLowerCaseString
         extends Utility {
 
     @Contract(CommonContracts.ALWAYS_FAIL_0)
-    private ToLowerCaseString() { throw new ImpossibleConstructionException("The utility class \"ToToLowerCaseString\" cannot be constructed.", ToLowerCaseString.class); }
+    private ToLowerCaseString() { throw new ImpossibleConstructionException("The utility class “ToLowerCaseString” cannot be constructed.", ToLowerCaseString.class); }
 
     //#region -------------------- Facade method --------------------
 
