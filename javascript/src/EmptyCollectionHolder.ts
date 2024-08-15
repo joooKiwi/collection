@@ -263,10 +263,7 @@ export class EmptyCollectionHolder
     public hasAll(values: CollectionIterator,): boolean
     public hasAll(values: Iterable<unknown>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasAll(...values: readonly never[]): boolean
-    public hasAll(...values: readonly unknown[]): boolean
-    public hasAll() {
-        const values: PossibleIterableArraySetOrCollectionHolder<unknown> = arguments.length == 1 ? arguments[0] : arguments // TODO Change once the version 1.10 is in progress
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         if (values instanceof Array)
             return values.length == 0
         if (values instanceof Set)
@@ -303,10 +300,7 @@ export class EmptyCollectionHolder
     public includesAll(values: CollectionIterator,): boolean
     public includesAll(values: Iterable<unknown>,): boolean
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesAll(...values: readonly never[]): boolean
-    public includesAll(...values: readonly unknown[]): boolean
-    public includesAll() {
-        const values: PossibleIterableArraySetOrCollectionHolder<unknown> = arguments.length == 1 ? arguments[0] : arguments // TODO Change once the version 1.10 is in progress
+    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         if (values instanceof Array)
             return values.length == 0
         if (values instanceof Set)
@@ -343,10 +337,7 @@ export class EmptyCollectionHolder
     public containsAll(values: CollectionIterator,): boolean
     public containsAll(values: Iterable<unknown>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsAll(...values: readonly never[]): boolean
-    public containsAll(...values: readonly unknown[]): boolean
-    public containsAll() {
-        const values: PossibleIterableArraySetOrCollectionHolder<unknown> = arguments.length == 1 ? arguments[0] : arguments // TODO Change once the version 1.10 is in progress
+    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         if (values instanceof Array)
             return values.length == 0
         if (values instanceof Set)
@@ -404,9 +395,6 @@ export class EmptyCollectionHolder
 
     //#endregion -------------------- Filter not methods --------------------
     //#region -------------------- Filter not indexed methods --------------------
-
-    public filterIndexedNot<const S, >(..._: readonly unknown[]): this
-    public filterIndexedNot() { return this }
 
     public filterNotIndexed<const S, >(..._: readonly unknown[]): this
     public filterNotIndexed() { return this }

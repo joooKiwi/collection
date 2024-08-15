@@ -7,10 +7,10 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
 
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
-import type {CollectionHolder}                                                                                                                                                                                                                                                                                                                                            from "./CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                                                  from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                                                                                          from "./iterator/CollectionIterator"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                                                              from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                    from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "./iterator/CollectionIterator"
 
 import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
 import {allByCollectionHolder}                     from "./method/all"
@@ -287,39 +287,21 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Has methods --------------------
 
     public has(value: T,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public has(...values: readonly T[]): boolean
     public has(value: unknown,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public has(...values: readonly unknown[]): boolean
-    public has() {
-        if (arguments.length == 1)
-            return hasByCollectionHolder(this, arguments[0],)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public has(value: unknown,) {
+        return hasByCollectionHolder(this, value,)
     }
 
     public includes(value: T,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public includes(...values: readonly T[]): boolean
     public includes(value: unknown,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public includes(...values: readonly unknown[]): boolean
-    public includes() {
-        if (arguments.length == 1)
-            return this.has(arguments[0],)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public includes(value: unknown,) {
+        return this.has(value,)
     }
 
     public contains(value: T,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public contains(...values: readonly T[]): boolean
     public contains(value: unknown,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public contains(...values: readonly unknown[]): boolean
-    public contains() {
-        if (arguments.length == 1)
-            return this.has(arguments[0] as unknown,)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public contains(value: unknown,) {
+        return this.has(value,)
     }
 
     //#endregion -------------------- Has methods --------------------
@@ -339,14 +321,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasOne(values: CollectionIterator,): boolean
     public hasOne(values: Iterable<unknown>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public hasOne(...values: readonly T[]): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public hasOne(...values: readonly unknown[]): boolean
-    public hasOne() {
-        if (arguments.length == 1)
-            return hasOneByCollectionHolder(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return hasOneByCollectionHolder(this, values,)
     }
 
     public includesOne(values: readonly T[],): boolean
@@ -363,14 +339,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public includesOne(values: CollectionIterator,): boolean
     public includesOne(values: Iterable<unknown>,): boolean
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public includesOne(...values: readonly T[]): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public includesOne(...values: readonly unknown[]): boolean
-    public includesOne() {
-        if (arguments.length == 1)
-            return this.hasOne(arguments[0],)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return this.hasOne(values,)
     }
 
     public containsOne(values: readonly T[],): boolean
@@ -379,22 +349,16 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public containsOne(values: MinimalistCollectionHolder<T>,): boolean
     public containsOne(values: CollectionIterator<T>,): boolean
     public containsOne(values: Iterable<T>,): boolean
-    public containsOne(values: PossibleIterableOrCollection<T>,): boolean
+    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
     public containsOne(values: readonly unknown[],): boolean
     public containsOne(values: ReadonlySet<unknown>,): boolean
     public containsOne(values: CollectionHolder,): boolean
     public containsOne(values: MinimalistCollectionHolder,): boolean
     public containsOne(values: CollectionIterator,): boolean
     public containsOne(values: Iterable<unknown>,): boolean
-    public containsOne(values: PossibleIterableOrCollection<unknown>,): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public containsOne(...values: readonly T[]): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public containsOne(...values: readonly unknown[]): boolean
-    public containsOne() {
-        if (arguments.length == 1)
-            return this.hasOne(arguments[0],)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return this.hasOne(values,)
     }
 
     //#endregion -------------------- Has one methods --------------------
@@ -414,14 +378,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasAll(values: CollectionIterator,): boolean
     public hasAll(values: Iterable<unknown>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public hasAll(...values: readonly T[]): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public hasAll(...values: readonly unknown[]): boolean
-    public hasAll() {
-        if (arguments.length == 1)
-            return hasAllByCollectionHolder(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-        return hasAllByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return hasAllByCollectionHolder(this, values,)
     }
 
     public includesAll(values: readonly T[],): boolean
@@ -438,14 +396,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public includesAll(values: CollectionIterator,): boolean
     public includesAll(values: Iterable<unknown>,): boolean
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public includesAll(...values: readonly T[]): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public includesAll(...values: readonly unknown[]): boolean
-    public includesAll() {
-        if (arguments.length == 1)
-            return this.hasAll(arguments[0],)
-        return hasAllByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return this.hasAll(values,)
     }
 
     public containsAll(values: readonly T[],): boolean
@@ -464,14 +416,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public containsAll(values: CollectionIterator,): boolean
     public containsAll(values: Iterable<unknown>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public containsAll(...values: readonly T[]): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public containsAll(...values: readonly unknown[]): boolean
-    public containsAll() {
-        if (arguments.length == 1)
-            return this.hasAll(arguments[0],)
-        return hasAllByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return this.hasAll(values,)
     }
 
     //#endregion -------------------- Has all methods --------------------
@@ -516,12 +462,6 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#endregion -------------------- Filter not methods --------------------
     //#region -------------------- Filter not indexed methods --------------------
-
-    public filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexedNot(predicate: ReverseBooleanCallback<T>,) {
-        return this.filterNotIndexed(predicate,)
-    }
 
     public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>

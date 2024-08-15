@@ -312,27 +312,19 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#region -------------------- Has methods --------------------
 
     public has(value: T,): boolean
-    public has(...values: readonly T[]): boolean
     public has(value: unknown,): boolean
-    public has(...values: readonly unknown[]): boolean
-    public has(): boolean {
-        if (arguments.length == 1)
-            return has(this, arguments[0] as unknown,)
-        throw new Error("The method \"has\" was not expected to be called with a variadic parameter.",) // TODO Remove once the version 1.10 is in progress
+    public has(value: unknown,): boolean {
+        return has(this, value,)
     }
 
     public includes(value: T,): boolean
-    public includes(...values: readonly T[]): boolean
     public includes(value: unknown,): boolean
-    public includes(...values: readonly unknown[]): boolean
     public includes(): never {
         throw new Error("The method \"includes\" was not expected to be called.",)
     }
 
     public contains(value: T,): boolean
-    public contains(...values: readonly T[]): boolean
     public contains(value: unknown,): boolean
-    public contains(...values: readonly unknown[]): boolean
     public contains(): never {
         throw new Error("The method \"contains\" was not expected to be called.",)
     }
@@ -354,12 +346,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public hasOne(values: CollectionIterator,): boolean
     public hasOne(values: Iterable<unknown>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasOne(...values: readonly T[]): boolean
-    public hasOne(...values: readonly unknown[]): boolean
-    public hasOne(): boolean {
-        if (arguments.length == 1)
-            return hasOne(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-        throw new Error("The method \"hasAll\" was not expected to be called with a variadic parameter.",) // TODO Remove once the version 1.10 is in progress
+    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
+        return hasOne(this, values,)
     }
 
     public includesOne(values: readonly T[],): boolean
@@ -376,8 +364,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public includesOne(values: CollectionIterator,): boolean
     public includesOne(values: Iterable<unknown>,): boolean
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesOne(...values: readonly T[]): boolean
-    public includesOne(...values: readonly unknown[]): boolean
     public includesOne(): never {
         throw new Error("The method \"includesOne\" was not expected to be called.",)
     }
@@ -396,8 +382,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public containsOne(values: CollectionIterator,): boolean
     public containsOne(values: Iterable<unknown>,): boolean
     public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsOne(...values: readonly T[]): boolean
-    public containsOne(...values: readonly unknown[]): boolean
     public containsOne(): never {
         throw new Error("The method \"containsOne\" was not expected to be called.",)
     }
@@ -419,12 +403,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public hasAll(values: CollectionIterator,): boolean
     public hasAll(values: Iterable<unknown>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasAll(...values: readonly T[]): boolean
-    public hasAll(...values: readonly unknown[]): boolean
-    public hasAll(): boolean {
-        if (arguments.length == 1)
-            return hasAll(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-        throw new Error("The method \"hasAll\" was not expected to be called with a variadic parameter.",) // TODO Remove once the version 1.10 is in progress
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
+        return hasAll(this, values,)
     }
 
     public includesAll(values: readonly T[],): boolean
@@ -441,8 +421,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public includesAll(values: CollectionIterator,): boolean
     public includesAll(values: Iterable<unknown>,): boolean
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesAll(...values: readonly T[]): boolean
-    public includesAll(...values: readonly unknown[]): boolean
     public includesAll(): never {
         throw new Error("The method \"includesAll\" was not expected to be called.",)
     }
@@ -461,8 +439,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public containsAll(values: CollectionIterator,): boolean
     public containsAll(values: Iterable<unknown>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsAll(...values: readonly T[]): boolean
-    public containsAll(...values: readonly unknown[]): boolean
     public containsAll(): never {
         throw new Error("The \"containsAll\" was not expected to be called.",)
     }
@@ -510,12 +486,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
     //#endregion -------------------- Filter not methods --------------------
     //#region -------------------- Filter not indexed methods --------------------
-
-    public filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexedNot(): never {
-        throw new Error("The method \"filterIndexedNot\" was not expected to be called.",)
-    }
 
     public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>

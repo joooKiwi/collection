@@ -197,33 +197,7 @@ export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @facadeFunction
  */
 export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-/**
- * Tell that the {@link values} are in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @return {boolean} Every {@link values} are in the {@link collection}
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- */
-export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, ...values: readonly T[]): boolean
-/**
- * Tell that the {@link values} are in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @return {boolean} Every {@link values} are in the {@link collection}
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- */
-export function hasAll(collection: Nullable<MinimalistCollectionHolder>, ...values: readonly unknown[]): boolean
-export function hasAll(collection: Nullable<MinimalistCollectionHolder>,): boolean {
-    if (arguments.length != 2) { // TODO Remove once the version 1.10 is in progress
-        const [, ...variadicArguments] = arguments as unknown as readonly [Nullable<MinimalistCollectionHolder>, ...readonly unknown[],]
-        return hasAllWithArray(collection, variadicArguments,)
-    }
-
-    const values = arguments[1] as PossibleIterableArraySetOrCollectionHolder<unknown>
+export function hasAll(collection: Nullable<MinimalistCollectionHolder>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
     if (values instanceof Array)
         return hasAllWithArray(collection, values,)
     if (values instanceof Set)
@@ -416,33 +390,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @facadeFunction
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-/**
- * Tell that the {@link values} are in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @return {boolean} Every {@link values} are in the {@link collection}
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- */
-export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, ...values: readonly T[]): boolean
-/**
- * Tell that the {@link values} are in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @return {boolean} Every {@link values} are in the {@link collection}
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- */
-export function hasAllByCollectionHolder(collection: Nullable<CollectionHolder>, ...values: readonly unknown[]): boolean
-export function hasAllByCollectionHolder(collection: Nullable<CollectionHolder>,): boolean {
-    if (arguments.length != 2) { // TODO Remove once the version 1.10 is in progress
-        const [, ...variadicArguments] = arguments as unknown as readonly [Nullable<CollectionHolder>, ...readonly unknown[],]
-        return hasAllWithArrayByCollectionHolder(collection, variadicArguments,)
-    }
-
-    const values = arguments[1] as PossibleIterableArraySetOrCollectionHolder<unknown>
+export function hasAllByCollectionHolder(collection: Nullable<CollectionHolder>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
     if (values instanceof Array)
         return hasAllWithArrayByCollectionHolder(collection, values,)
     if (values instanceof Set)

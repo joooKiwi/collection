@@ -38,7 +38,7 @@ import {indexOfFirstByCollectionHolder}            from "../../src/method/indexO
 import {indexOfFirstIndexedByCollectionHolder}     from "../../src/method/indexOfFirstIndexed"
 import {indexOfLastByCollectionHolder}             from "../../src/method/indexOfLast"
 import {indexOfLastIndexedByCollectionHolder}      from "../../src/method/indexOfLastIndexed"
-import {joinByCollectionHolder}                    from "../../src/method/join"
+import {joinToStringByCollectionHolder}            from "../../src/method/joinToString"
 import {lastByCollectionHolder}                    from "../../src/method/last"
 import {lastIndexOfByCollectionHolder}             from "../../src/method/lastIndexOf"
 import {lastOrNullByCollectionHolder}              from "../../src/method/lastOrNull"
@@ -283,27 +283,19 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     //#region -------------------- Has methods --------------------
 
     public override has(value: T,): boolean
-    public override has(...values: readonly T[]): boolean
     public override has(value: unknown,): boolean
-    public override has(...values: readonly unknown[]): boolean
-    public override has(): boolean {
-        if (arguments.length == 1)
-            return hasByCollectionHolder(this, arguments[0] as unknown,)
-        throw new Error("The method \"has\" was not expected to be called with a variadic parameter.",) // TODO Remove once the version 1.10 is in progress
+    public override has(value: unknown,): boolean {
+        return hasByCollectionHolder(this, value,)
     }
 
     public override includes(value: T,): boolean
-    public override includes(...values: readonly T[]): boolean
     public override includes(value: unknown,): boolean
-    public override includes(...values: readonly unknown[]): boolean
     public override includes(): never {
         throw new Error("The method \"includes\" was not expected to be called.",)
     }
 
     public override contains(value: T,): boolean
-    public override contains(...values: readonly T[]): boolean
     public override contains(value: unknown,): boolean
-    public override contains(...values: readonly unknown[]): boolean
     public override contains(): never {
         throw new Error("The method \"contains\" was not expected to be called.",)
     }
@@ -325,12 +317,8 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override hasOne(values: CollectionIterator,): boolean
     public override hasOne(values: Iterable<unknown>,): boolean
     public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override hasOne(...values: readonly T[]): boolean
-    public override hasOne(...values: readonly unknown[]): boolean
-    public override hasOne(): boolean {
-        if (arguments.length == 1)
-            return hasOneByCollectionHolder(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-        throw new Error("The method \"hasOne\" was not expected to be called with a variadic parameter.",) // TODO Remove once the version 1.10 is in progress
+    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
+        return hasOneByCollectionHolder(this, values,)
     }
 
     public override includesOne(values: readonly T[],): boolean
@@ -347,8 +335,6 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override includesOne(values: CollectionIterator,): boolean
     public override includesOne(values: Iterable<unknown>,): boolean
     public override includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override includesOne(...values: readonly T[]): boolean
-    public override includesOne(...values: readonly unknown[]): boolean
     public override includesOne(): never {
         throw new Error("The method \"includesOne\" was not expected to be called.",)
     }
@@ -367,8 +353,6 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override containsOne(values: CollectionIterator,): boolean
     public override containsOne(values: Iterable<unknown>,): boolean
     public override containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override containsOne(...values: readonly T[]): boolean
-    public override containsOne(...values: readonly unknown[]): boolean
     public override containsOne(): never {
         throw new Error("The method \"containsOne\" was not expected to be called.",)
     }
@@ -447,7 +431,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     }
 
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
-        return joinByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
+        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
     }
 
     //#endregion -------------------- Join to string methods --------------------
@@ -480,12 +464,6 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
 
     //#endregion -------------------- Filter not methods --------------------
     //#region -------------------- Filter not indexed methods --------------------
-
-    public override filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override filterIndexedNot(): never {
-        throw new Error("The method \"filterIndexedNot\" was not expected to be called.",)
-    }
 
     public override filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>

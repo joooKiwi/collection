@@ -133,22 +133,16 @@ export class CollectionHolder_ByStructure<const out T, >
     //#region -------------------- Loop methods (has) --------------------
 
     public has(value: T,): boolean
-    public has(...values: readonly T[]): boolean
     public has(value: unknown,): boolean
-    public has(...values: readonly unknown[]): boolean
-    public has() { return this.#internalReference.has(...arguments,) }
+    public has(value: unknown,) { return this.#internalReference.has(value,) }
 
     public includes(value: T,): boolean
-    public includes(...values: readonly T[]): boolean
     public includes(value: unknown,): boolean
-    public includes(...values: readonly unknown[]): boolean
-    public includes() { return this.#internalReference.includes(...arguments,) }
+    public includes(value: unknown,) { return this.#internalReference.includes(value,) }
 
     public contains(value: T,): boolean
-    public contains(...values: readonly T[]): boolean
     public contains(value: unknown,): boolean
-    public contains(...values: readonly unknown[]): boolean
-    public contains() { return this.#internalReference.contains(...arguments,) }
+    public contains(value: unknown,) { return this.#internalReference.contains(value,) }
 
 
     public hasOne(values: readonly T[],): boolean
@@ -165,9 +159,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public hasOne(values: CollectionIterator,): boolean
     public hasOne(values: Iterable<unknown>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasOne(...values: readonly T[]): boolean
-    public hasOne(...values: readonly unknown[]): boolean
-    public hasOne() { return this.#internalReference.hasOne(...arguments,) }
+    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.hasOne(values,) }
 
     public includesOne(values: readonly T[],): boolean
     public includesOne(values: ReadonlySet<T>,): boolean
@@ -183,9 +175,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public includesOne(values: CollectionIterator,): boolean
     public includesOne(values: Iterable<unknown>,): boolean
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesOne(...values: readonly T[]): boolean
-    public includesOne(...values: readonly unknown[]): boolean
-    public includesOne() { return this.#internalReference.includesOne(...arguments,) }
+    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.includesOne(values,) }
 
     public containsOne(values: readonly T[],): boolean
     public containsOne(values: ReadonlySet<T>,): boolean
@@ -201,9 +191,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public containsOne(values: CollectionIterator,): boolean
     public containsOne(values: Iterable<unknown>,): boolean
     public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsOne(...values: readonly T[]): boolean
-    public containsOne(...values: readonly unknown[]): boolean
-    public containsOne() { return this.#internalReference.containsOne(...arguments,) }
+    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.containsOne(values,) }
 
 
     public hasAll(values: readonly T[],): boolean
@@ -220,9 +208,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public hasAll(values: CollectionIterator,): boolean
     public hasAll(values: Iterable<unknown>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasAll(...values: readonly T[]): boolean
-    public hasAll(...values: readonly unknown[]): boolean
-    public hasAll() { return this.#internalReference.hasAll(...arguments,) }
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.hasAll(values,) }
 
     public includesAll(values: readonly T[],): boolean
     public includesAll(values: ReadonlySet<T>,): boolean
@@ -238,9 +224,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public includesAll(values: CollectionIterator,): boolean
     public includesAll(values: Iterable<unknown>,): boolean
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesAll(...values: readonly T[]): boolean
-    public includesAll(...values: readonly unknown[]): boolean
-    public includesAll() { return this.#internalReference.includesAll(...arguments,) }
+    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.includesAll(values,) }
 
     public containsAll(values: readonly T[],): boolean
     public containsAll(values: ReadonlySet<T>,): boolean
@@ -256,9 +240,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public containsAll(values: CollectionIterator,): boolean
     public containsAll(values: Iterable<unknown>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsAll(...values: readonly T[]): boolean
-    public containsAll(...values: readonly unknown[]): boolean
-    public containsAll() { return this.#internalReference.containsAll(...arguments,) }
+    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.containsAll(values,) }
 
     //#endregion -------------------- Loop methods (has) --------------------
     //#region -------------------- Loop methods (join to string) --------------------
@@ -281,10 +263,6 @@ export class CollectionHolder_ByStructure<const out T, >
     public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public filterNot(predicate: BooleanCallback<T>,) { return this.#internalReference.filterNot(predicate,) }
-
-    public filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexedNot(predicate: ReverseBooleanCallback<T>,) { return this.#internalReference.filterIndexedNot(predicate,) }
 
     public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>

@@ -5,6 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/CollectionHolder.types"
+
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
 
 export class GenericCollectionHolder_HasAllAlias
@@ -14,9 +16,9 @@ export class GenericCollectionHolder_HasAllAlias
 
     public constructor() { super([],) }
 
-    public override hasAll(...values: unknown[]): boolean {
+    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
         this.amountOfCall++
-        return super.hasAll(...values,)
+        return super.hasAll(values,)
     }
 
 }

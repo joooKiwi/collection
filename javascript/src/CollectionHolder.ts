@@ -763,81 +763,6 @@ export interface CollectionHolder<out T = unknown, >
     contains(value: unknown,): boolean
 
     //#endregion -------------------- Has methods (aliases) --------------------
-    //#region -------------------- Has methods (deprecated) --------------------
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see ReadonlyArray.includes
-     * @see ReadonlySet.has
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
-     * @deprecated Replace with non-variadic arguments or hasOneOf. It will be removed in version 1.10
-     */
-    has(...values: readonly T[]): boolean
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @see includesOne
-     * @see containsOne
-     * @see ReadonlyArray.includes
-     * @see ReadonlySet.has
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
-     * @deprecated Replace with non-variadic arguments or hasOneOf. It will be removed in version 1.10
-     */
-    has(...values: readonly unknown[]): boolean
-
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias has
-     * @deprecated Replace with non-variadic arguments or hasOneOf. It will be removed in version 1.10
-     */
-    includes(...values: readonly T[]): boolean
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias has
-     * @deprecated Replace with non-variadic arguments or hasOneOf. It will be removed in version 1.10
-     */
-    includes(...values: readonly unknown[]): boolean
-
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias has
-     * @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10
-     */
-    contains(...values: readonly T[]): boolean
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias has
-     * @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10
-     */
-    contains(...values: readonly unknown[]): boolean
-
-    //#endregion -------------------- Has methods (deprecated) --------------------
 
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- Has one methods --------------------
@@ -1244,68 +1169,6 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 
     //#endregion -------------------- Has one methods (aliases) --------------------
-    //#region -------------------- Has one methods (deprecated) --------------------
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    hasOne(...values: readonly T[]): boolean
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    hasOne(...values: readonly unknown[]): boolean
-
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    includesOne(...values: readonly T[]): boolean
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    includesOne(...values: readonly unknown[]): boolean
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    containsOne(...values: readonly T[]): boolean
-
-    /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} <b>true</b> if at least one value is equals to one value in the current {@link CollectionHolder collection}
-     * @alias hasOne
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    containsOne(...values: readonly unknown[]): boolean
-
-    //#endregion -------------------- Has one methods (deprecated) --------------------
 
     //#endregion -------------------- Has one methods --------------------
     //#region -------------------- Has all methods --------------------
@@ -1741,67 +1604,6 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 
     //#endregion -------------------- Has all methods (aliases) --------------------
-    //#region -------------------- Has all methods (deprecated) --------------------
-
-    /**
-     * Tell that every value received is in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    hasAll(...values: readonly T[]): boolean
-
-    /**
-     * Tell that every value received are in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    hasAll(...values: readonly unknown[]): boolean
-
-
-    /**
-     * Tell that every value received is in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    includesAll(...values: readonly T[]): boolean
-
-    /**
-     * Tell that every value received is in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    includesAll(...values: readonly unknown[]): boolean
-
-
-    /**
-     * Tell that every value received is in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
-     * @alias hasAll
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    containsAll(...values: readonly T[]): boolean
-
-    /**
-     * Tell that every value received is in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @return {boolean} Every {@link values} are in the current {@link CollectionHolder collection}
-     * @alias hasAll
-     * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
-     */
-    containsAll(...values: readonly unknown[]): boolean
-
-    //#endregion -------------------- Has all methods (deprecated) --------------------
 
     //#endregion -------------------- Has all methods --------------------
 
@@ -1945,25 +1747,6 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Filter not methods --------------------
     //#region -------------------- Filter not indexed methods --------------------
-
-    /**
-     * Get a new {@link CollectionHolder}
-     * not matching the given {@link predicate}
-     *
-     * @param predicate The given predicate
-     * @deprecated Use filterNotIndexed instead. It will be changed in v1.10
-     */
-    filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<T>
-
-    /**
-     * Get a new {@link CollectionHolder}
-     * not matching the given {@link predicate}
-     *
-     * @param predicate The given predicate
-     * @deprecated Use filterNotIndexed instead. It will be changed in v1.10
-     */
-    filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-
 
     /**
      * Get a new {@link CollectionHolder}

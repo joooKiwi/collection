@@ -352,29 +352,21 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     //#region -------------------- Has methods --------------------
 
     public has(value: T,): boolean
-    public has(...values: readonly T[]): boolean
     public has(value: unknown,): boolean
-    public has(...values: readonly unknown[]): boolean
-    public has(): boolean {
-        if (arguments.length == 1)
+    public has(value: unknown,): boolean {
         return this.#isCollectionHolder
-            ? hasByCollectionHolder(this, arguments[0] as unknown,)
-            : has(this, arguments[0] as unknown,)
-        throw new Error("The method \"has\" was not expected to be called with a variadic parameter.",) // TODO Remove once the version 1.10 is in progress
+            ? hasByCollectionHolder(this, value,)
+            : has(this, value,)
     }
 
     public includes(value: T,): boolean
-    public includes(...values: readonly T[]): boolean
     public includes(value: unknown,): boolean
-    public includes(...values: readonly unknown[]): boolean
     public includes(): never {
         throw new Error("The method \"includes\" was not expected to be called.",)
     }
 
     public contains(value: T,): boolean
-    public contains(...values: readonly T[]): boolean
     public contains(value: unknown,): boolean
-    public contains(...values: readonly unknown[]): boolean
     public contains(): never {
         throw new Error("The method \"contains\" was not expected to be called.",)
     }
@@ -396,14 +388,10 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public hasOne(values: CollectionIterator,): boolean
     public hasOne(values: Iterable<unknown>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasOne(...values: readonly T[]): boolean
-    public hasOne(...values: readonly unknown[]): boolean
-    public hasOne(): boolean {
-        if (arguments.length == 1)
-            return this.#isCollectionHolder
-                ? hasOneByCollectionHolder(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-                : hasOne(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-        throw new Error("The method \"hasOne\" was not expected to be called with a variadic parameter.",) // TODO Remove once the version 1.10 is in progress
+    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
+        return this.#isCollectionHolder
+            ? hasOneByCollectionHolder(this, values,)
+            : hasOne(this, values,)
     }
 
     public includesOne(values: readonly T[],): boolean
@@ -420,8 +408,6 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public includesOne(values: CollectionIterator,): boolean
     public includesOne(values: Iterable<unknown>,): boolean
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesOne(...values: readonly T[]): boolean
-    public includesOne(...values: readonly unknown[]): boolean
     public includesOne(): never {
         throw new Error("The method \"includesOne\" was not expected to be called.",)
     }
@@ -440,8 +426,6 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public containsOne(values: CollectionIterator,): boolean
     public containsOne(values: Iterable<unknown>,): boolean
     public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsOne(...values: readonly T[]): boolean
-    public containsOne(...values: readonly unknown[]): boolean
     public containsOne(): never {
         throw new Error("The method \"containsOne\" was not expected to be called.",)
     }
@@ -564,12 +548,6 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     //#endregion -------------------- Filter not methods --------------------
     //#region -------------------- Filter not indexed methods --------------------
-
-    public filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexedNot(): never {
-        throw new Error("The method \"filterIndexedNot\" was not expected to be called.",)
-    }
 
     public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>

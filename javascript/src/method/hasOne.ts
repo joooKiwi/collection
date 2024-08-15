@@ -169,33 +169,7 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @typescriptDefinition
  */
 export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-/**
- * Tell whenever at least one value exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- * @facadeFunction
- */
-export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, ...values: readonly T[]): boolean
-/**
- * Tell whenever at least one value exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- * @facadeFunction
- */
-export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, ...values: readonly unknown[]): boolean
-export function hasOne(collection: Nullable<MinimalistCollectionHolder>,): boolean {
-    if (arguments.length != 2) { // TODO Remove once the version 1.10 is in progress
-        const [, ...variadicArguments] = arguments as unknown as readonly [Nullable<MinimalistCollectionHolder>, ...readonly unknown[],]
-        return hasOneWithArray(collection, variadicArguments,)
-    }
-
-    const values = arguments[1] as PossibleIterableArraySetOrCollectionHolder<unknown>
+export function hasOne(collection: Nullable<MinimalistCollectionHolder>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
     if (values instanceof Array)
         return hasOneWithArray(collection, values,)
     if (values instanceof Set)
@@ -356,43 +330,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @facadeFunction
  */
 export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-/**
- * Tell whenever at least one value exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
- * @see ReadonlyArray.includes
- * @see ReadonlySet.has
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- * @facadeFunction
- */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, ...values: readonly T[]): boolean
-/**
- * Tell whenever at least one value exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
- * @see ReadonlyArray.includes
- * @see ReadonlySet.has
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/contains.html Kotlin contains(element)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- * @facadeFunction
- */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, ...values: readonly unknown[]): boolean
-export function hasOneByCollectionHolder(collection: Nullable<CollectionHolder>,): boolean {
-    if (arguments.length != 2) { // TODO Remove once the version 1.10 is in progress
-        const [, ...variadicArguments] = arguments as unknown as readonly [Nullable<CollectionHolder>, ...readonly unknown[],]
-        return hasOneWithArrayByCollectionHolder(collection, variadicArguments,)
-    }
-
-    const values = arguments[1] as PossibleIterableArraySetOrCollectionHolder<unknown>
+export function hasOneByCollectionHolder(collection: Nullable<CollectionHolder>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
     if (values instanceof Array)
         return hasOneWithArrayByCollectionHolder(collection, values,)
     if (values instanceof Set)
