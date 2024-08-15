@@ -513,7 +513,6 @@ export class LazyGenericCollectionHolder<const T = unknown,
 
             this.#size = size
             const handler = this.#lazyHandler = lazy(() => this.#handlerByIterableWithSize(reference, size,),)
-            this.#lazySize = lazy(() => handler.value.size,)
             this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
@@ -527,7 +526,6 @@ export class LazyGenericCollectionHolder<const T = unknown,
 
             this.#size = size
             const handler = this.#lazyHandler = lazy(() => this.#handlerByIterableWithSize(reference, size,),)
-            this.#lazySize = lazy(() => handler.value.size,)
             this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
@@ -541,7 +539,6 @@ export class LazyGenericCollectionHolder<const T = unknown,
 
             this.#size = size
             const handler = this.#lazyHandler = lazy(() => this.#handlerByIterableWithSize(reference, size,),)
-            this.#lazySize = lazy(() => handler.value.size,)
             this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
