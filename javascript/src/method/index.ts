@@ -12,6 +12,7 @@ export {filter,                               filterByCollectionHolder}         
 export {filterIndexed,                        filterIndexedByCollectionHolder}                                            from "./filterIndexed"
 export {filterIndexedNot,                     filterIndexedNotByCollectionHolder}                                         from "./filterIndexedNot"
 export {filterNot,                            filterNotByCollectionHolder}                                                from "./filterNot"
+export {filterNotIndexed,                     filterNotIndexedByCollectionHolder}                                         from "./filterNotIndexed"
 export {filterNotNull,                        filterNotNullByCollectionHolder}                                            from "./filterNotNull"
 export {find,                                 findByCollectionHolder}                                                     from "./find"
 export {findIndexed,                          findIndexedByCollectionHolder}                                              from "./findIndexed"
