@@ -6,3 +6,4 @@
  ******************************************************************************/
 
 export {all, all as allByMinimalistCollectionHolder}                   from "./all"
+export {getOrElse, getOrElse as getOrElseByMinimalistCollectionHolder} from "./getOrElse"

@@ -735,7 +735,7 @@ export class GenericCollectionHolder<const T = unknown,
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) {
+    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         if (Number.isNaN(index,))
             return defaultValue(index,)
         if (index == Number.NEGATIVE_INFINITY)

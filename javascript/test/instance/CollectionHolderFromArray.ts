@@ -29,9 +29,9 @@ export class CollectionHolderFromArray<const out T = unknown, >
         throw new Error(`The method get was attempting to retrieve an invalid index (“${index}”)`,)
     }
 
-    public getOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
-    public getOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
-    public getOrElse(): never { throw new Error("The method getOrElse was not expected to be called",) }
+    public override getOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
+    public override getOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
+    public override getOrElse(): never { throw new Error("The method getOrElse was not expected to be called",) }
 
     public getOrNull(index?: number,): never
     public getOrNull(): never { throw new Error("The method getOrNull was not expected to be called",) }

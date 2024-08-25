@@ -28,6 +28,7 @@ import {firstByCollectionHolder}                   from "./method/first"
 import {firstOrNullByCollectionHolder}             from "./method/firstOrNull"
 import {forEach}                                   from "./method/forEach"
 import {forEachIndexed}                            from "./method/forEachIndexed"
+import {getOrElse}                                 from "./method/collectionHolder/getOrElse"
 import {hasByCollectionHolder}                     from "./method/has"
 import {hasAllByCollectionHolder}                  from "./method/hasAll"
 import {hasNullByCollectionHolder}                 from "./method/hasNull"
@@ -136,18 +137,21 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Get or else methods --------------------
 
-    public abstract getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public abstract getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
+        return getOrElse(this, index, defaultValue,)
+    }
 
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
+    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         return this.getOrElse(index, defaultValue,)
     }
 
     public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
+    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         return this.getOrElse(index, defaultValue,)
     }
 

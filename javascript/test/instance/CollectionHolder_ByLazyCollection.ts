@@ -28,7 +28,7 @@ export class CollectionHolder_ByLazyCollection<const out T, >
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) { return this.#instance.getOrElse(index, defaultValue,) }
+    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.#instance.getOrElse(index, defaultValue,) }
 
     public getOrNull(index: number,): NullOr<T> { return this.#instance.getOrNull(index,) }
 

@@ -6,3 +6,4 @@
  ******************************************************************************/
 
 export {all, all as allByCollectionHolder}                   from "./all"
+export {getOrElse, getOrElse as getOrElseByCollectionHolder} from "./getOrElse"

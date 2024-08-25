@@ -24,6 +24,11 @@ export {first,                                firstByCollectionHolder}          
 export {firstOrNull,                          firstOrNullByCollectionHolder}                                              from "./firstOrNull"
 export {forEach}                                                                                                          from "./forEach"
 export {forEachIndexed}                                                                                                   from "./forEachIndexed"
+
+export {getOrElse}                                          from "./getOrElse"
+export {getOrElse as getOrElseByCollectionHolder}           from "./collectionHolder/getOrElse"
+export {getOrElse as getOrElseByMinimalistCollectionHolder} from "./minimalistCollectionHolder/getOrElse"
+
 export {has,                                  hasByCollectionHolder}                                                      from "./has"
 export {hasAll,                               hasAllByCollectionHolder}                                                   from "./hasAll"
 export {hasAllWithArray,                      hasAllWithArrayByCollectionHolder}                                          from "./hasAll.withArray"

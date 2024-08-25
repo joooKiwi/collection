@@ -20,7 +20,7 @@ export class GenericCollectionHolder_GetOrElseAlias
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
-    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| unknown | U>,) {
+    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         this.amountOfCall++
         return super.getOrElse(index, defaultValue,)
     }
