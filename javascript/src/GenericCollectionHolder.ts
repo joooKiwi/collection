@@ -745,13 +745,21 @@ export class GenericCollectionHolder<const T = unknown,
         if (this.isEmpty)
             return defaultValue(index < 0 ? this.size + index : index,)
 
-        const size = this.size
-        const indexToRetrieve = index < 0 ? size + index : index
-        if (indexToRetrieve < 0)
-            return defaultValue(indexToRetrieve,)
-        if (indexToRetrieve > size)
-            return defaultValue(indexToRetrieve,)
-        return this.get(indexToRetrieve,)
+        if (index < 0) {
+            const size = this.size
+            const indexToRetrieve = size + index
+            if (indexToRetrieve < 0)
+                return defaultValue(indexToRetrieve,)
+            if (indexToRetrieve > size)
+                return defaultValue(indexToRetrieve,)
+            return this.get(indexToRetrieve,)
+        }
+
+        if (index < 0)
+            return defaultValue(index,)
+        if (index > this.size)
+            return defaultValue(index,)
+        return this.get(index,)
     }
 
     public override getOrNull(index: number,): NullOr<T> {
@@ -764,13 +772,21 @@ export class GenericCollectionHolder<const T = unknown,
         if (this.isEmpty)
             return null
 
-        const size = this.size
-        const indexToRetrieve = index < 0 ? size + index : index
-        if (indexToRetrieve < 0)
+        if (index < 0) {
+            const size = this.size
+            const indexToRetrieve = size + index
+            if (indexToRetrieve < 0)
+                return null
+            if (indexToRetrieve > size)
+                return null
+            return this[indexToRetrieve] as T
+        }
+
+        if (index < 0)
             return null
-        if (indexToRetrieve > size)
+        if (index > this.size)
             return null
-        return this[indexToRetrieve] as T
+        return this[index] as T
     }
 
     public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> { return this.#objectValuesMap ??= super.objectValuesMap }
