@@ -30,6 +30,6 @@ export class CollectionHolder_ByGenericCollection<const out T, >
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.#instance.getOrElse(index, defaultValue,) }
 
-    public getOrNull(index: number,): NullOr<T> { return this.#instance.getOrNull(index,) }
+    public override getOrNull(index: number,): NullOr<T> { return this.#instance.getOrNull(index,) }
 
 }

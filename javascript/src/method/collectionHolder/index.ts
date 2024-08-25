@@ -7,3 +7,4 @@
 
 export {all, all as allByCollectionHolder}                   from "./all"
 export {getOrElse, getOrElse as getOrElseByCollectionHolder} from "./getOrElse"
+export {getOrNull, getOrNull as getOrNullByCollectionHolder} from "./getOrNull"

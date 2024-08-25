@@ -7,3 +7,4 @@
 
 export {all, all as allByMinimalistCollectionHolder}                   from "./all"
 export {getOrElse, getOrElse as getOrElseByMinimalistCollectionHolder} from "./getOrElse"
+export {getOrNull, getOrNull as getOrNullByMinimalistCollectionHolder} from "./getOrNull"

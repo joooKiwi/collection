@@ -29,6 +29,7 @@ import {firstOrNullByCollectionHolder}             from "./method/firstOrNull"
 import {forEach}                                   from "./method/forEach"
 import {forEachIndexed}                            from "./method/forEachIndexed"
 import {getOrElse}                                 from "./method/collectionHolder/getOrElse"
+import {getOrNull}                                 from "./method/collectionHolder/getOrNull"
 import {hasByCollectionHolder}                     from "./method/has"
 import {hasAllByCollectionHolder}                  from "./method/hasAll"
 import {hasNullByCollectionHolder}                 from "./method/hasNull"
@@ -158,7 +159,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Get or else methods --------------------
     //#region -------------------- Get or null methods --------------------
 
-    public abstract getOrNull(index: number,): NullOr<T>
+    public getOrNull(index: number,): NullOr<T> {
+        return getOrNull<T>(this, index,)
+    }
 
     public atOrNull(index: number,): NullOr<T> {
         return this.getOrNull(index,)

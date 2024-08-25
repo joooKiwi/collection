@@ -30,7 +30,7 @@ export class CollectionHolder_ByGenericMinimalistCollection<const out T, >
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(): never { throw new Error("No method \"getOrElse\" exist in the \"GenericMinimalistCollectionHolder\" instance.") }
 
-    public getOrNull(index: number,): NullOr<T>
-    public getOrNull(): never { throw new Error("No method \"getOrNull\" exist in the \"GenericMinimalistCollectionHolder\" instance.") }
+    public override getOrNull(index: number,): NullOr<T>
+    public override getOrNull(): never { throw new Error("No method \"getOrNull\" exist in the \"GenericMinimalistCollectionHolder\" instance.") }
 
 }

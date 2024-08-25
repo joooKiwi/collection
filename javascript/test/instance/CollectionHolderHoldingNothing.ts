@@ -23,7 +23,7 @@ export class CollectionHolderHoldingNothing<const out T = unknown, >
     public override getOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
     public override getOrElse(): never { throw new Error("The method getOrElse was not expected to be called",) }
 
-    public getOrNull(index?: number,): never
-    public getOrNull(): never { throw new Error("The method getOrNull was not expected to be called",) }
+    public override getOrNull(index?: number,): never
+    public override getOrNull(): never { throw new Error("The method getOrNull was not expected to be called",) }
 
 }

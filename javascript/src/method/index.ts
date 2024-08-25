@@ -29,6 +29,10 @@ export {getOrElse}                                          from "./getOrElse"
 export {getOrElse as getOrElseByCollectionHolder}           from "./collectionHolder/getOrElse"
 export {getOrElse as getOrElseByMinimalistCollectionHolder} from "./minimalistCollectionHolder/getOrElse"
 
+export {getOrNull}                                          from "./getOrNull"
+export {getOrNull as getOrNullByCollectionHolder}           from "./collectionHolder/getOrNull"
+export {getOrNull as getOrNullByMinimalistCollectionHolder} from "./minimalistCollectionHolder/getOrNull"
+
 export {has,                                  hasByCollectionHolder}                                                      from "./has"
 export {hasAll,                               hasAllByCollectionHolder}                                                   from "./hasAll"
 export {hasAllWithArray,                      hasAllWithArrayByCollectionHolder}                                          from "./hasAll.withArray"
