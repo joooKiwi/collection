@@ -136,47 +136,47 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
         return this.#array[index] as T
     }
 
-    public override at(index: number,): T
-    public override at(): never {
+    public override at(index: number,): never
+    public override at() {
         throw new Error("The method \"at\" was not expected to be called in a test.",)
     }
 
-    public override elementAt(index: number,): T
-    public override elementAt(): never {
+    public override elementAt(index: number,): never
+    public override elementAt() {
         throw new Error("The method \"elementAt\" was not expected to be called in a test.",)
     }
 
 
-    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public override getOrElse(): never {
+    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): never
+    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): never
+    public override getOrElse() {
         throw new Error("The method \"getOrElse\" was not expected to be called in a test.",)
     }
 
-    public override atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public override atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public override atOrElse(): never {
+    public override atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): never
+    public override atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): never
+    public override atOrElse() {
         throw new Error("The method \"atOrElse\" was not expected to be called in a test.",)
     }
 
-    public override elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public override elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public override elementAtOrElse(): never {
+    public override elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): never
+    public override elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): never
+    public override elementAtOrElse() {
         throw new Error("The method \"elementAtOrElse\" was not expected to be called in a test.",)
     }
 
 
-    public override getOrNull(index: number,): NullOr<T>
+    public override getOrNull(index: number,): never
     public override getOrNull(): never {
         throw new Error("The method \"getOrNull\" was not expected to be called in a test.",)
     }
 
-    public override atOrNull(index: number,): NullOr<T>
+    public override atOrNull(index: number,): never
     public override atOrNull(): never {
         throw new Error("The method \"atOrNull\" was not expected to be called in a test.",)
     }
 
-    public override elementAtOrNull(index: number,): NullOr<T>
+    public override elementAtOrNull(index: number,): never
     public override elementAtOrNull(): never {
         throw new Error("The method \"elementAtOrNull\" was not expected to be called in a test.",)
     }
@@ -288,15 +288,15 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
         return hasByCollectionHolder(this, value,)
     }
 
-    public override includes(value: T,): boolean
-    public override includes(value: unknown,): boolean
-    public override includes(): never {
+    public override includes(value: T,): never
+    public override includes(value: unknown,): never
+    public override includes() {
         throw new Error("The method \"includes\" was not expected to be called.",)
     }
 
-    public override contains(value: T,): boolean
-    public override contains(value: unknown,): boolean
-    public override contains(): never {
+    public override contains(value: T,): never
+    public override contains(value: unknown,): never
+    public override contains() {
         throw new Error("The method \"contains\" was not expected to be called.",)
     }
 
@@ -321,39 +321,39 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
         return hasOneByCollectionHolder(this, values,)
     }
 
-    public override includesOne(values: readonly T[],): boolean
-    public override includesOne(values: ReadonlySet<T>,): boolean
-    public override includesOne(values: CollectionHolder<T>,): boolean
-    public override includesOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override includesOne(values: CollectionIterator<T>,): boolean
-    public override includesOne(values: Iterable<T>,): boolean
-    public override includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override includesOne(values: readonly unknown[],): boolean
-    public override includesOne(values: ReadonlySet<unknown>,): boolean
-    public override includesOne(values: CollectionHolder,): boolean
-    public override includesOne(values: MinimalistCollectionHolder,): boolean
-    public override includesOne(values: CollectionIterator,): boolean
-    public override includesOne(values: Iterable<unknown>,): boolean
-    public override includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override includesOne(): never {
+    public override includesOne(values: readonly T[],): never
+    public override includesOne(values: ReadonlySet<T>,): never
+    public override includesOne(values: CollectionHolder<T>,): never
+    public override includesOne(values: MinimalistCollectionHolder<T>,): never
+    public override includesOne(values: CollectionIterator<T>,): never
+    public override includesOne(values: Iterable<T>,): never
+    public override includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public override includesOne(values: readonly unknown[],): never
+    public override includesOne(values: ReadonlySet<unknown>,): never
+    public override includesOne(values: CollectionHolder,): never
+    public override includesOne(values: MinimalistCollectionHolder,): never
+    public override includesOne(values: CollectionIterator,): never
+    public override includesOne(values: Iterable<unknown>,): never
+    public override includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public override includesOne() {
         throw new Error("The method \"includesOne\" was not expected to be called.",)
     }
 
-    public override containsOne(values: readonly T[],): boolean
-    public override containsOne(values: ReadonlySet<T>,): boolean
-    public override containsOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override containsOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override containsOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override containsOne(values: Iterable<T>,): boolean
-    public override containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override containsOne(values: readonly unknown[],): boolean
-    public override containsOne(values: ReadonlySet<unknown>,): boolean
-    public override containsOne(values: CollectionHolder,): boolean
-    public override containsOne(values: MinimalistCollectionHolder,): boolean
-    public override containsOne(values: CollectionIterator,): boolean
-    public override containsOne(values: Iterable<unknown>,): boolean
-    public override containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override containsOne(): never {
+    public override containsOne(values: readonly T[],): never
+    public override containsOne(values: ReadonlySet<T>,): never
+    public override containsOne(values: MinimalistCollectionHolder<T>,): never
+    public override containsOne(values: MinimalistCollectionHolder<T>,): never
+    public override containsOne(values: MinimalistCollectionHolder<T>,): never
+    public override containsOne(values: Iterable<T>,): never
+    public override containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public override containsOne(values: readonly unknown[],): never
+    public override containsOne(values: ReadonlySet<unknown>,): never
+    public override containsOne(values: CollectionHolder,): never
+    public override containsOne(values: MinimalistCollectionHolder,): never
+    public override containsOne(values: CollectionIterator,): never
+    public override containsOne(values: Iterable<unknown>,): never
+    public override containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public override containsOne() {
         throw new Error("The method \"containsOne\" was not expected to be called.",)
     }
 
@@ -373,51 +373,43 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override hasAll(values: CollectionIterator,): boolean
     public override hasAll(values: Iterable<unknown>,): boolean
     public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override hasAll(...values: readonly T[]): boolean
-    public override hasAll(...values: readonly unknown[]): boolean
-    public override hasAll(): boolean {
-        if (arguments.length == 1)
-            return hasAllByCollectionHolder(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-        throw new Error("The method \"hasAll\" was not expected to be called with a variadic parameter.",) // TODO Remove once the version 1.10 is in progress
+    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
+        return hasAllByCollectionHolder(this, values,)
     }
 
-    public override includesAll(values: readonly T[],): boolean
-    public override includesAll(values: ReadonlySet<T>,): boolean
-    public override includesAll(values: CollectionHolder<T>,): boolean
-    public override includesAll(values: MinimalistCollectionHolder<T>,): boolean
-    public override includesAll(values: CollectionIterator<T>,): boolean
-    public override includesAll(values: Iterable<T>,): boolean
-    public override includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override includesAll(values: readonly unknown[],): boolean
-    public override includesAll(values: ReadonlySet<unknown>,): boolean
-    public override includesAll(values: CollectionHolder,): boolean
-    public override includesAll(values: MinimalistCollectionHolder,): boolean
-    public override includesAll(values: CollectionIterator,): boolean
-    public override includesAll(values: Iterable<unknown>,): boolean
-    public override includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override includesAll(...values: readonly T[]): boolean
-    public override includesAll(...values: readonly unknown[]): boolean
-    public override includesAll(): never {
+    public override includesAll(values: readonly T[],): never
+    public override includesAll(values: ReadonlySet<T>,): never
+    public override includesAll(values: CollectionHolder<T>,): never
+    public override includesAll(values: MinimalistCollectionHolder<T>,): never
+    public override includesAll(values: CollectionIterator<T>,): never
+    public override includesAll(values: Iterable<T>,): never
+    public override includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public override includesAll(values: readonly unknown[],): never
+    public override includesAll(values: ReadonlySet<unknown>,): never
+    public override includesAll(values: CollectionHolder,): never
+    public override includesAll(values: MinimalistCollectionHolder,): never
+    public override includesAll(values: CollectionIterator,): never
+    public override includesAll(values: Iterable<unknown>,): never
+    public override includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public override includesAll() {
         throw new Error("The method \"includesAll\" was not expected to be called.",)
     }
 
-    public override containsAll(values: readonly T[],): boolean
-    public override containsAll(values: ReadonlySet<T>,): boolean
-    public override containsAll(values: CollectionHolder<T>,): boolean
-    public override containsAll(values: MinimalistCollectionHolder<T>,): boolean
-    public override containsAll(values: CollectionIterator<T>,): boolean
-    public override containsAll(values: Iterable<T>,): boolean
-    public override containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override containsAll(values: readonly unknown[],): boolean
-    public override containsAll(values: ReadonlySet<unknown>,): boolean
-    public override containsAll(values: CollectionHolder,): boolean
-    public override containsAll(values: MinimalistCollectionHolder,): boolean
-    public override containsAll(values: CollectionIterator,): boolean
-    public override containsAll(values: Iterable<unknown>,): boolean
-    public override containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override containsAll(...values: readonly T[]): boolean
-    public override containsAll(...values: readonly unknown[]): boolean
-    public override containsAll(): never {
+    public override containsAll(values: readonly T[],): never
+    public override containsAll(values: ReadonlySet<T>,): never
+    public override containsAll(values: CollectionHolder<T>,): never
+    public override containsAll(values: MinimalistCollectionHolder<T>,): never
+    public override containsAll(values: CollectionIterator<T>,): never
+    public override containsAll(values: Iterable<T>,): never
+    public override containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public override containsAll(values: readonly unknown[],): never
+    public override containsAll(values: ReadonlySet<unknown>,): never
+    public override containsAll(values: CollectionHolder,): never
+    public override containsAll(values: MinimalistCollectionHolder,): never
+    public override containsAll(values: CollectionIterator,): never
+    public override containsAll(values: Iterable<unknown>,): never
+    public override containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public override containsAll() {
         throw new Error("The \"containsAll\" was not expected to be called.",)
     }
 
@@ -425,8 +417,8 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
 
     //#region -------------------- Join to string methods --------------------
 
-    public override join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
-    public override join(): never {
+    public override join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): never
+    public override join() {
         throw new Error("The method \"join\" was not expected to be called.",)
     }
 
@@ -653,13 +645,13 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
         return toReverseByCollectionHolder<T>(this, fromIndex, toIndex, limit,)
     }
 
-    public override toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public override toReversed(): never {
+    public override toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
+    public override toReversed() {
         throw new Error("The method \"toReversed\" was not expected to be called.",)
     }
 
-    public override reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public override reversed(): never {
+    public override reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
+    public override reversed() {
         throw new Error("The method \"reversed\" was not expected to be called.",)
     }
 
