@@ -13,7 +13,7 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "./iterator/CollectionIterator"
 
 import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
-import {allByCollectionHolder}                     from "./method/all"
+import {all}                                       from "./method/collectionHolder/all"
 import {anyByCollectionHolder}                     from "./method/any"
 import {filterByCollectionHolder}                  from "./method/filter"
 import {filterIndexedByCollectionHolder}           from "./method/filterIndexed"
@@ -261,7 +261,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- All methods --------------------
 
     public all(predicate: BooleanCallback<T>,): boolean {
-        return allByCollectionHolder(this, predicate,)
+        return all(this, predicate,)
     }
 
     //#endregion -------------------- All methods --------------------

@@ -11,13 +11,17 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {BooleanCallback}            from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {all as allByCollectionHolder2}          from "./collectionHolder/all"
+import {all as allByMinimalistCollectionHolder} from "./minimalistCollectionHolder/all"
+import {isCollectionHolder}                     from "./isCollectionHolder"
+
 //#region -------------------- Facade method --------------------
 
 /**
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
@@ -28,16 +32,9 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 export function all<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
     if (collection == null)
         return false
-
-    const size = collection.size
-    if (size == 0)
-        return false
-
-    if (predicate.length == 1)
-        return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
-    if (predicate.length >= 2)
-        return __with2Argument(collection, predicate, collection.size,)
-    return __with0Argument(predicate as () => boolean, collection.size,)
+    if (isCollectionHolder<T>(collection,))
+        return allByCollectionHolder2(collection, predicate,)
+    return allByMinimalistCollectionHolder(collection, predicate,)
 }
 
 /**
@@ -47,28 +44,18 @@ export function all<const T, >(collection: Nullable<MinimalistCollectionHolder<T
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java allMatch(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
+ * @deprecated Use all from import("@joookiwi/collection/collectionHolder")
  */
 export function allByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
-    if (collection == null)
-        return false
-    if (collection.isEmpty)
-        return false
-
-    if (predicate.length == 1)
-        return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
-    if (predicate.length >= 2)
-        return __with2Argument(collection, predicate, collection.size,)
-    return __with0Argument(predicate as () => boolean, collection.size,)
+    return allByCollectionHolder2(collection, predicate,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __with0Argument(predicate: () => boolean, size: number,) {
+/** @internal */
+export function __with0Argument(predicate: () => boolean, size: number,) {
     let index = size
     while (index-- > 0)
         if (!predicate())
@@ -76,7 +63,8 @@ function __with0Argument(predicate: () => boolean, size: number,) {
     return true
 }
 
-function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, size: number,) {
+/** @internal */
+export function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (!predicate(collection.get(index,),))
@@ -84,7 +72,8 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return true
 }
 
-function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
+/** @internal */
+export function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (!predicate(collection.get(index,), index,))

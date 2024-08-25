@@ -5,7 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {all,                                  allByCollectionHolder}                                                      from "./all"
+export {all}                                    from "./all"
+export {all as allByCollectionHolder}           from "./collectionHolder/all"
+export {all as allByMinimalistCollectionHolder} from "./minimalistCollectionHolder/all"
+
 export {any,                                  anyByCollectionHolder}                                                      from "./any"
 export {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString} from "./asString"
 export {filter,                               filterByCollectionHolder}                                                   from "./filter"

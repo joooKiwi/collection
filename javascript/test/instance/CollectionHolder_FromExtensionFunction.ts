@@ -13,7 +13,7 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
 
 import {AbstractCollectionHolder}                  from "../../src/AbstractCollectionHolder"
-import {allByCollectionHolder}                     from "../../src/method/all"
+import {all}                                       from "../../src/method/collectionHolder/all"
 import {anyByCollectionHolder}                     from "../../src/method/any"
 import {filterByCollectionHolder}                  from "../../src/method/filter"
 import {filterIndexedByCollectionHolder}           from "../../src/method/filterIndexed"
@@ -257,7 +257,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     //#region -------------------- All methods --------------------
 
     public override all(predicate: BooleanCallback<T>,): boolean {
-        return allByCollectionHolder(this, predicate,)
+        return all(this, predicate,)
     }
 
     //#endregion -------------------- All methods --------------------

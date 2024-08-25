@@ -13,7 +13,9 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
 
 import {AbstractCollectionHolder}                                           from "../../src/AbstractCollectionHolder"
-import {all, allByCollectionHolder}                                         from "../../src/method/all"
+import {all as allByCollectionHolder}                                       from "../../src/method/collectionHolder/all"
+import {all as allByMinimalistCollectionHolder}                             from "../../src/method/minimalistCollectionHolder/all"
+
 import {any, anyByCollectionHolder}                                         from "../../src/method/any"
 import {filter, filterByCollectionHolder}                                   from "../../src/method/filter"
 import {filterIndexed, filterIndexedByCollectionHolder}                     from "../../src/method/filterIndexed"
@@ -322,7 +324,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public all(predicate: BooleanCallback<T>,): boolean {
         return this.#isCollectionHolder
             ? allByCollectionHolder(this, predicate,)
-            : all(this, predicate,)
+            : allByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- All methods --------------------
