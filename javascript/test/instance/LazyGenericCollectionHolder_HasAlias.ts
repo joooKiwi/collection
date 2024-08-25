@@ -14,9 +14,9 @@ export class LazyGenericCollectionHolder_HasAlias
 
     public constructor() { super([],) }
 
-    public override has(...values: unknown[]): boolean {
+    public override has(value: unknown,): boolean {
         this.amountOfCall++
-        return super.hasAll(...values,)
+        return super.has(value,)
     }
 
 }
