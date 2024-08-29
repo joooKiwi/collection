@@ -28,6 +28,8 @@ import {first}                              from "../../src/method/first"
 import {firstOrNull}                        from "../../src/method/firstOrNull"
 import {forEach}                            from "../../src/method/forEach"
 import {forEachIndexed}                     from "../../src/method/forEachIndexed"
+import {getOrElse}                          from "../../src/method/minimalistCollectionHolder/getOrElse"
+import {getOrNull}                          from "../../src/method/minimalistCollectionHolder/getOrNull"
 import {has}                                from "../../src/method/has"
 import {hasAll}                             from "../../src/method/hasAll"
 import {hasDuplicate}                       from "../../src/method/hasDuplicate"
@@ -155,8 +157,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public getOrElse(): never {
-        throw new Error("The method \"getOrElse\" was not expected to be called in a test.",)
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) {
+        return getOrElse(this, index, defaultValue,)
     }
 
     public atOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
@@ -174,9 +176,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#endregion -------------------- Get or else methods --------------------
     //#region -------------------- Get or null methods --------------------
 
-    public getOrNull(index: number,): NullOr<T>
-    public getOrNull(): never {
-        throw new Error("The method \"getOrNull\" was not expected to be called in a test.",)
+    public getOrNull(index: number,): NullOr<T> {
+        return getOrNull(this, index,)
     }
 
     public atOrNull(index?: number,): never
