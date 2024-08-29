@@ -5,7 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-
 import type {Nullable} from "@joookiwi/type"
 
 import type {BooleanCallback}            from "../../CollectionHolder.types"

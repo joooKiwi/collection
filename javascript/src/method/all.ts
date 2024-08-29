@@ -11,9 +11,9 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {BooleanCallback}            from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {all as allByCollectionHolder2}          from "./collectionHolder/all"
-import {all as allByMinimalistCollectionHolder} from "./minimalistCollectionHolder/all"
 import {isCollectionHolder}                     from "./isCollectionHolder"
+import {all as byCollectionHolder}          from "./collectionHolder/all"
+import {all as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/all"
 
 //#region -------------------- Facade method --------------------
 
@@ -33,8 +33,8 @@ export function all<const T, >(collection: Nullable<MinimalistCollectionHolder<T
     if (collection == null)
         return false
     if (isCollectionHolder<T>(collection,))
-        return allByCollectionHolder2(collection, predicate,)
-    return allByMinimalistCollectionHolder(collection, predicate,)
+        return byCollectionHolder(collection, predicate,)
+    return byMinimalistCollectionHolder(collection, predicate,)
 }
 
 /**
@@ -48,7 +48,7 @@ export function all<const T, >(collection: Nullable<MinimalistCollectionHolder<T
  * @deprecated Use all from import("@joookiwi/collection/collectionHolder")
  */
 export function allByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
-    return allByCollectionHolder2(collection, predicate,)
+    return byCollectionHolder(collection, predicate,)
 }
 
 //#endregion -------------------- Facade method --------------------
