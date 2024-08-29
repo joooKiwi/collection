@@ -30,7 +30,7 @@ import {onEach as byMinimalistCollectionHolder} from "./minimalistCollectionHold
  */
 export function onEach<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION, action: ValueIndexCallback<T>,): COLLECTION {
     if (collection == null)
-        return null as COLLECTION
+        return collection
     if (isCollectionHolder<T>(collection,))
         return byCollectionHolder(collection, action,)
     return byMinimalistCollectionHolder(collection, action,)
