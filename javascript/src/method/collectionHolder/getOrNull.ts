@@ -32,24 +32,19 @@ export function getOrNull<const T, >(collection: Nullable<CollectionHolder<T>>, 
         return null
 
     if (collection.isEmpty)
-        if (index < 0)
-            return null
-        else
-            return null
-
-    if (index < 0) {
-        const size = collection.size
-        const indexToRetrieve = size + index
-        if (indexToRetrieve < 0)
-            return null
-        if (indexToRetrieve > size)
-            return null
-        return collection.get(indexToRetrieve,)
-    }
-
-    if (index < 0)
         return null
-    if (index > collection.size)
+
+    const size = collection.size
+    if (index > size)
         return null
-    return collection.get(index,)
+    if (index >= 0)
+        return collection.get(index,)
+
+    const indexToRetrieve = size + index
+    if (indexToRetrieve < 0)
+        return null
+    if (indexToRetrieve > size)
+        return null
+    return collection.get(indexToRetrieve,)
+
 }

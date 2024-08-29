@@ -33,23 +33,17 @@ export function getOrNull<const T, >(collection: Nullable<MinimalistCollectionHo
 
     const size = collection.size
     if (size == 0)
-        if (index < 0)
-            return null
-        else
-            return null
-
-    if (index < 0) {
-        const indexToRetrieve = size + index
-        if (indexToRetrieve < 0)
-            return null
-        if (indexToRetrieve > size)
-            return null
-        return collection.get(indexToRetrieve,)
-    }
-
-    if (index < 0)
         return null
     if (index > size)
         return null
-    return collection.get(index,)
+    if (index >= 0)
+        return collection.get(index,)
+
+    const indexToRetrieve = size + index
+    if (indexToRetrieve < 0)
+        return null
+    if (indexToRetrieve > size)
+        return null
+    return collection.get(indexToRetrieve,)
+
 }

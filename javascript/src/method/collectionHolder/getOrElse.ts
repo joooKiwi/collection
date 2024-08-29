@@ -50,24 +50,18 @@ export function getOrElse<const T, >(collection: Nullable<CollectionHolder<T>>, 
         return defaultValue(index,)
 
     if (collection.isEmpty)
-        if (index < 0)
-            return defaultValue(collection.size + index,)
-        else
-            return defaultValue(index,)
-
-    if (index < 0) {
-        const size = collection.size
-        const indexToRetrieve = size + index
-        if (indexToRetrieve < 0)
-            return defaultValue(indexToRetrieve,)
-        if (indexToRetrieve > size)
-            return defaultValue(indexToRetrieve,)
-        return collection.get(indexToRetrieve,)
-    }
-
-    if (index < 0)
         return defaultValue(index,)
-    if (index > collection.size)
+
+    const size = collection.size
+    if (index > size)
         return defaultValue(index,)
-    return collection.get(index,)
+    if (index >= 0)
+        return collection.get(index,)
+
+    const indexToRetrieve = size + index
+    if (indexToRetrieve < 0)
+        return defaultValue(index,)
+    if (indexToRetrieve > size)
+        return defaultValue(index,)
+    return collection.get(indexToRetrieve,)
 }

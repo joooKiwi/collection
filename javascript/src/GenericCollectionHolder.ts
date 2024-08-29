@@ -743,23 +743,20 @@ export class GenericCollectionHolder<const T = unknown,
         if (index == Number.POSITIVE_INFINITY)
             return defaultValue(index,)
         if (this.isEmpty)
-            return defaultValue(index < 0 ? this.size + index : index,)
-
-        if (index < 0) {
-            const size = this.size
-            const indexToRetrieve = size + index
-            if (indexToRetrieve < 0)
-                return defaultValue(indexToRetrieve,)
-            if (indexToRetrieve > size)
-                return defaultValue(indexToRetrieve,)
-            return this.get(indexToRetrieve,)
-        }
-
-        if (index < 0)
             return defaultValue(index,)
-        if (index > this.size)
+
+        const size = this.size
+        if (index > size)
             return defaultValue(index,)
-        return this.get(index,)
+        if (index >= 0)
+            return this[index] as T
+
+        const indexToRetrieve = size + index
+        if (indexToRetrieve < 0)
+            return defaultValue(index,)
+        if (indexToRetrieve > size)
+            return defaultValue(index,)
+        return this[indexToRetrieve] as T
     }
 
     public override getOrNull(index: number,): NullOr<T> {
@@ -772,21 +769,18 @@ export class GenericCollectionHolder<const T = unknown,
         if (this.isEmpty)
             return null
 
-        if (index < 0) {
-            const size = this.size
-            const indexToRetrieve = size + index
-            if (indexToRetrieve < 0)
-                return null
-            if (indexToRetrieve > size)
-                return null
-            return this[indexToRetrieve] as T
-        }
+        const size = this.size
+        if (index > size)
+            return null
+        if (index >= 0)
+            return this[index] as T
 
-        if (index < 0)
+        const indexToRetrieve = size + index
+        if (indexToRetrieve < 0)
             return null
-        if (index > this.size)
+        if (indexToRetrieve > size)
             return null
-        return this[index] as T
+        return this[indexToRetrieve] as T
     }
 
     public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> { return this.#objectValuesMap ??= super.objectValuesMap }
