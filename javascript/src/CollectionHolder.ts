@@ -12,15 +12,25 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "./iterator/CollectionIterator"
 
 /**
- * A collection to hold another collection and do some generic stuff if applicable.
+ * A collection to hold data.
+ * Its purpose is to do generic stuff if applicable.
  *
- * It also has some methods that are applicable for both {@link Array} & {@link Set} to give options.
- * Some methods are inspired by other languages to give more cross-language functionality.
+ * It has some methods that are applicable on {@link ReadonlyArray}, {@link ReadonlySet}
+ * & {@link ReadonlyMap} to give functionalities.
+ * Some methods are inspired by other languages to give more cross-language features.
  *
+ * @param T The type (by default <em>unknown</em>)
+ *
+ * @see ReadonlyArray
+ * @see ReadonlySet
+ * @see ReadonlyMap
  * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array Javascript Array
  * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set Javascript Set
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map Javascript Map
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html Java Collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/ Kotlin Collection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable C# Enumerable
+ * @see https://docs.oracle.com/en/java/javase/22/core/java-collections-framework.html Java collection framework
  */
 export interface CollectionHolder<out T = unknown, >
     extends MinimalistCollectionHolder<T>,
@@ -701,6 +711,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
@@ -717,6 +728,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)

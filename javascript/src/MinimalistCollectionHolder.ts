@@ -5,7 +5,11 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-/** A minimalistic declaration of the {@link CollectionHolder} */
+/**
+ * A minimalistic declaration of the {@link CollectionHolder}
+ *
+ * @param T The type (by default <em>unknown</em>)
+ */
 export interface MinimalistCollectionHolder<out T = unknown, > {
 
     /**
