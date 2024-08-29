@@ -25,8 +25,14 @@ export {findLast,                             findLastByCollectionHolder}       
 export {findLastIndexed,                      findLastIndexedByCollectionHolder}                                          from "./findLastIndexed"
 export {first,                                firstByCollectionHolder}                                                    from "./first"
 export {firstOrNull,                          firstOrNullByCollectionHolder}                                              from "./firstOrNull"
-export {forEach}                                                                                                          from "./forEach"
-export {forEachIndexed}                                                                                                   from "./forEachIndexed"
+
+export {forEach}                                        from "./forEach"
+export {forEach as forEachByCollectionHolder}           from "./collectionHolder/forEach"
+export {forEach as forEachByMinimalistCollectionHolder} from "./minimalistCollectionHolder/forEach"
+
+export {forEachIndexed}                                               from "./forEachIndexed"
+export {forEachIndexed as forEachIndexedByCollectionHolder}           from "./collectionHolder/forEachIndexed"
+export {forEachIndexed as forEachIndexedByMinimalistCollectionHolder} from "./minimalistCollectionHolder/forEachIndexed"
 
 export {getOrElse}                                          from "./getOrElse"
 export {getOrElse as getOrElseByCollectionHolder}           from "./collectionHolder/getOrElse"
@@ -74,6 +80,15 @@ export {mapNotNull,                           mapNotNullByCollectionHolder}     
 export {mapNotNullIndexed,                    mapNotNullIndexedByCollectionHolder}                                        from "./mapNotNullIndexed"
 export {none,                                 noneByCollectionHolder}                                                     from "./none"
 export {objectValuesMap,                      objectValuesMapByCollectionHolder}                                          from "./objectValuesMap"
+
+export {onEach}                                        from "./onEach"
+export {onEach as onEachByCollectionHolder}           from "./collectionHolder/onEach"
+export {onEach as onEachByMinimalistCollectionHolder} from "./minimalistCollectionHolder/onEach"
+
+export {onEachIndexed}                                               from "./onEachIndexed"
+export {onEachIndexed as onEachIndexedByCollectionHolder}           from "./collectionHolder/onEachIndexed"
+export {onEachIndexed as onEachIndexedByMinimalistCollectionHolder} from "./minimalistCollectionHolder/onEachIndexed"
+
 export {requireNoNulls,                       requireNoNullsByCollectionHolder}                                           from "./requireNoNulls"
 export {slice,                                sliceByCollectionHolder}                                                    from "./slice"
 export {sliceWithARange,                      sliceWithARangeByCollectionHolder}                                          from "./slice.withARange"

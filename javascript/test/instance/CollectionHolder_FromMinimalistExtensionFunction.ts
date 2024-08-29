@@ -50,6 +50,8 @@ import {mapIndexed}                         from "../../src/method/mapIndexed"
 import {mapNotNull}                         from "../../src/method/mapNotNull"
 import {mapNotNullIndexed}                  from "../../src/method/mapNotNullIndexed"
 import {objectValuesMap}                    from "../../src/method/objectValuesMap"
+import {onEach}                             from "../../src/method/minimalistCollectionHolder/onEach"
+import {onEachIndexed}                      from "../../src/method/minimalistCollectionHolder/onEachIndexed"
 import {requireNoNulls}                     from "../../src/method/requireNoNulls"
 import {slice}                              from "../../src/method/slice"
 import {toArray}                            from "../../src/method/toArray"
@@ -594,18 +596,33 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
     //#region -------------------- For each methods --------------------
 
-    public forEach(action: ValueIndexCallback<T>,): this {
-        return forEach(this, action,)
+    public forEach(action: ValueIndexCallback<T>,): void {
+        forEach(this, action,)
     }
 
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- For each indexed methods --------------------
 
-    public forEachIndexed(action: IndexValueCallback<T>,): this {
-        return forEachIndexed(this, action,)
+    public forEachIndexed(action: IndexValueCallback<T>,): void {
+        forEachIndexed(this, action,)
     }
 
     //#endregion -------------------- For each indexed methods --------------------
+
+    //#region -------------------- On each methods --------------------
+
+    public onEach(action: ValueIndexCallback<T>,): this {
+        return onEach(this, action,)
+    }
+
+    //#endregion -------------------- On each methods --------------------
+    //#region -------------------- On each indexed methods --------------------
+
+    public onEachIndexed(action: IndexValueCallback<T>,): this {
+        return onEachIndexed(this, action,)
+    }
+
+    //#endregion -------------------- On each indexed methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------

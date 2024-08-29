@@ -10,55 +10,54 @@ import type {Nullable} from "@joookiwi/type"
 import type {IndexValueCallback}         from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isCollectionHolder}                             from "./isCollectionHolder"
-import {forEachIndexed as byCollectionHolder}           from "./collectionHolder/forEachIndexed"
-import {forEachIndexed as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/forEachIndexed"
+import {isCollectionHolder}                            from "./isCollectionHolder"
+import {onEachIndexed as byCollectionHolder}           from "./collectionHolder/onEachIndexed"
+import {onEachIndexed as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/onEachIndexed"
 
 //#region -------------------- Facade method --------------------
 
 /**
  * Perform a given {@link action} on each element
+ * and return the {@link collection} afterwards
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
  * @extensionFunction
  */
-export function forEachIndexed<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, action: IndexValueCallback<T>,): void {
+export function onEachIndexed<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
     if (collection == null)
-        return
+        return null as COLLECTION
     if (isCollectionHolder<T>(collection,))
-        byCollectionHolder(collection, action,)
-    else
-        byMinimalistCollectionHolder(collection, action,)
-
+        return byCollectionHolder(collection, action,)
+    return byMinimalistCollectionHolder(collection, action,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-/** @internal */
-export function __with0Argument(action: () => void, size: number,) {
+export function __with0Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: () => void, size: number,) {
     let index = size
     while (index-- > 0)
         action()
+    return collection
 }
 
-/** @internal */
-export function __with1Argument(action: (index: number,) => void, size: number,) {
+export function __with1Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (index: number,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index,)
+    return collection
 }
 
-/** @internal */
-export function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, action: (index: number, value: T,) => void, size: number,) {
+export function __with2Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (index: number, value: T,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index, collection.get(index,),)
+    return collection
 }
 
 //#endregion -------------------- Loop methods --------------------

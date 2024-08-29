@@ -472,16 +472,29 @@ export class EmptyCollectionHolder
 
     //#region -------------------- For each methods --------------------
 
-    public forEach(..._: readonly unknown[]): this
-    public forEach() { return this }
+    public forEach(..._: readonly unknown[]): void
+    public forEach() {}
 
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- For each indexed methods --------------------
 
-    public forEachIndexed(..._: readonly unknown[]): this
-    public forEachIndexed() { return this }
+    public forEachIndexed(..._: readonly unknown[]): void
+    public forEachIndexed() {}
 
     //#endregion -------------------- For each indexed methods --------------------
+
+    //#region -------------------- On each methods --------------------
+
+    public onEach(..._: readonly unknown[]): this
+    public onEach() { return this }
+
+    //#endregion -------------------- On each methods --------------------
+    //#region -------------------- On each indexed methods --------------------
+
+    public onEachIndexed(..._: readonly unknown[]): this
+    public onEachIndexed() { return this }
+
+    //#endregion -------------------- On each indexed methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------

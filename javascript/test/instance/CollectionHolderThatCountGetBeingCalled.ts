@@ -12,11 +12,19 @@ import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexVal
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                    from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
 
-import {AbstractCollectionHolder}               from "../../src/AbstractCollectionHolder"
-import {all as allByCollectionHolder}           from "../../src/method/collectionHolder/all"
-import {all as allByMinimalistCollectionHolder} from "../../src/method/minimalistCollectionHolder/all"
-import {any as anyByCollectionHolder}           from "../../src/method/collectionHolder/any"
-import {any as anyByMinimalistCollectionHolder} from "../../src/method/minimalistCollectionHolder/any"
+import {AbstractCollectionHolder}                                     from "../../src/AbstractCollectionHolder"
+import {all as allByCollectionHolder}                                 from "../../src/method/collectionHolder/all"
+import {all as allByMinimalistCollectionHolder}                       from "../../src/method/minimalistCollectionHolder/all"
+import {any as anyByCollectionHolder}                                 from "../../src/method/collectionHolder/any"
+import {any as anyByMinimalistCollectionHolder}                       from "../../src/method/minimalistCollectionHolder/any"
+import {forEach as forEachByCollectionHolder}                         from "../../src/method/collectionHolder/forEach"
+import {forEach as forEachByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/forEach"
+import {forEachIndexed as forEachIndexedByCollectionHolder}           from "../../src/method/collectionHolder/forEachIndexed"
+import {forEachIndexed as forEachIndexedByMinimalistCollectionHolder} from "../../src/method/minimalistCollectionHolder/forEachIndexed"
+import {onEach as onEachByCollectionHolder}                           from "../../src/method/collectionHolder/onEach"
+import {onEach as onEachByMinimalistCollectionHolder}                 from "../../src/method/minimalistCollectionHolder/onEach"
+import {onEachIndexed as onEachIndexedByCollectionHolder}             from "../../src/method/collectionHolder/onEachIndexed"
+import {onEachIndexed as onEachIndexedByMinimalistCollectionHolder}   from "../../src/method/minimalistCollectionHolder/onEachIndexed"
 
 import {filter, filterByCollectionHolder}                                   from "../../src/method/filter"
 import {filterIndexed, filterIndexedByCollectionHolder}                     from "../../src/method/filterIndexed"
@@ -29,8 +37,6 @@ import {findLast, findLastByCollectionHolder}                               from
 import {findLastIndexed, findLastIndexedByCollectionHolder}                 from "../../src/method/findLastIndexed"
 import {first, firstByCollectionHolder}                                     from "../../src/method/first"
 import {firstOrNull, firstOrNullByCollectionHolder}                         from "../../src/method/firstOrNull"
-import {forEach}                                                            from "../../src/method/forEach"
-import {forEachIndexed}                                                     from "../../src/method/forEachIndexed"
 import {has, hasByCollectionHolder}                                         from "../../src/method/has"
 import {hasAll, hasAllByCollectionHolder}                                   from "../../src/method/hasAll"
 import {hasDuplicate, hasDuplicateByCollectionHolder}                       from "../../src/method/hasDuplicate"
@@ -675,20 +681,41 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     //#region -------------------- For each methods --------------------
 
-    public forEach(action: ValueIndexCallback<T>,): this {
-        forEach(this, action,)
-        return this
+    public forEach(action: ValueIndexCallback<T>,): void {
+        this.#isCollectionHolder
+            ? forEachByCollectionHolder(this, action,)
+            : forEachByMinimalistCollectionHolder(this, action,)
     }
 
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- For each indexed methods --------------------
 
-    public forEachIndexed(action: IndexValueCallback<T>,): this {
-        forEachIndexed(this, action,)
-        return this
+    public forEachIndexed(action: IndexValueCallback<T>,): void {
+        this.#isCollectionHolder
+            ? forEachIndexedByCollectionHolder(this, action,)
+            : forEachIndexedByMinimalistCollectionHolder(this, action,)
     }
 
     //#endregion -------------------- For each indexed methods --------------------
+
+    //#region -------------------- On each methods --------------------
+
+    public onEach(action: ValueIndexCallback<T>,): this {
+        return this.#isCollectionHolder
+            ? onEachByCollectionHolder(this, action,)
+            : onEachByMinimalistCollectionHolder(this, action,)
+    }
+
+    //#endregion -------------------- On each methods --------------------
+    //#region -------------------- On each indexed methods --------------------
+
+    public onEachIndexed(action: IndexValueCallback<T>,): this {
+        return this.#isCollectionHolder
+            ? onEachIndexedByCollectionHolder(this, action,)
+            : onEachIndexedByMinimalistCollectionHolder(this, action,)
+    }
+
+    //#endregion -------------------- On each indexed methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
 

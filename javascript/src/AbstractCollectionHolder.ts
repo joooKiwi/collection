@@ -26,8 +26,8 @@ import {findLastByCollectionHolder}                from "./method/findLast"
 import {findLastIndexedByCollectionHolder}         from "./method/findLastIndexed"
 import {firstByCollectionHolder}                   from "./method/first"
 import {firstOrNullByCollectionHolder}             from "./method/firstOrNull"
-import {forEach}                                   from "./method/forEach"
-import {forEachIndexed}                            from "./method/forEachIndexed"
+import {forEach}                                   from "./method/collectionHolder/forEach"
+import {forEachIndexed}                            from "./method/collectionHolder/forEachIndexed"
 import {getOrElse}                                 from "./method/collectionHolder/getOrElse"
 import {getOrNull}                                 from "./method/collectionHolder/getOrNull"
 import {hasByCollectionHolder}                     from "./method/has"
@@ -50,6 +50,8 @@ import {mapIndexedByCollectionHolder}              from "./method/mapIndexed"
 import {mapNotNullByCollectionHolder}              from "./method/mapNotNull"
 import {mapNotNullIndexedByCollectionHolder}       from "./method/mapNotNullIndexed"
 import {objectValuesMapByCollectionHolder}         from "./method/objectValuesMap"
+import {onEach}                                    from "./method/collectionHolder/onEach"
+import {onEachIndexed}                             from "./method/collectionHolder/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "./method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "./method/slice"
 import {toArrayByCollectionHolder}                 from "./method/toArray"
@@ -577,18 +579,33 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- For each methods --------------------
 
-    public forEach(action: ValueIndexCallback<T>,): this {
-        return forEach(this, action,)
+    public forEach(action: ValueIndexCallback<T>,): void {
+        forEach(this, action,)
     }
 
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- For each indexed methods --------------------
 
-    public forEachIndexed(action: IndexValueCallback<T>,): this {
-        return forEachIndexed(this, action,)
+    public forEachIndexed(action: IndexValueCallback<T>,): void {
+        forEachIndexed(this, action,)
     }
 
     //#endregion -------------------- For each indexed methods --------------------
+
+    //#region -------------------- On each methods --------------------
+
+    public onEach(action: ValueIndexCallback<T>,): this {
+        return onEach(this, action,)
+    }
+
+    //#endregion -------------------- On each methods --------------------
+    //#region -------------------- On each indexed methods --------------------
+
+    public onEachIndexed(action: IndexValueCallback<T>,): this {
+        return onEachIndexed(this, action,)
+    }
+
+    //#endregion -------------------- On each indexed methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------

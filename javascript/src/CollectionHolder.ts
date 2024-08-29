@@ -2103,19 +2103,46 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Perform a given {@link action} on each element
+     *
+     * @param action The given action
+     * @see ReadonlyArray.forEach
+     * @see ReadonlySet.forEach
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+     */
+    forEach(action: ValueIndexCallback<T>,): void
+
+    //#endregion -------------------- For each methods --------------------
+    //#region -------------------- For each indexed methods --------------------
+
+    /**
+     * Perform a given {@link action} on each element
+     *
+     * @param action The given action
+     * @see ReadonlyArray.forEach
+     * @see ReadonlySet.forEach
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+     */
+    forEachIndexed(action: IndexValueCallback<T>,): void
+
+    //#endregion -------------------- For each indexed methods --------------------
+    //#region -------------------- On each methods --------------------
+
+    /**
+     * Perform a given {@link action} on each element
      * and return the current {@link CollectionHolder collection} afterwards
      *
      * @param action The given action
      * @see ReadonlyArray.forEach
      * @see ReadonlySet.forEach
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
      */
-    forEach(action: ValueIndexCallback<T>,): this
+    onEach(action: ValueIndexCallback<T>,): this
 
-    //#endregion -------------------- For each methods --------------------
-    //#region -------------------- For each indexed methods --------------------
+    //#endregion -------------------- On each methods --------------------
+    //#region -------------------- On each indexed methods --------------------
 
     /**
      * Perform a given {@link action} on each element
@@ -2125,12 +2152,11 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.forEach
      * @see ReadonlySet.forEach
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
      */
-    forEachIndexed(action: IndexValueCallback<T>,): this
+    onEachIndexed(action: IndexValueCallback<T>,): this
 
-    //#endregion -------------------- For each indexed methods --------------------
+    //#endregion -------------------- On each indexed methods --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Javascript methods --------------------
