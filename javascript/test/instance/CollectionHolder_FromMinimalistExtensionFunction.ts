@@ -13,8 +13,8 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
 
 import {AbstractMinimalistCollectionHolder} from "../../src/AbstractMinimalistCollectionHolder"
-import {all}                                from "../../src/method/all"
-import {any}                                from "../../src/method/any"
+import {all}                                from "../../src/method/minimalistCollectionHolder/all"
+import {any}                                from "../../src/method/minimalistCollectionHolder/any"
 import {filter}                             from "../../src/method/filter"
 import {filterIndexed}                      from "../../src/method/filterIndexed"
 import {filterNot}                          from "../../src/method/filterNot"
@@ -294,7 +294,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public any(predicate?: Nullable<BooleanCallback<T>>,): boolean {
+    public any(predicate?: Nullable<BooleanCallback<T>>,) {
         return any(this, predicate,)
     }
 

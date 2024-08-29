@@ -14,7 +14,7 @@ import type {CollectionIterator}                                                
 
 import {AbstractCollectionHolder}                  from "../../src/AbstractCollectionHolder"
 import {all}                                       from "../../src/method/collectionHolder/all"
-import {anyByCollectionHolder}                     from "../../src/method/any"
+import {any}                                       from "../../src/method/collectionHolder/any"
 import {filterByCollectionHolder}                  from "../../src/method/filter"
 import {filterIndexedByCollectionHolder}           from "../../src/method/filterIndexed"
 import {filterNotByCollectionHolder}               from "../../src/method/filterNot"
@@ -265,8 +265,8 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
 
     public override any(): this["isNotEmpty"]
     public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override any(predicate?: Nullable<BooleanCallback<T>>,): boolean {
-        return anyByCollectionHolder(this, predicate,)
+    public override any(predicate?: Nullable<BooleanCallback<T>>,) {
+        return any(this, predicate,)
     }
 
     //#endregion -------------------- Any methods --------------------

@@ -14,7 +14,7 @@ import type {CollectionIterator}                                                
 
 import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
 import {all}                                       from "./method/collectionHolder/all"
-import {anyByCollectionHolder}                     from "./method/any"
+import {any}                                       from "./method/collectionHolder/any"
 import {filterByCollectionHolder}                  from "./method/filter"
 import {filterIndexedByCollectionHolder}           from "./method/filterIndexed"
 import {filterNotByCollectionHolder}               from "./method/filterNot"
@@ -277,7 +277,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public any(predicate?: Nullable<BooleanCallback<T>>,) {
-        return anyByCollectionHolder(this, predicate,)
+        return any(this, predicate,)
     }
 
     //#endregion -------------------- Any methods --------------------

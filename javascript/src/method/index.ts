@@ -9,7 +9,10 @@ export {all}                                    from "./all"
 export {all as allByCollectionHolder}           from "./collectionHolder/all"
 export {all as allByMinimalistCollectionHolder} from "./minimalistCollectionHolder/all"
 
-export {any,                                  anyByCollectionHolder}                                                      from "./any"
+export {any}                                    from "./any"
+export {any as anyByCollectionHolder}           from "./collectionHolder/any"
+export {any as anyByMinimalistCollectionHolder} from "./minimalistCollectionHolder/any"
+
 export {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString} from "./asString"
 export {filter,                               filterByCollectionHolder}                                                   from "./filter"
 export {filterIndexed,                        filterIndexedByCollectionHolder}                                            from "./filterIndexed"

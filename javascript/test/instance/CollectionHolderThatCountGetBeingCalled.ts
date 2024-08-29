@@ -12,9 +12,11 @@ import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexVal
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                    from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
 
-import {AbstractCollectionHolder}                                           from "../../src/AbstractCollectionHolder"
-import {all as allByCollectionHolder}                                       from "../../src/method/collectionHolder/all"
-import {all as allByMinimalistCollectionHolder}                             from "../../src/method/minimalistCollectionHolder/all"
+import {AbstractCollectionHolder}               from "../../src/AbstractCollectionHolder"
+import {all as allByCollectionHolder}           from "../../src/method/collectionHolder/all"
+import {all as allByMinimalistCollectionHolder} from "../../src/method/minimalistCollectionHolder/all"
+import {any as anyByCollectionHolder}           from "../../src/method/collectionHolder/any"
+import {any as anyByMinimalistCollectionHolder} from "../../src/method/minimalistCollectionHolder/any"
 
 import {any, anyByCollectionHolder}                                         from "../../src/method/any"
 import {filter, filterByCollectionHolder}                                   from "../../src/method/filter"
@@ -332,10 +334,10 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public any(predicate?: Nullable<BooleanCallback<T>>,): boolean {
+    public any(predicate?: Nullable<BooleanCallback<T>>,) {
         return this.#isCollectionHolder
             ? anyByCollectionHolder(this, predicate,)
-            : any(this, predicate,)
+            : anyByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Any methods --------------------
