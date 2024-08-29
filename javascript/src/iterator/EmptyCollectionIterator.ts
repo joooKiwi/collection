@@ -49,7 +49,7 @@ export class EmptyCollectionIterator
     //#region -------------------- Next methods --------------------
 
     public next(... _: readonly unknown[]): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol>
-    public next(): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol> { return GenericAfterLastIteratorValue.get }
+    public next() { return GenericAfterLastIteratorValue.get }
 
     public get nextValue(): never { throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",) }
 
@@ -57,7 +57,7 @@ export class EmptyCollectionIterator
     //#region -------------------- Previous methods --------------------
 
     public previous(... _: readonly unknown[]): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol>
-    public previous(): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol> { return GenericBeforeFirstIteratorValue.get }
+    public previous() { return GenericBeforeFirstIteratorValue.get }
 
     public get previousValue(): never { throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",) }
 
@@ -65,7 +65,7 @@ export class EmptyCollectionIterator
     //#region -------------------- Reset methods --------------------
 
     public reset(... _: readonly unknown[]): this
-    public reset(): this { return this }
+    public reset() { return this }
 
     //#endregion -------------------- Reset methods --------------------
 
