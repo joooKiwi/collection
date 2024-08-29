@@ -162,6 +162,7 @@ export class CollectionConstants {
             "map", "mapIndexed",
             "mapNotNull", "mapNotNullIndexed",
             "forEach", "forEachIndexed",
+            "onEach", "onEachIndexed",
             Symbol.iterator, Symbol.toStringTag,
             "objectValuesMap",
             "toIterator",
@@ -181,6 +182,7 @@ export class CollectionConstants {
     public static get ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
         return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
+            "isEmpty", "isNotEmpty",
             "currentIndex", "index",
             "nextIndex", "previousIndex",
             "hasNext", "hasPrevious",
