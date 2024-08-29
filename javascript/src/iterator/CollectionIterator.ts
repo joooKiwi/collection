@@ -44,6 +44,13 @@ export interface CollectionIterator<out T = unknown, >
      */
     get count(): this["size"]
 
+
+    /** The {@link collection} {@link CollectionHolder.isEmpty is empty} */
+    get isEmpty(): boolean
+
+    /** The {@link collection} {@link CollectionHolder.isNotEmpty is not empty} */
+    get isNotEmpty(): boolean
+
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Current index methods --------------------
 

@@ -34,6 +34,9 @@ export class EmptyCollectionIterator
     public get length(): 0 { return 0 }
     public get count(): 0 { return 0 }
 
+    public get isEmpty(): true { return true }
+    public get isNotEmpty(): false { return false }
+
     public get index(): null { return null }
     public get currentIndex(): null { return null }
 
