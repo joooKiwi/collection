@@ -18,7 +18,6 @@ import {all as allByMinimalistCollectionHolder} from "../../src/method/minimalis
 import {any as anyByCollectionHolder}           from "../../src/method/collectionHolder/any"
 import {any as anyByMinimalistCollectionHolder} from "../../src/method/minimalistCollectionHolder/any"
 
-import {any, anyByCollectionHolder}                                         from "../../src/method/any"
 import {filter, filterByCollectionHolder}                                   from "../../src/method/filter"
 import {filterIndexed, filterIndexedByCollectionHolder}                     from "../../src/method/filterIndexed"
 import {filterNot, filterNotByCollectionHolder}                             from "../../src/method/filterNot"
@@ -158,52 +157,52 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
         return this.#instance.get(index,)
     }
 
-    public at(index: number,): T
-    public at(): never {
+    public at(index?: number,): never
+    public at() {
         throw new Error("The method \"at\" was not expected to be called in a test.",)
     }
 
-    public elementAt(index: number,): T
-    public elementAt(): never {
+    public elementAt(index?: number,): never
+    public elementAt() {
         throw new Error("The method \"elementAt\" was not expected to be called in a test.",)
     }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Get or else methods --------------------
 
-    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public getOrElse(): never {
+    public getOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
+    public getOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
+    public getOrElse() {
         throw new Error("The method \"getOrElse\" was not expected to be called in a test.",)
     }
 
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public atOrElse(): never {
+    public atOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
+    public atOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
+    public atOrElse() {
         throw new Error("The method \"atOrElse\" was not expected to be called in a test.",)
     }
 
-    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public elementAtOrElse(): never {
+    public elementAtOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
+    public elementAtOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
+    public elementAtOrElse() {
         throw new Error("The method \"elementAtOrElse\" was not expected to be called in a test.",)
     }
 
     //#endregion -------------------- Get or else methods --------------------
     //#region -------------------- Get or null methods --------------------
 
-    public getOrNull(index: number,): NullOr<T>
-    public getOrNull(): never {
+    public getOrNull(index?: number,): never
+    public getOrNull() {
         throw new Error("The method \"getOrNull\" was not expected to be called in a test.",)
     }
 
-    public atOrNull(index: number,): NullOr<T>
-    public atOrNull(): never {
+    public atOrNull(index?: number,): never
+    public atOrNull() {
         throw new Error("The method \"atOrNull\" was not expected to be called in a test.",)
     }
 
-    public elementAtOrNull(index: number,): NullOr<T>
-    public elementAtOrNull(): never {
+    public elementAtOrNull(index?: number,): never
+    public elementAtOrNull() {
         throw new Error("The method \"elementAtOrNull\" was not expected to be called in a test.",)
     }
 
@@ -213,7 +212,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
     public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return this.#isCollectionHolder
             ? indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
             : indexOf(this, element, fromIndex, toIndex, limit,)
@@ -224,7 +223,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
     public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return this.#isCollectionHolder
             ? lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
             : lastIndexOf(this, element, fromIndex, toIndex, limit,)
@@ -270,10 +269,10 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     //#region -------------------- First methods --------------------
 
-    public first(): NonNullable<T>
-    public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
-    public first<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+    public first(): T
+    public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+    public first(predicate: Nullable<BooleanCallback<T>>,): T
+    public first(predicate?: Nullable<BooleanCallback<T>>,) {
         return this.#isCollectionHolder
             ? firstByCollectionHolder(this, predicate,)
             : first(this, predicate,)
@@ -285,7 +284,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public firstOrNull(): NullOr<T>
     public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public firstOrNull<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+    public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
         return this.#isCollectionHolder
             ? firstOrNullByCollectionHolder(this, predicate,)
             : firstOrNull(this, predicate,)
@@ -295,10 +294,10 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     //#region -------------------- Last methods --------------------
 
-    public last(): NonNullable<T>
-    public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
-    public last<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+    public last(): T
+    public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+    public last(predicate: Nullable<BooleanCallback<T>>,): T
+    public last(predicate?: Nullable<BooleanCallback<T>>,) {
         return this.#isCollectionHolder
             ? lastByCollectionHolder(this, predicate,)
             : last(this, predicate,)
@@ -310,7 +309,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public lastOrNull(): NullOr<T>
     public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public lastOrNull<const S extends T, >(predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+    public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
         return this.#isCollectionHolder
             ? lastOrNullByCollectionHolder(this, predicate,)
             : lastOrNull(this, predicate,)
@@ -345,7 +344,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public none(): this["isEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public none(predicate?: Nullable<BooleanCallback<T>>,): boolean {
+    public none(predicate?: Nullable<BooleanCallback<T>>,) {
         return this.#isCollectionHolder
             ? noneByCollectionHolder(this, predicate,)
             : none(this, predicate,)
@@ -357,21 +356,21 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public has(value: T,): boolean
     public has(value: unknown,): boolean
-    public has(value: unknown,): boolean {
+    public has(value: unknown,) {
         return this.#isCollectionHolder
             ? hasByCollectionHolder(this, value,)
             : has(this, value,)
     }
 
-    public includes(value: T,): boolean
-    public includes(value: unknown,): boolean
-    public includes(): never {
+    public includes(value?: T,): never
+    public includes(value?: unknown,): never
+    public includes() {
         throw new Error("The method \"includes\" was not expected to be called.",)
     }
 
-    public contains(value: T,): boolean
-    public contains(value: unknown,): boolean
-    public contains(): never {
+    public contains(value?: T,): never
+    public contains(value?: unknown,): never
+    public contains() {
         throw new Error("The method \"contains\" was not expected to be called.",)
     }
 
@@ -398,39 +397,39 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
             : hasOne(this, values,)
     }
 
-    public includesOne(values: readonly T[],): boolean
-    public includesOne(values: ReadonlySet<T>,): boolean
-    public includesOne(values: CollectionHolder<T>,): boolean
-    public includesOne(values: MinimalistCollectionHolder<T>,): boolean
-    public includesOne(values: CollectionIterator<T>,): boolean
-    public includesOne(values: Iterable<T>,): boolean
-    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public includesOne(values: readonly unknown[],): boolean
-    public includesOne(values: ReadonlySet<unknown>,): boolean
-    public includesOne(values: CollectionHolder,): boolean
-    public includesOne(values: MinimalistCollectionHolder,): boolean
-    public includesOne(values: CollectionIterator,): boolean
-    public includesOne(values: Iterable<unknown>,): boolean
-    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesOne(): never {
+    public includesOne(values?: readonly T[],): never
+    public includesOne(values?: ReadonlySet<T>,): never
+    public includesOne(values?: CollectionHolder<T>,): never
+    public includesOne(values?: MinimalistCollectionHolder<T>,): never
+    public includesOne(values?: CollectionIterator<T>,): never
+    public includesOne(values?: Iterable<T>,): never
+    public includesOne(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public includesOne(values?: readonly unknown[],): never
+    public includesOne(values?: ReadonlySet<unknown>,): never
+    public includesOne(values?: CollectionHolder,): never
+    public includesOne(values?: MinimalistCollectionHolder,): never
+    public includesOne(values?: CollectionIterator,): never
+    public includesOne(values?: Iterable<unknown>,): never
+    public includesOne(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public includesOne() {
         throw new Error("The method \"includesOne\" was not expected to be called.",)
     }
 
-    public containsOne(values: readonly T[],): boolean
-    public containsOne(values: ReadonlySet<T>,): boolean
-    public containsOne(values: CollectionHolder<T>,): boolean
-    public containsOne(values: MinimalistCollectionHolder<T>,): boolean
-    public containsOne(values: CollectionIterator<T>,): boolean
-    public containsOne(values: Iterable<T>,): boolean
-    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public containsOne(values: readonly unknown[],): boolean
-    public containsOne(values: ReadonlySet<unknown>,): boolean
-    public containsOne(values: CollectionHolder,): boolean
-    public containsOne(values: MinimalistCollectionHolder,): boolean
-    public containsOne(values: CollectionIterator,): boolean
-    public containsOne(values: Iterable<unknown>,): boolean
-    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsOne(): never {
+    public containsOne(values?: readonly T[],): never
+    public containsOne(values?: ReadonlySet<T>,): never
+    public containsOne(values?: CollectionHolder<T>,): never
+    public containsOne(values?: MinimalistCollectionHolder<T>,): never
+    public containsOne(values?: CollectionIterator<T>,): never
+    public containsOne(values?: Iterable<T>,): never
+    public containsOne(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public containsOne(values?: readonly unknown[],): never
+    public containsOne(values?: ReadonlySet<unknown>,): never
+    public containsOne(values?: CollectionHolder,): never
+    public containsOne(values?: MinimalistCollectionHolder,): never
+    public containsOne(values?: CollectionIterator,): never
+    public containsOne(values?: Iterable<unknown>,): never
+    public containsOne(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public containsOne() {
         throw new Error("The method \"containsOne\" was not expected to be called.",)
     }
 
@@ -451,53 +450,45 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public hasAll(values: CollectionIterator,): boolean
     public hasAll(values: Iterable<unknown>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasAll(...values: readonly T[]): boolean
-    public hasAll(...values: readonly unknown[]): boolean
-    public hasAll(): boolean {
-        if (arguments.length == 1)
-            return this.#isCollectionHolder
-                ? hasAllByCollectionHolder(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-                : hasAll(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-        throw new Error("The method \"hasAll\" was not expected to be called with a variadic parameter.",) // TODO Remove once the version 1.10 is in progress
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return this.#isCollectionHolder
+            ? hasAllByCollectionHolder(this, values,)
+            : hasAll(this, values,)
     }
 
-    public includesAll(values: readonly T[],): boolean
-    public includesAll(values: ReadonlySet<T>,): boolean
-    public includesAll(values: CollectionHolder<T>,): boolean
-    public includesAll(values: MinimalistCollectionHolder<T>,): boolean
-    public includesAll(values: CollectionIterator<T>,): boolean
-    public includesAll(values: Iterable<T>,): boolean
-    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public includesAll(values: readonly unknown[],): boolean
-    public includesAll(values: ReadonlySet<unknown>,): boolean
-    public includesAll(values: CollectionHolder,): boolean
-    public includesAll(values: MinimalistCollectionHolder,): boolean
-    public includesAll(values: CollectionIterator,): boolean
-    public includesAll(values: Iterable<unknown>,): boolean
-    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesAll(...values: readonly T[]): boolean
-    public includesAll(...values: readonly unknown[]): boolean
-    public includesAll(): never {
+    public includesAll(values?: readonly T[],): never
+    public includesAll(values?: ReadonlySet<T>,): never
+    public includesAll(values?: CollectionHolder<T>,): never
+    public includesAll(values?: MinimalistCollectionHolder<T>,): never
+    public includesAll(values?: CollectionIterator<T>,): never
+    public includesAll(values?: Iterable<T>,): never
+    public includesAll(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public includesAll(values?: readonly unknown[],): never
+    public includesAll(values?: ReadonlySet<unknown>,): never
+    public includesAll(values?: CollectionHolder,): never
+    public includesAll(values?: MinimalistCollectionHolder,): never
+    public includesAll(values?: CollectionIterator,): never
+    public includesAll(values?: Iterable<unknown>,): never
+    public includesAll(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public includesAll() {
         throw new Error("The method \"includesAll\" was not expected to be called.",)
     }
 
-    public containsAll(values: readonly T[],): boolean
-    public containsAll(values: ReadonlySet<T>,): boolean
-    public containsAll(values: CollectionHolder<T>,): boolean
-    public containsAll(values: MinimalistCollectionHolder<T>,): boolean
-    public containsAll(values: CollectionIterator<T>,): boolean
-    public containsAll(values: Iterable<T>,): boolean
-    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public containsAll(values: readonly unknown[],): boolean
-    public containsAll(values: ReadonlySet<unknown>,): boolean
-    public containsAll(values: CollectionHolder,): boolean
-    public containsAll(values: MinimalistCollectionHolder,): boolean
-    public containsAll(values: CollectionIterator,): boolean
-    public containsAll(values: Iterable<unknown>,): boolean
-    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsAll(...values: readonly T[]): boolean
-    public containsAll(...values: readonly unknown[]): boolean
-    public containsAll(): never {
+    public containsAll(values?: readonly T[],): never
+    public containsAll(values?: ReadonlySet<T>,): never
+    public containsAll(values?: CollectionHolder<T>,): never
+    public containsAll(values?: MinimalistCollectionHolder<T>,): never
+    public containsAll(values?: CollectionIterator<T>,): never
+    public containsAll(values?: Iterable<T>,): never
+    public containsAll(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public containsAll(values?: readonly unknown[],): never
+    public containsAll(values?: ReadonlySet<unknown>,): never
+    public containsAll(values?: CollectionHolder,): never
+    public containsAll(values?: MinimalistCollectionHolder,): never
+    public containsAll(values?: CollectionIterator,): never
+    public containsAll(values?: Iterable<unknown>,): never
+    public containsAll(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public containsAll() {
         throw new Error("The method \"containsAll\" was not expected to be called.",)
     }
 
@@ -505,8 +496,8 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     //#region -------------------- Join to string methods --------------------
 
-    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
-    public join(): never {
+    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): never
+    public join() {
         throw new Error("The method \"join\" was not expected to be called.",)
     }
 
@@ -585,7 +576,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public find(predicate: BooleanCallback<T>,): NullOr<T>
-    public find<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
+    public find(predicate: BooleanCallback<T>,) {
         return this.#isCollectionHolder
             ? findByCollectionHolder(this, predicate,)
             : find(this, predicate,)
@@ -596,7 +587,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findIndexed<const S extends T, >(predicate: | ReverseRestrainedBooleanCallback<T, S> | ReverseBooleanCallback<T>,) {
+    public findIndexed(predicate: ReverseBooleanCallback<T>,) {
         return this.#isCollectionHolder
             ? findIndexedByCollectionHolder(this, predicate,)
             : findIndexed(this, predicate,)
@@ -607,7 +598,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public findLast(predicate: BooleanCallback<T>,): NullOr<T>
-    public findLast<const S extends T, >(predicate: | RestrainedBooleanCallback<T, S> | BooleanCallback<T>,) {
+    public findLast(predicate: BooleanCallback<T>,) {
         return this.#isCollectionHolder
             ? findLastByCollectionHolder(this, predicate,)
             : findLast(this, predicate,)
@@ -618,7 +609,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T> {
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
         return this.#isCollectionHolder
             ? findLastIndexedByCollectionHolder(this, predicate,)
             : findLastIndexed(this, predicate,)
@@ -637,7 +628,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
     public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return this.#isCollectionHolder
             ? sliceByCollectionHolder<T>(this, indicesOrFromIndex, toIndex, limit,)
             : slice(this, indicesOrFromIndex, toIndex, limit,)
@@ -782,13 +773,13 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
             : toReverse(this, fromIndex, toIndex, limit,)
     }
 
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public toReversed(): never {
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
+    public toReversed() {
         throw new Error("The method \"toReversed\" was not expected to be called.",)
     }
 
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public reversed(): never {
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
+    public reversed() {
         throw new Error("The method \"reversed\" was not expected to be called.",)
     }
 

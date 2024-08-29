@@ -17,13 +17,13 @@ export class CollectionHolderHoldingNothing<const out T = unknown, >
     public override get size(): never { throw new Error("The getter method size was not expected to be called",) }
 
     public override get(index?: unknown,): never
-    public override get(): never { throw new Error("The method get was not expected to be called",) }
+    public override get() { throw new Error("The method get was not expected to be called",) }
 
     public override getOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
     public override getOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
-    public override getOrElse(): never { throw new Error("The method getOrElse was not expected to be called",) }
+    public override getOrElse() { throw new Error("The method getOrElse was not expected to be called",) }
 
     public override getOrNull(index?: number,): never
-    public override getOrNull(): never { throw new Error("The method getOrNull was not expected to be called",) }
+    public override getOrNull() { throw new Error("The method getOrNull was not expected to be called",) }
 
 }

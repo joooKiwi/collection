@@ -89,17 +89,17 @@ export class EmptyCollectionHolder
     //#region -------------------- Get methods --------------------
 
     public get(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
-    public get(index?: Nullable<NumericOrObject>,): never {
+    public get(index?: Nullable<NumericOrObject>,) {
         throw new EmptyCollectionHolderException(null, index,)
     }
 
     public at(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
-    public at(index?: Nullable<NumericOrObject>,): never {
+    public at(index?: Nullable<NumericOrObject>,) {
         throw new EmptyCollectionHolderException(null, index,)
     }
 
     public elementAt(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
-    public elementAt(index?: Nullable<NumericOrObject>,): never {
+    public elementAt(index?: Nullable<NumericOrObject>,) {
         throw new EmptyCollectionHolderException(null, index,)
     }
 
@@ -114,13 +114,13 @@ export class EmptyCollectionHolder
 
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
     public atOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| U | never>,) {
+    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U >,) {
         return defaultValue(index,)
     }
 
     public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
-    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| U | never>,) {
+    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,) {
         return defaultValue(index,)
     }
 
