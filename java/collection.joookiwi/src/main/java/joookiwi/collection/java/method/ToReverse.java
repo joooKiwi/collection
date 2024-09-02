@@ -71,7 +71,7 @@ public final class ToReverse
     /**
      * Reverse the {@code collection}
      * from a start <em>(if provided)</em>
-     * to the end of the {@link MinimalistCollectionHolder collection}
+     * to the end of the {@code collection}
      *
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
@@ -96,7 +96,7 @@ public final class ToReverse
     /**
      * Reverse the {@code collection}
      * from a start
-     * to the end of the {@link MinimalistCollectionHolder collection}
+     * to the end of the {@code collection}
      *
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
@@ -122,7 +122,7 @@ public final class ToReverse
     /**
      * Reverse the {@code collection}
      * from a start <em>(if provided)</em>
-     * to the end of the {@link CollectionHolder collection}
+     * to the end of the {@code collection}
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
@@ -147,7 +147,7 @@ public final class ToReverse
     /**
      * Reverse the {@code collection}
      * from a start
-     * to the end of the {@link CollectionHolder collection}
+     * to the end of the {@code collection}
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
@@ -173,8 +173,8 @@ public final class ToReverse
 
     /**
      * Reverse the {@code collection}
-     * from a start <em>(if provided)</em>
-     * to an end <em>(if provided)</em>
+     * from a start
+     * to an end
      *
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
@@ -189,18 +189,11 @@ public final class ToReverse
     @ExtensionFunction
     @CanReceiveNegativeValue
     public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final @Nullable Integer fromIndex,
-                                                             final @Nullable Integer toIndex) {
+                                                             final int fromIndex,
+                                                             final int toIndex) {
         if (collection == null)
             return emptyCollectionHolder();
-        if (toIndex == null)
-            if (fromIndex == null)
-                return __toReverse(collection);
-            else
-                return __toReverse(collection, fromIndex.intValue());
-        if (fromIndex == null)
-            return __toReverse(collection, null, toIndex.intValue());
-        return __toReverse(collection, fromIndex.intValue(), toIndex.intValue());
+        return __toReverse(collection, fromIndex, toIndex);
     }
 
     /**
@@ -259,8 +252,8 @@ public final class ToReverse
 
     /**
      * Reverse the {@code collection}
-     * from a start
-     * to an end
+     * from a start <em>(if provided)</em>
+     * to an end <em>(if provided)</em>
      *
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
@@ -275,11 +268,18 @@ public final class ToReverse
     @ExtensionFunction
     @CanReceiveNegativeValue
     public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final int fromIndex,
-                                                             final int toIndex) {
+                                                             final @Nullable Integer fromIndex,
+                                                             final @Nullable Integer toIndex) {
         if (collection == null)
             return emptyCollectionHolder();
-        return __toReverse(collection, fromIndex, toIndex);
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __toReverse(collection);
+            else
+                return __toReverse(collection, fromIndex.intValue());
+        if (fromIndex == null)
+            return __toReverse(collection, null, toIndex.intValue());
+        return __toReverse(collection, fromIndex.intValue(), toIndex.intValue());
     }
 
     //#endregion -------------------- minimalist - from, to --------------------
@@ -287,8 +287,8 @@ public final class ToReverse
 
     /**
      * Reverse the {@code collection}
-     * from a start <em>(if provided)</em>
-     * to an end <em>(if provided)</em>
+     * from a start
+     * to an end
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
@@ -303,18 +303,11 @@ public final class ToReverse
     @ExtensionFunction
     @CanReceiveNegativeValue
     public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final @Nullable Integer fromIndex,
-                                                             final @Nullable Integer toIndex) {
+                                                             final int fromIndex,
+                                                             final int toIndex) {
         if (collection == null)
             return emptyCollectionHolder();
-        if (toIndex == null)
-            if (fromIndex == null)
-                return __toReverse(collection);
-            else
-                return __toReverse(collection, fromIndex.intValue());
-        if (fromIndex == null)
-            return __toReverse(collection, null, toIndex.intValue());
-        return __toReverse(collection, fromIndex.intValue(), toIndex.intValue());
+        return __toReverse(collection, fromIndex, toIndex);
     }
 
     /**
@@ -373,8 +366,8 @@ public final class ToReverse
 
     /**
      * Reverse the {@code collection}
-     * from a start
-     * to an end
+     * from a start <em>(if provided)</em>
+     * to an end <em>(if provided)</em>
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
@@ -389,11 +382,18 @@ public final class ToReverse
     @ExtensionFunction
     @CanReceiveNegativeValue
     public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final int fromIndex,
-                                                             final int toIndex) {
+                                                             final @Nullable Integer fromIndex,
+                                                             final @Nullable Integer toIndex) {
         if (collection == null)
             return emptyCollectionHolder();
-        return __toReverse(collection, fromIndex, toIndex);
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __toReverse(collection);
+            else
+                return __toReverse(collection, fromIndex.intValue());
+        if (fromIndex == null)
+            return __toReverse(collection, null, toIndex.intValue());
+        return __toReverse(collection, fromIndex.intValue(), toIndex.intValue());
     }
 
     //#endregion -------------------- from, to --------------------
