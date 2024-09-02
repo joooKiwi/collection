@@ -1148,8 +1148,6 @@ public final class ToReverse
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        if (fromIndex == 0)
-            return emptyCollectionHolder();
         if (limit == 0)
             return emptyCollectionHolder();
 
@@ -1222,6 +1220,59 @@ public final class ToReverse
             throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
 
         //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
+
+        return new GenericCollectionHolder<>(() -> __withALimit(collection, startingIndex, endingIndex, maximumIndex));
+    }
+
+    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull CollectionHolder<? extends T> collection,
+                                                                final @Nullable Object ignoredNullFromIndex,
+                                                                final int toIndex,
+                                                                final int limit) {
+        //#region -------------------- Early returns --------------------
+
+        if (collection.isEmpty())
+            return emptyCollectionHolder();
+        if (toIndex == 0)
+            return emptyCollectionHolder();
+        if (limit == 0)
+            return emptyCollectionHolder();
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (ending/maximum index) --------------------
+
+        final var size = collection.size();
+        final var endingIndex = _endingIndex(toIndex, size);
+        final var maximumIndex = _maximumIndex(limit, size);
+        if (maximumIndex > endingIndex)
+            throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
+
+        //#endregion -------------------- Initialization (ending/maximum index) --------------------
+
+        return new GenericCollectionHolder<>(() -> __withALimit(collection, 0, endingIndex, maximumIndex));
+    }
+
+    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull CollectionHolder<? extends T> collection,
+                                                                final int fromIndex,
+                                                                final @Nullable Object ignoredNullToIndex,
+                                                                final int limit) {
+        //#region -------------------- Early returns --------------------
+
+        if (collection.isEmpty())
+            return emptyCollectionHolder();
+        if (limit == 0)
+            return emptyCollectionHolder();
+
+        //#endregion -------------------- Early returns --------------------
+        //#region -------------------- Initialization (starting/maximum index) --------------------
+
+        final var size = collection.size();
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = size - 1;
+        final var maximumIndex = _maximumIndex(limit, size);
+        if (endingIndex - startingIndex < maximumIndex - 1)
+            throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + endingIndex + "”.", limit);
+
+        //#endregion -------------------- Initialization (starting/maximum index) --------------------
 
         return new GenericCollectionHolder<>(() -> __withALimit(collection, startingIndex, endingIndex, maximumIndex));
     }
