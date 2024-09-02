@@ -21,7 +21,7 @@ public final class ToLocaleUpperCaseString
 
     //#region -------------------- Facade method --------------------
 
-    //#region -------------------- () --------------------
+    //#region -------------------- ∅ --------------------
 
     /**
      * Convert the {@code collection} to a {@link String} on every value
@@ -57,7 +57,7 @@ public final class ToLocaleUpperCaseString
         return __withNoLocale(collection, collection.size());
     }
 
-    //#endregion -------------------- () --------------------
+    //#endregion -------------------- ∅ --------------------
     //#region -------------------- locale --------------------
 
     /**

@@ -21,7 +21,7 @@ public final class LastOrNull
 
     //#region -------------------- Facade methods --------------------
 
-    //#region -------------------- () --------------------
+    //#region -------------------- ∅ --------------------
 
     /**
      * Get the last element in the current {@code collection}
@@ -34,7 +34,7 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return null;
 
@@ -55,7 +55,7 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection) {
+    public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -63,8 +63,8 @@ public final class LastOrNull
         return __withNoPredicate(collection, collection.size());
     }
 
-    //#endregion -------------------- () --------------------
-    //#region -------------------- predicate (T, int) → boolean --------------------
+    //#endregion -------------------- ∅ --------------------
+    //#region -------------------- (T, int) → boolean --------------------
 
     /**
      * Get the last element in the current {@code collection}
@@ -79,8 +79,8 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                             final @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -105,8 +105,8 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection,
-                                             @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                             final @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -116,8 +116,8 @@ public final class LastOrNull
         return __with2Argument(collection, predicate, collection.size());
     }
 
-    //#endregion -------------------- predicate (T, int) → boolean --------------------
-    //#region -------------------- predicate (T) → boolean --------------------
+    //#endregion -------------------- (T, int) → boolean --------------------
+    //#region -------------------- (T) → boolean --------------------
 
     /**
      * Get the last element in the current {@code collection}
@@ -132,8 +132,8 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             @Nullable Predicate<? super T> predicate) {
+    public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                             final @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -158,8 +158,8 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection,
-                                             @Nullable Predicate<? super T> predicate) {
+    public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                             final @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -169,8 +169,8 @@ public final class LastOrNull
         return __with1Argument(collection, predicate, collection.size());
     }
 
-    //#endregion -------------------- predicate (T) → boolean --------------------
-    //#region -------------------- predicate () → boolean --------------------
+    //#endregion -------------------- (T) → boolean --------------------
+    //#region -------------------- () → boolean --------------------
 
     /**
      * Get the last element in the current {@code collection}
@@ -185,8 +185,8 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(@Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             @Nullable BooleanSupplier predicate) {
+    public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                             final @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return null;
 
@@ -211,8 +211,8 @@ public final class LastOrNull
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(@Nullable CollectionHolder<? extends T> collection,
-                                             @Nullable BooleanSupplier predicate) {
+    public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                             final @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -222,7 +222,7 @@ public final class LastOrNull
         return __with0Argument(collection, predicate, collection.size());
     }
 
-    //#endregion -------------------- predicate () → boolean --------------------
+    //#endregion -------------------- () → boolean --------------------
 
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------

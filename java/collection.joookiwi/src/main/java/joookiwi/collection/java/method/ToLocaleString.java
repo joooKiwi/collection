@@ -21,7 +21,7 @@ public final class ToLocaleString
 
     //#region -------------------- Facade method --------------------
 
-    //#region -------------------- () --------------------
+    //#region -------------------- ∅ --------------------
 
     /**
      * Convert the {@code collection} to a {@link String} on every value
@@ -57,7 +57,7 @@ public final class ToLocaleString
         return __withNoLocale(collection, collection.size());
     }
 
-    //#endregion -------------------- () --------------------
+    //#endregion -------------------- ∅ --------------------
     //#region -------------------- locale --------------------
 
     /**
