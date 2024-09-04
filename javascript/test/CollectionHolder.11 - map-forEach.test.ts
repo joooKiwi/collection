@@ -42,6 +42,16 @@ describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
             test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.forEachIndexed(_ => {},),).amountOfCall,).toBe(0,),)
             test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.forEachIndexed((_1,_2,) => {},),).amountOfCall,).toBe(2,),)
         },)
+        describe("onEach", () => {
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.onEach(() => {},),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.onEach(_ => {},),).amountOfCall,).toBe(2,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.onEach((_1,_2,) => {},),).amountOfCall,).toBe(2,),)
+        },)
+        describe("onEachIndexed", () => {
+            test("0 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.onEachIndexed(() => {},),).amountOfCall,).toBe(0,),)
+            test("1 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.onEachIndexed(_ => {},),).amountOfCall,).toBe(0,),)
+            test("2 arguments", () => expect(new CollectionHolderThatCountGetBeingCalled(newInstance(AB,),).execute(it => it.onEachIndexed((_1,_2,) => {},),).amountOfCall,).toBe(2,),)
+        },)
     },)
 
 
