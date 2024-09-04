@@ -48,7 +48,7 @@ public final class IndexOf
                                                                                  final @Nullable Object element) {
         if (collection == null)
             return null;
-        return __indexOf(collection, element);
+        return __core(collection, element);
     }
 
     //#endregion -------------------- minimalist - element --------------------
@@ -73,7 +73,7 @@ public final class IndexOf
                                                                                  final @Nullable Object element) {
         if (collection == null)
             return null;
-        return __indexOf(collection, element);
+        return __core(collection, element);
     }
 
     //#endregion -------------------- element --------------------
@@ -101,12 +101,10 @@ public final class IndexOf
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                  final @Nullable Object element,
-                                                                                 final @Nullable Integer fromIndex) {
+                                                                                 final int fromIndex) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __indexOf(collection, element);
-        return __indexOf(collection, element, fromIndex.intValue());
+        return __core(collection, element, fromIndex);
     }
 
     /**
@@ -130,10 +128,12 @@ public final class IndexOf
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                  final @Nullable Object element,
-                                                                                 final int fromIndex) {
+                                                                                 final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
-        return __indexOf(collection, element, fromIndex);
+        if (fromIndex == null)
+            return __core(collection, element);
+        return __core(collection, element, fromIndex);
     }
 
     //#endregion -------------------- minimalist - element, from --------------------
@@ -160,12 +160,10 @@ public final class IndexOf
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOf(final @Nullable CollectionHolder<? extends T> collection,
                                                                                  final @Nullable Object element,
-                                                                                 final @Nullable Integer fromIndex) {
+                                                                                 final int fromIndex) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __indexOf(collection, element);
-        return __indexOf(collection, element, fromIndex.intValue());
+        return __core(collection, element, fromIndex);
     }
 
     /**
@@ -189,10 +187,12 @@ public final class IndexOf
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOf(final @Nullable CollectionHolder<? extends T> collection,
                                                                                  final @Nullable Object element,
-                                                                                 final int fromIndex) {
+                                                                                 final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
-        return __indexOf(collection, element, fromIndex);
+        if (fromIndex == null)
+            return __core(collection, element);
+        return __core(collection, element, fromIndex);
     }
 
     //#endregion -------------------- element, from --------------------
@@ -225,7 +225,7 @@ public final class IndexOf
                                                                                  final int toIndex) {
         if (collection == null)
             return null;
-        return __indexOf(collection, element, fromIndex, toIndex);
+        return __core(collection, element, fromIndex, toIndex);
     }
 
     /**
@@ -255,8 +255,8 @@ public final class IndexOf
         if (collection == null)
             return null;
         if (toIndex == null)
-            return __indexOf(collection, element, fromIndex);
-        return __indexOf(collection, element, fromIndex, toIndex.intValue());
+            return __core(collection, element, fromIndex);
+        return __core(collection, element, fromIndex, toIndex);
     }
 
     /**
@@ -286,8 +286,8 @@ public final class IndexOf
         if (collection == null)
             return null;
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex);
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex);
+            return __coreWithNoFrom(collection, element, toIndex);
+        return __core(collection, element, fromIndex, toIndex);
     }
 
     /**
@@ -318,12 +318,12 @@ public final class IndexOf
             return null;
         if (toIndex == null)
             if (fromIndex == null)
-                return __indexOf(collection, element);
+                return __core(collection, element);
             else
-                return __indexOf(collection, element, fromIndex.intValue());
+                return __core(collection, element, fromIndex);
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex.intValue());
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex.intValue());
+            return __coreWithNoFrom(collection, element, toIndex);
+        return __core(collection, element, fromIndex, toIndex);
     }
 
     //#endregion -------------------- minimalist - element, from, to --------------------
@@ -355,7 +355,7 @@ public final class IndexOf
                                                                                  final int toIndex) {
         if (collection == null)
             return null;
-        return __indexOf(collection, element, fromIndex, toIndex);
+        return __core(collection, element, fromIndex, toIndex);
     }
 
     /**
@@ -385,8 +385,8 @@ public final class IndexOf
         if (collection == null)
             return null;
         if (toIndex == null)
-            return __indexOf(collection, element, fromIndex);
-        return __indexOf(collection, element, fromIndex, toIndex.intValue());
+            return __core(collection, element, fromIndex);
+        return __core(collection, element, fromIndex, toIndex);
     }
 
     /**
@@ -416,8 +416,8 @@ public final class IndexOf
         if (collection == null)
             return null;
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex);
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex);
+            return __coreWithNoFrom(collection, element, toIndex);
+        return __core(collection, element, fromIndex, toIndex);
     }
 
     /**
@@ -448,12 +448,12 @@ public final class IndexOf
             return null;
         if (toIndex == null)
             if (fromIndex == null)
-                return __indexOf(collection, element);
+                return __core(collection, element);
             else
-                return __indexOf(collection, element, fromIndex.intValue());
+                return __core(collection, element, fromIndex);
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex.intValue());
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex.intValue());
+            return __coreWithNoFrom(collection, element, toIndex);
+        return __core(collection, element, fromIndex, toIndex);
     }
 
     //#endregion -------------------- element, from, to --------------------
@@ -471,7 +471,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -488,7 +488,7 @@ public final class IndexOf
                                                                                  final int limit) {
         if (collection == null)
             return null;
-        return __indexOf(collection, element, fromIndex, toIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -502,7 +502,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -520,8 +520,8 @@ public final class IndexOf
         if (collection == null)
             return null;
         if (limit == null)
-                return __indexOf(collection, element, fromIndex, toIndex);
-        return __indexOf(collection, element, fromIndex, toIndex, limit.intValue());
+                return __core(collection, element, fromIndex, toIndex);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -535,7 +535,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -553,8 +553,8 @@ public final class IndexOf
         if (collection == null)
             return null;
         if (toIndex == null)
-                return __indexOf(collection, element, fromIndex, null, limit);
-        return __indexOf(collection, element, fromIndex, toIndex.intValue(), limit);
+                return __coreWithNoTo(collection, element, fromIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -568,7 +568,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -587,12 +587,12 @@ public final class IndexOf
             return null;
         if (limit == null)
             if (toIndex == null)
-                return __indexOf(collection, element, fromIndex);
+                return __core(collection, element, fromIndex);
             else
-                return __indexOf(collection, element, fromIndex, toIndex.intValue());
+                return __core(collection, element, fromIndex, toIndex);
         if (toIndex == null)
-            return __indexOf(collection, element, fromIndex, null, limit.intValue());
-        return __indexOf(collection, element, fromIndex, toIndex.intValue(), limit.intValue());
+            return __coreWithNoTo(collection, element, fromIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -606,7 +606,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -624,8 +624,8 @@ public final class IndexOf
         if (collection == null)
             return null;
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex, limit);
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex, limit);
+            return __coreWithNoFrom(collection, element, toIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -639,7 +639,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -658,12 +658,12 @@ public final class IndexOf
             return null;
         if (limit == null)
             if (fromIndex == null)
-                return __indexOf(collection, element, null, toIndex);
+                return __coreWithNoFrom(collection, element, toIndex);
             else
-                return __indexOf(collection, element, fromIndex.intValue(), toIndex);
+                return __core(collection, element, fromIndex, toIndex);
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex, limit.intValue());
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex, limit.intValue());
+            return __coreWithNoFrom(collection, element, toIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -677,7 +677,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -696,12 +696,12 @@ public final class IndexOf
             return null;
         if (toIndex == null)
             if (fromIndex == null)
-                return __indexOf(collection, element, null, null, limit);
+                return __coreWithNoFromAndTo(collection, element, limit);
             else
-                return __indexOf(collection, element, fromIndex.intValue(), null, limit);
+                return __coreWithNoTo(collection, element, fromIndex, limit);
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex.intValue(), limit);
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex.intValue(), limit);
+            return __coreWithNoFrom(collection, element, toIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -715,7 +715,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -735,21 +735,21 @@ public final class IndexOf
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return __indexOf(collection, element);
+                    return __core(collection, element);
                 else
-                    return __indexOf(collection, element, fromIndex.intValue());
+                    return __core(collection, element, fromIndex);
             else if (fromIndex == null)
-                return __indexOf(collection, element, null, toIndex.intValue());
+                return __coreWithNoFrom(collection, element, toIndex);
             else
-                return __indexOf(collection, element, fromIndex.intValue(), toIndex.intValue());
+                return __core(collection, element, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return __indexOf(collection, element, null, null, limit.intValue());
+                return __coreWithNoFromAndTo(collection, element, limit);
             else
-                return __indexOf(collection, element, fromIndex.intValue(), null, limit.intValue());
+                return __coreWithNoTo(collection, element, fromIndex, limit);
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex.intValue(), limit.intValue());
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex.intValue(), limit.intValue());
+            return __coreWithNoFrom(collection, element, toIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     //#endregion -------------------- minimalist - element, from, to, limit --------------------
@@ -766,7 +766,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -783,7 +783,7 @@ public final class IndexOf
                                                                                  final int limit) {
         if (collection == null)
             return null;
-        return __indexOf(collection, element, fromIndex, toIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -797,7 +797,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -815,8 +815,8 @@ public final class IndexOf
         if (collection == null)
             return null;
         if (limit == null)
-            return __indexOf(collection, element, fromIndex, toIndex);
-        return __indexOf(collection, element, fromIndex, toIndex, limit.intValue());
+            return __core(collection, element, fromIndex, toIndex);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -830,7 +830,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -848,8 +848,8 @@ public final class IndexOf
         if (collection == null)
             return null;
         if (toIndex == null)
-            return __indexOf(collection, element, fromIndex, null, limit);
-        return __indexOf(collection, element, fromIndex, toIndex.intValue(), limit);
+            return __coreWithNoTo(collection, element, fromIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -863,7 +863,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -882,12 +882,12 @@ public final class IndexOf
             return null;
         if (limit == null)
             if (toIndex == null)
-                return __indexOf(collection, element, fromIndex);
+                return __core(collection, element, fromIndex);
             else
-                return __indexOf(collection, element, fromIndex, toIndex.intValue());
+                return __core(collection, element, fromIndex, toIndex);
         if (toIndex == null)
-            return __indexOf(collection, element, fromIndex, null, limit.intValue());
-        return __indexOf(collection, element, fromIndex, toIndex.intValue(), limit.intValue());
+            return __coreWithNoTo(collection, element, fromIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -901,7 +901,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -919,8 +919,8 @@ public final class IndexOf
         if (collection == null)
             return null;
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex, limit);
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex, limit);
+            return __coreWithNoFrom(collection, element, toIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -934,7 +934,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -953,12 +953,12 @@ public final class IndexOf
             return null;
         if (limit == null)
             if (fromIndex == null)
-                return __indexOf(collection, element, null, toIndex);
+                return __coreWithNoFrom(collection, element, toIndex);
             else
-                return __indexOf(collection, element, fromIndex.intValue(), toIndex);
+                return __core(collection, element, fromIndex, toIndex);
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex, limit.intValue());
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex, limit.intValue());
+            return __coreWithNoFrom(collection, element, toIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -972,7 +972,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -991,12 +991,12 @@ public final class IndexOf
             return null;
         if (toIndex == null)
             if (fromIndex == null)
-                return __indexOf(collection, element, null, null, limit);
+                return __coreWithNoFromAndTo(collection, element, limit);
             else
-                return __indexOf(collection, element, fromIndex.intValue(), null, limit);
+                return __coreWithNoTo(collection, element, fromIndex, limit);
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex.intValue(), limit);
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex.intValue(), limit);
+            return __coreWithNoFrom(collection, element, toIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     /**
@@ -1010,7 +1010,7 @@ public final class IndexOf
      * @param toIndex    The inclusive ending index
      * @param limit      The maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} and {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -1030,21 +1030,21 @@ public final class IndexOf
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return __indexOf(collection, element);
+                    return __core(collection, element);
                 else
-                    return __indexOf(collection, element, fromIndex.intValue());
+                    return __core(collection, element, fromIndex);
             else if (fromIndex == null)
-                return __indexOf(collection, element, null, toIndex.intValue());
+                return __coreWithNoFrom(collection, element, toIndex);
             else
-                return __indexOf(collection, element, fromIndex.intValue(), toIndex.intValue());
+                return __core(collection, element, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return __indexOf(collection, element, null, null, limit.intValue());
+                return __coreWithNoFromAndTo(collection, element, limit);
             else
-                return __indexOf(collection, element, fromIndex.intValue(), null, limit.intValue());
+                return __coreWithNoTo(collection, element, fromIndex, limit);
         if (fromIndex == null)
-            return __indexOf(collection, element, null, toIndex.intValue(), limit.intValue());
-        return __indexOf(collection, element, fromIndex.intValue(), toIndex.intValue(), limit.intValue());
+            return __coreWithNoFrom(collection, element, toIndex, limit);
+        return __core(collection, element, fromIndex, toIndex, limit);
     }
 
     //#endregion -------------------- element, from, to, limit --------------------
@@ -1052,45 +1052,45 @@ public final class IndexOf
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Core methods --------------------
 
-    //#region -------------------- minimalist - element --------------------
+    //#region -------------------- Core methods (minimalist - element) --------------------
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element) {
+    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                final @Nullable Object element) {
         final var size = collection.size();
         if (size == 0)
             return null;
         return __withoutALimit(collection, element, -1, size - 1);
     }
 
-    //#endregion -------------------- minimalist - element --------------------
-    //#region -------------------- element --------------------
+    //#endregion -------------------- Core methods (minimalist - element) --------------------
+    //#region -------------------- Core methods (element) --------------------
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull CollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element) {
+    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                final @Nullable Object element) {
         if (collection.isEmpty())
             return null;
         return __withoutALimit(collection, element, -1, collection.size() - 1);
     }
 
-    //#endregion -------------------- element --------------------
+    //#endregion -------------------- Core methods (element) --------------------
 
-    //#region -------------------- minimalist - element, from --------------------
+    //#region -------------------- Core methods (minimalist - element, from) --------------------
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final int fromIndex) {
+    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                final @Nullable Object element,
+                                                final int fromIndex) {
         final var size = collection.size();
         if (size == 0)
             return null;
         return __withoutALimit(collection, element, _startingIndex(fromIndex, size), size - 1);
     }
 
-    //#endregion -------------------- minimalist - element, from --------------------
-    //#region -------------------- element, from --------------------
+    //#endregion -------------------- Core methods (minimalist - element, from) --------------------
+    //#region -------------------- Core methods (element, from) --------------------
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull CollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final int fromIndex) {
+    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                final @Nullable Object element,
+                                                final int fromIndex) {
         if (collection.isEmpty())
             return null;
 
@@ -1098,14 +1098,14 @@ public final class IndexOf
         return __withoutALimit(collection, element, _startingIndex(fromIndex, size), size - 1);
     }
 
-    //#endregion -------------------- element, from --------------------
+    //#endregion -------------------- Core methods (element, from) --------------------
 
-    //#region -------------------- minimalist - element, from, to --------------------
+    //#region -------------------- Core methods (minimalist - element, from, to) --------------------
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final int fromIndex,
-                                                   final int toIndex) {
+    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                final @Nullable Object element,
+                                                final int fromIndex,
+                                                final int toIndex) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1127,10 +1127,9 @@ public final class IndexOf
         return __withoutALimit(collection, element, startingIndex, endingIndex);
     }
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final @Nullable Object ignoredNullFromIndex,
-                                                   final int toIndex) {
+    private static <T> @Nullable Integer __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                          final @Nullable Object element,
+                                                          final int toIndex) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1145,13 +1144,13 @@ public final class IndexOf
         return __withoutALimit(collection, element, 0, endingIndex);
     }
 
-    //#endregion -------------------- minimalist - element, from, to --------------------
-    //#region -------------------- element, from, to --------------------
+    //#endregion -------------------- Core methods (minimalist - element, from, to) --------------------
+    //#region -------------------- Core methods (element, from, to) --------------------
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull CollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final int fromIndex,
-                                                   final int toIndex) {
+    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                final @Nullable Object element,
+                                                final int fromIndex,
+                                                final int toIndex) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1173,10 +1172,9 @@ public final class IndexOf
         return __withoutALimit(collection, element, startingIndex, endingIndex);
     }
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull CollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final @Nullable Object ignoredNullFromIndex,
-                                                   final int toIndex) {
+    private static <T> @Nullable Integer __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+                                                          final @Nullable Object element,
+                                                          final int toIndex) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1190,15 +1188,14 @@ public final class IndexOf
         return __withoutALimit(collection, element, 0, endingIndex);
     }
 
-    //#endregion -------------------- element, from, to --------------------
+    //#endregion -------------------- Core methods (element, from, to) --------------------
 
-    //#region -------------------- minimalist - element, from, to, limit --------------------
+    //#region -------------------- Core methods (minimalist - element, from, to, limit) --------------------
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final @Nullable Object ignoredNullFromIndex,
-                                                   final int toIndex,
-                                                   final int limit) {
+    private static <T> @Nullable Integer __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                          final @Nullable Object element,
+                                                          final int toIndex,
+                                                          final int limit) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1222,11 +1219,10 @@ public final class IndexOf
         return __withALimit(collection, element, 0, endingIndex, maximumIndex);
     }
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final int fromIndex,
-                                                   final @Nullable Object ignoredNullToIndex,
-                                                   final int limit) {
+    private static <T> @Nullable Integer __coreWithNoTo(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                        final @Nullable Object element,
+                                                        final int fromIndex,
+                                                        final int limit) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1252,11 +1248,9 @@ public final class IndexOf
         return __withALimit(collection, element, startingIndex, endingIndex, maximumIndex);
     }
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final @Nullable Object ignoredNullFromIndex,
-                                                   final @Nullable Object ignoredNullToIndex,
-                                                   final int limit) {
+    private static <T> @Nullable Integer __coreWithNoFromAndTo(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                               final @Nullable Object element,
+                                                               final int limit) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1277,11 +1271,11 @@ public final class IndexOf
         return __withALimit(collection, element, 0, size - 1, maximumIndex);
     }
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final int fromIndex,
-                                                   final int toIndex,
-                                                   final int limit) {
+    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                final @Nullable Object element,
+                                                final int fromIndex,
+                                                final int toIndex,
+                                                final int limit) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1309,14 +1303,13 @@ public final class IndexOf
         return __withALimit(collection, element, startingIndex, endingIndex, maximumIndex);
     }
 
-    //#endregion -------------------- minimalist - element, from, to, limit --------------------
-    //#region -------------------- element, from, to, limit --------------------
+    //#endregion -------------------- Core methods (minimalist - element, from, to, limit) --------------------
+    //#region -------------------- Core methods (element, from, to, limit) --------------------
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull CollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final @Nullable Object ignoredNullFromIndex,
-                                                   final int toIndex,
-                                                   final int limit) {
+    private static <T> @Nullable Integer __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+                                                          final @Nullable Object element,
+                                                          final int toIndex,
+                                                          final int limit) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1340,11 +1333,10 @@ public final class IndexOf
         return __withALimit(collection, element, 0, endingIndex, maximumIndex);
     }
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull CollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final int fromIndex,
-                                                   final @Nullable Object ignoredNullToIndex,
-                                                   final int limit) {
+    private static <T> @Nullable Integer __coreWithNoTo(final @NotNull CollectionHolder<? extends T> collection,
+                                                        final @Nullable Object element,
+                                                        final int fromIndex,
+                                                        final int limit) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1367,11 +1359,9 @@ public final class IndexOf
         return __withALimit(collection, element, startingIndex, endingIndex, maximumIndex);
     }
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull CollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final @Nullable Object ignoredNullFromIndex,
-                                                   final @Nullable Object ignoredNullToIndex,
-                                                   final int limit) {
+    private static <T> @Nullable Integer __coreWithNoFromAndTo(final @NotNull CollectionHolder<? extends T> collection,
+                                                               final @Nullable Object element,
+                                                               final int limit) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1392,11 +1382,11 @@ public final class IndexOf
         return __withALimit(collection, element, 0, size - 1, maximumIndex);
     }
 
-    private static <T> @Nullable Integer __indexOf(final @NotNull CollectionHolder<? extends T> collection,
-                                                   final @Nullable Object element,
-                                                   final int fromIndex,
-                                                   final int toIndex,
-                                                   final int limit) {
+    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                final @Nullable Object element,
+                                                final int fromIndex,
+                                                final int toIndex,
+                                                final int limit) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1424,7 +1414,7 @@ public final class IndexOf
         return __withALimit(collection, element, startingIndex, endingIndex, maximumIndex);
     }
 
-    //#endregion -------------------- element, from, to, limit --------------------
+    //#endregion -------------------- Core methods (element, from, to, limit) --------------------
 
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
