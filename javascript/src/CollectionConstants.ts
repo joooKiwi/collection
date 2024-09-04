@@ -158,7 +158,7 @@ export class CollectionConstants {
             "has", "includes", "contains",
             "hasOne", "includesOne", "containsOne",
             "hasAll", "includesAll", "containsAll",
-            "joinToString",
+            "joinToString", 'join',
             "filter", "filterIndexed", "filterNot", "filterNotIndexed", "filterNotNull", "requireNoNulls",
             "find", "findIndexed", "findLast", "findLastIndexed",
             "map", "mapIndexed",
