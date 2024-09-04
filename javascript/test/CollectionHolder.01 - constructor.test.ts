@@ -15,7 +15,7 @@ if (isMinimalist)
 
 describe.each(iterableCreation,)("%s", ({value: iterableCreation,},) => {
     const newCollection = isLazy
-        ? (array: readonly unknown[],) => newInstance(iterableCreation, array,).forEach(_ => {},)
+        ? (array: readonly unknown[],) => newInstance(iterableCreation, array,).onEach(_ => {},)
         : (array: readonly unknown[],) => newInstance(iterableCreation, array,)
 
     test("empty",                        () => expect(newCollection(EMPTY,),).toBeEmpty(),)
