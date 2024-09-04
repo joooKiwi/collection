@@ -11,7 +11,9 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import static joookiwi.collection.java.CommonContracts.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_1;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_2;
 
 public final class FirstOrNull
         extends Utility {
