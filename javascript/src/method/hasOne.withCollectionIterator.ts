@@ -18,7 +18,6 @@ import type {CollectionIterator}         from "../iterator/CollectionIterator"
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithCollectionIterator<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator<T>,): boolean
@@ -27,7 +26,6 @@ export function hasOneWithCollectionIterator<const T, >(collection: Nullable<Min
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithCollectionIterator<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator,): boolean
@@ -51,7 +49,6 @@ export function hasOneWithCollectionIterator<const T, >(collection: Nullable<Min
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithCollectionIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionIterator<T>,): boolean
@@ -60,7 +57,6 @@ export function hasOneWithCollectionIteratorByCollectionHolder<const T, >(collec
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithCollectionIteratorByCollectionHolder(collection: Nullable<CollectionHolder>, values: CollectionIterator,): boolean

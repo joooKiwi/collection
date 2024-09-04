@@ -17,7 +17,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean
@@ -26,7 +25,6 @@ export function hasOneWithMinimalistCollectionHolder<const T, >(collection: Null
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder,): boolean
@@ -50,7 +48,6 @@ export function hasOneWithMinimalistCollectionHolder<const T, >(collection: Null
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithMinimalistCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean
@@ -59,7 +56,6 @@ export function hasOneWithMinimalistCollectionHolderByCollectionHolder<const T, 
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithMinimalistCollectionHolderByCollectionHolder(collection: Nullable<CollectionHolder>, values: MinimalistCollectionHolder,): boolean

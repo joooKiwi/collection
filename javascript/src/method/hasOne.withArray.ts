@@ -17,7 +17,6 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithArray<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly T[],): boolean
@@ -26,7 +25,6 @@ export function hasOneWithArray<const T, >(collection: Nullable<MinimalistCollec
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithArray<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly unknown[],): boolean
@@ -50,7 +48,6 @@ export function hasOneWithArray<const T, >(collection: Nullable<MinimalistCollec
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: readonly T[],): boolean
@@ -59,7 +56,6 @@ export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullabl
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  */
 export function hasOneWithArrayByCollectionHolder(collection: Nullable<CollectionHolder>, values: readonly unknown[],): boolean

@@ -32,7 +32,6 @@ import {isMinimalistCollectionHolderByStructure}                                
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -42,7 +41,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -52,7 +50,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -62,7 +59,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -72,7 +68,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -82,7 +77,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -92,7 +86,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  * @typescriptDefinition
@@ -103,7 +96,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -113,7 +105,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -123,7 +114,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -133,7 +123,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -143,7 +132,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -153,7 +141,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -163,7 +150,6 @@ export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolde
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  * @typescriptDefinition
@@ -195,7 +181,6 @@ export function hasOne(collection: Nullable<MinimalistCollectionHolder>, values:
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -205,7 +190,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -215,7 +199,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -225,7 +208,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -235,7 +217,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -245,7 +226,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -255,7 +235,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -265,7 +244,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -275,7 +253,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -285,7 +262,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -295,7 +271,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -305,7 +280,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -315,7 +289,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
@@ -325,7 +298,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @extensionFunction
  * @facadeFunction
  */
