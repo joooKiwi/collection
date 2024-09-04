@@ -321,18 +321,24 @@ export class CollectionHolder_ByStructure<const out T, >
     //#endregion -------------------- Loop methods (map) --------------------
     //#region -------------------- Loop methods (for each) --------------------
 
-    public forEach(action: ValueIndexCallback<T>,): this {
-        this.#internalReference.forEach(action,)
-        return this
-    }
+    public forEach(action: ValueIndexCallback<T>,): void { this.#internalReference.forEach(action,) }
 
-    public forEachIndexed(action: IndexValueCallback<T>,): this {
-        this.#internalReference.forEachIndexed(action,)
-        return this
-    }
-
+    public forEachIndexed(action: IndexValueCallback<T>,): void { this.#internalReference.forEachIndexed(action,) }
 
     //#endregion -------------------- Loop methods (for each) --------------------
+    //#region -------------------- Loop methods (on each) --------------------
+
+    public onEach(action: ValueIndexCallback<T>,): this {
+        this.#internalReference.onEach(action,)
+        return this
+    }
+
+    public onEachIndexed(action: IndexValueCallback<T>,): this {
+        this.#internalReference.onEachIndexed(action,)
+        return this
+    }
+
+    //#endregion -------------------- Loop methods (on each) --------------------
 
     //#region -------------------- Javascript methods --------------------
 
