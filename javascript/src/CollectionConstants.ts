@@ -47,6 +47,8 @@ export class CollectionConstants {
 
     static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<keyof MinimalistCollectionHolder>
     static #COLLECTION_MEMBERS?: CollectionHolder<keyof CollectionHolder>
+    static #ARRAY_MEMBERS?: CollectionHolder<keyof ReadonlyArray<unknown>>
+    static #SET_MEMBERS?: CollectionHolder<keyof ReadonlySet<unknown>>
     static #ITERATOR_MEMBERS?: CollectionHolder<keyof CollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
@@ -174,6 +176,50 @@ export class CollectionConstants {
             "toString", "toLocaleString",
             "toLowerCaseString", "toLocaleLowerCaseString",
             "toUpperCaseString", "toLocaleUpperCaseString",
+        ] as const,),)
+    }
+
+
+    /** Every method applicable to an {@link ReadonlyArray Array} */
+    public static get ARRAY_MEMBERS(): CollectionHolder<keyof ReadonlyArray<unknown>> {
+        return CollectionConstants.#ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "length",
+            "at",
+            "indexOf", "lastIndexOf",
+            "includes",
+            "every", "some", "with",
+            "join",
+            "filter",
+            "find", "findLast",
+            "findIndex", "findLastIndex",
+            "concat",
+            "reduce", "reduceRight",
+            "flat", "flatMap",
+            "map",
+            "forEach",
+            "keys", "values", "entries",
+            Symbol.iterator,
+            Symbol.unscopables,
+            "toReversed",
+            "toSorted",
+            "slice", "toSpliced",
+            "toString", "toLocaleString",
+        ] as const,),)
+    }
+
+
+    /** Every method applicable to an {@link ReadonlyArray Array} */
+    public static get SET_MEMBERS(): CollectionHolder<keyof ReadonlySet<unknown>> {
+        return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "size",
+            "has",
+            "forEach",
+            "keys", "values", "entries",
+            "union", "intersection",
+            "difference", "symmetricDifference",
+            "isSubsetOf", "isSupersetOf",
+            "isDisjointFrom",
+            Symbol.iterator,
         ] as const,),)
     }
 
