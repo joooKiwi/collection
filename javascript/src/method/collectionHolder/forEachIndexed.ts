@@ -26,14 +26,12 @@ import {__with0Argument, __with1Argument, __with2Argument} from "../forEachIndex
 export function forEachIndexed<const T, >(collection: Nullable<CollectionHolder<T>>, action: IndexValueCallback<T>,): void {
     if (collection == null)
         return
-
-    const size = collection.size
-    if (size == 0)
+    if (collection.isEmpty)
         return
     if (action.length == 1)
-        __with1Argument(action as (index: number,) => void, size,)
+        __with1Argument(action as (index: number,) => void, collection.size,)
     else if (action.length >= 2)
-        __with2Argument(collection, action, size,)
+        __with2Argument(collection, action, collection.size,)
     else
-        __with0Argument(action as () => void, size,)
+        __with0Argument(action as () => void, collection.size,)
 }

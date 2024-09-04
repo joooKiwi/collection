@@ -27,7 +27,6 @@ import {__with0Argument, __with1Argument, __with2Argument} from "../onEachIndexe
 export function onEachIndexed<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
     if (collection == null)
         return null as COLLECTION
-
     if (collection.isEmpty)
         return collection
     if (action.length == 1)

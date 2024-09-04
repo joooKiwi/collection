@@ -26,7 +26,6 @@ import {__with0Argument, __with1Argument, __with2Argument} from "../forEach"
 export function forEach<const T, >(collection: Nullable<CollectionHolder<T>>, action: ValueIndexCallback<T>,): void {
     if (collection == null)
         return
-
     if (collection.isEmpty)
         return
     if (action.length == 1)
