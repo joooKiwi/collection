@@ -58,6 +58,7 @@ export function none<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
+ * @deprecated Use "none" from import("@joookiwi/collection/collectionHolder")
  */
 export function noneByCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: Nullable<COLLECTION>,): COLLECTION["isEmpty"]
 /**
@@ -70,6 +71,7 @@ export function noneByCollectionHolder<const T, const COLLECTION extends Collect
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none(predicate)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#noneMatch(java.util.function.Predicate) Java noneMatch(predicate)
  * @extensionFunction
+ * @deprecated Use "none" from import("@joookiwi/collection/collectionHolder")
  */
 export function noneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
 export function noneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,): boolean {
