@@ -219,15 +219,18 @@ public final class None
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static boolean __with0Argument(final @NotNull BooleanSupplier predicate, final int size) {
-        var index = -1;
-        while (++index < size)
+    private static boolean __with0Argument(final @NotNull BooleanSupplier predicate,
+                                           final int size) {
+        var index = size;
+        while (index-- > 0)
             if (predicate.getAsBoolean())
                 return false;
         return true;
     }
 
-    private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull Predicate<? super T> predicate, final int size) {
+    private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                               final @NotNull Predicate<? super T> predicate,
+                                               final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.test(collection.get(index)))
@@ -235,7 +238,9 @@ public final class None
         return true;
     }
 
-    private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, final @NotNull ObjIntPredicate<? super T> predicate, final int size) {
+    private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                               final @NotNull ObjIntPredicate<? super T> predicate,
+                                               final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.test(collection.get(index), index))
