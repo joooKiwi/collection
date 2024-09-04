@@ -23,9 +23,9 @@ export class CollectionHandlerBySetOf2<const T = unknown,
 
     #iterator?: Iterator<T, unknown>
 
-    public constructor(collection: COLLECTION, reference: REFERENCE,) {
+    public constructor(collection: COLLECTION, reference: REFERENCE, size: number = reference.size,) {
         super(collection, reference,)
-        if (reference.size !== 2)
+        if (size !== 2)
             throw new TypeError(`The set received in the "${this.constructor.name}" cannot have a different size than 2.`,)
     }
 
