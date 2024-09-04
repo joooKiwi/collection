@@ -42,7 +42,7 @@ import {joinToStringByCollectionHolder}            from "../../src/method/joinTo
 import {lastByCollectionHolder}                    from "../../src/method/last"
 import {lastIndexOfByCollectionHolder}             from "../../src/method/lastIndexOf"
 import {lastOrNullByCollectionHolder}              from "../../src/method/lastOrNull"
-import {noneByCollectionHolder}                    from "../../src/method/none"
+import {none}                                      from "../../src/method/collectionHolder/none"
 import {mapByCollectionHolder}                     from "../../src/method/map"
 import {mapIndexedByCollectionHolder}              from "../../src/method/mapIndexed"
 import {mapNotNullByCollectionHolder}              from "../../src/method/mapNotNull"
@@ -277,7 +277,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override none(): this["isEmpty"]
     public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override none(predicate?: Nullable<BooleanCallback<T>>,) {
-        return noneByCollectionHolder(this, predicate,)
+        return none(this, predicate,)
     }
 
     //#endregion -------------------- None methods --------------------

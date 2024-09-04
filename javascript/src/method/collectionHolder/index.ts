@@ -12,5 +12,6 @@ export {getOrNull,      getOrNull as      getOrNullByCollectionHolder}      from
 export {filter,         filter as         filterByCollectionHolder}         from "./filter"
 export {forEach,        forEach as        forEachByCollectionHolder}        from "./forEach"
 export {forEachIndexed, forEachIndexed as forEachIndexedByCollectionHolder} from "./forEachIndexed"
+export {none,           none as           noneByCollectionHolder}           from "./none"
 export {onEach,         onEach as         onEachByCollectionHolder}         from "./onEach"
 export {onEachIndexed,  onEachIndexed as  onEachIndexedByCollectionHolder}  from "./onEachIndexed"

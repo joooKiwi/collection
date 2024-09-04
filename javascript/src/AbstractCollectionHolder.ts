@@ -44,7 +44,7 @@ import {joinToStringByCollectionHolder}            from "./method/joinToString"
 import {lastByCollectionHolder}                    from "./method/last"
 import {lastIndexOfByCollectionHolder}             from "./method/lastIndexOf"
 import {lastOrNullByCollectionHolder}              from "./method/lastOrNull"
-import {noneByCollectionHolder}                    from "./method/none"
+import {none}                                      from "./method/collectionHolder/none"
 import {mapByCollectionHolder}                     from "./method/map"
 import {mapIndexedByCollectionHolder}              from "./method/mapIndexed"
 import {mapNotNullByCollectionHolder}              from "./method/mapNotNull"
@@ -288,7 +288,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public none(): this["isEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public none(predicate?: Nullable<BooleanCallback<T>>,) {
-        return noneByCollectionHolder(this, predicate,)
+        return none(this, predicate,)
     }
 
     //#endregion -------------------- None methods --------------------

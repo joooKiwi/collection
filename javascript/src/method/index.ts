@@ -82,7 +82,11 @@ export {map,                                  mapByCollectionHolder}            
 export {mapIndexed,                           mapIndexedByCollectionHolder}                                               from "./mapIndexed"
 export {mapNotNull,                           mapNotNullByCollectionHolder}                                               from "./mapNotNull"
 export {mapNotNullIndexed,                    mapNotNullIndexedByCollectionHolder}                                        from "./mapNotNullIndexed"
-export {none,                                 noneByCollectionHolder}                                                     from "./none"
+
+export {none}                                     from "./none"
+export {none as noneByCollectionHolder}           from "./collectionHolder/none"
+export {none as noneByMinimalistCollectionHolder} from "./minimalistCollectionHolder/none"
+
 export {objectValuesMap,                      objectValuesMapByCollectionHolder}                                          from "./objectValuesMap"
 
 export {onEach}                                        from "./onEach"

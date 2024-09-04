@@ -11,8 +11,21 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {BooleanCallback}            from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {isCollectionHolder}                   from "./isCollectionHolder"
+import {none as byCollectionHolder}           from "./collectionHolder/none"
+import {none as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/none"
+
 //#region -------------------- Facade method --------------------
 
+/**
+ * Tell if the {@link collection} {@link CollectionHolder.isEmpty is empty}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
+ * @extensionFunction
+ */
+export function none<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: Nullable<COLLECTION>,): COLLECTION["isEmpty"]
 /**
  * Tell if the {@link collection} <b>is empty</b>
  *
@@ -26,7 +39,7 @@ export function none<const T, const COLLECTION extends MinimalistCollectionHolde
  * Check if <b>no</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param predicate The given predicate
  * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none(predicate)
@@ -37,18 +50,9 @@ export function none<const T, >(collection: Nullable<MinimalistCollectionHolder<
 export function none<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,): boolean {
     if (collection == null)
         return true
-    if (predicate == null)
-        return collection.size == 0
-
-    const size = collection.size
-    if (size == 0)
-        return true
-
-    if (predicate.length == 1)
-        return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
-    if (predicate.length >= 2)
-        return __with2Argument(collection, predicate, size,)
-    return __with0Argument(predicate as () => boolean, size,)
+    if (isCollectionHolder<T>(collection,))
+        return byCollectionHolder(collection, predicate,)
+    return byMinimalistCollectionHolder(collection, predicate,)
 }
 
 /**
@@ -75,24 +79,14 @@ export function noneByCollectionHolder<const T, const COLLECTION extends Collect
  */
 export function noneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
 export function noneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,): boolean {
-    if (collection == null)
-        return true
-    if (predicate == null)
-        return collection.isEmpty
-    if (collection.isEmpty)
-        return true
-
-    if (predicate.length == 1)
-        return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
-    if (predicate.length >= 2)
-        return __with2Argument(collection, predicate, collection.size,)
-    return __with0Argument(predicate as () => boolean, collection.size,)
+    return byCollectionHolder(collection, predicate,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __with0Argument(predicate: () => boolean, size: number,) {
+/** @internal */
+export function __with0Argument(predicate: () => boolean, size: number,) {
     let index = size - 1
     while (index-- > 0)
         if (predicate())
@@ -100,7 +94,8 @@ function __with0Argument(predicate: () => boolean, size: number,) {
     return true
 }
 
-function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, size: number,) {
+/** @internal */
+export function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (predicate(collection.get(index,),))
@@ -108,7 +103,8 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return true
 }
 
-function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
+/** @internal */
+export function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (predicate(collection.get(index,), index,))

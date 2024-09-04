@@ -12,5 +12,6 @@ export {getOrNull,      getOrNull as      getOrNullByMinimalistCollectionHolder}
 export {filter,         filter as         filterByMinimalistCollectionHolder}         from "./filter"
 export {forEach,        forEach as        forEachByMinimalistCollectionHolder}        from "./forEach"
 export {forEachIndexed, forEachIndexed as forEachIndexedByMinimalistCollectionHolder} from "./forEachIndexed"
+export {none,           none as           noneByMinimalistCollectionHolder}           from "./none"
 export {onEach,         onEach as         onEachByMinimalistCollectionHolder}         from "./onEach"
 export {onEachIndexed,  onEachIndexed as  onEachIndexedByMinimalistCollectionHolder}  from "./onEachIndexed"

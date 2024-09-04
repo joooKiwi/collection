@@ -23,6 +23,8 @@ import {forEach as forEachByCollectionHolder}                         from "../.
 import {forEach as forEachByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/forEach"
 import {forEachIndexed as forEachIndexedByCollectionHolder}           from "../../src/method/collectionHolder/forEachIndexed"
 import {forEachIndexed as forEachIndexedByMinimalistCollectionHolder} from "../../src/method/minimalistCollectionHolder/forEachIndexed"
+import {none as noneByCollectionHolder}                               from "../../src/method/collectionHolder/none"
+import {none as noneByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/none"
 import {onEach as onEachByCollectionHolder}                           from "../../src/method/collectionHolder/onEach"
 import {onEach as onEachByMinimalistCollectionHolder}                 from "../../src/method/minimalistCollectionHolder/onEach"
 import {onEachIndexed as onEachIndexedByCollectionHolder}             from "../../src/method/collectionHolder/onEachIndexed"
@@ -52,7 +54,6 @@ import {joinToString, joinToStringByCollectionHolder}                       from
 import {last, lastByCollectionHolder}                                       from "../../src/method/last"
 import {lastIndexOf, lastIndexOfByCollectionHolder}                         from "../../src/method/lastIndexOf"
 import {lastOrNull, lastOrNullByCollectionHolder}                           from "../../src/method/lastOrNull"
-import {none, noneByCollectionHolder}                                       from "../../src/method/none"
 import {map, mapByCollectionHolder}                                         from "../../src/method/map"
 import {mapIndexed, mapIndexedByCollectionHolder}                           from "../../src/method/mapIndexed"
 import {mapNotNull, mapNotNullByCollectionHolder}                           from "../../src/method/mapNotNull"
@@ -354,7 +355,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public none(predicate?: Nullable<BooleanCallback<T>>,) {
         return this.#isCollectionHolder
             ? noneByCollectionHolder(this, predicate,)
-            : none(this, predicate,)
+            : noneByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- None methods --------------------
