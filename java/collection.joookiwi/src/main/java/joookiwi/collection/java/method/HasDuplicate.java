@@ -27,7 +27,7 @@ public final class HasDuplicate
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T> boolean hasDuplicate(@Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> boolean hasDuplicate(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return false;
 
@@ -45,7 +45,7 @@ public final class HasDuplicate
      */
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T> boolean hasDuplicate(@Nullable CollectionHolder<? extends T> collection) {
+    public static <T> boolean hasDuplicate(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return false;
         if (collection.isEmpty())
@@ -57,7 +57,8 @@ public final class HasDuplicate
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static boolean __hasDuplicate(@NotNull MinimalistCollectionHolder<?> collection, int size) {
+    private static boolean __hasDuplicate(final @NotNull MinimalistCollectionHolder<?> collection,
+                                          final int size) {
         final var temporaryArray = new @Nullable Object[size];
         temporaryArray[0] = collection.get(0);
         var amountOfItemAdded = 1;
