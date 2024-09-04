@@ -19,7 +19,10 @@ export {filter}                                       from "./filter"
 export {filter as filterByCollectionHolder}           from "./collectionHolder/filter"
 export {filter as filterByMinimalistCollectionHolder} from "./minimalistCollectionHolder/filter"
 
-export {filterIndexed,                        filterIndexedByCollectionHolder}                                            from "./filterIndexed"
+export {filterIndexed}                                              from "./filterIndexed"
+export {filterIndexed as filterIndexedByCollectionHolder}           from "./collectionHolder/filterIndexed"
+export {filterIndexed as filterIndexedByMinimalistCollectionHolder} from "./minimalistCollectionHolder/filterIndexed"
+
 export {filterNot,                            filterNotByCollectionHolder}                                                from "./filterNot"
 export {filterNotIndexed,                     filterNotIndexedByCollectionHolder}                                         from "./filterNotIndexed"
 export {filterNotNull,                        filterNotNullByCollectionHolder}                                            from "./filterNotNull"

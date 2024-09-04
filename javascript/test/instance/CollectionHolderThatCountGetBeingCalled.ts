@@ -19,6 +19,8 @@ import {any as anyByCollectionHolder}                                 from "../.
 import {any as anyByMinimalistCollectionHolder}                       from "../../src/method/minimalistCollectionHolder/any"
 import {filter as filterByCollectionHolder}                           from "../../src/method/collectionHolder/filter"
 import {filter as filterByMinimalistCollectionHolder}                 from "../../src/method/minimalistCollectionHolder/filter"
+import {filterIndexed as filterIndexedByCollectionHolder}             from "../../src/method/collectionHolder/filterIndexed"
+import {filterIndexed as filterIndexedByMinimalistCollectionHolder}   from "../../src/method/minimalistCollectionHolder/filterIndexed"
 import {forEach as forEachByCollectionHolder}                         from "../../src/method/collectionHolder/forEach"
 import {forEach as forEachByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/forEach"
 import {forEachIndexed as forEachIndexedByCollectionHolder}           from "../../src/method/collectionHolder/forEachIndexed"
@@ -30,7 +32,6 @@ import {onEach as onEachByMinimalistCollectionHolder}                 from "../.
 import {onEachIndexed as onEachIndexedByCollectionHolder}             from "../../src/method/collectionHolder/onEachIndexed"
 import {onEachIndexed as onEachIndexedByMinimalistCollectionHolder}   from "../../src/method/minimalistCollectionHolder/onEachIndexed"
 
-import {filterIndexed, filterIndexedByCollectionHolder}                     from "../../src/method/filterIndexed"
 import {filterNot, filterNotByCollectionHolder}                             from "../../src/method/filterNot"
 import {filterNotIndexed, filterNotIndexedByCollectionHolder}               from "../../src/method/filterNotIndexed"
 import {filterNotNull, filterNotNullByCollectionHolder}                     from "../../src/method/filterNotNull"
@@ -535,7 +536,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public filterIndexed(predicate: ReverseBooleanCallback<T>,) {
         return this.#isCollectionHolder
             ? filterIndexedByCollectionHolder(this, predicate,)
-            : filterIndexed(this, predicate,)
+            : filterIndexedByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter indexed methods --------------------
