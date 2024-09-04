@@ -107,7 +107,7 @@ export class CollectionHandlerByIterable<const T = unknown,
         }
 
         this._collection[0] = iteratorValue.value
-        this._lastIndexRetrieved = 1
+        this._lastIndexRetrieved = 0
         return this.#isEmpty = false
     }
 
@@ -289,7 +289,7 @@ export class CollectionHandlerByIterable<const T = unknown,
 
             const lastIndex = this._lastIndexRetrieved
             const iterator = this._iterator
-            let iteratorIndex = lastIndex - 1
+            let iteratorIndex = lastIndex
             let iteratorResult: IteratorResult<T, unknown>
             while (!(iteratorResult = iterator.next()).done)
                 collection[++iteratorIndex] = iteratorResult.value
@@ -308,7 +308,7 @@ export class CollectionHandlerByIterable<const T = unknown,
 
         const lastIndex = this._lastIndexRetrieved
         const iterator = this._iterator
-        let iteratorIndex = lastIndex - 1
+        let iteratorIndex = lastIndex
         let iteratorResult: IteratorResult<T, unknown>
         while (++iteratorIndex, !(iteratorResult = iterator.next()).done) {
             collection[iteratorIndex] = iteratorResult.value
