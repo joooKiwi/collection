@@ -17,7 +17,7 @@ import {all}                                       from "../../src/method/collec
 import {any}                                       from "../../src/method/collectionHolder/any"
 import {filter}                                    from "../../src/method/collectionHolder/filter"
 import {filterIndexed}                             from "../../src/method/collectionHolder/filterIndexed"
-import {filterNotByCollectionHolder}               from "../../src/method/filterNot"
+import {filterNot}                                 from "../../src/method/collectionHolder/filterNot"
 import {filterNotIndexedByCollectionHolder}        from "../../src/method/filterNotIndexed"
 import {filterNotNullByCollectionHolder}           from "../../src/method/filterNotNull"
 import {findByCollectionHolder}                    from "../../src/method/find"
@@ -359,7 +359,8 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
         throw new Error("The method \"containsOne\" was not expected to be called.",)
     }
 
-    //#region -------------------- Has one methods --------------------
+    //#endregion -------------------- Has one methods --------------------
+    //#region -------------------- Has all methods --------------------
 
     public override hasAll(values: readonly T[],): boolean
     public override hasAll(values: ReadonlySet<T>,): boolean
@@ -453,7 +454,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public override filterNot(predicate: BooleanCallback<T>,) {
-        return filterNotByCollectionHolder(this, predicate,)
+        return filterNot(this, predicate,)
     }
 
     //#endregion -------------------- Filter not methods --------------------

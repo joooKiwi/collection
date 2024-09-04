@@ -11,6 +11,7 @@ export {getOrElse,      getOrElse as      getOrElseByCollectionHolder}      from
 export {getOrNull,      getOrNull as      getOrNullByCollectionHolder}      from "./getOrNull"
 export {filter,         filter as         filterByCollectionHolder}         from "./filter"
 export {filterIndexed,  filterIndexed as  filterIndexedByCollectionHolder}  from "./filterIndexed"
+export {filterNot,      filterNot as      filterNotByCollectionHolder}      from "./filterNot"
 export {forEach,        forEach as        forEachByCollectionHolder}        from "./forEach"
 export {forEachIndexed, forEachIndexed as forEachIndexedByCollectionHolder} from "./forEachIndexed"
 export {none,           none as           noneByCollectionHolder}           from "./none"
