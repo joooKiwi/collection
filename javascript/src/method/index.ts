@@ -14,7 +14,11 @@ export {any as anyByCollectionHolder}           from "./collectionHolder/any"
 export {any as anyByMinimalistCollectionHolder} from "./minimalistCollectionHolder/any"
 
 export {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString} from "./asString"
-export {filter,                               filterByCollectionHolder}                                                   from "./filter"
+
+export {filter}                                       from "./filter"
+export {filter as filterByCollectionHolder}           from "./collectionHolder/filter"
+export {filter as filterByMinimalistCollectionHolder} from "./minimalistCollectionHolder/filter"
+
 export {filterIndexed,                        filterIndexedByCollectionHolder}                                            from "./filterIndexed"
 export {filterNot,                            filterNotByCollectionHolder}                                                from "./filterNot"
 export {filterNotIndexed,                     filterNotIndexedByCollectionHolder}                                         from "./filterNotIndexed"

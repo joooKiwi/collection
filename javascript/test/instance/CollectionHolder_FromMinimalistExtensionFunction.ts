@@ -15,7 +15,7 @@ import type {CollectionIterator}                                                
 import {AbstractMinimalistCollectionHolder} from "../../src/AbstractMinimalistCollectionHolder"
 import {all}                                from "../../src/method/minimalistCollectionHolder/all"
 import {any}                                from "../../src/method/minimalistCollectionHolder/any"
-import {filter}                             from "../../src/method/filter"
+import {filter}                             from "../../src/method/minimalistCollectionHolder/filter"
 import {filterIndexed}                      from "../../src/method/filterIndexed"
 import {filterNot}                          from "../../src/method/filterNot"
 import {filterNotIndexed}                   from "../../src/method/filterNotIndexed"

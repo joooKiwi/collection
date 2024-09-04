@@ -15,7 +15,7 @@ import type {CollectionIterator}                                                
 import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
 import {all}                                       from "./method/collectionHolder/all"
 import {any}                                       from "./method/collectionHolder/any"
-import {filterByCollectionHolder}                  from "./method/filter"
+import {filter}                                    from "./method/collectionHolder/filter"
 import {filterIndexedByCollectionHolder}           from "./method/filterIndexed"
 import {filterNotByCollectionHolder}               from "./method/filterNot"
 import {filterNotIndexedByCollectionHolder}        from "./method/filterNotIndexed"
@@ -448,7 +448,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public filter(predicate: BooleanCallback<T>,) {
-        return filterByCollectionHolder(this, predicate,)
+        return filter(this, predicate,)
     }
 
     //#endregion -------------------- Filter methods --------------------
