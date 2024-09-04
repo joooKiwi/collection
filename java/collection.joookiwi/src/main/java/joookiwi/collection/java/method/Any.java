@@ -239,8 +239,8 @@ public final class Any
 
     private static boolean __with0Argument(final @NotNull BooleanSupplier predicate,
                                            final int size) {
-        var index = -1;
-        while (++index < size)
+        var index = size;
+        while (index-- > 0)
             if (predicate.getAsBoolean())
                 return true;
         return false;
