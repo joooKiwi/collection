@@ -13,6 +13,7 @@ import type {MinimalistCollectionHolder}                 from "../MinimalistColl
 
 import {CollectionConstants}                    from "../CollectionConstants"
 import {isCollectionHolder}                     from "./isCollectionHolder"
+import {isCollectionHolderByStructure}          from "./isCollectionHolderByStructure"
 import {filter as byCollectionHolder}           from "./collectionHolder/filter"
 import {filter as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/filter"
 
@@ -51,6 +52,8 @@ export function filter<const T, >(collection: Nullable<MinimalistCollectionHolde
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
+        return byCollectionHolder(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
         return byCollectionHolder(collection, predicate,)
     return byMinimalistCollectionHolder(collection, predicate,)
 }

@@ -11,6 +11,7 @@ import type {ValueIndexCallback}         from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {isCollectionHolder}                      from "./isCollectionHolder"
+import {isCollectionHolderByStructure}           from "./isCollectionHolderByStructure"
 import {forEach as byCollectionHolder}           from "./collectionHolder/forEach"
 import {forEach as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/forEach"
 
@@ -31,6 +32,8 @@ export function forEach<const T, >(collection: Nullable<MinimalistCollectionHold
     if (collection == null)
         return
     if (isCollectionHolder<T>(collection,))
+        byCollectionHolder(collection, action,)
+    else if (isCollectionHolderByStructure<T>(collection,))
         byCollectionHolder(collection, action,)
     else
         byMinimalistCollectionHolder(collection, action,)

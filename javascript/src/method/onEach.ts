@@ -11,6 +11,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {ValueIndexCallback}         from "../CollectionHolder.types"
 
 import {isCollectionHolder}                     from "./isCollectionHolder"
+import {isCollectionHolderByStructure}          from "./isCollectionHolderByStructure"
 import {onEach as byCollectionHolder}           from "./collectionHolder/onEach"
 import {onEach as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/onEach"
 
@@ -32,6 +33,8 @@ export function onEach<const T, const COLLECTION extends Nullable<MinimalistColl
     if (collection == null)
         return collection
     if (isCollectionHolder<T>(collection,))
+        return byCollectionHolder(collection, action,)
+    if (isCollectionHolderByStructure<T>(collection,))
         return byCollectionHolder(collection, action,)
     return byMinimalistCollectionHolder(collection, action,)
 }

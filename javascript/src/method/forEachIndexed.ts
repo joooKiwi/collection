@@ -11,6 +11,7 @@ import type {IndexValueCallback}         from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {isCollectionHolder}                             from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                  from "./isCollectionHolderByStructure"
 import {forEachIndexed as byCollectionHolder}           from "./collectionHolder/forEachIndexed"
 import {forEachIndexed as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/forEachIndexed"
 
@@ -32,6 +33,8 @@ export function forEachIndexed<const T, >(collection: Nullable<MinimalistCollect
         return
     if (isCollectionHolder<T>(collection,))
         byCollectionHolder(collection, action,)
+    else if (isCollectionHolderByStructure<T>(collection,))
+        return byCollectionHolder(collection, action,)
     else
         byMinimalistCollectionHolder(collection, action,)
 

@@ -13,6 +13,7 @@ import type {MinimalistCollectionHolder}                               from "../
 
 import {CollectionConstants}                           from "../CollectionConstants"
 import {isCollectionHolder}                            from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                 from "./isCollectionHolderByStructure"
 import {filterIndexed as byCollectionHolder}           from "./collectionHolder/filterIndexed"
 import {filterIndexed as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/filterIndexed"
 
@@ -49,6 +50,8 @@ export function filterIndexed<const T, >(collection: Nullable<MinimalistCollecti
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
+        return byCollectionHolder(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
         return byCollectionHolder(collection, predicate,)
     return byMinimalistCollectionHolder(collection, predicate,)
 }

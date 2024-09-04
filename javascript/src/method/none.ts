@@ -12,6 +12,7 @@ import type {BooleanCallback}            from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {isCollectionHolder}                   from "./isCollectionHolder"
+import {isCollectionHolderByStructure}        from "./isCollectionHolderByStructure"
 import {none as byCollectionHolder}           from "./collectionHolder/none"
 import {none as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/none"
 
@@ -51,6 +52,8 @@ export function none<const T, >(collection: Nullable<MinimalistCollectionHolder<
     if (collection == null)
         return true
     if (isCollectionHolder<T>(collection,))
+        return byCollectionHolder(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
         return byCollectionHolder(collection, predicate,)
     return byMinimalistCollectionHolder(collection, predicate,)
 }

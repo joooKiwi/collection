@@ -11,8 +11,9 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {BooleanCallback}            from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isCollectionHolder}                     from "./isCollectionHolder"
-import {all as byCollectionHolder}          from "./collectionHolder/all"
+import {isCollectionHolder}                  from "./isCollectionHolder"
+import {isCollectionHolderByStructure}       from "./isCollectionHolderByStructure"
+import {all as byCollectionHolder}           from "./collectionHolder/all"
 import {all as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/all"
 
 //#region -------------------- Facade method --------------------
@@ -33,6 +34,8 @@ export function all<const T, >(collection: Nullable<MinimalistCollectionHolder<T
     if (collection == null)
         return false
     if (isCollectionHolder<T>(collection,))
+        return byCollectionHolder(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
         return byCollectionHolder(collection, predicate,)
     return byMinimalistCollectionHolder(collection, predicate,)
 }
