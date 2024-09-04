@@ -19,12 +19,14 @@ import {MinimalistCollectionHolder}                from "./MinimalistCollectionH
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
+import {isArrayByStructure}                        from "./method/isArrayByStructure"
 import {isCollectionHolder}                        from "./method/isCollectionHolder"
 import {isCollectionHolderByStructure}             from "./method/isCollectionHolderByStructure"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}           from "./method/isCollectionIteratorByStructure"
 import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}   from "./method/isMinimalistCollectionHolderByStructure"
+import {isSetByStructure}                          from "./method/isSetByStructure"
 
 export class GenericMinimalistCollectionHolder<const T = unknown,
     const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
@@ -72,6 +74,8 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
         if (reference instanceof Function)
             reference = reference()
         this.#reference = reference
+
+        //#region -------------------- initialization by a known instance --------------------
 
         if (reference instanceof Array) {
             const size = this.#size = reference.length
@@ -265,6 +269,87 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        //#endregion -------------------- initialization by a known instance --------------------
+        //#region -------------------- initialization by a structure --------------------
+
+        if (isArrayByStructure<T>(reference,)) {
+            const size = this.#size = reference.length
+            //#region -------------------- Initialization (empty) --------------------
+
+            if (size == 0) {
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                return
+            }
+
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                this.#array = Object.freeze([reference[0] as T,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                this.#array = Object.freeze([reference[0] as T, reference[1] as T,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            let index = size
+            while (index-- > 0)
+                array[index] = reference[index] as T
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        if (isSetByStructure<T>(reference,)) {
+            const size = this.#size = reference.size
+            //#region -------------------- Initialization (empty) --------------------
+
+            if (size == 0) {
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                return
+            }
+
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                this.#array = Object.freeze([reference[Symbol.iterator]().next().value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+                this.#array = Object.freeze([iterator.next().value, iterator.next().value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            let index = -1
+            while (++index < size)
+                array[index] = iterator.next().value
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
         if (isCollectionHolderByStructure<T>(reference,)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
@@ -378,6 +463,8 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
+
+        //#endregion -------------------- initialization by a structure --------------------
 
         sizeIf: if ("size" in reference) {
             const size = reference.size

@@ -21,12 +21,14 @@ import {CollectionConstants}                       from "./CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
+import {isArrayByStructure}                        from "./method/isArrayByStructure"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}           from "./method/isCollectionIteratorByStructure"
 import {isCollectionHolder}                        from "./method/isCollectionHolder"
 import {isCollectionHolderByStructure}             from "./method/isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}   from "./method/isMinimalistCollectionHolderByStructure"
+import {isSetByStructure}                          from "./method/isSetByStructure"
 
 /**
  * A {@link CollectionHolder} having the values eagerly retrieved.
@@ -93,6 +95,8 @@ export class GenericCollectionHolder<const T = unknown,
         if (reference instanceof Function)
             reference = reference()
         this.#reference = reference
+
+        //#region -------------------- initialization by a known instance --------------------
 
         if (reference instanceof Array) {
             const size = this.#size = reference.length
@@ -345,6 +349,110 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        //#endregion -------------------- initialization by a known instance --------------------
+        //#region -------------------- initialization by a structure --------------------
+
+        if (isArrayByStructure<T>(reference,)) {
+            const size = this.#size = reference.length
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = size == 0) {
+                this.#hasNull = this.#hasDuplicate = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = reference[0] as T
+                this.#hasNull = value == null
+                this.#hasDuplicate = false
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const firstValue = this[0] = reference[0] as T
+                const secondValue = this[1] = reference[1] as T
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#hasDuplicate = firstValue === secondValue
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            let index = size
+            while (index-- > 0)
+                this[index] = array[index] = reference[index] as T
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        if (isSetByStructure<T>(reference,)) {
+            this.#hasDuplicate = false
+            const size = this.#size = reference.size
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = size == 0) {
+                this.#hasNull = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
+                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, unknown>).next().value as T
+                this.#hasNull = value == null
+                this.#array = Object.freeze([value,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
+                const firstValue = this[0] = iterator.next().value as T
+                const secondValue = this[1] = iterator.next().value as T
+                this.#hasNull = firstValue == null || secondValue == null
+                this.#array = Object.freeze([firstValue, secondValue,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            const iterator = reference[Symbol.iterator]() as Iterator<T, unknown>
+            let index = -1
+            while (++index < size)
+                this[index] = array[index] = iterator.next().value as T
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
         if (isCollectionHolderByStructure<T>(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
@@ -494,6 +602,9 @@ export class GenericCollectionHolder<const T = unknown,
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
+
+        //#endregion -------------------- initialization by a structure --------------------
+        //#region -------------------- initialization by an iterator --------------------
 
         sizeIf: if ("size" in reference) {
             const size = reference.size
@@ -686,6 +797,8 @@ export class GenericCollectionHolder<const T = unknown,
         this.#array = Object.freeze(array,)
 
         //#endregion -------------------- Initialization (size = over 0) --------------------
+
+        //#endregion -------------------- initialization by an iterator --------------------
     }
 
     //#endregion -------------------- Constructor --------------------
