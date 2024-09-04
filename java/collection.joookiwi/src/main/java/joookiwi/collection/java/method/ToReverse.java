@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.ArrayList;
 import java.util.List;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.CommonContracts;
@@ -41,7 +40,7 @@ public final class ToReverse
     public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyCollectionHolder();
-        return __toReverse(collection);
+        return __core(collection);
     }
 
     //#endregion -------------------- minimalist - ∅ --------------------
@@ -61,7 +60,7 @@ public final class ToReverse
     public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyCollectionHolder();
-        return __toReverse(collection);
+        return __core(collection);
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -89,8 +88,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (fromIndex == null)
-            return __toReverse(collection);
-        return __toReverse(collection, fromIndex);
+            return __core(collection);
+        return __core(collection, fromIndex);
     }
 
     /**
@@ -113,7 +112,7 @@ public final class ToReverse
                                                              final int fromIndex) {
         if (collection == null)
             return emptyCollectionHolder();
-        return __toReverse(collection, fromIndex);
+        return __core(collection, fromIndex);
     }
 
     //#endregion -------------------- minimalist - from --------------------
@@ -140,8 +139,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (fromIndex == null)
-            return __toReverse(collection);
-        return __toReverse(collection, fromIndex);
+            return __core(collection);
+        return __core(collection, fromIndex);
     }
 
     /**
@@ -164,7 +163,7 @@ public final class ToReverse
                                                              final int fromIndex) {
         if (collection == null)
             return emptyCollectionHolder();
-        return __toReverse(collection, fromIndex);
+        return __core(collection, fromIndex);
     }
 
     //#endregion -------------------- from --------------------
@@ -193,7 +192,7 @@ public final class ToReverse
                                                              final int toIndex) {
         if (collection == null)
             return emptyCollectionHolder();
-        return __toReverse(collection, fromIndex, toIndex);
+        return __core(collection, fromIndex, toIndex);
     }
 
     /**
@@ -219,8 +218,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (toIndex == null)
-            return __toReverse(collection, fromIndex);
-        return __toReverse(collection, fromIndex, toIndex.intValue());
+            return __core(collection, fromIndex);
+        return __core(collection, fromIndex, toIndex);
     }
 
     /**
@@ -246,8 +245,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex);
-        return __toReverse(collection, fromIndex.intValue(), toIndex);
+            return __coreWithNoFrom(collection, toIndex);
+        return __core(collection, fromIndex, toIndex);
     }
 
     /**
@@ -274,12 +273,12 @@ public final class ToReverse
             return emptyCollectionHolder();
         if (toIndex == null)
             if (fromIndex == null)
-                return __toReverse(collection);
+                return __core(collection);
             else
-                return __toReverse(collection, fromIndex.intValue());
+                return __core(collection, fromIndex);
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex.intValue());
-        return __toReverse(collection, fromIndex.intValue(), toIndex.intValue());
+            return __coreWithNoFrom(collection, toIndex);
+        return __core(collection, fromIndex, toIndex);
     }
 
     //#endregion -------------------- minimalist - from, to --------------------
@@ -307,7 +306,7 @@ public final class ToReverse
                                                              final int toIndex) {
         if (collection == null)
             return emptyCollectionHolder();
-        return __toReverse(collection, fromIndex, toIndex);
+        return __core(collection, fromIndex, toIndex);
     }
 
     /**
@@ -333,8 +332,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (toIndex == null)
-            return __toReverse(collection, fromIndex);
-        return __toReverse(collection, fromIndex, toIndex.intValue());
+            return __core(collection, fromIndex);
+        return __core(collection, fromIndex, toIndex);
     }
 
     /**
@@ -360,8 +359,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex);
-        return __toReverse(collection, fromIndex.intValue(), toIndex);
+            return __coreWithNoFrom(collection, toIndex);
+        return __core(collection, fromIndex, toIndex);
     }
 
     /**
@@ -388,12 +387,12 @@ public final class ToReverse
             return emptyCollectionHolder();
         if (toIndex == null)
             if (fromIndex == null)
-                return __toReverse(collection);
+                return __core(collection);
             else
-                return __toReverse(collection, fromIndex.intValue());
+                return __core(collection, fromIndex);
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex.intValue());
-        return __toReverse(collection, fromIndex.intValue(), toIndex.intValue());
+            return __coreWithNoFrom(collection, toIndex);
+        return __core(collection, fromIndex, toIndex);
     }
 
     //#endregion -------------------- from, to --------------------
@@ -425,7 +424,7 @@ public final class ToReverse
                                                              final int limit) {
         if (collection == null)
             return emptyCollectionHolder();
-        return __toReverse(collection, fromIndex, toIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -454,8 +453,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (limit == null)
-            return __toReverse(collection, fromIndex, toIndex);
-        return __toReverse(collection, fromIndex, toIndex, limit.intValue());
+            return __core(collection, fromIndex, toIndex);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -484,8 +483,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (toIndex == null)
-            return __toReverse(collection, fromIndex, null, limit);
-        return __toReverse(collection, fromIndex, toIndex.intValue(), limit);
+            return __coreWithNoTo(collection, fromIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -515,12 +514,12 @@ public final class ToReverse
             return emptyCollectionHolder();
         if (limit == null)
             if (toIndex == null)
-                return __toReverse(collection, fromIndex);
+                return __core(collection, fromIndex);
             else
-                return __toReverse(collection, fromIndex, toIndex.intValue());
+                return __core(collection, fromIndex, toIndex);
         if (toIndex == null)
-            return __toReverse(collection, fromIndex, null, limit.intValue());
-        return __toReverse(collection, fromIndex, toIndex.intValue(), limit.intValue());
+            return __coreWithNoTo(collection, fromIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -549,8 +548,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex, limit);
-        return __toReverse(collection, fromIndex.intValue(), toIndex, limit);
+            return __coreWithNoFrom(collection, toIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -580,12 +579,12 @@ public final class ToReverse
             return emptyCollectionHolder();
         if (limit == null)
             if (fromIndex == null)
-                return __toReverse(collection, null, toIndex);
+                return __coreWithNoFrom(collection, toIndex);
             else
-                return __toReverse(collection, fromIndex.intValue(), toIndex);
+                return __core(collection, fromIndex, toIndex);
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex, limit.intValue());
-        return __toReverse(collection, fromIndex.intValue(), toIndex, limit.intValue());
+            return __coreWithNoFrom(collection, toIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -615,12 +614,12 @@ public final class ToReverse
             return emptyCollectionHolder();
         if (toIndex == null)
             if (fromIndex == null)
-                return __toReverse(collection, null, null, limit);
+                return __coreWithNoFromAndTo(collection, limit);
             else
-                return __toReverse(collection, fromIndex, null, limit);
+                return __coreWithNoFromAndTo(collection, limit);
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex.intValue(), limit);
-        return __toReverse(collection, fromIndex.intValue(), toIndex.intValue(), limit);
+            return __coreWithNoFrom(collection, toIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -651,21 +650,21 @@ public final class ToReverse
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return __toReverse(collection);
+                    return __core(collection);
                 else
-                    return __toReverse(collection, fromIndex.intValue());
+                    return __core(collection, fromIndex);
             else if (fromIndex == null)
-                return __toReverse(collection, null, toIndex.intValue());
+                return __coreWithNoFrom(collection, toIndex);
             else
-                return __toReverse(collection, fromIndex.intValue(), toIndex.intValue());
+                return __core(collection, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return __toReverse(collection, null, null, limit.intValue());
+                return __coreWithNoFromAndTo(collection, limit);
             else
-                return __toReverse(collection, fromIndex, null, limit.intValue());
+                return __coreWithNoFromAndTo(collection, limit);
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex.intValue(), limit.intValue());
-        return __toReverse(collection, fromIndex.intValue(), toIndex.intValue(), limit.intValue());
+            return __coreWithNoFrom(collection, toIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     //#endregion -------------------- minimalist - from, to, limit --------------------
@@ -696,7 +695,7 @@ public final class ToReverse
                                                              final int limit) {
         if (collection == null)
             return emptyCollectionHolder();
-        return __toReverse(collection, fromIndex, toIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -725,8 +724,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (limit == null)
-            return __toReverse(collection, fromIndex, toIndex);
-        return __toReverse(collection, fromIndex, toIndex, limit.intValue());
+            return __core(collection, fromIndex, toIndex);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -755,8 +754,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (toIndex == null)
-                return __toReverse(collection, fromIndex, null, limit);
-        return __toReverse(collection, fromIndex, toIndex.intValue(), limit);
+                return __coreWithNoTo(collection, fromIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -786,12 +785,12 @@ public final class ToReverse
             return emptyCollectionHolder();
         if (limit == null)
             if (toIndex == null)
-                return __toReverse(collection, fromIndex);
+                return __core(collection, fromIndex);
             else
-                return __toReverse(collection, fromIndex, toIndex.intValue());
+                return __core(collection, fromIndex, toIndex);
         if (toIndex == null)
-            return __toReverse(collection, fromIndex, null, limit.intValue());
-        return __toReverse(collection, fromIndex, toIndex.intValue(), limit.intValue());
+            return __coreWithNoTo(collection, fromIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -820,8 +819,8 @@ public final class ToReverse
         if (collection == null)
             return emptyCollectionHolder();
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex, limit);
-        return __toReverse(collection, fromIndex.intValue(), toIndex, limit);
+            return __coreWithNoFrom(collection, toIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
     /**
      * Reverse the {@code collection}
@@ -850,12 +849,12 @@ public final class ToReverse
             return emptyCollectionHolder();
         if (limit == null)
             if (fromIndex == null)
-                return __toReverse(collection, null, toIndex);
+                return __coreWithNoFrom(collection, toIndex);
             else
-                return __toReverse(collection, fromIndex.intValue(), toIndex);
+                return __core(collection, fromIndex, toIndex);
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex, limit.intValue());
-        return __toReverse(collection, fromIndex.intValue(), toIndex, limit.intValue());
+            return __coreWithNoFrom(collection, toIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -885,12 +884,12 @@ public final class ToReverse
             return emptyCollectionHolder();
         if (toIndex == null)
             if (fromIndex == null)
-                return __toReverse(collection, null, null, limit);
+                return __coreWithNoFromAndTo(collection, limit);
             else
-                return __toReverse(collection, fromIndex.intValue(), null, limit);
+                return __coreWithNoTo(collection, fromIndex, limit);
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex.intValue(), limit);
-        return __toReverse(collection, fromIndex.intValue(), toIndex.intValue(), limit);
+            return __coreWithNoFrom(collection, toIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     /**
@@ -921,21 +920,21 @@ public final class ToReverse
         if (limit == null)
             if (toIndex == null)
                 if (fromIndex == null)
-                    return __toReverse(collection);
+                    return __core(collection);
                 else
-                    return __toReverse(collection, fromIndex.intValue());
+                    return __core(collection, fromIndex);
             else if (fromIndex == null)
-                return __toReverse(collection, null, toIndex.intValue());
+                return __coreWithNoFrom(collection, toIndex);
             else
-                return __toReverse(collection, fromIndex.intValue(), toIndex.intValue());
+                return __core(collection, fromIndex, toIndex);
         if (toIndex == null)
             if (fromIndex == null)
-                return __toReverse(collection, null, null, limit.intValue());
+                return __coreWithNoFromAndTo(collection, limit);
             else
-                return __toReverse(collection, fromIndex.intValue(), null, limit.intValue());
+                return __coreWithNoTo(collection, fromIndex, limit);
         if (fromIndex == null)
-            return __toReverse(collection, null, toIndex.intValue(), limit.intValue());
-        return __toReverse(collection, fromIndex.intValue(), toIndex.intValue(), limit.intValue());
+            return __coreWithNoFrom(collection, toIndex, limit);
+        return __core(collection, fromIndex, toIndex, limit);
     }
 
     //#endregion -------------------- from, to, limit --------------------
@@ -945,7 +944,7 @@ public final class ToReverse
 
     //#region -------------------- minimalist - ∅ --------------------
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull MinimalistCollectionHolder<? extends T> collection) {
+    private static <T> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection) {
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
@@ -955,7 +954,7 @@ public final class ToReverse
     //#endregion -------------------- minimalist - ∅ --------------------
     //#region -------------------- ∅ --------------------
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull CollectionHolder<? extends T> collection) {
+    private static <T> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
         return new GenericCollectionHolder<>(() -> __all(collection, collection.size()));
@@ -965,8 +964,8 @@ public final class ToReverse
 
     //#region -------------------- minimalist - from --------------------
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                final int fromIndex) {
+    private static <T> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                           final int fromIndex) {
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
@@ -978,8 +977,8 @@ public final class ToReverse
     //#endregion -------------------- minimalist - from --------------------
     //#region -------------------- from --------------------
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull CollectionHolder<? extends T> collection,
-                                                                final int fromIndex) {
+    private static <T> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                           final int fromIndex) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
 
@@ -992,9 +991,9 @@ public final class ToReverse
 
     //#region -------------------- minimalist - from, to --------------------
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                final int fromIndex,
-                                                                final int toIndex) {
+    private static <T> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                           final int fromIndex,
+                                                           final int toIndex) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1017,9 +1016,8 @@ public final class ToReverse
     }
 
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                final @Nullable Object ignoredNullFromIndex,
-                                                                final int toIndex) {
+    private static <T> @NotNull CollectionHolder<T> __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                     final int toIndex) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1037,9 +1035,9 @@ public final class ToReverse
     //#endregion -------------------- minimalist - from, to --------------------
     //#region -------------------- from, to --------------------
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull CollectionHolder<? extends T> collection,
-                                                                final int fromIndex,
-                                                                final int toIndex) {
+    private static <T> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                           final int fromIndex,
+                                                           final int toIndex) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1061,9 +1059,8 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withStaringAndEndingIndex(collection, startingIndex, endingIndex));
     }
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull CollectionHolder<? extends T> collection,
-                                                                final @Nullable Object ignoredNullFromIndex,
-                                                                final int toIndex) {
+    private static <T> @NotNull CollectionHolder<T> __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+                                                                     final int toIndex) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1081,10 +1078,10 @@ public final class ToReverse
 
     //#region -------------------- minimalist - from, to, limit --------------------
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                final int fromIndex,
-                                                                final int toIndex,
-                                                                final int limit) {
+    private static <T> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                           final int fromIndex,
+                                                           final int toIndex,
+                                                           final int limit) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1112,10 +1109,9 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withALimit(collection, startingIndex, endingIndex, maximumIndex));
     }
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                final @Nullable Object ignoredNullFromIndex,
-                                                                final int toIndex,
-                                                                final int limit) {
+    private static <T> @NotNull CollectionHolder<T> __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                     final int toIndex,
+                                                                     final int limit) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1139,10 +1135,9 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withALimit(collection, 0, endingIndex, maximumIndex));
     }
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                final int fromIndex,
-                                                                final @Nullable Object ignoredNullToIndex,
-                                                                final int limit) {
+    private static <T> @NotNull CollectionHolder<T> __coreWithNoTo(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int fromIndex,
+                                                                   final int limit) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1165,10 +1160,8 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withALimit(collection, startingIndex, endingIndex, maximumIndex));
     }
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                final @Nullable Object ignoredNullFromIndex,
-                                                                final @Nullable Object ignoredNullToIndex,
-                                                                final int limit) {
+    private static <T> @NotNull CollectionHolder<T> __coreWithNoFromAndTo(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                          final int limit) {
         //#region -------------------- Early returns --------------------
 
         final var size = collection.size();
@@ -1193,10 +1186,10 @@ public final class ToReverse
     //#endregion -------------------- minimalist - from, to, limit --------------------
     //#region -------------------- from, to, limit --------------------
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull CollectionHolder<? extends T> collection,
-                                                                final int fromIndex,
-                                                                final int toIndex,
-                                                                final int limit) {
+    private static <T> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                           final int fromIndex,
+                                                           final int toIndex,
+                                                           final int limit) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1224,10 +1217,9 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withALimit(collection, startingIndex, endingIndex, maximumIndex));
     }
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull CollectionHolder<? extends T> collection,
-                                                                final @Nullable Object ignoredNullFromIndex,
-                                                                final int toIndex,
-                                                                final int limit) {
+    private static <T> @NotNull CollectionHolder<T> __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+                                                                     final int toIndex,
+                                                                     final int limit) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1251,10 +1243,9 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withALimit(collection, 0, endingIndex, maximumIndex));
     }
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull CollectionHolder<? extends T> collection,
-                                                                final int fromIndex,
-                                                                final @Nullable Object ignoredNullToIndex,
-                                                                final int limit) {
+    private static <T> @NotNull CollectionHolder<T> __coreWithNoTo(final @NotNull CollectionHolder<? extends T> collection,
+                                                                   final int fromIndex,
+                                                                   final int limit) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1277,10 +1268,8 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withALimit(collection, startingIndex, endingIndex, maximumIndex));
     }
 
-    private static <T> @NotNull CollectionHolder<T> __toReverse(final @NotNull CollectionHolder<? extends T> collection,
-                                                                final @Nullable Object ignoredNullFromIndex,
-                                                                final @Nullable Object ignoredNullToIndex,
-                                                                final int limit) {
+    private static <T> @NotNull CollectionHolder<T> __coreWithNoFromAndTo(final @NotNull CollectionHolder<? extends T> collection,
+                                                                          final int limit) {
         //#region -------------------- Early returns --------------------
 
         if (collection.isEmpty())
@@ -1310,32 +1299,32 @@ public final class ToReverse
 
     private static <T> @NotNull @Unmodifiable List<T> __all(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                             final int size) {
-        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
+        @SuppressWarnings("unchecked cast") final var reversedArray = (T[]) new Object[size];
         var index = size;
         while (--index >= 0)
-            newArray[index] = collection.get(index);
-        return List.of(newArray);
+            reversedArray[index] = collection.get(index);
+        return List.of(reversedArray);
     }
 
     private static <T> @NotNull @Unmodifiable List<T> __withStartingIndex(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                                           final int startingIndex,
                                                                           final int size) {
-        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - startingIndex];
+        @SuppressWarnings("unchecked cast") final var reversedArray = (T[]) new Object[size - startingIndex];
         var index = size - 1;
         while (--index >= startingIndex)
-            newArray[index] = collection.get(index);
-        return List.of(newArray);
+            reversedArray[index] = collection.get(index);
+        return List.of(reversedArray);
     }
 
     private static <T> @NotNull @Unmodifiable List<T> __withStaringAndEndingIndex(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                                                   final int startingIndex,
                                                                                   final int endingIndex) {
-        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[endingIndex - startingIndex];
+        @SuppressWarnings("unchecked cast") final var reversedArray = (T[]) new Object[endingIndex - startingIndex];
         var indexAdded = -1;
         var index = endingIndex + 1;
         while (--index >= startingIndex)
-            newArray[++indexAdded] = collection.get(index);
-        return List.of(newArray);
+            reversedArray[++indexAdded] = collection.get(index);
+        return List.of(reversedArray);
     }
 
 
@@ -1343,14 +1332,20 @@ public final class ToReverse
                                                                    final int startingIndex,
                                                                    final int endingIndex,
                                                                    final int maximumIndex) {
-        final var temporaryList = new ArrayList<T>(maximumIndex);
+        @SuppressWarnings("unchecked cast") final var reversedArray = (T[]) new Object[maximumIndex];
         var index = endingIndex + 1;
         while (--index >= startingIndex) {
-            if (temporaryList.size() >= maximumIndex)
-                return List.copyOf(temporaryList);
-            temporaryList.add(collection.get(index));
+            if (index >= maximumIndex)
+                return List.of(reversedArray);
+            reversedArray[index] = collection.get(index);
         }
-        return List.copyOf(temporaryList);
+
+        //We create a new array from 0 to the ending index since it hasn't reached the maximum index
+        @SuppressWarnings("unchecked cast") final var reversedArray2 = (T[]) new Object[endingIndex];
+        var index2 = endingIndex + 1;
+        while (--index2 > 0)
+            reversedArray2[index2] = reversedArray[index2];
+        return List.of(reversedArray2);
     }
 
     //#endregion -------------------- Loop methods --------------------
