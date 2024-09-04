@@ -25,7 +25,7 @@ public final class Last
 
     //#region -------------------- Facade methods --------------------
 
-    //#region -------------------- () --------------------
+    //#region -------------------- ∅ --------------------
 
     /**
      * Get the last element in the current {@code collection}
@@ -69,7 +69,7 @@ public final class Last
         return __withNoPredicate(collection, collection.size());
     }
 
-    //#endregion -------------------- () --------------------
+    //#endregion -------------------- ∅ --------------------
     //#region -------------------- predicate (T, int) → boolean --------------------
 
     /**

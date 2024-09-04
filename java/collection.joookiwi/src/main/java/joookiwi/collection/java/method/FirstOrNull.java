@@ -23,7 +23,7 @@ public final class FirstOrNull
 
     //#region -------------------- Facade methods --------------------
 
-    //#region -------------------- () --------------------
+    //#region -------------------- ∅ --------------------
 
     /**
      * Get the first element in the {@code collection}
@@ -63,7 +63,7 @@ public final class FirstOrNull
         return __withNoArgument(collection);
     }
 
-    //#endregion -------------------- () --------------------
+    //#endregion -------------------- ∅ --------------------
     //#region -------------------- predicate (T, int) → boolean --------------------
 
     /**

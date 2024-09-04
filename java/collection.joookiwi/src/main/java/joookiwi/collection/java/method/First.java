@@ -25,7 +25,7 @@ public final class First
 
     //#region -------------------- Facade methods --------------------
 
-    //#region -------------------- () ---------------------
+    //#region -------------------- ∅ ---------------------
 
     /**
      * Get the first element in the {@code collection}
@@ -67,7 +67,7 @@ public final class First
         return __withNoArgument(collection);
     }
 
-    //#endregion -------------------- () --------------------
+    //#endregion -------------------- ∅ --------------------
     //#region -------------------- predicate (T, int) → boolean --------------------
 
     /**
