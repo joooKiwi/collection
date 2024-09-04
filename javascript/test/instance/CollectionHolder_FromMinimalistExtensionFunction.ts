@@ -18,7 +18,7 @@ import {any}                                from "../../src/method/minimalistCol
 import {filter}                             from "../../src/method/minimalistCollectionHolder/filter"
 import {filterIndexed}                      from "../../src/method/minimalistCollectionHolder/filterIndexed"
 import {filterNot}                          from "../../src/method/minimalistCollectionHolder/filterNot"
-import {filterNotIndexed}                   from "../../src/method/filterNotIndexed"
+import {filterNotIndexed}                   from "../../src/method/minimalistCollectionHolder/filterNotIndexed"
 import {filterNotNull}                      from "../../src/method/filterNotNull"
 import {find}                               from "../../src/method/find"
 import {findIndexed}                        from "../../src/method/findIndexed"

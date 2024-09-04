@@ -12,29 +12,30 @@ import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexVal
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                    from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
 
-import {AbstractCollectionHolder}                                     from "../../src/AbstractCollectionHolder"
-import {all as allByCollectionHolder}                                 from "../../src/method/collectionHolder/all"
-import {all as allByMinimalistCollectionHolder}                       from "../../src/method/minimalistCollectionHolder/all"
-import {any as anyByCollectionHolder}                                 from "../../src/method/collectionHolder/any"
-import {any as anyByMinimalistCollectionHolder}                       from "../../src/method/minimalistCollectionHolder/any"
-import {filter as filterByCollectionHolder}                           from "../../src/method/collectionHolder/filter"
-import {filter as filterByMinimalistCollectionHolder}                 from "../../src/method/minimalistCollectionHolder/filter"
-import {filterIndexed as filterIndexedByCollectionHolder}             from "../../src/method/collectionHolder/filterIndexed"
-import {filterIndexed as filterIndexedByMinimalistCollectionHolder}   from "../../src/method/minimalistCollectionHolder/filterIndexed"
-import {filterNot as filterNotByCollectionHolder}                     from "../../src/method/collectionHolder/filterNot"
-import {filterNot as filterNotByMinimalistCollectionHolder}           from "../../src/method/minimalistCollectionHolder/filterNot"
-import {forEach as forEachByCollectionHolder}                         from "../../src/method/collectionHolder/forEach"
-import {forEach as forEachByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/forEach"
-import {forEachIndexed as forEachIndexedByCollectionHolder}           from "../../src/method/collectionHolder/forEachIndexed"
-import {forEachIndexed as forEachIndexedByMinimalistCollectionHolder} from "../../src/method/minimalistCollectionHolder/forEachIndexed"
-import {none as noneByCollectionHolder}                               from "../../src/method/collectionHolder/none"
-import {none as noneByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/none"
-import {onEach as onEachByCollectionHolder}                           from "../../src/method/collectionHolder/onEach"
-import {onEach as onEachByMinimalistCollectionHolder}                 from "../../src/method/minimalistCollectionHolder/onEach"
-import {onEachIndexed as onEachIndexedByCollectionHolder}             from "../../src/method/collectionHolder/onEachIndexed"
-import {onEachIndexed as onEachIndexedByMinimalistCollectionHolder}   from "../../src/method/minimalistCollectionHolder/onEachIndexed"
+import {AbstractCollectionHolder}                                         from "../../src/AbstractCollectionHolder"
+import {all as allByCollectionHolder}                                     from "../../src/method/collectionHolder/all"
+import {all as allByMinimalistCollectionHolder}                           from "../../src/method/minimalistCollectionHolder/all"
+import {any as anyByCollectionHolder}                                     from "../../src/method/collectionHolder/any"
+import {any as anyByMinimalistCollectionHolder}                           from "../../src/method/minimalistCollectionHolder/any"
+import {filter as filterByCollectionHolder}                               from "../../src/method/collectionHolder/filter"
+import {filter as filterByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/filter"
+import {filterIndexed as filterIndexedByCollectionHolder}                 from "../../src/method/collectionHolder/filterIndexed"
+import {filterIndexed as filterIndexedByMinimalistCollectionHolder}       from "../../src/method/minimalistCollectionHolder/filterIndexed"
+import {filterNot as filterNotByCollectionHolder}                         from "../../src/method/collectionHolder/filterNot"
+import {filterNot as filterNotByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/filterNot"
+import {filterNotIndexed as filterNotIndexedByCollectionHolder}           from "../../src/method/collectionHolder/filterNotIndexed"
+import {filterNotIndexed as filterNotIndexedByMinimalistCollectionHolder} from "../../src/method/minimalistCollectionHolder/filterNotIndexed"
+import {forEach as forEachByCollectionHolder}                             from "../../src/method/collectionHolder/forEach"
+import {forEach as forEachByMinimalistCollectionHolder}                   from "../../src/method/minimalistCollectionHolder/forEach"
+import {forEachIndexed as forEachIndexedByCollectionHolder}               from "../../src/method/collectionHolder/forEachIndexed"
+import {forEachIndexed as forEachIndexedByMinimalistCollectionHolder}     from "../../src/method/minimalistCollectionHolder/forEachIndexed"
+import {none as noneByCollectionHolder}                                   from "../../src/method/collectionHolder/none"
+import {none as noneByMinimalistCollectionHolder}                         from "../../src/method/minimalistCollectionHolder/none"
+import {onEach as onEachByCollectionHolder}                               from "../../src/method/collectionHolder/onEach"
+import {onEach as onEachByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/onEach"
+import {onEachIndexed as onEachIndexedByCollectionHolder}                 from "../../src/method/collectionHolder/onEachIndexed"
+import {onEachIndexed as onEachIndexedByMinimalistCollectionHolder}       from "../../src/method/minimalistCollectionHolder/onEachIndexed"
 
-import {filterNotIndexed, filterNotIndexedByCollectionHolder}               from "../../src/method/filterNotIndexed"
 import {filterNotNull, filterNotNullByCollectionHolder}                     from "../../src/method/filterNotNull"
 import {find, findByCollectionHolder}                                       from "../../src/method/find"
 import {findIndexed, findIndexedByCollectionHolder}                         from "../../src/method/findIndexed"
@@ -559,7 +560,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,) {
         return this.#isCollectionHolder
             ? filterNotIndexedByCollectionHolder(this, predicate,)
-            : filterNotIndexed(this, predicate,)
+            : filterNotIndexedByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter not indexed methods --------------------
