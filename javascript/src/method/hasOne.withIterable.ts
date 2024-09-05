@@ -36,8 +36,8 @@ export function hasOneWithIterable<const T, >(collection: Nullable<MinimalistCol
     if (size == 0)
         return false
 
-    const iterator = values[Symbol.iterator]() as Iterator<unknown, unknown>
-    const iteratorResult: IteratorResult<unknown, unknown> = iterator.next()
+    const iterator: Iterator<unknown, unknown> = values[Symbol.iterator]()
+    const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return true
 
@@ -66,8 +66,8 @@ export function hasOneWithIterableByCollectionHolder(collection: Nullable<Collec
     if (collection.isEmpty)
         return false
 
-    const iterator = values[Symbol.iterator]() as Iterator<unknown, unknown>
-    const iteratorResult: IteratorResult<unknown, unknown> = iterator.next()
+    const iterator: Iterator<unknown, unknown> = values[Symbol.iterator]()
+    const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return true
 

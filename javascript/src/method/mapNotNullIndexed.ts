@@ -71,7 +71,7 @@ export function mapNotNullIndexedByCollectionHolder<const T, const U extends Non
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument<const U extends NonNullable<unknown>, >(transform: () => Nullable<U>, size: number,) {
-    const newArray = [] as U[]
+    const newArray: U[] = []
     let index = size
     while (index-- > 0) {
         const value = transform()
@@ -82,7 +82,7 @@ function __with0Argument<const U extends NonNullable<unknown>, >(transform: () =
 }
 
 function __with1Argument<const U extends NonNullable<unknown>, >(transform: (index: number,) => Nullable<U>, size: number,) {
-    const newArray = [] as U[]
+    const newArray: U[] = []
     let index = -1
     while (++index < size) {
         const value = transform(index,)
@@ -93,7 +93,7 @@ function __with1Argument<const U extends NonNullable<unknown>, >(transform: (ind
 }
 
 function __with2Argument<const T, const U extends NonNullable<unknown>, >(collection: MinimalistCollectionHolder<T>, transform: (index: number, value: T,) => Nullable<U>, size: number,) {
-    const newArray = [] as U[]
+    const newArray: U[] = []
     let index = -1
     while (++index < size) {
         const value = transform(index, collection.get(index,),)

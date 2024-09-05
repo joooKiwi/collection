@@ -63,7 +63,7 @@ export class CollectionHandlerByIterable<const T = unknown,
             return this.#size = this._collection.size
 
         const iterator = this._iterator
-        let iteratorValue = iterator.next() as IteratorResult<T, unknown>
+        let iteratorValue = iterator.next()
         if (iteratorValue.done) {
             this._hasFinished = true
             if (this._isTheFirstElementRetrieved) {
@@ -95,7 +95,7 @@ export class CollectionHandlerByIterable<const T = unknown,
         if (this._hasFinished === true)
             return this.#isEmpty = this._collection.isEmpty
 
-        const iteratorValue = this._iterator.next() as IteratorResult<T, unknown>
+        const iteratorValue = this._iterator.next()
         if (iteratorValue.done) {
             this._hasFinished = true
             if (this._isTheFirstElementRetrieved) {
@@ -154,10 +154,10 @@ export class CollectionHandlerByIterable<const T = unknown,
         //FIXME: use the same logic as the CollectionHandler-by-CollectionIterator instance
         //TODO add logic to compare if it exist and _lastIndexRetrieved++ logic
         const reference = this._reference
-        const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+        const iterator: Iterator<T, unknown> = reference[Symbol.iterator]()
         const collection = this._collection
         const temporaryArray = []
-        collection[0] = temporaryArray[0] = iterator.next().value
+        collection[0] = temporaryArray[0] = iterator.next().value as T
         let iteratorResult: IteratorResult<T, unknown>
         let amountOfItemAdded = 1
         let index = 0
@@ -237,7 +237,7 @@ export class CollectionHandlerByIterable<const T = unknown,
         if (value != null)
             return value
 
-        const iteratorValue = this._iterator.next() as IteratorResult<T, unknown>
+        const iteratorValue = this._iterator.next()
         if (iteratorValue.done)
             return this._hasFinished = true
 

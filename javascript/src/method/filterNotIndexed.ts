@@ -94,7 +94,7 @@ export function filterNotIndexedByCollectionHolder<const T, >(collection: Nullab
 
 /** @internal */
 export function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: () => boolean, size: number,) {
-    const newArray = [] as T[]
+    const newArray: T[] = []
     let index = -1
     while (++index < size)
         if (!predicate())
@@ -104,7 +104,7 @@ export function __with0Argument<const T, >(collection: MinimalistCollectionHolde
 
 /** @internal */
 export function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (index: number,) => boolean, size: number,) {
-    const newArray = [] as T[]
+    const newArray: T[] = []
     let index = -1
     while (++index < size)
         if (!predicate(index,))
@@ -114,7 +114,7 @@ export function __with1Argument<const T, >(collection: MinimalistCollectionHolde
 
 /** @internal */
 export function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (index: number, value: T,) => boolean, size: number,) {
-    const newArray = [] as T[]
+    const newArray: T[] = []
     let index = -1
     while (++index < size) {
         const value = collection.get(index,)

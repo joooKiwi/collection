@@ -33,8 +33,8 @@ export function sliceWithIterable<const T, >(collection: Nullable<MinimalistColl
     if (collection.size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    const iterator = indices[Symbol.iterator]() as Iterator<number, unknown>
-    const iteratorResult: IteratorResult<number, unknown> = iterator.next()
+    const iterator: Iterator<number, unknown> = indices[Symbol.iterator]()
+    const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
@@ -59,8 +59,8 @@ export function sliceWithIterableByCollectionHolder<const T, >(collection: Nulla
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    const iterator = indices[Symbol.iterator]() as Iterator<number, unknown>
-    const iteratorResult: IteratorResult<number, unknown> = iterator.next()
+    const iterator: Iterator<number, unknown> = indices[Symbol.iterator]()
+    const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)

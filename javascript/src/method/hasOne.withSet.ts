@@ -72,7 +72,7 @@ export function hasOneWithSetByCollectionHolder(collection: Nullable<CollectionH
 //#region -------------------- Loop methods --------------------
 
 function __hasOne(collection: MinimalistCollectionHolder, values: ReadonlySet<unknown>, size: number,) {
-    const iterator = values[Symbol.iterator]() as IterableIterator<unknown>
+    const iterator: Iterator<unknown, unknown> = values[Symbol.iterator]()
     let iteratorResult: IteratorResult<unknown, unknown>
     while (!(iteratorResult = iterator.next()).done) {
         const value = iteratorResult.value

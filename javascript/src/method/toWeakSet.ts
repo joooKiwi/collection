@@ -20,9 +20,9 @@ import {CollectionConstants} from "../CollectionConstants"
  */
 export function toWeakSet<const T, >(collection: Nullable<CollectionHolder<T>>,): Readonly<WeakSet<ObjectOf<T>>> {
     if (collection == null)
-        return CollectionConstants.EMPTY_WEAK_SET as Readonly<WeakSet<ObjectOf<T>>>
+        return CollectionConstants.EMPTY_WEAK_SET
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_WEAK_SET as Readonly<WeakSet<ObjectOf<T>>>
+        return CollectionConstants.EMPTY_WEAK_SET
 
     const size = collection.size
     const weakSet = new WeakSet<ObjectOf<T>>

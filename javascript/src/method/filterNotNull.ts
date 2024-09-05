@@ -58,7 +58,7 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
 //#region -------------------- Loop methods --------------------
 
 function __fromComplete<const T, >(collection: MinimalistCollectionHolder<T>,): readonly NonNullable<T>[] {
-    const newArray = [] as NonNullable<T>[]
+    const newArray: NonNullable<T>[] = []
     const size = collection.size
     let index = -1
     while (++index < size) {
@@ -74,7 +74,7 @@ function __fromMinimalist<const T, >(collection: MinimalistCollectionHolder<T>, 
     while (++index < size)
         if (collection.get(index) == null)
             return new CollectionConstants.LazyGenericCollectionHolder(() => {
-                const newArray = [] as NonNullable<T>[]
+                const newArray: NonNullable<T>[] = []
                 let index2 = -1
                 while (++index2 < index) // We add the non-null items from 0 to the index (they cannot be null)
                     newArray.push(collection.get(index2,) as NonNullable<T>,)

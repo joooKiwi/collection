@@ -210,7 +210,7 @@ function __maximumIndex(limit: number, size: number,) {
 //#region -------------------- Loop methods --------------------
 
 function __withoutALimit<const T, >(collection: MinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number,) {
-    const newArray = [] as T[]
+    const newArray: T[] = []
     let index = startingIndex - 1
     while (++index <= endingIndex)
         newArray.push(collection.get(index,),)
@@ -218,7 +218,7 @@ function __withoutALimit<const T, >(collection: MinimalistCollectionHolder<T>, s
 }
 
 function __withALimit<const T, >(collection: MinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,) {
-    const newArray = [] as T[]
+    const newArray: T[] = []
     let index = startingIndex - 1
     while (++index <= endingIndex) {
         if (newArray.length >= maximumIndex)
