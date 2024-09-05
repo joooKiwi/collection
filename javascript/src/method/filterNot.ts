@@ -68,7 +68,7 @@ export function filterNot<const T, >(collection: Nullable<MinimalistCollectionHo
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @typescriptDefinition
  * @extensionFunction
- * @deprecated Use "filterNot" from import("@joookiwi/collection/collectionHolder")
+ * @deprecated Use "filterNot" from import("@joookiwi/collection/method/collectionHolder")
  */
 export function filterNotByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
@@ -81,7 +81,7 @@ export function filterNotByCollectionHolder<const T, const S extends T, >(collec
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
- * @deprecated Use "filterNot" from import("@joookiwi/collection/collectionHolder")
+ * @deprecated Use "filterNot" from import("@joookiwi/collection/method/collectionHolder")
  * @extensionFunction
  */
 export function filterNotByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>

@@ -68,7 +68,7 @@ export function filterNotIndexed<const T, >(collection: Nullable<MinimalistColle
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @typescriptDefinition
  * @extensionFunction
- * @deprecated Use "filterNotIndexed" from import("@joookiwi/collection/collectionHolder")
+ * @deprecated Use "filterNotIndexed" from import("@joookiwi/collection/method/collectionHolder")
  */
 export function filterNotIndexedByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
@@ -82,7 +82,7 @@ export function filterNotIndexedByCollectionHolder<const T, const S extends T, >
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @extensionFunction
- * @deprecated Use "filterNotIndexed" from import("@joookiwi/collection/collectionHolder")
+ * @deprecated Use "filterNotIndexed" from import("@joookiwi/collection/method/collectionHolder")
  */
 export function filterNotIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 export function filterNotIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,) {

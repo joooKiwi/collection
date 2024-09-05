@@ -73,7 +73,7 @@ export function any<const T, >(collection: Nullable<MinimalistCollectionHolder<T
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
  * @extensionFunction
- * @deprecated Use "any" from import("@joookiwi/collection/collectionHolder")
+ * @deprecated Use "any" from import("@joookiwi/collection/method/collectionHolder")
  */
 export function anyByCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: Nullable<COLLECTION>,): COLLECTION["isNotEmpty"]
 /**
@@ -88,7 +88,7 @@ export function anyByCollectionHolder<const T, const COLLECTION extends Collecti
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java anyMatch(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
  * @extensionFunction
- * @deprecated Use "any" from import("@joookiwi/collection/collectionHolder")
+ * @deprecated Use "any" from import("@joookiwi/collection/method/collectionHolder")
  */
 export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
 export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,): boolean {

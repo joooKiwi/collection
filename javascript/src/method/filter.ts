@@ -70,7 +70,7 @@ export function filter<const T, >(collection: Nullable<MinimalistCollectionHolde
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @typescriptDefinition
  * @extensionFunction
- * @deprecated Use "filter" from import("@joookiwi/collection/collectionHolder")
+ * @deprecated Use "filter" from import("@joookiwi/collection/method/collectionHolder")
  */
 export function filterByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
@@ -84,7 +84,7 @@ export function filterByCollectionHolder<const T, const S extends T, >(collectio
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @extensionFunction
- * @deprecated Use "filter" from import("@joookiwi/collection/collectionHolder")
+ * @deprecated Use "filter" from import("@joookiwi/collection/method/collectionHolder")
  */
 export function filterByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
 export function filterByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,) {

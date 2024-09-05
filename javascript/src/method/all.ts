@@ -48,7 +48,7 @@ export function all<const T, >(collection: Nullable<MinimalistCollectionHolder<T
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @extensionFunction
- * @deprecated Use all from import("@joookiwi/collection/collectionHolder")
+ * @deprecated Use all from import("@joookiwi/collection/method/collectionHolder")
  */
 export function allByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
     return byCollectionHolder(collection, predicate,)
