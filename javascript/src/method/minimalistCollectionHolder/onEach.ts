@@ -26,7 +26,7 @@ import {__with0Argument, __with1Argument, __with2Argument} from "../onEach"
  */
 export function onEach<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION, action: ValueIndexCallback<T>,): COLLECTION {
     if (collection == null)
-        return null as COLLECTION
+        return collection
 
     const size = collection.size
     if (size == 0)
