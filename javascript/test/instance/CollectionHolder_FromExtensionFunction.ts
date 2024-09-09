@@ -7,10 +7,10 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                                                                              from "../../src/CollectionHolder"
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                    from "../../src/MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                                                    from "../../src/CollectionHolder"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                          from "../../src/MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "../../src/iterator/CollectionIterator"
 
 import {AbstractCollectionHolder}                  from "../../src/AbstractCollectionHolder"
 import {all}                                       from "../../src/method/collectionHolder/all"
@@ -47,7 +47,6 @@ import {mapByCollectionHolder}                     from "../../src/method/map"
 import {mapIndexedByCollectionHolder}              from "../../src/method/mapIndexed"
 import {mapNotNullByCollectionHolder}              from "../../src/method/mapNotNull"
 import {mapNotNullIndexedByCollectionHolder}       from "../../src/method/mapNotNullIndexed"
-import {objectValuesMapByCollectionHolder}         from "../../src/method/objectValuesMap"
 import {onEach}                                    from "../../src/method/collectionHolder/onEach"
 import {onEachIndexed}                             from "../../src/method/collectionHolder/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "../../src/method/requireNoNulls"
@@ -62,12 +61,10 @@ import {toMapByCollectionHolder}                   from "../../src/method/toMap"
 import {toMutableArrayByCollectionHolder}          from "../../src/method/toMutableArray"
 import {toMutableSetByCollectionHolder}            from "../../src/method/toMutableSet"
 import {toMutableMapByCollectionHolder}            from "../../src/method/toMutableMap"
-import {toMutableWeakSet}                          from "../../src/method/toMutableWeakSet"
 import {toReverseByCollectionHolder}               from "../../src/method/toReverse"
 import {toSetByCollectionHolder}                   from "../../src/method/toSet"
 import {toStringByCollectionHolder}                from "../../src/method/toString"
 import {toUpperCaseStringByCollectionHolder}       from "../../src/method/toUpperCaseString"
-import {toWeakSet}                                 from "../../src/method/toWeakSet"
 
 export class CollectionHolder_FromExtensionFunction<const out T, >
     extends AbstractCollectionHolder<T>
@@ -613,11 +610,6 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
-        return objectValuesMapByCollectionHolder<T>(this,)
-    }
-
-
     public override toIterator(): CollectionIterator<T> {
         return this[Symbol.iterator]()
     }
@@ -638,15 +630,6 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
 
     public override toMutableSet(): Set<T> {
         return toMutableSetByCollectionHolder<T>(this,)
-    }
-
-
-    public override toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
-        return toWeakSet(this,)
-    }
-
-    public override toMutableWeakSet(): WeakSet<ObjectOf<T>> {
-        return toMutableWeakSet(this,)
     }
 
 

@@ -7,10 +7,10 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                                                                              from "../../src/CollectionHolder"
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/CollectionHolder.types"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                    from "../../src/MinimalistCollectionHolder"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                                                    from "../../src/CollectionHolder"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/CollectionHolder.types"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "../../src/iterator/CollectionIterator"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                          from "../../src/MinimalistCollectionHolder"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
 
@@ -350,8 +350,6 @@ export class CollectionHolder_ByStructure<const out T, >
 
     //#region -------------------- Conversion methods (other kind) --------------------
 
-    public get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> { return this.#internalReference.objectValuesMap }
-
     public toIterator(): CollectionIterator<T> { return this.#internalReference.toIterator() }
 
     public toArray(): readonly T[] { return this.#internalReference.toArray() }
@@ -359,9 +357,6 @@ export class CollectionHolder_ByStructure<const out T, >
 
     public toSet(): ReadonlySet<T> { return this.#internalReference.toSet() }
     public toMutableSet(): Set<T> { return this.#internalReference.toMutableSet() }
-
-    public toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> { return this.#internalReference.toWeakSet() }
-    public toMutableWeakSet(): WeakSet<ObjectOf<T>> { return this.#internalReference.toMutableWeakSet() }
 
     public toMap(): ReadonlyMap<number, T> { return this.#internalReference.toMap() }
     public toMutableMap(): Map<number, T> { return this.#internalReference.toMutableMap() }

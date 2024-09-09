@@ -9,15 +9,15 @@ import type {Lazy}    from "@joookiwi/lazy"
 import type {NullOr}  from "@joookiwi/type"
 import {lazy, lazyOf} from "@joookiwi/lazy"
 
-import type {CollectionHolder}                                                                                            from "./CollectionHolder"
-import type {IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                  from "./MinimalistCollectionHolder"
-import type {CollectionHandler}                                                                                           from "./handler/CollectionHandler"
-import type {IterableWithCount}                                                                                           from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                                                                          from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                                                                    from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                                                            from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                                                                          from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                  from "./CollectionHolder"
+import type {IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                                                        from "./MinimalistCollectionHolder"
+import type {CollectionHandler}                                                                                 from "./handler/CollectionHandler"
+import type {IterableWithCount}                                                                                 from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                                                                from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                                                          from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                                                  from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                                                                from "./iterator/CollectionIterator"
 
 import {AbstractCollectionHolder}                         from "./AbstractCollectionHolder"
 import {CollectionConstants}                              from "./CollectionConstants"
@@ -76,10 +76,8 @@ export class LazyGenericCollectionHolder<const T = unknown,
     #lazyHasDuplicate?: Lazy<boolean>
 
     readonly #reference: Lazy<REFERENCE>
-    #objectValuesMap?: ReadonlyMap<T, ObjectOf<T>>
     #array?: readonly T[]
     #set?: ReadonlySet<T>
-    #weakSet?: Readonly<WeakSet<ObjectOf<T>>>
     #map?: ReadonlyMap<number, T>
 
     #handler?: CollectionHandler<T>
@@ -467,8 +465,6 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#hasNull = this.#hasDuplicate = false
             this.#array = CollectionConstants.EMPTY_ARRAY
             this.#set = CollectionConstants.EMPTY_SET
-            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
             return this.#handler = CollectionConstants.EMPTY_COLLECTION_HANDLER
         }
 
@@ -521,8 +517,6 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#hasNull = false
             this.#array = CollectionConstants.EMPTY_ARRAY
             this.#set = CollectionConstants.EMPTY_SET
-            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
             return this.#handler = CollectionConstants.EMPTY_COLLECTION_HANDLER
         }
 
@@ -568,8 +562,6 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#hasNull = this.#hasDuplicate = false
             this.#array = CollectionConstants.EMPTY_ARRAY
             this.#set = CollectionConstants.EMPTY_SET
-            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
             return this.#handler = CollectionConstants.EMPTY_COLLECTION_HANDLER
         }
 
@@ -617,8 +609,6 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#hasNull = this.#hasDuplicate = false
             this.#array = CollectionConstants.EMPTY_ARRAY
             this.#set = CollectionConstants.EMPTY_SET
-            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
             return CollectionConstants.EMPTY_COLLECTION_HANDLER
         }
 
@@ -667,8 +657,6 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#hasNull = this.#hasDuplicate = false
             this.#array = CollectionConstants.EMPTY_ARRAY
             this.#set = CollectionConstants.EMPTY_SET
-            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
             return CollectionConstants.EMPTY_COLLECTION_HANDLER
         }
 
@@ -715,8 +703,6 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#hasNull = this.#hasDuplicate = false
             this.#array = CollectionConstants.EMPTY_ARRAY
             this.#set = CollectionConstants.EMPTY_SET
-            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
             return CollectionConstants.EMPTY_COLLECTION_HANDLER
         }
 
@@ -854,10 +840,8 @@ export class LazyGenericCollectionHolder<const T = unknown,
     public override getOrNull(index: number,): NullOr<T> { return this._handler.get(index,).value }
 
 
-    public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> { return this.#objectValuesMap ??= super.objectValuesMap }
     public override toArray(): readonly T[] { return this.#array ??= super.toArray() }
     public override toSet(): ReadonlySet<T> { return this.#set ??= super.toSet() }
-    public override toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> { return this.#weakSet ??= super.toWeakSet() }
     public override toMap(): ReadonlyMap<number, T> { return this.#map ??= super.toMap() }
 
     //#endregion -------------------- Methods --------------------

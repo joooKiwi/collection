@@ -5,14 +5,14 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {AAB, AAB_AAB, AAB_OBJECT, AB, AB_AB, AB_OBJECT, EMPTY, SINGULAR_A_OBJECT, SINGULAR_B_OBJECT} from "./constantCollections"
+import {AAB, AAB_AAB, AB, AB_AB, EMPTY} from "./constantCollections"
 import {everyInstance}                                                                               from "./constantValues"
 
 import {CollectionConstants}       from "../src/CollectionConstants"
 import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
 
 describe("CollectionHolderTest (conversion)", () => {
-describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist,},},) => {
+describe.each(everyInstance,)("%s", ({value: {newInstance,},},) => {
     describe("to iterator", () => {
         test("empty",     () => expect(newInstance(EMPTY,).toIterator(),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
         test("non-empty", () => expect(newInstance(AB,).toIterator(),).toBeInstanceOf(GenericCollectionIterator,),)
@@ -47,34 +47,6 @@ describe.each(everyInstance,)("%s", ({value: {newInstance, isMinimalist,},},) =>
         test("frozen",    () => expect(newInstance(AB,).toMutableSet(),).not.toBeFrozen(),)
         test("size",      () => expect(newInstance(AB,).toMutableSet().size,).toBe(2,),)
     },)
-
-    describe("object values map", () => {
-        test("empty",     () => expect(newInstance(EMPTY,).objectValuesMap,).toBe(CollectionConstants.EMPTY_MAP,),)
-        test("basic",     () => {
-            const map = newInstance(AB,).objectValuesMap
-            expect(map,).toEqual(new Map(AB.map(it => [it, map.get(it,),],)),)
-        },)
-        test("duplicate", () => {
-            const map = newInstance(AAB,).objectValuesMap
-            expect(map,).toEqual(new Map(AAB.map(it => [it, map.get(it,),],)),)
-        },)
-        test("frozen",    () => expect(newInstance(AB,).objectValuesMap,).toBeFrozen(),)
-    },)
-
-    if (!isMinimalist) {
-        describe("to weak set", () => {
-            test("empty",     () => expect(newInstance(EMPTY,).toWeakSet(),).toBe(CollectionConstants.EMPTY_WEAK_SET,),)
-            test("basic",     () => expect(newInstance(AB_OBJECT,).toWeakSet(),).toEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
-            test("duplicate", () => expect(newInstance(AAB_OBJECT,).toWeakSet(),).toEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
-            test("frozen",    () => expect(newInstance(AB,).toWeakSet(),).toBeFrozen(),)
-        },)
-        describe("to mutable weak set", () => {
-            test("empty",     () => expect(newInstance(EMPTY,).toMutableWeakSet(),).toEqual(new WeakSet(),),)
-            test("basic",     () => expect(newInstance(AB_OBJECT,).toMutableWeakSet(),).toEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
-            test("duplicate", () => expect(newInstance(AAB_OBJECT,).toMutableWeakSet(),).toEqual(new WeakSet([SINGULAR_A_OBJECT, SINGULAR_B_OBJECT,],),),)
-            test("frozen",    () => expect(newInstance(AB,).toMutableWeakSet(),).not.toBeFrozen(),)
-        },)
-    }
 
     describe("to map", () => {
         test("empty",     () => expect(newInstance(EMPTY,).toMap(),).toBe(CollectionConstants.EMPTY_MAP,),)

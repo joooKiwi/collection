@@ -102,7 +102,7 @@ export {none}                                     from "./none"
 export {none as noneByCollectionHolder}           from "./collectionHolder/none"
 export {none as noneByMinimalistCollectionHolder} from "./minimalistCollectionHolder/none"
 
-export {objectValuesMap,                      objectValuesMapByCollectionHolder}                                          from "./objectValuesMap"
+export {objectValuesMap, objectValuesMapByCollectionHolder} from "./objectValuesMap"
 
 export {onEach}                                        from "./onEach"
 export {onEach as onEachByCollectionHolder}           from "./collectionHolder/onEach"
@@ -131,9 +131,16 @@ export {toMap,                                toMapByCollectionHolder}          
 export {toMutableArray,                       toMutableArrayByCollectionHolder}                                           from "./toMutableArray"
 export {toMutableMap,                         toMutableMapByCollectionHolder}                                             from "./toMutableMap"
 export {toMutableSet,                         toMutableSetByCollectionHolder}                                             from "./toMutableSet"
-export {toMutableWeakSet}                                                                                                 from "./toMutableWeakSet"
+
+export {toMutableWeakSet}                                                 from "./toMutableWeakSet"
+export {toMutableWeakSet as toMutableWeakSetByCollectionHolder}           from "./collectionHolder/toMutableWeakSet"
+export {toMutableWeakSet as toMutableWeakSetByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMutableWeakSet"
+
 export {toReverse,                            toReverseByCollectionHolder}                                                from "./toReverse"
 export {toSet,                                toSetByCollectionHolder}                                                    from "./toSet"
 export {toString,                             toStringByCollectionHolder}                                                 from "./toString"
 export {toUpperCaseString,                    toUpperCaseStringByCollectionHolder}                                        from "./toUpperCaseString"
-export {toWeakSet}                                                                                                        from "./toWeakSet"
+
+export {toWeakSet}                                          from "./toWeakSet"
+export {toWeakSet as toWeakSetByCollectionHolder}           from "./collectionHolder/toWeakSet"
+export {toWeakSet as toWeakSetByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toWeakSet"

@@ -457,9 +457,6 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public get objectValuesMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP as ReadonlyMap<never, never> }
-
-
     public toIterator(..._: readonly unknown[]): EmptyCollectionIterator
     public toIterator(): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 

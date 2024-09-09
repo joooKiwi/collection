@@ -7,10 +7,10 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
 
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
-import type {CollectionHolder}                                                                                                                                                                                                                                                                                                              from "./CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                    from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "./iterator/CollectionIterator"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                                                    from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                          from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "./iterator/CollectionIterator"
 
 import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
 import {all}                                       from "./method/collectionHolder/all"
@@ -49,7 +49,6 @@ import {mapByCollectionHolder}                     from "./method/map"
 import {mapIndexedByCollectionHolder}              from "./method/mapIndexed"
 import {mapNotNullByCollectionHolder}              from "./method/mapNotNull"
 import {mapNotNullIndexedByCollectionHolder}       from "./method/mapNotNullIndexed"
-import {objectValuesMapByCollectionHolder}         from "./method/objectValuesMap"
 import {onEach}                                    from "./method/collectionHolder/onEach"
 import {onEachIndexed}                             from "./method/collectionHolder/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "./method/requireNoNulls"
@@ -64,12 +63,10 @@ import {toMapByCollectionHolder}                   from "./method/toMap"
 import {toMutableArrayByCollectionHolder}          from "./method/toMutableArray"
 import {toMutableSetByCollectionHolder}            from "./method/toMutableSet"
 import {toMutableMapByCollectionHolder}            from "./method/toMutableMap"
-import {toMutableWeakSet}                          from "./method/toMutableWeakSet"
 import {toReverseByCollectionHolder}               from "./method/toReverse"
 import {toSetByCollectionHolder}                   from "./method/toSet"
 import {toStringByCollectionHolder}                from "./method/toString"
 import {toUpperCaseStringByCollectionHolder}       from "./method/toUpperCaseString"
-import {toWeakSet}                                 from "./method/toWeakSet"
 
 /**
  * A definition of a {@link CollectionHolder} to have a common ancestor.
@@ -621,10 +618,6 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
-        return objectValuesMapByCollectionHolder<T>(this,)
-    }
-
     //#region -------------------- Conversion methods (iterator) --------------------
 
     public toIterator(): CollectionIterator<T> {
@@ -654,17 +647,6 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Conversion methods (set) --------------------
-    //#region -------------------- Conversion methods (weak set) --------------------
-
-    public toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
-        return toWeakSet(this,)
-    }
-
-    public toMutableWeakSet(): WeakSet<ObjectOf<T>> {
-        return toMutableWeakSet(this,)
-    }
-
-    //#endregion -------------------- Conversion methods (weak set) --------------------
     //#region -------------------- Conversion methods (map) --------------------
 
     public toMap(): ReadonlyMap<number, T> {

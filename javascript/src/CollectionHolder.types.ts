@@ -221,9 +221,11 @@ export type IndexValueWithReturnCallback<in T, out R, > = (index: number, value:
  */
 export type StringCallback<in T, > = (value: T, index: number,) => string
 
-/** An object encapsulation of a value */
+/**
+ * An object encapsulation of a value
+ * @deprecated It should be replaced with the proper type handled instead of an inferred one. It will be removed in the version 1.11
+ */
 export type ObjectOf<T, > = T & object
-//TODO fix the typing to properly tell the conversion without error on its part.
     // | (T extends string ? (& String & { valueOf(): T, }) : never)
     // | (T extends boolean ? (& Boolean & { valueOf(): T, }) : never)
     // | (T extends number ? (& Number & { valueOf(): T, }) : never)

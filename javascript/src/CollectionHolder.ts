@@ -7,9 +7,9 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
 
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                    from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "./iterator/CollectionIterator"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                          from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "./iterator/CollectionIterator"
 
 /**
  * A collection to hold data.
@@ -2051,9 +2051,6 @@ export interface CollectionHolder<out T = unknown, >
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    /** Get an every object associated to the typed value */
-    get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>>
-
     //#region -------------------- Conversion methods (iterator) --------------------
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link CollectionIterator} */
@@ -2078,15 +2075,6 @@ export interface CollectionHolder<out T = unknown, >
     toMutableSet(): Set<T>
 
     //#endregion -------------------- Conversion methods (set) --------------------
-    //#region -------------------- Conversion methods (weak set) --------------------
-
-    /** Convert the current {@link CollectionHolder collection} to a new {@link WeakSet weak set} */
-    toWeakSet(): Readonly<WeakSet<ObjectOf<T>>>
-
-    /** Convert the current {@link CollectionHolder collection} to a new {@link WeakSet mutable weak set} */
-    toMutableWeakSet(): WeakSet<ObjectOf<T>>
-
-    //#endregion -------------------- Conversion methods (weak set) --------------------
     //#region -------------------- Conversion methods (map) --------------------
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyMap map} */

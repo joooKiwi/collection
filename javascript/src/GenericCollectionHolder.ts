@@ -7,14 +7,14 @@
 
 import type {NullOr} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                            from "./CollectionHolder"
-import type {IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                  from "./MinimalistCollectionHolder"
-import type {IterableWithCount}                                                                                           from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                                                                          from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                                                                    from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                                                            from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                                                                          from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                  from "./CollectionHolder"
+import type {IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                                                        from "./MinimalistCollectionHolder"
+import type {IterableWithCount}                                                                                 from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                                                                from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                                                          from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                                                  from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                                                                from "./iterator/CollectionIterator"
 
 import {AbstractCollectionHolder}                  from "./AbstractCollectionHolder"
 import {CollectionConstants}                       from "./CollectionConstants"
@@ -52,10 +52,8 @@ export class GenericCollectionHolder<const T = unknown,
     readonly #isEmpty: boolean
 
     readonly #reference: REFERENCE
-    #objectValuesMap?: ReadonlyMap<T, ObjectOf<T>>
     readonly #array: readonly T[]
     #set?: ReadonlySet<T>
-    #weakSet?: Readonly<WeakSet<ObjectOf<T>>>
     #map?: ReadonlyMap<number, T>
 
     #hasNull?: boolean
@@ -107,8 +105,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -158,8 +154,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -207,8 +201,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -258,8 +250,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -307,8 +297,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -361,8 +349,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -412,8 +398,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -461,8 +445,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -512,8 +494,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -561,8 +541,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -618,8 +596,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -673,8 +649,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -728,8 +702,6 @@ export class GenericCollectionHolder<const T = unknown,
                 this.#hasNull = this.#hasDuplicate = false
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 this.#set = CollectionConstants.EMPTY_SET
-                this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-                this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
                 return
             }
 
@@ -781,10 +753,9 @@ export class GenericCollectionHolder<const T = unknown,
             this.#hasNull = this.#hasDuplicate = false
             this.#array = CollectionConstants.EMPTY_ARRAY
             this.#set = CollectionConstants.EMPTY_SET
-            this.#weakSet = CollectionConstants.EMPTY_WEAK_SET
-            this.#objectValuesMap = this.#map = CollectionConstants.EMPTY_MAP
             return
         }
+
         //#endregion -------------------- Initialization (size = 0) --------------------
         //#region -------------------- Initialization (size = over 0) --------------------
 
@@ -896,10 +867,8 @@ export class GenericCollectionHolder<const T = unknown,
         return this[indexToRetrieve] as T
     }
 
-    public override get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> { return this.#objectValuesMap ??= super.objectValuesMap }
     public override toArray(): readonly T[] { return this.#array }
     public override toSet(): ReadonlySet<T> { return this.#set ??= super.toSet() }
-    public override toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> { return this.#weakSet ??= super.toWeakSet() }
     public override toMap(): ReadonlyMap<number, T> { return this.#map ??= super.toMap() }
 
 

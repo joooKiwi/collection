@@ -18,3 +18,5 @@ export {forEachIndexed,   forEachIndexed as   forEachIndexedByMinimalistCollecti
 export {none,             none as             noneByMinimalistCollectionHolder}             from "./none"
 export {onEach,           onEach as           onEachByMinimalistCollectionHolder}           from "./onEach"
 export {onEachIndexed,    onEachIndexed as    onEachIndexedByMinimalistCollectionHolder}    from "./onEachIndexed"
+export {toMutableWeakSet, toMutableWeakSet as toMutableWeakSetByMinimalistCollectionHolder} from "./toMutableWeakSet"
+export {toWeakSet,        toWeakSet as        toWeakSetByMinimalistCollectionHolder}        from "./toWeakSet"

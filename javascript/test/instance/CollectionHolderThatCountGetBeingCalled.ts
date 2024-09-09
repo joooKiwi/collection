@@ -7,10 +7,10 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                                                                              from "../../src/CollectionHolder"
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                    from "../../src/MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                                                    from "../../src/CollectionHolder"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                          from "../../src/MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "../../src/iterator/CollectionIterator"
 
 import {AbstractCollectionHolder}                                         from "../../src/AbstractCollectionHolder"
 import {all as allByCollectionHolder}                                     from "../../src/method/collectionHolder/all"
@@ -61,7 +61,6 @@ import {map, mapByCollectionHolder}                                         from
 import {mapIndexed, mapIndexedByCollectionHolder}                           from "../../src/method/mapIndexed"
 import {mapNotNull, mapNotNullByCollectionHolder}                           from "../../src/method/mapNotNull"
 import {mapNotNullIndexed, mapNotNullIndexedByCollectionHolder}             from "../../src/method/mapNotNullIndexed"
-import {objectValuesMap, objectValuesMapByCollectionHolder}                 from "../../src/method/objectValuesMap"
 import {requireNoNulls, requireNoNullsByCollectionHolder}                   from "../../src/method/requireNoNulls"
 import {slice, sliceByCollectionHolder}                                     from "../../src/method/slice"
 import {toArray, toArrayByCollectionHolder}                                 from "../../src/method/toArray"
@@ -74,12 +73,10 @@ import {toMap, toMapByCollectionHolder}                                     from
 import {toMutableArray, toMutableArrayByCollectionHolder}                   from "../../src/method/toMutableArray"
 import {toMutableSet, toMutableSetByCollectionHolder}                       from "../../src/method/toMutableSet"
 import {toMutableMap, toMutableMapByCollectionHolder}                       from "../../src/method/toMutableMap"
-import {toMutableWeakSet}                                                   from "../../src/method/toMutableWeakSet"
 import {toReverse, toReverseByCollectionHolder}                             from "../../src/method/toReverse"
 import {toSet, toSetByCollectionHolder}                                     from "../../src/method/toSet"
 import {toString, toStringByCollectionHolder}                               from "../../src/method/toString"
 import {toUpperCaseString, toUpperCaseStringByCollectionHolder}             from "../../src/method/toUpperCaseString"
-import {toWeakSet}                                                          from "../../src/method/toWeakSet"
 
 /** A {@link CollectionHolder} that count the amount of time the {@link get} is being called */
 export class CollectionHolderThatCountGetBeingCalled<const out T, >
@@ -737,13 +734,6 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
-        return this.#isCollectionHolder
-            ? objectValuesMapByCollectionHolder<T>(this,)
-            : objectValuesMap(this,)
-    }
-
-
     public toIterator(): CollectionIterator<T> {
         return this.#isCollectionHolder
             ? toIteratorByCollectionHolder<T>(this,)
@@ -774,15 +764,6 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
         return this.#isCollectionHolder
             ? toMutableSetByCollectionHolder<T>(this,)
             : toMutableSet(this,)
-    }
-
-
-    public toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
-        return toWeakSet(this,)
-    }
-
-    public toMutableWeakSet(): WeakSet<ObjectOf<T>> {
-        return toMutableWeakSet(this,)
     }
 
 

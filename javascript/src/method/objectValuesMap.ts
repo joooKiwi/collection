@@ -19,6 +19,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * Get an every object associated to the typed value
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @deprecated This extension method is no longer useful. The replacement should be to transform the collection instead. It will be removed in the version 1.11
  */
 export function objectValuesMap<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): ReadonlyMap<T, ObjectOf<T>> {
     if (collection == null)
@@ -34,6 +35,7 @@ export function objectValuesMap<const T, >(collection: Nullable<MinimalistCollec
  * Get an every object associated to the typed value
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @deprecated This extension method is no longer useful. The replacement should be to transform the collection instead. It will be removed in the version 1.11
  */
 export function objectValuesMapByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlyMap<T, ObjectOf<T>> {
     if (collection == null)
