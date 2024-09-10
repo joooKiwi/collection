@@ -2092,8 +2092,9 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException     The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws CollectionHolderRangeIndexOutOfBoundException The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws ForbiddenIndexException                       The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see Array.reverse
      * @see ReadonlyArray.toReversed
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reversed.html Kotlin reversed()
@@ -2110,8 +2111,9 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException     The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws CollectionHolderRangeIndexOutOfBoundException The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws ForbiddenIndexException                       The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @canReceiveNegativeValue
      */
     toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
@@ -2123,8 +2125,9 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @param limit     The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException     The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws CollectionHolderRangeIndexOutOfBoundException The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws ForbiddenIndexException                       The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @canReceiveNegativeValue
      */
     reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>

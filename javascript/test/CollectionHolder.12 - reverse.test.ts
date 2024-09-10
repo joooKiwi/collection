@@ -10,8 +10,9 @@ import {everyInstance}                              from "./constantValues"
 import {GenericCollectionHolder_ToReverseAlias}     from "./instance/GenericCollectionHolder_ToReverseAlias"
 import {LazyGenericCollectionHolder_ToReverseAlias} from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
-import {ForbiddenIndexException}                   from "../src/exception/ForbiddenIndexException"
+import {CollectionHolderIndexOutOfBoundsException}     from "../src/exception/CollectionHolderIndexOutOfBoundsException"
+import {CollectionHolderRangeIndexOutOfBoundException} from "../src/exception/CollectionHolderRangeIndexOutOfBoundException"
+import {ForbiddenIndexException}                       from "../src/exception/ForbiddenIndexException"
 
 describe("CollectionHolderTest (reverse)", () => {
 
@@ -114,24 +115,24 @@ describe("CollectionHolderTest (reverse)", () => {
 
         describe("error", () => {
             describe("from > to", () => {
-                test("(0, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(0, 1,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("(1, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(1, 1,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("(2, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(2, 1,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("(3, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(3, 1,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("(4, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(4, 1,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("(5, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(5, 1,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("(6, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(6, 1,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("(7, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(7, 1,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("(8, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(8, 1,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("(9, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(9, 1,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("(0, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(0, 1,),).not.toThrow(),)
+                test("(1, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(1, 1,),).not.toThrow(),)
+                test("(2, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(2, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
+                test("(3, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(3, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
+                test("(4, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(4, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
+                test("(5, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(5, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
+                test("(6, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(6, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
+                test("(7, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(7, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
+                test("(8, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(8, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
+                test("(9, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(9, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
             },)
             describe("from index", () => {
-                test('9',    () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(9,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test('9',    () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(9,),).not.toThrow(),)
                 test("10",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(10,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("11",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(11,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                test("-9",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(-9,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("-10",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(-10,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-9",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(-9,),).not.toThrow(),)
+                test("-10",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(-10,),).not.toThrow(),)
                 test("-11",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(-11,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
                 test("400",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(400,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -142,12 +143,12 @@ describe("CollectionHolderTest (reverse)", () => {
                 test("-∞",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(-Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("to index", () => {
-                test('9',    () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, 9,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test('9',    () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, 9,),).not.toThrow(),)
                 test("10",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, 10,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
                 test("11",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, 11,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                test("-9",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, -9,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("-10",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, -10,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-9",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, -9,),).not.toThrow(),)
+                test("-10",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, -10,),).not.toThrow(),)
                 test("-11",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, -11,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
                 test("400",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, 400,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
@@ -158,12 +159,12 @@ describe("CollectionHolderTest (reverse)", () => {
                 test("-∞",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, -Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
             describe("limit", () => {
-                test('9',    () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, 9,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("10",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, 10,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test('9',    () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, 9,),).not.toThrow(),)
+                test("10",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, 10,),).not.toThrow(),)
                 test("11",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, 11,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
-                test("-9",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, -9,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                test("-10",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, -10,),).not.toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                test("-9",   () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, -9,),).not.toThrow(),)
+                test("-10",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, -10,),).not.toThrow(),)
                 test("-11",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, -11,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
 
                 test("400",  () => expect(() => newInstance(ABCDEFGHIJ,).toReverse(null, null, 400,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
