@@ -35,6 +35,8 @@ import {onEach as onEachByCollectionHolder}                                 from
 import {onEach as onEachByMinimalistCollectionHolder}                       from "../../src/method/minimalistCollectionHolder/onEach"
 import {onEachIndexed as onEachIndexedByCollectionHolder}                   from "../../src/method/collectionHolder/onEachIndexed"
 import {onEachIndexed as onEachIndexedByMinimalistCollectionHolder}         from "../../src/method/minimalistCollectionHolder/onEachIndexed"
+import {toString as toStringByCollectionHolder}                             from "../../src/method/collectionHolder/toString"
+import {toString as toStringByMinimalistCollectionHolder}                   from "../../src/method/minimalistCollectionHolder/toString"
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}           from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder} from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
@@ -77,7 +79,6 @@ import {toMutableSet, toMutableSetByCollectionHolder}                       from
 import {toMutableMap, toMutableMapByCollectionHolder}                       from "../../src/method/toMutableMap"
 import {toReverse, toReverseByCollectionHolder}                             from "../../src/method/toReverse"
 import {toSet, toSetByCollectionHolder}                                     from "../../src/method/toSet"
-import {toString, toStringByCollectionHolder}                               from "../../src/method/toString"
 
 /** A {@link CollectionHolder} that count the amount of time the {@link get} is being called */
 export class CollectionHolderThatCountGetBeingCalled<const out T, >
@@ -802,7 +803,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public toString(): string {
         return this.#isCollectionHolder
             ? toStringByCollectionHolder(this,)
-            : toString(this,)
+            : toStringByMinimalistCollectionHolder(this,)
     }
 
     public toLocaleString(locale?: NullableString,): string {

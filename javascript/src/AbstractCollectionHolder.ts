@@ -65,7 +65,7 @@ import {toMutableSetByCollectionHolder}            from "./method/toMutableSet"
 import {toMutableMapByCollectionHolder}            from "./method/toMutableMap"
 import {toReverseByCollectionHolder}               from "./method/toReverse"
 import {toSetByCollectionHolder}                   from "./method/toSet"
-import {toStringByCollectionHolder}                from "./method/toString"
+import {toString}                                  from "./method/collectionHolder/toString"
 import {toUpperCaseString}                         from "./method/collectionHolder/toUpperCaseString"
 
 /**
@@ -676,7 +676,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Conversion methods (string) --------------------
 
     public override toString(): string {
-        return toStringByCollectionHolder(this,)
+        return toString(this,)
     }
 
     public override toLocaleString(locale?: NullableString,): string {

@@ -63,7 +63,7 @@ import {toMutableSetByCollectionHolder}            from "../../src/method/toMuta
 import {toMutableMapByCollectionHolder}            from "../../src/method/toMutableMap"
 import {toReverseByCollectionHolder}               from "../../src/method/toReverse"
 import {toSetByCollectionHolder}                   from "../../src/method/toSet"
-import {toStringByCollectionHolder}                from "../../src/method/toString"
+import {toString}                                  from "../../src/method/collectionHolder/toString"
 import {toUpperCaseString}                         from "../../src/method/collectionHolder/toUpperCaseString"
 
 export class CollectionHolder_FromExtensionFunction<const out T, >
@@ -659,7 +659,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     //#region -------------------- Conversion methods (toString) --------------------
 
     public override toString(): string {
-        return toStringByCollectionHolder(this,)
+        return toString(this,)
     }
 
     public override toLocaleString(locale?: NullableString,): string {

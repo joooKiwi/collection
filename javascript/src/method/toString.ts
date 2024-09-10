@@ -10,7 +10,11 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {asString} from "./asString"
+import {isCollectionHolder}                       from "./isCollectionHolder"
+import {isCollectionHolderByStructure}            from "./isCollectionHolderByStructure"
+import {asString}                                 from "./asString"
+import {toString as byCollectionHolder}           from "./collectionHolder/toString"
+import {toString as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/toString"
 
 //#region -------------------- Facade method --------------------
 
@@ -18,7 +22,7 @@ import {asString} from "./asString"
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toString toString()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @see Array.toString
  * @see Object.toString
  * @extensionFunction
@@ -26,11 +30,11 @@ import {asString} from "./asString"
 export function toString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): string {
     if (collection == null)
         return "[]"
-
-    const size = collection.size
-    if (size == 0)
-        return "[]"
-    return __toString(collection, size,)
+    if (isCollectionHolder(collection,))
+        return byCollectionHolder(collection,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return byCollectionHolder(collection,)
+    return byMinimalistCollectionHolder(collection,)
 }
 
 /**
@@ -41,19 +45,17 @@ export function toString<const T, >(collection: Nullable<MinimalistCollectionHol
  * @see Array.toString
  * @see Object.toString
  * @extensionFunction
+ * @deprecated Use toString from import("@joookiwi/collection/method/collectionHolder")
  */
 export function toStringByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): string {
-    if (collection == null)
-        return "[]"
-    if (collection.isEmpty)
-        return "[]"
-    return __toString(collection, collection.size,)
+    return byCollectionHolder(collection,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
-function __toString(collection: MinimalistCollectionHolder, size: number,) {
+/** @internal */
+export function __toString(collection: MinimalistCollectionHolder, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1

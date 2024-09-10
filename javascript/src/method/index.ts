@@ -138,7 +138,10 @@ export {toMutableWeakSet as toMutableWeakSetByMinimalistCollectionHolder} from "
 
 export {toReverse,                            toReverseByCollectionHolder}                                                from "./toReverse"
 export {toSet,                                toSetByCollectionHolder}                                                    from "./toSet"
-export {toString,                             toStringByCollectionHolder}                                                 from "./toString"
+
+export {toString}                                         from "./toString"
+export {toString as toStringByCollectionHolder}           from "./collectionHolder/toString"
+export {toString as toStringByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toString"
 
 export {toUpperCaseString}                                                  from "./toUpperCaseString"
 export {toUpperCaseString as toUpperCaseStringByCollectionHolder}           from "./collectionHolder/toUpperCaseString"

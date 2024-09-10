@@ -19,5 +19,6 @@ export {none,              none as              noneByMinimalistCollectionHolder
 export {onEach,            onEach as            onEachByMinimalistCollectionHolder}            from "./onEach"
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByMinimalistCollectionHolder}     from "./onEachIndexed"
 export {toMutableWeakSet,  toMutableWeakSet as  toMutableWeakSetByMinimalistCollectionHolder}  from "./toMutableWeakSet"
+export {toString,          toString as          toStringByMinimalistCollectionHolder}          from "./toString"
 export {toUpperCaseString, toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder} from "./toUpperCaseString"
 export {toWeakSet,         toWeakSet as         toWeakSetByMinimalistCollectionHolder}         from "./toWeakSet"
