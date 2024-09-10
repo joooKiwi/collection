@@ -64,7 +64,7 @@ import {toMutableArray}                     from "../../src/method/toMutableArra
 import {toMutableSet}                       from "../../src/method/toMutableSet"
 import {toMutableMap}                       from "../../src/method/toMutableMap"
 import {toReverse}                          from "../../src/method/toReverse"
-import {toSet}                              from "../../src/method/toSet"
+import {toSet}                              from "../../src/method/minimalistCollectionHolder/toSet"
 import {toString}                           from "../../src/method/minimalistCollectionHolder/toString"
 import {toUpperCaseString}                  from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
