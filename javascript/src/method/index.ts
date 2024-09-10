@@ -104,11 +104,11 @@ export {none as noneByMinimalistCollectionHolder} from "./minimalistCollectionHo
 
 export {objectValuesMap, objectValuesMapByCollectionHolder} from "./objectValuesMap"
 
-export {onEach}                                        from "./onEach"
+export {onEach}                                       from "./onEach"
 export {onEach as onEachByCollectionHolder}           from "./collectionHolder/onEach"
 export {onEach as onEachByMinimalistCollectionHolder} from "./minimalistCollectionHolder/onEach"
 
-export {onEachIndexed}                                               from "./onEachIndexed"
+export {onEachIndexed}                                              from "./onEachIndexed"
 export {onEachIndexed as onEachIndexedByCollectionHolder}           from "./collectionHolder/onEachIndexed"
 export {onEachIndexed as onEachIndexedByMinimalistCollectionHolder} from "./minimalistCollectionHolder/onEachIndexed"
 

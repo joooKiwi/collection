@@ -353,13 +353,13 @@ export class EmptyCollectionHolder
     //#region -------------------- Filter not null methods --------------------
 
     public filterNotNull(..._: readonly unknown[]): this
-    public filterNotNull(): this { return this }
+    public filterNotNull() { return this }
 
     //#endregion -------------------- Filter not null methods --------------------
     //#region -------------------- Require no nulls methods --------------------
 
     public requireNoNulls(..._: readonly unknown[]): this
-    public requireNoNulls(): this { return this }
+    public requireNoNulls() { return this }
 
     //#endregion -------------------- Require no nulls methods --------------------
 
@@ -450,7 +450,7 @@ export class EmptyCollectionHolder
     //#region -------------------- Javascript methods --------------------
 
     public [Symbol.iterator](..._: readonly unknown[]): EmptyCollectionIterator
-    public [Symbol.iterator](): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
+    public [Symbol.iterator]() { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
     public get [Symbol.toStringTag](): CollectionHolderName { return "CollectionHolder" }
 
@@ -458,35 +458,35 @@ export class EmptyCollectionHolder
     //#region -------------------- Conversion methods --------------------
 
     public toIterator(..._: readonly unknown[]): EmptyCollectionIterator
-    public toIterator(): EmptyCollectionIterator { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
+    public toIterator() { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
 
     public toArray(..._: readonly unknown[]): readonly never[]
-    public toArray(): readonly never[] { return CollectionConstants.EMPTY_ARRAY }
+    public toArray() { return CollectionConstants.EMPTY_ARRAY }
 
     public toMutableArray(..._: readonly unknown[]): never[]
-    public toMutableArray(): never[] { return [] }
+    public toMutableArray() { return [] }
 
 
     public toSet(..._: readonly unknown[]): ReadonlySet<never>
-    public toSet(): ReadonlySet<never> { return CollectionConstants.EMPTY_SET }
+    public toSet() { return CollectionConstants.EMPTY_SET }
 
     public toMutableSet(..._: readonly unknown[]): Set<never>
-    public toMutableSet(): Set<never> { return new Set() }
+    public toMutableSet() { return new Set() }
 
 
     public toWeakSet(..._: readonly unknown[]): Readonly<WeakSet<never>>
-    public toWeakSet(): Readonly<WeakSet<never>> { return CollectionConstants.EMPTY_WEAK_SET }
+    public toWeakSet() { return CollectionConstants.EMPTY_WEAK_SET }
 
     public toMutableWeakSet(..._: readonly unknown[]): WeakSet<never>
-    public toMutableWeakSet(): WeakSet<never> { return new WeakSet() }
+    public toMutableWeakSet() { return new WeakSet() }
 
 
     public toMap(..._: readonly unknown[]): ReadonlyMap<never, never>
-    public toMap(): ReadonlyMap<never, never> { return CollectionConstants.EMPTY_MAP as ReadonlyMap<never, never> }
+    public toMap() { return CollectionConstants.EMPTY_MAP }
 
     public toMutableMap(..._: readonly unknown[]): Map<never, never>
-    public toMutableMap(): Map<never, never> { return new Map<never, never>() }
+    public toMutableMap() { return new Map() }
 
 
     public toReverse(..._: readonly unknown[]): this
@@ -501,20 +501,20 @@ export class EmptyCollectionHolder
     //#region -------------------- Conversion methods (string) --------------------
 
     public toString(..._: readonly unknown[]): "[]"
-    public toString(): "[]" { return "[]" }
+    public toString() { return "[]" }
 
 
     public toLocaleString(..._: readonly unknown[]): "[]"
     public toLocaleString() { return "[]" }
 
     public toLowerCaseString(..._: readonly unknown[]): "[]"
-    public toLowerCaseString(): "[]" { return "[]" }
+    public toLowerCaseString() { return "[]" }
 
     public toLocaleLowerCaseString(..._: readonly unknown[]): "[]"
     public toLocaleLowerCaseString() { return "[]" }
 
     public toUpperCaseString(..._: readonly unknown[]): "[]"
-    public toUpperCaseString(): "[]" { return "[]" }
+    public toUpperCaseString() { return "[]" }
 
     public toLocaleUpperCaseString(..._: readonly unknown[]): "[]"
     public toLocaleUpperCaseString() { return "[]" }
