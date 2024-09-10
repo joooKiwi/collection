@@ -20,6 +20,7 @@ export {onEach,            onEach as            onEachByCollectionHolder}       
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByCollectionHolder}     from "./onEachIndexed"
 export {toMutableSet,      toMutableSet as      toMutableSetByCollectionHolder}      from "./toMutableSet"
 export {toMutableWeakSet,  toMutableWeakSet as  toMutableWeakSetByCollectionHolder}  from "./toMutableWeakSet"
+export {toReverse,         toReverse as         toReverseByCollectionHolder}         from "./toReverse"
 export {toSet,             toSet as             toSetByCollectionHolder}             from "./toSet"
 export {toString,          toString as          toStringByCollectionHolder}          from "./toString"
 export {toUpperCaseString, toUpperCaseString as toUpperCaseStringByCollectionHolder} from "./toUpperCaseString"

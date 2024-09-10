@@ -37,6 +37,8 @@ import {onEachIndexed as onEachIndexedByCollectionHolder}                   from
 import {onEachIndexed as onEachIndexedByMinimalistCollectionHolder}         from "../../src/method/minimalistCollectionHolder/onEachIndexed"
 import {toMutableSet as toMutableSetByCollectionHolder}                     from "../../src/method/collectionHolder/toMutableSet"
 import {toMutableSet as toMutableSetByMinimalistCollectionHolder}           from "../../src/method/minimalistCollectionHolder/toMutableSet"
+import {toReverse as toReverseByCollectionHolder}                           from "../../src/method/collectionHolder/toReverse"
+import {toReverse as toReverseByMinimalistCollectionHolder}                 from "../../src/method/minimalistCollectionHolder/toReverse"
 import {toSet as toSetByCollectionHolder}                                   from "../../src/method/collectionHolder/toSet"
 import {toSet as toSetByMinimalistCollectionHolder}                         from "../../src/method/minimalistCollectionHolder/toSet"
 import {toString as toStringByCollectionHolder}                             from "../../src/method/collectionHolder/toString"
@@ -80,7 +82,6 @@ import {toLowerCaseString, toLowerCaseStringByCollectionHolder}             from
 import {toMap, toMapByCollectionHolder}                                     from "../../src/method/toMap"
 import {toMutableArray, toMutableArrayByCollectionHolder}                   from "../../src/method/toMutableArray"
 import {toMutableMap, toMutableMapByCollectionHolder}                       from "../../src/method/toMutableMap"
-import {toReverse, toReverseByCollectionHolder}                             from "../../src/method/toReverse"
 
 /** A {@link CollectionHolder} that count the amount of time the {@link get} is being called */
 export class CollectionHolderThatCountGetBeingCalled<const out T, >
@@ -787,7 +788,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
         return this.#isCollectionHolder
             ? toReverseByCollectionHolder<T>(this, fromIndex, toIndex, limit,)
-            : toReverse(this, fromIndex, toIndex, limit,)
+            : toReverseByMinimalistCollectionHolder(this, fromIndex, toIndex, limit,)
     }
 
     public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never

@@ -139,7 +139,9 @@ export {toMutableWeakSet}                                                 from "
 export {toMutableWeakSet as toMutableWeakSetByCollectionHolder}           from "./collectionHolder/toMutableWeakSet"
 export {toMutableWeakSet as toMutableWeakSetByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMutableWeakSet"
 
-export {toReverse,                            toReverseByCollectionHolder}                                                from "./toReverse"
+export {toReverse}                                          from "./toReverse"
+export {toReverse as toReverseByCollectionHolder}           from "./collectionHolder/toReverse"
+export {toReverse as toReverseByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toReverse"
 
 export {toSet}                                      from "./toSet"
 export {toSet as toSetByCollectionHolder}           from "./collectionHolder/toSet"

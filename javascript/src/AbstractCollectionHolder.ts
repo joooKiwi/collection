@@ -63,7 +63,7 @@ import {toMapByCollectionHolder}                   from "./method/toMap"
 import {toMutableArrayByCollectionHolder}          from "./method/toMutableArray"
 import {toMutableSet}                              from "./method/collectionHolder/toMutableSet"
 import {toMutableMapByCollectionHolder}            from "./method/toMutableMap"
-import {toReverseByCollectionHolder}               from "./method/toReverse"
+import {toReverse}                                 from "./method/collectionHolder/toReverse"
 import {toSet}                                     from "./method/collectionHolder/toSet"
 import {toString}                                  from "./method/collectionHolder/toString"
 import {toUpperCaseString}                         from "./method/collectionHolder/toUpperCaseString"
@@ -661,7 +661,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Conversion methods (reverse) --------------------
 
     public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex, limit,)
+        return toReverse<T>(this, fromIndex, toIndex, limit,)
     }
 
     public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {

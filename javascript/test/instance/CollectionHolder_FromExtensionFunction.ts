@@ -59,9 +59,9 @@ import {toLocaleUpperCaseStringByCollectionHolder} from "../../src/method/toLoca
 import {toLowerCaseStringByCollectionHolder}       from "../../src/method/toLowerCaseString"
 import {toMapByCollectionHolder}                   from "../../src/method/toMap"
 import {toMutableArrayByCollectionHolder}          from "../../src/method/toMutableArray"
-import {toMutableSet}            from "../../src/method/collectionHolder/toMutableSet"
+import {toMutableSet}                              from "../../src/method/collectionHolder/toMutableSet"
 import {toMutableMapByCollectionHolder}            from "../../src/method/toMutableMap"
-import {toReverseByCollectionHolder}               from "../../src/method/toReverse"
+import {toReverse}                                 from "../../src/method/collectionHolder/toReverse"
 import {toSet}                                     from "../../src/method/collectionHolder/toSet"
 import {toString}                                  from "../../src/method/collectionHolder/toString"
 import {toUpperCaseString}                         from "../../src/method/collectionHolder/toUpperCaseString"
@@ -643,7 +643,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
 
 
     public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex, limit,)
+        return toReverse<T>(this, fromIndex, toIndex, limit,)
     }
 
     public override toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
