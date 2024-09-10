@@ -61,7 +61,7 @@ import {toLocaleUpperCaseStringByCollectionHolder} from "./method/toLocaleUpperC
 import {toLowerCaseStringByCollectionHolder}       from "./method/toLowerCaseString"
 import {toMapByCollectionHolder}                   from "./method/toMap"
 import {toMutableArrayByCollectionHolder}          from "./method/toMutableArray"
-import {toMutableSetByCollectionHolder}            from "./method/toMutableSet"
+import {toMutableSet}                              from "./method/collectionHolder/toMutableSet"
 import {toMutableMapByCollectionHolder}            from "./method/toMutableMap"
 import {toReverseByCollectionHolder}               from "./method/toReverse"
 import {toSet}                                     from "./method/collectionHolder/toSet"
@@ -643,7 +643,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     public toMutableSet(): Set<T> {
-        return toMutableSetByCollectionHolder<T>(this,)
+        return toMutableSet<T>(this,)
     }
 
     //#endregion -------------------- Conversion methods (set) --------------------

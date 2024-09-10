@@ -35,6 +35,8 @@ import {onEach as onEachByCollectionHolder}                                 from
 import {onEach as onEachByMinimalistCollectionHolder}                       from "../../src/method/minimalistCollectionHolder/onEach"
 import {onEachIndexed as onEachIndexedByCollectionHolder}                   from "../../src/method/collectionHolder/onEachIndexed"
 import {onEachIndexed as onEachIndexedByMinimalistCollectionHolder}         from "../../src/method/minimalistCollectionHolder/onEachIndexed"
+import {toMutableSet as toMutableSetByCollectionHolder}                     from "../../src/method/collectionHolder/toMutableSet"
+import {toMutableSet as toMutableSetByMinimalistCollectionHolder}           from "../../src/method/minimalistCollectionHolder/toMutableSet"
 import {toSet as toSetByCollectionHolder}                                   from "../../src/method/collectionHolder/toSet"
 import {toSet as toSetByMinimalistCollectionHolder}                         from "../../src/method/minimalistCollectionHolder/toSet"
 import {toString as toStringByCollectionHolder}                             from "../../src/method/collectionHolder/toString"
@@ -77,7 +79,6 @@ import {toLocaleUpperCaseString, toLocaleUpperCaseStringByCollectionHolder} from
 import {toLowerCaseString, toLowerCaseStringByCollectionHolder}             from "../../src/method/toLowerCaseString"
 import {toMap, toMapByCollectionHolder}                                     from "../../src/method/toMap"
 import {toMutableArray, toMutableArrayByCollectionHolder}                   from "../../src/method/toMutableArray"
-import {toMutableSet, toMutableSetByCollectionHolder}                       from "../../src/method/toMutableSet"
 import {toMutableMap, toMutableMapByCollectionHolder}                       from "../../src/method/toMutableMap"
 import {toReverse, toReverseByCollectionHolder}                             from "../../src/method/toReverse"
 
@@ -766,7 +767,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public toMutableSet(): Set<T> {
         return this.#isCollectionHolder
             ? toMutableSetByCollectionHolder<T>(this,)
-            : toMutableSet(this,)
+            : toMutableSetByMinimalistCollectionHolder(this,)
     }
 
 

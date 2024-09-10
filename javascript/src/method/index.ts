@@ -130,7 +130,10 @@ export {toLowerCaseString,                    toLowerCaseStringByCollectionHolde
 export {toMap,                                toMapByCollectionHolder}                                                    from "./toMap"
 export {toMutableArray,                       toMutableArrayByCollectionHolder}                                           from "./toMutableArray"
 export {toMutableMap,                         toMutableMapByCollectionHolder}                                             from "./toMutableMap"
-export {toMutableSet,                         toMutableSetByCollectionHolder}                                             from "./toMutableSet"
+
+export {toMutableSet}                                             from "./toMutableSet"
+export {toMutableSet as toMutableSetByCollectionHolder}           from "./collectionHolder/toMutableSet"
+export {toMutableSet as toMutableSetByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMutableSet"
 
 export {toMutableWeakSet}                                                 from "./toMutableWeakSet"
 export {toMutableWeakSet as toMutableWeakSetByCollectionHolder}           from "./collectionHolder/toMutableWeakSet"

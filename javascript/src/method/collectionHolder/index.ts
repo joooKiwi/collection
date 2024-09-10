@@ -18,6 +18,7 @@ export {forEachIndexed,    forEachIndexed as    forEachIndexedByCollectionHolder
 export {none,              none as              noneByCollectionHolder}              from "./none"
 export {onEach,            onEach as            onEachByCollectionHolder}            from "./onEach"
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByCollectionHolder}     from "./onEachIndexed"
+export {toMutableSet,      toMutableSet as      toMutableSetByCollectionHolder}      from "./toMutableSet"
 export {toMutableWeakSet,  toMutableWeakSet as  toMutableWeakSetByCollectionHolder}  from "./toMutableWeakSet"
 export {toSet,             toSet as             toSetByCollectionHolder}             from "./toSet"
 export {toString,          toString as          toStringByCollectionHolder}          from "./toString"
