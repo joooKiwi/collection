@@ -66,7 +66,7 @@ import {toMutableMap}                       from "../../src/method/toMutableMap"
 import {toReverse}                          from "../../src/method/toReverse"
 import {toSet}                              from "../../src/method/toSet"
 import {toString}                           from "../../src/method/toString"
-import {toUpperCaseString}                  from "../../src/method/toUpperCaseString"
+import {toUpperCaseString}                  from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
 export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     extends AbstractMinimalistCollectionHolder<T>
