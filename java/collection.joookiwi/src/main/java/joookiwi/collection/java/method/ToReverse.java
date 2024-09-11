@@ -9,6 +9,7 @@ import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -1008,7 +1009,7 @@ public final class ToReverse
         final var startingIndex = _startingIndex(fromIndex, size);
         final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
-            throw new CollectionHolderIndexOutOfBoundsException("The ending index “" + toIndex + '"' + (toIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + fromIndex + '"' + (fromIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', toIndex);
+            throw new InvalidIndexRangeException("Invalid index range. The ending index “" + toIndex + '"' + (toIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + fromIndex + '"' + (fromIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
 
         //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -1052,7 +1053,7 @@ public final class ToReverse
         final var startingIndex = _startingIndex(fromIndex, size);
         final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
-            throw new CollectionHolderIndexOutOfBoundsException("The ending index “" + toIndex + '"' + (toIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + fromIndex + '"' + (fromIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', toIndex);
+            throw new InvalidIndexRangeException("Invalid index range. The ending index “" + toIndex + '"' + (toIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + fromIndex + '"' + (fromIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
 
         //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -1098,11 +1099,11 @@ public final class ToReverse
         final var startingIndex = _startingIndex(fromIndex, size);
         final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
-            throw new CollectionHolderIndexOutOfBoundsException("The ending index “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', toIndex);
+            throw new InvalidIndexRangeException("Invalid index range. The ending index “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
 
         final var maximumIndex = _maximumIndex(limit, size);
         if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
+            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
 
         //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
 
@@ -1128,7 +1129,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(toIndex, size);
         final var maximumIndex = _maximumIndex(limit, size);
         if (maximumIndex > endingIndex)
-            throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
+            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
 
         //#endregion -------------------- Initialization (ending/maximum index) --------------------
 
@@ -1153,7 +1154,7 @@ public final class ToReverse
         final var endingIndex = size - 1;
         final var maximumIndex = _maximumIndex(limit, size);
         if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + endingIndex + "”.", limit);
+            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + endingIndex + "”.", limit);
 
         //#endregion -------------------- Initialization (starting/maximum index) --------------------
 
@@ -1176,7 +1177,7 @@ public final class ToReverse
         final var endingIndex = size - 1;
         final var maximumIndex = _maximumIndex(limit, size);
         if (maximumIndex > size)
-            throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '"' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + endingIndex + "”.", limit);
+            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '"' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + endingIndex + "”.", limit);
 
         //#endregion -------------------- Initialization (maximum index) --------------------
 
@@ -1206,11 +1207,11 @@ public final class ToReverse
         final var startingIndex = _startingIndex(fromIndex, size);
         final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
-            throw new CollectionHolderIndexOutOfBoundsException("The ending index “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', toIndex);
+            throw new InvalidIndexRangeException("Invalid index range. The ending index “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
 
         final var maximumIndex = _maximumIndex(limit, size);
         if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
+            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
 
         //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
 
@@ -1236,7 +1237,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(toIndex, size);
         final var maximumIndex = _maximumIndex(limit, size);
         if (maximumIndex > endingIndex)
-            throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
+            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
 
         //#endregion -------------------- Initialization (ending/maximum index) --------------------
 
@@ -1261,7 +1262,7 @@ public final class ToReverse
         final var endingIndex = size - 1;
         final var maximumIndex = _maximumIndex(limit, size);
         if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + endingIndex + "”.", limit);
+            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + endingIndex + "”.", limit);
 
         //#endregion -------------------- Initialization (starting/maximum index) --------------------
 
@@ -1285,7 +1286,7 @@ public final class ToReverse
 
         final var maximumIndex = _maximumIndex(limit, size);
         if (maximumIndex > size)
-            throw new CollectionHolderIndexOutOfBoundsException("The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + endingIndex + "”.", limit);
+            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + endingIndex + "”.", limit);
 
         //#endregion -------------------- Initialization (maximum index) --------------------
 
