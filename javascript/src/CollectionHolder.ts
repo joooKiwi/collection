@@ -1877,8 +1877,9 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The starting index
      * @param toIndex  The ending index
      * @param limit    The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException     The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws CollectionHolderRangeIndexOutOfBoundException The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws ForbiddenIndexException                       The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -1894,9 +1895,10 @@ export interface CollectionHolder<out T = unknown, >
      * @param indicesOrFromIndex The given indices (or starting index)
      * @param toIndex            The ending index
      * @param limit              The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException     The {@link indicesOrFromIndex}, {@link toIndex} and {@link limit} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws CollectionHolderIndexOutOfBoundsException     An indice is not in the current {@link CollectionHolder collection}
+     * @throws CollectionHolderRangeIndexOutOfBoundException The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
+     * @throws ForbiddenIndexException                       The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)

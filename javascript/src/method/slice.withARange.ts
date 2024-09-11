@@ -12,6 +12,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}                            from "../CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException}      from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {CollectionHolderRangeIndexOutOfBoundException}  from "../exception/CollectionHolderRangeIndexOutOfBoundException"
 import {__endingIndex, __maximumIndex, __startingIndex} from "./_indexes utility"
 
 //#region -------------------- Facade method --------------------
@@ -28,8 +29,9 @@ import {__endingIndex, __maximumIndex, __startingIndex} from "./_indexes utility
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws CollectionHolderIndexOutOfBoundsException     The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+ * @throws CollectionHolderRangeIndexOutOfBoundException The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @throws ForbiddenIndexException                       The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -54,7 +56,7 @@ export function sliceWithARange<const T, >(collection: Nullable<MinimalistCollec
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, toIndex,)
+        throw new CollectionHolderRangeIndexOutOfBoundException(`Range index out of bound. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -64,7 +66,7 @@ export function sliceWithARange<const T, >(collection: Nullable<MinimalistCollec
     //#region -------------------- Initialization (maximum index) --------------------
 
     const maximumIndex = __maximumIndex(limit, size,)
-    if (maximumIndex == size - 1)
+    if (maximumIndex == size)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __withoutALimit(collection, startingIndex, endingIndex,),)
     if (endingIndex - startingIndex < maximumIndex - 1)
         throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}"${limit == maximumIndex ? "" : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ""}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`} to "${toIndex ?? ""}"${toIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, limit,)
@@ -86,8 +88,9 @@ export function sliceWithARange<const T, >(collection: Nullable<MinimalistCollec
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws CollectionHolderIndexOutOfBoundsException     The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws CollectionHolderRangeIndexOutOfBoundException The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @throws ForbiddenIndexException                       The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -111,7 +114,7 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, toIndex,)
+        throw new CollectionHolderRangeIndexOutOfBoundException(`Range index out of bound. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
@@ -121,7 +124,7 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
     //#region -------------------- Initialization (maximum index) --------------------
 
     const maximumIndex = __maximumIndex(limit, size,)
-    if (maximumIndex == size - 1)
+    if (maximumIndex == size)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __withoutALimit(collection, startingIndex, endingIndex,),)
     if (endingIndex - startingIndex < maximumIndex - 1)
         throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}"${limit == maximumIndex ? "" : `("${maximumIndex}" after calculation)`} cannot be applied within the range "${fromIndex ?? ""}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`} to "${toIndex ?? ""}"${toIndex == endingIndex ? "" : `("${endingIndex}" after calculation)`}.`, limit,)
@@ -147,7 +150,7 @@ function __withALimit<const T, >(collection: MinimalistCollectionHolder<T>, star
     let index = startingIndex - 1
     while (++index <= endingIndex) {
         if (newArray.length >= maximumIndex)
-            return newArray
+            return Object.freeze(newArray,)
         newArray.push(collection.get(index,),)
     }
     return Object.freeze(newArray,)
