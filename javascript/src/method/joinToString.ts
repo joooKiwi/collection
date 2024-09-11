@@ -11,8 +11,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {StringCallback}             from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
-import {ForbiddenIndexException}                   from "../exception/ForbiddenIndexException"
+import {__maximumIndex} from "./_indexes utility"
 
 //#region -------------------- Facade method --------------------
 
@@ -158,29 +157,6 @@ export function prefixAndPostfixOnly(prefix: NullableString = null, postfix: Nul
 }
 
 //#endregion -------------------- Prefix & postfix method --------------------
-//#region -------------------- Utility methods --------------------
-
-function __maximumIndex(limit: number, size: number,) {
-    if (Number.isNaN(limit,))
-        throw new ForbiddenIndexException("Forbidden index. The limit cannot be NaN.", limit,)
-    if (limit == Number.NEGATIVE_INFINITY)
-        throw new ForbiddenIndexException("Forbidden index. The limit cannot be -∞.", limit,)
-    if (limit == Number.POSITIVE_INFINITY)
-        throw new ForbiddenIndexException("Forbidden index. The limit cannot be +∞.", limit,)
-
-    if (limit > size)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}" cannot over the collection size "${size}".`, limit,)
-
-    let maximumIndex = limit
-    if (maximumIndex < 0)
-        maximumIndex += size
-    if (maximumIndex < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}" ("${maximumIndex}" after calculation) cannot under 0.`, limit,)
-
-    return maximumIndex
-}
-
-//#endregion -------------------- Utility methods --------------------
 //#region -------------------- Loop methods --------------------
 
 function __withNothing(collection: MinimalistCollectionHolder, separator: string, prefix: string, postfix: string, lastIndex: number,) {
