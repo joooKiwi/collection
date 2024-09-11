@@ -5,8 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {CollectionHolderIndexOutOfBoundsException}     from "./CollectionHolderIndexOutOfBoundsException"
-export {CollectionHolderRangeIndexOutOfBoundException} from "./CollectionHolderRangeIndexOutOfBoundException"
-export {EmptyCollectionHolderException}                from "./EmptyCollectionHolderException"
-export {ForbiddenIndexException}                       from "./ForbiddenIndexException"
-export {NoElementFoundInCollectionHolderException}     from "./NoElementFoundInCollectionHolderException"
+export {CollectionHolderIndexOutOfBoundsException} from "./CollectionHolderIndexOutOfBoundsException"
+export {EmptyCollectionHolderException}            from "./EmptyCollectionHolderException"
+export {ForbiddenIndexException}                   from "./ForbiddenIndexException"
+export {InvalidIndexRangeException}                from "./InvalidIndexRangeException"
+export {NoElementFoundInCollectionHolderException} from "./NoElementFoundInCollectionHolderException"

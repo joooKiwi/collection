@@ -12,7 +12,7 @@ import type {MinimalistCollectionHolder} from "../../MinimalistCollectionHolder"
 
 import {CollectionConstants}                            from "../../CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException}      from "../../exception/CollectionHolderIndexOutOfBoundsException"
-import {CollectionHolderRangeIndexOutOfBoundException}  from "../../exception/CollectionHolderRangeIndexOutOfBoundException"
+import {InvalidIndexRangeException}                     from "../../exception/InvalidIndexRangeException"
 import {__endingIndex, __maximumIndex, __startingIndex} from "../_indexes utility"
 import {__withALimit, __withoutALimit}                  from "../toReverse"
 
@@ -23,9 +23,9 @@ import {__withALimit, __withoutALimit}                  from "../toReverse"
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
- * @throws CollectionHolderIndexOutOfBoundsException     The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
- * @throws CollectionHolderRangeIndexOutOfBoundException The {@link toIndex} is before the {@link fromIndex} after the calculation
- * @throws ForbiddenIndexException                       The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+ * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
@@ -54,7 +54,7 @@ export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHo
     const endingIndex = __endingIndex(toIndex, size,)
 
     if (endingIndex < startingIndex)
-        throw new CollectionHolderRangeIndexOutOfBoundException(`Range index out of bound. The ending index "${toIndex}"${(toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`)} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 

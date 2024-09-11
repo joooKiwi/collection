@@ -12,7 +12,7 @@ import {CollectionConstants}                       from "../src/CollectionConsta
 import {GenericCollectionIterator}                 from "../src/iterator/GenericCollectionIterator"
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
 import {ForbiddenIndexException}                   from "../src/exception/ForbiddenIndexException"
-import {CollectionHolderRangeIndexOutOfBoundException} from "../src"
+import {InvalidIndexRangeException}                from "../src/exception/InvalidIndexRangeException"
 
 describe("CollectionHolderTest (slice)", () => {
 describe.each(everyInstance,)("%s", ({value: {newInstance, isExtensionOnly,},},) => {
@@ -171,14 +171,14 @@ describe.each(everyInstance,)("%s", ({value: {newInstance, isExtensionOnly,},},)
             describe("from > to", () => {
                 test("(0, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(0, 1,).toString(),).not.toThrow(),)
                 test("(1, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(1, 1,).toString(),).not.toThrow(),)
-                test("(2, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(2, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
-                test("(3, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(3, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
-                test("(4, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(4, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
-                test("(5, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(5, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
-                test("(6, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(6, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
-                test("(7, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(7, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
-                test("(8, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(8, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
-                test("(9, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(9, 1,),).toThrow(CollectionHolderRangeIndexOutOfBoundException,),)
+                test("(2, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(2, 1,),).toThrow(InvalidIndexRangeException,),)
+                test("(3, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(3, 1,),).toThrow(InvalidIndexRangeException,),)
+                test("(4, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(4, 1,),).toThrow(InvalidIndexRangeException,),)
+                test("(5, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(5, 1,),).toThrow(InvalidIndexRangeException,),)
+                test("(6, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(6, 1,),).toThrow(InvalidIndexRangeException,),)
+                test("(7, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(7, 1,),).toThrow(InvalidIndexRangeException,),)
+                test("(8, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(8, 1,),).toThrow(InvalidIndexRangeException,),)
+                test("(9, 1)", () => expect(() => newInstance(ABCDEFGHIJ,).slice(9, 1,),).toThrow(InvalidIndexRangeException,),)
             },)
             describe("from index", () => {
                 test('9',   () => expect(() => newInstance(ABCDEFGHIJ,).slice(9,).toString(),).not.toThrow(),)

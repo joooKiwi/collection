@@ -7,8 +7,8 @@
 
 import type {Nullable, NullOr, NumericOrObject} from "@joookiwi/type"
 
-/** An {@link Error exception} that tell that the ending and the starting indexes are not valid compare to each other */
-export class CollectionHolderRangeIndexOutOfBoundException<const STARTING_INDEX extends NullOr<NumericOrObject> = NullOr<NumericOrObject>,
+/** An {@link Error exception} that tell that the ending and starting indexes are not valid compare to each other */
+export class InvalidIndexRangeException<const STARTING_INDEX extends NullOr<NumericOrObject> = NullOr<NumericOrObject>,
     const ENDING_INDEX extends NullOr<NumericOrObject> = NullOr<NumericOrObject>,
     const CAUSE extends Error = never, >
     extends RangeError {
