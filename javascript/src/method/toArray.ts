@@ -11,6 +11,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}                     from "../CollectionConstants"
+import {__values}                                from "./_tables utility"
 import {isCollectionHolder}                      from "./isCollectionHolder"
 import {isCollectionHolderByStructure}           from "./isCollectionHolderByStructure"
 import {toArray as byCollectionHolder}           from "./collectionHolder/toArray"
@@ -49,11 +50,7 @@ export function toArrayByCollectionHolder<const T, >(collection: Nullable<Collec
 
 /** @internal */
 export function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
-    const array = new Array<T>(size,)
-    let index = size
-    while (index-- > 0)
-        array[index] = collection.get(index,)
-    return Object.freeze(array,)
+    return Object.freeze(__values(collection, size,),)
 }
 
 //#endregion -------------------- Loop method --------------------

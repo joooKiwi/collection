@@ -9,6 +9,7 @@ import type {Nullable} from "@joookiwi/type"
 
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {__values}                                  from "./_tables utility"
 import {isCollectionHolder}                        from "./isCollectionHolder"
 import {isCollectionHolderByStructure}             from "./isCollectionHolderByStructure"
 import {toWeakSet as byCollectionHolder}           from "./collectionHolder/toWeakSet"
@@ -35,11 +36,7 @@ export function toWeakSet<const T extends WeakKey, >(collection: Nullable<Minima
 
 /** @internal */
 export function __newWeakSet<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,): Readonly<WeakSet<T>> {
-    const array = new Array<T>(size,)
-    let index = size
-    while (index-- > 0)
-        array[index] = collection.get(index,)
-    return Object.freeze(new WeakSet(Object.freeze(array,),),)
+    return Object.freeze(new WeakSet(__values(collection, size,),),)
 }
 
 //#endregion -------------------- Core method --------------------

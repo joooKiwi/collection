@@ -10,6 +10,7 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {__associativeValues}                          from "./_tables utility"
 import {isCollectionHolder}                           from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                from "./isCollectionHolderByStructure"
 import {toMutableMap as byCollectionHolder}           from "./collectionHolder/toMutableMap"
@@ -52,11 +53,7 @@ export function toMutableMapByCollectionHolder<const T, >(collection: Nullable<C
 
 /** @internal */
 export function __newMutableMap<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
-    const array = new Array<readonly [number, T,]>(size,)
-    let index = size
-    while (index-- > 0)
-        array[index] = [index, collection.get(index,),]
-    return new Map(array,)
+    return new Map(__associativeValues(collection, size,),)
 }
 
 //#endregion -------------------- Loop method --------------------

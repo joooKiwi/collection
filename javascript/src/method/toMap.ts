@@ -11,6 +11,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}                   from "../CollectionConstants"
+import {__associativeValues}                   from "./_tables utility"
 import {isCollectionHolder}                    from "./isCollectionHolder"
 import {isCollectionHolderByStructure}         from "./isCollectionHolderByStructure"
 import {toMap as byCollectionHolder}           from "./collectionHolder/toMap"
@@ -50,11 +51,7 @@ export function toMapByCollectionHolder<const T, >(collection: Nullable<Collecti
 
 /** @internal */
 export function __newMap<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
-    const array = new Array<readonly [number, T,]>(size,)
-    let index = size
-    while (index-- > 0)
-        array[index] = [index, collection.get(index,),]
-    return Object.freeze(new Map(array,),)
+    return Object.freeze(new Map(__associativeValues(collection, size,),),)
 }
 
 //#endregion -------------------- Loop method --------------------

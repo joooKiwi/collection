@@ -10,6 +10,7 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {__uniqueValues, __values}                     from "./_tables utility"
 import {isCollectionHolder}                           from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                from "./isCollectionHolderByStructure"
 import {toMutableSet as byCollectionHolder}           from "./collectionHolder/toMutableSet"
@@ -50,44 +51,12 @@ export function toMutableSetByCollectionHolder<const T, >(collection: Nullable<C
 
 /** @internal */
 export function __withDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
-    //#region -------------------- Possibly remove duplicates --------------------
-
-    const array1 = new Array<T>(size,)
-    array1[0] = collection.get(0,)
-    let amountOfItemAdded = 1
-    let index1 = -1
-    loopToRemoveDuplicate: while (++index1 < size) {
-        const value = collection.get(index1,)
-        let index2 = -1
-        while (++index2 < amountOfItemAdded) {
-            if (array1[index2] === value)
-                continue loopToRemoveDuplicate // It is equal, so we don't add it to the duplicates
-            array1[amountOfItemAdded++] = value
-        }
-    }
-
-    if (amountOfItemAdded == size)
-        return new Set(array1,)
-
-    //#endregion -------------------- Possibly remove duplicates --------------------
-    //#region -------------------- Return the non-duplicated values --------------------
-
-    const array2 = new Array<T>(amountOfItemAdded,)
-    let index3 = amountOfItemAdded
-    while (index3-- > 0)
-        array2[index3] = array1[index3] as T
-    return new Set(array2,)
-
-    //#endregion -------------------- Return the non-duplicated values --------------------
+    return new Set(__uniqueValues(collection, size,),)
 }
 
 /** @internal */
 export function __withoutDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
-    const array = new Array<T>(size,)
-    let index = size
-    while (index-- > 0)
-        array[index] = collection.get(index,)
-    return new Set(array,)
+    return new Set(__values(collection, size,),)
 }
 
 //#endregion -------------------- Loop method --------------------

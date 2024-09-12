@@ -10,6 +10,7 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {__values}                                       from "./_tables utility"
 import {isCollectionHolder}                             from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                  from "./isCollectionHolderByStructure"
 import {toMutableArray as byCollectionHolder}           from "./collectionHolder/toMutableArray"
@@ -48,11 +49,7 @@ export function toMutableArrayByCollectionHolder<const T, >(collection: Nullable
 
 /** @internal */
 export function __newMutableArray<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
-    const array = new Array<T>(size,)
-    let index = size
-    while (index-- > 0)
-        array[index] = collection.get(index,)
-    return array
+    return __values(collection, size,)
 }
 
 //#endregion -------------------- Loop method --------------------
