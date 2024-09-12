@@ -18,6 +18,7 @@ export {forEachIndexed,    forEachIndexed as    forEachIndexedByMinimalistCollec
 export {none,              none as              noneByMinimalistCollectionHolder}              from "./none"
 export {onEach,            onEach as            onEachByMinimalistCollectionHolder}            from "./onEach"
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByMinimalistCollectionHolder}     from "./onEachIndexed"
+export {toArray,           toArray as           toArrayByMinimalistCollectionHolder}           from "./toArray"
 export {toMap,             toMap as             toMapByMinimalistCollectionHolder}             from "./toMap"
 export {toMutableArray,    toMutableArray as    toMutableArrayByMinimalistCollectionHolder}    from "./toMutableArray"
 export {toMutableMap,      toMutableMap as      toMutableMapByMinimalistCollectionHolder}      from "./toMutableMap"

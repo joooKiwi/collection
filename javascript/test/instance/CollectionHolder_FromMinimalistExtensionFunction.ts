@@ -53,7 +53,7 @@ import {onEach}                             from "../../src/method/minimalistCol
 import {onEachIndexed}                      from "../../src/method/minimalistCollectionHolder/onEachIndexed"
 import {requireNoNulls}                     from "../../src/method/requireNoNulls"
 import {slice}                              from "../../src/method/slice"
-import {toArray}                            from "../../src/method/toArray"
+import {toArray}                            from "../../src/method/minimalistCollectionHolder/toArray"
 import {toIterator}                         from "../../src/method/toIterator"
 import {toLocaleLowerCaseString}            from "../../src/method/toLocaleLowerCaseString"
 import {toLocaleString}                     from "../../src/method/toLocaleString"

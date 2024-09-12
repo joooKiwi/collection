@@ -18,6 +18,7 @@ export {forEachIndexed,    forEachIndexed as    forEachIndexedByCollectionHolder
 export {none,              none as              noneByCollectionHolder}              from "./none"
 export {onEach,            onEach as            onEachByCollectionHolder}            from "./onEach"
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByCollectionHolder}     from "./onEachIndexed"
+export {toArray,           toArray as           toArrayByCollectionHolder}           from "./toArray"
 export {toMap,             toMap as             toMapByCollectionHolder}             from "./toMap"
 export {toMutableArray,    toMutableArray as    toMutableArrayByCollectionHolder}    from "./toMutableArray"
 export {toMutableMap,      toMutableMap as      toMutableMapByCollectionHolder}      from "./toMutableMap"

@@ -121,7 +121,11 @@ export {sliceWithCollectionIterator,          sliceWithCollectionIteratorByColle
 export {sliceWithIterable,                    sliceWithIterableByCollectionHolder}                                        from "./slice.withIterable"
 export {sliceWithMinimalistCollectionHolder,  sliceWithMinimalistCollectionHolderByCollectionHolder}                      from "./slice.withMinimalistCollectionHolder"
 export {sliceWithSet,                         sliceByCollectionHolderWithSet}                                             from "./slice.withSet"
-export {toArray,                              toArrayByCollectionHolder}                                                  from "./toArray"
+
+export {toArray}                                        from "./toArray"
+export {toArray as toArrayByCollectionHolder}           from "./collectionHolder/toArray"
+export {toArray as toArrayByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toArray"
+
 export {toIterator,                           toIteratorByCollectionHolder}                                               from "./toIterator"
 export {toLocaleLowerCaseString,              toLocaleLowerCaseStringByCollectionHolder}                                  from "./toLocaleLowerCaseString"
 export {toLocaleString,                       toLocaleStringByCollectionHolder}                                           from "./toLocaleString"
