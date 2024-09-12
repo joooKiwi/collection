@@ -20,17 +20,17 @@ import {toMutableSet as byMinimalistCollectionHolder} from "./minimalistCollecti
 /**
  * Convert the {@link collection} to an {@link Set mutable set}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to convert
  * @extensionFunction
  */
 export function toMutableSet<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Set<T> {
     if (collection == null)
         return new Set()
     if (isCollectionHolder<T>(collection,))
-        return byCollectionHolder(collection)
+        return byCollectionHolder(collection,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return byCollectionHolder(collection)
-    return byMinimalistCollectionHolder(collection)
+        return byCollectionHolder(collection,)
+    return byMinimalistCollectionHolder(collection,)
 }
 
 /**
@@ -41,7 +41,7 @@ export function toMutableSet<const T, >(collection: Nullable<MinimalistCollectio
  * @deprecated Use toMutableSet from import("@joookiwi/collection/method/collectionHolder")
  */
 export function toMutableSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): Set<T> {
-    return byCollectionHolder(collection)
+    return byCollectionHolder(collection,)
 
 }
 

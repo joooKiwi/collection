@@ -21,7 +21,7 @@ import {toSet as byMinimalistCollectionHolder} from "./minimalistCollectionHolde
 /**
  * Convert the {@link collection} to an {@link ReadonlySet set}
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to convert
  * @extensionFunction
  */
 export function toSet<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): ReadonlySet<T> {

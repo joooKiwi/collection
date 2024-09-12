@@ -19,7 +19,7 @@ import {__withALimit, __withoutALimit}                  from "../toReverse"
 /**
  * Reverse the {@link collection} from a range (if provided)
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to reverse
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @param limit      The maximum index
