@@ -10,24 +10,28 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants} from "../CollectionConstants"
+import {CollectionConstants}                   from "../CollectionConstants"
+import {isCollectionHolder}                    from "./isCollectionHolder"
+import {isCollectionHolderByStructure}         from "./isCollectionHolderByStructure"
+import {toMap as byCollectionHolder}           from "./collectionHolder/toMap"
+import {toMap as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMap"
 
 //#region -------------------- Facade method --------------------
 
 /**
  * Convert the {@link collection} to an {@link ReadonlyMap map}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to convert
  * @extensionFunction
  */
 export function toMap<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): ReadonlyMap<number, T> {
     if (collection == null)
         return CollectionConstants.EMPTY_MAP
-
-    const size = collection.size
-    if (size == 0)
-        return CollectionConstants.EMPTY_MAP
-    return __newMap(collection, size,)
+    if (isCollectionHolder<T>(collection,))
+        return byCollectionHolder(collection,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return byCollectionHolder(collection,)
+    return byMinimalistCollectionHolder(collection,)
 }
 
 /**
@@ -35,24 +39,22 @@ export function toMap<const T, >(collection: Nullable<MinimalistCollectionHolder
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
  * @extensionFunction
+ * @deprecated Use toMap from import("@joookiwi/collection/method/collectionHolder")
  */
 export function toMapByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlyMap<number, T> {
-    if (collection == null)
-        return CollectionConstants.EMPTY_MAP
-    if (collection.isEmpty)
-        return CollectionConstants.EMPTY_MAP
-    return __newMap(collection, collection.size,)
+    return byCollectionHolder(collection,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
-function __newMap<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
-    const map = new Map<number, T>()
+/** @internal */
+export function __newMap<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+    const array = new Array<readonly [number, T,]>(size,)
     let index = size
     while (index-- > 0)
-        map.set(index, collection.get(index,),)
-    return Object.freeze(map,)
+        array[index] = [index, collection.get(index,),]
+    return Object.freeze(new Map(array,),)
 }
 
 //#endregion -------------------- Loop method --------------------

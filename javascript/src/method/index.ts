@@ -127,7 +127,11 @@ export {toLocaleLowerCaseString,              toLocaleLowerCaseStringByCollectio
 export {toLocaleString,                       toLocaleStringByCollectionHolder}                                           from "./toLocaleString"
 export {toLocaleUpperCaseString,              toLocaleUpperCaseStringByCollectionHolder}                                  from "./toLocaleUpperCaseString"
 export {toLowerCaseString,                    toLowerCaseStringByCollectionHolder}                                        from "./toLowerCaseString"
-export {toMap,                                toMapByCollectionHolder}                                                    from "./toMap"
+
+export {toMap}                                      from "./toMap"
+export {toMap as toMapByCollectionHolder}           from "./collectionHolder/toMap"
+export {toMap as toMapByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMap"
+
 export {toMutableArray,                       toMutableArrayByCollectionHolder}                                           from "./toMutableArray"
 export {toMutableMap,                         toMutableMapByCollectionHolder}                                             from "./toMutableMap"
 

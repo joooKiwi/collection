@@ -35,6 +35,8 @@ import {onEach as onEachByCollectionHolder}                                 from
 import {onEach as onEachByMinimalistCollectionHolder}                       from "../../src/method/minimalistCollectionHolder/onEach"
 import {onEachIndexed as onEachIndexedByCollectionHolder}                   from "../../src/method/collectionHolder/onEachIndexed"
 import {onEachIndexed as onEachIndexedByMinimalistCollectionHolder}         from "../../src/method/minimalistCollectionHolder/onEachIndexed"
+import {toMap as toMapByCollectionHolder}                                   from "../../src/method/collectionHolder/toMap"
+import {toMap as toMapByMinimalistCollectionHolder}                         from "../../src/method/minimalistCollectionHolder/toMap"
 import {toMutableSet as toMutableSetByCollectionHolder}                     from "../../src/method/collectionHolder/toMutableSet"
 import {toMutableSet as toMutableSetByMinimalistCollectionHolder}           from "../../src/method/minimalistCollectionHolder/toMutableSet"
 import {toReverse as toReverseByCollectionHolder}                           from "../../src/method/collectionHolder/toReverse"
@@ -79,7 +81,6 @@ import {toLocaleLowerCaseString, toLocaleLowerCaseStringByCollectionHolder} from
 import {toLocaleString, toLocaleStringByCollectionHolder}                   from "../../src/method/toLocaleString"
 import {toLocaleUpperCaseString, toLocaleUpperCaseStringByCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
 import {toLowerCaseString, toLowerCaseStringByCollectionHolder}             from "../../src/method/toLowerCaseString"
-import {toMap, toMapByCollectionHolder}                                     from "../../src/method/toMap"
 import {toMutableArray, toMutableArrayByCollectionHolder}                   from "../../src/method/toMutableArray"
 import {toMutableMap, toMutableMapByCollectionHolder}                       from "../../src/method/toMutableMap"
 
@@ -775,7 +776,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public toMap(): ReadonlyMap<number, T> {
         return this.#isCollectionHolder
             ? toMapByCollectionHolder<T>(this,)
-            : toMap(this,)
+            : toMapByMinimalistCollectionHolder(this,)
     }
 
     public toMutableMap(): Map<number, T> {
