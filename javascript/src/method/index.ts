@@ -133,7 +133,10 @@ export {toMap as toMapByCollectionHolder}           from "./collectionHolder/toM
 export {toMap as toMapByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMap"
 
 export {toMutableArray,                       toMutableArrayByCollectionHolder}                                           from "./toMutableArray"
-export {toMutableMap,                         toMutableMapByCollectionHolder}                                             from "./toMutableMap"
+
+export {toMutableMap}                                             from "./toMutableMap"
+export {toMutableMap as toMutableMapByCollectionHolder}           from "./collectionHolder/toMutableMap"
+export {toMutableMap as toMutableMapByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMutableMap"
 
 export {toMutableSet}                                             from "./toMutableSet"
 export {toMutableSet as toMutableSetByCollectionHolder}           from "./collectionHolder/toMutableSet"

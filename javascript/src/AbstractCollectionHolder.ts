@@ -59,10 +59,10 @@ import {toLocaleLowerCaseStringByCollectionHolder} from "./method/toLocaleLowerC
 import {toLocaleStringByCollectionHolder}          from "./method/toLocaleString"
 import {toLocaleUpperCaseStringByCollectionHolder} from "./method/toLocaleUpperCaseString"
 import {toLowerCaseStringByCollectionHolder}       from "./method/toLowerCaseString"
-import {toMapByCollectionHolder}                   from "./method/toMap"
+import {toMap}                                     from "./method/collectionHolder/toMap"
 import {toMutableArrayByCollectionHolder}          from "./method/toMutableArray"
+import {toMutableMap}                              from "./method/collectionHolder/toMutableMap"
 import {toMutableSet}                              from "./method/collectionHolder/toMutableSet"
-import {toMutableMapByCollectionHolder}            from "./method/toMutableMap"
 import {toReverse}                                 from "./method/collectionHolder/toReverse"
 import {toSet}                                     from "./method/collectionHolder/toSet"
 import {toString}                                  from "./method/collectionHolder/toString"
@@ -650,11 +650,11 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Conversion methods (map) --------------------
 
     public toMap(): ReadonlyMap<number, T> {
-        return toMapByCollectionHolder<T>(this,)
+        return toMap<T>(this,)
     }
 
     public toMutableMap(): Map<number, T> {
-        return toMutableMapByCollectionHolder<T>(this,)
+        return toMutableMap<T>(this,)
     }
 
     //#endregion -------------------- Conversion methods (map) --------------------

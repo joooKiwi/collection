@@ -19,6 +19,7 @@ export {none,              none as              noneByMinimalistCollectionHolder
 export {onEach,            onEach as            onEachByMinimalistCollectionHolder}            from "./onEach"
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByMinimalistCollectionHolder}     from "./onEachIndexed"
 export {toMap,             toMap as             toMapByMinimalistCollectionHolder}             from "./toMap"
+export {toMutableMap,      toMutableMap as      toMutableMapByMinimalistCollectionHolder}      from "./toMutableMap"
 export {toMutableSet,      toMutableSet as      toMutableSetByMinimalistCollectionHolder}      from "./toMutableSet"
 export {toMutableWeakSet,  toMutableWeakSet as  toMutableWeakSetByMinimalistCollectionHolder}  from "./toMutableWeakSet"
 export {toReverse,         toReverse as         toReverseByMinimalistCollectionHolder}         from "./toReverse"

@@ -62,7 +62,7 @@ import {toLowerCaseString}                  from "../../src/method/toLowerCaseSt
 import {toMap}                              from "../../src/method/minimalistCollectionHolder/toMap"
 import {toMutableArray}                     from "../../src/method/toMutableArray"
 import {toMutableSet}                       from "../../src/method/minimalistCollectionHolder/toMutableSet"
-import {toMutableMap}                       from "../../src/method/toMutableMap"
+import {toMutableMap}                       from "../../src/method/minimalistCollectionHolder/toMutableMap"
 import {toReverse}                          from "../../src/method/minimalistCollectionHolder/toReverse"
 import {toSet}                              from "../../src/method/minimalistCollectionHolder/toSet"
 import {toString}                           from "../../src/method/minimalistCollectionHolder/toString"

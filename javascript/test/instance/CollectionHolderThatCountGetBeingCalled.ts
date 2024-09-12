@@ -37,6 +37,8 @@ import {onEachIndexed as onEachIndexedByCollectionHolder}                   from
 import {onEachIndexed as onEachIndexedByMinimalistCollectionHolder}         from "../../src/method/minimalistCollectionHolder/onEachIndexed"
 import {toMap as toMapByCollectionHolder}                                   from "../../src/method/collectionHolder/toMap"
 import {toMap as toMapByMinimalistCollectionHolder}                         from "../../src/method/minimalistCollectionHolder/toMap"
+import {toMutableMap as toMutableMapByCollectionHolder}                     from "../../src/method/collectionHolder/toMutableMap"
+import {toMutableMap as toMutableMapByMinimalistCollectionHolder}           from "../../src/method/minimalistCollectionHolder/toMutableMap"
 import {toMutableSet as toMutableSetByCollectionHolder}                     from "../../src/method/collectionHolder/toMutableSet"
 import {toMutableSet as toMutableSetByMinimalistCollectionHolder}           from "../../src/method/minimalistCollectionHolder/toMutableSet"
 import {toReverse as toReverseByCollectionHolder}                           from "../../src/method/collectionHolder/toReverse"
@@ -82,7 +84,6 @@ import {toLocaleString, toLocaleStringByCollectionHolder}                   from
 import {toLocaleUpperCaseString, toLocaleUpperCaseStringByCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
 import {toLowerCaseString, toLowerCaseStringByCollectionHolder}             from "../../src/method/toLowerCaseString"
 import {toMutableArray, toMutableArrayByCollectionHolder}                   from "../../src/method/toMutableArray"
-import {toMutableMap, toMutableMapByCollectionHolder}                       from "../../src/method/toMutableMap"
 
 /** A {@link CollectionHolder} that count the amount of time the {@link get} is being called */
 export class CollectionHolderThatCountGetBeingCalled<const out T, >
@@ -782,7 +783,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public toMutableMap(): Map<number, T> {
         return this.#isCollectionHolder
             ? toMutableMapByCollectionHolder<T>(this,)
-            : toMutableMap(this,)
+            : toMutableMapByMinimalistCollectionHolder(this,)
     }
 
 

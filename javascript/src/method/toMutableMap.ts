@@ -10,22 +10,27 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {isCollectionHolder}                           from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                from "./isCollectionHolderByStructure"
+import {toMutableMap as byCollectionHolder}           from "./collectionHolder/toMutableMap"
+import {toMutableMap as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMutableMap"
+
 //#region -------------------- Facade method --------------------
 
 /**
  * Convert the {@link collection} to an {@link Map mutable map}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to convert
  * @extensionFunction
  */
 export function toMutableMap<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Map<number, T> {
     if (collection == null)
         return new Map()
-
-    const size = collection.size
-    if (size == 0)
-        return new Map()
-    return __newMutableMap(collection, size,)
+    if (isCollectionHolder<T>(collection,))
+        return byCollectionHolder(collection,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return byCollectionHolder(collection,)
+    return byMinimalistCollectionHolder(collection,)
 }
 
 /**
@@ -45,12 +50,13 @@ export function toMutableMapByCollectionHolder<const T, >(collection: Nullable<C
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
-function __newMutableMap<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
-    const map = new Map<number, T>()
+/** @internal */
+export function __newMutableMap<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+    const array = new Array<readonly [number, T,]>(size,)
     let index = size
     while (index-- > 0)
-        map.set(index, collection.get(index,),)
-    return map
+        array[index] = [index, collection.get(index,),]
+    return new Map(array,)
 }
 
 //#endregion -------------------- Loop method --------------------
