@@ -19,6 +19,7 @@ export {none,              none as              noneByCollectionHolder}         
 export {onEach,            onEach as            onEachByCollectionHolder}            from "./onEach"
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByCollectionHolder}     from "./onEachIndexed"
 export {toMap,             toMap as             toMapByCollectionHolder}             from "./toMap"
+export {toMutableArray,    toMutableArray as    toMutableArrayByCollectionHolder}    from "./toMutableArray"
 export {toMutableMap,      toMutableMap as      toMutableMapByCollectionHolder}      from "./toMutableMap"
 export {toMutableSet,      toMutableSet as      toMutableSetByCollectionHolder}      from "./toMutableSet"
 export {toMutableWeakSet,  toMutableWeakSet as  toMutableWeakSetByCollectionHolder}  from "./toMutableWeakSet"

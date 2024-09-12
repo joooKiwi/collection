@@ -60,7 +60,7 @@ import {toLocaleString}                     from "../../src/method/toLocaleStrin
 import {toLocaleUpperCaseString}            from "../../src/method/toLocaleUpperCaseString"
 import {toLowerCaseString}                  from "../../src/method/toLowerCaseString"
 import {toMap}                              from "../../src/method/minimalistCollectionHolder/toMap"
-import {toMutableArray}                     from "../../src/method/toMutableArray"
+import {toMutableArray}                     from "../../src/method/minimalistCollectionHolder/toMutableArray"
 import {toMutableSet}                       from "../../src/method/minimalistCollectionHolder/toMutableSet"
 import {toMutableMap}                       from "../../src/method/minimalistCollectionHolder/toMutableMap"
 import {toReverse}                          from "../../src/method/minimalistCollectionHolder/toReverse"
