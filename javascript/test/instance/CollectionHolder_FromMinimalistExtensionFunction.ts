@@ -27,7 +27,7 @@ import {findLastIndexedByMinimalistCollectionHolder}  from "../../src/method/fin
 import {firstByMinimalistCollectionHolder}            from "../../src/method/first"
 import {firstOrNullByMinimalistCollectionHolder}      from "../../src/method/firstOrNull"
 import {forEachByMinimalistCollectionHolder}          from "../../src/method/forEach"
-import {forEachIndexed}                               from "../../src/method/forEachIndexed"
+import {forEachIndexedByMinimalistCollectionHolder}   from "../../src/method/forEachIndexed"
 import {getOrElse}                                    from "../../src/method/minimalistCollectionHolder/getOrElse"
 import {getOrNull}                                    from "../../src/method/minimalistCollectionHolder/getOrNull"
 import {has}                                          from "../../src/method/has"
@@ -601,7 +601,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#region -------------------- For each indexed methods --------------------
 
     public forEachIndexed(action: IndexValueCallback<T>,): void {
-        forEachIndexed(this, action,)
+        forEachIndexedByMinimalistCollectionHolder(this, action,)
     }
 
     //#endregion -------------------- For each indexed methods --------------------

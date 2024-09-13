@@ -7,7 +7,6 @@
 
 export {getOrElse,         getOrElse as         getOrElseByMinimalistCollectionHolder}         from "./getOrElse"
 export {getOrNull,         getOrNull as         getOrNullByMinimalistCollectionHolder}         from "./getOrNull"
-export {forEachIndexed,    forEachIndexed as    forEachIndexedByMinimalistCollectionHolder}    from "./forEachIndexed"
 export {none,              none as              noneByMinimalistCollectionHolder}              from "./none"
 export {onEach,            onEach as            onEachByMinimalistCollectionHolder}            from "./onEach"
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByMinimalistCollectionHolder}     from "./onEachIndexed"

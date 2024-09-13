@@ -20,10 +20,7 @@ export {findLastIndexed,  findLastIndexedByCollectionHolder,  findLastIndexedByM
 export {first,            firstByCollectionHolder,            firstByMinimalistCollectionHolder                         } from "./first"
 export {firstOrNull,      firstOrNullByCollectionHolder,      firstOrNullByMinimalistCollectionHolder                   } from "./firstOrNull"
 export {forEach,          forEachByCollectionHolder,          forEachByMinimalistCollectionHolder                       } from "./forEach"
-
-export {forEachIndexed}                                               from "./forEachIndexed"
-export {forEachIndexed as forEachIndexedByCollectionHolder}           from "./collectionHolder/forEachIndexed"
-export {forEachIndexed as forEachIndexedByMinimalistCollectionHolder} from "./minimalistCollectionHolder/forEachIndexed"
+export {forEachIndexed,   forEachIndexedByCollectionHolder,   forEachIndexedByMinimalistCollectionHolder                } from "./forEachIndexed"
 
 export {getOrElse}                                          from "./getOrElse"
 export {getOrElse as getOrElseByCollectionHolder}           from "./collectionHolder/getOrElse"

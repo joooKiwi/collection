@@ -27,7 +27,7 @@ import {findLastIndexedByCollectionHolder}         from "./method/findLastIndexe
 import {firstByCollectionHolder}                   from "./method/first"
 import {firstOrNullByCollectionHolder}             from "./method/firstOrNull"
 import {forEachByCollectionHolder}                 from "./method/forEach"
-import {forEachIndexed}                            from "./method/collectionHolder/forEachIndexed"
+import {forEachIndexedByCollectionHolder}          from "./method/forEachIndexed"
 import {getOrElse}                                 from "./method/collectionHolder/getOrElse"
 import {getOrNull}                                 from "./method/collectionHolder/getOrNull"
 import {hasByCollectionHolder}                     from "./method/has"
@@ -584,7 +584,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- For each indexed methods --------------------
 
     public forEachIndexed(action: IndexValueCallback<T>,): void {
-        forEachIndexed(this, action,)
+        forEachIndexedByCollectionHolder(this, action,)
     }
 
     //#endregion -------------------- For each indexed methods --------------------
