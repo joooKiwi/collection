@@ -26,7 +26,7 @@ import {findLastByCollectionHolder}                from "../../src/method/findLa
 import {findLastIndexedByCollectionHolder}         from "../../src/method/findLastIndexed"
 import {firstByCollectionHolder}                   from "../../src/method/first"
 import {firstOrNullByCollectionHolder}             from "../../src/method/firstOrNull"
-import {forEach}                                   from "../../src/method/collectionHolder/forEach"
+import {forEachByCollectionHolder}                 from "../../src/method/forEach"
 import {forEachIndexed}                            from "../../src/method/collectionHolder/forEachIndexed"
 import {hasByCollectionHolder}                     from "../../src/method/has"
 import {hasAllByCollectionHolder}                  from "../../src/method/hasAll"
@@ -565,7 +565,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     //#region -------------------- For each methods --------------------
 
     public override forEach(action: ValueIndexCallback<T>,): void {
-        forEach(this, action,)
+        forEachByCollectionHolder(this, action,)
     }
 
     //#endregion -------------------- For each methods --------------------
