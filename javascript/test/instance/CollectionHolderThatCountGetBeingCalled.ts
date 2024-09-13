@@ -22,6 +22,7 @@ import {filterNotIndexedByCollectionHolder, filterNotIndexedByMinimalistCollecti
 import {filterNotNullByCollectionHolder, filterNotNullByMinimalistCollectionHolder}       from "../../src/method/filterNotNull"
 import {findByCollectionHolder, findByMinimalistCollectionHolder}                         from "../../src/method/find"
 import {findIndexedByCollectionHolder, findIndexedByMinimalistCollectionHolder}           from "../../src/method/findIndexed"
+import {findLastByCollectionHolder, findLastByMinimalistCollectionHolder}                 from "../../src/method/findLast"
 import {forEach as forEachByCollectionHolder}                                             from "../../src/method/collectionHolder/forEach"
 import {forEach as forEachByMinimalistCollectionHolder}                                   from "../../src/method/minimalistCollectionHolder/forEach"
 import {forEachIndexed as forEachIndexedByCollectionHolder}                               from "../../src/method/collectionHolder/forEachIndexed"
@@ -51,7 +52,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                         from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {findLast, findLastByCollectionHolder}                               from "../../src/method/findLast"
 import {findLastIndexed, findLastIndexedByCollectionHolder}                 from "../../src/method/findLastIndexed"
 import {first, firstByCollectionHolder}                                     from "../../src/method/first"
 import {firstOrNull, firstOrNullByCollectionHolder}                         from "../../src/method/firstOrNull"
@@ -612,7 +612,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public findLast(predicate: BooleanCallback<T>,) {
         return this.#isCollectionHolder
             ? findLastByCollectionHolder(this, predicate,)
-            : findLast(this, predicate,)
+            : findLastByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find last methods --------------------

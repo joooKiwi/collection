@@ -11,7 +11,44 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+
 //#region -------------------- Facade method --------------------
+
+/**
+ * Get the last element found or <b>null</b> if nothing was found
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param predicate  The given predicate
+ * @see ReadonlyArray.findLast
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @typescriptDefinition
+ * @extensionFunction
+ */
+export function findLast<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+/**
+ * Get the last element found or <b>null</b> if nothing was found
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param predicate  The given predicate
+ * @see ReadonlyArray.findLast
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @extensionFunction
+ */
+export function findLast<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T>
+export function findLast<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T> {
+    if (collection == null)
+        return null
+    if (isCollectionHolder<T>(collection,))
+        return findLastByCollectionHolder(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return findLastByCollectionHolder(collection, predicate,)
+    return findLastByMinimalistCollectionHolder(collection, predicate,)
+}
+
 
 /**
  * Get the last element found or <b>null</b> if nothing was found
@@ -24,7 +61,7 @@ import type {MinimalistCollectionHolder}                 from "../MinimalistColl
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findLast<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+export function findLastByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Get the last element found or <b>null</b> if nothing was found
  *
@@ -35,8 +72,8 @@ export function findLast<const T, const S extends T, >(collection: Nullable<Mini
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */
-export function findLast<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T>
-export function findLast<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T> {
+export function findLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T>
+export function findLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T> {
     if (collection == null)
         return null
 
