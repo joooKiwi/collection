@@ -18,7 +18,7 @@ import {anyByCollectionHolder}                     from "../../src/method/any"
 import {filterByCollectionHolder}                  from "../../src/method/filter"
 import {filterIndexedByCollectionHolder}           from "../../src/method/filterIndexed"
 import {filterNotByCollectionHolder}               from "../../src/method/filterNot"
-import {filterNotIndexed}                          from "../../src/method/collectionHolder/filterNotIndexed"
+import {filterNotIndexedByCollectionHolder}        from "../../src/method/filterNotIndexed"
 import {filterNotNullByCollectionHolder}           from "../../src/method/filterNotNull"
 import {findByCollectionHolder}                    from "../../src/method/find"
 import {findIndexedByCollectionHolder}             from "../../src/method/findIndexed"
@@ -460,7 +460,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return filterNotIndexed(this, predicate,)
+        return filterNotIndexedByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter not indexed methods --------------------

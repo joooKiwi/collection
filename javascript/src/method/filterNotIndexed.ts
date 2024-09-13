@@ -11,11 +11,9 @@ import type {CollectionHolder}                                         from "../
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}                              from "../CollectionConstants"
-import {isCollectionHolder}                               from "./isCollectionHolder"
-import {isCollectionHolderByStructure}                    from "./isCollectionHolderByStructure"
-import {filterNotIndexed as byCollectionHolder}           from "./collectionHolder/filterNotIndexed"
-import {filterNotIndexed as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/filterNotIndexed"
+import {CollectionConstants}           from "../CollectionConstants"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -50,10 +48,52 @@ export function filterNotIndexed<const T, >(collection: Nullable<MinimalistColle
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
-        return byCollectionHolder(collection, predicate,)
+        return filterNotIndexedByCollectionHolder(collection, predicate,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return byCollectionHolder(collection, predicate,)
-    return byMinimalistCollectionHolder(collection, predicate,)
+        return filterNotIndexedByCollectionHolder(collection, predicate,)
+    return filterNotIndexedByMinimalistCollectionHolder(collection, predicate,)
+}
+
+
+/**
+ * Get a new {@link CollectionHolder}
+ * not matching the given {@link predicate}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The given predicate
+ * @see ReadonlyArray.filter
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
+ * @typescriptDefinition
+ * @extensionFunction
+ */
+export function filterNotIndexedByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+/**
+ * Get a new {@link CollectionHolder}
+ * not matching the given {@link predicate}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The given predicate
+ * @see ReadonlyArray.filter
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
+ * @extensionFunction
+ */
+export function filterNotIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+export function filterNotIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,) {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+
+    const size = collection.size
+    if (size == 0)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (predicate.length == 1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, predicate as (index: number,) => boolean, size,),)
+    if (predicate.length >= 2)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection, predicate, size,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, size,),)
 }
 
 /**
@@ -68,7 +108,6 @@ export function filterNotIndexed<const T, >(collection: Nullable<MinimalistColle
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @typescriptDefinition
  * @extensionFunction
- * @deprecated Use "filterNotIndexed" from import("@joookiwi/collection/method/collectionHolder")
  */
 export function filterNotIndexedByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
@@ -82,18 +121,24 @@ export function filterNotIndexedByCollectionHolder<const T, const S extends T, >
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @extensionFunction
- * @deprecated Use "filterNotIndexed" from import("@joookiwi/collection/method/collectionHolder")
  */
 export function filterNotIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 export function filterNotIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,) {
-    return byCollectionHolder(collection, predicate,)
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (predicate.length == 1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, predicate as (index: number,) => boolean, collection.size,),)
+    if (predicate.length >= 2)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, collection.size,),)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-/** @internal */
-export function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: () => boolean, size: number,) {
+function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: () => boolean, size: number,) {
     const newArray: T[] = []
     let index = -1
     while (++index < size)
@@ -102,8 +147,7 @@ export function __with0Argument<const T, >(collection: MinimalistCollectionHolde
     return newArray
 }
 
-/** @internal */
-export function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (index: number,) => boolean, size: number,) {
+function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (index: number,) => boolean, size: number,) {
     const newArray: T[] = []
     let index = -1
     while (++index < size)
@@ -112,8 +156,7 @@ export function __with1Argument<const T, >(collection: MinimalistCollectionHolde
     return newArray
 }
 
-/** @internal */
-export function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (index: number, value: T,) => boolean, size: number,) {
+function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (index: number, value: T,) => boolean, size: number,) {
     const newArray: T[] = []
     let index = -1
     while (++index < size) {

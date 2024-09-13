@@ -18,7 +18,7 @@ import {anyByCollectionHolder}                     from "./method/any"
 import {filterByCollectionHolder}                  from "./method/filter"
 import {filterIndexedByCollectionHolder}           from "./method/filterIndexed"
 import {filterNotByCollectionHolder}               from "./method/filterNot"
-import {filterNotIndexed}                          from "./method/collectionHolder/filterNotIndexed"
+import {filterNotIndexedByCollectionHolder}        from "./method/filterNotIndexed"
 import {filterNotNullByCollectionHolder}           from "./method/filterNotNull"
 import {findByCollectionHolder}                    from "./method/find"
 import {findIndexedByCollectionHolder}             from "./method/findIndexed"
@@ -472,7 +472,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return filterNotIndexed(this, predicate,)
+        return filterNotIndexedByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter not indexed methods --------------------

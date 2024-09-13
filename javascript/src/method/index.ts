@@ -5,17 +5,13 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {all,           allByCollectionHolder,           allByMinimalistCollectionHolder                                 } from "./all"
-export {any,           anyByCollectionHolder,           anyByMinimalistCollectionHolder                                 } from "./any"
+export {all,              allByCollectionHolder,              allByMinimalistCollectionHolder                           } from "./all"
+export {any,              anyByCollectionHolder,              anyByMinimalistCollectionHolder                           } from "./any"
 export {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString} from "./asString"
-export {filter,        filterByCollectionHolder,        filterByMinimalistCollectionHolder                              } from "./filter"
-export {filterIndexed, filterIndexedByCollectionHolder, filterIndexedByMinimalistCollectionHolder                       } from "./filterIndexed"
-export {filterNot,     filterNotByCollectionHolder,     filterNotByMinimalistCollectionHolder                           } from "./filterNot"
-
-
-export {filterNotIndexed}                                                 from "./filterNotIndexed"
-export {filterNotIndexed as filterNotIndexedByCollectionHolder}           from "./collectionHolder/filterNotIndexed"
-export {filterNotIndexed as filterNotIndexedByMinimalistCollectionHolder} from "./minimalistCollectionHolder/filterNotIndexed"
+export {filter,           filterByCollectionHolder,           filterByMinimalistCollectionHolder                        } from "./filter"
+export {filterIndexed,    filterIndexedByCollectionHolder,    filterIndexedByMinimalistCollectionHolder                 } from "./filterIndexed"
+export {filterNot,        filterNotByCollectionHolder,        filterNotByMinimalistCollectionHolder                     } from "./filterNot"
+export {filterNotIndexed, filterNotIndexedByCollectionHolder, filterNotIndexedByMinimalistCollectionHolder              } from "./filterNotIndexed"
 
 export {filterNotNull,                        filterNotNullByCollectionHolder}                                            from "./filterNotNull"
 export {find,                                 findByCollectionHolder}                                                     from "./find"
