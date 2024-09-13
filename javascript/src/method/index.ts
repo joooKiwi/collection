@@ -5,14 +5,11 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {all,    allByCollectionHolder,    allByMinimalistCollectionHolder                                               } from "./all"
-export {any,    anyByCollectionHolder,    anyByMinimalistCollectionHolder                                               } from "./any"
+export {all,           allByCollectionHolder,           allByMinimalistCollectionHolder                                               } from "./all"
+export {any,           anyByCollectionHolder,           anyByMinimalistCollectionHolder                                               } from "./any"
 export {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString} from "./asString"
-export {filter, filterByCollectionHolder, filterByMinimalistCollectionHolder                                            } from "./filter"
-
-export {filterIndexed}                                              from "./filterIndexed"
-export {filterIndexed as filterIndexedByCollectionHolder}           from "./collectionHolder/filterIndexed"
-export {filterIndexed as filterIndexedByMinimalistCollectionHolder} from "./minimalistCollectionHolder/filterIndexed"
+export {filter,        filterByCollectionHolder,        filterByMinimalistCollectionHolder                                            } from "./filter"
+export {filterIndexed, filterIndexedByCollectionHolder, filterIndexedByMinimalistCollectionHolder                                            } from "./filterIndexed"
 
 export {filterNot}                                          from "./filterNot"
 export {filterNot as filterNotByCollectionHolder}           from "./collectionHolder/filterNot"

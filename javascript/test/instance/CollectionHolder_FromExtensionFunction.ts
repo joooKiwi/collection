@@ -16,7 +16,7 @@ import {AbstractCollectionHolder}                  from "../../src/AbstractColle
 import {allByCollectionHolder}                     from "../../src/method/all"
 import {anyByCollectionHolder}                     from "../../src/method/any"
 import {filterByCollectionHolder}                  from "../../src/method/filter"
-import {filterIndexed}                             from "../../src/method/collectionHolder/filterIndexed"
+import {filterIndexedByCollectionHolder}           from "../../src/method/filterIndexed"
 import {filterNot}                                 from "../../src/method/collectionHolder/filterNot"
 import {filterNotIndexed}                          from "../../src/method/collectionHolder/filterNotIndexed"
 import {filterNotNullByCollectionHolder}           from "../../src/method/filterNotNull"
@@ -442,7 +442,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public override filterIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return filterIndexed(this, predicate,)
+        return filterIndexedByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter indexed methods --------------------

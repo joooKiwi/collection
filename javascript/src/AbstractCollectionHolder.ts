@@ -16,7 +16,7 @@ import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCol
 import {allByCollectionHolder}                     from "./method/all"
 import {anyByCollectionHolder}                     from "./method/any"
 import {filterByCollectionHolder}                  from "./method/filter"
-import {filterIndexed}                             from "./method/collectionHolder/filterIndexed"
+import {filterIndexedByCollectionHolder}           from "./method/filterIndexed"
 import {filterNot}                                 from "./method/collectionHolder/filterNot"
 import {filterNotIndexed}                          from "./method/collectionHolder/filterNotIndexed"
 import {filterNotNullByCollectionHolder}           from "./method/filterNotNull"
@@ -454,7 +454,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public filterIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return filterIndexed(this, predicate,)
+        return filterIndexedByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter indexed methods --------------------

@@ -7,7 +7,6 @@
 
 export {getOrElse,         getOrElse as         getOrElseByCollectionHolder}         from "./getOrElse"
 export {getOrNull,         getOrNull as         getOrNullByCollectionHolder}         from "./getOrNull"
-export {filterIndexed,     filterIndexed as     filterIndexedByCollectionHolder}     from "./filterIndexed"
 export {filterNot,         filterNot as         filterNotByCollectionHolder}         from "./filterNot"
 export {filterNotIndexed,  filterNotIndexed as  filterNotIndexedByCollectionHolder}  from "./filterNotIndexed"
 export {forEach,           forEach as           forEachByCollectionHolder}           from "./forEach"
