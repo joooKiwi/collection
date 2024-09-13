@@ -28,8 +28,8 @@ import {firstByMinimalistCollectionHolder}            from "../../src/method/fir
 import {firstOrNullByMinimalistCollectionHolder}      from "../../src/method/firstOrNull"
 import {forEachByMinimalistCollectionHolder}          from "../../src/method/forEach"
 import {forEachIndexedByMinimalistCollectionHolder}   from "../../src/method/forEachIndexed"
-import {getOrNull}                                    from "../../src/method/minimalistCollectionHolder/getOrNull"
 import {getOrElseByMinimalistCollectionHolder}        from "../../src/method/getOrElse"
+import {getOrNullByMinimalistCollectionHolder}        from "../../src/method/getOrNull"
 import {has}                                          from "../../src/method/has"
 import {hasAll}                                       from "../../src/method/hasAll"
 import {hasDuplicate}                                 from "../../src/method/hasDuplicate"
@@ -176,7 +176,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#region -------------------- Get or null methods --------------------
 
     public getOrNull(index: number,): NullOr<T> {
-        return getOrNull(this, index,)
+        return getOrNullByMinimalistCollectionHolder(this, index,)
     }
 
     public atOrNull(index?: number,): never

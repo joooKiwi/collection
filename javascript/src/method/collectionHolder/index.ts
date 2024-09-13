@@ -5,7 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {getOrNull,         getOrNull as         getOrNullByCollectionHolder}         from "./getOrNull"
 export {none,              none as              noneByCollectionHolder}              from "./none"
 export {onEach,            onEach as            onEachByCollectionHolder}            from "./onEach"
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByCollectionHolder}     from "./onEachIndexed"

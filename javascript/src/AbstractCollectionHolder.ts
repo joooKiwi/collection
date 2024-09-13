@@ -28,8 +28,8 @@ import {firstByCollectionHolder}                   from "./method/first"
 import {firstOrNullByCollectionHolder}             from "./method/firstOrNull"
 import {forEachByCollectionHolder}                 from "./method/forEach"
 import {forEachIndexedByCollectionHolder}          from "./method/forEachIndexed"
-import {getOrNull}                                 from "./method/collectionHolder/getOrNull"
 import {getOrElseByCollectionHolder}               from "./method/getOrElse"
+import {getOrNullByCollectionHolder}               from "./method/getOrNull"
 import {hasByCollectionHolder}                     from "./method/has"
 import {hasAllByCollectionHolder}                  from "./method/hasAll"
 import {hasNullByCollectionHolder}                 from "./method/hasNull"
@@ -159,7 +159,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Get or null methods --------------------
 
     public getOrNull(index: number,): NullOr<T> {
-        return getOrNull<T>(this, index,)
+        return getOrNullByCollectionHolder<T>(this, index,)
     }
 
     public atOrNull(index: number,): NullOr<T> {

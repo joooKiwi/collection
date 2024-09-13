@@ -22,10 +22,7 @@ export {firstOrNull,      firstOrNullByCollectionHolder,      firstOrNullByMinim
 export {forEach,          forEachByCollectionHolder,          forEachByMinimalistCollectionHolder                       } from "./forEach"
 export {forEachIndexed,   forEachIndexedByCollectionHolder,   forEachIndexedByMinimalistCollectionHolder                } from "./forEachIndexed"
 export {getOrElse,        getOrElseByCollectionHolder,        getOrElseByMinimalistCollectionHolder                     } from "./getOrElse"
-
-export {getOrNull}                                          from "./getOrNull"
-export {getOrNull as getOrNullByCollectionHolder}           from "./collectionHolder/getOrNull"
-export {getOrNull as getOrNullByMinimalistCollectionHolder} from "./minimalistCollectionHolder/getOrNull"
+export {getOrNull,        getOrNullByCollectionHolder,        getOrNullByMinimalistCollectionHolder                     } from "./getOrNull"
 
 export {has,                                  hasByCollectionHolder}                                                      from "./has"
 export {hasAll,                               hasAllByCollectionHolder}                                                   from "./hasAll"
