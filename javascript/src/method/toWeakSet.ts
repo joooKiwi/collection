@@ -9,8 +9,8 @@ import type {Nullable} from "@joookiwi/type"
 
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {__values}                                  from "./_tables utility"
-import {isCollectionHolder}                        from "./isCollectionHolder"
+import {__uniqueValues, __values} from "./_tables utility"
+import {isCollectionHolder}       from "./isCollectionHolder"
 import {isCollectionHolderByStructure}             from "./isCollectionHolderByStructure"
 import {toWeakSet as byCollectionHolder}           from "./collectionHolder/toWeakSet"
 import {toWeakSet as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/toWeakSet"
@@ -35,7 +35,12 @@ export function toWeakSet<const T extends WeakKey, >(collection: Nullable<Minima
 //#region -------------------- Core method --------------------
 
 /** @internal */
-export function __newWeakSet<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,): Readonly<WeakSet<T>> {
+export function __withDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,): Readonly<WeakSet<T>> {
+    return Object.freeze(new WeakSet(__uniqueValues(collection, size,),),)
+}
+
+/** @internal */
+export function __withoutDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,): Readonly<WeakSet<T>> {
     return Object.freeze(new WeakSet(__values(collection, size,),),)
 }
 

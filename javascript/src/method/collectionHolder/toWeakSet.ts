@@ -9,8 +9,8 @@ import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder} from "../../CollectionHolder"
 
-import {CollectionConstants} from "../../CollectionConstants"
-import {__newWeakSet}        from "../toWeakSet"
+import {CollectionConstants}                 from "../../CollectionConstants"
+import {__withDuplicate, __withoutDuplicate} from "../toWeakSet"
 
 /**
  * Convert the {@link collection} to an {@link WeakSet weak set}
@@ -23,5 +23,7 @@ export function toWeakSet<const T extends WeakKey, >(collection: Nullable<Collec
         return CollectionConstants.EMPTY_WEAK_SET
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_WEAK_SET
-    return __newWeakSet(collection, collection.size,)
+    if (collection.hasDuplicate)
+        return __withDuplicate(collection, collection.size,)
+    return __withoutDuplicate(collection, collection.size,)
 }
