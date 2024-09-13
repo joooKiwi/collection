@@ -23,8 +23,8 @@ import {filterNotNullByMinimalistCollectionHolder}    from "../../src/method/fil
 import {findByMinimalistCollectionHolder}             from "../../src/method/find"
 import {findIndexedByMinimalistCollectionHolder}      from "../../src/method/findIndexed"
 import {findLastByMinimalistCollectionHolder}         from "../../src/method/findLast"
-import {findLastIndexed}                              from "../../src/method/findLastIndexed"
-import {first}                                        from "../../src/method/first"
+import {findLastIndexedByMinimalistCollectionHolder}  from "../../src/method/findLastIndexed"
+import {firstByMinimalistCollectionHolder}            from "../../src/method/first"
 import {firstOrNull}                                  from "../../src/method/firstOrNull"
 import {forEach}                                      from "../../src/method/forEach"
 import {forEachIndexed}                               from "../../src/method/forEachIndexed"
@@ -244,7 +244,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
     public first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
     public first(predicate?: Nullable<BooleanCallback<T>>,) {
-        return first(this, predicate,)
+        return firstByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- First methods --------------------
@@ -541,7 +541,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findLastIndexed(this, predicate,)
+        return findLastIndexedByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find last indexed methods --------------------
