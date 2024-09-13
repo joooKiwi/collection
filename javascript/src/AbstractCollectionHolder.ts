@@ -28,8 +28,8 @@ import {firstByCollectionHolder}                   from "./method/first"
 import {firstOrNullByCollectionHolder}             from "./method/firstOrNull"
 import {forEachByCollectionHolder}                 from "./method/forEach"
 import {forEachIndexedByCollectionHolder}          from "./method/forEachIndexed"
-import {getOrElse}                                 from "./method/collectionHolder/getOrElse"
 import {getOrNull}                                 from "./method/collectionHolder/getOrNull"
+import {getOrElseByCollectionHolder}               from "./method/getOrElse"
 import {hasByCollectionHolder}                     from "./method/has"
 import {hasAllByCollectionHolder}                  from "./method/hasAll"
 import {hasNullByCollectionHolder}                 from "./method/hasNull"
@@ -140,7 +140,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
-        return getOrElse(this, index, defaultValue,)
+        return getOrElseByCollectionHolder(this, index, defaultValue,)
     }
 
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U

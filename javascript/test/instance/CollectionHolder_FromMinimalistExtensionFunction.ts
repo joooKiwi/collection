@@ -28,8 +28,8 @@ import {firstByMinimalistCollectionHolder}            from "../../src/method/fir
 import {firstOrNullByMinimalistCollectionHolder}      from "../../src/method/firstOrNull"
 import {forEachByMinimalistCollectionHolder}          from "../../src/method/forEach"
 import {forEachIndexedByMinimalistCollectionHolder}   from "../../src/method/forEachIndexed"
-import {getOrElse}                                    from "../../src/method/minimalistCollectionHolder/getOrElse"
 import {getOrNull}                                    from "../../src/method/minimalistCollectionHolder/getOrNull"
+import {getOrElseByMinimalistCollectionHolder}        from "../../src/method/getOrElse"
 import {has}                                          from "../../src/method/has"
 import {hasAll}                                       from "../../src/method/hasAll"
 import {hasDuplicate}                                 from "../../src/method/hasDuplicate"
@@ -157,7 +157,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) {
-        return getOrElse(this, index, defaultValue,)
+        return getOrElseByMinimalistCollectionHolder(this, index, defaultValue,)
     }
 
     public atOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
