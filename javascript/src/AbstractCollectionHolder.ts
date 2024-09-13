@@ -377,12 +377,19 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasAll(values: CollectionIterator<T>,): boolean
     public hasAll(values: Iterable<T>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: readonly unknown[],): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: CollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: CollectionIterator,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: Iterable<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         return hasAllByCollectionHolder(this, values,)
@@ -395,12 +402,19 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public includesAll(values: CollectionIterator<T>,): boolean
     public includesAll(values: Iterable<T>,): boolean
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: readonly unknown[],): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: CollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: CollectionIterator,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: Iterable<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         return this.hasAll(values,)
@@ -414,13 +428,21 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public containsAll(values: CollectionIterator<T>,): boolean
     public containsAll(values: Iterable<T>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: readonly unknown[],): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: CollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: CollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: CollectionIterator,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: Iterable<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         return this.hasAll(values,)

@@ -732,7 +732,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
-     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in the version 1.11
+     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     has(value: unknown,): boolean
 
@@ -753,7 +753,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param value The value to compare
      * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
      * @alias has
-     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in the version 1.11
+     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includes(value: unknown,): boolean
 
@@ -773,7 +773,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param value The value to compare
      * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
      * @alias has
-     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in the version 1.11
+     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     contains(value: unknown,): boolean
 
@@ -1188,6 +1188,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasAll(values: readonly unknown[],): boolean
 
@@ -1197,6 +1198,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasAll(values: ReadonlySet<unknown>,): boolean
 
@@ -1206,6 +1208,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasAll(values: CollectionHolder,): boolean
 
@@ -1215,6 +1218,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasAll(values: MinimalistCollectionHolder,): boolean
 
@@ -1224,6 +1228,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasAll(values: CollectionIterator,): boolean
 
@@ -1233,6 +1238,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasAll(values: Iterable<unknown>,): boolean
 
@@ -1243,6 +1249,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      * @typescriptDefinition
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 
@@ -1310,6 +1317,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesAll(values: readonly unknown[],): boolean
 
@@ -1318,6 +1326,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesAll(values: ReadonlySet<unknown>,): boolean
 
@@ -1326,6 +1335,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesAll(values: CollectionHolder,): boolean
 
@@ -1334,6 +1344,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesAll(values: MinimalistCollectionHolder,): boolean
 
@@ -1342,6 +1353,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesAll(values: CollectionIterator,): boolean
 
@@ -1350,6 +1362,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesAll(values: Iterable<unknown>,): boolean
 
@@ -1359,6 +1372,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias hasAll
      * @typescriptDefinition
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 
@@ -1425,6 +1439,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsAll(values: readonly unknown[],): boolean
 
@@ -1433,6 +1448,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsAll(values: ReadonlySet<unknown>,): boolean
 
@@ -1441,6 +1457,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsAll(values: CollectionHolder,): boolean
 
@@ -1450,6 +1467,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias hasAll
      * @typescriptDefinition
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsAll(values: MinimalistCollectionHolder,): boolean
 
@@ -1458,6 +1476,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsAll(values: CollectionIterator,): boolean
 
@@ -1466,6 +1485,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasAll
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsAll(values: Iterable<unknown>,): boolean
 
@@ -1475,6 +1495,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias hasAll
      * @typescriptDefinition
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 

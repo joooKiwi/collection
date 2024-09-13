@@ -31,7 +31,7 @@ import {forEachIndexedByMinimalistCollectionHolder}   from "../../src/method/for
 import {getOrElseByMinimalistCollectionHolder}        from "../../src/method/getOrElse"
 import {getOrNullByMinimalistCollectionHolder}        from "../../src/method/getOrNull"
 import {hasByMinimalistCollectionHolder}              from "../../src/method/has"
-import {hasAll}                                       from "../../src/method/hasAll"
+import {hasAllByMinimalistCollectionHolder}           from "../../src/method/hasAll"
 import {hasDuplicate}                                 from "../../src/method/hasDuplicate"
 import {hasNull}                                      from "../../src/method/hasNull"
 import {hasOne}                                       from "../../src/method/hasOne"
@@ -404,7 +404,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public hasAll(values: Iterable<unknown>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
-        return hasAll(this, values,)
+        return hasAllByMinimalistCollectionHolder(this, values,)
     }
 
     public includesAll(values?: readonly T[],): never

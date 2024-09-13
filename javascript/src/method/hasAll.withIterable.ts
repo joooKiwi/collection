@@ -10,6 +10,9 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+
 //#region -------------------- Facade method --------------------
 
 /**
@@ -30,9 +33,42 @@ export function hasAllWithIterable<const T, >(collection: Nullable<MinimalistCol
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
+ * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
  */
 export function hasAllWithIterable<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<unknown>,): boolean
-export function hasAllWithIterable<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<unknown>,) {
+export function hasAllWithIterable<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,) {
+    if (collection == null)
+        return false
+    if (isCollectionHolder<T>(collection,))
+        return hasAllWithIterableByCollectionHolder(collection, values,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return hasAllWithIterableByCollectionHolder(collection, values,)
+    return hasAllWithIterableByMinimalistCollectionHolder(collection, values,)
+}
+
+
+/**
+ * Tell that all of the {@link values} (as an {@link Iterable}) exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ */
+export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,): boolean
+/**
+ * Tell that all of the {@link values} (as an {@link Iterable}) exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
+ */
+export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<unknown>,): boolean
+export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,) {
     if (collection == null)
         return false
 
@@ -44,7 +80,6 @@ export function hasAllWithIterable<const T, >(collection: Nullable<MinimalistCol
     const size = collection.size
     if (size == 0)
         return false
-
     return __hasAll(collection, iterator, iteratorResult.value, size,)
 }
 
@@ -66,9 +101,10 @@ export function hasAllWithIterableByCollectionHolder<const T, >(collection: Null
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
+ * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
  */
-export function hasAllWithIterableByCollectionHolder(collection: Nullable<CollectionHolder>, values: Iterable<unknown>,): boolean
-export function hasAllWithIterableByCollectionHolder(collection: Nullable<CollectionHolder>, values: Iterable<unknown>,) {
+export function hasAllWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<unknown>,): boolean
+export function hasAllWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<T>,) {
     if (collection == null)
         return false
 
@@ -78,14 +114,13 @@ export function hasAllWithIterableByCollectionHolder(collection: Nullable<Collec
         return true
     if (collection.isEmpty)
         return false
-
     return __hasAll(collection, iterator, iteratorResult.value, collection.size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasAll(collection: MinimalistCollectionHolder, iterator: IterableIterator<unknown>, firstValue: unknown, size: number,) {
+function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, iterator: IterableIterator<T>, firstValue: unknown, size: number,) {
     firstValueLoop: {
         let index1 = -1
         while (++index1 < size)
@@ -94,7 +129,7 @@ function __hasAll(collection: MinimalistCollectionHolder, iterator: IterableIter
         return false
     }
 
-    let iteratorResult: IteratorResult<unknown, unknown>
+    let iteratorResult: IteratorResult<T, unknown>
     valueLoop: while (!(iteratorResult = iterator.next()).done) {
         const value = iteratorResult.value
         let index2 = -1
