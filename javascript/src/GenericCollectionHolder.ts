@@ -21,6 +21,7 @@ import {CollectionConstants}                       from "./CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
+import {isArray}                                   from "./method/isArray"
 import {isArrayByStructure}                        from "./method/isArrayByStructure"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}           from "./method/isCollectionIteratorByStructure"
@@ -28,6 +29,7 @@ import {isCollectionHolder}                        from "./method/isCollectionHo
 import {isCollectionHolderByStructure}             from "./method/isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}   from "./method/isMinimalistCollectionHolderByStructure"
+import {isSet}                                     from "./method/isSet"
 import {isSetByStructure}                          from "./method/isSetByStructure"
 
 /**
@@ -96,7 +98,7 @@ export class GenericCollectionHolder<const T = unknown,
 
         //#region -------------------- initialization by a known instance --------------------
 
-        if (reference instanceof Array) {
+        if (isArray(reference,)) {
             const size = this.#size = reference.length
 
             //#region -------------------- Initialization (size = 0) --------------------
@@ -144,7 +146,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (reference instanceof Set) {
+        if (isSet<T>(reference,)) {
             this.#hasDuplicate = false
             const size = this.#size = reference.size
 

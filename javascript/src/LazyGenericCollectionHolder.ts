@@ -40,6 +40,7 @@ import {CollectionHandlerByMinimalistCollectionHolderOf2} from "./handler/Collec
 import {CollectionHandlerBySet}                           from "./handler/CollectionHandlerBySet"
 import {CollectionHandlerBySetOf1}                        from "./handler/CollectionHandlerBySetOf1"
 import {CollectionHandlerBySetOf2}                        from "./handler/CollectionHandlerBySetOf2"
+import {isArray}                                          from "./method/isArray"
 import {isArrayByStructure}                               from "./method/isArrayByStructure"
 import {isCollectionIterator}                             from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}                  from "./method/isCollectionIteratorByStructure"
@@ -47,6 +48,7 @@ import {isCollectionHolder}                               from "./method/isColle
 import {isCollectionHolderByStructure}                    from "./method/isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}                     from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}          from "./method/isMinimalistCollectionHolderByStructure"
+import {isSet}                                            from "./method/isSet"
 import {isSetByStructure}                                 from "./method/isSetByStructure"
 
 /**
@@ -117,7 +119,7 @@ export class LazyGenericCollectionHolder<const T = unknown,
 
         //#region -------------------- Initialization by a known instance --------------------
 
-        if (reference instanceof Array) {
+        if (isArray<T>(reference,)) {
             this.#reference = lazyOf(reference as REFERENCE,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerByArray(reference,),)
             this.#lazySize = lazy(() => handler.value.size,)
@@ -126,7 +128,7 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
         }
 
-        if (reference instanceof Set) {
+        if (isSet<T>(reference,)) {
             this.#reference = lazyOf(reference as REFERENCE,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerBySet(reference,),)
             this.#lazySize = lazy(() => handler.value.size,)
@@ -224,7 +226,7 @@ export class LazyGenericCollectionHolder<const T = unknown,
 
                 //#region -------------------- Late-initialization by a known instance --------------------
 
-                if (referenceFound instanceof Array) {
+                if (isArray<T>(referenceFound,)) {
                     const handler = this.#handler = this.#handlerByArray(referenceFound,)
                     if (this.#size == null)
                         this.#lazySize = lazy(() => handler.size,)
@@ -235,7 +237,7 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
-                if (referenceFound instanceof Set) {
+                if (isSet<T>(referenceFound,)) {
                     const handler = this.#handler = this.#handlerBySet(referenceFound,)
                     if (this.#size == null)
                         this.#lazySize = lazy(() => handler.size,)
