@@ -5,9 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {all}                                    from "./all"
-export {all as allByCollectionHolder}           from "./collectionHolder/all"
-export {all as allByMinimalistCollectionHolder} from "./minimalistCollectionHolder/all"
+export {all, allByCollectionHolder, allByMinimalistCollectionHolder} from "./all"
 
 export {any}                                    from "./any"
 export {any as anyByCollectionHolder}           from "./collectionHolder/any"
