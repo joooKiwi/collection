@@ -13,10 +13,8 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "../../src/iterator/CollectionIterator"
 
 import {AbstractCollectionHolder}                                           from "../../src/AbstractCollectionHolder"
-import {all as allByCollectionHolder}                                       from "../../src/method/collectionHolder/all"
-import {all as allByMinimalistCollectionHolder}                             from "../../src/method/minimalistCollectionHolder/all"
-import {any as anyByCollectionHolder}                                       from "../../src/method/collectionHolder/any"
-import {any as anyByMinimalistCollectionHolder}                             from "../../src/method/minimalistCollectionHolder/any"
+import {allByCollectionHolder, allByMinimalistCollectionHolder}             from "../../src/method/all"
+import {anyByCollectionHolder, anyByMinimalistCollectionHolder}             from "../../src/method/any"
 import {filter as filterByCollectionHolder}                                 from "../../src/method/collectionHolder/filter"
 import {filter as filterByMinimalistCollectionHolder}                       from "../../src/method/minimalistCollectionHolder/filter"
 import {filterIndexed as filterIndexedByCollectionHolder}                   from "../../src/method/collectionHolder/filterIndexed"

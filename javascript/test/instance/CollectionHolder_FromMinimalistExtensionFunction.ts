@@ -13,8 +13,8 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "../../src/iterator/CollectionIterator"
 
 import {AbstractMinimalistCollectionHolder} from "../../src/AbstractMinimalistCollectionHolder"
-import {all}                                from "../../src/method/minimalistCollectionHolder/all"
-import {any}                                from "../../src/method/minimalistCollectionHolder/any"
+import {allByMinimalistCollectionHolder}    from "../../src/method/all"
+import {anyByMinimalistCollectionHolder}    from "../../src/method/any"
 import {filter}                             from "../../src/method/minimalistCollectionHolder/filter"
 import {filterIndexed}                      from "../../src/method/minimalistCollectionHolder/filterIndexed"
 import {filterNot}                          from "../../src/method/minimalistCollectionHolder/filterNot"
@@ -286,7 +286,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#region -------------------- All methods --------------------
 
     public all(predicate: BooleanCallback<T>,): boolean {
-        return all(this, predicate,)
+        return allByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- All methods --------------------
@@ -295,7 +295,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public any(predicate?: Nullable<BooleanCallback<T>>,) {
-        return any(this, predicate,)
+        return anyByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Any methods --------------------

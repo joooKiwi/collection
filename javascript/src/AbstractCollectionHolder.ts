@@ -13,8 +13,8 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "./iterator/CollectionIterator"
 
 import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
-import {all}                                       from "./method/collectionHolder/all"
-import {any}                                       from "./method/collectionHolder/any"
+import {allByCollectionHolder}                     from "./method/all"
+import {anyByCollectionHolder}                     from "./method/any"
 import {filter}                                    from "./method/collectionHolder/filter"
 import {filterIndexed}                             from "./method/collectionHolder/filterIndexed"
 import {filterNot}                                 from "./method/collectionHolder/filterNot"
@@ -53,7 +53,7 @@ import {onEach}                                    from "./method/collectionHold
 import {onEachIndexed}                             from "./method/collectionHolder/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "./method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "./method/slice"
-import {toArrayByCollectionHolder}                 from "./method/toArray"
+import {toArray}                                   from "./method/collectionHolder/toArray"
 import {toIteratorByCollectionHolder}              from "./method/toIterator"
 import {toLocaleLowerCaseStringByCollectionHolder} from "./method/toLocaleLowerCaseString"
 import {toLocaleStringByCollectionHolder}          from "./method/toLocaleString"
@@ -267,7 +267,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- All methods --------------------
 
     public all(predicate: BooleanCallback<T>,): boolean {
-        return all(this, predicate,)
+        return allByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- All methods --------------------
@@ -276,7 +276,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public any(predicate?: Nullable<BooleanCallback<T>>,) {
-        return any(this, predicate,)
+        return anyByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Any methods --------------------
@@ -628,7 +628,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Conversion methods (array) --------------------
 
     public toArray(): readonly T[] {
-        return toArrayByCollectionHolder<T>(this,)
+        return toArray<T>(this,)
     }
 
     public toMutableArray(): T[] {
