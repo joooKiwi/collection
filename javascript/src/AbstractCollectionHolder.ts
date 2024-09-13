@@ -293,20 +293,23 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Has methods --------------------
 
     public has(value: T,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public has(value: unknown,): boolean
-    public has(value: unknown,) {
+    public has(value: T,) {
         return hasByCollectionHolder(this, value,)
     }
 
     public includes(value: T,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includes(value: unknown,): boolean
-    public includes(value: unknown,) {
+    public includes(value: T,) {
         return this.has(value,)
     }
 
     public contains(value: T,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public contains(value: unknown,): boolean
-    public contains(value: unknown,) {
+    public contains(value: T,) {
         return this.has(value,)
     }
 
