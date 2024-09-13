@@ -6,10 +6,7 @@
  ******************************************************************************/
 
 export {all, allByCollectionHolder, allByMinimalistCollectionHolder} from "./all"
-
-export {any}                                    from "./any"
-export {any as anyByCollectionHolder}           from "./collectionHolder/any"
-export {any as anyByMinimalistCollectionHolder} from "./minimalistCollectionHolder/any"
+export {any, anyByCollectionHolder, anyByMinimalistCollectionHolder} from "./any"
 
 export {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString} from "./asString"
 

@@ -5,7 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {any,               any as               anyByCollectionHolder}               from "./any"
 export {getOrElse,         getOrElse as         getOrElseByCollectionHolder}         from "./getOrElse"
 export {getOrNull,         getOrNull as         getOrNullByCollectionHolder}         from "./getOrNull"
 export {filter,            filter as            filterByCollectionHolder}            from "./filter"

@@ -5,7 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {any,               any as               anyByMinimalistCollectionHolder}               from "./any"
 export {getOrElse,         getOrElse as         getOrElseByMinimalistCollectionHolder}         from "./getOrElse"
 export {getOrNull,         getOrNull as         getOrNullByMinimalistCollectionHolder}         from "./getOrNull"
 export {filter,            filter as            filterByMinimalistCollectionHolder}            from "./filter"
