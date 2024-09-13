@@ -25,6 +25,7 @@ import {findIndexedByCollectionHolder, findIndexedByMinimalistCollectionHolder} 
 import {findLastByCollectionHolder, findLastByMinimalistCollectionHolder}                 from "../../src/method/findLast"
 import {findLastIndexedByCollectionHolder, findLastIndexedByMinimalistCollectionHolder}   from "../../src/method/findLastIndexed"
 import {firstByCollectionHolder, firstByMinimalistCollectionHolder}                       from "../../src/method/first"
+import {firstOrNullByCollectionHolder, firstOrNullByMinimalistCollectionHolder}           from "../../src/method/firstOrNull"
 import {forEach as forEachByCollectionHolder}                                             from "../../src/method/collectionHolder/forEach"
 import {forEach as forEachByMinimalistCollectionHolder}                                   from "../../src/method/minimalistCollectionHolder/forEach"
 import {forEachIndexed as forEachIndexedByCollectionHolder}                               from "../../src/method/collectionHolder/forEachIndexed"
@@ -54,7 +55,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                         from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {firstOrNull, firstOrNullByCollectionHolder}                         from "../../src/method/firstOrNull"
 import {has, hasByCollectionHolder}                                         from "../../src/method/has"
 import {hasAll, hasAllByCollectionHolder}                                   from "../../src/method/hasAll"
 import {hasDuplicate, hasDuplicateByCollectionHolder}                       from "../../src/method/hasDuplicate"
@@ -298,7 +298,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
         return this.#isCollectionHolder
             ? firstOrNullByCollectionHolder(this, predicate,)
-            : firstOrNull(this, predicate,)
+            : firstOrNullByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- First or null methods --------------------

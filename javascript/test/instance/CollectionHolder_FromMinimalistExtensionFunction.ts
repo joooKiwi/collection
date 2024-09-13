@@ -25,7 +25,7 @@ import {findIndexedByMinimalistCollectionHolder}      from "../../src/method/fin
 import {findLastByMinimalistCollectionHolder}         from "../../src/method/findLast"
 import {findLastIndexedByMinimalistCollectionHolder}  from "../../src/method/findLastIndexed"
 import {firstByMinimalistCollectionHolder}            from "../../src/method/first"
-import {firstOrNull}                                  from "../../src/method/firstOrNull"
+import {firstOrNullByMinimalistCollectionHolder}      from "../../src/method/firstOrNull"
 import {forEach}                                      from "../../src/method/forEach"
 import {forEachIndexed}                               from "../../src/method/forEachIndexed"
 import {getOrElse}                                    from "../../src/method/minimalistCollectionHolder/getOrElse"
@@ -254,7 +254,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        return firstOrNull(this, predicate,)
+        return firstOrNullByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- First or null methods --------------------

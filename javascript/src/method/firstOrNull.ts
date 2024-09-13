@@ -11,13 +11,16 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+
 //#region -------------------- Facade method --------------------
 
 /**
  * Get the first element in the {@link collection}
  * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
  * @extensionFunction
@@ -28,7 +31,7 @@ export function firstOrNull<const T, >(collection: Nullable<MinimalistCollection
  * matching the given {@link predicate}
  * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param predicate  The matching predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
@@ -41,7 +44,7 @@ export function firstOrNull<const T, const S extends T, >(collection: Nullable<M
  * matching the given {@link predicate}
  * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param predicate  The matching predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
@@ -49,6 +52,52 @@ export function firstOrNull<const T, const S extends T, >(collection: Nullable<M
  */
 export function firstOrNull<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
 export function firstOrNull<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
+    if (collection == null)
+        return null
+    if (isCollectionHolder<T>(collection,))
+        return firstOrNullByCollectionHolder(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return firstOrNullByCollectionHolder(collection, predicate,)
+    return firstOrNullByMinimalistCollectionHolder(collection, predicate,)
+}
+
+
+/**
+ * Get the first element in the {@link collection}
+ * or <b>null</b> if the {@link collection} <b>is empty</b>
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
+ * @extensionFunction
+ */
+export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): NullOr<T>
+/**
+ * Get the first element in the {@link collection}
+ * matching the given {@link predicate}
+ * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param predicate  The matching predicate
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+ * @typescriptDefinition
+ * @extensionFunction
+ */
+export function firstOrNullByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+/**
+ * Get the first element in the {@link collection}
+ * matching the given {@link predicate}
+ * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param predicate  The matching predicate
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+ * @extensionFunction
+ */
+export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (collection == null)
         return null
 
