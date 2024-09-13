@@ -11,9 +11,9 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}                       from "../CollectionConstants"
-import {isCollectionHolder}                        from "./isCollectionHolder"
-import {isCollectionHolderByStructure}             from "./isCollectionHolderByStructure"
+import {CollectionConstants}           from "../CollectionConstants"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -53,6 +53,7 @@ export function filterNot<const T, >(collection: Nullable<MinimalistCollectionHo
         return filterNotByCollectionHolder(collection, predicate,)
     return filterNotByMinimalistCollectionHolder(collection, predicate,)
 }
+
 
 /**
  * Get a new {@link CollectionHolder}

@@ -11,9 +11,9 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}                    from "../CollectionConstants"
-import {isCollectionHolder}                     from "./isCollectionHolder"
-import {isCollectionHolderByStructure}          from "./isCollectionHolderByStructure"
+import {CollectionConstants}           from "../CollectionConstants"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -56,45 +56,6 @@ export function filter<const T, >(collection: Nullable<MinimalistCollectionHolde
     return filterByMinimalistCollectionHolder(collection, predicate,)
 }
 
-/**
- * Get a new {@link CollectionHolder}
- * matching only the given {@link predicate}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate  The given predicate
- * @see ReadonlyArray.filter
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
- * @typescriptDefinition
- * @extensionFunction
- */
-export function filterByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-/**
- * Get a new {@link CollectionHolder}
- * matching only the given {@link predicate}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate  The given predicate
- * @see ReadonlyArray.filter
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
- * @extensionFunction
- */
-export function filterByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
-export function filterByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,) {
-    if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (predicate.length == 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,),)
-    if (predicate.length >= 2)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, collection.size,),)
-}
-
 
 /**
  * Get a new {@link CollectionHolder}
@@ -135,6 +96,45 @@ export function filterByMinimalistCollectionHolder<const T, >(collection: Nullab
     if (predicate.length >= 2)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection, predicate, size,),)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, size,),)
+}
+
+/**
+ * Get a new {@link CollectionHolder}
+ * matching only the given {@link predicate}
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param predicate  The given predicate
+ * @see ReadonlyArray.filter
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
+ * @typescriptDefinition
+ * @extensionFunction
+ */
+export function filterByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+/**
+ * Get a new {@link CollectionHolder}
+ * matching only the given {@link predicate}
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param predicate  The given predicate
+ * @see ReadonlyArray.filter
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter.html Kotlin filter(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
+ * @extensionFunction
+ */
+export function filterByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
+export function filterByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,) {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (predicate.length == 1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,),)
+    if (predicate.length >= 2)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, collection.size,),)
 }
 
 //#endregion -------------------- Facade method --------------------

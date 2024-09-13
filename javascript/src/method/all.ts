@@ -38,6 +38,7 @@ export function all<const T, >(collection: Nullable<MinimalistCollectionHolder<T
     return allByMinimalistCollectionHolder(collection, predicate,)
 }
 
+
 /**
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
