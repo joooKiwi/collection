@@ -7,7 +7,6 @@
 
 export {getOrElse,         getOrElse as         getOrElseByMinimalistCollectionHolder}         from "./getOrElse"
 export {getOrNull,         getOrNull as         getOrNullByMinimalistCollectionHolder}         from "./getOrNull"
-export {filter,            filter as            filterByMinimalistCollectionHolder}            from "./filter"
 export {filterIndexed,     filterIndexed as     filterIndexedByMinimalistCollectionHolder}     from "./filterIndexed"
 export {filterNot,         filterNot as         filterNotByMinimalistCollectionHolder}         from "./filterNot"
 export {filterNotIndexed,  filterNotIndexed as  filterNotIndexedByMinimalistCollectionHolder}  from "./filterNotIndexed"

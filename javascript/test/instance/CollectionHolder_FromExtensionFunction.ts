@@ -15,7 +15,7 @@ import type {CollectionIterator}                                                
 import {AbstractCollectionHolder}                  from "../../src/AbstractCollectionHolder"
 import {allByCollectionHolder}                     from "../../src/method/all"
 import {anyByCollectionHolder}                     from "../../src/method/any"
-import {filter}                                    from "../../src/method/collectionHolder/filter"
+import {filterByCollectionHolder}                  from "../../src/method/filter"
 import {filterIndexed}                             from "../../src/method/collectionHolder/filterIndexed"
 import {filterNot}                                 from "../../src/method/collectionHolder/filterNot"
 import {filterNotIndexed}                          from "../../src/method/collectionHolder/filterNotIndexed"
@@ -433,7 +433,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public override filter(predicate: BooleanCallback<T>,) {
-        return filter(this, predicate,)
+        return filterByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter methods --------------------

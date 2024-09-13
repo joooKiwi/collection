@@ -15,7 +15,7 @@ import type {CollectionIterator}                                                
 import {AbstractMinimalistCollectionHolder} from "../../src/AbstractMinimalistCollectionHolder"
 import {allByMinimalistCollectionHolder}    from "../../src/method/all"
 import {anyByMinimalistCollectionHolder}    from "../../src/method/any"
-import {filter}                             from "../../src/method/minimalistCollectionHolder/filter"
+import {filterByMinimalistCollectionHolder} from "../../src/method/filter"
 import {filterIndexed}                      from "../../src/method/minimalistCollectionHolder/filterIndexed"
 import {filterNot}                          from "../../src/method/minimalistCollectionHolder/filterNot"
 import {filterNotIndexed}                   from "../../src/method/minimalistCollectionHolder/filterNotIndexed"
@@ -463,7 +463,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public filter(predicate: BooleanCallback<T>,) {
-        return filter(this, predicate,)
+        return filterByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter methods --------------------
