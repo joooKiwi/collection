@@ -23,8 +23,8 @@ export {forEach,          forEachByCollectionHolder,          forEachByMinimalis
 export {forEachIndexed,   forEachIndexedByCollectionHolder,   forEachIndexedByMinimalistCollectionHolder                } from "./forEachIndexed"
 export {getOrElse,        getOrElseByCollectionHolder,        getOrElseByMinimalistCollectionHolder                     } from "./getOrElse"
 export {getOrNull,        getOrNullByCollectionHolder,        getOrNullByMinimalistCollectionHolder                     } from "./getOrNull"
+export {has,              hasByCollectionHolder,              hasByMinimalistCollectionHolder                           } from "./has"
 
-export {has,                                  hasByCollectionHolder}                                                      from "./has"
 export {hasAll,                               hasAllByCollectionHolder}                                                   from "./hasAll"
 export {hasAllWithArray,                      hasAllWithArrayByCollectionHolder}                                          from "./hasAll.withArray"
 export {hasAllWithCollectionHolder,           hasAllWithCollectionHolderByCollectionHolder}                               from "./hasAll.withCollectionHolder"

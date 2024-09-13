@@ -30,7 +30,7 @@ import {forEachByMinimalistCollectionHolder}          from "../../src/method/for
 import {forEachIndexedByMinimalistCollectionHolder}   from "../../src/method/forEachIndexed"
 import {getOrElseByMinimalistCollectionHolder}        from "../../src/method/getOrElse"
 import {getOrNullByMinimalistCollectionHolder}        from "../../src/method/getOrNull"
-import {has}                                          from "../../src/method/has"
+import {hasByMinimalistCollectionHolder}              from "../../src/method/has"
 import {hasAll}                                       from "../../src/method/hasAll"
 import {hasDuplicate}                                 from "../../src/method/hasDuplicate"
 import {hasNull}                                      from "../../src/method/hasNull"
@@ -314,7 +314,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public has(value: T,): boolean
     public has(value: unknown,): boolean
     public has(value: unknown,) {
-        return has(this, value,)
+        return hasByMinimalistCollectionHolder(this, value,)
     }
 
     public includes(value?: T,): never

@@ -28,6 +28,7 @@ import {firstByCollectionHolder, firstByMinimalistCollectionHolder}             
 import {firstOrNullByCollectionHolder, firstOrNullByMinimalistCollectionHolder}           from "../../src/method/firstOrNull"
 import {forEachByCollectionHolder, forEachByMinimalistCollectionHolder}                   from "../../src/method/forEach"
 import {forEachIndexedByCollectionHolder, forEachIndexedByMinimalistCollectionHolder}     from "../../src/method/forEachIndexed"
+import {hasByCollectionHolder, hasByMinimalistCollectionHolder}                           from "../../src/method/has"
 import {none as noneByCollectionHolder}                                                   from "../../src/method/collectionHolder/none"
 import {none as noneByMinimalistCollectionHolder}                                         from "../../src/method/minimalistCollectionHolder/none"
 import {onEach as onEachByCollectionHolder}                                               from "../../src/method/collectionHolder/onEach"
@@ -53,7 +54,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                         from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {has, hasByCollectionHolder}                                         from "../../src/method/has"
 import {hasAll, hasAllByCollectionHolder}                                   from "../../src/method/hasAll"
 import {hasDuplicate, hasDuplicateByCollectionHolder}                       from "../../src/method/hasDuplicate"
 import {hasNull, hasNullByCollectionHolder}                                 from "../../src/method/hasNull"
@@ -368,7 +368,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public has(value: unknown,) {
         return this.#isCollectionHolder
             ? hasByCollectionHolder(this, value,)
-            : has(this, value,)
+            : hasByMinimalistCollectionHolder(this, value,)
     }
 
     public includes(value?: T,): never

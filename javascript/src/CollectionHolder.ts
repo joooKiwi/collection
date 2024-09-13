@@ -732,6 +732,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
+     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in the version 1.11
      */
     has(value: unknown,): boolean
 
@@ -752,6 +753,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param value The value to compare
      * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
      * @alias has
+     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in the version 1.11
      */
     includes(value: unknown,): boolean
 
@@ -771,6 +773,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param value The value to compare
      * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
      * @alias has
+     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in the version 1.11
      */
     contains(value: unknown,): boolean
 
