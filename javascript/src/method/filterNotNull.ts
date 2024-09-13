@@ -10,9 +10,31 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants} from "../CollectionConstants"
+import {CollectionConstants}           from "../CollectionConstants"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
+
+/**
+ * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @see ReadonlyArray.filter
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
+ * @see requireNoNulls
+ * @extensionFunction
+ */
+export function filterNotNull<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (isCollectionHolder<T>(collection,))
+        return filterNotNullByCollectionHolder(collection,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return filterNotNullByCollectionHolder(collection,)
+    return filterNotNullByMinimalistCollectionHolder(collection,)
+}
+
 
 /**
  * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
@@ -23,14 +45,13 @@ import {CollectionConstants} from "../CollectionConstants"
  * @see requireNoNulls
  * @extensionFunction
  */
-export function filterNotNull<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {
+export function filterNotNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const size = collection.size
     if (size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
     return __fromMinimalist(collection, size,)
 }
 
@@ -57,7 +78,7 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __fromComplete<const T, >(collection: MinimalistCollectionHolder<T>,): readonly NonNullable<T>[] {
+function __fromComplete<const T, >(collection: MinimalistCollectionHolder<Nullable<T>>,): readonly NonNullable<T>[] {
     const newArray: NonNullable<T>[] = []
     const size = collection.size
     let index = -1
@@ -69,10 +90,10 @@ function __fromComplete<const T, >(collection: MinimalistCollectionHolder<T>,): 
     return newArray
 }
 
-function __fromMinimalist<const T, >(collection: MinimalistCollectionHolder<T>, size: number,): CollectionHolder<NonNullable<T>> {
+function __fromMinimalist<const T, >(collection: MinimalistCollectionHolder<Nullable<T>>, size: number,): CollectionHolder<NonNullable<T>> {
     let index = -1
     while (++index < size)
-        if (collection.get(index) == null)
+        if (collection.get(index,) == null)
             return new CollectionConstants.LazyGenericCollectionHolder(() => {
                 const newArray: NonNullable<T>[] = []
                 let index2 = -1

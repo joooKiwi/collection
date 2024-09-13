@@ -19,7 +19,7 @@ import {filterByMinimalistCollectionHolder}           from "../../src/method/fil
 import {filterIndexedByMinimalistCollectionHolder}    from "../../src/method/filterIndexed"
 import {filterNotByMinimalistCollectionHolder}        from "../../src/method/filterNot"
 import {filterNotIndexedByMinimalistCollectionHolder} from "../../src/method/filterNotIndexed"
-import {filterNotNull}                                from "../../src/method/filterNotNull"
+import {filterNotNullByMinimalistCollectionHolder}    from "../../src/method/filterNotNull"
 import {find}                                         from "../../src/method/find"
 import {findIndexed}                                  from "../../src/method/findIndexed"
 import {findLast}                                     from "../../src/method/findLast"
@@ -497,7 +497,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#region -------------------- Filter not null methods --------------------
 
     public filterNotNull(): CollectionHolder<NonNullable<T>> {
-        return filterNotNull(this,)
+        return filterNotNullByMinimalistCollectionHolder(this,)
     }
 
     //#endregion -------------------- Filter not null methods --------------------
