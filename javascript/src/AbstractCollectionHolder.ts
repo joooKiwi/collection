@@ -17,7 +17,7 @@ import {allByCollectionHolder}                     from "./method/all"
 import {anyByCollectionHolder}                     from "./method/any"
 import {filterByCollectionHolder}                  from "./method/filter"
 import {filterIndexedByCollectionHolder}           from "./method/filterIndexed"
-import {filterNot}                                 from "./method/collectionHolder/filterNot"
+import {filterNotByCollectionHolder}               from "./method/filterNot"
 import {filterNotIndexed}                          from "./method/collectionHolder/filterNotIndexed"
 import {filterNotNullByCollectionHolder}           from "./method/filterNotNull"
 import {findByCollectionHolder}                    from "./method/find"
@@ -463,7 +463,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public filterNot(predicate: BooleanCallback<T>,) {
-        return filterNot(this, predicate,)
+        return filterNotByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter not methods --------------------

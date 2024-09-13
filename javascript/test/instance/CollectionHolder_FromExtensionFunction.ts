@@ -17,7 +17,7 @@ import {allByCollectionHolder}                     from "../../src/method/all"
 import {anyByCollectionHolder}                     from "../../src/method/any"
 import {filterByCollectionHolder}                  from "../../src/method/filter"
 import {filterIndexedByCollectionHolder}           from "../../src/method/filterIndexed"
-import {filterNot}                                 from "../../src/method/collectionHolder/filterNot"
+import {filterNotByCollectionHolder}               from "../../src/method/filterNot"
 import {filterNotIndexed}                          from "../../src/method/collectionHolder/filterNotIndexed"
 import {filterNotNullByCollectionHolder}           from "../../src/method/filterNotNull"
 import {findByCollectionHolder}                    from "../../src/method/find"
@@ -451,7 +451,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public override filterNot(predicate: BooleanCallback<T>,) {
-        return filterNot(this, predicate,)
+        return filterNotByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter not methods --------------------

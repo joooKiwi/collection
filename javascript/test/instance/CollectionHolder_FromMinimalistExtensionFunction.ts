@@ -17,7 +17,7 @@ import {allByMinimalistCollectionHolder}           from "../../src/method/all"
 import {anyByMinimalistCollectionHolder}           from "../../src/method/any"
 import {filterByMinimalistCollectionHolder}        from "../../src/method/filter"
 import {filterIndexedByMinimalistCollectionHolder} from "../../src/method/filterIndexed"
-import {filterNot}                                 from "../../src/method/minimalistCollectionHolder/filterNot"
+import {filterNotByMinimalistCollectionHolder}     from "../../src/method/filterNot"
 import {filterNotIndexed}                          from "../../src/method/minimalistCollectionHolder/filterNotIndexed"
 import {filterNotNull}                             from "../../src/method/filterNotNull"
 import {find}                                      from "../../src/method/find"
@@ -481,7 +481,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public filterNot(predicate: BooleanCallback<T>,) {
-        return filterNot(this, predicate,)
+        return filterNotByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Filter not methods --------------------

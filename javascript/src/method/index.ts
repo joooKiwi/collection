@@ -5,15 +5,13 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {all,           allByCollectionHolder,           allByMinimalistCollectionHolder                                               } from "./all"
-export {any,           anyByCollectionHolder,           anyByMinimalistCollectionHolder                                               } from "./any"
+export {all,           allByCollectionHolder,           allByMinimalistCollectionHolder                                 } from "./all"
+export {any,           anyByCollectionHolder,           anyByMinimalistCollectionHolder                                 } from "./any"
 export {asLocaleLowerCaseString, asLocaleString, asLocaleUpperCaseString, asLowerCaseString, asString, asUpperCaseString} from "./asString"
-export {filter,        filterByCollectionHolder,        filterByMinimalistCollectionHolder                                            } from "./filter"
-export {filterIndexed, filterIndexedByCollectionHolder, filterIndexedByMinimalistCollectionHolder                                            } from "./filterIndexed"
+export {filter,        filterByCollectionHolder,        filterByMinimalistCollectionHolder                              } from "./filter"
+export {filterIndexed, filterIndexedByCollectionHolder, filterIndexedByMinimalistCollectionHolder                       } from "./filterIndexed"
+export {filterNot,     filterNotByCollectionHolder,     filterNotByMinimalistCollectionHolder                           } from "./filterNot"
 
-export {filterNot}                                          from "./filterNot"
-export {filterNot as filterNotByCollectionHolder}           from "./collectionHolder/filterNot"
-export {filterNot as filterNotByMinimalistCollectionHolder} from "./minimalistCollectionHolder/filterNot"
 
 export {filterNotIndexed}                                                 from "./filterNotIndexed"
 export {filterNotIndexed as filterNotIndexedByCollectionHolder}           from "./collectionHolder/filterNotIndexed"

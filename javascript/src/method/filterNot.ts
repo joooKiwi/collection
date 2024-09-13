@@ -14,8 +14,6 @@ import type {MinimalistCollectionHolder}                 from "../MinimalistColl
 import {CollectionConstants}                       from "../CollectionConstants"
 import {isCollectionHolder}                        from "./isCollectionHolder"
 import {isCollectionHolderByStructure}             from "./isCollectionHolderByStructure"
-import {filterNot as byCollectionHolder}           from "./collectionHolder/filterNot"
-import {filterNot as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/filterNot"
 
 //#region -------------------- Facade method --------------------
 
@@ -50,10 +48,51 @@ export function filterNot<const T, >(collection: Nullable<MinimalistCollectionHo
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
-        return byCollectionHolder(collection, predicate,)
+        return filterNotByCollectionHolder(collection, predicate,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return byCollectionHolder(collection, predicate,)
-    return byMinimalistCollectionHolder(collection, predicate,)
+        return filterNotByCollectionHolder(collection, predicate,)
+    return filterNotByMinimalistCollectionHolder(collection, predicate,)
+}
+
+/**
+ * Get a new {@link CollectionHolder}
+ * not matching the given {@link predicate}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The given predicate
+ * @see ReadonlyArray.filter
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
+ * @typescriptDefinition
+ * @extensionFunction
+ */
+export function filterNotByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+/**
+ * Get a new {@link CollectionHolder}
+ * not matching the given {@link predicate}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The given predicate
+ * @see ReadonlyArray.filter
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
+ * @extensionFunction
+ */
+export function filterNotByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
+export function filterNotByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,) {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+
+    const size = collection.size
+    if (size == 0)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (predicate.length == 1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, size,),)
+    if (predicate.length >= 2)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection, predicate, size,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, size,),)
 }
 
 /**
@@ -68,7 +107,6 @@ export function filterNot<const T, >(collection: Nullable<MinimalistCollectionHo
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @typescriptDefinition
  * @extensionFunction
- * @deprecated Use "filterNot" from import("@joookiwi/collection/method/collectionHolder")
  */
 export function filterNotByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
@@ -81,19 +119,25 @@ export function filterNotByCollectionHolder<const T, const S extends T, >(collec
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#filter(java.util.function.Predicate) Java filter(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
- * @deprecated Use "filterNot" from import("@joookiwi/collection/method/collectionHolder")
  * @extensionFunction
  */
 export function filterNotByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
 export function filterNotByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,) {
-    return byCollectionHolder(collection, predicate,)
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (predicate.length == 1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,),)
+    if (predicate.length >= 2)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection, predicate, collection.size,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(collection, predicate as () => boolean, collection.size,),)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-/** @internal */
-export function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: () => boolean, size: number,) {
+function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: () => boolean, size: number,) {
     const newArray: T[] = []
     let index = -1
     while (++index < size)
@@ -102,8 +146,7 @@ export function __with0Argument<const T, >(collection: MinimalistCollectionHolde
     return newArray
 }
 
-/** @internal */
-export function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, size: number,) {
+function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, size: number,) {
     const newArray: T[] = []
     let index = -1
     while (++index < size) {
@@ -114,8 +157,7 @@ export function __with1Argument<const T, >(collection: MinimalistCollectionHolde
     return newArray
 }
 
-/** @internal */
-export function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
+function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
     const newArray: T[] = []
     let index = -1
     while (++index < size) {
