@@ -56,6 +56,7 @@ export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHold
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
+ * @deprecated Use a value that is present in the {@link collection} instead
  */
 export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 export function indexOf(collection: Nullable<MinimalistCollectionHolder>, element: unknown, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
@@ -140,6 +141,7 @@ export function indexOfByCollectionHolder<const T, >(collection: Nullable<Collec
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
+ * @deprecated Use a value that is present in the {@link collection} instead and use the import("@joookiwi/collection/method/collectionHolder/indexOf") instead
  */
 export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 export function indexOfByCollectionHolder(collection: Nullable<CollectionHolder>, element: unknown, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {

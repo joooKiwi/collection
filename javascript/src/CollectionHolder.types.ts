@@ -223,7 +223,7 @@ export type StringCallback<in T, > = (value: T, index: number,) => string
 
 /**
  * An object encapsulation of a value
- * @deprecated It should be replaced with the proper type handled instead of an inferred one. It will be removed in the version 1.11
+ * @deprecated It should be replaced with the proper type handled instead of an inferred one. It will be removed in version 1.11
  */
 export type ObjectOf<T, > = T & object
     // | (T extends string ? (& String & { valueOf(): T, }) : never)
