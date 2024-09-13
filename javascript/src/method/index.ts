@@ -12,9 +12,8 @@ export {filter,           filterByCollectionHolder,           filterByMinimalist
 export {filterIndexed,    filterIndexedByCollectionHolder,    filterIndexedByMinimalistCollectionHolder                 } from "./filterIndexed"
 export {filterNot,        filterNotByCollectionHolder,        filterNotByMinimalistCollectionHolder                     } from "./filterNot"
 export {filterNotIndexed, filterNotIndexedByCollectionHolder, filterNotIndexedByMinimalistCollectionHolder              } from "./filterNotIndexed"
-export {filterNotNull,    filterNotNullByCollectionHolder,    filterNotNullByMinimalistCollectionHolder}                from "./filterNotNull"
-
-export {find,                                 findByCollectionHolder}                                                     from "./find"
+export {filterNotNull,    filterNotNullByCollectionHolder,    filterNotNullByMinimalistCollectionHolder                 } from "./filterNotNull"
+export {find,             findByCollectionHolder,             findByMinimalistCollectionHolder                          } from "./find"
 export {findIndexed,                          findIndexedByCollectionHolder}                                              from "./findIndexed"
 export {findLast,                             findLastByCollectionHolder}                                                 from "./findLast"
 export {findLastIndexed,                      findLastIndexedByCollectionHolder}                                          from "./findLastIndexed"

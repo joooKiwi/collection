@@ -20,7 +20,7 @@ import {filterIndexedByMinimalistCollectionHolder}    from "../../src/method/fil
 import {filterNotByMinimalistCollectionHolder}        from "../../src/method/filterNot"
 import {filterNotIndexedByMinimalistCollectionHolder} from "../../src/method/filterNotIndexed"
 import {filterNotNullByMinimalistCollectionHolder}    from "../../src/method/filterNotNull"
-import {find}                                         from "../../src/method/find"
+import {findByMinimalistCollectionHolder}             from "../../src/method/find"
 import {findIndexed}                                  from "../../src/method/findIndexed"
 import {findLast}                                     from "../../src/method/findLast"
 import {findLastIndexed}                              from "../../src/method/findLastIndexed"
@@ -514,7 +514,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public find(predicate: BooleanCallback<T>,): NullOr<T>
     public find(predicate: BooleanCallback<T>,) {
-        return find(this, predicate,)
+        return findByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find methods --------------------

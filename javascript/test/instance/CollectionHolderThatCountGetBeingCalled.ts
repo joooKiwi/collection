@@ -20,6 +20,7 @@ import {filterIndexedByCollectionHolder, filterIndexedByMinimalistCollectionHold
 import {filterNotByCollectionHolder, filterNotByMinimalistCollectionHolder}               from "../../src/method/filterNot"
 import {filterNotIndexedByCollectionHolder, filterNotIndexedByMinimalistCollectionHolder} from "../../src/method/filterNotIndexed"
 import {filterNotNullByCollectionHolder, filterNotNullByMinimalistCollectionHolder}       from "../../src/method/filterNotNull"
+import {findByCollectionHolder, findByMinimalistCollectionHolder}                         from "../../src/method/find"
 import {forEach as forEachByCollectionHolder}                                             from "../../src/method/collectionHolder/forEach"
 import {forEach as forEachByMinimalistCollectionHolder}                                   from "../../src/method/minimalistCollectionHolder/forEach"
 import {forEachIndexed as forEachIndexedByCollectionHolder}                               from "../../src/method/collectionHolder/forEachIndexed"
@@ -49,7 +50,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                         from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {find, findByCollectionHolder}                                       from "../../src/method/find"
 import {findIndexed, findIndexedByCollectionHolder}                         from "../../src/method/findIndexed"
 import {findLast, findLastByCollectionHolder}                               from "../../src/method/findLast"
 import {findLastIndexed, findLastIndexedByCollectionHolder}                 from "../../src/method/findLastIndexed"
@@ -590,7 +590,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public find(predicate: BooleanCallback<T>,) {
         return this.#isCollectionHolder
             ? findByCollectionHolder(this, predicate,)
-            : find(this, predicate,)
+            : findByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find methods --------------------
