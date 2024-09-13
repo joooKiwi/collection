@@ -14,7 +14,7 @@ export {filterNot,        filterNotByCollectionHolder,        filterNotByMinimal
 export {filterNotIndexed, filterNotIndexedByCollectionHolder, filterNotIndexedByMinimalistCollectionHolder              } from "./filterNotIndexed"
 export {filterNotNull,    filterNotNullByCollectionHolder,    filterNotNullByMinimalistCollectionHolder                 } from "./filterNotNull"
 export {find,             findByCollectionHolder,             findByMinimalistCollectionHolder                          } from "./find"
-export {findIndexed,                          findIndexedByCollectionHolder}                                              from "./findIndexed"
+export {findIndexed,      findIndexedByCollectionHolder,      findIndexedByMinimalistCollectionHolder                   } from "./findIndexed"
 export {findLast,                             findLastByCollectionHolder}                                                 from "./findLast"
 export {findLastIndexed,                      findLastIndexedByCollectionHolder}                                          from "./findLastIndexed"
 export {first,                                firstByCollectionHolder}                                                    from "./first"

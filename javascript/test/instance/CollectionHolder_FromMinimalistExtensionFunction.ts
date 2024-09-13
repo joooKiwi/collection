@@ -21,7 +21,7 @@ import {filterNotByMinimalistCollectionHolder}        from "../../src/method/fil
 import {filterNotIndexedByMinimalistCollectionHolder} from "../../src/method/filterNotIndexed"
 import {filterNotNullByMinimalistCollectionHolder}    from "../../src/method/filterNotNull"
 import {findByMinimalistCollectionHolder}             from "../../src/method/find"
-import {findIndexed}                                  from "../../src/method/findIndexed"
+import {findIndexedByMinimalistCollectionHolder}      from "../../src/method/findIndexed"
 import {findLast}                                     from "../../src/method/findLast"
 import {findLastIndexed}                              from "../../src/method/findLastIndexed"
 import {first}                                        from "../../src/method/first"
@@ -523,7 +523,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public findIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findIndexed(this, predicate,)
+        return findIndexedByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find indexed methods --------------------

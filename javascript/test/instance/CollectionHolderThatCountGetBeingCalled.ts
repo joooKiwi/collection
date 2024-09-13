@@ -21,6 +21,7 @@ import {filterNotByCollectionHolder, filterNotByMinimalistCollectionHolder}     
 import {filterNotIndexedByCollectionHolder, filterNotIndexedByMinimalistCollectionHolder} from "../../src/method/filterNotIndexed"
 import {filterNotNullByCollectionHolder, filterNotNullByMinimalistCollectionHolder}       from "../../src/method/filterNotNull"
 import {findByCollectionHolder, findByMinimalistCollectionHolder}                         from "../../src/method/find"
+import {findIndexedByCollectionHolder, findIndexedByMinimalistCollectionHolder}           from "../../src/method/findIndexed"
 import {forEach as forEachByCollectionHolder}                                             from "../../src/method/collectionHolder/forEach"
 import {forEach as forEachByMinimalistCollectionHolder}                                   from "../../src/method/minimalistCollectionHolder/forEach"
 import {forEachIndexed as forEachIndexedByCollectionHolder}                               from "../../src/method/collectionHolder/forEachIndexed"
@@ -50,7 +51,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                         from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {findIndexed, findIndexedByCollectionHolder}                         from "../../src/method/findIndexed"
 import {findLast, findLastByCollectionHolder}                               from "../../src/method/findLast"
 import {findLastIndexed, findLastIndexedByCollectionHolder}                 from "../../src/method/findLastIndexed"
 import {first, firstByCollectionHolder}                                     from "../../src/method/first"
@@ -601,7 +601,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public findIndexed(predicate: ReverseBooleanCallback<T>,) {
         return this.#isCollectionHolder
             ? findIndexedByCollectionHolder(this, predicate,)
-            : findIndexed(this, predicate,)
+            : findIndexedByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find indexed methods --------------------
