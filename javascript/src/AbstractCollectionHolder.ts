@@ -50,7 +50,7 @@ import {mapIndexedByCollectionHolder}              from "./method/mapIndexed"
 import {mapNotNullByCollectionHolder}              from "./method/mapNotNull"
 import {mapNotNullIndexedByCollectionHolder}       from "./method/mapNotNullIndexed"
 import {onEachByCollectionHolder}                  from "./method/onEach"
-import {onEachIndexed}                             from "./method/collectionHolder/onEachIndexed"
+import {onEachIndexedByCollectionHolder}           from "./method/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "./method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "./method/slice"
 import {toArray}                                   from "./method/collectionHolder/toArray"
@@ -647,7 +647,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- On each indexed methods --------------------
 
     public onEachIndexed(action: IndexValueCallback<T>,): this {
-        return onEachIndexed(this, action,)
+        return onEachIndexedByCollectionHolder(this, action,)
     }
 
     //#endregion -------------------- On each indexed methods --------------------

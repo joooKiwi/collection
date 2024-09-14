@@ -48,7 +48,7 @@ import {mapIndexedByCollectionHolder}              from "../../src/method/mapInd
 import {mapNotNullByCollectionHolder}              from "../../src/method/mapNotNull"
 import {mapNotNullIndexedByCollectionHolder}       from "../../src/method/mapNotNullIndexed"
 import {onEachByCollectionHolder}                  from "../../src/method/onEach"
-import {onEachIndexed}                             from "../../src/method/collectionHolder/onEachIndexed"
+import {onEachIndexedByCollectionHolder}           from "../../src/method/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "../../src/method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "../../src/method/slice"
 import {toArray}                                   from "../../src/method/collectionHolder/toArray"
@@ -587,7 +587,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     //#region -------------------- On each indexed methods --------------------
 
     public override onEachIndexed(action: IndexValueCallback<T>,): this {
-        return onEachIndexed(this, action,)
+        return onEachIndexedByCollectionHolder(this, action,)
     }
 
     //#endregion -------------------- On each indexed methods --------------------

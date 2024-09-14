@@ -7,13 +7,12 @@
 
 import type {Nullable} from "@joookiwi/type"
 
+import type {CollectionHolder}           from "../CollectionHolder"
 import type {IndexValueCallback}         from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isCollectionHolder}                            from "./isCollectionHolder"
-import {isCollectionHolderByStructure}                 from "./isCollectionHolderByStructure"
-import {onEachIndexed as byCollectionHolder}           from "./collectionHolder/onEachIndexed"
-import {onEachIndexed as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/onEachIndexed"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -33,10 +32,61 @@ export function onEachIndexed<const T, const COLLECTION extends Nullable<Minimal
     if (collection == null)
         return collection
     if (isCollectionHolder<T>(collection,))
-        return byCollectionHolder(collection, action,)
+        return onEachIndexedByCollectionHolder(collection, action,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return byCollectionHolder(collection, action,)
-    return byMinimalistCollectionHolder(collection, action,)
+        return onEachIndexedByCollectionHolder(collection, action,)
+    return onEachIndexedByMinimalistCollectionHolder(collection, action,)
+}
+
+
+/**
+ * Perform a given {@link action} on each element
+ * and return the {@link collection} afterwards
+ *
+ * @param collection The {@link MinimalistCollectionHolder collection}
+ * @param action     The given action
+ * @see ReadonlyArray.forEach
+ * @see ReadonlySet.forEach
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+ * @extensionFunction
+ */
+export function onEachIndexedByMinimalistCollectionHolder<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
+    if (collection == null)
+        return collection
+
+    const size = collection.size
+    if (size == 0)
+        return collection
+    if (action.length == 1)
+        return __with1Argument(collection, action as (index: number,) => void, size,)
+    if (action.length >= 2)
+        return __with2Argument(collection, action, size,)
+    return __with0Argument(collection, action as () => void, size,)
+}
+
+/**
+ * Perform a given {@link action} on each element
+ * and return the {@link collection} afterwards
+ *
+ * @param collection The {@link CollectionHolder collection}
+ * @param action     The given action
+ * @see ReadonlyArray.forEach
+ * @see ReadonlySet.forEach
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+ * @extensionFunction
+ */
+export function onEachIndexedByCollectionHolder<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
+    if (collection == null)
+        return collection
+    if (collection.isEmpty)
+        return collection
+    if (action.length == 1)
+        return __with1Argument(collection, action as (index: number,) => void, collection.size,)
+    if (action.length >= 2)
+        return __with2Argument(collection, action, collection.size,)
+    return __with0Argument(collection, action as () => void, collection.size,)
 }
 
 //#endregion -------------------- Facade method --------------------

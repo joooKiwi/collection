@@ -66,11 +66,7 @@ export {mapNotNull,                           mapNotNullByCollectionHolder,     
 export {mapNotNullIndexed,                    mapNotNullIndexedByCollectionHolder,                    mapNotNullIndexedByMinimalistCollectionHolder                   } from "./mapNotNullIndexed"
 export {objectValuesMap,                      objectValuesMapByCollectionHolder                                                                                       } from "./objectValuesMap"
 export {onEach,                               onEachByCollectionHolder,                               onEachByMinimalistCollectionHolder                              } from "./onEach"
-
-export {onEachIndexed}                                              from "./onEachIndexed"
-export {onEachIndexed as onEachIndexedByCollectionHolder}           from "./collectionHolder/onEachIndexed"
-export {onEachIndexed as onEachIndexedByMinimalistCollectionHolder} from "./minimalistCollectionHolder/onEachIndexed"
-
+export {onEachIndexed,                        onEachIndexedByCollectionHolder,                        onEachIndexedByMinimalistCollectionHolder                       } from "./onEachIndexed"
 export {requireNoNulls,                       requireNoNullsByCollectionHolder,                       requireNoNullsByMinimalistCollectionHolder                      } from "./requireNoNulls"
 export {slice,                                sliceByCollectionHolder,                                sliceByMinimalistCollectionHolder                               } from "./slice"
 export {sliceWithARange,                      sliceWithARangeByCollectionHolder,                      sliceWithARangeByMinimalistCollectionHolder                     } from "./slice.withARange"
