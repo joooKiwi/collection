@@ -45,6 +45,7 @@ import {lastOrNullByCollectionHolder, lastOrNullByMinimalistCollectionHolder}   
 import {noneByCollectionHolder, noneByMinimalistCollectionHolder}                               from "../../src/method/none"
 import {mapByCollectionHolder, mapByMinimalistCollectionHolder}                                 from "../../src/method/map"
 import {mapIndexedByCollectionHolder, mapIndexedByMinimalistCollectionHolder}                   from "../../src/method/mapIndexed"
+import {mapNotNullByCollectionHolder, mapNotNullByMinimalistCollectionHolder}                   from "../../src/method/mapNotNull"
 import {onEach as onEachByCollectionHolder}                                                     from "../../src/method/collectionHolder/onEach"
 import {onEach as onEachByMinimalistCollectionHolder}                                           from "../../src/method/minimalistCollectionHolder/onEach"
 import {onEachIndexed as onEachIndexedByCollectionHolder}                                       from "../../src/method/collectionHolder/onEachIndexed"
@@ -68,7 +69,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                               from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {mapNotNull, mapNotNullByCollectionHolder}                           from "../../src/method/mapNotNull"
 import {mapNotNullIndexed, mapNotNullIndexedByCollectionHolder}             from "../../src/method/mapNotNullIndexed"
 import {requireNoNulls, requireNoNullsByCollectionHolder}                   from "../../src/method/requireNoNulls"
 import {slice, sliceByCollectionHolder}                                     from "../../src/method/slice"
@@ -667,7 +667,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return this.#isCollectionHolder
             ? mapNotNullByCollectionHolder(this, transform,)
-            : mapNotNull(this, transform,)
+            : mapNotNullByMinimalistCollectionHolder(this, transform,)
     }
 
     //#endregion -------------------- Map not null methods --------------------

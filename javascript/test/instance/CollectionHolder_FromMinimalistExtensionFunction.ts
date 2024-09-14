@@ -47,7 +47,7 @@ import {lastOrNullByMinimalistCollectionHolder}          from "../../src/method/
 import {noneByMinimalistCollectionHolder}                from "../../src/method/none"
 import {mapByMinimalistCollectionHolder}                 from "../../src/method/map"
 import {mapIndexedByMinimalistCollectionHolder}          from "../../src/method/mapIndexed"
-import {mapNotNull}                                      from "../../src/method/mapNotNull"
+import {mapNotNullByMinimalistCollectionHolder}          from "../../src/method/mapNotNull"
 import {mapNotNullIndexed}                               from "../../src/method/mapNotNullIndexed"
 import {onEach}                                          from "../../src/method/minimalistCollectionHolder/onEach"
 import {onEachIndexed}                                   from "../../src/method/minimalistCollectionHolder/onEachIndexed"
@@ -579,7 +579,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#region -------------------- Map not null methods --------------------
 
     public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
-        return mapNotNull(this, transform,)
+        return mapNotNullByMinimalistCollectionHolder(this, transform,)
     }
 
     //#endregion -------------------- Map not null methods --------------------
