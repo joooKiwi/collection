@@ -31,8 +31,8 @@ export {hasAllWithCollectionIterator,         hasAllWithCollectionIteratorByColl
 export {hasAllWithIterable,                   hasAllWithIterableByCollectionHolder,                   hasAllWithIterableByMinimalistCollectionHolder                  } from "./hasAll.withIterable"
 export {hasAllWithMinimalistCollectionHolder, hasAllWithMinimalistCollectionHolderByCollectionHolder, hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "./hasAll.withMinimalistCollectionHolder"
 export {hasAllWithSet,                        hasAllWithSetByCollectionHolder,                        hasAllWithSetByMinimalistCollectionHolder                       } from "./hasAll.withSet"
+export {hasDuplicate,                         hasDuplicateByCollectionHolder,                         hasDuplicateByMinimalistCollectionHolder                        } from "./hasDuplicate"
 
-export {hasDuplicate,                         hasDuplicateByCollectionHolder}                                             from "./hasDuplicate"
 export {hasNull,                              hasNullByCollectionHolder}                                                  from "./hasNull"
 export {hasOne,                               hasOneByCollectionHolder}                                                   from "./hasOne"
 export {hasOneWithArray,                      hasOneWithArrayByCollectionHolder}                                          from "./hasOne.withArray"

@@ -10,7 +10,28 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+
 //#region -------------------- Facade method --------------------
+
+/**
+ * The {@link collection} has at least one duplicate value
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+ * @extensionFunction
+ */
+export function hasDuplicate<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+    if (collection == null)
+        return false
+    if (isCollectionHolder(collection,))
+        return hasDuplicateByCollectionHolder(collection,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return hasDuplicateByCollectionHolder(collection,)
+    return hasDuplicateByMinimalistCollectionHolder(collection,)
+}
+
 
 /**
  * The {@link collection} has at least one duplicate value
@@ -19,7 +40,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */
-export function hasDuplicate<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+export function hasDuplicateByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
         return false
 
@@ -55,23 +76,6 @@ function __hasDuplicate<T, >(collection: MinimalistCollectionHolder<T>, size: nu
     while (++index < size) {
         const value = collection.get(index,)
         let index2 = -1
-
-        if (value === null) {
-            while (++index2 < amountOfItemAdded)
-                if (temporaryArray[index2] === null)
-                    return true
-            temporaryArray[amountOfItemAdded++] = null as T
-            continue
-        }
-
-        if (value === undefined) {
-            while (++index2 < amountOfItemAdded)
-                if (temporaryArray[index2] === undefined)
-                    return true
-            temporaryArray[amountOfItemAdded++] = undefined as T
-            continue
-        }
-
         while (++index2 < amountOfItemAdded)
             if (temporaryArray[index2] === value)
                 return true

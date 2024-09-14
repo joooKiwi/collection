@@ -30,6 +30,7 @@ import {forEachByCollectionHolder, forEachByMinimalistCollectionHolder}         
 import {forEachIndexedByCollectionHolder, forEachIndexedByMinimalistCollectionHolder}     from "../../src/method/forEachIndexed"
 import {hasByCollectionHolder, hasByMinimalistCollectionHolder}                           from "../../src/method/has"
 import {hasAllByCollectionHolder, hasAllByMinimalistCollectionHolder}                     from "../../src/method/hasAll"
+import {hasDuplicateByCollectionHolder, hasDuplicateByMinimalistCollectionHolder}         from "../../src/method/hasDuplicate"
 import {none as noneByCollectionHolder}                                                   from "../../src/method/collectionHolder/none"
 import {none as noneByMinimalistCollectionHolder}                                         from "../../src/method/minimalistCollectionHolder/none"
 import {onEach as onEachByCollectionHolder}                                               from "../../src/method/collectionHolder/onEach"
@@ -55,7 +56,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                         from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {hasDuplicate, hasDuplicateByCollectionHolder}                       from "../../src/method/hasDuplicate"
 import {hasNull, hasNullByCollectionHolder}                                 from "../../src/method/hasNull"
 import {hasOne, hasOneByCollectionHolder}                                   from "../../src/method/hasOne"
 import {indexOf, indexOfByCollectionHolder}                                 from "../../src/method/indexOf"
@@ -143,7 +143,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public get hasDuplicate(): boolean {
         return this.#isCollectionHolder
             ? hasDuplicateByCollectionHolder(this,)
-            : hasDuplicate(this,)
+            : hasDuplicateByMinimalistCollectionHolder(this,)
     }
 
     public get includesDuplicate(): never {
