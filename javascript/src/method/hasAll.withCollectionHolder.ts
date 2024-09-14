@@ -16,7 +16,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell that all of the {@link values} (as a {@link CollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
@@ -26,7 +26,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  */
 export function hasAllWithCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} (as a {@link CollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
@@ -48,7 +48,7 @@ export function hasAllWithCollectionHolder<const T, >(collection: Nullable<Minim
 
 
 /**
- * Tell that all of the {@link values} (as a {@link CollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
@@ -58,7 +58,7 @@ export function hasAllWithCollectionHolder<const T, >(collection: Nullable<Minim
  */
 export function hasAllWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} (as a {@link CollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
@@ -81,7 +81,7 @@ export function hasAllWithCollectionHolderByMinimalistCollectionHolder<const T, 
 }
 
 /**
- * Tell that all of the {@link values} (as a {@link CollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
@@ -91,7 +91,7 @@ export function hasAllWithCollectionHolderByMinimalistCollectionHolder<const T, 
  */
 export function hasAllWithCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} (as a {@link CollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare

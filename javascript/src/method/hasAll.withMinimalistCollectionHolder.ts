@@ -16,9 +16,9 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell that all of the {@link values} (as a {@link MinimalistCollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
@@ -26,9 +26,9 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  */
 export function hasAllWithMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} (as a {@link MinimalistCollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
@@ -48,7 +48,7 @@ export function hasAllWithMinimalistCollectionHolder<const T, >(collection: Null
 
 
 /**
- * Tell that all of the {@link values} (as a {@link MinimalistCollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
@@ -58,7 +58,7 @@ export function hasAllWithMinimalistCollectionHolder<const T, >(collection: Null
  */
 export function hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} (as a {@link MinimalistCollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
@@ -83,7 +83,7 @@ export function hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder
 }
 
 /**
- * Tell that all of the {@link values} (as a {@link MinimalistCollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
@@ -93,7 +93,7 @@ export function hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder
  */
 export function hasAllWithMinimalistCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} (as a {@link MinimalistCollectionHolder}) exist in the {@link collection}
+ * Tell that all of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
