@@ -12,8 +12,40 @@ import type {BooleanCallback}            from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {__endingIndex, __maximumIndex, __startingIndex} from "./_indexes utility"
+import {isCollectionHolder}                             from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                  from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
+
+/**
+ * Get the last index matching the {@link predicate}
+ * or <b>null</b> if it was not in the {@link collection}
+ * from a range (if provided)
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param predicate  The given predicate
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The maximum index
+ * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLast<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
+    if (collection == null)
+        return null
+    if (isCollectionHolder<T>(collection,))
+        return indexOfLastByCollectionHolder(collection, predicate, fromIndex, toIndex, limit,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return indexOfLastByCollectionHolder(collection, predicate, fromIndex, toIndex, limit,)
+    return indexOfLastByMinimalistCollectionHolder(collection, predicate, fromIndex, toIndex, limit,)
+}
+
 
 /**
  * Get the last index matching the {@link predicate}
@@ -34,7 +66,7 @@ import {__endingIndex, __maximumIndex, __startingIndex} from "./_indexes utility
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLast<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
+export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -87,6 +119,7 @@ export function indexOfLast<const T, >(collection: Nullable<MinimalistCollection
         return __withALimitAnd2Argument(collection, predicate, startingIndex, endingIndex, maximumIndex,)
     return __withALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex, maximumIndex,)
 }
+
 
 /**
  * Get the last index matching the {@link predicate}
