@@ -71,13 +71,15 @@ export function hasAllWithSetByMinimalistCollectionHolder<const T, >(collection:
 export function hasAllWithSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<T>,) {
     if (collection == null)
         return false
-    if (values.size == 0)
+
+    const valuesSize = values.size
+    if (valuesSize == 0)
         return true
 
     const size = collection.size
     if (size == 0)
         return false
-    return __hasAll(collection, values, size,)
+    return __hasAll(collection, values, size, valuesSize,)
 }
 
 /**
@@ -104,21 +106,23 @@ export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<
 export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: ReadonlySet<T>,) {
     if (collection == null)
         return false
-    if (values.size == 0)
+
+    const valuesSize = values.size
+    if (valuesSize == 0)
         return true
     if (collection.isEmpty)
         return false
-    return __hasAll(collection, values, collection.size,)
+    return __hasAll(collection, values, collection.size, valuesSize,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, values: ReadonlySet<T>, size: number,) {
+function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, values: ReadonlySet<T>, size: number, valuesSize: number,) {
     const iterator: Iterator<T, unknown> = values[Symbol.iterator]()
-    let iteratorResult: IteratorResult<T, unknown>
-    valueLoop: while (!(iteratorResult = iterator.next()).done) {
-        const value = iteratorResult.value
+    let valuesIndex = valuesSize
+    valueLoop: while (--valuesIndex > 0) {
+        const value = iterator.next().value
         let index = -1
         while (++index < size)
             if (collection.get(index,) === value)
