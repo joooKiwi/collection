@@ -11,9 +11,34 @@ import type {CollectionHolder}             from "../CollectionHolder"
 import type {IndexValueWithReturnCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}   from "../MinimalistCollectionHolder"
 
-import {CollectionConstants} from "../CollectionConstants"
+import {CollectionConstants}           from "../CollectionConstants"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
+
+/**
+ * Create a new {@link CollectionHolder} applying a {@link transform} function
+ * on each element of the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param transform  The given transform
+ * @see ReadonlyArray.map
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html Kotlin mapIndexed(transform)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java map(transform)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
+ * @extensionFunction
+ */
+export function mapIndexed<const T, const U, >(collection: Nullable<MinimalistCollectionHolder<T>>, transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (isCollectionHolder<T>(collection,))
+        return mapIndexedByCollectionHolder(collection, transform,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return mapIndexedByCollectionHolder(collection, transform,)
+    return mapIndexedByMinimalistCollectionHolder(collection, transform,)
+}
+
 
 /**
  * Create a new {@link CollectionHolder} applying a {@link transform} function
@@ -27,14 +52,13 @@ import {CollectionConstants} from "../CollectionConstants"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
-export function mapIndexed<const T, const U, >(collection: Nullable<MinimalistCollectionHolder<T>>, transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
+export function mapIndexedByMinimalistCollectionHolder<const T, const U, >(collection: Nullable<MinimalistCollectionHolder<T>>, transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const size = collection.size
     if (size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
     if (transform.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(transform as (index: number,) => U, size,),)
     if (transform.length >= 2)
@@ -59,7 +83,6 @@ export function mapIndexedByCollectionHolder<const T, const U, >(collection: Nul
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
     if (transform.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(transform as (index: number,) => U, collection.size,),)
     if (transform.length >= 2)

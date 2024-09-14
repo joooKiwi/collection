@@ -44,6 +44,7 @@ import {lastIndexOfByCollectionHolder, lastIndexOfByMinimalistCollectionHolder} 
 import {lastOrNullByCollectionHolder, lastOrNullByMinimalistCollectionHolder}                   from "../../src/method/lastOrNull"
 import {noneByCollectionHolder, noneByMinimalistCollectionHolder}                               from "../../src/method/none"
 import {mapByCollectionHolder, mapByMinimalistCollectionHolder}                                 from "../../src/method/map"
+import {mapIndexedByCollectionHolder, mapIndexedByMinimalistCollectionHolder}                   from "../../src/method/mapIndexed"
 import {onEach as onEachByCollectionHolder}                                                     from "../../src/method/collectionHolder/onEach"
 import {onEach as onEachByMinimalistCollectionHolder}                                           from "../../src/method/minimalistCollectionHolder/onEach"
 import {onEachIndexed as onEachIndexedByCollectionHolder}                                       from "../../src/method/collectionHolder/onEachIndexed"
@@ -67,7 +68,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                               from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {mapIndexed, mapIndexedByCollectionHolder}                           from "../../src/method/mapIndexed"
 import {mapNotNull, mapNotNullByCollectionHolder}                           from "../../src/method/mapNotNull"
 import {mapNotNullIndexed, mapNotNullIndexedByCollectionHolder}             from "../../src/method/mapNotNullIndexed"
 import {requireNoNulls, requireNoNullsByCollectionHolder}                   from "../../src/method/requireNoNulls"
@@ -658,7 +658,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
         return this.#isCollectionHolder
             ? mapIndexedByCollectionHolder(this, transform,)
-            : mapIndexed(this, transform,)
+            : mapIndexedByMinimalistCollectionHolder(this, transform,)
     }
 
     //#endregion -------------------- Map indexed methods --------------------

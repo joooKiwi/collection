@@ -46,7 +46,7 @@ import {lastIndexOfByMinimalistCollectionHolder}         from "../../src/method/
 import {lastOrNullByMinimalistCollectionHolder}          from "../../src/method/lastOrNull"
 import {noneByMinimalistCollectionHolder}                from "../../src/method/none"
 import {mapByMinimalistCollectionHolder}                 from "../../src/method/map"
-import {mapIndexed}                                      from "../../src/method/mapIndexed"
+import {mapIndexedByMinimalistCollectionHolder}          from "../../src/method/mapIndexed"
 import {mapNotNull}                                      from "../../src/method/mapNotNull"
 import {mapNotNullIndexed}                               from "../../src/method/mapNotNullIndexed"
 import {onEach}                                          from "../../src/method/minimalistCollectionHolder/onEach"
@@ -572,7 +572,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#region -------------------- Map indexed methods --------------------
 
     public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
-        return mapIndexed(this, transform,)
+        return mapIndexedByMinimalistCollectionHolder(this, transform,)
     }
 
     //#endregion -------------------- Map indexed methods --------------------

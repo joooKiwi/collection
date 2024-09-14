@@ -64,8 +64,7 @@ export {map,                                  mapByCollectionHolder,            
 export {mapIndexed,                           mapIndexedByCollectionHolder,                           mapIndexedByMinimalistCollectionHolder                          } from "./mapIndexed"
 export {mapNotNull,                           mapNotNullByCollectionHolder,                           mapNotNullByMinimalistCollectionHolder                          } from "./mapNotNull"
 export {mapNotNullIndexed,                    mapNotNullIndexedByCollectionHolder,                    mapNotNullIndexedByMinimalistCollectionHolder                   } from "./mapNotNullIndexed"
-
-export {objectValuesMap, objectValuesMapByCollectionHolder} from "./objectValuesMap"
+export {objectValuesMap,                      objectValuesMapByCollectionHolder                                                                                       } from "./objectValuesMap"
 
 export {onEach}                                       from "./onEach"
 export {onEach as onEachByCollectionHolder}           from "./collectionHolder/onEach"
