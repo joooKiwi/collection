@@ -11,9 +11,43 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {StringCallback}             from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {__maximumIndex} from "./_indexes utility"
+import {__maximumIndex}                from "./_indexes utility"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
+
+/**
+ * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
+ * utilizing the given {@link prefix} and {@link postfix} if supplied.
+ *
+ * Note that if the {@link collection} is huge,
+ * a {@link limit} can be specified followed by a {@link truncated} value.
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param separator  The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+ * @param prefix     The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
+ * @param postfix    The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
+ * @param limit      The maximum amount of values in the join (null by default)
+ * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
+ * @param transform  A callback to transform into a {@link String}
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
+ * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.join
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
+ * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
+ * @canReceiveNegativeValue
+ */
+export function joinToString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
+    if (collection == null)
+        return prefixAndPostfixOnly(prefix, postfix,)
+    if (isCollectionHolder<T>(collection,))
+        return joinToStringByCollectionHolder(collection, separator, prefix, postfix, limit, truncated, transform,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return joinToStringByCollectionHolder(collection, separator, prefix, postfix, limit, truncated, transform,)
+    return joinToStringByMinimalistCollectionHolder(collection, separator, prefix, postfix, limit, truncated, transform,)
+}
+
 
 /**
  * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
@@ -36,7 +70,7 @@ import {__maximumIndex} from "./_indexes utility"
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
  * @canReceiveNegativeValue
  */
-export function joinToString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
+export function joinToStringByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
     if (collection == null)
         return prefixAndPostfixOnly(prefix, postfix,)
 
@@ -150,6 +184,7 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
  * @param prefix The prefix to apply (or {@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
  * @param postfix The prefix to apply (or {@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
  * @see joinToString
+ * @see joinToStringByMinimalistCollectionHolder
  * @see joinToStringByCollectionHolder
  */
 export function prefixAndPostfixOnly(prefix: NullableString = null, postfix: NullableString = null,): string {

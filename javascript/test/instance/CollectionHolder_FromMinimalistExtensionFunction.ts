@@ -40,7 +40,7 @@ import {indexOfFirstByMinimalistCollectionHolder}        from "../../src/method/
 import {indexOfFirstIndexedByMinimalistCollectionHolder} from "../../src/method/indexOfFirstIndexed"
 import {indexOfLastByMinimalistCollectionHolder}         from "../../src/method/indexOfLast"
 import {indexOfLastIndexedByMinimalistCollectionHolder}  from "../../src/method/indexOfLastIndexed"
-import {joinToString}                                    from "../../src/method/joinToString"
+import {joinToStringByMinimalistCollectionHolder}        from "../../src/method/joinToString"
 import {last}                                            from "../../src/method/last"
 import {lastIndexOf}                                     from "../../src/method/lastIndexOf"
 import {lastOrNull}                                      from "../../src/method/lastOrNull"
@@ -453,7 +453,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     }
 
     public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
-        return joinToString(this, separator, prefix, postfix, limit, truncated, transform,)
+        return joinToStringByMinimalistCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
     }
 
     //#endregion -------------------- Join to string methods --------------------
