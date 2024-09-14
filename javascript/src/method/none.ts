@@ -19,7 +19,7 @@ import {isCollectionHolderByStructure}        from "./isCollectionHolderByStruct
 /**
  * Tell if the {@link collection} {@link CollectionHolder.isEmpty is empty}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
@@ -28,7 +28,7 @@ export function none<const T, const COLLECTION extends CollectionHolder<T> = Col
 /**
  * Tell if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
