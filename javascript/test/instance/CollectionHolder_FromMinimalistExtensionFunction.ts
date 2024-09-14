@@ -34,7 +34,7 @@ import {hasByMinimalistCollectionHolder}              from "../../src/method/has
 import {hasAllByMinimalistCollectionHolder}           from "../../src/method/hasAll"
 import {hasDuplicateByMinimalistCollectionHolder}     from "../../src/method/hasDuplicate"
 import {hasNullByMinimalistCollectionHolder}          from "../../src/method/hasNull"
-import {hasOne}                                       from "../../src/method/hasOne"
+import {hasOneByMinimalistCollectionHolder}           from "../../src/method/hasOne"
 import {indexOf}                                      from "../../src/method/indexOf"
 import {indexOfFirst}                                 from "../../src/method/indexOfFirst"
 import {indexOfFirstIndexed}                          from "../../src/method/indexOfFirstIndexed"
@@ -347,7 +347,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public hasOne(values: Iterable<unknown>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
-        return hasOne(this, values,)
+        return hasOneByMinimalistCollectionHolder(this, values,)
     }
 
     public includesOne(values?: readonly T[],): never

@@ -10,25 +10,57 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell whenever at least one value of the {@link values} (as a {@link CollectionHolder}) exist in the {@link collection}
+ * Tell whenever at least one value of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
  * @extensionFunction
  */
 export function hasOneWithCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,): boolean
 /**
- * Tell whenever at least one value of the {@link values} (as a {@link CollectionHolder}) exist in the {@link collection}
+ * Tell whenever at least one value of the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param values     The values to compare
+ * @extensionFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function hasOneWithCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder,): boolean
+export function hasOneWithCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,) {
+    if (collection == null)
+        return false
+    if (isCollectionHolder<T>(collection,))
+        return hasOneWithCollectionHolderByCollectionHolder(collection, values,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return hasOneWithCollectionHolderByCollectionHolder(collection, values,)
+    return hasOneWithCollectionHolderByMinimalistCollectionHolder(collection, values,)
+}
+
+
+/**
+ * Tell whenever at least one value of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder,): boolean
-export function hasOneWithCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder,) {
+export function hasOneWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,): boolean
+/**
+ * Tell whenever at least one value of the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @extensionFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function hasOneWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder,): boolean
+export function hasOneWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,) {
     if (collection == null)
         return false
 
@@ -37,12 +69,11 @@ export function hasOneWithCollectionHolder<const T, >(collection: Nullable<Minim
         return false
     if (values.isEmpty)
         return true
-
     return __hasOne(collection, values, size, values.size,)
 }
 
 /**
- * Tell whenever at least one value of the {@link values} (as a {@link CollectionHolder}) exist in the {@link collection}
+ * Tell whenever at least one value of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
@@ -50,28 +81,28 @@ export function hasOneWithCollectionHolder<const T, >(collection: Nullable<Minim
  */
 export function hasOneWithCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder<T>,): boolean
 /**
- * Tell whenever at least one value of the {@link values} (as a {@link CollectionHolder}) exist in the {@link collection}
+ * Tell whenever at least one value of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
  * @extensionFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
-export function hasOneWithCollectionHolderByCollectionHolder(collection: Nullable<CollectionHolder>, values: CollectionHolder,): boolean
-export function hasOneWithCollectionHolderByCollectionHolder(collection: Nullable<CollectionHolder>, values: CollectionHolder,) {
+export function hasOneWithCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder,): boolean
+export function hasOneWithCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder<T>,) {
     if (collection == null)
         return false
     if (collection.isEmpty)
         return false
     if (values.isEmpty)
         return true
-
     return __hasOne(collection, values, collection.size, values.size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasOne(collection: MinimalistCollectionHolder, values: CollectionHolder, size: number, valuesSize: number,) {
+function __hasOne<const T, >(collection: MinimalistCollectionHolder<T>, values: CollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)

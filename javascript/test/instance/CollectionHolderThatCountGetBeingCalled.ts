@@ -32,6 +32,7 @@ import {hasByCollectionHolder, hasByMinimalistCollectionHolder}                 
 import {hasAllByCollectionHolder, hasAllByMinimalistCollectionHolder}                     from "../../src/method/hasAll"
 import {hasDuplicateByCollectionHolder, hasDuplicateByMinimalistCollectionHolder}         from "../../src/method/hasDuplicate"
 import {hasNullByCollectionHolder, hasNullByMinimalistCollectionHolder}                   from "../../src/method/hasNull"
+import {hasOneByCollectionHolder, hasOneByMinimalistCollectionHolder}                     from "../../src/method/hasOne"
 import {none as noneByCollectionHolder}                                                   from "../../src/method/collectionHolder/none"
 import {none as noneByMinimalistCollectionHolder}                                         from "../../src/method/minimalistCollectionHolder/none"
 import {onEach as onEachByCollectionHolder}                                               from "../../src/method/collectionHolder/onEach"
@@ -57,7 +58,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                         from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {hasOne, hasOneByCollectionHolder}                                   from "../../src/method/hasOne"
 import {indexOf, indexOfByCollectionHolder}                                 from "../../src/method/indexOf"
 import {indexOfFirst, indexOfFirstByCollectionHolder}                       from "../../src/method/indexOfFirst"
 import {indexOfFirstIndexed, indexOfFirstIndexedByCollectionHolder}         from "../../src/method/indexOfFirstIndexed"
@@ -403,7 +403,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
         return this.#isCollectionHolder
             ? hasOneByCollectionHolder(this, values,)
-            : hasOne(this, values,)
+            : hasOneByMinimalistCollectionHolder(this, values,)
     }
 
     public includesOne(values?: readonly T[],): never

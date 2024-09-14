@@ -323,12 +323,19 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasOne(values: CollectionIterator<T>,): boolean
     public hasOne(values: Iterable<T>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: readonly unknown[],): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: CollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: CollectionIterator,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: Iterable<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         return hasOneByCollectionHolder(this, values,)
@@ -341,12 +348,19 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public includesOne(values: CollectionIterator<T>,): boolean
     public includesOne(values: Iterable<T>,): boolean
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: readonly unknown[],): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: CollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: CollectionIterator,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: Iterable<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         return this.hasOne(values,)
@@ -359,12 +373,19 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public containsOne(values: CollectionIterator<T>,): boolean
     public containsOne(values: Iterable<T>,): boolean
     public containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: readonly unknown[],): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: CollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: CollectionIterator,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: Iterable<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
     public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         return this.hasOne(values,)

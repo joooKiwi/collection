@@ -836,6 +836,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasOne(values: readonly unknown[],): boolean
 
@@ -843,6 +844,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasOne(values: ReadonlySet<unknown>,): boolean
 
@@ -850,6 +852,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasOne(values: CollectionHolder,): boolean
 
@@ -857,6 +860,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasOne(values: MinimalistCollectionHolder,): boolean
 
@@ -864,6 +868,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasOne(values: CollectionIterator,): boolean
 
@@ -872,6 +877,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @typescriptDefinition
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasOne(values: Iterable<unknown>,): boolean
 
@@ -879,6 +885,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 
@@ -946,6 +953,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesOne(values: readonly unknown[],): boolean
 
@@ -954,6 +962,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesOne(values: ReadonlySet<unknown>,): boolean
 
@@ -962,6 +971,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesOne(values: CollectionHolder,): boolean
 
@@ -970,6 +980,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesOne(values: MinimalistCollectionHolder,): boolean
 
@@ -978,6 +989,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesOne(values: CollectionIterator,): boolean
 
@@ -986,6 +998,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesOne(values: Iterable<unknown>,): boolean
 
@@ -995,6 +1008,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias hasOne
      * @typescriptDefinition
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 
@@ -1061,6 +1075,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsOne(values: readonly unknown[],): boolean
 
@@ -1069,6 +1084,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsOne(values: ReadonlySet<unknown>,): boolean
 
@@ -1077,6 +1093,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsOne(values: CollectionHolder,): boolean
 
@@ -1085,6 +1102,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsOne(values: MinimalistCollectionHolder,): boolean
 
@@ -1093,6 +1111,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsOne(values: CollectionIterator,): boolean
 
@@ -1101,6 +1120,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias hasOne
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsOne(values: Iterable<unknown>,): boolean
 
@@ -1110,6 +1130,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias hasOne
      * @typescriptDefinition
+     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
      */
     containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 
