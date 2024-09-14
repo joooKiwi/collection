@@ -43,6 +43,7 @@ import {lastByCollectionHolder, lastByMinimalistCollectionHolder}               
 import {lastIndexOfByCollectionHolder, lastIndexOfByMinimalistCollectionHolder}                 from "../../src/method/lastIndexOf"
 import {lastOrNullByCollectionHolder, lastOrNullByMinimalistCollectionHolder}                   from "../../src/method/lastOrNull"
 import {noneByCollectionHolder, noneByMinimalistCollectionHolder}                               from "../../src/method/none"
+import {mapByCollectionHolder, mapByMinimalistCollectionHolder}                                 from "../../src/method/map"
 import {onEach as onEachByCollectionHolder}                                                     from "../../src/method/collectionHolder/onEach"
 import {onEach as onEachByMinimalistCollectionHolder}                                           from "../../src/method/minimalistCollectionHolder/onEach"
 import {onEachIndexed as onEachIndexedByCollectionHolder}                                       from "../../src/method/collectionHolder/onEachIndexed"
@@ -66,7 +67,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                               from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {map, mapByCollectionHolder}                                         from "../../src/method/map"
 import {mapIndexed, mapIndexedByCollectionHolder}                           from "../../src/method/mapIndexed"
 import {mapNotNull, mapNotNullByCollectionHolder}                           from "../../src/method/mapNotNull"
 import {mapNotNullIndexed, mapNotNullIndexedByCollectionHolder}             from "../../src/method/mapNotNullIndexed"
