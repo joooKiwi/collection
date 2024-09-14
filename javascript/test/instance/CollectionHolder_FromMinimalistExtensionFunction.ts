@@ -35,7 +35,7 @@ import {hasAllByMinimalistCollectionHolder}           from "../../src/method/has
 import {hasDuplicateByMinimalistCollectionHolder}     from "../../src/method/hasDuplicate"
 import {hasNullByMinimalistCollectionHolder}          from "../../src/method/hasNull"
 import {hasOneByMinimalistCollectionHolder}           from "../../src/method/hasOne"
-import {indexOf}                                      from "../../src/method/indexOf"
+import {indexOfByMinimalistCollectionHolder}          from "../../src/method/indexOf"
 import {indexOfFirst}                                 from "../../src/method/indexOfFirst"
 import {indexOfFirstIndexed}                          from "../../src/method/indexOfFirstIndexed"
 import {indexOfLast}                                  from "../../src/method/indexOfLast"
@@ -195,8 +195,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
     public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
     public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return indexOf(this, element, fromIndex, toIndex, limit,)
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+        return indexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Index of methods --------------------

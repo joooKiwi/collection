@@ -11,6 +11,8 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {__endingIndex, __maximumIndex, __startingIndex} from "./_indexes utility"
+import {isCollectionHolder}                             from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                  from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -19,7 +21,7 @@ import {__endingIndex, __maximumIndex, __startingIndex} from "./_indexes utility
  * or <b>null</b> if it was not in the {@link collection}
  * from a range (if provided)
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param element    The element to find
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
@@ -41,6 +43,40 @@ export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHold
  * or <b>null</b> if it was not in the {@link collection}
  * from a range (if provided)
  *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param element    The element to find
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The maximum index
+ * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.indexOf
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
+    if (collection == null)
+        return null
+    if (isCollectionHolder<T>(collection,))
+        return indexOfByCollectionHolder(collection, element, fromIndex, toIndex, limit,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return indexOfByCollectionHolder(collection, element, fromIndex, toIndex, limit,)
+    return indexOfByMinimalistCollectionHolder(collection, element, fromIndex, toIndex, limit,)
+}
+
+
+/**
+ * Get the <b>first</b> occurrence equivalent to the value received
+ * or <b>null</b> if it was not in the {@link collection}
+ * from a range (if provided)
+ *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param element    The element to find
  * @param fromIndex  The inclusive starting index
@@ -56,10 +92,32 @@ export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHold
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
- * @deprecated Use a value that is present in the {@link collection} instead
  */
-export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-export function indexOf(collection: Nullable<MinimalistCollectionHolder>, element: unknown, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
+export function indexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+/**
+ * Get the <b>first</b> occurrence equivalent to the value received
+ * or <b>null</b> if it was not in the {@link collection}
+ * from a range (if provided)
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param element    The element to find
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The maximum index
+ * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.indexOf
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function indexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+export function indexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -141,10 +199,10 @@ export function indexOfByCollectionHolder<const T, >(collection: Nullable<Collec
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
- * @deprecated Use a value that is present in the {@link collection} instead and use the import("@joookiwi/collection/method/collectionHolder/indexOf") instead
+ * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-export function indexOfByCollectionHolder(collection: Nullable<CollectionHolder>, element: unknown, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
+export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
@@ -186,7 +244,7 @@ export function indexOfByCollectionHolder(collection: Nullable<CollectionHolder>
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __withoutALimit(collection: MinimalistCollectionHolder, element: unknown, startingIndex: number, endingIndex: number,) {
+function __withoutALimit<const T, >(collection: MinimalistCollectionHolder<T>, element: T, startingIndex: number, endingIndex: number,) {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (collection.get(index,) === element)
@@ -194,7 +252,7 @@ function __withoutALimit(collection: MinimalistCollectionHolder, element: unknow
     return null
 }
 
-function __withALimit(collection: MinimalistCollectionHolder, element: unknown, startingIndex: number, endingIndex: number, maximumIndex: number,) {
+function __withALimit<const T, >(collection: MinimalistCollectionHolder<T>, element: T, startingIndex: number, endingIndex: number, maximumIndex: number,) {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (index >= maximumIndex)

@@ -33,6 +33,7 @@ import {hasAllByCollectionHolder, hasAllByMinimalistCollectionHolder}           
 import {hasDuplicateByCollectionHolder, hasDuplicateByMinimalistCollectionHolder}         from "../../src/method/hasDuplicate"
 import {hasNullByCollectionHolder, hasNullByMinimalistCollectionHolder}                   from "../../src/method/hasNull"
 import {hasOneByCollectionHolder, hasOneByMinimalistCollectionHolder}                     from "../../src/method/hasOne"
+import {indexOfByCollectionHolder, indexOfByMinimalistCollectionHolder}                   from "../../src/method/indexOf"
 import {none as noneByCollectionHolder}                                                   from "../../src/method/collectionHolder/none"
 import {none as noneByMinimalistCollectionHolder}                                         from "../../src/method/minimalistCollectionHolder/none"
 import {onEach as onEachByCollectionHolder}                                               from "../../src/method/collectionHolder/onEach"
@@ -58,7 +59,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                         from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {indexOf, indexOfByCollectionHolder}                                 from "../../src/method/indexOf"
 import {indexOfFirst, indexOfFirstByCollectionHolder}                       from "../../src/method/indexOfFirst"
 import {indexOfFirstIndexed, indexOfFirstIndexedByCollectionHolder}         from "../../src/method/indexOfFirstIndexed"
 import {indexOfLast, indexOfLastByCollectionHolder}                         from "../../src/method/indexOfLast"
@@ -221,10 +221,10 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
     public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return this.#isCollectionHolder
             ? indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
-            : indexOf(this, element, fromIndex, toIndex, limit,)
+            : indexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Index of methods --------------------
