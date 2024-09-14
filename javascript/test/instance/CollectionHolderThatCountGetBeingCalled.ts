@@ -37,6 +37,7 @@ import {indexOfByCollectionHolder, indexOfByMinimalistCollectionHolder}         
 import {indexOfFirstByCollectionHolder, indexOfFirstByMinimalistCollectionHolder}               from "../../src/method/indexOfFirst"
 import {indexOfFirstIndexedByCollectionHolder, indexOfFirstIndexedByMinimalistCollectionHolder} from "../../src/method/indexOfFirstIndexed"
 import {indexOfLastByCollectionHolder, indexOfLastByMinimalistCollectionHolder}                 from "../../src/method/indexOfLast"
+import {indexOfLastIndexedByCollectionHolder, indexOfLastIndexedByMinimalistCollectionHolder}   from "../../src/method/indexOfLastIndexed"
 import {none as noneByCollectionHolder}                                                         from "../../src/method/collectionHolder/none"
 import {none as noneByMinimalistCollectionHolder}                                               from "../../src/method/minimalistCollectionHolder/none"
 import {onEach as onEachByCollectionHolder}                                                     from "../../src/method/collectionHolder/onEach"
@@ -62,7 +63,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                               from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {indexOfLastIndexed, indexOfLastIndexedByCollectionHolder}           from "../../src/method/indexOfLastIndexed"
 import {joinToString, joinToStringByCollectionHolder}                       from "../../src/method/joinToString"
 import {last, lastByCollectionHolder}                                       from "../../src/method/last"
 import {lastIndexOf, lastIndexOfByCollectionHolder}                         from "../../src/method/lastIndexOf"
@@ -271,7 +271,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return this.#isCollectionHolder
             ? indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-            : indexOfLastIndexed(this, predicate, fromIndex, toIndex, limit,)
+            : indexOfLastIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Index of last indexed methods --------------------
