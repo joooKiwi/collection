@@ -59,14 +59,11 @@ export {joinToString,                         joinToStringByCollectionHolder,   
 export {last,                                 lastByCollectionHolder,                                 lastByMinimalistCollectionHolder                                } from "./last"
 export {lastIndexOf,                          lastIndexOfByCollectionHolder,                          lastIndexOfByMinimalistCollectionHolder                         } from "./lastIndexOf"
 export {lastOrNull,                           lastOrNullByCollectionHolder,                           lastOrNullByMinimalistCollectionHolder                          } from "./lastOrNull"
+export {none,                                 noneByCollectionHolder,                                 noneByMinimalistCollectionHolder                                } from "./none"
 export {map,                                  mapByCollectionHolder,                                  mapByMinimalistCollectionHolder                                 } from "./map"
 export {mapIndexed,                           mapIndexedByCollectionHolder,                           mapIndexedByMinimalistCollectionHolder                          } from "./mapIndexed"
 export {mapNotNull,                           mapNotNullByCollectionHolder,                           mapNotNullByMinimalistCollectionHolder                          } from "./mapNotNull"
 export {mapNotNullIndexed,                    mapNotNullIndexedByCollectionHolder,                    mapNotNullIndexedByMinimalistCollectionHolder                   } from "./mapNotNullIndexed"
-
-export {none}                                     from "./none"
-export {none as noneByCollectionHolder}           from "./collectionHolder/none"
-export {none as noneByMinimalistCollectionHolder} from "./minimalistCollectionHolder/none"
 
 export {objectValuesMap, objectValuesMapByCollectionHolder} from "./objectValuesMap"
 

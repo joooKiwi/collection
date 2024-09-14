@@ -42,8 +42,7 @@ import {joinToStringByCollectionHolder, joinToStringByMinimalistCollectionHolder
 import {lastByCollectionHolder, lastByMinimalistCollectionHolder}                               from "../../src/method/last"
 import {lastIndexOfByCollectionHolder, lastIndexOfByMinimalistCollectionHolder}                 from "../../src/method/lastIndexOf"
 import {lastOrNullByCollectionHolder, lastOrNullByMinimalistCollectionHolder}                   from "../../src/method/lastOrNull"
-import {none as noneByCollectionHolder}                                                         from "../../src/method/collectionHolder/none"
-import {none as noneByMinimalistCollectionHolder}                                               from "../../src/method/minimalistCollectionHolder/none"
+import {noneByCollectionHolder, noneByMinimalistCollectionHolder}                               from "../../src/method/none"
 import {onEach as onEachByCollectionHolder}                                                     from "../../src/method/collectionHolder/onEach"
 import {onEach as onEachByMinimalistCollectionHolder}                                           from "../../src/method/minimalistCollectionHolder/onEach"
 import {onEachIndexed as onEachIndexedByCollectionHolder}                                       from "../../src/method/collectionHolder/onEachIndexed"
@@ -650,7 +649,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
         return this.#isCollectionHolder
             ? mapByCollectionHolder(this, transform,)
-            : map(this, transform,)
+            : mapByMinimalistCollectionHolder(this, transform,)
     }
 
     //#endregion -------------------- Map methods --------------------

@@ -44,8 +44,8 @@ import {joinToStringByMinimalistCollectionHolder}        from "../../src/method/
 import {lastByMinimalistCollectionHolder}                from "../../src/method/last"
 import {lastIndexOfByMinimalistCollectionHolder}         from "../../src/method/lastIndexOf"
 import {lastOrNullByMinimalistCollectionHolder}          from "../../src/method/lastOrNull"
-import {none}                                            from "../../src/method/minimalistCollectionHolder/none"
 import {map}                                             from "../../src/method/map"
+import {noneByMinimalistCollectionHolder}                from "../../src/method/none"
 import {mapIndexed}                                      from "../../src/method/mapIndexed"
 import {mapNotNull}                                      from "../../src/method/mapNotNull"
 import {mapNotNullIndexed}                               from "../../src/method/mapNotNullIndexed"
@@ -304,7 +304,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public none(): this["isEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public none(predicate?: Nullable<BooleanCallback<T>>,) {
-        return none(this, predicate,)
+        return noneByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- None methods --------------------
