@@ -43,7 +43,7 @@ import {indexOfLastIndexedByMinimalistCollectionHolder}  from "../../src/method/
 import {joinToStringByMinimalistCollectionHolder}        from "../../src/method/joinToString"
 import {lastByMinimalistCollectionHolder}                from "../../src/method/last"
 import {lastIndexOfByMinimalistCollectionHolder}         from "../../src/method/lastIndexOf"
-import {lastOrNull}                                      from "../../src/method/lastOrNull"
+import {lastOrNullByMinimalistCollectionHolder}          from "../../src/method/lastOrNull"
 import {none}                                            from "../../src/method/minimalistCollectionHolder/none"
 import {map}                                             from "../../src/method/map"
 import {mapIndexed}                                      from "../../src/method/mapIndexed"
@@ -275,7 +275,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        return lastOrNull(this, predicate,)
+        return lastOrNullByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Last or null methods --------------------

@@ -11,13 +11,16 @@ import type {CollectionHolder}                           from "../CollectionHold
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+
 //#region -------------------- Facade method --------------------
 
 /**
  * Get the last element in the {@link collection}
  * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction
@@ -28,7 +31,7 @@ export function lastOrNull<const T, >(collection: Nullable<MinimalistCollectionH
  * matching the given {@link predicate}
  * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param predicate  The matching predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
@@ -41,7 +44,7 @@ export function lastOrNull<const T, const S extends T, >(collection: Nullable<Mi
  * matching the given {@link predicate}
  * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param predicate  The matching predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
@@ -49,6 +52,52 @@ export function lastOrNull<const T, const S extends T, >(collection: Nullable<Mi
  */
 export function lastOrNull<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
 export function lastOrNull<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+    if (collection == null)
+        return null
+    if (isCollectionHolder<T>(collection,))
+        return lastOrNullByCollectionHolder(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return lastOrNullByCollectionHolder(collection, predicate,)
+    return lastOrNullByMinimalistCollectionHolder(collection, predicate,)
+}
+
+
+/**
+ * Get the last element in the {@link collection}
+ * or <b>null</b> if the {@link collection} <b>is empty</b>
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
+ * @extensionFunction
+ */
+export function lastOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): NullOr<T>
+/**
+ * Get the last element in the {@link collection}
+ * matching the given {@link predicate}
+ * or <b>null</b> if the {@link collection} <b>is empty</b>
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The matching predicate
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @typescriptDefinition
+ * @extensionFunction
+ */
+export function lastOrNullByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+/**
+ * Get the last element in the {@link collection}
+ * matching the given {@link predicate}
+ * or <b>null</b> if the {@link collection} <b>is empty</b>
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The matching predicate
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @extensionFunction
+ */
+export function lastOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+export function lastOrNullByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
     if (collection == null)
         return null
 

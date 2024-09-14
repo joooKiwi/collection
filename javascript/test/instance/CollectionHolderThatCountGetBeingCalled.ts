@@ -41,6 +41,7 @@ import {indexOfLastIndexedByCollectionHolder, indexOfLastIndexedByMinimalistColl
 import {joinToStringByCollectionHolder, joinToStringByMinimalistCollectionHolder}               from "../../src/method/joinToString"
 import {lastByCollectionHolder, lastByMinimalistCollectionHolder}                               from "../../src/method/last"
 import {lastIndexOfByCollectionHolder, lastIndexOfByMinimalistCollectionHolder}                 from "../../src/method/lastIndexOf"
+import {lastOrNullByCollectionHolder, lastOrNullByMinimalistCollectionHolder}                   from "../../src/method/lastOrNull"
 import {none as noneByCollectionHolder}                                                         from "../../src/method/collectionHolder/none"
 import {none as noneByMinimalistCollectionHolder}                                               from "../../src/method/minimalistCollectionHolder/none"
 import {onEach as onEachByCollectionHolder}                                                     from "../../src/method/collectionHolder/onEach"
@@ -66,7 +67,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                               from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {lastOrNull, lastOrNullByCollectionHolder}                           from "../../src/method/lastOrNull"
 import {map, mapByCollectionHolder}                                         from "../../src/method/map"
 import {mapIndexed, mapIndexedByCollectionHolder}                           from "../../src/method/mapIndexed"
 import {mapNotNull, mapNotNullByCollectionHolder}                           from "../../src/method/mapNotNull"
@@ -321,7 +321,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
         return this.#isCollectionHolder
             ? lastOrNullByCollectionHolder(this, predicate,)
-            : lastOrNull(this, predicate,)
+            : lastOrNullByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Last or null methods --------------------
