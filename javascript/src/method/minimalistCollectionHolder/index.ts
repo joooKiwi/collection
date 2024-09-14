@@ -5,7 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {onEach,            onEach as            onEachByMinimalistCollectionHolder}            from "./onEach"
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByMinimalistCollectionHolder}     from "./onEachIndexed"
 export {toArray,           toArray as           toArrayByMinimalistCollectionHolder}           from "./toArray"
 export {toMap,             toMap as             toMapByMinimalistCollectionHolder}             from "./toMap"

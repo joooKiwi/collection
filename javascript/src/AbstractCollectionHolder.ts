@@ -49,7 +49,7 @@ import {mapByCollectionHolder}                     from "./method/map"
 import {mapIndexedByCollectionHolder}              from "./method/mapIndexed"
 import {mapNotNullByCollectionHolder}              from "./method/mapNotNull"
 import {mapNotNullIndexedByCollectionHolder}       from "./method/mapNotNullIndexed"
-import {onEach}                                    from "./method/collectionHolder/onEach"
+import {onEachByCollectionHolder}                  from "./method/onEach"
 import {onEachIndexed}                             from "./method/collectionHolder/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "./method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "./method/slice"
@@ -640,7 +640,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- On each methods --------------------
 
     public onEach(action: ValueIndexCallback<T>,): this {
-        return onEach(this, action,)
+        return onEachByCollectionHolder(this, action,)
     }
 
     //#endregion -------------------- On each methods --------------------

@@ -47,7 +47,7 @@ import {mapByCollectionHolder}                     from "../../src/method/map"
 import {mapIndexedByCollectionHolder}              from "../../src/method/mapIndexed"
 import {mapNotNullByCollectionHolder}              from "../../src/method/mapNotNull"
 import {mapNotNullIndexedByCollectionHolder}       from "../../src/method/mapNotNullIndexed"
-import {onEach}                                    from "../../src/method/collectionHolder/onEach"
+import {onEachByCollectionHolder}                  from "../../src/method/onEach"
 import {onEachIndexed}                             from "../../src/method/collectionHolder/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "../../src/method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "../../src/method/slice"
@@ -580,7 +580,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     //#region -------------------- On each methods --------------------
 
     public override onEach(action: ValueIndexCallback<T>,): this {
-        return onEach(this, action,)
+        return onEachByCollectionHolder(this, action,)
     }
 
     //#endregion -------------------- On each methods --------------------
