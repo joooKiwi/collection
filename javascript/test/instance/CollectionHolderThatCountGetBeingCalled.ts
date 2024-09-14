@@ -34,6 +34,7 @@ import {hasDuplicateByCollectionHolder, hasDuplicateByMinimalistCollectionHolder
 import {hasNullByCollectionHolder, hasNullByMinimalistCollectionHolder}                   from "../../src/method/hasNull"
 import {hasOneByCollectionHolder, hasOneByMinimalistCollectionHolder}                     from "../../src/method/hasOne"
 import {indexOfByCollectionHolder, indexOfByMinimalistCollectionHolder}                   from "../../src/method/indexOf"
+import {indexOfFirstByCollectionHolder, indexOfFirstByMinimalistCollectionHolder}         from "../../src/method/indexOfFirst"
 import {none as noneByCollectionHolder}                                                   from "../../src/method/collectionHolder/none"
 import {none as noneByMinimalistCollectionHolder}                                         from "../../src/method/minimalistCollectionHolder/none"
 import {onEach as onEachByCollectionHolder}                                               from "../../src/method/collectionHolder/onEach"
@@ -59,7 +60,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                         from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {indexOfFirst, indexOfFirstByCollectionHolder}                       from "../../src/method/indexOfFirst"
 import {indexOfFirstIndexed, indexOfFirstIndexedByCollectionHolder}         from "../../src/method/indexOfFirstIndexed"
 import {indexOfLast, indexOfLastByCollectionHolder}                         from "../../src/method/indexOfLast"
 import {indexOfLastIndexed, indexOfLastIndexedByCollectionHolder}           from "../../src/method/indexOfLastIndexed"
@@ -244,7 +244,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return this.#isCollectionHolder
             ? indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-            : indexOfFirst(this, predicate, fromIndex, toIndex, limit,)
+            : indexOfFirstByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Index of first methods --------------------
