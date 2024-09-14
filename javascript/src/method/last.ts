@@ -13,13 +13,15 @@ import type {MinimalistCollectionHolder}                 from "../MinimalistColl
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+import {isCollectionHolder}                        from "./isCollectionHolder"
+import {isCollectionHolderByStructure}             from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
 /**
  * Get the last element in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} <b</b>is empty}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
@@ -32,7 +34,7 @@ export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<
  * Get the last element in the {@link collection}
  * matching the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param predicate  The matching predicate
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
@@ -47,7 +49,7 @@ export function last<const T, const S extends T, >(collection: Nullable<Minimali
  * Get the last element in the {@link collection}
  * matching the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param predicate  The matching predicate
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
@@ -59,7 +61,59 @@ export function last<const T, const S extends T, >(collection: Nullable<Minimali
 export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T
 export function last<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (collection == null)
-        throw new TypeError("No element could be retrieved from a null value.",)
+        throw new TypeError("No element could be retrieved from a null value.",) // TODO change to custom exception
+    if (isCollectionHolder<T>(collection,))
+        return lastByCollectionHolder(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return lastByCollectionHolder(collection, predicate,)
+    return lastByMinimalistCollectionHolder(collection, predicate,)
+}
+
+
+/**
+ * Get the last element in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException The {@link collection} <b>is empty</b>
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+ * @extensionFunction
+ */
+export function lastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): T
+/**
+ * Get the last element in the {@link collection}
+ * matching the given {@link predicate}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The matching predicate
+ * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+ * @typescriptDefinition
+ * @extensionFunction
+ */
+export function lastByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+/**
+ * Get the last element in the {@link collection}
+ * matching the given {@link predicate}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The matching predicate
+ * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+ * @extensionFunction
+ */
+export function lastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T
+export function lastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
+    if (collection == null)
+        throw new TypeError("No element could be retrieved from a null value.",) // TODO change to custom exception
 
     const size = collection.size
     if (size == 0)
@@ -117,7 +171,7 @@ export function lastByCollectionHolder<const T, const S extends T, >(collection:
 export function lastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): T
 export function lastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (collection == null)
-        throw new TypeError("No element could be retrieved from a null value.",)
+        throw new TypeError("No element could be retrieved from a null value.",) // TODO change to custom exception
     if (collection.isEmpty)
         throw new EmptyCollectionHolderException()
 

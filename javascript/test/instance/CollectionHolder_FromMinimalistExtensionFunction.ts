@@ -41,7 +41,7 @@ import {indexOfFirstIndexedByMinimalistCollectionHolder} from "../../src/method/
 import {indexOfLastByMinimalistCollectionHolder}         from "../../src/method/indexOfLast"
 import {indexOfLastIndexedByMinimalistCollectionHolder}  from "../../src/method/indexOfLastIndexed"
 import {joinToStringByMinimalistCollectionHolder}        from "../../src/method/joinToString"
-import {last}                                            from "../../src/method/last"
+import {lastByMinimalistCollectionHolder}                from "../../src/method/last"
 import {lastIndexOf}                                     from "../../src/method/lastIndexOf"
 import {lastOrNull}                                      from "../../src/method/lastOrNull"
 import {none}                                            from "../../src/method/minimalistCollectionHolder/none"
@@ -265,7 +265,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
     public last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
     public last(predicate?: Nullable<BooleanCallback<T>>,) {
-        return last(this, predicate,)
+        return lastByMinimalistCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Last methods --------------------
