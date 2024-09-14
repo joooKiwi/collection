@@ -391,6 +391,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, limit?)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
+     * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
      */
     lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 

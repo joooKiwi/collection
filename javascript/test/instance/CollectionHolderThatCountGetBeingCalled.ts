@@ -40,6 +40,7 @@ import {indexOfLastByCollectionHolder, indexOfLastByMinimalistCollectionHolder} 
 import {indexOfLastIndexedByCollectionHolder, indexOfLastIndexedByMinimalistCollectionHolder}   from "../../src/method/indexOfLastIndexed"
 import {joinToStringByCollectionHolder, joinToStringByMinimalistCollectionHolder}               from "../../src/method/joinToString"
 import {lastByCollectionHolder, lastByMinimalistCollectionHolder}                               from "../../src/method/last"
+import {lastIndexOfByCollectionHolder, lastIndexOfByMinimalistCollectionHolder}                 from "../../src/method/lastIndexOf"
 import {none as noneByCollectionHolder}                                                         from "../../src/method/collectionHolder/none"
 import {none as noneByMinimalistCollectionHolder}                                               from "../../src/method/minimalistCollectionHolder/none"
 import {onEach as onEachByCollectionHolder}                                                     from "../../src/method/collectionHolder/onEach"
@@ -65,7 +66,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                               from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {lastIndexOf, lastIndexOfByCollectionHolder}                         from "../../src/method/lastIndexOf"
 import {lastOrNull, lastOrNullByCollectionHolder}                           from "../../src/method/lastOrNull"
 import {map, mapByCollectionHolder}                                         from "../../src/method/map"
 import {mapIndexed, mapIndexedByCollectionHolder}                           from "../../src/method/mapIndexed"
@@ -232,10 +232,10 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
     public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return this.#isCollectionHolder
             ? lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
-            : lastIndexOf(this, element, fromIndex, toIndex, limit,)
+            : lastIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Last index of methods --------------------

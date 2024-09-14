@@ -185,8 +185,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Last index of methods --------------------
 
     public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 

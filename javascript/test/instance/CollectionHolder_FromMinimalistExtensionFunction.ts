@@ -42,7 +42,7 @@ import {indexOfLastByMinimalistCollectionHolder}         from "../../src/method/
 import {indexOfLastIndexedByMinimalistCollectionHolder}  from "../../src/method/indexOfLastIndexed"
 import {joinToStringByMinimalistCollectionHolder}        from "../../src/method/joinToString"
 import {lastByMinimalistCollectionHolder}                from "../../src/method/last"
-import {lastIndexOf}                                     from "../../src/method/lastIndexOf"
+import {lastIndexOfByMinimalistCollectionHolder}         from "../../src/method/lastIndexOf"
 import {lastOrNull}                                      from "../../src/method/lastOrNull"
 import {none}                                            from "../../src/method/minimalistCollectionHolder/none"
 import {map}                                             from "../../src/method/map"
@@ -204,8 +204,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
     public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
     public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return lastIndexOf(this, element, fromIndex, toIndex, limit,)
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+        return lastIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Last index of methods --------------------
