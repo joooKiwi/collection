@@ -10,7 +10,28 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+
 //#region -------------------- Facade method --------------------
+
+/**
+ * The {@link collection} has at least one <b>null</b> or <b>undefined</b>
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+ * @extensionFunction
+ */
+export function hasNull<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+    if (collection == null)
+        return false
+    if (isCollectionHolder(collection,))
+        return hasNullByCollectionHolder(collection,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return hasNullByCollectionHolder(collection,)
+    return hasNullByMinimalistCollectionHolder(collection,)
+}
+
 
 /**
  * The {@link collection} has at least one <b>null</b> or <b>undefined</b>
@@ -19,7 +40,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
  * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */
-export function hasNull<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+export function hasNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
         return false
 

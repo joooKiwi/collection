@@ -33,7 +33,7 @@ import {getOrNullByMinimalistCollectionHolder}        from "../../src/method/get
 import {hasByMinimalistCollectionHolder}              from "../../src/method/has"
 import {hasAllByMinimalistCollectionHolder}           from "../../src/method/hasAll"
 import {hasDuplicateByMinimalistCollectionHolder}     from "../../src/method/hasDuplicate"
-import {hasNull}                                      from "../../src/method/hasNull"
+import {hasNullByMinimalistCollectionHolder}          from "../../src/method/hasNull"
 import {hasOne}                                       from "../../src/method/hasOne"
 import {indexOf}                                      from "../../src/method/indexOf"
 import {indexOfFirst}                                 from "../../src/method/indexOfFirst"
@@ -106,7 +106,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
 
     public get hasNull(): boolean {
-        return hasNull(this,)
+        return hasNullByMinimalistCollectionHolder(this,)
     }
 
     public get includesNull(): never {

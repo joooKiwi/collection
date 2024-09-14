@@ -31,6 +31,7 @@ import {forEachIndexedByCollectionHolder, forEachIndexedByMinimalistCollectionHo
 import {hasByCollectionHolder, hasByMinimalistCollectionHolder}                           from "../../src/method/has"
 import {hasAllByCollectionHolder, hasAllByMinimalistCollectionHolder}                     from "../../src/method/hasAll"
 import {hasDuplicateByCollectionHolder, hasDuplicateByMinimalistCollectionHolder}         from "../../src/method/hasDuplicate"
+import {hasNullByCollectionHolder, hasNullByMinimalistCollectionHolder}                   from "../../src/method/hasNull"
 import {none as noneByCollectionHolder}                                                   from "../../src/method/collectionHolder/none"
 import {none as noneByMinimalistCollectionHolder}                                         from "../../src/method/minimalistCollectionHolder/none"
 import {onEach as onEachByCollectionHolder}                                               from "../../src/method/collectionHolder/onEach"
@@ -56,7 +57,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                         from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}               from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {hasNull, hasNullByCollectionHolder}                                 from "../../src/method/hasNull"
 import {hasOne, hasOneByCollectionHolder}                                   from "../../src/method/hasOne"
 import {indexOf, indexOfByCollectionHolder}                                 from "../../src/method/indexOf"
 import {indexOfFirst, indexOfFirstByCollectionHolder}                       from "../../src/method/indexOfFirst"
@@ -128,7 +128,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public get hasNull(): boolean {
         return this.#isCollectionHolder
             ? hasNullByCollectionHolder(this,)
-            : hasNull(this,)
+            : hasNullByMinimalistCollectionHolder(this,)
     }
 
     public get includesNull(): never {
