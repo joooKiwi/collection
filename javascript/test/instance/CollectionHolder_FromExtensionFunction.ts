@@ -57,7 +57,7 @@ import {toLocaleLowerCaseStringByCollectionHolder} from "../../src/method/toLoca
 import {toLocaleStringByCollectionHolder}          from "../../src/method/toLocaleString"
 import {toLocaleUpperCaseStringByCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
 import {toLowerCaseStringByCollectionHolder}       from "../../src/method/toLowerCaseString"
-import {toMap}                                     from "../../src/method/collectionHolder/toMap"
+import {toMapByCollectionHolder}                   from "../../src/method/toMap"
 import {toMutableArray}                            from "../../src/method/collectionHolder/toMutableArray"
 import {toMutableSet}                              from "../../src/method/collectionHolder/toMutableSet"
 import {toMutableMap}                              from "../../src/method/collectionHolder/toMutableMap"
@@ -634,7 +634,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
 
 
     public override toMap(): ReadonlyMap<number, T> {
-        return toMap<T>(this,)
+        return toMapByCollectionHolder<T>(this,)
     }
 
     public override toMutableMap(): Map<number, T> {

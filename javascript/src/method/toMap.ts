@@ -10,12 +10,10 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}                   from "../CollectionConstants"
-import {__associativeValues}                   from "./_tables utility"
-import {isCollectionHolder}                    from "./isCollectionHolder"
-import {isCollectionHolderByStructure}         from "./isCollectionHolderByStructure"
-import {toMap as byCollectionHolder}           from "./collectionHolder/toMap"
-import {toMap as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMap"
+import {CollectionConstants}           from "../CollectionConstants"
+import {__associativeValues}           from "./_tables utility"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,10 +27,27 @@ export function toMap<const T, >(collection: Nullable<MinimalistCollectionHolder
     if (collection == null)
         return CollectionConstants.EMPTY_MAP
     if (isCollectionHolder<T>(collection,))
-        return byCollectionHolder(collection,)
+        return toMapByCollectionHolder(collection,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return byCollectionHolder(collection,)
-    return byMinimalistCollectionHolder(collection,)
+        return toMapByCollectionHolder(collection,)
+    return toMapByMinimalistCollectionHolder(collection,)
+}
+
+
+/**
+ * Convert the {@link collection} to an {@link ReadonlyMap map}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @extensionFunction
+ */
+export function toMapByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): ReadonlyMap<number, T> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_MAP
+
+    const size = collection.size
+    if (size == 0)
+        return CollectionConstants.EMPTY_MAP
+    return __newMap(collection, size,)
 }
 
 /**
@@ -40,17 +55,19 @@ export function toMap<const T, >(collection: Nullable<MinimalistCollectionHolder
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
  * @extensionFunction
- * @deprecated Use toMap from import("@joookiwi/collection/method/collectionHolder")
  */
 export function toMapByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlyMap<number, T> {
-    return byCollectionHolder(collection,)
+    if (collection == null)
+        return CollectionConstants.EMPTY_MAP
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_MAP
+    return __newMap(collection, collection.size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
-/** @internal */
-export function __newMap<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+function __newMap<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return Object.freeze(new Map(__associativeValues(collection, size,),),)
 }
 

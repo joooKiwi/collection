@@ -83,12 +83,9 @@ export {toLocaleLowerCaseString,              toLocaleLowerCaseStringByCollectio
 export {toLocaleString,                       toLocaleStringByCollectionHolder,                       toLocaleStringByMinimalistCollectionHolder                      } from "./toLocaleString"
 export {toLocaleUpperCaseString,              toLocaleUpperCaseStringByCollectionHolder,              toLocaleUpperCaseStringByMinimalistCollectionHolder             } from "./toLocaleUpperCaseString"
 export {toLowerCaseString,                    toLowerCaseStringByCollectionHolder,                    toLowerCaseStringByMinimalistCollectionHolder                   } from "./toLowerCaseString"
+export {toMap,                                toMapByCollectionHolder,                                toMapByMinimalistCollectionHolder                               } from "./toMap"
 
-export {toMap}                                      from "./toMap"
-export {toMap as toMapByCollectionHolder}           from "./collectionHolder/toMap"
-export {toMap as toMapByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMap"
-
-export {toMutableArray}                                             from "./toMutableArray"
+export {toMutableArray}                                               from "./toMutableArray"
 export {toMutableArray as toMutableArrayByCollectionHolder}           from "./collectionHolder/toMutableArray"
 export {toMutableArray as toMutableArrayByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toMutableArray"
 
