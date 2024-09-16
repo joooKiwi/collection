@@ -88,10 +88,7 @@ export {toMutableArray,                       toMutableArrayByCollectionHolder, 
 export {toMutableMap,                         toMutableMapByCollectionHolder,                         toMutableMapByMinimalistCollectionHolder                        } from "./toMutableMap"
 export {toMutableSet,                         toMutableSetByCollectionHolder,                         toMutableSetByMinimalistCollectionHolder                        } from "./toMutableSet"
 export {toMutableWeakSet,                     toMutableWeakSetByCollectionHolder,                     toMutableWeakSetByMinimalistCollectionHolder                    } from "./toMutableWeakSet"
-
-export {toReverse}                                          from "./toReverse"
-export {toReverse as toReverseByCollectionHolder}           from "./collectionHolder/toReverse"
-export {toReverse as toReverseByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toReverse"
+export {toReverse,                            toReverseByCollectionHolder,                            toReverseByMinimalistCollectionHolder                           } from "./toReverse"
 
 export {toSet}                                      from "./toSet"
 export {toSet as toSetByCollectionHolder}           from "./collectionHolder/toSet"

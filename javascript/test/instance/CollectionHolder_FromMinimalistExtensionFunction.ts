@@ -63,7 +63,7 @@ import {toMapByMinimalistCollectionHolder}                   from "../../src/met
 import {toMutableArrayByMinimalistCollectionHolder}          from "../../src/method/toMutableArray"
 import {toMutableMapByMinimalistCollectionHolder}            from "../../src/method/toMutableMap"
 import {toMutableSetByMinimalistCollectionHolder}            from "../../src/method/toMutableSet"
-import {toReverse}                                           from "../../src/method/minimalistCollectionHolder/toReverse"
+import {toReverseByMinimalistCollectionHolder}               from "../../src/method/toReverse"
 import {toSet}                                               from "../../src/method/minimalistCollectionHolder/toSet"
 import {toString}                                            from "../../src/method/minimalistCollectionHolder/toString"
 import {toUpperCaseString}                                   from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
@@ -668,7 +668,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
 
     public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return toReverse(this, fromIndex, toIndex, limit,)
+        return toReverseByMinimalistCollectionHolder(this, fromIndex, toIndex, limit,)
     }
 
     public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never

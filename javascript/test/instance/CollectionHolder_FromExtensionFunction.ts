@@ -61,7 +61,7 @@ import {toMapByCollectionHolder}                   from "../../src/method/toMap"
 import {toMutableArrayByCollectionHolder}          from "../../src/method/toMutableArray"
 import {toMutableSetByCollectionHolder}            from "../../src/method/toMutableSet"
 import {toMutableMapByCollectionHolder}            from "../../src/method/toMutableMap"
-import {toReverse}                                 from "../../src/method/collectionHolder/toReverse"
+import {toReverseByCollectionHolder}               from "../../src/method/toReverse"
 import {toSet}                                     from "../../src/method/collectionHolder/toSet"
 import {toString}                                  from "../../src/method/collectionHolder/toString"
 import {toUpperCaseString}                         from "../../src/method/collectionHolder/toUpperCaseString"
@@ -643,7 +643,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
 
 
     public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return toReverse<T>(this, fromIndex, toIndex, limit,)
+        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex, limit,)
     }
 
     public override toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
