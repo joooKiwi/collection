@@ -60,7 +60,7 @@ import {toLowerCaseStringByCollectionHolder}       from "../../src/method/toLowe
 import {toMapByCollectionHolder}                   from "../../src/method/toMap"
 import {toMutableArrayByCollectionHolder}          from "../../src/method/toMutableArray"
 import {toMutableSet}                              from "../../src/method/collectionHolder/toMutableSet"
-import {toMutableMap}                              from "../../src/method/collectionHolder/toMutableMap"
+import {toMutableMapByCollectionHolder}            from "../../src/method/toMutableMap"
 import {toReverse}                                 from "../../src/method/collectionHolder/toReverse"
 import {toSet}                                     from "../../src/method/collectionHolder/toSet"
 import {toString}                                  from "../../src/method/collectionHolder/toString"
@@ -638,7 +638,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     }
 
     public override toMutableMap(): Map<number, T> {
-        return toMutableMap<T>(this,)
+        return toMutableMapByCollectionHolder<T>(this,)
     }
 
 
