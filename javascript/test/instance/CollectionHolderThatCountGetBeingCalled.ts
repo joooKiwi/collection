@@ -55,6 +55,7 @@ import {toArrayByCollectionHolder, toArrayByMinimalistCollectionHolder}         
 import {toIteratorByCollectionHolder, toIteratorByMinimalistCollectionHolder}                           from "../../src/method/toIterator"
 import {toLocaleLowerCaseStringByCollectionHolder, toLocaleLowerCaseStringByMinimalistCollectionHolder} from "../../src/method/toLocaleLowerCaseString"
 import {toLocaleStringByCollectionHolder, toLocaleStringByMinimalistCollectionHolder}                   from "../../src/method/toLocaleString"
+import {toLocaleUpperCaseStringByCollectionHolder, toLocaleUpperCaseStringByMinimalistCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
 import {toMap as toMapByCollectionHolder}                                                               from "../../src/method/collectionHolder/toMap"
 import {toMap as toMapByMinimalistCollectionHolder}                                                     from "../../src/method/minimalistCollectionHolder/toMap"
 import {toMutableArray as toMutableArrayByCollectionHolder}                                             from "../../src/method/collectionHolder/toMutableArray"
@@ -72,8 +73,7 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                                       from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                             from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {toLocaleUpperCaseString, toLocaleUpperCaseStringByCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
-import {toLowerCaseString, toLowerCaseStringByCollectionHolder}             from "../../src/method/toLowerCaseString"
+import {toLowerCaseString, toLowerCaseStringByCollectionHolder} from "../../src/method/toLowerCaseString"
 
 /** A {@link CollectionHolder} that count the amount of time the {@link get} is being called */
 export class CollectionHolderThatCountGetBeingCalled<const out T, >
@@ -828,7 +828,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public toLocaleUpperCaseString(locale?: NullableString,): string {
         return this.#isCollectionHolder
             ? toLocaleUpperCaseStringByCollectionHolder(this,)
-            : toLocaleUpperCaseString(this, locale,)
+            : toLocaleUpperCaseStringByMinimalistCollectionHolder(this, locale,)
     }
 
     //#endregion -------------------- Conversion methods (toString) --------------------

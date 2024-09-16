@@ -10,9 +10,31 @@ import type {Nullable, NullableString} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {asLocaleUpperCaseString} from "./asString"
+import {asLocaleUpperCaseString}       from "./asString"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
+
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toLocaleUpperCase toLocaleUpperCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param locale     The possible locale to apply on each value
+ * @see String.toLocaleUpperCase
+ * @extensionFunction
+ */
+export function toLocaleUpperCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
+    if (collection == null)
+        return "[]"
+    if (isCollectionHolder(collection,))
+        return toLocaleUpperCaseStringByCollectionHolder(collection, locale,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return toLocaleUpperCaseStringByCollectionHolder(collection, locale,)
+    return toLocaleUpperCaseStringByMinimalistCollectionHolder(collection, locale,)
+}
+
 
 /**
  * Convert the {@link collection} to a {@link String} on every value
@@ -23,14 +45,13 @@ import {asLocaleUpperCaseString} from "./asString"
  * @see String.toLocaleUpperCase
  * @extensionFunction
  */
-export function toLocaleUpperCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
+export function toLocaleUpperCaseStringByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
 
     const size = collection.size
     if (size == 0)
         return "[]"
-
     if (locale == null)
         return __withNoLocale(collection, size,)
     return __withLocale(collection, locale, size,)
@@ -50,7 +71,6 @@ export function toLocaleUpperCaseStringByCollectionHolder<const T, >(collection:
         return "[]"
     if (collection.isEmpty)
         return "[]"
-
     if (locale == null)
         return __withNoLocale(collection, collection.size,)
     return __withLocale(collection, locale, collection.size,)

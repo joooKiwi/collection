@@ -57,7 +57,7 @@ import {toArrayByMinimalistCollectionHolder}                 from "../../src/met
 import {toIteratorByMinimalistCollectionHolder}              from "../../src/method/toIterator"
 import {toLocaleLowerCaseStringByMinimalistCollectionHolder} from "../../src/method/toLocaleLowerCaseString"
 import {toLocaleStringByMinimalistCollectionHolder}          from "../../src/method/toLocaleString"
-import {toLocaleUpperCaseString}                             from "../../src/method/toLocaleUpperCaseString"
+import {toLocaleUpperCaseStringByMinimalistCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
 import {toLowerCaseString}                                   from "../../src/method/toLowerCaseString"
 import {toMap}                                               from "../../src/method/minimalistCollectionHolder/toMap"
 import {toMutableArray}                                      from "../../src/method/minimalistCollectionHolder/toMutableArray"
@@ -704,7 +704,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     }
 
     public toLocaleUpperCaseString(locale?: NullableString,): string {
-        return toLocaleUpperCaseString(this, locale,)
+        return toLocaleUpperCaseStringByMinimalistCollectionHolder(this, locale,)
     }
 
     //#endregion -------------------- Conversion methods (string) --------------------
