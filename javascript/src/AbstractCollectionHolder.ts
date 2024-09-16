@@ -40,6 +40,7 @@ import {indexOfFirstByCollectionHolder}            from "./method/indexOfFirst"
 import {indexOfFirstIndexedByCollectionHolder}     from "./method/indexOfFirstIndexed"
 import {indexOfLastByCollectionHolder}             from "./method/indexOfLast"
 import {indexOfLastIndexedByCollectionHolder}      from "./method/indexOfLastIndexed"
+import {isEmptyByCollectionHolder}                 from "./method/isEmpty"
 import {joinToStringByCollectionHolder}            from "./method/joinToString"
 import {lastByCollectionHolder}                    from "./method/last"
 import {lastIndexOfByCollectionHolder}             from "./method/lastIndexOf"
@@ -99,7 +100,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public get length(): this["size"] { return this.size }
     public get count(): this["size"] { return this.size }
 
-    public get isEmpty(): boolean { return this.size == 0 }
+    public get isEmpty(): boolean { return isEmptyByCollectionHolder(this,) }
 
     public get isNotEmpty(): boolean { return !this.isEmpty }
 

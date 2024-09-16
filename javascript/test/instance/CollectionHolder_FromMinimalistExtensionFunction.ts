@@ -40,6 +40,7 @@ import {indexOfFirstByMinimalistCollectionHolder}            from "../../src/met
 import {indexOfFirstIndexedByMinimalistCollectionHolder}     from "../../src/method/indexOfFirstIndexed"
 import {indexOfLastByMinimalistCollectionHolder}             from "../../src/method/indexOfLast"
 import {indexOfLastIndexedByMinimalistCollectionHolder}      from "../../src/method/indexOfLastIndexed"
+import {isEmptyByMinimalistCollectionHolder}                 from "../../src/method/isEmpty"
 import {joinToStringByMinimalistCollectionHolder}            from "../../src/method/joinToString"
 import {lastByMinimalistCollectionHolder}                    from "../../src/method/last"
 import {lastIndexOfByMinimalistCollectionHolder}             from "../../src/method/lastIndexOf"
@@ -96,8 +97,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     }
 
 
-    public get isEmpty(): never {
-        throw new Error("The method \"isEmpty\" was not expected to be called in a test.",)
+    public get isEmpty(): boolean {
+        return isEmptyByMinimalistCollectionHolder(this,)
     }
 
     public get isNotEmpty(): never {

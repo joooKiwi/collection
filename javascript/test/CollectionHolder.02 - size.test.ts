@@ -38,13 +38,11 @@ describe("CollectionHolderTest (size)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstance,)("%s", ({value: {isMinimalist, newInstance,},},) => {
+    describe.each(everyCollectionInstance,)("%s", ({value: {newInstance,},},) => {
     describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
         test("size", () => expect(newInstance(array,).size,).toEqual(size,),)
-        if (!isMinimalist) {
-            test("isEmpty", () => expect(newInstance(array,).isEmpty,).toBe(size == 0,),)
-            test("isNotEmpty", () => expect(newInstance(array,).isNotEmpty,).toBe(size != 0,),)
-        }
+        test("isEmpty", () => expect(newInstance(array,).isEmpty,).toBe(size == 0,),)
+        test("isNotEmpty", () => expect(newInstance(array,).isNotEmpty,).toBe(size != 0,),)
     },)},)
 
 },)

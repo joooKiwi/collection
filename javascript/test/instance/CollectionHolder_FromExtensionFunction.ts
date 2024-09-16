@@ -38,6 +38,7 @@ import {indexOfFirstByCollectionHolder}            from "../../src/method/indexO
 import {indexOfFirstIndexedByCollectionHolder}     from "../../src/method/indexOfFirstIndexed"
 import {indexOfLastByCollectionHolder}             from "../../src/method/indexOfLast"
 import {indexOfLastIndexedByCollectionHolder}      from "../../src/method/indexOfLastIndexed"
+import {isEmptyByCollectionHolder}                 from "../../src/method/isEmpty"
 import {joinToStringByCollectionHolder}            from "../../src/method/joinToString"
 import {lastByCollectionHolder}                    from "../../src/method/last"
 import {lastIndexOfByCollectionHolder}             from "../../src/method/lastIndexOf"
@@ -93,6 +94,10 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
         return this.#array.length
     }
 
+
+    public override get isEmpty(): boolean {
+        return isEmptyByCollectionHolder(this,)
+    }
 
     public override get isNotEmpty(): never {
         throw new Error("The getter method \"isNotEmpty\" was not expected to be called.",)

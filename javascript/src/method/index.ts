@@ -51,6 +51,7 @@ export {isCollectionHolder                                                      
 export {isCollectionHolderByStructure                                                                                                                                 } from "./isCollectionHolderByStructure"
 export {isCollectionIterator                                                                                                                                          } from "./isCollectionIterator"
 export {isCollectionIteratorByStructure                                                                                                                               } from "./isCollectionIteratorByStructure"
+export {isEmpty,                              isEmptyByCollectionHolder,                              isEmptyByMinimalistCollectionHolder                             } from "./isEmpty"
 export {isMinimalistCollectionHolder                                                                                                                                  } from "./isMinimalistCollectionHolder"
 export {isMinimalistCollectionHolderByStructure                                                                                                                       } from "./isMinimalistCollectionHolderByStructure"
 export {isSet                                                                                                                                                         } from "./isSet"
