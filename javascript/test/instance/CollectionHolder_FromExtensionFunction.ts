@@ -51,7 +51,7 @@ import {onEachByCollectionHolder}                  from "../../src/method/onEach
 import {onEachIndexedByCollectionHolder}           from "../../src/method/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "../../src/method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "../../src/method/slice"
-import {toArray}                                   from "../../src/method/collectionHolder/toArray"
+import {toArrayByCollectionHolder}                 from "../../src/method/toArray"
 import {toIteratorByCollectionHolder}              from "../../src/method/toIterator"
 import {toLocaleLowerCaseStringByCollectionHolder} from "../../src/method/toLocaleLowerCaseString"
 import {toLocaleStringByCollectionHolder}          from "../../src/method/toLocaleString"
@@ -616,7 +616,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
 
 
     public override toArray(): readonly T[] {
-        return toArray<T>(this,)
+        return toArrayByCollectionHolder<T>(this,)
     }
 
     public override toMutableArray(): T[] {

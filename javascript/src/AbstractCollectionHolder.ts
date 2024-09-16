@@ -53,7 +53,7 @@ import {onEachByCollectionHolder}                  from "./method/onEach"
 import {onEachIndexedByCollectionHolder}           from "./method/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "./method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "./method/slice"
-import {toArray}                                   from "./method/collectionHolder/toArray"
+import {toArrayByCollectionHolder}                 from "./method/toArray"
 import {toIteratorByCollectionHolder}              from "./method/toIterator"
 import {toLocaleLowerCaseStringByCollectionHolder} from "./method/toLocaleLowerCaseString"
 import {toLocaleStringByCollectionHolder}          from "./method/toLocaleString"
@@ -676,7 +676,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Conversion methods (array) --------------------
 
     public toArray(): readonly T[] {
-        return toArray<T>(this,)
+        return toArrayByCollectionHolder<T>(this,)
     }
 
     public toMutableArray(): T[] {

@@ -6,7 +6,6 @@
  ******************************************************************************/
 
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByCollectionHolder}     from "./onEachIndexed"
-export {toArray,           toArray as           toArrayByCollectionHolder}           from "./toArray"
 export {toMap,             toMap as             toMapByCollectionHolder}             from "./toMap"
 export {toMutableArray,    toMutableArray as    toMutableArrayByCollectionHolder}    from "./toMutableArray"
 export {toMutableMap,      toMutableMap as      toMutableMapByCollectionHolder}      from "./toMutableMap"

@@ -53,7 +53,7 @@ import {onEachByMinimalistCollectionHolder}              from "../../src/method/
 import {onEachIndexedByMinimalistCollectionHolder}       from "../../src/method/onEachIndexed"
 import {requireNoNullsByMinimalistCollectionHolder}      from "../../src/method/requireNoNulls"
 import {sliceByMinimalistCollectionHolder}               from "../../src/method/slice"
-import {toArray}                                         from "../../src/method/minimalistCollectionHolder/toArray"
+import {toArrayByMinimalistCollectionHolder}             from "../../src/method/toArray"
 import {toIterator}                                      from "../../src/method/toIterator"
 import {toLocaleLowerCaseString}                         from "../../src/method/toLocaleLowerCaseString"
 import {toLocaleString}                                  from "../../src/method/toLocaleString"
@@ -641,7 +641,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
 
     public toArray(): readonly T[] {
-        return toArray(this,)
+        return toArrayByMinimalistCollectionHolder(this,)
     }
 
     public toMutableArray(): T[] {

@@ -10,14 +10,28 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}                     from "../CollectionConstants"
-import {__values}                                from "./_tables utility"
-import {isCollectionHolder}                      from "./isCollectionHolder"
-import {isCollectionHolderByStructure}           from "./isCollectionHolderByStructure"
-import {toArray as byCollectionHolder}           from "./collectionHolder/toArray"
-import {toArray as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/toArray"
+import {CollectionConstants}           from "../CollectionConstants"
+import {__values}                      from "./_tables utility"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
+
+/**
+ * Convert the {@link collection} to an {@link ReadonlyArray array}
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to convert
+ * @extensionFunction
+ */
+export function toArray<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): readonly T[] {
+    if (collection == null)
+        return CollectionConstants.EMPTY_ARRAY
+    if (isCollectionHolder<T>(collection,))
+        return toArrayByCollectionHolder(collection,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return toArrayByCollectionHolder(collection,)
+    return toArrayByMinimalistCollectionHolder(collection,)
+}
 
 /**
  * Convert the {@link collection} to an {@link ReadonlyArray array}
@@ -25,15 +39,16 @@ import {toArray as byMinimalistCollectionHolder} from "./minimalistCollectionHol
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
  * @extensionFunction
  */
-export function toArray<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): readonly T[] {
+export function toArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): readonly T[] {
     if (collection == null)
         return CollectionConstants.EMPTY_ARRAY
-    if (isCollectionHolder<T>(collection,))
-        return byCollectionHolder(collection,)
-    if (isCollectionHolderByStructure<T>(collection,))
-        return byCollectionHolder(collection,)
-    return byMinimalistCollectionHolder(collection,)
+
+    const size = collection.size
+    if (size == 0)
+        return CollectionConstants.EMPTY_ARRAY
+    return __newArray(collection, size,)
 }
+
 
 /**
  * Convert the {@link collection} to an {@link ReadonlyArray array}
@@ -42,14 +57,17 @@ export function toArray<const T, >(collection: Nullable<MinimalistCollectionHold
  * @extensionFunction
  */
 export function toArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): readonly T[] {
-    return byCollectionHolder(collection,)
+    if (collection == null)
+        return CollectionConstants.EMPTY_ARRAY
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_ARRAY
+    return __newArray(collection, collection.size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
-/** @internal */
-export function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return Object.freeze(__values(collection, size,),)
 }
 
