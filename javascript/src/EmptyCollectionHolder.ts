@@ -15,12 +15,16 @@ import type {MinimalistCollectionHolder}                                        
 
 import {EmptyCollectionHolderException}          from "./exception/EmptyCollectionHolderException"
 import {CollectionConstants}                     from "./CollectionConstants"
+import {isArray}                                 from "./method/isArray"
+import {isArrayByStructure}                      from "./method/isArrayByStructure"
 import {isCollectionIterator}                    from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}         from "./method/isCollectionIteratorByStructure"
 import {isCollectionHolder}                      from "./method/isCollectionHolder"
 import {isCollectionHolderByStructure}           from "./method/isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}            from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure} from "./method/isMinimalistCollectionHolderByStructure"
+import {isSet}                                   from "./method/isSet"
+import {isSetByStructure}                        from "./method/isSetByStructure"
 import {prefixAndPostfixOnly}                    from "./method/joinToString"
 
 /**
@@ -256,9 +260,9 @@ export class EmptyCollectionHolder
     public hasAll(values: Iterable<unknown>, ..._: readonly unknown[]): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>, ..._: readonly unknown[]): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
-        if (values instanceof Array)
+        if (isArray(values,))
             return values.length == 0
-        if (values instanceof Set)
+        if (isSet(values,))
             return values.size == 0
         if (isCollectionHolder(values,))
             return values.isEmpty
@@ -267,12 +271,15 @@ export class EmptyCollectionHolder
         if (isCollectionIterator(values,))
             return values.size == 0
 
-        if (isCollectionHolderByStructure<unknown>(values,))
-            return values.isEmpty
-        if (isMinimalistCollectionHolderByStructure<unknown>(values,))
-            //@ts-ignore: This is a MinimalistCollectionHolder by structure
+        if (isArrayByStructure(values,))
+            return values.length == 0
+        if (isSetByStructure(values,))
             return values.size == 0
-        if (isCollectionIteratorByStructure<unknown>(values,))
+        if (isCollectionHolderByStructure<never>(values,))
+            return values.isEmpty
+        if (isMinimalistCollectionHolderByStructure<never>(values,))
+            return values.size == 0
+        if (isCollectionIteratorByStructure<never>(values,))
             return values.size == 0
 
         return values[Symbol.iterator]().next().done

@@ -10,9 +10,35 @@ import type {Nullable, NullableString} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {asLocaleString} from "./asString"
+import {asLocaleString}                from "./asString"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
+
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link Object.toLocaleString toLocaleString()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param locale     The possible locale to apply on each value
+ * @see Array.toLocaleString
+ * @see Object.toLocaleString
+ * @see Date.toLocaleString
+ * @see Number.toLocaleString
+ * @see BigInt.toLocaleString
+ * @extensionFunction
+ */
+export function toLocaleString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
+    if (collection == null)
+        return "[]"
+    if (isCollectionHolder(collection,))
+        return toLocaleStringByCollectionHolder(collection, locale,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return toLocaleStringByCollectionHolder(collection, locale,)
+    return toLocaleStringByMinimalistCollectionHolder(collection, locale,)
+}
+
 
 /**
  * Convert the {@link collection} to a {@link String} on every value
@@ -27,7 +53,7 @@ import {asLocaleString} from "./asString"
  * @see BigInt.toLocaleString
  * @extensionFunction
  */
-export function toLocaleString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
+export function toLocaleStringByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
 

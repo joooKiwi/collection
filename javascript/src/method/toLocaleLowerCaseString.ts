@@ -10,9 +10,31 @@ import type {Nullable, NullableString} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {asLocaleLowerCaseString} from "./asString"
+import {asLocaleLowerCaseString}       from "./asString"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
+
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toLocaleLowerCase toLocaleLowerCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param locale     The possible locale to apply on each value
+ * @see String.toLocaleLowerCase
+ * @extensionFunction
+ */
+export function toLocaleLowerCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
+    if (collection == null)
+        return "[]"
+    if (isCollectionHolder(collection,))
+        return toLocaleLowerCaseStringByCollectionHolder(collection, locale,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return toLocaleLowerCaseStringByCollectionHolder(collection, locale,)
+    return toLocaleLowerCaseStringByMinimalistCollectionHolder(collection, locale,)
+}
+
 
 /**
  * Convert the {@link collection} to a {@link String} on every value
@@ -23,7 +45,7 @@ import {asLocaleLowerCaseString} from "./asString"
  * @see String.toLocaleLowerCase
  * @extensionFunction
  */
-export function toLocaleLowerCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
+export function toLocaleLowerCaseStringByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
 
