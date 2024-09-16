@@ -68,13 +68,11 @@ export function toMutableSetByCollectionHolder<const T, >(collection: Nullable<C
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
-/** @internal */
-export function __withDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+function __withDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return new Set(__uniqueValues(collection, size,),)
 }
 
-/** @internal */
-export function __withoutDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+function __withoutDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return new Set(__values(collection, size,),)
 }
 
