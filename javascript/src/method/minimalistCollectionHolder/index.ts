@@ -5,7 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {toMutableSet,      toMutableSet as      toMutableSetByMinimalistCollectionHolder}      from "./toMutableSet"
 export {toMutableWeakSet,  toMutableWeakSet as  toMutableWeakSetByMinimalistCollectionHolder}  from "./toMutableWeakSet"
 export {toReverse,         toReverse as         toReverseByMinimalistCollectionHolder}         from "./toReverse"
 export {toSet,             toSet as             toSetByMinimalistCollectionHolder}             from "./toSet"
