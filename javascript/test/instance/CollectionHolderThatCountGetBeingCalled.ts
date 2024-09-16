@@ -563,7 +563,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public filterNotNull(): CollectionHolder<NonNullable<T>> {
         return this.#isCollectionHolder
-            ? filterNotNullByCollectionHolder<T>(this,)
+            ? filterNotNullByCollectionHolder(this,)
             : filterNotNullByMinimalistCollectionHolder(this,)
     }
 
@@ -572,7 +572,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
 
     public requireNoNulls(): CollectionHolder<NonNullable<T>> {
         return this.#isCollectionHolder
-            ? requireNoNullsByCollectionHolder<T>(this,)
+            ? requireNoNullsByCollectionHolder(this,)
             : requireNoNullsByMinimalistCollectionHolder(this,)
     }
 
@@ -636,7 +636,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return this.#isCollectionHolder
-            ? sliceByCollectionHolder<T>(this, indicesOrFromIndex, toIndex, limit,)
+            ? sliceByCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
             : sliceByMinimalistCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
     }
 

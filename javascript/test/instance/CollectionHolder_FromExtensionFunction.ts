@@ -467,14 +467,14 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     //#region -------------------- Filter not null methods --------------------
 
     public override filterNotNull(): CollectionHolder<NonNullable<T>> {
-        return filterNotNullByCollectionHolder<T>(this,)
+        return filterNotNullByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Filter not null methods --------------------
     //#region -------------------- Require no nulls methods --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNullsByCollectionHolder<T>(this,)
+        return requireNoNullsByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Require no nulls methods --------------------
@@ -528,7 +528,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     public override slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return sliceByCollectionHolder<T>(this, indicesOrFromIndex, toIndex, limit,)
+        return sliceByCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Slice methods --------------------
