@@ -63,8 +63,7 @@ import {toMutableMapByCollectionHolder, toMutableMapByMinimalistCollectionHolder
 import {toMutableSetByCollectionHolder, toMutableSetByMinimalistCollectionHolder}                       from "../../src/method/toMutableSet"
 import {toReverseByCollectionHolder, toReverseByMinimalistCollectionHolder}                             from "../../src/method/toReverse"
 import {toSetByCollectionHolder, toSetByMinimalistCollectionHolder}                                     from "../../src/method/toSet"
-import {toString as toStringByCollectionHolder}                                                         from "../../src/method/collectionHolder/toString"
-import {toString as toStringByMinimalistCollectionHolder}                                               from "../../src/method/minimalistCollectionHolder/toString"
+import {toStringByCollectionHolder, toStringByMinimalistCollectionHolder}                               from "../../src/method/toString"
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                                       from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                             from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 

@@ -65,7 +65,7 @@ import {toMutableMapByMinimalistCollectionHolder}            from "../../src/met
 import {toMutableSetByMinimalistCollectionHolder}            from "../../src/method/toMutableSet"
 import {toReverseByMinimalistCollectionHolder}               from "../../src/method/toReverse"
 import {toSetByMinimalistCollectionHolder}                   from "../../src/method/toSet"
-import {toString}                                            from "../../src/method/minimalistCollectionHolder/toString"
+import {toStringByMinimalistCollectionHolder}                from "../../src/method/toString"
 import {toUpperCaseString}                                   from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
 export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
@@ -684,7 +684,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#region -------------------- Conversion methods (string) --------------------
 
     public override toString(): string {
-        return toString(this,)
+        return toStringByMinimalistCollectionHolder(this,)
     }
 
     public override toLocaleString(locale?: NullableString,): string {

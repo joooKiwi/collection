@@ -10,11 +10,9 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isCollectionHolder}                       from "./isCollectionHolder"
-import {isCollectionHolderByStructure}            from "./isCollectionHolderByStructure"
-import {asString}                                 from "./asString"
-import {toString as byCollectionHolder}           from "./collectionHolder/toString"
-import {toString as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/toString"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {asString}                      from "./asString"
 
 //#region -------------------- Facade method --------------------
 
@@ -31,10 +29,30 @@ export function toString<const T, >(collection: Nullable<MinimalistCollectionHol
     if (collection == null)
         return "[]"
     if (isCollectionHolder(collection,))
-        return byCollectionHolder(collection,)
+        return toStringByCollectionHolder(collection,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return byCollectionHolder(collection,)
-    return byMinimalistCollectionHolder(collection,)
+        return toStringByCollectionHolder(collection,)
+    return toStringByMinimalistCollectionHolder(collection,)
+}
+
+
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link Object.toString toString()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @see Array.toString
+ * @see Object.toString
+ * @extensionFunction
+ */
+export function toStringByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): string {
+    if (collection == null)
+        return "[]"
+
+    const size = collection.size
+    if (size == 0)
+        return "[]"
+    return __toString(collection, size,)
 }
 
 /**
@@ -45,17 +63,21 @@ export function toString<const T, >(collection: Nullable<MinimalistCollectionHol
  * @see Array.toString
  * @see Object.toString
  * @extensionFunction
- * @deprecated Use toString from import("@joookiwi/collection/method/collectionHolder")
  */
 export function toStringByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): string {
-    return byCollectionHolder(collection,)
+    if (collection == null)
+        return "[]"
+
+    const size = collection.size
+    if (size == 0)
+        return "[]"
+    return __toString(collection, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
-/** @internal */
-export function __toString(collection: MinimalistCollectionHolder, size: number,) {
+function __toString(collection: MinimalistCollectionHolder, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1
