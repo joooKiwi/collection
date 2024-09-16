@@ -64,8 +64,7 @@ import {toMutableSetByCollectionHolder, toMutableSetByMinimalistCollectionHolder
 import {toReverseByCollectionHolder, toReverseByMinimalistCollectionHolder}                             from "../../src/method/toReverse"
 import {toSetByCollectionHolder, toSetByMinimalistCollectionHolder}                                     from "../../src/method/toSet"
 import {toStringByCollectionHolder, toStringByMinimalistCollectionHolder}                               from "../../src/method/toString"
-import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                                       from "../../src/method/collectionHolder/toUpperCaseString"
-import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                             from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
+import {toUpperCaseStringByCollectionHolder, toUpperCaseStringByMinimalistCollectionHolder}             from "../../src/method/toUpperCaseString"
 
 /** A {@link CollectionHolder} that count the amount of time the {@link get} is being called */
 export class CollectionHolderThatCountGetBeingCalled<const out T, >

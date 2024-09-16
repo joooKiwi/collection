@@ -10,11 +10,9 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {isCollectionHolder}                                from "./isCollectionHolder"
-import {isCollectionHolderByStructure}                     from "./isCollectionHolderByStructure"
-import {asUpperCaseString}                                 from "./asString"
-import {toUpperCaseString as byCollectionHolder}           from "./collectionHolder/toUpperCaseString"
-import {toUpperCaseString as byMinimalistCollectionHolder} from "./minimalistCollectionHolder/toUpperCaseString"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {asUpperCaseString}             from "./asString"
 
 //#region -------------------- Facade method --------------------
 
@@ -30,10 +28,29 @@ export function toUpperCaseString<const T, >(collection: Nullable<MinimalistColl
     if (collection == null)
         return "[]"
     if (isCollectionHolder(collection,))
-        return byCollectionHolder(collection,)
+        return toUpperCaseStringByCollectionHolder(collection,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return byCollectionHolder(collection,)
-    return byMinimalistCollectionHolder(collection,)
+        return toUpperCaseStringByCollectionHolder(collection,)
+    return toUpperCaseStringByMinimalistCollectionHolder(collection,)
+}
+
+
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toUpperCase toUpperCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @see String.toUpperCase
+ * @extensionFunction
+ */
+export function toUpperCaseStringByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): string {
+    if (collection == null)
+        return "[]"
+
+    const size = collection.size
+    if (size == 0)
+        return "[]"
+    return __toString(collection, size,)
 }
 
 /**
@@ -43,17 +60,19 @@ export function toUpperCaseString<const T, >(collection: Nullable<MinimalistColl
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @see String.toUpperCase
  * @extensionFunction
- * @deprecated Use toUpperCaseString from import("@joookiwi/collection/method/collectionHolder")
  */
 export function toUpperCaseStringByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): string {
-    return byCollectionHolder(collection,)
+    if (collection == null)
+        return "[]"
+    if (collection.isEmpty)
+        return "[]"
+    return __toString(collection, collection.size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
-/** @internal */
-export function __toString(collection: MinimalistCollectionHolder, size: number,) {
+function __toString(collection: MinimalistCollectionHolder, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1

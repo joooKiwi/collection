@@ -66,7 +66,7 @@ import {toMutableSetByCollectionHolder}            from "./method/toMutableSet"
 import {toReverseByCollectionHolder}               from "./method/toReverse"
 import {toSetByCollectionHolder}                   from "./method/toSet"
 import {toStringByCollectionHolder}                from "./method/toString"
-import {toUpperCaseString}                         from "./method/collectionHolder/toUpperCaseString"
+import {toUpperCaseStringByCollectionHolder}       from "./method/toUpperCaseString"
 
 /**
  * A definition of a {@link CollectionHolder} to have a common ancestor.
@@ -742,7 +742,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
 
     public toUpperCaseString(): string {
-        return toUpperCaseString(this,)
+        return toUpperCaseStringByCollectionHolder(this,)
     }
 
     public toLocaleUpperCaseString(locale?: NullableString,): string {

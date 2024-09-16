@@ -6,5 +6,4 @@
  ******************************************************************************/
 
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByCollectionHolder}     from "./onEachIndexed"
-export {toUpperCaseString, toUpperCaseString as toUpperCaseStringByCollectionHolder} from "./toUpperCaseString"
 export {toWeakSet,         toWeakSet as         toWeakSetByCollectionHolder}         from "./toWeakSet"

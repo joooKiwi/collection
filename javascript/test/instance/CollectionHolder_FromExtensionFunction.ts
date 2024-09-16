@@ -64,7 +64,7 @@ import {toMutableMapByCollectionHolder}            from "../../src/method/toMuta
 import {toReverseByCollectionHolder}               from "../../src/method/toReverse"
 import {toSetByCollectionHolder}                   from "../../src/method/toSet"
 import {toStringByCollectionHolder}                from "../../src/method/toString"
-import {toUpperCaseString}                         from "../../src/method/collectionHolder/toUpperCaseString"
+import {toUpperCaseStringByCollectionHolder}       from "../../src/method/toUpperCaseString"
 
 export class CollectionHolder_FromExtensionFunction<const out T, >
     extends AbstractCollectionHolder<T>
@@ -675,7 +675,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     }
 
     public override toUpperCaseString(): string {
-        return toUpperCaseString(this,)
+        return toUpperCaseStringByCollectionHolder(this,)
     }
 
     public override toLocaleUpperCaseString(locale?: NullableString,): string {

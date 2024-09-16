@@ -66,7 +66,7 @@ import {toMutableSetByMinimalistCollectionHolder}            from "../../src/met
 import {toReverseByMinimalistCollectionHolder}               from "../../src/method/toReverse"
 import {toSetByMinimalistCollectionHolder}                   from "../../src/method/toSet"
 import {toStringByMinimalistCollectionHolder}                from "../../src/method/toString"
-import {toUpperCaseString}                                   from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
+import {toUpperCaseStringByMinimalistCollectionHolder}       from "../../src/method/toUpperCaseString"
 
 export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     extends AbstractMinimalistCollectionHolder<T>
@@ -700,7 +700,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     }
 
     public toUpperCaseString(): string {
-        return toUpperCaseString(this,)
+        return toUpperCaseStringByMinimalistCollectionHolder(this,)
     }
 
     public toLocaleUpperCaseString(locale?: NullableString,): string {
