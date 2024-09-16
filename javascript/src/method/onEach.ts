@@ -92,24 +92,21 @@ export function onEachByCollectionHolder<const T, const COLLECTION extends Nulla
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-/** @internal */
-export function __with0Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: () => void, size: number,) {
+function __with0Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: () => void, size: number,) {
     let index = size
     while (index-- > 0)
         action()
     return collection
 }
 
-/** @internal */
-export function __with1Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (value: T,) => void, size: number,) {
+function __with1Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (value: T,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(collection.get(index,),)
     return collection
 }
 
-/** @internal */
-export function __with2Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (value: T, index: number,) => void, size: number,) {
+function __with2Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (value: T, index: number,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(collection.get(index,), index,)

@@ -93,22 +93,19 @@ export function forEachIndexedByCollectionHolder<const T, >(collection: Nullable
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-/** @internal */
-export function __with0Argument(action: () => void, size: number,) {
+function __with0Argument(action: () => void, size: number,) {
     let index = size
     while (index-- > 0)
         action()
 }
 
-/** @internal */
-export function __with1Argument(action: (index: number,) => void, size: number,) {
+function __with1Argument(action: (index: number,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index,)
 }
 
-/** @internal */
-export function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, action: (index: number, value: T,) => void, size: number,) {
+function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, action: (index: number, value: T,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index, collection.get(index,),)

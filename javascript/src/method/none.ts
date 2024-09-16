@@ -132,8 +132,7 @@ export function noneByCollectionHolder<const T, >(collection: Nullable<Collectio
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-/** @internal */
-export function __with0Argument(predicate: () => boolean, size: number,) {
+function __with0Argument(predicate: () => boolean, size: number,) {
     let index = size - 1
     while (index-- > 0)
         if (predicate())
@@ -141,8 +140,7 @@ export function __with0Argument(predicate: () => boolean, size: number,) {
     return true
 }
 
-/** @internal */
-export function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, size: number,) {
+function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (predicate(collection.get(index,),))
@@ -150,8 +148,7 @@ export function __with1Argument<const T, >(collection: MinimalistCollectionHolde
     return true
 }
 
-/** @internal */
-export function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
+function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (predicate(collection.get(index,), index,))
