@@ -51,7 +51,7 @@ import {mapNotNullByMinimalistCollectionHolder}          from "../../src/method/
 import {mapNotNullIndexedByMinimalistCollectionHolder}   from "../../src/method/mapNotNullIndexed"
 import {onEachByMinimalistCollectionHolder}              from "../../src/method/onEach"
 import {onEachIndexedByMinimalistCollectionHolder}       from "../../src/method/onEachIndexed"
-import {requireNoNulls}                                  from "../../src/method/requireNoNulls"
+import {requireNoNullsByMinimalistCollectionHolder}      from "../../src/method/requireNoNulls"
 import {slice}                                           from "../../src/method/slice"
 import {toArray}                                         from "../../src/method/minimalistCollectionHolder/toArray"
 import {toIterator}                                      from "../../src/method/toIterator"
@@ -504,7 +504,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#region -------------------- Require not nulls methods --------------------
 
     public requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNulls<T>(this,)
+        return requireNoNullsByMinimalistCollectionHolder(this,)
     }
 
     //#endregion -------------------- Require not nulls methods --------------------

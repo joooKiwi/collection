@@ -49,6 +49,7 @@ import {mapNotNullByCollectionHolder, mapNotNullByMinimalistCollectionHolder}   
 import {mapNotNullIndexedByCollectionHolder, mapNotNullIndexedByMinimalistCollectionHolder}     from "../../src/method/mapNotNullIndexed"
 import {onEachByCollectionHolder, onEachByMinimalistCollectionHolder}                           from "../../src/method/onEach"
 import {onEachIndexedByCollectionHolder, onEachIndexedByMinimalistCollectionHolder}             from "../../src/method/onEachIndexed"
+import {requireNoNullsByCollectionHolder, requireNoNullsByMinimalistCollectionHolder}           from "../../src/method/requireNoNulls"
 import {toArray as toArrayByCollectionHolder}                                                   from "../../src/method/collectionHolder/toArray"
 import {toArray as toArrayByMinimalistCollectionHolder}                                         from "../../src/method/minimalistCollectionHolder/toArray"
 import {toMap as toMapByCollectionHolder}                                                       from "../../src/method/collectionHolder/toMap"
@@ -68,7 +69,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                               from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {requireNoNulls, requireNoNullsByCollectionHolder}                   from "../../src/method/requireNoNulls"
 import {slice, sliceByCollectionHolder}                                     from "../../src/method/slice"
 import {toIterator, toIteratorByCollectionHolder}                           from "../../src/method/toIterator"
 import {toLocaleLowerCaseString, toLocaleLowerCaseStringByCollectionHolder} from "../../src/method/toLocaleLowerCaseString"
@@ -573,7 +573,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public requireNoNulls(): CollectionHolder<NonNullable<T>> {
         return this.#isCollectionHolder
             ? requireNoNullsByCollectionHolder<T>(this,)
-            : requireNoNulls<T>(this,)
+            : requireNoNullsByMinimalistCollectionHolder(this,)
     }
 
     //#endregion -------------------- Require no nulls methods --------------------
