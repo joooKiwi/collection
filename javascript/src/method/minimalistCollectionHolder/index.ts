@@ -5,7 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {toSet,             toSet as             toSetByMinimalistCollectionHolder}             from "./toSet"
 export {toString,          toString as          toStringByMinimalistCollectionHolder}          from "./toString"
 export {toUpperCaseString, toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder} from "./toUpperCaseString"
 export {toWeakSet,         toWeakSet as         toWeakSetByMinimalistCollectionHolder}         from "./toWeakSet"

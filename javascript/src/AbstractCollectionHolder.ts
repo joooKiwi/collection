@@ -64,7 +64,7 @@ import {toMutableArrayByCollectionHolder}          from "./method/toMutableArray
 import {toMutableMapByCollectionHolder}            from "./method/toMutableMap"
 import {toMutableSetByCollectionHolder}            from "./method/toMutableSet"
 import {toReverseByCollectionHolder}               from "./method/toReverse"
-import {toSet}                                     from "./method/collectionHolder/toSet"
+import {toSetByCollectionHolder}                   from "./method/toSet"
 import {toString}                                  from "./method/collectionHolder/toString"
 import {toUpperCaseString}                         from "./method/collectionHolder/toUpperCaseString"
 
@@ -687,7 +687,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Conversion methods (set) --------------------
 
     public toSet(): ReadonlySet<T> {
-        return toSet<T>(this,)
+        return toSetByCollectionHolder<T>(this,)
     }
 
     public toMutableSet(): Set<T> {
