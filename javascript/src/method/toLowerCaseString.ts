@@ -10,9 +10,30 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {asLowerCaseString} from "./asString"
+import {asLowerCaseString}             from "./asString"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
+
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toLowerCase toLowerCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @see String.toLowerCase
+ * @extensionFunction
+ */
+export function toLowerCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): string {
+    if (collection == null)
+        return "[]"
+    if (isCollectionHolder(collection,))
+        return toLowerCaseStringByCollectionHolder(collection,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return toLowerCaseStringByCollectionHolder(collection,)
+    return toLowerCaseStringByMinimalistCollectionHolder(collection,)
+}
+
 
 /**
  * Convert the {@link collection} to a {@link String} on every value
@@ -22,7 +43,7 @@ import {asLowerCaseString} from "./asString"
  * @see String.toLowerCase
  * @extensionFunction
  */
-export function toLowerCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): string {
+export function toLowerCaseStringByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): string {
     if (collection == null)
         return "[]"
 

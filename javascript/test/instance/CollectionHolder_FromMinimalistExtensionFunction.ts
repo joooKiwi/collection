@@ -58,7 +58,7 @@ import {toIteratorByMinimalistCollectionHolder}              from "../../src/met
 import {toLocaleLowerCaseStringByMinimalistCollectionHolder} from "../../src/method/toLocaleLowerCaseString"
 import {toLocaleStringByMinimalistCollectionHolder}          from "../../src/method/toLocaleString"
 import {toLocaleUpperCaseStringByMinimalistCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
-import {toLowerCaseString}                                   from "../../src/method/toLowerCaseString"
+import {toLowerCaseStringByMinimalistCollectionHolder}       from "../../src/method/toLowerCaseString"
 import {toMap}                                               from "../../src/method/minimalistCollectionHolder/toMap"
 import {toMutableArray}                                      from "../../src/method/minimalistCollectionHolder/toMutableArray"
 import {toMutableSet}                                        from "../../src/method/minimalistCollectionHolder/toMutableSet"
@@ -692,7 +692,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     }
 
     public toLowerCaseString(): string {
-        return toLowerCaseString(this,)
+        return toLowerCaseStringByMinimalistCollectionHolder(this,)
     }
 
     public toLocaleLowerCaseString(locale?: NullableString,): string {
