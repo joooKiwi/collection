@@ -60,7 +60,6 @@ export function toLocaleStringByMinimalistCollectionHolder<const T, >(collection
     const size = collection.size
     if (size == 0)
         return "[]"
-
     if (locale == null)
         return __withNoLocale(collection, size,)
     return __withLocale(collection, locale, size,)
@@ -84,7 +83,6 @@ export function toLocaleStringByCollectionHolder<const T, >(collection: Nullable
         return "[]"
     if (collection.isEmpty)
         return "[]"
-
     if (locale == null)
         return __withNoLocale(collection, collection.size,)
     return __withLocale(collection, locale, collection.size,)
