@@ -5,7 +5,6 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export {toMutableArray,    toMutableArray as    toMutableArrayByMinimalistCollectionHolder}    from "./toMutableArray"
 export {toMutableMap,      toMutableMap as      toMutableMapByMinimalistCollectionHolder}      from "./toMutableMap"
 export {toMutableSet,      toMutableSet as      toMutableSetByMinimalistCollectionHolder}      from "./toMutableSet"
 export {toMutableWeakSet,  toMutableWeakSet as  toMutableWeakSetByMinimalistCollectionHolder}  from "./toMutableWeakSet"

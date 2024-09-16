@@ -58,7 +58,7 @@ import {toLocaleStringByCollectionHolder}          from "../../src/method/toLoca
 import {toLocaleUpperCaseStringByCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
 import {toLowerCaseStringByCollectionHolder}       from "../../src/method/toLowerCaseString"
 import {toMapByCollectionHolder}                   from "../../src/method/toMap"
-import {toMutableArray}                            from "../../src/method/collectionHolder/toMutableArray"
+import {toMutableArrayByCollectionHolder}          from "../../src/method/toMutableArray"
 import {toMutableSet}                              from "../../src/method/collectionHolder/toMutableSet"
 import {toMutableMap}                              from "../../src/method/collectionHolder/toMutableMap"
 import {toReverse}                                 from "../../src/method/collectionHolder/toReverse"
@@ -620,7 +620,7 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
     }
 
     public override toMutableArray(): T[] {
-        return toMutableArray<T>(this,)
+        return toMutableArrayByCollectionHolder<T>(this,)
     }
 
 

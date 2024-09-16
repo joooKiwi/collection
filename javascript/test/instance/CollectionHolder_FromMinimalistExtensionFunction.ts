@@ -60,7 +60,7 @@ import {toLocaleStringByMinimalistCollectionHolder}          from "../../src/met
 import {toLocaleUpperCaseStringByMinimalistCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
 import {toLowerCaseStringByMinimalistCollectionHolder}       from "../../src/method/toLowerCaseString"
 import {toMapByMinimalistCollectionHolder}                   from "../../src/method/toMap"
-import {toMutableArray}                                      from "../../src/method/minimalistCollectionHolder/toMutableArray"
+import {toMutableArrayByMinimalistCollectionHolder}          from "../../src/method/toMutableArray"
 import {toMutableSet}                                        from "../../src/method/minimalistCollectionHolder/toMutableSet"
 import {toMutableMap}                                        from "../../src/method/minimalistCollectionHolder/toMutableMap"
 import {toReverse}                                           from "../../src/method/minimalistCollectionHolder/toReverse"
@@ -645,7 +645,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     }
 
     public toMutableArray(): T[] {
-        return toMutableArray(this,)
+        return toMutableArrayByMinimalistCollectionHolder(this,)
     }
 
 

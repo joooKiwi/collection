@@ -60,7 +60,7 @@ import {toLocaleStringByCollectionHolder}          from "./method/toLocaleString
 import {toLocaleUpperCaseStringByCollectionHolder} from "./method/toLocaleUpperCaseString"
 import {toLowerCaseStringByCollectionHolder}       from "./method/toLowerCaseString"
 import {toMapByCollectionHolder}                   from "./method/toMap"
-import {toMutableArray}                            from "./method/collectionHolder/toMutableArray"
+import {toMutableArrayByCollectionHolder}          from "./method/toMutableArray"
 import {toMutableMap}                              from "./method/collectionHolder/toMutableMap"
 import {toMutableSet}                              from "./method/collectionHolder/toMutableSet"
 import {toReverse}                                 from "./method/collectionHolder/toReverse"
@@ -680,7 +680,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     public toMutableArray(): T[] {
-        return toMutableArray<T>(this,)
+        return toMutableArrayByCollectionHolder<T>(this,)
     }
 
     //#endregion -------------------- Conversion methods (array) --------------------

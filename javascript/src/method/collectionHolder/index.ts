@@ -6,7 +6,6 @@
  ******************************************************************************/
 
 export {onEachIndexed,     onEachIndexed as     onEachIndexedByCollectionHolder}     from "./onEachIndexed"
-export {toMutableArray,    toMutableArray as    toMutableArrayByCollectionHolder}    from "./toMutableArray"
 export {toMutableMap,      toMutableMap as      toMutableMapByCollectionHolder}      from "./toMutableMap"
 export {toMutableSet,      toMutableSet as      toMutableSetByCollectionHolder}      from "./toMutableSet"
 export {toMutableWeakSet,  toMutableWeakSet as  toMutableWeakSetByCollectionHolder}  from "./toMutableWeakSet"
