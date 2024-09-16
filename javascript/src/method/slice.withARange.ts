@@ -14,6 +14,8 @@ import {CollectionConstants}                            from "../CollectionConst
 import {CollectionHolderIndexOutOfBoundsException}      from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {InvalidIndexRangeException}                     from "../exception/InvalidIndexRangeException"
 import {__endingIndex, __maximumIndex, __startingIndex} from "./_indexes utility"
+import {isCollectionHolder}                             from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                  from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -22,7 +24,7 @@ import {__endingIndex, __maximumIndex, __startingIndex} from "./_indexes utility
  * to the {@link toIndex ending} index with a {@link limit} applied
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param fromIndex The inclusive starting index
  * @param toIndex   The inclusive ending index
  * @param limit     The maximum index
@@ -36,6 +38,35 @@ import {__endingIndex, __maximumIndex, __startingIndex} from "./_indexes utility
  * @extensionFunction
  */
 export function sliceWithARange<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (isCollectionHolder<T>(collection,))
+        return sliceWithARangeByCollectionHolder(collection, fromIndex, toIndex, limit,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return sliceWithARangeByCollectionHolder(collection, fromIndex, toIndex, limit,)
+    return sliceWithARangeByMinimalistCollectionHolder(collection, fromIndex, toIndex, limit,)
+}
+
+
+/**
+ * Create a new {@link CollectionHolder} from the {@link fromIndex starting}
+ * to the {@link toIndex ending} index with a {@link limit} applied
+ * in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param fromIndex The inclusive starting index
+ * @param toIndex   The inclusive ending index
+ * @param limit     The maximum index
+ * @see ReadonlyArray.slice
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ */
+export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)

@@ -52,7 +52,7 @@ import {mapNotNullIndexedByMinimalistCollectionHolder}   from "../../src/method/
 import {onEachByMinimalistCollectionHolder}              from "../../src/method/onEach"
 import {onEachIndexedByMinimalistCollectionHolder}       from "../../src/method/onEachIndexed"
 import {requireNoNullsByMinimalistCollectionHolder}      from "../../src/method/requireNoNulls"
-import {slice}                                           from "../../src/method/slice"
+import {sliceByMinimalistCollectionHolder}               from "../../src/method/slice"
 import {toArray}                                         from "../../src/method/minimalistCollectionHolder/toArray"
 import {toIterator}                                      from "../../src/method/toIterator"
 import {toLocaleLowerCaseString}                         from "../../src/method/toLocaleLowerCaseString"
@@ -557,7 +557,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return slice(this, indicesOrFromIndex, toIndex, limit,)
+        return sliceByMinimalistCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Slice methods --------------------

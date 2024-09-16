@@ -50,6 +50,7 @@ import {mapNotNullIndexedByCollectionHolder, mapNotNullIndexedByMinimalistCollec
 import {onEachByCollectionHolder, onEachByMinimalistCollectionHolder}                           from "../../src/method/onEach"
 import {onEachIndexedByCollectionHolder, onEachIndexedByMinimalistCollectionHolder}             from "../../src/method/onEachIndexed"
 import {requireNoNullsByCollectionHolder, requireNoNullsByMinimalistCollectionHolder}           from "../../src/method/requireNoNulls"
+import {sliceByCollectionHolder, sliceByMinimalistCollectionHolder}                             from "../../src/method/slice"
 import {toArray as toArrayByCollectionHolder}                                                   from "../../src/method/collectionHolder/toArray"
 import {toArray as toArrayByMinimalistCollectionHolder}                                         from "../../src/method/minimalistCollectionHolder/toArray"
 import {toMap as toMapByCollectionHolder}                                                       from "../../src/method/collectionHolder/toMap"
@@ -69,7 +70,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                               from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {slice, sliceByCollectionHolder}                                     from "../../src/method/slice"
 import {toIterator, toIteratorByCollectionHolder}                           from "../../src/method/toIterator"
 import {toLocaleLowerCaseString, toLocaleLowerCaseStringByCollectionHolder} from "../../src/method/toLocaleLowerCaseString"
 import {toLocaleString, toLocaleStringByCollectionHolder}                   from "../../src/method/toLocaleString"
@@ -637,7 +637,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return this.#isCollectionHolder
             ? sliceByCollectionHolder<T>(this, indicesOrFromIndex, toIndex, limit,)
-            : slice(this, indicesOrFromIndex, toIndex, limit,)
+            : sliceByMinimalistCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Slice methods --------------------

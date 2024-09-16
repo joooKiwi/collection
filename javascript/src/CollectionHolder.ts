@@ -1936,7 +1936,8 @@ export interface CollectionHolder<out T = unknown, >
     //#endregion -------------------- Slice (from, to, limit) methods --------------------
 
     /**
-     * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex}
+     * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex indices}
+     * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index with a {@link limit} applied
      * in the current {@link CollectionHolder collection}
      *
      * @param indicesOrFromIndex The given indices (or starting index)

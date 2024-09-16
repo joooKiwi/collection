@@ -76,17 +76,17 @@ export {sliceWithCollectionIterator,          sliceWithCollectionIteratorByColle
 export {sliceWithIterable,                    sliceWithIterableByCollectionHolder,                    sliceWithIterableByMinimalistCollectionHolder                   } from "./slice.withIterable"
 export {sliceWithMinimalistCollectionHolder,  sliceWithMinimalistCollectionHolderByCollectionHolder,  sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder } from "./slice.withMinimalistCollectionHolder"
 export {sliceWithSet,                         sliceWithSetByCollectionHolder,                         sliceWithSetByMinimalistCollectionHolder                        } from "./slice.withSet"
-export {sliceByCollectionHolderWithSet}                                             from "./slice.withSet"
+export {sliceByCollectionHolderWithSet                                                                                                                                } from "./slice.withSet"
 
 export {toArray}                                        from "./toArray"
 export {toArray as toArrayByCollectionHolder}           from "./collectionHolder/toArray"
 export {toArray as toArrayByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toArray"
 
-export {toIterator,                           toIteratorByCollectionHolder,                           toIteratorByMinimalistCollectionHolder                          } from "./toIterator"
-export {toLocaleLowerCaseString,              toLocaleLowerCaseStringByCollectionHolder,              toLocaleLowerCaseStringByMinimalistCollectionHolder             } from "./toLocaleLowerCaseString"
-export {toLocaleString,                       toLocaleStringByCollectionHolder,                       toLocaleStringByMinimalistCollectionHolder                      } from "./toLocaleString"
-export {toLocaleUpperCaseString,              toLocaleUpperCaseStringByCollectionHolder,              toLocaleUpperCaseStringByMinimalistCollectionHolder             } from "./toLocaleUpperCaseString"
-export {toLowerCaseString,                    toLowerCaseStringByCollectionHolder,                    toLowerCaseStringByMinimalistCollectionHolder                   } from "./toLowerCaseString"
+export {toIterator,                           toIteratorByCollectionHolder,                           /*toIteratorByMinimalistCollectionHolder */                         } from "./toIterator"
+export {toLocaleLowerCaseString,              toLocaleLowerCaseStringByCollectionHolder,              /*toLocaleLowerCaseStringByMinimalistCollectionHolder*/             } from "./toLocaleLowerCaseString"
+export {toLocaleString,                       toLocaleStringByCollectionHolder,                       /*toLocaleStringByMinimalistCollectionHolder             */         } from "./toLocaleString"
+export {toLocaleUpperCaseString,              toLocaleUpperCaseStringByCollectionHolder,              /*toLocaleUpperCaseStringByMinimalistCollectionHolder        */     } from "./toLocaleUpperCaseString"
+export {toLowerCaseString,                    toLowerCaseStringByCollectionHolder,                    /*toLowerCaseStringByMinimalistCollectionHolder                  */ } from "./toLowerCaseString"
 
 export {toMap}                                      from "./toMap"
 export {toMap as toMapByCollectionHolder}           from "./collectionHolder/toMap"
