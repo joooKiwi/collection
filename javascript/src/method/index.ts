@@ -56,6 +56,7 @@ export {isMinimalistCollectionHolder                                            
 export {isMinimalistCollectionHolderByStructure                                                                                                                       } from "./isMinimalistCollectionHolderByStructure"
 export {isSet                                                                                                                                                         } from "./isSet"
 export {isSetByStructure                                                                                                                                              } from "./isSetByStructure"
+export {isNotEmpty,                           isNotEmptyByCollectionHolder,                           isNotEmptyByMinimalistCollectionHolder                          } from "./isNotEmpty"
 export {joinToString,                         joinToStringByCollectionHolder,                         joinToStringByMinimalistCollectionHolder, prefixAndPostfixOnly  } from "./joinToString"
 export {last,                                 lastByCollectionHolder,                                 lastByMinimalistCollectionHolder                                } from "./last"
 export {lastIndexOf,                          lastIndexOfByCollectionHolder,                          lastIndexOfByMinimalistCollectionHolder                         } from "./lastIndexOf"
