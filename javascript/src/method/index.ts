@@ -92,7 +92,4 @@ export {toReverse,                            toReverseByCollectionHolder,      
 export {toSet,                                toSetByCollectionHolder,                                toSetByMinimalistCollectionHolder                               } from "./toSet"
 export {toString,                             toStringByCollectionHolder,                             toStringByMinimalistCollectionHolder                            } from "./toString"
 export {toUpperCaseString,                    toUpperCaseStringByCollectionHolder,                    toUpperCaseStringByMinimalistCollectionHolder                   } from "./toUpperCaseString"
-
-export {toWeakSet}                                          from "./toWeakSet"
-export {toWeakSet as toWeakSetByCollectionHolder}           from "./collectionHolder/toWeakSet"
-export {toWeakSet as toWeakSetByMinimalistCollectionHolder} from "./minimalistCollectionHolder/toWeakSet"
+export {toWeakSet,                            toWeakSetByCollectionHolder,                            toWeakSetByMinimalistCollectionHolder                           } from "./toWeakSet"
