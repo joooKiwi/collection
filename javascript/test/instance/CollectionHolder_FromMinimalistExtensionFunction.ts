@@ -54,7 +54,7 @@ import {onEachIndexedByMinimalistCollectionHolder}       from "../../src/method/
 import {requireNoNullsByMinimalistCollectionHolder}      from "../../src/method/requireNoNulls"
 import {sliceByMinimalistCollectionHolder}               from "../../src/method/slice"
 import {toArrayByMinimalistCollectionHolder}             from "../../src/method/toArray"
-import {toIterator}                                      from "../../src/method/toIterator"
+import {toIteratorByMinimalistCollectionHolder}          from "../../src/method/toIterator"
 import {toLocaleLowerCaseString}                         from "../../src/method/toLocaleLowerCaseString"
 import {toLocaleString}                                  from "../../src/method/toLocaleString"
 import {toLocaleUpperCaseString}                         from "../../src/method/toLocaleUpperCaseString"
@@ -625,7 +625,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#region -------------------- Javascript methods --------------------
 
     public [Symbol.iterator](): CollectionIterator<T> {
-        return toIterator(this,)
+        return toIteratorByMinimalistCollectionHolder(this,)
     }
 
     public get [Symbol.toStringTag](): CollectionHolderName {

@@ -78,7 +78,6 @@ export {sliceWithMinimalistCollectionHolder,  sliceWithMinimalistCollectionHolde
 export {sliceWithSet,                         sliceWithSetByCollectionHolder,                         sliceWithSetByMinimalistCollectionHolder                        } from "./slice.withSet"
 export {sliceByCollectionHolderWithSet                                                                                                                                } from "./slice.withSet"
 export {toArray,                              toArrayByCollectionHolder,                              toArrayByMinimalistCollectionHolder                             } from "./toArray"
-
 export {toIterator,                           toIteratorByCollectionHolder,                           toIteratorByMinimalistCollectionHolder                          } from "./toIterator"
 export {toLocaleLowerCaseString,              toLocaleLowerCaseStringByCollectionHolder,              toLocaleLowerCaseStringByMinimalistCollectionHolder             } from "./toLocaleLowerCaseString"
 export {toLocaleString,                       toLocaleStringByCollectionHolder,                       toLocaleStringByMinimalistCollectionHolder                      } from "./toLocaleString"

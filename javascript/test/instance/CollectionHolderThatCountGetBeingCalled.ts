@@ -52,6 +52,7 @@ import {onEachIndexedByCollectionHolder, onEachIndexedByMinimalistCollectionHold
 import {requireNoNullsByCollectionHolder, requireNoNullsByMinimalistCollectionHolder}           from "../../src/method/requireNoNulls"
 import {sliceByCollectionHolder, sliceByMinimalistCollectionHolder}                             from "../../src/method/slice"
 import {toArrayByCollectionHolder, toArrayByMinimalistCollectionHolder}                         from "../../src/method/toArray"
+import {toIteratorByCollectionHolder, toIteratorByMinimalistCollectionHolder}                   from "../../src/method/toIterator"
 import {toMap as toMapByCollectionHolder}                                                       from "../../src/method/collectionHolder/toMap"
 import {toMap as toMapByMinimalistCollectionHolder}                                             from "../../src/method/minimalistCollectionHolder/toMap"
 import {toMutableArray as toMutableArrayByCollectionHolder}                                     from "../../src/method/collectionHolder/toMutableArray"
@@ -69,7 +70,6 @@ import {toString as toStringByMinimalistCollectionHolder}                       
 import {toUpperCaseString as toUpperCaseStringByCollectionHolder}                               from "../../src/method/collectionHolder/toUpperCaseString"
 import {toUpperCaseString as toUpperCaseStringByMinimalistCollectionHolder}                     from "../../src/method/minimalistCollectionHolder/toUpperCaseString"
 
-import {toIterator, toIteratorByCollectionHolder}                           from "../../src/method/toIterator"
 import {toLocaleLowerCaseString, toLocaleLowerCaseStringByCollectionHolder} from "../../src/method/toLocaleLowerCaseString"
 import {toLocaleString, toLocaleStringByCollectionHolder}                   from "../../src/method/toLocaleString"
 import {toLocaleUpperCaseString, toLocaleUpperCaseStringByCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
@@ -734,7 +734,7 @@ export class CollectionHolderThatCountGetBeingCalled<const out T, >
     public toIterator(): CollectionIterator<T> {
         return this.#isCollectionHolder
             ? toIteratorByCollectionHolder<T>(this,)
-            : toIterator(this,)
+            : toIteratorByMinimalistCollectionHolder(this,)
     }
 
 
