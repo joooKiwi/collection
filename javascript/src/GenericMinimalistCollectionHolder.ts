@@ -130,7 +130,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                this.#array = Object.freeze([reference[Symbol.iterator]().next().value,],)
+                this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
                 return
             }
 
@@ -325,7 +325,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                this.#array = Object.freeze([reference[Symbol.iterator]().next().value,],)
+                this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
                 return
             }
 

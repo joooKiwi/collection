@@ -27,6 +27,6 @@ export class CollectionHandlerBySetOf1<const T = unknown,
             throw new TypeError(`The set received in the "${this.constructor.name}" cannot have a different size than 1.`,)
     }
 
-    protected override _retrieveFirst(): T { return this._reference[Symbol.iterator]().next().value }
+    protected override _retrieveFirst(): T { return this._reference[Symbol.iterator]().next().value as T }
 
 }
