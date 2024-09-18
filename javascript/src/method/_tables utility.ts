@@ -27,11 +27,11 @@ export function __uniqueValues<const T, >(collection: MinimalistCollectionHolder
     loopToRemoveDuplicate: while (++index1 < size) {
         const value = collection.get(index1,)
         let index2 = -1
-        while (++index2 < amountOfItemAdded) {
+        while (++index2 < amountOfItemAdded)
             if (array1[index2] === value)
                 continue loopToRemoveDuplicate // It is equal, so we don't add it to the duplicates
-            array1[amountOfItemAdded++] = value
-        }
+            else
+                array1[amountOfItemAdded++] = value
     }
 
     if (amountOfItemAdded == size)

@@ -177,11 +177,11 @@ function __withoutALimit<const T, >(collection: MinimalistCollectionHolder<T>, s
 function __withALimit<const T, >(collection: MinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number, maximumIndex: number,) {
     const newArray: T[] = []
     let index = endingIndex + 1
-    while (--index >= startingIndex) {
+    while (--index >= startingIndex)
         if (newArray.length >= maximumIndex)
             return newArray
-        newArray.push(collection.get(index,),)
-    }
+        else
+            newArray.push(collection.get(index,),)
     return newArray
 }
 
