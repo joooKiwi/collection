@@ -5,9 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Lazy}                                         from "@joookiwi/lazy"
-import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakSet} from "@joookiwi/type"
-import {lazyOf}                                            from "@joookiwi/lazy"
+import type {Lazy}                                                       from "@joookiwi/lazy"
+import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
+import {lazyOf}                                                          from "@joookiwi/lazy"
 
 import type {CollectionHolder}           from "./CollectionHolder"
 import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
@@ -68,6 +68,8 @@ export class CollectionConstants {
     public static readonly EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet
     /** An empty {@link ReadonlyMap map} */
     public static readonly EMPTY_MAP = Object.freeze(new Map<any, never>(),) as EmptyMap
+    /** An empty {@link WeakSet weak set} */
+    public static readonly EMPTY_WEAK_MAP = Object.freeze(new WeakMap(),) as EmptyWeakMap
 
 
     /** An {@link EmptyCollectionHolder} instance */
