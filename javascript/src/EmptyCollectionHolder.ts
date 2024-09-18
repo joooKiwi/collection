@@ -515,6 +515,13 @@ export class EmptyCollectionHolder
     public toMutableMap(..._: readonly unknown[]): Map<never, never>
     public toMutableMap() { return new Map() }
 
+
+    public toWeakMap(..._: readonly unknown[]): Readonly<WeakMap<never, never>>
+    public toWeakMap() { return CollectionConstants.EMPTY_WEAK_MAP }
+
+    public toMutableWeakMap(..._: readonly unknown[]): WeakMap<never, never>
+    public toMutableWeakMap() { return new WeakMap() }
+
     //#region -------------------- To string --------------------
 
     public toString(..._: readonly unknown[]): "[]"
