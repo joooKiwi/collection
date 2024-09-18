@@ -1,7 +1,7 @@
 {
   "name": "@joookiwi/collection",
   "version": "1.9.3",
-  "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin), List (from Java/Kotlin/C#) and Enumerable (from C#)",
+  "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin) and List (from Java/Kotlin/C#)",
 
   "scripts": {
     "clear-dist-folder": "del-cli dist/",
