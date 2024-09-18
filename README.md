@@ -8,6 +8,21 @@ Also, all the features are based on immutability.
 
 _(Maybe other languages will be integrated, only the future will tell it)_
 
+## Table of content
+* [Publication location](#publication-location)
+* [Related projects](#related-projects)
+* [Contribution](#contribution)
+* [Equivalence depending on the language](#equivalence-depending-on-the-language)
+  * [Size methods](#size-methods)
+  * [Research methods](#research-methods)
+  * [Index methods](#index-methods)
+  * [Validation methods](#validation-methods)
+  * [Transformation methods](#transformation-methods)
+  * [Loop methods](#loop-methods)
+  * [Reordering methods](#reordering-methods)
+  * [Conversion methods](#conversion-methods)
+* [Version history](#version-history)
+
 ## Publication location
 This project has only the Javascript / Typescript version uploaded.
 
@@ -39,25 +54,6 @@ Here is a list of the related projects made by me
 You can contribute to my projects in 2 different ways
 - [GitHub sponsor](https://github.com/sponsors/joooKiwi) or
 - [!["Buy me a Coffee"](https://img.buymeacoffee.com/button-api/?&button_colour=40DCA5&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00)](https://www.buymeacoffee.com/joookiwi)
-
-## Table of content
-<!-- TOC -->
-* [Collection](#collection)
-  * [Publication location](#publication-location)
-  * [Related projects](#related-projects)
-  * [Contribution](#contribution)
-  * [Table of content](#table-of-content)
-  * [Equivalence depending on the language](#equivalence-depending-on-the-language)
-    * [Size methods](#size-methods)
-    * [Research methods](#research-methods)
-    * [Index methods](#index-methods)
-    * [Validation methods](#validation-methods)
-    * [Transformation methods](#transformation-methods)
-    * [Loop methods](#loop-methods)
-    * [Reordering methods](#reordering-methods)
-    * [Conversion methods](#conversion-methods)
-  * [Version history](#version-history)
-<!-- TOC -->
 
 ## Equivalence depending on the language
 
@@ -258,7 +254,7 @@ The methods are made to find an element or giving a value
 
 | Language       | Equivalent                                                              |
 |:---------------|:------------------------------------------------------------------------|
-| **Javascript** | `array[size - 1] ?? throw `                                             |
+| **Javascript** | `size - 1 in array[size - 1] : throw `                                  |
 | **Java**       | `collection.stream().reduce((_, it) -> it).orElseThrow()`               |
 | **Kotlin**     | <ul><li>[Array.last()<br/>Iterable.last()<br/>List.last()][kotlin-last] |
 | **PHP**        |                                                                         |
@@ -1071,7 +1067,7 @@ The methods are made to do validation on type, value or comparison
  - `hasAll`|`containsAll`|`includesAll`(values)
  - `requireNoNulls`()
 
-<details><summary>all()</summary>
+<details><summary>all(predicate)</summary>
 
 | Language       | Equivalent                                                             |
 |:---------------|:-----------------------------------------------------------------------|
@@ -1079,7 +1075,7 @@ The methods are made to do validation on type, value or comparison
 | **Java**       | `collection.stream().allMatch(predicate)`                              |
 | **Kotlin**     | <ul><li>[Array.all(predicate)<br/>Iterable.all(predicate)][kotlin-all] |
 | **PHP**        |                                                                        |
-| **C#**         | <ul><li>[IEnumerable.All()][c#-all]                                    |
+| **C#**         | <ul><li>[IEnumerable.All(predicate)][c#-all]                           |
 
 </details>
 <details><summary>any()</summary>
@@ -1131,7 +1127,7 @@ The methods are made to do validation on type, value or comparison
 
 | Language       | Equivalent                                                                     |
 |:---------------|:-------------------------------------------------------------------------------|
-| **Javascript** | `array.includes(null)`                                                         |
+| **Javascript** | `array.includes(null,)`                                                        |
 | **Java**       | `collection.contains(null)`                                                    |
 | **Kotlin**     | _N/A_                                                                          |
 | **PHP**        | `in_array(null, $array, true)`                                                 |
@@ -1142,7 +1138,7 @@ The methods are made to do validation on type, value or comparison
 <tr><th>Javascript</th><td>
 
 ```javascript
-const temporaryArray = new Array<T>(size)
+const temporaryArray = new Array(size,)
 temporaryArray[0] = array[0]
 let amountOfItemAdded = 1
 let index = 0
