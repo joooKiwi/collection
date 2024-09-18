@@ -94,7 +94,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     protected constructor() { super() }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
 
     //#region -------------------- Size methods --------------------
 
@@ -106,27 +106,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public get isNotEmpty(): boolean { return isNotEmptyByCollectionHolder(this,) }
 
     //#endregion -------------------- Size methods --------------------
-    //#region -------------------- Has null methods --------------------
+    //#region -------------------- Research methods --------------------
 
-    public get hasNull(): boolean { return hasNullByCollectionHolder(this,) }
-    public get includesNull(): this["hasNull"] { return this.hasNull }
-    public get containsNull(): this["hasNull"] { return this.hasNull }
-
-    //#endregion -------------------- Has null methods --------------------
-    //#region -------------------- Has duplicate methods --------------------
-
-    public get hasDuplicate(): boolean { return hasDuplicateByCollectionHolder(this,) }
-    public get includesDuplicate(): this["hasDuplicate"] { return this.hasDuplicate }
-    public get containsDuplicate(): this["hasDuplicate"] { return this.hasDuplicate }
-
-    //#endregion -------------------- Has duplicate methods --------------------
-
-    //#endregion -------------------- Getter methods --------------------
-    //#region -------------------- Methods --------------------
-
-    //#region -------------------- Value methods --------------------
-
-    //#region -------------------- Get methods --------------------
+    //#region -------------------- Get --------------------
 
     public at(index: number,): T {
         return this.get(index,)
@@ -136,8 +118,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.get(index,)
     }
 
-    //#endregion -------------------- Get methods --------------------
-    //#region -------------------- Get or else methods --------------------
+    //#endregion -------------------- Get --------------------
+    //#region -------------------- Get or else --------------------
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -157,8 +139,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.getOrElse(index, defaultValue,)
     }
 
-    //#endregion -------------------- Get or else methods --------------------
-    //#region -------------------- Get or null methods --------------------
+    //#endregion -------------------- Get or else --------------------
+    //#region -------------------- Get or null --------------------
 
     public getOrNull(index: number,): NullOr<T> {
         return getOrNullByCollectionHolder<T>(this, index,)
@@ -172,58 +154,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.getOrNull(index,)
     }
 
-    //#endregion -------------------- Get or null methods --------------------
+    //#endregion -------------------- Get or null --------------------
 
-    //#region -------------------- Index of methods --------------------
-
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of methods --------------------
-    //#region -------------------- Last index of methods --------------------
-
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Last index of methods --------------------
-    //#region -------------------- Index of first methods --------------------
-
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of first methods --------------------
-    //#region -------------------- Index of first indexed methods --------------------
-
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of first indexed methods --------------------
-    //#region -------------------- Index of last methods --------------------
-
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of last methods --------------------
-    //#region -------------------- Index of last indexed methods --------------------
-
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of last indexed methods --------------------
-
-    //#region -------------------- First methods --------------------
+    //#region -------------------- First --------------------
 
     public first(): T
     public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
@@ -232,8 +165,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return firstByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- First methods --------------------
-    //#region -------------------- First or null methods --------------------
+    //#endregion -------------------- First --------------------
+    //#region -------------------- First or null --------------------
 
     public firstOrNull(): NullOr<T>
     public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
@@ -242,9 +175,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return firstOrNullByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- First or null methods --------------------
+    //#endregion -------------------- First or null --------------------
 
-    //#region -------------------- Last methods --------------------
+    //#region -------------------- Last --------------------
 
     public last(): T
     public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
@@ -253,8 +186,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return lastByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Last methods --------------------
-    //#region -------------------- Last or null methods --------------------
+    //#endregion -------------------- Last --------------------
+    //#region -------------------- Last or null --------------------
 
     public lastOrNull(): NullOr<T>
     public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
@@ -263,19 +196,112 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return lastOrNullByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Last or null methods --------------------
+    //#endregion -------------------- Last or null --------------------
 
-    //#endregion -------------------- Value methods --------------------
-    //#region -------------------- Loop methods --------------------
+    //#region -------------------- Find --------------------
 
-    //#region -------------------- All methods --------------------
+    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public find(predicate: BooleanCallback<T>,): NullOr<T>
+    public find(predicate: BooleanCallback<T>,) {
+        return findByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Find --------------------
+    //#region -------------------- Find indexed --------------------
+
+    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return findIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Find indexed --------------------
+
+    //#region -------------------- Find last --------------------
+
+    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLast(predicate: BooleanCallback<T>,): NullOr<T>
+    public findLast(predicate: BooleanCallback<T>,) {
+        return findLastByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Find last --------------------
+    //#region -------------------- Find last indexed --------------------
+
+    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return findLastIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Find last indexed --------------------
+
+    //#endregion -------------------- Research methods --------------------
+    //#region -------------------- Index methods --------------------
+
+    //#region -------------------- Index of --------------------
+
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+        return indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
+    }
+
+    //#endregion -------------------- Index of --------------------
+
+    //#region -------------------- Last index of --------------------
+
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+        return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
+    }
+
+    //#endregion -------------------- Last index of --------------------
+
+    //#region -------------------- Index of first --------------------
+
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+        return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    }
+
+    //#endregion -------------------- Index of first --------------------
+    //#region -------------------- Index of first indexed --------------------
+
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    }
+
+    //#endregion -------------------- Index of first indexed --------------------
+
+    //#region -------------------- Index of last --------------------
+
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+        return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    }
+
+    //#endregion -------------------- Index of last --------------------
+    //#region -------------------- Index of last indexed --------------------
+
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    }
+
+    //#endregion -------------------- Index of last indexed --------------------
+
+    //#endregion -------------------- Index methods --------------------
+    //#region -------------------- Validation methods --------------------
+
+    //#region -------------------- All --------------------
 
     public all(predicate: BooleanCallback<T>,): boolean {
         return allByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- All methods --------------------
-    //#region -------------------- Any methods --------------------
+    //#endregion -------------------- All --------------------
+    //#region -------------------- Any --------------------
 
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -283,8 +309,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return anyByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Any methods --------------------
-    //#region -------------------- None methods --------------------
+    //#endregion -------------------- Any --------------------
+    //#region -------------------- None --------------------
 
     public none(): this["isEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -292,9 +318,24 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return noneByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- None methods --------------------
+    //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has methods --------------------
+    //#region -------------------- Has null --------------------
+
+    public get hasNull(): boolean { return hasNullByCollectionHolder(this,) }
+    public get includesNull(): this["hasNull"] { return this.hasNull }
+    public get containsNull(): this["hasNull"] { return this.hasNull }
+
+    //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has duplicate --------------------
+
+    public get hasDuplicate(): boolean { return hasDuplicateByCollectionHolder(this,) }
+    public get includesDuplicate(): this["hasDuplicate"] { return this.hasDuplicate }
+    public get containsDuplicate(): this["hasDuplicate"] { return this.hasDuplicate }
+
+    //#endregion -------------------- Has duplicate --------------------
+
+    //#region -------------------- Has --------------------
 
     public has(value: T,): boolean
     /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
@@ -317,8 +358,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.has(value,)
     }
 
-    //#endregion -------------------- Has methods --------------------
-    //#region -------------------- Has one methods --------------------
+    //#endregion -------------------- Has --------------------
+    //#region -------------------- Has one --------------------
 
     public hasOne(values: readonly T[],): boolean
     public hasOne(values: ReadonlySet<T>,): boolean
@@ -395,8 +436,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.hasOne(values,)
     }
 
-    //#endregion -------------------- Has one methods --------------------
-    //#region -------------------- Has all methods --------------------
+    //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has all --------------------
 
     public hasAll(values: readonly T[],): boolean
     public hasAll(values: ReadonlySet<T>,): boolean
@@ -476,21 +517,20 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.hasAll(values,)
     }
 
-    //#endregion -------------------- Has all methods --------------------
+    //#endregion -------------------- Has all --------------------
 
-    //#region -------------------- Join to string methods --------------------
+    //#region -------------------- Require no nulls --------------------
 
-    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
-        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
+    public requireNoNulls(): CollectionHolder<NonNullable<T>> {
+        return requireNoNullsByCollectionHolder<T>(this,)
     }
 
-    public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
-        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
-    }
+    //#endregion -------------------- Require no nulls --------------------
 
-    //#endregion -------------------- Join to string methods --------------------
+    //#endregion -------------------- Validation methods --------------------
+    //#region -------------------- Transformation methods --------------------
 
-    //#region -------------------- Filter methods --------------------
+    //#region -------------------- Filter --------------------
 
     public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -498,8 +538,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return filterByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter methods --------------------
-    //#region -------------------- Filter indexed methods --------------------
+    //#endregion -------------------- Filter --------------------
+    //#region -------------------- Filter indexed --------------------
 
     public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
@@ -507,8 +547,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return filterIndexedByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter indexed methods --------------------
-    //#region -------------------- Filter not methods --------------------
+    //#endregion -------------------- Filter indexed --------------------
+
+    //#region -------------------- Filter not --------------------
 
     public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -516,8 +557,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return filterNotByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter not methods --------------------
-    //#region -------------------- Filter not indexed methods --------------------
+    //#endregion -------------------- Filter not --------------------
+    //#region -------------------- Filter not indexed --------------------
 
     public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
@@ -525,60 +566,17 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return filterNotIndexedByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter not indexed methods --------------------
-    //#region -------------------- Filter not null methods --------------------
+    //#endregion -------------------- Filter not indexed --------------------
+
+    //#region -------------------- Filter not null --------------------
 
     public filterNotNull(): CollectionHolder<NonNullable<T>> {
         return filterNotNullByCollectionHolder<T>(this,)
     }
 
-    //#endregion -------------------- Filter not null methods --------------------
-    //#region -------------------- Require no nulls methods --------------------
+    //#endregion -------------------- Filter not null --------------------
 
-    public requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNullsByCollectionHolder<T>(this,)
-    }
-
-    //#endregion -------------------- Require no nulls methods --------------------
-
-    //#region -------------------- Find methods --------------------
-
-    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public find(predicate: BooleanCallback<T>,): NullOr<T>
-    public find(predicate: BooleanCallback<T>,) {
-        return findByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find methods --------------------
-    //#region -------------------- Find indexed methods --------------------
-
-    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findIndexedByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find indexed methods --------------------
-    //#region -------------------- Find last methods --------------------
-
-    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLast(predicate: BooleanCallback<T>,): NullOr<T>
-    public findLast(predicate: BooleanCallback<T>,) {
-        return findLastByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find last methods --------------------
-    //#region -------------------- Find last indexed methods --------------------
-
-    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findLastIndexedByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find last indexed methods --------------------
-
-    //#region -------------------- Slice methods --------------------
+    //#region -------------------- Slice --------------------
 
     public slice(indices: readonly number[],): CollectionHolder<T>
     public slice(indices: ReadonlySet<number>,): CollectionHolder<T>
@@ -593,122 +591,75 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return sliceByCollectionHolder<T>(this, indicesOrFromIndex, toIndex, limit,)
     }
 
-    //#endregion -------------------- Slice methods --------------------
+    //#endregion -------------------- Slice --------------------
 
-    //#region -------------------- Map methods --------------------
+    //#region -------------------- Map --------------------
 
     public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
         return mapByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map methods --------------------
-    //#region -------------------- Map indexed methods --------------------
+    //#endregion -------------------- Map --------------------
+    //#region -------------------- Map indexed --------------------
 
     public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
         return mapIndexedByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map indexed methods --------------------
-    //#region -------------------- Map not null methods --------------------
+    //#endregion -------------------- Map indexed --------------------
+
+    //#region -------------------- Map not null --------------------
 
     public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return mapNotNullByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map not null methods --------------------
-    //#region -------------------- Map not null indexed methods --------------------
+    //#endregion -------------------- Map not null --------------------
+    //#region -------------------- Map not null indexed --------------------
 
     public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return mapNotNullIndexedByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map not null indexed methods --------------------
+    //#endregion -------------------- Map not null indexed --------------------
 
-    //#region -------------------- For each methods --------------------
+    //#endregion -------------------- Transformation methods --------------------
+    //#region -------------------- Loop methods --------------------
+
+    //#region -------------------- For each --------------------
 
     public forEach(action: ValueIndexCallback<T>,): void {
         forEachByCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- For each methods --------------------
-    //#region -------------------- For each indexed methods --------------------
+    //#endregion -------------------- For each --------------------
+    //#region -------------------- For each indexed --------------------
 
     public forEachIndexed(action: IndexValueCallback<T>,): void {
         forEachIndexedByCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- For each indexed methods --------------------
+    //#endregion -------------------- For each indexed --------------------
 
-    //#region -------------------- On each methods --------------------
+    //#region -------------------- On each --------------------
 
     public onEach(action: ValueIndexCallback<T>,): this {
         return onEachByCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- On each methods --------------------
-    //#region -------------------- On each indexed methods --------------------
+    //#endregion -------------------- On each --------------------
+    //#region -------------------- On each indexed --------------------
 
     public onEachIndexed(action: IndexValueCallback<T>,): this {
         return onEachIndexedByCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- On each indexed methods --------------------
+    //#endregion -------------------- On each indexed --------------------
 
     //#endregion -------------------- Loop methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- Reordering methods --------------------
 
-    public [Symbol.iterator](): CollectionIterator<T> {
-        return toIteratorByCollectionHolder<T>(this,)
-    }
-
-    public get [Symbol.toStringTag](): CollectionHolderName {
-        return "CollectionHolder"
-    }
-
-    //#endregion -------------------- Javascript methods --------------------
-    //#region -------------------- Conversion methods --------------------
-
-    //#region -------------------- Conversion methods (iterator) --------------------
-
-    public toIterator(): CollectionIterator<T> {
-        return this[Symbol.iterator]()
-    }
-
-    //#endregion -------------------- Conversion methods (iterator) --------------------
-    //#region -------------------- Conversion methods (array) --------------------
-
-    public toArray(): readonly T[] {
-        return toArrayByCollectionHolder<T>(this,)
-    }
-
-    public toMutableArray(): T[] {
-        return toMutableArrayByCollectionHolder<T>(this,)
-    }
-
-    //#endregion -------------------- Conversion methods (array) --------------------
-    //#region -------------------- Conversion methods (set) --------------------
-
-    public toSet(): ReadonlySet<T> {
-        return toSetByCollectionHolder<T>(this,)
-    }
-
-    public toMutableSet(): Set<T> {
-        return toMutableSetByCollectionHolder<T>(this,)
-    }
-
-    //#endregion -------------------- Conversion methods (set) --------------------
-    //#region -------------------- Conversion methods (map) --------------------
-
-    public toMap(): ReadonlyMap<number, T> {
-        return toMapByCollectionHolder<T>(this,)
-    }
-
-    public toMutableMap(): Map<number, T> {
-        return toMutableMapByCollectionHolder<T>(this,)
-    }
-
-    //#endregion -------------------- Conversion methods (map) --------------------
-    //#region -------------------- Conversion methods (reverse) --------------------
+    //#region -------------------- To reverse --------------------
 
     public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
         return toReverseByCollectionHolder<T>(this, fromIndex, toIndex, limit,)
@@ -722,8 +673,64 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.toReverse(fromIndex, toIndex, limit,)
     }
 
-    //#endregion -------------------- Conversion methods (reverse) --------------------
-    //#region -------------------- Conversion methods (string) --------------------
+    //#endregion -------------------- To reverse --------------------
+
+    //#endregion -------------------- Reordering methods --------------------
+    //#region -------------------- Javascript methods --------------------
+
+    public [Symbol.iterator](): CollectionIterator<T> {
+        return toIteratorByCollectionHolder<T>(this,)
+    }
+
+    public get [Symbol.toStringTag](): CollectionHolderName {
+        return "CollectionHolder"
+    }
+
+    //#endregion -------------------- Javascript methods --------------------
+    //#region -------------------- Conversion methods --------------------
+
+    //#region -------------------- To iterator --------------------
+
+    public toIterator(): CollectionIterator<T> {
+        return this[Symbol.iterator]()
+    }
+
+    //#endregion -------------------- To iterator --------------------
+    //#region -------------------- To array --------------------
+
+    public toArray(): readonly T[] {
+        return toArrayByCollectionHolder<T>(this,)
+    }
+
+    public toMutableArray(): T[] {
+        return toMutableArrayByCollectionHolder<T>(this,)
+    }
+
+    //#endregion -------------------- To array --------------------
+    //#region -------------------- To set --------------------
+
+    public toSet(): ReadonlySet<T> {
+        return toSetByCollectionHolder<T>(this,)
+    }
+
+    public toMutableSet(): Set<T> {
+        return toMutableSetByCollectionHolder<T>(this,)
+    }
+
+    //#endregion -------------------- To set --------------------
+    //#region -------------------- To map --------------------
+
+    public toMap(): ReadonlyMap<number, T> {
+        return toMapByCollectionHolder<T>(this,)
+    }
+
+    public toMutableMap(): Map<number, T> {
+        return toMutableMapByCollectionHolder<T>(this,)
+    }
+
+    //#endregion -------------------- To map --------------------
+
+    //#region -------------------- To string --------------------
 
     public override toString(): string {
         return toStringByCollectionHolder(this,)
@@ -751,7 +758,18 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
     }
 
-    //#endregion -------------------- Conversion methods (string) --------------------
+    //#endregion -------------------- To string --------------------
+    //#region -------------------- Join to string --------------------
+
+    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
+        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
+    }
+
+    public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
+        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
+    }
+
+    //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 

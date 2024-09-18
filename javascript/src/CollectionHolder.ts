@@ -43,8 +43,6 @@ export interface CollectionHolder<out T = unknown, >
      */
     [index: TemplateOrNumber]: UndefinedOr<T>
 
-    //#region -------------------- Getter methods --------------------
-
     //#region -------------------- Size methods --------------------
 
     /**
@@ -77,6 +75,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     get count(): this["size"]
 
+
     /**
      * The {@link CollectionHolder collection} has no values
      *
@@ -98,67 +97,9 @@ export interface CollectionHolder<out T = unknown, >
     get isNotEmpty(): boolean
 
     //#endregion -------------------- Size methods --------------------
-    //#region -------------------- Has null methods --------------------
+    //#region -------------------- Research methods --------------------
 
-    /**
-     * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
-     *
-     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
-     * @see includesNull
-     * @see containsNull
-     */
-    get hasNull(): boolean
-
-    /**
-     * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
-     *
-     * @alias hasNull
-     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
-     */
-    get includesNull(): this["hasNull"]
-
-    /**
-     * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
-     *
-     * @alias hasNull
-     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
-     */
-    get containsNull(): this["hasNull"]
-
-    //#endregion -------------------- Has null methods --------------------
-    //#region -------------------- Has duplicate methods --------------------
-
-    /**
-     * The {@link CollectionHolder} has at least one duplicate value
-     *
-     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
-     * @see includesDuplicate
-     * @see containsDuplicate
-     */
-    get hasDuplicate(): boolean
-
-    /**
-     * The {@link CollectionHolder} has at least one duplicate value
-     *
-     * @alias hasDuplicate
-     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
-     */
-    get includesDuplicate(): this["hasDuplicate"]
-
-    /**
-     * The {@link CollectionHolder} has at least one duplicate value
-     *
-     * @alias hasDuplicate
-     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
-     */
-    get containsDuplicate(): this["hasDuplicate"]
-
-    //#endregion -------------------- Has duplicate methods --------------------
-
-    //#endregion -------------------- Getter methods --------------------
-    //#region -------------------- Value methods --------------------
-
-    //#region -------------------- Get methods --------------------
+    //#region -------------------- Get --------------------
 
     /**
      * Get the element at the specified index in the current {@link CollectionHolder collection}
@@ -191,8 +132,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     elementAt(index: number,): T
 
-    //#endregion -------------------- Get methods --------------------
-    //#region -------------------- Get or else methods --------------------
+    //#endregion -------------------- Get --------------------
+    //#region -------------------- Get or else --------------------
 
     /**
      * Get the element at the specified index in the current {@link CollectionHolder collection}
@@ -268,8 +209,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
-    //#endregion -------------------- Get or else methods --------------------
-    //#region -------------------- Get or null methods --------------------
+    //#endregion -------------------- Get or else --------------------
+    //#region -------------------- Get or null --------------------
 
     /**
      * Get the element at the specified index in the {@link CollectionHolder collection}
@@ -302,9 +243,258 @@ export interface CollectionHolder<out T = unknown, >
      */
     elementAtOrNull(index: number,): NullOr<T>
 
-    //#endregion -------------------- Get or null methods --------------------
+    //#endregion -------------------- Get or null --------------------
 
-    //#region -------------------- Index of methods --------------------
+    //#region -------------------- First --------------------
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     *
+     * @throws EmptyCollectionHolderException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
+     */
+    first(): T
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     * matching the given {@link predicate}
+     *
+     * @param predicate The matching predicate
+     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @typescriptDefinition
+     */
+    first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     * matching the given {@link predicate}
+     *
+     * @param predicate The matching predicate
+     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     */
+    first(predicate: Nullable<BooleanCallback<T>>,): T
+
+    //#endregion -------------------- First --------------------
+    //#region -------------------- First or null --------------------
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     *
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
+     */
+    firstOrNull(): NullOr<T>
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     * matching the given {@link predicate} or <b>null</b>
+     * if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     *
+     * @param predicate The matching predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @typescriptDefinition
+     */
+    firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     * matching the given {@link predicate} or <b>null</b>
+     * if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     *
+     * @param predicate The matching predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     */
+    firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+
+    //#endregion -------------------- First or null --------------------
+
+    //#region -------------------- Last --------------------
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     *
+     * @throws EmptyCollectionHolderException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+     */
+    last(): T
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     * matching the given {@link predicate}
+     *
+     * @param predicate The matching predicate
+     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     * @typescriptDefinition
+     */
+    last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     * matching the given {@link predicate}
+     *
+     * @param predicate The matching predicate
+     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     */
+    last(predicate: Nullable<BooleanCallback<T>>,): T
+
+    //#endregion -------------------- Last --------------------
+    //#region -------------------- Last or null --------------------
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     *
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
+     */
+    lastOrNull(): NullOr<T>
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     * matching the given {@link predicate}
+     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     *
+     * @param predicate The matching predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     * @typescriptDefinition
+     */
+    lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     * matching the given {@link predicate}
+     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     *
+     * @param predicate The matching predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     */
+    lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+
+    //#endregion -------------------- Last or null --------------------
+
+    //#region -------------------- Find --------------------
+
+    /**
+     * Get the first element found or <b>null</b> if nothing was found
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @typescriptDefinition
+     */
+    find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+
+    /**
+     * Get the first element found or <b>null</b> if nothing was found
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     */
+    find(predicate: BooleanCallback<T>,): NullOr<T>
+
+    //#endregion -------------------- Find --------------------
+    //#region -------------------- Find indexed --------------------
+
+    /**
+     * Get the first element found or <b>null</b> if nothing was found
+     *
+     * @param callback The given predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @typescriptDefinition
+     */
+    findIndexed<const S extends T, >(callback: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+
+    /**
+     * Get the first element found or <b>null</b> if nothing was found
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     */
+    findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+
+    //#endregion -------------------- Find indexed --------------------
+
+    //#region -------------------- Find last --------------------
+
+    /**
+     * Get the last element found or <b>null</b> if nothing was found
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.findLast
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     * @typescriptDefinition
+     */
+    findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+
+    /**
+     * Get the last element found or <b>null</b> if nothing was found
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.findLast
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     */
+    findLast(predicate: BooleanCallback<T>,): NullOr<T>
+
+    //#endregion -------------------- Find last --------------------
+    //#region -------------------- Find last indexed --------------------
+
+    /**
+     * Get the last element found or <b>null</b> if nothing was found
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.findLast
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     * @typescriptDefinition
+     */
+    findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+
+    /**
+     * Get the last element found or <b>null</b> if nothing was found
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.findLast
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     */
+    findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+
+    //#endregion -------------------- Find last indexed --------------------
+
+    //#endregion -------------------- Research methods --------------------
+    //#region -------------------- Index methods --------------------
+
+    //#region -------------------- Index of --------------------
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
@@ -349,8 +539,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Index of methods --------------------
-    //#region -------------------- Last index of methods --------------------
+    //#endregion -------------------- Index of --------------------
+
+    //#region -------------------- Last index of --------------------
 
     /**
      * Get the <b>last</b> occurrence equivalent to the value received
@@ -395,8 +586,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Last index of methods --------------------
-    //#region -------------------- Index of first methods --------------------
+    //#endregion -------------------- Last index of --------------------
+
+    //#region -------------------- Index of first --------------------
 
     /**
      * Get the first index matching the {@link predicate}
@@ -417,8 +609,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Index of first methods --------------------
-    //#region -------------------- Index of first indexed methods --------------------
+    //#endregion -------------------- Index of first --------------------
+    //#region -------------------- Index of first indexed --------------------
 
     /**
      * Get the first index matching the {@link predicate}
@@ -439,8 +631,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Index of first indexed methods --------------------
-    //#region -------------------- Index of last methods --------------------
+    //#endregion -------------------- Index of first indexed --------------------
+
+    //#region -------------------- Index of last --------------------
 
     /**
      * Get the last index matching the {@link predicate}
@@ -461,8 +654,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Index of last methods --------------------
-    //#region -------------------- Index of last indexed methods --------------------
+    //#endregion -------------------- Index of last --------------------
+    //#region -------------------- Index of last indexed --------------------
 
     /**
      * Get the last index matching the {@link predicate}
@@ -483,160 +676,12 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Index of last indexed methods --------------------
+    //#endregion -------------------- Index of last indexed --------------------
 
-    //#region -------------------- First methods --------------------
+    //#endregion -------------------- Index methods --------------------
+    //#region -------------------- Validation methods --------------------
 
-    /**
-     * Get the first element in the current {@link CollectionHolder collection}
-     *
-     * @throws EmptyCollectionHolderException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
-     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
-     */
-    first(): T
-
-    /**
-     * Get the first element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
-     *
-     * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
-     * @typescriptDefinition
-     */
-    first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
-
-    /**
-     * Get the first element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
-     *
-     * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
-     */
-    first(predicate: Nullable<BooleanCallback<T>>,): T
-
-    //#endregion -------------------- First methods --------------------
-    //#region -------------------- First or null methods --------------------
-
-    /**
-     * Get the first element in the current {@link CollectionHolder collection}
-     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     *
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
-     */
-    firstOrNull(): NullOr<T>
-
-    /**
-     * Get the first element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate} or <b>null</b>
-     * if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     *
-     * @param predicate The matching predicate
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
-     * @typescriptDefinition
-     */
-    firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-
-    /**
-     * Get the first element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate} or <b>null</b>
-     * if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     *
-     * @param predicate The matching predicate
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
-     */
-    firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-
-    //#endregion -------------------- First or null methods --------------------
-
-    //#region -------------------- Last methods --------------------
-
-    /**
-     * Get the last element in the current {@link CollectionHolder collection}
-     *
-     * @throws EmptyCollectionHolderException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
-     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
-     */
-    last(): T
-
-    /**
-     * Get the last element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
-     *
-     * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
-     * @typescriptDefinition
-     */
-    last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
-
-    /**
-     * Get the last element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
-     *
-     * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
-     */
-    last(predicate: Nullable<BooleanCallback<T>>,): T
-
-    //#endregion -------------------- Last methods --------------------
-    //#region -------------------- Last or null methods --------------------
-
-    /**
-     * Get the last element in the current {@link CollectionHolder collection}
-     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     *
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
-     */
-    lastOrNull(): NullOr<T>
-
-    /**
-     * Get the last element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
-     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     *
-     * @param predicate The matching predicate
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
-     * @typescriptDefinition
-     */
-    lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-
-    /**
-     * Get the last element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
-     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     *
-     * @param predicate The matching predicate
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
-     */
-    lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-
-    //#endregion -------------------- Last or null methods --------------------
-
-    //#endregion -------------------- Value methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    //#region -------------------- All methods --------------------
+    //#region -------------------- All --------------------
 
     /**
      * Check if <b>every</b> element in the current {@link CollectionHolder collection}
@@ -650,8 +695,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     all(predicate: BooleanCallback<T>,): boolean
 
-    //#endregion -------------------- All methods --------------------
-    //#region -------------------- Any methods --------------------
+    //#endregion -------------------- All --------------------
+    //#region -------------------- Any --------------------
 
     /**
      * Tell if the current {@link CollectionHolder collection} {@link CollectionHolder.isNotEmpty is not empty}
@@ -677,8 +722,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     any(predicate: Nullable<BooleanCallback<T>>,): boolean
 
-    //#endregion -------------------- All methods --------------------
-    //#region -------------------- None methods --------------------
+    //#endregion -------------------- All --------------------
+    //#region -------------------- None --------------------
 
     /**
      * Tell if the current {@link CollectionHolder collection} {@link isEmpty is empty}
@@ -699,9 +744,66 @@ export interface CollectionHolder<out T = unknown, >
      */
     none(predicate: Nullable<BooleanCallback<T>>,): boolean
 
-    //#endregion -------------------- None methods --------------------
+    //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has methods --------------------
+    //#region -------------------- Has null methods --------------------
+
+    /**
+     * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
+     *
+     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+     * @see includesNull
+     * @see containsNull
+     */
+    get hasNull(): boolean
+
+    /**
+     * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
+     *
+     * @alias hasNull
+     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+     */
+    get includesNull(): this["hasNull"]
+
+    /**
+     * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
+     *
+     * @alias hasNull
+     * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
+     */
+    get containsNull(): this["hasNull"]
+
+    //#endregion -------------------- Has null methods --------------------
+    //#region -------------------- Has duplicate methods --------------------
+
+    /**
+     * The {@link CollectionHolder} has at least one duplicate value
+     *
+     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     * @see includesDuplicate
+     * @see containsDuplicate
+     */
+    get hasDuplicate(): boolean
+
+    /**
+     * The {@link CollectionHolder} has at least one duplicate value
+     *
+     * @alias hasDuplicate
+     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     */
+    get includesDuplicate(): this["hasDuplicate"]
+
+    /**
+     * The {@link CollectionHolder} has at least one duplicate value
+     *
+     * @alias hasDuplicate
+     * @return {boolean} <b>true</b> only if one element is equal (===) to another one
+     */
+    get containsDuplicate(): this["hasDuplicate"]
+
+    //#endregion -------------------- Has duplicate methods --------------------
+
+    //#region -------------------- Has --------------------
 
     /**
      * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
@@ -781,8 +883,8 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Has methods (aliases) --------------------
 
-    //#endregion -------------------- Has methods --------------------
-    //#region -------------------- Has one methods --------------------
+    //#endregion -------------------- Has --------------------
+    //#region -------------------- Has one --------------------
 
     /**
      * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
@@ -1138,8 +1240,8 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Has one methods (aliases) --------------------
 
-    //#endregion -------------------- Has one methods --------------------
-    //#region -------------------- Has all methods --------------------
+    //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has all --------------------
 
     /**
      * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
@@ -1524,58 +1626,26 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Has all methods (aliases) --------------------
 
-    //#endregion -------------------- Has all methods --------------------
+    //#endregion -------------------- Has all --------------------
 
-    //#region -------------------- Join to string methods --------------------
-
-    /**
-     * Create a new {@link String} from every element in the current {@link CollectionHolder collection} using a {@link separator}
-     * utilizing the given {@link prefix} and {@link postfix} if supplied.
-     *
-     * Note that if the current {@link CollectionHolder collection} is huge,
-     * a {@link limit} can be specified followed by a {@link truncated} value.
-     *
-     * @param separator The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
-     * @param prefix    The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
-     * @param postfix   The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
-     * @param limit     The maximum amount of values in the join (null by default)
-     * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
-     * @param transform A callback to transform into a {@link String}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
-     * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.join
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
-     * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
-     * @canReceiveNegativeValue
-     * @alias joinToString
-     */
-    join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
+    //#region -------------------- Require not nulls --------------------
 
     /**
-     * Create a new {@link String} from every element in the current {@link CollectionHolder collection} using a {@link separator}
-     * utilizing the given {@link prefix} and {@link postfix} if supplied.
+     * Require that no items are <b>null</b> or <b>undefined</b> in the current {@link CollectionHolder collection}
      *
-     * Note that if the current {@link CollectionHolder collection} is huge,
-     * a {@link limit} can be specified followed by a {@link truncated} value.
-     *
-     * @param separator The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
-     * @param prefix    The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
-     * @param postfix   The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
-     * @param limit     The maximum amount of values in the join (null by default)
-     * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
-     * @param transform A callback to transform into a {@link String}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
-     * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.join
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
-     * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
-     * @canReceiveNegativeValue
+     * @throws {TypeError} There is <b>null</b> or <b>undefined</b> value in the current collection
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
+     * @see filterNotNull
+     * @return {this} The current {@link SortableCollectionHolder collection}
      */
-    joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
+    requireNoNulls(): CollectionHolder<NonNullable<T>>
 
-    //#endregion -------------------- Join to string methods --------------------
+    //#endregion -------------------- Require not nulls --------------------
 
-    //#region -------------------- Filter methods --------------------
+    //#endregion -------------------- Validation methods --------------------
+    //#region -------------------- Transformation methods --------------------
+
+    //#region -------------------- Filter --------------------
 
     /**
      * Get a new {@link CollectionHolder collection}
@@ -1604,8 +1674,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
-    //#endregion -------------------- Filter methods --------------------
-    //#region -------------------- Filter indexed methods --------------------
+    //#endregion -------------------- Filter --------------------
+    //#region -------------------- Filter indexed --------------------
 
     /**
      * Get a new {@link CollectionHolder collection}
@@ -1634,8 +1704,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
-    //#endregion -------------------- Filter indexed methods --------------------
-    //#region -------------------- Filter not methods --------------------
+    //#endregion -------------------- Filter indexed --------------------
+
+    //#region -------------------- Filter not --------------------
 
     /**
      * Get a new {@link CollectionHolder}
@@ -1664,8 +1735,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
-    //#endregion -------------------- Filter not methods --------------------
-    //#region -------------------- Filter not indexed methods --------------------
+    //#endregion -------------------- Filter not --------------------
+    //#region -------------------- Filter not indexed --------------------
 
     /**
      * Get a new {@link CollectionHolder}
@@ -1694,8 +1765,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
-    //#endregion -------------------- Filter not indexed methods --------------------
-    //#region -------------------- Filter not null methods --------------------
+    //#endregion -------------------- Filter not indexed --------------------
+
+    //#region -------------------- Filter not null --------------------
 
     /**
      * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
@@ -1706,121 +1778,11 @@ export interface CollectionHolder<out T = unknown, >
      */
     filterNotNull(): CollectionHolder<NonNullable<T>>
 
-    //#endregion -------------------- Filter not null methods --------------------
-    //#region -------------------- Require not nulls methods --------------------
+    //#endregion -------------------- Filter not null --------------------
 
-    /**
-     * Require that no items are <b>null</b> or <b>undefined</b> in the current {@link CollectionHolder collection}
-     *
-     * @throws {TypeError} There is <b>null</b> or <b>undefined</b> value in the current collection
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
-     * @see filterNotNull
-     * @return {this} The current {@link SortableCollectionHolder collection}
-     */
-    requireNoNulls(): CollectionHolder<NonNullable<T>>
+    //#region -------------------- Slice --------------------
 
-    //#endregion -------------------- Require not nulls methods --------------------
-
-    //#region -------------------- Find methods --------------------
-
-    /**
-     * Get the first element found or <b>null</b> if nothing was found
-     *
-     * @param predicate The given predicate
-     * @see ReadonlyArray.find
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
-     * @typescriptDefinition
-     */
-    find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-
-    /**
-     * Get the first element found or <b>null</b> if nothing was found
-     *
-     * @param predicate The given predicate
-     * @see ReadonlyArray.find
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
-     */
-    find(predicate: BooleanCallback<T>,): NullOr<T>
-
-    //#endregion -------------------- Find methods --------------------
-    //#region -------------------- Find indexed methods --------------------
-
-    /**
-     * Get the first element found or <b>null</b> if nothing was found
-     *
-     * @param callback The given predicate
-     * @see ReadonlyArray.find
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
-     * @typescriptDefinition
-     */
-    findIndexed<const S extends T, >(callback: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-
-    /**
-     * Get the first element found or <b>null</b> if nothing was found
-     *
-     * @param predicate The given predicate
-     * @see ReadonlyArray.find
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
-     */
-    findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-
-    //#endregion -------------------- Find indexed methods --------------------
-    //#region -------------------- Find last methods --------------------
-
-    /**
-     * Get the last element found or <b>null</b> if nothing was found
-     *
-     * @param predicate The given predicate
-     * @see ReadonlyArray.findLast
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
-     * @typescriptDefinition
-     */
-    findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-
-    /**
-     * Get the last element found or <b>null</b> if nothing was found
-     *
-     * @param predicate The given predicate
-     * @see ReadonlyArray.findLast
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
-     */
-    findLast(predicate: BooleanCallback<T>,): NullOr<T>
-
-    //#endregion -------------------- Find last methods --------------------
-    //#region -------------------- Find last indexed methods --------------------
-
-    /**
-     * Get the last element found or <b>null</b> if nothing was found
-     *
-     * @param predicate The given predicate
-     * @see ReadonlyArray.findLast
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
-     * @typescriptDefinition
-     */
-    findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-
-    /**
-     * Get the last element found or <b>null</b> if nothing was found
-     *
-     * @param predicate The given predicate
-     * @see ReadonlyArray.findLast
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
-     */
-    findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-
-    //#endregion -------------------- Find last indexed methods --------------------
-
-    //#region -------------------- Slice methods --------------------
-
-    //#region -------------------- Slice (indice) methods --------------------
+    //#region -------------------- Slice (indice) --------------------
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
@@ -1914,8 +1876,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
 
-    //#endregion -------------------- Slice (indice) methods --------------------
-    //#region -------------------- Slice (from, to, limit) methods --------------------
+    //#endregion -------------------- Slice (indice) --------------------
+    //#region -------------------- Slice (from, to, limit) --------------------
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
@@ -1933,7 +1895,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
-    //#endregion -------------------- Slice (from, to, limit) methods --------------------
+    //#endregion -------------------- Slice (from, to, limit) --------------------
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex indices}
@@ -1954,9 +1916,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
-    //#endregion -------------------- Slice methods --------------------
+    //#endregion -------------------- Slice --------------------
 
-    //#region -------------------- Map methods --------------------
+    //#region -------------------- Map --------------------
 
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
@@ -1971,8 +1933,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U>
 
-    //#endregion -------------------- Map methods --------------------
-    //#region -------------------- Map indexed methods --------------------
+    //#endregion -------------------- Map --------------------
+    //#region -------------------- Map indexed --------------------
 
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
@@ -1987,8 +1949,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U>
 
-    //#endregion -------------------- Map indexed methods --------------------
-    //#region -------------------- Map not null methods --------------------
+    //#endregion -------------------- Map indexed --------------------
+
+    //#region -------------------- Map not null --------------------
 
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
@@ -2003,8 +1966,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U>
 
-    //#endregion -------------------- Map not null methods --------------------
-    //#region -------------------- Map not null indexed methods --------------------
+    //#endregion -------------------- Map not null --------------------
+    //#region -------------------- Map not null indexed --------------------
 
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
@@ -2019,9 +1982,12 @@ export interface CollectionHolder<out T = unknown, >
      */
     mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U>
 
-    //#endregion -------------------- Map not null indexed methods --------------------
+    //#endregion -------------------- Map not null indexed --------------------
 
-    //#region -------------------- For each methods --------------------
+    //#endregion -------------------- Transformation methods --------------------
+    //#region -------------------- Loop methods --------------------
+
+    //#region -------------------- For each --------------------
 
     /**
      * Perform a given {@link action} on each element
@@ -2034,8 +2000,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     forEach(action: ValueIndexCallback<T>,): void
 
-    //#endregion -------------------- For each methods --------------------
-    //#region -------------------- For each indexed methods --------------------
+    //#endregion -------------------- For each --------------------
+    //#region -------------------- For each indexed --------------------
 
     /**
      * Perform a given {@link action} on each element
@@ -2048,8 +2014,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     forEachIndexed(action: IndexValueCallback<T>,): void
 
-    //#endregion -------------------- For each indexed methods --------------------
-    //#region -------------------- On each methods --------------------
+    //#endregion -------------------- For each indexed --------------------
+
+    //#region -------------------- On each --------------------
 
     /**
      * Perform a given {@link action} on each element
@@ -2063,8 +2030,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     onEach(action: ValueIndexCallback<T>,): this
 
-    //#endregion -------------------- On each methods --------------------
-    //#region -------------------- On each indexed methods --------------------
+    //#endregion -------------------- On each --------------------
+    //#region -------------------- On each indexed --------------------
 
     /**
      * Perform a given {@link action} on each element
@@ -2078,63 +2045,12 @@ export interface CollectionHolder<out T = unknown, >
      */
     onEachIndexed(action: IndexValueCallback<T>,): this
 
-    //#endregion -------------------- On each indexed methods --------------------
+    //#endregion -------------------- On each indexed --------------------
 
     //#endregion -------------------- Loop methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- Reordering methods --------------------
 
-    /**
-     * A Javascript way to implement a "for‥of" over the {@link CollectionHolder collection
-     *
-     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
-     */
-    [Symbol.iterator](): CollectionIterator<T>
-
-    /**
-     * Give an output for the call from {@link ObjectConstructor.toString.call} [object CollectionHolder] instead of [object Object]
-     *
-     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag
-     * @readonly
-     */
-    [Symbol.toStringTag]: CollectionHolderName
-
-    //#endregion -------------------- Javascript methods --------------------
-    //#region -------------------- Conversion methods --------------------
-
-    //#region -------------------- Conversion methods (iterator) --------------------
-
-    /** Convert the current {@link CollectionHolder collection} to a new {@link CollectionIterator} */
-    toIterator(): CollectionIterator<T>
-
-    //#endregion -------------------- Conversion methods (iterator) --------------------
-    //#region -------------------- Conversion methods (array) --------------------
-
-    /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyArray array} */
-    toArray(): readonly T[]
-
-    /** Convert the current {@link CollectionHolder collection} to a new {@link Array mutable array} */
-    toMutableArray(): T[]
-
-    //#endregion -------------------- Conversion methods (array) --------------------
-    //#region -------------------- Conversion methods (set) --------------------
-
-    /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlySet set} */
-    toSet(): ReadonlySet<T>
-
-    /** Convert the current {@link CollectionHolder collection} to a new {@link Set mutable set} */
-    toMutableSet(): Set<T>
-
-    //#endregion -------------------- Conversion methods (set) --------------------
-    //#region -------------------- Conversion methods (map) --------------------
-
-    /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyMap map} */
-    toMap(): ReadonlyMap<number, T>
-
-    /** Convert the current {@link CollectionHolder collection} to a new {@link Map mutable map} */
-    toMutableMap(): Map<number, T>
-
-    //#endregion -------------------- Conversion methods (map) --------------------
-    //#region -------------------- Conversion methods (reverse) --------------------
+    //#region -------------------- To reverse --------------------
 
     /**
      * Reverse the current {@link CollectionHolder collection} from a range (if provided)
@@ -2182,8 +2098,64 @@ export interface CollectionHolder<out T = unknown, >
      */
     reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
-    //#endregion -------------------- Conversion methods (reverse) --------------------
-    //#region -------------------- Conversion methods (string) --------------------
+    //#endregion -------------------- To reverse --------------------
+
+    //#endregion -------------------- Reordering methods --------------------
+    //#region -------------------- Javascript methods --------------------
+
+    /**
+     * A Javascript way to implement a "for‥of" over the {@link CollectionHolder collection
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
+     */
+    [Symbol.iterator](): CollectionIterator<T>
+
+    /**
+     * Give an output for the call from {@link ObjectConstructor.toString.call} [object CollectionHolder] instead of [object Object]
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag
+     * @readonly
+     */
+    [Symbol.toStringTag]: CollectionHolderName
+
+    //#endregion -------------------- Javascript methods --------------------
+    //#region -------------------- Conversion methods --------------------
+
+    //#region -------------------- To iterator --------------------
+
+    /** Convert the current {@link CollectionHolder collection} to a new {@link CollectionIterator} */
+    toIterator(): CollectionIterator<T>
+
+    //#endregion -------------------- To iterator --------------------
+    //#region -------------------- To array --------------------
+
+    /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyArray array} */
+    toArray(): readonly T[]
+
+    /** Convert the current {@link CollectionHolder collection} to a new {@link Array mutable array} */
+    toMutableArray(): T[]
+
+    //#endregion -------------------- To array --------------------
+    //#region -------------------- To set --------------------
+
+    /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlySet set} */
+    toSet(): ReadonlySet<T>
+
+    /** Convert the current {@link CollectionHolder collection} to a new {@link Set mutable set} */
+    toMutableSet(): Set<T>
+
+    //#endregion -------------------- To set --------------------
+    //#region -------------------- To map --------------------
+
+    /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyMap map} */
+    toMap(): ReadonlyMap<number, T>
+
+    /** Convert the current {@link CollectionHolder collection} to a new {@link Map mutable map} */
+    toMutableMap(): Map<number, T>
+
+    //#endregion -------------------- To map --------------------
+
+    //#region -------------------- To string --------------------
 
     /**
      * Convert the current {@link CollectionHolder collection} to a {@link String} on every value
@@ -2243,7 +2215,55 @@ export interface CollectionHolder<out T = unknown, >
      */
     toLocaleUpperCaseString(locale?: NullableString,): string
 
-    //#endregion -------------------- Conversion methods (string) --------------------
+    //#endregion -------------------- To string --------------------
+    //#region -------------------- Join to string --------------------
+
+    /**
+     * Create a new {@link String} from every element in the current {@link CollectionHolder collection} using a {@link separator}
+     * utilizing the given {@link prefix} and {@link postfix} if supplied.
+     *
+     * Note that if the current {@link CollectionHolder collection} is huge,
+     * a {@link limit} can be specified followed by a {@link truncated} value.
+     *
+     * @param separator The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+     * @param prefix    The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
+     * @param postfix   The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
+     * @param limit     The maximum amount of values in the join (null by default)
+     * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
+     * @param transform A callback to transform into a {@link String}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
+     * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.join
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
+     * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
+     * @canReceiveNegativeValue
+     * @alias joinToString
+     */
+    join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
+
+    /**
+     * Create a new {@link String} from every element in the current {@link CollectionHolder collection} using a {@link separator}
+     * utilizing the given {@link prefix} and {@link postfix} if supplied.
+     *
+     * Note that if the current {@link CollectionHolder collection} is huge,
+     * a {@link limit} can be specified followed by a {@link truncated} value.
+     *
+     * @param separator The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+     * @param prefix    The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
+     * @param postfix   The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
+     * @param limit     The maximum amount of values in the join (null by default)
+     * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
+     * @param transform A callback to transform into a {@link String}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
+     * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.join
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
+     * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
+     * @canReceiveNegativeValue
+     */
+    joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
+
+    //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 
