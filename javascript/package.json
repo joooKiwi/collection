@@ -46,12 +46,12 @@
       "import":  "./dist/ecmascript module/exception/index.js",
       "require": "./dist/common javascript/exception/index.js"
     },
-     "./handler": {
+    "./handler": {
       "types":   "./dist/types/handler/index.d.ts",
       "import":  "./dist/ecmascript module/handler/index.js",
       "require": "./dist/common javascript/handler/index.js"
     },
-     "./handler/value": {
+    "./handler/value": {
       "types":   "./dist/types/handler/value/index.d.ts",
       "import":  "./dist/ecmascript module/handler/value/index.js",
       "require": "./dist/common javascript/handler/value/index.js"
