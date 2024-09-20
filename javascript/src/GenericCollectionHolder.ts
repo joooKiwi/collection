@@ -779,6 +779,7 @@ export class GenericCollectionHolder<const T = unknown,
 
     public override get size(): number { return this.#size }
     public override get isEmpty(): boolean { return this.#isEmpty }
+    public override get isNotEmpty(): boolean { return !this.isEmpty }
     public override get hasNull(): boolean { return this.#hasNull ??= super.hasNull }
     public override get hasDuplicate(): boolean { return this.#hasDuplicate ??= super.hasDuplicate }
 

@@ -773,6 +773,8 @@ export class LazyGenericCollectionHolder<const T = unknown,
         return this.#isEmpty = valueFromLazy
     }
 
+    public override get isNotEmpty(): boolean { return !this.isEmpty }
+
     public override get hasNull(): boolean {
         const value = this.#hasNull
         if (value != null)
