@@ -688,12 +688,47 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @return {boolean} <b>true</b> only if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
+     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
+     * @see ReadonlyArray.every
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java allMatch(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
+     * @typescriptDefinition
+     */
+    all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+
+    /**
+     * Check if <b>every</b> element in the current {@link CollectionHolder collection}
+     * match the given {@link predicate}
+     *
+     * @param predicate The matching predicate
+     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
+     * @see ReadonlyArray.every
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java allMatch(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
      */
     all(predicate: BooleanCallback<T>,): boolean
+
+
+    /**
+     * Check if <b>every</b> element in the current {@link CollectionHolder collection}
+     * match the given {@link predicate}
+     *
+     * @param predicate The matching predicate
+     * @alias CollectionHolder.all
+     * @typescriptDefinition
+     */
+    every<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+
+    /**
+     * Check if <b>every</b> element in the current {@link CollectionHolder collection}
+     * match the given {@link predicate}
+     *
+     * @param predicate The matching predicate
+     * @alias CollectionHolder.all
+     */
+    every(predicate: BooleanCallback<T>,): boolean
 
     //#endregion -------------------- All --------------------
     //#region -------------------- Any --------------------
@@ -705,7 +740,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
-     * @alias isNotEmpty
+     * @alias CollectionHolder.isNotEmpty
      */
     any(): this["isNotEmpty"]
 
@@ -721,6 +756,25 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
      */
     any(predicate: Nullable<BooleanCallback<T>>,): boolean
+
+
+    /**
+     * Tell if the current {@link CollectionHolder collection} {@link CollectionHolder.isNotEmpty is not empty}
+     *
+     * @return {boolean} {@link isNotEmpty}
+     * @alias CollectionHolder.isNotEmpty
+     */
+    some(): this["isNotEmpty"]
+
+    /**
+     * Check if <b>one</b> of the elements in the current {@link CollectionHolder collection}
+     * match the given {@link predicate}
+     *
+     * @param predicate The condition to check on each value
+     * @return {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
+     * @alias CollectionHolder.any
+     */
+    some(predicate: Nullable<BooleanCallback<T>>,): boolean
 
     //#endregion -------------------- All --------------------
     //#region -------------------- None --------------------

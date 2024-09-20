@@ -215,19 +215,31 @@ export class EmptyCollectionHolder
 
     //#region -------------------- All --------------------
 
-    public all(..._: readonly unknown[]): false
-    public all() { return false }
+    /** @return {true} */
+    public all<const S extends never, >(..._: readonly unknown[]): this is CollectionHolder<S>
+    public all() {
+        return true
+    }
+
+    /** @return {true} */
+    public every<const S extends never, >(..._: readonly unknown[]): this is CollectionHolder<S>
+    public every() {
+        return true
+    }
 
     //#endregion -------------------- All --------------------
     //#region -------------------- Any --------------------
 
-    public any(..._: readonly unknown[]): this["isNotEmpty"]
+    public any(..._: readonly unknown[]): false
     public any() { return false }
+
+    public some(..._: readonly unknown[]): false
+    public some() { return false }
 
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
 
-    public none(..._: readonly unknown[]): this["isEmpty"]
+    public none(..._: readonly unknown[]): true
     public none() { return true }
 
     //#endregion -------------------- None --------------------
