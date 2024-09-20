@@ -33,6 +33,8 @@ import {hasAllByCollectionHolder}                  from "../../src/method/hasAll
 import {hasDuplicateByCollectionHolder}            from "../../src/method/hasDuplicate"
 import {hasNullByCollectionHolder}                 from "../../src/method/hasNull"
 import {hasOneByCollectionHolder}                  from "../../src/method/hasOne"
+import {getOrElseByCollectionHolder}               from "../../src/method/getOrElse"
+import {getOrNullByCollectionHolder}               from "../../src/method/getOrNull"
 import {indexOfByCollectionHolder}                 from "../../src/method/indexOf"
 import {indexOfFirstByCollectionHolder}            from "../../src/method/indexOfFirst"
 import {indexOfFirstIndexedByCollectionHolder}     from "../../src/method/indexOfFirstIndexed"
@@ -81,617 +83,589 @@ export class CollectionHolder_FromExtensionFunction<const out T, >
         this.#array = array
     }
 
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Size methods --------------------
 
-    public override get length(): never {
-        throw new Error("The getter method \"length\" was not expected to be called.",)
-    }
-
-    public override get count(): never {
-        throw new Error("The getter method \"count\" was not expected to be called.",)
-    }
-
-    public override get size(): number {
+    public get size(): number {
         return this.#array.length
     }
 
+    public get length(): never {
+        throw new Error("The getter method \"length\" was not expected to be called.",)
+    }
 
-    public override get isEmpty(): boolean {
+    public get count(): never {
+        throw new Error("The getter method \"count\" was not expected to be called.",)
+    }
+
+
+    public get isEmpty(): boolean {
         return isEmptyByCollectionHolder(this,)
     }
 
-    public override get isNotEmpty(): boolean {
+    public get isNotEmpty(): boolean {
         return isNotEmptyByCollectionHolder(this,)
     }
 
+    //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Research methods --------------------
 
-    public override get hasNull(): boolean {
-        return hasNullByCollectionHolder(this,)
-    }
+    //#region -------------------- Get --------------------
 
-    public override get includesNull(): never {
-        throw new Error("The getter method \"includesNull\" was not expected to be called.",)
-    }
-
-    public override get containsNull(): never {
-        throw new Error("The getter method \"containsNull\" was not expected to be called.",)
-    }
-
-
-    public override get hasDuplicate(): boolean {
-        return hasDuplicateByCollectionHolder(this,)
-    }
-
-    public override get includesDuplicate(): never {
-        throw new Error("The getter method \"includesDuplicate\" was not expected to be called.",)
-    }
-
-    public override get containsDuplicate(): never {
-        throw new Error("The getter method \"containsDuplicate\" was not expected to be called.",)
-    }
-
-    //#endregion -------------------- Getter methods --------------------
-    //#region -------------------- Methods --------------------
-
-    //#region -------------------- Value methods --------------------
-
-    //#region -------------------- Get methods --------------------
-
-    public override get(index: number,): T {
+    public get(index: number,): T {
+        this.amountOfCall++
         return this.#array[index] as T
     }
 
-    public override at(index?: number,): never
-    public override at() {
+    public at(index?: number,): never
+    public at() {
         throw new Error("The method \"at\" was not expected to be called in a test.",)
     }
 
-    public override elementAt(index?: number,): never
-    public override elementAt() {
+    public elementAt(index?: number,): never
+    public elementAt() {
         throw new Error("The method \"elementAt\" was not expected to be called in a test.",)
     }
 
 
-    public override getOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
-    public override getOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
-    public override getOrElse() {
-        throw new Error("The method \"getOrElse\" was not expected to be called in a test.",)
+    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T {
+        return getOrElseByCollectionHolder<T>(this, index, defaultValue,)
     }
 
-    public override atOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
-    public override atOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
-    public override atOrElse() {
+    public atOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
+    public atOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
+    public atOrElse() {
         throw new Error("The method \"atOrElse\" was not expected to be called in a test.",)
     }
 
-    public override elementAtOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
-    public override elementAtOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
-    public override elementAtOrElse() {
+    public elementAtOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
+    public elementAtOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
+    public elementAtOrElse() {
         throw new Error("The method \"elementAtOrElse\" was not expected to be called in a test.",)
     }
 
 
-    public override getOrNull(index?: number,): never
-    public override getOrNull() {
-        throw new Error("The method \"getOrNull\" was not expected to be called in a test.",)
+    public getOrNull(index: number,): NullOr<T> {
+        return getOrNullByCollectionHolder<T>(this, index,)
     }
 
-    public override atOrNull(index?: number,): never
-    public override atOrNull() {
+    public atOrNull(index?: number,): never
+    public atOrNull() {
         throw new Error("The method \"atOrNull\" was not expected to be called in a test.",)
     }
 
-    public override elementAtOrNull(index?: number,): never
-    public override elementAtOrNull() {
+    public elementAtOrNull(index?: number,): never
+    public elementAtOrNull() {
         throw new Error("The method \"elementAtOrNull\" was not expected to be called in a test.",)
     }
 
-    //#endregion -------------------- Get methods --------------------
+    //#endregion -------------------- Get --------------------
+    //#region -------------------- First --------------------
+
+    public first(): NonNullable<T>
+    public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
+    public first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
+    public first(predicate?: Nullable<BooleanCallback<T>>,) {
+        return firstByCollectionHolder(this, predicate,)
+    }
+
+    public firstOrNull(): NullOr<T>
+    public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+    public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+    public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
+        return firstOrNullByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- First --------------------
+    //#region -------------------- Last --------------------
+
+    public last(): NonNullable<T>
+    public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
+    public last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
+    public last(predicate?: Nullable<BooleanCallback<T>>,) {
+        return lastByCollectionHolder(this, predicate,)
+    }
+
+    public lastOrNull(): NullOr<T>
+    public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+    public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+    public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
+        return lastOrNullByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Last --------------------
+    //#region -------------------- Find --------------------
+
+    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public find(predicate: BooleanCallback<T>,): NullOr<T>
+    public find(predicate: BooleanCallback<T>,) {
+        return findByCollectionHolder(this, predicate,)
+    }
+
+    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return findIndexedByCollectionHolder(this, predicate,)
+    }
+
+
+    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLast(predicate: BooleanCallback<T>,): NullOr<T>
+    public findLast(predicate: BooleanCallback<T>,) {
+        return findLastByCollectionHolder(this, predicate,)
+    }
+
+    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return findLastIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Find --------------------
+
+    //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public override indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public override indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
 
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public override lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public override lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
     }
 
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
 
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
         return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
     }
 
     //#endregion -------------------- Index methods --------------------
-    //#region -------------------- First methods --------------------
+    //#region -------------------- Validation methods --------------------
 
-    public override first(): NonNullable<T>
-    public override first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public override first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
-    public override first(predicate?: Nullable<BooleanCallback<T>>,) {
-        return firstByCollectionHolder(this, predicate,)
-    }
+    //#region -------------------- All --------------------
 
-    public override firstOrNull(): NullOr<T>
-    public override firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public override firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public override firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        return firstOrNullByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- First methods --------------------
-    //#region -------------------- Last methods --------------------
-
-    public override last(): NonNullable<T>
-    public override last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public override last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
-    public override last(predicate?: Nullable<BooleanCallback<T>>,) {
-        return lastByCollectionHolder(this, predicate,)
-    }
-
-    public override lastOrNull(): NullOr<T>
-    public override lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public override lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public override lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        return lastOrNullByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Last methods --------------------
-
-    //#endregion -------------------- Value methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    //#region -------------------- All methods --------------------
-
-    public override all(predicate: BooleanCallback<T>,): boolean {
+    public all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public all(predicate: BooleanCallback<T>,): boolean
+    public all(predicate: BooleanCallback<T>,) {
         return allByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- All methods --------------------
-    //#region -------------------- Any methods --------------------
+    public every<const S extends T, >(predicate?: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public every(predicate?: BooleanCallback<T>,): never
+    public every(): never {
+        throw new Error("The method \"every\" was not expected to be called.",)
+    }
 
-    public override any(): this["isNotEmpty"]
-    public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override any(predicate?: Nullable<BooleanCallback<T>>,) {
+    //#endregion -------------------- All --------------------
+    //#region -------------------- Any --------------------
+
+    public any(): this["isNotEmpty"]
+    public any(predicate: Nullable<BooleanCallback<T>>,): boolean
+    public any(predicate?: Nullable<BooleanCallback<T>>,) {
         return anyByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Any methods --------------------
-    //#region -------------------- None methods --------------------
+    public some(): never
+    public some(predicate?: Nullable<BooleanCallback<T>>,): never
+    public some() {
+        throw new Error("The method \"some\" was not expected to be called.",)
+    }
 
-    public override none(): this["isEmpty"]
-    public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override none(predicate?: Nullable<BooleanCallback<T>>,) {
+    //#endregion -------------------- Any --------------------
+    //#region -------------------- None --------------------
+
+    public none(): this["isEmpty"]
+    public none(predicate: Nullable<BooleanCallback<T>>,): boolean
+    public none(predicate?: Nullable<BooleanCallback<T>>,) {
         return noneByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- None methods --------------------
+    //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has methods --------------------
+    //#region -------------------- Has null --------------------
 
-    public override has(value: T,): boolean
-    public override has(value: unknown,): boolean
-    public override has(value: unknown,) {
+    public get hasNull(): boolean {
+        return hasNullByCollectionHolder(this,)
+    }
+
+    public get includesNull(): never {
+        throw new Error("The getter method \"includesNull\" was not expected to be called.",)
+    }
+
+    public get containsNull(): never {
+        throw new Error("The getter method \"containsNull\" was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has duplicate --------------------
+
+    public get hasDuplicate(): boolean {
+        return hasDuplicateByCollectionHolder(this,)
+    }
+
+    public get includesDuplicate(): never {
+        throw new Error("The getter method \"includesDuplicate\" was not expected to be called.",)
+    }
+
+    public get containsDuplicate(): never {
+        throw new Error("The getter method \"containsDuplicate\" was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has duplicate --------------------
+
+    //#region -------------------- Has --------------------
+
+    public has(value: T,): boolean {
         return hasByCollectionHolder(this, value,)
     }
 
-    public override includes(value?: T,): never
-    public override includes(value?: unknown,): never
-    public override includes() {
+    public includes(value?: T,): never
+    public includes() {
         throw new Error("The method \"includes\" was not expected to be called.",)
     }
 
-    public override contains(value?: T,): never
-    public override contains(value?: unknown,): never
-    public override contains() {
+    public contains(value?: T,): never
+    public contains() {
         throw new Error("The method \"contains\" was not expected to be called.",)
     }
 
-    //#endregion -------------------- Has methods --------------------
-    //#region -------------------- Has one methods --------------------
+    //#endregion -------------------- Has --------------------
+    //#region -------------------- Has one --------------------
 
-    public override hasOne(values: readonly T[],): boolean
-    public override hasOne(values: ReadonlySet<T>,): boolean
-    public override hasOne(values: CollectionHolder<T>,): boolean
-    public override hasOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasOne(values: CollectionIterator<T>,): boolean
-    public override hasOne(values: Iterable<T>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override hasOne(values: readonly unknown[],): boolean
-    public override hasOne(values: ReadonlySet<unknown>,): boolean
-    public override hasOne(values: CollectionHolder,): boolean
-    public override hasOne(values: MinimalistCollectionHolder,): boolean
-    public override hasOne(values: CollectionIterator,): boolean
-    public override hasOne(values: Iterable<unknown>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public hasOne(values: readonly T[],): boolean
+    public hasOne(values: ReadonlySet<T>,): boolean
+    public hasOne(values: CollectionHolder<T>,): boolean
+    public hasOne(values: MinimalistCollectionHolder<T>,): boolean
+    public hasOne(values: CollectionIterator<T>,): boolean
+    public hasOne(values: Iterable<T>,): boolean
+    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return hasOneByCollectionHolder(this, values,)
     }
 
-    public override includesOne(values?: readonly T[],): never
-    public override includesOne(values?: ReadonlySet<T>,): never
-    public override includesOne(values?: CollectionHolder<T>,): never
-    public override includesOne(values?: MinimalistCollectionHolder<T>,): never
-    public override includesOne(values?: CollectionIterator<T>,): never
-    public override includesOne(values?: Iterable<T>,): never
-    public override includesOne(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
-    public override includesOne(values?: readonly unknown[],): never
-    public override includesOne(values?: ReadonlySet<unknown>,): never
-    public override includesOne(values?: CollectionHolder,): never
-    public override includesOne(values?: MinimalistCollectionHolder,): never
-    public override includesOne(values?: CollectionIterator,): never
-    public override includesOne(values?: Iterable<unknown>,): never
-    public override includesOne(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
-    public override includesOne() {
+    public includesOne(values?: readonly T[],): never
+    public includesOne(values?: ReadonlySet<T>,): never
+    public includesOne(values?: CollectionHolder<T>,): never
+    public includesOne(values?: MinimalistCollectionHolder<T>,): never
+    public includesOne(values?: CollectionIterator<T>,): never
+    public includesOne(values?: Iterable<T>,): never
+    public includesOne(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public includesOne(values?: readonly unknown[],): never
+    public includesOne(values?: ReadonlySet<unknown>,): never
+    public includesOne(values?: CollectionHolder,): never
+    public includesOne(values?: MinimalistCollectionHolder,): never
+    public includesOne(values?: CollectionIterator,): never
+    public includesOne(values?: Iterable<unknown>,): never
+    public includesOne(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public includesOne() {
         throw new Error("The method \"includesOne\" was not expected to be called.",)
     }
 
-    public override containsOne(values?: readonly T[],): never
-    public override containsOne(values?: ReadonlySet<T>,): never
-    public override containsOne(values?: MinimalistCollectionHolder<T>,): never
-    public override containsOne(values?: MinimalistCollectionHolder<T>,): never
-    public override containsOne(values?: MinimalistCollectionHolder<T>,): never
-    public override containsOne(values?: Iterable<T>,): never
-    public override containsOne(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
-    public override containsOne(values?: readonly unknown[],): never
-    public override containsOne(values?: ReadonlySet<unknown>,): never
-    public override containsOne(values?: CollectionHolder,): never
-    public override containsOne(values?: MinimalistCollectionHolder,): never
-    public override containsOne(values?: CollectionIterator,): never
-    public override containsOne(values?: Iterable<unknown>,): never
-    public override containsOne(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
-    public override containsOne() {
+    public containsOne(values?: readonly T[],): never
+    public containsOne(values?: ReadonlySet<T>,): never
+    public containsOne(values?: MinimalistCollectionHolder<T>,): never
+    public containsOne(values?: MinimalistCollectionHolder<T>,): never
+    public containsOne(values?: MinimalistCollectionHolder<T>,): never
+    public containsOne(values?: Iterable<T>,): never
+    public containsOne(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public containsOne(values?: readonly unknown[],): never
+    public containsOne(values?: ReadonlySet<unknown>,): never
+    public containsOne(values?: CollectionHolder,): never
+    public containsOne(values?: MinimalistCollectionHolder,): never
+    public containsOne(values?: CollectionIterator,): never
+    public containsOne(values?: Iterable<unknown>,): never
+    public containsOne(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public containsOne() {
         throw new Error("The method \"containsOne\" was not expected to be called.",)
     }
 
-    //#endregion -------------------- Has one methods --------------------
-    //#region -------------------- Has all methods --------------------
+    //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has all --------------------
 
-    public override hasAll(values: readonly T[],): boolean
-    public override hasAll(values: ReadonlySet<T>,): boolean
-    public override hasAll(values: CollectionHolder<T>,): boolean
-    public override hasAll(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasAll(values: CollectionIterator<T>,): boolean
-    public override hasAll(values: Iterable<T>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override hasAll(values: readonly unknown[],): boolean
-    public override hasAll(values: ReadonlySet<unknown>,): boolean
-    public override hasAll(values: CollectionHolder,): boolean
-    public override hasAll(values: MinimalistCollectionHolder,): boolean
-    public override hasAll(values: CollectionIterator,): boolean
-    public override hasAll(values: Iterable<unknown>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public hasAll(values: readonly T[],): boolean
+    public hasAll(values: ReadonlySet<T>,): boolean
+    public hasAll(values: CollectionHolder<T>,): boolean
+    public hasAll(values: MinimalistCollectionHolder<T>,): boolean
+    public hasAll(values: CollectionIterator<T>,): boolean
+    public hasAll(values: Iterable<T>,): boolean
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return hasAllByCollectionHolder(this, values,)
     }
 
-    public override includesAll(values?: readonly T[],): never
-    public override includesAll(values?: ReadonlySet<T>,): never
-    public override includesAll(values?: CollectionHolder<T>,): never
-    public override includesAll(values?: MinimalistCollectionHolder<T>,): never
-    public override includesAll(values?: CollectionIterator<T>,): never
-    public override includesAll(values?: Iterable<T>,): never
-    public override includesAll(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
-    public override includesAll(values?: readonly unknown[],): never
-    public override includesAll(values?: ReadonlySet<unknown>,): never
-    public override includesAll(values?: CollectionHolder,): never
-    public override includesAll(values?: MinimalistCollectionHolder,): never
-    public override includesAll(values?: CollectionIterator,): never
-    public override includesAll(values?: Iterable<unknown>,): never
-    public override includesAll(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
-    public override includesAll() {
+    public includesAll(values?: readonly T[],): never
+    public includesAll(values?: ReadonlySet<T>,): never
+    public includesAll(values?: CollectionHolder<T>,): never
+    public includesAll(values?: MinimalistCollectionHolder<T>,): never
+    public includesAll(values?: CollectionIterator<T>,): never
+    public includesAll(values?: Iterable<T>,): never
+    public includesAll(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public includesAll(values?: readonly unknown[],): never
+    public includesAll(values?: ReadonlySet<unknown>,): never
+    public includesAll(values?: CollectionHolder,): never
+    public includesAll(values?: MinimalistCollectionHolder,): never
+    public includesAll(values?: CollectionIterator,): never
+    public includesAll(values?: Iterable<unknown>,): never
+    public includesAll(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public includesAll() {
         throw new Error("The method \"includesAll\" was not expected to be called.",)
     }
 
-    public override containsAll(values?: readonly T[],): never
-    public override containsAll(values?: ReadonlySet<T>,): never
-    public override containsAll(values?: CollectionHolder<T>,): never
-    public override containsAll(values?: MinimalistCollectionHolder<T>,): never
-    public override containsAll(values?: CollectionIterator<T>,): never
-    public override containsAll(values?: Iterable<T>,): never
-    public override containsAll(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
-    public override containsAll(values?: readonly unknown[],): never
-    public override containsAll(values?: ReadonlySet<unknown>,): never
-    public override containsAll(values?: CollectionHolder,): never
-    public override containsAll(values?: MinimalistCollectionHolder,): never
-    public override containsAll(values?: CollectionIterator,): never
-    public override containsAll(values?: Iterable<unknown>,): never
-    public override containsAll(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
-    public override containsAll() {
+    public containsAll(values?: readonly T[],): never
+    public containsAll(values?: ReadonlySet<T>,): never
+    public containsAll(values?: CollectionHolder<T>,): never
+    public containsAll(values?: MinimalistCollectionHolder<T>,): never
+    public containsAll(values?: CollectionIterator<T>,): never
+    public containsAll(values?: Iterable<T>,): never
+    public containsAll(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
+    public containsAll(values?: readonly unknown[],): never
+    public containsAll(values?: ReadonlySet<unknown>,): never
+    public containsAll(values?: CollectionHolder,): never
+    public containsAll(values?: MinimalistCollectionHolder,): never
+    public containsAll(values?: CollectionIterator,): never
+    public containsAll(values?: Iterable<unknown>,): never
+    public containsAll(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
+    public containsAll() {
         throw new Error("The \"containsAll\" was not expected to be called.",)
     }
 
-    //#endregion -------------------- Has all methods --------------------
+    //#endregion -------------------- Has all --------------------
 
-    //#region -------------------- Join to string methods --------------------
+    //#region -------------------- Require no nulls --------------------
 
-    public override join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): never
-    public override join() {
-        throw new Error("The method \"join\" was not expected to be called.",)
-    }
-
-    public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
-        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
-    }
-
-    //#endregion -------------------- Join to string methods --------------------
-
-    //#region -------------------- Filter methods --------------------
-
-    public override filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public override filter(predicate: BooleanCallback<T>,) {
-        return filterByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Filter methods --------------------
-    //#region -------------------- Filter indexed methods --------------------
-
-    public override filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override filterIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return filterIndexedByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Filter indexed methods --------------------
-    //#region -------------------- Filter not methods --------------------
-
-    public override filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public override filterNot(predicate: BooleanCallback<T>,) {
-        return filterNotByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Filter not methods --------------------
-    //#region -------------------- Filter not indexed methods --------------------
-
-    public override filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return filterNotIndexedByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Filter not indexed methods --------------------
-    //#region -------------------- Filter not null methods --------------------
-
-    public override filterNotNull(): CollectionHolder<NonNullable<T>> {
-        return filterNotNullByCollectionHolder(this,)
-    }
-
-    //#endregion -------------------- Filter not null methods --------------------
-    //#region -------------------- Require no nulls methods --------------------
-
-    public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
+    public requireNoNulls(): CollectionHolder<NonNullable<T>> {
         return requireNoNullsByCollectionHolder(this,)
     }
 
-    //#endregion -------------------- Require no nulls methods --------------------
+    //#endregion -------------------- Require no nulls --------------------
 
-    //#region -------------------- Find methods --------------------
+    //#endregion -------------------- Validation methods --------------------
+    //#region -------------------- Transformation methods --------------------
 
-    public override find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override find(predicate: BooleanCallback<T>,): NullOr<T>
-    public override find(predicate: BooleanCallback<T>,) {
-        return findByCollectionHolder(this, predicate,)
+    //#region -------------------- Filter --------------------
+
+    public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public filter(predicate: BooleanCallback<T>,) {
+        return filterByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Find methods --------------------
-    //#region -------------------- Find indexed methods --------------------
-
-    public override findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public override findIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findIndexedByCollectionHolder(this, predicate,)
+    public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public filterIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return filterIndexedByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Find indexed methods --------------------
-    //#region -------------------- Find last methods --------------------
 
-    public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findLast(predicate: BooleanCallback<T>,): NullOr<T>
-    public override findLast(predicate: BooleanCallback<T>,) {
-        return findLastByCollectionHolder(this, predicate,)
+    public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
+    public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public filterNot(predicate: BooleanCallback<T>,) {
+        return filterNotByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Find last methods --------------------
-    //#region -------------------- Find last indexed methods --------------------
-
-    public override findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findLastIndexedByCollectionHolder(this, predicate,)
+    public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public filterNotIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return filterNotIndexedByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Find last indexed methods --------------------
 
-    //#region -------------------- Slice methods --------------------
+    public filterNotNull(): CollectionHolder<NonNullable<T>> {
+        return filterNotNullByCollectionHolder(this,)
+    }
 
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number>,): CollectionHolder<T>
-    public override slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,) {
+    //#endregion -------------------- Filter --------------------
+    //#region -------------------- Slice --------------------
+
+    public slice(indices: readonly number[],): CollectionHolder<T>
+    public slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public slice(indices: CollectionHolder<number>,): CollectionHolder<T>
+    public slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
+    public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
+    public slice(indices: Iterable<number>,): CollectionHolder<T>
+    public slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
+    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,) {
         return sliceByCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
     }
 
-    //#endregion -------------------- Slice methods --------------------
+    //#endregion -------------------- Slice --------------------
+    //#region -------------------- Map --------------------
 
-    //#region -------------------- Map methods --------------------
-
-    public override map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
+    public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
         return mapByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map methods --------------------
-    //#region -------------------- Map indexed methods --------------------
-
-    public override mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
+    public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
         return mapIndexedByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map indexed methods --------------------
-    //#region -------------------- Map not null methods --------------------
 
-    public override mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+    public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return mapNotNullByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map not null methods --------------------
-    //#region -------------------- Map not null indexed methods --------------------
-
-    public override mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return mapNotNullIndexedByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map not null indexed methods --------------------
+    //#endregion -------------------- Map --------------------
 
-    //#region -------------------- For each methods --------------------
+    //#endregion -------------------- Transformation methods --------------------
+    //#region -------------------- Loop methods --------------------
 
-    public override forEach(action: ValueIndexCallback<T>,): void {
+    //#region -------------------- For each --------------------
+
+    public forEach(action: ValueIndexCallback<T>,): void {
         forEachByCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- For each methods --------------------
-    //#region -------------------- For each indexed methods --------------------
-
-    public override forEachIndexed(action: IndexValueCallback<T>,): void {
+    public forEachIndexed(action: IndexValueCallback<T>,): void {
         forEachIndexedByCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- For each indexed methods --------------------
+    //#endregion -------------------- For each --------------------
+    //#region -------------------- On each --------------------
 
-    //#region -------------------- On each methods --------------------
-
-    public override onEach(action: ValueIndexCallback<T>,): this {
+    public onEach(action: ValueIndexCallback<T>,): this {
         return onEachByCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- On each methods --------------------
-    //#region -------------------- On each indexed methods --------------------
-
-    public override onEachIndexed(action: IndexValueCallback<T>,): this {
+    public onEachIndexed(action: IndexValueCallback<T>,): this {
         return onEachIndexedByCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- On each indexed methods --------------------
+    //#endregion -------------------- On each --------------------
 
     //#endregion -------------------- Loop methods --------------------
+    //#region -------------------- Reordering methods --------------------
+
+    //#region -------------------- To reverse --------------------
+
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
+        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex, limit,)
+    }
+
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
+    public toReversed() {
+        throw new Error("The method \"toReversed\" was not expected to be called.",)
+    }
+
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
+    public reversed() {
+        throw new Error("The method \"reversed\" was not expected to be called.",)
+    }
+
+    //#endregion -------------------- To reverse --------------------
+
+    //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Javascript methods --------------------
 
-    // public override get [Symbol.isConcatSpreadable](): false {
-    //     return false
-    // }
-
-    public override [Symbol.iterator](): CollectionIterator<T> {
+    public [Symbol.iterator](): CollectionIterator<T> {
         return toIteratorByCollectionHolder<T>(this,)
     }
 
-    public override get [Symbol.toStringTag](): CollectionHolderName {
+    public get [Symbol.toStringTag](): CollectionHolderName {
         return "CollectionHolder"
     }
 
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public override toIterator(): CollectionIterator<T> {
+    //#region -------------------- To other structure --------------------
+
+    public toIterator(): CollectionIterator<T> {
         return this[Symbol.iterator]()
     }
 
 
-    public override toArray(): readonly T[] {
+    public toArray(): readonly T[] {
         return toArrayByCollectionHolder<T>(this,)
     }
 
-    public override toMutableArray(): T[] {
+    public toMutableArray(): T[] {
         return toMutableArrayByCollectionHolder<T>(this,)
     }
 
 
-    public override toSet(): ReadonlySet<T> {
+    public toSet(): ReadonlySet<T> {
         return toSetByCollectionHolder<T>(this,)
     }
 
-    public override toMutableSet(): Set<T> {
+    public toMutableSet(): Set<T> {
         return toMutableSetByCollectionHolder<T>(this,)
     }
 
 
-    public override toMap(): ReadonlyMap<number, T> {
+    public toMap(): ReadonlyMap<number, T> {
         return toMapByCollectionHolder<T>(this,)
     }
 
-    public override toMutableMap(): Map<number, T> {
+    public toMutableMap(): Map<number, T> {
         return toMutableMapByCollectionHolder<T>(this,)
     }
 
+    //#endregion -------------------- To other structure --------------------
+    //#region -------------------- To string --------------------
 
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex, limit,)
-    }
-
-    public override toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
-    public override toReversed() {
-        throw new Error("The method \"toReversed\" was not expected to be called.",)
-    }
-
-    public override reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
-    public override reversed() {
-        throw new Error("The method \"reversed\" was not expected to be called.",)
-    }
-
-    //#region -------------------- Conversion methods (toString) --------------------
-
-    public override toString(): string {
+    public toString(): string {
         return toStringByCollectionHolder(this,)
     }
 
-    public override toLocaleString(locale?: NullableString,): string {
+    public toLocaleString(locale?: NullableString,): string {
         return toLocaleStringByCollectionHolder(this, locale,)
     }
 
-    public override toLowerCaseString(): string {
+    public toLowerCaseString(): string {
         return toLowerCaseStringByCollectionHolder(this,)
     }
 
-    public override toLocaleLowerCaseString(locale?: NullableString,): string {
+    public toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
     }
 
-    public override toUpperCaseString(): string {
+    public toUpperCaseString(): string {
         return toUpperCaseStringByCollectionHolder(this,)
     }
 
-    public override toLocaleUpperCaseString(locale?: NullableString,): string {
+    public toLocaleUpperCaseString(locale?: NullableString,): string {
         return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
     }
 
-    //#endregion -------------------- Conversion methods (toString) --------------------
+    //#endregion -------------------- To string --------------------
+    //#region -------------------- Join to string --------------------
+
+    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): never
+    public join() {
+        throw new Error("The method \"join\" was not expected to be called.",)
+    }
+
+    public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
+        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
+    }
+
+    //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
-
-    //#endregion -------------------- Methods --------------------
 
 }

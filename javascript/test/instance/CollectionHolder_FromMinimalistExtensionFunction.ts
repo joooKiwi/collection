@@ -83,7 +83,11 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         this.#array = array
     }
 
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Size methods --------------------
+
+    public get size(): number {
+        return this.#array.length
+    }
 
     public get length(): never {
         throw new Error("The getter method \"length\" was not expected to be called.",)
@@ -91,10 +95,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
     public get count(): never {
         throw new Error("The getter method \"count\" was not expected to be called.",)
-    }
-
-    public override get size(): number {
-        return this.#array.length
     }
 
 
@@ -106,40 +106,13 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return isNotEmptyByMinimalistCollectionHolder(this,)
     }
 
+    //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Research methods --------------------
 
-    public get hasNull(): boolean {
-        return hasNullByMinimalistCollectionHolder(this,)
-    }
-
-    public get includesNull(): never {
-        throw new Error("The getter method \"includesNull\" was not expected to be called.",)
-    }
-
-    public get containsNull(): never {
-        throw new Error("The getter method \"containsNull\" was not expected to be called.",)
-    }
-
-
-    public get hasDuplicate(): boolean {
-        return hasDuplicateByMinimalistCollectionHolder(this,)
-    }
-
-    public get includesDuplicate(): never {
-        throw new Error("The getter method \"includesDuplicate\" was not expected to be called.",)
-    }
-
-    public get containsDuplicate(): never {
-        throw new Error("The getter method \"containsDuplicate\" was not expected to be called.",)
-    }
-
-    //#endregion -------------------- Getter methods --------------------
-    //#region -------------------- Methods --------------------
-
-    //#region -------------------- Value methods --------------------
-
-    //#region -------------------- Get methods --------------------
+    //#region -------------------- Get --------------------
 
     public get(index: number,): T {
+        this.amountOfCall++
         return this.#array[index] as T
     }
 
@@ -153,8 +126,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         throw new Error("The method \"elementAt\" was not expected to be called in a test.",)
     }
 
-    //#endregion -------------------- Get methods --------------------
-    //#region -------------------- Get or else methods --------------------
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -174,8 +145,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         throw new Error("The method \"elementAtOrElse\" was not expected to be called in a test.",)
     }
 
-    //#endregion -------------------- Get or else methods --------------------
-    //#region -------------------- Get or null methods --------------------
 
     public getOrNull(index: number,): NullOr<T> {
         return getOrNullByMinimalistCollectionHolder(this, index,)
@@ -191,56 +160,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         throw new Error("The method \"elementAtOrNull\" was not expected to be called in a test.",)
     }
 
-    //#endregion -------------------- Get or null methods --------------------
-
-    //#region -------------------- Index of methods --------------------
-
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return indexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of methods --------------------
-    //#region -------------------- Last index of methods --------------------
-
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return lastIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Last index of methods --------------------
-    //#region -------------------- Index of first methods --------------------
-
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfFirstByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of first methods --------------------
-    //#region -------------------- Index of first indexed methods --------------------
-
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfFirstIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of first indexed methods --------------------
-    //#region -------------------- Index of last methods --------------------
-
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfLastByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of last methods --------------------
-    //#region -------------------- Index of last indexed methods --------------------
-
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfLastIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of last indexed methods --------------------
-
-    //#region -------------------- First methods --------------------
+    //#endregion -------------------- Get --------------------
+    //#region -------------------- First --------------------
 
     public first(): NonNullable<T>
     public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
@@ -249,8 +170,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return firstByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- First methods --------------------
-    //#region -------------------- First or null methods --------------------
 
     public firstOrNull(): NullOr<T>
     public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
@@ -259,9 +178,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return firstOrNullByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- First or null methods --------------------
-
-    //#region -------------------- Last methods --------------------
+    //#endregion -------------------- First --------------------
+    //#region -------------------- Last --------------------
 
     public last(): NonNullable<T>
     public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
@@ -270,8 +188,6 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return lastByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Last methods --------------------
-    //#region -------------------- Last or null methods --------------------
 
     public lastOrNull(): NullOr<T>
     public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
@@ -280,19 +196,89 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return lastOrNullByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Last or null methods --------------------
+    //#endregion -------------------- Last --------------------
+    //#region -------------------- Find --------------------
 
-    //#endregion -------------------- Value methods --------------------
-    //#region -------------------- Loop methods --------------------
+    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public find(predicate: BooleanCallback<T>,): NullOr<T>
+    public find(predicate: BooleanCallback<T>,) {
+        return findByMinimalistCollectionHolder(this, predicate,)
+    }
 
-    //#region -------------------- All methods --------------------
+    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return findIndexedByMinimalistCollectionHolder(this, predicate,)
+    }
 
-    public all(predicate: BooleanCallback<T>,): boolean {
+
+    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLast(predicate: BooleanCallback<T>,): NullOr<T>
+    public findLast(predicate: BooleanCallback<T>,) {
+        return findLastByMinimalistCollectionHolder(this, predicate,)
+    }
+
+    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return findLastIndexedByMinimalistCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Find --------------------
+
+    //#endregion -------------------- Research methods --------------------
+    //#region -------------------- Index methods --------------------
+
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+        return indexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex, limit,)
+    }
+
+
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
+        return lastIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex, limit,)
+    }
+
+
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+        return indexOfFirstByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    }
+
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    }
+
+
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+        return indexOfLastByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    }
+
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    }
+
+    //#endregion -------------------- Index methods --------------------
+    //#region -------------------- Validation methods --------------------
+
+    //#region -------------------- All --------------------
+
+    public all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public all(predicate: BooleanCallback<T>,): boolean
+    public all(predicate: BooleanCallback<T>,) {
         return allByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- All methods --------------------
-    //#region -------------------- Any methods --------------------
+    public every<const S extends T, >(predicate?: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public every(predicate?: BooleanCallback<T>,): never
+    public every(): never {
+        throw new Error("The method \"every\" was not expected to be called.",)
+    }
+
+    //#endregion -------------------- All --------------------
+    //#region -------------------- Any --------------------
 
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -300,8 +286,14 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return anyByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Any methods --------------------
-    //#region -------------------- None methods --------------------
+    public some(): never
+    public some(predicate?: Nullable<BooleanCallback<T>>,): never
+    public some() {
+        throw new Error("The method \"some\" was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Any --------------------
+    //#region -------------------- None --------------------
 
     public none(): this["isEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -309,30 +301,57 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return noneByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- None methods --------------------
+    //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has methods --------------------
+    //#region -------------------- Has null --------------------
 
-    public has(value: T,): boolean
-    public has(value: unknown,): boolean
-    public has(value: unknown,) {
+    public get hasNull(): boolean {
+        return hasNullByMinimalistCollectionHolder(this,)
+    }
+
+    public get includesNull(): never {
+        throw new Error("The getter method \"includesNull\" was not expected to be called.",)
+    }
+
+    public get containsNull(): never {
+        throw new Error("The getter method \"containsNull\" was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has duplicate --------------------
+
+    public get hasDuplicate(): boolean {
+        return hasDuplicateByMinimalistCollectionHolder(this,)
+    }
+
+    public get includesDuplicate(): never {
+        throw new Error("The getter method \"includesDuplicate\" was not expected to be called.",)
+    }
+
+    public get containsDuplicate(): never {
+        throw new Error("The getter method \"containsDuplicate\" was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has duplicate --------------------
+
+    //#region -------------------- Has --------------------
+
+    public has(value: T,): boolean {
         return hasByMinimalistCollectionHolder(this, value,)
     }
 
     public includes(value?: T,): never
-    public includes(value?: unknown,): never
     public includes() {
         throw new Error("The method \"includes\" was not expected to be called.",)
     }
 
     public contains(value?: T,): never
-    public contains(value?: unknown,): never
     public contains() {
         throw new Error("The method \"contains\" was not expected to be called.",)
     }
 
     //#endregion -------------------- Has methods --------------------
-    //#region -------------------- Has one methods --------------------
+    //#region -------------------- Has one --------------------
 
     public hasOne(values: readonly T[],): boolean
     public hasOne(values: ReadonlySet<T>,): boolean
@@ -341,14 +360,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public hasOne(values: CollectionIterator<T>,): boolean
     public hasOne(values: Iterable<T>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public hasOne(values: readonly unknown[],): boolean
-    public hasOne(values: ReadonlySet<unknown>,): boolean
-    public hasOne(values: CollectionHolder,): boolean
-    public hasOne(values: MinimalistCollectionHolder,): boolean
-    public hasOne(values: CollectionIterator,): boolean
-    public hasOne(values: Iterable<unknown>,): boolean
-    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return hasOneByMinimalistCollectionHolder(this, values,)
     }
 
@@ -388,8 +400,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         throw new Error("The method \"containsOne\" was not expected to be called.",)
     }
 
-    //#endregion -------------------- Has one methods --------------------
-    //#region -------------------- Has all methods --------------------
+    //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has all --------------------
 
     public hasAll(values: readonly T[],): boolean
     public hasAll(values: ReadonlySet<T>,): boolean
@@ -398,14 +410,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public hasAll(values: CollectionIterator<T>,): boolean
     public hasAll(values: Iterable<T>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public hasAll(values: readonly unknown[],): boolean
-    public hasAll(values: ReadonlySet<unknown>,): boolean
-    public hasAll(values: CollectionHolder,): boolean
-    public hasAll(values: MinimalistCollectionHolder,): boolean
-    public hasAll(values: CollectionIterator,): boolean
-    public hasAll(values: Iterable<unknown>,): boolean
-    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return hasAllByMinimalistCollectionHolder(this, values,)
     }
 
@@ -445,22 +450,20 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         throw new Error("The \"containsAll\" was not expected to be called.",)
     }
 
-    //#endregion -------------------- Has all methods --------------------
+    //#endregion -------------------- Has all --------------------
 
-    //#region -------------------- Join to string methods --------------------
+    //#region -------------------- Require not nulls --------------------
 
-    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): never
-    public join() {
-        throw new Error("The method \"join\" was not expected to be called.",)
+    public requireNoNulls(): CollectionHolder<NonNullable<T>> {
+        return requireNoNullsByMinimalistCollectionHolder(this,)
     }
 
-    public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
-        return joinToStringByMinimalistCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
-    }
+    //#endregion -------------------- Require not nulls --------------------
 
-    //#endregion -------------------- Join to string methods --------------------
+    //#endregion -------------------- Validation methods --------------------
+    //#region -------------------- Transformation methods --------------------
 
-    //#region -------------------- Filter methods --------------------
+    //#region -------------------- Filter --------------------
 
     public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -468,17 +471,12 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return filterByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter methods --------------------
-    //#region -------------------- Filter indexed methods --------------------
-
     public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public filterIndexed(predicate: ReverseBooleanCallback<T>,) {
         return filterIndexedByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter indexed methods --------------------
-    //#region -------------------- Filter not methods --------------------
 
     public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -486,69 +484,19 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return filterNotByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter not methods --------------------
-    //#region -------------------- Filter not indexed methods --------------------
-
     public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,) {
         return filterNotIndexedByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter not indexed methods --------------------
-    //#region -------------------- Filter not null methods --------------------
 
     public filterNotNull(): CollectionHolder<NonNullable<T>> {
         return filterNotNullByMinimalistCollectionHolder(this,)
     }
 
-    //#endregion -------------------- Filter not null methods --------------------
-    //#region -------------------- Require not nulls methods --------------------
-
-    public requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNullsByMinimalistCollectionHolder(this,)
-    }
-
-    //#endregion -------------------- Require not nulls methods --------------------
-
-    //#region -------------------- Find methods --------------------
-
-    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public find(predicate: BooleanCallback<T>,): NullOr<T>
-    public find(predicate: BooleanCallback<T>,) {
-        return findByMinimalistCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find methods --------------------
-    //#region -------------------- Find indexed methods --------------------
-
-    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findIndexedByMinimalistCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find indexed methods --------------------
-    //#region -------------------- Find last methods --------------------
-
-    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLast(predicate: BooleanCallback<T>,): NullOr<T>
-    public findLast(predicate: BooleanCallback<T>,) {
-        return findLastByMinimalistCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find last methods --------------------
-    //#region -------------------- Find last indexed methods --------------------
-
-    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findLastIndexedByMinimalistCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find last indexed methods --------------------
-
-    //#region -------------------- Slice methods --------------------
+    //#endregion -------------------- Filter --------------------
+    //#region -------------------- Slice --------------------
 
     public slice(indices: readonly number[],): CollectionHolder<T>
     public slice(indices: ReadonlySet<number>,): CollectionHolder<T>
@@ -562,68 +510,76 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return sliceByMinimalistCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
     }
 
-    //#endregion -------------------- Slice methods --------------------
-
-    //#region -------------------- Map methods --------------------
+    //#endregion -------------------- Slice --------------------
+    //#region -------------------- Map --------------------
 
     public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
         return mapByMinimalistCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map methods --------------------
-    //#region -------------------- Map indexed methods --------------------
-
     public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
         return mapIndexedByMinimalistCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map indexed methods --------------------
-    //#region -------------------- Map not null methods --------------------
 
     public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return mapNotNullByMinimalistCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map not null methods --------------------
-    //#region -------------------- Map not null indexed methods --------------------
-
     public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return mapNotNullIndexedByMinimalistCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map not null indexed methods --------------------
+    //#endregion -------------------- Map --------------------
 
-    //#region -------------------- For each methods --------------------
+    //#endregion -------------------- Transformation methods --------------------
+    //#region -------------------- Loop methods --------------------
+
+    //#region -------------------- For each --------------------
 
     public forEach(action: ValueIndexCallback<T>,): void {
         forEachByMinimalistCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- For each methods --------------------
-    //#region -------------------- For each indexed methods --------------------
-
     public forEachIndexed(action: IndexValueCallback<T>,): void {
         forEachIndexedByMinimalistCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- For each indexed methods --------------------
-
-    //#region -------------------- On each methods --------------------
+    //#endregion -------------------- For each --------------------
+    //#region -------------------- On each --------------------
 
     public onEach(action: ValueIndexCallback<T>,): this {
         return onEachByMinimalistCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- On each methods --------------------
-    //#region -------------------- On each indexed methods --------------------
-
     public onEachIndexed(action: IndexValueCallback<T>,): this {
         return onEachIndexedByMinimalistCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- On each indexed methods --------------------
+    //#endregion -------------------- On each --------------------
 
     //#endregion -------------------- Loop methods --------------------
+    //#region -------------------- Reordering methods --------------------
+
+    //#region -------------------- To reverse --------------------
+
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
+        return toReverseByMinimalistCollectionHolder(this, fromIndex, toIndex, limit,)
+    }
+
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
+    public toReversed() {
+        throw new Error("The method \"toReversed\" was not expected to be called.",)
+    }
+
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
+    public reversed() {
+        throw new Error("The method \"reversed\" was not expected to be called.",)
+    }
+
+    //#endregion -------------------- To reverse --------------------
+
+    //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Javascript methods --------------------
 
     public [Symbol.iterator](): CollectionIterator<T> {
@@ -636,6 +592,8 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
+
+    //#region -------------------- To other structure --------------------
 
     public toIterator(): CollectionIterator<T> {
         return this[Symbol.iterator]()
@@ -668,28 +626,14 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return toMutableMapByMinimalistCollectionHolder(this,)
     }
 
+    //#endregion -------------------- To other structure --------------------
+    //#region -------------------- To string --------------------
 
-    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByMinimalistCollectionHolder(this, fromIndex, toIndex, limit,)
-    }
-
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
-    public toReversed() {
-        throw new Error("The method \"toReversed\" was not expected to be called.",)
-    }
-
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
-    public reversed() {
-        throw new Error("The method \"reversed\" was not expected to be called.",)
-    }
-
-    //#region -------------------- Conversion methods (string) --------------------
-
-    public override toString(): string {
+    public toString(): string {
         return toStringByMinimalistCollectionHolder(this,)
     }
 
-    public override toLocaleString(locale?: NullableString,): string {
+    public toLocaleString(locale?: NullableString,): string {
         return toLocaleStringByMinimalistCollectionHolder(this, locale,)
     }
 
@@ -709,11 +653,21 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return toLocaleUpperCaseStringByMinimalistCollectionHolder(this, locale,)
     }
 
-    //#endregion -------------------- Conversion methods (string) --------------------
+    //#endregion -------------------- To string --------------------
+    //#region -------------------- Join to string --------------------
+
+    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): never
+    public join() {
+        throw new Error("The method \"join\" was not expected to be called.",)
+    }
+
+    public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
+        return joinToStringByMinimalistCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
+    }
+
+    //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
-
-    //#endregion -------------------- Methods --------------------
 
 
 }
