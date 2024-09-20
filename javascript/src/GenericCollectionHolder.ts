@@ -41,6 +41,7 @@ import {isSetByStructure}                          from "./method/isSetByStructu
  * But it is not {@link Object.isFrozen frozen} to ensure
  * the children can do their initialization.
  *
+ * @see GenericMinimalistCollectionHolder
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
  */

@@ -57,6 +57,7 @@ import {isSetByStructure}                                 from "./method/isSetBy
  * Meaning that the value in the instance are not retrieved until it is necessary.
  *
  * @note The index in the instance may not be initialized if retrieved directly
+ * @see GenericMinimalistCollectionHolder
  * @see GenericCollectionHolder
  * @see EmptyCollectionHolder
  * @beta

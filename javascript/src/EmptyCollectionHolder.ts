@@ -30,6 +30,7 @@ import {prefixAndPostfixOnly}                    from "./method/joinToString"
 /**
  * A {@link CollectionHolder} with no values (as a singleton instance)
  *
+ * @see GenericMinimalistCollectionHolder
  * @see GenericCollectionHolder
  * @see LazyGenericCollectionHolder
  * @singleton
