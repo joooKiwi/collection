@@ -409,8 +409,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -437,8 +437,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -467,8 +467,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -497,8 +497,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -532,8 +532,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -562,8 +562,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -597,8 +597,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -632,8 +632,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -680,8 +680,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -708,8 +708,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -738,8 +738,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -768,8 +768,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -803,8 +803,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -832,8 +832,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -867,8 +867,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -902,8 +902,8 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The inclusive maximum index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>

@@ -469,9 +469,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -500,9 +500,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -533,9 +533,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -566,9 +566,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -604,9 +604,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -637,9 +637,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -675,9 +675,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -713,9 +713,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -764,9 +764,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -795,9 +795,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -828,9 +828,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -861,9 +861,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -899,9 +899,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -932,9 +932,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -970,9 +970,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
@@ -1008,9 +1008,9 @@ public final class IndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
+     * @param limit      The inclusive maximum index
      * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#indexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>

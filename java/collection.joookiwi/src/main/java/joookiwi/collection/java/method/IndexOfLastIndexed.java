@@ -1210,8 +1210,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1238,8 +1238,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1268,8 +1268,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1298,8 +1298,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1333,8 +1333,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1363,8 +1363,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1398,8 +1398,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1433,8 +1433,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1481,8 +1481,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1509,8 +1509,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1539,8 +1539,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1569,8 +1569,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1604,8 +1604,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1634,8 +1634,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1669,8 +1669,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1704,8 +1704,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1753,8 +1753,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1781,8 +1781,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1811,8 +1811,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1841,8 +1841,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1876,8 +1876,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1906,8 +1906,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1941,8 +1941,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -1976,8 +1976,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2024,8 +2024,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2052,8 +2052,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2082,8 +2082,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2112,8 +2112,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2147,8 +2147,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2177,8 +2177,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2212,8 +2212,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2247,8 +2247,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2296,8 +2296,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2324,8 +2324,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2354,8 +2354,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2384,8 +2384,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2419,8 +2419,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2449,8 +2449,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2484,8 +2484,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2519,8 +2519,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2567,8 +2567,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2595,8 +2595,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2625,8 +2625,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2655,8 +2655,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2690,8 +2690,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2720,8 +2720,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2755,8 +2755,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */
@@ -2790,8 +2790,8 @@ public final class IndexOfLastIndexed
      * @param predicate  The given predicate
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
      */

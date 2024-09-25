@@ -440,8 +440,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -469,8 +469,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -500,8 +500,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -531,8 +531,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -567,8 +567,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -598,8 +598,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -634,8 +634,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -670,8 +670,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -719,8 +719,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -748,8 +748,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -779,8 +779,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -810,8 +810,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -846,8 +846,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -877,8 +877,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -913,8 +913,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
@@ -949,8 +949,8 @@ public final class LastIndexOf
      * @param element    The element to find
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
-     * @param limit      The maximum index
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex}, {@code toIndex} or {@code limit} are not within a valid range
+     * @param limit      The maximum amount of values to search
+     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.List#lastIndexOf(Object)
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, fromIndex?)</a>
      * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
