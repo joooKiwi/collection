@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.List;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.CommonContracts;
 import joookiwi.collection.java.GenericCollectionHolder;
@@ -31,6 +30,7 @@ public final class ToReverse
      * Reverse the {@code collection}
      *
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+     * @param <T>        The {@code collection} type
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -51,6 +51,7 @@ public final class ToReverse
      * Reverse the {@code collection}
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+     * @param <T>        The {@code collection} type
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -75,6 +76,7 @@ public final class ToReverse
      *
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -100,6 +102,7 @@ public final class ToReverse
      *
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -126,6 +129,7 @@ public final class ToReverse
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -151,6 +155,7 @@ public final class ToReverse
      *
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -179,6 +184,7 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -204,6 +210,7 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -231,6 +238,7 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -258,6 +266,7 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -293,6 +302,7 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -318,6 +328,7 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -345,6 +356,7 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -372,6 +384,7 @@ public final class ToReverse
      * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
      * @param fromIndex  The inclusive starting index
      * @param toIndex    The inclusive ending index
+     * @param <T>        The {@code collection} type
      * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
      * @see java.util.SequencedCollection#reversed()
      * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
@@ -398,552 +411,10 @@ public final class ToReverse
 
     //#endregion -------------------- from, to --------------------
 
-    //#region -------------------- minimalist - from, to, limit --------------------
-
-    /**
-     * Reverse the {@code collection}
-     * from a start
-     * to an end
-     * applying it a limit
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final int fromIndex,
-                                                             final int toIndex,
-                                                             final int limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start
-     * to an end
-     * applying it a limit <em>(if provided)</em>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final int fromIndex,
-                                                             final int toIndex,
-                                                             final @Nullable Integer limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (limit == null)
-            return __core(collection, fromIndex, toIndex);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start
-     * to an end <em>(if provided)</em>
-     * applying it a limit
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final int fromIndex,
-                                                             final @Nullable Integer toIndex,
-                                                             final int limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (toIndex == null)
-            return __coreWithNoTo(collection, fromIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start
-     * to an end <em>(if provided)</em>
-     * applying it a limit <em>(if provided)</em>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final int fromIndex,
-                                                             final @Nullable Integer toIndex,
-                                                             final @Nullable Integer limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (limit == null)
-            if (toIndex == null)
-                return __core(collection, fromIndex);
-            else
-                return __core(collection, fromIndex, toIndex);
-        if (toIndex == null)
-            return __coreWithNoTo(collection, fromIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start <em>(if provided)</em>
-     * to an end
-     * applying it a limit
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final @Nullable Integer fromIndex,
-                                                             final int toIndex,
-                                                             final int limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, toIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start <em>(if provided)</em>
-     * to an end
-     * applying it a limit <em>(if provided)</em>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final @Nullable Integer fromIndex,
-                                                             final int toIndex,
-                                                             final @Nullable Integer limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (limit == null)
-            if (fromIndex == null)
-                return __coreWithNoFrom(collection, toIndex);
-            else
-                return __core(collection, fromIndex, toIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, toIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start <em>(if provided)</em>
-     * to an end <em>(if provided)</em>
-     * applying it a limit
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final @Nullable Integer fromIndex,
-                                                             final @Nullable Integer toIndex,
-                                                             final int limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (toIndex == null)
-            if (fromIndex == null)
-                return __coreWithNoFromAndTo(collection, limit);
-            else
-                return __coreWithNoFromAndTo(collection, limit);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, toIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start <em>(if provided)</em>
-     * to an end <em>(if provided)</em>
-     * applying it a limit <em>(if provided)</em>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final @Nullable Integer fromIndex,
-                                                             final @Nullable Integer toIndex,
-                                                             final @Nullable Integer limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (limit == null)
-            if (toIndex == null)
-                if (fromIndex == null)
-                    return __core(collection);
-                else
-                    return __core(collection, fromIndex);
-            else if (fromIndex == null)
-                return __coreWithNoFrom(collection, toIndex);
-            else
-                return __core(collection, fromIndex, toIndex);
-        if (toIndex == null)
-            if (fromIndex == null)
-                return __coreWithNoFromAndTo(collection, limit);
-            else
-                return __coreWithNoFromAndTo(collection, limit);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, toIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    //#endregion -------------------- minimalist - from, to, limit --------------------
-    //#region -------------------- from, to, limit --------------------
-
-    /**
-     * Reverse the {@code collection}
-     * from a start
-     * to an end
-     * applying it a limit
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final int fromIndex,
-                                                             final int toIndex,
-                                                             final int limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start
-     * to an end
-     * applying it a limit <em>(if provided)</em>
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final int fromIndex,
-                                                             final int toIndex,
-                                                             final @Nullable Integer limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (limit == null)
-            return __core(collection, fromIndex, toIndex);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start
-     * to an end <em>(if provided)</em>
-     * applying it a limit
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final int fromIndex,
-                                                             final @Nullable Integer toIndex,
-                                                             final int limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (toIndex == null)
-                return __coreWithNoTo(collection, fromIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start
-     * to an end <em>(if provided)</em>
-     * applying it a limit <em>(if provided)</em>
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final int fromIndex,
-                                                             final @Nullable Integer toIndex,
-                                                             final @Nullable Integer limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (limit == null)
-            if (toIndex == null)
-                return __core(collection, fromIndex);
-            else
-                return __core(collection, fromIndex, toIndex);
-        if (toIndex == null)
-            return __coreWithNoTo(collection, fromIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start <em>(if provided)</em>
-     * to an end
-     * applying it a limit
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final @Nullable Integer fromIndex,
-                                                             final int toIndex,
-                                                             final int limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, toIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-    /**
-     * Reverse the {@code collection}
-     * from a start <em>(if provided)</em>
-     * to an end
-     * applying it a limit <em>(if provided)</em>
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final @Nullable Integer fromIndex,
-                                                             final int toIndex,
-                                                             final @Nullable Integer limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (limit == null)
-            if (fromIndex == null)
-                return __coreWithNoFrom(collection, toIndex);
-            else
-                return __core(collection, fromIndex, toIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, toIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start <em>(if provided)</em>
-     * to an end <em>(if provided)</em>
-     * applying it a limit
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final @Nullable Integer fromIndex,
-                                                             final @Nullable Integer toIndex,
-                                                             final int limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (toIndex == null)
-            if (fromIndex == null)
-                return __coreWithNoFromAndTo(collection, limit);
-            else
-                return __coreWithNoTo(collection, fromIndex, limit);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, toIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    /**
-     * Reverse the {@code collection}
-     * from a start <em>(if provided)</em>
-     * to an end <em>(if provided)</em>
-     * applying it a limit <em>(if provided)</em>
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param limit      The inclusive maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.SequencedCollection#reversed()
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-     */
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    public static <T> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final @Nullable Integer fromIndex,
-                                                             final @Nullable Integer toIndex,
-                                                             final @Nullable Integer limit) {
-        if (collection == null)
-            return emptyCollectionHolder();
-        if (limit == null)
-            if (toIndex == null)
-                if (fromIndex == null)
-                    return __core(collection);
-                else
-                    return __core(collection, fromIndex);
-            else if (fromIndex == null)
-                return __coreWithNoFrom(collection, toIndex);
-            else
-                return __core(collection, fromIndex, toIndex);
-        if (toIndex == null)
-            if (fromIndex == null)
-                return __coreWithNoFromAndTo(collection, limit);
-            else
-                return __coreWithNoTo(collection, fromIndex, limit);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, toIndex, limit);
-        return __core(collection, fromIndex, toIndex, limit);
-    }
-
-    //#endregion -------------------- from, to, limit --------------------
-
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Core methods --------------------
 
-    //#region -------------------- minimalist - ∅ --------------------
+    //#region -------------------- ∅ --------------------
 
     private static <T> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection) {
         final var size = collection.size();
@@ -952,9 +423,6 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __all(collection, size));
     }
 
-    //#endregion -------------------- minimalist - ∅ --------------------
-    //#region -------------------- ∅ --------------------
-
     private static <T> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
@@ -962,8 +430,7 @@ public final class ToReverse
     }
 
     //#endregion -------------------- ∅ --------------------
-
-    //#region -------------------- minimalist - from --------------------
+    //#region -------------------- from --------------------
 
     private static <T> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                            final int fromIndex) {
@@ -972,11 +439,8 @@ public final class ToReverse
             return emptyCollectionHolder();
 
         final var startingIndex = _startingIndex(fromIndex, size);
-        return new GenericCollectionHolder<>(() -> __withStartingIndex(collection, startingIndex, size));
+        return new GenericCollectionHolder<>(() -> __withAStartingIndex(collection, startingIndex, size));
     }
-
-    //#endregion -------------------- minimalist - from --------------------
-    //#region -------------------- from --------------------
 
     private static <T> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection,
                                                            final int fromIndex) {
@@ -985,368 +449,94 @@ public final class ToReverse
 
         final var size = collection.size();
         final var startingIndex = _startingIndex(fromIndex, size);
-        return new GenericCollectionHolder<>(() -> __withStartingIndex(collection, startingIndex, size));
+        return new GenericCollectionHolder<>(() -> __withAStartingIndex(collection, startingIndex, size));
     }
 
     //#endregion -------------------- from --------------------
-
-    //#region -------------------- minimalist - from, to --------------------
+    //#region -------------------- from, to --------------------
 
     private static <T> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                            final int fromIndex,
                                                            final int toIndex) {
-        //#region -------------------- Early returns --------------------
-
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        if (fromIndex == 0 && toIndex == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending index) --------------------
 
         final var startingIndex = _startingIndex(fromIndex, size);
         final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
             throw new InvalidIndexRangeException("Invalid index range. The ending index “" + toIndex + '"' + (toIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + fromIndex + '"' + (fromIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-
-        return new GenericCollectionHolder<>(() -> __withStaringAndEndingIndex(collection, startingIndex, endingIndex));
+        return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
     }
-
-
-    private static <T> @NotNull CollectionHolder<T> __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                     final int toIndex) {
-        //#region -------------------- Early returns --------------------
-
-        final var size = collection.size();
-        if (size == 0)
-            return emptyCollectionHolder();
-        if (toIndex == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-
-        final var endingIndex = _endingIndex(toIndex, size);
-        return new GenericCollectionHolder<>(() -> __withStaringAndEndingIndex(collection, 0, endingIndex));
-    }
-
-    //#endregion -------------------- minimalist - from, to --------------------
-    //#region -------------------- from, to --------------------
 
     private static <T> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection,
                                                            final int fromIndex,
                                                            final int toIndex) {
-        //#region -------------------- Early returns --------------------
-
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        if (fromIndex == 0 && toIndex == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending index) --------------------
 
         final var size = collection.size();
         final var startingIndex = _startingIndex(fromIndex, size);
         final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
             throw new InvalidIndexRangeException("Invalid index range. The ending index “" + toIndex + '"' + (toIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + fromIndex + '"' + (fromIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
-
-        //#endregion -------------------- Initialization (starting/ending index) --------------------
-
-        return new GenericCollectionHolder<>(() -> __withStaringAndEndingIndex(collection, startingIndex, endingIndex));
-    }
-
-    private static <T> @NotNull CollectionHolder<T> __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
-                                                                     final int toIndex) {
-        //#region -------------------- Early returns --------------------
-
-        if (collection.isEmpty())
-            return emptyCollectionHolder();
-        if (toIndex == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-
-        final var endingIndex = _endingIndex(toIndex, collection.size());
-        return new GenericCollectionHolder<>(() -> __withStaringAndEndingIndex(collection, 0, endingIndex));
+        return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
     }
 
     //#endregion -------------------- from, to --------------------
-
-    //#region -------------------- minimalist - from, to, limit --------------------
-
-    private static <T> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                           final int fromIndex,
-                                                           final int toIndex,
-                                                           final int limit) {
-        //#region -------------------- Early returns --------------------
-
-        final var size = collection.size();
-        if (size == 0)
-            return emptyCollectionHolder();
-        if (fromIndex == 0 && toIndex == 0)
-            return emptyCollectionHolder();
-        if (limit == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new InvalidIndexRangeException("Invalid index range. The ending index “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
-
-        final var maximumIndex = _maximumIndex(limit, size);
-        if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
-
-        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        return new GenericCollectionHolder<>(() -> __withALimit(collection, startingIndex, endingIndex, maximumIndex));
-    }
+    //#region -------------------- to --------------------
 
     private static <T> @NotNull CollectionHolder<T> __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                     final int toIndex,
-                                                                     final int limit) {
-        //#region -------------------- Early returns --------------------
-
+                                                                     final int toIndex) {
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        if (toIndex == 0)
-            return emptyCollectionHolder();
-        if (limit == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (ending/maximum index) --------------------
-
         final var endingIndex = _endingIndex(toIndex, size);
-        final var maximumIndex = _maximumIndex(limit, size);
-        if (maximumIndex > endingIndex)
-            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
-
-        //#endregion -------------------- Initialization (ending/maximum index) --------------------
-
-        return new GenericCollectionHolder<>(() -> __withALimit(collection, 0, endingIndex, maximumIndex));
-    }
-
-    private static <T> @NotNull CollectionHolder<T> __coreWithNoTo(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                   final int fromIndex,
-                                                                   final int limit) {
-        //#region -------------------- Early returns --------------------
-
-        final var size = collection.size();
-        if (size == 0)
-            return emptyCollectionHolder();
-        if (limit == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/maximum index) --------------------
-
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = size - 1;
-        final var maximumIndex = _maximumIndex(limit, size);
-        if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + endingIndex + "”.", limit);
-
-        //#endregion -------------------- Initialization (starting/maximum index) --------------------
-
-        return new GenericCollectionHolder<>(() -> __withALimit(collection, startingIndex, endingIndex, maximumIndex));
-    }
-
-    private static <T> @NotNull CollectionHolder<T> __coreWithNoFromAndTo(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                          final int limit) {
-        //#region -------------------- Early returns --------------------
-
-        final var size = collection.size();
-        if (size == 0)
-            return emptyCollectionHolder();
-        if (limit == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (maximum index) --------------------
-
-        final var endingIndex = size - 1;
-        final var maximumIndex = _maximumIndex(limit, size);
-        if (maximumIndex > size)
-            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '"' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + endingIndex + "”.", limit);
-
-        //#endregion -------------------- Initialization (maximum index) --------------------
-
-        return new GenericCollectionHolder<>(() -> __withALimit(collection, 0, endingIndex, maximumIndex));
-    }
-
-    //#endregion -------------------- minimalist - from, to, limit --------------------
-    //#region -------------------- from, to, limit --------------------
-
-    private static <T> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                           final int fromIndex,
-                                                           final int toIndex,
-                                                           final int limit) {
-        //#region -------------------- Early returns --------------------
-
-        if (collection.isEmpty())
-            return emptyCollectionHolder();
-        if (fromIndex == 0 && toIndex == 0)
-            return emptyCollectionHolder();
-        if (limit == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        final var size = collection.size();
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new InvalidIndexRangeException("Invalid index range. The ending index “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
-
-        final var maximumIndex = _maximumIndex(limit, size);
-        if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
-
-        //#endregion -------------------- Initialization (starting/ending/maximum index) --------------------
-
-        return new GenericCollectionHolder<>(() -> __withALimit(collection, startingIndex, endingIndex, maximumIndex));
+        return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, 0, endingIndex));
     }
 
     private static <T> @NotNull CollectionHolder<T> __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
-                                                                     final int toIndex,
-                                                                     final int limit) {
-        //#region -------------------- Early returns --------------------
-
+                                                                     final int toIndex) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        if (toIndex == 0)
-            return emptyCollectionHolder();
-        if (limit == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (ending/maximum index) --------------------
-
-        final var size = collection.size();
-        final var endingIndex = _endingIndex(toIndex, size);
-        final var maximumIndex = _maximumIndex(limit, size);
-        if (maximumIndex > endingIndex)
-            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + toIndex + '”' + (toIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation)") + '.', limit);
-
-        //#endregion -------------------- Initialization (ending/maximum index) --------------------
-
-        return new GenericCollectionHolder<>(() -> __withALimit(collection, 0, endingIndex, maximumIndex));
+        final var endingIndex = _endingIndex(toIndex, collection.size());
+        return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, 0, endingIndex));
     }
 
-    private static <T> @NotNull CollectionHolder<T> __coreWithNoTo(final @NotNull CollectionHolder<? extends T> collection,
-                                                                   final int fromIndex,
-                                                                   final int limit) {
-        //#region -------------------- Early returns --------------------
-
-        if (collection.isEmpty())
-            return emptyCollectionHolder();
-        if (limit == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (starting/maximum index) --------------------
-
-        final var size = collection.size();
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = size - 1;
-        final var maximumIndex = _maximumIndex(limit, size);
-        if (endingIndex - startingIndex < maximumIndex - 1)
-            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “" + fromIndex + '”' + (fromIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " to “" + endingIndex + "”.", limit);
-
-        //#endregion -------------------- Initialization (starting/maximum index) --------------------
-
-        return new GenericCollectionHolder<>(() -> __withALimit(collection, startingIndex, endingIndex, maximumIndex));
-    }
-
-    private static <T> @NotNull CollectionHolder<T> __coreWithNoFromAndTo(final @NotNull CollectionHolder<? extends T> collection,
-                                                                          final int limit) {
-        //#region -------------------- Early returns --------------------
-
-        if (collection.isEmpty())
-            return emptyCollectionHolder();
-        if (limit == 0)
-            return emptyCollectionHolder();
-
-        //#endregion -------------------- Early returns --------------------
-        //#region -------------------- Initialization (maximum index) --------------------
-
-        final var size = collection.size();
-        final var endingIndex = size - 1;
-
-        final var maximumIndex = _maximumIndex(limit, size);
-        if (maximumIndex > size)
-            throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. The limit “" + limit + '”' + (limit == maximumIndex ? "" : "(“" + maximumIndex + "” after calculation") + " cannot be applied within the range “0” to “" + endingIndex + "”.", limit);
-
-        //#endregion -------------------- Initialization (maximum index) --------------------
-
-        return new GenericCollectionHolder<>(() -> __withALimit(collection, 0, endingIndex, maximumIndex));
-    }
-
-    //#endregion -------------------- from, to, limit --------------------
+    //#endregion -------------------- to --------------------
 
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @NotNull @Unmodifiable List<T> __all(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T> T @NotNull @Unmodifiable [] __all(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                             final int size) {
-        @SuppressWarnings("unchecked cast") final var reversedArray = (T[]) new Object[size];
+        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
         var index = size;
         while (--index >= 0)
-            reversedArray[index] = collection.get(index);
-        return List.of(reversedArray);
+            newArray[index] = collection.get(index);
+        return newArray;
     }
 
-    private static <T> @NotNull @Unmodifiable List<T> __withStartingIndex(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                          final int startingIndex,
-                                                                          final int size) {
-        @SuppressWarnings("unchecked cast") final var reversedArray = (T[]) new Object[size - startingIndex];
+    private static <T> T @NotNull @Unmodifiable [] __withAStartingIndex(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                        final int startingIndex,
+                                                                        final int size) {
+        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - startingIndex];
+        var indexAdded = -1;
         var index = size - 1;
         while (--index >= startingIndex)
-            reversedArray[index] = collection.get(index);
-        return List.of(reversedArray);
+            newArray[++indexAdded] = collection.get(index);
+        return newArray;
     }
 
-    private static <T> @NotNull @Unmodifiable List<T> __withStaringAndEndingIndex(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                  final int startingIndex,
-                                                                                  final int endingIndex) {
-        @SuppressWarnings("unchecked cast") final var reversedArray = (T[]) new Object[endingIndex - startingIndex];
+    private static <T> T @NotNull @Unmodifiable [] __withAStartingAndEndingIndex(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                 final int startingIndex,
+                                                                                 final int endingIndex) {
+        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[endingIndex - startingIndex];
         var indexAdded = -1;
         var index = endingIndex + 1;
         while (--index >= startingIndex)
-            reversedArray[++indexAdded] = collection.get(index);
-        return List.of(reversedArray);
-    }
-
-
-    private static <T> @NotNull @Unmodifiable List<T> __withALimit(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                   final int startingIndex,
-                                                                   final int endingIndex,
-                                                                   final int maximumIndex) {
-        @SuppressWarnings("unchecked cast") final var reversedArray = (T[]) new Object[maximumIndex];
-        var index = endingIndex + 1;
-        while (--index >= startingIndex) {
-            if (index >= maximumIndex)
-                return List.of(reversedArray);
-            reversedArray[index] = collection.get(index);
-        }
-
-        //We create a new array from 0 to the ending index since it hasn't reached the maximum index
-        @SuppressWarnings("unchecked cast") final var reversedArray2 = (T[]) new Object[endingIndex];
-        var index2 = endingIndex + 1;
-        while (--index2 > 0)
-            reversedArray2[index2] = reversedArray[index2];
-        return List.of(reversedArray2);
+            newArray[++indexAdded] = collection.get(index);
+        return newArray;
     }
 
     //#endregion -------------------- Loop methods --------------------
