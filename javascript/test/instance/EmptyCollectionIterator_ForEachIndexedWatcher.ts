@@ -5,27 +5,26 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolderForTest} from "./CollectionHolderForTest"
+import type {CollectionIteratorForTest} from "./CollectionIteratorForTest"
 
-import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
-import {ABCD}                    from "../value/arrays"
+import {EmptyCollectionIterator} from "../../src/iterator/EmptyCollectionIterator"
 
-export class GenericCollectionHolder_HasNullAlias
-    extends GenericCollectionHolder<string, readonly string[]>
-    implements CollectionHolderForTest<string> {
+export class EmptyCollectionIterator_ForEachIndexedWatcher
+    extends EmptyCollectionIterator
+    implements CollectionIteratorForTest<never> {
 
     public amountOfCall = 0
 
-    public constructor() { super(ABCD,) }
+    public constructor() { super() }
 
     public execute(action: (instance: this,) => void,): this {
         action(this,)
         return this
     }
 
-    public override get hasNull(): boolean {
+    public override forEachIndexed(): this {
         this.amountOfCall++
-        return super.hasNull
+        return super.forEach()
     }
 
 }

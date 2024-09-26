@@ -5,14 +5,14 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {AbstractCollectionHolder} from "../../src/AbstractCollectionHolder"
+import {AbstractMinimalistCollectionHolder} from "../../src/AbstractMinimalistCollectionHolder"
 
 /**
- * A {@link CollectionHolder} having the functionality from an {@link ReadonlyArray array}
- * without handling negative indexes in the {@link CollectionHolder.get} method
+ * A {@link MinimalistCollectionHolder} having the functionality from an {@link ReadonlyArray array}
+ * without handling negative indexes in the {@link MinimalistCollectionHolder.get} method
  */
-export class CollectionHolderFromArray<const out T = unknown, >
-    extends AbstractCollectionHolder<T> {
+export class MinimalistCollectionHolderFromArray<const T, >
+    extends AbstractMinimalistCollectionHolder<T> {
 
     readonly #array
     readonly #size

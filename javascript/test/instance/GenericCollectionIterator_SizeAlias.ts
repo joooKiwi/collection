@@ -5,18 +5,19 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolderForTest} from "./CollectionHolderForTest"
+import type {CollectionIteratorForTest} from "./CollectionIteratorForTest"
 
-import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
-import {ABCD}                        from "../value/arrays"
+import {GenericCollectionIterator} from "../../src/iterator/GenericCollectionIterator"
+import {CollectionHolderFromArray} from "./CollectionHolderFromArray"
+import {ABCD}                      from "../value/arrays"
 
-export class LazyGenericCollectionHolder_SizeAlias
-    extends LazyGenericCollectionHolder<string, readonly string[]>
-    implements CollectionHolderForTest<string> {
+export class GenericCollectionIterator_SizeAlias
+    extends GenericCollectionIterator<string, CollectionHolderFromArray<string>>
+    implements CollectionIteratorForTest<string> {
 
     public amountOfCall = 0
 
-    public constructor() { super(ABCD,) }
+    public constructor() { super(new CollectionHolderFromArray(ABCD,),) }
 
     public execute(action: (instance: this,) => void,): this {
         action(this,)

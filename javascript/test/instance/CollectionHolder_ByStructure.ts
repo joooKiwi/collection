@@ -12,55 +12,61 @@ import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexVal
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "../../src/iterator/CollectionIterator"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                          from "../../src/MinimalistCollectionHolder"
 
-import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
+import {CollectionHolderFromArray} from "./CollectionHolderFromArray"
 
-export class CollectionHolder_ByStructure<const out T, >
+/**
+ * A {@link CollectionHolder} having the structure of it,
+ * but without inheriting the {@link AbstractCollectionHolder}.
+ *
+ * Internally, it is using a {@link CollectionHolderFromArray} for every method
+ */
+export class CollectionHolder_ByStructure<const T, >
     implements CollectionHolder<T> {
 
     [index: TemplateOrNumber]: undefined
-    readonly #internalReference: GenericCollectionHolder<T>
+    public readonly reference
 
-    public constructor(reference: PossibleIterableArraySetOrCollectionHolder<T> | (() => PossibleIterableArraySetOrCollectionHolder<T>),) { this.#internalReference = new GenericCollectionHolder(reference,) }
+    public constructor(array: readonly T[],) { this.reference = new CollectionHolderFromArray(array,) }
 
     //#region -------------------- Size methods --------------------
 
-    public get size(): number { return this.#internalReference.size }
-    public get length(): this["size"] { return this.#internalReference.length }
-    public get count(): this["size"] { return this.#internalReference.count }
+    public get size(): number { return this.reference.size }
+    public get length(): this["size"] { return this.reference.length }
+    public get count(): this["size"] { return this.reference.count }
 
-    public get isEmpty(): boolean { return this.#internalReference.isEmpty }
-    public get isNotEmpty(): boolean { return this.#internalReference.isNotEmpty }
+    public get isEmpty(): boolean { return this.reference.isEmpty }
+    public get isNotEmpty(): boolean { return this.reference.isNotEmpty }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 
     //#region -------------------- Get --------------------
 
-    public get(index: number,): T { return this.#internalReference.get(index,) }
+    public get(index: number,): T { return this.reference.get(index,) }
 
-    public at(index: number,): T { return this.#internalReference.at(index,) }
+    public at(index: number,): T { return this.reference.at(index,) }
 
-    public elementAt(index: number,): T { return this.#internalReference.elementAt(index,) }
+    public elementAt(index: number,): T { return this.reference.elementAt(index,) }
 
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) { return this.#internalReference.getOrElse(index, defaultValue,) }
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) { return this.reference.getOrElse(index, defaultValue,) }
 
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) { return this.#internalReference.atOrElse(index, defaultValue,) }
+    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) { return this.reference.atOrElse(index, defaultValue,) }
 
     public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) { return this.#internalReference.elementAtOrElse(index, defaultValue,) }
+    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) { return this.reference.elementAtOrElse(index, defaultValue,) }
 
 
-    public getOrNull(index: number,): NullOr<T> { return this.#internalReference.getOrNull(index,) }
+    public getOrNull(index: number,): NullOr<T> { return this.reference.getOrNull(index,) }
 
-    public atOrNull(index: number,): NullOr<T> { return this.#internalReference.atOrNull(index,) }
+    public atOrNull(index: number,): NullOr<T> { return this.reference.atOrNull(index,) }
 
-    public elementAtOrNull(index: number,): NullOr<T> { return this.#internalReference.elementAtOrNull(index,) }
+    public elementAtOrNull(index: number,): NullOr<T> { return this.reference.elementAtOrNull(index,) }
 
     //#endregion -------------------- Get --------------------
     //#region -------------------- First --------------------
@@ -68,12 +74,12 @@ export class CollectionHolder_ByStructure<const out T, >
     public first(): T
     public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
     public first(predicate: Nullable<BooleanCallback<T>>,): T
-    public first(predicate?: Nullable<BooleanCallback<T>>,) { return this.#internalReference.first(predicate,) }
+    public first(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.first(predicate,) }
 
     public firstOrNull(): NullOr<T>
     public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) { return this.#internalReference.firstOrNull(predicate,) }
+    public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.firstOrNull(predicate,) }
 
     //#endregion -------------------- Firs --------------------
     //#region -------------------- Last --------------------
@@ -81,56 +87,56 @@ export class CollectionHolder_ByStructure<const out T, >
     public last(): T
     public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
     public last(predicate: Nullable<BooleanCallback<T>>,): T
-    public last(predicate?: Nullable<BooleanCallback<T>>,) { return this.#internalReference.last(predicate,) }
+    public last(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.last(predicate,) }
 
     public lastOrNull(): NullOr<T>
     public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) { return this.#internalReference.lastOrNull(predicate,) }
+    public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.lastOrNull(predicate,) }
 
     //#endregion -------------------- Last --------------------
     //#region -------------------- Find --------------------
 
     public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public find(predicate: BooleanCallback<T>,): NullOr<T>
-    public find(predicate: BooleanCallback<T>,) { return this.#internalReference.find(predicate,) }
+    public find(predicate: BooleanCallback<T>,) { return this.reference.find(predicate,) }
 
     public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findIndexed(predicate: ReverseBooleanCallback<T>,) { return this.#internalReference.findIndexed(predicate,) }
+    public findIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.findIndexed(predicate,) }
 
 
     public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public findLast(predicate: BooleanCallback<T>,): NullOr<T>
-    public findLast(predicate: BooleanCallback<T>,) { return this.#internalReference.findLast(predicate,) }
+    public findLast(predicate: BooleanCallback<T>,) { return this.reference.findLast(predicate,) }
 
     public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) { return this.#internalReference.findLastIndexed(predicate,) }
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.findLastIndexed(predicate,) }
 
     //#endregion -------------------- Find --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) { return this.#internalReference.indexOf(element, fromIndex, toIndex, limit,) }
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber,) { return this.reference.indexOf(element, fromIndex, toIndex,) }
 
 
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) { return this.#internalReference.lastIndexOf(element, fromIndex, toIndex, limit,) }
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber,) { return this.reference.lastIndexOf(element, fromIndex, toIndex,) }
 
 
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber { return this.#internalReference.indexOfFirst(predicate, fromIndex, toIndex, limit,) }
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfFirst(predicate, fromIndex, toIndex,) }
 
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber { return this.#internalReference.indexOfFirstIndexed(predicate, fromIndex, toIndex, limit,) }
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfFirstIndexed(predicate, fromIndex, toIndex,) }
 
 
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber { return this.#internalReference.indexOfLast(predicate, fromIndex, toIndex, limit,) }
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfLast(predicate, fromIndex, toIndex,) }
 
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber { return this.#internalReference.indexOfLastIndexed(predicate, fromIndex, toIndex, limit,) }
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfLastIndexed(predicate, fromIndex, toIndex,) }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
@@ -139,54 +145,54 @@ export class CollectionHolder_ByStructure<const out T, >
 
     public all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public all(predicate: BooleanCallback<T>,): boolean
-    public all(predicate: BooleanCallback<T>,) { return this.#internalReference.all(predicate,) }
+    public all(predicate: BooleanCallback<T>,) { return this.reference.all(predicate,) }
 
     public every<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public every(predicate: BooleanCallback<T>,): boolean
-    public every(predicate: BooleanCallback<T>,) { return this.#internalReference.every(predicate,) }
+    public every(predicate: BooleanCallback<T>,) { return this.reference.every(predicate,) }
 
     //#endregion -------------------- All --------------------
     //#region -------------------- Any --------------------
 
     public any(): this["isEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public any(predicate?: Nullable<BooleanCallback<T>>,) { return this.#internalReference.any(predicate,) }
+    public any(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.any(predicate,) }
 
     public some(): this["isEmpty"]
     public some(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public some(predicate?: Nullable<BooleanCallback<T>>,) { return this.#internalReference.some(predicate,) }
+    public some(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.some(predicate,) }
 
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
 
     public none(): this["isNotEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public none(predicate?: Nullable<BooleanCallback<T>>,) { return this.#internalReference.none(predicate,) }
+    public none(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.none(predicate,) }
 
     //#endregion -------------------- None --------------------
 
     //#region -------------------- Has null --------------------
 
-    public get hasNull(): boolean { return this.#internalReference.hasNull }
-    public get includesNull(): this["hasNull"] { return this.#internalReference.includesNull }
-    public get containsNull(): this["hasNull"] { return this.#internalReference.containsNull }
+    public get hasNull(): boolean { return this.reference.hasNull }
+    public get includesNull(): this["hasNull"] { return this.reference.includesNull }
+    public get containsNull(): this["hasNull"] { return this.reference.containsNull }
 
     //#endregion -------------------- Has null --------------------
     //#region -------------------- Has duplicate --------------------
 
-    public get hasDuplicate(): boolean { return this.#internalReference.hasDuplicate }
-    public get includesDuplicate(): this["hasDuplicate"] { return this.#internalReference.includesDuplicate }
-    public get containsDuplicate(): this["hasDuplicate"] { return this.#internalReference.containsDuplicate }
+    public get hasDuplicate(): boolean { return this.reference.hasDuplicate }
+    public get includesDuplicate(): this["hasDuplicate"] { return this.reference.includesDuplicate }
+    public get containsDuplicate(): this["hasDuplicate"] { return this.reference.containsDuplicate }
 
     //#endregion -------------------- Has duplicate --------------------
 
     //#region -------------------- Has --------------------
 
-    public has(value: T,): boolean { return this.#internalReference.has(value,) }
+    public has(value: T,): boolean { return this.reference.has(value,) }
 
-    public includes(value: T,): boolean { return this.#internalReference.includes(value,) }
+    public includes(value: T,): boolean { return this.reference.includes(value,) }
 
-    public contains(value: T,): boolean { return this.#internalReference.contains(value,) }
+    public contains(value: T,): boolean { return this.reference.contains(value,) }
 
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
@@ -205,7 +211,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public hasOne(values: CollectionIterator,): boolean
     public hasOne(values: Iterable<unknown>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.hasOne(values,) }
+    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.reference.hasOne(values,) }
 
     public includesOne(values: readonly T[],): boolean
     public includesOne(values: ReadonlySet<T>,): boolean
@@ -221,7 +227,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public includesOne(values: CollectionIterator,): boolean
     public includesOne(values: Iterable<unknown>,): boolean
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.includesOne(values,) }
+    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.reference.includesOne(values,) }
 
     public containsOne(values: readonly T[],): boolean
     public containsOne(values: ReadonlySet<T>,): boolean
@@ -237,7 +243,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public containsOne(values: CollectionIterator,): boolean
     public containsOne(values: Iterable<unknown>,): boolean
     public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.containsOne(values,) }
+    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.reference.containsOne(values,) }
 
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has all --------------------
@@ -256,7 +262,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public hasAll(values: CollectionIterator,): boolean
     public hasAll(values: Iterable<unknown>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.hasAll(values,) }
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.reference.hasAll(values,) }
 
     public includesAll(values: readonly T[],): boolean
     public includesAll(values: ReadonlySet<T>,): boolean
@@ -272,7 +278,7 @@ export class CollectionHolder_ByStructure<const out T, >
     public includesAll(values: CollectionIterator,): boolean
     public includesAll(values: Iterable<unknown>,): boolean
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.includesAll(values,) }
+    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.reference.includesAll(values,) }
 
     public containsAll(values: readonly T[],): boolean
     public containsAll(values: ReadonlySet<T>,): boolean
@@ -288,13 +294,13 @@ export class CollectionHolder_ByStructure<const out T, >
     public containsAll(values: CollectionIterator,): boolean
     public containsAll(values: Iterable<unknown>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.#internalReference.containsAll(values,) }
+    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) { return this.reference.containsAll(values,) }
 
     //#endregion -------------------- Has all --------------------
 
     //#region -------------------- Require no nulls --------------------
 
-    public requireNoNulls(): CollectionHolder<NonNullable<T>> { return this.#internalReference.requireNoNulls() }
+    public requireNoNulls(): CollectionHolder<NonNullable<T>> { return this.reference.requireNoNulls() }
 
     //#endregion -------------------- Require no nulls --------------------
 
@@ -305,22 +311,22 @@ export class CollectionHolder_ByStructure<const out T, >
 
     public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public filter(predicate: BooleanCallback<T>,) { return this.#internalReference.filter(predicate,) }
+    public filter(predicate: BooleanCallback<T>,) { return this.reference.filter(predicate,) }
 
     public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexed(predicate: ReverseBooleanCallback<T>,) { return this.#internalReference.filterIndexed(predicate,) }
+    public filterIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.filterIndexed(predicate,) }
 
     public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public filterNot(predicate: BooleanCallback<T>,) { return this.#internalReference.filterNot(predicate,) }
+    public filterNot(predicate: BooleanCallback<T>,) { return this.reference.filterNot(predicate,) }
 
-    public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterNotIndexed(predicate: ReverseBooleanCallback<T>,) { return this.#internalReference.filterNotIndexed(predicate,) }
+    public filterNotIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.filterNotIndexed(predicate,) }
 
 
-    public filterNotNull(): CollectionHolder<NonNullable<T>> { return this.#internalReference.filterNotNull() }
+    public filterNotNull(): CollectionHolder<NonNullable<T>> { return this.reference.filterNotNull() }
 
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
@@ -332,21 +338,21 @@ export class CollectionHolder_ByStructure<const out T, >
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public slice(indices: Iterable<number>,): CollectionHolder<T>
     public slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,) { return this.#internalReference.slice(indicesOrFromIndex, toIndex, limit,) }
+    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,) { return this.reference.slice(indicesOrFromIndex, toIndex,) }
 
     //#endregion -------------------- Slice --------------------
     //#region -------------------- Map --------------------
 
-    public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> { return this.#internalReference.map(transform,) }
+    public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> { return this.reference.map(transform,) }
 
-    public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> { return this.#internalReference.mapIndexed(transform,) }
+    public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> { return this.reference.mapIndexed(transform,) }
 
 
-    public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> { return this.#internalReference.mapNotNull(transform,) }
+    public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> { return this.reference.mapNotNull(transform,) }
 
-    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> { return this.#internalReference.mapNotNullIndexed(transform,) }
+    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> { return this.reference.mapNotNullIndexed(transform,) }
 
     //#endregion -------------------- Map --------------------
 
@@ -355,20 +361,20 @@ export class CollectionHolder_ByStructure<const out T, >
 
     //#region -------------------- For each --------------------
 
-    public forEach(action: ValueIndexCallback<T>,): void { this.#internalReference.forEach(action,) }
+    public forEach(action: ValueIndexCallback<T>,): void { this.reference.forEach(action,) }
 
-    public forEachIndexed(action: IndexValueCallback<T>,): void { this.#internalReference.forEachIndexed(action,) }
+    public forEachIndexed(action: IndexValueCallback<T>,): void { this.reference.forEachIndexed(action,) }
 
     //#endregion -------------------- For each --------------------
     //#region -------------------- On each --------------------
 
     public onEach(action: ValueIndexCallback<T>,): this {
-        this.#internalReference.onEach(action,)
+        this.reference.onEach(action,)
         return this
     }
 
     public onEachIndexed(action: IndexValueCallback<T>,): this {
-        this.#internalReference.onEachIndexed(action,)
+        this.reference.onEachIndexed(action,)
         return this
     }
 
@@ -379,60 +385,60 @@ export class CollectionHolder_ByStructure<const out T, >
 
     //#region -------------------- To reverse --------------------
 
-    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> { return this.#internalReference.toReverse(fromIndex, toIndex, limit,) }
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> { return this.reference.toReverse(fromIndex, toIndex,) }
 
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> { return this.#internalReference.toReversed(fromIndex, toIndex, limit,) }
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> { return this.reference.toReversed(fromIndex, toIndex,) }
 
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> { return this.#internalReference.reversed(fromIndex, toIndex, limit,) }
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> { return this.reference.reversed(fromIndex, toIndex,) }
 
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Javascript methods --------------------
 
-    public [Symbol.iterator](): CollectionIterator<T> { return this.#internalReference[Symbol.iterator]() }
+    public [Symbol.iterator](): CollectionIterator<T> { return this.reference[Symbol.iterator]() }
 
-    public get [Symbol.toStringTag](): CollectionHolderName { return this.#internalReference[Symbol.toStringTag] }
+    public get [Symbol.toStringTag](): CollectionHolderName { return this.reference[Symbol.toStringTag] }
 
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To other structure --------------------
 
-    public toIterator(): CollectionIterator<T> { return this.#internalReference.toIterator() }
+    public toIterator(): CollectionIterator<T> { return this.reference.toIterator() }
 
-    public toArray(): readonly T[] { return this.#internalReference.toArray() }
-    public toMutableArray(): T[] { return this.#internalReference.toMutableArray() }
+    public toArray(): readonly T[] { return this.reference.toArray() }
+    public toMutableArray(): T[] { return this.reference.toMutableArray() }
 
-    public toSet(): ReadonlySet<T> { return this.#internalReference.toSet() }
-    public toMutableSet(): Set<T> { return this.#internalReference.toMutableSet() }
+    public toSet(): ReadonlySet<T> { return this.reference.toSet() }
+    public toMutableSet(): Set<T> { return this.reference.toMutableSet() }
 
-    public toMap(): ReadonlyMap<number, T> { return this.#internalReference.toMap() }
-    public toMutableMap(): Map<number, T> { return this.#internalReference.toMutableMap() }
+    public toMap(): ReadonlyMap<number, T> { return this.reference.toMap() }
+    public toMutableMap(): Map<number, T> { return this.reference.toMutableMap() }
 
     //#endregion -------------------- To other structure --------------------
     //#region -------------------- To string --------------------
 
-    public toString(): string { return this.#internalReference.toString() }
+    public toString(): string { return this.reference.toString() }
 
-    public toLocaleString(locale?: NullableString,): string { return this.#internalReference.toLocaleString(locale,) }
-
-
-    public toLowerCaseString(): string { return this.#internalReference.toLowerCaseString() }
-
-    public toLocaleLowerCaseString(locale?: NullableString,): string { return this.#internalReference.toLocaleLowerCaseString(locale,) }
+    public toLocaleString(locale?: NullableString,): string { return this.reference.toLocaleString(locale,) }
 
 
-    public toUpperCaseString(): string { return this.#internalReference.toUpperCaseString() }
+    public toLowerCaseString(): string { return this.reference.toLowerCaseString() }
 
-    public toLocaleUpperCaseString(locale?: NullableString,): string { return this.#internalReference.toLocaleUpperCaseString(locale,) }
+    public toLocaleLowerCaseString(locale?: NullableString,): string { return this.reference.toLocaleLowerCaseString(locale,) }
+
+
+    public toUpperCaseString(): string { return this.reference.toUpperCaseString() }
+
+    public toLocaleUpperCaseString(locale?: NullableString,): string { return this.reference.toLocaleUpperCaseString(locale,) }
 
     //#endregion -------------------- To string --------------------
     //#region -------------------- Join to string --------------------
 
-    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.#internalReference.join(separator, prefix, postfix, limit, truncated, transform,) }
+    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.reference.join(separator, prefix, postfix, limit, truncated, transform,) }
 
-    public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.#internalReference.joinToString(separator, prefix, postfix, limit, truncated, transform,) }
+    public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.reference.joinToString(separator, prefix, postfix, limit, truncated, transform,) }
 
     //#endregion -------------------- Join to string --------------------
 

@@ -5,10 +5,13 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-export function newIterable<const T, >(array: readonly T[],): Iterable<T> {
-    return {
-        [Symbol.iterator](): IterableIterator<T> {
-            return array[Symbol.iterator]()
-        },
+import {GenericMinimalistCollectionHolder} from "../../src/GenericMinimalistCollectionHolder"
+
+export class GenericMinimalistCollectionHolder_ConstructorTest<const T, >
+    extends GenericMinimalistCollectionHolder<T> {
+
+    public override get _array(): readonly T[] {
+        return super._array
     }
+
 }

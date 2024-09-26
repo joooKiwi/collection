@@ -7,13 +7,12 @@
 
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
 
-/** A {@link LazyGenericCollectionHolder} made for the test to do task from its internal state */
-export class LazyCollectionHolderThatCanRetrieveHandler<const out T, >
-    extends LazyGenericCollectionHolder<T> {
+/** A {@link CollectionHolder} that have no end and always have a next value to <b>a</b> */
+export class InfiniteCollectionHolder
+    extends LazyGenericCollectionHolder<'a'> {
 
-    public retrieveHandler(): this {
-        this._handler
-        return this
+    public constructor() {
+        super({ *[Symbol.iterator]() { while (true) yield 'a' },} satisfies Iterable<'a'>,)
     }
 
 }

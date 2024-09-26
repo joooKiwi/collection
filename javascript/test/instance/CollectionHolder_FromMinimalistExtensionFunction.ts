@@ -11,8 +11,8 @@ import type {CollectionHolder}                                                  
 import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/CollectionHolder.types"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                          from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "../../src/iterator/CollectionIterator"
+import type {CollectionHolderForTest}                                                                                                                                                                                                                                                                                             from "./CollectionHolderForTest"
 
-import {AbstractMinimalistCollectionHolder}                  from "../../src/AbstractMinimalistCollectionHolder"
 import {allByMinimalistCollectionHolder}                     from "../../src/method/all"
 import {anyByMinimalistCollectionHolder}                     from "../../src/method/any"
 import {filterByMinimalistCollectionHolder}                  from "../../src/method/filter"
@@ -70,23 +70,35 @@ import {toSetByMinimalistCollectionHolder}                   from "../../src/met
 import {toStringByMinimalistCollectionHolder}                from "../../src/method/toString"
 import {toUpperCaseStringByMinimalistCollectionHolder}       from "../../src/method/toUpperCaseString"
 
-export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
-    extends AbstractMinimalistCollectionHolder<T>
-    implements CollectionHolder<T> {
+export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
+    implements CollectionHolderForTest<T> {
 
     [index: TemplateOrNumber]: undefined
 
-    readonly #array
+    public readonly array: readonly T[]
+    #amountOfCall?: number
 
-    public constructor(array: readonly unknown[],) {
-        super()
-        this.#array = array
+    public constructor(array: readonly T[],) {
+        this.array = array
+    }
+
+    public get amountOfCall(): number {
+        return this.#amountOfCall ?? 0
+    }
+
+    public set amountOfCall(value: number,) {
+        this.#amountOfCall = value
+    }
+
+    public execute(action: (instance: this,) => void,): this {
+        action(this,)
+        return this
     }
 
     //#region -------------------- Size methods --------------------
 
     public get size(): number {
-        return this.#array.length
+        return this.array.length
     }
 
     public get length(): never {
@@ -113,7 +125,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
     public get(index: number,): T {
         this.amountOfCall++
-        return this.#array[index] as T
+        return this.array[index] as T
     }
 
     public at(index?: number,): never
@@ -229,35 +241,35 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return indexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex, limit,)
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return indexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
 
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return lastIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex, limit,)
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return lastIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
 
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfFirstByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfFirstIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
 
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfLastByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfLastIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index methods --------------------
@@ -484,7 +496,7 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
         return filterNotByMinimalistCollectionHolder(this, predicate,)
     }
 
-    public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,) {
         return filterNotIndexedByMinimalistCollectionHolder(this, predicate,)
@@ -504,10 +516,10 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     public slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public slice(indices: Iterable<number>,): CollectionHolder<T>
-    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return sliceByMinimalistCollectionHolder(this, indicesOrFromIndex, toIndex, limit,)
+    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,) {
+        return sliceByMinimalistCollectionHolder(this, indicesOrFromIndex, toIndex,)
     }
 
     //#endregion -------------------- Slice --------------------
@@ -563,16 +575,16 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
 
     //#region -------------------- To reverse --------------------
 
-    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByMinimalistCollectionHolder(this, fromIndex, toIndex, limit,)
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
+        return toReverseByMinimalistCollectionHolder(this, fromIndex, toIndex,)
     }
 
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): never
     public toReversed() {
         throw new Error("The method \"toReversed\" was not expected to be called.",)
     }
 
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): never
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): never
     public reversed() {
         throw new Error("The method \"reversed\" was not expected to be called.",)
     }
@@ -668,6 +680,5 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const out T, >
     //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
-
 
 }

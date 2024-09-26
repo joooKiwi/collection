@@ -7,21 +7,29 @@
 
 import type {CollectionHolder}                           from "../../src/CollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../../src/CollectionHolder.types"
+import type {CollectionHolderForTest}                    from "./CollectionHolderForTest"
 
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
+import {ABCD}                        from "../value/arrays"
 
 export class LazyGenericCollectionHolder_AllAlias
-    extends LazyGenericCollectionHolder {
+    extends LazyGenericCollectionHolder<string, readonly string[]>
+    implements CollectionHolderForTest<string> {
 
     public amountOfCall = 0
 
-    public constructor() { super([],) }
+    public constructor() { super(ABCD,) }
 
-    public override all<S extends unknown, >(predicate: RestrainedBooleanCallback<unknown, S>,): this is CollectionHolder<S>
-    public override all(predicate: BooleanCallback<unknown>,): boolean
-    public override all(predicate: BooleanCallback<unknown>,) {
+    public execute(action: (instance: this,) => void,): this {
+        action(this,)
+        return this
+    }
+
+    public override all<S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolder<S>
+    public override all(predicate: BooleanCallback<string>,): boolean
+    public override all(predicate: BooleanCallback<string>,) {
         this.amountOfCall++
-        return super.has(predicate,)
+        return super.all(predicate,)
     }
 
 }

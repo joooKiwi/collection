@@ -5,21 +5,27 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {ABCDEFGHIJ} from "../constantCollections"
-
 import type {IndexWithReturnCallback} from "../../src/CollectionHolder.types"
+import type {CollectionHolderForTest} from "./CollectionHolderForTest"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
+import {ABCD}                    from "../value/arrays"
 
 export class GenericCollectionHolder_GetOrElseAlias
-    extends GenericCollectionHolder {
+    extends GenericCollectionHolder<string, readonly string[]>
+    implements CollectionHolderForTest<string> {
 
     public amountOfCall = 0
 
-    public constructor() { super(ABCDEFGHIJ,) }
+    public constructor() { super(ABCD,) }
 
-    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
-    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
+    public execute(action: (instance: this,) => void,): this {
+        action(this,)
+        return this
+    }
+
+    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | string | U
+    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<string>,): string
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         this.amountOfCall++
         return super.getOrElse(index, defaultValue,)

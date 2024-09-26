@@ -5,14 +5,15 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}                           from "../../src/CollectionHolder"
-import type {BooleanCallback, RestrainedBooleanCallback} from "../../src/CollectionHolder.types"
-import type {CollectionHolderForTest}                    from "./CollectionHolderForTest"
+import type {Nullable, NullableNumber, NullableString} from "@joookiwi/type"
+
+import type {StringCallback}          from "../../src/CollectionHolder.types"
+import type {CollectionHolderForTest} from "./CollectionHolderForTest"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
 import {ABCD}                    from "../value/arrays"
 
-export class GenericCollectionHolder_AllAlias
+export class GenericCollectionHolder_JoinToStringAlias
     extends GenericCollectionHolder<string, readonly string[]>
     implements CollectionHolderForTest<string> {
 
@@ -25,11 +26,9 @@ export class GenericCollectionHolder_AllAlias
         return this
     }
 
-    public override all<S extends string, >(predicate: RestrainedBooleanCallback<string, S>,): this is CollectionHolder<S>
-    public override all(predicate: BooleanCallback<string>,): boolean
-    public override all(predicate: BooleanCallback<string>,) {
+    public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<string>>,): string {
         this.amountOfCall++
-        return super.all(predicate,)
+        return super.joinToString(separator, prefix, postfix, limit, truncated, transform,)
     }
 
 }

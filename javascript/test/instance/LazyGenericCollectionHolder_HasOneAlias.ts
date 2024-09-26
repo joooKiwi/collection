@@ -5,27 +5,25 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}                           from "../../src/CollectionHolder"
 import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/CollectionHolder.types"
-import type {MinimalistCollectionHolder}                 from "../../src/MinimalistCollectionHolder"
-import type {CollectionIterator}                         from "../../src/iterator/CollectionIterator"
+import type {CollectionHolderForTest}                    from "./CollectionHolderForTest"
 
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
+import {ABCD}                        from "../value/arrays"
 
 export class LazyGenericCollectionHolder_HasOneAlias
-    extends LazyGenericCollectionHolder {
+    extends LazyGenericCollectionHolder<string, readonly string[]>
+    implements CollectionHolderForTest<string> {
 
     public amountOfCall = 0
 
-    public constructor() { super([],) }
+    public constructor() { super(ABCD,) }
 
-    public override hasOne(values: readonly unknown[],): boolean
-    public override hasOne(values: ReadonlySet<unknown>,): boolean
-    public override hasOne(values: CollectionHolder,): boolean
-    public override hasOne(values: MinimalistCollectionHolder,): boolean
-    public override hasOne(values: CollectionIterator,): boolean
-    public override hasOne(values: Iterable<unknown>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    public execute(action: (instance: this,) => void,): this {
+        action(this,)
+        return this
+    }
+
     public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         this.amountOfCall++
         return super.hasOne(values,)

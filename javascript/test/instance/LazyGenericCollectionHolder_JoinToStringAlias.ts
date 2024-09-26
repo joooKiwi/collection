@@ -5,12 +5,15 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable, NullableNumber, NullableString} from "@joookiwi/type"
+
+import type {StringCallback}          from "../../src/CollectionHolder.types"
 import type {CollectionHolderForTest} from "./CollectionHolderForTest"
 
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
 import {ABCD}                        from "../value/arrays"
 
-export class LazyGenericCollectionHolder_HasAlias
+export class LazyGenericCollectionHolder_JoinToStringAlias
     extends LazyGenericCollectionHolder<string, readonly string[]>
     implements CollectionHolderForTest<string> {
 
@@ -23,9 +26,9 @@ export class LazyGenericCollectionHolder_HasAlias
         return this
     }
 
-    public override has(value: string,): boolean {
+    public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<string>>,): string {
         this.amountOfCall++
-        return super.has(value,)
+        return super.joinToString(separator, prefix, postfix, limit, truncated, transform,)
     }
 
 }

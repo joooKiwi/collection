@@ -7,21 +7,28 @@
 
 import type {NullableNumber} from "@joookiwi/type"
 
-import {ABCDEFGHIJ} from "../constantCollections"
-
-import type {CollectionHolder} from "../../src/CollectionHolder"
+import type {CollectionHolder}        from "../../src/CollectionHolder"
+import type {CollectionHolderForTest} from "./CollectionHolderForTest"
 
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
+import {ABCD}                        from "../value/arrays"
 
 export class LazyGenericCollectionHolder_ToReverseAlias
-    extends LazyGenericCollectionHolder {
+    extends LazyGenericCollectionHolder<string, readonly string[]>
+    implements CollectionHolderForTest<string> {
 
     public amountOfCall = 0
 
-    public constructor() { super(ABCDEFGHIJ,) }
+    public constructor() { super(ABCD,) }
 
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder {
-        this.amountOfCall++
-        return super.toReverse(fromIndex, toIndex, limit,)
+    public execute(action: (instance: this,) => void,): this {
+        action(this,)
+        return this
     }
+
+    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<string> {
+        this.amountOfCall++
+        return super.toReverse(fromIndex, toIndex,)
+    }
+
 }

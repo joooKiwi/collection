@@ -7,29 +7,81 @@
 
 import type {NullOr} from "@joookiwi/type"
 
-import type {IndexWithReturnCallback} from "../../src/CollectionHolder.types"
+import type {CollectionHolder}                          from "../../src/CollectionHolder"
+import type {IndexWithReturnCallback}                 from "../../src/CollectionHolder.types"
+import type {CollectionHolderForTestHavingAnInstance} from "./CollectionHolderForTestHavingAnInstance"
 
-import {AbstractCollectionHolder} from "../../src/AbstractCollectionHolder"
-import {GenericCollectionHolder}  from "../../src/GenericCollectionHolder"
+import {GenericCollectionHolder}                   from "../../src/GenericCollectionHolder"
+import {CollectionHolderIndexOutOfBoundsException} from "../../src/exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../../src/exception/EmptyCollectionHolderException"
+import {CollectionHolder_FromExtensionFunction}    from "./CollectionHolder_FromExtensionFunction"
 
-export class CollectionHolder_ByGenericCollection<const out T, >
-    extends AbstractCollectionHolder<T> {
+export class CollectionHolder_ByGenericCollection<const T, >
+    extends CollectionHolder_FromExtensionFunction<T>
+    implements CollectionHolderForTestHavingAnInstance<T> {
 
-    readonly #instance
+    public readonly instance: GenericCollectionHolder<T>
 
     public constructor(array: readonly T[],) {
-        super()
-        this.#instance = new GenericCollectionHolder(array,)
+        super(array,)
+        const $this = this
+        this.instance = new class CollectionHolder_CountingGetByGenericCollection
+            extends GenericCollectionHolder<T> {
+            public override get(index: number,): T {
+                $this.amountOfCall++
+                return super.get(index,)
+            }
+        }(array,)
     }
 
-    public override get size(): number { return this.#instance.size }
+    public executeWhileIgnoringIndexOutOfBound(action: (instance: this,) => void,): this {
+        try {
+            action(this,)
+            return this
+        } catch (exception) {
+            if (exception instanceof CollectionHolderIndexOutOfBoundsException)
+                return this
+            throw exception
+        }
+    }
 
-    public override get(index: number,): T { return this.#instance.get(index,) }
+    public executeWhileIgnoringEmptyException(action: (instance: this,) => void,): this {
+        try {
+            action(this,)
+            return this
+        } catch (exception) {
+            if (exception instanceof EmptyCollectionHolderException)
+                return this
+            throw exception
+        }
+    }
+
+    public executeWhileHavingIndexesOnField<const U, >(action: (instance: this,) => CollectionHolder<U>,): this {
+        action(this,).onEach(_ => {},)
+        return this
+    }
+
+    public executeToHaveIndexesOnField<const U, >(action: (instance: this,) => CollectionHolder<U>,): CollectionHolder<U> {
+        return action(this,).onEach(_ => {},)
+    }
+
+
+    public override get size(): number { return this.instance.size }
+    public override get isEmpty(): boolean { return this.instance.isEmpty }
+    public override get isNotEmpty(): boolean { return this.instance.isNotEmpty }
+    public override get hasNull(): boolean { return this.instance.hasNull }
+    public override get hasDuplicate(): boolean { return this.instance.hasDuplicate }
+
+    public override get(index: number,): T { return this.instance.get(index,) }
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.#instance.getOrElse(index, defaultValue,) }
+    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.instance.getOrElse(index, defaultValue,) }
 
-    public override getOrNull(index: number,): NullOr<T> { return this.#instance.getOrNull(index,) }
+    public override getOrNull(index: number,): NullOr<T> { return this.instance.getOrNull(index,) }
+
+    public override toArray(): readonly T[] { return this.instance.toArray() }
+    public override toSet(): ReadonlySet<T> { return this.instance.toSet() }
+    public override toMap(): ReadonlyMap<number, T> { return this.instance.toMap() }
 
 }

@@ -7,20 +7,28 @@
 
 import type {Nullable} from "@joookiwi/type"
 
-import type {BooleanCallback} from "../../src/CollectionHolder.types"
+import type {CollectionHolderForTest} from "./CollectionHolderForTest"
+import type {BooleanCallback}         from "../../src/CollectionHolder.types"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
+import {ABCD}                    from "../value/arrays"
 
 export class GenericCollectionHolder_AnyAlias
-    extends GenericCollectionHolder {
+    extends GenericCollectionHolder<string, readonly string[]>
+    implements CollectionHolderForTest<string> {
 
     public amountOfCall = 0
 
-    public constructor() { super([],) }
+    public constructor() { super(ABCD,) }
+
+    public execute(action: (instance: this,) => void,): this {
+        action(this,)
+        return this
+    }
 
     public override any(): this["isNotEmpty"]
-    public override any(predicate: Nullable<BooleanCallback<unknown>>,): boolean
-    public override any(predicate?: Nullable<BooleanCallback<unknown>>,) {
+    public override any(predicate: Nullable<BooleanCallback<string>>,): boolean
+    public override any(predicate?: Nullable<BooleanCallback<string>>,) {
         this.amountOfCall++
         return super.any(predicate,)
     }
