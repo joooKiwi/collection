@@ -5,12 +5,13 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {CollectionHolder}            from "../../src/CollectionHolder"
-import {GenericCollectionHolder}     from "../../src/GenericCollectionHolder"
+import type {CollectionHolder} from "../../src/CollectionHolder"
+
 import {CollectionHandlerByIterable} from "../../src/handler/CollectionHandlerByIterable"
+import {CollectionHolderFromArray}   from "../instance/CollectionHolderFromArray"
+import {IterableForTest}             from "../instance/IterableForTest"
 
-import {newIterable} from "./newIterable"
-
-export function newIterableHandler<const T, >(array: readonly T[], collection: CollectionHolder<T> = new GenericCollectionHolder(array,),) {
-    return new CollectionHandlerByIterable<T>(collection, newIterable(array,),)
+export function newIterableHandler<const T, >(array: readonly T[],
+                                              collection: CollectionHolder<T> = new CollectionHolderFromArray(array,),) {
+    return new CollectionHandlerByIterable<T>(collection, new IterableForTest(array,),)
 }

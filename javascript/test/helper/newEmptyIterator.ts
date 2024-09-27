@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {EmptyCollectionIterator} from "../src/iterator/EmptyCollectionIterator"
+import {EmptyCollectionIterator} from "../../src/iterator/EmptyCollectionIterator"
 
 /** Create a new {@link EmptyCollectionIterator} simply */
 export function newEmptyIterator(): EmptyCollectionIterator {

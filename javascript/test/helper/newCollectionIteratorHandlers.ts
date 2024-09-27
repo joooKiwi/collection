@@ -5,23 +5,26 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {CollectionHolder}                         from "../../src/CollectionHolder"
-import {GenericCollectionHolder}                  from "../../src/GenericCollectionHolder"
+import type {CollectionHolder} from "../../src/CollectionHolder"
+
 import {CollectionHandlerByCollectionIterator}    from "../../src/handler/CollectionHandlerByCollectionIterator"
 import {CollectionHandlerByCollectionIteratorOf1} from "../../src/handler/CollectionHandlerByCollectionIteratorOf1"
 import {CollectionHandlerByCollectionIteratorOf2} from "../../src/handler/CollectionHandlerByCollectionIteratorOf2"
 import {GenericCollectionIterator}                from "../../src/iterator/GenericCollectionIterator"
+import {CollectionHolderFromArray}                from "../instance/CollectionHolderFromArray"
+import {A, AB}                                    from "../value/arrays"
 
-import {A, AB} from "../constantCollections"
-
-export function newCollectionIteratorHandler<const T, >(array: readonly T[], collection: CollectionHolder<T> = new GenericCollectionHolder(array,),) {
-    return new CollectionHandlerByCollectionIterator<T>(collection, new GenericCollectionIterator(new GenericCollectionHolder(array,),),)
+export function newCollectionIteratorHandler<const T, >(array: readonly T[],
+                                                        collection: CollectionHolder<T> = new CollectionHolderFromArray(array,),) {
+    return new CollectionHandlerByCollectionIterator<T>(collection, new GenericCollectionIterator(new CollectionHolderFromArray(array,),),)
 }
 
-export function newCollectionIteratorOf1Handler(array: readonly unknown[] = A, collection: CollectionHolder = new GenericCollectionHolder(array,),) {
-    return new CollectionHandlerByCollectionIteratorOf1(collection, new GenericCollectionIterator(new GenericCollectionHolder(array,),), array.length,)
+export function newCollectionIteratorOf1Handler<const T = 'a', >(array: readonly T[] = A as unknown as readonly T[],
+                                                                 collection: CollectionHolder<T> = new CollectionHolderFromArray(array,),) {
+    return new CollectionHandlerByCollectionIteratorOf1(collection, new GenericCollectionIterator(new CollectionHolderFromArray(array,),), array.length,)
 }
 
-export function newCollectionIteratorOf2Handler(array: readonly unknown[] = AB, collection: CollectionHolder = new GenericCollectionHolder(array,),) {
-    return new CollectionHandlerByCollectionIteratorOf2(collection, new GenericCollectionIterator(new GenericCollectionHolder(array,),), array.length,)
+export function newCollectionIteratorOf2Handler<const T = | 'a' | 'b', >(array: readonly T[] = AB as unknown as readonly T[],
+                                                                 collection: CollectionHolder<T> = new CollectionHolderFromArray(array,),) {
+    return new CollectionHandlerByCollectionIteratorOf2(collection, new GenericCollectionIterator(new CollectionHolderFromArray(array,),), array.length,)
 }
