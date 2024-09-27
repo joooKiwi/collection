@@ -7,7 +7,7 @@
 
 import type {CollectionHolder} from "../../src/CollectionHolder"
 
-import {ABC} from "../constantCollections"
+import {ABC} from "../value/arrays"
 
 export function expectIndexesInCollectionOf3ToNotHave2ndPresent(collection: CollectionHolder, array: readonly [unknown, ...readonly unknown[],] = ABC,) {
     expect(collection,).toContainKeys(["0", "2",],)

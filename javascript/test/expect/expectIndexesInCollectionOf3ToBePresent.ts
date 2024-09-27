@@ -7,7 +7,7 @@
 
 import type {CollectionHolder} from "../../src/CollectionHolder"
 
-import {ABC} from "../constantCollections"
+import {ABC} from "../value/arrays"
 
 export function expectIndexesInCollectionOf3ToBePresent(collection: CollectionHolder, array: readonly [unknown, unknown, unknown,] = ABC,) {
     expect(collection,).toContainKeys(["0", "1", "2",],)
