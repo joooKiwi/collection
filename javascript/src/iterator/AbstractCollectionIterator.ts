@@ -334,7 +334,7 @@ export abstract class AbstractCollectionIterator<const T,
             if (this._hasOnly1Element) {
                 this._previousIndex = null
                 this._nextIndex = null
-                return this.collection.get(this._currentIndex = 0,)
+                return this._getValue(this._currentIndex = 0,)
             }
 
             this._previousIndex = this._sizeMinus2
