@@ -5,30 +5,36 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
+import {newEmptyIterator}          from "./helper/newEmptyIterator"
+import {CollectionHolderFromArray} from "./instance/CollectionHolderFromArray"
+import {sizeValues}                from "./value/sizes"
 
-import {everyCollectionInstanceByIterable, iterableCreation, sizeValues} from "./constantValues"
-import {newEmptyIterator}                                                from "./newEmptyIterator"
+import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
+import {GenericCollectionIterator_SizeAlias} from "./instance/GenericCollectionIterator_SizeAlias"
 
 describe("CollectionIteratorTest (size)", () => {
 
     describe("EmptyCollectionIterator", () => {
-        test("size",   () => expect(newEmptyIterator().size,).toBe(0,),)
-        test("length", () => expect(newEmptyIterator().length,).toBe(0,),)
-        test("count",  () => expect(newEmptyIterator().length,).toBe(0,),)
+        test("size",       () => expect(newEmptyIterator().size,).toBe(0,),)
+        test("length",     () => expect(newEmptyIterator().length,).toBe(0,),)
+        test("count",      () => expect(newEmptyIterator().count,).toBe(0,),)
+        test("isEmpty",    () => expect(newEmptyIterator().isEmpty,).toBeTrue(),)
+        test("isNotEmpty", () => expect(newEmptyIterator().isNotEmpty,).toBeFalse(),)
     },)
-    describe("GenericCollectionIterator", () => {
-        describe.each(everyCollectionInstanceByIterable,)("%s", ({value: {newInstance: newCollectionInstance, },},) => {
-        describe.each(iterableCreation,)("%s", ({value: iterableCreation,},) => {
-        describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
-            const newInstance = () => new GenericCollectionIterator(newCollectionInstance(iterableCreation, array,),)
 
-            describe("size", () => {
-                test("size",   () => expect(newInstance().size,).toBe(size,),)
-                test("length", () => expect(newInstance().length,).toBe(size,),)
-                test("count",  () => expect(newInstance().count,).toBe(size,),)
-            },)
-        },)},)},)
-    },)
+    describe("aliases", () => {
+    describe("GenericCollectionIterator", () => {
+        describe("length", () => expect(new GenericCollectionIterator_SizeAlias().execute(it => it.length,).amountOfCall,).toBe(1,),)
+        describe("count",  () => expect(new GenericCollectionIterator_SizeAlias().execute(it => it.count,).amountOfCall,).toBe(1,),)
+    },)},)
+
+    describe("GenericCollectionIterator", () => {
+    describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
+        const newInstance = () => new GenericCollectionIterator(new CollectionHolderFromArray(array,),)
+
+        test("size",       () => expect(newInstance().size,).toBe(size,),)
+        test("isEmpty",    () => expect(newInstance().isEmpty,)[size == 0 ? 'toBeTrue' : 'toBeFalse'](),)
+        test("isNotEmpty", () => expect(newInstance().isNotEmpty,)[size == 0 ? 'toBeFalse' : 'toBeTrue'](),)
+    },)},)
 
 },)
