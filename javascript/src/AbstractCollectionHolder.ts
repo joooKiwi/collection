@@ -591,7 +591,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Filter not --------------------
     //#region -------------------- Filter not indexed --------------------
 
-    public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,) {
         return filterNotIndexedByCollectionHolder(this, predicate,)

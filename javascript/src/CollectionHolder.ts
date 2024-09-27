@@ -1862,7 +1862,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see filterNotIndexed
      * @typescriptDefinition
      */
-    filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<T>
+    filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 
     /**
      * Get a new {@link CollectionHolder collection}
@@ -1923,7 +1923,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see filterIndexed
      * @typescriptDefinition
      */
-    filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<T>
+    filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
 
     /**
      * Get a new {@link CollectionHolder}
