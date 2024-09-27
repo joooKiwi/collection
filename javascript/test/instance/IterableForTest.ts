@@ -5,6 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+/** An {@link Iterable} that is made for the tests with an {@link ReadonlyArray Array} under the hood */
 export class IterableForTest<const T, >
     implements Iterable<T> {
 

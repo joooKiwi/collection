@@ -13,10 +13,10 @@ export class EmptyCollectionHolderForTest
     extends EmptyCollectionHolder
     implements CollectionHolderForTest<never> {
 
-    public readonly amountOfCall = 0
+    public constructor() { super() }
 
-    public constructor() {
-        super()
+    public get amountOfCall(): never {
+        throw new Error("The amountOfCall will never change on an EmptyCollectionHolder.",)
     }
 
     public execute(action?: (instance: this,) => void,): never

@@ -7,6 +7,7 @@
 
 import type {IterableWithLength} from "../../src/iterable/IterableWithLength"
 
+/** An {@link IterableWithLength} that is made for the tests with an {@link ReadonlyArray Array} under the hood */
 export class IterableWithLengthForTest<const T, >
     implements IterableWithLength<T> {
 

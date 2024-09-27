@@ -7,6 +7,7 @@
 
 import type {IterableWithCount} from "../../src/iterable/IterableWithCount"
 
+/** An {@link IterableWithCount} that is made for the tests with an {@link ReadonlyArray Array} under the hood */
 export class IterableWithCountForTest<const T, >
     implements IterableWithCount<T> {
 

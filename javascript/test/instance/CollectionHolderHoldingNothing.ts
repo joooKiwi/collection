@@ -7,7 +7,11 @@
 
 import {AbstractCollectionHolder} from "../../src/AbstractCollectionHolder"
 
-export class CollectionHolderHoldingNothing<const out T = unknown, >
+/**
+ * A {@link CollectionHolder} that holds nothing and give an error when attempting to call
+ * its methods {@link CollectionHolderHoldingNothing.size get size} and {@link CollectionHolderHoldingNothing.get get}
+ */
+export class CollectionHolderHoldingNothing<const T, >
     extends AbstractCollectionHolder<T> {
 
     public constructor() { super() }
