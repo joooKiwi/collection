@@ -486,7 +486,6 @@ export class EmptyCollectionHolder
     //#endregion -------------------- to reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-
     //#region -------------------- Javascript methods --------------------
 
     public [Symbol.iterator](..._: readonly unknown[]): EmptyCollectionIterator
@@ -497,9 +496,13 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
+    //#region -------------------- To iterator --------------------
+
     public toIterator(..._: readonly unknown[]): EmptyCollectionIterator
     public toIterator() { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
+    //#endregion -------------------- To iterator --------------------
+    //#region -------------------- To array --------------------
 
     public toArray(..._: readonly unknown[]): readonly never[]
     public toArray() { return CollectionConstants.EMPTY_ARRAY }
@@ -507,6 +510,8 @@ export class EmptyCollectionHolder
     public toMutableArray(..._: readonly unknown[]): never[]
     public toMutableArray() { return [] }
 
+    //#endregion -------------------- To array --------------------
+    //#region -------------------- To set --------------------
 
     public toSet(..._: readonly unknown[]): ReadonlySet<never>
     public toSet() { return CollectionConstants.EMPTY_SET }
@@ -514,6 +519,8 @@ export class EmptyCollectionHolder
     public toMutableSet(..._: readonly unknown[]): Set<never>
     public toMutableSet() { return new Set() }
 
+    //#endregion -------------------- To set --------------------
+    //#region -------------------- To weak set --------------------
 
     public toWeakSet(..._: readonly unknown[]): Readonly<WeakSet<never>>
     public toWeakSet() { return CollectionConstants.EMPTY_WEAK_SET }
@@ -521,6 +528,8 @@ export class EmptyCollectionHolder
     public toMutableWeakSet(..._: readonly unknown[]): WeakSet<never>
     public toMutableWeakSet() { return new WeakSet() }
 
+    //#endregion -------------------- To weak set --------------------
+    //#region -------------------- To map --------------------
 
     public toMap(..._: readonly unknown[]): ReadonlyMap<never, never>
     public toMap() { return CollectionConstants.EMPTY_MAP }
@@ -528,12 +537,16 @@ export class EmptyCollectionHolder
     public toMutableMap(..._: readonly unknown[]): Map<never, never>
     public toMutableMap() { return new Map() }
 
+    //#endregion -------------------- To map --------------------
+    //#region -------------------- To weak map --------------------
 
     public toWeakMap(..._: readonly unknown[]): Readonly<WeakMap<never, never>>
     public toWeakMap() { return CollectionConstants.EMPTY_WEAK_MAP }
 
     public toMutableWeakMap(..._: readonly unknown[]): WeakMap<never, never>
     public toMutableWeakMap() { return new WeakMap() }
+
+    //#endregion -------------------- To weak map --------------------
 
     //#region -------------------- To string --------------------
 
