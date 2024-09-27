@@ -38,10 +38,13 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter & setter methods --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Reference methods --------------------
 
     public abstract get collection(): COLLECTION
 
+    //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
     public get size(): number { return this.collection.size }
@@ -83,7 +86,40 @@ export abstract class AbstractCollectionIterator<const T,
     protected get _hasOnly2Elements(): boolean { return this.size == 2 }
 
     //#endregion -------------------- Size methods --------------------
-    //#region -------------------- Current index methods --------------------
+    //#region -------------------- End-point index methods --------------------
+
+    /** @initializedOnFirstCall */
+    protected get firstIndex(): NullOrZeroNumber {
+        const value = this.#firstIndex
+        if (value !== undefined)
+            return value
+
+        if (this.isEmpty)
+            return this.#firstIndex = null
+        return this.#firstIndex = 0
+    }
+
+    /** Tell that the {@link firstIndex} has yet to be retrieved */
+    protected get _isFirstIndexInitialized(): boolean { return this.#firstIndex !== undefined }
+
+
+    /** @initializedOnFirstCall */
+    protected get lastIndex(): NullOrNumber {
+        const value = this.#lastIndex
+        if (value !== undefined)
+            return value
+
+        if (this.isEmpty)
+            return this.#lastIndex = null
+        return this.#lastIndex ??= this.size - 1
+    }
+
+    /** Tell that the {@link lastIndex} has yet to be retrieved */
+    protected get _isLastIndexInitialized(): boolean { return this.#lastIndex !== undefined }
+
+    //#endregion -------------------- End-point index methods --------------------
+
+    //#region -------------------- Current methods --------------------
 
     public get currentIndex(): NullOrNumber { return this._currentIndex }
 
@@ -104,49 +140,22 @@ export abstract class AbstractCollectionIterator<const T,
 
     public get index(): NullOrNumber { return this.currentIndex }
 
-    //#endregion -------------------- Current index methods --------------------
-    //#region -------------------- End-point index methods --------------------
-
-    /**
-     * Get the first index of the {@link collection}.
-     * If it is <b>null</b>, then it is empty, otherwise, it should be <b>0</b>.
-     *
-     * @initializedOnFirstCall
-     */
-    protected get firstIndex(): NullOrZeroNumber {
-        const value = this.#firstIndex
-        if (value !== undefined)
-            return value
-
-        if (this.isEmpty)
-            return this.#firstIndex = null
-        return this.#firstIndex = 0
-    }
-
-    /** Tell that the {@link firstIndex} has yet to be retrieved */
-    protected get _isFirstIndexInitialized(): boolean { return this.#firstIndex !== undefined }
-
-    /**
-     * Get the last index of the {@link collection}.
-     * If it is <b>null</b>, then it is empty, otherwise, it should be <code>size - 1</code>.
-     *
-     * @initializedOnFirstCall
-     */
-    protected get lastIndex(): NullOrNumber {
-        const value = this.#lastIndex
-        if (value !== undefined)
-            return value
-
-        if (this.isEmpty)
-            return this.#lastIndex = null
-        return this.#lastIndex ??= this.size - 1
-    }
-
-    /** Tell that the {@link lastIndex} has yet to be retrieved */
-    protected get _isLastIndexInitialized(): boolean { return this.#lastIndex !== undefined }
-
-    //#endregion -------------------- End-point index methods --------------------
+    //#endregion -------------------- Current methods --------------------
     //#region -------------------- Next methods --------------------
+
+    public get hasNext(): boolean {
+        if (this.isEmpty)
+            return false
+
+        if (this._isNextIndexInitialized)
+            return this._nextIndex != null
+
+        const currentIndex = this._currentIndex
+        if (currentIndex == null)
+            return true
+        return currentIndex < this.size
+    }
+
 
     public get nextIndex(): NullOrNumber { return this._nextIndex }
 
@@ -173,59 +182,55 @@ export abstract class AbstractCollectionIterator<const T,
     /** Tell that the next index has been initialized to either <b>null</b> or a {@link Number} */
     protected get _isNextIndexInitialized(): boolean { return this.#nextIndex !== undefined }
 
-    //#endregion -------------------- Next methods --------------------
-    //#region -------------------- Previous methods --------------------
 
-    public get previousIndex(): NullOrNumber { return this._previousIndex }
-
-    /**
-     * Get the previous index that the {@link GenericCollectionIterator} should be at
-     *
-     * @initializedOnFirstCall
-     * @synchronyzedWith<{@link _currentIndex}, {@link _nextIndex}>
-     */
-    protected get _previousIndex(): NullOrNumber {
-        const value = this.#previousIndex
-        if (value !== undefined)
-            return value
-        return this.#previousIndex = this.lastIndex
-    }
-
-    /**
-     * Set the previous index that the {@link GenericCollectionIterator} should be at
-     *
-     * @param value The value to set
-     */
-    protected set _previousIndex(value: NullOrNumber,) { this.#previousIndex = value }
-
-    /** Tell that the previous index has been initialized to either <b>null</b> or a {@link Number} */
-    protected get _isPreviousIndexInitialized(): boolean { return this.#previousIndex !== undefined }
-
-    //#endregion -------------------- Previous methods --------------------
-
-    //#endregion -------------------- Getter & setter methods --------------------
-    //#region -------------------- Methods --------------------
-
-    //#region -------------------- Value methods --------------------
-
-    protected abstract _getIteratorValue(index: number,): IteratorValue<T>
-    protected abstract _getValue(index: number,): T
-
-    //#endregion -------------------- Value methods --------------------
-    //#region -------------------- Next methods --------------------
-
-    public get hasNext(): boolean {
+    public get nextValue(): T {
         if (this.isEmpty)
-            return false
-
-        if (this._isNextIndexInitialized)
-            return this._nextIndex != null
+            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
 
         const currentIndex = this._currentIndex
-        if (currentIndex == null)
-            return true
-        return currentIndex < this.size
+        if (currentIndex == null) {
+            // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
+            if (this._hasOnly1Element) {
+                this._previousIndex = null
+                this._nextIndex = null
+                return this._getValue(this._currentIndex = 0,)
+            }
+
+            this._previousIndex = null
+            this._nextIndex = 1
+            return this._getValue(this._currentIndex = 0,)
+        }
+
+        if (this._hasOnly1Element)
+            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
+
+        if (this._nextIndex == null) // At the end of the line
+            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
+
+        if (this._previousIndex == null) { // At the start of the line
+            if (this._hasOnly2Elements) {
+                this._previousIndex = 0
+                this._nextIndex = null
+                return this._getValue(this._currentIndex = 1,)
+            }
+
+            this._previousIndex = 0
+            this._nextIndex = 2
+            return this._getValue(this._currentIndex = 1,)
+        }
+
+        if (currentIndex == this._sizeMinus2) { // At the end of the line (but no internal value set)
+            this._previousIndex = currentIndex
+            this._nextIndex = null
+            return this._getValue(this._currentIndex = currentIndex + 1,)
+        }
+
+        // Somewhere in the line
+        this._previousIndex = currentIndex
+        this._nextIndex = currentIndex + 2
+        return this._getValue(this._currentIndex = currentIndex + 1,)
     }
+
 
     public next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol> {
         if (this.isEmpty)
@@ -276,54 +281,6 @@ export abstract class AbstractCollectionIterator<const T,
         return this._getIteratorValue(this._currentIndex = currentIndex + 1,)
     }
 
-    public get nextValue(): T {
-        if (this.isEmpty)
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
-
-        const currentIndex = this._currentIndex
-        if (currentIndex == null) {
-            // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
-            if (this._hasOnly1Element) {
-                this._previousIndex = null
-                this._nextIndex = null
-                return this._getValue(this._currentIndex = 0,)
-            }
-
-            this._previousIndex = null
-            this._nextIndex = 1
-            return this._getValue(this._currentIndex = 0,)
-        }
-
-        if (this._hasOnly1Element)
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
-
-        if (this._nextIndex == null) // At the end of the line
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
-
-        if (this._previousIndex == null) { // At the start of the line
-            if (this._hasOnly2Elements) {
-                this._previousIndex = 0
-                this._nextIndex = null
-                return this._getValue(this._currentIndex = 1,)
-            }
-
-            this._previousIndex = 0
-            this._nextIndex = 2
-            return this._getValue(this._currentIndex = 1,)
-        }
-
-        if (currentIndex == this._sizeMinus2) { // At the end of the line (but no internal value set)
-            this._previousIndex = currentIndex
-            this._nextIndex = null
-            return this._getValue(this._currentIndex = currentIndex + 1,)
-        }
-
-        // Somewhere in the line
-        this._previousIndex = currentIndex
-        this._nextIndex = currentIndex + 2
-        return this._getValue(this._currentIndex = currentIndex + 1,)
-    }
-
     //#endregion -------------------- Next methods --------------------
     //#region -------------------- Previous methods --------------------
 
@@ -340,53 +297,32 @@ export abstract class AbstractCollectionIterator<const T,
         return currentIndex > 0
     }
 
-    public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> {
-        if (this.isEmpty)
-            return GenericBeforeFirstIteratorValue.get
 
-        const currentIndex = this._currentIndex
-        if (currentIndex == null) {
-            // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
-            if (this._hasOnly1Element) {
-                this._previousIndex = null
-                this._nextIndex = null
-                return this._getIteratorValue(this._currentIndex = 0,)
-            }
+    public get previousIndex(): NullOrNumber { return this._previousIndex }
 
-            this._previousIndex = this._sizeMinus2
-            this._nextIndex = null
-            return this._getIteratorValue(this._currentIndex = this._sizeMinus1,)
-        }
-
-        if (this._hasOnly1Element)
-            return GenericBeforeFirstIteratorValue.get
-
-        if (this._previousIndex == null) // At the start of the line
-            return GenericBeforeFirstIteratorValue.get
-
-        if (this._nextIndex == null) { // At the end of the line
-            if (this._hasOnly2Elements) {
-                this._previousIndex = null
-                this._nextIndex = 1
-                return this._getIteratorValue(this._currentIndex = 0,)
-            }
-
-            this._previousIndex = currentIndex - 2
-            this._nextIndex = currentIndex
-            return this._getIteratorValue(this._currentIndex = currentIndex - 1,)
-        }
-
-        if (currentIndex == 1) { // At the 2nd index
-            this._previousIndex = null
-            this._nextIndex = 1
-            return this._getIteratorValue(this._currentIndex = 0,)
-        }
-
-        // Somewhere in the line
-        this._previousIndex = currentIndex - 2
-        this._nextIndex = currentIndex
-        return this._getIteratorValue(this._currentIndex = currentIndex - 1,)
+    /**
+     * Get the previous index that the {@link GenericCollectionIterator} should be at
+     *
+     * @initializedOnFirstCall
+     * @synchronyzedWith<{@link _currentIndex}, {@link _nextIndex}>
+     */
+    protected get _previousIndex(): NullOrNumber {
+        const value = this.#previousIndex
+        if (value !== undefined)
+            return value
+        return this.#previousIndex = this.lastIndex
     }
+
+    /**
+     * Set the previous index that the {@link GenericCollectionIterator} should be at
+     *
+     * @param value The value to set
+     */
+    protected set _previousIndex(value: NullOrNumber,) { this.#previousIndex = value }
+
+    /** Tell that the previous index has been initialized to either <b>null</b> or a {@link Number} */
+    protected get _isPreviousIndexInitialized(): boolean { return this.#previousIndex !== undefined }
+
 
     public get previousValue(): T {
         if (this.isEmpty)
@@ -436,7 +372,73 @@ export abstract class AbstractCollectionIterator<const T,
         return this._getValue(this._currentIndex = currentIndex - 1,)
     }
 
+
+    public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> {
+        if (this.isEmpty)
+            return GenericBeforeFirstIteratorValue.get
+
+        const currentIndex = this._currentIndex
+        if (currentIndex == null) {
+            // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
+            if (this._hasOnly1Element) {
+                this._previousIndex = null
+                this._nextIndex = null
+                return this._getIteratorValue(this._currentIndex = 0,)
+            }
+
+            this._previousIndex = this._sizeMinus2
+            this._nextIndex = null
+            return this._getIteratorValue(this._currentIndex = this._sizeMinus1,)
+        }
+
+        if (this._hasOnly1Element)
+            return GenericBeforeFirstIteratorValue.get
+
+        if (this._previousIndex == null) // At the start of the line
+            return GenericBeforeFirstIteratorValue.get
+
+        if (this._nextIndex == null) { // At the end of the line
+            if (this._hasOnly2Elements) {
+                this._previousIndex = null
+                this._nextIndex = 1
+                return this._getIteratorValue(this._currentIndex = 0,)
+            }
+
+            this._previousIndex = currentIndex - 2
+            this._nextIndex = currentIndex
+            return this._getIteratorValue(this._currentIndex = currentIndex - 1,)
+        }
+
+        if (currentIndex == 1) { // At the 2nd index
+            this._previousIndex = null
+            this._nextIndex = 1
+            return this._getIteratorValue(this._currentIndex = 0,)
+        }
+
+        // Somewhere in the line
+        this._previousIndex = currentIndex - 2
+        this._nextIndex = currentIndex
+        return this._getIteratorValue(this._currentIndex = currentIndex - 1,)
+    }
+
     //#endregion -------------------- Previous methods --------------------
+    //#region -------------------- Value methods --------------------
+
+    /**
+     * Get the value encapsulated in an {@link IteratorValue} at the specified {@link index}
+     *
+     * @param index The positive in-bound index to retrieve the value
+     */
+    protected abstract _getIteratorValue(index: number,): IteratorValue<T>
+
+    /**
+     * Get the value directly from the {@link collection} at the specified {@link index}
+     *
+     * @param index The positive in-bound index to retrieve the value
+     */
+    protected abstract _getValue(index: number,): T
+
+    //#endregion -------------------- Value methods --------------------
     //#region -------------------- Reset methods --------------------
 
     public reset(): this {

@@ -36,9 +36,14 @@ export class GenericCollectionIterator<const T = unknown,
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Reference methods --------------------
 
     public override get collection(): COLLECTION { return this.#collection }
+
+    //#endregion -------------------- Reference methods --------------------
+    //#region -------------------- Size methods --------------------
 
     public override get size(): COLLECTION["size"] { return this.#size ??= super.size }
     protected override get _sizeMinus1(): number { return this.#sizeMinus1 ??= super._sizeMinus1 }
@@ -50,14 +55,20 @@ export class GenericCollectionIterator<const T = unknown,
     protected override get _hasOnly1Element(): boolean { return this.#hasOnly1Element ??= super._hasOnly1Element }
     protected override get _hasOnly2Elements(): boolean { return this.#hasOnly2Elements ??= super._hasOnly2Elements }
 
-    //#endregion -------------------- Getter methods --------------------
-    //#region -------------------- Methods --------------------
+    //#endregion -------------------- Size methods --------------------
+
+    //#region -------------------- Value methods --------------------
 
     protected override _getIteratorValue(index: number,): IteratorValue<T> { return new GenericIteratorValue(this.collection, index,) }
 
     protected override _getValue(index: number,): T { return this.collection.get(index,) }
 
-    public [Symbol.iterator](): CollectionIterator<T> { return new GenericCollectionIterator(this.collection,) }
+    //#endregion -------------------- Value methods --------------------
+    //#region -------------------- Javascript methods --------------------
+
+    public override [Symbol.iterator](): CollectionIterator<T> { return new GenericCollectionIterator(this.collection,) }
+
+    //#endregion -------------------- Javascript methods --------------------
 
     //#endregion -------------------- Methods --------------------
 
