@@ -49,7 +49,8 @@ export class CollectionConstants {
     static #COLLECTION_MEMBERS?: CollectionHolder<keyof CollectionHolder>
     static #ARRAY_MEMBERS?: CollectionHolder<keyof ReadonlyArray<unknown>>
     static #SET_MEMBERS?: CollectionHolder<keyof ReadonlySet<unknown>>
-    static #ITERATOR_MEMBERS?: CollectionHolder<keyof CollectionIterator>
+    // static #ITERATOR_MEMBERS?: CollectionHolder<keyof Iterator<unknown, unknown, unknown>>
+    static #COLLECTION_ITERATOR_MEMBERS?: CollectionHolder<keyof CollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
     static #GenericCollectionHolder?: typeof GenericCollectionHolder
@@ -224,9 +225,18 @@ export class CollectionConstants {
     }
 
 
-    /** Every method applicable to a {@link CollectionIterator} */
+    /**
+     * Every method applicable to a {@link CollectionIterator}
+     *
+     * @deprecated Use {@link COLLECTION_ITERATOR_MEMBERS} instead. The Iterator will be a proper object in JavaScript. This will be removed in version 1.11, but added back once TypeScript add the other methods
+     */
     public static get ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
-        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.COLLECTION_ITERATOR_MEMBERS
+    }
+
+    /** Every method applicable to a {@link CollectionIterator} */
+    public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
+        return CollectionConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
             "currentIndex", "index",
