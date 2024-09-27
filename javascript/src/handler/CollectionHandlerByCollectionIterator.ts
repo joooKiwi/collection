@@ -107,6 +107,10 @@ export class CollectionHandlerByCollectionIterator<const T = unknown,
             return this.#hasDuplicate = false
         }
 
+        const size = this.size
+        if (size == 1)
+            return this.#hasDuplicate = false
+
         //TODO add logic to compare if it exist and _lastIndex++ logic
         const reference = this._reference
         const collection = this._collection
