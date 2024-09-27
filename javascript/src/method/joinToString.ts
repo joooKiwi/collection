@@ -11,7 +11,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {StringCallback}             from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {__maximumIndex}                from "./_indexes utility"
+import {__lastIndex}                   from "./_indexes utility"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
@@ -28,11 +28,10 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param separator  The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
  * @param prefix     The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
  * @param postfix    The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit      The maximum amount of values in the join (null by default)
+ * @param limit     The maximum number of values to loop (<b>null</b> by default)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
- * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
- * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
@@ -60,11 +59,10 @@ export function joinToString<const T, >(collection: Nullable<MinimalistCollectio
  * @param separator  The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
  * @param prefix     The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
  * @param postfix    The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit      The maximum amount of values in the join (null by default)
+ * @param limit     The maximum number of values to loop (<b>null</b> by default)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
- * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
- * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
@@ -78,14 +76,18 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
     if (size == 0)
         return prefixAndPostfixOnly(prefix, postfix,)
 
+    if (limit == 0)
+        return "[]"
     if (transform == null) {
         if (limit == null)
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size,)
 
-        const maximumIndex = __maximumIndex(limit, size,)
-        if (maximumIndex == size)
+        const lastIndex = __lastIndex(limit, size,)
+        if (lastIndex == 0)
+            return "[]"
+        if (lastIndex == size)
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
-        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…',)
+        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…',)
     }
 
     if (limit == null) {
@@ -96,8 +98,10 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
         return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as () => string,)
     }
 
-    const maximumIndex = __maximumIndex(limit, size,)
-    if (maximumIndex == size) {
+    const lastIndex = __lastIndex(limit, size,)
+    if (lastIndex == 0)
+        return "[]"
+    if (lastIndex == size) {
         if (transform.length == 1)
             return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
         if (transform.length >= 2)
@@ -106,10 +110,10 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
     }
 
     if (transform.length == 1)
-        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as (value: T,) => string,)
+        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…', transform as (value: T,) => string,)
     if (transform.length >= 2)
-        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform,)
-    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as () => string,)
+        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…', transform,)
+    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…', transform as () => string,)
 }
 
 /**
@@ -123,11 +127,10 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
  * @param separator  The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
  * @param prefix     The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
  * @param postfix    The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit      The maximum amount of values in the join (null by default)
+ * @param limit     The maximum number of values to loop (<b>null</b> by default)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
- * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
- * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
@@ -139,15 +142,19 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
     if (collection.isEmpty)
         return prefixAndPostfixOnly(prefix, postfix,)
 
+    if (limit == 0)
+        return "[]"
     if (transform == null) {
         if (limit == null)
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size,)
 
         const size = collection.size
-        const maximumIndex = __maximumIndex(limit, size,)
-        if (maximumIndex == size)
+        const lastIndex = __lastIndex(limit, size,)
+        if (lastIndex == 0)
+            return "[]"
+        if (lastIndex == size)
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
-        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…',)
+        return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…',)
     }
 
     if (limit == null) {
@@ -159,8 +166,10 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
     }
 
     const size = collection.size
-    const maximumIndex = __maximumIndex(limit, size,)
-    if (maximumIndex == size) {
+    const lastIndex = __lastIndex(limit, size,)
+    if (lastIndex == 0)
+        return "[]"
+    if (lastIndex == size) {
         if (transform.length == 1)
             return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
         if (transform.length >= 2)
@@ -169,10 +178,10 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
     }
 
     if (transform.length == 1)
-        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as (value: T,) => string,)
+        return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…', transform as (value: T,) => string,)
     if (transform.length >= 2)
-        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform,)
-    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', maximumIndex, truncated ?? '…', transform as () => string,)
+        return __withTruncatedAnd2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…', transform,)
+    return __withTruncatedAnd0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…', transform as () => string,)
 }
 
 //#endregion -------------------- Facade method --------------------

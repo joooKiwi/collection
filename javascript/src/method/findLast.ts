@@ -129,7 +129,7 @@ export function findLastByCollectionHolder<const T, >(collection: Nullable<Colle
 
 function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: () => boolean, size: number,) {
     let index = size
-    while (--index > 0)
+    while (index-- > 0)
         if (predicate())
             return collection.get(index,)
     return null

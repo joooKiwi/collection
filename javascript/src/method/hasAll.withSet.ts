@@ -120,7 +120,7 @@ export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<
 
 function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, values: ReadonlySet<T>, size: number, valuesSize: number,) {
     const iterator: Iterator<T, unknown> = values[Symbol.iterator]()
-    let valuesIndex = valuesSize
+    let valuesIndex = valuesSize + 1
     valueLoop: while (--valuesIndex > 0) {
         const value = iterator.next().value
         let index = -1

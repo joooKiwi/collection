@@ -133,7 +133,7 @@ export function noneByCollectionHolder<const T, >(collection: Nullable<Collectio
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument(predicate: () => boolean, size: number,) {
-    let index = size - 1
+    let index = size
     while (index-- > 0)
         if (predicate())
             return false

@@ -97,7 +97,7 @@ export function getOrElseByMinimalistCollectionHolder<const T, >(collection: Nul
     const size = collection.size
     if (size == 0)
         return defaultValue(index,)
-    if (index > size)
+    if (index >= size)
         return defaultValue(index,)
     if (index >= 0)
         return collection.get(index,)
@@ -153,7 +153,7 @@ export function getOrElseByCollectionHolder<const T, >(collection: Nullable<Coll
         return defaultValue(index,)
 
     const size = collection.size
-    if (index > size)
+    if (index >= size)
         return defaultValue(index,)
     if (index >= 0)
         return collection.get(index,)

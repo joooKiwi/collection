@@ -108,7 +108,7 @@ export function hasOneWithSetByCollectionHolder<const T, >(collection: Nullable<
 
 function __hasOne<const T, >(collection: MinimalistCollectionHolder<T>, values: ReadonlySet<T>, size: number, valuesSize: number,) {
     const iterator: Iterator<T, unknown> = values[Symbol.iterator]()
-    let valueIndex = valuesSize
+    let valueIndex = valuesSize + 1
     while (--valueIndex > 0) {
         const value = iterator.next().value
         let index = -1

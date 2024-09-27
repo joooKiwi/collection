@@ -810,6 +810,8 @@ export class GenericCollectionHolder<const T = unknown,
         const size = this.size
         if (index > size)
             throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is over the size of the collection (${size}).`, index,)
+        if (index == size)
+            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is the size of the collection (${size}).`, index,)
         if (index >= 0)
             return this[index] as T
 
@@ -834,7 +836,7 @@ export class GenericCollectionHolder<const T = unknown,
             return defaultValue(index,)
 
         const size = this.size
-        if (index > size)
+        if (index >= size)
             return defaultValue(index,)
         if (index >= 0)
             return this[index] as T
@@ -858,7 +860,7 @@ export class GenericCollectionHolder<const T = unknown,
             return null
 
         const size = this.size
-        if (index > size)
+        if (index >= size)
             return null
         if (index >= 0)
             return this[index] as T
