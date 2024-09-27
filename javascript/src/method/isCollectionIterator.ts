@@ -18,7 +18,7 @@ import {EmptyCollectionIterator}    from "../iterator/EmptyCollectionIterator"
  * @see isCollectionIteratorByStructure
  */
 export function isCollectionIterator<const T, >(value: unknown,): value is CollectionIterator<T>
-export function isCollectionIterator(value: unknown,): boolean {
+export function isCollectionIterator(value: unknown,) {
     if (value == null)
         return false
     if (value instanceof GenericCollectionIterator)
