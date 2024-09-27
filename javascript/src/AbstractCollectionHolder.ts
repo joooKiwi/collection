@@ -163,6 +163,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
     public first(predicate: Nullable<BooleanCallback<T>>,): T
     public first(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return firstByCollectionHolder(this,)
         return firstByCollectionHolder(this, predicate,)
     }
 
@@ -173,6 +175,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return firstOrNullByCollectionHolder(this, predicate,)
         return firstOrNullByCollectionHolder(this, predicate,)
     }
 
@@ -184,6 +188,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
     public last(predicate: Nullable<BooleanCallback<T>>,): T
     public last(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+        return lastByCollectionHolder(this,)
         return lastByCollectionHolder(this, predicate,)
     }
 
@@ -194,6 +200,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return lastOrNullByCollectionHolder(this,)
         return lastOrNullByCollectionHolder(this, predicate,)
     }
 
@@ -331,12 +339,16 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public any(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return anyByCollectionHolder(this,)
         return anyByCollectionHolder(this, predicate,)
     }
 
     public some(): this["isNotEmpty"]
-    public some(predicate: Nullable<BooleanCallback<T>>): boolean
-    public some(predicate?: Nullable<BooleanCallback<T>>) {
+    public some(predicate: Nullable<BooleanCallback<T>>,): boolean
+    public some(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return this.any()
         return this.any(predicate,)
     }
 
@@ -346,6 +358,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public none(): this["isEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public none(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return noneByCollectionHolder(this,)
         return noneByCollectionHolder(this, predicate,)
     }
 
@@ -790,6 +804,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     public override toLocaleString(locale?: NullableString,): string {
+        if (arguments.length === 0)
+            return toLocaleStringByCollectionHolder(this, locale,)
         return toLocaleStringByCollectionHolder(this, locale,)
     }
 
@@ -799,6 +815,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     public toLocaleLowerCaseString(locale?: NullableString,): string {
+        if (arguments.length === 0)
+            return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
         return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
     }
 
@@ -808,6 +826,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     public toLocaleUpperCaseString(locale?: NullableString,): string {
+        if (arguments.length === 0)
+            return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
         return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
     }
 
