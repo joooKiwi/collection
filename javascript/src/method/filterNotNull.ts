@@ -69,7 +69,6 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
     if (collection.hasNull)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __fromComplete(collection,),)
     return collection as CollectionHolder<NonNullable<T>>
@@ -91,14 +90,15 @@ function __fromComplete<const T, >(collection: MinimalistCollectionHolder<Nullab
 }
 
 function __fromMinimalist<const T, >(collection: MinimalistCollectionHolder<Nullable<T>>, size: number,): CollectionHolder<NonNullable<T>> {
+    const temporaryArray = new Array<Nullable<T>>(size,)
     let index = -1
     while (++index < size)
-        if (collection.get(index,) == null)
+        if ((temporaryArray[index] = collection.get(index,)) == null)
             return new CollectionConstants.LazyGenericCollectionHolder(() => {
                 const newArray: NonNullable<T>[] = []
                 let index2 = -1
                 while (++index2 < index) // We add the non-null items from 0 to the index (they cannot be null)
-                    newArray.push(collection.get(index2,) as NonNullable<T>,)
+                    newArray.push(temporaryArray[index2] as NonNullable<T>,)
 
                 while (++index2 < size) { // We add the remaining items while validating the nullability
                     const value = collection.get(index2,)
