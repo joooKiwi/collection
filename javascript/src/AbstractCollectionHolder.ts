@@ -55,6 +55,7 @@ import {onEachByCollectionHolder}                  from "./method/onEach"
 import {onEachIndexedByCollectionHolder}           from "./method/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "./method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "./method/slice"
+import {sliceWithARangeByCollectionHolder}         from "./method/slice.withARange"
 import {toArrayByCollectionHolder}                 from "./method/toArray"
 import {toIteratorByCollectionHolder}              from "./method/toIterator"
 import {toLocaleLowerCaseStringByCollectionHolder} from "./method/toLocaleLowerCaseString"
@@ -241,52 +242,68 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- Index of --------------------
 
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
     public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
     /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return indexOfByCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of --------------------
 
     //#region -------------------- Last index of --------------------
 
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
     public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
     /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Last index of --------------------
 
     //#region -------------------- Index of first --------------------
 
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of first indexed --------------------
 
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of first indexed --------------------
 
     //#region -------------------- Index of last --------------------
 
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of last --------------------
     //#region -------------------- Index of last indexed --------------------
 
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of last indexed --------------------
@@ -599,10 +616,23 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public slice(indices: Iterable<number>,): CollectionHolder<T>
     public slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
+    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
     public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return sliceByCollectionHolder<T>(this, indicesOrFromIndex, toIndex, limit,)
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T> {
+        if (arguments.length === 0)
+            return sliceWithARangeByCollectionHolder<T>(this,)
+        if (arguments.length === 1)
+            if (indicesOrFromIndex == null)
+                return sliceWithARangeByCollectionHolder<T>(this, indicesOrFromIndex,)
+            else if (typeof indicesOrFromIndex == "number")
+                return sliceWithARangeByCollectionHolder<T>(this, indicesOrFromIndex,)
+            else
+                return sliceByCollectionHolder<T>(this, indicesOrFromIndex,)
+        return sliceWithARangeByCollectionHolder<T>(this, indicesOrFromIndex as NullableNumber, toIndex,)
     }
 
     //#endregion -------------------- Slice --------------------
@@ -675,16 +705,25 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- To reverse --------------------
 
-    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex, limit,)
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
+        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex,)
     }
 
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return this.toReverse(fromIndex, toIndex, limit,)
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
+        return this.toReverse(fromIndex, toIndex,)
     }
 
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return this.toReverse(fromIndex, toIndex, limit,)
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
+        return this.toReverse(fromIndex, toIndex,)
     }
 
     //#endregion -------------------- To reverse --------------------

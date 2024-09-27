@@ -504,14 +504,35 @@ export interface CollectionHolder<out T = unknown, >
      * @param element   The element to find
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
      * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, toIndex?)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the <b>first</b> occurrence equivalent to the value received
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param element   The element to find
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The never used limit
+     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.indexOf
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, toIndex?)
+     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -525,14 +546,14 @@ export interface CollectionHolder<out T = unknown, >
      * @param element   The element to find
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
+     * @param limit     The never used limit
      * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, toIndex?)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
@@ -551,14 +572,35 @@ export interface CollectionHolder<out T = unknown, >
      * @param element   The element to find
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
      * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, limit?)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, toIndex?)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the <b>last</b> occurrence equivalent to the value received
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param element   The element to find
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The never used limit
+     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.lastIndexOf
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, toIndex?)
+     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -572,17 +614,18 @@ export interface CollectionHolder<out T = unknown, >
      * @param element   The element to find
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
+     * @param limit     The never used limit
      * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws ForbiddenIndexException                   The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, limit?)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, toIndex?)
+     * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
-     * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
      */
     lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
@@ -598,12 +641,31 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The never used limit
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -620,11 +682,30 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
      * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The never used limit
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.findIndex
+     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -643,11 +724,30 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
      * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findLastIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the last index matching the {@link predicate}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The never used limit
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.findLastIndex
+     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -665,12 +765,31 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
      * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the last index matching the {@link predicate}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The never used limit
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.findLastIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -1860,7 +1979,6 @@ export interface CollectionHolder<out T = unknown, >
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: ReadonlySet<number>,): CollectionHolder<T>
 
@@ -1873,7 +1991,6 @@ export interface CollectionHolder<out T = unknown, >
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: CollectionHolder<number>,): CollectionHolder<T>
 
@@ -1886,7 +2003,6 @@ export interface CollectionHolder<out T = unknown, >
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
 
@@ -1899,7 +2015,6 @@ export interface CollectionHolder<out T = unknown, >
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: CollectionIterator<number>,): CollectionHolder<T>
 
@@ -1912,7 +2027,6 @@ export interface CollectionHolder<out T = unknown, >
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
     slice(indices: Iterable<number>,): CollectionHolder<T>
 
@@ -1925,47 +2039,96 @@ export interface CollectionHolder<out T = unknown, >
      * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      * @typescriptDefinition
      */
     slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
 
     //#endregion -------------------- Slice (indice) --------------------
-    //#region -------------------- Slice (from, to, limit) --------------------
+    //#region -------------------- Slice (from, to) --------------------
 
     /**
-     * Create a new {@link CollectionHolder} from the {@link indices}
-     * in the current {@link CollectionHolder collection}
+     * Create a new {@link CollectionHolder}
+     * from the {@link fromIndex starting} to the {@link toIndex ending} index
+     * in the current {@link CollectionHolder collection}.
+     *
+     * If the {@link fromIndex} is 0 and the {@link toIndex}
+     * is the <code>{@link CollectionHolder.size size} - 1</code>,
+     * then the current {@link CollectionHolder collection} is returned.
      *
      * @param fromIndex The starting index
-     * @param toIndex  The ending index
-     * @param limit    The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @param toIndex   The ending index
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+     */
+    slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder}
+     * from the {@link fromIndex starting} to the {@link toIndex ending} index
+     * in the current {@link CollectionHolder collection}.
+     *
+     * If the {@link fromIndex} is 0 and the {@link toIndex}
+     * is the <code>{@link CollectionHolder.size size} - 1</code>,
+     * then the current {@link CollectionHolder collection} is returned.
+     *
+     * @param fromIndex The starting index
+     * @param toIndex   The ending index
+     * @param limit     The never used limit
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.slice
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
      */
     slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
-    //#endregion -------------------- Slice (from, to, limit) --------------------
+    //#endregion -------------------- Slice (from, to) --------------------
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex indices}
-     * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index with a {@link limit} applied
-     * in the current {@link CollectionHolder collection}
+     * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index
+     * in the current {@link CollectionHolder collection}.
+     *
+     * If the {@link indicesOrFromIndex} is 0 and the {@link toIndex}
+     * is the <code>{@link CollectionHolder.size size} - 1</code>,
+     * then the current {@link CollectionHolder collection} is returned.
      *
      * @param indicesOrFromIndex The given indices (or starting index)
      * @param toIndex            The ending index
-     * @param limit              The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
      * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+     * @typescriptDefinition
+     */
+    slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex indices}
+     * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index
+     * in the current {@link CollectionHolder collection}.
+     *
+     * If the {@link indicesOrFromIndex} is 0 and the {@link toIndex}
+     * is the <code>{@link CollectionHolder.size size} - 1</code>,
+     * then the current {@link CollectionHolder collection} is returned.
+     *
+     * @param indicesOrFromIndex The given indices (or starting index)
+     * @param toIndex            The ending index
+     * @param limit              The never used limit
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
+     * @see ReadonlyArray.slice
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
      * @typescriptDefinition
      */
     slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
@@ -2107,13 +2270,17 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- To reverse --------------------
 
     /**
-     * Reverse the current {@link CollectionHolder collection} from a range (if provided)
+     * Reverse to a new {@link CollectionHolder}
+     * from the {@link toIndex ending} to the {@link fromIndex starting} index
+     * in the current {@link CollectionHolder collection}.
+     *
+     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
+     * then the current {@link CollectionHolder collect is returned.
      *
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see Array.reverse
      * @see ReadonlyArray.toReversed
@@ -2122,32 +2289,106 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
      * @canReceiveNegativeValue
      */
-    toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
 
     /**
-     * Reverse the current {@link CollectionHolder collection} from a range (if provided)
+     * Reverse to a new {@link CollectionHolder}
+     * from the {@link toIndex ending} to the {@link fromIndex starting} index
+     * in the current {@link CollectionHolder collection}.
+     *
+     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
+     * then the current {@link CollectionHolder collect is returned.
+     *
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The never used limit
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see Array.reverse
+     * @see ReadonlyArray.toReversed
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reversed.html Kotlin reversed()
+     * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
+     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
+     * @canReceiveNegativeValue
+     */
+    toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+
+
+    /**
+     * Reverse to a new {@link CollectionHolder}
+     * from the {@link toIndex ending} to the {@link fromIndex starting} index
+     * in the current {@link CollectionHolder collection}.
+     *
+     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
+     * then the current {@link CollectionHolder collect is returned.
      *
      * @alias toReverse
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @canReceiveNegativeValue
+     */
+    toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+
+    /**
+     * Reverse to a new {@link CollectionHolder}
+     * from the {@link toIndex ending} to the {@link fromIndex starting} index
+     * in the current {@link CollectionHolder collection}.
+     *
+     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
+     * then the current {@link CollectionHolder collect is returned.
+     *
+     * @alias toReverse
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The never used limit
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
      * @canReceiveNegativeValue
      */
     toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
+
     /**
-     * Reverse the current {@link CollectionHolder collection} from a range (if provided)
+     * Reverse to a new {@link CollectionHolder}
+     * from the {@link toIndex ending} to the {@link fromIndex starting} index
+     * in the current {@link CollectionHolder collection}.
+     *
+     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
+     * then the current {@link CollectionHolder collect is returned.
      *
      * @alias toReverse
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The maximum index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @canReceiveNegativeValue
+     */
+    reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+
+    /**
+     * Reverse to a new {@link CollectionHolder}
+     * from the {@link toIndex ending} to the {@link fromIndex starting} index
+     * in the current {@link CollectionHolder collection}.
+     *
+     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
+     * then the current {@link CollectionHolder collect is returned.
+     *
+     * @alias toReverse
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @param limit     The never used limit
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
      * @canReceiveNegativeValue
      */
     reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
@@ -2282,11 +2523,10 @@ export interface CollectionHolder<out T = unknown, >
      * @param separator The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
      * @param prefix    The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
      * @param postfix   The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
-     * @param limit     The maximum amount of values in the join (null by default)
+     * @param limit     The maximum number of values to loop (<b>null</b> by default)
      * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
      * @param transform A callback to transform into a {@link String}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
-     * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws ForbiddenIndexException The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see ReadonlyArray.join
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
      * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
@@ -2305,11 +2545,10 @@ export interface CollectionHolder<out T = unknown, >
      * @param separator The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
      * @param prefix    The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
      * @param postfix   The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX  ']'} by default)
-     * @param limit     The maximum amount of values in the join (null by default)
+     * @param limit     The maximum number of values to loop (<b>null</b> by default)
      * @param truncated The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
      * @param transform A callback to transform into a {@link String}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link limit} is not within a valid range
-     * @throws ForbiddenIndexException                   The {@link limit} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws ForbiddenIndexException The {@link limit} is a forbidden {@link Number} ({@link Number.NaN NaN})
      * @see ReadonlyArray.join
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
      * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()

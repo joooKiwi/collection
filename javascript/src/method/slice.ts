@@ -39,7 +39,6 @@ import {sliceWithSet, sliceWithSetByCollectionHolder, sliceWithSetByMinimalistCo
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -53,7 +52,6 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -67,7 +65,6 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -81,7 +78,6 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -95,7 +91,6 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -109,7 +104,6 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -123,7 +117,6 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -132,48 +125,90 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  */
 export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
 /**
- * Create a new {@link CollectionHolder} from the {@link fromIndex starting}
- * to the {@link toIndex ending} index with a {@link limit} applied
+ * Create a new {@link CollectionHolder}
+ * from the {@link fromIndex starting} to the {@link toIndex ending} index
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param fromIndex  The starting index
  * @param toIndex    The ending index
- * @param limit      The maximum index
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
- * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link fromIndex starting} to the {@link toIndex ending} index
+ * in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param fromIndex  The starting index
+ * @param toIndex    The ending index
+ * @param limit      The never used limit
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
  * @canReceiveNegativeValue
  * @extensionFunction
  * @facadeFunction
  */
 export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 /**
- * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex indices}
- * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index with a {@link limit} applied
+ * Create a new {@link CollectionHolder}
+ * from the {@link indicesOrFromIndex indices}
+ * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index
  * in the {@link collection}
  *
  * @param collection         The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param indicesOrFromIndex The given indices (or starting index)
  * @param toIndex            The ending index
- * @param limit              The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex} or {@link toIndex} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
- * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
  * @canReceiveNegativeValue
  * @extensionFunction
  * @facadeFunction
  * @typescriptDefinition
  */
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link indicesOrFromIndex indices}
+ * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index
+ * in the {@link collection}
+ *
+ * @param collection         The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param indicesOrFromIndex The given indices (or starting index)
+ * @param toIndex            The ending index
+ * @param limit              The never used limit
+ * @see ReadonlyArray.slice
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex} or {@link toIndex} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
+ * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ * @facadeFunction
+ * @typescriptDefinition
+ */
 export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number> = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
+export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number> = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
     if (isArray(indicesOrFromIndex,))
         return sliceWithArray(collection, indicesOrFromIndex,)
     if (isSet(indicesOrFromIndex,))
@@ -185,9 +220,9 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
     if (isCollectionIterator<number>(indicesOrFromIndex,))
         return sliceWithCollectionIterator(collection, indicesOrFromIndex,)
     if (indicesOrFromIndex == null)
-        return sliceWithARange(collection, indicesOrFromIndex, toIndex, limit,)
+        return sliceWithARange(collection, indicesOrFromIndex, toIndex,)
     if (typeof indicesOrFromIndex == "number")
-        return sliceWithARange(collection, indicesOrFromIndex, toIndex, limit,)
+        return sliceWithARange(collection, indicesOrFromIndex, toIndex,)
 
     if (isArrayByStructure<number>(indicesOrFromIndex,))
         return sliceWithArray(collection, indicesOrFromIndex,)
@@ -210,7 +245,6 @@ export function slice<const T, >(collection: Nullable<MinimalistCollectionHolder
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -224,7 +258,6 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -238,7 +271,6 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -252,7 +284,6 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -266,7 +297,6 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -280,7 +310,6 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -294,7 +323,6 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -303,48 +331,90 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  */
 export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
 /**
- * Create a new {@link CollectionHolder} from the {@link fromIndex starting}
- * to the {@link toIndex ending} index with a {@link limit} applied
+ * Create a new {@link CollectionHolder}
+ * from the {@link fromIndex starting} to the {@link toIndex ending} index
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param fromIndex  The starting index
  * @param toIndex    The ending index
- * @param limit      The maximum index
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link CollectionHolder.size size}
- * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link fromIndex starting} to the {@link toIndex ending} index
+ * in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param fromIndex  The starting index
+ * @param toIndex    The ending index
+ * @param limit      The never used limit
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
  * @canReceiveNegativeValue
  * @extensionFunction
  * @facadeFunction
  */
 export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 /**
- * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex indices}
- * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index with a {@link limit} applied
+ * Create a new {@link CollectionHolder}
+ * from the {@link indicesOrFromIndex indices}
+ * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index
  * in the {@link collection}
  *
  * @param collection         The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param indicesOrFromIndex The given indices (or starting index)
  * @param toIndex            The ending index
- * @param limit              The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex} or {@link toIndex} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
- * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
  * @canReceiveNegativeValue
  * @extensionFunction
  * @facadeFunction
  * @typescriptDefinition
  */
+export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link indicesOrFromIndex indices}
+ * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index
+ * in the {@link collection}
+ *
+ * @param collection         The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param indicesOrFromIndex The given indices (or starting index)
+ * @param toIndex            The ending index
+ * @param limit              The never used limit
+ * @see ReadonlyArray.slice
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex} or {@link toIndex} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
+ * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ * @facadeFunction
+ * @typescriptDefinition
+ */
 export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number> = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
+export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indicesOrFromIndex: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number> = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
     if (isArray(indicesOrFromIndex,))
         return sliceWithArrayByMinimalistCollectionHolder(collection, indicesOrFromIndex,)
     if (isSet(indicesOrFromIndex,))
@@ -356,9 +426,9 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
     if (isCollectionIterator(indicesOrFromIndex,))
         return sliceWithCollectionIteratorByMinimalistCollectionHolder(collection, indicesOrFromIndex,)
     if (indicesOrFromIndex == null)
-        return sliceWithARangeByMinimalistCollectionHolder(collection, indicesOrFromIndex, toIndex, limit,)
+        return sliceWithARangeByMinimalistCollectionHolder(collection, indicesOrFromIndex, toIndex,)
     if (typeof indicesOrFromIndex == "number")
-        return sliceWithARangeByMinimalistCollectionHolder(collection, indicesOrFromIndex, toIndex, limit,)
+        return sliceWithARangeByMinimalistCollectionHolder(collection, indicesOrFromIndex, toIndex,)
 
     if (isArrayByStructure<number>(indicesOrFromIndex,))
         return sliceWithArrayByMinimalistCollectionHolder(collection, indicesOrFromIndex,)
@@ -380,7 +450,6 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -394,7 +463,6 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -408,7 +476,6 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -422,7 +489,6 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -436,7 +502,6 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -450,7 +515,6 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -464,7 +528,6 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
@@ -473,48 +536,90 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  */
 export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
 /**
- * Create a new {@link CollectionHolder} from the {@link fromIndex starting}
- * to the {@link toIndex ending} index with a {@link limit} applied
+ * Create a new {@link CollectionHolder}
+ * from the {@link fromIndex starting} to the {@link toIndex ending} index
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param fromIndex  The starting index
  * @param toIndex    The ending index
- * @param limit      The maximum index
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link CollectionHolder.size size}
- * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link fromIndex starting} to the {@link toIndex ending} index
+ * in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param fromIndex  The starting index
+ * @param toIndex    The ending index
+ * @param limit      The never used limit
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
  * @canReceiveNegativeValue
  * @extensionFunction
  * @facadeFunction
  */
 export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 /**
- * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex indices}
- * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index with a {@link limit} applied
+ * Create a new {@link CollectionHolder}
+ * from the {@link indicesOrFromIndex indices}
+ * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index
  * in the {@link collection}
  *
  * @param collection         The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param indicesOrFromIndex The given indices (or starting index)
  * @param toIndex            The ending index
- * @param limit              The maximum index
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex}, {@link toIndex} and {@link limit} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex} or {@link toIndex} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
  * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
- * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
  * @canReceiveNegativeValue
  * @extensionFunction
  * @facadeFunction
  * @typescriptDefinition
  */
+export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link indicesOrFromIndex indices}
+ * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index
+ * in the {@link collection}
+ *
+ * @param collection         The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param indicesOrFromIndex The given indices (or starting index)
+ * @param toIndex            The ending index
+ * @param limit              The never used limit
+ * @see ReadonlyArray.slice
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex} or {@link toIndex} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+ * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
+ * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ * @facadeFunction
+ * @typescriptDefinition
+ */
 export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indicesOrFromIndex: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number> = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): CollectionHolder<T> {
+export function sliceByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indicesOrFromIndex: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number> = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
     if (isArray(indicesOrFromIndex,))
         return sliceWithArrayByCollectionHolder(collection, indicesOrFromIndex,)
     if (isSet(indicesOrFromIndex,))
@@ -526,9 +631,9 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
     if (isCollectionIterator(indicesOrFromIndex,))
         return sliceWithCollectionIteratorByCollectionHolder(collection, indicesOrFromIndex,)
     if (indicesOrFromIndex == null)
-        return sliceWithARangeByCollectionHolder(collection, indicesOrFromIndex, toIndex, limit,)
+        return sliceWithARangeByCollectionHolder(collection, indicesOrFromIndex, toIndex,)
     if (typeof indicesOrFromIndex == "number")
-        return sliceWithARangeByCollectionHolder(collection, indicesOrFromIndex, toIndex, limit,)
+        return sliceWithARangeByCollectionHolder(collection, indicesOrFromIndex, toIndex,)
 
     if (isArrayByStructure<number>(indicesOrFromIndex,))
         return sliceWithArrayByCollectionHolder(collection, indicesOrFromIndex,)

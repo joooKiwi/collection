@@ -13,7 +13,7 @@ import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {__endingIndex, __maximumIndex, __startingIndex} from "./_indexes utility"
 import {isCollectionHolder}                             from "./isCollectionHolder"
-import {isCollectionHolderByStructure}                  from "./isCollectionHolderByStructure"
+import {isCollectionHolderByStructure}                      from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -26,24 +26,46 @@ import {isCollectionHolderByStructure}                  from "./isCollectionHold
  * @param predicate  The given predicate
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
- * @param limit      The maximum index
  * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.findIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirst<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
+export function indexOfFirst<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+/**
+ * Get the first index matching the {@link predicate}
+ * or <b>null</b> if it was not in the {@link collection}
+ * from a range (if provided)
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param predicate  The given predicate
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The never used limit
+ * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws ForbiddenIndexException                   The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
+ * @see ReadonlyArray.findIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+ * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
+ * @canRceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfFirst<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+export function indexOfFirst<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
     if (isCollectionHolder<T>(collection,))
-        return indexOfFirstByCollectionHolder(collection, predicate, fromIndex, toIndex, limit,)
+        return indexOfFirstByCollectionHolder(collection, predicate, fromIndex, toIndex,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return indexOfFirstByCollectionHolder(collection, predicate, fromIndex, toIndex, limit,)
-    return indexOfFirstByMinimalistCollectionHolder(collection, predicate, fromIndex, toIndex, limit,)
+        return indexOfFirstByCollectionHolder(collection, predicate, fromIndex, toIndex,)
+    return indexOfFirstByMinimalistCollectionHolder(collection, predicate, fromIndex, toIndex,)
 }
 
 
@@ -56,28 +78,46 @@ export function indexOfFirst<const T, >(collection: Nullable<MinimalistCollectio
  * @param predicate  The given predicate
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
- * @param limit      The maximum index
  * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.findIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
+export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+/**
+ * Get the first index matching the {@link predicate}
+ * or <b>null</b> if it was not in the {@link collection}
+ * from a range (if provided)
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The given predicate
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The never used limit
+ * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws ForbiddenIndexException                   The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
+ * @see ReadonlyArray.findIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+ * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
         return null
 
     const size = collection.size
-    if (size == 0)
-        return null
-    if (fromIndex === 0 && toIndex === 0)
-        return null
-    if (limit === 0)
+    if (size === 0)
         return null
 
     //#endregion -------------------- Early returns --------------------
@@ -90,34 +130,11 @@ export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: 
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
-    if (limit == null) {
-        if (predicate.length == 1)
-            return __withoutALimitAnd1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
-        if (predicate.length >= 2)
-            return __withoutALimitAnd2Argument(collection, predicate, startingIndex, endingIndex,)
-        return __withoutALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex,)
-    }
-
-    //#region -------------------- Initialization (maximum index) --------------------
-
-    const maximumIndex = __maximumIndex(limit, size,)
-    if (maximumIndex == size) {
-        if (predicate.length == 1)
-            return __withoutALimitAnd1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
-        if (predicate.length >= 2)
-            return __withoutALimitAnd2Argument(collection, predicate, startingIndex, endingIndex,)
-        return __withoutALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex,)
-    }
-    if (endingIndex - startingIndex < maximumIndex - 1)
-        return null
-
-    //#endregion -------------------- Initialization (maximum index) --------------------
-
     if (predicate.length == 1)
-        return __withALimitAnd1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex, maximumIndex,)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
-        return __withALimitAnd2Argument(collection, predicate, startingIndex, endingIndex, maximumIndex,)
-    return __withALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex, maximumIndex,)
+        return __with2Argument(collection, predicate, startingIndex, endingIndex,)
+    return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
 }
 
 /**
@@ -129,26 +146,44 @@ export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: 
  * @param predicate  The given predicate
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
- * @param limit      The maximum index
  * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex}, {@link toIndex} or {@link limit} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex}, {@link toIndex} or {@link limit} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.findIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null, limit: NullableNumber = null,): NullOrNumber {
+export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+/**
+ * Get the first index matching the {@link predicate}
+ * or <b>null</b> if it was not in the {@link collection}
+ * from a range (if provided)
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param predicate  The given predicate
+ * @param fromIndex  The inclusive starting index
+ * @param toIndex    The inclusive ending index
+ * @param limit      The never used limit
+ * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+ * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws ForbiddenIndexException                   The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
+ * @see ReadonlyArray.findIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+ * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     //#region -------------------- Early returns --------------------
 
     if (collection == null)
         return null
     if (collection.isEmpty)
-        return null
-    if (fromIndex === 0 && toIndex === 0)
-        return null
-    if (limit === 0)
         return null
 
     //#endregion -------------------- Early returns --------------------
@@ -163,40 +198,17 @@ export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<C
 
     //#endregion -------------------- Initialization (starting/ending index) --------------------
 
-    if (limit == null) {
-        if (predicate.length == 1)
-            return __withoutALimitAnd1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
-        if (predicate.length >= 2)
-            return __withoutALimitAnd2Argument(collection, predicate, startingIndex, endingIndex,)
-        return __withoutALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex,)
-    }
-
-    //#region -------------------- Initialization (maximum index) --------------------
-
-    const maximumIndex = __maximumIndex(limit, size,)
-    if (maximumIndex == size) {
-        if (predicate.length == 1)
-            return __withoutALimitAnd1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
-        if (predicate.length >= 2)
-            return __withoutALimitAnd2Argument(collection, predicate, startingIndex, endingIndex,)
-        return __withoutALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex,)
-    }
-    if (endingIndex - startingIndex < maximumIndex - 1)
-        return null
-
-    //#endregion -------------------- Initialization (maximum index) --------------------
-
     if (predicate.length == 1)
-        return __withALimitAnd1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex, maximumIndex,)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
-        return __withALimitAnd2Argument(collection, predicate, startingIndex, endingIndex, maximumIndex,)
-    return __withALimitAnd0Argument(predicate as () => boolean, startingIndex, endingIndex, maximumIndex,)
+        return __with2Argument(collection, predicate, startingIndex, endingIndex,)
+    return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __withoutALimitAnd0Argument(predicate: () => boolean, startingIndex: number, endingIndex: number,) {
+function __with0Argument(predicate: () => boolean, startingIndex: number, endingIndex: number,) {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (predicate())
@@ -204,7 +216,7 @@ function __withoutALimitAnd0Argument(predicate: () => boolean, startingIndex: nu
     return null
 }
 
-function __withoutALimitAnd1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, startingIndex: number, endingIndex: number,) {
+function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, startingIndex: number, endingIndex: number,) {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (predicate(collection.get(index,)))
@@ -212,41 +224,10 @@ function __withoutALimitAnd1Argument<const T, >(collection: MinimalistCollection
     return null
 }
 
-function __withoutALimitAnd2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, startingIndex: number, endingIndex: number,) {
+function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, startingIndex: number, endingIndex: number,) {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (predicate(collection.get(index,), index,))
-            return index
-    return null
-}
-
-
-function __withALimitAnd0Argument(predicate: () => boolean, startingIndex: number, endingIndex: number, maximumIndex: number,) {
-    let index = startingIndex - 1
-    while (++index <= endingIndex)
-        if (index >= maximumIndex)
-            return null
-        else if (predicate())
-            return index
-    return null
-}
-
-function __withALimitAnd1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, startingIndex: number, endingIndex: number, maximumIndex: number,) {
-    let index = startingIndex - 1
-    while (++index <= endingIndex)
-        if (index >= maximumIndex)
-            return null
-        else if (predicate(collection.get(index,),))
-            return index
-    return null
-}
-
-function __withALimitAnd2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, startingIndex: number, endingIndex: number, maximumIndex: number,) {
-    let index = startingIndex - 1
-    while (++index <= endingIndex)
-        if (index >= maximumIndex)
-            return null
-        else if (predicate(collection.get(index,), index,))
             return index
     return null
 }
