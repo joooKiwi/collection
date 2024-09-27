@@ -32,6 +32,8 @@ describe("CollectionIteratorTest", () => {
 
         describe("index", () => {
             test("current",  () => expect(instance.currentIndex,).toBeNull(),)
+            test("first", () => expect(instance.firstIndex,).toBeNull(),)
+            test("last", () => expect(instance.lastIndex,).toBeNull(),)
             test("next",     () => expect(instance.nextIndex,).toBeNull(),)
             test("previous", () => expect(instance.previousIndex,).toBeNull(),)
         },)
@@ -76,6 +78,8 @@ describe("CollectionIteratorTest", () => {
 
             describe("index", () => {
                 test("current",  () => expect(instance.currentIndex,).toBeNull(),)
+                test("first", () => expect(instance.firstIndex,).toBeNull(),)
+                test("last", () => expect(instance.lastIndex,).toBeNull(),)
                 test("next",     () => expect(instance.nextIndex,).toBeNull(),)
                 test("previous", () => expect(instance.previousIndex,).toBeNull(),)
             },)
@@ -136,6 +140,8 @@ describe("CollectionIteratorTest", () => {
                         test("+ 1 previous", () => expect(do1Previous(instance,).currentIndex,).toBe(index,),)
                     },)
                 },)
+                test("first", () => expect(instance.firstIndex,).toBe(index,),)
+                test("last", () => expect(instance.lastIndex,).toBe(index,),)
                 describe("next", () => {
                     test("initial", () => expect(instance.nextIndex,).toBe(index,),)
 
@@ -367,6 +373,8 @@ describe("CollectionIteratorTest", () => {
                         test("+ 2 previous", () => expect(do2Previous(instance,).currentIndex,).toBe(index1,),)
                     },)
                 },)
+                test("first", () => expect(instance.firstIndex,).toBe(index1,),)
+                test("last", () => expect(instance.lastIndex,).toBe(index2,),)
                 describe("next", () => {
                     test("initial", () => expect(instance.nextIndex,).toBe(index1,),)
 
@@ -722,6 +730,8 @@ describe("CollectionIteratorTest", () => {
                         test("+ 2 previous", () => expect(do2Previous(instance,).currentIndex,).toBe(index2,),)
                     },)
                 },)
+                test("first", () => expect(instance.firstIndex,).toBe(index1,),)
+                test("last", () => expect(instance.lastIndex,).toBe(index4,),)
                 describe("next", () => {
                     test("initial", () => expect(instance.nextIndex,).toBe(index1,),)
 

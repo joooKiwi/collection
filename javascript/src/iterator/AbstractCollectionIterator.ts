@@ -89,7 +89,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#region -------------------- End-point index methods --------------------
 
     /** @initializedOnFirstCall */
-    protected get firstIndex(): NullOrZeroNumber {
+    public get firstIndex(): NullOrZeroNumber {
         const value = this.#firstIndex
         if (value !== undefined)
             return value
@@ -104,7 +104,7 @@ export abstract class AbstractCollectionIterator<const T,
 
 
     /** @initializedOnFirstCall */
-    protected get lastIndex(): NullOrNumber {
+    public get lastIndex(): NullOrNumber {
         const value = this.#lastIndex
         if (value !== undefined)
             return value

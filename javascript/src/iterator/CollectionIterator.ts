@@ -53,6 +53,21 @@ export interface CollectionIterator<out T = unknown, >
     get isNotEmpty(): boolean
 
     //#endregion -------------------- Size methods --------------------
+    //#region -------------------- End-point index methods --------------------
+
+    /**
+     * Get the first index of the {@link collection}.
+     * If it is <b>null</b>, then it is empty, otherwise, it should be <b>0</b>.
+     */
+    get firstIndex(): NullOrZeroNumber
+
+    /**
+     * Get the last index of the {@link collection}.
+     * If it is <b>null</b>, then it is empty, otherwise, it should be <code>size - 1</code>.
+     */
+    get lastIndex(): NullOrNumber
+
+    //#endregion -------------------- End-point index methods --------------------
 
     //#region -------------------- Current methods --------------------
 
