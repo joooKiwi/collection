@@ -499,7 +499,7 @@ export class EmptyCollectionHolder
     //#region -------------------- To iterator --------------------
 
     public toIterator(..._: readonly unknown[]): EmptyCollectionIterator
-    public toIterator() { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
+    public toIterator() { return this[Symbol.iterator]() }
 
     //#endregion -------------------- To iterator --------------------
     //#region -------------------- To array --------------------
