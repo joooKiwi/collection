@@ -7,10 +7,6 @@
 
 import type {CollectionHolder} from "../../src/CollectionHolder"
 
-import {ABC} from "../value/arrays"
-
-export function expectIndexesInCollectionOf3ToOnlyHave2ndPresent(collection: CollectionHolder, array: readonly [unknown, ...readonly unknown[],] = ABC,) {
-    expect(collection,).toContainKeys(["1",],)
-    expect(collection,).not.toContainKeys(["0", "2",],)
-    expect(collection[1],).toBe(array[1],)
+export function expectIndexesInCollectionOf4ToBeNotPresent(collection: CollectionHolder,) {
+    expect(collection,).not.toContainKeys(['0', '1', '2', '3',],)
 }

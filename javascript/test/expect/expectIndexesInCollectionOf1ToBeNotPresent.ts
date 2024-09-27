@@ -8,5 +8,5 @@
 import type {CollectionHolder} from "../../src/CollectionHolder"
 
 export function expectIndexesInCollectionOf1ToBeNotPresent(collection: CollectionHolder,) {
-    expect(collection,).not.toContainKey("0",)
+    expect(collection,).not.toContainKey('0',)
 }
