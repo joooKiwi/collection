@@ -38,8 +38,6 @@ export function __startingIndex(fromIndex: NullableNumber, size: number,) {
     let startingIndex = fromIndex
     if (startingIndex < 0)
         startingIndex += size
-    if (startingIndex == size)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" ("${startingIndex}" after calculation) is the collection size "${size}".`, fromIndex,)
     if (startingIndex < 0)
         throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" ("${startingIndex}" after calculation) is under 0.`, fromIndex,)
     return startingIndex
@@ -67,16 +65,14 @@ export function __endingIndex(toIndex: NullableNumber, size: number,) {
 
     if (toIndex == size)
         throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" is the collection size "${size}".`, toIndex,)
+    if (toIndex > size)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" is over the collection size "${size}".`, toIndex,)
 
     let endingIndex = toIndex
     if (endingIndex < 0)
         endingIndex += size
     if (endingIndex < 0)
         throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is under 0.`, toIndex,)
-    if (endingIndex == size)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is the collection size "${size}".`, toIndex,)
-    if (endingIndex > size)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is over the collection size "${size}".`, toIndex,)
     return endingIndex
 }
 
@@ -103,8 +99,6 @@ export function __lastIndex(limit: number, size: number,) {
         maximumIndex += size
     if (maximumIndex < 0)
         return 0
-    if (maximumIndex >= size)
-        return size
     return maximumIndex
 }
 
