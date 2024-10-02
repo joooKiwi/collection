@@ -84,7 +84,7 @@ export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder
  * Tell if the {@link collection} <b>is not empty</b>
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @return {boolean} <b>false</b> if null is received or !{@link MinimalistCollectionHolder.isEmpty isEmpty} otherwise
+ * @return {boolean} <b>false</b> if null is received or <b>is not empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
@@ -105,7 +105,7 @@ export function anyByMinimalistCollectionHolder<const T, const COLLECTION extend
  * @extensionFunction
  */
 export function anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
-export function anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,): boolean {
+export function anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (collection == null)
         return false
     if (predicate == null)
