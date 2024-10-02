@@ -10,9 +10,11 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
+import {asString}                      from "./asString"
+import {isArray}                       from "./isArray"
+import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
-import {asString}                      from "./asString"
 
 //#region -------------------- Facade method --------------------
 
@@ -20,18 +22,22 @@ import {asString}                      from "./asString"
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toString toString()}</i>" method
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @see Array.toString
  * @see Object.toString
  * @extensionFunction
  */
-export function toString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): string {
+export function toString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): string {
     if (collection == null)
         return "[]"
-    if (isCollectionHolder(collection,))
+    if (isCollectionHolder<T>(collection,))
         return toStringByCollectionHolder(collection,)
+    if (isArray(collection,))
+        return toStringByArray(collection,)
     if (isCollectionHolderByStructure<T>(collection,))
         return toStringByCollectionHolder(collection,)
+    if (isArrayByStructure<T>(collection,))
+        return toStringByArray(collection,)
     return toStringByMinimalistCollectionHolder(collection,)
 }
 
@@ -74,6 +80,25 @@ export function toStringByCollectionHolder<const T, >(collection: Nullable<Colle
     return __toString(collection, size,)
 }
 
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link Object.toString toString()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @see Array.toString
+ * @see Object.toString
+ * @extensionFunction
+ */
+export function toStringByArray<const T, >(collection: Nullable<readonly T[]>,): string {
+    if (collection == null)
+        return "[]"
+
+    const size = collection.length
+    if (size == 0)
+        return "[]"
+    return __toStringByArray(collection, size,)
+}
+
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
@@ -84,6 +109,15 @@ function __toString(collection: MinimalistCollectionHolder, size: number,) {
     while (++index < sizeMinus1)
         string += `${asString(collection.get(index,),)}, `
     return `[${string}${asString(collection.get(index),)}]`
+}
+
+function __toStringByArray(collection: readonly unknown[], size: number,) {
+    let string = ""
+    const sizeMinus1 = size - 1
+    let index = -1
+    while (++index < sizeMinus1)
+        string += `${asString(collection[index],)}, `
+    return `[${string}${asString(collection[index],)}]`
 }
 
 //#endregion -------------------- Loop method --------------------
