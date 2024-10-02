@@ -14,14 +14,14 @@ import {everyIterableInstances}                            from "./value/instanc
 describe("CollectionHolderTest (constructor)", () => {
 
     describe("GenericMinimalistCollectionHolder", () => {
-    describe.each(everyIterableInstances,)("%s", ({value,},) => {
-        const newCollection = <const T, >(values: readonly T[],) => new GenericMinimalistCollectionHolder_ConstructorTest<T>(value(values,),)._array
+    describe.each(everyIterableInstances,)("%s", ({value: it,},) => {
+        const newCollection = <const T, >(values: readonly T[],) => new GenericMinimalistCollectionHolder_ConstructorTest<T>(it(values,),).array
 
         test("empty",    () => expect(newCollection(EMPTY,),).toBeEmpty(),)
-        test("1 field",  () => expect(newCollection(A,),).toContainAllValues(A,),)
-        test("2 fields", () => expect(newCollection(AB,),).toContainAllValues(AB,),)
-        test("3 fields", () => expect(newCollection(ABC,),).toContainAllValues(ABC,),)
-        test("4 fields", () => expect(newCollection(ABCD,),).toContainAllValues(ABCD,),)
+        test("1 field",  () => expect(newCollection(A,),).toEqual(A,),)
+        test("2 fields", () => expect(newCollection(AB,),).toEqual(AB,),)
+        test("3 fields", () => expect(newCollection(ABC,),).toEqual(ABC,),)
+        test("4 fields", () => expect(newCollection(ABCD,),).toEqual(ABCD,),)
 
     },)},)
     describe("GenericCollectionHolder", () => {
