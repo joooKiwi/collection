@@ -10,16 +10,18 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {__uniqueValues, __values}      from "./_tables utility"
-import {isCollectionHolder}            from "./isCollectionHolder"
-import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {__uniqueValues, __uniqueValuesByArray, __values} from "./_tables utility"
+import {isArray}                                         from "./isArray"
+import {isArrayByStructure}                              from "./isArrayByStructure"
+import {isCollectionHolder}                              from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
 /**
  * Convert the {@link collection} to an {@link Set mutable set}
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to convert
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
 export function toMutableSet<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Set<T> {
@@ -27,8 +29,12 @@ export function toMutableSet<const T, >(collection: Nullable<MinimalistCollectio
         return new Set()
     if (isCollectionHolder<T>(collection,))
         return toMutableSetByCollectionHolder(collection,)
+    if (isArray<T>(collection,))
+        return toMutableSetByArray(collection,)
     if (isCollectionHolderByStructure<T>(collection,))
         return toMutableSetByCollectionHolder(collection,)
+    if (isArrayByStructure<T>(collection,))
+        return toMutableSetByArray(collection,)
     return toMutableSetByMinimalistCollectionHolder(collection,)
 }
 
@@ -65,12 +71,33 @@ export function toMutableSetByCollectionHolder<const T, >(collection: Nullable<C
     return __withoutDuplicate(collection, collection.size,)
 }
 
+/**
+ * Convert the {@link collection} to an {@link Set mutable set}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @extensionFunction
+ */
+export function toMutableSetByArray<const T, >(collection: Nullable<readonly T[]>,): Set<T> {
+    if (collection == null)
+        return new Set()
+
+    const size = collection.length
+    if (size == 0)
+        return new Set()
+    return __withDuplicateByArray(collection, size,)
+}
+
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
 function __withDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return new Set(__uniqueValues(collection, size,),)
 }
+
+function __withDuplicateByArray<const T, >(collection: readonly T[], size: number,) {
+    return new Set(__uniqueValuesByArray(collection, size,),)
+}
+
 
 function __withoutDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return new Set(__values(collection, size,),)
