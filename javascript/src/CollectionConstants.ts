@@ -232,6 +232,16 @@ export class CollectionConstants {
      */
     public static get ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
         return CollectionConstants.COLLECTION_ITERATOR_MEMBERS
+        // return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        //     "next",
+        //     "every", "some",
+        //     "find", "filter", "reduce",
+        //     "take", "drop",
+        //     "forEach",
+        //     "map", "flatMap",
+        //     "toArray",
+        //     Symbol.iterator, Symbol.toStringTag,
+        // ] as const,),)
     }
 
     /** Every method applicable to a {@link CollectionIterator} */
