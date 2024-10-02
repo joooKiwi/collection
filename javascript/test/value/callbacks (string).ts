@@ -15,7 +15,7 @@ export const callbackToString0 = () => 'E'
 export const callbackToUpperString1 = <const T extends string, >(it: T,) => it.toUpperCase() as Uppercase<T>
 export const callbackToUpperString1Alt = <const T extends string, >(_: unknown, it: T,) => it.toUpperCase() as Uppercase<T>
 export const callbackToUpperString2 = <const T extends string, >(it: T, i: number,) => `${i}:${it.toUpperCase() as Uppercase<T>}` as const
-export const callbackToUpperString2Alt = <const T extends string, >( i: number,it: T,) => `${i}:${it.toUpperCase() as Uppercase<T>}` as const
+export const callbackToUpperString2Alt = <const T extends string, >(i: number, it: T,) => `${i}:${it.toUpperCase() as Uppercase<T>}` as const
 
 export const callbackIsA: BooleanCallback<string> = it => it === 'a'
 export const callbackIsB: BooleanCallback<string> = it => it === 'b'

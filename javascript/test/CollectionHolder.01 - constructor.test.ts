@@ -25,8 +25,8 @@ describe("CollectionHolderTest (constructor)", () => {
 
     },)},)
     describe("GenericCollectionHolder", () => {
-    describe.each(everyIterableInstances,)("%s", ({value,},) => {
-        const newCollection = <const T, >(values: readonly T[],) => new GenericCollectionHolder_ConstructorTest<T>(value(values,),)._array
+    describe.each(everyIterableInstances,)("%s", ({value: it,},) => {
+        const newCollection = <const T, >(values: readonly T[],) => new GenericCollectionHolder_ConstructorTest<T>(it(values,),)
 
         test("empty",    () => expect(newCollection(EMPTY,),).toBeEmpty(),)
         test("1 field",  () => expect(newCollection(A,),).toContainAllValues(A,),)
@@ -36,8 +36,8 @@ describe("CollectionHolderTest (constructor)", () => {
 
     },)},)
     describe("LazyGenericCollectionHolder", () => {
-    describe.each(everyIterableInstances,)("%s", ({value,},) => {
-        const newCollection = <const T, >(values: readonly T[],) => new LazyGenericCollectionHolder_ConstructorTest(value(values,),)
+    describe.each(everyIterableInstances,)("%s", ({value: it,},) => {
+        const newCollection = <const T, >(values: readonly T[],) => new LazyGenericCollectionHolder_ConstructorTest(it(values,),)
 
         test("empty",    () => expect(newCollection(EMPTY,),).toBeEmpty(),)
         test("1 field",  () => expect(newCollection(A,),).toContainAllValues(A,),)
