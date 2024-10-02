@@ -10,23 +10,31 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {__uniqueValues, __values}      from "./_tables utility"
-import {isCollectionHolder}            from "./isCollectionHolder"
-import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {__uniqueValues, __uniqueValuesByArray, __values} from "./_tables utility"
+import {isArray}                                         from "./isArray"
+import {isArrayByStructure}                              from "./isArrayByStructure"
+import {isCollectionHolder}                              from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
 /**
  * Convert the {@link collection} to an {@link WeakSet mutable weak set}
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to convert
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable<CollectionHolder<T>>,): WeakSet<T> {
+export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): WeakSet<T> {
+    if (collection == null)
+        return new WeakSet()
     if (isCollectionHolder<T>(collection,))
         return toMutableWeakSetByCollectionHolder(collection,)
+    if (isArray(collection,))
+        return toMutableWeakSetByArray(collection,)
     if (isCollectionHolderByStructure<T>(collection,))
         return toMutableWeakSetByCollectionHolder(collection,)
+    if (isArrayByStructure<T>(collection,))
+        return toMutableWeakSetByArray(collection,)
     return toMutableWeakSetByMinimalistCollectionHolder(collection,)
 }
 
@@ -44,7 +52,7 @@ export function toMutableWeakSetByMinimalistCollectionHolder<const T extends Wea
     const size = collection.size
     if (size == 0)
         return new WeakSet()
-    return __withoutDuplicate(collection, size,)
+    return __withDuplicate(collection, size,)
 }
 
 /**
@@ -63,12 +71,33 @@ export function toMutableWeakSetByCollectionHolder<const T extends WeakKey, >(co
     return __withoutDuplicate(collection, collection.size,)
 }
 
+/**
+ * Convert the {@link collection} to an {@link WeakSet mutable weak set}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @extensionFunction
+ */
+export function toMutableWeakSetByArray<const T extends WeakKey, >(collection: Nullable<readonly T[]>,): WeakSet<T> {
+    if (collection == null)
+        return new WeakSet()
+
+    const size = collection.length
+    if (size == 0)
+        return new WeakSet()
+    return __withDuplicateByArray(collection, size,)
+}
+
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Core method --------------------
 
 function __withDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,): WeakSet<T> {
     return new WeakSet(__uniqueValues(collection, size,),)
 }
+
+function __withDuplicateByArray<const T extends WeakKey, >(collection: readonly T[], size: number,): WeakSet<T> {
+    return new WeakSet(__uniqueValuesByArray(collection, size,),)
+}
+
 
 function __withoutDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,): WeakSet<T> {
     return new WeakSet(__values(collection, size,),)
