@@ -10,26 +10,32 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
-import {__uniqueValues, __values}      from "./_tables utility"
-import {isCollectionHolder}            from "./isCollectionHolder"
-import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {CollectionConstants}                             from "../CollectionConstants"
+import {__uniqueValues, __uniqueValuesByArray, __values} from "./_tables utility"
+import {isArray}                                         from "./isArray"
+import {isArrayByStructure}                              from "./isArrayByStructure"
+import {isCollectionHolder}                              from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
 /**
  * Convert the {@link collection} to an {@link ReadonlySet set}
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to convert
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toSet<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): ReadonlySet<T> {
+export function toSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): ReadonlySet<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_SET
     if (isCollectionHolder<T>(collection,))
         return toSetByCollectionHolder(collection,)
+    if (isArray(collection,))
+        return toSetByArray(collection,)
     if (isCollectionHolderByStructure<T>(collection,))
         return toSetByCollectionHolder(collection,)
+    if (isArrayByStructure<T>(collection,))
+        return toSetByArray(collection,)
     return toSetByMinimalistCollectionHolder(collection,)
 }
 
@@ -66,12 +72,33 @@ export function toSetByCollectionHolder<const T, >(collection: Nullable<Collecti
     return __withoutDuplicate(collection, collection.size,)
 }
 
+/**
+ * Convert the {@link collection} to an {@link ReadonlySet set}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @extensionFunction
+ */
+export function toSetByArray<const T, >(collection: Nullable<readonly T[]>,): ReadonlySet<T> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_SET
+
+    const size = collection.length
+    if (size == 0)
+        return CollectionConstants.EMPTY_SET
+    return __withDuplicateByArray(collection, size,)
+}
+
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
 function __withDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return Object.freeze(new Set(__uniqueValues(collection, size,),),)
 }
+
+function __withDuplicateByArray<const T, >(collection: readonly T[], size: number,) {
+    return Object.freeze(new Set(__uniqueValuesByArray(collection, size,),),)
+}
+
 
 function __withoutDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return Object.freeze(new Set(__values(collection, size,),),)
