@@ -6,7 +6,7 @@
     <jest-options value="--collect-coverage=false" />
     <envs />
     <scope-kind value="SUITE" />
-    <test-file value="$PROJECT_DIR$/test/CollectionHolder.12 - reverse.test.ts" />
+    <test-file value="$PROJECT_DIR$/test/CollectionHolder.13 - reverse.test.ts" />
     <test-names>
       <test-name value="CollectionHolderTest (reverse)" />
     </test-names>
