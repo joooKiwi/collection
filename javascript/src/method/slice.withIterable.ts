@@ -62,7 +62,7 @@ export function sliceWithIterableByMinimalistCollectionHolder<const T, >(collect
     if (collection.size == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    const iterator: Iterator<number, unknown> = indices[Symbol.iterator]()
+    const iterator: Iterator<number, unknown, unknown> = indices[Symbol.iterator]()
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -86,7 +86,7 @@ export function sliceWithIterableByCollectionHolder<const T, >(collection: Nulla
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    const iterator: Iterator<number, unknown> = indices[Symbol.iterator]()
+    const iterator: Iterator<number, unknown, unknown> = indices[Symbol.iterator]()
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -120,7 +120,7 @@ export function sliceWithIterableByArray<const T, >(collection: Nullable<readonl
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<number, unknown>, firstValue: number,) {
+function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<number, unknown, unknown>, firstValue: number,) {
     const newArray = [collection.get(firstValue,),]
     let iteratorResult: IteratorResult<number, unknown>
     while (!(iteratorResult = iterator.next()).done)

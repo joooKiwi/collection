@@ -33,7 +33,7 @@ export class CollectionHandlerBySet<const T = unknown,
 
     //#region -------------------- Fields --------------------
 
-    #iterator?: IterableIterator<T>
+    #iterator?: SetIterator<T>
     readonly #size: REFERENCE["size"]
     readonly #isEmpty: boolean
     #hasNull?: boolean
@@ -109,7 +109,7 @@ export class CollectionHandlerBySet<const T = unknown,
     protected set _hasFinished(value: true,) { this.#hasFinished = value }
 
 
-    protected get _iterator(): IterableIterator<T> { return this.#iterator ??= this._reference[Symbol.iterator]() }
+    protected get _iterator(): SetIterator<T> { return this.#iterator ??= this._reference[Symbol.iterator]() }
 
     /** The last index retrieved (<b>-1</b> by default) */
     protected get _lastIndexRetrieved(): number { return this.#lastIndexRetrieved ?? -1 }

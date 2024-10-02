@@ -90,17 +90,17 @@ export class EmptyCollectionHolder
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
-    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,) {
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         return defaultValue(index,)
     }
 
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
     public atOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U >,) { return this.getOrElse(index, defaultValue,) }
+    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.getOrElse(index, defaultValue,) }
 
     public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
-    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,)  { return this.getOrElse(index, defaultValue,) }
+    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,)  { return this.getOrElse(index, defaultValue,) }
 
     //#endregion -------------------- Get or else --------------------
     //#region -------------------- Get or null --------------------

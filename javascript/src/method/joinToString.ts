@@ -95,26 +95,24 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size,)
         return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…',)
     }
-
-    if (limit == null) {
+    if (limit == null)
         if (transform.length == 1)
-            return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as (value: T,) => string,)
-        if (transform.length >= 2)
-            return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform,)
-        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as () => string,)
-    }
+            return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
+        else if (transform.length >= 2)
+            return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform,)
+        else
+            return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
 
     const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
         return "[]"
-    if (lastIndex == size) {
+    if (lastIndex == size)
         if (transform.length == 1)
             return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
-        if (transform.length >= 2)
+        else if (transform.length >= 2)
             return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform,)
-        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
-    }
-
+        else
+            return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
     if (transform.length == 1)
         return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…', transform as (value: T,) => string,)
     if (transform.length >= 2)
@@ -163,26 +161,25 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
         return __withTruncated(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…',)
     }
 
-    if (limit == null) {
+    if (limit == null)
         if (transform.length == 1)
             return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as (value: T,) => string,)
-        if (transform.length >= 2)
+        else if (transform.length >= 2)
             return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform,)
-        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as () => string,)
-    }
+        else
+            return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as () => string,)
 
     const size = collection.size
     const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
         return "[]"
-    if (lastIndex == size) {
+    if (lastIndex == size)
         if (transform.length == 1)
             return __with1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as (value: T,) => string,)
-        if (transform.length >= 2)
+        else if (transform.length >= 2)
             return __with2Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform,)
-        return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
-    }
-
+        else
+            return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
     if (transform.length == 1)
         return __withTruncatedAnd1Argument(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', lastIndex, truncated ?? '…', transform as (value: T,) => string,)
     if (transform.length >= 2)

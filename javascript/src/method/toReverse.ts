@@ -127,7 +127,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * @canReceiveNegativeValue
  */
 export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
+export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
@@ -188,7 +188,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * @canReceiveNegativeValue
  */
 export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
+export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)

@@ -26,7 +26,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
  * @extensionFunction
  */
@@ -50,11 +50,11 @@ export function onEachIndexed<const T, >(collection: Nullable<| MinimalistCollec
  * Perform a given {@link action} on each element
  * and return the {@link collection} afterwards
  *
- * @param collection The {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
  * @extensionFunction
  */
@@ -76,11 +76,11 @@ export function onEachIndexedByMinimalistCollectionHolder<const T, const COLLECT
  * Perform a given {@link action} on each element
  * and return the {@link collection} afterwards
  *
- * @param collection The {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
  * @extensionFunction
  */
@@ -104,7 +104,7 @@ export function onEachIndexedByCollectionHolder<const T, const COLLECTION extend
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
  * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
  * @extensionFunction
  */

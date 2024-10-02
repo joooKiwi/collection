@@ -36,7 +36,7 @@ export class CollectionHandlerByIterable<const T = unknown,
 
     //#region -------------------- Fields --------------------
 
-    #iterator?: Iterator<T, unknown>
+    #iterator?: Iterator<T, unknown, unknown>
 
     #size?: number
     #isEmpty?: boolean
@@ -154,7 +154,7 @@ export class CollectionHandlerByIterable<const T = unknown,
         //FIXME: use the same logic as the CollectionHandler-by-CollectionIterator instance
         //TODO add logic to compare if it exist and _lastIndexRetrieved++ logic
         const reference = this._reference
-        const iterator: Iterator<T, unknown> = reference[Symbol.iterator]()
+        const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
         const collection = this._collection
         const temporaryArray = []
         collection[0] = temporaryArray[0] = iterator.next().value as T
@@ -252,7 +252,7 @@ export class CollectionHandlerByIterable<const T = unknown,
     protected set _hasFinished(value: boolean,) { this.#hasFinished = value }
 
 
-    protected get _iterator(): Iterator<T, unknown> {
+    protected get _iterator(): Iterator<T, unknown, unknown> {
         return this.#iterator ??= this._reference[Symbol.iterator]()
     }
 

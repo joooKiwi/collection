@@ -103,14 +103,13 @@ export function lastOrNullByMinimalistCollectionHolder<const T, const S extends 
  * @extensionFunction
  */
 export function lastOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-export function lastOrNullByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+export function lastOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (collection == null)
         return null
 
     const size = collection.size
     if (size == 0)
         return null
-
     if (predicate == null)
         return collection.get(size - 1,)
     if (predicate.length == 1)
@@ -155,12 +154,11 @@ export function lastOrNullByCollectionHolder<const T, const S extends T, >(colle
  * @extensionFunction
  */
 export function lastOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-export function lastOrNullByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<| BooleanCallback<T> | RestrainedBooleanCallback<T, S>>,) {
+export function lastOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (collection == null)
         return null
     if (collection.isEmpty)
         return null
-
     if (predicate == null)
         return __withNoPredicate(collection, collection.size,)
     if (predicate.length == 1)

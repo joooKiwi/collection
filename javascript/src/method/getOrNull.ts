@@ -57,7 +57,6 @@ export function getOrNull<const T, >(collection: Nullable<| MinimalistCollection
 export function getOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, index: number,): NullOr<T> {
     if (collection == null)
         return null
-
     if (Number.isNaN(index,))
         return null
     if (index == Number.NEGATIVE_INFINITY)
@@ -73,7 +72,7 @@ export function getOrNullByMinimalistCollectionHolder<const T, >(collection: Nul
     if (index >= 0)
         return collection.get(index,)
 
-    const indexToRetrieve = size + index
+    const indexToRetrieve = index + size
     if (indexToRetrieve < 0)
         return null
     if (indexToRetrieve > size)
@@ -96,14 +95,12 @@ export function getOrNullByMinimalistCollectionHolder<const T, >(collection: Nul
 export function getOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, index: number,): NullOr<T> {
     if (collection == null)
         return null
-
     if (Number.isNaN(index,))
         return null
     if (index == Number.NEGATIVE_INFINITY)
         return null
     if (index == Number.POSITIVE_INFINITY)
         return null
-
     if (collection.isEmpty)
         return null
 
@@ -113,7 +110,7 @@ export function getOrNullByCollectionHolder<const T, >(collection: Nullable<Coll
     if (index >= 0)
         return collection.get(index,)
 
-    const indexToRetrieve = size + index
+    const indexToRetrieve = index + size
     if (indexToRetrieve < 0)
         return null
     if (indexToRetrieve > size)

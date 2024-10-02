@@ -79,14 +79,13 @@ export function findIndexedByMinimalistCollectionHolder<const T, const S extends
  * @extensionFunction
  */
 export function findIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T>
-export function findIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T> {
+export function findIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
         return null
 
     const size = collection.size
     if (size == 0)
         return null
-
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (index: number,) => boolean, size,)
     if (predicate.length >= 2)
@@ -117,12 +116,11 @@ export function findIndexedByCollectionHolder<const T, const S extends T, >(coll
  * @extensionFunction
  */
 export function findIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T>
-export function findIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): NullOr<T> {
+export function findIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
         return null
     if (collection.isEmpty)
         return null
-
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (index: number,) => boolean, collection.size,)
     if (predicate.length >= 2)

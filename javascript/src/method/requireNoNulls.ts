@@ -97,7 +97,6 @@ export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection
     while (++index < size)
         if (collection.get(index) == null)
             throw new TypeError("Forbidden null value. The current collection contains null values.",)
-
     return collection
 }
 

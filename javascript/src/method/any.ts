@@ -114,7 +114,6 @@ export function anyByMinimalistCollectionHolder<const T, >(collection: Nullable<
     const size = collection.size
     if (size == 0)
         return false
-
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)
@@ -147,7 +146,7 @@ export function anyByCollectionHolder<const T, const COLLECTION extends Collecti
  * @extensionFunction
  */
 export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
-export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,): boolean {
+export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (collection == null)
         return false
     if (predicate == null)
@@ -156,7 +155,6 @@ export function anyByCollectionHolder<const T, >(collection: Nullable<Collection
     const size = collection.size
     if (size == 0)
         return false
-
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)

@@ -919,7 +919,7 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has null methods --------------------
+    //#region -------------------- Has null --------------------
 
     /**
      * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
@@ -946,8 +946,8 @@ export interface CollectionHolder<out T = unknown, >
      */
     get containsNull(): this["hasNull"]
 
-    //#endregion -------------------- Has null methods --------------------
-    //#region -------------------- Has duplicate methods --------------------
+    //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has duplicate --------------------
 
     /**
      * The {@link CollectionHolder} has at least one duplicate value
@@ -974,7 +974,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     get containsDuplicate(): this["hasDuplicate"]
 
-    //#endregion -------------------- Has duplicate methods --------------------
+    //#endregion -------------------- Has duplicate --------------------
 
     //#region -------------------- Has --------------------
 

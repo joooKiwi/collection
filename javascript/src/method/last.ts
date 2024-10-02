@@ -124,7 +124,6 @@ export function lastByMinimalistCollectionHolder<const T, >(collection: Nullable
     const size = collection.size
     if (size == 0)
         throw new EmptyCollectionHolderException()
-
     if (predicate == null)
         return collection.get(size - 1,)
     if (predicate.length == 1)
@@ -180,7 +179,6 @@ export function lastByCollectionHolder<const T, >(collection: Nullable<Collectio
         throw new TypeError("No element could be retrieved from a null value.",) // TODO change to custom exception
     if (collection.isEmpty)
         throw new EmptyCollectionHolderException()
-
     if (predicate == null)
         return __withNoPredicate(collection, collection.size,)
     if (predicate.length == 1)

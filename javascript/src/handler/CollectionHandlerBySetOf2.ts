@@ -21,7 +21,7 @@ export class CollectionHandlerBySetOf2<const T = unknown,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy2Values<T, REFERENCE, COLLECTION> {
 
-    #iterator?: Iterator<T, unknown>
+    #iterator?: SetIterator<T>
 
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number = reference.size,) {
         super(collection, reference,)
@@ -29,7 +29,7 @@ export class CollectionHandlerBySetOf2<const T = unknown,
             throw new TypeError(`The set received in the "${this.constructor.name}" cannot have a different size than 2.`,)
     }
 
-    get #__iterator(): Iterator<T, unknown> { return this.#iterator ??= this._reference[Symbol.iterator]() }
+    get #__iterator(): SetIterator<T> { return this.#iterator ??= this._reference[Symbol.iterator]() }
 
     protected override _retrieveFirst(): T { return this.#__iterator.next().value as T }
 

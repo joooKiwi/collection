@@ -116,9 +116,7 @@ export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: 
  * @extensionFunction
  */
 export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
-    //#region -------------------- Early returns --------------------
-
+export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,) {
     if (collection == null)
         return null
 
@@ -126,16 +124,10 @@ export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: 
     if (size === 0)
         return null
 
-    //#endregion -------------------- Early returns --------------------
-    //#region -------------------- Initialization (starting/ending index) --------------------
-
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
         return null
-
-    //#endregion -------------------- Initialization (starting/ending index) --------------------
-
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
@@ -184,26 +176,17 @@ export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<C
  * @extensionFunction
  */
 export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
-    //#region -------------------- Early returns --------------------
-
+export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,) {
     if (collection == null)
         return null
     if (collection.isEmpty)
         return null
 
-    //#endregion -------------------- Early returns --------------------
-    //#region -------------------- Initialization (starting/ending index) --------------------
-
     const size = collection.size
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
-
     if (endingIndex < startingIndex)
         return null
-
-    //#endregion -------------------- Initialization (starting/ending index) --------------------
-
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)

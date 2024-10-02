@@ -72,7 +72,7 @@ export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollecti
  * Get the first element in the {@link collection}
  * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
  * @extensionFunction
@@ -81,9 +81,9 @@ export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: N
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
- * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
@@ -94,9 +94,9 @@ export function firstOrNullByMinimalistCollectionHolder<const T, const S extends
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
- * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
@@ -110,7 +110,6 @@ export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: N
     const size = collection.size
     if (size == 0)
         return null
-
     if (predicate == null)
         return collection.get(0,)
     if (predicate.length == 1)
@@ -160,7 +159,6 @@ export function firstOrNullByCollectionHolder<const T, >(collection: Nullable<Co
         return null
     if (collection.isEmpty)
         return null
-
     if (predicate == null)
         return __withNoPredicate(collection,)
     if (predicate.length == 1)

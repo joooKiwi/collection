@@ -50,7 +50,7 @@ export function onEach<const T, >(collection: Nullable<| MinimalistCollectionHol
  * Perform a given {@link action} on each element
  * and return the {@link collection} afterwards
  *
- * @param collection The {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
@@ -76,7 +76,7 @@ export function onEachByMinimalistCollectionHolder<const T, const COLLECTION ext
  * Perform a given {@link action} on each element
  * and return the {@link collection} afterwards
  *
- * @param collection The {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach

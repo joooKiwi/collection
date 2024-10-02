@@ -94,7 +94,7 @@ export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<
  * @deprecated Use a value present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, value: unknown,): boolean
-export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, value: T,): boolean {
+export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, value: T,) {
     if (collection == null)
         return false
 
@@ -135,7 +135,7 @@ export function hasByCollectionHolder<const T, >(collection: Nullable<Collection
  * @deprecated Use a value present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, value: unknown,): boolean
-export function hasByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, value: T,): boolean {
+export function hasByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, value: T,) {
     if (collection == null)
         return false
     if (collection.isEmpty)

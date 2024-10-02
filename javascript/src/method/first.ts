@@ -95,7 +95,7 @@ export function firstByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
@@ -110,7 +110,7 @@ export function firstByMinimalistCollectionHolder<const T, const S extends T, >(
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
  * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
@@ -124,7 +124,6 @@ export function firstByMinimalistCollectionHolder<const T, >(collection: Nullabl
     const size = collection.size
     if (size == 0)
         throw new EmptyCollectionHolderException()
-
     if (predicate == null)
         return collection.get(0,)
     if (predicate.length == 1)
@@ -180,7 +179,6 @@ export function firstByCollectionHolder<const T, >(collection: Nullable<Collecti
         throw new TypeError("No element could be retrieved from a null collection.",) // TODO change to custom exception
     if (collection.isEmpty)
         throw new EmptyCollectionHolderException()
-
     if (predicate == null)
         return __withNoPredicate(collection,)
     if (predicate.length == 1)

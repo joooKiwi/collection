@@ -109,14 +109,13 @@ export function allByMinimalistCollectionHolder<const T, const S extends T, >(co
  * @extensionFunction
  */
 export function allByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean
-export function allByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
+export function allByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return true
 
     const size = collection.size
     if (size == 0)
         return true
-
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)
@@ -133,7 +132,7 @@ export function allByMinimalistCollectionHolder<const T, >(collection: Nullable<
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @extensionFunction
  */
-export function allByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): collection is CollectionHolder<T>
+export function allByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): collection is CollectionHolder<S>
 /**
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
@@ -144,13 +143,11 @@ export function allByCollectionHolder<const T, const S extends T, >(collection: 
  * @extensionFunction
  */
 export function allByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean
-export function allByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
+export function allByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return true
-
     if (collection.isEmpty)
         return true
-
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
