@@ -73,11 +73,9 @@ export function toStringByMinimalistCollectionHolder<const T, >(collection: Null
 export function toStringByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): string {
     if (collection == null)
         return "[]"
-
-    const size = collection.size
-    if (size == 0)
+    if (collection.isEmpty)
         return "[]"
-    return __toString(collection, size,)
+    return __toString(collection, collection.size,)
 }
 
 /**

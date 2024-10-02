@@ -151,15 +151,13 @@ export function anyByCollectionHolder<const T, >(collection: Nullable<Collection
         return false
     if (predicate == null)
         return collection.size != 0
-
-    const size = collection.size
-    if (size == 0)
+    if (collection.isEmpty)
         return false
     if (predicate.length == 1)
-        return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
-        return __with2Argument(collection, predicate, size,)
-    return __with0Argument(predicate as () => boolean, size,)
+        return __with2Argument(collection, predicate, collection.size,)
+    return __with0Argument(predicate as () => boolean, collection.size,)
 }
 
 /**
