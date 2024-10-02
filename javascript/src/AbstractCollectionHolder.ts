@@ -805,7 +805,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     public override toLocaleString(locale?: NullableString,): string {
         if (arguments.length === 0)
-            return toLocaleStringByCollectionHolder(this, locale,)
+            return toLocaleStringByCollectionHolder(this,)
         return toLocaleStringByCollectionHolder(this, locale,)
     }
 
@@ -816,7 +816,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     public toLocaleLowerCaseString(locale?: NullableString,): string {
         if (arguments.length === 0)
-            return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
+            return toLocaleLowerCaseStringByCollectionHolder(this,)
         return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
     }
 
@@ -827,7 +827,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     public toLocaleUpperCaseString(locale?: NullableString,): string {
         if (arguments.length === 0)
-            return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
+            return toLocaleUpperCaseStringByCollectionHolder(this,)
         return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
     }
 
