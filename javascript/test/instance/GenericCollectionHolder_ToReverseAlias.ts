@@ -7,15 +7,15 @@
 
 import type {NullableNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}        from "../../src/CollectionHolder"
-import type {CollectionHolderForTest} from "./CollectionHolderForTest"
+import type {CollectionHolder}                from "../../src/CollectionHolder"
+import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderForTest"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
 import {ABCD}                    from "../value/arrays"
 
 export class GenericCollectionHolder_ToReverseAlias
     extends GenericCollectionHolder<string, readonly string[]>
-    implements CollectionHolderForTest<string> {
+    implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
 

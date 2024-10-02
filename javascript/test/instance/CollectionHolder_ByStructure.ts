@@ -51,15 +51,15 @@ export class CollectionHolder_ByStructure<const T, >
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) { return this.reference.getOrElse(index, defaultValue,) }
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.getOrElse(index, defaultValue,) }
 
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) { return this.reference.atOrElse(index, defaultValue,) }
+    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.atOrElse(index, defaultValue,) }
 
     public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,) { return this.reference.elementAtOrElse(index, defaultValue,) }
+    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.elementAtOrElse(index, defaultValue,) }
 
 
     public getOrNull(index: number,): NullOr<T> { return this.reference.getOrNull(index,) }

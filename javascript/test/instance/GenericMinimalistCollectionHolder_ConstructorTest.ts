@@ -10,8 +10,8 @@ import {GenericMinimalistCollectionHolder} from "../../src/GenericMinimalistColl
 export class GenericMinimalistCollectionHolder_ConstructorTest<const T, >
     extends GenericMinimalistCollectionHolder<T> {
 
-    public override get _array(): readonly T[] {
-        return super._array
+    public get array(): readonly T[] {
+        return this._array
     }
 
 }

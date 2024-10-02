@@ -8,10 +8,4 @@
 import {GenericCollectionHolder}     from "../../src/GenericCollectionHolder"
 
 export class GenericCollectionHolder_ConstructorTest<const T, >
-    extends GenericCollectionHolder<T> {
-
-    public override get _array(): readonly T[] {
-        return super._array
-    }
-
-}
+    extends GenericCollectionHolder<T> {}

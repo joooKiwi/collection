@@ -12,66 +12,67 @@ import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, 
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                    from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
 
-import {allByCollectionHolder}                     from "../../src/method/all"
-import {anyByCollectionHolder}                     from "../../src/method/any"
-import {filterByCollectionHolder}                  from "../../src/method/filter"
-import {filterIndexedByCollectionHolder}           from "../../src/method/filterIndexed"
-import {filterNotByCollectionHolder}               from "../../src/method/filterNot"
-import {filterNotIndexedByCollectionHolder}        from "../../src/method/filterNotIndexed"
-import {filterNotNullByCollectionHolder}           from "../../src/method/filterNotNull"
-import {findByCollectionHolder}                    from "../../src/method/find"
-import {findIndexedByCollectionHolder}             from "../../src/method/findIndexed"
-import {findLastByCollectionHolder}                from "../../src/method/findLast"
-import {findLastIndexedByCollectionHolder}         from "../../src/method/findLastIndexed"
-import {firstByCollectionHolder}                   from "../../src/method/first"
-import {firstOrNullByCollectionHolder}             from "../../src/method/firstOrNull"
-import {forEachByCollectionHolder}                 from "../../src/method/forEach"
-import {forEachIndexedByCollectionHolder}          from "../../src/method/forEachIndexed"
-import {getOrElseByCollectionHolder}               from "../../src/method/getOrElse"
-import {getOrNullByCollectionHolder}               from "../../src/method/getOrNull"
-import {hasByCollectionHolder}                     from "../../src/method/has"
-import {hasAllByCollectionHolder}                  from "../../src/method/hasAll"
-import {hasDuplicateByCollectionHolder}            from "../../src/method/hasDuplicate"
-import {hasNullByCollectionHolder}                 from "../../src/method/hasNull"
-import {hasOneByCollectionHolder}                  from "../../src/method/hasOne"
-import {indexOfByCollectionHolder}                 from "../../src/method/indexOf"
-import {indexOfFirstByCollectionHolder}            from "../../src/method/indexOfFirst"
-import {indexOfFirstIndexedByCollectionHolder}     from "../../src/method/indexOfFirstIndexed"
-import {indexOfLastByCollectionHolder}             from "../../src/method/indexOfLast"
-import {indexOfLastIndexedByCollectionHolder}      from "../../src/method/indexOfLastIndexed"
-import {isEmptyByCollectionHolder}                 from "../../src/method/isEmpty"
-import {isNotEmptyByCollectionHolder}              from "../../src/method/isNotEmpty"
-import {joinToStringByCollectionHolder}            from "../../src/method/joinToString"
-import {lastByCollectionHolder}                    from "../../src/method/last"
-import {lastIndexOfByCollectionHolder}             from "../../src/method/lastIndexOf"
-import {lastOrNullByCollectionHolder}              from "../../src/method/lastOrNull"
-import {noneByCollectionHolder}                    from "../../src/method/none"
-import {mapByCollectionHolder}                     from "../../src/method/map"
-import {mapIndexedByCollectionHolder}              from "../../src/method/mapIndexed"
-import {mapNotNullByCollectionHolder}              from "../../src/method/mapNotNull"
-import {mapNotNullIndexedByCollectionHolder}       from "../../src/method/mapNotNullIndexed"
-import {onEachByCollectionHolder}                  from "../../src/method/onEach"
-import {onEachIndexedByCollectionHolder}           from "../../src/method/onEachIndexed"
-import {requireNoNullsByCollectionHolder}          from "../../src/method/requireNoNulls"
-import {sliceByCollectionHolder}                   from "../../src/method/slice"
-import {toArrayByCollectionHolder}                 from "../../src/method/toArray"
-import {toIteratorByCollectionHolder}              from "../../src/method/toIterator"
-import {toLocaleLowerCaseStringByCollectionHolder} from "../../src/method/toLocaleLowerCaseString"
-import {toLocaleStringByCollectionHolder}          from "../../src/method/toLocaleString"
-import {toLocaleUpperCaseStringByCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
-import {toLowerCaseStringByCollectionHolder}       from "../../src/method/toLowerCaseString"
-import {toMapByCollectionHolder}                   from "../../src/method/toMap"
-import {toMutableArrayByCollectionHolder}          from "../../src/method/toMutableArray"
-import {toMutableMapByCollectionHolder}            from "../../src/method/toMutableMap"
-import {toMutableSetByCollectionHolder}            from "../../src/method/toMutableSet"
-import {toReverseByCollectionHolder}               from "../../src/method/toReverse"
-import {toSetByCollectionHolder}                   from "../../src/method/toSet"
-import {toStringByCollectionHolder}                from "../../src/method/toString"
-import {toUpperCaseStringByCollectionHolder}       from "../../src/method/toUpperCaseString"
-import {AbstractCollectionHolderForTest}           from "./AbstractCollectionHolderForTest"
+import {CollectionConstants}             from "../../src/CollectionConstants"
+import {allByArray}                      from "../../src/method/all"
+import {anyByArray}                      from "../../src/method/any"
+import {filterByArray}                   from "../../src/method/filter"
+import {filterIndexedByArray}            from "../../src/method/filterIndexed"
+import {filterNotByArray}                from "../../src/method/filterNot"
+import {filterNotIndexedByArray}         from "../../src/method/filterNotIndexed"
+import {filterNotNullByArray}            from "../../src/method/filterNotNull"
+import {findByArray}                     from "../../src/method/find"
+import {findIndexedByArray}              from "../../src/method/findIndexed"
+import {findLastByArray}                 from "../../src/method/findLast"
+import {findLastIndexedByArray}          from "../../src/method/findLastIndexed"
+import {firstByArray}                    from "../../src/method/first"
+import {firstOrNullByArray}              from "../../src/method/firstOrNull"
+import {forEachByArray}                  from "../../src/method/forEach"
+import {forEachIndexedByArray}           from "../../src/method/forEachIndexed"
+import {getOrElseByArray}                from "../../src/method/getOrElse"
+import {getOrNullByArray}                from "../../src/method/getOrNull"
+import {hasByArray}                      from "../../src/method/has"
+import {hasAllByArray}                   from "../../src/method/hasAll"
+import {hasDuplicateByArray}             from "../../src/method/hasDuplicate"
+import {hasNullByArray}                  from "../../src/method/hasNull"
+import {hasOneByArray}                   from "../../src/method/hasOne"
+import {indexOfByArray}                  from "../../src/method/indexOf"
+import {indexOfFirstByArray}             from "../../src/method/indexOfFirst"
+import {indexOfFirstIndexedByArray}      from "../../src/method/indexOfFirstIndexed"
+import {indexOfLastByArray}              from "../../src/method/indexOfLast"
+import {indexOfLastIndexedByArray}       from "../../src/method/indexOfLastIndexed"
+import {isEmptyByArray}                  from "../../src/method/isEmpty"
+import {isNotEmptyByArray}               from "../../src/method/isNotEmpty"
+import {joinToStringByArray}             from "../../src/method/joinToString"
+import {lastByArray}                     from "../../src/method/last"
+import {lastIndexOfByArray}              from "../../src/method/lastIndexOf"
+import {lastOrNullByArray}               from "../../src/method/lastOrNull"
+import {noneByArray}                     from "../../src/method/none"
+import {mapByArray}                      from "../../src/method/map"
+import {mapIndexedByArray}               from "../../src/method/mapIndexed"
+import {mapNotNullByArray}               from "../../src/method/mapNotNull"
+import {mapNotNullIndexedByArray}        from "../../src/method/mapNotNullIndexed"
+import {onEachByArray}                   from "../../src/method/onEach"
+import {onEachIndexedByArray}            from "../../src/method/onEachIndexed"
+import {requireNoNullsByArray}           from "../../src/method/requireNoNulls"
+import {sliceByArray}                    from "../../src/method/slice"
+import {toArrayByArray}                  from "../../src/method/toArray"
+import {toIteratorByArray}               from "../../src/method/toIterator"
+import {toLocaleLowerCaseStringByArray}  from "../../src/method/toLocaleLowerCaseString"
+import {toLocaleStringByArray}           from "../../src/method/toLocaleString"
+import {toLocaleUpperCaseStringByArray}  from "../../src/method/toLocaleUpperCaseString"
+import {toLowerCaseStringByArray}        from "../../src/method/toLowerCaseString"
+import {toMapByArray}                    from "../../src/method/toMap"
+import {toMutableArrayByArray}           from "../../src/method/toMutableArray"
+import {toMutableMapByArray}             from "../../src/method/toMutableMap"
+import {toMutableSetByArray}             from "../../src/method/toMutableSet"
+import {toReverseByArray}                from "../../src/method/toReverse"
+import {toSetByArray}                    from "../../src/method/toSet"
+import {toStringByArray}                 from "../../src/method/toString"
+import {toUpperCaseStringByArray}        from "../../src/method/toUpperCaseString"
+import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
 
-/** A test instance to test exclusively the extension methods for a {@link CollectionHolder} */
-export class CollectionHolder_FromExtensionFunction<const T, >
+/** A test instance to test exclusively the extension methods for an {@link ReadonlyArray Array} */
+export class CollectionHolder_FromArrayFunction<const T, >
     extends AbstractCollectionHolderForTest<T> {
 
     public constructor(array: readonly T[],) {
@@ -91,16 +92,16 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#endregion -------------------- Test utility methods --------------------
     //#region -------------------- Size methods --------------------
 
-    public get size(): number {
+    public override get size(): number {
         return this.array.length
     }
 
-    public get isEmpty(): boolean {
-        return isEmptyByCollectionHolder(this,)
+    public override get isEmpty(): boolean {
+        return isEmptyByArray(this.array,)
     }
 
-    public get isNotEmpty(): boolean {
-        return isNotEmptyByCollectionHolder(this,)
+    public override get isNotEmpty(): boolean {
+        return isNotEmptyByArray(this.array,)
     }
 
     //#endregion -------------------- Size methods --------------------
@@ -108,22 +109,19 @@ export class CollectionHolder_FromExtensionFunction<const T, >
 
     //#region -------------------- Get --------------------
 
-    public override get(index: number,): T {
-        if (index < 0)
-            throw new Error("The method “get” was not expected to be called with a negative index",)
-        if (index >= this.array.length)
-            throw new Error("The method “get” was not expected to be called with an index equal or over the size",)
-        return this.array[index] as T
+    public override get(index?: number,): never
+    public override get() {
+        throw new Error("The method “get” was not expected to be called directly",)
     }
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
-        return getOrElseByCollectionHolder(this, index, defaultValue,)
+        return getOrElseByArray(this.array, index, defaultValue,)
     }
 
     public override getOrNull(index: number,): NullOr<T> {
-        return getOrNullByCollectionHolder<T>(this, index,)
+        return getOrNullByArray(this.array, index,)
     }
 
     //#endregion -------------------- Get --------------------
@@ -133,14 +131,15 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
     public override first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
     public override first(predicate?: Nullable<BooleanCallback<T>>,) {
-        return firstByCollectionHolder(this, predicate,)
+        return firstByArray(this.array, predicate,)
     }
+
 
     public override firstOrNull(): NullOr<T>
     public override firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public override firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public override firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        return firstOrNullByCollectionHolder(this, predicate,)
+        return firstOrNullByArray(this.array, predicate,)
     }
 
     //#endregion -------------------- First --------------------
@@ -150,14 +149,15 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
     public override last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
     public override last(predicate?: Nullable<BooleanCallback<T>>,) {
-        return lastByCollectionHolder(this, predicate,)
+        return lastByArray(this.array, predicate,)
     }
+
 
     public override lastOrNull(): NullOr<T>
     public override lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public override lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public override lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        return lastOrNullByCollectionHolder(this, predicate,)
+        return lastOrNullByArray(this.array, predicate,)
     }
 
     //#endregion -------------------- Last --------------------
@@ -166,26 +166,26 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public override find(predicate: BooleanCallback<T>,): NullOr<T>
     public override find(predicate: BooleanCallback<T>,) {
-        return findByCollectionHolder(this, predicate,)
+        return findByArray(this.array, predicate,)
     }
 
     public override findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public override findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public override findIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findIndexedByCollectionHolder(this, predicate,)
+        return findIndexedByArray(this.array, predicate,)
     }
 
 
     public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public override findLast(predicate: BooleanCallback<T>,): NullOr<T>
     public override findLast(predicate: BooleanCallback<T>,) {
-        return findLastByCollectionHolder(this, predicate,)
+        return findLastByArray(this.array, predicate,)
     }
 
     public override findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public override findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public override findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findLastIndexedByCollectionHolder(this, predicate,)
+        return findLastIndexedByArray(this.array, predicate,)
     }
 
     //#endregion -------------------- Find --------------------
@@ -196,32 +196,32 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
     public override indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
     public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
-        return indexOfByCollectionHolder(this, element, fromIndex, toIndex,)
+        return indexOfByArray(this.array, element, fromIndex, toIndex,)
     }
 
 
     public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
     public override lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
     public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
-        return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex,)
+        return lastIndexOfByArray(this.array, element, fromIndex, toIndex,)
     }
 
 
     public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex,)
+        return indexOfFirstByArray(this.array, predicate, fromIndex, toIndex,)
     }
 
     public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
+        return indexOfFirstIndexedByArray(this.array, predicate, fromIndex, toIndex,)
     }
 
 
     public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex,)
+        return indexOfLastByArray(this.array, predicate, fromIndex, toIndex,)
     }
 
     public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
+        return indexOfLastIndexedByArray(this.array, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index methods --------------------
@@ -232,7 +232,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) {
-        return allByCollectionHolder(this, predicate,)
+        return allByArray(this.array, predicate,)
     }
 
     //#endregion -------------------- All --------------------
@@ -241,7 +241,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override any(): this["isNotEmpty"]
     public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override any(predicate?: Nullable<BooleanCallback<T>>,) {
-        return anyByCollectionHolder(this, predicate,)
+        return anyByArray(this.array, predicate,)
     }
 
     //#endregion -------------------- Any --------------------
@@ -250,7 +250,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override none(): this["isEmpty"]
     public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override none(predicate?: Nullable<BooleanCallback<T>>,) {
-        return noneByCollectionHolder(this, predicate,)
+        return noneByArray(this.array, predicate,)
     }
 
     //#endregion -------------------- None --------------------
@@ -258,14 +258,14 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- Has null --------------------
 
     public override get hasNull(): boolean {
-        return hasNullByCollectionHolder(this,)
+        return hasNullByArray(this.array,)
     }
 
     //#endregion -------------------- Has null --------------------
     //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): boolean {
-        return hasDuplicateByCollectionHolder(this,)
+        return hasDuplicateByArray(this.array,)
     }
 
     //#endregion -------------------- Has duplicate --------------------
@@ -273,7 +273,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {
-        return hasByCollectionHolder(this, value,)
+        return hasByArray(this.array, value,)
     }
 
     //#endregion -------------------- Has --------------------
@@ -287,7 +287,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override hasOne(values: Iterable<T>,): boolean
     public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
     public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
-        return hasOneByCollectionHolder(this, values,)
+        return hasOneByArray(this.array, values,)
     }
 
     //#endregion -------------------- Has one --------------------
@@ -301,7 +301,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override hasAll(values: Iterable<T>,): boolean
     public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
     public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
-        return hasAllByCollectionHolder(this, values,)
+        return hasAllByArray(this.array, values,)
     }
 
     //#endregion -------------------- Has all --------------------
@@ -309,7 +309,10 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- Require no nulls --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNullsByCollectionHolder(this,)
+        const array = requireNoNullsByArray(this.array,)
+        if (array.length == 0)
+            return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return new CollectionHolder_FromArrayFunction(array,)
     }
 
     //#endregion -------------------- Require no nulls --------------------
@@ -322,31 +325,31 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public override filter(predicate: BooleanCallback<T>,) {
-        return filterByCollectionHolder(this, predicate,)
+        return filterByArray(this.array, predicate,)
     }
 
     public override filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public override filterIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return filterIndexedByCollectionHolder(this, predicate,)
+        return filterIndexedByArray(this.array, predicate,)
     }
 
 
     public override filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public override filterNot(predicate: BooleanCallback<T>,) {
-        return filterNotByCollectionHolder(this, predicate,)
+        return filterNotByArray(this.array, predicate,)
     }
 
     public override filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return filterNotIndexedByCollectionHolder(this, predicate,)
+        return filterNotIndexedByArray(this.array, predicate,)
     }
 
 
     public override filterNotNull(): CollectionHolder<NonNullable<T>> {
-        return filterNotNullByCollectionHolder(this,)
+        return filterNotNullByArray(this.array,)
     }
 
     //#endregion -------------------- Filter --------------------
@@ -362,27 +365,27 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,) {
-        return sliceByCollectionHolder(this, indicesOrFromIndex, toIndex,)
+        return sliceByArray(this.array, indicesOrFromIndex, toIndex,)
     }
 
     //#endregion -------------------- Slice --------------------
     //#region -------------------- Map --------------------
 
     public override map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
-        return mapByCollectionHolder(this, transform,)
+        return mapByArray(this.array, transform,)
     }
 
     public override mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
-        return mapIndexedByCollectionHolder(this, transform,)
+        return mapIndexedByArray(this.array, transform,)
     }
 
 
     public override mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
-        return mapNotNullByCollectionHolder(this, transform,)
+        return mapNotNullByArray(this.array, transform,)
     }
 
     public override mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
-        return mapNotNullIndexedByCollectionHolder(this, transform,)
+        return mapNotNullIndexedByArray(this.array, transform,)
     }
 
     //#endregion -------------------- Map --------------------
@@ -393,22 +396,24 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- For each --------------------
 
     public override forEach(action: ValueIndexCallback<T>,): void {
-        forEachByCollectionHolder(this, action,)
+        forEachByArray(this.array, action,)
     }
 
     public override forEachIndexed(action: IndexValueCallback<T>,): void {
-        forEachIndexedByCollectionHolder(this, action,)
+        forEachIndexedByArray(this.array, action,)
     }
 
     //#endregion -------------------- For each --------------------
     //#region -------------------- On each --------------------
 
     public override onEach(action: ValueIndexCallback<T>,): this {
-        return onEachByCollectionHolder(this, action,)
+        onEachByArray(this.array, action,)
+        return this
     }
 
     public override onEachIndexed(action: IndexValueCallback<T>,): this {
-        return onEachIndexedByCollectionHolder(this, action,)
+        onEachIndexedByArray(this.array, action,)
+        return this
     }
 
     //#endregion -------------------- On each --------------------
@@ -419,7 +424,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- To reverse --------------------
 
     public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex,)
+        return toReverseByArray(this.array, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- To reverse --------------------
@@ -428,7 +433,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- Javascript methods --------------------
 
     public override [Symbol.iterator](): CollectionIterator<T> {
-        return toIteratorByCollectionHolder<T>(this,)
+        return toIteratorByArray(this.array,)
     }
 
     //#endregion -------------------- Javascript methods --------------------
@@ -437,63 +442,63 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- To other structure --------------------
 
     public override toArray(): readonly T[] {
-        return toArrayByCollectionHolder<T>(this,)
+        return toArrayByArray(this.array,)
     }
 
     public override toMutableArray(): T[] {
-        return toMutableArrayByCollectionHolder<T>(this,)
+        return toMutableArrayByArray(this.array,)
     }
 
 
     public override toSet(): ReadonlySet<T> {
-        return toSetByCollectionHolder<T>(this,)
+        return toSetByArray(this.array,)
     }
 
     public override toMutableSet(): Set<T> {
-        return toMutableSetByCollectionHolder<T>(this,)
+        return toMutableSetByArray(this.array,)
     }
 
 
     public override toMap(): ReadonlyMap<number, T> {
-        return toMapByCollectionHolder<T>(this,)
+        return toMapByArray(this.array,)
     }
 
     public override toMutableMap(): Map<number, T> {
-        return toMutableMapByCollectionHolder<T>(this,)
+        return toMutableMapByArray(this.array,)
     }
 
     //#endregion -------------------- To other structure --------------------
     //#region -------------------- To string --------------------
 
     public override toString(): string {
-        return toStringByCollectionHolder(this,)
+        return toStringByArray(this.array,)
     }
 
     public override toLocaleString(locale?: NullableString,): string {
-        return toLocaleStringByCollectionHolder(this, locale,)
+        return toLocaleStringByArray(this.array, locale,)
     }
 
     public override toLowerCaseString(): string {
-        return toLowerCaseStringByCollectionHolder(this,)
+        return toLowerCaseStringByArray(this.array,)
     }
 
     public override toLocaleLowerCaseString(locale?: NullableString,): string {
-        return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
+        return toLocaleLowerCaseStringByArray(this.array, locale,)
     }
 
     public override toUpperCaseString(): string {
-        return toUpperCaseStringByCollectionHolder(this,)
+        return toUpperCaseStringByArray(this.array,)
     }
 
     public override toLocaleUpperCaseString(locale?: NullableString,): string {
-        return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
+        return toLocaleUpperCaseStringByArray(this.array, locale,)
     }
 
     //#endregion -------------------- To string --------------------
     //#region -------------------- Join to string --------------------
 
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
-        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
+        return joinToStringByArray(this.array, separator, prefix, postfix, limit, truncated, transform,)
     }
 
     //#endregion -------------------- Join to string --------------------

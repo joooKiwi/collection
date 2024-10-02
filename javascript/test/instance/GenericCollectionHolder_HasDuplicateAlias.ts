@@ -5,14 +5,14 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolderForTest} from "./CollectionHolderForTest"
+import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderForTest"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
 import {ABCD}                    from "../value/arrays"
 
 export class GenericCollectionHolder_HasDuplicateAlias
     extends GenericCollectionHolder<string, readonly string[]>
-    implements CollectionHolderForTest<string> {
+    implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
 

@@ -6,14 +6,14 @@
  ******************************************************************************/
 
 import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/CollectionHolder.types"
-import type {CollectionHolderForTest}                    from "./CollectionHolderForTest"
+import type {StraightCollectionHolderForTest}            from "./StraightCollectionHolderForTest"
 
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
 import {ABCD}                        from "../value/arrays"
 
 export class LazyGenericCollectionHolder_HasAllAlias
     extends LazyGenericCollectionHolder<string, readonly string[]>
-    implements CollectionHolderForTest<string> {
+    implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
 

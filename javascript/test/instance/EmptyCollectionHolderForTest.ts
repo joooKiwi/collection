@@ -5,13 +5,13 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolderForTest} from "./CollectionHolderForTest"
+import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderForTest"
 
 import {EmptyCollectionHolder} from "../../src/EmptyCollectionHolder"
 
 export class EmptyCollectionHolderForTest
     extends EmptyCollectionHolder
-    implements CollectionHolderForTest<never> {
+    implements StraightCollectionHolderForTest<never> {
 
     public constructor() { super() }
 
