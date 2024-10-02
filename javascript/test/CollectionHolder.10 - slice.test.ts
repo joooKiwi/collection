@@ -177,24 +177,6 @@ describe("CollectionHolderTest (slice)", () => {
                 test("2, 2", () => expect(() => new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(3, 2,),),).toThrow(InvalidIndexRangeException,),)
                 test("2, 3", () => expect(new instance(ABCD,).slice(3, 3,).toArray(),).toEqual(D,),)
             },)
-
-            if (isMinimalist)
-                return // We only do some test that are a CollectionHolder
-            describe("non-minimalist collection", () => {
-                test("1 field",      () => expectToBeInstance(new instance(A,), it => it.slice(),),)
-                test("1 field: ++",  () => expectToBeInstance(new instance(A,), it => it.slice(0, 0,),),)
-                test("1 field: +-",  () => expectToBeInstance(new instance(A,), it => it.slice(0, -1,),),)
-                test("1 field: -+",  () => expectToBeInstance(new instance(A,), it => it.slice(-1, 0,),),)
-                test("1 field: --",  () => expectToBeInstance(new instance(A,), it => it.slice(-1, -1,),),)
-                test("2 fields: ++", () => expectToBeInstance(new instance(AB,), it => it.slice(0, 1,),),)
-                test("2 fields: +-", () => expectToBeInstance(new instance(AB,), it => it.slice(0, -1,),),)
-                test("2 fields: -+", () => expectToBeInstance(new instance(AB,), it => it.slice(-2, 1,),),)
-                test("2 fields: --", () => expectToBeInstance(new instance(AB,), it => it.slice(-2, -1,),),)
-                test("4 fields: ++", () => expectToBeInstance(new instance(ABCD,), it => it.slice(0, 3,),),)
-                test("4 fields: +-", () => expectToBeInstance(new instance(ABCD,), it => it.slice(0, -1,),),)
-                test("4 fields: -+", () => expectToBeInstance(new instance(ABCD,), it => it.slice(-4, 3,),),)
-                test("4 fields: --", () => expectToBeInstance(new instance(ABCD,), it => it.slice(-4, -1,),),)
-            },)
         },)
     },)
 

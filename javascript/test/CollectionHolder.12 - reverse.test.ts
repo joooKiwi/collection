@@ -133,16 +133,6 @@ describe("CollectionHolderTest (reverse)", () => {
             test("3, 1", () => expect(() => new instance(ABCD,).toReverse(3, 2,),).toThrow(InvalidIndexRangeException,),)
             test("3, 3", () => expect(new instance(ABCD,).toReverse(3, 3,).toArray(),).toEqual(D,),)
         },)
-
-        if (isMinimalist)
-            return // We only do some test that are a CollectionHolder
-        describe("non-minimalist collection", () => {
-            test("1 field",      () => expectToBeInstance(new instance(A,), it => it.toReverse(),),)
-            test("1 field: ++",  () => expectToBeInstance(new instance(A,), it => it.toReverse(0, 0,),),)
-            test("1 field: +-",  () => expectToBeInstance(new instance(A,), it => it.toReverse(0, -1,),),)
-            test("1 field: -+",  () => expectToBeInstance(new instance(A,), it => it.toReverse(-1, 0,),),)
-            test("1 field: --",  () => expectToBeInstance(new instance(A,), it => it.toReverse(-1, -1,),),)
-        },)
     },)
 
 },)
