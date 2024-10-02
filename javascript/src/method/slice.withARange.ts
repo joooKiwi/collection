@@ -80,7 +80,6 @@ export function sliceWithARange<const T, >(collection: Nullable<| MinimalistColl
  * @param fromIndex The inclusive starting index
  * @param toIndex   The inclusive ending index
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -99,7 +98,6 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
  * @param toIndex   The inclusive ending index
  * @param limit     The never used limit
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -133,7 +131,6 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
  * @param fromIndex The inclusive starting index
  * @param toIndex   The inclusive ending index
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -152,7 +149,6 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
  * @param toIndex   The inclusive ending index
  * @param limit     The never used limit
  * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -169,17 +165,10 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const size = collection.size
-    if (fromIndex == 0)
-        if (toIndex == size - 1)
-            return collection
-
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
         throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
-    if (startingIndex == 0)
-        if (endingIndex == size - 1)
-            return collection
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
 }
 

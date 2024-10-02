@@ -75,8 +75,6 @@ export function getOrNullByMinimalistCollectionHolder<const T, >(collection: Nul
     const indexToRetrieve = index + size
     if (indexToRetrieve < 0)
         return null
-    if (indexToRetrieve > size)
-        return null
     return collection.get(indexToRetrieve,)
 
 }
@@ -112,8 +110,6 @@ export function getOrNullByCollectionHolder<const T, >(collection: Nullable<Coll
 
     const indexToRetrieve = index + size
     if (indexToRetrieve < 0)
-        return null
-    if (indexToRetrieve > size)
         return null
     return collection.get(indexToRetrieve,)
 

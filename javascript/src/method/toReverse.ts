@@ -195,17 +195,10 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const size = collection.size
-    if (size == 1)
-        if (fromIndex == toIndex)
-            return collection
-
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
         throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
-    if (size == 1)
-        if (startingIndex == endingIndex)
-            return collection
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, startingIndex, endingIndex,),)
 }
 
