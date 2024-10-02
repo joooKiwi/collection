@@ -11,6 +11,8 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {asLowerCaseString}             from "./asString"
+import {isArray}                       from "./isArray"
+import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
@@ -20,17 +22,21 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toLowerCase toLowerCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @see String.toLowerCase
  * @extensionFunction
  */
-export function toLowerCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): string {
+export function toLowerCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): string {
     if (collection == null)
         return "[]"
-    if (isCollectionHolder(collection,))
+    if (isCollectionHolder<T>(collection,))
         return toLowerCaseStringByCollectionHolder(collection,)
+    if (isArray(collection,))
+        return toLowerCaseStringByArray(collection,)
     if (isCollectionHolderByStructure<T>(collection,))
         return toLowerCaseStringByCollectionHolder(collection,)
+    if (isArrayByStructure<T>(collection,))
+        return toLowerCaseStringByArray(collection,)
     return toLowerCaseStringByMinimalistCollectionHolder(collection,)
 }
 
@@ -69,6 +75,24 @@ export function toLowerCaseStringByCollectionHolder<const T, >(collection: Nulla
     return __toString(collection, collection.size,)
 }
 
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toLowerCase toLowerCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @see String.toLowerCase
+ * @extensionFunction
+ */
+export function toLowerCaseStringByArray<const T, >(collection: Nullable<readonly T[]>,): string {
+    if (collection == null)
+        return "[]"
+
+    const size = collection.length
+    if (size == 0)
+        return "[]"
+    return __toStringByArray(collection, size,)
+}
+
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
@@ -79,6 +103,15 @@ function __toString(collection: MinimalistCollectionHolder, size: number,) {
     while (++index < sizeMinus1)
         string += `${asLowerCaseString(collection.get(index,),)}, `
     return `[${string}${asLowerCaseString(collection.get(index,),)}]`
+}
+
+function __toStringByArray(collection: readonly unknown[], size: number,) {
+    let string = ""
+    const sizeMinus1 = size - 1
+    let index = -1
+    while (++index < sizeMinus1)
+        string += `${asLowerCaseString(collection[index],)}, `
+    return `[${string}${asLowerCaseString(collection[index],)}]`
 }
 
 //#endregion -------------------- Loop method --------------------
