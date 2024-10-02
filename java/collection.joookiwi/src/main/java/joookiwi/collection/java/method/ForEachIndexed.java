@@ -169,7 +169,7 @@ public final class ForEachIndexed
     }
 
     private static void __with1Argument(final @NotNull IntConsumer action,
-                                            final int size) {
+                                        final int size) {
         var index = -1;
         while (++index < size)
             action.accept(index);

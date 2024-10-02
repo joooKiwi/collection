@@ -159,8 +159,8 @@ public final class ForEach
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> void __with0Argument(final @NotNull Runnable action,
-                                            final int size) {
+    private static void __with0Argument(final @NotNull Runnable action,
+                                        final int size) {
         var index = size;
         while (index-- > 0)
             action.run();
