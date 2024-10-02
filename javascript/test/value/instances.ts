@@ -17,6 +17,7 @@ import {CollectionHolder_ByMinimalistCollection}          from "../instance/Coll
 import {CollectionHolder_ByGenericCollection}             from "../instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByLazyCollection}                from "../instance/CollectionHolder_ByLazyCollection"
 import {CollectionHolder_ByStructure}                     from "../instance/CollectionHolder_ByStructure"
+import {CollectionHolder_FromArrayFunction}               from "../instance/CollectionHolder_FromArrayFunction"
 import {CollectionHolder_FromMinimalistExtensionFunction} from "../instance/CollectionHolder_FromMinimalistExtensionFunction"
 import {CollectionHolder_FromExtensionFunction}           from "../instance/CollectionHolder_FromExtensionFunction"
 import {CollectionHolderFromArray}                        from "../instance/CollectionHolderFromArray"
@@ -34,9 +35,9 @@ import {MinimalistCollectionHolderFromArray}              from "../instance/Mini
 
 /** The possible instances currently exported to the public */
 export const everyCollectionInstances = [
-    new Holder({ isMinimalist: true,  isLazy: false, isExtension: false, type: 'minimalist', instance: GenericMinimalistCollectionHolder,}, "minimalist",),
-    new Holder({ isMinimalist: false, isLazy: false, isExtension: false, type: 'normal',     instance: GenericCollectionHolder,},           "normal",),
-    new Holder({ isMinimalist: false, isLazy: true,  isExtension: false, type: 'lazy',       instance: LazyGenericCollectionHolder,},       "lazy",),
+    new Holder({ isMinimalist: true,  isLazy: false, isExtension: false, type: "minimalist", instance: GenericMinimalistCollectionHolder,}, "minimalist",),
+    new Holder({ isMinimalist: false, isLazy: false, isExtension: false, type: "normal",     instance: GenericCollectionHolder,},           "normal",),
+    new Holder({ isMinimalist: false, isLazy: true,  isExtension: false, type: "lazy",       instance: LazyGenericCollectionHolder,},       "lazy",),
 ] as const
 
 /**
@@ -44,8 +45,9 @@ export const everyCollectionInstances = [
  * to apply on tests
  */
 export const everyExtensionFunctionAsCollectionHolder = [
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: true, type: 'minimalist', instance: CollectionHolder_FromMinimalistExtensionFunction,}, "collection (on minimalist extension)",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true, type: 'normal',     instance: CollectionHolder_FromExtensionFunction,},           "collection (on extension)",),
+    new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  type: "minimalist extension", instance: CollectionHolder_FromMinimalistExtensionFunction,}, "collection (on minimalist extension)",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  type: "normal extension",     instance: CollectionHolder_FromExtensionFunction,},           "collection (on extension)",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  type: "array extension",      instance: CollectionHolder_FromArrayFunction,},               "collection (on array extension)",),
 ] as const
 
 /**
@@ -53,9 +55,22 @@ export const everyExtensionFunctionAsCollectionHolder = [
  * to apply on tests
  */
 export const everyCollectionInstancesAsCollectionHolder = [
-    new Holder({ isMinimalist: true,  isLazy: false, isExtension: false, type: 'minimalist', instance: CollectionHolder_ByMinimalistCollection, }, "collection (by minimalist)",),
-    new Holder({ isMinimalist: false, isLazy: false, isExtension: false, type: 'normal',     instance: CollectionHolder_ByGenericCollection, },    "collection (by normal)",),
-    new Holder({ isMinimalist: false, isLazy: true,  isExtension: false, type: 'lazy',       instance: CollectionHolder_ByLazyCollection, },       "collection (by lazy)",),
+    new Holder({isMinimalist: true,  isLazy: false, isExtension: false, type: "minimalist", instance: CollectionHolder_ByMinimalistCollection, }, "collection (by minimalist)",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: false, type: "normal",     instance: CollectionHolder_ByGenericCollection, },    "collection (by normal)",),
+    new Holder({isMinimalist: false, isLazy: true,  isExtension: false, type: "lazy",       instance: CollectionHolder_ByLazyCollection, },       "collection (by lazy)",),
+] as const
+
+/**
+ * The possible instances and extension function currently exported to the public as a mocked {@link CollectionHolder}
+ * to apply on tests
+ */
+export const everyCollectionInstancesAndExtensionFunctionAsCollectionHolder = [
+    new Holder({isMinimalist: true,  isLazy: false, isExtension: false, type: "minimalist",           instance: CollectionHolder_ByMinimalistCollection, },         "collection (by minimalist)",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: false, type: "normal",               instance: CollectionHolder_ByGenericCollection, },            "collection (by normal)",),
+    new Holder({isMinimalist: false, isLazy: true,  isExtension: false, type: "lazy",                 instance: CollectionHolder_ByLazyCollection, },               "collection (by lazy)",),
+    new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  type: "minimalist extension", instance: CollectionHolder_FromMinimalistExtensionFunction,}, "collection (on minimalist extension)",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  type: "normal extension",     instance: CollectionHolder_FromExtensionFunction,},           "collection (on extension)",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  type: "array extension",      instance: CollectionHolder_FromArrayFunction,},               "collection (on array extension)",),
 ] as const
 
 
