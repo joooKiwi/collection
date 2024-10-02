@@ -12,7 +12,7 @@ import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, c
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                             from "./value/callbacks (fail)"
 import {callbackIs0, callbackIs0Alt, callbackIs1, callbackIs1Alt, callbackIs2, callbackIs2Alt, callbackIs3, callbackIs3Alt, callbackIs4, callbackIs4Alt, callbackIsEven, callbackIsEvenAlt, callbackIsOdd, callbackIsOddAlt}           from "./value/callbacks (number)"
 import {callbackIsA, callbackIsAAlt, callbackIsB, callbackIsBAlt, callbackIsC, callbackIsCAlt, callbackIsD, callbackIsDAlt, callbackIsE, callbackIsEAlt}                                                                               from "./value/callbacks (string)"
-import {everyCollectionInstancesAsCollectionHolder}                                                                                                                                                                                    from "./value/instances"
+import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                                                                                from "./value/instances"
 
 import {CollectionConstants} from "../src/CollectionConstants"
 
@@ -27,145 +27,149 @@ describe("CollectionHolderTest (filter)", () => {
         test("requireNoNulls",   () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.requireNoNulls(),),)
     },)
 
-    describe.each(everyCollectionInstancesAsCollectionHolder,)("%s", ({value: {instance, type, isMinimalist,},},) => {
-        describe("get() being called", () => {
-            describe("filter", () => {
-                describe("empty", () => {
-                    test("0 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                    test("2 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
+        const isNormal = type === "normal"
+        const isArrayExtension = type === "array extension"
+
+        if (!isExtension)
+            describe("get() being called", () => {
+                describe("filter", () => {
+                    describe("empty", () => {
+                        test("0 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                        test("2 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                    },)
+                    describe("1 field", () => {
+                        test("0 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+                        test("1 argument: true",   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                        test("2 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                        test("0 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: false",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                        test("2 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                    },)
+                    describe("2 fields", () => {
+                        test("0 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
+                        test("1 argument: true",   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
+                        test("2 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
+                        test("0 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: false",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                        test("2 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                    },)
+                    describe("4 fields", () => {
+                        test("0 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),).amountOfCall,).toBe(4,),)
+                        test("1 argument: true",   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),).amountOfCall,).toBe(4,),)
+                        test("2 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),).amountOfCall,).toBe(4,),)
+                        test("0 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: false",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                        test("2 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                    },)
                 },)
-                describe("1 field", () => {
-                    test("0 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-                    test("1 argument: true",   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                    test("2 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                    test("0 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: false",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                    test("2 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                describe("filterIndexed", () => {
+                    describe("empty", () => {
+                        test("0 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                        test("2 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                    },)
+                    describe("1 field", () => {
+                        test("0 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+                        test("1 argument: true",   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                        test("2 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                        test("0 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: false",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                        test("2 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                    },)
+                    describe("2 fields", () => {
+                        test("0 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
+                        test("1 argument: true",   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
+                        test("2 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
+                        test("0 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: false",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                        test("2 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                    },)
+                    describe("4 fields", () => {
+                        test("0 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),).amountOfCall,).toBe(4,),)
+                        test("1 argument: true",   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),).amountOfCall,).toBe(4,),)
+                        test("2 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),).amountOfCall,).toBe(4,),)
+                        test("0 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: false",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                        test("2 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                    },)
                 },)
-                describe("2 fields", () => {
-                    test("0 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
-                    test("1 argument: true",   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
-                    test("2 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
-                    test("0 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: false",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                    test("2 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                describe("filterNot", () => {
+                    describe("empty", () => {
+                        test("0 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                        test("2 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                    },)
+                    describe("1 field", () => {
+                        test("0 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: true",   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                        test("2 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                        test("0 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+                        test("1 argument: false",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                        test("2 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                    },)
+                    describe("2 fields", () => {
+                        test("0 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: true",   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
+                        test("2 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
+                        test("0 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+                        test("1 argument: false",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                        test("2 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                    },)
+                    describe("4 fields", () => {
+                        test("0 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: true",   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),).amountOfCall,).toBe(4,),)
+                        test("2 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),).amountOfCall,).toBe(4,),)
+                        test("0 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+                        test("1 argument: false",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                        test("2 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                    },)
                 },)
-                describe("4 fields", () => {
-                    test("0 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),).amountOfCall,).toBe(4,),)
-                    test("1 argument: true",   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),).amountOfCall,).toBe(4,),)
-                    test("2 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),).amountOfCall,).toBe(4,),)
-                    test("0 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: false",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                    test("2 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                describe("filterNotIndexed", () => {
+                    describe("empty", () => {
+                        test("0 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                        test("2 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                    },)
+                    describe("1 field", () => {
+                        test("0 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: true",   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                        test("2 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                        test("0 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+                        test("1 argument: false",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                        test("2 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                    },)
+                    describe("2 fields", () => {
+                        test("0 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: true",   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                        test("2 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
+                        test("0 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+                        test("1 argument: false",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                        test("2 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                    },)
+                    describe("4 fields", () => {
+                        test("0 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                        test("1 argument: true",   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                        test("2 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),).amountOfCall,).toBe(4,),)
+                        test("0 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+                        test("1 argument: false",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                        test("2 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                    },)
+                },)
+                describe("filterNotNull", () => {
+                    test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(0,),)
+                    test("1 field",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(isMinimalist ? 2 : 1,),)
+                    test("2 fields", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(isMinimalist ? 4 : 2,),)
+                    test("4 fields", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(isMinimalist || isNormal ? 8 : 4,),)//TODO remove the type == normal validation
+                },)
+                describe("requireNoNulls", () => {
+                    test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(0,),)
+                    test("1 field",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(isMinimalist ? 2 : 1,),)
+                    test("2 fields", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(isMinimalist ? 4 : 2,),)
+                    test("4 fields", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(isMinimalist || isNormal ? 8 : 4,),)//TODO remove the type == normal validation
                 },)
             },)
-            describe("filterIndexed", () => {
-                describe("empty", () => {
-                    test("0 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                    test("2 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                },)
-                describe("1 field", () => {
-                    test("0 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-                    test("1 argument: true",   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                    test("2 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                    test("0 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: false",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                    test("2 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                },)
-                describe("2 fields", () => {
-                    test("0 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
-                    test("1 argument: true",   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
-                    test("2 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
-                    test("0 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: false",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                    test("2 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                },)
-                describe("4 fields", () => {
-                    test("0 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),).amountOfCall,).toBe(4,),)
-                    test("1 argument: true",   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),).amountOfCall,).toBe(4,),)
-                    test("2 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),).amountOfCall,).toBe(4,),)
-                    test("0 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: false",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                    test("2 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                },)
-            },)
-            describe("filterNot", () => {
-                describe("empty", () => {
-                    test("0 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                    test("2 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                },)
-                describe("1 field", () => {
-                    test("0 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: true",   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                    test("2 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                    test("0 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-                    test("1 argument: false",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                    test("2 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                },)
-                describe("2 fields", () => {
-                    test("0 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: true",   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
-                    test("2 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
-                    test("0 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
-                    test("1 argument: false",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                    test("2 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                },)
-                describe("4 fields", () => {
-                    test("0 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: true",   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),).amountOfCall,).toBe(4,),)
-                    test("2 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),).amountOfCall,).toBe(4,),)
-                    test("0 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
-                    test("1 argument: false",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                    test("2 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                },)
-            },)
-            describe("filterNotIndexed", () => {
-                describe("empty", () => {
-                    test("0 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                    test("2 arguments", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                },)
-                describe("1 field", () => {
-                    test("0 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: true",   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                    test("2 arguments: true",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                    test("0 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-                    test("1 argument: false",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                    test("2 arguments: false", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                },)
-                describe("2 fields", () => {
-                    test("0 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: true",   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                    test("2 arguments: true",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
-                    test("0 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
-                    test("1 argument: false",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                    test("2 arguments: false", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                },)
-                describe("4 fields", () => {
-                    test("0 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                    test("1 argument: true",   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                    test("2 arguments: true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),).amountOfCall,).toBe(4,),)
-                    test("0 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
-                    test("1 argument: false",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                    test("2 arguments: false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                },)
-            },)
-            describe("filterNotNull", () => {
-                test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(0,),)
-                test("1 field",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(isMinimalist ? 2 : 1,),)
-                test("2 fields", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(isMinimalist ? 4 : 2,),)
-                test("4 fields", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(type === 'normal' || isMinimalist ? 8 : 4,),)//TODO remove the type == normal validation
-            },)
-            describe("requireNoNulls", () => {
-                test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(0,),)
-                test("1 field",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(isMinimalist ? 2 : 1,),)
-                test("2 fields", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(isMinimalist ? 4 : 2,),)
-                test("4 fields", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(type === 'normal' || isMinimalist ? 8 : 4,),)//TODO remove the type == normal validation
-            },)
-        },)
 
         describe("filter", () => {
             describe("empty", () => {
@@ -372,7 +376,7 @@ describe("CollectionHolderTest (filter)", () => {
             },)
         },)
         describe("filterNotNull", () => {
-            test("empty", () => expect(new instance(EMPTY,).filterNotNull(),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("empty", () => expect(new instance(EMPTY,).filterNotNull(),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             describe("1 field", () => {
                 test("non-null",  () => expect(new instance(A,).filterNotNull().toArray(),).toEqual(A,),)
                 test("null",      () => expect(new instance(NULL,).filterNotNull().toArray(),).toBeEmpty(),)
@@ -397,8 +401,8 @@ describe("CollectionHolderTest (filter)", () => {
                 test("null + undefined",    () => expect(new instance(A_NULL_UNDEFINED_B,).filterNotNull().toArray(),).toEqual(AB,),)
             },)
 
-            if (isMinimalist)
-                return // We only do some test that require the CollectionHolder.hasNull method
+            if (isMinimalist || isExtension)
+                return // We only do some test that require the CollectionHolder.hasNull method and is not an extension method instance
             describe("non-minimalist collection", () => {
                 test("1 field",  () => expectToBeInstance(new instance(A,), it => it.filterNotNull(),),)
                 test("2 fields", () => expectToBeInstance(new instance(AB,), it => it.filterNotNull(),),)
@@ -406,14 +410,31 @@ describe("CollectionHolderTest (filter)", () => {
             },)
         },)
         describe("requireNoNulls", () => {
-            test("empty", () => expect(new instance(EMPTY,).requireNoNulls(),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("empty", () => {
+                if (isArrayExtension)
+                    expect(() => new instance(EMPTY,).requireNoNulls(),).not.toThrow()
+                else
+                    expectToBeInstance(new instance(EMPTY,), it => it.requireNoNulls(),)
+            },)
             describe("1 field", () => {
-                test("non-null",  () => expectToBeInstance(new instance(A,), it => it.requireNoNulls(),),)
+                test("non-null", () => {
+                    if (isArrayExtension)
+                        expect(() => new instance(A,).requireNoNulls(),).not.toThrow()
+                    else
+                        expectToBeInstance(new instance(A,), it => it.requireNoNulls(),)
+                },)
+
                 test("null",      () => expect(() => new instance(NULL,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
                 test("undefined", () => expect(() => new instance(UNDEFINED,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
             },)
             describe("2 fields", () => {
-                test("non-null",           () => expectToBeInstance(new instance(AB,), it => it.requireNoNulls(),),)
+                test("non-null", () => {
+                    if (isArrayExtension)
+                        expect(() => new instance(AB,).requireNoNulls(),).not.toThrow()
+                    else
+                        expectToBeInstance(new instance(AB,), it => it.requireNoNulls(),)
+                },)
+
                 test("null at start",      () => expect(() => new instance(NULL_A,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
                 test("null at end",        () => expect(() => new instance(A_NULL,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
                 test("undefined at start", () => expect(() => new instance(UNDEFINED_A,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
@@ -421,7 +442,13 @@ describe("CollectionHolderTest (filter)", () => {
                 test("null + undefined",   () => expect(() => new instance(NULL_UNDEFINED,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
             },)
             describe("4 fields", () => {
-                test("non-null",            () => expectToBeInstance(new instance(ABCD,), it => it.requireNoNulls(),),)
+                test("non-null", () => {
+                    if (isArrayExtension)
+                        expect(() => new instance(ABCD,).requireNoNulls(),).not.toThrow()
+                    else
+                        expectToBeInstance(new instance(ABCD,), it => it.requireNoNulls(),)
+                },)
+
                 test("null at start",       () => expect(() => new instance(NULL_AB,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
                 test("null at center",      () => expect(() => new instance(A_NULL_B,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
                 test("null at end",         () => expect(() => new instance(AB_NULL,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
@@ -431,8 +458,8 @@ describe("CollectionHolderTest (filter)", () => {
                 test("null + undefined",    () => expect(() => new instance(A_NULL_UNDEFINED_B,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
             },)
 
-            if (isMinimalist)
-                return // We only do some test that require the CollectionHolder.hasNull method
+            if (isMinimalist || isExtension)
+                return // We only do some test that require the CollectionHolder.hasNull method and is not an extension method instance
             describe("non-minimalist collection", () => {
                 describe("1 field", () => {
                     test("null",      () => expect(() => new instance(NULL,).requireNoNulls(),).toThrow(TypeError,),)

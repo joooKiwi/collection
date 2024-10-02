@@ -5,9 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {EmptyCollectionHolderForTest}               from "./instance/EmptyCollectionHolderForTest"
-import {everyCollectionInstancesAsCollectionHolder} from "./value/instances"
-import {A, A_A, AA, AB, AB_AB, ABAB, ABCD, EMPTY}   from "./value/arrays"
+import {EmptyCollectionHolderForTest}                                   from "./instance/EmptyCollectionHolderForTest"
+import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
+import {A, A_A, AA, AB, AB_AB, ABAB, ABCD, EMPTY}                       from "./value/arrays"
 
 import {CollectionConstants}       from "../src/CollectionConstants"
 import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
@@ -39,7 +39,7 @@ describe("CollectionHolderTest (conversion)", () => {
         test("to locale upper case string", () => expect(new EmptyCollectionHolderForTest().toLocaleUpperCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
     },)
 
-    describe.each(everyCollectionInstancesAsCollectionHolder,)("%s", ({value: {instance,},},) => {
+    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance,},},) => {
         test("to iterator: empty",                     () => expect(new instance(EMPTY,).toIterator(),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
         test("to iterator: 1 field",                   () => expect(new instance(A,).toIterator(),).toBeInstanceOf(GenericCollectionIterator,),)
         test("to iterator: 2 fields",                  () => expect(new instance(AB,).toIterator(),).toBeInstanceOf(GenericCollectionIterator,),)

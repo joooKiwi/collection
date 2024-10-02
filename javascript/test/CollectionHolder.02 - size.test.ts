@@ -5,11 +5,11 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {GenericCollectionHolder_SizeAlias}                                                    from "./instance/GenericCollectionHolder_SizeAlias"
-import {EmptyCollectionHolderForTest}                                                         from "./instance/EmptyCollectionHolderForTest"
-import {LazyGenericCollectionHolder_SizeAlias}                                                from "./instance/LazyGenericCollectionHolder_SizeAlias"
-import {everyCollectionInstancesAsCollectionHolder, everyExtensionFunctionAsCollectionHolder} from "./value/instances"
-import {sizeValues}                                                                           from "./value/sizes"
+import {GenericCollectionHolder_SizeAlias}                              from "./instance/GenericCollectionHolder_SizeAlias"
+import {EmptyCollectionHolderForTest}                                   from "./instance/EmptyCollectionHolderForTest"
+import {LazyGenericCollectionHolder_SizeAlias}                          from "./instance/LazyGenericCollectionHolder_SizeAlias"
+import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
+import {sizeValues}                                                     from "./value/sizes"
 
 describe("CollectionHolderTest (size)", () => {
 
@@ -32,16 +32,10 @@ describe("CollectionHolderTest (size)", () => {
         },)
     },)
 
-    describe("extensions", () => {
-    describe.each(everyExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance,},},) => {
+    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
     describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
-        test("isEmpty",    () => expect(new instance(array,).isEmpty,)[size == 0 ? "toBeTrue" : "toBeFalse"](),)
-        test("isNotEmpty", () => expect(new instance(array,).isNotEmpty,)[size == 0 ? "toBeFalse" : "toBeTrue"](),)
-    },)},)},)
-
-    describe.each(everyCollectionInstancesAsCollectionHolder,)("%s", ({value: {instance,},},) => {
-    describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
-        test("size",       () => expect(new instance(array,).size,).toBe(size,),)
+        if (!isExtension)
+            test("size", () => expect(new instance(array,).size,).toBe(size,),)
         test("isEmpty",    () => expect(new instance(array,).isEmpty,)[size == 0 ? "toBeTrue" : "toBeFalse"](),)
         test("isNotEmpty", () => expect(new instance(array,).isNotEmpty,)[size == 0 ? "toBeFalse" : "toBeTrue"](),)
     },)},)

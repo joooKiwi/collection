@@ -5,12 +5,12 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {expectToBeInstance}                                      from "./expect/expectToBeInstance"
-import {EmptyCollectionHolderForTest}                            from "./instance/EmptyCollectionHolderForTest"
-import {GenericCollectionHolder_ToReverseAlias}                  from "./instance/GenericCollectionHolder_ToReverseAlias"
-import {LazyGenericCollectionHolder_ToReverseAlias}              from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
-import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY} from "./value/arrays"
-import {everyCollectionInstancesAsCollectionHolder}              from "./value/instances"
+import {expectToBeInstance}                                             from "./expect/expectToBeInstance"
+import {EmptyCollectionHolderForTest}                                   from "./instance/EmptyCollectionHolderForTest"
+import {GenericCollectionHolder_ToReverseAlias}                         from "./instance/GenericCollectionHolder_ToReverseAlias"
+import {LazyGenericCollectionHolder_ToReverseAlias}                     from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
+import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY}        from "./value/arrays"
+import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
 
 import {CollectionConstants}                       from "../src/CollectionConstants"
 import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
@@ -36,7 +36,15 @@ describe("CollectionHolderTest (reverse)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAsCollectionHolder,)("%s", ({value: {instance, isMinimalist,},},) => {
+    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
+        if (!isExtension)
+            describe("get() being called", () => {
+                test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(0,),)
+                test("1 field",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(1,),)
+                test("2 fields", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(2,),)
+                test("4 fields", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(4,),)
+            },)
+
         describe("empty", () => {
             test("direct", () => expect(new instance(EMPTY,).toReverse(),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             test("from (NaN)", () => expect(new instance(EMPTY,).toReverse(NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
