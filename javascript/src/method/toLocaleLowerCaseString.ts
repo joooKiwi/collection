@@ -11,6 +11,8 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {asLocaleLowerCaseString}       from "./asString"
+import {isArray}                       from "./isArray"
+import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
@@ -20,18 +22,22 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toLocaleLowerCase toLocaleLowerCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param locale     The possible locale to apply on each value
  * @see String.toLocaleLowerCase
  * @extensionFunction
  */
-export function toLocaleLowerCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
+export function toLocaleLowerCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
-    if (isCollectionHolder(collection,))
+    if (isCollectionHolder<T>(collection,))
         return toLocaleLowerCaseStringByCollectionHolder(collection, locale,)
+    if (isArray(collection,))
+        return toLocaleLowerCaseStringByArray(collection, locale,)
     if (isCollectionHolderByStructure<T>(collection,))
         return toLocaleLowerCaseStringByCollectionHolder(collection, locale,)
+    if (isArrayByStructure<T>(collection,))
+        return toLocaleLowerCaseStringByArray(collection, locale,)
     return toLocaleLowerCaseStringByMinimalistCollectionHolder(collection, locale,)
 }
 
@@ -76,6 +82,27 @@ export function toLocaleLowerCaseStringByCollectionHolder<const T, >(collection:
     return __withLocale(collection, locale, collection.size,)
 }
 
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toLocaleLowerCase toLocaleLowerCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param locale     The possible locale to apply on each value
+ * @see String.toLocaleLowerCase
+ * @extensionFunction
+ */
+export function toLocaleLowerCaseStringByArray<const T, >(collection: Nullable<readonly T[]>, locale?: NullableString,): string {
+    if (collection == null)
+        return "[]"
+
+    const size = collection.length
+    if (size == 0)
+        return "[]"
+    if (locale == null)
+        return __withNoLocaleByArray(collection, size,)
+    return __withLocaleByArray(collection, locale, size,)
+}
+
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop method --------------------
 
@@ -88,6 +115,15 @@ function __withNoLocale(collection: MinimalistCollectionHolder, size: number,) {
     return `[${string}${asLocaleLowerCaseString(collection.get(index,),)}]`
 }
 
+function __withNoLocaleByArray(collection: readonly unknown[], size: number,) {
+    let string = ""
+    const sizeMinus1 = size - 1
+    let index = -1
+    while (++index < sizeMinus1)
+        string += `${asLocaleLowerCaseString(collection[index],)}, `
+    return `[${string}${asLocaleLowerCaseString(collection[index],)}]`
+}
+
 function __withLocale(collection: MinimalistCollectionHolder, locale: string, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
@@ -95,6 +131,16 @@ function __withLocale(collection: MinimalistCollectionHolder, locale: string, si
     while (++index < sizeMinus1)
         string += `${asLocaleLowerCaseString(collection.get(index,), locale,)}, `
     return `[${string}${asLocaleLowerCaseString(collection.get(index,), locale,)}]`
+}
+
+
+function __withLocaleByArray(collection: readonly unknown[], locale: string, size: number,) {
+    let string = ""
+    const sizeMinus1 = size - 1
+    let index = -1
+    while (++index < sizeMinus1)
+        string += `${asLocaleLowerCaseString(collection[index], locale,)}, `
+    return `[${string}${asLocaleLowerCaseString(collection[index], locale,)}]`
 }
 
 //#endregion -------------------- Loop method --------------------
