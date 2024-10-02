@@ -12,6 +12,8 @@ import type {ValueIndexWithReturnCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}   from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}           from "../CollectionConstants"
+import {isArray}                       from "./isArray"
+import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
@@ -21,7 +23,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each non-null element of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
@@ -29,13 +31,17 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
-export function mapNotNull<const T, const U extends NonNullable<unknown>, >(collection: Nullable<MinimalistCollectionHolder<T>>, transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+export function mapNotNull<const T, const U extends NonNullable<unknown>, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
         return mapNotNullByCollectionHolder(collection, transform,)
+    if (isArray(collection,))
+        return mapNotNullByArray(collection, transform,)
     if (isCollectionHolderByStructure<T>(collection,))
         return mapNotNullByCollectionHolder(collection, transform,)
+    if (isArrayByStructure<T>(collection,))
+        return mapNotNullByArray(collection, transform,)
     return mapNotNullByMinimalistCollectionHolder(collection, transform,)
 }
 
@@ -90,6 +96,32 @@ export function mapNotNullByCollectionHolder<const T, const U extends NonNullabl
     return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, collection.size,),)
 }
 
+/**
+ * Create a new {@link CollectionHolder} applying a {@link transform} function
+ * on each non-null element of the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param transform  The given transform
+ * @see ReadonlyArray.map
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-not-null.html Kotlin mapNotNull(transform)
+ * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java map(transform)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
+ * @extensionFunction
+ */
+export function mapNotNullByArray<const T, const U extends NonNullable<unknown>, >(collection: Nullable<readonly T[]>, transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+
+    const size = collection.length
+    if (size == 0)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (transform.length == 1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1ArgumentByArray(collection, transform as (value: T,) => Nullable<U>, size,),)
+    if (transform.length >= 2)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2ArgumentByArray(collection, transform, size,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, size,),)
+}
+
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
@@ -104,6 +136,7 @@ function __with0Argument<const U extends NonNullable<unknown>, >(transform: () =
     return newArray
 }
 
+
 function __with1Argument<const T, const U extends NonNullable<unknown>, >(collection: MinimalistCollectionHolder<T>, transform: (value: T,) => Nullable<U>, size: number,) {
     const newArray: U[] = []
     let index = -1
@@ -115,11 +148,34 @@ function __with1Argument<const T, const U extends NonNullable<unknown>, >(collec
     return newArray
 }
 
+function __with1ArgumentByArray<const T, const U extends NonNullable<unknown>, >(collection: readonly T[], transform: (value: T,) => Nullable<U>, size: number,) {
+    const newArray: U[] = []
+    let index = -1
+    while (++index < size) {
+        const value = transform(collection[index] as T,)
+        if (value != null)
+            newArray.push(value,)
+    }
+    return newArray
+}
+
+
 function __with2Argument<const T, const U extends NonNullable<unknown>, >(collection: MinimalistCollectionHolder<T>, transform: (value: T, index: number,) => Nullable<U>, size: number,) {
     const newArray: U[] = []
     let index = -1
     while (++index < size) {
         const value = transform(collection.get(index,), index,)
+        if (value != null)
+            newArray.push(value,)
+    }
+    return newArray
+}
+
+function __with2ArgumentByArray<const T, const U extends NonNullable<unknown>, >(collection: readonly T[], transform: (value: T, index: number,) => Nullable<U>, size: number,) {
+    const newArray: U[] = []
+    let index = -1
+    while (++index < size) {
+        const value = transform(collection[index] as T, index,)
         if (value != null)
             newArray.push(value,)
     }
