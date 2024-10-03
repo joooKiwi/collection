@@ -125,7 +125,7 @@ export function onEachIndexedByArray<const T, const COLLECTION extends Nullable<
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-export function __with0Argument<const COLLECTION, >(collection: COLLECTION, action: () => void, size: number,) {
+function __with0Argument<const COLLECTION, >(collection: COLLECTION, action: () => void, size: number,) {
     let index = size
     while (index-- > 0)
         action()
@@ -133,7 +133,7 @@ export function __with0Argument<const COLLECTION, >(collection: COLLECTION, acti
 }
 
 
-export function __with1Argument<const COLLECTION, >(collection: COLLECTION, action: (index: number,) => void, size: number,) {
+function __with1Argument<const COLLECTION, >(collection: COLLECTION, action: (index: number,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index,)
@@ -141,14 +141,14 @@ export function __with1Argument<const COLLECTION, >(collection: COLLECTION, acti
 }
 
 
-export function __with2Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (index: number, value: T,) => void, size: number,) {
+function __with2Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (index: number, value: T,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index, collection.get(index,),)
     return collection
 }
 
-export function __with2ArgumentByArray<const T, const COLLECTION extends readonly T[], >(collection: COLLECTION, action: (index: number, value: T,) => void, size: number,) {
+function __with2ArgumentByArray<const T, const COLLECTION extends readonly T[], >(collection: COLLECTION, action: (index: number, value: T,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index, collection[index] as T,)
