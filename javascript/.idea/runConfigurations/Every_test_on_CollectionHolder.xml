@@ -3,6 +3,7 @@
     <toRun name="all / any / none" type="JavaScriptTestRunnerJest" />
     <toRun name="constructor" type="JavaScriptTestRunnerJest" />
     <toRun name="conversion" type="JavaScriptTestRunnerJest" />
+    <toRun name="drop" type="JavaScriptTestRunnerJest" />
     <toRun name="filter" type="JavaScriptTestRunnerJest" />
     <toRun name="find" type="JavaScriptTestRunnerJest" />
     <toRun name="forEach / onEach" type="JavaScriptTestRunnerJest" />
@@ -14,6 +15,7 @@
     <toRun name="reverse" type="JavaScriptTestRunnerJest" />
     <toRun name="size" type="JavaScriptTestRunnerJest" />
     <toRun name="slice" type="JavaScriptTestRunnerJest" />
+    <toRun name="take" type="JavaScriptTestRunnerJest" />
     <toRun name="value" type="JavaScriptTestRunnerJest" />
     <method v="2" />
   </configuration>
