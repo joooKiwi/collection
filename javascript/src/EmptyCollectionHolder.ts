@@ -85,8 +85,6 @@ export class EmptyCollectionHolder
     public elementAt(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
     public elementAt(index?: Nullable<NumericOrObject>,) { return this.get(index,) }
 
-    //#endregion -------------------- Get --------------------
-    //#region -------------------- Get or else --------------------
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
@@ -102,8 +100,6 @@ export class EmptyCollectionHolder
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,)  { return this.getOrElse(index, defaultValue,) }
 
-    //#endregion -------------------- Get or else --------------------
-    //#region -------------------- Get or null --------------------
 
     public getOrNull(..._: readonly unknown[]): null
     public getOrNull() { return null }
@@ -114,102 +110,65 @@ export class EmptyCollectionHolder
     public elementAtOrNull(..._: readonly unknown[]): null
     public elementAtOrNull() { return this.getOrNull() }
 
-    //#endregion -------------------- Get or null --------------------
-
+    //#endregion -------------------- Get --------------------
     //#region -------------------- First --------------------
 
     public first<const S, >(..._: readonly unknown[]): never
     public first() { throw new EmptyCollectionHolderException() }
 
-    //#endregion -------------------- First --------------------
-    //#region -------------------- First or null --------------------
-
     public firstOrNull<const S, >(..._: readonly unknown[]): null
     public firstOrNull() { return null }
 
-    //#endregion -------------------- First or null --------------------
-
+    //#endregion -------------------- First --------------------
     //#region -------------------- Last --------------------
 
     public last<const S, >(..._: readonly unknown[]): never
     public last() { throw new EmptyCollectionHolderException() }
 
-    //#endregion -------------------- Last --------------------
-    //#region -------------------- Last or null --------------------
-
     public lastOrNull<const S, >(..._: readonly unknown[]): null
     public lastOrNull() { return null }
 
-    //#endregion -------------------- Last or null --------------------
-
+    //#endregion -------------------- Last --------------------
     //#region -------------------- Find --------------------
 
     public find<const S, >(..._: readonly unknown[]): null
     public find() { return null }
 
-    //#endregion -------------------- Find --------------------
-    //#region -------------------- Find indexed --------------------
-
     public findIndexed<const S, >(..._: readonly unknown[]): null
     public findIndexed() { return null }
 
-    //#endregion -------------------- Find indexed --------------------
-
-    //#region -------------------- Find last --------------------
 
     public findLast<const S, >(..._: readonly unknown[]): null
     public findLast() { return null }
 
-    //#endregion -------------------- Find last --------------------
-    //#region -------------------- Find last indexed --------------------
-
     public findLastIndexed<const S, >(..._: readonly unknown[]): null
     public findLastIndexed() { return null }
 
-    //#endregion -------------------- Find last indexed --------------------
+    //#endregion -------------------- Find --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    //#region -------------------- Index of --------------------
-
     public indexOf(..._: readonly unknown[]): null
     public indexOf() { return null }
 
-    //#endregion -------------------- Index of --------------------
-
-    //#region -------------------- Last index of --------------------
 
     public lastIndexOf(..._: readonly unknown[]): null
     public lastIndexOf() { return null }
 
-    //#endregion -------------------- Last index of --------------------
-
-    //#region -------------------- Index of first --------------------
 
     public indexOfFirst(..._: readonly unknown[]): null
     public indexOfFirst() { return null }
 
-    //#endregion -------------------- Index of first --------------------
-    //#region -------------------- Index of first indexed --------------------
-
     public indexOfFirstIndexed(..._: readonly unknown[]): null
     public indexOfFirstIndexed() { return null }
 
-    //#endregion -------------------- Index of first indexed --------------------
-
-    //#region -------------------- Index of last --------------------
 
     public indexOfLast(..._: readonly unknown[]): null
     public indexOfLast() { return null }
 
-    //#endregion -------------------- Index of last --------------------
-    //#region -------------------- Index of last indexed --------------------
-
     public indexOfLastIndexed(..._: readonly unknown[]): null
     public indexOfLastIndexed() { return null }
-
-    //#endregion -------------------- Index of last indexed --------------------
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
@@ -379,34 +338,21 @@ export class EmptyCollectionHolder
     public filter<const S, >(..._: readonly unknown[]): this
     public filter() { return this }
 
-    //#endregion -------------------- Filter --------------------
-    //#region -------------------- Filter indexed --------------------
-
     public filterIndexed<const S, >(..._: readonly unknown[]): this
     public filterIndexed() { return this }
 
-    //#endregion -------------------- Filter indexed --------------------
-
-    //#region -------------------- Filter not --------------------
 
     public filterNot<const S, >(..._: readonly unknown[]): this
     public filterNot() { return this }
 
-    //#endregion -------------------- Filter not --------------------
-    //#region -------------------- Filter not indexed --------------------
-
     public filterNotIndexed<const S, >(..._: readonly unknown[]): this
     public filterNotIndexed() { return this }
 
-    //#endregion -------------------- Filter not indexed --------------------
-
-    //#region -------------------- Filter not null --------------------
 
     public filterNotNull(..._: readonly unknown[]): this
     public filterNotNull() { return this }
 
-    //#endregion -------------------- Filter not null --------------------
-
+    //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
     public slice(..._: readonly unknown[]): this
@@ -419,26 +365,17 @@ export class EmptyCollectionHolder
     public map<const U, >(..._: readonly unknown[]): CollectionHolder<U>
     public map() { return this }
 
-    //#endregion -------------------- Map --------------------
-    //#region -------------------- Map indexed --------------------
-
     public mapIndexed<const U, >(..._: readonly unknown[]): CollectionHolder<U>
     public mapIndexed() { return this }
 
-    //#endregion -------------------- Map indexed --------------------
-
-    //#region -------------------- Map not null --------------------
 
     public mapNotNull<const U extends NonNullable<unknown>, >(..._: readonly unknown[]): CollectionHolder<U>
     public mapNotNull() { return this }
 
-    //#endregion -------------------- Map not null --------------------
-    //#region -------------------- Map not null indexed --------------------
-
     public mapNotNullIndexed<const U extends NonNullable<unknown>, >(..._: readonly unknown[]): CollectionHolder<U>
     public mapNotNullIndexed() { return this }
 
-    //#endregion -------------------- Map not null indexed --------------------
+    //#endregion -------------------- Map --------------------
 
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Loop methods --------------------
@@ -448,26 +385,19 @@ export class EmptyCollectionHolder
     public forEach(..._: readonly unknown[]): void
     public forEach() {}
 
-    //#endregion -------------------- For each --------------------
-    //#region -------------------- For each indexed --------------------
-
     public forEachIndexed(..._: readonly unknown[]): void
     public forEachIndexed() {}
 
-    //#endregion -------------------- For each indexed --------------------
-
+    //#endregion -------------------- For each --------------------
     //#region -------------------- On each --------------------
 
     public onEach(..._: readonly unknown[]): this
     public onEach() { return this }
 
-    //#endregion -------------------- On each --------------------
-    //#region -------------------- On each indexed --------------------
-
     public onEachIndexed(..._: readonly unknown[]): this
     public onEachIndexed() { return this }
 
-    //#endregion -------------------- On each indexed --------------------
+    //#endregion -------------------- On each --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
