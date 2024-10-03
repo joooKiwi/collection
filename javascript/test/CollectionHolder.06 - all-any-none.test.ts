@@ -10,7 +10,7 @@ import {GenericCollectionHolder_AllAlias}                                       
 import {GenericCollectionHolder_AnyAlias}                                                                                                       from "./instance/GenericCollectionHolder_AnyAlias"
 import {LazyGenericCollectionHolder_AnyAlias}                                                                                                   from "./instance/LazyGenericCollectionHolder_AnyAlias"
 import {LazyGenericCollectionHolder_AllAlias}                                                                                                   from "./instance/LazyGenericCollectionHolder_AllAlias"
-import {A, AB, ABCD, EMPTY}                                                                                                                     from "./value/arrays"
+import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                                                                                     from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2, falseCallbacks, trueCallbacks} from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                      from "./value/callbacks (fail)"
 import {callbackIs0Alt, callbackIs1Alt, callbackIs2Alt, callbackIs3Alt, callbackIs4Alt, callbackIsEvenAlt, callbackIsOddAlt}                    from "./value/callbacks (number)"
@@ -76,12 +76,12 @@ describe("CollectionHolderTest (all / any / none)", () => {
                 test("2 arguments", () => expect(new instance(EMPTY,).all(callbackAsFail2,),).toBeTrue(),)
             },)
             describe("boolean callbacks", () => {
-                describe.each(trueCallbacks,)("true: %s",    ({value: it,},) => {
+                describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
                     test("1 field",  () => expect(new instance(A,).all(it,),).toBeTrue(),)
                     test("2 fields", () => expect(new instance(AB,).all(it,),).toBeTrue(),)
                     test("4 fields", () => expect(new instance(ABCD,).all(it,),).toBeTrue(),)
                 },)
-                describe.each(falseCallbacks,)("false: %s",    ({value: it,},) => {
+                describe.each(falseCallbacks,)("false: %s", ({value: it,},) => {
                     test("1 field",  () => expect(new instance(A,).all(it,),).toBeFalse(),)
                     test("2 fields", () => expect(new instance(AB,).all(it,),).toBeFalse(),)
                     test("4 fields", () => expect(new instance(ABCD,).all(it,),).toBeFalse(),)
@@ -127,7 +127,7 @@ describe("CollectionHolderTest (all / any / none)", () => {
                 test("2 fields", () => expect(new instance(AB,).any(),).toBeTrue(),)
                 test("4 fields", () => expect(new instance(ABCD,).any(),).toBeTrue(),)
             },)
-            describe.each([null, undefined,],)("null parameter: %s", it => {
+            describe.each(NULL_UNDEFINED,)("null parameter: %s", it => {
                 test("empty",    () => expect(new instance(EMPTY,).any(it,),).toBeFalse(),)
                 test("1 field",  () => expect(new instance(A,).any(it,),).toBeTrue(),)
                 test("2 fields", () => expect(new instance(AB,).any(it,),).toBeTrue(),)
@@ -140,12 +140,12 @@ describe("CollectionHolderTest (all / any / none)", () => {
                     test("2 arguments", () => expect(new instance(EMPTY,).any(callbackAsFail2,),).toBeFalse(),)
                 },)
                 describe("boolean callbacks", () => {
-                    describe.each(trueCallbacks,)("true: %s",    ({value: it,},) => {
+                    describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
                         test("1 field",  () => expect(new instance(A,).any(it,),).toBeTrue(),)
                         test("2 fields", () => expect(new instance(AB,).any(it,),).toBeTrue(),)
                         test("4 fields", () => expect(new instance(ABCD,).any(it,),).toBeTrue(),)
                     },)
-                    describe.each(falseCallbacks,)("false: %s",    ({value: it,},) => {
+                    describe.each(falseCallbacks,)("false: %s", ({value: it,},) => {
                         test("1 field",  () => expect(new instance(A,).any(it,),).toBeFalse(),)
                         test("2 fields", () => expect(new instance(AB,).any(it,),).toBeFalse(),)
                         test("4 fields", () => expect(new instance(ABCD,).any(it,),).toBeFalse(),)
@@ -192,7 +192,7 @@ describe("CollectionHolderTest (all / any / none)", () => {
                 test("2 fields", () => expect(new instance(AB,).none(),).toBeFalse(),)
                 test("4 fields", () => expect(new instance(ABCD,).none(),).toBeFalse(),)
             },)
-            describe.each([null, undefined,],)("null parameter: %s", it => {
+            describe.each(NULL_UNDEFINED,)("null parameter: %s", it => {
                 test("empty",    () => expect(new instance(EMPTY,).none(it,),).toBeTrue(),)
                 test("1 field",  () => expect(new instance(A,).none(it,),).toBeFalse(),)
                 test("2 fields", () => expect(new instance(AB,).none(it,),).toBeFalse(),)
@@ -205,12 +205,12 @@ describe("CollectionHolderTest (all / any / none)", () => {
                     test("2 arguments", () => expect(new instance(EMPTY,).none(callbackAsFail2,),).toBeTrue(),)
                 },)
                 describe("boolean callbacks", () => {
-                    describe.each(trueCallbacks,)("true: %s",    ({value: it,},) => {
+                    describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
                         test("1 field",  () => expect(new instance(A,).none(it,),).toBeFalse(),)
                         test("2 fields", () => expect(new instance(AB,).none(it,),).toBeFalse(),)
                         test("4 fields", () => expect(new instance(ABCD,).none(it,),).toBeFalse(),)
                     },)
-                    describe.each(falseCallbacks,)("false: %s",    ({value: it,},) => {
+                    describe.each(falseCallbacks,)("false: %s", ({value: it,},) => {
                         test("1 field",  () => expect(new instance(A,).none(it,),).toBeTrue(),)
                         test("2 fields", () => expect(new instance(AB,).none(it,),).toBeTrue(),)
                         test("4 fields", () => expect(new instance(ABCD,).none(it,),).toBeTrue(),)

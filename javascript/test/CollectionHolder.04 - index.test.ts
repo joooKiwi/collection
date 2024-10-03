@@ -378,7 +378,7 @@ describe("CollectionHolderTest (index)", () => {
                 test("to (+∞)",    () => expect(new instance(EMPTY,).indexOfFirst(callbackAsFail0, null, Infinity,),).toBeNull(),)
             },)
             describe("boolean callbacks", () => {
-                describe.each(trueCallbacks,)("true: %s",   ({value: it,},) => {
+                describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
                     test("1 field",  () => expect(new instance(A,).indexOfFirst(it,),).toBe(0,),)
                     test("2 fields", () => expect(new instance(AB,).indexOfFirst(it,),).toBe(0,),)
                     test("4 fields", () => expect(new instance(ABCD,).indexOfFirst(it,),).toBe(0,),)
@@ -500,7 +500,7 @@ describe("CollectionHolderTest (index)", () => {
                 test("to (+∞)",    () => expect(new instance(EMPTY,).indexOfFirstIndexed(callbackAsFail0, null, Infinity,),).toBeNull(),)
             },)
             describe("boolean callbacks", () => {
-                describe.each(trueCallbacks,)("true: %s",   ({value: it,},) => {
+                describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
                     test("1 field",  () => expect(new instance(A,).indexOfFirstIndexed(it,),).toBe(0,),)
                     test("2 fields", () => expect(new instance(AB,).indexOfFirstIndexed(it,),).toBe(0,),)
                     test("4 fields", () => expect(new instance(ABCD,).indexOfFirstIndexed(it,),).toBe(0,),)
@@ -620,7 +620,7 @@ describe("CollectionHolderTest (index)", () => {
                 test("to (+∞)",    () => expect(new instance(EMPTY,).indexOfLast(callbackAsFail0, null, Infinity,),).toBeNull(),)
             },)
             describe("boolean callbacks", () => {
-                describe.each(trueCallbacks,)("true: %s",   ({value: it,},) => {
+                describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
                     test("1 field",  () => expect(new instance(A,).indexOfLast(it,),).toBe(0,),)
                     test("2 fields", () => expect(new instance(AB,).indexOfLast(it,),).toBe(1,),)
                     test("4 fields", () => expect(new instance(ABCD,).indexOfLast(it,),).toBe(3,),)
@@ -738,7 +738,7 @@ describe("CollectionHolderTest (index)", () => {
                 test("to (+∞)",    () => expect(new instance(EMPTY,).indexOfLastIndexed(callbackAsFail0, null, Infinity,),).toBeNull(),)
             },)
             describe("boolean callbacks", () => {
-                describe.each(trueCallbacks,)("true: %s",   ({value: it,},) => {
+                describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
                     test("1 field",  () => expect(new instance(A,).indexOfLastIndexed(it,),).toBe(0,),)
                     test("2 fields", () => expect(new instance(AB,).indexOfLastIndexed(it,),).toBe(1,),)
                     test("4 fields", () => expect(new instance(ABCD,).indexOfLastIndexed(it,),).toBe(3,),)

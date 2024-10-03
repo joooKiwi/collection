@@ -12,7 +12,7 @@ import {GenericCollectionHolder_GetOrNullAlias}                                 
 import {LazyGenericCollectionHolder_GetAlias}                                                                                                   from "./instance/LazyGenericCollectionHolder_GetAlias"
 import {LazyGenericCollectionHolder_GetOrElseAlias}                                                                                             from "./instance/LazyGenericCollectionHolder_GetOrElseAlias"
 import {LazyGenericCollectionHolder_GetOrNullAlias}                                                                                             from "./instance/LazyGenericCollectionHolder_GetOrNullAlias"
-import {A, AB, ABCD, EMPTY}                                                                                                                     from "./value/arrays"
+import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                                                                                     from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2, falseCallbacks, trueCallbacks} from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                      from "./value/callbacks (fail)"
 import {callbackAsNull0}                                                                                                                        from "./value/callbacks (null)"
@@ -396,7 +396,7 @@ describe("CollectionHolderTest (value)", () => {
                 test("2 fields", () => expect(new instance(AB,).first(),).toBe('a',),)
                 test("4 fields", () => expect(new instance(ABCD,).first(),).toBe('a',),)
             },)
-            describe.each([null, undefined,],)("null parameter: %s", it => {
+            describe.each(NULL_UNDEFINED,)("null parameter: %s", it => {
                 test("empty",    () => expect(() => new instance(EMPTY,).first(it,),).toThrow(EmptyCollectionHolderException,),)
                 test("1 field",  () => expect(new instance(A,).first(it,),).toBe('a',),)
                 test("2 fields", () => expect(new instance(AB,).first(it,),).toBe('a',),)
@@ -405,7 +405,7 @@ describe("CollectionHolderTest (value)", () => {
             describe("with predicate", () => {
                 test("empty", () => expect(() => new instance(EMPTY,).first(callbackAsFail0,),).toThrow(EmptyCollectionHolderException,),)
                 describe("boolean callbacks", () => {
-                    describe.each(trueCallbacks,)("true: %s",   ({value: it,},) => {
+                    describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
                         test("1 field",  () => expect(new instance(A,).first(it,),).toBe('a',),)
                         test("2 fields", () => expect(new instance(AB,).first(it,),).toBe('a',),)
                         test("4 fields", () => expect(new instance(ABCD,).first(it,),).toBe('a',),)
@@ -457,7 +457,7 @@ describe("CollectionHolderTest (value)", () => {
                 test("2 fields", () => expect(new instance(AB,).firstOrNull(),).toBe('a',),)
                 test("4 fields", () => expect(new instance(ABCD,).firstOrNull(),).toBe('a',),)
             },)
-            describe.each([null, undefined,],)("null parameter: %s", it => {
+            describe.each(NULL_UNDEFINED,)("null parameter: %s", it => {
                 test("empty",    () => expect(new instance(EMPTY,).firstOrNull(it,),).toBeNull(),)
                 test("1 field",  () => expect(new instance(A,).firstOrNull(it,),).toBe('a',),)
                 test("2 fields", () => expect(new instance(AB,).firstOrNull(it,),).toBe('a',),)
@@ -466,7 +466,7 @@ describe("CollectionHolderTest (value)", () => {
             describe("with predicate", () => {
                 test("empty", () => expect(new instance(EMPTY,).firstOrNull(callbackAsFail0,),).toBeNull(),)
                 describe("boolean callbacks", () => {
-                    describe.each(trueCallbacks,)("true: %s",   ({value: it,},) => {
+                    describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
                         test("1 field",  () => expect(new instance(A,).firstOrNull(it,),).toBe('a',),)
                         test("2 fields", () => expect(new instance(AB,).firstOrNull(it,),).toBe('a',),)
                         test("4 fields", () => expect(new instance(ABCD,).firstOrNull(it,),).toBe('a',),)
@@ -518,7 +518,7 @@ describe("CollectionHolderTest (value)", () => {
                 test("2 fields", () => expect(new instance(AB,).last(),).toBe('b',),)
                 test("4 fields", () => expect(new instance(ABCD,).last(),).toBe('d',),)
             },)
-            describe.each([null, undefined,],)("null parameter: %s", it => {
+            describe.each(NULL_UNDEFINED,)("null parameter: %s", it => {
                 test("empty",    () => expect(() => new instance(EMPTY,).last(it,),).toThrow(EmptyCollectionHolderException,),)
                 test("1 field",  () => expect(new instance(A,).last(it,),).toBe('a',),)
                 test("2 fields", () => expect(new instance(AB,).last(it,),).toBe('b',),)
@@ -527,7 +527,7 @@ describe("CollectionHolderTest (value)", () => {
             describe("with predicate", () => {
                 test("empty", () => expect(() => new instance(EMPTY,).last(callbackAsFail0,),).toThrow(EmptyCollectionHolderException,),)
                 describe("boolean callbacks", () => {
-                    describe.each(trueCallbacks,)("true: %s",   ({value: it,},) => {
+                    describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
                         test("1 field",  () => expect(new instance(A,).last(it,),).toBe('a',),)
                         test("2 fields", () => expect(new instance(AB,).last(it,),).toBe('b',),)
                         test("4 fields", () => expect(new instance(ABCD,).last(it,),).toBe('d',),)
@@ -579,7 +579,7 @@ describe("CollectionHolderTest (value)", () => {
                 test("2 fields", () => expect(new instance(AB,).lastOrNull(),).toBe('b',),)
                 test("4 fields", () => expect(new instance(ABCD,).lastOrNull(),).toBe('d',),)
             },)
-            describe.each([null, undefined,],)("null parameter: %s", it => {
+            describe.each(NULL_UNDEFINED,)("null parameter: %s", it => {
                 test("empty",    () => expect(new instance(EMPTY,).lastOrNull(it,),).toBeNull(),)
                 test("1 field",  () => expect(new instance(A,).lastOrNull(it,),).toBe('a',),)
                 test("2 fields", () => expect(new instance(AB,).lastOrNull(it,),).toBe('b',),)
