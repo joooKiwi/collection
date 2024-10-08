@@ -105,9 +105,7 @@ export function sliceWithSetByCollectionHolder<const T, >(collection: Nullable<C
 export function sliceWithSetByArray<const T, >(collection: Nullable<readonly T[]>, indices: ReadonlySet<number>,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
-    const size = collection.length
-    if (size == 0)
+    if (collection.length == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const indicesSize = indices.size
@@ -138,20 +136,18 @@ export function sliceByCollectionHolderWithSet<const T, >(collection: Nullable<C
 function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indices: ReadonlySet<number>, indicesSize: number,) {
     const newArray = new Array<T>(indicesSize,)
     const iterator = indices[Symbol.iterator]()
-    let index = 0
-    let iteratorResult: IteratorResult<number, unknown>
-    while (!(iteratorResult = iterator.next()).done)
-        newArray[index++] = collection.get(iteratorResult.value,)
+    let index = indicesSize
+    while (index-- > 0)
+        newArray[index++] = collection.get(iterator.next().value!,)
     return Object.freeze(newArray,)
 }
 
 function __newArrayByArray<const T, >(collection: readonly T[], indices: ReadonlySet<number>, indicesSize: number,) {
     const newArray = new Array<T>(indicesSize,)
     const iterator = indices[Symbol.iterator]()
-    let index = 0
-    let iteratorResult: IteratorResult<number, unknown>
-    while (!(iteratorResult = iterator.next()).done)
-        newArray[index++] = __get(collection, iteratorResult.value,)
+    let index = indicesSize
+    while (index-- > 0)
+        newArray[index++] = __get(collection, iterator.next().value!,)
     return Object.freeze(newArray,)
 }
 

@@ -65,7 +65,7 @@ export function sliceWithArrayByMinimalistCollectionHolder<const T, >(collection
     const indicesSize = indices.length
     if (indicesSize == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => _newArray(collection, indices, indicesSize,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
 
 /**
@@ -88,7 +88,7 @@ export function sliceWithArrayByCollectionHolder<const T, >(collection: Nullable
     const indicesSize = indices.length
     if (indicesSize == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => _newArray(collection, indices, indicesSize,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
 
 /**
@@ -111,13 +111,13 @@ export function sliceWithArrayByArray<const T, >(collection: Nullable<readonly T
     const indicesSize = indices.length
     if (indicesSize == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => _newArrayByArray(collection, indices, indicesSize,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayByArray(collection, indices, indicesSize,),)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function _newArray<const T, >(collection: MinimalistCollectionHolder<T>, indices: readonly number[], indicesSize: number,) {
+function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indices: readonly number[], indicesSize: number,) {
     const newArray = new Array<T>(indicesSize,)
     let index = indicesSize
     while (index-- > 0)
@@ -125,7 +125,7 @@ function _newArray<const T, >(collection: MinimalistCollectionHolder<T>, indices
     return Object.freeze(newArray,)
 }
 
-function _newArrayByArray<const T, >(collection: readonly T[], indices: readonly number[], indicesSize: number,) {
+function __newArrayByArray<const T, >(collection: readonly T[], indices: readonly number[], indicesSize: number,) {
     const newArray = new Array<T>(indicesSize,)
     let index = indicesSize
     while (index-- > 0)

@@ -105,9 +105,7 @@ export function sliceWithMinimalistCollectionHolderByCollectionHolder<const T, >
 export function sliceWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
-    const size = collection.length
-    if (size == 0)
+    if (collection.length == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const indicesSize = indices.size
