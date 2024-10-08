@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.9.3",
+  "version": "1.10.0",
   "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin) and List (from Java/Kotlin/C#)",
 
   "scripts": {
@@ -154,8 +154,8 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.13",
-    "@types/node": "^22.7.4",
-    "del-cli": "^5.1.0",
+    "@types/node": "^22.7.5",
+    "del-cli": "^6.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-extended": "^4.0.2",
     "ts-jest": "^29.2.5",
