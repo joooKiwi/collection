@@ -64,6 +64,7 @@ describe("CollectionHolderTest (value)", () => {
     },)
 
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
+        /** The instance is a {@link GenericCollectionHolder} */
         const isNormal = type === "normal"
         if (!isExtension)
             describe("get() being called", () => {

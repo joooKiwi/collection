@@ -28,7 +28,9 @@ describe("CollectionHolderTest (filter)", () => {
     },)
 
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
+        /** The instance is a {@link GenericCollectionHolder} */
         const isNormal = type === "normal"
+        /** The instance is a {@link CollectionHolder} for the {@link ReadonlyArray} extension methods */
         const isArrayExtension = type === "array extension"
 
         if (!isExtension)
