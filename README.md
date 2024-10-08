@@ -64,13 +64,14 @@ They are meant to give a preview, but not always the most efficient.
 
 The structure can sometime have an equivalent on other languages:
 
-| variable in a template | Javascript                                     | Java                          | Kotlin                                                                           | PHP                               | C#                                                                                  |
-|------------------------|------------------------------------------------|-------------------------------|----------------------------------------------------------------------------------|-----------------------------------|-------------------------------------------------------------------------------------|
-| iterable               | Object with a [[Symbol.iterator]][js-iterator] | [Iterable][java-iterable]     | [Iterable][kotlin-iterable] / [MutableIterable][kotlin-mutable-iterable]         | [IteratorAggregate][php-iterable] | [IEnumerable][c#-iterable-1] / [Enumerable][c#-iterable-2]                          |
-| array                  | [Array][js-array]                              | Array                         | [Array][kotlin-array]                                                            | [Array][php-array]                | [ImmutableArray][c#-array] / [Array][c#-mutable-array]                              |
-| collection             | _N/A_                                          | [Collection][java-collection] | [Collection][kotlin-collection] / [MutableCollection][kotlin-mutable-collection] | [Collection][php-collection]      | [IReadOnlyCollection][c#-collection] / [ICollection][c#-mutable-collection]         |
-| list                   | _N/A_                                          | [List][java-list]             | [List][kotlin-list] / [MutableList][kotlin-mutable-list]                         | _N/A_                             | [IImmutableList][c#-list-2] / [IReadOnlyList][c#-list-1] / [IList][c#-mutable-list] |
-| set                    | [Set][js-set] / [WeakSet][js-weak-set]         | [Set][java-set]               | [Set][kotlin-set] / [MutableSet][kotlin-mutable-set]                             | [Set][php-set]                    | [IImmutableSet][c#-set-2] / [IReadOnlySet][c#-set-1] / [ISet][c#-mutable-set]       |
+| variable in a template | Javascript                                            | Java                          | Kotlin                                                                           | PHP                               | C#                                                                                           |
+|------------------------|-------------------------------------------------------|-------------------------------|----------------------------------------------------------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------|
+| iterable               | Object with a [[Symbol.iterator]][js-symbol-iterator] | [Iterable][java-iterable]     | [Iterable][kotlin-iterable] / [MutableIterable][kotlin-mutable-iterable]         | [IteratorAggregate][php-iterable] | [IEnumerable][c#-iterable-1] / [IEnumerable<T>][c#-iterable-2] / [Enumerable][c#-iterable-3] |
+| iterator               | [Iterator][js-iterator]                               | [Iterator][java-iterator]     | [Iterator][kotlin-iterator] / [MutableIterator][kotlin-mutable-iterator]         | [Iterator][php-iterator]          | [IEnumerator][c#-iterator-1] / [IEnumerator<T>][c#-iterator-2]                               |
+| array                  | [Array][js-array]                                     | Array                         | [Array][kotlin-array]                                                            | [Array][php-array]                | [ImmutableArray][c#-array] / [Array][c#-mutable-array]                                       |
+| collection             | _N/A_                                                 | [Collection][java-collection] | [Collection][kotlin-collection] / [MutableCollection][kotlin-mutable-collection] | [Collection][php-collection]      | [IReadOnlyCollection][c#-collection] / [ICollection][c#-mutable-collection]                  |
+| list                   | _N/A_                                                 | [List][java-list]             | [List][kotlin-list] / [MutableList][kotlin-mutable-list]                         | _N/A_                             | [IImmutableList][c#-list-2] / [IReadOnlyList][c#-list-1] / [IList][c#-mutable-list]          |
+| set                    | [Set][js-set] / [WeakSet][js-weak-set]                | [Set][java-set]               | [Set][kotlin-set] / [MutableSet][kotlin-mutable-set]                             | [Set][php-set]                    | [IImmutableSet][c#-set-2] / [IReadOnlySet][c#-set-1] / [ISet][c#-mutable-set]                |
  
 Quick note: _For the `C#`, no external library other than the `.NET` is used (even though `MoreLINQ` is a fantastic library) ._
 
@@ -1688,7 +1689,8 @@ This is the most bare-bones structure
 
 
 <!-- JavaScript references -->
-[js-iterator]:                   https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
+[js-symbol-iterator]:            https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
+[js-iterator]:                   https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator
 [js-array]:                      https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 [js-set]:                        https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set
 [js-weak-set]:                   https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
@@ -1726,6 +1728,7 @@ This is the most bare-bones structure
 <!-- JavaScript references -->
 <!-- Java references -->
 [java-iterable]:               https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html
+[java-iterator]:               https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Iterator.html
 [java-collection]:             https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html
 [java-list]:                   https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/List.html
 [java-set]:                    https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Set.html
@@ -1755,6 +1758,8 @@ This is the most bare-bones structure
 <!-- Kotlin references -->
 [kotlin-iterable]:                https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable
 [kotlin-mutable-iterable]:        https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterable
+[kotlin-iterator]:                https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator
+[kotlin-mutable-iterator]:        https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterator
 [kotlin-array]:                   https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/
 [kotlin-collection]:              https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection
 [kotlin-mutable-collection]:      https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection
@@ -1839,6 +1844,7 @@ This is the most bare-bones structure
 <!-- Kotlin references -->
 <!-- PHP references -->
 [php-iterable]:    https://www.php.net/manual/class.iteratoraggregate.php
+[php-iterator]:    https://www.php.net/manual/class.iterator.php
 [php-array]:       https://www.php.net/manual/language.types.array.php
 [php-collection]:  https://www.php.net/manual/class.ds-collection.php
 [php-set]:         https://www.php.net/manual/class.ds-set.php
@@ -1851,7 +1857,10 @@ This is the most bare-bones structure
 <!-- PHP references -->
 <!-- C# references -->
 [c#-iterable-1]:                        https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
-[c#-iterable-2]:                        https://learn.microsoft.com/dotnet/api/system.linq.enumerable
+[c#-iterable-2]:                        https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+[c#-iterable-3]:                        https://learn.microsoft.com/dotnet/api/system.linq.enumerable
+[c#-iterator-1]:                        https://learn.microsoft.com/dotnet/api/system.collections.ienumerator
+[c#-iterator-2]:                        https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
 [c#-array]:                             https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1
 [c#-mutable-array]:                     https://learn.microsoft.com/dotnet/api/system.array
 [c#-collection]:                        https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
