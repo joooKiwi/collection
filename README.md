@@ -552,7 +552,7 @@ return null;
 </table></details>
 <br/>
 
-<details><summary>indexOfFirst(element)<br/>indexOfFirstIndexed(element)</summary><table>
+<details><summary>indexOfFirst(predicate)<br/>indexOfFirstIndexed(predicate)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
@@ -579,7 +579,7 @@ return null;
  - [List.FindIndex(predicate)][c#-list-index-of-first-element]
 </td></tr>
 </table></details>
-<details><summary>indexOfFirst(element, fromIndex)<br/>indexOfFirstIndexed(element, fromIndex)</summary><table>
+<details><summary>indexOfFirst(predicate, fromIndex)<br/>indexOfFirstIndexed(predicate, fromIndex)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
@@ -621,7 +621,7 @@ return null
 - [List.FindIndex(fromIndex, predicate)][c#-list-index-of-first-element-from]
 </td></tr>
 </table></details>
-<details><summary>indexOfFirst(element, fromIndex, toIndex)<br/>indexOfFirstIndexed(element, fromIndex, toIndex)</summary><table>
+<details><summary>indexOfFirst(predicate, fromIndex, toIndex)<br/>indexOfFirstIndexed(predicate, fromIndex, toIndex)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
@@ -675,7 +675,7 @@ return null;
 </table></details>
 <br/>
 
-<details><summary>indexOfLast(element)<br/>indexOfLastIndexed(element)</summary><table>
+<details><summary>indexOfLast(predicate)<br/>indexOfLastIndexed(predicate)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
@@ -702,7 +702,7 @@ return null;
  - [List.FindLastIndex(predicate)][c#-list-index-of-first-element]
 </td></tr>
 </table></details>
-<details><summary>indexOfLast(element, fromIndex)<br/>indexOfLastIndexed(element, fromIndex)</summary><table>
+<details><summary>indexOfLast(predicate, fromIndex)<br/>indexOfLastIndexed(predicate, fromIndex)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
@@ -744,7 +744,7 @@ return null
 - [List.FindLastIndex(predicate)][c#-list-index-of-first-element-from]
 </td></tr>
 </table></details>
-<details><summary>indexOfLast(element, fromIndex, toIndex)<br/>indexOfLastIndexed(element, fromIndex, toIndex)</summary><table>
+<details><summary>indexOfLast(predicate, fromIndex, toIndex)<br/>indexOfLastIndexed(predicate, fromIndex, toIndex)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
