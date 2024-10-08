@@ -154,8 +154,8 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.13",
-    "@types/node": "^22.7.4",
-    "del-cli": "^5.1.0",
+    "@types/node": "^22.7.5",
+    "del-cli": "^6.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-extended": "^4.0.2",
     "ts-jest": "^29.2.5",
