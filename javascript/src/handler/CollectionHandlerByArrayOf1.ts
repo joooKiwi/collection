@@ -20,9 +20,9 @@ export class CollectionHandlerByArrayOf1<const T = unknown,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy1Value<T, REFERENCE, COLLECTION> {
 
-    public constructor(collection: COLLECTION, reference: readonly T[],) {
+    public constructor(collection: COLLECTION, reference: readonly T[], size: number = reference.length,) {
         super(collection, reference as REFERENCE,)
-        if (reference.length !== 1)
+        if (size !== 1)
             throw new TypeError(`The array received in the "${this.constructor.name}" cannot have a different size than 1.`,)
     }
 

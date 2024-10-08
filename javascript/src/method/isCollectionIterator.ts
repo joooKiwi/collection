@@ -7,7 +7,7 @@
 
 import type {CollectionIterator} from "../iterator/CollectionIterator"
 
-import {GenericCollectionIterator}  from "../iterator/GenericCollectionIterator"
+import {AbstractCollectionIterator} from "../iterator/AbstractCollectionIterator"
 import {EmptyCollectionIterator}    from "../iterator/EmptyCollectionIterator"
 
 /**
@@ -18,10 +18,10 @@ import {EmptyCollectionIterator}    from "../iterator/EmptyCollectionIterator"
  * @see isCollectionIteratorByStructure
  */
 export function isCollectionIterator<const T, >(value: unknown,): value is CollectionIterator<T>
-export function isCollectionIterator(value: unknown,): boolean {
+export function isCollectionIterator(value: unknown,) {
     if (value == null)
         return false
-    if (value instanceof GenericCollectionIterator)
+    if (value instanceof AbstractCollectionIterator)
         return true
     if (value instanceof EmptyCollectionIterator)
         return true

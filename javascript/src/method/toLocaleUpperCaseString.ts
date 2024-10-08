@@ -10,9 +10,37 @@ import type {Nullable, NullableString} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {asLocaleUpperCaseString} from "./asString"
+import {asLocaleUpperCaseString}       from "./asString"
+import {isArray}                       from "./isArray"
+import {isArrayByStructure}            from "./isArrayByStructure"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
+
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toLocaleUpperCase toLocaleUpperCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param locale     The possible locale to apply on each value
+ * @see String.toLocaleUpperCase
+ * @extensionFunction
+ */
+export function toLocaleUpperCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, locale?: NullableString,): string {
+    if (collection == null)
+        return "[]"
+    if (isCollectionHolder<T>(collection,))
+        return toLocaleUpperCaseStringByCollectionHolder(collection, locale,)
+    if (isArray(collection,))
+        return toLocaleUpperCaseStringByArray(collection, locale,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return toLocaleUpperCaseStringByCollectionHolder(collection, locale,)
+    if (isArrayByStructure<T>(collection,))
+        return toLocaleUpperCaseStringByArray(collection, locale,)
+    return toLocaleUpperCaseStringByMinimalistCollectionHolder(collection, locale,)
+}
+
 
 /**
  * Convert the {@link collection} to a {@link String} on every value
@@ -23,14 +51,13 @@ import {asLocaleUpperCaseString} from "./asString"
  * @see String.toLocaleUpperCase
  * @extensionFunction
  */
-export function toLocaleUpperCaseString<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
+export function toLocaleUpperCaseStringByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
 
     const size = collection.size
     if (size == 0)
         return "[]"
-
     if (locale == null)
         return __withNoLocale(collection, size,)
     return __withLocale(collection, locale, size,)
@@ -50,10 +77,30 @@ export function toLocaleUpperCaseStringByCollectionHolder<const T, >(collection:
         return "[]"
     if (collection.isEmpty)
         return "[]"
-
     if (locale == null)
         return __withNoLocale(collection, collection.size,)
     return __withLocale(collection, locale, collection.size,)
+}
+
+/**
+ * Convert the {@link collection} to a {@link String} on every value
+ * by calling its "<i>{@link String.toLocaleUpperCase toLocaleUpperCase()}</i>" method
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param locale     The possible locale to apply on each value
+ * @see String.toLocaleUpperCase
+ * @extensionFunction
+ */
+export function toLocaleUpperCaseStringByArray<const T, >(collection: Nullable<readonly T[]>, locale?: NullableString,): string {
+    if (collection == null)
+        return "[]"
+
+    const size = collection.length
+    if (size == 0)
+        return "[]"
+    if (locale == null)
+        return __withNoLocaleByArray(collection, size,)
+    return __withLocaleByArray(collection, locale, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
@@ -68,6 +115,16 @@ function __withNoLocale(collection: MinimalistCollectionHolder, size: number,) {
     return `[${string}${asLocaleUpperCaseString(collection.get(index,),)}]`
 }
 
+function __withNoLocaleByArray(collection: readonly unknown[], size: number,) {
+    let string = ""
+    const sizeMinus1 = size - 1
+    let index = -1
+    while (++index < sizeMinus1)
+        string += `${asLocaleUpperCaseString(collection[index],)}, `
+    return `[${string}${asLocaleUpperCaseString(collection[index],)}]`
+}
+
+
 function __withLocale(collection: MinimalistCollectionHolder, locale: string, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
@@ -75,6 +132,15 @@ function __withLocale(collection: MinimalistCollectionHolder, locale: string, si
     while (++index < sizeMinus1)
         string += `${asLocaleUpperCaseString(collection.get(index,), locale,)}, `
     return `[${string}${asLocaleUpperCaseString(collection.get(index,), locale,)}]`
+}
+
+function __withLocaleByArray(collection: readonly unknown[], locale: string, size: number,) {
+    let string = ""
+    const sizeMinus1 = size - 1
+    let index = -1
+    while (++index < sizeMinus1)
+        string += `${asLocaleUpperCaseString(collection[index], locale,)}, `
+    return `[${string}${asLocaleUpperCaseString(collection[index], locale,)}]`
 }
 
 //#endregion -------------------- Loop method --------------------

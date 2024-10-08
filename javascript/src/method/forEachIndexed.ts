@@ -5,56 +5,150 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {Nullable} from "@joookiwi/type"
+
+import type {CollectionHolder}           from "../CollectionHolder"
 import type {IndexValueCallback}         from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
+
+import {isArray}                       from "./isArray"
+import {isArrayByStructure}            from "./isArrayByStructure"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
 /**
  * Perform a given {@link action} on each element
- * and return the {@link collection} afterwards
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param action     The given action
+ * @see ReadonlyArray.forEach
+ * @see ReadonlySet.forEach
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+ * @extensionFunction
+ */
+export function forEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, action: IndexValueCallback<T>,): void {
+    if (collection == null)
+        return
+    if (isCollectionHolder<T>(collection,))
+        forEachIndexedByCollectionHolder(collection, action,)
+    else if (isArray(collection,))
+        forEachIndexedByArray(collection, action,)
+    else if (isCollectionHolderByStructure<T>(collection,))
+        return forEachIndexedByCollectionHolder(collection, action,)
+    else if (isArrayByStructure<T>(collection,))
+        return forEachIndexedByArray(collection, action,)
+    else
+        forEachIndexedByMinimalistCollectionHolder(collection, action,)
+
+}
+
+
+/**
+ * Perform a given {@link action} on each element
  *
  * @param collection The {@link MinimalistCollectionHolder collection}
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html Kotlin forEach(action)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
  * @extensionFunction
  */
-export function forEachIndexed<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
+export function forEachIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, action: IndexValueCallback<T>,): void {
+    if (collection == null)
+        return
+
+    const size = collection.size
+    if (size == 0)
+        return
     if (action.length == 1)
-        return __with1Argument(collection, action as (index: number,) => void,)
-    if (action.length >= 2)
-        return __with2Argument(collection, action,)
-    return __with0Argument(collection, action as () => void,)
+        __with1Argument(action as (index: number,) => void, size,)
+    else if (action.length >= 2)
+        __with2Argument(collection, action, size,)
+    else
+        __with0Argument(action as () => void, size,)
+}
+
+/**
+ * Perform a given {@link action} on each element
+ *
+ * @param collection The {@link CollectionHolder collection}
+ * @param action     The given action
+ * @see ReadonlyArray.forEach
+ * @see ReadonlySet.forEach
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+ * @extensionFunction
+ */
+export function forEachIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, action: IndexValueCallback<T>,): void {
+    if (collection == null)
+        return
+    if (collection.isEmpty)
+        return
+    if (action.length == 1)
+        __with1Argument(action as (index: number,) => void, collection.size,)
+    else if (action.length >= 2)
+        __with2Argument(collection, action, collection.size,)
+    else
+        __with0Argument(action as () => void, collection.size,)
+}
+
+/**
+ * Perform a given {@link action} on each element
+ *
+ * @param collection The {@link ReadonlyArray collection}
+ * @param action     The given action
+ * @see ReadonlyArray.forEach
+ * @see ReadonlySet.forEach
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+ * @extensionFunction
+ */
+export function forEachIndexedByArray<const T, >(collection: Nullable<readonly T[]>, action: IndexValueCallback<T>,): void {
+    if (collection == null)
+        return
+
+    const size = collection.length
+    if (size == 0)
+        return
+    if (action.length == 1)
+        __with1Argument(action as (index: number,) => void, size,)
+    else if (action.length >= 2)
+        __with2ArgumentByArray(collection, action, size,)
+    else
+        __with0Argument(action as () => void, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __with0Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: () => void,) {
-    let index = collection.size
+function __with0Argument(action: () => void, size: number,) {
+    let index = size
     while (index-- > 0)
         action()
-    return collection
 }
 
-function __with1Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (index: number,) => void,) {
-    const size = collection.size
+
+function __with1Argument(action: (index: number,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index,)
-    return collection
 }
 
-function __with2Argument<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION, action: (index: number, value: T,) => void,) {
-    const size = collection.size
+
+function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, action: (index: number, value: T,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index, collection.get(index,),)
-    return collection
+}
+
+function __with2ArgumentByArray<const T, >(collection: readonly T[], action: (index: number, value: T,) => void, size: number,) {
+    let index = -1
+    while (++index < size)
+        action(index, collection[index] as T,)
 }
 
 //#endregion -------------------- Loop methods --------------------

@@ -15,7 +15,6 @@ export {GenericCollectionHolder}                 from "./GenericCollectionHolder
 export {GenericMinimalistCollectionHolder}       from "./GenericMinimalistCollectionHolder"
 export {LazyGenericCollectionHolder}             from "./LazyGenericCollectionHolder"
 export type {MinimalistCollectionHolder}         from "./MinimalistCollectionHolder"
-export type {NonEmptyCollectionHolder}           from "./NonEmptyCollectionHolder"
 export *                                         from "./handler/index"
 export *                                         from "./exception/index"
 export *                                         from "./iterable/index"

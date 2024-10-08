@@ -16,17 +16,15 @@ public final class ToLowerCaseString
         extends Utility {
 
     @Contract(CommonContracts.ALWAYS_FAIL_0)
-    private ToLowerCaseString() { throw new ImpossibleConstructionException("The utility class \"ToToLowerCaseString\" cannot be constructed.", ToLowerCaseString.class); }
+    private ToLowerCaseString() { throw new ImpossibleConstructionException("The utility class “ToLowerCaseString” cannot be constructed.", ToLowerCaseString.class); }
 
     //#region -------------------- Facade method --------------------
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#toLowerCase()} toLowerCase()}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @see String#toLowerCase()
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[#toLowerCase()] toLowerCase()}_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @see String#toLowerCase()
     @ExtensionFunction
     public static <T> @NotNull String toLowerCaseString(@Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
@@ -38,13 +36,11 @@ public final class ToLowerCaseString
         return __toString(collection, size);
     }
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#toLowerCase()} toLowerCase()}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @see String#toLowerCase()
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[#toLowerCase()] toLowerCase()}_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @see String#toLowerCase()
     @ExtensionFunction
     public static <T> @NotNull String toLowerCaseString(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)

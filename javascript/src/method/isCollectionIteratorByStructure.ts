@@ -34,7 +34,7 @@ export function isCollectionIteratorByStructure(value: unknown,): boolean {
     if (typeof value != "object")
         return false
 
-    const members = CollectionConstants.ITERATOR_MEMBERS
+    const members = CollectionConstants.COLLECTION_ITERATOR_MEMBERS
     const size = members.length
     let index = -1
     while (++index < size)

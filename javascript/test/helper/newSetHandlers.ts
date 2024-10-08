@@ -5,22 +5,25 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {CollectionHolder}          from "../../src/CollectionHolder"
-import {GenericCollectionHolder}   from "../../src/GenericCollectionHolder"
+import type {CollectionHolder} from "../../src/CollectionHolder"
+
 import {CollectionHandlerBySet}    from "../../src/handler/CollectionHandlerBySet"
 import {CollectionHandlerBySetOf1} from "../../src/handler/CollectionHandlerBySetOf1"
 import {CollectionHandlerBySetOf2} from "../../src/handler/CollectionHandlerBySetOf2"
+import {CollectionHolderFromArray} from "../instance/CollectionHolderFromArray"
+import {A, AB}                     from "../value/arrays"
 
-import {A, AB} from "../constantCollections"
-
-export function newSetHandler<const T, >(array: readonly T[], collection: CollectionHolder<T> = new GenericCollectionHolder(array,),) {
+export function newSetHandler<const T, >(array: readonly T[],
+                                         collection: CollectionHolder<T> = new CollectionHolderFromArray(array,),) {
     return new CollectionHandlerBySet<T>(collection, new Set(array,),)
 }
 
-export function newSetOf1Handler(array: readonly unknown[] = A, collection: CollectionHolder = new GenericCollectionHolder(array,),) {
+export function newSetOf1Handler<const T = 'a', >(array: readonly T[] = A as unknown as readonly T[],
+                                                  collection: CollectionHolder<T> = new CollectionHolderFromArray(array,),) {
     return new CollectionHandlerBySetOf1(collection, new Set(array,),)
 }
 
-export function newSetOf2Handler(array: readonly unknown[] = AB, collection: CollectionHolder = new GenericCollectionHolder(array,),) {
+export function newSetOf2Handler<const T = | 'a' | 'b', >(array: readonly T[] = AB as unknown as readonly T[],
+                                                          collection: CollectionHolder<T> = new CollectionHolderFromArray(array,),) {
     return new CollectionHandlerBySetOf2(collection, new Set(array,),)
 }

@@ -19,12 +19,16 @@ import {MinimalistCollectionHolder}                from "./MinimalistCollectionH
 import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
 import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
+import {isArray}                                   from "./method/isArray"
+import {isArrayByStructure}                        from "./method/isArrayByStructure"
 import {isCollectionHolder}                        from "./method/isCollectionHolder"
 import {isCollectionHolderByStructure}             from "./method/isCollectionHolderByStructure"
 import {isCollectionIterator}                      from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}           from "./method/isCollectionIteratorByStructure"
 import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}   from "./method/isMinimalistCollectionHolderByStructure"
+import {isSet}                                     from "./method/isSet"
+import {isSetByStructure}                          from "./method/isSetByStructure"
 
 export class GenericMinimalistCollectionHolder<const T = unknown,
     const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
@@ -73,7 +77,9 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             reference = reference()
         this.#reference = reference
 
-        if (reference instanceof Array) {
+        //#region -------------------- initialization by a known instance --------------------
+
+        if (isArray(reference,)) {
             const size = this.#size = reference.length
             //#region -------------------- Initialization (empty) --------------------
 
@@ -86,7 +92,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                this.#array = Object.freeze([reference[0],],)
+                this.#array = Object.freeze([reference[0] as T,],)
                 return
             }
 
@@ -94,7 +100,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                this.#array = Object.freeze([reference[0], reference[1],],)
+                this.#array = Object.freeze([reference[0] as T, reference[1] as T,],)
                 return
             }
 
@@ -104,14 +110,14 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
-                array[index] = reference[index]
+                array[index] = reference[index] as T
             this.#array = Object.freeze(array,)
             return
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (reference instanceof Set) {
+        if (isSet<T>(reference,)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 
@@ -124,16 +130,16 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                this.#array = Object.freeze([reference[Symbol.iterator]().next().value,],)
+                this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
                 return
             }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
 
-            if (size == 1) {
-                const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-                this.#array = Object.freeze([iterator.next().value, iterator.next().value,],)
+            if (size == 2) {
+                const iterator = reference[Symbol.iterator]()
+                this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
                 return
             }
 
@@ -141,10 +147,10 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = over 2) --------------------
 
             const array = new Array<T>(size,)
-            const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            const iterator = reference[Symbol.iterator]()
             let index = -1
             while (++index < size)
-                array[index] = iterator.next().value
+                array[index] = iterator.next().value as T
             this.#array = Object.freeze(array,)
             return
 
@@ -179,7 +185,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array = [] as T[]
+            const array: T[] = []
             let index = size
             while (index-- > 0)
                 array[index] = reference.get(index,)
@@ -217,7 +223,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array = [] as T[]
+            const array: T[] = []
             let index = size
             while (index-- > 0)
                 array[index] = reference.get(index,)
@@ -255,10 +261,91 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array = [] as T[]
+            const array: T[] = []
             let index = size
             while (index-- > 0)
                 array[index] = reference.previousValue
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        //#endregion -------------------- initialization by a known instance --------------------
+        //#region -------------------- initialization by a structure --------------------
+
+        if (isArrayByStructure<T>(reference,)) {
+            const size = this.#size = reference.length
+            //#region -------------------- Initialization (empty) --------------------
+
+            if (size == 0) {
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                return
+            }
+
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                this.#array = Object.freeze([reference[0] as T,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                this.#array = Object.freeze([reference[0] as T, reference[1] as T,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            let index = size
+            while (index-- > 0)
+                array[index] = reference[index] as T
+            this.#array = Object.freeze(array,)
+            return
+
+            //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        if (isSetByStructure<T>(reference,)) {
+            const size = this.#size = reference.size
+            //#region -------------------- Initialization (empty) --------------------
+
+            if (size == 0) {
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                return
+            }
+
+            //#endregion -------------------- Initialization (empty) --------------------
+            //#region -------------------- Initialization (size = 1) --------------------
+
+            if (size == 1) {
+                this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 1) --------------------
+            //#region -------------------- Initialization (size = 2) --------------------
+
+            if (size == 2) {
+                const iterator = reference[Symbol.iterator]()
+                this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 2) --------------------
+            //#region -------------------- Initialization (size = over 2) --------------------
+
+            const array = new Array<T>(size,)
+            const iterator = reference[Symbol.iterator]()
+            let index = -1
+            while (++index < size)
+                array[index] = iterator.next().value as T
             this.#array = Object.freeze(array,)
             return
 
@@ -293,7 +380,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array = [] as T[]
+            const array: T[] = []
             let index = size
             while (index-- > 0)
                 array[index] = reference.get(index,)
@@ -331,7 +418,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array = [] as T[]
+            const array: T[] = []
             let index = size
             while (index-- > 0)
                 array[index] = reference.get(index,)
@@ -369,7 +456,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array = [] as T[]
+            const array: T[] = []
             let index = size
             while (index-- > 0)
                 array[index] = reference.previousValue
@@ -378,6 +465,8 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
+
+        //#endregion -------------------- initialization by a structure --------------------
 
         sizeIf: if ("size" in reference) {
             const size = reference.size
@@ -402,15 +491,15 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-                this.#array = Object.freeze([iterator.next().value, iterator.next().value,],)
+                const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
+                this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
             }
 
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array = [] as T[]
-            const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            const array: T[] = []
+            const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
             let iteratorResult: IteratorResult<T, unknown>
             while (++index, !(iteratorResult = iterator.next()).done)
@@ -444,15 +533,15 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-                this.#array = Object.freeze([iterator.next().value, iterator.next().value,],)
+                const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
+                this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
             }
 
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array = [] as T[]
-            const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            const array: T[] = []
+            const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
             let iteratorResult: IteratorResult<T, unknown>
             while (++index, !(iteratorResult = iterator.next()).done)
@@ -486,15 +575,15 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-                this.#array = Object.freeze([iterator.next().value, iterator.next().value,],)
+                const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
+                this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
             }
 
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array = [] as T[]
-            const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+            const array: T[] = []
+            const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
             let iteratorResult: IteratorResult<T, unknown>
             while (++index, !(iteratorResult = iterator.next()).done)
@@ -505,8 +594,8 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        const iterator = reference[Symbol.iterator]() as IterableIterator<T>
-        let iteratorResult = iterator.next() as IteratorResult<T, unknown>
+        const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
+        let iteratorResult = iterator.next()
         //#region -------------------- Initialization (empty) --------------------
 
         if (iteratorResult.done) {
@@ -518,7 +607,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
         //#endregion -------------------- Initialization (empty) --------------------
         //#region -------------------- Initialization (non-empty) --------------------
 
-        const array = [] as T[]
+        const array: T[] = []
         array[0] = iteratorResult.value
         let size = 0
         while (++size, !(iteratorResult = iterator.next()).done)
@@ -530,7 +619,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Methods & getter methods --------------------
+    //#region -------------------- Methods --------------------
 
     /** The iterable received in the constructor */
     protected get _reference(): REFERENCE {
@@ -564,6 +653,8 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
 
         if (index > size)
             throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is over the size of the collection (${size}).`, index,)
+        if (index == size)
+            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is the size of the collection (${size}).`, index,)
         if (index >= 0)
             return array[index] as T
 
@@ -575,6 +666,6 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
         return array[indexToRetrieve] as T
     }
 
-    //#endregion -------------------- Methods & getter methods --------------------
+    //#endregion -------------------- Methods --------------------
 
 }

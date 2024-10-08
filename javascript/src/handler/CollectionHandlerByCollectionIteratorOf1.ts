@@ -23,7 +23,7 @@ export class CollectionHandlerByCollectionIteratorOf1<const T = unknown,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy1Value<T, REFERENCE, COLLECTION> {
 
-    public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {
+    public constructor(collection: COLLECTION, reference: REFERENCE, size: number = reference.size,) {
         super(collection, reference,)
         if (size !== 1)
             throw new TypeError(`The collection iterator received in the "${this.constructor.name}" cannot have a different size than 1.`,)

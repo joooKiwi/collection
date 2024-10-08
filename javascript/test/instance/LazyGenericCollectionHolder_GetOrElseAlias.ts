@@ -5,22 +5,28 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {ABCDEFGHIJ} from "../constantCollections"
-
-import type {IndexWithReturnCallback} from "../../src/CollectionHolder.types"
+import type {IndexWithReturnCallback}         from "../../src/CollectionHolder.types"
+import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderForTest"
 
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
+import {ABCD}                        from "../value/arrays"
 
 export class LazyGenericCollectionHolder_GetOrElseAlias
-    extends LazyGenericCollectionHolder {
+    extends LazyGenericCollectionHolder<string, readonly string[]>
+    implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
 
-    public constructor() { super(ABCDEFGHIJ,) }
+    public constructor() { super(ABCD,) }
 
-    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | unknown | U
-    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,): unknown
-    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| unknown | U>,) {
+    public execute(action: (instance: this,) => void,): this {
+        action(this,)
+        return this
+    }
+
+    public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | string | U
+    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<string>,): string
+    public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         this.amountOfCall++
         return super.getOrElse(index, defaultValue,)
     }

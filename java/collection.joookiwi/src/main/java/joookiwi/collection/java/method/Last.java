@@ -1,11 +1,11 @@
 package joookiwi.collection.java.method;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException;
 import joookiwi.collection.java.exception.EmptyCollectionHolderException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
@@ -13,28 +13,28 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import static joookiwi.collection.java.CommonContracts.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_2;
 
 public final class Last
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private Last() { throw new ImpossibleConstructionException("The utility class \"Last\" cannot be constructed.", Last.class); }
+    private Last() { throw new ImpossibleConstructionException("The utility class “Last” cannot be constructed.", Last.class); }
 
     //#region -------------------- Facade methods --------------------
 
-    //#region -------------------- () --------------------
+    //#region -------------------- ∅ --------------------
 
-    /**
-     * Get the last element in the current {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param <T>        The {@code collection} type
-     * @throws NullPointerException           The {@code collection} was <b>null</b> or <b>undefined</b>
-     * @throws EmptyCollectionHolderException The {@code collection} <b>is empty</b>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     */
+    /// Get the last element in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @throws NullPointerException           The `collection` was `null` or **undefined**
+    /// @throws EmptyCollectionHolderException The `collection` **is empty**
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
     public static <T> @NotNull T last(@Nullable MinimalistCollectionHolder<? extends T> collection) {
@@ -47,16 +47,14 @@ public final class Last
         return __withNoPredicate(collection, size);
     }
 
-    /**
-     * Get the last element in the current {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param <T>        The {@code collection} type
-     * @throws NullPointerException           The {@code collection} was <b>null</b> or <b>undefined</b>
-     * @throws EmptyCollectionHolderException The {@code collection} {@link CollectionHolder#isEmpty is empty}
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     */
+    /// Get the last element in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @throws NullPointerException           The `collection` was `null` or **undefined**
+    /// @throws EmptyCollectionHolderException The `collection` [is empty][#isEmpty]
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
     public static <T> @NotNull T last(@Nullable CollectionHolder<? extends T> collection) {
@@ -67,25 +65,24 @@ public final class Last
         return __withNoPredicate(collection, collection.size());
     }
 
-    //#endregion -------------------- () --------------------
+    //#endregion -------------------- ∅ --------------------
     //#region -------------------- predicate (T, int) → boolean --------------------
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @throws NullPointerException                      The {@code collection} was <b>null</b> or <b>undefined</b>
-     * @throws EmptyCollectionHolderException            The {@code collection} <b>is empty</b>
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @throws NullPointerException                      The `collection` was `null` or **undefined**
+    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @NotNull T last(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+    public static <T> @NotNull T last(@Nullable MinimalistCollectionHolder<? extends T> collection,
+                                      @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
 
@@ -97,22 +94,21 @@ public final class Last
         return __with2Argument(collection, predicate, size);
     }
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @throws NullPointerException                      The {@code collection} was <b>null</b> or <b>undefined</b>
-     * @throws EmptyCollectionHolderException            The {@code collection} {@link CollectionHolder#isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @throws NullPointerException                      The `collection` was `null` or **undefined**
+    /// @throws EmptyCollectionHolderException            The `collection` [is empty][#isEmpty]
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @NotNull T last(@Nullable CollectionHolder<? extends T> collection, @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+    public static <T> @NotNull T last(@Nullable CollectionHolder<? extends T> collection,
+                                      @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
         if (collection.isEmpty())
@@ -125,22 +121,21 @@ public final class Last
     //#endregion -------------------- predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T) → boolean --------------------
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @throws NullPointerException                      The {@code collection} was <b>null</b> or <b>undefined</b>
-     * @throws EmptyCollectionHolderException            The {@code collection} <b>is empty</b>
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @throws NullPointerException                      The `collection` was `null` or **undefined**
+    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @NotNull T last(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Function<? super T, @NotNull Boolean> predicate) {
+    public static <T> @NotNull T last(@Nullable MinimalistCollectionHolder<? extends T> collection,
+                                      @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
 
@@ -152,22 +147,21 @@ public final class Last
         return __with1Argument(collection, predicate, size);
     }
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @throws NullPointerException                      The {@code collection} was <b>null</b> or <b>undefined</b>
-     * @throws EmptyCollectionHolderException            The {@code collection} {@link CollectionHolder#isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @throws NullPointerException                      The `collection` was `null` or **undefined**
+    /// @throws EmptyCollectionHolderException            The `collection` [is empty][#isEmpty]
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @NotNull T last(@Nullable CollectionHolder<? extends T> collection, @Nullable Function<? super T, @NotNull Boolean> predicate) {
+    public static <T> @NotNull T last(@Nullable CollectionHolder<? extends T> collection,
+                                      @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
         if (collection.isEmpty())
@@ -180,22 +174,21 @@ public final class Last
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @throws NullPointerException                      The {@code collection} was <b>null</b> or <b>undefined</b>
-     * @throws EmptyCollectionHolderException            The {@code collection} <b>is empty</b>
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @throws NullPointerException                      The `collection` was `null` or **undefined**
+    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @NotNull T last(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
+    public static <T> @NotNull T last(@Nullable MinimalistCollectionHolder<? extends T> collection,
+                                      @Nullable BooleanSupplier predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
 
@@ -207,22 +200,21 @@ public final class Last
         return __with0Argument(collection, predicate, size);
     }
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @throws NullPointerException                      The {@code collection} was <b>null</b> or <b>undefined</b>
-     * @throws EmptyCollectionHolderException            The {@code collection} {@link CollectionHolder#isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@code predicate}
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @throws NullPointerException                      The `collection` was `null` or **undefined**
+    /// @throws EmptyCollectionHolderException            The `collection` [is empty][#isEmpty]
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @NotNull T last(@Nullable CollectionHolder<? extends T> collection, @Nullable Supplier<@NotNull Boolean> predicate) {
+    public static <T> @NotNull T last(@Nullable CollectionHolder<? extends T> collection,
+                                      @Nullable BooleanSupplier predicate) {
         if (collection == null)
             throw new NullPointerException("No element could be retrieved from a null collection.");//TODO change to custom exception
         if (collection.isEmpty())
@@ -237,33 +229,40 @@ public final class Last
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> T __withNoPredicate(@NotNull MinimalistCollectionHolder<? extends T> collection, int size) {
+    private static <T> T __withNoPredicate(@NotNull MinimalistCollectionHolder<? extends T> collection,
+                                           int size) {
         return collection.get(size - 1);
     }
 
-    private static <T> T __with0Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Supplier<@NotNull Boolean> predicate, int size) {
+    private static <T> T __with0Argument(@NotNull MinimalistCollectionHolder<? extends T> collection,
+                                         @NotNull BooleanSupplier predicate,
+                                         int size) {
         var index = size;
         while (index-- > 0)
-            if (predicate.get())
+            if (predicate.getAsBoolean())
                 return collection.get(index);
         throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", size - 1);
     }
 
-    private static <T> T __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull Function<? super T, @NotNull Boolean> predicate, int size) {
+    private static <T> T __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection,
+                                         @NotNull Predicate<? super T> predicate,
+                                         int size) {
         var index = size;
         while (index-- > 0) {
             var value = collection.get(index);
-            if (predicate.apply(value))
+            if (predicate.test(value))
                 return value;
         }
         throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", size - 1);
     }
 
-    private static <T> T __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection, @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate, int size) {
+    private static <T> T __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection,
+                                         @NotNull ObjIntPredicate<? super T> predicate,
+                                         int size) {
         var index = size;
         while (index-- > 0) {
             var value = collection.get(index);
-            if (predicate.apply(value, index))
+            if (predicate.test(value, index))
                 return value;
         }
         throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", size - 1);

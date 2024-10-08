@@ -26,46 +26,63 @@ export class EmptyCollectionIterator
     public static get get(): EmptyCollectionIterator { return EmptyCollectionIterator.#instance ??= new EmptyCollectionIterator() }
 
     //#endregion -------------------- Singleton usage --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Reference methods --------------------
 
     public get collection(): EmptyCollectionHolder { return CollectionConstants.EMPTY_COLLECTION_HOLDER }
+
+    //#endregion -------------------- Reference methods --------------------
+    //#region -------------------- Size methods --------------------
 
     public get size(): 0 { return 0 }
     public get length(): 0 { return 0 }
     public get count(): 0 { return 0 }
 
+    public get isEmpty(): true { return true }
+    public get isNotEmpty(): false { return false }
+
+    //#endregion -------------------- Size methods --------------------
+    //#region -------------------- End-point index methods --------------------
+
+    public get firstIndex(): null { return null }
+
+    public get lastIndex(): null { return null }
+
+    //#endregion -------------------- End-point index methods --------------------
+
+    //#region -------------------- Current methods --------------------
+
     public get index(): null { return null }
     public get currentIndex(): null { return null }
 
-    public get nextIndex(): null { return null }
-    public get previousIndex(): null { return null }
-
-    public get hasNext(): false { return false }
-    public get hasPrevious(): false { return false }
-
-    //#endregion -------------------- Getter methods --------------------
-    //#region -------------------- Methods --------------------
-
+    //#endregion -------------------- Current methods --------------------
     //#region -------------------- Next methods --------------------
 
-    public next(... _: readonly unknown[]): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol>
-    public next(): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol> { return GenericAfterLastIteratorValue.get }
+    public get hasNext(): false { return false }
 
+    public get nextIndex(): null { return null }
     public get nextValue(): never { throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",) }
+
+    public next(... _: readonly unknown[]): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol>
+    public next() { return GenericAfterLastIteratorValue.get }
 
     //#endregion -------------------- Next methods --------------------
     //#region -------------------- Previous methods --------------------
 
-    public previous(... _: readonly unknown[]): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol>
-    public previous(): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol> { return GenericBeforeFirstIteratorValue.get }
+    public get hasPrevious(): false { return false }
 
+    public get previousIndex(): null { return null }
     public get previousValue(): never { throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",) }
+
+    public previous(... _: readonly unknown[]): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol>
+    public previous() { return GenericBeforeFirstIteratorValue.get }
 
     //#endregion -------------------- Previous methods --------------------
     //#region -------------------- Reset methods --------------------
 
     public reset(... _: readonly unknown[]): this
-    public reset(): this { return this }
+    public reset() { return this }
 
     //#endregion -------------------- Reset methods --------------------
 

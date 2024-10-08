@@ -5,18 +5,28 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/CollectionHolder.types"
+import type {StraightCollectionHolderForTest}            from "./StraightCollectionHolderForTest"
+
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
+import {ABCD}                        from "../value/arrays"
 
 export class LazyGenericCollectionHolder_HasOneAlias
-    extends LazyGenericCollectionHolder {
+    extends LazyGenericCollectionHolder<string, readonly string[]>
+    implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
 
-    public constructor() { super([],) }
+    public constructor() { super(ABCD,) }
 
-    public override hasOne(...values: unknown[]): boolean {
+    public execute(action: (instance: this,) => void,): this {
+        action(this,)
+        return this
+    }
+
+    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
         this.amountOfCall++
-        return super.hasOne(...values,)
+        return super.hasOne(values,)
     }
 
 }

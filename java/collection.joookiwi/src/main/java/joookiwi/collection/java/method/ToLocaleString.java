@@ -17,19 +17,17 @@ public final class ToLocaleString
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private ToLocaleString() { throw new ImpossibleConstructionException("The utility class \"ToToLocaleStringSet\" cannot be constructed.", ToLocaleString.class); }
+    private ToLocaleString() { throw new ImpossibleConstructionException("The utility class “ToLocaleString” cannot be constructed.", ToLocaleString.class); }
 
     //#region -------------------- Facade method --------------------
 
-    //#region -------------------- () --------------------
+    //#region -------------------- ∅ --------------------
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#format(Locale, String, Object...) format(Locale, %s, value)}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @see String#format(Locale, String, Object...)
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[format(Locale, %s, value)][#format(Locale,String,Object...)]_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
     public static <T> @NotNull String toLocaleString(@Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
@@ -41,13 +39,11 @@ public final class ToLocaleString
         return __withNoLocale(collection, size);
     }
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#format(Locale, String, Object...) format(Locale, %s, value)}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @see String#format(Locale, String, Object...)
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[format(Locale, %s, value)][#format(Locale,String,Object...)]_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
     public static <T> @NotNull String toLocaleString(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
@@ -57,17 +53,15 @@ public final class ToLocaleString
         return __withNoLocale(collection, collection.size());
     }
 
-    //#endregion -------------------- () --------------------
+    //#endregion -------------------- ∅ --------------------
     //#region -------------------- locale --------------------
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#format(Locale, String, Object...) format(Locale, %s, value)}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param locale     The possible locale to apply on each value
-     * @see String#format(Locale, String, Object...)
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[format(Locale, %s, value)][#format(Locale,String,Object...)]_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param locale     The possible locale to apply on each value
+    /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
     public static <T> @NotNull String toLocaleString(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Locale locale) {
         if (collection == null)
@@ -81,14 +75,12 @@ public final class ToLocaleString
         return __withLocale(collection, locale, size);
     }
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#format(Locale, String, Object...) format(Locale, %s, value)}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param locale     The possible locale to apply on each value
-     * @see String#format(Locale, String, Object...)
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[format(Locale, %s, value)][#format(Locale,String,Object...)]_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param locale     The possible locale to apply on each value
+    /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
     public static <T> @NotNull String toLocaleString(@Nullable CollectionHolder<? extends T> collection, @Nullable Locale locale) {
         if (collection == null)

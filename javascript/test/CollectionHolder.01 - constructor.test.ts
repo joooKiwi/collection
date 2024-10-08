@@ -5,32 +5,46 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {A, A_NULL_B_UNDEFINED, AB, AB12, AB_AB, AB_OBJECT, ABCD, ABCD_ABCD, ABCD_NULL, ABCD_UNDEFINED, ABCDEFGHIJ, EMPTY, NULL_ABCD, UNDEFINED_ABCD} from "./constantCollections"
-import {everyCollectionInstanceByIterable, iterableCreation, TEMPLATE_ITEMS}                                                                         from "./constantValues"
+import {GenericCollectionHolder_ConstructorTest}           from "./instance/GenericCollectionHolder_ConstructorTest"
+import {GenericMinimalistCollectionHolder_ConstructorTest} from "./instance/GenericMinimalistCollectionHolder_ConstructorTest"
+import {LazyGenericCollectionHolder_ConstructorTest}       from "./instance/LazyGenericCollectionHolder_ConstructorTest"
+import {A, AB, ABC, ABCD, EMPTY}                           from "./value/arrays"
+import {everyIterableInstances}                            from "./value/instances"
 
 describe("CollectionHolderTest (constructor)", () => {
-describe.each(everyCollectionInstanceByIterable,)("%s", ({value: {isLazy, isMinimalist, newInstance,},},) => {
-if (isMinimalist)
-    return // The minimalist collection doesn't set any index to its instance
 
-describe.each(iterableCreation,)("%s", ({value: iterableCreation,},) => {
-    const newCollection = isLazy
-        ? (array: readonly unknown[],) => newInstance(iterableCreation, array,).forEach(_ => {},)
-        : (array: readonly unknown[],) => newInstance(iterableCreation, array,)
+    describe("GenericMinimalistCollectionHolder", () => {
+    describe.each(everyIterableInstances,)("%s", ({value: it,},) => {
+        const newCollection = <const T, >(values: readonly T[],) => new GenericMinimalistCollectionHolder_ConstructorTest<T>(it(values,),).array
 
-    test("empty",                        () => expect(newCollection(EMPTY,),).toBeEmpty(),)
-    test("a",                            () => expect(newCollection(A,),).toContainAllValues(A,),)
-    test("a, b",                         () => expect(newCollection(AB,),).toContainAllValues(AB,),)
-    test("a, b (as object)",             () => expect(newCollection(AB_OBJECT,),).toContainAllValues(AB_OBJECT,),)
-    test("a, null, b, undefined",        () => expect(newCollection(A_NULL_B_UNDEFINED,),).toContainAllValues(A_NULL_B_UNDEFINED,),)
-    test("a, b, 1, 2",                   () => expect(newCollection(AB12,),).toContainAllValues(AB12,),)
-    test("a, b, c, d",                   () => expect(newCollection(ABCD,),).toContainAllValues(ABCD,),)
-    test("a, b, A, B",                   () => expect(newCollection(AB_AB,),).toContainAllValues(AB_AB,),)
-    test("a, b, c, d, e, f, g, h, i, j", () => expect(newCollection(ABCDEFGHIJ,),).toContainAllValues(ABCDEFGHIJ,),)
-    test("a, b, c, d, A, B, C, D",       () => expect(newCollection(ABCD_ABCD,),).toContainAllValues(ABCD_ABCD,),)
-    test("null, a, b, c, d",             () => expect(newCollection(NULL_ABCD,),).toContainAllValues(NULL_ABCD,),)
-    test("a, b, c, d, null",             () => expect(newCollection(ABCD_NULL,),).toContainAllValues(ABCD_NULL,),)
-    test("undefined, a, b, c, d",        () => expect(newCollection(UNDEFINED_ABCD,),).toContainAllValues(UNDEFINED_ABCD,),)
-    test("a, b, c, d, undefined",        () => expect(newCollection(ABCD_UNDEFINED,),).toContainAllValues(ABCD_UNDEFINED,),)
-    test("[template items]",             () => expect(newCollection(TEMPLATE_ITEMS,),).toContainAllValues(TEMPLATE_ITEMS,),)
-},)},)},)
+        test("empty",    () => expect(newCollection(EMPTY,),).toBeEmpty(),)
+        test("1 field",  () => expect(newCollection(A,),).toEqual(A,),)
+        test("2 fields", () => expect(newCollection(AB,),).toEqual(AB,),)
+        test("3 fields", () => expect(newCollection(ABC,),).toEqual(ABC,),)
+        test("4 fields", () => expect(newCollection(ABCD,),).toEqual(ABCD,),)
+
+    },)},)
+    describe("GenericCollectionHolder", () => {
+    describe.each(everyIterableInstances,)("%s", ({value: it,},) => {
+        const newCollection = <const T, >(values: readonly T[],) => new GenericCollectionHolder_ConstructorTest<T>(it(values,),)
+
+        test("empty",    () => expect(newCollection(EMPTY,),).toBeEmpty(),)
+        test("1 field",  () => expect(newCollection(A,),).toContainAllValues(A,),)
+        test("2 fields", () => expect(newCollection(AB,),).toContainAllValues(AB,),)
+        test("3 fields", () => expect(newCollection(ABC,),).toContainAllValues(ABC,),)
+        test("4 fields", () => expect(newCollection(ABCD,),).toContainAllValues(ABCD,),)
+
+    },)},)
+    describe("LazyGenericCollectionHolder", () => {
+    describe.each(everyIterableInstances,)("%s", ({value: it,},) => {
+        const newCollection = <const T, >(values: readonly T[],) => new LazyGenericCollectionHolder_ConstructorTest(it(values,),)
+
+        test("empty",    () => expect(newCollection(EMPTY,),).toBeEmpty(),)
+        test("1 field",  () => expect(newCollection(A,),).toContainAllValues(A,),)
+        test("2 fields", () => expect(newCollection(AB,),).toContainAllValues(AB,),)
+        test("3 fields", () => expect(newCollection(ABC,),).toContainAllValues(ABC,),)
+        test("4 fields", () => expect(newCollection(ABCD,),).toContainAllValues(ABCD,),)
+
+    },)},)
+
+},)

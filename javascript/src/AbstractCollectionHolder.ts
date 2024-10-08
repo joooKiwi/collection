@@ -7,14 +7,20 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
 
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, ObjectOf, PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
-import type {CollectionHolder}                                                                                                                                                                                                                                                                                                                                            from "./CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                                                  from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                                                                                          from "./iterator/CollectionIterator"
+import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
+import type {CollectionHolder}                                                                                                                                                                                                                                                                                                    from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                          from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "./iterator/CollectionIterator"
 
 import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
 import {allByCollectionHolder}                     from "./method/all"
 import {anyByCollectionHolder}                     from "./method/any"
+import {dropByCollectionHolder}                    from "./method/drop"
+import {dropLastByCollectionHolder}                from "./method/dropLast"
+import {dropLastWhileByCollectionHolder}           from "./method/dropLastWhile"
+import {dropLastWhileIndexedByCollectionHolder}    from "./method/dropLastWhileIndexed"
+import {dropWhileByCollectionHolder}               from "./method/dropWhile"
+import {dropWhileIndexedByCollectionHolder}        from "./method/dropWhileIndexed"
 import {filterByCollectionHolder}                  from "./method/filter"
 import {filterIndexedByCollectionHolder}           from "./method/filterIndexed"
 import {filterNotByCollectionHolder}               from "./method/filterNot"
@@ -26,8 +32,10 @@ import {findLastByCollectionHolder}                from "./method/findLast"
 import {findLastIndexedByCollectionHolder}         from "./method/findLastIndexed"
 import {firstByCollectionHolder}                   from "./method/first"
 import {firstOrNullByCollectionHolder}             from "./method/firstOrNull"
-import {forEach}                                   from "./method/forEach"
-import {forEachIndexed}                            from "./method/forEachIndexed"
+import {forEachByCollectionHolder}                 from "./method/forEach"
+import {forEachIndexedByCollectionHolder}          from "./method/forEachIndexed"
+import {getOrElseByCollectionHolder}               from "./method/getOrElse"
+import {getOrNullByCollectionHolder}               from "./method/getOrNull"
 import {hasByCollectionHolder}                     from "./method/has"
 import {hasAllByCollectionHolder}                  from "./method/hasAll"
 import {hasNullByCollectionHolder}                 from "./method/hasNull"
@@ -38,6 +46,8 @@ import {indexOfFirstByCollectionHolder}            from "./method/indexOfFirst"
 import {indexOfFirstIndexedByCollectionHolder}     from "./method/indexOfFirstIndexed"
 import {indexOfLastByCollectionHolder}             from "./method/indexOfLast"
 import {indexOfLastIndexedByCollectionHolder}      from "./method/indexOfLastIndexed"
+import {isEmptyByCollectionHolder}                 from "./method/isEmpty"
+import {isNotEmptyByCollectionHolder}              from "./method/isNotEmpty"
 import {joinToStringByCollectionHolder}            from "./method/joinToString"
 import {lastByCollectionHolder}                    from "./method/last"
 import {lastIndexOfByCollectionHolder}             from "./method/lastIndexOf"
@@ -47,9 +57,17 @@ import {mapByCollectionHolder}                     from "./method/map"
 import {mapIndexedByCollectionHolder}              from "./method/mapIndexed"
 import {mapNotNullByCollectionHolder}              from "./method/mapNotNull"
 import {mapNotNullIndexedByCollectionHolder}       from "./method/mapNotNullIndexed"
-import {objectValuesMapByCollectionHolder}         from "./method/objectValuesMap"
+import {onEachByCollectionHolder}                  from "./method/onEach"
+import {onEachIndexedByCollectionHolder}           from "./method/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "./method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "./method/slice"
+import {sliceWithARangeByCollectionHolder}         from "./method/slice.withARange"
+import {takeByCollectionHolder}                    from "./method/take"
+import {takeLastByCollectionHolder}                from "./method/takeLast"
+import {takeLastWhileByCollectionHolder}           from "./method/takeLastWhile"
+import {takeLastWhileIndexedByCollectionHolder}    from "./method/takeLastWhileIndexed"
+import {takeWhileByCollectionHolder}               from "./method/takeWhile"
+import {takeWhileIndexedByCollectionHolder}        from "./method/takeWhileIndexed"
 import {toArrayByCollectionHolder}                 from "./method/toArray"
 import {toIteratorByCollectionHolder}              from "./method/toIterator"
 import {toLocaleLowerCaseStringByCollectionHolder} from "./method/toLocaleLowerCaseString"
@@ -58,14 +76,12 @@ import {toLocaleUpperCaseStringByCollectionHolder} from "./method/toLocaleUpperC
 import {toLowerCaseStringByCollectionHolder}       from "./method/toLowerCaseString"
 import {toMapByCollectionHolder}                   from "./method/toMap"
 import {toMutableArrayByCollectionHolder}          from "./method/toMutableArray"
-import {toMutableSetByCollectionHolder}            from "./method/toMutableSet"
 import {toMutableMapByCollectionHolder}            from "./method/toMutableMap"
-import {toMutableWeakSet}                          from "./method/toMutableWeakSet"
+import {toMutableSetByCollectionHolder}            from "./method/toMutableSet"
 import {toReverseByCollectionHolder}               from "./method/toReverse"
 import {toSetByCollectionHolder}                   from "./method/toSet"
 import {toStringByCollectionHolder}                from "./method/toString"
 import {toUpperCaseStringByCollectionHolder}       from "./method/toUpperCaseString"
-import {toWeakSet}                                 from "./method/toWeakSet"
 
 /**
  * A definition of a {@link CollectionHolder} to have a common ancestor.
@@ -91,39 +107,21 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     protected constructor() { super() }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
 
     //#region -------------------- Size methods --------------------
 
     public get length(): this["size"] { return this.size }
     public get count(): this["size"] { return this.size }
 
-    public get isEmpty(): boolean { return this.size == 0 }
+    public get isEmpty(): boolean { return isEmptyByCollectionHolder(this,) }
 
-    public get isNotEmpty(): boolean { return !this.isEmpty }
+    public get isNotEmpty(): boolean { return isNotEmptyByCollectionHolder(this,) }
 
     //#endregion -------------------- Size methods --------------------
-    //#region -------------------- Has null methods --------------------
+    //#region -------------------- Research methods --------------------
 
-    public get hasNull(): boolean { return hasNullByCollectionHolder(this,) }
-    public get includesNull(): this["hasNull"] { return this.hasNull }
-    public get containsNull(): this["hasNull"] { return this.hasNull }
-
-    //#endregion -------------------- Has null methods --------------------
-    //#region -------------------- Has duplicate methods --------------------
-
-    public get hasDuplicate(): boolean { return hasDuplicateByCollectionHolder(this,) }
-    public get includesDuplicate(): this["hasDuplicate"] { return this.hasDuplicate }
-    public get containsDuplicate(): this["hasDuplicate"] { return this.hasDuplicate }
-
-    //#endregion -------------------- Has duplicate methods --------------------
-
-    //#endregion -------------------- Getter methods --------------------
-    //#region -------------------- Methods --------------------
-
-    //#region -------------------- Value methods --------------------
-
-    //#region -------------------- Get methods --------------------
+    //#region -------------------- Get --------------------
 
     public at(index: number,): T {
         return this.get(index,)
@@ -133,28 +131,33 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.get(index,)
     }
 
-    //#endregion -------------------- Get methods --------------------
-    //#region -------------------- Get or else methods --------------------
+    //#endregion -------------------- Get --------------------
+    //#region -------------------- Get or else --------------------
 
-    public abstract getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public abstract getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
+        return getOrElseByCollectionHolder(this, index, defaultValue,)
+    }
 
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
+    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         return this.getOrElse(index, defaultValue,)
     }
 
     public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
-    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<| T | U>,) {
+    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         return this.getOrElse(index, defaultValue,)
     }
 
-    //#endregion -------------------- Get or else methods --------------------
-    //#region -------------------- Get or null methods --------------------
+    //#endregion -------------------- Get or else --------------------
+    //#region -------------------- Get or null --------------------
 
-    public abstract getOrNull(index: number,): NullOr<T>
+    public getOrNull(index: number,): NullOr<T> {
+        return getOrNullByCollectionHolder<T>(this, index,)
+    }
 
     public atOrNull(index: number,): NullOr<T> {
         return this.getOrNull(index,)
@@ -164,166 +167,256 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.getOrNull(index,)
     }
 
-    //#endregion -------------------- Get or null methods --------------------
+    //#endregion -------------------- Get or null --------------------
 
-    //#region -------------------- Index of methods --------------------
-
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return indexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of methods --------------------
-    //#region -------------------- Last index of methods --------------------
-
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,) {
-        return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Last index of methods --------------------
-    //#region -------------------- Index of first methods --------------------
-
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of first methods --------------------
-    //#region -------------------- Index of first indexed methods --------------------
-
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of first indexed methods --------------------
-    //#region -------------------- Index of last methods --------------------
-
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of last methods --------------------
-    //#region -------------------- Index of last indexed methods --------------------
-
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber {
-        return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Index of last indexed methods --------------------
-
-    //#region -------------------- First methods --------------------
+    //#region -------------------- First --------------------
 
     public first(): T
     public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
     public first(predicate: Nullable<BooleanCallback<T>>,): T
     public first(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return firstByCollectionHolder(this,)
         return firstByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- First methods --------------------
-    //#region -------------------- First or null methods --------------------
+    //#endregion -------------------- First --------------------
+    //#region -------------------- First or null --------------------
 
     public firstOrNull(): NullOr<T>
     public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return firstOrNullByCollectionHolder(this, predicate,)
         return firstOrNullByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- First or null methods --------------------
+    //#endregion -------------------- First or null --------------------
 
-    //#region -------------------- Last methods --------------------
+    //#region -------------------- Last --------------------
 
     public last(): T
     public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
     public last(predicate: Nullable<BooleanCallback<T>>,): T
     public last(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+        return lastByCollectionHolder(this,)
         return lastByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Last methods --------------------
-    //#region -------------------- Last or null methods --------------------
+    //#endregion -------------------- Last --------------------
+    //#region -------------------- Last or null --------------------
 
     public lastOrNull(): NullOr<T>
     public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return lastOrNullByCollectionHolder(this,)
         return lastOrNullByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Last or null methods --------------------
+    //#endregion -------------------- Last or null --------------------
 
-    //#endregion -------------------- Value methods --------------------
-    //#region -------------------- Loop methods --------------------
+    //#region -------------------- Find --------------------
 
-    //#region -------------------- All methods --------------------
+    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public find(predicate: BooleanCallback<T>,): NullOr<T>
+    public find(predicate: BooleanCallback<T>,) {
+        return findByCollectionHolder(this, predicate,)
+    }
 
-    public all(predicate: BooleanCallback<T>,): boolean {
+    //#endregion -------------------- Find --------------------
+    //#region -------------------- Find indexed --------------------
+
+    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return findIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Find indexed --------------------
+
+    //#region -------------------- Find last --------------------
+
+    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLast(predicate: BooleanCallback<T>,): NullOr<T>
+    public findLast(predicate: BooleanCallback<T>,) {
+        return findLastByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Find last --------------------
+    //#region -------------------- Find last indexed --------------------
+
+    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return findLastIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Find last indexed --------------------
+
+    //#endregion -------------------- Research methods --------------------
+    //#region -------------------- Index methods --------------------
+
+    //#region -------------------- Index of --------------------
+
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
+    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return indexOfByCollectionHolder(this, element, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Index of --------------------
+
+    //#region -------------------- Last index of --------------------
+
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
+    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Last index of --------------------
+
+    //#region -------------------- Index of first --------------------
+
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Index of first --------------------
+    //#region -------------------- Index of first indexed --------------------
+
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Index of first indexed --------------------
+
+    //#region -------------------- Index of last --------------------
+
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Index of last --------------------
+    //#region -------------------- Index of last indexed --------------------
+
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Index of last indexed --------------------
+
+    //#endregion -------------------- Index methods --------------------
+    //#region -------------------- Validation methods --------------------
+
+    //#region -------------------- All --------------------
+
+    public all<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public all(predicate: BooleanCallback<T>,): boolean
+    public all(predicate: BooleanCallback<T>,) {
         return allByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- All methods --------------------
-    //#region -------------------- Any methods --------------------
+    public every<S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
+    public every(predicate: BooleanCallback<T>,): boolean
+    public every(predicate: BooleanCallback<T>,) {
+        return this.all(predicate,)
+    }
+
+    //#endregion -------------------- All --------------------
+    //#region -------------------- Any --------------------
 
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public any(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return anyByCollectionHolder(this,)
         return anyByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Any methods --------------------
-    //#region -------------------- None methods --------------------
+    public some(): this["isNotEmpty"]
+    public some(predicate: Nullable<BooleanCallback<T>>,): boolean
+    public some(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return this.any()
+        return this.any(predicate,)
+    }
+
+    //#endregion -------------------- Any --------------------
+    //#region -------------------- None --------------------
 
     public none(): this["isEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public none(predicate?: Nullable<BooleanCallback<T>>,) {
+        if (arguments.length === 0)
+            return noneByCollectionHolder(this,)
         return noneByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- None methods --------------------
+    //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has methods --------------------
+    //#region -------------------- Has null --------------------
+
+    public get hasNull(): boolean { return hasNullByCollectionHolder(this,) }
+    public get includesNull(): this["hasNull"] { return this.hasNull }
+    public get containsNull(): this["hasNull"] { return this.hasNull }
+
+    //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has duplicate --------------------
+
+    public get hasDuplicate(): boolean { return hasDuplicateByCollectionHolder(this,) }
+    public get includesDuplicate(): this["hasDuplicate"] { return this.hasDuplicate }
+    public get containsDuplicate(): this["hasDuplicate"] { return this.hasDuplicate }
+
+    //#endregion -------------------- Has duplicate --------------------
+
+    //#region -------------------- Has --------------------
 
     public has(value: T,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public has(...values: readonly T[]): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public has(value: unknown,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public has(...values: readonly unknown[]): boolean
-    public has() {
-        if (arguments.length == 1)
-            return hasByCollectionHolder(this, arguments[0],)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public has(value: T,) {
+        return hasByCollectionHolder(this, value,)
     }
 
     public includes(value: T,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public includes(...values: readonly T[]): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includes(value: unknown,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public includes(...values: readonly unknown[]): boolean
-    public includes() {
-        if (arguments.length == 1)
-            return this.has(arguments[0],)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public includes(value: T,) {
+        return this.has(value,)
     }
 
     public contains(value: T,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public contains(...values: readonly T[]): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public contains(value: unknown,): boolean
-    /** @deprecated Replace with non-variadic arguments or hasOne. It will be removed in version 1.10 */
-    public contains(...values: readonly unknown[]): boolean
-    public contains() {
-        if (arguments.length == 1)
-            return this.has(arguments[0] as unknown,)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public contains(value: T,) {
+        return this.has(value,)
     }
 
-    //#endregion -------------------- Has methods --------------------
-    //#region -------------------- Has one methods --------------------
+    //#endregion -------------------- Has --------------------
+    //#region -------------------- Has one --------------------
 
     public hasOne(values: readonly T[],): boolean
     public hasOne(values: ReadonlySet<T>,): boolean
@@ -332,21 +425,22 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasOne(values: CollectionIterator<T>,): boolean
     public hasOne(values: Iterable<T>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: readonly unknown[],): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: CollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: CollectionIterator,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: Iterable<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public hasOne(...values: readonly T[]): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public hasOne(...values: readonly unknown[]): boolean
-    public hasOne() {
-        if (arguments.length == 1)
-            return hasOneByCollectionHolder(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return hasOneByCollectionHolder(this, values,)
     }
 
     public includesOne(values: readonly T[],): boolean
@@ -356,21 +450,22 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public includesOne(values: CollectionIterator<T>,): boolean
     public includesOne(values: Iterable<T>,): boolean
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: readonly unknown[],): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: CollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: CollectionIterator,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: Iterable<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public includesOne(...values: readonly T[]): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public includesOne(...values: readonly unknown[]): boolean
-    public includesOne() {
-        if (arguments.length == 1)
-            return this.hasOne(arguments[0],)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return this.hasOne(values,)
     }
 
     public containsOne(values: readonly T[],): boolean
@@ -379,26 +474,27 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public containsOne(values: MinimalistCollectionHolder<T>,): boolean
     public containsOne(values: CollectionIterator<T>,): boolean
     public containsOne(values: Iterable<T>,): boolean
-    public containsOne(values: PossibleIterableOrCollection<T>,): boolean
+    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: readonly unknown[],): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: CollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: CollectionIterator,): boolean
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsOne(values: Iterable<unknown>,): boolean
-    public containsOne(values: PossibleIterableOrCollection<unknown>,): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public containsOne(...values: readonly T[]): boolean
-    /**@deprecated @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public containsOne(...values: readonly unknown[]): boolean
-    public containsOne() {
-        if (arguments.length == 1)
-            return this.hasOne(arguments[0],)
-        return hasOneByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
+    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return this.hasOne(values,)
     }
 
-    //#endregion -------------------- Has one methods --------------------
-    //#region -------------------- Has all methods --------------------
+    //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has all --------------------
 
     public hasAll(values: readonly T[],): boolean
     public hasAll(values: ReadonlySet<T>,): boolean
@@ -407,21 +503,22 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasAll(values: CollectionIterator<T>,): boolean
     public hasAll(values: Iterable<T>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: readonly unknown[],): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: CollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: CollectionIterator,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: Iterable<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public hasAll(...values: readonly T[]): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public hasAll(...values: readonly unknown[]): boolean
-    public hasAll() {
-        if (arguments.length == 1)
-            return hasAllByCollectionHolder(this, arguments[0] as PossibleIterableArraySetOrCollectionHolder<unknown>,)
-        return hasAllByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return hasAllByCollectionHolder(this, values,)
     }
 
     public includesAll(values: readonly T[],): boolean
@@ -431,21 +528,22 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public includesAll(values: CollectionIterator<T>,): boolean
     public includesAll(values: Iterable<T>,): boolean
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: readonly unknown[],): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: CollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: CollectionIterator,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: Iterable<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public includesAll(...values: readonly T[]): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public includesAll(...values: readonly unknown[]): boolean
-    public includesAll() {
-        if (arguments.length == 1)
-            return this.hasAll(arguments[0],)
-        return hasAllByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return this.hasAll(values,)
     }
 
     public containsAll(values: readonly T[],): boolean
@@ -456,39 +554,40 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public containsAll(values: CollectionIterator<T>,): boolean
     public containsAll(values: Iterable<T>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: readonly unknown[],): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: ReadonlySet<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: CollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: CollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: MinimalistCollectionHolder,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: CollectionIterator,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: Iterable<unknown>,): boolean
+    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public containsAll(...values: readonly T[]): boolean
-    /** @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10 */
-    public containsAll(...values: readonly unknown[]): boolean
-    public containsAll() {
-        if (arguments.length == 1)
-            return this.hasAll(arguments[0],)
-        return hasAllByCollectionHolder(this, arguments as unknown as readonly unknown[],) // TODO Remove once the version 1.10 is in progress
+    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+        return this.hasAll(values,)
     }
 
-    //#endregion -------------------- Has all methods --------------------
+    //#endregion -------------------- Has all --------------------
 
-    //#region -------------------- Join to string methods --------------------
+    //#region -------------------- Require no nulls --------------------
 
-    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
-        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
+    public requireNoNulls(): CollectionHolder<NonNullable<T>> {
+        return requireNoNullsByCollectionHolder<T>(this,)
     }
 
-    public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
-        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
-    }
+    //#endregion -------------------- Require no nulls --------------------
 
-    //#endregion -------------------- Join to string methods --------------------
+    //#endregion -------------------- Validation methods --------------------
+    //#region -------------------- Transformation methods --------------------
 
-    //#region -------------------- Filter methods --------------------
+    //#region -------------------- Filter --------------------
 
     public filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -496,8 +595,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return filterByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter methods --------------------
-    //#region -------------------- Filter indexed methods --------------------
+    //#endregion -------------------- Filter --------------------
+    //#region -------------------- Filter indexed --------------------
 
     public filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
@@ -505,8 +604,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return filterIndexedByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter indexed methods --------------------
-    //#region -------------------- Filter not methods --------------------
+    //#endregion -------------------- Filter indexed --------------------
+
+    //#region -------------------- Filter not --------------------
 
     public filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -514,75 +614,26 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return filterNotByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter not methods --------------------
-    //#region -------------------- Filter not indexed methods --------------------
+    //#endregion -------------------- Filter not --------------------
+    //#region -------------------- Filter not indexed --------------------
 
-    public filterIndexedNot<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public filterIndexedNot(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public filterIndexedNot(predicate: ReverseBooleanCallback<T>,) {
-        return this.filterNotIndexed(predicate,)
-    }
-
-    public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public filterNotIndexed(predicate: ReverseBooleanCallback<T>,) {
         return filterNotIndexedByCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Filter not indexed methods --------------------
-    //#region -------------------- Filter not null methods --------------------
+    //#endregion -------------------- Filter not indexed --------------------
+
+    //#region -------------------- Filter not null --------------------
 
     public filterNotNull(): CollectionHolder<NonNullable<T>> {
         return filterNotNullByCollectionHolder<T>(this,)
     }
 
-    //#endregion -------------------- Filter not null methods --------------------
-    //#region -------------------- Require no nulls methods --------------------
+    //#endregion -------------------- Filter not null --------------------
 
-    public requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNullsByCollectionHolder<T>(this,)
-    }
-
-    //#endregion -------------------- Require no nulls methods --------------------
-
-    //#region -------------------- Find methods --------------------
-
-    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public find(predicate: BooleanCallback<T>,): NullOr<T>
-    public find(predicate: BooleanCallback<T>,) {
-        return findByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find methods --------------------
-    //#region -------------------- Find indexed methods --------------------
-
-    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findIndexedByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find indexed methods --------------------
-    //#region -------------------- Find last methods --------------------
-
-    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLast(predicate: BooleanCallback<T>,): NullOr<T>
-    public findLast(predicate: BooleanCallback<T>,) {
-        return findLastByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find last methods --------------------
-    //#region -------------------- Find last indexed methods --------------------
-
-    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findLastIndexedByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Find last indexed methods --------------------
-
-    //#region -------------------- Slice methods --------------------
+    //#region -------------------- Slice --------------------
 
     public slice(indices: readonly number[],): CollectionHolder<T>
     public slice(indices: ReadonlySet<number>,): CollectionHolder<T>
@@ -591,59 +642,221 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public slice(indices: Iterable<number>,): CollectionHolder<T>
     public slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
+    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
     public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return sliceByCollectionHolder<T>(this, indicesOrFromIndex, toIndex, limit,)
+    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T> {
+        if (arguments.length === 0)
+            return sliceWithARangeByCollectionHolder<T>(this,)
+        if (arguments.length === 1)
+            if (indicesOrFromIndex == null)
+                return sliceWithARangeByCollectionHolder<T>(this, indicesOrFromIndex,)
+            else if (typeof indicesOrFromIndex == "number")
+                return sliceWithARangeByCollectionHolder<T>(this, indicesOrFromIndex,)
+            else
+                return sliceByCollectionHolder<T>(this, indicesOrFromIndex,)
+        return sliceWithARangeByCollectionHolder<T>(this, indicesOrFromIndex as NullableNumber, toIndex,)
     }
 
-    //#endregion -------------------- Slice methods --------------------
+    //#endregion -------------------- Slice --------------------
 
-    //#region -------------------- Map methods --------------------
+    //#region -------------------- Take --------------------
+
+    public take(n: number,): CollectionHolder<T> {
+        return takeByCollectionHolder<T>(this, n,)
+    }
+
+    //#endregion -------------------- Take --------------------
+    //#region -------------------- Take while --------------------
+
+    public takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public takeWhile(predicate: BooleanCallback<T>,) {
+        return takeWhileByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Take while --------------------
+    //#region -------------------- Take while indexed --------------------
+
+    public takeWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return takeWhileIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Take while indexed --------------------
+    //#region -------------------- Take last --------------------
+
+    public takeLast(n: number,): CollectionHolder<T> {
+        return takeLastByCollectionHolder<T>(this, n,)
+    }
+
+    //#endregion -------------------- Take last --------------------
+    //#region -------------------- Take last while --------------------
+
+    public takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public takeLastWhile(predicate: BooleanCallback<T>,) {
+        return takeLastWhileByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Take last while --------------------
+    //#region -------------------- Take last while indexed --------------------
+
+    public takeLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return takeLastWhileIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Take last while indexed --------------------
+
+    //#region -------------------- Drop --------------------
+
+    public drop(n: number,): CollectionHolder<T> {
+        return dropByCollectionHolder<T>(this, n,)
+    }
+
+    //#endregion -------------------- Drop --------------------
+    //#region -------------------- Drop while --------------------
+
+    public dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public dropWhile(predicate: BooleanCallback<T>,) {
+        return dropWhileByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Drop while --------------------
+    //#region -------------------- Drop while indexed --------------------
+
+    public dropWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return dropWhileIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Drop while indexed --------------------
+    //#region -------------------- Drop last --------------------
+
+    public dropLast(n: number,): CollectionHolder<T> {
+        return dropLastByCollectionHolder<T>(this, n,)
+    }
+
+    //#endregion -------------------- Drop last --------------------
+    //#region -------------------- Drop last while --------------------
+
+    public dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public dropLastWhile(predicate: BooleanCallback<T>,) {
+        return dropLastWhileByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Drop last while --------------------
+    //#region -------------------- Drop last while indexed --------------------
+
+    public dropLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return dropLastWhileIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Drop last while indexed --------------------
+
+    //#region -------------------- Map --------------------
 
     public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
         return mapByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map methods --------------------
-    //#region -------------------- Map indexed methods --------------------
+    //#endregion -------------------- Map --------------------
+    //#region -------------------- Map indexed --------------------
 
     public mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
         return mapIndexedByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map indexed methods --------------------
-    //#region -------------------- Map not null methods --------------------
+    //#endregion -------------------- Map indexed --------------------
+
+    //#region -------------------- Map not null --------------------
 
     public mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return mapNotNullByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map not null methods --------------------
-    //#region -------------------- Map not null indexed methods --------------------
+    //#endregion -------------------- Map not null --------------------
+    //#region -------------------- Map not null indexed --------------------
 
     public mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
         return mapNotNullIndexedByCollectionHolder(this, transform,)
     }
 
-    //#endregion -------------------- Map not null indexed methods --------------------
+    //#endregion -------------------- Map not null indexed --------------------
 
-    //#region -------------------- For each methods --------------------
+    //#endregion -------------------- Transformation methods --------------------
+    //#region -------------------- Loop methods --------------------
 
-    public forEach(action: ValueIndexCallback<T>,): this {
-        return forEach(this, action,)
+    //#region -------------------- For each --------------------
+
+    public forEach(action: ValueIndexCallback<T>,): void {
+        forEachByCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- For each methods --------------------
-    //#region -------------------- For each indexed methods --------------------
+    //#endregion -------------------- For each --------------------
+    //#region -------------------- For each indexed --------------------
 
-    public forEachIndexed(action: IndexValueCallback<T>,): this {
-        return forEachIndexed(this, action,)
+    public forEachIndexed(action: IndexValueCallback<T>,): void {
+        forEachIndexedByCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- For each indexed methods --------------------
+    //#endregion -------------------- For each indexed --------------------
+
+    //#region -------------------- On each --------------------
+
+    public onEach(action: ValueIndexCallback<T>,): this {
+        return onEachByCollectionHolder(this, action,)
+    }
+
+    //#endregion -------------------- On each --------------------
+    //#region -------------------- On each indexed --------------------
+
+    public onEachIndexed(action: IndexValueCallback<T>,): this {
+        return onEachIndexedByCollectionHolder(this, action,)
+    }
+
+    //#endregion -------------------- On each indexed --------------------
 
     //#endregion -------------------- Loop methods --------------------
+    //#region -------------------- Reordering methods --------------------
+
+    //#region -------------------- To reverse --------------------
+
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex,)
+    }
+
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return this.toReverse(fromIndex, toIndex,)
+    }
+
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+        return this.toReverse(fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- To reverse --------------------
+
+    //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Javascript methods --------------------
 
     public [Symbol.iterator](): CollectionIterator<T> {
@@ -657,18 +870,14 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Javascript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public get objectValuesMap(): ReadonlyMap<T, ObjectOf<T>> {
-        return objectValuesMapByCollectionHolder<T>(this,)
-    }
-
-    //#region -------------------- Conversion methods (iterator) --------------------
+    //#region -------------------- To iterator --------------------
 
     public toIterator(): CollectionIterator<T> {
         return this[Symbol.iterator]()
     }
 
-    //#endregion -------------------- Conversion methods (iterator) --------------------
-    //#region -------------------- Conversion methods (array) --------------------
+    //#endregion -------------------- To iterator --------------------
+    //#region -------------------- To array --------------------
 
     public toArray(): readonly T[] {
         return toArrayByCollectionHolder<T>(this,)
@@ -678,8 +887,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return toMutableArrayByCollectionHolder<T>(this,)
     }
 
-    //#endregion -------------------- Conversion methods (array) --------------------
-    //#region -------------------- Conversion methods (set) --------------------
+    //#endregion -------------------- To array --------------------
+    //#region -------------------- To set --------------------
 
     public toSet(): ReadonlySet<T> {
         return toSetByCollectionHolder<T>(this,)
@@ -689,19 +898,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return toMutableSetByCollectionHolder<T>(this,)
     }
 
-    //#endregion -------------------- Conversion methods (set) --------------------
-    //#region -------------------- Conversion methods (weak set) --------------------
-
-    public toWeakSet(): Readonly<WeakSet<ObjectOf<T>>> {
-        return toWeakSet(this,)
-    }
-
-    public toMutableWeakSet(): WeakSet<ObjectOf<T>> {
-        return toMutableWeakSet(this,)
-    }
-
-    //#endregion -------------------- Conversion methods (weak set) --------------------
-    //#region -------------------- Conversion methods (map) --------------------
+    //#endregion -------------------- To set --------------------
+    //#region -------------------- To map --------------------
 
     public toMap(): ReadonlyMap<number, T> {
         return toMapByCollectionHolder<T>(this,)
@@ -711,29 +909,17 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return toMutableMapByCollectionHolder<T>(this,)
     }
 
-    //#endregion -------------------- Conversion methods (map) --------------------
-    //#region -------------------- Conversion methods (reverse) --------------------
+    //#endregion -------------------- To map --------------------
 
-    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex, limit,)
-    }
-
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return this.toReverse(fromIndex, toIndex, limit,)
-    }
-
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T> {
-        return this.toReverse(fromIndex, toIndex, limit,)
-    }
-
-    //#endregion -------------------- Conversion methods (reverse) --------------------
-    //#region -------------------- Conversion methods (string) --------------------
+    //#region -------------------- To string --------------------
 
     public override toString(): string {
         return toStringByCollectionHolder(this,)
     }
 
     public override toLocaleString(locale?: NullableString,): string {
+        if (arguments.length === 0)
+            return toLocaleStringByCollectionHolder(this,)
         return toLocaleStringByCollectionHolder(this, locale,)
     }
 
@@ -743,6 +929,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     public toLocaleLowerCaseString(locale?: NullableString,): string {
+        if (arguments.length === 0)
+            return toLocaleLowerCaseStringByCollectionHolder(this,)
         return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
     }
 
@@ -752,10 +940,23 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     public toLocaleUpperCaseString(locale?: NullableString,): string {
+        if (arguments.length === 0)
+            return toLocaleUpperCaseStringByCollectionHolder(this,)
         return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
     }
 
-    //#endregion -------------------- Conversion methods (string) --------------------
+    //#endregion -------------------- To string --------------------
+    //#region -------------------- Join to string --------------------
+
+    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
+        return this.joinToString(separator, prefix, postfix, limit, truncated, transform,)
+    }
+
+    public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
+        return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
+    }
+
+    //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 

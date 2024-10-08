@@ -12,221 +12,192 @@ import type {PossibleIterableArraySetOrCollectionHolder} from "../CollectionHold
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 import type {CollectionIterator}                         from "../iterator/CollectionIterator"
 
-import {hasAllWithArray, hasAllWithArrayByCollectionHolder}                                           from "./hasAll.withArray"
-import {hasAllWithCollectionHolder, hasAllWithCollectionHolderByCollectionHolder}                     from "./hasAll.withCollectionHolder"
-import {hasAllWithCollectionIterator, hasAllWithCollectionIteratorByCollectionHolder}                 from "./hasAll.withCollectionIterator"
-import {hasAllWithIterable, hasAllWithIterableByCollectionHolder}                                     from "./hasAll.withIterable"
-import {hasAllWithMinimalistCollectionHolder, hasAllWithMinimalistCollectionHolderByCollectionHolder} from "./hasAll.withMinimalistCollectionHolder"
-import {hasAllWithSet, hasAllWithSetByCollectionHolder}                                               from "./hasAll.withSet"
-import {isCollectionIterator}                                                                         from "./isCollectionIterator"
-import {isCollectionIteratorByStructure}                                                              from "./isCollectionIteratorByStructure"
-import {isCollectionHolder}                                                                           from "./isCollectionHolder"
-import {isCollectionHolderByStructure}                                                                from "./isCollectionHolderByStructure"
-import {isMinimalistCollectionHolder}                                                                 from "./isMinimalistCollectionHolder"
-import {isMinimalistCollectionHolderByStructure}                                                      from "./isMinimalistCollectionHolderByStructure"
+import {hasAllWithArray, hasAllWithArrayByArray, hasAllWithArrayByCollectionHolder, hasAllWithArrayByMinimalistCollectionHolder}                                                                                     from "./hasAll.withArray"
+import {hasAllWithCollectionHolder, hasAllWithCollectionHolderByArray, hasAllWithCollectionHolderByCollectionHolder, hasAllWithCollectionHolderByMinimalistCollectionHolder}                                         from "./hasAll.withCollectionHolder"
+import {hasAllWithCollectionIterator, hasAllWithCollectionIteratorByArray, hasAllWithCollectionIteratorByCollectionHolder, hasAllWithCollectionIteratorByMinimalistCollectionHolder}                                 from "./hasAll.withCollectionIterator"
+import {hasAllWithIterable, hasAllWithIterableByArray, hasAllWithIterableByCollectionHolder, hasAllWithIterableByMinimalistCollectionHolder}                                                                         from "./hasAll.withIterable"
+import {hasAllWithMinimalistCollectionHolder, hasAllWithMinimalistCollectionHolderByArray, hasAllWithMinimalistCollectionHolderByCollectionHolder, hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "./hasAll.withMinimalistCollectionHolder"
+import {hasAllWithSet, hasAllWithSetByArray, hasAllWithSetByCollectionHolder, hasAllWithSetByMinimalistCollectionHolder}                                                                                             from "./hasAll.withSet"
+import {isArray}                                                                                                                                                                                                     from "./isArray"
+import {isArrayByStructure}                                                                                                                                                                                          from "./isArrayByStructure"
+import {isCollectionIterator}                                                                                                                                                                                        from "./isCollectionIterator"
+import {isCollectionIteratorByStructure}                                                                                                                                                                             from "./isCollectionIteratorByStructure"
+import {isCollectionHolder}                                                                                                                                                                                          from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                                                                                                                                                                               from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                                                                                                                                                                                from "./isMinimalistCollectionHolder"
+import {isMinimalistCollectionHolderByStructure}                                                                                                                                                                     from "./isMinimalistCollectionHolderByStructure"
+import {isSet}                                                                                                                                                                                                       from "./isSet"
+import {isSetByStructure}                                                                                                                                                                                            from "./isSetByStructure"
 
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly T[],): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: readonly T[],): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<T>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: ReadonlySet<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: CollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator<T>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: CollectionIterator<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: Iterable<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @typescriptDefinition
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly unknown[],): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<unknown>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<unknown>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @typescriptDefinition
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-/**
- * Tell that the {@link values} are in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @return {boolean} Every {@link values} are in the {@link collection}
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- */
-export function hasAll<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, ...values: readonly T[]): boolean
-/**
- * Tell that the {@link values} are in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @return {boolean} Every {@link values} are in the {@link collection}
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- */
-export function hasAll(collection: Nullable<MinimalistCollectionHolder>, ...values: readonly unknown[]): boolean
-export function hasAll(collection: Nullable<MinimalistCollectionHolder>,): boolean {
-    if (arguments.length != 2) { // TODO Remove once the version 1.10 is in progress
-        const [, ...variadicArguments] = arguments as unknown as readonly [Nullable<MinimalistCollectionHolder>, ...readonly unknown[],]
-        return hasAllWithArray(collection, variadicArguments,)
-    }
-
-    const values = arguments[1] as PossibleIterableArraySetOrCollectionHolder<unknown>
-    if (values instanceof Array)
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean {
+    if (isArray(values,))
         return hasAllWithArray(collection, values,)
-    if (values instanceof Set)
+    if (isSet(values,))
         return hasAllWithSet(collection, values,)
     if (isCollectionHolder(values,))
         return hasAllWithCollectionHolder(collection, values,)
@@ -235,217 +206,377 @@ export function hasAll(collection: Nullable<MinimalistCollectionHolder>,): boole
     if (isCollectionIterator(values,))
         return hasAllWithCollectionIterator(collection, values,)
 
-    if (isCollectionHolderByStructure<unknown>(values,))
+    if (isArrayByStructure<T>(values,))
+        return hasAllWithArray(collection, values,)
+    if (isSetByStructure<T>(values,))
+        return hasAllWithSet(collection, values,)
+    if (isCollectionHolderByStructure<T>(values,))
         return hasAllWithCollectionHolder(collection, values,)
-    if (isMinimalistCollectionHolderByStructure<unknown>(values,))
-        //@ts-ignore
+    if (isMinimalistCollectionHolderByStructure<T>(values,))
         return hasAllWithMinimalistCollectionHolder(collection, values,)
-    if (isCollectionIteratorByStructure<unknown>(values,))
+    if (isCollectionIteratorByStructure<T>(values,))
         return hasAllWithCollectionIterator(collection, values,)
 
     return hasAllWithIterable(collection, values,)
 }
 
+
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly T[],): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @typescriptDefinition
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly unknown[],): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<unknown>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<unknown>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @typescriptDefinition
+ * @extensionFunction
+ * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
+ */
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean {
+    if (isArray(values,))
+        return hasAllWithArrayByMinimalistCollectionHolder(collection, values,)
+    if (isSet(values,))
+        return hasAllWithSetByMinimalistCollectionHolder(collection, values,)
+    if (isCollectionHolder(values,))
+        return hasAllWithCollectionHolderByMinimalistCollectionHolder(collection, values,)
+    if (isMinimalistCollectionHolder(values,))
+        return hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder(collection, values,)
+    if (isCollectionIterator(values,))
+        return hasAllWithCollectionIteratorByMinimalistCollectionHolder(collection, values,)
+
+    if (isArrayByStructure<T>(values,))
+        return hasAllWithArrayByMinimalistCollectionHolder(collection, values,)
+    if (isSetByStructure<T>(values,))
+        return hasAllWithSetByMinimalistCollectionHolder(collection, values,)
+    if (isCollectionHolderByStructure<T>(values,))
+        return hasAllWithCollectionHolderByMinimalistCollectionHolder(collection, values,)
+    if (isMinimalistCollectionHolderByStructure<T>(values,))
+        return hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder(collection, values,)
+    if (isCollectionIteratorByStructure<T>(values,))
+        return hasAllWithCollectionIteratorByMinimalistCollectionHolder(collection, values,)
+
+    return hasAllWithIterableByMinimalistCollectionHolder(collection, values,)
+}
+
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: readonly T[],): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: ReadonlySet<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionIterator<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @typescriptDefinition
  * @extensionFunction
  * @facadeFunction
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: readonly unknown[],): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: ReadonlySet<unknown>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: MinimalistCollectionHolder,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionIterator,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<unknown>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
- * @return {boolean} <b>true</b> if at least one value is equals to one value in the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @typescriptDefinition
  * @extensionFunction
  * @facadeFunction
+ * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
  */
 export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-/**
- * Tell that the {@link values} are in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @return {boolean} Every {@link values} are in the {@link collection}
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- */
-export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, ...values: readonly T[]): boolean
-/**
- * Tell that the {@link values} are in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @return {boolean} Every {@link values} are in the {@link collection}
- * @deprecated Replace with has or use a non-variadic arguments. It will be removed in version 1.10
- * @extensionFunction
- */
-export function hasAllByCollectionHolder(collection: Nullable<CollectionHolder>, ...values: readonly unknown[]): boolean
-export function hasAllByCollectionHolder(collection: Nullable<CollectionHolder>,): boolean {
-    if (arguments.length != 2) { // TODO Remove once the version 1.10 is in progress
-        const [, ...variadicArguments] = arguments as unknown as readonly [Nullable<CollectionHolder>, ...readonly unknown[],]
-        return hasAllWithArrayByCollectionHolder(collection, variadicArguments,)
-    }
-
-    const values = arguments[1] as PossibleIterableArraySetOrCollectionHolder<unknown>
-    if (values instanceof Array)
+export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean {
+    if (isArray(values,))
         return hasAllWithArrayByCollectionHolder(collection, values,)
-    if (values instanceof Set)
+    if (isSet(values,))
         return hasAllWithSetByCollectionHolder(collection, values,)
     if (isCollectionHolder(values,))
         return hasAllWithCollectionHolderByCollectionHolder(collection, values,)
@@ -454,14 +585,122 @@ export function hasAllByCollectionHolder(collection: Nullable<CollectionHolder>,
     if (isCollectionIterator(values,))
         return hasAllWithCollectionIteratorByCollectionHolder(collection, values,)
 
-    if (isCollectionHolderByStructure<unknown>(values,))
+    if (isArrayByStructure<T>(values,))
+        return hasAllWithArrayByCollectionHolder(collection, values,)
+    if (isSetByStructure<T>(values,))
+        return hasAllWithSetByCollectionHolder(collection, values,)
+    if (isCollectionHolderByStructure<T>(values,))
         return hasAllWithCollectionHolderByCollectionHolder(collection, values,)
-    if (isMinimalistCollectionHolderByStructure<unknown>(values,))
+    if (isMinimalistCollectionHolderByStructure<T>(values,))
         return hasAllWithMinimalistCollectionHolderByCollectionHolder(collection, values,)
-    if (isCollectionIteratorByStructure<unknown>(values,))
+    if (isCollectionIteratorByStructure<T>(values,))
         return hasAllWithCollectionIteratorByCollectionHolder(collection, values,)
 
     return hasAllWithIterableByCollectionHolder(collection, values,)
+}
+
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: readonly T[],): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: ReadonlySet<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: CollectionHolder<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: CollectionIterator<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterable<T>,): boolean
+/**
+ * Tell that all the {@link values} exist in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param values     The values to compare
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+ * @typescriptDefinition
+ * @extensionFunction
+ * @facadeFunction
+ */
+export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: PossibleIterableArraySetOrCollectionHolder<T>,) {
+    if (isArray(values,))
+        return hasAllWithArrayByArray(collection, values,)
+    if (isSet(values,))
+        return hasAllWithSetByArray(collection, values,)
+    if (isCollectionHolder(values,))
+        return hasAllWithCollectionHolderByArray(collection, values,)
+    if (isMinimalistCollectionHolder(values,))
+        return hasAllWithMinimalistCollectionHolderByArray(collection, values,)
+    if (isCollectionIterator(values,))
+        return hasAllWithCollectionIteratorByArray(collection, values,)
+
+    if (isArrayByStructure<T>(values,))
+        return hasAllWithArrayByArray(collection, values,)
+    if (isSetByStructure<T>(values,))
+        return hasAllWithSetByArray(collection, values,)
+    if (isCollectionHolderByStructure<T>(values,))
+        return hasAllWithCollectionHolderByArray(collection, values,)
+    if (isMinimalistCollectionHolderByStructure<T>(values,))
+        return hasAllWithMinimalistCollectionHolderByArray(collection, values,)
+    if (isCollectionIteratorByStructure<T>(values,))
+        return hasAllWithCollectionIteratorByArray(collection, values,)
+
+    return hasAllWithIterableByArray(collection, values,)
 }
 
 //#endregion -------------------- Facade method --------------------

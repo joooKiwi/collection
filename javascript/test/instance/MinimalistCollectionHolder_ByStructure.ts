@@ -5,20 +5,25 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/CollectionHolder.types"
-import type {MinimalistCollectionHolder}                 from "../../src/MinimalistCollectionHolder"
+import type {MinimalistCollectionHolder} from "../../src/MinimalistCollectionHolder"
 
-import {GenericMinimalistCollectionHolder} from "../../src/GenericMinimalistCollectionHolder"
+import {MinimalistCollectionHolderFromArray} from "./MinimalistCollectionHolderFromArray"
 
+/**
+ * A {@link MinimalistCollectionHolder} having the structure of it,
+ * but without inheriting the {@link AbstractMinimalistCollectionHolder}.
+ *
+ * Internally, it is using a {@link MinimalistCollectionHolderFromArray} for every method
+ */
 export class MinimalistCollectionHolder_ByStructure<const out T, >
     implements MinimalistCollectionHolder<T> {
 
-    readonly #internalReference: GenericMinimalistCollectionHolder<T>
+    public readonly reference
 
-    public constructor(reference: PossibleIterableArraySetOrCollectionHolder<T> | (() => PossibleIterableArraySetOrCollectionHolder<T>),) { this.#internalReference = new GenericMinimalistCollectionHolder(reference,) }
+    public constructor(array: readonly T[],) { this.reference = new MinimalistCollectionHolderFromArray(array,) }
 
-    public get size(): number { return this.#internalReference.size }
+    public get size(): number { return this.reference.size }
 
-    public get(index: number,): T { return this.#internalReference.get(index,) }
+    public get(index: number,): T { return this.reference.get(index,) }
 
 }

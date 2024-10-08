@@ -5,9 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Lazy}                                         from "@joookiwi/lazy"
-import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakSet} from "@joookiwi/type"
-import {lazyOf}                                            from "@joookiwi/lazy"
+import type {Lazy}                                                       from "@joookiwi/lazy"
+import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
+import {lazyOf}                                                          from "@joookiwi/lazy"
 
 import type {CollectionHolder}           from "./CollectionHolder"
 import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
@@ -47,7 +47,10 @@ export class CollectionConstants {
 
     static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<keyof MinimalistCollectionHolder>
     static #COLLECTION_MEMBERS?: CollectionHolder<keyof CollectionHolder>
-    static #ITERATOR_MEMBERS?: CollectionHolder<keyof CollectionIterator>
+    static #ARRAY_MEMBERS?: CollectionHolder<keyof ReadonlyArray<unknown>>
+    static #SET_MEMBERS?: CollectionHolder<keyof ReadonlySet<unknown>>
+    // static #ITERATOR_MEMBERS?: CollectionHolder<keyof Iterator<unknown, unknown, unknown>>
+    static #COLLECTION_ITERATOR_MEMBERS?: CollectionHolder<keyof CollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
     static #GenericCollectionHolder?: typeof GenericCollectionHolder
@@ -66,6 +69,8 @@ export class CollectionConstants {
     public static readonly EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet
     /** An empty {@link ReadonlyMap map} */
     public static readonly EMPTY_MAP = Object.freeze(new Map<any, never>(),) as EmptyMap
+    /** An empty {@link WeakSet weak set} */
+    public static readonly EMPTY_WEAK_MAP = Object.freeze(new WeakMap(),) as EmptyWeakMap
 
 
     /** An {@link EmptyCollectionHolder} instance */
@@ -138,13 +143,6 @@ export class CollectionConstants {
         return CollectionConstants.#MINIMALIST_COLLECTION_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "get",],),)
     }
 
-    /**
-     * Every method applicable to a {@link MinimalistCollectionHolder}
-     *
-     * @deprecated Use CollectionConstants.MINIMALIST_COLLECTION_MEMBERS instead. It will be removed in version 1.10
-     */
-    public static get EVERY_MINIMALIST_COLLECTION_METHODS(): CollectionHolder<keyof MinimalistCollectionHolder> { return CollectionConstants.MINIMALIST_COLLECTION_MEMBERS }
-
 
     /** Every method applicable to a {@link CollectionHolder} */
     public static get COLLECTION_MEMBERS(): CollectionHolder<keyof CollectionHolder> {
@@ -163,18 +161,17 @@ export class CollectionConstants {
             "has", "includes", "contains",
             "hasOne", "includesOne", "containsOne",
             "hasAll", "includesAll", "containsAll",
-            "joinToString",
+            "joinToString", 'join',
             "filter", "filterIndexed", "filterNot", "filterNotIndexed", "filterNotNull", "requireNoNulls",
             "find", "findIndexed", "findLast", "findLastIndexed",
             "map", "mapIndexed",
             "mapNotNull", "mapNotNullIndexed",
             "forEach", "forEachIndexed",
+            "onEach", "onEachIndexed",
             Symbol.iterator, Symbol.toStringTag,
-            "objectValuesMap",
             "toIterator",
             "toArray", "toMutableArray",
             "toSet", "toMutableSet",
-            "toWeakSet", "toMutableWeakSet",
             "toMap", "toMutableMap",
             "toReverse", "toReversed", "reversed",
             "toString", "toLocaleString",
@@ -183,18 +180,75 @@ export class CollectionConstants {
         ] as const,),)
     }
 
-    /**
-     * Every method applicable to a {@link CollectionHolder}
-     *
-     * @deprecated Use CollectionConstants.COLLECTION_MEMBERS instead. It will be removed in version 1.10
-     */
-    public static get EVERY_COLLECTION_METHODS(): CollectionHolder<keyof CollectionHolder> { return CollectionConstants.COLLECTION_MEMBERS }
 
+    /** Every method applicable to an {@link ReadonlyArray Array} */
+    public static get ARRAY_MEMBERS(): CollectionHolder<keyof ReadonlyArray<unknown>> {
+        return CollectionConstants.#ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "length",
+            "at",
+            "indexOf", "lastIndexOf",
+            "includes",
+            "every", "some", "with",
+            "join",
+            "filter",
+            "find", "findLast",
+            "findIndex", "findLastIndex",
+            "concat",
+            "reduce", "reduceRight",
+            "flat", "flatMap",
+            "map",
+            "forEach",
+            "keys", "values", "entries",
+            Symbol.iterator,
+            Symbol.unscopables,
+            "toReversed",
+            "toSorted",
+            "slice", "toSpliced",
+            "toString", "toLocaleString",
+        ] as const,),)
+    }
+
+
+    /** Every method applicable to an {@link ReadonlyArray Array} */
+    public static get SET_MEMBERS(): CollectionHolder<keyof ReadonlySet<unknown>> {
+        return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "size",
+            "has",
+            "forEach",
+            "keys", "values", "entries",
+            "union", "intersection",
+            "difference", "symmetricDifference",
+            "isSubsetOf", "isSupersetOf",
+            "isDisjointFrom",
+            Symbol.iterator,
+        ] as const,),)
+    }
+
+
+    /**
+     * Every method applicable to a {@link CollectionIterator}
+     *
+     * @deprecated Use {@link COLLECTION_ITERATOR_MEMBERS} instead. The Iterator will be a proper object in JavaScript. This will be removed in version 1.11, but added back once TypeScript add the other methods
+     */
+    public static get ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
+        return CollectionConstants.COLLECTION_ITERATOR_MEMBERS
+        // return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        //     "next",
+        //     "every", "some",
+        //     "find", "filter", "reduce",
+        //     "take", "drop",
+        //     "forEach",
+        //     "map", "flatMap",
+        //     "toArray",
+        //     Symbol.iterator, Symbol.toStringTag,
+        // ] as const,),)
+    }
 
     /** Every method applicable to a {@link CollectionIterator} */
-    public static get ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
-        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+    public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
+        return CollectionConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
+            "isEmpty", "isNotEmpty",
             "currentIndex", "index",
             "nextIndex", "previousIndex",
             "hasNext", "hasPrevious",
@@ -205,13 +259,6 @@ export class CollectionConstants {
             Symbol.iterator, Symbol.toStringTag,
         ] as const,),)
     }
-
-    /**
-     * Every method applicable to a {@link CollectionIterator}
-     *
-     * @deprecated Use CollectionConstants.ITERATOR_MEMBERS instead. It will be removed in version 1.10
-     */
-    public static get EVERY_ITERATOR_METHODS(): CollectionHolder<keyof CollectionIterator> { return CollectionConstants.ITERATOR_MEMBERS }
 
     //#endregion -------------------- Members references --------------------
     //#region -------------------- Constructor references --------------------

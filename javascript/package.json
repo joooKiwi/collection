@@ -1,7 +1,7 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.9.3",
-  "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin), List (from Java/Kotlin/C#) and Enumerable (from C#)",
+  "version": "1.10.0",
+  "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin) and List (from Java/Kotlin/C#)",
 
   "scripts": {
     "clear-dist-folder": "del-cli dist/",
@@ -46,12 +46,12 @@
       "import":  "./dist/ecmascript module/exception/index.js",
       "require": "./dist/common javascript/exception/index.js"
     },
-     "./handler": {
+    "./handler": {
       "types":   "./dist/types/handler/index.d.ts",
       "import":  "./dist/ecmascript module/handler/index.js",
       "require": "./dist/common javascript/handler/index.js"
     },
-     "./handler/value": {
+    "./handler/value": {
       "types":   "./dist/types/handler/value/index.d.ts",
       "import":  "./dist/ecmascript module/handler/value/index.js",
       "require": "./dist/common javascript/handler/value/index.js"
@@ -149,17 +149,17 @@
   "author": "JóôòKiwi",
   "license": "MIT",
   "dependencies": {
-    "@joookiwi/lazy": "^1.4.0",
+    "@joookiwi/lazy": "^1.5.0",
     "@joookiwi/type": "^1.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.14.11",
-    "del-cli": "^5.1.0",
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.7.5",
+    "del-cli": "^6.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-extended": "^4.0.2",
-    "ts-jest": "^29.2.3",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.6.2"
   }
 }

@@ -108,10 +108,14 @@ export class CollectionHandlerByMinimalistCollectionHolder<const T = unknown,
             return this.#hasDuplicate = false
         }
 
+        const size = this.size
+        if (size == 1)
+            return this.#hasDuplicate = false
+
         //TODO add logic to compare if it exist and _lastIndex++ logic
+
         const reference = this._reference
         const collection = this._collection
-        const size = this.size
         const temporaryArray = new Array<T>(size,)
         collection[0] = temporaryArray[0] = reference.get(0,)
         let amountOfItemAdded = 1

@@ -36,7 +36,7 @@ export class CollectionHandlerByIterable<const T = unknown,
 
     //#region -------------------- Fields --------------------
 
-    #iterator?: Iterator<T, unknown>
+    #iterator?: Iterator<T, unknown, unknown>
 
     #size?: number
     #isEmpty?: boolean
@@ -63,7 +63,7 @@ export class CollectionHandlerByIterable<const T = unknown,
             return this.#size = this._collection.size
 
         const iterator = this._iterator
-        let iteratorValue = iterator.next() as IteratorResult<T, unknown>
+        let iteratorValue = iterator.next()
         if (iteratorValue.done) {
             this._hasFinished = true
             if (this._isTheFirstElementRetrieved) {
@@ -95,7 +95,7 @@ export class CollectionHandlerByIterable<const T = unknown,
         if (this._hasFinished === true)
             return this.#isEmpty = this._collection.isEmpty
 
-        const iteratorValue = this._iterator.next() as IteratorResult<T, unknown>
+        const iteratorValue = this._iterator.next()
         if (iteratorValue.done) {
             this._hasFinished = true
             if (this._isTheFirstElementRetrieved) {
@@ -107,7 +107,7 @@ export class CollectionHandlerByIterable<const T = unknown,
         }
 
         this._collection[0] = iteratorValue.value
-        this._lastIndexRetrieved = 1
+        this._lastIndexRetrieved = 0
         return this.#isEmpty = false
     }
 
@@ -154,10 +154,10 @@ export class CollectionHandlerByIterable<const T = unknown,
         //FIXME: use the same logic as the CollectionHandler-by-CollectionIterator instance
         //TODO add logic to compare if it exist and _lastIndexRetrieved++ logic
         const reference = this._reference
-        const iterator = reference[Symbol.iterator]() as IterableIterator<T>
+        const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
         const collection = this._collection
         const temporaryArray = []
-        collection[0] = temporaryArray[0] = iterator.next().value
+        collection[0] = temporaryArray[0] = iterator.next().value as T
         let iteratorResult: IteratorResult<T, unknown>
         let amountOfItemAdded = 1
         let index = 0
@@ -237,7 +237,7 @@ export class CollectionHandlerByIterable<const T = unknown,
         if (value != null)
             return value
 
-        const iteratorValue = this._iterator.next() as IteratorResult<T, unknown>
+        const iteratorValue = this._iterator.next()
         if (iteratorValue.done)
             return this._hasFinished = true
 
@@ -252,7 +252,7 @@ export class CollectionHandlerByIterable<const T = unknown,
     protected set _hasFinished(value: boolean,) { this.#hasFinished = value }
 
 
-    protected get _iterator(): Iterator<T, unknown> {
+    protected get _iterator(): Iterator<T, unknown, unknown> {
         return this.#iterator ??= this._reference[Symbol.iterator]()
     }
 
@@ -289,7 +289,7 @@ export class CollectionHandlerByIterable<const T = unknown,
 
             const lastIndex = this._lastIndexRetrieved
             const iterator = this._iterator
-            let iteratorIndex = lastIndex - 1
+            let iteratorIndex = lastIndex
             let iteratorResult: IteratorResult<T, unknown>
             while (!(iteratorResult = iterator.next()).done)
                 collection[++iteratorIndex] = iteratorResult.value
@@ -308,7 +308,7 @@ export class CollectionHandlerByIterable<const T = unknown,
 
         const lastIndex = this._lastIndexRetrieved
         const iterator = this._iterator
-        let iteratorIndex = lastIndex - 1
+        let iteratorIndex = lastIndex
         let iteratorResult: IteratorResult<T, unknown>
         while (++iteratorIndex, !(iteratorResult = iterator.next()).done) {
             collection[iteratorIndex] = iteratorResult.value

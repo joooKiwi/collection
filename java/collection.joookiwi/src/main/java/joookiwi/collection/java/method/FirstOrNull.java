@@ -1,37 +1,37 @@
 package joookiwi.collection.java.method;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import static joookiwi.collection.java.CommonContracts.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_1;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_2;
 
 public final class FirstOrNull
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private FirstOrNull() { throw new ImpossibleConstructionException("The utility class \"FirstOrNull\" cannot be constructed.", FirstOrNull.class); }
+    private FirstOrNull() { throw new ImpossibleConstructionException("The utility class “FirstOrNull” cannot be constructed.", FirstOrNull.class); }
 
     //#region -------------------- Facade methods --------------------
 
-    //#region -------------------- () --------------------
+    //#region -------------------- ∅ --------------------
 
-    /**
-     * Get the first element in the {@code collection}
-     * or <b>null</b> if the {@code collection} <b>is empty</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault()</a>
-     */
+    /// Get the first element in the `collection`
+    /// or `null` if the `collection` **is empty**
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
     public static <T> @Nullable T firstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
@@ -42,15 +42,13 @@ public final class FirstOrNull
         return __withNoArgument(collection);
     }
 
-    /**
-     * Get the first element in the {@code collection}
-     * or <b>null</b> if the {@code collection} {@link CollectionHolder#isEmpty is empty}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault()</a>
-     */
+    /// Get the first element in the `collection`
+    /// or `null` if the `collection` [is empty][#isEmpty]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
     public static <T> @Nullable T firstOrNull(final @Nullable CollectionHolder<? extends T> collection) {
@@ -61,24 +59,22 @@ public final class FirstOrNull
         return __withNoArgument(collection);
     }
 
-    //#endregion -------------------- () --------------------
+    //#endregion -------------------- ∅ --------------------
     //#region -------------------- predicate (T, int) → boolean --------------------
 
-    /**
-     * Get the first element in the {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} <b>is empty</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
-     */
+    /// Get the first element in the `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` **is empty**
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                              final @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                              final @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -90,21 +86,19 @@ public final class FirstOrNull
         return __with0Argument(collection, predicate, size);
     }
 
-    /**
-     * Get the first element in the {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} {@link CollectionHolder#isEmpty is empty}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
-     */
+    /// Get the first element in the `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` [is empty][#isEmpty]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                              final @Nullable BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate) {
+                                              final @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -117,21 +111,19 @@ public final class FirstOrNull
     //#endregion -------------------- predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T) → boolean --------------------
 
-    /**
-     * Get the first element in the {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} <b>is empty</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
-     */
+    /// Get the first element in the `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` **is empty**
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                              final @Nullable Function<? super T, @NotNull Boolean> predicate) {
+                                              final @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -143,21 +135,19 @@ public final class FirstOrNull
         return __with1Argument(collection, predicate, size);
     }
 
-    /**
-     * Get the first element in the {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} {@link CollectionHolder#isEmpty is empty}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
-     */
+    /// Get the first element in the `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` [is empty][#isEmpty]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                              final @Nullable Function<? super T, @NotNull Boolean> predicate) {
+                                              final @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -170,21 +160,19 @@ public final class FirstOrNull
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /**
-     * Get the first element in the {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} <b>is empty</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
-     */
+    /// Get the first element in the `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` **is empty**
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable MinimalistCollectionHolder<T> collection,
-                                              final @Nullable Supplier<@NotNull Boolean> predicate) {
+                                              final @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return null;
 
@@ -196,21 +184,19 @@ public final class FirstOrNull
         return __with2Argument(collection, predicate, size);
     }
 
-    /**
-     * Get the first element in the {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} {@link CollectionHolder#isEmpty is empty}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
-     */
+    /// Get the first element in the `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` [is empty][#isEmpty]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T firstOrNull(final @Nullable CollectionHolder<T> collection,
-                                              final @Nullable Supplier<@NotNull Boolean> predicate) {
+                                              final @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -231,35 +217,35 @@ public final class FirstOrNull
 
 
     private static <T> @Nullable T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull BiFunction<? super T, @NotNull Integer, @NotNull Boolean> predicate,
+                                                   final @NotNull ObjIntPredicate<? super T> predicate,
                                                    final int size) {
         var index = -1;
         while (++index < size) {
             var value = collection.get(index);
-            if (predicate.apply(value, index))
+            if (predicate.test(value, index))
                 return value;
         }
         return null;
     }
 
     private static <T> @Nullable T __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull Function<? super T, @NotNull Boolean> predicate,
+                                                   final @NotNull Predicate<? super T> predicate,
                                                    final int size) {
         var index = -1;
         while (++index < size) {
             var value = collection.get(index);
-            if (predicate.apply(value))
+            if (predicate.test(value))
                 return value;
         }
         return null;
     }
 
     private static <T> @Nullable T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull Supplier<@NotNull Boolean> predicate,
+                                                   final @NotNull BooleanSupplier predicate,
                                                    final int size) {
         var index = -1;
         while (++index < size)
-            if (predicate.get())
+            if (predicate.getAsBoolean())
                 return collection.get(index);
         return null;
     }

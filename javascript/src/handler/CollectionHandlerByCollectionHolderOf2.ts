@@ -21,7 +21,7 @@ export class CollectionHandlerByCollectionHolderOf2<const T = unknown,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy2Values<T, REFERENCE, COLLECTION> {
 
-    public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {
+    public constructor(collection: COLLECTION, reference: REFERENCE, size: number = reference.size,) {
         super(collection, reference,)
         if (size !== 2)
             throw new TypeError(`The collection holder received in the "${this.constructor.name}" cannot have a different size than 2.`,)

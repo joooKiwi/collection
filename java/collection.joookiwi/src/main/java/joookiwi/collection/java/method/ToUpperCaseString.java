@@ -16,17 +16,15 @@ public final class ToUpperCaseString
         extends Utility {
 
     @Contract(CommonContracts.ALWAYS_FAIL_0)
-    private ToUpperCaseString() { throw new ImpossibleConstructionException("The utility class \"ToUpperCaseString\" cannot be constructed.", ToUpperCaseString.class); }
+    private ToUpperCaseString() { throw new ImpossibleConstructionException("The utility class “ToUpperCaseString” cannot be constructed.", ToUpperCaseString.class); }
 
     //#region -------------------- Facade method --------------------
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#toUpperCase()} toUpperCase()}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @see String#toUpperCase()
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[#toUpperCase()] toUpperCase()}_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @see String#toUpperCase()
     @ExtensionFunction
     public static <T> @NotNull String toUpperCaseString(@Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
@@ -38,13 +36,11 @@ public final class ToUpperCaseString
         return __toString(collection, size);
     }
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#toUpperCase()} toUpperCase()}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @see String#toUpperCase()
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[#toUpperCase()] toUpperCase()}_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @see String#toUpperCase()
     @ExtensionFunction
     public static <T> @NotNull String toUpperCaseString(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
