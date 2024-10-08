@@ -25,15 +25,13 @@ public final class LastOrNull
 
     //#region -------------------- ∅ --------------------
 
-    /**
-     * Get the last element in the current {@code collection}
-     * or <b>null</b> if the {@code collection} <b>is empty</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
-     */
+    /// Get the last element in the current `collection`
+    /// or `null` if the `collection` **is empty**
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
     public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
@@ -46,15 +44,13 @@ public final class LastOrNull
         return __withNoPredicate(collection, size);
     }
 
-    /**
-     * Get the last element in the current {@code collection}
-     * or <b>null</b> if the {@code collection} {@link CollectionHolder#isEmpty is empty}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
-     */
+    /// Get the last element in the current `collection`
+    /// or `null` if the `collection` [is empty][#isEmpty]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
     public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection) {
@@ -68,17 +64,15 @@ public final class LastOrNull
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → boolean --------------------
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} <b>is empty</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` **is empty**
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -94,17 +88,15 @@ public final class LastOrNull
         return __with2Argument(collection, predicate, size);
     }
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} {@link CollectionHolder#isEmpty is empty}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` [is empty][#isEmpty]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
@@ -121,17 +113,15 @@ public final class LastOrNull
     //#endregion -------------------- (T, int) → boolean --------------------
     //#region -------------------- (T) → boolean --------------------
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} <b>is empty</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` **is empty**
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -147,17 +137,15 @@ public final class LastOrNull
         return __with1Argument(collection, predicate, size);
     }
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} {@link CollectionHolder#isEmpty is empty}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` [is empty][#isEmpty]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
@@ -174,17 +162,15 @@ public final class LastOrNull
     //#endregion -------------------- (T) → boolean --------------------
     //#region -------------------- () → boolean --------------------
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} <b>is empty</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` **is empty**
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -200,17 +186,15 @@ public final class LastOrNull
         return __with0Argument(collection, predicate, size);
     }
 
-    /**
-     * Get the last element in the current {@code collection}
-     * matching the given {@code predicate}
-     * or <b>null</b> if the {@code collection} {@link CollectionHolder#isEmpty is empty}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
-     */
+    /// Get the last element in the current `collection`
+    /// matching the given `predicate`
+    /// or `null` if the `collection` [is empty][#isEmpty]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,

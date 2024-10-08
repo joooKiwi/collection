@@ -19,12 +19,10 @@ public final class HasDuplicate
 
     //#region -------------------- Facade methods --------------------
 
-    /**
-     * The {@code collection} has at least one duplicate value
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @return b>true</b> only if one element is equal (== or {@link Object#equals equals}) to another one
-     */
+    /// The `collection` has at least one duplicate value
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @return b>true** only if one element is equal (== or [equals][#equals]) to another one
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean hasDuplicate(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
@@ -37,12 +35,10 @@ public final class HasDuplicate
         return __hasDuplicate(collection, size);
     }
 
-    /**
-     * The {@code collection} has at least one duplicate value
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @return b>true</b> only if one element is equal (== or {@link Object#equals equals}) to another one
-     */
+    /// The `collection` has at least one duplicate value
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @return b>true** only if one element is equal (== or [equals][#equals]) to another one
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean hasDuplicate(final @Nullable CollectionHolder<? extends T> collection) {

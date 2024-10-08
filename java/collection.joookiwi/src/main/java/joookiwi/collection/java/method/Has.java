@@ -21,20 +21,18 @@ public final class Has
 
     //#region -------------------- Facade methods --------------------
 
-    /**
-     * Tell whenever the {@code value} exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param value      The value to compare
-     * @return <b>true</b> if the {@code value} is equals to one value in the {@code collection}
-     * @see java.util.Collection#contains(Object)
-     * @see java.util.Map#containsValue(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Javascript Array.includes(value)</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">Javascript Set.has(value)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html">Kotlin contains(value)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html">Kotlin Map.containsValue(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
-     */
+    /// Tell whenever the `value` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param value      The value to compare
+    /// @return `true` if the `value` is equals to one value in the `collection`
+    /// @see java.util.Collection#contains(Object)
+    /// @see java.util.Map#containsValue(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Javascript Array.includes(value)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">Javascript Set.has(value)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html">Kotlin contains(value)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html">Kotlin Map.containsValue(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean has(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -48,19 +46,17 @@ public final class Has
         return __has(collection, size, value);
     }
 
-    /**
-     * Tell whenever the {@code value} exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param value      The value to compare
-     * @return <b>true</b> if the {@code value} is equals to one value in the {@code collection}
-     * @see java.util.Collection#contains(Object)
-     * @see java.util.Map#containsValue(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Javascript Array.includes(value)</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">Javascript Set.has(value)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html">Kotlin contains(value)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
-     */
+    /// Tell whenever the `value` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param value      The value to compare
+    /// @return `true` if the `value` is equals to one value in the `collection`
+    /// @see java.util.Collection#contains(Object)
+    /// @see java.util.Map#containsValue(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Javascript Array.includes(value)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">Javascript Set.has(value)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html">Kotlin contains(value)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean has(final @Nullable CollectionHolder<? extends T> collection,

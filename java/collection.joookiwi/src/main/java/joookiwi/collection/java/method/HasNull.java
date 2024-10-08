@@ -19,12 +19,10 @@ public final class HasNull
 
     //#region -------------------- Facade methods --------------------
 
-    /**
-     * The {@code collection} has at least one <b>null</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @return <b>true</b> only if one element is <b>null</b>
-     */
+    /// The `collection` has at least one `null`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @return `true` only if one element is `null`
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean hasNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
@@ -37,12 +35,10 @@ public final class HasNull
         return __hasNull(collection, size);
     }
 
-    /**
-     * The {@code collection} has at least one <b>null</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @return <b>true</b> only if one element is <b>null</b>
-     */
+    /// The `collection` has at least one `null`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @return `true` only if one element is `null`
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean hasNull(final @Nullable CollectionHolder<? extends T> collection) {

@@ -30,16 +30,14 @@ public final class IndexOfFirstIndexed
 
     //#region -------------------- minimalist - predicate (int, T) → boolean --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
@@ -53,16 +51,14 @@ public final class IndexOfFirstIndexed
     //#endregion -------------------- minimalist - predicate (int, T) → boolean --------------------
     //#region -------------------- predicate (int, T) → boolean --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
@@ -77,16 +73,14 @@ public final class IndexOfFirstIndexed
 
     //#region -------------------- minimalist - predicate (int) → boolean --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
@@ -100,16 +94,14 @@ public final class IndexOfFirstIndexed
     //#endregion -------------------- minimalist - predicate (int) → boolean --------------------
     //#region -------------------- predicate (int) → boolean --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
@@ -124,16 +116,14 @@ public final class IndexOfFirstIndexed
 
     //#region -------------------- minimalist - predicate () → boolean --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
@@ -147,16 +137,14 @@ public final class IndexOfFirstIndexed
     //#endregion -------------------- minimalist - predicate () → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
@@ -172,19 +160,17 @@ public final class IndexOfFirstIndexed
 
     //#region -------------------- minimalist - predicate (int, T) → boolean, from --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -197,19 +183,17 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -227,19 +211,17 @@ public final class IndexOfFirstIndexed
     //#endregion -------------------- minimalist - predicate (int, T) → boolean, from --------------------
     //#region -------------------- predicate (int, T) → boolean, from --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -252,19 +234,17 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -283,19 +263,17 @@ public final class IndexOfFirstIndexed
 
     //#region -------------------- minimalist - predicate (int) → boolean, from --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -308,19 +286,17 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -338,19 +314,17 @@ public final class IndexOfFirstIndexed
     //#endregion -------------------- minimalist - predicate (int) → boolean, from --------------------
     //#region -------------------- predicate (int) → boolean, from --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -363,19 +337,17 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -394,19 +366,17 @@ public final class IndexOfFirstIndexed
 
     //#region -------------------- minimalist - predicate () → boolean, from --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -419,19 +389,17 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -449,19 +417,17 @@ public final class IndexOfFirstIndexed
     //#endregion -------------------- minimalist - predicate () → boolean, from --------------------
     //#region -------------------- predicate () → boolean, from --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -474,19 +440,17 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -506,20 +470,18 @@ public final class IndexOfFirstIndexed
 
     //#region -------------------- minimalist - predicate (int, T) → boolean, from, to --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -533,20 +495,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -562,20 +522,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -591,20 +549,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -628,20 +584,18 @@ public final class IndexOfFirstIndexed
     //#endregion -------------------- minimalist - predicate (int, T) → boolean, from, to --------------------
     //#region -------------------- predicate (int, T) → boolean, from, to --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -655,20 +609,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -684,20 +636,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -713,20 +663,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -751,20 +699,18 @@ public final class IndexOfFirstIndexed
 
     //#region -------------------- minimalist - predicate (int) → boolean, from, to --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -778,20 +724,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -807,20 +751,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -836,20 +778,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -873,20 +813,18 @@ public final class IndexOfFirstIndexed
     //#endregion -------------------- minimalist - predicate (int) → boolean, from, to --------------------
     //#region -------------------- predicate (int) → boolean, from, to --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -900,20 +838,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -929,20 +865,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -958,20 +892,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -996,20 +928,18 @@ public final class IndexOfFirstIndexed
 
     //#region -------------------- minimalist - predicate () → boolean, from, to --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1023,20 +953,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1052,20 +980,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1081,20 +1007,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1118,20 +1042,18 @@ public final class IndexOfFirstIndexed
     //#endregion -------------------- minimalist - predicate () → boolean, from, to --------------------
     //#region -------------------- predicate () → boolean, from, to --------------------
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1145,20 +1067,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1174,20 +1094,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1203,20 +1121,18 @@ public final class IndexOfFirstIndexed
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    /**
-     * Get the first index matching the {@code predicate}
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
-     */
+    /// Get the first index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue

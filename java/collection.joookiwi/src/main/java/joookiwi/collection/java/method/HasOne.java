@@ -64,12 +64,10 @@ public final class HasOne
 
     //#region -------------------- iterator --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Iterator<?> values) {
@@ -80,12 +78,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Iterator<?> values) {
@@ -99,12 +95,10 @@ public final class HasOne
     //#endregion -------------------- iterator --------------------
     //#region -------------------- list iterator --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ListIterator<?> values) {
@@ -115,12 +109,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ListIterator<?> values) {
@@ -134,12 +126,10 @@ public final class HasOne
     //#endregion -------------------- list iterator --------------------
     //#region -------------------- spliterator --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Spliterator<?> values) {
@@ -150,12 +140,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Spliterator<?> values) {
@@ -169,12 +157,10 @@ public final class HasOne
     //#endregion -------------------- spliterator --------------------
     //#region -------------------- enumeration --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Enumeration<?> values) {
@@ -185,12 +171,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Enumeration<?> values) {
@@ -205,12 +189,10 @@ public final class HasOne
 
     //#region -------------------- iterable --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Iterable<?> values) {
@@ -227,12 +209,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Iterable<?> values) {
@@ -253,12 +233,10 @@ public final class HasOne
 
     //#region -------------------- minimalist collection holder --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable MinimalistCollectionHolder<?> values) {
@@ -271,12 +249,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable MinimalistCollectionHolder<?> values) {
@@ -292,12 +268,10 @@ public final class HasOne
     //#endregion -------------------- minimalist collection holder --------------------
     //#region -------------------- collection holder --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable CollectionHolder<?> values) {
@@ -308,12 +282,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable CollectionHolder<?> values) {
@@ -328,12 +300,10 @@ public final class HasOne
 
     //#region -------------------- collection --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Collection<?> values) {
@@ -346,12 +316,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Collection<?> values) {
@@ -367,12 +335,10 @@ public final class HasOne
     //#endregion -------------------- collection --------------------
     //#region -------------------- sequenced collection --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable SequencedCollection<?> values) {
@@ -385,12 +351,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable SequencedCollection<?> values) {
@@ -407,12 +371,10 @@ public final class HasOne
 
     //#region -------------------- list --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable List<?> values) {
@@ -423,12 +385,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable List<?> values) {
@@ -442,12 +402,10 @@ public final class HasOne
     //#endregion -------------------- list --------------------
     //#region -------------------- array list --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ArrayList<?> values) {
@@ -458,12 +416,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ArrayList<?> values) {
@@ -477,12 +433,10 @@ public final class HasOne
     //#endregion -------------------- array list --------------------
     //#region -------------------- copy on write array list --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable CopyOnWriteArrayList<?> values) {
@@ -493,12 +447,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable CopyOnWriteArrayList<?> values) {
@@ -512,12 +464,10 @@ public final class HasOne
     //#endregion -------------------- copy on write array list --------------------
     //#region -------------------- linked list --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable LinkedList<?> values) {
@@ -528,12 +478,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable LinkedList<?> values) {
@@ -547,12 +495,10 @@ public final class HasOne
     //#endregion -------------------- linked list --------------------
     //#region -------------------- vector --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Vector<?> values) {
@@ -563,12 +509,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Vector<?> values) {
@@ -583,12 +527,10 @@ public final class HasOne
 
     //#region -------------------- set --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Set<?> values) {
@@ -601,12 +543,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Set<?> values) {
@@ -622,12 +562,10 @@ public final class HasOne
     //#endregion -------------------- set --------------------
     //#region -------------------- sequenced set --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable SequencedSet<?> values) {
@@ -640,12 +578,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable SequencedSet<?> values) {
@@ -661,12 +597,10 @@ public final class HasOne
     //#endregion -------------------- sequenced set --------------------
     //#region -------------------- sorted set --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable SortedSet<?> values) {
@@ -679,12 +613,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable SortedSet<?> values) {
@@ -700,12 +632,10 @@ public final class HasOne
     //#endregion -------------------- sorted set --------------------
     //#region -------------------- navigable set --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable NavigableSet<?> values) {
@@ -718,12 +648,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable NavigableSet<?> values) {
@@ -739,12 +667,10 @@ public final class HasOne
     //#endregion -------------------- navigable set --------------------
     //#region -------------------- concurrent skip list set --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentSkipListSet<?> values) {
@@ -757,12 +683,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentSkipListSet<?> values) {
@@ -778,12 +702,10 @@ public final class HasOne
     //#endregion -------------------- concurrent skip list set --------------------
     //#region -------------------- copy on write array set --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable CopyOnWriteArraySet<?> values) {
@@ -796,12 +718,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable CopyOnWriteArraySet<?> values) {
@@ -817,12 +737,10 @@ public final class HasOne
     //#endregion -------------------- copy on write array set --------------------
     //#region -------------------- enum set --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Enum<T>> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                      final @Nullable EnumSet<?> values) {
@@ -833,12 +751,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Enum<T>> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                                      final @Nullable EnumSet<?> values) {
@@ -852,12 +768,10 @@ public final class HasOne
     //#endregion -------------------- enum set --------------------
     //#region -------------------- hash set --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable HashSet<?> values) {
@@ -870,12 +784,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable HashSet<?> values) {
@@ -891,12 +803,10 @@ public final class HasOne
     //#endregion -------------------- hash set --------------------
     //#region -------------------- linked hash set --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable LinkedHashSet<?> values) {
@@ -909,12 +819,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable LinkedHashSet<?> values) {
@@ -930,12 +838,10 @@ public final class HasOne
     //#endregion -------------------- linked hash set --------------------
     //#region -------------------- tree set --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable TreeSet<?> values) {
@@ -948,12 +854,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable TreeSet<?> values) {
@@ -970,12 +874,10 @@ public final class HasOne
 
     //#region -------------------- queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Queue<?> values) {
@@ -988,12 +890,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Queue<?> values) {
@@ -1009,12 +909,10 @@ public final class HasOne
     //#endregion -------------------- queue --------------------
     //#region -------------------- blocking queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable BlockingQueue<?> values) {
@@ -1027,12 +925,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable BlockingQueue<?> values) {
@@ -1048,12 +944,10 @@ public final class HasOne
     //#endregion -------------------- blocking queue --------------------
     //#region -------------------- transfer queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable TransferQueue<?> values) {
@@ -1066,12 +960,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable TransferQueue<?> values) {
@@ -1087,12 +979,10 @@ public final class HasOne
     //#endregion -------------------- transfer queue --------------------
     //#region -------------------- array blocking queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ArrayBlockingQueue<?> values) {
@@ -1105,12 +995,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ArrayBlockingQueue<?> values) {
@@ -1126,12 +1014,10 @@ public final class HasOne
     //#endregion -------------------- array blocking queue --------------------
     //#region -------------------- concurrent linked queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentLinkedQueue<?> values) {
@@ -1144,12 +1030,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentLinkedQueue<?> values) {
@@ -1165,12 +1049,10 @@ public final class HasOne
     //#endregion -------------------- concurrent linked queue --------------------
     //#region -------------------- delay queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Delayed> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                      final @Nullable DelayQueue<?> values) {
@@ -1183,12 +1065,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Delayed> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                                      final @Nullable DelayQueue<?> values) {
@@ -1204,12 +1084,10 @@ public final class HasOne
     //#endregion -------------------- delay queue --------------------
     //#region -------------------- linked blocking queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable LinkedBlockingQueue<?> values) {
@@ -1222,12 +1100,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable LinkedBlockingQueue<?> values) {
@@ -1243,12 +1119,10 @@ public final class HasOne
     //#endregion -------------------- linked blocking queue --------------------
     //#region -------------------- linked transfer queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable LinkedTransferQueue<?> values) {
@@ -1261,12 +1135,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable LinkedTransferQueue<?> values) {
@@ -1282,12 +1154,10 @@ public final class HasOne
     //#endregion -------------------- linked transfer queue --------------------
     //#region -------------------- priority blocking queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable PriorityBlockingQueue<?> values) {
@@ -1300,12 +1170,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable PriorityBlockingQueue<?> values) {
@@ -1321,12 +1189,10 @@ public final class HasOne
     //#endregion -------------------- priority blocking queue --------------------
     //#region -------------------- priority queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable PriorityQueue<?> values) {
@@ -1339,12 +1205,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable PriorityQueue<?> values) {
@@ -1360,12 +1224,10 @@ public final class HasOne
     //#endregion -------------------- priority queue --------------------
     //#region -------------------- synchronous queue --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable SynchronousQueue<?> values) {
@@ -1378,12 +1240,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable SynchronousQueue<?> values) {
@@ -1400,12 +1260,10 @@ public final class HasOne
 
     //#region -------------------- deque --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Deque<?> values) {
@@ -1418,12 +1276,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Deque<?> values) {
@@ -1439,12 +1295,10 @@ public final class HasOne
     //#endregion -------------------- deque --------------------
     //#region -------------------- blocking deque --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable BlockingDeque<?> values) {
@@ -1457,12 +1311,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable BlockingDeque<?> values) {
@@ -1478,12 +1330,10 @@ public final class HasOne
     //#endregion -------------------- blocking deque --------------------
     //#region -------------------- array deque --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ArrayDeque<?> values) {
@@ -1496,12 +1346,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ArrayDeque<?> values) {
@@ -1517,12 +1365,10 @@ public final class HasOne
     //#endregion -------------------- array deque --------------------
     //#region -------------------- concurrent linked deque --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentLinkedDeque<?> values) {
@@ -1535,12 +1381,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentLinkedDeque<?> values) {
@@ -1556,12 +1400,10 @@ public final class HasOne
     //#endregion -------------------- concurrent linked deque --------------------
     //#region -------------------- linked blocking deque --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable LinkedBlockingDeque<?> values) {
@@ -1574,12 +1416,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable LinkedBlockingDeque<?> values) {
@@ -1595,12 +1435,10 @@ public final class HasOne
     //#endregion -------------------- linked blocking deque --------------------
     //#region -------------------- stack --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Stack<?> values) {
@@ -1611,12 +1449,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Stack<?> values) {
@@ -1631,12 +1467,10 @@ public final class HasOne
 
     //#region -------------------- array --------------------
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Object @Nullable @Unmodifiable [] values) {
@@ -1647,12 +1481,10 @@ public final class HasOne
         return __hasOne(collection, values);
     }
 
-    /**
-     * Tell whenever at least one value exist in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     */
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Object @Nullable @Unmodifiable [] values) {

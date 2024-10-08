@@ -25,16 +25,14 @@ public final class Any
 
     //#region -------------------- ∅ --------------------
 
-    /**
-     * Tell if the {@code collection} {@link MinimalistCollectionHolder#size size} is not <b>0</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param <T>        The {@code collection} type
-     * @return <b>false</b> if null is received or {@link MinimalistCollectionHolder#size size} is not <b>0</b> otherwise
-     * @see java.util.stream.Stream#findAny() Stream.findAny()
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
-     */
+    /// Tell if the `collection` [size][#size] is not **0**
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @return `false` if null is received or [size][#size] is not **0** otherwise
+    /// @see java.util.stream.Stream#findAny() Stream.findAny()
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
@@ -43,16 +41,14 @@ public final class Any
         return collection.size() != 0;
     }
 
-    /**
-     * Tell if the {@code collection} {@link CollectionHolder#isNotEmpty is not empty}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param <T>        The {@code collection} type
-     * @return <b>false</b> if null is received or {@link CollectionHolder#isNotEmpty isNotEmpty} otherwise
-     * @see java.util.stream.Stream#findAny() Stream.findAny()
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
-     */
+    /// Tell if the `collection` [is not empty][#isNotEmpty]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @return `false` if null is received or [isNotEmpty][#isNotEmpty] otherwise
+    /// @see java.util.stream.Stream#findAny() Stream.findAny()
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean any(final @Nullable CollectionHolder<? extends T> collection) {
@@ -64,19 +60,17 @@ public final class Any
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → boolean --------------------
 
-    /**
-     * Check if <b>one</b> of the elements in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
-     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
-     */
+    /// Check if **one** of the elements in the `collection`
+    /// matches the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` if at least one `predicate` is true on a value of the `collection`
+    /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -92,19 +86,17 @@ public final class Any
         return __with2Argument(collection, predicate, size);
     }
 
-    /**
-     * Check if <b>one</b> of the elements in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
-     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
-     */
+    /// Check if **one** of the elements in the `collection`
+    /// matches the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` if at least one `predicate` is true on a value of the `collection`
+    /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean any(final @Nullable CollectionHolder<? extends T> collection,
@@ -121,19 +113,17 @@ public final class Any
     //#endregion -------------------- (T, int) → boolean --------------------
     //#region -------------------- (T) → boolean --------------------
 
-    /**
-     * Check if <b>one</b> of the elements in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
-     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
-     */
+    /// Check if **one** of the elements in the `collection`
+    /// matches the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` if at least one `predicate` is true on a value of the `collection`
+    /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -149,19 +139,17 @@ public final class Any
         return __with1Argument(collection, predicate, size);
     }
 
-    /**
-     * Check if <b>one</b> of the elements in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
-     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
-     */
+    /// Check if **one** of the elements in the `collection`
+    /// matches the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` if at least one `predicate` is true on a value of the `collection`
+    /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean any(final @Nullable CollectionHolder<? extends T> collection,
@@ -178,19 +166,17 @@ public final class Any
     //#endregion -------------------- (T) → boolean --------------------
     //#region -------------------- () → boolean --------------------
 
-    /**
-     * Check if <b>one</b> of the elements in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
-     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
-     */
+    /// Check if **one** of the elements in the `collection`
+    /// matches the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` if at least one `predicate` is true on a value of the `collection`
+    /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -206,19 +192,17 @@ public final class Any
         return __with0Argument(predicate, size);
     }
 
-    /**
-     * Check if <b>one</b> of the elements in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> if at least one {@code predicate} is true on a value of the {@code collection}
-     * @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
-     */
+    /// Check if **one** of the elements in the `collection`
+    /// matches the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` if at least one `predicate` is true on a value of the `collection`
+    /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean any(final @Nullable CollectionHolder<? extends T> collection,

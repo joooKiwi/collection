@@ -25,14 +25,12 @@ public final class None
 
     //#region -------------------- ∅ --------------------
 
-    /**
-     * Tell if the {@code collection} <b>is empty</b>
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> if null is received or {@code collection} <b>is empty</b> otherwise
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none()</a>
-     */
+    /// Tell if the `collection` **is empty**
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @return `true` if null is received or `collection` **is empty** otherwise
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_1)
     public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection) {
@@ -41,14 +39,12 @@ public final class None
         return collection.size() == 0;
     }
 
-    /**
-     * Tell if the {@code collection} {@link CollectionHolder#isEmpty is empty}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> if null is received or the {@code collection} {@link CollectionHolder#isEmpty is empty} otherwise
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none()</a>
-     */
+    /// Tell if the `collection` [is empty][#isEmpty]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @return `true` if null is received or the `collection` [is empty][#isEmpty] otherwise
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_1)
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection) {
@@ -60,17 +56,15 @@ public final class None
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → boolean --------------------
 
-    /**
-     * Check if <b>no</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
-     */
+    /// Check if **no** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @return `false` if at least one `predicate` is `true` on a value of the `collection`
+    /// @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -86,17 +80,15 @@ public final class None
         return __with2Argument(collection, predicate, size);
     }
 
-    /**
-     * Check if <b>no</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
-     */
+    /// Check if **no** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @return `false` if at least one `predicate` is `true` on a value of the `collection`
+    /// @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection,
@@ -113,17 +105,15 @@ public final class None
     //#endregion -------------------- (T, int) → boolean --------------------
     //#region -------------------- (T) → boolean --------------------
 
-    /**
-     * Check if <b>no</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
-     */
+    /// Check if **no** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @return `false` if at least one `predicate` is `true` on a value of the `collection`
+    /// @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -139,17 +129,15 @@ public final class None
         return __with1Argument(collection, predicate, size);
     }
 
-    /**
-     * Check if <b>no</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
-     */
+    /// Check if **no** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @return `false` if at least one `predicate` is `true` on a value of the `collection`
+    /// @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection,
@@ -166,17 +154,15 @@ public final class None
     //#endregion -------------------- (T) → boolean --------------------
     //#region -------------------- () → boolean --------------------
 
-    /**
-     * Check if <b>no</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
-     */
+    /// Check if **no** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @return `false` if at least one `predicate` is `true` on a value of the `collection`
+    /// @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -192,17 +178,15 @@ public final class None
         return __with0Argument(predicate, size);
     }
 
-    /**
-     * Check if <b>no</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The given predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>false</b> if at least one {@code predicate} is <b>true</b> on a value of the {@code collection}
-     * @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
-     */
+    /// Check if **no** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @return `false` if at least one `predicate` is `true` on a value of the `collection`
+    /// @see java.util.stream.Stream#noneMatch(java.util.function.Predicate) Stream.noneMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html">Kotlin none(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T> boolean none(@Nullable CollectionHolder<? extends T> collection,

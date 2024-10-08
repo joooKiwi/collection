@@ -28,18 +28,16 @@ public final class IndexOf
 
     //#region -------------------- minimalist - element --------------------
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param element    The element to find
-     * @param <T>        The {@code collection} and {@code element} type
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param element    The element to find
+    /// @param <T>        The `collection` and `element` type
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
@@ -53,18 +51,16 @@ public final class IndexOf
     //#endregion -------------------- minimalist - element --------------------
     //#region -------------------- element --------------------
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param element    The element to find
-     * @param <T>        The {@code collection} and {@code element} type
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param element    The element to find
+    /// @param <T>        The `collection` and `element` type
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
@@ -79,21 +75,19 @@ public final class IndexOf
 
     //#region -------------------- minimalist - element, from --------------------
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -106,21 +100,19 @@ public final class IndexOf
         return __core(collection, element, fromIndex);
     }
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -138,21 +130,19 @@ public final class IndexOf
     //#endregion -------------------- minimalist - element, from --------------------
     //#region -------------------- element, from --------------------
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -165,21 +155,19 @@ public final class IndexOf
         return __core(collection, element, fromIndex);
     }
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to the end of the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} is not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -198,22 +186,20 @@ public final class IndexOf
 
     //#region -------------------- minimalist - element, from, to --------------------
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -227,22 +213,20 @@ public final class IndexOf
         return __core(collection, element, fromIndex, toIndex);
     }
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -258,22 +242,20 @@ public final class IndexOf
         return __core(collection, element, fromIndex, toIndex);
     }
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -289,22 +271,20 @@ public final class IndexOf
         return __core(collection, element, fromIndex, toIndex);
     }
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -328,22 +308,20 @@ public final class IndexOf
     //#endregion -------------------- minimalist - element, from, to --------------------
     //#region -------------------- element, from, to --------------------
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -357,22 +335,20 @@ public final class IndexOf
         return __core(collection, element, fromIndex, toIndex);
     }
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -388,22 +364,20 @@ public final class IndexOf
         return __core(collection, element, fromIndex, toIndex);
     }
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -419,22 +393,20 @@ public final class IndexOf
         return __core(collection, element, fromIndex, toIndex);
     }
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the {@code collection}
-     * from a start to an end
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param element    The element to find
-     * @param fromIndex  The inclusive starting index
-     * @param toIndex    The inclusive ending index
-     * @param <T>        The {@code collection} and {@code element} type
-     * @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The {@code fromIndex} or {@code toIndex} are not within a valid range
-     * @see java.util.List#indexOf(Object)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
-     */
+    /// Get the **first** occurrence equivalent to the value received
+    /// or `null` if it was not in the `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param element    The element to find
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` and `element` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see java.util.List#indexOf(Object)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">ReadonlyArray.indexOf(element, fromIndex?)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index-of.html">Kotlin indexOf(element)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, fromIndex?, limit?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue

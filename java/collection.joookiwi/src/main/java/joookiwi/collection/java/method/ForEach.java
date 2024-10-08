@@ -22,16 +22,14 @@ public final class ForEach
 
     //#region -------------------- predicate (T, int) → boolean --------------------
 
-    /**
-     * Perform a given {@code action} on each element
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param action The given action
-     * @see Iterable#forEach(Consumer)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
-     */
+    /// Perform a given `action` on each element
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param action The given action
+    /// @see Iterable#forEach(Consumer)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T> void forEach(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                    final @NotNull ObjIntConsumer<? super T> action) {
@@ -44,16 +42,14 @@ public final class ForEach
         __with2Argument(collection, action, size);
     }
 
-    /**
-     * Perform a given {@code action} on each element
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param action The given action
-     * @see Iterable#forEach(Consumer)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
-     */
+    /// Perform a given `action` on each element
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param action The given action
+    /// @see Iterable#forEach(Consumer)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T> void forEach(final @Nullable CollectionHolder<? extends T> collection,
                                    final @NotNull ObjIntConsumer<? super T> action) {
@@ -67,16 +63,14 @@ public final class ForEach
     //#endregion -------------------- predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T) → boolean --------------------
 
-    /**
-     * Perform a given {@code action} on each element
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param action The given action
-     * @see Iterable#forEach(Consumer)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
-     */
+    /// Perform a given `action` on each element
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param action The given action
+    /// @see Iterable#forEach(Consumer)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T> void forEach(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                    final @NotNull Consumer<? super T> action) {
@@ -89,16 +83,14 @@ public final class ForEach
         __with1Argument(collection, action, size);
     }
 
-    /**
-     * Perform a given {@code action} on each element
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param action The given action
-     * @see Iterable#forEach(Consumer)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
-     */
+    /// Perform a given `action` on each element
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param action The given action
+    /// @see Iterable#forEach(Consumer)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T> void forEach(final @Nullable CollectionHolder<? extends T> collection,
                                    final @NotNull Consumer<? super T> action) {
@@ -112,16 +104,14 @@ public final class ForEach
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /**
-     * Perform a given {@code action} on each element
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param action The given action
-     * @see Iterable#forEach(Consumer)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
-     */
+    /// Perform a given `action` on each element
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param action The given action
+    /// @see Iterable#forEach(Consumer)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T> void forEach(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                    final @NotNull Runnable action) {
@@ -134,16 +124,14 @@ public final class ForEach
         __with0Argument(action, size);
     }
 
-    /**
-     * Perform a given {@code action} on each element
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param action The given action
-     * @see Iterable#forEach(Consumer)
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
-     * @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
-     */
+    /// Perform a given `action` on each element
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param action The given action
+    /// @see Iterable#forEach(Consumer)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T> void forEach(final @Nullable CollectionHolder<? extends T> collection,
                                    final @NotNull Runnable action) {

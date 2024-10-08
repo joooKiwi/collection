@@ -24,18 +24,16 @@ public final class All
 
     //#region -------------------- (T, int) → boolean --------------------
 
-    /**
-     * Check if <b>every</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
-     */
+    /// Check if **every** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` only if every value in the `collection` is applicable to the `predicate`
+    /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -49,18 +47,16 @@ public final class All
         return __with2Argument(collection, predicate, size);
     }
 
-    /**
-     * Check if <b>every</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
-     */
+    /// Check if **every** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` only if every value in the `collection` is applicable to the `predicate`
+    /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
@@ -75,18 +71,16 @@ public final class All
     //#endregion -------------------- (T, int) → boolean --------------------
     //#region -------------------- (T) → boolean --------------------
 
-    /**
-     * Check if <b>every</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
-     */
+    /// Check if **every** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` only if every value in the `collection` is applicable to the `predicate`
+    /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -100,18 +94,16 @@ public final class All
         return __with1Argument(collection, predicate, size);
     }
 
-    /**
-     * Check if <b>every</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
-     */
+    /// Check if **every** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` only if every value in the `collection` is applicable to the `predicate`
+    /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
@@ -127,18 +119,16 @@ public final class All
     //#endregion -------------------- (T) → boolean --------------------
     //#region -------------------- () → boolean --------------------
 
-    /**
-     * Check if <b>every</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
-     */
+    /// Check if **every** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` only if every value in the `collection` is applicable to the `predicate`
+    /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -152,18 +142,16 @@ public final class All
         return __with0Argument(predicate, size);
     }
 
-    /**
-     * Check if <b>every</b> element in the {@code collection}
-     * match the given {@code predicate}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param predicate  The matching predicate
-     * @param <T>        The {@code collection} type
-     * @return <b>true</b> only if every value in the {@code collection} is applicable to the {@code predicate}
-     * @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
-     * @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
-     */
+    /// Check if **every** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` only if every value in the `collection` is applicable to the `predicate`
+    /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,

@@ -23,13 +23,11 @@ public final class ToLocaleUpperCaseString
 
     //#region -------------------- ∅ --------------------
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#toUpperCase(Locale)} toUpperCase(Locale)}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @see String#toUpperCase(Locale)
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[#toUpperCase(Locale)] toUpperCase(Locale)}_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @see String#toUpperCase(Locale)
     @ExtensionFunction
     public static <T> @NotNull String toLocaleUpperCaseString(@Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
@@ -41,13 +39,11 @@ public final class ToLocaleUpperCaseString
         return __withNoLocale(collection, size);
     }
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#toUpperCase(Locale)} toUpperCase(Locale)}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @see String#toUpperCase(Locale)
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[#toUpperCase(Locale)] toUpperCase(Locale)}_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @see String#toUpperCase(Locale)
     @ExtensionFunction
     public static <T> @NotNull String toLocaleUpperCaseString(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
@@ -60,14 +56,12 @@ public final class ToLocaleUpperCaseString
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- locale --------------------
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#toUpperCase(Locale)} toUpperCase(Locale)}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param locale     The possible locale to apply on each value
-     * @see String#toUpperCase(Locale)
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[#toUpperCase(Locale)] toUpperCase(Locale)}_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param locale     The possible locale to apply on each value
+    /// @see String#toUpperCase(Locale)
     @ExtensionFunction
     public static <T> @NotNull String toLocaleUpperCaseString(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Locale locale) {
         if (collection == null)
@@ -81,14 +75,12 @@ public final class ToLocaleUpperCaseString
         return __withLocale(collection, locale, size);
     }
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link String#toUpperCase(Locale)} toUpperCase(Locale)}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param locale     The possible locale to apply on each value
-     * @see String#toUpperCase(Locale)
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[#toUpperCase(Locale)] toUpperCase(Locale)}_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param locale     The possible locale to apply on each value
+    /// @see String#toUpperCase(Locale)
     @ExtensionFunction
     public static <T> @NotNull String toLocaleUpperCaseString(@Nullable CollectionHolder<? extends T> collection, @Nullable Locale locale) {
         if (collection == null)

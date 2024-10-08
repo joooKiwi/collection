@@ -16,11 +16,9 @@ public final class AsString
 
     //#region -------------------- Facade methods --------------------
 
-    /**
-     * Convert the {@code value} to a {@link String}
-     *
-     * @param value The value to convert
-     */
+    /// Convert the `value` to a [String]
+    ///
+    /// @param value The value to convert
     public static @NotNull String asString(final @Nullable Object value) {
         if (value == null)
             return "null";
@@ -28,23 +26,19 @@ public final class AsString
     }
 
 
-    /**
-     * Convert the {@code value} to a {@link String} while handling the {@link Locale#getDefault() default locale}
-     *
-     * @param value The value to convert
-     */
+    /// Convert the `value` to a [String] while handling the [default locale][#getDefault()]
+    ///
+    /// @param value The value to convert
     public static @NotNull String asLocaleString(final @Nullable Object value) {
         if (value == null)
             return new Formatter(Locale.getDefault()).format("%s", "null").toString();
         return new Formatter(Locale.getDefault()).format("%s", value).toString();
     }
 
-    /**
-     * Convert the {@code value} to a {@link String} while handling the {@code locale}
-     *
-     * @param value  The value to convert
-     * @param locale The locale to possibly apply
-     */
+    /// Convert the `value` to a [String] while handling the `locale`
+    ///
+    /// @param value  The value to convert
+    /// @param locale The locale to possibly apply
     public static @NotNull String asLocaleString(final @Nullable Object value, final @Nullable Locale locale) {
         if (locale == null) {
             if (value == null)
@@ -58,11 +52,9 @@ public final class AsString
     }
 
 
-    /**
-     * Convert the {@code value} to a lowercase {@link String}
-     *
-     * @param value The value to convert
-     */
+    /// Convert the `value` to a lowercase [String]
+    ///
+    /// @param value The value to convert
     public static @NotNull String asLowerCaseString(final @Nullable Object value) {
         if (value == null)
             return "null";
@@ -72,11 +64,9 @@ public final class AsString
     }
 
 
-    /**
-     * Convert the {@code value} to a lowercase {@link String} while handling the {@link Locale#getDefault() default locale}
-     *
-     * @param value The value to convert
-     */
+    /// Convert the `value` to a lowercase [String] while handling the [default locale][#getDefault()]
+    ///
+    /// @param value The value to convert
     public static @NotNull String asLocaleLowerCaseString(final @Nullable Object value) {
         var currentLocale = Locale.getDefault();
 
@@ -87,12 +77,10 @@ public final class AsString
         return new Formatter(currentLocale).format("%s", value).toString().toLowerCase(currentLocale);
     }
 
-    /**
-     * Convert the {@code value} to a lowercase {@link String} while handling the {@code locale}
-     *
-     * @param value  The value to convert
-     * @param locale The locale to possibly apply
-     */
+    /// Convert the `value` to a lowercase [String] while handling the `locale`
+    ///
+    /// @param value  The value to convert
+    /// @param locale The locale to possibly apply
     public static @NotNull String asLocaleLowerCaseString(final @Nullable Object value, final @Nullable Locale locale) {
         if (locale == null) {
             var currentLocale = Locale.getDefault();
@@ -112,11 +100,9 @@ public final class AsString
     }
 
 
-    /**
-     * Convert the {@code value} to an uppercase {@link String}
-     *
-     * @param value The value to convert
-     */
+    /// Convert the `value` to an uppercase [String]
+    ///
+    /// @param value The value to convert
     public static @NotNull String asUpperCaseString(final @Nullable Object value) {
         if (value == null)
             return "NULL";
@@ -126,11 +112,9 @@ public final class AsString
     }
 
 
-    /**
-     * Convert the {@code value} to an uppercase {@link String} while handling the {@link Locale#getDefault() default locale}
-     *
-     * @param value The value to convert
-     */
+    /// Convert the `value` to an uppercase [String] while handling the [default locale][#getDefault()]
+    ///
+    /// @param value The value to convert
     public static @NotNull String asLocaleUpperCaseString(final @Nullable Object value) {
         var currentLocale = Locale.getDefault();
 
@@ -141,12 +125,10 @@ public final class AsString
         return new Formatter(currentLocale).format("%s", value).toString().toUpperCase(currentLocale);
     }
 
-    /**
-     * Convert the {@code value} to an uppercase {@link String} while handling the {@code locale}
-     *
-     * @param value  The value to convert
-     * @param locale The locale to possibly apply
-     */
+    /// Convert the `value` to an uppercase [String] while handling the `locale`
+    ///
+    /// @param value  The value to convert
+    /// @param locale The locale to possibly apply
     public static @NotNull String asLocaleUpperCaseString(final @Nullable Object value, final @Nullable Locale locale) {
         if (locale == null) {
             var currentLocale = Locale.getDefault();

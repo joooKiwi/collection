@@ -20,13 +20,11 @@ public final class ToString
 
     //#region -------------------- Facade method --------------------
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link Object#toString()} toString()}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @see Object#toString()
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[#toString()] toString()}_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @see Object#toString()
     @ExtensionFunction
     public static <T> @NotNull String toString(@Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
@@ -38,13 +36,11 @@ public final class ToString
         return __toString(collection, size);
     }
 
-    /**
-     * Convert the {@code collection} to a {@link String} on every value
-     * by calling its "<i>{@link Object#toString()} toString()}</i>" method
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @see Object#toString()
-     */
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[#toString()] toString()}_" method
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @see Object#toString()
     @ExtensionFunction
     public static <T> @NotNull String toString(@Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)

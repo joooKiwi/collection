@@ -64,14 +64,12 @@ public final class HasAll
 
     //#region -------------------- iterator --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Iterator<?> values) {
@@ -82,14 +80,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Iterator<?> values) {
@@ -103,14 +99,12 @@ public final class HasAll
     //#endregion -------------------- iterator --------------------
     //#region -------------------- list iterator --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ListIterator<?> values) {
@@ -121,14 +115,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ListIterator<?> values) {
@@ -142,14 +134,12 @@ public final class HasAll
     //#endregion -------------------- list iterator --------------------
     //#region -------------------- spliterator --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Spliterator<?> values) {
@@ -160,14 +150,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Spliterator<?> values) {
@@ -181,14 +169,12 @@ public final class HasAll
     //#endregion -------------------- spliterator --------------------
     //#region -------------------- enumeration --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Enumeration<?> values) {
@@ -199,14 +185,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Enumeration<?> values) {
@@ -221,14 +205,12 @@ public final class HasAll
 
     //#region -------------------- iterable --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Iterable<?> values) {
@@ -245,14 +227,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Iterable<?> values) {
@@ -273,14 +253,12 @@ public final class HasAll
 
     //#region -------------------- minimalist collection holder --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable MinimalistCollectionHolder<?> values) {
@@ -293,14 +271,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable MinimalistCollectionHolder<?> values) {
@@ -316,14 +292,12 @@ public final class HasAll
     //#endregion -------------------- minimalist collection holder --------------------
     //#region -------------------- collection holder --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable CollectionHolder<?> values) {
@@ -334,14 +308,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable CollectionHolder<?> values) {
@@ -356,14 +328,12 @@ public final class HasAll
 
     //#region -------------------- collection --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Collection<?> values) {
@@ -376,14 +346,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Collection<?> values) {
@@ -399,14 +367,12 @@ public final class HasAll
     //#endregion -------------------- collection --------------------
     //#region -------------------- sequenced collection --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable SequencedCollection<?> values) {
@@ -419,14 +385,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable SequencedCollection<?> values) {
@@ -443,14 +407,12 @@ public final class HasAll
 
     //#region -------------------- list --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable List<?> values) {
@@ -461,14 +423,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable List<?> values) {
@@ -482,14 +442,12 @@ public final class HasAll
     //#endregion -------------------- list --------------------
     //#region -------------------- array list --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ArrayList<?> values) {
@@ -500,14 +458,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ArrayList<?> values) {
@@ -521,14 +477,12 @@ public final class HasAll
     //#endregion -------------------- array list --------------------
     //#region -------------------- copy on write array list --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable CopyOnWriteArrayList<?> values) {
@@ -539,14 +493,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable CopyOnWriteArrayList<?> values) {
@@ -560,14 +512,12 @@ public final class HasAll
     //#endregion -------------------- copy on write array list --------------------
     //#region -------------------- linked list --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable LinkedList<?> values) {
@@ -578,14 +528,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable LinkedList<?> values) {
@@ -599,14 +547,12 @@ public final class HasAll
     //#endregion -------------------- linked list --------------------
     //#region -------------------- vector --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Vector<?> values) {
@@ -617,14 +563,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Vector<?> values) {
@@ -639,14 +583,12 @@ public final class HasAll
 
     //#region -------------------- set --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Set<?> values) {
@@ -659,14 +601,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Set<?> values) {
@@ -682,14 +622,12 @@ public final class HasAll
     //#endregion -------------------- set --------------------
     //#region -------------------- sequenced set --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable SequencedSet<?> values) {
@@ -702,14 +640,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable SequencedSet<?> values) {
@@ -725,14 +661,12 @@ public final class HasAll
     //#endregion -------------------- sequenced set --------------------
     //#region -------------------- sorted set --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable SortedSet<?> values) {
@@ -745,14 +679,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable SortedSet<?> values) {
@@ -768,14 +700,12 @@ public final class HasAll
     //#endregion -------------------- sorted set --------------------
     //#region -------------------- navigable set --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable NavigableSet<?> values) {
@@ -788,14 +718,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable NavigableSet<?> values) {
@@ -811,14 +739,12 @@ public final class HasAll
     //#endregion -------------------- navigable set --------------------
     //#region -------------------- concurrent skip list set --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentSkipListSet<?> values) {
@@ -831,14 +757,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentSkipListSet<?> values) {
@@ -854,14 +778,12 @@ public final class HasAll
     //#endregion -------------------- concurrent skip list set --------------------
     //#region -------------------- copy on write array set --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable CopyOnWriteArraySet<?> values) {
@@ -874,14 +796,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable CopyOnWriteArraySet<?> values) {
@@ -897,14 +817,12 @@ public final class HasAll
     //#endregion -------------------- copy on write array set --------------------
     //#region -------------------- enum set --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Enum<T>> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                      final @Nullable EnumSet<?> values) {
@@ -915,14 +833,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Enum<T>> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                                      final @Nullable EnumSet<?> values) {
@@ -936,14 +852,12 @@ public final class HasAll
     //#endregion -------------------- enum set --------------------
     //#region -------------------- hash set --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable HashSet<?> values) {
@@ -956,14 +870,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable HashSet<?> values) {
@@ -979,14 +891,12 @@ public final class HasAll
     //#endregion -------------------- hash set --------------------
     //#region -------------------- linked hash set --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable LinkedHashSet<?> values) {
@@ -999,14 +909,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable LinkedHashSet<?> values) {
@@ -1022,14 +930,12 @@ public final class HasAll
     //#endregion -------------------- linked hash set --------------------
     //#region -------------------- tree set --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable TreeSet<?> values) {
@@ -1042,14 +948,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable TreeSet<?> values) {
@@ -1066,14 +970,12 @@ public final class HasAll
 
     //#region -------------------- queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Queue<?> values) {
@@ -1086,14 +988,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Queue<?> values) {
@@ -1109,14 +1009,12 @@ public final class HasAll
     //#endregion -------------------- queue --------------------
     //#region -------------------- blocking queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable BlockingQueue<?> values) {
@@ -1129,14 +1027,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable BlockingQueue<?> values) {
@@ -1152,14 +1048,12 @@ public final class HasAll
     //#endregion -------------------- blocking queue --------------------
     //#region -------------------- transfer queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable TransferQueue<?> values) {
@@ -1172,14 +1066,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable TransferQueue<?> values) {
@@ -1195,14 +1087,12 @@ public final class HasAll
     //#endregion -------------------- transfer queue --------------------
     //#region -------------------- array blocking queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ArrayBlockingQueue<?> values) {
@@ -1215,14 +1105,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ArrayBlockingQueue<?> values) {
@@ -1238,14 +1126,12 @@ public final class HasAll
     //#endregion -------------------- array blocking queue --------------------
     //#region -------------------- concurrent linked queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentLinkedQueue<?> values) {
@@ -1258,14 +1144,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentLinkedQueue<?> values) {
@@ -1281,14 +1165,12 @@ public final class HasAll
     //#endregion -------------------- concurrent linked queue --------------------
     //#region -------------------- delay queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Delayed> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                      final @Nullable DelayQueue<?> values) {
@@ -1301,14 +1183,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Delayed> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                                      final @Nullable DelayQueue<?> values) {
@@ -1324,14 +1204,12 @@ public final class HasAll
     //#endregion -------------------- delay queue --------------------
     //#region -------------------- linked blocking queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable LinkedBlockingQueue<?> values) {
@@ -1344,14 +1222,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable LinkedBlockingQueue<?> values) {
@@ -1367,14 +1243,12 @@ public final class HasAll
     //#endregion -------------------- linked blocking queue --------------------
     //#region -------------------- linked transfer queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable LinkedTransferQueue<?> values) {
@@ -1387,14 +1261,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable LinkedTransferQueue<?> values) {
@@ -1410,14 +1282,12 @@ public final class HasAll
     //#endregion -------------------- linked transfer queue --------------------
     //#region -------------------- priority blocking queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable PriorityBlockingQueue<?> values) {
@@ -1430,14 +1300,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable PriorityBlockingQueue<?> values) {
@@ -1453,14 +1321,12 @@ public final class HasAll
     //#endregion -------------------- priority blocking queue --------------------
     //#region -------------------- priority queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable PriorityQueue<?> values) {
@@ -1473,14 +1339,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable PriorityQueue<?> values) {
@@ -1496,14 +1360,12 @@ public final class HasAll
     //#endregion -------------------- priority queue --------------------
     //#region -------------------- synchronous queue --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable SynchronousQueue<?> values) {
@@ -1516,14 +1378,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable SynchronousQueue<?> values) {
@@ -1540,14 +1400,12 @@ public final class HasAll
 
     //#region -------------------- deque --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Deque<?> values) {
@@ -1560,14 +1418,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Deque<?> values) {
@@ -1583,14 +1439,12 @@ public final class HasAll
     //#endregion -------------------- deque --------------------
     //#region -------------------- blocking deque --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable BlockingDeque<?> values) {
@@ -1603,14 +1457,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable BlockingDeque<?> values) {
@@ -1626,14 +1478,12 @@ public final class HasAll
     //#endregion -------------------- blocking deque --------------------
     //#region -------------------- array deque --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ArrayDeque<?> values) {
@@ -1646,14 +1496,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ArrayDeque<?> values) {
@@ -1669,14 +1517,12 @@ public final class HasAll
     //#endregion -------------------- array deque --------------------
     //#region -------------------- concurrent linked deque --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentLinkedDeque<?> values) {
@@ -1689,14 +1535,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ConcurrentLinkedDeque<?> values) {
@@ -1712,14 +1556,12 @@ public final class HasAll
     //#endregion -------------------- concurrent linked deque --------------------
     //#region -------------------- linked blocking deque --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable LinkedBlockingDeque<?> values) {
@@ -1732,14 +1574,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable LinkedBlockingDeque<?> values) {
@@ -1755,14 +1595,12 @@ public final class HasAll
     //#endregion -------------------- linked blocking deque --------------------
     //#region -------------------- stack --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Stack<?> values) {
@@ -1773,14 +1611,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Stack<?> values) {
@@ -1795,14 +1631,12 @@ public final class HasAll
 
     //#region -------------------- array --------------------
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Object @Nullable @Unmodifiable [] values) {
@@ -1813,14 +1647,12 @@ public final class HasAll
         return __hasAll(collection, values);
     }
 
-    /**
-     * Tell that every value received are in the {@code collection}
-     *
-     * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
-     * @param values     The values to compare
-     * @see Collection#containsAll(Collection)
-     * @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
-     */
+    /// Tell that all the `values` are in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @see Collection#containsAll(Collection)
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Object @Nullable @Unmodifiable [] values) {
