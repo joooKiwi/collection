@@ -32,6 +32,7 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Javascript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
@@ -55,6 +56,7 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Javascript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
@@ -79,6 +81,7 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Javascript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
@@ -102,6 +105,7 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Javascript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
@@ -127,6 +131,7 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Javascript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
@@ -150,6 +155,7 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Javascript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
