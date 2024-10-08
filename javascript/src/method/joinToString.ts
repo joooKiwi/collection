@@ -11,7 +11,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {StringCallback}             from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {__index}                       from "./_indexes utility"
+import {__lastIndex}                   from "./_indexes utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -88,7 +88,7 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
         if (limit == null)
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size,)
 
-        const lastIndex = __index(limit, size,)
+        const lastIndex = __lastIndex(limit, size,)
         if (lastIndex == 0)
             return "[]"
         if (lastIndex == size)
@@ -103,7 +103,7 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
         else
             return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
 
-    const lastIndex = __index(limit, size,)
+    const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
         return "[]"
     if (lastIndex == size)
@@ -153,7 +153,7 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
             return __withNothing(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size,)
 
         const size = collection.size
-        const lastIndex = __index(limit, size,)
+        const lastIndex = __lastIndex(limit, size,)
         if (lastIndex == 0)
             return "[]"
         if (lastIndex == size)
@@ -170,7 +170,7 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
             return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.size, transform as () => string,)
 
     const size = collection.size
-    const lastIndex = __index(limit, size,)
+    const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
         return "[]"
     if (lastIndex == size)
@@ -221,7 +221,7 @@ export function joinToStringByArray<const T, >(collection: Nullable<readonly T[]
         if (limit == null)
             return __withNothingByArray(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', collection.length,)
 
-        const lastIndex = __index(limit, size,)
+        const lastIndex = __lastIndex(limit, size,)
         if (lastIndex == 0)
             return "[]"
         if (lastIndex == size)
@@ -236,7 +236,7 @@ export function joinToStringByArray<const T, >(collection: Nullable<readonly T[]
         else
             return __with0Argument(separator ?? ", ", prefix ?? '[', postfix ?? ']', size, transform as () => string,)
 
-    const lastIndex = __index(limit, size,)
+    const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
         return "[]"
     if (lastIndex == size)

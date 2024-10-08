@@ -77,14 +77,14 @@ export function __endingIndex(toIndex: NullableNumber, size: number,) {
 }
 
 /**
- * Get the index possible between 0 and the {@link size}
+ * Get the last index possible between 0 and the {@link size}
  *
  * @param limit The value to calculate
  * @param size  The last value that should be equivalent to the {@link MinimalistCollectionHolder.size size}
  * @throws ForbiddenIndexException The {@link limit} is {@link Number.NaN NaN}
  * @internal
  */
-export function __index(limit: number, size: number,) {
+export function __lastIndex(limit: number, size: number,) {
     if (Number.isNaN(limit,))
         throw new ForbiddenIndexException("Forbidden index. The limit cannot be determined with NaN.", limit,)
     if (limit == Number.NEGATIVE_INFINITY)
