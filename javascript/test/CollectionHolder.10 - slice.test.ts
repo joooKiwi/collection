@@ -22,14 +22,17 @@ describe("CollectionHolderTest (slice)", () => {
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
         if (!isExtension)
             describe("get() being called", () => {
-                describe.each(everyIterableInstances,)("by indices: %s", ({value: newIterable,},) => {
+                describe.each(everyIterableInstances,)("by indices: %s", ({value: newIterable, toString,},) => {
+                    const isIterable = toString().includes("iterable",)
+                    const isSet = toString() == "set"
+
                     describe("empty", () => {
                         test("empty",     () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
                         test("non-empty", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),).amountOfCall,).toBe(0,),)
                     },)
                     describe("1 field", () => {
                         test("empty",     () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
-                        test("non-empty", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringIndexOutOfBound(it => it.slice(newIterable(_01,),),),).amountOfCall,).toBe(1,),)
+                        test("non-empty", () => expect(new instance(A,).executeWhileIgnoringIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),),).amountOfCall,).toBe(isIterable || isSet ? 2 : 1,),)
                     },)
                     describe("2 fields", () => {
                         test("empty",     () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
