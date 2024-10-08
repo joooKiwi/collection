@@ -19,7 +19,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
@@ -29,7 +29,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  */
 export function hasAllWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: CollectionIterator<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
@@ -55,7 +55,7 @@ export function hasAllWithCollectionIterator<const T, >(collection: Nullable<| M
 
 
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
@@ -65,7 +65,7 @@ export function hasAllWithCollectionIterator<const T, >(collection: Nullable<| M
  */
 export function hasAllWithCollectionIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
@@ -90,7 +90,7 @@ export function hasAllWithCollectionIteratorByMinimalistCollectionHolder<const T
 }
 
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
@@ -100,7 +100,7 @@ export function hasAllWithCollectionIteratorByMinimalistCollectionHolder<const T
  */
 export function hasAllWithCollectionIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionIterator<T>,): boolean
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
@@ -123,7 +123,7 @@ export function hasAllWithCollectionIteratorByCollectionHolder<const T, >(collec
 }
 
 /**
- * Tell that all of the {@link values} exist in the {@link collection}
+ * Tell that all the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param values     The values to compare

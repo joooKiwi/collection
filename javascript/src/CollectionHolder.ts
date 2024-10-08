@@ -1417,7 +1417,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has all --------------------
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1426,7 +1426,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: readonly T[],): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1435,7 +1435,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1444,7 +1444,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1453,7 +1453,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1462,7 +1462,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1471,7 +1471,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: Iterable<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1481,7 +1481,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1491,7 +1491,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: readonly unknown[],): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1501,7 +1501,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: ReadonlySet<unknown>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1511,7 +1511,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: CollectionHolder,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1521,7 +1521,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: MinimalistCollectionHolder,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1531,7 +1531,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: CollectionIterator,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1541,7 +1541,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: Iterable<unknown>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -1554,7 +1554,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has all methods (aliases) --------------------
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1562,7 +1562,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: readonly T[],): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1570,7 +1570,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1578,7 +1578,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1586,7 +1586,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1594,7 +1594,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1602,7 +1602,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: Iterable<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1611,7 +1611,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1620,7 +1620,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: readonly unknown[],): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1629,7 +1629,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: ReadonlySet<unknown>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1638,7 +1638,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: CollectionHolder,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1647,7 +1647,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: MinimalistCollectionHolder,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1656,7 +1656,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: CollectionIterator,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1665,7 +1665,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: Iterable<unknown>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1676,7 +1676,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1684,7 +1684,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: readonly T[],): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1692,7 +1692,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1700,7 +1700,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1708,7 +1708,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1716,7 +1716,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1724,7 +1724,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: Iterable<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1733,7 +1733,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1742,7 +1742,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: readonly unknown[],): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1751,7 +1751,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: ReadonlySet<unknown>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1760,7 +1760,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: CollectionHolder,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1770,7 +1770,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: MinimalistCollectionHolder,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1779,7 +1779,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: CollectionIterator,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
@@ -1788,7 +1788,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: Iterable<unknown>,): boolean
 
     /**
-     * Tell that all of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasAll
