@@ -244,6 +244,7 @@ export class CollectionHolder_ByLazyCollection<const T, >
         return this.instance.slice(indicesOrFromIndex, toIndex,)
     }
 
+    //#endregion -------------------- Slice --------------------
     //#region -------------------- Take --------------------
 
     public override take(n: number,): CollectionHolder<T> {
@@ -316,6 +317,7 @@ export class CollectionHolder_ByLazyCollection<const T, >
     }
 
     //#endregion -------------------- Drop --------------------
+    //#region -------------------- Map --------------------
 
     public override map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> { return this.instance.map(transform,) }
     public override mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> { return this.instance.mapIndexed(transform,) }
