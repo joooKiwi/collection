@@ -126,6 +126,18 @@ with a possibly different type from the original **collection**
  - `filterIndexedNot`
  - `filterNotNull`
  - `slice`
+ - `take`
+ - `takeWhile`
+ - `takeWhileIndexed`
+ - `takeLast`
+ - `takeLastWhile`
+ - `takeLastWhileIndexed`
+ - `drop`
+ - `dropWhile`
+ - `dropWhileIndexed`
+ - `dropLast`
+ - `dropLastWhile`
+ - `dropLastWhileIndexed`
  - `map`
  - `mapIndexed`
  - `mapNotNull`
@@ -181,12 +193,13 @@ but are a complement to the overall robustest of the **collection**
  - `isArrayByStructure`
  - `isCollectionHolder`
  - `isCollectionHolderByStructure`
- - `isCollectionIterator`
- - `isCollectionIteratorByStructure`
  - `isMinimalistCollectionHolder`
  - `isMinimalistCollectionHoldeByStructure`
  - `isSet`
  - `isSetByStructure`
+ - `isCollectionIterator`
+ - `isCollectionIteratorByStructure`
+ - `isIterator`
 
 ---
 
