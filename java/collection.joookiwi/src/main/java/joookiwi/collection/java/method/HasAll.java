@@ -82,7 +82,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -117,7 +117,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -152,7 +152,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -187,7 +187,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -229,7 +229,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -273,7 +273,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -310,7 +310,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -348,7 +348,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -387,7 +387,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -425,7 +425,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -460,7 +460,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -495,7 +495,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -530,7 +530,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -565,7 +565,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -603,7 +603,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -642,7 +642,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -681,7 +681,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -720,7 +720,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -759,7 +759,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -798,7 +798,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -835,7 +835,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -872,7 +872,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -911,7 +911,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -950,7 +950,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -990,7 +990,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1029,7 +1029,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1068,7 +1068,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1107,7 +1107,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1146,7 +1146,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1185,7 +1185,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1224,7 +1224,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1263,7 +1263,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1302,7 +1302,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1341,7 +1341,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1380,7 +1380,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1420,7 +1420,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1459,7 +1459,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1498,7 +1498,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1537,7 +1537,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1576,7 +1576,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1613,7 +1613,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
@@ -1649,7 +1649,7 @@ public final class HasAll
 
     /// Tell that all the `values` are in the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     /// @see Collection#containsAll(Collection)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>

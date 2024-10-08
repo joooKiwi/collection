@@ -80,7 +80,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -111,7 +111,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -142,7 +142,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -173,7 +173,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -211,7 +211,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -251,7 +251,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -284,7 +284,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -318,7 +318,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -353,7 +353,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -387,7 +387,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -418,7 +418,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -449,7 +449,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -480,7 +480,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -511,7 +511,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -545,7 +545,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -580,7 +580,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -615,7 +615,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -650,7 +650,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -685,7 +685,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -720,7 +720,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -753,7 +753,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Enum<T>> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -786,7 +786,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -821,7 +821,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -856,7 +856,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -892,7 +892,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -927,7 +927,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -962,7 +962,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -997,7 +997,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1032,7 +1032,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1067,7 +1067,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Delayed> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1102,7 +1102,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1137,7 +1137,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1172,7 +1172,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1207,7 +1207,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1242,7 +1242,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1278,7 +1278,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1313,7 +1313,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1348,7 +1348,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1383,7 +1383,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1418,7 +1418,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1451,7 +1451,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
@@ -1483,7 +1483,7 @@ public final class HasOne
 
     /// Tell that one of the `values` exist in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
