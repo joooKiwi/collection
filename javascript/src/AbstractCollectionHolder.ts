@@ -15,6 +15,12 @@ import type {CollectionIterator}                                                
 import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
 import {allByCollectionHolder}                     from "./method/all"
 import {anyByCollectionHolder}                     from "./method/any"
+import {dropByCollectionHolder}                    from "./method/drop"
+import {dropLastByCollectionHolder}                from "./method/dropLast"
+import {dropLastWhileByCollectionHolder}           from "./method/dropLastWhile"
+import {dropLastWhileIndexedByCollectionHolder}    from "./method/dropLastWhileIndexed"
+import {dropWhileByCollectionHolder}               from "./method/dropWhile"
+import {dropWhileIndexedByCollectionHolder}        from "./method/dropWhileIndexed"
 import {filterByCollectionHolder}                  from "./method/filter"
 import {filterIndexedByCollectionHolder}           from "./method/filterIndexed"
 import {filterNotByCollectionHolder}               from "./method/filterNot"
@@ -56,6 +62,12 @@ import {onEachIndexedByCollectionHolder}           from "./method/onEachIndexed"
 import {requireNoNullsByCollectionHolder}          from "./method/requireNoNulls"
 import {sliceByCollectionHolder}                   from "./method/slice"
 import {sliceWithARangeByCollectionHolder}         from "./method/slice.withARange"
+import {takeByCollectionHolder}                    from "./method/take"
+import {takeLastByCollectionHolder}                from "./method/takeLast"
+import {takeLastWhileByCollectionHolder}           from "./method/takeLastWhile"
+import {takeLastWhileIndexedByCollectionHolder}    from "./method/takeLastWhileIndexed"
+import {takeWhileByCollectionHolder}               from "./method/takeWhile"
+import {takeWhileIndexedByCollectionHolder}        from "./method/takeWhileIndexed"
 import {toArrayByCollectionHolder}                 from "./method/toArray"
 import {toIteratorByCollectionHolder}              from "./method/toIterator"
 import {toLocaleLowerCaseStringByCollectionHolder} from "./method/toLocaleLowerCaseString"
@@ -650,6 +662,108 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Slice --------------------
+
+    //#region -------------------- Take --------------------
+
+    public take(n: number,): CollectionHolder<T> {
+        return takeByCollectionHolder<T>(this, n,)
+    }
+
+    //#endregion -------------------- Take --------------------
+    //#region -------------------- Take while --------------------
+
+    public takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public takeWhile(predicate: BooleanCallback<T>,) {
+        return takeWhileByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Take while --------------------
+    //#region -------------------- Take while indexed --------------------
+
+    public takeWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return takeWhileIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Take while indexed --------------------
+    //#region -------------------- Take last --------------------
+
+    public takeLast(n: number,): CollectionHolder<T> {
+        return takeLastByCollectionHolder<T>(this, n,)
+    }
+
+    //#endregion -------------------- Take last --------------------
+    //#region -------------------- Take last while --------------------
+
+    public takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public takeLastWhile(predicate: BooleanCallback<T>,) {
+        return takeLastWhileByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Take last while --------------------
+    //#region -------------------- Take last while indexed --------------------
+
+    public takeLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return takeLastWhileIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Take last while indexed --------------------
+
+    //#region -------------------- Drop --------------------
+
+    public drop(n: number,): CollectionHolder<T> {
+        return dropByCollectionHolder<T>(this, n,)
+    }
+
+    //#endregion -------------------- Drop --------------------
+    //#region -------------------- Drop while --------------------
+
+    public dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public dropWhile(predicate: BooleanCallback<T>,) {
+        return dropWhileByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Drop while --------------------
+    //#region -------------------- Drop while indexed --------------------
+
+    public dropWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return dropWhileIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Drop while indexed --------------------
+    //#region -------------------- Drop last --------------------
+
+    public dropLast(n: number,): CollectionHolder<T> {
+        return dropLastByCollectionHolder<T>(this, n,)
+    }
+
+    //#endregion -------------------- Drop last --------------------
+    //#region -------------------- Drop last while --------------------
+
+    public dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public dropLastWhile(predicate: BooleanCallback<T>,) {
+        return dropLastWhileByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Drop last while --------------------
+    //#region -------------------- Drop last while indexed --------------------
+
+    public dropLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return dropLastWhileIndexedByCollectionHolder(this, predicate,)
+    }
+
+    //#endregion -------------------- Drop last while indexed --------------------
 
     //#region -------------------- Map --------------------
 

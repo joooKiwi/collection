@@ -359,7 +359,50 @@ export class EmptyCollectionHolder
     public slice() { return this }
 
     //#endregion -------------------- Slice --------------------
+    //#region -------------------- Take --------------------
 
+    public take(..._: readonly unknown[]): this
+    public take() { return this }
+
+    public takeWhile(..._: readonly unknown[]): this
+    public takeWhile() { return this }
+
+    public takeWhileIndexed(..._: readonly unknown[]): this
+    public takeWhileIndexed() { return this }
+
+
+    public takeLast(..._: readonly unknown[]): this
+    public takeLast() { return this }
+
+    public takeLastWhile(..._: readonly unknown[]): this
+    public takeLastWhile() { return this }
+
+    public takeLastWhileIndexed(..._: readonly unknown[]): this
+    public takeLastWhileIndexed() { return this }
+
+    //#endregion -------------------- Take --------------------
+    //#region -------------------- Drop --------------------
+
+    public drop(..._: readonly unknown[]): this
+    public drop() { return this }
+
+    public dropWhile(..._: readonly unknown[]): this
+    public dropWhile() { return this }
+
+    public dropWhileIndexed(..._: readonly unknown[]): this
+    public dropWhileIndexed() { return this }
+
+
+    public dropLast(..._: readonly unknown[]): this
+    public dropLast() { return this }
+
+    public dropLastWhile(..._: readonly unknown[]): this
+    public dropLastWhile() { return this }
+
+    public dropLastWhileIndexed(..._: readonly unknown[]): this
+    public dropLastWhileIndexed() { return this }
+
+    //#endregion -------------------- Drop --------------------
     //#region -------------------- Map --------------------
 
     public map<const U, >(..._: readonly unknown[]): CollectionHolder<U>

@@ -23,6 +23,12 @@ import {EmptyCollectionHolderException}            from "./exception/EmptyCollec
 import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
 import {allByArray}                                from "./method/all"
 import {anyByArray}                                from "./method/any"
+import {dropByArray}                               from "./method/drop"
+import {dropLastByArray}                           from "./method/dropLast"
+import {dropLastWhileByArray}                      from "./method/dropLastWhile"
+import {dropLastWhileIndexedByArray}               from "./method/dropLastWhileIndexed"
+import {dropWhileByArray}                          from "./method/dropWhile"
+import {dropWhileIndexedByArray}                   from "./method/dropWhileIndexed"
 import {filterByArray}                             from "./method/filter"
 import {filterIndexedByArray}                      from "./method/filterIndexed"
 import {filterNotByArray}                          from "./method/filterNot"
@@ -70,6 +76,12 @@ import {onEachByArray}                             from "./method/onEach"
 import {onEachIndexedByArray}                      from "./method/onEachIndexed"
 import {sliceByArray}                              from "./method/slice"
 import {sliceWithARangeByArray}                    from "./method/slice.withARange"
+import {takeByArray}                               from "./method/take"
+import {takeLastByArray}                           from "./method/takeLast"
+import {takeLastWhileByArray}                      from "./method/takeLastWhile"
+import {takeLastWhileIndexedByArray}               from "./method/takeLastWhileIndexed"
+import {takeWhileByArray}                          from "./method/takeWhile"
+import {takeWhileIndexedByArray}                   from "./method/takeWhileIndexed"
 import {toIteratorByArray}                         from "./method/toIterator"
 import {toLocaleLowerCaseStringByArray}            from "./method/toLocaleLowerCaseString"
 import {toLocaleStringByArray}                     from "./method/toLocaleString"
@@ -1202,6 +1214,79 @@ export class GenericCollectionHolder<const T = unknown,
     }
 
     //#endregion -------------------- Slice --------------------
+    //#region -------------------- Take --------------------
+
+    public override take(n: number,): CollectionHolder<T> {
+        return takeByArray(this._array, n,)
+    }
+
+    public override takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public override takeWhile(predicate: BooleanCallback<T>,) {
+        return takeWhileByArray(this._array, predicate,)
+    }
+
+    public override takeWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return takeWhileIndexedByArray(this._array, predicate,)
+    }
+
+
+    public override takeLast(n: number,): CollectionHolder<T> {
+        return takeLastByArray(this._array, n,)
+    }
+
+
+    public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public override takeLastWhile(predicate: BooleanCallback<T>,) {
+        return takeLastWhileByArray(this._array, predicate,)
+    }
+
+    public override takeLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return takeLastWhileIndexedByArray(this._array, predicate,)
+    }
+
+    //#endregion -------------------- Take --------------------
+    //#region -------------------- Drop --------------------
+
+    public override drop(n: number,): CollectionHolder<T> {
+        return dropByArray(this._array, n,)
+    }
+
+    public override dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public override dropWhile(predicate: BooleanCallback<T>,) {
+        return dropWhileByArray(this._array, predicate,)
+    }
+
+    public override dropWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return dropWhileIndexedByArray(this._array, predicate,)
+    }
+
+
+    public override dropLast(n: number,): CollectionHolder<T> {
+        return dropLastByArray(this._array, n,)
+    }
+
+    public override dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public override dropLastWhile(predicate: BooleanCallback<T>,) {
+        return dropLastWhileByArray(this._array, predicate,)
+    }
+
+    public override dropLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return dropLastWhileIndexedByArray(this._array, predicate,)
+    }
+
+    //#endregion -------------------- Drop --------------------
     //#region -------------------- Map --------------------
 
     public override map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
