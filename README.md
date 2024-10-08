@@ -1300,6 +1300,18 @@ The methods are made to transform the structure by different type or size
  - `filterNotNull`()
  - `slice`(indices)
  - `slice`(fromIndex?, toIndex?, limit?)
+ - `take`(n)
+ - `takeWhile`(predicate)
+ - `takeWhileIndexed`(predicate)
+ - `takeLast`(n)
+ - `takeLastWhile`(predicate)
+ - `takeLastWhileIndexed`(predicate)
+ - `drop`(n)
+ - `dropWhile`(predicate)
+ - `dropWhileIndexed`(predicate)
+ - `dropLast`(n)
+ - `dropLastWhile`(predicate)
+ - `dropLastWhileIndexed`(predicate)
  - `map`(transform)
  - `mapIndexed`(transform)
  - `mapNotNull`(transform)
@@ -1492,6 +1504,125 @@ while (++index <= endingIndex)
 return newList;
 ```
 </td></tr>
+</table></details>
+<br/>
+<details><summary>take(n)</summary>
+
+| Language       | Equivalent                                            |
+|----------------|-------------------------------------------------------|
+| **Javascript** | `array.slice(0, n)`                                   |
+| **Java**       |                                                       |
+| **Kotlin**     | <ul><li>[Array.take(n)<br/>List.take(n)][kotlin-take] |
+| **PHP**        |                                                       |
+| **C#**         |                                                       |
+
+</details>
+<details><summary>takeWhile(predicate)<br/>takeWhileIndexed(predicate)</summary>
+
+| Language       | Equivalent                                                                            |
+|----------------|---------------------------------------------------------------------------------------|
+| **Javascript** | `array.filter(predicate)`                                                             |
+| **Java**       |                                                                                       |
+| **Kotlin**     | <ul><li>[Array.takeWhile(predicate)<br/>List.takeWhile(predicate)][kotlin-take-while] |
+| **PHP**        |                                                                                       |
+| **C#**         |                                                                                       |
+
+</details>
+<details><summary>takeLast(n)</summary>
+
+| Language       | Equivalent                                                         |
+|----------------|--------------------------------------------------------------------|
+| **Javascript** | `array.slice(-n)`                                                  |
+| **Java**       |                                                                    |
+| **Kotlin**     | <ul><li>[Array.takeLast(n)<br/>List.takeLast(n)][kotlin-take-last] |
+| **PHP**        |                                                                    |
+| **C#**         |                                                                    |
+
+</details>
+<details><summary>takeLastWhile(predicate)<br/>takeLastWhileIndexed(predicate)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+let index = size
+while (--index >= 0)
+    if (!predicate) {
+        const newArrayFromIndexToLast = new Array(size - index - 1,)
+        let indexAdded = 0
+        while (++index < size)
+            newArrayFromIndexToLast[indexAdded++] = array[index]
+        return newArrayFromIndexToLast
+    }
+return newArray
+```
+</td></tr>
+<tr><th>Java</th><td></td></tr>
+<tr><th>Kotlin</th><td>
+
+- [Array.takeLastWhile(predicate)<br/>List.takeLastWhile(predicate)][kotlin-take-last-while]
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td></td></tr>
+</table></details>
+<br/>
+<details><summary>drop(n)</summary>
+
+| Language       | Equivalent                                    |
+|----------------|-----------------------------------------------|
+| **Javascript** | `array.slice(n)`                              |
+| **Java**       |                                               |
+| **Kotlin**     | [Array.drop(n)<br/>List.drop(n)][kotlin-drop] |
+| **PHP**        |                                               |
+| **C#**         |                                               |
+
+</details>
+<details><summary>dropWhile(predicate)<br/>dropWhileIndexed(predicate)</summary>
+
+| Language       | Equivalent                                                                    |
+|----------------|-------------------------------------------------------------------------------|
+| **Javascript** | `array.filter(!predicate)`                                                    |
+| **Java**       |                                                                               |
+| **Kotlin**     | [Array.dropWhile(predicate)<br/>List.dropWhile(predicate)][kotlin-drop-while] |
+| **PHP**        |                                                                               |
+| **C#**         |                                                                               |
+
+</details>
+<details><summary>dropLast(n)</summary>
+
+| Language       | Equivalent                                                 |
+|----------------|------------------------------------------------------------|
+| **Javascript** | `array.slice(0, -n)`                                       |
+| **Java**       |                                                            |
+| **Kotlin**     | [Array.dropLast(n)<br/>List.dropLast(n)][kotlin-drop-last] |
+| **PHP**        |                                                            |
+| **C#**         |                                                            |
+
+</details>
+<details><summary>dropLastWhile(predicate)<br/>dropLastWhileIndexed(predicate)</summary><table>
+<tr><th>Language</th><th>Equivalent</th>
+<tr><th>Javascript</th><td>
+
+```javascript
+let index = size
+while (--index >= 0)
+    if (!predicate) {
+        const newArrayFrom0ToIndex = new Array(index + 1,)
+        let index2 = -1
+        while (++index2 <= index)
+            newArrayFrom0ToIndex[index2] = array[index2]
+        return newArrayFrom0ToIndex
+    }
+return []
+```
+</td></tr>
+<tr><th>Java</th><td></td></tr>
+<tr><th>Kotlin</th><td>
+
+- [Array.dropLastWhile(predicate)<br/>List.dropLastWhile(predicate)][kotlin-drop-last-while]
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td></td></tr>
+
 </table></details>
 <br/>
 <details><summary>map(transform)</summary>
@@ -2068,6 +2199,15 @@ This is the most bare-bones structure
 [kotlin-filter-indexed]:          https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-indexed.html
 [kotlin-filter-not]:              https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html
 [kotlin-filter-not-null]:         https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html
+[kotlin-slice]:                   https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html
+[kotlin-take]:                    https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html
+[kotlin-take-while]:              https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html
+[kotlin-take-last]:               https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html
+[kotlin-take-last-while]:         https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html
+[kotlin-drop]:                    https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html
+[kotlin-drop-while]:              https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html
+[kotlin-drop-last]:               https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last.html
+[kotlin-drop-last-while]:         https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html
 [kotlin-map]:                     https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html
 [kotlin-map-indexed]:             https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html
 [kotlin-map-not-null]:            https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-not-null.html
