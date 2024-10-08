@@ -96,11 +96,11 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract get size(): number
 
     public get length(): never {
-        throw new Error("The getter method \"length\" was not expected to be called.",)
+        throw new Error("The getter method “length” was not expected to be called.",)
     }
 
     public get count(): never {
-        throw new Error("The getter method \"count\" was not expected to be called.",)
+        throw new Error("The getter method “count” was not expected to be called.",)
     }
 
     public abstract get isEmpty(): boolean
@@ -115,12 +115,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public at(index?: number,): never
     public at() {
-        throw new Error("The method \"at\" was not expected to be called in a test.",)
+        throw new Error("The method “at” was not expected to be called in a test.",)
     }
 
     public elementAt(index?: number,): never
     public elementAt() {
-        throw new Error("The method \"elementAt\" was not expected to be called in a test.",)
+        throw new Error("The method “elementAt” was not expected to be called in a test.",)
     }
 
 
@@ -130,13 +130,13 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public atOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
     public atOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
     public atOrElse() {
-        throw new Error("The method \"atOrElse\" was not expected to be called in a test.",)
+        throw new Error("The method “atOrElse” was not expected to be called in a test.",)
     }
 
     public elementAtOrElse<const U, >(index?: number, defaultValue?: IndexWithReturnCallback<U>,): never
     public elementAtOrElse(index?: number, defaultValue?: IndexWithReturnCallback<T>,): never
     public elementAtOrElse() {
-        throw new Error("The method \"elementAtOrElse\" was not expected to be called in a test.",)
+        throw new Error("The method “elementAtOrElse” was not expected to be called in a test.",)
     }
 
 
@@ -144,12 +144,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public atOrNull(index?: number,): never
     public atOrNull() {
-        throw new Error("The method \"atOrNull\" was not expected to be called in a test.",)
+        throw new Error("The method “atOrNull” was not expected to be called in a test.",)
     }
 
     public elementAtOrNull(index?: number,): never
     public elementAtOrNull() {
-        throw new Error("The method \"elementAtOrNull\" was not expected to be called in a test.",)
+        throw new Error("The method “elementAtOrNull” was not expected to be called in a test.",)
     }
 
     //#endregion -------------------- Get --------------------
@@ -216,7 +216,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public every<const S extends T, >(predicate?: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public every(predicate?: BooleanCallback<T>,): never
     public every(): never {
-        throw new Error("The method \"every\" was not expected to be called.",)
+        throw new Error("The method “every” was not expected to be called.",)
     }
 
     //#endregion -------------------- All --------------------
@@ -228,7 +228,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public some(): never
     public some(predicate?: Nullable<BooleanCallback<T>>,): never
     public some() {
-        throw new Error("The method \"some\" was not expected to be called.",)
+        throw new Error("The method “some” was not expected to be called.",)
     }
 
     //#endregion -------------------- Any --------------------
@@ -244,11 +244,11 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract get hasNull(): boolean
 
     public get includesNull(): never {
-        throw new Error("The getter method \"includesNull\" was not expected to be called.",)
+        throw new Error("The getter method “includesNull” was not expected to be called.",)
     }
 
     public get containsNull(): never {
-        throw new Error("The getter method \"containsNull\" was not expected to be called.",)
+        throw new Error("The getter method “containsNull” was not expected to be called.",)
     }
 
     //#endregion -------------------- Has null --------------------
@@ -257,11 +257,11 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract get hasDuplicate(): boolean
 
     public get includesDuplicate(): never {
-        throw new Error("The getter method \"includesDuplicate\" was not expected to be called.",)
+        throw new Error("The getter method “includesDuplicate” was not expected to be called.",)
     }
 
     public get containsDuplicate(): never {
-        throw new Error("The getter method \"containsDuplicate\" was not expected to be called.",)
+        throw new Error("The getter method “containsDuplicate” was not expected to be called.",)
     }
 
     //#endregion -------------------- Has duplicate --------------------
@@ -272,12 +272,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public includes(value?: T,): never
     public includes() {
-        throw new Error("The method \"includes\" was not expected to be called.",)
+        throw new Error("The method “includes” was not expected to be called.",)
     }
 
     public contains(value?: T,): never
     public contains() {
-        throw new Error("The method \"contains\" was not expected to be called.",)
+        throw new Error("The method “contains” was not expected to be called.",)
     }
 
     //#endregion -------------------- Has --------------------
@@ -306,7 +306,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public includesOne(values?: Iterable<unknown>,): never
     public includesOne(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
     public includesOne() {
-        throw new Error("The method \"includesOne\" was not expected to be called.",)
+        throw new Error("The method “includesOne” was not expected to be called.",)
     }
 
     public containsOne(values?: readonly T[],): never
@@ -324,7 +324,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public containsOne(values?: Iterable<unknown>,): never
     public containsOne(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
     public containsOne() {
-        throw new Error("The method \"containsOne\" was not expected to be called.",)
+        throw new Error("The method “containsOne” was not expected to be called.",)
     }
 
     //#endregion -------------------- Has one --------------------
@@ -353,7 +353,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public includesAll(values?: Iterable<unknown>,): never
     public includesAll(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
     public includesAll() {
-        throw new Error("The method \"includesAll\" was not expected to be called.",)
+        throw new Error("The method “includesAll” was not expected to be called.",)
     }
 
     public containsAll(values?: readonly T[],): never
@@ -371,7 +371,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public containsAll(values?: Iterable<unknown>,): never
     public containsAll(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
     public containsAll() {
-        throw new Error("The \"containsAll\" was not expected to be called.",)
+        throw new Error("The “containsAll” was not expected to be called.",)
     }
 
     //#endregion -------------------- Has all --------------------
@@ -495,12 +495,12 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): never
     public toReversed() {
-        throw new Error("The method \"toReversed\" was not expected to be called.",)
+        throw new Error("The method “toReversed” was not expected to be called.",)
     }
 
     public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): never
     public reversed() {
-        throw new Error("The method \"reversed\" was not expected to be called.",)
+        throw new Error("The method “reversed” was not expected to be called.",)
     }
 
     //#endregion -------------------- To reverse --------------------
@@ -554,7 +554,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): never
     public join() {
-        throw new Error("The method \"join\" was not expected to be called.",)
+        throw new Error("The method “join” was not expected to be called.",)
     }
 
     public abstract joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
