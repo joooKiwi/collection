@@ -148,7 +148,7 @@ export function hasAllWithSetByArray<const T, >(collection: Nullable<readonly T[
 //#region -------------------- Loop methods --------------------
 
 function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, values: ReadonlySet<T>, size: number, valuesSize: number,) {
-    const iterator: Iterator<T, unknown, unknown> = values[Symbol.iterator]()
+    const iterator = values[Symbol.iterator]()
     let valuesIndex = valuesSize + 1
     valueLoop: while (--valuesIndex > 0) {
         const value = iterator.next().value
@@ -162,7 +162,7 @@ function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, values: 
 }
 
 function __hasAllByArray<const T, >(collection: readonly T[], values: ReadonlySet<T>, size: number, valuesSize: number,) {
-    const iterator: Iterator<T, unknown, unknown> = values[Symbol.iterator]()
+    const iterator = values[Symbol.iterator]()
     let valuesIndex = valuesSize + 1
     valueLoop: while (--valuesIndex > 0) {
         const value = iterator.next().value
