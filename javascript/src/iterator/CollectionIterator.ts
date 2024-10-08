@@ -134,6 +134,7 @@ export interface CollectionIterator<out T = unknown, >
     /**
      * Do a certain operation for the rest of the elements in the current {@link CollectionIterator iterator}
      *
+     * @see IteratorObject.forEach
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html Kotlin onEach(action)
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html Kotlin forEach(operation)
      */
@@ -142,6 +143,7 @@ export interface CollectionIterator<out T = unknown, >
     /**
      * Do a certain operation for the rest of the elements in the current {@link CollectionIterator iterator}
      *
+     * @see IteratorObject.forEach
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html Kotlin onEachIndexed(action)
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
      */
