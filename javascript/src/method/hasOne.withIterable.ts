@@ -18,7 +18,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell whenever at least one value of the {@link values} exist in the {@link collection}
+ * Tell that one of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param values     The values to compare
@@ -26,7 +26,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  */
 export function hasOneWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: Iterable<T>,): boolean
 /**
- * Tell whenever at least one value of the {@link values} exist in the {@link collection}
+ * Tell that one of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @param values     The values to compare
@@ -50,7 +50,7 @@ export function hasOneWithIterable<const T, >(collection: Nullable<| MinimalistC
 
 
 /**
- * Tell whenever at least one value of the {@link values} exist in the {@link collection}
+ * Tell that one of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
@@ -58,7 +58,7 @@ export function hasOneWithIterable<const T, >(collection: Nullable<| MinimalistC
  */
 export function hasOneWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,): boolean
 /**
- * Tell whenever at least one value of the {@link values} exist in the {@link collection}
+ * Tell that one of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param values     The values to compare
@@ -83,7 +83,7 @@ export function hasOneWithIterableByMinimalistCollectionHolder<const T, >(collec
 }
 
 /**
- * Tell whenever at least one value of the {@link values} exist in the {@link collection}
+ * Tell that one of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
@@ -91,7 +91,7 @@ export function hasOneWithIterableByMinimalistCollectionHolder<const T, >(collec
  */
 export function hasOneWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<T>,): boolean
 /**
- * Tell whenever at least one value of the {@link values} exist in the {@link collection}
+ * Tell that one of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param values     The values to compare
@@ -114,7 +114,7 @@ export function hasOneWithIterableByCollectionHolder<const T, >(collection: Null
 }
 
 /**
- * Tell whenever at least one value of the {@link values} exist in the {@link collection}
+ * Tell that one of the {@link values} exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param values     The values to compare

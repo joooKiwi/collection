@@ -1060,49 +1060,49 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has one --------------------
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      */
     hasOne(values: readonly T[],): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      */
     hasOne(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      */
     hasOne(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      */
     hasOne(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      */
     hasOne(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      */
     hasOne(values: Iterable<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @typescriptDefinition
@@ -1110,7 +1110,7 @@ export interface CollectionHolder<out T = unknown, >
     hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
@@ -1118,7 +1118,7 @@ export interface CollectionHolder<out T = unknown, >
     hasOne(values: readonly unknown[],): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
@@ -1126,7 +1126,7 @@ export interface CollectionHolder<out T = unknown, >
     hasOne(values: ReadonlySet<unknown>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
@@ -1134,7 +1134,7 @@ export interface CollectionHolder<out T = unknown, >
     hasOne(values: CollectionHolder,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
@@ -1142,7 +1142,7 @@ export interface CollectionHolder<out T = unknown, >
     hasOne(values: MinimalistCollectionHolder,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
@@ -1150,7 +1150,7 @@ export interface CollectionHolder<out T = unknown, >
     hasOne(values: CollectionIterator,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @typescriptDefinition
@@ -1159,7 +1159,7 @@ export interface CollectionHolder<out T = unknown, >
     hasOne(values: Iterable<unknown>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
@@ -1177,7 +1177,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: readonly T[],): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1185,7 +1185,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1193,7 +1193,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1201,7 +1201,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1209,7 +1209,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1217,7 +1217,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: Iterable<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1226,7 +1226,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1235,7 +1235,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: readonly unknown[],): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1244,7 +1244,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: ReadonlySet<unknown>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1253,7 +1253,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: CollectionHolder,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1262,7 +1262,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: MinimalistCollectionHolder,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1271,7 +1271,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: CollectionIterator,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1280,7 +1280,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: Iterable<unknown>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1291,7 +1291,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1299,7 +1299,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: readonly T[],): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1307,7 +1307,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1315,7 +1315,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1323,7 +1323,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1331,7 +1331,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1339,7 +1339,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: Iterable<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1348,7 +1348,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1357,7 +1357,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: readonly unknown[],): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1366,7 +1366,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: ReadonlySet<unknown>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1375,7 +1375,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: CollectionHolder,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1384,7 +1384,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: MinimalistCollectionHolder,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1393,7 +1393,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: CollectionIterator,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
@@ -1402,7 +1402,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: Iterable<unknown>,): boolean
 
     /**
-     * Tell whenever at least one value exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
      *
      * @param values The values to compare
      * @alias hasOne
