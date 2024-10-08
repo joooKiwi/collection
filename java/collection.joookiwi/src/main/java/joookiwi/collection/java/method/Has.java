@@ -36,7 +36,7 @@ public final class Has
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean has(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final @Nullable Object value) {
+                                  final T value) {
         if (collection == null)
             return false;
 
@@ -60,7 +60,7 @@ public final class Has
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
     public static <T> boolean has(final @Nullable CollectionHolder<? extends T> collection,
-                                  final @Nullable Object value) {
+                                  final T value) {
         if (collection == null)
             return false;
         if (collection.isEmpty())
@@ -72,7 +72,7 @@ public final class Has
     //#region -------------------- Loop methods --------------------
 
     private static <T> boolean __has(final @NotNull MinimalistCollectionHolder<? extends T> collection, int size,
-                                     final @Nullable Object value) {
+                                     final T value) {
         var index = -1;
         if (value == null) {
             while (++index < size)
