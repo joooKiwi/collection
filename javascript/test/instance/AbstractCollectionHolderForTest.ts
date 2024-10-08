@@ -403,6 +403,46 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public abstract slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice --------------------
+    //#region -------------------- Take --------------------
+
+    public abstract take(n: number,): CollectionHolder<T>
+
+    public abstract takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public abstract takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+
+    public abstract takeWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public abstract takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+
+
+    public abstract takeLast(n: number,): CollectionHolder<T>
+
+    public abstract takeLastWhile<const S extends T, >(predicate?: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public abstract takeLastWhile(predicate?: BooleanCallback<T>,): CollectionHolder<T>
+
+    public abstract takeLastWhileIndexed<const S extends T, >(predicate?: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public abstract takeLastWhileIndexed(predicate?: ReverseBooleanCallback<T>,): CollectionHolder<T>
+
+    //#endregion -------------------- Take --------------------
+    //#region -------------------- Drop --------------------
+
+    public abstract drop(n: number,): CollectionHolder<T>
+
+    public abstract dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public abstract dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+
+    public abstract dropWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public abstract dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+
+
+    public abstract dropLast(n: number,): CollectionHolder<T>
+
+    public abstract dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public abstract dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+
+    public abstract dropLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public abstract dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+
+    //#endregion -------------------- Drop --------------------
     //#region -------------------- Map --------------------
 
     public abstract map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U>

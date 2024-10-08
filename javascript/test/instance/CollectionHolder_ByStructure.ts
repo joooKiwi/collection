@@ -343,6 +343,56 @@ export class CollectionHolder_ByStructure<const T, >
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,) { return this.reference.slice(indicesOrFromIndex, toIndex,) }
 
     //#endregion -------------------- Slice --------------------
+    //#region -------------------- Take --------------------
+
+    public take(n: number,): CollectionHolder<T> { return this.reference.take(n,) }
+
+
+    public takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public takeWhile(predicate: BooleanCallback<T>,) { return this.reference.takeWhile(predicate,) }
+
+
+    public takeWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.takeWhileIndexed(predicate,) }
+
+
+    public takeLast(n: number,): CollectionHolder<T> { return this.reference.takeLast(n,) }
+
+    public takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public takeLastWhile(predicate: BooleanCallback<T>,) { return this.reference.takeLastWhile(predicate,) }
+
+    public takeLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.takeLastWhileIndexed(predicate,) }
+
+    //#endregion -------------------- Take --------------------
+    //#region -------------------- Drop --------------------
+
+    public drop(n: number,): CollectionHolder<T> { return this.reference.drop(n,) }
+
+    public dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public dropWhile(predicate: BooleanCallback<T>,) { return this.reference.dropWhile(predicate,) }
+
+    public dropWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.dropWhileIndexed(predicate,) }
+
+
+    public dropLast(n: number,): CollectionHolder<T> { return this.reference.dropLast(n,) }
+
+    public dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public dropLastWhile(predicate: BooleanCallback<T>,) { return this.reference.dropLastWhile(predicate,) }
+
+    public dropLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.dropLastWhileIndexed(predicate,) }
+
+    //#endregion -------------------- Drop --------------------
     //#region -------------------- Map --------------------
 
     public map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> { return this.reference.map(transform,) }

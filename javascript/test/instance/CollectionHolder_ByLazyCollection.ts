@@ -199,6 +199,8 @@ export class CollectionHolder_ByLazyCollection<const T, >
     //#endregion -------------------- Validation methods --------------------
     //#region -------------------- Transformation methods --------------------
 
+    //#region -------------------- Filter --------------------
+
     public override filter<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override filter(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public override filter(predicate: BooleanCallback<T>,) { return this.instance.filter(predicate,) }
@@ -222,6 +224,8 @@ export class CollectionHolder_ByLazyCollection<const T, >
         return instance
     }
 
+    //#endregion -------------------- Filter --------------------
+    //#region -------------------- Slice --------------------
 
     public override slice(indices: readonly number[],): CollectionHolder<T>
     public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
@@ -240,12 +244,86 @@ export class CollectionHolder_ByLazyCollection<const T, >
         return this.instance.slice(indicesOrFromIndex, toIndex,)
     }
 
+    //#region -------------------- Take --------------------
+
+    public override take(n: number,): CollectionHolder<T> {
+        return this.instance.take(n,)
+    }
+
+    public override takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public override takeWhile(predicate: BooleanCallback<T>,) {
+        return this.instance.takeWhile(predicate,)
+    }
+
+    public override takeWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return this.instance.takeWhileIndexed(predicate,)
+    }
+
+
+    public override takeLast(n: number,): CollectionHolder<T> {
+        return this.instance.takeLast(n,)
+    }
+
+    public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public override takeLastWhile(predicate: BooleanCallback<T>,) {
+        return this.instance.takeLastWhile(predicate,)
+    }
+
+    public override takeLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return this.instance.takeLastWhileIndexed(predicate,)
+    }
+
+    //#endregion -------------------- Take --------------------
+    //#region -------------------- Drop --------------------
+
+    public override drop(n: number,): CollectionHolder<T> {
+        return this.instance.drop(n,)
+    }
+
+    public override dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public override dropWhile(predicate: BooleanCallback<T>,) {
+        return this.instance.dropWhile(predicate,)
+    }
+
+    public override dropWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return this.instance.dropWhileIndexed(predicate,)
+    }
+
+
+    public override dropLast(n: number,): CollectionHolder<T> {
+        return this.instance.dropLast(n,)
+    }
+
+    public override dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public override dropLastWhile(predicate: BooleanCallback<T>,) {
+        return this.instance.dropLastWhile(predicate,)
+    }
+
+    public override dropLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return this.instance.dropLastWhileIndexed(predicate,)
+    }
+
+    //#endregion -------------------- Drop --------------------
 
     public override map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> { return this.instance.map(transform,) }
     public override mapIndexed<const U, >(transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> { return this.instance.mapIndexed(transform,) }
 
     public override mapNotNull<const U extends NonNullable<unknown>, >(transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> { return this.instance.mapNotNull(transform,) }
     public override mapNotNullIndexed<const U extends NonNullable<unknown>, >(transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> { return this.instance.mapNotNullIndexed(transform,) }
+
+    //#endregion -------------------- Map --------------------
 
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Loop methods --------------------
