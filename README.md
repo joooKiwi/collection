@@ -344,12 +344,12 @@ The methods are made to find an element or giving a value
 ### Index methods
 
 The methods are made to find an index
- - `indexOf`(element, fromIndex?, toIndex?, limit?)
- - `lastIndexOf`(element, fromIndex?, toIndex?, limit?)
- - `indexOfFirst`|`findIndex`(predicate, fromIndex?, toIndex?, limit?)
- - `indexOfFirstIndexed`|`findIndexIndexed`(predicate, fromIndex?, toIndex?, limit?)
- - `indexOfLast`|`findLastIndex`(predicate, fromIndex?, toIndex?, limit?)
- - `indexOfLastIndexed`|`findLastIndexIndexed`(predicate, fromIndex?, toIndex?, limit?)
+ - `indexOf`(element, fromIndex?, toIndex?)
+ - `lastIndexOf`(element, fromIndex?, toIndex?)
+ - `indexOfFirst`|`findIndex`(predicate, fromIndex?, toIndex?)
+ - `indexOfFirstIndexed`|`findIndexIndexed`(predicate, fromIndex?, toIndex?)
+ - `indexOfLast`|`findLastIndex`(predicate, fromIndex?, toIndex?)
+ - `indexOfLastIndexed`|`findLastIndexIndexed`(predicate, fromIndex?, toIndex?)
 
 <details><summary>indexOf(element)</summary>
 
@@ -450,71 +450,6 @@ return null;
 ```
 </td></tr>
 </table></details>
-<details><summary>indexOf(element, fromIndex, toIndex, limit)</summary><table>
-<tr><th>Language</th><th>Equivalent</th></tr>
-<tr><th>Javascript</th><td>
-
-```javascript
-const startingIndex = calculate-starting-index(fromIndex)
-const endingIndex = calculate-ending-index(toIndex)
-const maximumIndex = calculate-maximum-index(limit)
-let index = startingIndex - 1
-while (++index <= endingIndex)
-    if (index >= maximumIndex)
-        return null
-    else if (array[index] === element)
-        return index
-return null
-```
-
-</td></tr>
-<tr><th>Java</th><td>
-
-```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
-final var maximumIndex = calculate-maximum-index(toIndex);
-var index = startingIndex - 1;
-while (++index <= endingIndex)
-    if (index >= maximumIndex)
-        return null;
-    else if (array[index] == element)
-        return index;
-return null;
-```
-</td></tr>
-<tr><th>Kotlin</th><td>
-
-```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-val endingIndex = calculate-ending-index(toIndex)
-val maximumIndex = calculate-maximum-index(limit)
-var index = startingIndex - 1
-while (++index <= endingIndex)
-    if (index >= maximumIndex)
-        return null
-    else if (element in array[index])
-        return index
-return null
-```
-</td></tr>
-<tr><th>PHP</th><td></td></tr>
-<tr><th>C#</th><td>
-
-```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
-var maximumIndex = calculate-maximum-index(limit);
-var index = startingIndex - 1;
-while (++index <= endingIndex)
-    if (index >= maximumIndex)
-        return null;
-    else if (array[index] == element)
-        return index;
-return null;
-```
-</td></tr>
-</table></details>
 <br/>
 
 <details><summary>lastIndexOf(element)</summary>
@@ -608,70 +543,6 @@ return null
 var startingIndex = calculate-starting-index(fromIndex);
 var endingIndex = calculate-ending-index(toIndex);
 var index = endingIndex + 1;
-while (--index >= startingIndex)
-    if (array[index] == element)
-        return index;
-return null;
-```
-</td></tr>
-</table></details>
-<details><summary>lastIndexOf(element, fromIndex, toIndex, limit)</summary><table>
-<tr><th>Language</th><th>Equivalent</th></tr>
-<tr><th>Javascript</th><td>
-
-```javascript
-const startingIndex = calculate-starting-index(fromIndex)
-const endingIndex = calculate-ending-index(toIndex)
-const maximumIndex = calculate-maximum-index(limit)
-var index = endingIndex + 1
-if (index >= maximumIndex)
-    index = maximumIndex
-while (--index >= startingIndex)
-    if (array[index] == element)
-        return index
-return null
-```
-</td></tr>
-<tr><th>Java</th><td>
-
-```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
-final var maximumIndex = calculate-maximum-index(limit);
-var index = endingIndex + 1;
-if (index >= maximumIndex)
-    index = maximumIndex;
-while (--index >= startingIndex)
-    if (array[index] == element)
-        return index;
-return null;
-```
-</td></tr>
-<tr><th>Kotlin</th><td>
-
-```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-val endingIndex = calculate-ending-index(toIndex)
-val maximumIndex = calculate-maximum-index(limit)
-var index = endingIndex + 1
-if (index >= maximumIndex)
-    index = maximumIndex
-while (--index >= startingIndex)
-    if (element in array[index])
-        return index
-return null
-```
-</td></tr>
-<tr><th>PHP</th><td></td></tr>
-<tr><th>C#</th><td>
-
-```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
-var maximumIndex = calculate-ending-index(limit);
-var index = endingIndex + 1;
-if (index >= maximumIndex)
-    index = maximumIndex;
 while (--index >= startingIndex)
     if (array[index] == element)
         return index;
@@ -802,70 +673,6 @@ return null;
 ```
 </td></tr>
 </table></details>
-<details><summary>indexOfFirst(element, fromIndex, toIndex, limit)<br/>indexOfFirstIndexed(element, fromIndex, toIndex, limit)</summary><table>
-<tr><th>Language</th><th>Equivalent</th></tr>
-<tr><th>Javascript</th><td>
-
-```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
-const endingIndex = calculate-ending-index(toIndex,)
-const maximumIndex = calculate-maximum-index(limit,)
-let index = startingIndex - 1
-while (++index <= endingIndex)
-    if (index >= maximumIndex)
-        return null
-    else if (predicate)
-        return index
-return null
-```
-</td></tr>
-<tr><th>Java</th><td>
-
-```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
-final var maximumIndex = calculate-maximum-index(limit);
-var index = startingIndex - 1;
-while (++index <= endingIndex)
-    if (index >= maximumIndex)
-        return null;
-    else if (predicate)
-        return index;
-return null;
-```
-</td></tr>
-<tr><th>Kotlin</th><td>
-
-```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-val endingIndex = calculate-ending-index(toIndex)
-val maximumIndex = calculate-maximum-index(limit)
-var index = startingIndex - 1
-while (++index <= endingIndex)
-    if (index >= maximumIndex)
-        return null
-    else if (predicate)
-        return index
-return null
-```
-</td></tr>
-<tr><th>PHP</th><td></td></tr>
-<tr><th>C#</th><td>
-
-```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
-var maximumIndex = calculate-maximum-index(limit);
-var index = startingIndex - 1;
-while (++index <= endingIndex)
-    if (index >= maximumIndex)
-        return null;
-    else if (predicate)
-        return index;
-return null;
-```
-</td></tr>
-</table></details>
 <br/>
 
 <details><summary>indexOfLast(element)<br/>indexOfLastIndexed(element)</summary><table>
@@ -982,70 +789,6 @@ return null
 var startingIndex = calculate-starting-index(fromIndex);
 var endingIndex = calculate-ending-index(toIndex);
 var index = endingIndex + 1;
-while (--index >= startingIndex)
-    if (predicate)
-        return index;
-return null;
-```
-</td></tr>
-</table></details>
-<details><summary>indexOfLast(element, fromIndex, toIndex, limit)<br/>indexOfLastIndexed(element, fromIndex, toIndex, limit)</summary><table>
-<tr><th>Language</th><th>Equivalent</th></tr>
-<tr><th>Javascript</th><td>
-
-```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
-const endingIndex = calculate-ending-index(toIndex,)
-const maximumIndex = calculate-maximum-index(limit,)
-let index = endingIndex + 1
-if (index >= maximumIndex)
-    index = maximumIndex
-while (--index >= startingIndex)
-    if (predicate)
-        return index
-return null
-```
-</td></tr>
-<tr><th>Java</th><td>
-
-```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
-const maximumIndex = calculate-maximum-index(limit);
-var index = endingIndex + 1;
-if (index >= maximumIndex)
-    index = maximumIndex;
-while (--index >= startingIndex)
-    if (predicate)
-        return index;
-return null;
-```
-</td></tr>
-<tr><th>Kotlin</th><td>
-
-```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-val endingIndex = calculate-ending-index(toIndex)
-val maximumIndex = calculate-maximum-index(limit)
-var index = endingIndex + 1
-if (index >= maximumIndex)
-    index = maximumIndex
-while (--index >= startingIndex)
-    if (predicate)
-        return index
-return null
-```
-</td></tr>
-<tr><th>PHP</th><td></td></tr>
-<tr><th>C#</th><td>
-
-```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
-const maximumIndex = calculate-maximum-index(limit);
-var index = endingIndex + 1;
-if (index >= maximumIndex)
-    index = maximumIndex;
 while (--index >= startingIndex)
     if (predicate)
         return index;
@@ -1299,7 +1042,7 @@ The methods are made to transform the structure by different type or size
  - `filterNotIndexed`(predicate)
  - `filterNotNull`()
  - `slice`(indices)
- - `slice`(fromIndex?, toIndex?, limit?)
+ - `slice`(fromIndex?, toIndex?)
  - `take`(n)
  - `takeWhile`(predicate)
  - `takeWhileIndexed`(predicate)
@@ -1417,94 +1160,26 @@ return newArray;
 </details>
 <details><summary>slice(fromIndex)</summary>
 
-| Language       | Equivalent                                       |
-|:---------------|:-------------------------------------------------|
-| **Javascript** | [Array.slice(fromIndex)][js-slice]               |
-| **Java**       | `Arrays.copyOfRange(array, fromIndex, size - 1)` |
-| **Kotlin**     | `array[fromIndex..]`                             |
-| **PHP**        |                                                  |
-| **C#**         | `array[fromIndex..^0]`                           |
+| Language       | Equivalent                                          |
+|:---------------|:----------------------------------------------------|
+| **Javascript** | [Array.slice(fromIndex)][js-slice]                  |
+| **Java**       | `Arrays.copyOfRange(array, fromIndex, size - 1)`    |
+| **Kotlin**     | `array[fromIndex..]`<br/>`array.slice(fromIndex..)` |
+| **PHP**        |                                                     |
+| **C#**         | `array[fromIndex..^0]`                              |
 
 </details>
 <details><summary>slice(fromIndex, toIndex)</summary>
 
-| Language       | Equivalent                                      |
-|:---------------|:------------------------------------------------|
-| **Javascript** | [Array.slice(fromIndex, toIndex)][js-slice]     |
-| **Java**       | `Arrays.copyOfRange(array, fromIndex, toIndex)` |
-| **Kotlin**     | `array[fromIndex..toIndex]`                     |
-| **PHP**        |                                                 |
-| **C#**         | `array[fromIndex..toIndex]`                     |
+| Language       | Equivalent                                                        |
+|:---------------|:------------------------------------------------------------------|
+| **Javascript** | [Array.slice(fromIndex, toIndex)][js-slice]                       |
+| **Java**       | `Arrays.copyOfRange(array, fromIndex, toIndex)`                   |
+| **Kotlin**     | `array[fromIndex..toIndex]`<br/>`array.slice(fromIndex..toIndex)` |
+| **PHP**        |                                                                   |
+| **C#**         | `array[fromIndex..toIndex]`                                       |
 
 </details>
-<details><summary>slice(fromIndex, toIndex, limit)</summary><table>
-<tr><th>Language</th><th>Equivalent</th></tr>
-<tr><th>Javascript</th><td>
-
-```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
-const endingIndex = calculate-ending-index(toIndex,)
-const maximumIndex = calculate-maximum-index(limit,)
-const newArray = []
-let index = startingIndex - 1
-while (++index <= endingIndex)
-    if (newArray.length >= maximumIndex)
-        return newArray
-    else
-        newArray.push(array[index],)
-return newArray
-```
-</td></tr>
-<tr><th>Java</th><td>
-
-```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
-final var maximumIndex = calculate-maximum-index(limit);
-final var newList = new ArrayList<T>();
-let index = startingIndex - 1
-while (++index <= endingIndex)
-    if (newList.size() >= maximumIndex)
-        return newList;
-    else
-        newList.add(array[index]);
-return newList;
-```
-</td></tr>
-<tr><th>Kotlin</th><td>
-
-```kotlin
-val startingIndex = calculate-starting-index(fromIndex,)
-val endingIndex = calculate-ending-index(toIndex,)
-val maximumIndex = calculate-maximum-index(limit,)
-val newList = mutableListOf<T>()
-var index = startingIndex - 1
-while (++index <= endingIndex)
-    if (newList.size >= maximumIndex)
-        return newList
-    else
-        newList.add(array[index],)
-return newList
-```
-</td></tr>
-<tr><th>PHP</th><td></td></tr>
-<tr><th>C#</th><td>
-
-```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
-var maximumIndex = calculate-maximum-index(limit);
-var newList = new List<T>();
-let index = startingIndex - 1
-while (++index <= endingIndex)
-    if (newList.Count >= maximumIndex)
-        return newList;
-    else
-        newList.Add(array[index]);
-return newList;
-```
-</td></tr>
-</table></details>
 <br/>
 <details><summary>take(n)</summary>
 
@@ -1660,13 +1335,13 @@ return []
 </details>
 <details><summary>mapNotNullIndexed(transform)</summary>
 
-| Language       | Equivalent                                                                                            |
-|:---------------|:------------------------------------------------------------------------------------------------------|
-| **Javascript** | `array.map(it => it != null,)`                                                                        |
-| **Java**       | `collection.stream().map(it -> it != null).toList()`                                                  |
-| **Kotlin**     | <ul><li>[Array.mapNotNull(transform)<br/>Iterable.mapNotNull(transform)][kotlin-map-not-null-indexed] |
-| **PHP**        | `array_map(fn(it,) => it != null, $array)`                                                            |
-| **C#**         | `enumerable.Select(it it != null)`                                                                    |
+| Language       | Equivalent                                                                                                          |
+|:---------------|:--------------------------------------------------------------------------------------------------------------------|
+| **Javascript** | `array.map(it => it != null,)`                                                                                      |
+| **Java**       | `collection.stream().map(it -> it != null).toList()`                                                                |
+| **Kotlin**     | <ul><li>[Array.mapIndexedNotNull(transform)<br/>Iterable.mapIndexedNotNull(transform)][kotlin-map-not-null-indexed] |
+| **PHP**        | `array_map(fn(it,) => it != null, $array)`                                                                          |
+| **C#**         | `enumerable.Select(it it != null)`                                                                                  |
 
 </details>
 
@@ -1728,7 +1403,7 @@ The methods are basically an embedded loop
 ### Reordering methods
 
 The methods are there to reorder the values
- - `toReverse`|`toReversed`|`reversed`(fromIndex?, toIndex?, limit?)
+ - `toReverse`|`toReversed`|`reversed`(fromIndex?, toIndex?)
 
 <details><summary>toReverse()</summary>
 
@@ -1847,74 +1522,6 @@ var index = endingIndex + 1;
 while (--index >= startingIndex)
     newArray[++indexAdded] = array[index];
 return newArray;
-```
-</td></tr>
-</table></details>
-<details><summary>toReverse(fromIndex, toIndex, limit)</summary><table>
-<tr><th>Language</th><th>Equivalent</th></tr>
-<tr><th>Javascript</th><td>
-
-```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
-const endingIndex = calculate-ending-index(toIndex,)
-const maximumIndex = calculate-maximum-index(limit,)
-const newArray = []
-let index = endingIndex + 1
-while (--index >= startingIndex)
-    if (newArray.length >= maximumIndex)
-        return newArray
-    else
-        newArray.push(collection.get(index,),)
-return newArray
-```
-</td></tr>
-<tr><th>Java</th><td>
-
-```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
-final var maximumIndex = calculate-maximum-index(limit);
-final var newList = new ArrayList<T>();
-var index = endingIndex + 1;
-while (--index >= startingIndex)
-    if (newList.size() >= maximumIndex)
-        return newList.toArray((T[]) new Object[newList.size()]);
-    else
-        newList.add(array[index]);
-return newList.toArray((T[]) new Object[newList.size()]);
-```
-</td></tr>
-<tr><th>Kotlin</th><td>
-
-```kotlin
-val startingIndex = calculate-starting-index(fromIndex,)
-val endingIndex = calculate-ending-index(toIndex,)
-val maximumIndex = calculate-maximum-index(limit,)
-val newList = mutableList<T>()
-var index = endingIndex + 1
-while (--index >= startingIndex)
-    if (newList.size >= maximumIndex)
-        return newList.toTypedArray()
-    else
-        newList.add(array[index])
-return newList.toTypedArray()
-```
-</td></tr>
-<tr><th>PHP</th><td></td></tr>
-<tr><th>C#</th><td>
-
-```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
-var maximumIndex = calculate-maximum-index(limit);
-var newList = new List<T>();
-var index = endingIndex + 1;
-while (--index >= startingIndex)
-    if (newList.Count >= maximumIndex)
-        return newList;
-    else
-        newList.Add(array[index]);
-return newList;
 ```
 </td></tr>
 </table></details>
@@ -2038,7 +1645,7 @@ This is the most bare-bones structure
 
 | Language       | Equivalent                                                                                                                                        |
 |:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <code>\`${prefix}${[Array.join(separator)][js-join-to-string]}]`                                                                                  |
+| **Javascript** | <code>\`\${prefix}${[Array.join(separator)][js-join-to-string]}]`                                                                                 |
 | **Java**       |                                                                                                                                                   |
 | **Kotlin**     | [Array.joinToString(separator, prefix)<br/>Iterable.joinToString(separator, prefix)][kotlin-join-to-string]                                       |
 | **PHP**        |                                                                                                                                                   |
@@ -2049,7 +1656,7 @@ This is the most bare-bones structure
 
 | Language       | Equivalent                                                                                                                                                |
 |:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <code>\`${prefix}${[Array.join(separator)][js-join-to-string]}${postfix}`                                                                                 |
+| **Javascript** | <code>\`\${prefix}\${[Array.join(separator)][js-join-to-string]}${postfix}`                                                                               |
 | **Java**       |                                                                                                                                                           |
 | **Kotlin**     | [Array.joinToString(separator, prefix, postfix)<br/>Iterable.joinToString(separator, prefix, postfix)][kotlin-join-to-string]                             |
 | **PHP**        |                                                                                                                                                           |
