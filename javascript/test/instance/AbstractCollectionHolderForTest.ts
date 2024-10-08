@@ -15,6 +15,7 @@ import type {CollectionHolderForTest}                                           
 
 import {CollectionHolderIndexOutOfBoundsException} from "../../src/exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../../src/exception/EmptyCollectionHolderException"
+import {ForbiddenIndexException}                   from "../../src/exception/ForbiddenIndexException"
 
 /**
  * A bare-bone implementation of a {@link CollectionHolderForTest} with nothing implemented,
@@ -50,23 +51,34 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public executeWhileIgnoringIndexOutOfBound(action: (instance: this,) => void,): this {
         try {
             action(this,)
-            return this
         } catch (exception) {
             if (exception instanceof CollectionHolderIndexOutOfBoundsException)
                 return this
             throw exception
         }
+        throw new Error("The exception “CollectionHolderIndexOutOfBoundsException” was expected to be thrown.",)
     }
 
     public executeWhileIgnoringEmptyException(action: (instance: this,) => void,): this {
         try {
             action(this,)
-            return this
         } catch (exception) {
             if (exception instanceof EmptyCollectionHolderException)
                 return this
             throw exception
         }
+        throw new Error("The exception “EmptyCollectionHolderException” was expected to be thrown.",)
+    }
+
+    public executeWhileIgnoringForbiddenException(action: (instance: this,) => void,): this {
+        try {
+            action(this,)
+        } catch (exception) {
+            if (exception instanceof ForbiddenIndexException)
+                return this
+            throw exception
+        }
+        throw new Error("The exception “ForbiddenIndexException” was expected to be thrown.",)
     }
 
     public executeWhileHavingIndexesOnField<const U, >(action: (instance: this,) => CollectionHolder<U>,): this {

@@ -34,6 +34,15 @@ export interface CollectionHolderForTest<out T, >
     executeWhileIgnoringEmptyException(action: (instance: this,) => void,): this
 
     /**
+     * Do an action on the curent {@link CollectionHolderForTest instance}
+     * while ignoring any {@link ForbiddenIndexException} being thrown
+     * and return itself afterward
+     *
+     * @param action The action to do
+     */
+    executeWhileIgnoringForbiddenException(action: (instance: this,) => void,): this
+
+    /**
      * Do an action on the current {@link CollectionHolderForTest instance}
      * and have the index being present on the returned {@link CollectionHolder collection} on the action
      * and return itself afterward
