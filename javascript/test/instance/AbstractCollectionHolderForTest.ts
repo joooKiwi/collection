@@ -197,13 +197,40 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
+
     public abstract lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
+
     public abstract indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    public findIndex(predicate?: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): never
+    public findIndex() {
+        throw new Error("The method “findIndex” was not expected to be called.",)
+    }
+
+
     public abstract indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
+    public findIndexIndexed(predicate?: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): never
+    public findIndexIndexed() {
+        throw new Error("The method “findIndexIndexed” was not expected to be called.",)
+    }
+
+
     public abstract indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    public findLastIndex(predicate?: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): never
+    public findLastIndex() {
+        throw new Error("The method “findLastIndex” was not expected to be called.",)
+    }
+
+
     public abstract indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    public findLastIndexIndexed(predicate?: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): never
+    public findLastIndexIndexed() {
+        throw new Error("The method “findLastIndexIndexed” was not expected to be called.",)
+    }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------

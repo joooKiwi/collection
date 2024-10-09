@@ -160,15 +160,27 @@ export class EmptyCollectionHolder
     public indexOfFirst(..._: readonly unknown[]): null
     public indexOfFirst() { return null }
 
+    public findIndex(..._: readonly unknown[]): null
+    public findIndex() { return this.indexOfFirst() }
+
     public indexOfFirstIndexed(..._: readonly unknown[]): null
     public indexOfFirstIndexed() { return null }
+
+    public findIndexIndexed(..._: readonly unknown[]): null
+    public findIndexIndexed() { return this.indexOfFirstIndexed() }
 
 
     public indexOfLast(..._: readonly unknown[]): null
     public indexOfLast() { return null }
 
+    public findLastIndex(..._: readonly unknown[]): null
+    public findLastIndex() { return this.indexOfLast() }
+
     public indexOfLastIndexed(..._: readonly unknown[]): null
     public indexOfLastIndexed() { return null }
+
+    public findLastIndexIndexed(..._: readonly unknown[]): null
+    public findLastIndexIndexed() { return this.indexOfLastIndexed() }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------

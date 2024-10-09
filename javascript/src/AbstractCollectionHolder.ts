@@ -282,11 +282,19 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
+    public findIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.indexOfFirst(predicate, fromIndex, toIndex,)
+    }
+
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of first indexed --------------------
 
     public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
         return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    public findIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.indexOfFirstIndexed(predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of first indexed --------------------
@@ -297,11 +305,19 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
+    public findLastIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.indexOfLast(predicate, fromIndex, toIndex,)
+    }
+
     //#endregion -------------------- Index of last --------------------
     //#region -------------------- Index of last indexed --------------------
 
     public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
         return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    public findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.indexOfLastIndexed(predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of last indexed --------------------
