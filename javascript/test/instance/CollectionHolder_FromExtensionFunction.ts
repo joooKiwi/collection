@@ -108,11 +108,11 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     }
 
     public get isEmpty(): boolean {
-        return isEmptyByCollectionHolder(this,)
+        return isEmptyByCollectionHolder<T>(this,)
     }
 
     public get isNotEmpty(): boolean {
-        return isNotEmptyByCollectionHolder(this,)
+        return isNotEmptyByCollectionHolder<T>(this,)
     }
 
     //#endregion -------------------- Size methods --------------------
@@ -131,7 +131,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
-        return getOrElseByCollectionHolder(this, index, defaultValue,)
+        return getOrElseByCollectionHolder(this as CollectionHolder, index, defaultValue,)
     }
 
     public override getOrNull(index: number,): NullOr<T> {
@@ -266,14 +266,14 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- Has null --------------------
 
     public override get hasNull(): boolean {
-        return hasNullByCollectionHolder(this,)
+        return hasNullByCollectionHolder<T>(this,)
     }
 
     //#endregion -------------------- Has null --------------------
     //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): boolean {
-        return hasDuplicateByCollectionHolder(this,)
+        return hasDuplicateByCollectionHolder<T>(this,)
     }
 
     //#endregion -------------------- Has duplicate --------------------
@@ -281,7 +281,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {
-        return hasByCollectionHolder(this, value,)
+        return hasByCollectionHolder<T>(this, value,)
     }
 
     //#endregion -------------------- Has --------------------
@@ -295,7 +295,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override hasOne(values: Iterable<T>,): boolean
     public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
     public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
-        return hasOneByCollectionHolder(this, values,)
+        return hasOneByCollectionHolder<T>(this, values,)
     }
 
     //#endregion -------------------- Has one --------------------
@@ -309,7 +309,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override hasAll(values: Iterable<T>,): boolean
     public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
     public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
-        return hasAllByCollectionHolder(this, values,)
+        return hasAllByCollectionHolder<T>(this, values,)
     }
 
     //#endregion -------------------- Has all --------------------
@@ -317,7 +317,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- Require no nulls --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNullsByCollectionHolder(this,)
+        return requireNoNullsByCollectionHolder<T>(this,)
     }
 
     //#endregion -------------------- Require no nulls --------------------
@@ -354,7 +354,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
 
 
     public override filterNotNull(): CollectionHolder<NonNullable<T>> {
-        return filterNotNullByCollectionHolder(this,)
+        return filterNotNullByCollectionHolder<T>(this,)
     }
 
     //#endregion -------------------- Filter --------------------
@@ -370,7 +370,7 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,) {
-        return sliceByCollectionHolder(this, indicesOrFromIndex, toIndex,)
+        return sliceByCollectionHolder<T>(this, indicesOrFromIndex, toIndex,)
     }
 
     //#endregion -------------------- Slice --------------------
@@ -546,27 +546,27 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#region -------------------- To string --------------------
 
     public override toString(): string {
-        return toStringByCollectionHolder(this,)
+        return toStringByCollectionHolder<T>(this,)
     }
 
     public override toLocaleString(locale?: NullableString,): string {
-        return toLocaleStringByCollectionHolder(this, locale,)
+        return toLocaleStringByCollectionHolder<T>(this, locale,)
     }
 
     public override toLowerCaseString(): string {
-        return toLowerCaseStringByCollectionHolder(this,)
+        return toLowerCaseStringByCollectionHolder<T>(this,)
     }
 
     public override toLocaleLowerCaseString(locale?: NullableString,): string {
-        return toLocaleLowerCaseStringByCollectionHolder(this, locale,)
+        return toLocaleLowerCaseStringByCollectionHolder<T>(this, locale,)
     }
 
     public override toUpperCaseString(): string {
-        return toUpperCaseStringByCollectionHolder(this,)
+        return toUpperCaseStringByCollectionHolder<T>(this,)
     }
 
     public override toLocaleUpperCaseString(locale?: NullableString,): string {
-        return toLocaleUpperCaseStringByCollectionHolder(this, locale,)
+        return toLocaleUpperCaseStringByCollectionHolder<T>(this, locale,)
     }
 
     //#endregion -------------------- To string --------------------
