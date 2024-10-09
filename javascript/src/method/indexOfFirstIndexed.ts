@@ -37,29 +37,6 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-/**
- * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws ForbiddenIndexException                   The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
- * @see ReadonlyArray.findIndex
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function indexOfFirstIndexed<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 export function indexOfFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
@@ -93,29 +70,6 @@ export function indexOfFirstIndexed<const T, >(collection: Nullable<| Minimalist
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-/**
- * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws ForbiddenIndexException                   The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
- * @see ReadonlyArray.findIndex
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function indexOfFirstIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 export function indexOfFirstIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
@@ -153,29 +107,6 @@ export function indexOfFirstIndexedByMinimalistCollectionHolder<const T, >(colle
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-/**
- * Get the first index matching the {@link predicate}
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws ForbiddenIndexException                   The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
- * @see ReadonlyArray.findIndex
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null

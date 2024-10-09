@@ -41,32 +41,7 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-/**
- * Reverse to a new {@link CollectionHolder}
- * from the {@link toIndex ending} to the {@link fromIndex starting} index
- * in the {@link collection}.
- *
- * If the {@link MinimalistCollectionHolder.size size} is 1 (<i>with valid indexes</i>),
- * then the {@link collection} is returned.
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to reverse
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
- * @see Array.reverse
- * @see ReadonlyArray.toReversed
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- */
-export function toReverse<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,) {
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
@@ -102,32 +77,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-/**
- * Reverse to a new {@link CollectionHolder}
- * from the {@link toIndex ending} to the {@link fromIndex starting} index
- * in the {@link collection}.
- *
- * If the {@link MinimalistCollectionHolder.size size} is 1 (<i>with valid indexes</i>),
- * then the {@link collection} is returned.
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to reverse
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
- * @see Array.reverse
- * @see ReadonlyArray.toReversed
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- */
-export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,) {
+export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
@@ -163,32 +113,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-/**
- * Reverse to a new {@link CollectionHolder}
- * from the {@link toIndex ending} to the {@link fromIndex starting} index
- * in the {@link collection}.
- *
- * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
- * then the {@link collection} is returned.
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to reverse
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
- * @see Array.reverse
- * @see ReadonlyArray.toReversed
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- */
-export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,) {
+export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)

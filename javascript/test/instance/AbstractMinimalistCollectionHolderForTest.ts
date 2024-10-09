@@ -181,16 +181,12 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    public override indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
         return indexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
 
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    public override lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
         return lastIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
@@ -297,7 +293,7 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, >
     //#region -------------------- Require no nulls --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNullsByMinimalistCollectionHolder(this,)
+        return requireNoNullsByMinimalistCollectionHolder<T>(this,)
     }
 
     //#endregion -------------------- Require no nulls --------------------

@@ -298,13 +298,6 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public includesOne(values?: CollectionIterator<T>,): never
     public includesOne(values?: Iterable<T>,): never
     public includesOne(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
-    public includesOne(values?: readonly unknown[],): never
-    public includesOne(values?: ReadonlySet<unknown>,): never
-    public includesOne(values?: CollectionHolder,): never
-    public includesOne(values?: MinimalistCollectionHolder,): never
-    public includesOne(values?: CollectionIterator,): never
-    public includesOne(values?: Iterable<unknown>,): never
-    public includesOne(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
     public includesOne() {
         throw new Error("The method “includesOne” was not expected to be called.",)
     }
@@ -316,13 +309,6 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public containsOne(values?: MinimalistCollectionHolder<T>,): never
     public containsOne(values?: Iterable<T>,): never
     public containsOne(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
-    public containsOne(values?: readonly unknown[],): never
-    public containsOne(values?: ReadonlySet<unknown>,): never
-    public containsOne(values?: CollectionHolder,): never
-    public containsOne(values?: MinimalistCollectionHolder,): never
-    public containsOne(values?: CollectionIterator,): never
-    public containsOne(values?: Iterable<unknown>,): never
-    public containsOne(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
     public containsOne() {
         throw new Error("The method “containsOne” was not expected to be called.",)
     }
@@ -345,13 +331,6 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public includesAll(values?: CollectionIterator<T>,): never
     public includesAll(values?: Iterable<T>,): never
     public includesAll(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
-    public includesAll(values?: readonly unknown[],): never
-    public includesAll(values?: ReadonlySet<unknown>,): never
-    public includesAll(values?: CollectionHolder,): never
-    public includesAll(values?: MinimalistCollectionHolder,): never
-    public includesAll(values?: CollectionIterator,): never
-    public includesAll(values?: Iterable<unknown>,): never
-    public includesAll(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
     public includesAll() {
         throw new Error("The method “includesAll” was not expected to be called.",)
     }
@@ -363,13 +342,6 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     public containsAll(values?: CollectionIterator<T>,): never
     public containsAll(values?: Iterable<T>,): never
     public containsAll(values?: PossibleIterableArraySetOrCollectionHolder<T>,): never
-    public containsAll(values?: readonly unknown[],): never
-    public containsAll(values?: ReadonlySet<unknown>,): never
-    public containsAll(values?: CollectionHolder,): never
-    public containsAll(values?: MinimalistCollectionHolder,): never
-    public containsAll(values?: CollectionIterator,): never
-    public containsAll(values?: Iterable<unknown>,): never
-    public containsAll(values?: PossibleIterableArraySetOrCollectionHolder<unknown>,): never
     public containsAll() {
         throw new Error("The “containsAll” was not expected to be called.",)
     }

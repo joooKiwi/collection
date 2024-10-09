@@ -38,50 +38,7 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>first</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>first</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @see ReadonlyArray.indexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function indexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-export function indexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,) {
+export function indexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
     if (isCollectionHolder<T>(collection,))
@@ -116,54 +73,7 @@ export function indexOf<const T, >(collection: Nullable<| MinimalistCollectionHo
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>first</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @see ReadonlyArray.indexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function indexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>first</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @see ReadonlyArray.indexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function indexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-export function indexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,) {
+export function indexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
 
@@ -198,54 +108,7 @@ export function indexOfByMinimalistCollectionHolder<const T, >(collection: Nulla
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>first</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @see ReadonlyArray.indexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>first</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @see ReadonlyArray.indexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, limit?)
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,) {
+export function indexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
     if (collection.isEmpty)

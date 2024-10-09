@@ -38,55 +38,6 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>last</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws ForbiddenIndexException                   The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
- * @see ReadonlyArray.lastIndexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function lastIndexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>last</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws ForbiddenIndexException                   The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
- * @see ReadonlyArray.lastIndexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- * @deprecated Use a value that is present in the {@link collection} instead
- */
-export function lastIndexOf<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
@@ -122,53 +73,6 @@ export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollecti
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>last</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @see ReadonlyArray.lastIndexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>last</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @see ReadonlyArray.lastIndexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- * @deprecated Use a value that is present in the {@link collection} instead
- */
-export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
@@ -204,53 +108,6 @@ export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: N
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>last</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @see ReadonlyArray.lastIndexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
- * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-/**
- * Get the <b>last</b> occurrence equivalent to the value received
- * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @param limit      The never used limit
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @see ReadonlyArray.lastIndexOf
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
- * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- * @deprecated Use a value that is present in the {@link collection} instead
- */
-export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null

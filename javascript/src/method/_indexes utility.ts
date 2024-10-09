@@ -101,33 +101,3 @@ export function __lastIndex(limit: number, size: number,) {
         return 0
     return maximumIndex
 }
-
-/**
- * Get the maximum amount of iteration that can be done.
- * The value can only be between the 0 and the {@link size}.
- *
- * @param limit The value to calculate
- * @param size  The last value that should be equivalent to the {@link MinimalistCollectionHolder.size size}
- * @throws CollectionHolderIndexOutOfBoundsException The value is equal or over to the {@link size} (before or after calculation)
- * @throws ForbiddenIndexException                   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @deprecated This method has no longer any use case. This should be removed in version 1.11
- * @internal
- */
-export function __maximumIndex(limit: number, size: number,) {
-    if (Number.isNaN(limit,))
-        throw new ForbiddenIndexException("Forbidden index. The limit cannot be NaN.", limit,)
-    if (limit == Number.NEGATIVE_INFINITY)
-        throw new ForbiddenIndexException("Forbidden index. The limit cannot be -∞.", limit,)
-    if (limit == Number.POSITIVE_INFINITY)
-        throw new ForbiddenIndexException("Forbidden index. The limit cannot be +∞.", limit,)
-
-    if (limit > size)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}" cannot over the collection size "${size}".`, limit,)
-
-    let maximumIndex = limit
-    if (maximumIndex < 0)
-        maximumIndex += size
-    if (maximumIndex < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The limit "${limit}" ("${maximumIndex}" after calculation) cannot under 0.`, limit,)
-    return maximumIndex
-}

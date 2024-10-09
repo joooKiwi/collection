@@ -225,24 +225,19 @@ export class CollectionConstants {
     }
 
 
-    /**
-     * Every method applicable to a {@link CollectionIterator}
-     *
-     * @deprecated Use {@link COLLECTION_ITERATOR_MEMBERS} instead. The Iterator will be a proper object in JavaScript. This will be removed in version 1.11, but added back once TypeScript add the other methods
-     */
-    public static get ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
-        return CollectionConstants.COLLECTION_ITERATOR_MEMBERS
-        // return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
-        //     "next",
-        //     "every", "some",
-        //     "find", "filter", "reduce",
-        //     "take", "drop",
-        //     "forEach",
-        //     "map", "flatMap",
-        //     "toArray",
-        //     Symbol.iterator, Symbol.toStringTag,
-        // ] as const,),)
-    }
+    // /** Every method applicable to an {@link IteratorObject} */
+    // public static get ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
+    //     return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+    //         "next",
+    //         "every", "some",
+    //         "find", "filter", "reduce",
+    //         "take", "drop",
+    //         "forEach",
+    //         "map", "flatMap",
+    //         "toArray",
+    //         Symbol.iterator, Symbol.toStringTag,
+    //     ] as const,),)
+    // }
 
     /** Every method applicable to a {@link CollectionIterator} */
     public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {

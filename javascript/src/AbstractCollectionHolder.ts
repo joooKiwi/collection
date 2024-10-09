@@ -262,12 +262,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- Index of --------------------
 
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
         return indexOfByCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
@@ -275,12 +270,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- Last index of --------------------
 
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
         return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
@@ -288,20 +278,14 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- Index of first --------------------
 
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
         return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of first indexed --------------------
 
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
         return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
@@ -309,20 +293,14 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- Index of last --------------------
 
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
         return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of last --------------------
     //#region -------------------- Index of last indexed --------------------
 
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
         return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
@@ -394,24 +372,15 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- Has --------------------
 
-    public has(value: T,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public has(value: unknown,): boolean
-    public has(value: T,) {
+    public has(value: T,): boolean {
         return hasByCollectionHolder(this, value,)
     }
 
-    public includes(value: T,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includes(value: unknown,): boolean
-    public includes(value: T,) {
+    public includes(value: T,): boolean {
         return this.has(value,)
     }
 
-    public contains(value: T,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public contains(value: unknown,): boolean
-    public contains(value: T,) {
+    public contains(value: T,): boolean {
         return this.has(value,)
     }
 
@@ -425,21 +394,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasOne(values: CollectionIterator<T>,): boolean
     public hasOne(values: Iterable<T>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasOne(values: readonly unknown[],): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasOne(values: ReadonlySet<unknown>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasOne(values: CollectionHolder,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasOne(values: MinimalistCollectionHolder,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasOne(values: CollectionIterator,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasOne(values: Iterable<unknown>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return hasOneByCollectionHolder(this, values,)
     }
 
@@ -450,21 +405,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public includesOne(values: CollectionIterator<T>,): boolean
     public includesOne(values: Iterable<T>,): boolean
     public includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesOne(values: readonly unknown[],): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesOne(values: ReadonlySet<unknown>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesOne(values: CollectionHolder,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesOne(values: MinimalistCollectionHolder,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesOne(values: CollectionIterator,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesOne(values: Iterable<unknown>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return this.hasOne(values,)
     }
 
@@ -475,21 +416,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public containsOne(values: CollectionIterator<T>,): boolean
     public containsOne(values: Iterable<T>,): boolean
     public containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsOne(values: readonly unknown[],): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsOne(values: ReadonlySet<unknown>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsOne(values: CollectionHolder,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsOne(values: MinimalistCollectionHolder,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsOne(values: CollectionIterator,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsOne(values: Iterable<unknown>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return this.hasOne(values,)
     }
 
@@ -503,21 +430,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasAll(values: CollectionIterator<T>,): boolean
     public hasAll(values: Iterable<T>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasAll(values: readonly unknown[],): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasAll(values: ReadonlySet<unknown>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasAll(values: CollectionHolder,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasAll(values: MinimalistCollectionHolder,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasAll(values: CollectionIterator,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasAll(values: Iterable<unknown>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return hasAllByCollectionHolder(this, values,)
     }
 
@@ -528,21 +441,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public includesAll(values: CollectionIterator<T>,): boolean
     public includesAll(values: Iterable<T>,): boolean
     public includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesAll(values: readonly unknown[],): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesAll(values: ReadonlySet<unknown>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesAll(values: CollectionHolder,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesAll(values: MinimalistCollectionHolder,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesAll(values: CollectionIterator,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesAll(values: Iterable<unknown>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return this.hasAll(values,)
     }
 
@@ -554,23 +453,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public containsAll(values: CollectionIterator<T>,): boolean
     public containsAll(values: Iterable<T>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsAll(values: readonly unknown[],): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsAll(values: ReadonlySet<unknown>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsAll(values: CollectionHolder,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsAll(values: CollectionHolder,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsAll(values: MinimalistCollectionHolder,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsAll(values: CollectionIterator,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsAll(values: Iterable<unknown>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return this.hasAll(values,)
     }
 
@@ -643,11 +526,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public slice(indices: Iterable<number>,): CollectionHolder<T>
     public slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
     public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T> {
         if (arguments.length === 0)
             return sliceWithARangeByCollectionHolder<T>(this,)
@@ -833,24 +712,15 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- To reverse --------------------
 
-    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
         return toReverseByCollectionHolder<T>(this, fromIndex, toIndex,)
     }
 
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
         return this.toReverse(fromIndex, toIndex,)
     }
 
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
         return this.toReverse(fromIndex, toIndex,)
     }
 

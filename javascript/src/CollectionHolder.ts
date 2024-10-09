@@ -516,50 +516,6 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
-     *
-     * @param element   The element to find
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.indexOf
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, toIndex?)
-     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-
-    /**
-     * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
-     *
-     * @param element   The element to find
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.indexOf
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, toIndex?)
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
-     */
-    indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-
     //#endregion -------------------- Index of --------------------
 
     //#region -------------------- Last index of --------------------
@@ -584,51 +540,6 @@ export interface CollectionHolder<out T = unknown, >
      */
     lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
-    /**
-     * Get the <b>last</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
-     *
-     * @param element   The element to find
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.lastIndexOf
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, toIndex?)
-     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-
-    /**
-     * Get the <b>last</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
-     *
-     * @param element   The element to find
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws ForbiddenIndexException                   The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
-     * @see ReadonlyArray.lastIndexOf
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, toIndex?)
-     * @deprecated Use a value that is present in the {@link collection} instead. This will be removed in version 1.11
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-
     //#endregion -------------------- Last index of --------------------
 
     //#region -------------------- Index of first --------------------
@@ -651,26 +562,6 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
-    /**
-     * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
-     *
-     * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
-     * @see ReadonlyArray.findIndex
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
-     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of first indexed --------------------
 
@@ -691,26 +582,6 @@ export interface CollectionHolder<out T = unknown, >
      * @onlyGivePositiveValue
      */
     indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-
-    /**
-     * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
-     *
-     * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.findIndex
-     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Index of first indexed --------------------
 
@@ -734,26 +605,6 @@ export interface CollectionHolder<out T = unknown, >
      */
     indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
-    /**
-     * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
-     *
-     * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.findLastIndex
-     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-
     //#endregion -------------------- Index of last --------------------
     //#region -------------------- Index of last indexed --------------------
 
@@ -774,26 +625,6 @@ export interface CollectionHolder<out T = unknown, >
      * @onlyGivePositiveValue
      */
     indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-
-    /**
-     * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
-     *
-     * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.findLastIndex
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
-     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Index of last indexed --------------------
 
@@ -1000,26 +831,6 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param value The value to compare
      * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
-     * @see includes
-     * @see contains
-     * @see ReadonlyArray.includes
-     * @see ReadonlySet.has
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
-     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    has(value: unknown,): boolean
-
-    //#region -------------------- Has methods (aliases) --------------------
-
-    /**
-     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
-     *
-     * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
      * @alias has
      */
     includes(value: T,): boolean
@@ -1030,31 +841,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param value The value to compare
      * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
      * @alias has
-     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includes(value: unknown,): boolean
-
-
-    /**
-     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
-     *
-     * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
-     * @alias has
      */
     contains(value: T,): boolean
-
-    /**
-     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
-     *
-     * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
-     * @alias has
-     * @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    contains(value: unknown,): boolean
-
-    //#endregion -------------------- Has methods (aliases) --------------------
 
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
@@ -1108,63 +896,6 @@ export interface CollectionHolder<out T = unknown, >
      * @typescriptDefinition
      */
     hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasOne(values: readonly unknown[],): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasOne(values: ReadonlySet<unknown>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasOne(values: CollectionHolder,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasOne(values: MinimalistCollectionHolder,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasOne(values: CollectionIterator,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @typescriptDefinition
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasOne(values: Iterable<unknown>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 
     //#region -------------------- Has one methods (aliases) --------------------
 
@@ -1225,70 +956,6 @@ export interface CollectionHolder<out T = unknown, >
      */
     includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesOne(values: readonly unknown[],): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesOne(values: ReadonlySet<unknown>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesOne(values: CollectionHolder,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesOne(values: MinimalistCollectionHolder,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesOne(values: CollectionIterator,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesOne(values: Iterable<unknown>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @typescriptDefinition
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
@@ -1346,70 +1013,6 @@ export interface CollectionHolder<out T = unknown, >
      * @typescriptDefinition
      */
     containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsOne(values: readonly unknown[],): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsOne(values: ReadonlySet<unknown>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsOne(values: CollectionHolder,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsOne(values: MinimalistCollectionHolder,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsOne(values: CollectionIterator,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsOne(values: Iterable<unknown>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasOne
-     * @typescriptDefinition
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 
     //#endregion -------------------- Has one methods (aliases) --------------------
 
@@ -1480,77 +1083,6 @@ export interface CollectionHolder<out T = unknown, >
      */
     hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasAll(values: readonly unknown[],): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasAll(values: ReadonlySet<unknown>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasAll(values: CollectionHolder,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasAll(values: MinimalistCollectionHolder,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasAll(values: CollectionIterator,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasAll(values: Iterable<unknown>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
-     * @typescriptDefinition
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-
     //#region -------------------- Has all methods (aliases) --------------------
 
     /**
@@ -1610,70 +1142,6 @@ export interface CollectionHolder<out T = unknown, >
      */
     includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
 
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesAll(values: readonly unknown[],): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesAll(values: ReadonlySet<unknown>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesAll(values: CollectionHolder,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesAll(values: MinimalistCollectionHolder,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesAll(values: CollectionIterator,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesAll(values: Iterable<unknown>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @typescriptDefinition
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    includesAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
@@ -1731,71 +1199,6 @@ export interface CollectionHolder<out T = unknown, >
      * @typescriptDefinition
      */
     containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsAll(values: readonly unknown[],): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsAll(values: ReadonlySet<unknown>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsAll(values: CollectionHolder,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @typescriptDefinition
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsAll(values: MinimalistCollectionHolder,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsAll(values: CollectionIterator,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsAll(values: Iterable<unknown>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
-     *
-     * @param values The values to compare
-     * @alias hasAll
-     * @typescriptDefinition
-     * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
-     */
-    containsAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 
     //#endregion -------------------- Has all methods (aliases) --------------------
 
@@ -2065,27 +1468,6 @@ export interface CollectionHolder<out T = unknown, >
      */
     slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
 
-    /**
-     * Create a new {@link CollectionHolder}
-     * from the {@link fromIndex starting} to the {@link toIndex ending} index
-     * in the current {@link CollectionHolder collection}.
-     *
-     * If the {@link fromIndex} is 0 and the {@link toIndex}
-     * is the <code>{@link CollectionHolder.size size} - 1</code>,
-     * then the current {@link CollectionHolder collection} is returned.
-     *
-     * @param fromIndex The starting index
-     * @param toIndex   The ending index
-     * @param limit     The never used limit
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
-     * @see ReadonlyArray.slice
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
-     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11
-     */
-    slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-
     //#endregion -------------------- Slice (from, to) --------------------
 
     /**
@@ -2109,29 +1491,6 @@ export interface CollectionHolder<out T = unknown, >
      * @typescriptDefinition
      */
     slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
-
-    /**
-     * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex indices}
-     * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index
-     * in the current {@link CollectionHolder collection}.
-     *
-     * If the {@link indicesOrFromIndex} is 0 and the {@link toIndex}
-     * is the <code>{@link CollectionHolder.size size} - 1</code>,
-     * then the current {@link CollectionHolder collection} is returned.
-     *
-     * @param indicesOrFromIndex The given indices (or starting index)
-     * @param toIndex            The ending index
-     * @param limit              The never used limit
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
-     * @see ReadonlyArray.slice
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
-     * @typescriptDefinition
-     */
-    slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice --------------------
 
@@ -2513,31 +1872,6 @@ export interface CollectionHolder<out T = unknown, >
      * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
      * then the current {@link CollectionHolder collect is returned.
      *
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
-     * @see Array.reverse
-     * @see ReadonlyArray.toReversed
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reversed.html Kotlin reversed()
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
-     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
-     * @canReceiveNegativeValue
-     */
-    toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-
-
-    /**
-     * Reverse to a new {@link CollectionHolder}
-     * from the {@link toIndex ending} to the {@link fromIndex starting} index
-     * in the current {@link CollectionHolder collection}.
-     *
-     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
-     * then the current {@link CollectionHolder collect is returned.
-     *
      * @alias toReverse
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
@@ -2559,53 +1893,12 @@ export interface CollectionHolder<out T = unknown, >
      * @alias toReverse
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
-     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
-     * @canReceiveNegativeValue
-     */
-    toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-
-
-    /**
-     * Reverse to a new {@link CollectionHolder}
-     * from the {@link toIndex ending} to the {@link fromIndex starting} index
-     * in the current {@link CollectionHolder collection}.
-     *
-     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
-     * then the current {@link CollectionHolder collect is returned.
-     *
-     * @alias toReverse
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
      * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @canReceiveNegativeValue
      */
     reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-
-    /**
-     * Reverse to a new {@link CollectionHolder}
-     * from the {@link toIndex ending} to the {@link fromIndex starting} index
-     * in the current {@link CollectionHolder collection}.
-     *
-     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
-     * then the current {@link CollectionHolder collect is returned.
-     *
-     * @alias toReverse
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @param limit     The never used limit
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
-     * @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11
-     * @canReceiveNegativeValue
-     */
-    reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- To reverse --------------------
 
