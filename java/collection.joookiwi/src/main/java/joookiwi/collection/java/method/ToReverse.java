@@ -437,7 +437,7 @@ public final class ToReverse
         final var startingIndex = _startingIndex(fromIndex, size);
         final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
-            throw new InvalidIndexRangeException("Invalid index range. The ending index “" + toIndex + '"' + (toIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + fromIndex + '"' + (fromIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
+            throw new InvalidIndexRangeException("Invalid index range. The ending index “" + toIndex + '”' + (toIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + fromIndex + '”' + (fromIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
         return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
     }
 
@@ -451,7 +451,7 @@ public final class ToReverse
         final var startingIndex = _startingIndex(fromIndex, size);
         final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
-            throw new InvalidIndexRangeException("Invalid index range. The ending index “" + toIndex + '"' + (toIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + fromIndex + '"' + (fromIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
+            throw new InvalidIndexRangeException("Invalid index range. The ending index “" + toIndex + '”' + (toIndex == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + fromIndex + '”' + (fromIndex == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', fromIndex, toIndex);
         return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
     }
 
