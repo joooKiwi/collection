@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>joookiwi</OriginalElement>
+  <nodes>
+    <node x="-717.5" y="142.0">java.util.concurrent.BlockingDeque</node>
+    <node x="-214.5" y="222.0">java.util.concurrent.ConcurrentLinkedDeque.AbstractItr</node>
+    <node x="-58.808823529411825" y="302.0">java.util.concurrent.ConcurrentLinkedDeque.Itr</node>
+    <node x="-344.3088235294118" y="302.0">java.util.concurrent.ConcurrentLinkedDeque.DescendingItr</node>
+    <node x="-404.25" y="222.0">java.util.concurrent.ConcurrentLinkedDeque.Node</node>
+    <node x="-476.5" y="142.0">java.util.ArrayDeque</node>
+    <node x="-62.5" y="222.0">java.util.concurrent.ConcurrentLinkedDeque.CLDSpliterator</node>
+    <node x="-283.5" y="142.0">java.util.concurrent.ConcurrentLinkedDeque</node>
+    <node x="-743.0" y="222.0">java.util.concurrent.LinkedBlockingDeque</node>
+    <node x="-437.75" y="64.0">java.util.Deque</node>
+    <node x="6.5" y="142.0">java.util.LinkedList</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.concurrent.ConcurrentLinkedDeque" target="java.util.Deque" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-148.5" y="112.0" />
+      <point x="-338.75" y="112.0" />
+      <point x="33.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.LinkedBlockingDeque" target="java.util.concurrent.BlockingDeque" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.BlockingDeque" target="java.util.Deque" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-619.0" y="122.0" />
+      <point x="-404.75" y="122.0" />
+      <point x="-33.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.ConcurrentLinkedDeque.DescendingItr" target="java.util.concurrent.ConcurrentLinkedDeque" relationship="INNER_CLASS">
+      <point x="-39.5" y="-14.0" />
+      <point x="-304.8088235294118" y="276.0" />
+      <point x="-414.75" y="276.0" />
+      <point x="-414.75" y="196.0" />
+      <point x="-148.5" y="196.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.ArrayDeque" target="java.util.Deque" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-390.0" y="122.0" />
+      <point x="-148.5" y="122.0" />
+      <point x="-148.5" y="112.0" />
+      <point x="-338.75" y="112.0" />
+      <point x="33.0" y="14.0" />
+    </edge>
+    <edge source="java.util.LinkedList" target="java.util.Deque" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="86.5" y="122.0" />
+      <point x="-148.5" y="122.0" />
+      <point x="-148.5" y="112.0" />
+      <point x="-338.75" y="112.0" />
+      <point x="33.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.ConcurrentLinkedDeque.Itr" target="java.util.concurrent.ConcurrentLinkedDeque.AbstractItr" relationship="GENERALIZATION">
+      <point x="-16.75" y="-14.0" />
+      <point x="-42.058823529411825" y="276.0" />
+      <point x="-148.5" y="276.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.ConcurrentLinkedDeque.Node" target="java.util.concurrent.ConcurrentLinkedDeque" relationship="INNER_CLASS">
+      <point x="0.0" y="-14.0" />
+      <point x="-342.25" y="196.0" />
+      <point x="-148.5" y="196.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.ConcurrentLinkedDeque.AbstractItr" target="java.util.concurrent.ConcurrentLinkedDeque" relationship="INNER_CLASS">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.ConcurrentLinkedDeque.CLDSpliterator" target="java.util.concurrent.ConcurrentLinkedDeque" relationship="INNER_CLASS">
+      <point x="0.0" y="-14.0" />
+      <point x="19.0" y="196.0" />
+      <point x="-148.5" y="196.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.ConcurrentLinkedDeque.Itr" target="java.util.concurrent.ConcurrentLinkedDeque" relationship="INNER_CLASS">
+      <point x="16.75" y="-14.0" />
+      <point x="-8.558823529411825" y="276.0" />
+      <point x="111.0" y="276.0" />
+      <point x="111.0" y="196.0" />
+      <point x="-148.5" y="196.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.ConcurrentLinkedDeque.DescendingItr" target="java.util.concurrent.ConcurrentLinkedDeque.AbstractItr" relationship="GENERALIZATION">
+      <point x="39.5" y="-14.0" />
+      <point x="-225.80882352941182" y="276.0" />
+      <point x="-148.5" y="276.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.4623655913978495" showDependencies="false" x="-278.00000000000006" y="206.99999999999994" />
+  <SelectedNodes>
+    <node>java.util.concurrent.ConcurrentLinkedDeque.AbstractItr</node>
+    <node>java.util.concurrent.ConcurrentLinkedDeque.DescendingItr</node>
+    <node>java.util.concurrent.ConcurrentLinkedDeque.Itr</node>
+    <node>java.util.concurrent.ConcurrentLinkedDeque.Node</node>
+    <node>java.util.concurrent.ConcurrentLinkedDeque.CLDSpliterator</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
