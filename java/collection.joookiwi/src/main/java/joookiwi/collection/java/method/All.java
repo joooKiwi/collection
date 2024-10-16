@@ -9,11 +9,14 @@ import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_2;
 
+@NotNullByDefault
 public final class All
         extends Utility {
 
@@ -70,6 +73,30 @@ public final class All
         return __with2Argument(collection, predicate, collection.size());
     }
 
+    /// Check if **every** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` only if every value in the `collection` is applicable to the `predicate`
+    /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Javascript every(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    public static <T> boolean all(final T @Nullable @Unmodifiable [] collection,
+                                  final @NotNull ObjIntPredicate<? super T> predicate) {
+        if (collection == null)
+            return false;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        return __with2Argument(collection, predicate, size);
+    }
+
     //#endregion -------------------- (T, int) → boolean --------------------
     //#region -------------------- (T) → boolean --------------------
 
@@ -118,6 +145,30 @@ public final class All
         if (collection.isEmpty())
             return false;
         return __with1Argument(collection, predicate, collection.size());
+    }
+
+    /// Check if **every** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` only if every value in the `collection` is applicable to the `predicate`
+    /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Javascript every(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    public static <T> boolean all(final T @Nullable @Unmodifiable [] collection,
+                                  final @NotNull Predicate<? super T> predicate) {
+        if (collection == null)
+            return false;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        return __with1Argument(collection, predicate, size);
     }
 
     //#endregion -------------------- (T) → boolean --------------------
@@ -169,6 +220,30 @@ public final class All
         return __with0Argument(predicate, collection.size());
     }
 
+    /// Check if **every** element in the `collection`
+    /// match the given `predicate`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The matching predicate
+    /// @param <T>        The `collection` type
+    /// @return `true` only if every value in the `collection` is applicable to the `predicate`
+    /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">Javascript every(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    public static <T> boolean all(final T @Nullable @Unmodifiable [] collection,
+                                  final @NotNull BooleanSupplier predicate) {
+        if (collection == null)
+            return false;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        return __with0Argument(predicate, size);
+    }
+
     //#endregion -------------------- () → boolean --------------------
 
     //#endregion -------------------- Facade methods --------------------
@@ -183,6 +258,7 @@ public final class All
         return true;
     }
 
+
     private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                final @NotNull Predicate<? super T> predicate,
                                                final int size) {
@@ -193,12 +269,33 @@ public final class All
         return true;
     }
 
+    private static <T> boolean __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                               final @NotNull Predicate<? super T> predicate,
+                                               final int size) {
+        var index = -1;
+        while (++index < size)
+            if (!predicate.test(collection[index]))
+                return false;
+        return true;
+    }
+
+
     private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                final @NotNull ObjIntPredicate<? super T> predicate,
                                                final int size) {
         var index = -1;
         while (++index < size)
             if (!predicate.test(collection.get(index), index))
+                return false;
+        return true;
+    }
+
+    private static <T> boolean __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                               final @NotNull ObjIntPredicate<? super T> predicate,
+                                               final int size) {
+        var index = -1;
+        while (++index < size)
+            if (!predicate.test(collection[index], index))
                 return false;
         return true;
     }
