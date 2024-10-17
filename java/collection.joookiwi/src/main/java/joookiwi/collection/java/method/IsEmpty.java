@@ -15,6 +15,8 @@ public final class IsEmpty
     @Contract(ALWAYS_FAIL_0)
     private IsEmpty() { throw new ImpossibleConstructionException("The utility class “IsEmpty” cannot be constructed.", IsEmpty.class); }
 
+    //#region -------------------- Facade methods --------------------
+
     /// The [collection][MinimalistCollectionHolder] has no values
     ///
     /// @param collection The collection to retrieve its [size][MinimalistCollectionHolder#size]
@@ -62,5 +64,7 @@ public final class IsEmpty
             return true;
         return collection.length == 0;
     }
+
+    //#endregion -------------------- Facade methods --------------------
 
 }
