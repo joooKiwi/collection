@@ -36,6 +36,7 @@ public final class First
     /// @param <T>        The `collection` type
     /// @throws NullPointerException           The `collection` was `null`
     /// @throws EmptyCollectionHolderException The `collection` **is empty**
+    /// @see java.util.SequencedCollection#getFirst()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @ExtensionFunction
@@ -54,6 +55,7 @@ public final class First
     /// @param <T>        The `collection` type
     /// @throws NullPointerException           The `collection` was `null`
     /// @throws EmptyCollectionHolderException The `collection` [is empty][#isEmpty]
+    /// @see java.util.SequencedCollection#getFirst()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @ExtensionFunction
@@ -72,6 +74,7 @@ public final class First
     /// @param <T>        The `collection` type
     /// @throws NullPointerException           The `collection` was `null`
     /// @throws EmptyCollectionHolderException The `collection` **is empty**
+    /// @see java.util.SequencedCollection#getFirst()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @ExtensionFunction
@@ -361,7 +364,7 @@ public final class First
                                          final int size) {
         var index = -1;
         while (++index < size) {
-            var value = collection.get(index);
+            final var value = collection.get(index);
             if (predicate.test(value))
                 return value;
         }
@@ -373,7 +376,7 @@ public final class First
                                          final int size) {
         var index = -1;
         while (++index < size) {
-            var value = collection[index];
+            final var value = collection[index];
             if (predicate.test(value))
                 return value;
         }
@@ -386,7 +389,7 @@ public final class First
                                          final int size) {
         var index = -1;
         while (++index < size) {
-            var value = collection.get(index);
+            final var value = collection.get(index);
             if (predicate.test(value, index))
                 return value;
         }
@@ -398,7 +401,7 @@ public final class First
                                          final int size) {
         var index = -1;
         while (++index < size) {
-            var value = collection[index];
+            final var value = collection[index];
             if (predicate.test(value, index))
                 return value;
         }

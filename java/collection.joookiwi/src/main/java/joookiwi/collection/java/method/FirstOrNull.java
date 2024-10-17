@@ -103,7 +103,7 @@ public final class FirstOrNull
             return null;
         if (predicate == null)
             return __withNoArgument(collection);
-        return __with0Argument(collection, predicate, size);
+        return __with2Argument(collection, predicate, size);
     }
 
     /// Get the first element in the `collection`
@@ -125,7 +125,7 @@ public final class FirstOrNull
             return null;
         if (predicate == null)
             return __withNoArgument(collection);
-        return __with0Argument(collection, predicate, collection.size());
+        return __with2Argument(collection, predicate, collection.size());
     }
 
     /// Get the first element in the `collection`
@@ -149,7 +149,7 @@ public final class FirstOrNull
             return null;
         if (predicate == null)
             return __withNoArgument(collection);
-        return __with0Argument(collection, predicate, size);
+        return __with2Argument(collection, predicate, size);
     }
 
     //#endregion -------------------- predicate (T, int) → boolean --------------------
@@ -249,7 +249,7 @@ public final class FirstOrNull
             return null;
         if (predicate == null)
             return __withNoArgument(collection);
-        return __with2Argument(collection, predicate, size);
+        return __with0Argument(collection, predicate, size);
     }
 
     /// Get the first element in the `collection`
@@ -271,7 +271,7 @@ public final class FirstOrNull
             return null;
         if (predicate == null)
             return __withNoArgument(collection);
-        return __with2Argument(collection, predicate, collection.size());
+        return __with0Argument(collection, predicate, collection.size());
     }
 
     /// Get the first element in the `collection`
@@ -295,7 +295,7 @@ public final class FirstOrNull
             return null;
         if (predicate == null)
             return __withNoArgument(collection);
-        return __with2Argument(collection, predicate, size);
+        return __with0Argument(collection, predicate, size);
     }
 
     //#endregion -------------------- predicate () → boolean --------------------
@@ -313,26 +313,22 @@ public final class FirstOrNull
 
 
     private static <T> @Nullable T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull ObjIntPredicate<? super T> predicate,
+                                                   final @NotNull BooleanSupplier predicate,
                                                    final int size) {
         var index = -1;
-        while (++index < size) {
-            var value = collection.get(index);
-            if (predicate.test(value, index))
-                return value;
-        }
+        while (++index < size)
+            if (predicate.getAsBoolean())
+                return collection.get(index);
         return null;
     }
 
     private static <T> @Nullable T __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull ObjIntPredicate<? super T> predicate,
+                                                   final @NotNull BooleanSupplier predicate,
                                                    final int size) {
         var index = -1;
-        while (++index < size) {
-            var value = collection[index];
-            if (predicate.test(value, index))
-                return value;
-        }
+        while (++index < size)
+            if (predicate.getAsBoolean())
+                return collection[index];
         return null;
     }
 
@@ -342,7 +338,7 @@ public final class FirstOrNull
                                                    final int size) {
         var index = -1;
         while (++index < size) {
-            var value = collection.get(index);
+            final var value = collection.get(index);
             if (predicate.test(value))
                 return value;
         }
@@ -354,7 +350,7 @@ public final class FirstOrNull
                                                    final int size) {
         var index = -1;
         while (++index < size) {
-            var value = collection[index];
+            final var value = collection[index];
             if (predicate.test(value))
                 return value;
         }
@@ -363,22 +359,26 @@ public final class FirstOrNull
 
 
     private static <T> @Nullable T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull BooleanSupplier predicate,
+                                                   final @NotNull ObjIntPredicate<? super T> predicate,
                                                    final int size) {
         var index = -1;
-        while (++index < size)
-            if (predicate.getAsBoolean())
-                return collection.get(index);
+        while (++index < size) {
+            final var value = collection.get(index);
+            if (predicate.test(value, index))
+                return value;
+        }
         return null;
     }
 
     private static <T> @Nullable T __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull BooleanSupplier predicate,
+                                                   final @NotNull ObjIntPredicate<? super T> predicate,
                                                    final int size) {
         var index = -1;
-        while (++index < size)
-            if (predicate.getAsBoolean())
-                return collection[index];
+        while (++index < size) {
+            final var value = collection[index];
+            if (predicate.test(value, index))
+                return value;
+        }
         return null;
     }
 
