@@ -14,7 +14,9 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CollectionConstants.emptyList;
-import static joookiwi.collection.java.CommonContracts.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
 /// A bare-bone implementation of a [java List][List]
 /// with the [immutability][Unmodifiable] in place.
@@ -30,7 +32,7 @@ import static joookiwi.collection.java.CommonContracts.*;
 /// @param <T> The type
 @NotNullByDefault
 public class ArrayAsList<T extends @Nullable Object>
-        extends ArrayAsCollection<T>
+        extends ArrayAsSequencedCollection<T>
         implements List<T> {
 
     //#region -------------------- Constructor --------------------
@@ -87,6 +89,20 @@ public class ArrayAsList<T extends @Nullable Object>
         return new ArrayAsList<>(newArray);
     }
 
+    @Override public @NotNull List<T> reversed() {
+        if (isEmpty())
+            return emptyList();
+
+        final var reference = _reference();
+        final var size = size();
+        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
+        var index = size;
+        while (--index >= 0)
+            newArray[index] = reference[index];
+        return new ArrayAsList<>(newArray);
+    }
+
+
     @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)
     @Override public boolean equals(final @Nullable Object other) {
         if (other == null)
@@ -131,6 +147,7 @@ public class ArrayAsList<T extends @Nullable Object>
     ///
     /// @param index The (_never used_) index
     /// @throws UnsupportedOperationException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
     @Override public T remove(int index) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable List."); }
 
     //#endregion -------------------- Unsupported methods --------------------
