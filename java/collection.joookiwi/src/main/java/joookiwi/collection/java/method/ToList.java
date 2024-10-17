@@ -16,8 +16,6 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.emptyList;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
 
 @NotNullByDefault
 public final class ToList
@@ -35,7 +33,6 @@ public final class ToList
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_1)
     public static <T> @NotNull @Unmodifiable List<T> toList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyList();
@@ -51,7 +48,6 @@ public final class ToList
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_1)
     public static <T> @NotNull @Unmodifiable List<T> toList(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyList();
@@ -65,7 +61,6 @@ public final class ToList
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_1)
     public static <T> @NotNull @Unmodifiable List<T> toList(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyList();
@@ -87,7 +82,6 @@ public final class ToList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_2)
     public static <T, U> @NotNull @Unmodifiable List<U> toList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
@@ -107,7 +101,6 @@ public final class ToList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_2)
     public static <T, U> @NotNull @Unmodifiable List<U> toList(final @Nullable CollectionHolder<? extends T> collection,
                                                                final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
@@ -125,7 +118,6 @@ public final class ToList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_2)
     public static <T, U> @NotNull @Unmodifiable List<U> toList(final T @Nullable @Unmodifiable [] collection,
                                                                final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
@@ -148,7 +140,6 @@ public final class ToList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_2)
     public static <T, U> @NotNull @Unmodifiable List<U> toList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
@@ -168,7 +159,6 @@ public final class ToList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_2)
     public static <T, U> @NotNull @Unmodifiable List<U> toList(final @Nullable CollectionHolder<? extends T> collection,
                                                                final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
@@ -186,7 +176,6 @@ public final class ToList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_2)
     public static <T, U> @NotNull @Unmodifiable List<U> toList(final T @Nullable @Unmodifiable [] collection,
                                                                final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
@@ -209,7 +198,6 @@ public final class ToList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_2)
     public static <T, U> @NotNull @Unmodifiable List<U> toList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
@@ -229,7 +217,6 @@ public final class ToList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_2)
     public static <T, U> @NotNull @Unmodifiable List<U> toList(final @Nullable CollectionHolder<? extends T> collection,
                                                                final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
@@ -247,7 +234,6 @@ public final class ToList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    @Contract(ALWAYS_NEW_2)
     public static <T, U> @NotNull @Unmodifiable List<U> toList(final T @Nullable @Unmodifiable [] collection,
                                                                final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
