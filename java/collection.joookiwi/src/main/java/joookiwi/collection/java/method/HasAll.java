@@ -1676,7 +1676,7 @@ public final class HasAll
         if (!values.hasNext())
             return true;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         return __fromIterator(collection, size, values);
@@ -1700,7 +1700,7 @@ public final class HasAll
         if (values.estimateSize() == 0L)
             return true;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         return __fromIterator(collection, size, values);
@@ -1723,7 +1723,7 @@ public final class HasAll
         if (!values.hasMoreElements())
             return true;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         return __fromIterator(collection, size, values);
@@ -1744,11 +1744,11 @@ public final class HasAll
 
     private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                         final @NotNull Iterable<?> values) {
-        var iterator = values.iterator();
+        final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         return __fromIterator(collection, size, iterator);
@@ -1756,7 +1756,7 @@ public final class HasAll
 
     private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
                                         final @NotNull Iterable<?> values) {
-        var iterator = values.iterator();
+        final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
         if (collection.isEmpty())
@@ -1771,11 +1771,11 @@ public final class HasAll
     private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                         final @NotNull MinimalistCollectionHolder<?> values) {
 
-        var valuesSize = values.size();
+        final var valuesSize = values.size();
         if (valuesSize == 0)
             return true;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         return __fromNotIterator(collection, size, values, valuesSize);
@@ -1784,7 +1784,7 @@ public final class HasAll
     private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
                                         final @NotNull MinimalistCollectionHolder<?> values) {
 
-        var valuesSize = values.size();
+        final var valuesSize = values.size();
         if (valuesSize == 0)
             return true;
         if (collection.isEmpty())
@@ -1801,7 +1801,7 @@ public final class HasAll
         if (values.isEmpty())
             return true;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         if (values instanceof RandomAccess)
@@ -1832,7 +1832,7 @@ public final class HasAll
         if (values.isEmpty())
             return true;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         return __fromIterator(collection, size, values.iterator());
@@ -1858,7 +1858,7 @@ public final class HasAll
         if (values.isEmpty())
             return true;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         if (values instanceof RandomAccess)
@@ -1889,7 +1889,7 @@ public final class HasAll
         if (valuesSize == 0)
             return true;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         return __fromNotIterator(collection, size, values, valuesSize);

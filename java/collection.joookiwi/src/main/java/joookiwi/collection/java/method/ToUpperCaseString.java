@@ -30,7 +30,7 @@ public final class ToUpperCaseString
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return DEFAULT_EMPTY_COLLECTION;
         return __toString(collection, size);
@@ -54,8 +54,8 @@ public final class ToUpperCaseString
     //#region -------------------- Loop method --------------------
 
     private static @NotNull String __toString(@NotNull MinimalistCollectionHolder<?> collection, int size) {
-        var string = new StringBuilder();
-        var sizeMinus1 = size - 1;
+        final var string = new StringBuilder();
+        final var sizeMinus1 = size - 1;
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asUpperCaseString(collection.get(index))).append(DEFAULT_JOIN_SEPARATOR);

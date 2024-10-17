@@ -38,7 +38,7 @@ public final class ToSet
         if (collection == null)
             return emptySet();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptySet();
         return __withNoTransform(collection, size);
@@ -68,7 +68,7 @@ public final class ToSet
         if (collection == null)
             return emptySet();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptySet();
         return __withNoTransform(collection, size);
@@ -90,7 +90,7 @@ public final class ToSet
         if (collection == null)
             return emptySet();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptySet();
         return __with2Argument(collection, size, transform);
@@ -126,7 +126,7 @@ public final class ToSet
         if (collection == null)
             return emptySet();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptySet();
         return __with2Argument(collection, size, transform);
@@ -148,7 +148,7 @@ public final class ToSet
         if (collection == null)
             return emptySet();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptySet();
         return __with1Argument(collection, size, transform);
@@ -184,7 +184,7 @@ public final class ToSet
         if (collection == null)
             return emptySet();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptySet();
         return __with1Argument(collection, size, transform);
@@ -206,7 +206,7 @@ public final class ToSet
         if (collection == null)
             return emptySet();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptySet();
         return __with0Argument(size, transform);
@@ -242,7 +242,7 @@ public final class ToSet
         if (collection == null)
             return emptySet();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptySet();
         return __with0Argument(size, transform);

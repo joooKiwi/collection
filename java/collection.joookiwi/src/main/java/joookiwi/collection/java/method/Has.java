@@ -40,7 +40,7 @@ public final class Has
         if (collection == null)
             return false;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         return __has(collection, size, value);
@@ -89,7 +89,7 @@ public final class Has
         if (collection == null)
             return false;
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return false;
         return __has(collection, size, value);
