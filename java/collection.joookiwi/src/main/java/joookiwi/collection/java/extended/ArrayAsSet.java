@@ -1,7 +1,6 @@
 package joookiwi.collection.java.extended;
 
 import java.util.Set;
-
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;

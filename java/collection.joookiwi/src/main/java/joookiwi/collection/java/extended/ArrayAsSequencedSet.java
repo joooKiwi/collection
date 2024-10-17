@@ -25,7 +25,10 @@ public class ArrayAsSequencedSet<T extends @Nullable Object>
         extends ArrayAsSet<T>
         implements SequencedSet<T> {
 
-    public ArrayAsSequencedSet(final T @NotNull @Unmodifiable [] values) { super(values); }
+    /// Create an instance of a [SequencedSet] but allowing `null` in the `reference`
+    ///
+    /// @param reference The array to be the internal structure
+    public ArrayAsSequencedSet(final T @NotNull @Unmodifiable [] reference) { super(reference); }
 
     @Override public SequencedSet<T> reversed() {
         if (isEmpty())

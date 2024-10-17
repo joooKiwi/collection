@@ -37,7 +37,7 @@ public class ArrayAsList<T extends @Nullable Object>
 
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance similar to {@link java.util.List#of(Object[])},
+    /// Create an instance similar to {@link List#of(Object[])},
     /// but allowing `null` in the `reference`
     ///
     /// @param reference The array to be the internal structure

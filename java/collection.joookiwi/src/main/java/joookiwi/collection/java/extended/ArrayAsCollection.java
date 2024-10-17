@@ -58,7 +58,8 @@ public class ArrayAsCollection<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [Collection] and allowing `null` in the `reference`
+    /// Create an instance similar to [java.util.Collections#unmodifiableCollection(Collection)]
+    /// but allowing `null` in the `reference`
     ///
     /// @param reference The array to be the internal structure
     public ArrayAsCollection(final T @NotNull @Unmodifiable [] reference) {
