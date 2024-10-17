@@ -1,5 +1,14 @@
 package joookiwi.collection.java.extended;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import joookiwi.collection.java.helper.HashCodeCreator;
 import joookiwi.collection.java.method.ForEach;
 import joookiwi.collection.java.method.ToArray;
@@ -9,24 +18,30 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
+import org.jetbrains.annotations.UnknownNullability;
 import org.jetbrains.annotations.Unmodifiable;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-
 import static java.lang.Integer.MAX_VALUE;
-import static joookiwi.collection.java.CommonContracts.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_PARAMETER_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.method.Has.has;
 import static joookiwi.collection.java.method.HasAll.hasAll;
 
+/// A bare-bone implementation of a [java Collection][Collection]
+/// with the [immutability][Unmodifiable] in place.
+/// During its creation, it <u>implies</u> that the array received has no duplicate.
+///
+/// Note that `null` is permitted in this instance.
+/// It is up to the implementor to specify it.
+///
+/// The instance uses the [methods][joookiwi.collection.java.method]
+/// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
+/// when possible.
+///
+/// @param <T> The type
 @NotNullByDefault
 public class ArrayAsCollection<T extends @Nullable Object>
         implements Collection<T> {
@@ -61,21 +76,21 @@ public class ArrayAsCollection<T extends @Nullable Object>
 
     //#region -------------------- Supported methods --------------------
 
-    /// Get the size of the current [Set]
+    /// Get the size of the current [Collection]
     @Contract(pure = true)
     @Override public @Range(from = 0, to = MAX_VALUE) int size() { return __size; }
 
-    /// Tell if the current [Set] has no values
+    /// Tell if the current [Collection] has no values
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
 
 
-    /// Tell whenever the `value` exist in the current [Set]
+    /// Tell whenever the `value` exist in the current [Collection]
     ///
     /// @param value The value to compare
     @Override public boolean contains(final @Nullable Object value) { return has(_reference(), value); }
 
-    /// Tell that all the `values` are in the current [Set]
+    /// Tell that all the `values` are in the current [Collection]
     ///
     /// @param values The values to compare
     @Override public boolean containsAll(final @NotNull @Unmodifiable Collection<?> values) { return hasAll(_reference(), values); }
@@ -87,12 +102,12 @@ public class ArrayAsCollection<T extends @Nullable Object>
     @Override public void forEach(final @NotNull Consumer<? super T> action) { ForEach.forEach(_reference(), action); }
 
 
-    /// Convert the current [Set] to a [String] by calling its [toString\(\)][Object#toString()] method
+    /// Convert the current [Collection] to a [String] by calling its [toString\(\)][Object#toString()] method
     @Override public String toString() { return ToString.toString(_reference()); }
 
-    /// Convert the current [Set] to an `array`
-    @Contract(value = ALWAYS_NEW_0, pure = true)
-    @Override public @NotNull Object @NotNull [] toArray() { return ToArray.toArray(_reference()); }
+    /// Convert the current [Collection] to an `array`
+    @Contract(pure = true)
+    @Override public @UnknownNullability Object @NotNull [] toArray() { return ToArray.toArray(_reference()); }
 
     /// Put the values inside the `newArray`
     ///
@@ -100,7 +115,7 @@ public class ArrayAsCollection<T extends @Nullable Object>
     /// @param <U>      The new type
     @SuppressWarnings("unchecked cast")
     @Contract(value = ALWAYS_1ST_PARAMETER_1, mutates = "param1")
-    @Override public <U extends @Nullable Object> U @NotNull [] toArray(U @NotNull @Unmodifiable [] newArray) {
+    @Override public <U extends @Nullable Object> U @NotNull [] toArray(U @NotNull [] newArray) {
         final var reference = _reference();
         final var size = newArray.length;
         var index = -1;
@@ -128,7 +143,7 @@ public class ArrayAsCollection<T extends @Nullable Object>
 
     @Override public Stream<T> stream() { return Arrays.stream(_reference()); }
 
-    @Override public @NotNull Iterator<T> iterator() { return Arrays.stream(_reference()).iterator(); }
+    @Override public @NotNull Iterator<T> iterator() { return new ArrayAsIterator<>(_reference()); }
 
     @Override public Spliterator<T> spliterator() { return Arrays.spliterator(_reference()); }
 
