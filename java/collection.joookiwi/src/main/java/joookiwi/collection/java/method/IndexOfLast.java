@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
+import org.jetbrains.annotations.Unmodifiable;
 
 import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
@@ -28,27 +29,6 @@ public final class IndexOfLast
 
     //#region -------------------- Facade methods --------------------
 
-    //#region -------------------- minimalist - predicate (T, int) → boolean --------------------
-
-    /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The given predicate
-    /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-    @ExtensionFunction
-    @OnlyGivePositiveValue
-    @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                     final @NotNull ObjIntPredicate<? super T> predicate) {
-        if (collection == null)
-            return null;
-        return __core(collection, predicate);
-    }
-
-    //#endregion -------------------- minimalist - predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T, int) → boolean --------------------
 
     /// Get the last index matching the `predicate`
@@ -57,7 +37,25 @@ public final class IndexOfLast
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                     final @NotNull ObjIntPredicate<? super T> predicate) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -69,17 +67,34 @@ public final class IndexOfLast
         return __core(collection, predicate);
     }
 
-    //#endregion -------------------- predicate (T, int) → boolean --------------------
-
-    //#region -------------------- minimalist - predicate (T) → boolean --------------------
-
     /// Get the last index matching the `predicate`
     /// or `null` if it was not in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull ObjIntPredicate<? super T> predicate) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate);
+    }
+
+    //#endregion -------------------- predicate (T, int) → boolean --------------------
+    //#region -------------------- predicate (T) → boolean --------------------
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -91,16 +106,13 @@ public final class IndexOfLast
         return __core(collection, predicate);
     }
 
-    //#endregion -------------------- minimalist - predicate (T) → boolean --------------------
-    //#region -------------------- predicate (T) → boolean --------------------
-
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -112,17 +124,34 @@ public final class IndexOfLast
         return __core(collection, predicate);
     }
 
-    //#endregion -------------------- predicate (T) → boolean --------------------
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull Predicate<? super T> predicate) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate);
+    }
 
-    //#region -------------------- minimalist - predicate () → boolean --------------------
+    //#endregion -------------------- predicate (T) → boolean --------------------
+    //#region -------------------- predicate () → boolean --------------------
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -134,21 +163,36 @@ public final class IndexOfLast
         return __core(collection, predicate);
     }
 
-    //#endregion -------------------- minimalist - predicate () → boolean --------------------
-    //#region -------------------- predicate () → boolean --------------------
-
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @NotNull BooleanSupplier predicate) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param <T>        The `collection` type
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_2)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
                                                                                      final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return null;
@@ -157,11 +201,10 @@ public final class IndexOfLast
 
     //#endregion -------------------- predicate () → boolean --------------------
 
-
-    //#region -------------------- minimalist - predicate (T, int) → boolean, from --------------------
+    //#region -------------------- predicate (T, int) → boolean, from --------------------
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -169,7 +212,7 @@ public final class IndexOfLast
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -184,7 +227,54 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                     final int fromIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                     final int fromIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -192,7 +282,7 @@ public final class IndexOfLast
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -208,11 +298,8 @@ public final class IndexOfLast
         return __core(collection, predicate, fromIndex);
     }
 
-    //#endregion -------------------- minimalist - predicate (T, int) → boolean, from --------------------
-    //#region -------------------- predicate (T, int) → boolean, from --------------------
-
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -220,7 +307,7 @@ public final class IndexOfLast
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -228,28 +315,30 @@ public final class IndexOfLast
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
                                                                                      final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                     final int fromIndex) {
+                                                                                     final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
+        if (fromIndex == null)
+            return __core(collection, predicate);
         return __core(collection, predicate, fromIndex);
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
                                                                                      final @NotNull ObjIntPredicate<? super T> predicate,
                                                                                      final @Nullable Integer fromIndex) {
         if (collection == null)
@@ -260,11 +349,10 @@ public final class IndexOfLast
     }
 
     //#endregion -------------------- predicate (T, int) → boolean, from --------------------
-
-    //#region -------------------- minimalist - predicate (T) → boolean, from --------------------
+    //#region -------------------- predicate (T) → boolean, from --------------------
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -272,7 +360,7 @@ public final class IndexOfLast
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -287,7 +375,54 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @NotNull Predicate<? super T> predicate,
+                                                                                     final int fromIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull Predicate<? super T> predicate,
+                                                                                     final int fromIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -295,7 +430,7 @@ public final class IndexOfLast
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -311,11 +446,8 @@ public final class IndexOfLast
         return __core(collection, predicate, fromIndex);
     }
 
-    //#endregion -------------------- minimalist - predicate (T) → boolean, from --------------------
-    //#region -------------------- predicate (T) → boolean, from --------------------
-
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -323,7 +455,7 @@ public final class IndexOfLast
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -331,28 +463,30 @@ public final class IndexOfLast
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
                                                                                      final @NotNull Predicate<? super T> predicate,
-                                                                                     final int fromIndex) {
+                                                                                     final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
+        if (fromIndex == null)
+            return __core(collection, predicate);
         return __core(collection, predicate, fromIndex);
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
                                                                                      final @NotNull Predicate<? super T> predicate,
                                                                                      final @Nullable Integer fromIndex) {
         if (collection == null)
@@ -363,11 +497,10 @@ public final class IndexOfLast
     }
 
     //#endregion -------------------- predicate (T) → boolean, from --------------------
-
-    //#region -------------------- minimalist - predicate () → boolean, from --------------------
+    //#region -------------------- predicate () → boolean, from --------------------
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -375,7 +508,7 @@ public final class IndexOfLast
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -390,7 +523,54 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @NotNull BooleanSupplier predicate,
+                                                                                     final int fromIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to the end of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_3)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull BooleanSupplier predicate,
+                                                                                     final int fromIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -398,7 +578,7 @@ public final class IndexOfLast
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -414,11 +594,8 @@ public final class IndexOfLast
         return __core(collection, predicate, fromIndex);
     }
 
-    //#endregion -------------------- minimalist - predicate () → boolean, from --------------------
-    //#region -------------------- predicate () → boolean, from --------------------
-
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -426,7 +603,7 @@ public final class IndexOfLast
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -434,28 +611,30 @@ public final class IndexOfLast
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
                                                                                      final @NotNull BooleanSupplier predicate,
-                                                                                     final int fromIndex) {
+                                                                                     final @Nullable Integer fromIndex) {
         if (collection == null)
             return null;
+        if (fromIndex == null)
+            return __core(collection, predicate);
         return __core(collection, predicate, fromIndex);
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to the end of the `collection`
     ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
                                                                                      final @NotNull BooleanSupplier predicate,
                                                                                      final @Nullable Integer fromIndex) {
         if (collection == null)
@@ -467,11 +646,10 @@ public final class IndexOfLast
 
     //#endregion -------------------- predicate () → boolean, from --------------------
 
-
-    //#region -------------------- minimalist - predicate (T, int) → boolean, from, to --------------------
+    //#region -------------------- predicate (T, int) → boolean, from, to --------------------
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -480,7 +658,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -496,7 +674,58 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                     final int fromIndex,
+                                                                                     final int toIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                     final int fromIndex,
+                                                                                     final int toIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -505,7 +734,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -523,7 +752,62 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                     final int fromIndex,
+                                                                                     final @Nullable Integer toIndex) {
+        if (collection == null)
+            return null;
+        if (toIndex == null)
+            return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                     final int fromIndex,
+                                                                                     final @Nullable Integer toIndex) {
+        if (collection == null)
+            return null;
+        if (toIndex == null)
+            return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -532,7 +816,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -550,7 +834,62 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                     final @Nullable Integer fromIndex,
+                                                                                     final int toIndex) {
+        if (collection == null)
+            return null;
+        if (fromIndex == null)
+            return __coreWithNoFrom(collection, predicate, toIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                     final @Nullable Integer fromIndex,
+                                                                                     final int toIndex) {
+        if (collection == null)
+            return null;
+        if (fromIndex == null)
+            return __coreWithNoFrom(collection, predicate, toIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -559,7 +898,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -581,11 +920,8 @@ public final class IndexOfLast
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    //#endregion -------------------- minimalist - predicate (T, int) → boolean, from, to --------------------
-    //#region -------------------- predicate (T, int) → boolean, from, to --------------------
-
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -594,59 +930,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    @OnlyGivePositiveValue
-    @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                     final int fromIndex,
-                                                                                     final int toIndex) {
-        if (collection == null)
-            return null;
-        return __core(collection, predicate, fromIndex, toIndex);
-    }
-
-    /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
-    /// from a start to an end
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index
-    /// @param toIndex    The inclusive ending index
-    /// @param <T>        The `collection` type
-    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    @OnlyGivePositiveValue
-    @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                     final int fromIndex,
-                                                                                     final @Nullable Integer toIndex) {
-        if (collection == null)
-            return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
-    }
-
-    /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
-    /// from a start to an end
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index
-    /// @param toIndex    The inclusive ending index
-    /// @param <T>        The `collection` type
-    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -655,31 +939,36 @@ public final class IndexOfLast
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
                                                                                      final @NotNull ObjIntPredicate<? super T> predicate,
                                                                                      final @Nullable Integer fromIndex,
-                                                                                     final int toIndex) {
+                                                                                     final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __core(collection, predicate);
+            else
+                return __core(collection, predicate, fromIndex);
         if (fromIndex == null)
             return __coreWithNoFrom(collection, predicate, toIndex);
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
                                                                                      final @NotNull ObjIntPredicate<? super T> predicate,
                                                                                      final @Nullable Integer fromIndex,
                                                                                      final @Nullable Integer toIndex) {
@@ -696,11 +985,10 @@ public final class IndexOfLast
     }
 
     //#endregion -------------------- predicate (T, int) → boolean, from, to --------------------
-
-    //#region -------------------- minimalist - predicate (T) → boolean, from, to --------------------
+    //#region -------------------- predicate (T) → boolean, from, to --------------------
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -709,7 +997,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -725,7 +1013,58 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast2(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                      final @NotNull Predicate<? super T> predicate,
+                                                                                      final int fromIndex,
+                                                                                      final int toIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull Predicate<? super T> predicate,
+                                                                                     final int fromIndex,
+                                                                                     final int toIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -734,7 +1073,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -752,7 +1091,62 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast2(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                      final @NotNull Predicate<? super T> predicate,
+                                                                                      final int fromIndex,
+                                                                                      final @Nullable Integer toIndex) {
+        if (collection == null)
+            return null;
+        if (toIndex == null)
+            return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull Predicate<? super T> predicate,
+                                                                                     final int fromIndex,
+                                                                                     final @Nullable Integer toIndex) {
+        if (collection == null)
+            return null;
+        if (toIndex == null)
+            return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -761,7 +1155,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -779,7 +1173,62 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast2(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                      final @NotNull Predicate<? super T> predicate,
+                                                                                      final @Nullable Integer fromIndex,
+                                                                                      final int toIndex) {
+        if (collection == null)
+            return null;
+        if (fromIndex == null)
+            return __coreWithNoFrom(collection, predicate, toIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull Predicate<? super T> predicate,
+                                                                                     final @Nullable Integer fromIndex,
+                                                                                     final int toIndex) {
+        if (collection == null)
+            return null;
+        if (fromIndex == null)
+            return __coreWithNoFrom(collection, predicate, toIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -788,7 +1237,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -810,11 +1259,8 @@ public final class IndexOfLast
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    //#endregion -------------------- minimalist - predicate (T) → boolean, from, to --------------------
-    //#region -------------------- predicate (T) → boolean, from, to --------------------
-
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -823,59 +1269,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    @OnlyGivePositiveValue
-    @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final @NotNull Predicate<? super T> predicate,
-                                                                                     final int fromIndex,
-                                                                                     final int toIndex) {
-        if (collection == null)
-            return null;
-        return __core(collection, predicate, fromIndex, toIndex);
-    }
-
-    /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
-    /// from a start to an end
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index
-    /// @param toIndex    The inclusive ending index
-    /// @param <T>        The `collection` type
-    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    @OnlyGivePositiveValue
-    @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final @NotNull Predicate<? super T> predicate,
-                                                                                     final int fromIndex,
-                                                                                     final @Nullable Integer toIndex) {
-        if (collection == null)
-            return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
-    }
-
-    /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
-    /// from a start to an end
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index
-    /// @param toIndex    The inclusive ending index
-    /// @param <T>        The `collection` type
-    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -884,31 +1278,36 @@ public final class IndexOfLast
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
                                                                                      final @NotNull Predicate<? super T> predicate,
                                                                                      final @Nullable Integer fromIndex,
-                                                                                     final int toIndex) {
+                                                                                     final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __core(collection, predicate);
+            else
+                return __core(collection, predicate, fromIndex);
         if (fromIndex == null)
             return __coreWithNoFrom(collection, predicate, toIndex);
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
                                                                                      final @NotNull Predicate<? super T> predicate,
                                                                                      final @Nullable Integer fromIndex,
                                                                                      final @Nullable Integer toIndex) {
@@ -925,11 +1324,10 @@ public final class IndexOfLast
     }
 
     //#endregion -------------------- predicate (T) → boolean, from, to --------------------
-
-    //#region -------------------- minimalist - predicate () → boolean, from, to --------------------
+    //#region -------------------- predicate () → boolean, from, to --------------------
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -938,7 +1336,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -954,7 +1352,58 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @NotNull BooleanSupplier predicate,
+                                                                                     final int fromIndex,
+                                                                                     final int toIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull BooleanSupplier predicate,
+                                                                                     final int fromIndex,
+                                                                                     final int toIndex) {
+        if (collection == null)
+            return null;
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -963,7 +1412,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -981,7 +1430,62 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @NotNull BooleanSupplier predicate,
+                                                                                     final int fromIndex,
+                                                                                     final @Nullable Integer toIndex) {
+        if (collection == null)
+            return null;
+        if (toIndex == null)
+            return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull BooleanSupplier predicate,
+                                                                                     final int fromIndex,
+                                                                                     final @Nullable Integer toIndex) {
+        if (collection == null)
+            return null;
+        if (toIndex == null)
+            return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -990,7 +1494,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1008,7 +1512,62 @@ public final class IndexOfLast
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final @NotNull BooleanSupplier predicate,
+                                                                                     final @Nullable Integer fromIndex,
+                                                                                     final int toIndex) {
+        if (collection == null)
+            return null;
+        if (fromIndex == null)
+            return __coreWithNoFrom(collection, predicate, toIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
+    /// from a start to an end
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param predicate  The given predicate
+    /// @param fromIndex  The inclusive starting index
+    /// @param toIndex    The inclusive ending index
+    /// @param <T>        The `collection` type
+    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
+    @ExtensionFunction
+    @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
+    @Contract(IF_1ST_NULL_THEN_NULL_4)
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final @NotNull BooleanSupplier predicate,
+                                                                                     final @Nullable Integer fromIndex,
+                                                                                     final int toIndex) {
+        if (collection == null)
+            return null;
+        if (fromIndex == null)
+            return __coreWithNoFrom(collection, predicate, toIndex);
+        return __core(collection, predicate, fromIndex, toIndex);
+    }
+
+
+    /// Get the last index matching the `predicate`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -1017,7 +1576,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1039,11 +1598,8 @@ public final class IndexOfLast
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
-    //#endregion -------------------- minimalist - predicate () → boolean, from, to --------------------
-    //#region -------------------- predicate () → boolean, from, to --------------------
-
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -1052,59 +1608,7 @@ public final class IndexOfLast
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    @OnlyGivePositiveValue
-    @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final @NotNull BooleanSupplier predicate,
-                                                                                     final int fromIndex,
-                                                                                     final int toIndex) {
-        if (collection == null)
-            return null;
-        return __core(collection, predicate, fromIndex, toIndex);
-    }
-
-    /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
-    /// from a start to an end
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index
-    /// @param toIndex    The inclusive ending index
-    /// @param <T>        The `collection` type
-    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
-    @ExtensionFunction
-    @CanReceiveNegativeValue
-    @OnlyGivePositiveValue
-    @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final @NotNull BooleanSupplier predicate,
-                                                                                     final int fromIndex,
-                                                                                     final @Nullable Integer toIndex) {
-        if (collection == null)
-            return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
-    }
-
-    /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
-    /// from a start to an end
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index
-    /// @param toIndex    The inclusive ending index
-    /// @param <T>        The `collection` type
-    /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1113,31 +1617,36 @@ public final class IndexOfLast
     public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
                                                                                      final @NotNull BooleanSupplier predicate,
                                                                                      final @Nullable Integer fromIndex,
-                                                                                     final int toIndex) {
+                                                                                     final @Nullable Integer toIndex) {
         if (collection == null)
             return null;
+        if (toIndex == null)
+            if (fromIndex == null)
+                return __core(collection, predicate);
+            else
+                return __core(collection, predicate, fromIndex);
         if (fromIndex == null)
             return __coreWithNoFrom(collection, predicate, toIndex);
         return __core(collection, predicate, fromIndex, toIndex);
     }
 
     /// Get the last index matching the `predicate`
-    /// or `null` if it was not in the `collection`
+    /// or `null` if it was not in the current `collection`
     /// from a start to an end
     ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
     /// @throws joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex" >ReadonlyArray.findLastIndex(predicate)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html">Kotlin indexOfLast(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLast(final T @Nullable @Unmodifiable [] collection,
                                                                                      final @NotNull BooleanSupplier predicate,
                                                                                      final @Nullable Integer fromIndex,
                                                                                      final @Nullable Integer toIndex) {
@@ -1175,6 +1684,14 @@ public final class IndexOfLast
         return __with2Argument(collection, predicate, 0, collection.size() - 1);
     }
 
+    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                final @NotNull ObjIntPredicate<? super T> predicate) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+        return __with2Argument(collection, predicate, 0, size - 1);
+    }
+
     //#endregion -------------------- Core methods (predicate (T, int) → boolean) --------------------
     //#region -------------------- Core methods (predicate (T) → boolean) --------------------
 
@@ -1193,6 +1710,14 @@ public final class IndexOfLast
         return __with1Argument(collection, predicate, 0, collection.size() - 1);
     }
 
+    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                final @NotNull Predicate<? super T> predicate) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+        return __with1Argument(collection, predicate, 0, size - 1);
+    }
+
     //#endregion -------------------- Core methods (predicate (T) → boolean) --------------------
     //#region -------------------- Core methods (predicate () → boolean) --------------------
 
@@ -1209,6 +1734,14 @@ public final class IndexOfLast
         if (collection.isEmpty())
             return null;
         return __with0Argument(predicate, 0, collection.size() - 1);
+    }
+
+    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                final @NotNull BooleanSupplier predicate) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+        return __with0Argument(predicate, 0, size - 1);
     }
 
     //#endregion -------------------- Core methods (predicate () → boolean) --------------------
@@ -1234,6 +1767,15 @@ public final class IndexOfLast
         return __with2Argument(collection, predicate, _startingIndex(fromIndex, size), size - 1);
     }
 
+    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                final @NotNull ObjIntPredicate<? super T> predicate,
+                                                final int fromIndex) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+        return __with2Argument(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+    }
+
     //#endregion -------------------- Core methods (predicate (T, int) → boolean, from) --------------------
     //#region -------------------- Core methods (predicate (T) → boolean, from) --------------------
 
@@ -1256,7 +1798,16 @@ public final class IndexOfLast
         return __with1Argument(collection, predicate, _startingIndex(fromIndex, size), size - 1);
     }
 
-    //#endregion -------------------- Core methods (predicate (T) → boolean, from0 --------------------
+    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                final @NotNull Predicate<? super T> predicate,
+                                                final int fromIndex) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+        return __with1Argument(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+    }
+
+    //#endregion -------------------- Core methods (predicate (T) → boolean, from) --------------------
     //#region -------------------- Core methods (predicate () → boolean, from) --------------------
 
     private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
@@ -1275,6 +1826,15 @@ public final class IndexOfLast
             return null;
 
         final var size = collection.size();
+        return __with0Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+    }
+
+    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                final @NotNull BooleanSupplier predicate,
+                                                final int fromIndex) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
         return __with0Argument(predicate, _startingIndex(fromIndex, size), size - 1);
     }
 
@@ -1305,6 +1865,21 @@ public final class IndexOfLast
             return null;
 
         final var size = collection.size();
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+        return __with2Argument(collection, predicate, startingIndex, endingIndex);
+    }
+
+    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                final @NotNull ObjIntPredicate<? super T> predicate,
+                                                final int fromIndex,
+                                                final int toIndex) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+
         final var startingIndex = _startingIndex(fromIndex, size);
         final var endingIndex = _endingIndex(toIndex, size);
         if (endingIndex < startingIndex)
@@ -1345,6 +1920,21 @@ public final class IndexOfLast
         return __with1Argument(collection, predicate, startingIndex, endingIndex);
     }
 
+    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                final @NotNull Predicate<? super T> predicate,
+                                                final int fromIndex,
+                                                final int toIndex) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+        return __with1Argument(collection, predicate, startingIndex, endingIndex);
+    }
+
     //#endregion -------------------- Core methods (predicate (T) → boolean, from, to) --------------------
     //#region -------------------- Core methods (predicate () → boolean, from, to) --------------------
 
@@ -1378,6 +1968,21 @@ public final class IndexOfLast
         return __with0Argument(predicate, startingIndex, endingIndex);
     }
 
+    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                final @NotNull BooleanSupplier predicate,
+                                                final int fromIndex,
+                                                final int toIndex) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+
+        final var startingIndex = _startingIndex(fromIndex, size);
+        final var endingIndex = _endingIndex(toIndex, size);
+        if (endingIndex < startingIndex)
+            return null;
+        return __with0Argument(predicate, startingIndex, endingIndex);
+    }
+
     //#endregion -------------------- Core methods (predicate () → boolean, from, to) --------------------
 
     //#region -------------------- Core methods (predicate (T, int) → boolean, to) --------------------
@@ -1397,6 +2002,15 @@ public final class IndexOfLast
         if (collection.isEmpty())
             return null;
         return __with2Argument(collection, predicate, 0, _endingIndex(toIndex, collection.size()));
+    }
+
+    private static <T> @Nullable Integer __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
+                                                          final @NotNull ObjIntPredicate<? super T> predicate,
+                                                          final int toIndex) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+        return __with2Argument(collection, predicate, 0, _endingIndex(toIndex, size));
     }
 
     //#endregion -------------------- Core methods (predicate (T, int) → boolean, to) --------------------
@@ -1419,6 +2033,15 @@ public final class IndexOfLast
         return __with1Argument(collection, predicate, 0, _endingIndex(toIndex, collection.size()));
     }
 
+    private static <T> @Nullable Integer __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
+                                                          final @NotNull Predicate<? super T> predicate,
+                                                          final int toIndex) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+        return __with1Argument(collection, predicate, 0, _endingIndex(toIndex, size));
+    }
+
     //#endregion -------------------- Core methods (predicate (T) → boolean, to) --------------------
     //#region -------------------- Core methods (predicate () → boolean, to) --------------------
 
@@ -1439,14 +2062,23 @@ public final class IndexOfLast
         return __with0Argument(predicate, 0, _endingIndex(toIndex, collection.size()));
     }
 
+    private static <T> @Nullable Integer __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
+                                                          final @NotNull BooleanSupplier predicate,
+                                                          final int toIndex) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+        return __with0Argument(predicate, 0, _endingIndex(toIndex, size));
+    }
+
     //#endregion -------------------- Core methods (predicate () → boolean, to) --------------------
 
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static @Nullable Integer __with0Argument(@NotNull BooleanSupplier predicate,
-                                                     int startingIndex,
-                                                     int endingIndex) {
+    private static @Nullable Integer __with0Argument(final @NotNull BooleanSupplier predicate,
+                                                     final int startingIndex,
+                                                     final int endingIndex) {
         var index = endingIndex + 1;
         while (--index >= startingIndex)
             if (predicate.getAsBoolean())
@@ -1454,10 +2086,11 @@ public final class IndexOfLast
         return null;
     }
 
-    private static <T> @Nullable Integer __with1Argument(@NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                         @NotNull Predicate<? super T> predicate,
-                                                         int startingIndex,
-                                                         int endingIndex) {
+
+    private static <T> @Nullable Integer __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                         final @NotNull Predicate<? super T> predicate,
+                                                         final int startingIndex,
+                                                         final int endingIndex) {
         var index = endingIndex + 1;
         while (--index >= startingIndex)
             if (predicate.test(collection.get(index)))
@@ -1465,13 +2098,36 @@ public final class IndexOfLast
         return null;
     }
 
-    private static <T> @Nullable Integer __with2Argument(@NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                         @NotNull ObjIntPredicate<? super T> predicate,
-                                                         int startingIndex,
-                                                         int endingIndex) {
+    private static <T> @Nullable Integer __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                         final @NotNull Predicate<? super T> predicate,
+                                                         final int startingIndex,
+                                                         final int endingIndex) {
+        var index = endingIndex + 1;
+        while (--index >= startingIndex)
+            if (predicate.test(collection[index]))
+                return index;
+        return null;
+    }
+
+
+    private static <T> @Nullable Integer __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                         final @NotNull ObjIntPredicate<? super T> predicate,
+                                                         final int startingIndex,
+                                                         final int endingIndex) {
         var index = endingIndex + 1;
         while (--index >= startingIndex)
             if (predicate.test(collection.get(index), index))
+                return index;
+        return null;
+    }
+
+    private static <T> @Nullable Integer __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                         final @NotNull ObjIntPredicate<? super T> predicate,
+                                                         final int startingIndex,
+                                                         final int endingIndex) {
+        var index = endingIndex + 1;
+        while (--index >= startingIndex)
+            if (predicate.test(collection[index], index))
                 return index;
         return null;
     }
