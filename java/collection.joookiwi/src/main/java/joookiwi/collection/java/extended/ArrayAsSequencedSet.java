@@ -1,14 +1,12 @@
 package joookiwi.collection.java.extended;
 
 import java.util.SequencedSet;
-
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CollectionConstants.emptySequencedSet;
 
 /// A bare-bone implementation of a [java SequencedSet][SequencedSet]
 /// with the [immutability][Unmodifiable] in place.
@@ -29,8 +27,10 @@ public class ArrayAsSequencedSet<T extends @Nullable Object>
 
     public ArrayAsSequencedSet(final T @NotNull @Unmodifiable [] values) { super(values); }
 
-    @Contract(ALWAYS_NEW_0)
     @Override public SequencedSet<T> reversed() {
+        if (isEmpty())
+            return emptySequencedSet();
+
         final var reference = _reference();
         final var size = size();
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
