@@ -8,6 +8,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.ArrayAsList;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -252,44 +253,44 @@ public final class ToList
 
     private static <T> @NotNull @Unmodifiable List<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                                         final int size) {
-        return List.of(_values(collection, size)); // TODO create a list that can hold null values
+        return new ArrayAsList<>(_values(collection, size));
     }
 
     private static <T> @NotNull @Unmodifiable List<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
                                                                         final int size) {
-        return List.of(_values(collection, size)); // TODO create a list that can hold null values
+        return new ArrayAsList<>(_values(collection, size));
     }
 
 
     private static <U> @NotNull @Unmodifiable List<U> __with0Argument(final int size,
                                                                       final @NotNull Supplier<? extends U> transform) {
-        return List.of(_values(size, transform)); // TODO create a list that can hold null values
+        return new ArrayAsList<>(_values(size, transform));
     }
 
 
     private static <T, U> @NotNull @Unmodifiable List<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                                          final int size,
                                                                          final @NotNull Function<? super T, ? extends U> transform) {
-        return List.of(_values(collection, size, transform)); // TODO create a list that can hold null values
+        return new ArrayAsList<>(_values(collection, size, transform));
     }
 
     private static <T, U> @NotNull @Unmodifiable List<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
                                                                          final int size,
                                                                          final @NotNull Function<? super T, ? extends U> transform) {
-        return List.of(_values(collection, size, transform)); // TODO create a list that can hold null values
+        return new ArrayAsList<>(_values(collection, size, transform));
     }
 
 
     private static <T, U> @NotNull @Unmodifiable List<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                                          final int size,
                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
-        return List.of(_values(collection, size, transform)); // TODO create a list that can hold null values
+        return new ArrayAsList<>(_values(collection, size, transform));
     }
 
     private static <T, U> @NotNull @Unmodifiable List<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
                                                                          final int size,
                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
-        return List.of(_values(collection, size, transform)); // TODO create a list that can hold null values
+        return new ArrayAsList<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- Loop methods --------------------
