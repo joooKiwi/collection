@@ -8,6 +8,7 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
@@ -18,6 +19,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_2;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_3;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_4;
 
+@NotNullByDefault
 public final class LastIndexOf
         extends UtilityWithIndex {
 

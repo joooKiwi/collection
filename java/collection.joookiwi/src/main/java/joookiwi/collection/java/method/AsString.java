@@ -6,8 +6,10 @@ import joookiwi.collection.java.CommonContracts;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+@NotNullByDefault
 public final class AsString
         extends Utility {
 

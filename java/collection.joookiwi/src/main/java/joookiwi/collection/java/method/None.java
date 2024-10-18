@@ -9,6 +9,7 @@ import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
@@ -16,6 +17,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_TRUE_1;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_TRUE_2;
 
+@NotNullByDefault
 public final class None
         extends Utility {
 
