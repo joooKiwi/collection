@@ -45,15 +45,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2;
 
+@NotNullByDefault
 public final class HasOne
         extends Utility {
 
@@ -68,9 +71,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Iterator<?> values) {
+                                     final @Nullable Iterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -82,9 +86,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Iterator<?> values) {
+                                     final @Nullable Iterator<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable Iterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -99,9 +119,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable ListIterator<?> values) {
+                                     final @Nullable ListIterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -113,9 +134,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable ListIterator<?> values) {
+                                     final @Nullable ListIterator<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable ListIterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -130,9 +167,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Spliterator<?> values) {
+                                     final @Nullable Spliterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -144,9 +182,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Spliterator<?> values) {
+                                     final @Nullable Spliterator<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable Spliterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -161,9 +215,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Enumeration<?> values) {
+                                     final @Nullable Enumeration<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -175,9 +230,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Enumeration<?> values) {
+                                     final @Nullable Enumeration<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable Enumeration<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -193,19 +264,20 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Iterable<?> values) {
+                                     final @Nullable Iterable<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
             return true;
-        if (values instanceof CollectionHolder<?>)
-            return __hasOne(collection, (CollectionHolder<?>) values);
-        if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        if (values instanceof Collection<?>)
-            return __hasOne(collection, (Collection<?>) values);
+        if (values instanceof CollectionHolder<? extends T>)
+            return __hasOne(collection, (CollectionHolder<? extends T>) values);
+        if (values instanceof List<? extends T>)
+            return __hasOne(collection, (List<? extends T>) values);
+        if (values instanceof Collection<? extends T>)
+            return __hasOne(collection, (Collection<? extends T>) values);
         return __hasOne(collection, values);
     }
 
@@ -213,19 +285,41 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Iterable<?> values) {
+                                     final @Nullable Iterable<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
             return true;
-        if (values instanceof CollectionHolder<?>)
-            return __hasOne(collection, (CollectionHolder<?>) values);
-        if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        if (values instanceof Collection<?>)
-            return __hasOne(collection, (Collection<?>) values);
+        if (values instanceof CollectionHolder<? extends T>)
+            return __hasOne(collection, (CollectionHolder<? extends T>) values);
+        if (values instanceof List<? extends T>)
+            return __hasOne(collection, (List<? extends T>) values);
+        if (values instanceof Collection<? extends T>)
+            return __hasOne(collection, (Collection<? extends T>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable Iterable<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof CollectionHolder<? extends T>)
+            return __hasOne(collection, (CollectionHolder<? extends T>) values);
+        if (values instanceof List<? extends T>)
+            return __hasOne(collection, (List<? extends T>) values);
+        if (values instanceof Collection<? extends T>)
+            return __hasOne(collection, (Collection<? extends T>) values);
         return __hasOne(collection, values);
     }
 
@@ -237,15 +331,16 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable MinimalistCollectionHolder<?> values) {
+                                     final @Nullable MinimalistCollectionHolder<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
             return true;
-        if (values instanceof CollectionHolder<?>)
-            return __hasOne(collection, (CollectionHolder<?>) values);
+        if (values instanceof CollectionHolder<? extends T>)
+            return __hasOne(collection, (CollectionHolder<? extends T>) values);
         return __hasOne(collection, values);
     }
 
@@ -253,15 +348,33 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable MinimalistCollectionHolder<?> values) {
+                                     final @Nullable MinimalistCollectionHolder<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
             return true;
-        if (values instanceof CollectionHolder<?>)
-            return __hasOne(collection, (CollectionHolder<?>) values);
+        if (values instanceof CollectionHolder<? extends T>)
+            return __hasOne(collection, (CollectionHolder<? extends T>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable MinimalistCollectionHolder<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof CollectionHolder<? extends T>)
+            return __hasOne(collection, (CollectionHolder<? extends T>) values);
         return __hasOne(collection, values);
     }
 
@@ -272,9 +385,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable CollectionHolder<?> values) {
+                                     final @Nullable CollectionHolder<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -286,9 +400,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable CollectionHolder<?> values) {
+                                     final @Nullable CollectionHolder<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable CollectionHolder<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -304,15 +434,16 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Collection<?> values) {
+                                     final @Nullable Collection<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
             return true;
-        if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
+        if (values instanceof List<? extends T>)
+            return __hasOne(collection, (List<? extends T>) values);
         return __hasOne(collection, values);
     }
 
@@ -320,15 +451,33 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Collection<?> values) {
+                                     final @Nullable Collection<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
             return true;
-        if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
+        if (values instanceof List<? extends T>)
+            return __hasOne(collection, (List<? extends T>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable Collection<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<? extends T>)
+            return __hasOne(collection, (List<? extends T>) values);
         return __hasOne(collection, values);
     }
 
@@ -339,15 +488,16 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable SequencedCollection<?> values) {
+                                     final @Nullable SequencedCollection<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
             return true;
-        if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
+        if (values instanceof List<? extends T>)
+            return __hasOne(collection, (List<? extends T>) values);
         return __hasOne(collection, values);
     }
 
@@ -355,15 +505,33 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable SequencedCollection<?> values) {
+                                     final @Nullable SequencedCollection<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
             return true;
-        if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
+        if (values instanceof List<? extends T>)
+            return __hasOne(collection, (List<? extends T>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable SequencedCollection<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<? extends T>)
+            return __hasOne(collection, (List<? extends T>) values);
         return __hasOne(collection, values);
     }
 
@@ -375,9 +543,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable List<?> values) {
+                                     final @Nullable List<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -389,9 +558,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable List<?> values) {
+                                     final @Nullable List<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable List<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -406,9 +591,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable ArrayList<?> values) {
+                                     final @Nullable ArrayList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -420,9 +606,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable ArrayList<?> values) {
+                                     final @Nullable ArrayList<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable ArrayList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -437,9 +639,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable CopyOnWriteArrayList<?> values) {
+                                     final @Nullable CopyOnWriteArrayList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -451,9 +654,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable CopyOnWriteArrayList<?> values) {
+                                     final @Nullable CopyOnWriteArrayList<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable CopyOnWriteArrayList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -468,9 +687,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable LinkedList<?> values) {
+                                     final @Nullable LinkedList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -482,9 +702,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable LinkedList<?> values) {
+                                     final @Nullable LinkedList<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable LinkedList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -499,9 +735,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Vector<?> values) {
+                                     final @Nullable Vector<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -513,9 +750,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Vector<?> values) {
+                                     final @Nullable Vector<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable Vector<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -531,9 +784,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Set<?> values) {
+                                     final @Nullable Set<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -547,9 +801,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Set<?> values) {
+                                     final @Nullable Set<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable Set<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -566,9 +838,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable SequencedSet<?> values) {
+                                     final @Nullable SequencedSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -582,9 +855,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable SequencedSet<?> values) {
+                                     final @Nullable SequencedSet<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable SequencedSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -601,9 +892,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable SortedSet<?> values) {
+                                     final @Nullable SortedSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -617,9 +909,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable SortedSet<?> values) {
+                                     final @Nullable SortedSet<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable SortedSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -636,9 +946,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable NavigableSet<?> values) {
+                                     final @Nullable NavigableSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -652,9 +963,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable NavigableSet<?> values) {
+                                     final @Nullable NavigableSet<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable NavigableSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -671,9 +1000,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable ConcurrentSkipListSet<?> values) {
+                                     final @Nullable ConcurrentSkipListSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -687,9 +1017,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable ConcurrentSkipListSet<?> values) {
+                                     final @Nullable ConcurrentSkipListSet<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable ConcurrentSkipListSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -706,9 +1054,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable CopyOnWriteArraySet<?> values) {
+                                     final @Nullable CopyOnWriteArraySet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -722,9 +1071,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable CopyOnWriteArraySet<?> values) {
+                                     final @Nullable CopyOnWriteArraySet<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable CopyOnWriteArraySet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -741,9 +1108,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Enum<T>> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                     final @Nullable EnumSet<?> values) {
+                                                     final @Nullable EnumSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -755,8 +1123,24 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Enum<T>> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                     final @Nullable EnumSet<?> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T extends Enum<T>> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                                      final @Nullable EnumSet<?> values) {
         if (collection == null)
             return false;
@@ -772,9 +1156,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable HashSet<?> values) {
+                                     final @Nullable HashSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -788,9 +1173,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable HashSet<?> values) {
+                                     final @Nullable HashSet<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable HashSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -807,9 +1210,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable LinkedHashSet<?> values) {
+                                     final @Nullable LinkedHashSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -823,9 +1227,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable LinkedHashSet<?> values) {
+                                     final @Nullable LinkedHashSet<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable LinkedHashSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -842,9 +1264,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable TreeSet<?> values) {
+                                     final @Nullable TreeSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -858,9 +1281,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable TreeSet<?> values) {
+                                     final @Nullable TreeSet<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable TreeSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -878,9 +1319,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Queue<?> values) {
+                                     final @Nullable Queue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -894,9 +1336,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Queue<?> values) {
+                                     final @Nullable Queue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable Queue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -913,9 +1373,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable BlockingQueue<?> values) {
+                                     final @Nullable BlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -929,9 +1390,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable BlockingQueue<?> values) {
+                                     final @Nullable BlockingQueue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable BlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -948,9 +1427,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable TransferQueue<?> values) {
+                                     final @Nullable TransferQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -964,9 +1444,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable TransferQueue<?> values) {
+                                     final @Nullable TransferQueue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable TransferQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -983,9 +1481,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable ArrayBlockingQueue<?> values) {
+                                     final @Nullable ArrayBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -999,9 +1498,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable ArrayBlockingQueue<?> values) {
+                                     final @Nullable ArrayBlockingQueue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable ArrayBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1018,9 +1535,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable ConcurrentLinkedQueue<?> values) {
+                                     final @Nullable ConcurrentLinkedQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1034,9 +1552,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable ConcurrentLinkedQueue<?> values) {
+                                     final @Nullable ConcurrentLinkedQueue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable ConcurrentLinkedQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1053,9 +1589,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Delayed> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                     final @Nullable DelayQueue<?> values) {
+                                                     final @Nullable DelayQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1069,9 +1606,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Delayed> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                                     final @Nullable DelayQueue<?> values) {
+                                                     final @Nullable DelayQueue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T extends Delayed> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                                     final @Nullable DelayQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1088,9 +1643,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable LinkedBlockingQueue<?> values) {
+                                     final @Nullable LinkedBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1104,9 +1660,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable LinkedBlockingQueue<?> values) {
+                                     final @Nullable LinkedBlockingQueue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable LinkedBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1123,9 +1697,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable LinkedTransferQueue<?> values) {
+                                     final @Nullable LinkedTransferQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1139,9 +1714,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable LinkedTransferQueue<?> values) {
+                                     final @Nullable LinkedTransferQueue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable LinkedTransferQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1158,9 +1751,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable PriorityBlockingQueue<?> values) {
+                                     final @Nullable PriorityBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1174,9 +1768,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable PriorityBlockingQueue<?> values) {
+                                     final @Nullable PriorityBlockingQueue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable PriorityBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1193,9 +1805,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable PriorityQueue<?> values) {
+                                     final @Nullable PriorityQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1209,9 +1822,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable PriorityQueue<?> values) {
+                                     final @Nullable PriorityQueue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable PriorityQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1228,9 +1859,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable SynchronousQueue<?> values) {
+                                     final @Nullable SynchronousQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1244,9 +1876,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable SynchronousQueue<?> values) {
+                                     final @Nullable SynchronousQueue<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable SynchronousQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1264,9 +1914,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Deque<?> values) {
+                                     final @Nullable Deque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1280,9 +1931,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Deque<?> values) {
+                                     final @Nullable Deque<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable Deque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1299,9 +1968,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable BlockingDeque<?> values) {
+                                     final @Nullable BlockingDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1315,9 +1985,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable BlockingDeque<?> values) {
+                                     final @Nullable BlockingDeque<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable BlockingDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1334,9 +2022,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable ArrayDeque<?> values) {
+                                     final @Nullable ArrayDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1350,9 +2039,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable ArrayDeque<?> values) {
+                                     final @Nullable ArrayDeque<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable ArrayDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1369,9 +2076,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable ConcurrentLinkedDeque<?> values) {
+                                     final @Nullable ConcurrentLinkedDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1385,9 +2093,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable ConcurrentLinkedDeque<?> values) {
+                                     final @Nullable ConcurrentLinkedDeque<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable ConcurrentLinkedDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1404,9 +2130,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable LinkedBlockingDeque<?> values) {
+                                     final @Nullable LinkedBlockingDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1420,9 +2147,27 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable LinkedBlockingDeque<?> values) {
+                                     final @Nullable LinkedBlockingDeque<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        if (values instanceof List<?>)
+            return __hasOne(collection, (List<?>) values);
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable LinkedBlockingDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1439,9 +2184,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Stack<?> values) {
+                                     final @Nullable Stack<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1453,9 +2199,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Stack<?> values) {
+                                     final @Nullable Stack<? extends T> values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable Stack<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1471,9 +2233,10 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Object @Nullable @Unmodifiable [] values) {
+                                     final T @Nullable @Unmodifiable [] values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1485,9 +2248,25 @@ public final class HasOne
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param values     The values to compare
+    @ExtensionFunction
     @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Object @Nullable @Unmodifiable [] values) {
+                                     final T @Nullable @Unmodifiable [] values) {
+        if (collection == null)
+            return false;
+        if (values == null)
+            return true;
+        return __hasOne(collection, values);
+    }
+
+    /// Tell that one of the `values` exist in the current `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    @ExtensionFunction
+    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
+                                     final T @Nullable @Unmodifiable [] values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1503,7 +2282,7 @@ public final class HasOne
     //#region -------------------- Core methods (iterator) --------------------
 
     private static <T> boolean __hasOne(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull Iterator<?> values) {
+                                        final @NotNull Iterator<? extends T> values) {
         if (!values.hasNext())
             return true;
 
@@ -1514,58 +2293,91 @@ public final class HasOne
     }
 
     private static <T> boolean __hasOne(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull Iterator<?> values) {
+                                        final @NotNull Iterator<? extends T> values) {
         if (!values.hasNext())
             return true;
         if (collection.isEmpty())
             return false;
         return __fromIterator(collection, collection.size(), values);
+    }
+
+    private static <T> boolean __hasOne(final T @NotNull @Unmodifiable [] collection,
+                                        final @NotNull Iterator<? extends T> values) {
+        if (!values.hasNext())
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        return __fromIterator(collection, size, values);
     }
 
     //#endregion -------------------- Core methods (iterator) --------------------
     //#region -------------------- Core methods (spliterator) --------------------
 
     private static <T> boolean __hasOne(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull Spliterator<?> values) {
+                                        final @NotNull Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
 
         final var size = collection.size();
         if (size == 0)
             return false;
-        return __fromIterator(collection, size, values);
+        return __fromSpliterator(collection, size, values);
     }
 
     private static <T> boolean __hasOne(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull Spliterator<?> values) {
+                                        final @NotNull Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
         if (collection.isEmpty())
             return false;
-        return __fromIterator(collection, collection.size(), values);
+        return __fromSpliterator(collection, collection.size(), values);
+    }
+
+    private static <T> boolean __hasOne(final T @NotNull @Unmodifiable [] collection,
+                                        final @NotNull Spliterator<? extends T> values) {
+        if (values.estimateSize() == 0L)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        return __fromSpliterator(collection, size, values);
     }
 
     //#endregion -------------------- Core methods (spliterator) --------------------
     //#region -------------------- Core methods (enumeration) --------------------
 
     private static <T> boolean __hasOne(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull Enumeration<?> values) {
+                                        final @NotNull Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
 
         final var size = collection.size();
         if (size == 0)
             return false;
-        return __fromIterator(collection, size, values);
+        return __fromEnumeration(collection, size, values);
     }
 
     private static <T> boolean __hasOne(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull Enumeration<?> values) {
+                                        final @NotNull Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
         if (collection.isEmpty())
             return false;
-        return __fromIterator(collection, collection.size(), values);
+        return __fromEnumeration(collection, collection.size(), values);
+    }
+
+    private static <T> boolean __hasOne(final T @NotNull @Unmodifiable [] collection,
+                                        final @NotNull Enumeration<? extends T> values) {
+        if (!values.hasMoreElements())
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        return __fromEnumeration(collection, size, values);
     }
 
     //#endregion -------------------- Core methods (enumeration) --------------------
@@ -1573,7 +2385,7 @@ public final class HasOne
     //#region -------------------- Core methods (iterable) --------------------
 
     private static <T> boolean __hasOne(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull Iterable<?> values) {
+                                        final @NotNull Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -1585,7 +2397,7 @@ public final class HasOne
     }
 
     private static <T> boolean __hasOne(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull Iterable<?> values) {
+                                        final @NotNull Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -1594,12 +2406,24 @@ public final class HasOne
         return __fromIterator(collection, collection.size(), iterator);
     }
 
+    private static <T> boolean __hasOne(final T @NotNull @Unmodifiable [] collection,
+                                        final @NotNull Iterable<? extends T> values) {
+        final var iterator = values.iterator();
+        if (!iterator.hasNext())
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        return __fromIterator(collection, size, iterator);
+    }
+
     //#endregion -------------------- Core methods (iterable) --------------------
 
     //#region -------------------- Core methods (minimalist collection holder) --------------------
 
     private static <T> boolean __hasOne(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull MinimalistCollectionHolder<?> values) {
+                                        final @NotNull MinimalistCollectionHolder<? extends T> values) {
         final var valuesSize = values.size();
         if (valuesSize == 0)
             return true;
@@ -1607,24 +2431,36 @@ public final class HasOne
         final var size = collection.size();
         if (size == 0)
             return false;
-        return __fromNotIterator(collection, size, values, valuesSize);
+        return __fromMinimalistCollectionHolder(collection, size, values, valuesSize);
     }
 
     private static <T> boolean __hasOne(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull MinimalistCollectionHolder<?> values) {
+                                        final @NotNull MinimalistCollectionHolder<? extends T> values) {
         final var valuesSize = values.size();
         if (valuesSize == 0)
             return true;
         if (collection.isEmpty())
             return false;
-        return __fromNotIterator(collection, collection.size(), values, valuesSize);
+        return __fromMinimalistCollectionHolder(collection, collection.size(), values, valuesSize);
+    }
+
+    private static <T> boolean __hasOne(final T @NotNull @Unmodifiable [] collection,
+                                        final @NotNull MinimalistCollectionHolder<? extends T> values) {
+        final var valuesSize = values.size();
+        if (valuesSize == 0)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        return __fromMinimalistCollectionHolder(collection, size, values, valuesSize);
     }
 
     //#endregion -------------------- Core methods (minimalist collection holder) --------------------
     //#region -------------------- Core methods (collection holder) --------------------
 
     private static <T> boolean __hasOne(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull CollectionHolder<?> values) {
+                                        final @NotNull CollectionHolder<? extends T> values) {
         if (values.isEmpty())
             return true;
 
@@ -1632,19 +2468,32 @@ public final class HasOne
         if (size == 0)
             return false;
         if (values instanceof RandomAccess)
-            return __fromNotIterator(collection, size, values, values.size());
+            return __fromMinimalistCollectionHolder(collection, size, values, values.size());
         return __fromIterator(collection, size, values.iterator());
     }
 
     private static <T> boolean __hasOne(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull CollectionHolder<?> values) {
+                                        final @NotNull CollectionHolder<? extends T> values) {
         if (values.isEmpty())
             return true;
         if (collection.isEmpty())
             return false;
         if (values instanceof RandomAccess)
-            return __fromNotIterator(collection, collection.size(), values, values.size());
+            return __fromMinimalistCollectionHolder(collection, collection.size(), values, values.size());
         return __fromIterator(collection, collection.size(), values.iterator());
+    }
+
+    private static <T> boolean __hasOne(final T @NotNull @Unmodifiable [] collection,
+                                        final @NotNull CollectionHolder<? extends T> values) {
+        if (values.isEmpty())
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        if (values instanceof RandomAccess)
+            return __fromMinimalistCollectionHolder(collection, size, values, values.size());
+        return __fromIterator(collection, size, values.iterator());
     }
 
     //#endregion -------------------- Core methods (collection holder) --------------------
@@ -1652,7 +2501,7 @@ public final class HasOne
     //#region -------------------- Core methods (collection) --------------------
 
     private static <T> boolean __hasOne(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull Collection<?> values) {
+                                        final @NotNull Collection<? extends T> values) {
         if (values.isEmpty())
             return true;
 
@@ -1663,12 +2512,23 @@ public final class HasOne
     }
 
     private static <T> boolean __hasOne(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull Collection<?> values) {
+                                        final @NotNull Collection<? extends T> values) {
         if (values.isEmpty())
             return true;
         if (collection.isEmpty())
             return false;
         return __fromIterator(collection, collection.size(), values.iterator());
+    }
+
+    private static <T> boolean __hasOne(final T @NotNull @Unmodifiable [] collection,
+                                        final @NotNull Collection<? extends T> values) {
+        if (values.isEmpty())
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        return __fromIterator(collection, size, values.iterator());
     }
 
     //#endregion -------------------- Core methods (collection) --------------------
@@ -1676,7 +2536,7 @@ public final class HasOne
     //#region -------------------- Core methods (list) --------------------
 
     private static <T> boolean __hasOne(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull List<?> values) {
+                                        final @NotNull List<? extends T> values) {
         if (values.isEmpty())
             return true;
 
@@ -1684,19 +2544,32 @@ public final class HasOne
         if (size == 0)
             return false;
         if (values instanceof RandomAccess)
-            return __fromNotIterator(collection, size, values, values.size());
+            return __fromList(collection, size, values, values.size());
         return __fromIterator(collection, size, values.iterator());
     }
 
     private static <T> boolean __hasOne(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull List<?> values) {
+                                        final @NotNull List<? extends T> values) {
         if (values.isEmpty())
             return true;
         if (collection.isEmpty())
             return false;
         if (values instanceof RandomAccess)
-            return __fromNotIterator(collection, collection.size(), values, values.size());
+            return __fromList(collection, collection.size(), values, values.size());
         return __fromIterator(collection, collection.size(), values.iterator());
+    }
+
+    private static <T> boolean __hasOne(final T @NotNull @Unmodifiable [] collection,
+                                        final @NotNull List<? extends T> values) {
+        if (values.isEmpty())
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        if (values instanceof RandomAccess)
+            return __fromList(collection, size, values, values.size());
+        return __fromIterator(collection, size, values.iterator());
     }
 
     //#endregion -------------------- Core methods (list) --------------------
@@ -1712,7 +2585,7 @@ public final class HasOne
         final var size = collection.size();
         if (size == 0)
             return false;
-        return __fromNotIterator(collection, size, values, valuesSize);
+        return __fromArray(collection, size, values, valuesSize);
     }
 
     private static <T> boolean __hasOne(final @NotNull CollectionHolder<? extends T> collection,
@@ -1722,7 +2595,19 @@ public final class HasOne
             return true;
         if (collection.isEmpty())
             return false;
-        return __fromNotIterator(collection, collection.size(), values, valuesSize);
+        return __fromArray(collection, collection.size(), values, valuesSize);
+    }
+
+    private static <T> boolean __hasOne(final T @NotNull @Unmodifiable [] collection,
+                                        final @Nullable Object @NotNull @Unmodifiable [] values) {
+        final var valuesSize = values.length;
+        if (valuesSize == 0)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return false;
+        return __fromArray(collection, size, values, valuesSize);
     }
 
     //#endregion -------------------- Core methods (array) --------------------
@@ -1732,9 +2617,9 @@ public final class HasOne
 
     //README: The iterator always has at least one element
 
-    private static boolean __fromIterator(final @NotNull MinimalistCollectionHolder<?> collection,
-                                          final int size,
-                                          final @NotNull Iterator<?> values) {
+    private static <T> boolean __fromIterator(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                              final int size,
+                                              final @NotNull Iterator<? extends T> values) {
         while (values.hasNext()) {
             final var value = values.next();
             var index = -1;
@@ -1745,11 +2630,25 @@ public final class HasOne
         return false;
     }
 
-    private static <U> boolean __fromIterator(final @NotNull MinimalistCollectionHolder<?> collection,
+    private static <T> boolean __fromIterator(final T @NotNull @Unmodifiable [] collection,
                                               final int size,
-                                              final @NotNull Spliterator<U> values) {
+                                              final @NotNull Iterator<? extends T> values) {
+        while (values.hasNext()) {
+            final var value = values.next();
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], value))
+                    return true;
+        }
+        return false;
+    }
+
+
+    private static <T> boolean __fromSpliterator(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                 final int size,
+                                                 final @NotNull Spliterator<? extends T> values) {
         final var valueReturned = new AtomicBoolean(false);
-        final var action = (Consumer<? super U>) it -> {
+        final Consumer<T> action = it -> {
             var index = -1;
             while (++index < size)
                 if (Objects.deepEquals(collection.get(index), it)) {
@@ -1762,9 +2661,27 @@ public final class HasOne
                 return valueReturned.get();
     }
 
-    private static boolean __fromIterator(final @NotNull MinimalistCollectionHolder<?> collection,
-                                          final int size,
-                                          final @NotNull Enumeration<?> values) {
+    private static <T> boolean __fromSpliterator(final T @NotNull @Unmodifiable [] collection,
+                                                 final int size,
+                                                 final @NotNull Spliterator<? extends T> values) {
+        final var valueReturned = new AtomicBoolean(false);
+        final Consumer<T> action = it -> {
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], it)) {
+                    valueReturned.set(true);
+                    return;
+                }
+        };
+        while (true)
+            if (!values.tryAdvance(action))
+                return valueReturned.get();
+    }
+
+
+    private static <T> boolean __fromEnumeration(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                 final int size,
+                                                 final @NotNull Enumeration<? extends T> values) {
         while (values.hasMoreElements()) {
             final var value = values.nextElement();
             var index = -1;
@@ -1775,11 +2692,24 @@ public final class HasOne
         return false;
     }
 
+    private static <T> boolean __fromEnumeration(final T @NotNull @Unmodifiable [] collection,
+                                                 final int size,
+                                                 final @NotNull Enumeration<? extends T> values) {
+        while (values.hasMoreElements()) {
+            final var value = values.nextElement();
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], value))
+                    return true;
+        }
+        return false;
+    }
 
-    private static boolean __fromNotIterator(@NotNull MinimalistCollectionHolder<?> collection,
-                                             int size,
-                                             @NotNull MinimalistCollectionHolder<?> values,
-                                             int valuesSize) {
+
+    private static <T> boolean __fromMinimalistCollectionHolder(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                final int size,
+                                                                final @NotNull MinimalistCollectionHolder<? extends T> values,
+                                                                final int valuesSize) {
         var valuesIndex = -1;
         while (++valuesIndex < valuesSize) {
             final var value = values.get(valuesIndex);
@@ -1791,10 +2721,26 @@ public final class HasOne
         return false;
     }
 
-    private static boolean __fromNotIterator(final @NotNull MinimalistCollectionHolder<?> collection,
-                                             final int size,
-                                             final @NotNull List<?> values,
-                                             final int valuesSize) {
+    private static <T> boolean __fromMinimalistCollectionHolder(final T @NotNull @Unmodifiable [] collection,
+                                                                final int size,
+                                                                final @NotNull MinimalistCollectionHolder<? extends T> values,
+                                                                final int valuesSize) {
+        var valuesIndex = -1;
+        while (++valuesIndex < valuesSize) {
+            final var value = values.get(valuesIndex);
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], value))
+                    return true;
+        }
+        return false;
+    }
+
+
+    private static <T> boolean __fromList(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                          final int size,
+                                          final @NotNull List<? extends T> values,
+                                          final int valuesSize) {
         var valuesIndex = -1;
         while (++valuesIndex < valuesSize) {
             final var value = values.get(valuesIndex);
@@ -1806,16 +2752,47 @@ public final class HasOne
         return false;
     }
 
-    private static boolean __fromNotIterator(final @NotNull MinimalistCollectionHolder<?> collection,
-                                             final int size,
-                                             final @Nullable Object @NotNull @Unmodifiable [] values,
-                                             final int valuesSize) {
+    private static <T> boolean __fromList(final T @NotNull @Unmodifiable [] collection,
+                                          final int size,
+                                          final @NotNull List<? extends T> values,
+                                          final int valuesSize) {
+        var valuesIndex = -1;
+        while (++valuesIndex < valuesSize) {
+            final var value = values.get(valuesIndex);
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], value))
+                    return true;
+        }
+        return false;
+    }
+
+
+    private static <T> boolean __fromArray(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                           final int size,
+                                           final T @NotNull @Unmodifiable [] values,
+                                           final int valuesSize) {
         var valuesIndex = -1;
         while (++valuesIndex < valuesSize) {
             final var value = values[valuesIndex];
             var index = -1;
             while (++index < size)
                 if (Objects.deepEquals(collection.get(index), value))
+                    return true;
+        }
+        return false;
+    }
+
+    private static <T> boolean __fromArray(final T @NotNull @Unmodifiable [] collection,
+                                           final int size,
+                                           final T @NotNull @Unmodifiable [] values,
+                                           final int valuesSize) {
+        var valuesIndex = -1;
+        while (++valuesIndex < valuesSize) {
+            final var value = values[valuesIndex];
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], value))
                     return true;
         }
         return false;
