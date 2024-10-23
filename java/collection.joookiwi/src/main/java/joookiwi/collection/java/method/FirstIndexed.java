@@ -17,17 +17,60 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_2;
 
 @NotNullByDefault
-public final class FindIndexed
+public final class FirstIndexed
         extends AliasUtility {
 
     @Contract(ALWAYS_FAIL_0)
-    private FindIndexed() { throw new ImpossibleConstructionException("The utility class “FindIndexed” cannot be constructed.", FindIndexed.class); }
+    private FirstIndexed() { throw new ImpossibleConstructionException("The utility class “FirstIndexed” cannot be constructed.", FirstIndexed.class); }
 
     //#region -------------------- Facade methods --------------------
 
+    //#region -------------------- ∅ ---------------------
+
+    /// Get the first element in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @throws NullCollectionHolderException  The `collection` was `null`
+    /// @throws EmptyCollectionHolderException The `collection` **is empty**
+    /// @see java.util.SequencedCollection#getFirst()
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_1)
+    public static <T> @NotNull T firstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection) { return GetFirst.getFirst(collection); }
+
+    /// Get the first element in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param <T>        The `collection` type
+    /// @throws NullCollectionHolderException  The `collection` was `null`
+    /// @throws EmptyCollectionHolderException The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @see java.util.SequencedCollection#getFirst()
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_1)
+    public static <T> @NotNull T firstIndexed(final @Nullable CollectionHolder<? extends T> collection) { return GetFirst.getFirst(collection); }
+
+    /// Get the first element in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param <T>        The `collection` type
+    /// @throws NullCollectionHolderException  The `collection` was `null`
+    /// @throws EmptyCollectionHolderException The `collection` **is empty**
+    /// @see java.util.SequencedCollection#getFirst()
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_1)
+    public static <T> @NotNull T firstIndexed(final T @Nullable @Unmodifiable [] collection) { return GetFirst.getFirst(collection); }
+
+    //#endregion -------------------- ∅ --------------------
     //#region -------------------- predicate (int, T) → boolean --------------------
 
     /// Get the first element found in the `collection`
@@ -42,8 +85,12 @@ public final class FindIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                    final @NotNull IntObjPredicate<? super T> predicate) { return FindFirstIndexed.findFirstIndexed(collection, predicate); }
+    public static <T> T firstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                     final @Nullable IntObjPredicate<? super T> predicate) {
+        if (predicate == null)
+            return GetFirst.getFirst(collection);
+        return FindFirstIndexed.findFirstIndexed(collection, predicate);
+    }
 
     /// Get the first element found in the `collection`
     ///
@@ -57,8 +104,12 @@ public final class FindIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                    final @NotNull IntObjPredicate<? super T> predicate) { return FindFirstIndexed.findFirstIndexed(collection, predicate); }
+    public static <T> T firstIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                     final @Nullable IntObjPredicate<? super T> predicate) {
+        if (predicate == null)
+            return GetFirst.getFirst(collection);
+        return FindFirstIndexed.findFirstIndexed(collection, predicate);
+    }
 
     /// Get the first element found in the `collection`
     ///
@@ -72,8 +123,12 @@ public final class FindIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findIndexed(final T @Nullable @Unmodifiable [] collection,
-                                    final @NotNull IntObjPredicate<? super T> predicate) { return FindFirstIndexed.findFirstIndexed(collection, predicate); }
+    public static <T> T firstIndexed(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable IntObjPredicate<? super T> predicate) {
+        if (predicate == null)
+            return GetFirst.getFirst(collection);
+        return FindFirstIndexed.findFirstIndexed(collection, predicate);
+    }
 
     //#endregion -------------------- predicate (int, T) → boolean --------------------
     //#region -------------------- predicate (int) → boolean --------------------
@@ -90,8 +145,12 @@ public final class FindIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                    final @NotNull IntPredicate predicate) { return FindFirstIndexed.findFirstIndexed(collection, predicate); }
+    public static <T> T firstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                     final @Nullable IntPredicate predicate) {
+        if (predicate == null)
+            return GetFirst.getFirst(collection);
+        return FindFirstIndexed.findFirstIndexed(collection, predicate);
+    }
 
     /// Get the first element found in the `collection`
     ///
@@ -105,8 +164,12 @@ public final class FindIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                    final @NotNull IntPredicate predicate) { return FindFirstIndexed.findFirstIndexed(collection, predicate); }
+    public static <T> T firstIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                     final @Nullable IntPredicate predicate) {
+        if (predicate == null)
+            return GetFirst.getFirst(collection);
+        return FindFirstIndexed.findFirstIndexed(collection, predicate);
+    }
 
     /// Get the first element found in the `collection`
     ///
@@ -120,8 +183,12 @@ public final class FindIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findIndexed(final T @Nullable @Unmodifiable [] collection,
-                                    final @NotNull IntPredicate predicate) { return FindFirstIndexed.findFirstIndexed(collection, predicate); }
+    public static <T> T firstIndexed(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable IntPredicate predicate) {
+        if (predicate == null)
+            return GetFirst.getFirst(collection);
+        return FindFirstIndexed.findFirstIndexed(collection, predicate);
+    }
 
     //#endregion -------------------- predicate (int) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
@@ -138,8 +205,12 @@ public final class FindIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                    final @NotNull BooleanSupplier predicate) { return FindFirstIndexed.findFirstIndexed(collection, predicate); }
+    public static <T> T firstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                     final @Nullable BooleanSupplier predicate) {
+        if (predicate == null)
+            return GetFirst.getFirst(collection);
+        return FindFirstIndexed.findFirstIndexed(collection, predicate);
+    }
 
     /// Get the first element found in the `collection`
     ///
@@ -153,8 +224,12 @@ public final class FindIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                    final @NotNull BooleanSupplier predicate) { return FindFirstIndexed.findFirstIndexed(collection, predicate); }
+    public static <T> T firstIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                     final @Nullable BooleanSupplier predicate) {
+        if (predicate == null)
+            return GetFirst.getFirst(collection);
+        return FindFirstIndexed.findFirstIndexed(collection, predicate);
+    }
 
     /// Get the first element found in the `collection`
     ///
@@ -168,8 +243,12 @@ public final class FindIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findIndexed(final T @Nullable @Unmodifiable [] collection,
-                                    final @NotNull BooleanSupplier predicate) { return FindFirstIndexed.findFirstIndexed(collection, predicate); }
+    public static <T> T firstIndexed(final T @Nullable @Unmodifiable [] collection,
+                                     final @Nullable BooleanSupplier predicate) {
+        if (predicate == null)
+            return GetFirst.getFirst(collection);
+        return FindFirstIndexed.findFirstIndexed(collection, predicate);
+    }
 
     //#endregion -------------------- predicate () → boolean --------------------
 
