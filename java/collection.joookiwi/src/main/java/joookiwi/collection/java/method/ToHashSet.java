@@ -40,7 +40,7 @@ public final class ToHashSet
 
         var size = collection.size();
         if (size == 0)
-            return new HashSet<>();
+            return emptyHashSet();
         return __withNoTransform(collection, size);
     }
 
