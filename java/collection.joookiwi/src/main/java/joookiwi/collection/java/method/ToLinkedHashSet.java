@@ -289,12 +289,14 @@ public final class ToLinkedHashSet
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable LinkedHashSet<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, int size,
+    private static <T, U> @NotNull @Unmodifiable LinkedHashSet<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                  final int size,
                                                                                   final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable LinkedHashSet<U> __with2Argument(final T @NotNull @Unmodifiable [] collection, int size,
+    private static <T, U> @NotNull @Unmodifiable LinkedHashSet<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                  final int size,
                                                                                   final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size, transform));
     }
