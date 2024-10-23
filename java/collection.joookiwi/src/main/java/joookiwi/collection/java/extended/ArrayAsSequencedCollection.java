@@ -84,26 +84,26 @@ public class ArrayAsSequencedCollection<T extends @Nullable Object>
     /// @param value The (_never used_) element to add at the start
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addFirst(T value) { throw new UnsupportedOperationException("The method “set” is not supported in an immutable List."); }
+    @Override public void addFirst(T value) { throw new UnsupportedOperationException("The method “addFirst” is not supported in an immutable List."); }
 
     /// Fail to add a `value` to the current [ArrayAsSequencedCollection]
     ///
     /// @param value The (_never used_) element to add at the end
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addLast(T value) { throw new UnsupportedOperationException("The method “set” is not supported in an immutable List."); }
+    @Override public void addLast(T value) { throw new UnsupportedOperationException("The method “addLast” is not supported in an immutable List."); }
 
-    /// Fail to remove the first `value` in the current [ArrayAsSequencedCollection]
+    /// Fail to remove the first value in the current [ArrayAsSequencedCollection]
     ///
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_0)
-    @Override public T removeFirst() { throw new UnsupportedOperationException("The method “set” is not supported in an immutable List."); }
+    @Override public T removeFirst() { throw new UnsupportedOperationException("The method “removeFirst” is not supported in an immutable List."); }
 
-    /// Fail to remove the last `value` in the current [ArrayAsSequencedCollection]
+    /// Fail to remove the last value in the current [ArrayAsSequencedCollection]
     ///
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_0)
-    @Override public T removeLast() { throw new UnsupportedOperationException("The method “set” is not supported in an immutable List."); }
+    @Override public T removeLast() { throw new UnsupportedOperationException("The method “removeLast” is not supported in an immutable List."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

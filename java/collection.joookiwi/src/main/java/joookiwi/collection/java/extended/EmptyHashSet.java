@@ -3,7 +3,6 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Spliterator;
@@ -20,20 +19,18 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CollectionConstants.*;
 import static joookiwi.collection.java.CommonContracts.*;
 
-/**
- * A [Singleton] implementation of the {@link HashSet},
- * but in an empty form
- *
- * @param <T> The type of the element
- * @see Collections#emptySet
- * @see joookiwi.collection.java.CollectionConstants#emptyHashSet
- */
+/// A [Singleton] implementation of the [java.util.HashSet],
+/// but in an empty form
+///
+/// @param <T> The type of the element
+/// @see Collections#emptySet
+/// @see joookiwi.collection.java.CollectionConstants#emptyHashSet
 @Singleton
 @NotNullByDefault
 public class EmptyHashSet<T>
         extends ImmutableHashSet<T> {
 
-    @Serial private static final long serialVersionUID = 7624628047815367455L;
+    @Serial private static final long serialVersionUID = -7946969251055106175L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -109,13 +106,17 @@ public class EmptyHashSet<T>
             return false;
         if (other == this)
             return true;
-
         if (!(other instanceof Set<?>))
             return false;
         return ((Collection<?>) other).isEmpty();
     }
 
     //#endregion -------------------- Equals methods --------------------
+    //#region -------------------- Clone methods --------------------
+
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyHashSet<T> clone() { return this; }
+
+    //#endregion -------------------- Clone methods --------------------
     //#region -------------------- To string methods --------------------
 
     @Contract(pure = true) public @Override String toString() { return DEFAULT_EMPTY_COLLECTION; }

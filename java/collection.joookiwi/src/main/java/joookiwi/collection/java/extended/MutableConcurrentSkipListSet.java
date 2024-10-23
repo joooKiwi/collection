@@ -32,7 +32,7 @@ public class MutableConcurrentSkipListSet<T>
     /// Create a mutable instance of [ConcurrentSkipListSet] that start empty
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableConcurrentSkipListSet() { super(); }
 
     //#endregion -------------------- ∅ --------------------
@@ -41,7 +41,7 @@ public class MutableConcurrentSkipListSet<T>
     /// Create a mutable instance of [ConcurrentSkipListSet]
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
         super();
         final var size = values.length;
@@ -55,7 +55,7 @@ public class MutableConcurrentSkipListSet<T>
     /// Create a mutable instance of [ConcurrentSkipListSet]
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
         super();
         if (values.isEmpty())
@@ -66,7 +66,7 @@ public class MutableConcurrentSkipListSet<T>
     /// Create a mutable instance of [ConcurrentSkipListSet]
     /// ordered according to the <code>values.[comparator][SortedSet#comparator]</code>
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable SortedSet<T> values) {
         super(values.comparator());
         if (values.isEmpty())
