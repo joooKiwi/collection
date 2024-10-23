@@ -6,7 +6,10 @@ import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
+import joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException;
+import joookiwi.collection.java.exception.EmptyCollectionHolderException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.exception.NullCollectionHolderException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -14,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_2;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_2;
 
 @NotNullByDefault
 public final class FindLast
@@ -27,198 +30,210 @@ public final class FindLast
 
     //#region -------------------- predicate (T, int) → boolean --------------------
 
-    /// Get the last element found or `null` if nothing was found
+    /// Get the last element found in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The given predicate
+    /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Array.findLast(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html">Kotlin findLast(predicate)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
+    /// @throws NullCollectionHolderException             The `collection` was `null`
+    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                           final @NotNull ObjIntPredicate<? super T> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FAIL_2)
+    public static <T> T findLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                 final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            return null;
+            throw new NullCollectionHolderException();
 
         final var size = collection.size();
         if (size == 0)
-            return null;
+            throw new EmptyCollectionHolderException();
         return __with2Argument(collection, predicate, size);
     }
 
-    /// Get the last element found or `null` if nothing was found
+    /// Get the last element found in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The given predicate
+    /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Array.findLast(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html">Kotlin findLast(predicate)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
+    /// @throws NullCollectionHolderException             The `collection` was `null`
+    /// @throws EmptyCollectionHolderException            The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLast(final @Nullable CollectionHolder<? extends T> collection,
-                                           final @NotNull ObjIntPredicate<? super T> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FAIL_2)
+    public static <T> T findLast(final @Nullable CollectionHolder<? extends T> collection,
+                                 final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            return null;
-
-        final var size = collection.size();
-        if (size == 0)
-            return null;
-        return __with2Argument(collection, predicate, size);
+            throw new NullCollectionHolderException();
+        if (collection.isEmpty())
+            throw new EmptyCollectionHolderException();
+        return __with2Argument(collection, predicate, collection.size());
     }
 
-    /// Get the last element found or `null` if nothing was found
+    /// Get the last element found in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The given predicate
+    /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Array.findLast(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html">Kotlin findLast(predicate)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
+    /// @throws NullCollectionHolderException             The `collection` was `null`
+    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLast(final T @Nullable @Unmodifiable [] collection,
-                                           final @NotNull ObjIntPredicate<? super T> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FAIL_2)
+    public static <T> T findLast(final T @Nullable @Unmodifiable [] collection,
+                                 final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            return null;
+            throw new NullCollectionHolderException();
 
         final var size = collection.length;
         if (size == 0)
-            return null;
+            throw new EmptyCollectionHolderException();
         return __with2Argument(collection, predicate, size);
     }
 
     //#endregion -------------------- predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T) → boolean --------------------
 
-    /// Get the last element found or `null` if nothing was found
+    /// Get the last element found in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The given predicate
+    /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Array.findLast(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html">Kotlin findLast(predicate)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
+    /// @throws NullCollectionHolderException             The `collection` was `null`
+    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                           final @NotNull Predicate<? super T> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FAIL_2)
+    public static <T> T findLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                 final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
-            return null;
+            throw new NullCollectionHolderException();
 
         final var size = collection.size();
         if (size == 0)
-            return null;
+            throw new EmptyCollectionHolderException();
         return __with1Argument(collection, predicate, size);
     }
 
-    /// Get the last element found or `null` if nothing was found
+    /// Get the last element found in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The given predicate
+    /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Array.findLast(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html">Kotlin findLast(predicate)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
+    /// @throws NullCollectionHolderException             The `collection` was `null`
+    /// @throws EmptyCollectionHolderException            The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLast(final @Nullable CollectionHolder<? extends T> collection,
-                                           final @NotNull Predicate<? super T> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FAIL_2)
+    public static <T> T findLast(final @Nullable CollectionHolder<? extends T> collection,
+                                 final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
-            return null;
-
-        final var size = collection.size();
-        if (size == 0)
-            return null;
-        return __with1Argument(collection, predicate, size);
+            throw new NullCollectionHolderException();
+        if (collection.isEmpty())
+            throw new EmptyCollectionHolderException();
+        return __with1Argument(collection, predicate, collection.size());
     }
 
-    /// Get the last element found or `null` if nothing was found
+    /// Get the last element found in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The given predicate
+    /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Array.findLast(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html">Kotlin findLast(predicate)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
+    /// @throws NullCollectionHolderException             The `collection` was `null`
+    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLast(final T @Nullable @Unmodifiable [] collection,
-                                           final @NotNull Predicate<? super T> predicate) {
+    @Contract(IF_1ST_NULL_THEN_FAIL_2)
+    public static <T> T findLast(final T @Nullable @Unmodifiable [] collection,
+                                 final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
-            return null;
+            throw new NullCollectionHolderException();
 
         final var size = collection.length;
         if (size == 0)
-            return null;
+            throw new EmptyCollectionHolderException();
         return __with1Argument(collection, predicate, size);
     }
 
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /// Get the last element found or `null` if nothing was found
+    /// Get the last element found in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The given predicate
+    /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Array.findLast(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html">Kotlin findLast(predicate)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
+    /// @throws NullCollectionHolderException             The `collection` was `null`
+    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                           final @NotNull BooleanSupplier predicate) {
+    @Contract(IF_1ST_NULL_THEN_FAIL_2)
+    public static <T> T findLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                 final @NotNull BooleanSupplier predicate) {
         if (collection == null)
-            return null;
+            throw new NullCollectionHolderException();
 
         final var size = collection.size();
         if (size == 0)
-            return null;
+            throw new EmptyCollectionHolderException();
         return __with0Argument(collection, predicate, size);
     }
 
-    /// Get the last element found or `null` if nothing was found
+    /// Get the last element found in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The given predicate
+    /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Array.findLast(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html">Kotlin findLast(predicate)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
+    /// @throws NullCollectionHolderException             The `collection` was `null`
+    /// @throws EmptyCollectionHolderException            The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLast(final @Nullable CollectionHolder<? extends T> collection,
-                                           final @NotNull BooleanSupplier predicate) {
+    @Contract(IF_1ST_NULL_THEN_FAIL_2)
+    public static <T> T findLast(final @Nullable CollectionHolder<? extends T> collection,
+                                 final @NotNull BooleanSupplier predicate) {
         if (collection == null)
-            return null;
-
-        final var size = collection.size();
-        if (size == 0)
-            return null;
-        return __with0Argument(collection, predicate, size);
+            throw new NullCollectionHolderException();
+        if (collection.isEmpty())
+            throw new EmptyCollectionHolderException();
+        return __with0Argument(collection, predicate, collection.size());
     }
 
-    /// Get the last element found or `null` if nothing was found
+    /// Get the last element found in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The given predicate
+    /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Array.findLast(predicate)</a>
-    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html">Kotlin findLast(predicate)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
+    /// @throws NullCollectionHolderException             The `collection` was `null`
+    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
+    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last(predicate)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLast(final T @Nullable @Unmodifiable [] collection,
-                                           final @NotNull BooleanSupplier predicate) {
+    @Contract(IF_1ST_NULL_THEN_FAIL_2)
+    public static <T> T findLast(final T @Nullable @Unmodifiable [] collection,
+                                 final @NotNull BooleanSupplier predicate) {
         if (collection == null)
-            return null;
+            throw new NullCollectionHolderException();
 
         final var size = collection.length;
         if (size == 0)
-            return null;
+            throw new EmptyCollectionHolderException();
         return __with0Argument(collection, predicate, size);
     }
 
@@ -234,7 +249,7 @@ public final class FindLast
         while (index-- > 0)
             if (predicate.getAsBoolean())
                 return collection.get(index);
-        return null;
+        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
     private static <T> @Nullable T __with0Argument(final T @NotNull @Unmodifiable [] collection,
@@ -244,7 +259,7 @@ public final class FindLast
         while (index-- > 0)
             if (predicate.getAsBoolean())
                 return collection[index];
-        return null;
+        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
 
@@ -257,7 +272,7 @@ public final class FindLast
             if (predicate.test(value))
                 return value;
         }
-        return null;
+        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
     private static <T> @Nullable T __with1Argument(final T @NotNull @Unmodifiable [] collection,
@@ -269,7 +284,7 @@ public final class FindLast
             if (predicate.test(value))
                 return value;
         }
-        return null;
+        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
 
@@ -282,7 +297,7 @@ public final class FindLast
             if (predicate.test(value, index))
                 return value;
         }
-        return null;
+        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
     private static <T> @Nullable T __with2Argument(final T @NotNull @Unmodifiable [] collection,
@@ -294,7 +309,7 @@ public final class FindLast
             if (predicate.test(value, index))
                 return value;
         }
-        return null;
+        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
     //#endregion -------------------- Loop methods --------------------
