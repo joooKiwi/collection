@@ -59,9 +59,9 @@ public class EmptyTreeSet<T>
 
     //#region -------------------- Size methods --------------------
 
-    @Contract(pure = true) public @Override @Range(from = 0, to = 0) int size() { return 0; }
+    @Contract(pure = true) @Override public @Range(from = 0, to = 0) int size() { return 0; }
 
-    @Contract(value = ALWAYS_TRUE_0, pure = true) public @Override boolean isEmpty() { return true; }
+    @Contract(value = ALWAYS_TRUE_0, pure = true) @Override public boolean isEmpty() { return true; }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Get methods --------------------
@@ -84,9 +84,9 @@ public class EmptyTreeSet<T>
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Has methods --------------------
 
-    @Contract(value = ALWAYS_FALSE_1, pure = true) public @Override boolean contains(final @Nullable Object value) { return false; }
+    @Contract(value = ALWAYS_FALSE_1, pure = true) @Override public boolean contains(final @Nullable Object value) { return false; }
 
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true) public @Override boolean containsAll(final @Nullable @Unmodifiable Collection<?> values) {
+    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true) @Override public boolean containsAll(final @Nullable @Unmodifiable Collection<?> values) {
         if (values == null)
             return false;
         return values.isEmpty();
@@ -95,28 +95,28 @@ public class EmptyTreeSet<T>
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- For each methods --------------------
 
-    @Contract(pure = true) public @Override void forEach(final @Nullable Consumer<? super T> action) {}
+    @Contract(pure = true) @Override public void forEach(final @Nullable Consumer<? super T> action) {}
 
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) public @Override @NotNull Iterator<T>    iterator(          ) { return emptyIterator(); }
-    @Contract(pure = true) public @Override @NotNull Spliterator<T> spliterator(       ) { return emptySpliterator(); }
+    @Contract(pure = true) @Override public @NotNull Iterator<T>    iterator(          ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public @NotNull Spliterator<T> spliterator(       ) { return emptySpliterator(); }
     @Contract(pure = true) @Override public @NotNull Iterator<T>    descendingIterator() { return emptyIterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)           public @Override     Object @NotNull [] toArray(                                                   ) { return new Object[0]; }
-    @Contract(value = ALWAYS_1ST_PARAMETER_1, pure = true) public @Override <U> U @NotNull []      toArray(final U @NotNull []                           array) { return array; }
-    @Contract(pure = true)                                 public @Override <U> U @NotNull []      toArray(final @NotNull IntFunction<U @NotNull []> generator) { return generator.apply(0); }
+    @Contract(value = ALWAYS_NEW_0, pure = true)           @Override public     Object @NotNull [] toArray(                                                   ) { return new Object[0]; }
+    @Contract(value = ALWAYS_1ST_PARAMETER_1, pure = true) @Override public <U> U @NotNull []      toArray(final U @NotNull []                           array) { return array; }
+    @Contract(pure = true)                                 @Override public <U> U @NotNull []      toArray(final @NotNull IntFunction<U @NotNull []> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) public @Override @NotNull Stream<T> stream() { return emptyStream(); }
+    @Contract(pure = true) @Override public @NotNull Stream<T> stream() { return emptyStream(); }
 
-    @Contract(pure = true) public @Override @NotNull Stream<T> parallelStream() { return emptyParellelStream(); }
+    @Contract(pure = true) @Override public @NotNull Stream<T> parallelStream() { return emptyParellelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Subset methods --------------------
@@ -140,9 +140,9 @@ public class EmptyTreeSet<T>
     //#endregion -------------------- To reverse methods --------------------
     //#region -------------------- Equals methods --------------------
 
-    @Contract(pure = true) public @Override @Range(from = 0, to = 0) int hashCode() { return DEFAULT_EMPTY_HASH_CODE; }
+    @Contract(pure = true) @Override public @Range(from = 0, to = 0) int hashCode() { return DEFAULT_EMPTY_HASH_CODE; }
 
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true) public @Override boolean equals(final @Nullable Object other) {
+    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true) @Override public boolean equals(final @Nullable Object other) {
         if (other == null)
             return false;
         if (other == this)
@@ -165,7 +165,7 @@ public class EmptyTreeSet<T>
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- To string methods --------------------
 
-    @Contract(pure = true) public @Override String toString() { return DEFAULT_EMPTY_COLLECTION; }
+    @Contract(pure = true) @Override public String toString() { return DEFAULT_EMPTY_COLLECTION; }
 
     //#endregion -------------------- To string methods --------------------
 
