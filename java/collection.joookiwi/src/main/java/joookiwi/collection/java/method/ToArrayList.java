@@ -1,5 +1,8 @@
 package joookiwi.collection.java.method;
 
+import java.util.ArrayList;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -10,10 +13,6 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
-
-import java.util.ArrayList;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 import static joookiwi.collection.java.CollectionConstants.emptyArrayList;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
