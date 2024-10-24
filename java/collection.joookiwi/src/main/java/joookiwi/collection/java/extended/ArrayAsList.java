@@ -1,8 +1,10 @@
 package joookiwi.collection.java.extended;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.function.UnaryOperator;
 import joookiwi.collection.java.method.IndexOf;
 import joookiwi.collection.java.method.LastIndexOf;
 import org.jetbrains.annotations.Contract;
@@ -149,6 +151,21 @@ public class ArrayAsList<T extends @Nullable Object>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public T remove(int index) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable List."); }
+
+    /// Fail to replace any value in the current [ArrayAsList]
+    ///
+    /// @param operator the (_never used_) operator
+    /// @throws UnsupportedOperationException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public void replaceAll(final @Nullable UnaryOperator<T> operator) { throw new UnsupportedOperationException("The method “replaceAll” is not supported in an immutable List."); }
+
+
+    /// Fail to sort the current [ArrayAsList]
+    ///
+    /// @param comparator The (_never used_) [comparator][Comparator]
+    /// @throws UnsupportedOperationException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public void sort(final @Nullable Comparator<? super T> comparator) { throw new UnsupportedOperationException("The method “sort” is not supported in an immutable List."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 
