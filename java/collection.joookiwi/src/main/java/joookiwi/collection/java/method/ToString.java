@@ -23,7 +23,7 @@ public final class ToString
     //#region -------------------- Facade method --------------------
 
     /// Convert the `collection` to a [String] on every value
-    /// by calling its "_[#toString()] toString()}_" method
+    /// by calling its "_[toString\(\)][Object#toString()]_" method
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @see Object#toString()
@@ -39,7 +39,7 @@ public final class ToString
     }
 
     /// Convert the `collection` to a [String] on every value
-    /// by calling its "_[#toString()] toString()}_" method
+    /// by calling its "_[toString\(\)][Object#toString()]_" method
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @see Object#toString()
@@ -50,6 +50,22 @@ public final class ToString
         if (collection.isEmpty())
             return DEFAULT_EMPTY_COLLECTION;
         return __toString(collection, collection.size());
+    }
+
+    /// Convert the `collection` to a [String] on every value
+    /// by calling its "_[toString\(\)][Object#toString()]_" method
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @see Object#toString()
+    @ExtensionFunction
+    public static <T> @NotNull String toString(final T @Nullable [] collection) {
+        if (collection == null)
+            return DEFAULT_EMPTY_COLLECTION;
+
+        var size = collection.length;
+        if (size == 0)
+            return DEFAULT_EMPTY_COLLECTION;
+        return __toString(collection, size);
     }
 
     //#endregion -------------------- Facade method --------------------
@@ -63,6 +79,16 @@ public final class ToString
         while (++index < sizeMinus1)
             string.append(asString(collection.get(index))).append(DEFAULT_JOIN_SEPARATOR);
         return DEFAULT_JOIN_POSTFIX_STRING + string + asString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
+    }
+
+    private static @NotNull String __toString(final @Nullable Object @NotNull [] collection,
+                                              final int size) {
+        var string = new StringBuilder();
+        var sizeMinus1 = size - 1;
+        var index = -1;
+        while (++index < sizeMinus1)
+            string.append(asString(collection[index])).append(DEFAULT_JOIN_SEPARATOR);
+        return DEFAULT_JOIN_POSTFIX_STRING + string + asString(collection[index]) + DEFAULT_JOIN_POSTFIX;
     }
 
     //#endregion -------------------- Loop method --------------------
