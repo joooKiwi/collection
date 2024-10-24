@@ -24,7 +24,7 @@ public class ImmutableLinkedHashSet<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -2145776141313965686L;
+    @Serial private static final long serialVersionUID = 6680528145384761051L;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------

@@ -30,7 +30,7 @@ import static joookiwi.collection.java.CommonContracts.*;
 public class EmptyCopyOnWriteArraySet<T>
         extends ImmutableCopyOnWriteArraySet<T> {
 
-    @Serial private static final long serialVersionUID = 1374410244316048758L;
+    @Serial private static final long serialVersionUID = -5412334794975800243L;
 
     //#region -------------------- Singleton usage --------------------
 

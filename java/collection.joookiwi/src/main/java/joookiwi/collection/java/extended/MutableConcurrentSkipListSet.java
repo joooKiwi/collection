@@ -25,7 +25,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 public class MutableConcurrentSkipListSet<T>
         extends ConcurrentSkipListSet<T> {
 
-    @Serial private static final long serialVersionUID = -1231467503248771243L;
+    @Serial private static final long serialVersionUID = 4781415824411035935L;
 
     //#region -------------------- ∅ --------------------
 

@@ -21,7 +21,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 public class MutableHashSet<T>
         extends HashSet<T> {
 
-    @Serial private static final long serialVersionUID = -1231467503248771243L;
+    @Serial private static final long serialVersionUID = -8220050431323577746L;
 
     //#region -------------------- ∅ --------------------
 

@@ -34,7 +34,7 @@ import static joookiwi.collection.java.CommonContracts.*;
 public class EmptyLinkedHashSet<T>
         extends ImmutableLinkedHashSet<T> {
 
-    @Serial private static final long serialVersionUID = -8955422418494223171L;
+    @Serial private static final long serialVersionUID = 918584861592640403L;
 
     //#region -------------------- Singleton usage --------------------
 
