@@ -1,19 +1,17 @@
 package joookiwi.collection.java.extended;
 
+import java.io.Serial;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.function.Predicate;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
-
-import java.io.Serial;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.concurrent.ConcurrentSkipListSet;
-import java.util.function.Predicate;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
@@ -125,28 +123,28 @@ public class ImmutableTreeSet<T>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable TreeSet."); }
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable TreeSet."); }
 
     /// Fail to add a `value` in the current [ImmutableTreeSet]
     ///
     /// @param value The (_never used_) element to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addFirst(T value) { throw new UnsupportedOperationException("The method “addFirst” is not supported in an immutable TreeSet."); }
+    @Override public void addFirst(final @Nullable T value) { throw new UnsupportedOperationException("The method “addFirst” is not supported in an immutable TreeSet."); }
 
     /// Fail to add a `value` in the current [ImmutableTreeSet]
     ///
     /// @param value The (_never used_) element to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addLast(T value) { throw new UnsupportedOperationException("The method “addLast” is not supported in an immutable TreeSet."); }
+    @Override public void addLast(final @Nullable T value) { throw new UnsupportedOperationException("The method “addLast” is not supported in an immutable TreeSet."); }
 
     /// Fail to add the `values` in the current [ImmutableTreeSet]
     ///
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable TreeSet."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable TreeSet."); }
 
     /// Fail to clear the current [ImmutableTreeSet]
     ///
@@ -160,7 +158,7 @@ public class ImmutableTreeSet<T>
     /// @param value The (_never used_) element to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean remove(final Object value) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable TreeSet."); }
+    @Override public boolean remove(final @Nullable Object value) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable TreeSet."); }
 
     /// Fail to remove the first value in the current [ImmutableTreeSet]
     ///
@@ -179,14 +177,14 @@ public class ImmutableTreeSet<T>
     /// @param values The (_never used_) elements to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeAll(final Collection<?> values) { throw new UnsupportedOperationException("The method “removeAll” is not supported in an immutable TreeSet."); }
+    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “removeAll” is not supported in an immutable TreeSet."); }
 
     /// Fail to remove anything to the current [ImmutableTreeSet]
     ///
     /// @param filter The (_never used_) predicate
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeIf(final Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable TreeSet."); }
+    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable TreeSet."); }
 
 
     /// Fail to keep the `values` in the current [ImmutableTreeSet]
@@ -194,7 +192,7 @@ public class ImmutableTreeSet<T>
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean retainAll(final @NotNull Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable TreeSet."); }
+    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable TreeSet."); }
 
 
     /// Fail to retrieve and remove the first value in the current [ImmutableTreeSet]

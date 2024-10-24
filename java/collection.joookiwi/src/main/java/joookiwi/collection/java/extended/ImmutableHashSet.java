@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Unmodifiable;
 import static joookiwi.collection.java.CollectionConstants.*;
 import static joookiwi.collection.java.CommonContracts.*;
 
-/// An [immutable-like][org.jetbrains.annotations.Unmodifiable] behaviour of a [HashSet]
+/// An [immutable-like][Unmodifiable] behaviour of a [HashSet]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
@@ -140,14 +140,14 @@ public class ImmutableHashSet<T>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable HashSet."); }
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable HashSet."); }
 
     /// Fail to add the `values` in the current [ImmutableHashSet]
     ///
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable HashSet."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable HashSet."); }
 
 
     /// Fail to clear the current [ImmutableHashSet]
@@ -162,28 +162,28 @@ public class ImmutableHashSet<T>
     /// @param value The (_never used_) element to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean remove(final Object value) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable HashSet."); }
+    @Override public boolean remove(final @Nullable Object value) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable HashSet."); }
 
     /// Fail to remove the `values` in the current [ImmutableHashSet]
     ///
     /// @param values The (_never used_) elements to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeAll(final Collection<?> values) { throw new UnsupportedOperationException("The method “removeAll” is not supported in an immutable HashSet."); }
+    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “removeAll” is not supported in an immutable HashSet."); }
 
     /// Fail to remove anything to the current [ImmutableHashSet]
     ///
     /// @param filter The (_never used_) predicate
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeIf(final Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable HashSet."); }
+    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable HashSet."); }
 
     /// Fail to keep the `values` in the current [ImmutableHashSet]
     ///
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean retainAll(final @NotNull Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable HashSet."); }
+    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable HashSet."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

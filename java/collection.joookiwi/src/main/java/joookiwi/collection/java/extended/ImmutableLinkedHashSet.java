@@ -141,28 +141,28 @@ public class ImmutableLinkedHashSet<T>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable LinkedHashSet."); }
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable LinkedHashSet."); }
 
     /// Fail to add a `value` in the current [ImmutableLinkedHashSet]
     ///
     /// @param value The (_never used_) element to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addFirst(T value) { throw new UnsupportedOperationException("The method “addFirst” is not supported in an immutable LinkedHashSet."); }
+    @Override public void addFirst(final @Nullable T value) { throw new UnsupportedOperationException("The method “addFirst” is not supported in an immutable LinkedHashSet."); }
 
     /// Fail to add a `value` in the current [ImmutableLinkedHashSet]
     ///
     /// @param value The (_never used_) element to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addLast(T value) { throw new UnsupportedOperationException("The method “addLast” is not supported in an immutable LinkedHashSet."); }
+    @Override public void addLast(final @Nullable T value) { throw new UnsupportedOperationException("The method “addLast” is not supported in an immutable LinkedHashSet."); }
 
     /// Fail to add the `values` in the current [ImmutableLinkedHashSet]
     ///
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable LinkedHashSet."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable LinkedHashSet."); }
 
 
     /// Fail to clear the current [ImmutableLinkedHashSet]
@@ -177,7 +177,7 @@ public class ImmutableLinkedHashSet<T>
     /// @param value The (_never used_) element to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean remove(final Object value) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable LinkedHashSet."); }
+    @Override public boolean remove(final @Nullable Object value) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable LinkedHashSet."); }
 
     /// Fail to remove the first value in the current [ImmutableLinkedHashSet]
     ///
@@ -196,21 +196,21 @@ public class ImmutableLinkedHashSet<T>
     /// @param values The (_never used_) elements to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeAll(final Collection<?> values) { throw new UnsupportedOperationException("The method “removeAll” is not supported in an immutable LinkedHashSet."); }
+    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “removeAll” is not supported in an immutable LinkedHashSet."); }
 
     /// Fail to remove anything to the current [ImmutableLinkedHashSet]
     ///
     /// @param filter The (_never used_) predicate
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeIf(final Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable LinkedHashSet."); }
+    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable LinkedHashSet."); }
 
     /// Fail to keep the `values` in the current [ImmutableLinkedHashSet]
     ///
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean retainAll(final @NotNull Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable LinkedHashSet."); }
+    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable LinkedHashSet."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

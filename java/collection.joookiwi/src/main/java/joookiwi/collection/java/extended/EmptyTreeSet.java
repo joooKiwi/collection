@@ -1,16 +1,7 @@
 package joookiwi.collection.java.extended;
 
-import joookiwi.collection.java.annotation.Singleton;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.NotNullByDefault;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Range;
-import org.jetbrains.annotations.Unmodifiable;
-
 import java.io.Serial;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NavigableSet;
@@ -20,6 +11,13 @@ import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
+import joookiwi.collection.java.annotation.Singleton;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
+import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.*;
 import static joookiwi.collection.java.CommonContracts.*;
@@ -28,7 +26,7 @@ import static joookiwi.collection.java.CommonContracts.*;
 /// but in an empty form
 ///
 /// @param <T> The type of the element
-/// @see Collections#emptySet
+/// @see java.util.Collections#emptySet
 /// @see joookiwi.collection.java.CollectionConstants#emptyConcurrentSkipListSet
 @Singleton
 @NotNullByDefault
@@ -88,7 +86,7 @@ public class EmptyTreeSet<T>
 
     @Contract(value = ALWAYS_FALSE_1, pure = true) public @Override boolean contains(final @Nullable Object value) { return false; }
 
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true) public @Override boolean containsAll(final @Nullable Collection<?> values) {
+    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true) public @Override boolean containsAll(final @Nullable @Unmodifiable Collection<?> values) {
         if (values == null)
             return false;
         return values.isEmpty();

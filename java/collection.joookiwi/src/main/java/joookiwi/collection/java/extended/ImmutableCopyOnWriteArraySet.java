@@ -1,5 +1,9 @@
 package joookiwi.collection.java.extended;
 
+import java.io.Serial;
+import java.util.Collection;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.function.Predicate;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -7,13 +11,6 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import java.io.Serial;
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.function.Predicate;
-
-import static joookiwi.collection.java.CollectionConstants.*;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 
@@ -77,14 +74,14 @@ public class ImmutableCopyOnWriteArraySet<T>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable CopyOnWriteArraySet."); }
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable CopyOnWriteArraySet."); }
 
     /// Fail to add the `values` in the current [ImmutableCopyOnWriteArraySet]
     ///
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable CopyOnWriteArraySet."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable CopyOnWriteArraySet."); }
 
 
     /// Fail to clear the current [ImmutableCopyOnWriteArraySet]
@@ -99,28 +96,28 @@ public class ImmutableCopyOnWriteArraySet<T>
     /// @param value The (_never used_) element to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean remove(final Object value) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable CopyOnWriteArraySet."); }
+    @Override public boolean remove(final @Nullable Object value) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable CopyOnWriteArraySet."); }
 
     /// Fail to remove the `values` in the current [ImmutableCopyOnWriteArraySet]
     ///
     /// @param values The (_never used_) elements to remove
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeAll(final Collection<?> values) { throw new UnsupportedOperationException("The method “removeAll” is not supported in an immutable CopyOnWriteArraySet."); }
+    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “removeAll” is not supported in an immutable CopyOnWriteArraySet."); }
 
     /// Fail to remove anything to the current [ImmutableCopyOnWriteArraySet]
     ///
     /// @param filter The (_never used_) predicate
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeIf(final Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable CopyOnWriteArraySet."); }
+    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable CopyOnWriteArraySet."); }
 
     /// Fail to keep the `values` in the current [ImmutableCopyOnWriteArraySet]
     ///
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean retainAll(final @NotNull Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable CopyOnWriteArraySet."); }
+    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable CopyOnWriteArraySet."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

@@ -2,10 +2,8 @@ package joookiwi.collection.java.extended;
 
 import java.io.Serial;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.NavigableSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.Spliterator;
@@ -27,7 +25,7 @@ import static joookiwi.collection.java.CommonContracts.*;
 /// but in an empty form
 ///
 /// @param <T> The type of the element
-/// @see Collections#emptySet
+/// @see java.util.Collections#emptySet
 /// @see joookiwi.collection.java.CollectionConstants#emptyHashSet
 @Singleton
 @NotNullByDefault
@@ -76,7 +74,7 @@ public class EmptyLinkedHashSet<T>
 
     @Contract(value = ALWAYS_FALSE_1, pure = true) public @Override boolean contains(final @Nullable Object value) { return false; }
 
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true) public @Override boolean containsAll(final @Nullable Collection<?> values) {
+    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true) public @Override boolean containsAll(final @Nullable @Unmodifiable Collection<?> values) {
         if (values == null)
             return false;
         return values.isEmpty();
