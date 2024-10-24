@@ -8,7 +8,6 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.ImmutableArrayList;
 import joookiwi.collection.java.extended.MutableArrayList;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -276,7 +275,7 @@ public final class ToMutableArrayList
 
     private static <U> @NotNull ArrayList<U> __with0Argument(final int size,
                                                              final @NotNull Supplier<? extends U> transform) {
-        return new ImmutableArrayList<>(_values(size, transform));
+        return new MutableArrayList<>(_values(size, transform));
     }
 
 
