@@ -7,11 +7,13 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CollectionConstants.*;
 import static joookiwi.collection.java.method.AsString.asUpperCaseString;
 
+@NotNullByDefault
 public final class ToUpperCaseString
         extends Utility {
 
@@ -53,7 +55,8 @@ public final class ToUpperCaseString
     //#endregion -------------------- Facade method --------------------
     //#region -------------------- Loop method --------------------
 
-    private static @NotNull String __toString(@NotNull MinimalistCollectionHolder<?> collection, int size) {
+    private static @NotNull String __toString(final @NotNull MinimalistCollectionHolder<?> collection,
+                                              final int size) {
         final var string = new StringBuilder();
         final var sizeMinus1 = size - 1;
         var index = -1;

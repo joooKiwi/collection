@@ -25,7 +25,7 @@ public final class HasDuplicate
     /// The `collection` has at least one duplicate value
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @return b>true** only if one element is equal (== or [equals][#equals]) to another one
+    /// @return **true** only if one element is equal (== or [equals][#equals]) to another one
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean hasDuplicate(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
@@ -41,7 +41,7 @@ public final class HasDuplicate
     /// The `collection` has at least one duplicate value
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @return b>true** only if one element is equal (== or [equals][#equals]) to another one
+    /// @return **true** only if one element is equal (== or [equals][#equals]) to another one
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean hasDuplicate(final @Nullable CollectionHolder<? extends T> collection) {
@@ -50,13 +50,12 @@ public final class HasDuplicate
         if (collection.isEmpty())
             return false;
         return __hasDuplicate(collection, collection.size());
-
     }
 
     /// The `collection` has at least one duplicate value
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @return b>true** only if one element is equal (== or [equals][#equals]) to another one
+    /// @return **true** only if one element is equal (== or [equals][#equals]) to another one
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean hasDuplicate(final T @Nullable @Unmodifiable [] collection) {
@@ -72,9 +71,9 @@ public final class HasDuplicate
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static boolean __hasDuplicate(final @NotNull MinimalistCollectionHolder<?> collection,
-                                          final int size) {
-        final var temporaryArray = new @Nullable Object[size];
+    private static <T> boolean __hasDuplicate(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                              final int size) {
+        @SuppressWarnings("unchecked cast") final var temporaryArray = (T[]) new Object[size];
         temporaryArray[0] = collection.get(0);
         var amountOfItemAdded = 1;
         var index = 0;
@@ -101,9 +100,9 @@ public final class HasDuplicate
         return amountOfItemAdded != size;
     }
 
-    private static boolean __hasDuplicate(final @Nullable Object @NotNull @Unmodifiable [] collection,
-                                          final int size) {
-        final var temporaryArray = new @Nullable Object[size];
+    private static <T> boolean __hasDuplicate(final T @NotNull @Unmodifiable [] collection,
+                                              final int size) {
+        @SuppressWarnings("unchecked cast") final var temporaryArray = (T[]) new Object[size];
         temporaryArray[0] = collection[0];
         var amountOfItemAdded = 1;
         var index = 0;

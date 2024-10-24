@@ -7,11 +7,13 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CollectionConstants.*;
 import static joookiwi.collection.java.method.AsString.asLowerCaseString;
 
+@NotNullByDefault
 public final class ToLowerCaseString
         extends Utility {
 
@@ -26,7 +28,7 @@ public final class ToLowerCaseString
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @see String#toLowerCase()
     @ExtensionFunction
-    public static <T> @NotNull String toLowerCaseString(@Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> @NotNull String toLowerCaseString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -42,7 +44,7 @@ public final class ToLowerCaseString
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @see String#toLowerCase()
     @ExtensionFunction
-    public static <T> @NotNull String toLowerCaseString(@Nullable CollectionHolder<? extends T> collection) {
+    public static <T> @NotNull String toLowerCaseString(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -53,7 +55,8 @@ public final class ToLowerCaseString
     //#endregion -------------------- Facade method --------------------
     //#region -------------------- Loop method --------------------
 
-    private static @NotNull String __toString(@NotNull MinimalistCollectionHolder<?> collection, int size) {
+    private static @NotNull String __toString(final @NotNull MinimalistCollectionHolder<?> collection,
+                                              final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;

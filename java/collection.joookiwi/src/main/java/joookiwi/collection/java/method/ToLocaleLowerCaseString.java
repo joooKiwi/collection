@@ -7,12 +7,14 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CollectionConstants.*;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asLocaleLowerCaseString;
 
+@NotNullByDefault
 public final class ToLocaleLowerCaseString
         extends Utility {
 
@@ -29,7 +31,7 @@ public final class ToLocaleLowerCaseString
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @see String#toLowerCase(Locale)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleLowerCaseString(@Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> @NotNull String toLocaleLowerCaseString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -45,7 +47,7 @@ public final class ToLocaleLowerCaseString
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @see String#toLowerCase(Locale)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleLowerCaseString(@Nullable CollectionHolder<? extends T> collection) {
+    public static <T> @NotNull String toLocaleLowerCaseString(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -63,7 +65,8 @@ public final class ToLocaleLowerCaseString
     /// @param locale     The possible locale to apply on each value
     /// @see String#toLowerCase(Locale)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleLowerCaseString(@Nullable MinimalistCollectionHolder<? extends T> collection, @Nullable Locale locale) {
+    public static <T> @NotNull String toLocaleLowerCaseString(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -82,7 +85,8 @@ public final class ToLocaleLowerCaseString
     /// @param locale     The possible locale to apply on each value
     /// @see String#toLowerCase(Locale)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleLowerCaseString(@Nullable CollectionHolder<? extends T> collection, @Nullable Locale locale) {
+    public static <T> @NotNull String toLocaleLowerCaseString(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -97,7 +101,8 @@ public final class ToLocaleLowerCaseString
     //#endregion -------------------- Facade method --------------------
     //#region -------------------- Locale method --------------------
 
-    private static @NotNull String __withNoLocale(@NotNull MinimalistCollectionHolder<?> collection, int size) {
+    private static @NotNull String __withNoLocale(final @NotNull MinimalistCollectionHolder<?> collection,
+                                                  final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;
@@ -106,7 +111,9 @@ public final class ToLocaleLowerCaseString
         return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleLowerCaseString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
     }
 
-    private static @NotNull String __withLocale(@NotNull MinimalistCollectionHolder<?> collection, @NotNull Locale locale, int size) {
+    private static @NotNull String __withLocale(final @NotNull MinimalistCollectionHolder<?> collection,
+                                                final @NotNull Locale locale,
+                                                final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;

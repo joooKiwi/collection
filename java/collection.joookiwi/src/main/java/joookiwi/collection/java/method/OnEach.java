@@ -4,15 +4,17 @@ import java.util.function.Consumer;
 import java.util.function.ObjIntConsumer;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_PARAMETER_2;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_PARAMETER_3;
 
+@NotNullByDefault
 public final class OnEach
         extends Utility {
 
@@ -32,6 +34,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
+    @ExtensionFunction
     @Contract(ALWAYS_1ST_PARAMETER_2)
     public static <T, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                               final @NotNull ObjIntConsumer<? super T> action) {
@@ -52,6 +55,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
+    @ExtensionFunction
     @Contract(ALWAYS_1ST_PARAMETER_2)
     public static <T, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                     final @NotNull ObjIntConsumer<? super T> action) {
@@ -74,6 +78,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
+    @ExtensionFunction
     @Contract(ALWAYS_1ST_PARAMETER_2)
     public static <T, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                               final @NotNull Consumer<? super T> action) {
@@ -95,6 +100,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
+    @ExtensionFunction
     @Contract(ALWAYS_1ST_PARAMETER_2)
     public static <T, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                     final @NotNull Consumer<? super T> action) {
@@ -137,6 +143,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
+    @ExtensionFunction
     @Contract(ALWAYS_1ST_PARAMETER_2)
     public static <T, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                     final @NotNull Runnable action) {
@@ -151,7 +158,6 @@ public final class OnEach
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    @Contract(ALWAYS_1ST_PARAMETER_3)
     private static <T, COLLECTION extends MinimalistCollectionHolder<? extends T>> @NotNull COLLECTION __with0Argument(final @NotNull COLLECTION collection,
                                                                                                                        final @NotNull Runnable action,
                                                                                                                        final int size) {
@@ -161,7 +167,6 @@ public final class OnEach
         return collection;
     }
 
-    @Contract(ALWAYS_1ST_PARAMETER_3)
     private static <T, COLLECTION extends MinimalistCollectionHolder<? extends T>> @NotNull COLLECTION __with1Argument(final @NotNull COLLECTION collection,
                                                                                                                        final @NotNull Consumer<? super T> action,
                                                                                                                        final int size) {
@@ -171,7 +176,6 @@ public final class OnEach
         return collection;
     }
 
-    @Contract(ALWAYS_1ST_PARAMETER_3)
     private static <T, COLLECTION extends MinimalistCollectionHolder<? extends T>> @NotNull COLLECTION __with2Argument(final @NotNull COLLECTION collection,
                                                                                                                        final @NotNull ObjIntConsumer<? super T> action,
                                                                                                                        final int size) {

@@ -2,6 +2,7 @@ package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -24,6 +25,7 @@ public final class IsNotEmpty
     /// @param collection The collection to retrieve its [size][MinimalistCollectionHolder#size]
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html">Kotlin isNotEmpty()</a>
+    @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean isNotEmpty(final @Nullable MinimalistCollectionHolder<T> collection) {
         if (collection == null)
@@ -36,11 +38,12 @@ public final class IsNotEmpty
     /// @param collection The collection to retrieve its [size][CollectionHolder#size]
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html">Kotlin isNotEmpty()</a>
+    @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean isNotEmpty(final @Nullable CollectionHolder<T> collection) {
         if (collection == null)
             return false;
-        return collection.size() != 0;
+        return !collection.isEmpty();
     }
 
     /// The `collection` has at least one value
@@ -48,6 +51,7 @@ public final class IsNotEmpty
     /// @param collection The collection to retrieve its `size`
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html">Kotlin isNotEmpty()</a>
+    @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
     public static <T> boolean isNotEmpty(final T @Nullable [] collection) {
         if (collection == null)

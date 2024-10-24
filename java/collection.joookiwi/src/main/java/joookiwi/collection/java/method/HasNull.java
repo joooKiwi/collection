@@ -72,8 +72,8 @@ public final class HasNull
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static boolean __hasNull(final @NotNull MinimalistCollectionHolder<?> collection,
-                                     final int size) {
+    private static <T> boolean __hasNull(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                         final int size) {
         var index = -1;
         while (++index < size)
             if (collection.get(index) == null)
@@ -81,8 +81,8 @@ public final class HasNull
         return false;
     }
 
-    private static boolean __hasNull(final @Nullable Object @NotNull @Unmodifiable [] collection,
-                                     final int size) {
+    private static <T> boolean __hasNull(final T @NotNull @Unmodifiable [] collection,
+                                         final int size) {
         var index = -1;
         while (++index < size)
             if (collection[index] == null)

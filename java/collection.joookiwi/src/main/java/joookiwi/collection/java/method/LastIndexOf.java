@@ -242,7 +242,6 @@ public final class LastIndexOf
     }
 
     //#endregion -------------------- element, from --------------------
-
     //#region -------------------- element, from, to --------------------
 
     /// Get the **first** occurrence equivalent to the value received

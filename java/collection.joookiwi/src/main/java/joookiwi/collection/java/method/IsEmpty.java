@@ -2,6 +2,7 @@ package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -28,6 +29,7 @@ public final class IsEmpty
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html">Kotlin isEmpty()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html">Kotlin Collection.isEmpty()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html">Kotlin Map.isEmpty()</a>
+    @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_1)
     public static <T> boolean isEmpty(final @Nullable MinimalistCollectionHolder<T> collection) {
         if (collection == null)
@@ -44,6 +46,7 @@ public final class IsEmpty
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html">Kotlin isEmpty()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html">Kotlin Collection.isEmpty()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html">Kotlin Map.isEmpty()</a>
+    @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_1)
     public static <T> boolean isEmpty(final @Nullable CollectionHolder<T> collection) {
         if (collection == null)
@@ -60,6 +63,7 @@ public final class IsEmpty
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html">Kotlin isEmpty()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html">Kotlin Collection.isEmpty()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html">Kotlin Map.isEmpty()</a>
+    @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_1)
     public static <T> boolean isEmpty(final T @Nullable [] collection) {
         if (collection == null)

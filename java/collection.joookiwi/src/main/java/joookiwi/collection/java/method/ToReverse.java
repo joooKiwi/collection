@@ -11,11 +11,13 @@ import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder;
 
+@NotNullByDefault
 public final class ToReverse
         extends UtilityWithIndex {
 
