@@ -106,7 +106,7 @@ export function takeByCollectionHolder<const T, >(collection: Nullable<Collectio
     if (n === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (n === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.first(),],)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getFirst(),],)
     if (n > 0)
         if (n >= collection.size)
             return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
@@ -119,7 +119,7 @@ export function takeByCollectionHolder<const T, >(collection: Nullable<Collectio
 
     const n2 = n + size
     if (n2 === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.first(),],)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getFirst(),],)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n + size,),)
 }
 

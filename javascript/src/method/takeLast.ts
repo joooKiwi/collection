@@ -105,7 +105,7 @@ export function takeLastByCollectionHolder<const T, >(collection: Nullable<Colle
     if (n === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (n === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.last(),],)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getLast(),],)
 
     const size = collection.size
     if (n > 0)
@@ -118,7 +118,7 @@ export function takeLastByCollectionHolder<const T, >(collection: Nullable<Colle
 
     const n2 = n + size
     if (n2 === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.last(),],)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getLast(),],)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n2,),)
 }
 

@@ -170,7 +170,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                this.#array = Object.freeze([reference.first(),],)
+                this.#array = Object.freeze([reference.getFirst(),],)
                 return
             }
 
@@ -178,7 +178,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                this.#array = Object.freeze([reference.first(), reference.last(),],)
+                this.#array = Object.freeze([reference.getFirst(), reference.getLast(),],)
                 return
             }
 
@@ -365,7 +365,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                this.#array = Object.freeze([reference.first(),],)
+                this.#array = Object.freeze([reference.getFirst(),],)
                 return
             }
 
@@ -373,7 +373,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                this.#array = Object.freeze([reference.first(), reference.last(),],)
+                this.#array = Object.freeze([reference.getFirst(), reference.getLast(),],)
                 return
             }
 

@@ -107,7 +107,7 @@ export function dropLastByCollectionHolder<const T, >(collection: Nullable<Colle
     if (n === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (n === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.first(),],)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getFirst(),],)
     if (n > 0)
         if (n >= collection.size)
             return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)

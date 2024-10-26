@@ -296,7 +296,7 @@ export class GenericCollectionHolder<const T = unknown,
 
             const size = this.#size = reference.size
             if (size == 1) {
-                const value = this[0] = reference.first()
+                const value = this[0] = reference.getFirst()
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -307,8 +307,8 @@ export class GenericCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const firstValue = this[0] = reference.first()
-                const secondValue = this[1] = reference.last()
+                const firstValue = this[0] = reference.getFirst()
+                const secondValue = this[1] = reference.getLast()
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -540,7 +540,7 @@ export class GenericCollectionHolder<const T = unknown,
 
             const size = this.#size = reference.size
             if (size == 1) {
-                const value = this[0] = reference.first()
+                const value = this[0] = reference.getFirst()
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -551,8 +551,8 @@ export class GenericCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const firstValue = this[0] = reference.first()
-                const secondValue = this[1] = reference.last()
+                const firstValue = this[0] = reference.getFirst()
+                const secondValue = this[1] = reference.getLast()
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
