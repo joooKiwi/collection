@@ -1124,6 +1124,15 @@ export class GenericCollectionHolder<const T = unknown,
 
     //#endregion -------------------- Has all --------------------
 
+    //#region -------------------- Require no nulls --------------------
+
+    public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
+        requireNoNullsByArray(this._array,)
+        return this as CollectionHolder<NonNullable<T>>
+    }
+
+    //#endregion -------------------- Require no nulls --------------------
+
     //#endregion -------------------- Validation methods --------------------
     //#region -------------------- Transformation methods --------------------
 
