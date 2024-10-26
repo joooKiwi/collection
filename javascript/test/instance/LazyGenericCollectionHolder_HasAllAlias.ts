@@ -24,7 +24,7 @@ export class LazyGenericCollectionHolder_HasAllAlias
         return this
     }
 
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
+    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<string>,) {
         this.amountOfCall++
         return super.hasAll(values,)
     }

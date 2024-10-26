@@ -24,7 +24,7 @@ export class GenericCollectionHolder_HasOneAlias
         return this
     }
 
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
+    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<string>,): boolean {
         this.amountOfCall++
         return super.hasOne(values,)
     }
