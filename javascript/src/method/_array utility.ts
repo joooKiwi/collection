@@ -23,14 +23,14 @@ export function __get<const T, >(array: readonly T[], index: number,): T {
     if (index in array)
         return array[index] as T
     if (index > size)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is over the size of the collection (${size}).`, index,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
     if (index == size)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is the size of the collection (${size}).`, index,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
     if (index >= 0)
         return array[index] as T
 
     const indexToRetrieve = index + size
     if (indexToRetrieve < 0)
-        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
+        throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index “${index}” (${indexToRetrieve} after calculation) is under 0.`, index,)
     return array[indexToRetrieve] as T
 }
