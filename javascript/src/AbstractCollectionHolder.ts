@@ -132,6 +132,21 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Get --------------------
+    //#region -------------------- Get first --------------------
+
+    public getFirst(): T {
+        return getFirstByCollectionHolder<T>(this,)
+    }
+
+    //#endregion -------------------- Get first --------------------
+    //#region -------------------- Get last --------------------
+
+    public getLast(): T {
+        return getLastByCollectionHolder<T>(this,)
+    }
+
+    //#endregion -------------------- Get last --------------------
+
     //#region -------------------- Get or else --------------------
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
@@ -153,6 +168,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Get or else --------------------
+
     //#region -------------------- Get or null --------------------
 
     public getOrNull(index: number,): NullOr<T> {
@@ -168,6 +184,20 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Get or null --------------------
+    //#region -------------------- Get first or null --------------------
+
+    public getFirstOrNull(): NullOr<T> {
+        return getFirstOrNullByCollectionHolder(this,)
+    }
+
+    //#endregion -------------------- Get first or null --------------------
+    //#region -------------------- Get last or null --------------------
+
+    public getLastOrNull(): NullOr<T> {
+        return getLastOrNullByCollectionHolder(this,)
+    }
+
+    //#endregion -------------------- Get last or null --------------------
 
     //#region -------------------- First --------------------
 
@@ -175,9 +205,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
     public first(predicate: Nullable<BooleanCallback<T>>,): T
     public first(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return firstByCollectionHolder(this,)
         return firstByCollectionHolder(this, predicate,)
+        if (predicate == null)
+            return this.getFirst()
     }
 
     //#endregion -------------------- First --------------------
@@ -187,9 +217,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return firstOrNullByCollectionHolder(this, predicate,)
         return firstOrNullByCollectionHolder(this, predicate,)
+        if (predicate == null)
+            return this.getFirstOrNull()
     }
 
     //#endregion -------------------- First or null --------------------
@@ -200,9 +230,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
     public last(predicate: Nullable<BooleanCallback<T>>,): T
     public last(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-        return lastByCollectionHolder(this,)
         return lastByCollectionHolder(this, predicate,)
+        if (predicate == null)
+            return this.getLast()
     }
 
     //#endregion -------------------- Last --------------------
@@ -212,9 +242,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
     public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return lastOrNullByCollectionHolder(this,)
         return lastOrNullByCollectionHolder(this, predicate,)
+        if (predicate == null)
+            return this.getLastOrNull()
     }
 
     //#endregion -------------------- Last or null --------------------

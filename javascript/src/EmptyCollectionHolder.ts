@@ -85,6 +85,12 @@ export class EmptyCollectionHolder
     public elementAt(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
     public elementAt(index?: Nullable<NumericOrObject>,) { return this.get(index,) }
 
+    public getFirst(..._: readonly unknown[]): never
+    public getFirst() { throw new EmptyCollectionHolderException() }
+
+    public getLast(..._: readonly unknown[]): never
+    public getLast() { throw new EmptyCollectionHolderException() }
+
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
@@ -109,6 +115,12 @@ export class EmptyCollectionHolder
 
     public elementAtOrNull(..._: readonly unknown[]): null
     public elementAtOrNull() { return this.getOrNull() }
+
+    public getFirstOrNull(..._: readonly unknown[]): null
+    public getFirstOrNull() { return null }
+
+    public getLastOrNull(..._: readonly unknown[]): null
+    public getLastOrNull() { return null }
 
     //#endregion -------------------- Get --------------------
     //#region -------------------- First --------------------

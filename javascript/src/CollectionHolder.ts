@@ -133,6 +133,33 @@ export interface CollectionHolder<out T = unknown, >
     elementAt(index: number,): T
 
     //#endregion -------------------- Get --------------------
+    //#region -------------------- Get first --------------------
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     *
+     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
+     */
+    getFirst(): T
+
+    //#endregion -------------------- Get first --------------------
+    //#region -------------------- Get last --------------------
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     *
+     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+     */
+    getLast(): T
+
+    //#endregion -------------------- Get last --------------------
+
     //#region -------------------- Get or else --------------------
 
     /**
@@ -210,6 +237,7 @@ export interface CollectionHolder<out T = unknown, >
     elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
     //#endregion -------------------- Get or else --------------------
+
     //#region -------------------- Get or null --------------------
 
     /**
@@ -244,6 +272,30 @@ export interface CollectionHolder<out T = unknown, >
     elementAtOrNull(index: number,): NullOr<T>
 
     //#endregion -------------------- Get or null --------------------
+    //#region -------------------- Get first or null --------------------
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+     *
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
+     */
+    getFirstOrNull(): NullOr<T>
+
+    //#endregion -------------------- Get first or null --------------------
+    //#region -------------------- Get last or null --------------------
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+     *
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
+     */
+    getLastOrNull(): NullOr<T>
+
+    //#endregion -------------------- Get last or null --------------------
 
     //#region -------------------- First --------------------
 
