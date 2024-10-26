@@ -5,6 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {KeyOfSet} from "../CollectionConstants.types"
+
 import {CollectionConstants} from "../CollectionConstants"
 
 /**
@@ -15,7 +17,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @see CollectionConstants.SET_MEMBERS
  * @doesNotValidateTheTypes
  */
-export function isSetByStructure(value: unknown,): value is (& object & Record<keyof ReadonlySet<unknown>, unknown>)
+export function isSetByStructure(value: unknown,): value is (& object & Record<KeyOfSet, unknown>)
 /**
  * Tell that the value has the structure of an {@link ReadonlySet Set}
  *

@@ -5,7 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder} from "../CollectionHolder"
+import type {CollectionHolder}      from "../CollectionHolder"
+import type {KeyOfCollectionHolder} from "../CollectionConstants.types"
 
 import {CollectionConstants} from "../CollectionConstants"
 
@@ -17,7 +18,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @see CollectionConstants.COLLECTION_MEMBERS
  * @doesNotValidateTheTypes
  */
-export function isCollectionHolderByStructure(value: unknown,): value is (& object & Record<keyof CollectionHolder, unknown>)
+export function isCollectionHolderByStructure(value: unknown,): value is (& object & Record<KeyOfCollectionHolder, unknown>)
 /**
  * Tell that the value has the structure of a {@link CollectionHolder}
  *

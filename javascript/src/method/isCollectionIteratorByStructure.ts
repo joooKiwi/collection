@@ -5,7 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionIterator} from "../iterator/CollectionIterator"
+import type {KeyOfCollectionIterator} from "../CollectionConstants.types"
+import type {CollectionIterator}      from "../iterator/CollectionIterator"
 
 import {CollectionConstants} from "../CollectionConstants"
 
@@ -14,16 +15,16 @@ import {CollectionConstants} from "../CollectionConstants"
  *
  * @param value The value to identity
  * @see isCollectionIterator
- * @see CollectionConstants.ITERATOR_MEMBERS
+ * @see CollectionConstants.COLLECTION_ITERATOR_MEMBERS
  * @doesNotValidateTheTypes
  */
-export function isCollectionIteratorByStructure(value: unknown,): value is (& object & Record<keyof CollectionIterator, unknown>)
+export function isCollectionIteratorByStructure(value: unknown,): value is (& object & Record<KeyOfCollectionIterator, unknown>)
 /**
  * Tell that the value has the structure of a {@link CollectionIterator}
  *
  * @param value The value to identity
  * @see isCollectionIterator
- * @see CollectionConstants.ITERATOR_MEMBERS
+ * @see CollectionConstants.COLLECTION_ITERATOR_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
  */

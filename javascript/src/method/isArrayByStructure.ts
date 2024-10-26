@@ -5,6 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {KeyOfArray} from "../CollectionConstants.types"
+
 import {CollectionConstants} from "../CollectionConstants"
 
 /**
@@ -15,7 +17,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @see CollectionConstants.ARRAY_MEMBERS
  * @doesNotValidateTheTypes
  */
-export function isArrayByStructure(value: unknown,): value is (& object & Record<keyof ReadonlyArray<unknown>, unknown>)
+export function isArrayByStructure(value: unknown,): value is (& object & Record<KeyOfArray, unknown>)
 /**
  * Tell that the value has the structure of an {@link ReadonlyArray Array}
  *
