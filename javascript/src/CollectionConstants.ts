@@ -50,6 +50,7 @@ export class CollectionConstants {
     static #COLLECTION_MEMBERS?: CollectionHolder<KeyOfCollectionHolder>
     static #ARRAY_MEMBERS?: CollectionHolder<KeyOfArray>
     static #SET_MEMBERS?: CollectionHolder<KeyOfSet>
+    static #WEAK_SET_MEMBERS?: CollectionHolder<KeyOfWeakSet>
     // static #ITERATOR_MEMBERS?: CollectionHolder<keyof Iterator<unknown, unknown, unknown>>
     static #COLLECTION_ITERATOR_MEMBERS?: CollectionHolder<KeyOfCollectionIterator>
 
@@ -222,6 +223,15 @@ export class CollectionConstants {
             "isSubsetOf", "isSupersetOf",
             "isDisjointFrom",
             Symbol.iterator,
+        ] as const,),)
+    }
+
+
+    /** Every method applicable to an {@link WeakSet} */
+    public static get WEAK_SET_MEMBERS(): CollectionHolder<KeyOfWeakSet> {
+        return CollectionConstants.#WEAK_SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "has",
+            Symbol.toStringTag,
         ] as const,),)
     }
 
