@@ -302,35 +302,36 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the first element in the current {@link CollectionHolder collection}
      *
-     * @throws EmptyCollectionHolderException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
+     * @alias CollectionHolder.getFirst
      */
     first(): T
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
+     * Find the first element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @alias CollectionHolder.find
      * @typescriptDefinition
      */
     first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
+     * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @alias CollectionHolder.find
      */
     first(predicate: Nullable<BooleanCallback<T>>,): T
 
@@ -339,72 +340,157 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first element in the current {@link CollectionHolder collection}
-     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
+     * @alias CollectionHolder.getFirstOrNull
      */
     firstOrNull(): NullOr<T>
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate} or <b>null</b>
-     * if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * Find the first element from the {@link predicate} in the {@link collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The matching predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @alias CollectionHolder.findOrNull
      * @typescriptDefinition
      */
     firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate} or <b>null</b>
-     * if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * Find the first element from the {@link predicate} in the {@link collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The matching predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html find(predicate)
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @alias CollectionHolder.findOrNull
      */
     firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
 
     //#endregion -------------------- First or null --------------------
+    //#region -------------------- First indexed --------------------
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     *
+     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
+     * @alias CollectionHolder.getFirst
+     */
+    firstIndexed(): T
+
+    /**
+     * Find the first element from the {@link predicate} in the {@link collection}
+     *
+     * @param predicate The matching predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @alias CollectionHolder.findIndexed
+     * @typescriptDefinition
+     */
+    firstIndexed<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+
+    /**
+     * Find the last element from the {@link predicate} in the {@link collection}
+     *
+     * @param predicate The matching predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @alias CollectionHolder.findIndexed
+     */
+    firstIndexed(predicate: Nullable<ReverseBooleanCallback<T>>,): T
+
+    //#endregion -------------------- First indexed --------------------
+    //#region -------------------- First indexed or null --------------------
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+     *
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
+     * @alias CollectionHolder.getFirstOrNull
+     */
+    firstIndexedOrNull(): NullOr<T>
+
+    /**
+     * Find the first element from the {@link predicate} in the {@link collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The matching predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @alias CollectionHolder.findIndexedOrNull
+     * @typescriptDefinition
+     */
+    firstIndexedOrNull<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
+
+    /**
+     * Find the first element from the {@link predicate} in the {@link collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The matching predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @alias CollectionHolder.findIndexedOrNull
+     */
+    firstIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
+
+    //#endregion -------------------- First indexed or null --------------------
 
     //#region -------------------- Last --------------------
 
     /**
      * Get the last element in the current {@link CollectionHolder collection}
      *
-     * @throws EmptyCollectionHolderException The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+     * @alias CollectionHolder.getLast
      */
     last(): T
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
+     * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     * @alias CollectionHolder.findLast
      * @typescriptDefinition
      */
     last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
+     * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     * @alias CollectionHolder.findLast
      */
     last(predicate: Nullable<BooleanCallback<T>>,): T
 
@@ -413,135 +499,444 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last element in the current {@link CollectionHolder collection}
-     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
+     * @alias CollectionHolder.getLastOrNull
      */
     lastOrNull(): NullOr<T>
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
-     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The matching predicate
+     * @see ReadonlyArray.findLast
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     * @alias CollectionHolder.findLastOrNull
      * @typescriptDefinition
      */
     lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
-     * matching the given {@link predicate}
-     * or <b>null</b> if the {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The matching predicate
+     * @see ReadonlyArray.findLast
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     * @alias CollectionHolder.findLastOrNull
      */
     lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
 
     //#endregion -------------------- Last or null --------------------
-
-    //#region -------------------- Find --------------------
+    //#region -------------------- Last indexed --------------------
 
     /**
-     * Get the first element found or <b>null</b> if nothing was found
+     * Get the last element in the current {@link CollectionHolder collection}
+     *
+     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
+     * @alias CollectionHolder.getLast
+     */
+    lastIndexed(): T
+
+    /**
+     * Find the last element from the {@link predicate} in the {@link collection}
+     *
+     * @param predicate The matching predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     * @alias CollectionHolder.findLastIndexed
+     * @typescriptDefinition
+     */
+    lastIndexed<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+
+    /**
+     * Find the last element from the {@link predicate} in the {@link collection}
+     *
+     * @param predicate The matching predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     * @alias CollectionHolder.findLastIndexed
+     */
+    lastIndexed(predicate: Nullable<ReverseBooleanCallback<T>>,): T
+
+    //#endregion -------------------- Last indexed --------------------
+    //#region -------------------- Last indexed or null --------------------
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
+     *
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
+     * @alias CollectionHolder.getLastOrNull
+     */
+    lastIndexedOrNull(): NullOr<T>
+
+    /**
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The matching predicate
+     * @see ReadonlyArray.findLast
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     * @alias CollectionHolder.findLastIndexedOrNull
+     * @typescriptDefinition
+     */
+    lastIndexedOrNull<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
+
+    /**
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The matching predicate
+     * @see ReadonlyArray.findLast
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+     * @alias CollectionHolder.findLastIndexedOrNull
+     */
+    lastIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
+
+    //#endregion -------------------- Last indexed or null --------------------
+
+    //#region -------------------- Find first --------------------
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     *
+     * @param predicate The given predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @typescriptDefinition
+     */
+    findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     *
+     * @param predicate The given predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     */
+    findFirst(predicate: BooleanCallback<T>,): T
+
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     *
+     * @param predicate The given predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @alias CollectionHolder.findFirst
+     * @typescriptDefinition
+     */
+    find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     *
+     * @param predicate The given predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @alias CollectionHolder.findFirst
+     */
+    find(predicate: BooleanCallback<T>,): T
+
+    //#endregion -------------------- Find first --------------------
+    //#region -------------------- Find first or null --------------------
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
      * @typescriptDefinition
      */
-    find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Get the first element found or <b>null</b> if nothing was found
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.find
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
      */
-    find(predicate: BooleanCallback<T>,): NullOr<T>
+    findFirstOrNull(predicate: BooleanCallback<T>,): NullOr<T>
 
-    //#endregion -------------------- Find --------------------
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @alias CollectionHolder.findFirstOrNull
+     * @typescriptDefinition
+     */
+    findOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @alias CollectionHolder.findFirstOrNull
+     */
+    findOrNull(predicate: BooleanCallback<T>,): NullOr<T>
+
+    //#endregion -------------------- Find first or null --------------------
     //#region -------------------- Find indexed --------------------
 
     /**
-     * Get the first element found or <b>null</b> if nothing was found
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
      *
      * @param callback The given predicate
-     * @see ReadonlyArray.find
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @typescriptDefinition
+     */
+    findFirstIndexed<const S extends T, >(callback: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     */
+    findFirstIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param callback The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @alias CollectionHolder.findFirstIndexed
      * @typescriptDefinition
      */
     findIndexed<const S extends T, >(callback: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Get the first element found or <b>null</b> if nothing was found
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
-     * @see ReadonlyArray.find
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
-     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
+     * @alias CollectionHolder.findFirstIndexed
      */
     findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
 
     //#endregion -------------------- Find indexed --------------------
+    //#region -------------------- Find first indexed or null --------------------
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @typescriptDefinition
+     */
+    findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     */
+    findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @alias CollectionHolder.findFirstIndexedOrNull
+     * @typescriptDefinition
+     */
+    findIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+
+    /**
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The given predicate
+     * @see ReadonlyArray.find
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
+     * @alias CollectionHolder.findFirstIndexedOrNull
+     */
+    findIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+
+    //#endregion -------------------- Find first indexed or null --------------------
 
     //#region -------------------- Find last --------------------
 
     /**
-     * Get the last element found or <b>null</b> if nothing was found
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     *
+     * @param predicate The given predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     * @typescriptDefinition
+     */
+    findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+
+    /**
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
+     *
+     * @param predicate The given predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     */
+    findLast(predicate: BooleanCallback<T>,): T
+
+    //#endregion -------------------- Find last --------------------
+    //#region -------------------- Find last or null --------------------
+
+    /**
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
      * @typescriptDefinition
      */
-    findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Get the last element found or <b>null</b> if nothing was found
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
      */
-    findLast(predicate: BooleanCallback<T>,): NullOr<T>
+    findLastOrNull(predicate: BooleanCallback<T>,): NullOr<T>
 
-    //#endregion -------------------- Find last --------------------
+    //#endregion -------------------- Find last or null --------------------
     //#region -------------------- Find last indexed --------------------
 
     /**
-     * Get the last element found or <b>null</b> if nothing was found
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     *
+     * @param predicate The given predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     * @typescriptDefinition
+     */
+    findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+
+    /**
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     *
+     * @param predicate The given predicate
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
+     */
+    findLastIndexed(predicate: ReverseBooleanCallback<T>,): T
+
+    //#endregion -------------------- Find last indexed --------------------
+    //#region -------------------- Find last indexed or null --------------------
+
+    /**
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
      * @typescriptDefinition
      */
-    findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Get the last element found or <b>null</b> if nothing was found
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.findLast
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
      */
-    findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
 
-    //#endregion -------------------- Find last indexed --------------------
+    //#endregion -------------------- Find last indexed or null --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
@@ -2033,13 +2428,13 @@ export interface CollectionHolder<out T = unknown, >
 
     //#region -------------------- To iterator --------------------
 
-    /** Convert the current {@link CollectionHolder collection} to a new {@link CollectionIterator} */
+    /** Convert the current {@link CollectionHolder collection} to a {@link CollectionIterator} */
     toIterator(): CollectionIterator<T>
 
     //#endregion -------------------- To iterator --------------------
     //#region -------------------- To array --------------------
 
-    /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyArray array} */
+    /** Convert the current {@link CollectionHolder collection} to a {@link ReadonlyArray array} */
     toArray(): readonly T[]
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link Array mutable array} */
@@ -2048,7 +2443,7 @@ export interface CollectionHolder<out T = unknown, >
     //#endregion -------------------- To array --------------------
     //#region -------------------- To set --------------------
 
-    /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlySet set} */
+    /** Convert the current {@link CollectionHolder collection} to a {@link ReadonlySet set} */
     toSet(): ReadonlySet<T>
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link Set mutable set} */
@@ -2057,7 +2452,7 @@ export interface CollectionHolder<out T = unknown, >
     //#endregion -------------------- To set --------------------
     //#region -------------------- To map --------------------
 
-    /** Convert the current {@link CollectionHolder collection} to a new {@link ReadonlyMap map} */
+    /** Convert the current {@link CollectionHolder collection} to a {@link ReadonlyMap map} */
     toMap(): ReadonlyMap<number, T>
 
     /** Convert the current {@link CollectionHolder collection} to a new {@link Map mutable map} */
