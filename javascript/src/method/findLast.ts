@@ -5,45 +5,52 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullOr} from "@joookiwi/type"
+import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 
-import {isArray}                       from "./isArray"
-import {isArrayByStructure}            from "./isArrayByStructure"
-import {isCollectionHolder}            from "./isCollectionHolder"
-import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+import {NullCollectionHolderException}             from "../exception/NullCollectionHolderException"
+import {isArray}                                   from "./isArray"
+import {isArrayByStructure}                        from "./isArrayByStructure"
+import {isCollectionHolder}                        from "./isCollectionHolder"
+import {isCollectionHolderByStructure}             from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
 /**
- * Get the last element found or <b>null</b> if nothing was found
+ * Find the last element from the {@link predicate} in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @throws NullCollectionHolderException             The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findLast<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+export function findLast<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): S
 /**
- * Get the last element found or <b>null</b> if nothing was found
+ * Find the last element from the {@link predicate} in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @throws NullCollectionHolderException             The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @extensionFunction
  */
-export function findLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): NullOr<T>
+export function findLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): T
 export function findLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return null
+        throw new NullCollectionHolderException()
     if (isCollectionHolder<T>(collection,))
         return findLastByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
@@ -57,35 +64,39 @@ export function findLast<const T, >(collection: Nullable<| MinimalistCollectionH
 
 
 /**
- * Get the last element found or <b>null</b> if nothing was found
+ * Find the last element from the {@link predicate} in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
- * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @throws NullCollectionHolderException             The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findLastByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+export function findLastByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): S
 /**
- * Get the last element found or <b>null</b> if nothing was found
+ * Find the last element from the {@link predicate} in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
- * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @throws NullCollectionHolderException             The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @extensionFunction
  */
-export function findLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T>
+export function findLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): T
 export function findLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return null
+        throw new NullCollectionHolderException()
 
     const size = collection.size
     if (size == 0)
-        return null
+        throw new EmptyCollectionHolderException()
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)
@@ -94,33 +105,37 @@ export function findLastByMinimalistCollectionHolder<const T, >(collection: Null
 }
 
 /**
- * Get the last element found or <b>null</b> if nothing was found
+ * Find the last element from the {@link predicate} in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
- * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @throws NullCollectionHolderException             The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findLastByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+export function findLastByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): S
 /**
- * Get the last element found or <b>null</b> if nothing was found
+ * Find the last element from the {@link predicate} in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
- * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @throws NullCollectionHolderException             The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @extensionFunction
  */
-export function findLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): NullOr<T>
+export function findLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): T
 export function findLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return null
+        throw new NullCollectionHolderException()
     if (collection.isEmpty)
-        return null
+        throw new EmptyCollectionHolderException()
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
     if (predicate.length >= 2)
@@ -129,35 +144,39 @@ export function findLastByCollectionHolder<const T, >(collection: Nullable<Colle
 }
 
 /**
- * Get the last element found or <b>null</b> if nothing was found
+ * Find the last element from the {@link predicate} in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The given predicate
- * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @throws NullCollectionHolderException             The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findLastByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+export function findLastByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): S
 /**
- * Get the last element found or <b>null</b> if nothing was found
+ * Find the last element from the {@link predicate} in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The given predicate
- * @see ReadonlyArray.findLast
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
+ * @throws NullCollectionHolderException             The {@link collection} is <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @extensionFunction
  */
-export function findLastByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): NullOr<T>
+export function findLastByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): T
 export function findLastByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return null
+        throw new NullCollectionHolderException()
 
     const size = collection.length
     if (size == 0)
-        return null
+        throw new EmptyCollectionHolderException()
     if (predicate.length == 1)
         return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, size,)
     if (predicate.length >= 2)
@@ -173,7 +192,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     while (index-- > 0)
         if (predicate())
             return collection.get(index,)
-    return null
+    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", size - 1,)
 }
 
 function __with0ArgumentByArray<const T, >(collection: readonly T[], predicate: () => boolean, size: number,) {
@@ -181,7 +200,7 @@ function __with0ArgumentByArray<const T, >(collection: readonly T[], predicate: 
     while (index-- > 0)
         if (predicate())
             return collection[index] as T
-    return null
+    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", size - 1,)
 }
 
 
@@ -192,7 +211,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
         if (predicate(value,))
             return value
     }
-    return null
+    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", size - 1,)
 }
 
 function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: (value: T,) => boolean, size: number,) {
@@ -202,7 +221,7 @@ function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: 
         if (predicate(value,))
             return value
     }
-    return null
+    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", size - 1,)
 }
 
 
@@ -213,7 +232,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
         if (predicate(value, index,))
             return value
     }
-    return null
+    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", size - 1,)
 }
 
 function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: (value: T, index: number,) => boolean, size: number,) {
@@ -223,7 +242,7 @@ function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: 
         if (predicate(value, index,))
             return value
     }
-    return null
+    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", size - 1,)
 }
 
 //#endregion -------------------- Loop methods --------------------
