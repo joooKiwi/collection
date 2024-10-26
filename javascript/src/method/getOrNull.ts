@@ -44,8 +44,8 @@ export function getOrNull<const T, >(collection: Nullable<| MinimalistCollection
 
 
 /**
- * Get the element at the specified index in the {@link collection}
- * or <b>null</b> if it is over the {@link size}
+ * Get the element at the specified {@link index} in the {@link collection}
+ * or <b>null</b> if it is over the {@link MinimalistCollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param index      The index to retrieve a value
@@ -81,7 +81,7 @@ export function getOrNullByMinimalistCollectionHolder<const T, >(collection: Nul
 
 /**
  * Get the element at the specified index in the {@link collection}
- * or <b>null</b> if it is over the {@link size}
+ * or <b>null</b> if it is over the {@link CollectionHolder.size size}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param index      The index to retrieve a value
@@ -117,7 +117,7 @@ export function getOrNullByCollectionHolder<const T, >(collection: Nullable<Coll
 
 /**
  * Get the element at the specified index in the {@link collection}
- * or <b>null</b> if it is over the {@link size}
+ * or <b>null</b> if it is over the {@link ReadonlyArray.length size}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param index      The index to retrieve a value

@@ -19,7 +19,7 @@ import {isCollectionHolderByStructure}                   from "./isCollectionHol
 //#region -------------------- Facade method --------------------
 
 /**
- * Convert the {@link collection} to an {@link Map mutable map}
+ * Convert the {@link collection} to a new {@link Map mutable map}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
@@ -40,7 +40,7 @@ export function toMutableMap<const T, >(collection: Nullable<| MinimalistCollect
 
 
 /**
- * Convert the {@link collection} to an {@link Map mutable map}
+ * Convert the {@link collection} to a new {@link Map mutable map}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
  * @extensionFunction
@@ -56,7 +56,7 @@ export function toMutableMapByMinimalistCollectionHolder<const T, >(collection: 
 }
 
 /**
- * Convert the {@link collection} to an {@link Map mutable map}
+ * Convert the {@link collection} to a new {@link Map mutable map}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
  * @extensionFunction
@@ -70,7 +70,7 @@ export function toMutableMapByCollectionHolder<const T, >(collection: Nullable<C
 }
 
 /**
- * Convert the {@link collection} to an {@link Map mutable map}
+ * Convert the {@link collection} to a new {@link Map mutable map}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
  * @extensionFunction

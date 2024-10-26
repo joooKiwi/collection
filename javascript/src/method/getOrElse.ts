@@ -25,7 +25,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  *
  * @param collection   The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param index        The index to retrieve a value
- * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
+ * @param defaultValue The callback to retrieve the default value if it is over the size (after calculation)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html Kotlin elementAtOrElse(key, defaultValue)
  * @canReceiveNegativeValue
