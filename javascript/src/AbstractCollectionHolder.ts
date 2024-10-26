@@ -375,9 +375,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public any(): this["isNotEmpty"]
     public any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public any(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return anyByCollectionHolder(this,)
-        return anyByCollectionHolder(this, predicate,)
+        if (predicate == null)
+            return this.isNotEmpty
+        return this._any(predicate,)
     }
 
     public some(): this["isNotEmpty"]
@@ -388,16 +388,24 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.any(predicate,)
     }
 
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.any CollectionHolder.any(predicate)} */
+    protected _any(predicate: BooleanCallback<T>,): boolean { return anyByCollectionHolder(this, predicate,) }
+
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
 
     public none(): this["isEmpty"]
     public none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public none(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return noneByCollectionHolder(this,)
-        return noneByCollectionHolder(this, predicate,)
+        if (predicate == null)
+            return this.isEmpty
+        return this._none(predicate,)
     }
+
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.none CollectionHolder.none(predicate)} */
+    protected _none(predicate: BooleanCallback<T>,): boolean { return noneByCollectionHolder(this, predicate,) }
 
     //#endregion -------------------- None --------------------
 
@@ -441,7 +449,27 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasOne(values: Iterable<T>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
     public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
-        return hasOneByCollectionHolder(this, values,)
+        if (isArray(values))
+            return this._hasOneByArray(values,)
+        if (isSet(values))
+            return this._hasOneBySet(values,)
+        if (isCollectionHolder(values))
+            return this._hasOneByCollectionHolder(values,)
+        if (isMinimalistCollectionHolder(values,))
+            return this._hasOneByMinimalistCollectionHolder(values,)
+        if (isCollectionIterator(values,))
+            return this._hasOneByCollectionIterator(values,)
+        if (isArrayByStructure<T>(values))
+            return this._hasOneByArray(values,)
+        if (isSetByStructure<T>(values))
+            return this._hasOneBySet(values,)
+        if (isCollectionHolderByStructure<T>(values))
+            return this._hasOneByCollectionHolder(values,)
+        if (isMinimalistCollectionHolderByStructure<T>(values,))
+            return this._hasOneByMinimalistCollectionHolder(values,)
+        if (isCollectionIteratorByStructure<T>(values,))
+            return this._hasOneByCollectionIterator(values,)
+        return this._hasOneByIterable(values,)
     }
 
     public includesOne(values: readonly T[],): boolean
@@ -466,6 +494,37 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this.hasOne(values,)
     }
 
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values)} */
+    protected _hasOneByArray(values: readonly T[],): boolean {
+        return hasOneWithArrayByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values)} */
+    protected _hasOneBySet(values: ReadonlySet<T>,): boolean {
+        return hasOneWithSetByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values)} */
+    protected _hasOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasOneWithMinimalistCollectionHolderByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values)} */
+    protected _hasOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasOneWithCollectionHolderByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values)} */
+    protected _hasOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasOneWithCollectionIteratorByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values)} */
+    protected _hasOneByIterable(values: Iterable<T>,): boolean {
+        return hasOneWithIterableByCollectionHolder(this, values,)
+    }
+
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has all --------------------
 
@@ -477,7 +536,27 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public hasAll(values: Iterable<T>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
     public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
-        return hasAllByCollectionHolder(this, values,)
+        if (isArray(values))
+            return this._hasAllByArray(values,)
+        if (isSet(values))
+            return this._hasAllBySet(values,)
+        if (isCollectionHolder(values))
+            return this._hasAllByCollectionHolder(values,)
+        if (isMinimalistCollectionHolder(values,))
+            return this._hasAllByMinimalistCollectionHolder(values,)
+        if (isCollectionIterator(values,))
+            return this._hasAllByCollectionIterator(values,)
+        if (isArrayByStructure<T>(values))
+            return this._hasAllByArray(values,)
+        if (isSetByStructure<T>(values))
+            return this._hasAllBySet(values,)
+        if (isCollectionHolderByStructure<T>(values))
+            return this._hasAllByCollectionHolder(values,)
+        if (isMinimalistCollectionHolderByStructure<T>(values,))
+            return this._hasAllByMinimalistCollectionHolder(values,)
+        if (isCollectionIteratorByStructure<T>(values,))
+            return this._hasAllByCollectionIterator(values,)
+        return this._hasAllByIterable(values,)
     }
 
     public includesAll(values: readonly T[],): boolean
@@ -501,6 +580,37 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
     public containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
         return this.hasAll(values,)
+    }
+
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values)} */
+    protected _hasAllByArray(values: readonly T[],): boolean {
+        return hasAllWithArrayByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values)} */
+    protected _hasAllBySet(values: ReadonlySet<T>,): boolean {
+        return hasAllWithSetByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values)} */
+    protected _hasAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasAllWithMinimalistCollectionHolderByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values)} */
+    protected _hasAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasAllWithCollectionHolderByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values)} */
+    protected _hasAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasAllWithCollectionIteratorByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values)} */
+    protected _hasAllByIterable(values: Iterable<T>,): boolean {
+        return hasAllWithIterableByCollectionHolder(this, values,)
     }
 
     //#endregion -------------------- Has all --------------------
@@ -574,16 +684,153 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
     public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T> {
+        //#region -------------------- 0 arguments --------------------
+
         if (arguments.length === 0)
-            return sliceWithARangeByCollectionHolder<T>(this,)
+            return this._sliceWith0Argument()
+
+        //#endregion -------------------- 0 arguments --------------------
+        //#region -------------------- 1 argument --------------------
+
         if (arguments.length === 1)
             if (indicesOrFromIndex == null)
-                return sliceWithARangeByCollectionHolder<T>(this, indicesOrFromIndex,)
+                return this._sliceWith0Argument()
             else if (typeof indicesOrFromIndex == "number")
-                return sliceWithARangeByCollectionHolder<T>(this, indicesOrFromIndex,)
+                return this._sliceWith1Argument(indicesOrFromIndex,)
+            else if (isArray(indicesOrFromIndex,))
+                return this._sliceByArray(indicesOrFromIndex,)
+            else if (isSet(indicesOrFromIndex))
+                return this._sliceBySet(indicesOrFromIndex,)
+            else if (isCollectionHolder(indicesOrFromIndex))
+                return this._sliceByCollectionHolder(indicesOrFromIndex,)
+            else if (isMinimalistCollectionHolder(indicesOrFromIndex))
+                return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
+            else if (isCollectionIterator(indicesOrFromIndex))
+                return this._sliceByCollectionIterator(indicesOrFromIndex,)
+            else if (isArrayByStructure<number>(indicesOrFromIndex,))
+                return this._sliceByArray(indicesOrFromIndex,)
+            else if (isSetByStructure<number>(indicesOrFromIndex))
+                return this._sliceBySet(indicesOrFromIndex,)
+            else if (isCollectionHolderByStructure<number>(indicesOrFromIndex))
+                return this._sliceByCollectionHolder(indicesOrFromIndex,)
+            else if (isMinimalistCollectionHolderByStructure<number>(indicesOrFromIndex))
+                return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
+            else if (isCollectionIteratorByStructure<number>(indicesOrFromIndex))
+                return this._sliceByCollectionIterator(indicesOrFromIndex,)
             else
-                return sliceByCollectionHolder<T>(this, indicesOrFromIndex,)
-        return sliceWithARangeByCollectionHolder<T>(this, indicesOrFromIndex as NullableNumber, toIndex,)
+                return this._sliceByIterable(indicesOrFromIndex,)
+
+        //#endregion -------------------- 1 argument --------------------
+        //#region -------------------- 2 arguments --------------------
+
+        if (indicesOrFromIndex == null)
+            if (toIndex == null)
+                return this._sliceWith0Argument()
+            else
+                return this._sliceWith2ArgumentWhere1stIsNull(indicesOrFromIndex, toIndex,)
+
+        if (toIndex == null)
+            if (typeof indicesOrFromIndex == "number")
+                return this._sliceWith1Argument(indicesOrFromIndex,)
+            else if (isArray(indicesOrFromIndex,))
+                return this._sliceByArray(indicesOrFromIndex,)
+            else if (isSet(indicesOrFromIndex))
+                return this._sliceBySet(indicesOrFromIndex,)
+            else if (isCollectionHolder(indicesOrFromIndex))
+                return this._sliceByCollectionHolder(indicesOrFromIndex,)
+            else if (isMinimalistCollectionHolder(indicesOrFromIndex))
+                return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
+            else if (isCollectionIterator(indicesOrFromIndex))
+                return this._sliceByCollectionIterator(indicesOrFromIndex,)
+            else if (isArrayByStructure<number>(indicesOrFromIndex,))
+                return this._sliceByArray(indicesOrFromIndex,)
+            else if (isSetByStructure<number>(indicesOrFromIndex))
+                return this._sliceBySet(indicesOrFromIndex,)
+            else if (isCollectionHolderByStructure<number>(indicesOrFromIndex))
+                return this._sliceByCollectionHolder(indicesOrFromIndex,)
+            else if (isMinimalistCollectionHolderByStructure<number>(indicesOrFromIndex))
+                return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
+            else if (isCollectionIteratorByStructure<number>(indicesOrFromIndex))
+                return this._sliceByCollectionIterator(indicesOrFromIndex,)
+            else
+                return this._sliceByIterable(indicesOrFromIndex,)
+
+        if (typeof indicesOrFromIndex == "number")
+            return this._sliceWith2Argument(indicesOrFromIndex, toIndex,)
+        if (isArray(indicesOrFromIndex,))
+            return this._sliceByArray(indicesOrFromIndex,)
+        if (isSet(indicesOrFromIndex))
+            return this._sliceBySet(indicesOrFromIndex,)
+        if (isCollectionHolder(indicesOrFromIndex))
+            return this._sliceByCollectionHolder(indicesOrFromIndex,)
+        if (isMinimalistCollectionHolder(indicesOrFromIndex))
+            return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
+        if (isCollectionIterator(indicesOrFromIndex))
+            return this._sliceByCollectionIterator(indicesOrFromIndex,)
+        if (isArrayByStructure<number>(indicesOrFromIndex,))
+            return this._sliceByArray(indicesOrFromIndex,)
+        if (isSetByStructure<number>(indicesOrFromIndex))
+            return this._sliceBySet(indicesOrFromIndex,)
+        if (isCollectionHolderByStructure<number>(indicesOrFromIndex))
+            return this._sliceByCollectionHolder(indicesOrFromIndex,)
+        if (isMinimalistCollectionHolderByStructure<number>(indicesOrFromIndex))
+            return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
+        if (isCollectionIteratorByStructure<number>(indicesOrFromIndex))
+            return this._sliceByCollectionIterator(indicesOrFromIndex,)
+        return this._sliceByIterable(indicesOrFromIndex,)
+
+        //#endregion -------------------- 2 arguments --------------------
+    }
+
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice()} */
+    protected _sliceWith0Argument(): CollectionHolder<T> {
+        return sliceWithARangeByCollectionHolder<T>(this,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(fromIndex)} */
+    protected _sliceWith1Argument(fromIndex: number,): CollectionHolder<T> {
+        return sliceWithARangeByCollectionHolder<T>(this, fromIndex,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(fromIndex, toIndex)} */
+    protected _sliceWith2Argument(fromIndex: number, toIndex: number,): CollectionHolder<T> {
+        return sliceWithARangeByCollectionHolder<T>(this, fromIndex, toIndex,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(null, toIndex)} */
+    protected _sliceWith2ArgumentWhere1stIsNull(fromIndex: NullOrUndefined, toIndex: number,): CollectionHolder<T> {
+        return sliceWithARangeByCollectionHolder<T>(this, fromIndex, toIndex,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
+    protected _sliceByArray(indices: readonly number[],): CollectionHolder<T> {
+        return sliceWithArrayByCollectionHolder<T>(this, indices,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
+    protected _sliceBySet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+        return sliceWithSetByCollectionHolder<T>(this, indices,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
+    protected _sliceByMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithMinimalistCollectionHolderByCollectionHolder<T>(this, indices,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
+    protected _sliceByCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithCollectionHolderByCollectionHolder<T>(this, indices,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
+    protected _sliceByCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
+        return sliceWithCollectionIteratorByCollectionHolder<T>(this, indices,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
+    protected _sliceByIterable(indices: Iterable<number>,): CollectionHolder<T> {
+        return sliceWithIterableByCollectionHolder<T>(this, indices,)
     }
 
     //#endregion -------------------- Slice --------------------

@@ -1013,22 +1013,14 @@ export class GenericCollectionHolder<const T = unknown,
     //#endregion -------------------- All --------------------
     //#region -------------------- Any --------------------
 
-    public override any(): this["isNotEmpty"]
-    public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override any(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return this.isNotEmpty
+    protected override _any(predicate: BooleanCallback<T>,): boolean {
         return anyByArray(this._array, predicate,)
     }
 
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
 
-    public override none(): this["isEmpty"]
-    public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override none(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return this.isEmpty
+    protected override _none(predicate: BooleanCallback<T>,): boolean {
         return noneByArray(this._array, predicate,)
     }
 
@@ -1054,29 +1046,55 @@ export class GenericCollectionHolder<const T = unknown,
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
-    public override hasOne(values: readonly T[],): boolean
-    public override hasOne(values: ReadonlySet<T>,): boolean
-    public override hasOne(values: CollectionHolder<T>,): boolean
-    public override hasOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasOne(values: CollectionIterator<T>,): boolean
-    public override hasOne(values: Iterable<T>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
-        return hasOneByArray(this._array, values,)
+    protected override _hasOneByArray(values: readonly T[],): boolean {
+        return hasOneWithArrayByArray(this._array, values,)
+    }
+
+    protected override _hasOneBySet(values: ReadonlySet<T>,): boolean {
+        return hasOneWithSetByArray(this._array, values,)
+    }
+
+    protected override _hasOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasOneWithMinimalistCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasOneWithCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasOneWithCollectionIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasOneByIterable(values: Iterable<T>,): boolean {
+        return hasOneWithIterableByArray(this._array, values,)
     }
 
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has all --------------------
 
-    public override hasAll(values: readonly T[],): boolean
-    public override hasAll(values: ReadonlySet<T>,): boolean
-    public override hasAll(values: CollectionHolder<T>,): boolean
-    public override hasAll(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasAll(values: CollectionIterator<T>,): boolean
-    public override hasAll(values: Iterable<T>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
-        return hasAllByArray(this._array, values,)
+    protected override _hasAllByArray(values: readonly T[],): boolean {
+        return hasAllWithArrayByArray(this._array, values,)
+    }
+
+    protected override _hasAllBySet(values: ReadonlySet<T>,): boolean {
+        return hasAllWithSetByArray(this._array, values,)
+    }
+
+    protected override _hasAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasAllWithMinimalistCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasAllWithCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasAllWithCollectionIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasAllByIterable(values: Iterable<T>,): boolean {
+        return hasAllWithIterableByArray(this._array, values,)
     }
 
     //#endregion -------------------- Has all --------------------
@@ -1134,26 +1152,44 @@ export class GenericCollectionHolder<const T = unknown,
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number>,): CollectionHolder<T>
-    public override slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T> {
-        if (arguments.length === 0)
-            return sliceWithARangeByArray<T>(this._array,)
-        if (arguments.length === 1)
-            if (indicesOrFromIndex == null)
-                return sliceWithARangeByArray<T>(this._array, indicesOrFromIndex,)
-            else if (typeof indicesOrFromIndex == "number")
-                return sliceWithARangeByArray<T>(this._array, indicesOrFromIndex,)
-            else
-                return sliceByArray<T>(this._array, indicesOrFromIndex,)
-        return sliceWithARangeByArray<T>(this._array, indicesOrFromIndex as NullableNumber, toIndex,)
+    protected override _sliceWith0Argument(): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array,)
+    }
+
+    protected override _sliceWith1Argument(fromIndex: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, fromIndex,)
+    }
+
+    protected override _sliceWith2Argument(fromIndex: number, toIndex: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, fromIndex, toIndex,)
+    }
+
+    protected override _sliceWith2ArgumentWhere1stIsNull(fromIndex: NullOrUndefined, toIndex: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, fromIndex, toIndex,)
+    }
+
+    protected override _sliceByArray(indices: readonly number[],): CollectionHolder<T> {
+        return sliceWithArrayByArray(this._array, indices,)
+    }
+
+    protected override _sliceBySet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+        return sliceWithSetByArray(this._array, indices,)
+    }
+
+    protected override _sliceByMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithMinimalistCollectionHolderByArray(this._array, indices,)
+    }
+
+    protected override _sliceByCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithCollectionHolderByArray(this._array, indices,)
+    }
+
+    protected override _sliceByCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
+        return sliceWithCollectionIteratorByArray(this._array, indices,)
+    }
+
+    protected override _sliceByIterable(indices: Iterable<number>,): CollectionHolder<T> {
+        return sliceWithIterableByArray(this._array, indices,)
     }
 
     //#endregion -------------------- Slice --------------------
