@@ -294,7 +294,7 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
-                if (isSetByStructure(referenceFound,)) {
+                if (isSetByStructure<T>(referenceFound,)) {
                     const handler = this.#handler = this.#handlerBySet(referenceFound,)
                     if (this.#size == null)
                         this.#lazySize = lazy(() => handler.size,)
