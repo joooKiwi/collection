@@ -126,37 +126,110 @@ export class EmptyCollectionHolder
     //#region -------------------- First --------------------
 
     public first<const S, >(..._: readonly unknown[]): never
-    public first() { throw new EmptyCollectionHolderException() }
+    public first() {
+        if (arguments.length == 0)
+            this.getFirst()
+        this.findFirst()
+    }
 
     public firstOrNull<const S, >(..._: readonly unknown[]): null
-    public firstOrNull() { return null }
+    public firstOrNull() {
+        if (arguments.length == 0)
+            return this.getFirstOrNull()
+        return this.findFirstOrNull()
+    }
+
+    public firstIndexed<const S, >(..._: readonly unknown[]): never
+    public firstIndexed() {
+        if (arguments.length == 0)
+            this.getFirst()
+        this.findFirstIndexed()
+    }
+
+    public firstIndexedOrNull<const S, >(..._: readonly unknown[]): null
+    public firstIndexedOrNull() {
+        if (arguments.length == 0)
+            return this.getFirstOrNull()
+        return this.findFirstIndexedOrNull()
+    }
 
     //#endregion -------------------- First --------------------
     //#region -------------------- Last --------------------
 
     public last<const S, >(..._: readonly unknown[]): never
-    public last() { throw new EmptyCollectionHolderException() }
+    public last() {
+        if (arguments.length == 0)
+            this.getLast()
+        this.findLast()
+    }
 
     public lastOrNull<const S, >(..._: readonly unknown[]): null
-    public lastOrNull() { return null }
+    public lastOrNull() {
+        if (arguments.length == 0)
+            return this.getLastOrNull()
+        return this.findLastOrNull()
+    }
+
+    public lastIndexed<const S, >(..._: readonly unknown[]): never
+    public lastIndexed() {
+        if (arguments.length == 0)
+            this.getLast()
+        this.findLastIndexed()
+    }
+
+    public lastIndexedOrNull<const S, >(..._: readonly unknown[]): null
+    public lastIndexedOrNull() {
+        if (arguments.length == 0)
+            return this.getLastOrNull()
+        return this.findLastIndexedOrNull()
+    }
 
     //#endregion -------------------- Last --------------------
-    //#region -------------------- Find --------------------
+    //#region -------------------- Find first --------------------
 
-    public find<const S, >(..._: readonly unknown[]): null
-    public find() { return null }
+    public findFirst<const S, >(..._: readonly unknown[]): never
+    public findFirst() { throw new EmptyCollectionHolderException() }
 
-    public findIndexed<const S, >(..._: readonly unknown[]): null
-    public findIndexed() { return null }
+    public find<const S, >(..._: readonly unknown[]): never
+    public find() { this.findFirst() }
 
 
-    public findLast<const S, >(..._: readonly unknown[]): null
-    public findLast() { return null }
+    public findFirstOrNull<const S, >(..._: readonly unknown[]): null
+    public findFirstOrNull() { return null }
 
-    public findLastIndexed<const S, >(..._: readonly unknown[]): null
-    public findLastIndexed() { return null }
+    public findOrNull<const S, >(..._: readonly unknown[]): null
+    public findOrNull() { return this.findFirstOrNull() }
 
-    //#endregion -------------------- Find --------------------
+
+    public findFirstIndexed<const S, >(..._: readonly unknown[]): never
+    public findFirstIndexed() { throw new EmptyCollectionHolderException() }
+
+    public findIndexed<const S, >(..._: readonly unknown[]): never
+    public findIndexed() { this.findFirstIndexed() }
+
+
+    public findFirstIndexedOrNull<const S, >(..._: readonly unknown[]): null
+    public findFirstIndexedOrNull() { return null }
+
+    public findIndexedOrNull<const S, >(..._: readonly unknown[]): null
+    public findIndexedOrNull() { return this.findFirstIndexedOrNull() }
+
+    //#endregion -------------------- Find first --------------------
+    //#region -------------------- Find last --------------------
+
+    public findLast<const S, >(..._: readonly unknown[]): never
+    public findLast() { throw new EmptyCollectionHolderException() }
+
+    public findLastOrNull<const S, >(..._: readonly unknown[]): null
+    public findLastOrNull() { return null }
+
+    public findLastIndexed<const S, >(..._: readonly unknown[]): never
+    public findLastIndexed() { throw new EmptyCollectionHolderException() }
+
+    public findLastIndexedOrNull<const S, >(..._: readonly unknown[]): null
+    public findLastIndexedOrNull() { return null }
+
+    //#endregion -------------------- Find last --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
