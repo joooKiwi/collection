@@ -25,14 +25,20 @@ import {filterIndexedByCollectionHolder}           from "../../src/method/filter
 import {filterNotByCollectionHolder}               from "../../src/method/filterNot"
 import {filterNotIndexedByCollectionHolder}        from "../../src/method/filterNotIndexed"
 import {filterNotNullByCollectionHolder}           from "../../src/method/filterNotNull"
-import {findByCollectionHolder}                    from "../../src/method/find"
-import {findIndexedByCollectionHolder}             from "../../src/method/findIndexed"
+import {findFirstByCollectionHolder}               from "../../src/method/findFirst"
+import {findFirstIndexedByCollectionHolder}        from "../../src/method/findFirstIndexed"
+import {findFirstIndexedOrNullByCollectionHolder}  from "../../src/method/findFirstIndexedOrNull"
+import {findFirstOrNullByCollectionHolder}         from "../../src/method/findFirstOrNull"
 import {findLastByCollectionHolder}                from "../../src/method/findLast"
 import {findLastIndexedByCollectionHolder}         from "../../src/method/findLastIndexed"
-import {firstByCollectionHolder}                   from "../../src/method/first"
-import {firstOrNullByCollectionHolder}             from "../../src/method/firstOrNull"
+import {findLastIndexedOrNullByCollectionHolder}   from "../../src/method/findLastIndexedOrNull"
+import {findLastOrNullByCollectionHolder}          from "../../src/method/findLastOrNull"
 import {forEachByCollectionHolder}                 from "../../src/method/forEach"
 import {forEachIndexedByCollectionHolder}          from "../../src/method/forEachIndexed"
+import {getFirstByCollectionHolder}                from "../../src/method/getFirst"
+import {getFirstOrNullByCollectionHolder}          from "../../src/method/getFirstOrNull"
+import {getLastByCollectionHolder}                 from "../../src/method/getLast"
+import {getLastOrNullByCollectionHolder}           from "../../src/method/getLastOrNull"
 import {getOrElseByCollectionHolder}               from "../../src/method/getOrElse"
 import {getOrNullByCollectionHolder}               from "../../src/method/getOrNull"
 import {hasByCollectionHolder}                     from "../../src/method/has"
@@ -48,9 +54,7 @@ import {indexOfLastIndexedByCollectionHolder}      from "../../src/method/indexO
 import {isEmptyByCollectionHolder}                 from "../../src/method/isEmpty"
 import {isNotEmptyByCollectionHolder}              from "../../src/method/isNotEmpty"
 import {joinToStringByCollectionHolder}            from "../../src/method/joinToString"
-import {lastByCollectionHolder}                    from "../../src/method/last"
 import {lastIndexOfByCollectionHolder}             from "../../src/method/lastIndexOf"
-import {lastOrNullByCollectionHolder}              from "../../src/method/lastOrNull"
 import {noneByCollectionHolder}                    from "../../src/method/none"
 import {mapByCollectionHolder}                     from "../../src/method/map"
 import {mapIndexedByCollectionHolder}              from "../../src/method/mapIndexed"
@@ -128,6 +132,22 @@ export class CollectionHolder_FromExtensionFunction<const T, >
         return this.array[index] as T
     }
 
+    public override getFirst(): T {
+        return getFirstByCollectionHolder<T>(this,)
+    }
+
+    public override getLast(): T {
+        return getLastByCollectionHolder<T>(this,)
+    }
+
+    public override getFirstOrNull(): NullOr<T> {
+        return getFirstOrNullByCollectionHolder<T>(this,)
+    }
+
+    public override getLastOrNull(): NullOr<T> {
+        return getLastOrNullByCollectionHolder<T>(this,)
+    }
+
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
@@ -139,65 +159,55 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     }
 
     //#endregion -------------------- Get --------------------
-    //#region -------------------- First --------------------
-
-    public override first(): NonNullable<T>
-    public override first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public override first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
-    public override first(predicate?: Nullable<BooleanCallback<T>>,) {
-        return firstByCollectionHolder(this, predicate,)
-    }
-
-    public override firstOrNull(): NullOr<T>
-    public override firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public override firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public override firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        return firstOrNullByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- First --------------------
-    //#region -------------------- Last --------------------
-
-    public override last(): NonNullable<T>
-    public override last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public override last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
-    public override last(predicate?: Nullable<BooleanCallback<T>>,) {
-        return lastByCollectionHolder(this, predicate,)
-    }
-
-    public override lastOrNull(): NullOr<T>
-    public override lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public override lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public override lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        return lastOrNullByCollectionHolder(this, predicate,)
-    }
-
-    //#endregion -------------------- Last --------------------
     //#region -------------------- Find --------------------
 
-    public override find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override find(predicate: BooleanCallback<T>,): NullOr<T>
-    public override find(predicate: BooleanCallback<T>,) {
-        return findByCollectionHolder(this, predicate,)
+    public override findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+    public override findFirst(predicate: BooleanCallback<T>,): T
+    public override findFirst(predicate: BooleanCallback<T>,) {
+        return findFirstByCollectionHolder(this, predicate,)
     }
 
-    public override findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public override findIndexed(predicate: ReverseBooleanCallback<T>,) {
-        return findIndexedByCollectionHolder(this, predicate,)
+    public override findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findFirstOrNull(predicate: BooleanCallback<T>,): NullOr<T>
+    public override findFirstOrNull(predicate: BooleanCallback<T>,) {
+        return findFirstOrNullByCollectionHolder(this, predicate,)
+    }
+
+    public override findFirstIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+    public override findFirstIndexed(predicate: ReverseBooleanCallback<T>,): T
+    public override findFirstIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return findFirstIndexedByCollectionHolder(this, predicate,)
+    }
+
+    public override findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,) {
+        return findFirstIndexedOrNullByCollectionHolder(this, predicate,)
     }
 
 
-    public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findLast(predicate: BooleanCallback<T>,): NullOr<T>
+    public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+    public override findLast(predicate: BooleanCallback<T>,): T
     public override findLast(predicate: BooleanCallback<T>,) {
         return findLastByCollectionHolder(this, predicate,)
     }
 
-    public override findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public override findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findLastOrNull(predicate: BooleanCallback<T>,): NullOr<T>
+    public override findLastOrNull(predicate: BooleanCallback<T>,) {
+        return findLastOrNullByCollectionHolder(this, predicate,)
+    }
+
+    public override findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,): T
     public override findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
         return findLastIndexedByCollectionHolder(this, predicate,)
+    }
+
+    public override findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,) {
+        return findLastIndexedOrNullByCollectionHolder(this, predicate,)
     }
 
     //#endregion -------------------- Find --------------------

@@ -113,6 +113,10 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract get(index: number,): T
 
+    public abstract getFirst(): T
+
+    public abstract getLast(): T
+
     public at(index?: number,): never
     public at() {
         throw new Error("The method “at” was not expected to be called in a test.",)
@@ -142,6 +146,10 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     public abstract getOrNull(index: number,): NullOr<T>
 
+    public abstract getFirstOrNull(): NullOr<T>
+
+    public abstract getLastOrNull(): NullOr<T>
+
     public atOrNull(index?: number,): never
     public atOrNull() {
         throw new Error("The method “atOrNull” was not expected to be called in a test.",)
@@ -155,42 +163,123 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Get --------------------
     //#region -------------------- First --------------------
 
-    public abstract first(): NonNullable<T>
-    public abstract first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public abstract first(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
+    public first(): never
+    public first<const S extends T, >(predicate?: Nullable<RestrainedBooleanCallback<T, S>>,): never
+    public first(predicate?: Nullable<BooleanCallback<T>>,): never
+    public first() {
+        throw new Error("The method “first” was not expected to be called in a test.",)
+    }
 
-    public abstract firstOrNull(): NullOr<T>
-    public abstract firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public abstract firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+    public firstOrNull(): never
+    public firstOrNull<const S extends T, >(predicate?: Nullable<RestrainedBooleanCallback<T, S>>,): never
+    public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,): never
+    public firstOrNull() {
+        throw new Error("The method “firstOrNull” was not expected to be called in a test.",)
+    }
+
+    public firstIndexed(): never
+    public firstIndexed<const S extends T, >(predicate?: Nullable<RestrainedBooleanCallback<T, S>>,): never
+    public firstIndexed(predicate?: Nullable<BooleanCallback<T>>,): never
+    public firstIndexed() {
+        throw new Error("The method “firstIndexed” was not expected to be called in a test.",)
+    }
+
+    public firstIndexedOrNull(): never
+    public firstIndexedOrNull<const S extends T, >(predicate?: Nullable<RestrainedBooleanCallback<T, S>>,): never
+    public firstIndexedOrNull(predicate?: Nullable<BooleanCallback<T>>,): never
+    public firstIndexedOrNull() {
+        throw new Error("The method “firstIndexedOrNull” was not expected to be called in a test.",)
+    }
 
     //#endregion -------------------- First --------------------
     //#region -------------------- Last --------------------
 
-    public abstract last(): NonNullable<T>
-    public abstract last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NonNullable<S>
-    public abstract last(predicate: Nullable<BooleanCallback<T>>,): NonNullable<T>
+    public last(): never
+    public last<const S extends T, >(predicate?: Nullable<RestrainedBooleanCallback<T, S>>,): never
+    public last(predicate?: Nullable<BooleanCallback<T>>,): never
+    public last() {
+        throw new Error("The method “last” was not expected to be called in a test.",)
+    }
 
-    public abstract lastOrNull(): NullOr<T>
-    public abstract lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public abstract lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+    public lastOrNull(): never
+    public lastOrNull<const S extends T, >(predicate?: Nullable<RestrainedBooleanCallback<T, S>>,): never
+    public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,): never
+    public lastOrNull() {
+        throw new Error("The method “lastOrNull” was not expected to be called in a test.",)
+    }
+
+    public lastIndexed(): never
+    public lastIndexed<const S extends T, >(predicate?: Nullable<RestrainedBooleanCallback<T, S>>,): never
+    public lastIndexed(predicate?: Nullable<BooleanCallback<T>>,): never
+    public lastIndexed() {
+        throw new Error("The method “lastIndexed” was not expected to be called in a test.",)
+    }
+
+    public lastIndexedOrNull(): never
+    public lastIndexedOrNull<const S extends T, >(predicate?: Nullable<RestrainedBooleanCallback<T, S>>,): never
+    public lastIndexedOrNull(predicate?: Nullable<BooleanCallback<T>>,): never
+    public lastIndexedOrNull() {
+        throw new Error("The method “lastIndexedOrNull” was not expected to be called in a test.",)
+    }
 
     //#endregion -------------------- Last --------------------
-    //#region -------------------- Find --------------------
+    //#region -------------------- Find first --------------------
 
-    public abstract find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public abstract find(predicate: BooleanCallback<T>,): NullOr<T>
+    public abstract findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+    public abstract findFirst(predicate: BooleanCallback<T>,): T
 
-    public abstract findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public abstract findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public find<const S extends T, >(predicate?: RestrainedBooleanCallback<T, S>,): never
+    public find(predicate?: BooleanCallback<T>,): never
+    public find() {
+        throw new Error("The method “find” was not expected to be called in a test.",)
+    }
 
 
-    public abstract findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public abstract findLast(predicate: BooleanCallback<T>,): NullOr<T>
+    public abstract findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public abstract findFirstOrNull(predicate: BooleanCallback<T>,): NullOr<T>
 
-    public abstract findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public abstract findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findOrNull<const S extends T, >(predicate?: RestrainedBooleanCallback<T, S>,): never
+    public findOrNull(predicate?: BooleanCallback<T>,): never
+    public findOrNull() {
+        throw new Error("The method “findOrNull” was not expected to be called in a test.",)
+    }
 
-    //#endregion -------------------- Find --------------------
+
+    public abstract findFirstIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+    public abstract findFirstIndexed(predicate: ReverseBooleanCallback<T>,): T
+
+    public findIndexed<const S extends T, >(predicate?: ReverseRestrainedBooleanCallback<T, S>,): never
+    public findIndexed(predicate?: ReverseBooleanCallback<T>,): never
+    public findIndexed() {
+        throw new Error("The method “findIndexed” was not expected to be called in a test.",)
+    }
+
+
+    public abstract findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public abstract findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+
+    public findIndexedOrNull<const S extends T, >(predicate?: ReverseRestrainedBooleanCallback<T, S>,): never
+    public findIndexedOrNull(predicate?: ReverseBooleanCallback<T>,): never
+    public findIndexedOrNull() {
+        throw new Error("The method “findIndexedOrNull” was not expected to be called in a test.",)
+    }
+
+    //#region -------------------- Find first --------------------
+    //#region -------------------- Find last --------------------
+
+    public abstract findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+    public abstract findLast(predicate: BooleanCallback<T>,): T
+
+    public abstract findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public abstract findLastOrNull(predicate: BooleanCallback<T>,): NullOr<T>
+
+    public abstract findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+    public abstract findLastIndexed(predicate: ReverseBooleanCallback<T>,): T
+
+    public abstract findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public abstract findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+
+    //#endregion -------------------- Find last --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------

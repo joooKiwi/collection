@@ -43,6 +43,8 @@ export class CollectionHolder_ByStructure<const T, >
     //#region -------------------- Get --------------------
 
     public get(index: number,): T { return this.reference.get(index,) }
+    public getFirst(): T { return this.reference.getFirst() }
+    public getLast(): T { return this.reference.getLast() }
 
     public at(index: number,): T { return this.reference.at(index,) }
 
@@ -63,6 +65,8 @@ export class CollectionHolder_ByStructure<const T, >
 
 
     public getOrNull(index: number,): NullOr<T> { return this.reference.getOrNull(index,) }
+    public getFirstOrNull(): NullOr<T> { return this.reference.getFirstOrNull() }
+    public getLastOrNull(): NullOr<T> { return this.reference.getLastOrNull() }
 
     public atOrNull(index: number,): NullOr<T> { return this.reference.atOrNull(index,) }
 
@@ -81,6 +85,16 @@ export class CollectionHolder_ByStructure<const T, >
     public firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.firstOrNull(predicate,) }
 
+    public firstIndexed(): T
+    public firstIndexed<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+    public firstIndexed(predicate: Nullable<ReverseBooleanCallback<T>>,): T
+    public firstIndexed(predicate?: Nullable<ReverseBooleanCallback<T>>,) { return this.reference.firstIndexed(predicate,) }
+
+    public firstIndexedOrNull(): NullOr<T>
+    public firstIndexedOrNull<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
+    public firstIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
+    public firstIndexedOrNull(predicate?: Nullable<ReverseBooleanCallback<T>>,) { return this.reference.firstIndexedOrNull(predicate,) }
+
     //#endregion -------------------- Firs --------------------
     //#region -------------------- Last --------------------
 
@@ -94,27 +108,74 @@ export class CollectionHolder_ByStructure<const T, >
     public lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
     public lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) { return this.reference.lastOrNull(predicate,) }
 
-    //#endregion -------------------- Last --------------------
-    //#region -------------------- Find --------------------
+    public lastIndexed(): T
+    public lastIndexed<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+    public lastIndexed(predicate: Nullable<ReverseBooleanCallback<T>>,): T
+    public lastIndexed(predicate?: Nullable<ReverseBooleanCallback<T>>,) { return this.reference.lastIndexed(predicate,) }
 
-    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public find(predicate: BooleanCallback<T>,): NullOr<T>
+    public lastIndexedOrNull(): NullOr<T>
+    public lastIndexedOrNull<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
+    public lastIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
+    public lastIndexedOrNull(predicate?: Nullable<ReverseBooleanCallback<T>>,) { return this.reference.lastIndexedOrNull(predicate,) }
+
+    //#endregion -------------------- Last --------------------
+    //#region -------------------- Find first --------------------
+
+    public findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+    public findFirst(predicate: BooleanCallback<T>,): T
+    public findFirst(predicate: BooleanCallback<T>,) { return this.reference.findFirst(predicate,) }
+
+    public find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+    public find(predicate: BooleanCallback<T>,): T
     public find(predicate: BooleanCallback<T>,) { return this.reference.find(predicate,) }
 
-    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+
+    public findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findFirstOrNull(predicate: BooleanCallback<T>,): NullOr<T>
+    public findFirstOrNull(predicate: BooleanCallback<T>,) { return this.reference.findFirstOrNull(predicate,) }
+
+    public findOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findOrNull(predicate: BooleanCallback<T>,): NullOr<T>
+    public findOrNull(predicate: BooleanCallback<T>,) { return this.reference.findOrNull(predicate,) }
+
+
+    public findFirstIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+    public findFirstIndexed(predicate: ReverseBooleanCallback<T>,): T
+    public findFirstIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.findFirstIndexed(predicate,) }
+
+    public findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+    public findIndexed(predicate: ReverseBooleanCallback<T>,): T
     public findIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.findIndexed(predicate,) }
 
 
-    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLast(predicate: BooleanCallback<T>,): NullOr<T>
+    public findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this.reference.findFirstIndexedOrNull(predicate,) }
+
+    public findIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this.reference.findIndexedOrNull(predicate,) }
+
+    //#region -------------------- Find first --------------------
+    //#region -------------------- Find last --------------------
+
+    public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+    public findLast(predicate: BooleanCallback<T>,): T
     public findLast(predicate: BooleanCallback<T>,) { return this.reference.findLast(predicate,) }
 
-    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLastOrNull(predicate: BooleanCallback<T>,): NullOr<T>
+    public findLastOrNull(predicate: BooleanCallback<T>,) { return this.reference.findLastOrNull(predicate,) }
+
+    public findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+    public findLastIndexed(predicate: ReverseBooleanCallback<T>,): T
     public findLastIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.findLastIndexed(predicate,) }
 
-    //#endregion -------------------- Find --------------------
+    public findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this.reference.findLastIndexedOrNull(predicate,) }
+
+    //#endregion -------------------- Find last --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
