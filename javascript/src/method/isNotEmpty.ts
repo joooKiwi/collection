@@ -69,7 +69,7 @@ export function isNotEmptyByCollectionHolder<const T, const COLLECTION extends C
 export function isNotEmptyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,) {
     if (collection == null)
         return false
-    return collection.size != 0
+    return !collection.isEmpty
 }
 
 /**
