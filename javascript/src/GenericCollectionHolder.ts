@@ -88,7 +88,6 @@ import {mapNotNullByArray}                           from "./method/mapNotNull"
 import {mapNotNullIndexedByArray}                    from "./method/mapNotNullIndexed"
 import {onEachByArray}                               from "./method/onEach"
 import {onEachIndexedByArray}                        from "./method/onEachIndexed"
-import {requireNoNullsByArray}                       from "./method/requireNoNulls"
 import {sliceWithARangeByArray}                      from "./method/slice.withARange"
 import {sliceWithArrayByArray}                       from "./method/slice.withArray"
 import {sliceWithCollectionHolderByArray}            from "./method/slice.withCollectionHolder"
@@ -1127,7 +1126,10 @@ export class GenericCollectionHolder<const T = unknown,
     //#region -------------------- Require no nulls --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        requireNoNullsByArray(this._array,)
+        if (this.isEmpty)
+            return this as CollectionHolder<NonNullable<T>>
+        if (this.hasNull)
+            throw new TypeError("Forbidden null value. The current collection contains null values.",)
         return this as CollectionHolder<NonNullable<T>>
     }
 
