@@ -9,9 +9,10 @@ import type {Lazy}                                                       from "@
 import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
 import {lazyOf}                                                          from "@joookiwi/lazy"
 
-import type {CollectionHolder}           from "./CollectionHolder"
-import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
-import type {CollectionIterator}         from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                                    from "./CollectionHolder"
+import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfMinimalistCollectionHolder, KeyOfSet, KeyOfWeakSet} from "./CollectionConstants.types"
+import type {MinimalistCollectionHolder}                                                                                          from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                  from "./iterator/CollectionIterator"
 
 import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
@@ -45,12 +46,12 @@ export class CollectionConstants {
     static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
     static #LAZY_EMPTY_COLLECTION_ITERATOR?: Lazy<EmptyCollectionIterator>
 
-    static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<keyof MinimalistCollectionHolder>
-    static #COLLECTION_MEMBERS?: CollectionHolder<keyof CollectionHolder>
-    static #ARRAY_MEMBERS?: CollectionHolder<keyof ReadonlyArray<unknown>>
-    static #SET_MEMBERS?: CollectionHolder<keyof ReadonlySet<unknown>>
+    static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<KeyOfMinimalistCollectionHolder>
+    static #COLLECTION_MEMBERS?: CollectionHolder<KeyOfCollectionHolder>
+    static #ARRAY_MEMBERS?: CollectionHolder<KeyOfArray>
+    static #SET_MEMBERS?: CollectionHolder<KeyOfSet>
     // static #ITERATOR_MEMBERS?: CollectionHolder<keyof Iterator<unknown, unknown, unknown>>
-    static #COLLECTION_ITERATOR_MEMBERS?: CollectionHolder<keyof CollectionIterator>
+    static #COLLECTION_ITERATOR_MEMBERS?: CollectionHolder<KeyOfCollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
     static #GenericCollectionHolder?: typeof GenericCollectionHolder
@@ -139,13 +140,13 @@ export class CollectionConstants {
     //#region -------------------- Members references --------------------
 
     /** Every method applicable to a {@link MinimalistCollectionHolder} */
-    public static get MINIMALIST_COLLECTION_MEMBERS(): CollectionHolder<keyof MinimalistCollectionHolder> {
+    public static get MINIMALIST_COLLECTION_MEMBERS(): CollectionHolder<KeyOfMinimalistCollectionHolder> {
         return CollectionConstants.#MINIMALIST_COLLECTION_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "get",],),)
     }
 
 
     /** Every method applicable to a {@link CollectionHolder} */
-    public static get COLLECTION_MEMBERS(): CollectionHolder<keyof CollectionHolder> {
+    public static get COLLECTION_MEMBERS(): CollectionHolder<KeyOfCollectionHolder> {
         return CollectionConstants.#COLLECTION_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
@@ -182,7 +183,7 @@ export class CollectionConstants {
 
 
     /** Every method applicable to an {@link ReadonlyArray Array} */
-    public static get ARRAY_MEMBERS(): CollectionHolder<keyof ReadonlyArray<unknown>> {
+    public static get ARRAY_MEMBERS(): CollectionHolder<KeyOfArray> {
         return CollectionConstants.#ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "length",
             "at",
@@ -210,7 +211,7 @@ export class CollectionConstants {
 
 
     /** Every method applicable to an {@link ReadonlyArray Array} */
-    public static get SET_MEMBERS(): CollectionHolder<keyof ReadonlySet<unknown>> {
+    public static get SET_MEMBERS(): CollectionHolder<KeyOfSet> {
         return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size",
             "has",
@@ -240,7 +241,7 @@ export class CollectionConstants {
     // }
 
     /** Every method applicable to a {@link CollectionIterator} */
-    public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
+    public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<KeyOfCollectionIterator> {
         return CollectionConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",

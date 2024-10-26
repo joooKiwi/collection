@@ -8,6 +8,7 @@
 export {AbstractCollectionHolder}                from "./AbstractCollectionHolder"
 export {AbstractMinimalistCollectionHolder}      from "./AbstractMinimalistCollectionHolder"
 export {CollectionConstants}                     from "./CollectionConstants"
+export type *                                    from "./CollectionConstants.types"
 export type {CollectionHolder}                   from "./CollectionHolder"
 export type *                                    from "./CollectionHolder.types"
 export {EmptyCollectionHolder}                   from "./EmptyCollectionHolder"
