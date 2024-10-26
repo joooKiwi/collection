@@ -10,3 +10,4 @@ export {EmptyCollectionHolderException}            from "./EmptyCollectionHolder
 export {ForbiddenIndexException}                   from "./ForbiddenIndexException"
 export {InvalidIndexRangeException}                from "./InvalidIndexRangeException"
 export {NoElementFoundInCollectionHolderException} from "./NoElementFoundInCollectionHolderException"
+export {NullCollectionHolderException}             from "./NullCollectionHolderException"
