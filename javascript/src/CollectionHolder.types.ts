@@ -25,6 +25,18 @@ export type PossibleCollectionHolderConstructor = | typeof GenericMinimalistColl
                                                   | typeof GenericCollectionHolder
                                                   | typeof LazyGenericCollectionHolder
 
+/**
+ * All the possible typed-{@link ReadonlyArray array} defined in JavaScript
+ *
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Guide/Typed_arrays
+ */
+export type TypedArray = | Int8Array | Uint8Array | Uint8ClampedArray
+                         | Int16Array | Uint16Array
+                         | Int32Array | Uint32Array
+                         | BigInt64Array | BigUint64Array
+                         | Float32Array
+                         | Float64Array
+
 
 /**
  * A type-alias for the possible type of {@link Iterable} with the size field

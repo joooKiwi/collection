@@ -6,6 +6,7 @@
  ******************************************************************************/
 
 import type {CollectionHolder}           from "./CollectionHolder"
+import type {TypedArray}                 from "./CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
 import type {CollectionIterator}         from "./iterator/CollectionIterator"
 
@@ -14,6 +15,12 @@ type ArraySymbolNames = | "iterator" | "unscopables"
 export type KeyOfArray = Exclude<keyof ReadonlyArray<unknown>, `[Symbol.${ArraySymbolNames}]`> | typeof Symbol[ArraySymbolNames]
 /** The keys applicable to a {@link Array MutableArray} */
 export type KeyOfMutableArray = Exclude<keyof Array<unknown>, `[Symbol.${ArraySymbolNames}]`> | typeof Symbol[ArraySymbolNames]
+
+type TypedArraySymbolNames = | "iterator" | "species"
+/** The keys applicable to a {@link TypedArray} */
+export type KeyOfTypedArray = Exclude<keyof TypedArray, `[Symbol.${TypedArraySymbolNames}]`> | typeof Symbol[TypedArraySymbolNames]
+/** The keys applicable to a {@link TypedArray Mutable TypedArray} */
+export type KeyOfMutableTypedArray = Exclude<keyof TypedArray, `[Symbol.${TypedArraySymbolNames}]`> | typeof Symbol[TypedArraySymbolNames]
 
 type SetSymbolNames = | "iterator" | "toStringTag"
 /** The keys applicable to a {@link ReadonlySet Set} */

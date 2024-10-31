@@ -9,10 +9,10 @@ import type {Lazy}                                                       from "@
 import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
 import {lazyOf}                                                          from "@joookiwi/lazy"
 
-import type {CollectionHolder}                                                                                                    from "./CollectionHolder"
-import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfMinimalistCollectionHolder, KeyOfSet, KeyOfWeakSet} from "./CollectionConstants.types"
-import type {MinimalistCollectionHolder}                                                                                          from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                  from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                                                     from "./CollectionHolder"
+import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfMinimalistCollectionHolder, KeyOfSet, KeyOfTypedArray, KeyOfWeakSet} from "./CollectionConstants.types"
+import type {MinimalistCollectionHolder}                                                                                                           from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                   from "./iterator/CollectionIterator"
 
 import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
@@ -49,6 +49,7 @@ export class CollectionConstants {
     static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<KeyOfMinimalistCollectionHolder>
     static #COLLECTION_MEMBERS?: CollectionHolder<KeyOfCollectionHolder>
     static #ARRAY_MEMBERS?: CollectionHolder<KeyOfArray>
+    static #TYPED_ARRAY_MEMBERS?: CollectionHolder<KeyOfTypedArray>
     static #SET_MEMBERS?: CollectionHolder<KeyOfSet>
     static #WEAK_SET_MEMBERS?: CollectionHolder<KeyOfWeakSet>
     // static #ITERATOR_MEMBERS?: CollectionHolder<keyof Iterator<unknown, unknown, unknown>>
@@ -206,6 +207,38 @@ export class CollectionConstants {
             "toReversed",
             "toSorted",
             "slice", "toSpliced",
+            "toString", "toLocaleString",
+        ] as const,),)
+    }
+
+
+    /** Every method applicable to a {@link TypedArray} */
+    public static get TYPED_ARRAY_MEMBERS(): CollectionHolder<KeyOfTypedArray> {
+        return CollectionConstants.#TYPED_ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "length",
+            "at", "set",
+            "buffer",
+            "BYTES_PER_ELEMENT", "byteLength", "byteOffset",
+            "indexOf", "lastIndexOf",
+            "includes",
+            "every", "some", "with",
+            "join",
+            "filter",
+            "find", "findLast",
+            "findIndex", "findLastIndex",
+            "reduce", "reduceRight",
+            "map",
+            "forEach",
+            "keys", "values", "entries",
+            Symbol.iterator,
+            Symbol.species,
+            "copyWithin",
+            "fill",
+            "reverse", "toReversed",
+            "sort", "toSorted",
+            "slice",
+            "subarray",
+            "valueOf",
             "toString", "toLocaleString",
         ] as const,),)
     }
