@@ -548,7 +548,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public abstract [Symbol.iterator](): CollectionIterator<T>
 
@@ -556,7 +556,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
         return "CollectionHolder"
     }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To other structure --------------------

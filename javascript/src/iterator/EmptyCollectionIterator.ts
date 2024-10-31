@@ -95,13 +95,13 @@ export class EmptyCollectionIterator
     public forEachIndexed() { return this }
 
     //#endregion -------------------- Loop methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public [Symbol.iterator](): this { return this }
 
     public get [Symbol.toStringTag](): CollectionIteratorName { return "CollectionIterator" }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
 
     //#endregion -------------------- Methods --------------------
 

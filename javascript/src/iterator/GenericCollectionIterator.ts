@@ -64,11 +64,11 @@ export class GenericCollectionIterator<const T = unknown,
     protected override _getValue(index: number,): T { return this.collection.get(index,) }
 
     //#endregion -------------------- Value methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public override [Symbol.iterator](): CollectionIterator<T> { return new GenericCollectionIterator(this.collection,) }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
 
     //#endregion -------------------- Methods --------------------
 

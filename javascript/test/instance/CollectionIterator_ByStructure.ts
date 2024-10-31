@@ -95,12 +95,12 @@ export class CollectionIterator_ByStructure<const T, >
     }
 
     //#endregion -------------------- Loop methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public [Symbol.iterator](): CollectionIterator<T> { return this.reference[Symbol.iterator]() }
 
     public get [Symbol.toStringTag](): CollectionIteratorName { return this.reference[Symbol.toStringTag] }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
 
 }

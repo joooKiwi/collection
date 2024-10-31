@@ -1363,11 +1363,11 @@ export class GenericCollectionHolder<const T = unknown,
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public override [Symbol.iterator](): CollectionIterator<T> { return toIteratorByArray(this._array,) }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To other structure --------------------

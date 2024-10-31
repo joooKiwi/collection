@@ -1158,7 +1158,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public [Symbol.iterator](): CollectionIterator<T> {
         return toIteratorByCollectionHolder<T>(this,)
@@ -1168,7 +1168,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return "CollectionHolder"
     }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To iterator --------------------

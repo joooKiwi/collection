@@ -509,13 +509,13 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
     //#endregion -------------------- Loop methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public abstract [Symbol.iterator](): CollectionIterator<T>
 
     public get [Symbol.toStringTag](): CollectionIteratorName { return "CollectionIterator" }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
 
     //#endregion -------------------- Methods --------------------
 

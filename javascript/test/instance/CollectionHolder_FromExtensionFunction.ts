@@ -515,13 +515,13 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public override [Symbol.iterator](): CollectionIterator<T> {
         return toIteratorByCollectionHolder<T>(this,)
     }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To other structure --------------------

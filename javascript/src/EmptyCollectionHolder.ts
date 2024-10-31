@@ -556,14 +556,14 @@ export class EmptyCollectionHolder
     //#endregion -------------------- to reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public [Symbol.iterator](..._: readonly unknown[]): EmptyCollectionIterator
     public [Symbol.iterator]() { return CollectionConstants.EMPTY_COLLECTION_ITERATOR }
 
     public get [Symbol.toStringTag](): CollectionHolderName { return "CollectionHolder" }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To iterator --------------------

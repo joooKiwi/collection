@@ -338,11 +338,11 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> { return this.instance.toReverse(fromIndex, toIndex,) }
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public override [Symbol.iterator](): CollectionIterator<T> { return this.instance[Symbol.iterator]() }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     public override toArray(): readonly T[] { return this.instance.toArray() }

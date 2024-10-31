@@ -24,9 +24,9 @@ import type {CollectionIterator}                                                
  * @see ReadonlyArray
  * @see ReadonlySet
  * @see ReadonlyMap
- * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array Javascript Array
- * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set Javascript Set
- * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map Javascript Map
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array JavaScript Array
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set JavaScript Set
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map JavaScript Map
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html Java Collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/ Kotlin Collection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable C# Enumerable
@@ -2407,10 +2407,10 @@ export interface CollectionHolder<out T = unknown, >
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     /**
-     * A Javascript way to implement a "for‥of" over the {@link CollectionHolder collection
+     * A JavaScript way to implement a "for‥of" over the {@link CollectionHolder collection
      *
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
      */
@@ -2424,7 +2424,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     [Symbol.toStringTag]: CollectionHolderName
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To iterator --------------------

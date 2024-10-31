@@ -460,13 +460,13 @@ export class CollectionHolder_ByStructure<const T, >
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public [Symbol.iterator](): CollectionIterator<T> { return this.reference[Symbol.iterator]() }
 
     public get [Symbol.toStringTag](): CollectionHolderName { return this.reference[Symbol.toStringTag] }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To other structure --------------------

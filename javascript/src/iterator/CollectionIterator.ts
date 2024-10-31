@@ -150,7 +150,7 @@ export interface CollectionIterator<out T = unknown, >
     forEachIndexed(operation: IndexValueCallback<T>,): this
 
     //#endregion -------------------- Loop methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     /** Create a new iterator instance with the same values */
     [Symbol.iterator](): CollectionIterator<T>
@@ -163,6 +163,6 @@ export interface CollectionIterator<out T = unknown, >
      */
     [Symbol.toStringTag]: CollectionIteratorName
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
 
 }
