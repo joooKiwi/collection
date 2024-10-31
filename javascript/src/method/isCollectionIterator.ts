@@ -17,8 +17,7 @@ import {EmptyCollectionIterator}    from "../iterator/EmptyCollectionIterator"
  * @param value The value to identify
  * @see isCollectionIteratorByStructure
  */
-export function isCollectionIterator<const T, >(value: unknown,): value is CollectionIterator<T>
-export function isCollectionIterator(value: unknown,) {
+export function isCollectionIterator<const T, >(value: unknown,): value is CollectionIterator<T> {
     if (value == null)
         return false
     if (value instanceof AbstractCollectionIterator)

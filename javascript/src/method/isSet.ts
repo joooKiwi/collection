@@ -11,8 +11,7 @@
  * @param value The value to identify
  * @see isSetByStructure
  */
-export function isSet<const T, >(value: unknown,): value is ReadonlySet<T>
-export function isSet(value: unknown,) {
+export function isSet<const T, >(value: unknown,): value is ReadonlySet<T> {
     if (value == null)
         return false
     if (value instanceof Set)

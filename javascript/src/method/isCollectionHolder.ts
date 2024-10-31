@@ -17,8 +17,7 @@ import {EmptyCollectionHolder}    from "../EmptyCollectionHolder"
  * @param value The value to identify
  * @see isCollectionHolderByStructure
  */
-export function isCollectionHolder<const T, >(value: unknown,): value is CollectionHolder<T>
-export function isCollectionHolder(value: unknown,) {
+export function isCollectionHolder<const T, >(value: unknown,): value is CollectionHolder<T> {
     if (value == null)
         return false
     if (value instanceof AbstractCollectionHolder)

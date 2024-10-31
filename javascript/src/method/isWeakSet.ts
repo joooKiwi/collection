@@ -11,8 +11,7 @@
  * @param value The value to identify
  * @see isWeakSetByStructure
  */
-export function isWeakSet<T extends WeakKey, >(value: unknown,): value is Readonly<WeakSet<T>>
-export function isWeakSet(value: unknown,) {
+export function isWeakSet<T extends WeakKey, >(value: unknown,): value is Readonly<WeakSet<T>> {
     if (value == null)
         return false
     if (value instanceof WeakSet)

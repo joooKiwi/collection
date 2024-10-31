@@ -17,8 +17,7 @@ import {EmptyCollectionHolder}              from "../EmptyCollectionHolder"
  * @param value The value to identify
  * @see isMinimalistCollectionHolderByStructure
  */
-export function isMinimalistCollectionHolder<const T, >(value: unknown,): value is MinimalistCollectionHolder<T>
-export function isMinimalistCollectionHolder(value: unknown,) {
+export function isMinimalistCollectionHolder<const T, >(value: unknown,): value is MinimalistCollectionHolder<T> {
     if (value == null)
         return false
     if (value instanceof AbstractMinimalistCollectionHolder)

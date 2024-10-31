@@ -11,8 +11,7 @@
  * @param value The value to identify
  * @see isArrayByStructure
  */
-export function isArray<const T, >(value: unknown,): value is ReadonlyArray<T>
-export function isArray(value: unknown,) {
+export function isArray<const T, >(value: unknown,): value is ReadonlyArray<T> {
     if (value == null)
         return false
     if (value instanceof Array)
