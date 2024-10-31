@@ -23,10 +23,7 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
 /**
  * Reverse to a new {@link CollectionHolder}
  * from the {@link toIndex ending} to the {@link fromIndex starting} index
- * in the {@link collection}.
- *
- * If the {@link MinimalistCollectionHolder.size size} is 1 (<i>with valid indexes</i>),
- * then the {@link collection} is returned.
+ * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to reverse
  * @param fromIndex  The inclusive starting index
@@ -59,10 +56,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
 /**
  * Reverse to a new {@link CollectionHolder}
  * from the {@link toIndex ending} to the {@link fromIndex starting} index
- * in the {@link collection}.
- *
- * If the {@link MinimalistCollectionHolder.size size} is 1 (<i>with valid indexes</i>),
- * then the {@link collection} is returned.
+ * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to reverse
  * @param fromIndex  The inclusive starting index
@@ -95,10 +89,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
 /**
  * Reverse to a new {@link CollectionHolder}
  * from the {@link toIndex ending} to the {@link fromIndex starting} index
- * in the {@link collection}.
- *
- * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
- * then the {@link collection} is returned.
+ * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to reverse
  * @param fromIndex  The inclusive starting index
@@ -130,10 +121,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
 /**
  * Reverse to a new {@link CollectionHolder}
  * from the {@link toIndex ending} to the {@link fromIndex starting} index
- * in the {@link collection}.
- *
- * If the {@link ReadonlyArray.length size} is 1 (<i>with valid indexes</i>),
- * then the {@link collection} is returned.
+ * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to reverse
  * @param fromIndex  The inclusive starting index

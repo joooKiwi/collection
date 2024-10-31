@@ -1712,7 +1712,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Require that no items are <b>null</b> or <b>undefined</b> in the current {@link CollectionHolder collection}
      *
-     * @throws {TypeError} There is <b>null</b> or <b>undefined</b> value in the current collection
+     * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the current collection
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
      * @see filterNotNull
      * @return {this} The current {@link SortableCollectionHolder collection}
@@ -2358,10 +2358,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Reverse to a new {@link CollectionHolder}
      * from the {@link toIndex ending} to the {@link fromIndex starting} index
-     * in the current {@link CollectionHolder collection}.
-     *
-     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
-     * then the current {@link CollectionHolder collect is returned.
+     * in the current {@link CollectionHolder collection}
      *
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
@@ -2380,10 +2377,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Reverse to a new {@link CollectionHolder}
      * from the {@link toIndex ending} to the {@link fromIndex starting} index
-     * in the current {@link CollectionHolder collection}.
-     *
-     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
-     * then the current {@link CollectionHolder collect is returned.
+     * in the current {@link CollectionHolder collection}
      *
      * @alias toReverse
      * @param fromIndex The inclusive starting index
@@ -2398,10 +2392,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Reverse to a new {@link CollectionHolder}
      * from the {@link toIndex ending} to the {@link fromIndex starting} index
-     * in the current {@link CollectionHolder collection}.
-     *
-     * If the {@link CollectionHolder.size size} is 1 (<i>with valid indexes</i>),
-     * then the current {@link CollectionHolder collect is returned.
+     * in the current {@link CollectionHolder collection}
      *
      * @alias toReverse
      * @param fromIndex The inclusive starting index

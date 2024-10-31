@@ -20,7 +20,7 @@ import {findFirst, findFirstByArray, findFirstByCollectionHolder, findFirstByMin
  * Get the first element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
@@ -36,7 +36,7 @@ export function first<const T, >(collection: Nullable<| MinimalistCollectionHold
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
- * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -53,7 +53,7 @@ export function first<const T, const S extends T, >(collection: Nullable<| Minim
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
- * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -74,7 +74,7 @@ export function first<const T, >(collection: Nullable<| MinimalistCollectionHold
  * Get the first element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
@@ -90,7 +90,7 @@ export function firstByMinimalistCollectionHolder<const T, >(collection: Nullabl
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
- * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -107,7 +107,7 @@ export function firstByMinimalistCollectionHolder<const T, const S extends T, >(
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
- * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -127,7 +127,7 @@ export function firstByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * Get the first element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
@@ -143,7 +143,7 @@ export function firstByCollectionHolder<const T, >(collection: Nullable<Collecti
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The matching predicate
- * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -160,7 +160,7 @@ export function firstByCollectionHolder<const T, const S extends T, >(collection
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The matching predicate
- * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -180,7 +180,7 @@ export function firstByCollectionHolder<const T, >(collection: Nullable<Collecti
  * Get the first element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @throws TypeError                      The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
@@ -196,7 +196,7 @@ export function firstByArray<const T, >(collection: Nullable<readonly T[]>,): T
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The matching predicate
- * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
@@ -213,7 +213,7 @@ export function firstByArray<const T, const S extends T, >(collection: Nullable<
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The matching predicate
- * @throws TypeError                                 The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
