@@ -28,8 +28,6 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @extensionFunction
  */
 export function hasAllWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: CollectionIterator<T>,): boolean {
-    if (collection == null)
-        return false
     if (isCollectionHolder<T>(collection,))
         return hasAllWithCollectionIteratorByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -52,12 +50,11 @@ export function hasAllWithCollectionIterator<const T, >(collection: Nullable<| M
  * @extensionFunction
  */
 export function hasAllWithCollectionIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator<T>,): boolean {
-    if (collection == null)
-        return false
-
     const valuesSize = values.size
     if (valuesSize == 0)
         return true
+    if (collection == null)
+        return false
 
     const size = collection.size
     if (size == 0)
@@ -75,12 +72,11 @@ export function hasAllWithCollectionIteratorByMinimalistCollectionHolder<const T
  * @extensionFunction
  */
 export function hasAllWithCollectionIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionIterator<T>,): boolean {
-    if (collection == null)
-        return false
-
     const valuesSize = values.size
     if (valuesSize == 0)
         return true
+    if (collection == null)
+        return false
     if (collection.isEmpty)
         return false
     return __hasAll(collection, values, collection.size, valuesSize,)
@@ -96,12 +92,11 @@ export function hasAllWithCollectionIteratorByCollectionHolder<const T, >(collec
  * @extensionFunction
  */
 export function hasAllWithCollectionIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: CollectionIterator<T>,): boolean {
-    if (collection == null)
-        return false
-
     const valuesSize = values.size
     if (valuesSize == 0)
         return true
+    if (collection == null)
+        return false
 
     const size = collection.length
     if (size == 0)

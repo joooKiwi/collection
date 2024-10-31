@@ -27,8 +27,6 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @extensionFunction
  */
 export function hasAllWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: CollectionHolder<T>,): boolean {
-    if (collection == null)
-        return false
     if (isCollectionHolder<T>(collection,))
         return hasAllWithCollectionHolderByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -51,10 +49,10 @@ export function hasAllWithCollectionHolder<const T, >(collection: Nullable<| Min
  * @extensionFunction
  */
 export function hasAllWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,): boolean {
-    if (collection == null)
-        return false
     if (values.isEmpty)
         return true
+    if (collection == null)
+        return false
 
     const size = collection.size
     if (size == 0)
@@ -72,10 +70,10 @@ export function hasAllWithCollectionHolderByMinimalistCollectionHolder<const T, 
  * @extensionFunction
  */
 export function hasAllWithCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder<T>,): boolean {
-    if (collection == null)
-        return false
     if (values.isEmpty)
         return true
+    if (collection == null)
+        return false
     if (collection.isEmpty)
         return false
 
@@ -92,10 +90,10 @@ export function hasAllWithCollectionHolderByCollectionHolder<const T, >(collecti
  * @extensionFunction
  */
 export function hasAllWithCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: CollectionHolder<T>,): boolean {
-    if (collection == null)
-        return false
     if (values.isEmpty)
         return true
+    if (collection == null)
+        return false
 
     const size = collection.length
     if (size == 0)

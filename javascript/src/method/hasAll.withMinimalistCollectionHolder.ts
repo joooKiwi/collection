@@ -27,8 +27,6 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @extensionFunction
  */
 export function hasAllWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean {
-    if (collection == null)
-        return false
     if (isCollectionHolder<T>(collection,))
         return hasAllWithMinimalistCollectionHolderByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -51,12 +49,11 @@ export function hasAllWithMinimalistCollectionHolder<const T, >(collection: Null
  * @extensionFunction
  */
 export function hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean {
-    if (collection == null)
-        return false
-
     const valuesSize = values.size
     if (valuesSize == 0)
         return true
+    if (collection == null)
+        return false
 
     const size = collection.size
     if (size == 0)
@@ -74,12 +71,11 @@ export function hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder
  * @extensionFunction
  */
 export function hasAllWithMinimalistCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean {
-    if (collection == null)
-        return false
-
     const valuesSize = values.size
     if (valuesSize == 0)
         return true
+    if (collection == null)
+        return false
     if (collection.isEmpty)
         return false
     return __hasAll(collection, values, collection.size, valuesSize,)
@@ -95,12 +91,11 @@ export function hasAllWithMinimalistCollectionHolderByCollectionHolder<const T, 
  * @extensionFunction
  */
 export function hasAllWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean {
-    if (collection == null)
-        return false
-
     const valuesSize = values.size
     if (valuesSize == 0)
         return true
+    if (collection == null)
+        return false
 
     const size = collection.length
     if (size == 0)
