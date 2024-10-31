@@ -8,14 +8,15 @@
 /** A class made to hold the necessary values for the tests */
 export class Holder<const T, const MESSAGE extends string, > {
 
-    readonly toString
-
     public constructor(
         /** The value to send to any {@link CollectionHolder} implementation */
         public readonly value: T,
-        message: MESSAGE,
-    ) {
-        this.toString = () => message
+        /** The message that will be sent to the {@link toString} method */
+        public readonly message: MESSAGE,
+    ) {}
+
+    public toString(): MESSAGE {
+        return this.message
     }
 
 }
