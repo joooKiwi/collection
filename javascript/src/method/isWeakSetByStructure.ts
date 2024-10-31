@@ -25,9 +25,9 @@ export function isWeakSetByStructure(value: unknown,): value is (& object & Reco
  * @see isArray
  * @see CollectionConstants.WEAK_SET_MEMBERS
  * @doesNotValidateTheTypes
- * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isWeakSetByStructure<T extends WeakKey, >(value: unknown,): value is Readonly<WeakSet<T>>
+export function isWeakSetByStructure<T extends WeakKey, const INSTANCE extends Readonly<WeakSet<T>> = Readonly<WeakSet<T>>, >(value: unknown,): value is INSTANCE
 export function isWeakSetByStructure(value: unknown,) {
     if (value == null)
         return false

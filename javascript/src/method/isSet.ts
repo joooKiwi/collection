@@ -10,8 +10,9 @@
  *
  * @param value The value to identify
  * @see isSetByStructure
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isSet<const T, >(value: unknown,): value is ReadonlySet<T> {
+export function isSet<const T, const INSTANCE extends ReadonlySet<T> = ReadonlySet<T>, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
     if (value instanceof Set)

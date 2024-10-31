@@ -25,9 +25,9 @@ export function isSetByStructure(value: unknown,): value is (& object & Record<K
  * @see isArray
  * @see CollectionConstants.SET_MEMBERS
  * @doesNotValidateTheTypes
- * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isSetByStructure<const T, >(value: unknown,): value is ReadonlySet<T>
+export function isSetByStructure<const T, const INSTANCE extends ReadonlySet<T> = ReadonlySet<T>, >(value: unknown,): value is INSTANCE
 export function isSetByStructure(value: unknown,) {
     if (value == null)
         return false

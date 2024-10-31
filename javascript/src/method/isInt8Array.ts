@@ -12,8 +12,9 @@
  * @see isTypedArray
  * @see isUint8Array
  * @see isUint8ClampedArray
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isInt8Array(value: unknown,): value is Int8Array {
+export function isInt8Array<const INSTANCE extends Int8Array, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
     if (value instanceof Int8Array)

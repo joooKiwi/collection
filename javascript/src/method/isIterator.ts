@@ -9,9 +9,9 @@
  * Tell that the value is a {@link Iterator}
  *
  * @param value The value to identify
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isIterator<const T, >(value: unknown,): value is Iterator<T>
-export function isIterator(value: unknown,) {
+export function isIterator<const T, const INSTANCE extends Iterator<T> = Iterator<T>, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
     if (value instanceof Iterator)

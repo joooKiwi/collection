@@ -16,8 +16,9 @@ import type {TypedArray} from "../CollectionHolder.types"
  * {@link BigInt64Array bigint} or {@link BigUint64Array ubigint} array)
  *
  * @param value The value to identify
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isTypedArray(value: unknown,): value is TypedArray {
+export function isTypedArray<const INSTANCE extends TypedArray, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
     if (value instanceof Int8Array)

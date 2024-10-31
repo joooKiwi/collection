@@ -26,9 +26,9 @@ export function isCollectionIteratorByStructure(value: unknown,): value is (& ob
  * @see isCollectionIterator
  * @see CollectionConstants.COLLECTION_ITERATOR_MEMBERS
  * @doesNotValidateTheTypes
- * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isCollectionIteratorByStructure<const T, >(value: unknown,): value is CollectionIterator<T>
+export function isCollectionIteratorByStructure<const T, const INSTANCE extends CollectionIterator<T> = CollectionIterator<T>, >(value: unknown,): value is INSTANCE
 export function isCollectionIteratorByStructure(value: unknown,): boolean {
     if (value == null)
         return false

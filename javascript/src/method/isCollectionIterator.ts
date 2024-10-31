@@ -16,8 +16,9 @@ import {EmptyCollectionIterator}    from "../iterator/EmptyCollectionIterator"
  *
  * @param value The value to identify
  * @see isCollectionIteratorByStructure
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isCollectionIterator<const T, >(value: unknown,): value is CollectionIterator<T> {
+export function isCollectionIterator<const T, const INSTANCE extends CollectionIterator<T> = CollectionIterator<T>, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
     if (value instanceof AbstractCollectionIterator)

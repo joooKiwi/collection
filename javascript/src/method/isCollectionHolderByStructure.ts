@@ -26,9 +26,9 @@ export function isCollectionHolderByStructure(value: unknown,): value is (& obje
  * @see isCollectionHolder
  * @see CollectionConstants.COLLECTION_MEMBERS
  * @doesNotValidateTheTypes
- * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isCollectionHolderByStructure<const T, >(value: unknown,): value is CollectionHolder<T>
+export function isCollectionHolderByStructure<const T, const INSTANCE extends CollectionHolder<T> = CollectionHolder<T>, >(value: unknown,): value is INSTANCE
 export function isCollectionHolderByStructure(value: unknown,) {
     if (value == null)
         return false

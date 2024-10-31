@@ -25,9 +25,9 @@ export function isArrayByStructure(value: unknown,): value is (& object & Record
  * @see isArray
  * @see CollectionConstants.ARRAY_MEMBERS
  * @doesNotValidateTheTypes
- * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isArrayByStructure<const T, >(value: unknown,): value is ReadonlyArray<T>
+export function isArrayByStructure<const T, const INSTANCE extends ReadonlyArray<T> = ReadonlyArray<T>, >(value: unknown,): value is INSTANCE
 export function isArrayByStructure(value: unknown,) {
     if (value == null)
         return false

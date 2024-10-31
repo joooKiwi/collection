@@ -10,8 +10,9 @@
  *
  * @param value The value to identify
  * @see isWeakSetByStructure
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isWeakSet<T extends WeakKey, >(value: unknown,): value is Readonly<WeakSet<T>> {
+export function isWeakSet<T extends WeakKey, const INSTANCE extends Readonly<WeakSet<T>> = Readonly<WeakSet<T>>, >(value: unknown,): value is  INSTANCE {
     if (value == null)
         return false
     if (value instanceof WeakSet)

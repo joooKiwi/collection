@@ -16,8 +16,9 @@ import {EmptyCollectionHolder}    from "../EmptyCollectionHolder"
  *
  * @param value The value to identify
  * @see isCollectionHolderByStructure
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isCollectionHolder<const T, >(value: unknown,): value is CollectionHolder<T> {
+export function isCollectionHolder<const T, const INSTANCE extends CollectionHolder<T> = CollectionHolder<T>, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
     if (value instanceof AbstractCollectionHolder)

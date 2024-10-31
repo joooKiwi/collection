@@ -11,8 +11,9 @@
  * @param value The value to identify
  * @see isTypedArray
  * @see isUint32Array
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isInt32Array(value: unknown,): value is Int32Array {
+export function isInt32Array<const INSTANCE extends Int32Array, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
     if (value instanceof Int32Array)

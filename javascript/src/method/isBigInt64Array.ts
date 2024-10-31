@@ -11,8 +11,9 @@
  * @param value The value to identify
  * @see isTypedArray
  * @see isBigUint64Array
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isBigInt64Array(value: unknown,): value is BigInt64Array {
+export function isBigInt64Array<const INSTANCE extends BigInt64Array, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
     if (value instanceof BigInt64Array)

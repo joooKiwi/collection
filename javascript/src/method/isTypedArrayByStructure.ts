@@ -26,7 +26,7 @@ export function isTypedArrayByStructure(value: unknown,): value is (& object & R
  * @see isArray
  * @see CollectionConstants.TYPED_ARRAY_MEMBERS
  * @doesNotValidateTheTypes
- * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
 export function isTypedArrayByStructure<const INSTANCE extends TypedArray, >(value: unknown,): value is INSTANCE
 export function isTypedArrayByStructure(value: unknown,) {

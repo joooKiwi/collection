@@ -10,8 +10,9 @@
  *
  * @param value The value to identify
  * @see isTypedArray
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isFloat64Array(value: unknown,): value is Float64Array {
+export function isFloat64Array<const INSTANCE extends Float64Array, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
     if (value instanceof Float64Array)
