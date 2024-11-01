@@ -110,8 +110,6 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.at
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/get.html Kotlin get(index)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#get(int) Java get(index)
-     * @see getOrElse
-     * @see getOrNull
      * @canReceiveNegativeValue
      */
     get(index: number,): T
@@ -171,11 +169,23 @@ export interface CollectionHolder<out T = unknown, >
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html Kotlin elementAtOrElse(key, defaultValue)
-     * @see get
-     * @see getOrNull
      * @canReceiveNegativeValue
      */
     getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
+
+    /**
+     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
+     *
+     * @param index        The index to retrieve a value
+     * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html Kotlin elementAtOrElse(key, defaultValue)
+     * @canReceiveNegativeValue
+     */
+    getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+
 
     /**
      * Get the element at the specified index in the current {@link CollectionHolder collection}
@@ -197,22 +207,8 @@ export interface CollectionHolder<out T = unknown, >
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
      * @alias getOrElse
      */
-    elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
+    atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
-    /**
-     * Get the element at the specified index in the current {@link CollectionHolder collection}
-     * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
-     *
-     * @param index        The index to retrieve a value
-     * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html Kotlin elementAtOrElse(key, defaultValue)
-     * @see get
-     * @see getOrNull
-     * @canReceiveNegativeValue
-     */
-    getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
     /**
      * Get the element at the specified index in the current {@link CollectionHolder collection}
@@ -223,7 +219,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
      * @alias getOrElse
      */
-    atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+    elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
 
     /**
      * Get the element at the specified index in the current {@link CollectionHolder collection}
@@ -247,8 +243,6 @@ export interface CollectionHolder<out T = unknown, >
      * @param index The index to retrieve a value
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-null.html Kotlin getOrNull(index)
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-null.html Kotlin elementAtOrNull(index)
-     * @see get
-     * @see getOrElse
      * @canReceiveNegativeValue
      */
     getOrNull(index: number,): NullOr<T>
