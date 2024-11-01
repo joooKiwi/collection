@@ -935,7 +935,55 @@ export interface CollectionHolder<out T = unknown, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    //#region -------------------- Index of --------------------
+    //#region -------------------- First index of --------------------
+
+    /**
+     * Get the <b>first</b> occurrence equivalent to the value received
+     * from a range (if provided)
+     *
+     * @param element   The element to find
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {number} The index associated to the {@link element} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.indexOf
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, toIndex?)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+
+    /**
+     * Get the <b>first</b> occurrence equivalent to the value received
+     * from a range (if provided)
+     *
+     * @param element   The element to find
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {number} The index associated to the {@link element} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.indexOf
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, toIndex?)
+     * @alias CollectionHolder.firstIndexOf
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+
+    //#endregion -------------------- First index of --------------------
+    //#region -------------------- First index of or null --------------------
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
@@ -946,20 +994,54 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.indexOf
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, fromIndex?, toIndex?)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Index of --------------------
+    /**
+     * Get the <b>first</b> occurrence equivalent to the value received
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param element   The element to find
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+     * @alias CollectionHolder.firstIndexOfOrNull
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    //#endregion -------------------- First index of or null --------------------
 
     //#region -------------------- Last index of --------------------
+
+    /**
+     * Get the <b>last</b> occurrence equivalent to the value received
+     * from a range (if provided)
+     *
+     * @param element   The element to find
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {number} The index associated to the {@link element} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.lastIndexOf
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, toIndex?)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+
+    //#endregion -------------------- Last index of --------------------
+    //#region -------------------- Last index of or null --------------------
 
     /**
      * Get the <b>last</b> occurrence equivalent to the value received
@@ -970,32 +1052,28 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.lastIndexOf
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
-     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, toIndex?)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Last index of --------------------
+    //#endregion -------------------- Last index of or null --------------------
 
     //#region -------------------- Index of first --------------------
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
      * from a range (if provided)
      *
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
+     * @return {number} The index matching the {@link predicate} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
@@ -1005,20 +1083,48 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
      * from a range (if provided)
      *
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @alias indexOfFirst
+     * @return {number} The index matching the {@link predicate} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @alias CollectionHolder.indexOfFirst
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findFirstIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {number} The index matching the {@link predicate} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @alias CollectionHolder.indexOfFirst
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
     findIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Index of first --------------------
-    //#region -------------------- Index of first indexed --------------------
+    //#region -------------------- Index of first or null --------------------
 
     /**
      * Get the first index matching the {@link predicate}
@@ -1029,8 +1135,57 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @alias CollectionHolder.indexOfFirstOrNull
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findFirstIndexOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @alias CollectionHolder.indexOfFirstOrNull
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findIndexOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    //#endregion -------------------- Index of first or null --------------------
+    //#region -------------------- Index of first indexed --------------------
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {number} The index matching the {@link predicate} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
@@ -1040,24 +1195,51 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
      * from a range (if provided)
      *
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
+     * @return {number} The index matching the {@link predicate} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias indexOfFirstIndexed
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
     findIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
-    //#endregion -------------------- Index of first indexed --------------------
+    /**
+     * Get the first index matching the {@link predicate}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {number} The index matching the {@link predicate} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @alias indexOfFirstIndexed
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
-    //#region -------------------- Index of last --------------------
+    //#endregion -------------------- Index of first indexed --------------------
+    //#region -------------------- Index of first indexed or null --------------------
 
     /**
-     * Get the last index matching the {@link predicate}
+     * Get the first index matching the {@link predicate}
      * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
      * from a range (if provided)
      *
@@ -1065,8 +1247,58 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @alias CollectionHolder.indexOfFirstIndexed
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findFirstIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @alias CollectionHolder.indexOfFirstIndexed
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    //#endregion -------------------- Index of first indexed or null --------------------
+
+    //#region -------------------- Index of last --------------------
+
+    /**
+     * Get the last index matching the {@link predicate}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {number} The index matching the {@link predicate} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
      * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
@@ -1076,20 +1308,27 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
      * from a range (if provided)
      *
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @alias indexOfLast
+     * @return {number} The index matching the {@link predicate} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.findLastIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+     * @alias CollectionHolder.indexOfLast
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
     findLastIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Index of last --------------------
-    //#region -------------------- Index of last indexed --------------------
+    //#region -------------------- Index of last or null --------------------
 
     /**
      * Get the last index matching the {@link predicate}
@@ -1100,14 +1339,10 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.findLastIndex
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
     /**
      * Get the last index matching the {@link predicate}
@@ -1117,13 +1352,90 @@ export interface CollectionHolder<out T = unknown, >
      * @param predicate The given predicate
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @alias indexOfLastIndexed
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @alias CollectionHolder.indexOfLastOrNull
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findLastIndexOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    //#endregion -------------------- Index of last or null --------------------
+    //#region -------------------- Index of last indexed --------------------
+
+    /**
+     * Get the last index matching the {@link predicate}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {number} The index matching the {@link predicate} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.findLastIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the last index matching the {@link predicate}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {number} The index matching the {@link predicate} within the range
+     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @see ReadonlyArray.findLastIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+     * @alias CollectionHolder.indexOfLastIndexed
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
     findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Index of last indexed --------------------
+    //#region -------------------- Index of last indexed or null --------------------
+
+    /**
+     * Get the last index matching the {@link predicate}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    /**
+     * Get the last index matching the {@link predicate}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * from a range (if provided)
+     *
+     * @param predicate The given predicate
+     * @param fromIndex The inclusive starting index
+     * @param toIndex   The inclusive ending index
+     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @alias CollectionHolder.indexOfLastIndexedOrNull
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findLastIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    //#endregion -------------------- Index of last indexed or null --------------------
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------

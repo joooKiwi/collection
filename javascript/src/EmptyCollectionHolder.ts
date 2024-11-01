@@ -234,38 +234,104 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public indexOf(..._: readonly unknown[]): null
-    public indexOf() { return null }
+    //#region -------------------- First index of --------------------
+
+    public firstIndexOf(..._: readonly unknown[]): never
+    public firstIndexOf() { throw new EmptyCollectionHolderException() }
+
+    public indexOf(..._: readonly unknown[]): never
+    public indexOf() { return this.firstIndexOf() }
 
 
-    public lastIndexOf(..._: readonly unknown[]): null
-    public lastIndexOf() { return null }
+    public firstIndexOfOrNull(..._: readonly unknown[]): null
+    public firstIndexOfOrNull() { return null }
+
+    public indexOfOrNull(..._: readonly unknown[]): null
+    public indexOfOrNull() { return this.firstIndexOfOrNull() }
+
+    //#endregion -------------------- First index of --------------------
+    //#region -------------------- Last index of --------------------
+
+    public lastIndexOf(..._: readonly unknown[]): never
+    public lastIndexOf() { throw new EmptyCollectionHolderException() }
 
 
-    public indexOfFirst(..._: readonly unknown[]): null
-    public indexOfFirst() { return null }
+    public lastIndexOfOrNull(..._: readonly unknown[]): null
+    public lastIndexOfOrNull() { return null }
 
-    public findIndex(..._: readonly unknown[]): null
+    //#endregion -------------------- Last index of --------------------
+    //#region -------------------- Index of first --------------------
+
+    public indexOfFirst(..._: readonly unknown[]): never
+    public indexOfFirst() { throw new EmptyCollectionHolderException() }
+
+    public findFirstIndex(..._: readonly unknown[]): never
+    public findFirstIndex() { return this.indexOfFirst() }
+
+    public findIndex(..._: readonly unknown[]): never
     public findIndex() { return this.indexOfFirst() }
 
-    public indexOfFirstIndexed(..._: readonly unknown[]): null
-    public indexOfFirstIndexed() { return null }
 
-    public findIndexIndexed(..._: readonly unknown[]): null
+    public indexOfFirstOrNull(..._: readonly unknown[]): null
+    public indexOfFirstOrNull() { return null }
+
+    public findFirstIndexOrNull(..._: readonly unknown[]): null
+    public findFirstIndexOrNull() { return this.indexOfFirstOrNull() }
+
+    public findIndexOrNull(..._: readonly unknown[]): null
+    public findIndexOrNull() { return this.indexOfFirstOrNull() }
+
+
+    public indexOfFirstIndexed(..._: readonly unknown[]): never
+    public indexOfFirstIndexed() { throw new EmptyCollectionHolderException() }
+
+    public findFirstIndexIndexed(..._: readonly unknown[]): never
+    public findFirstIndexIndexed() { return this.indexOfFirstIndexed() }
+
+    public findIndexIndexed(..._: readonly unknown[]): never
     public findIndexIndexed() { return this.indexOfFirstIndexed() }
 
 
-    public indexOfLast(..._: readonly unknown[]): null
-    public indexOfLast() { return null }
+    public indexOfFirstIndexedOrNull(..._: readonly unknown[]): null
+    public indexOfFirstIndexedOrNull() { return null }
 
-    public findLastIndex(..._: readonly unknown[]): null
+    public findFirstIndexIndexedOrNull(..._: readonly unknown[]): null
+    public findFirstIndexIndexedOrNull() { return this.indexOfFirstIndexedOrNull() }
+
+    public findIndexIndexedOrNull(..._: readonly unknown[]): null
+    public findIndexIndexedOrNull() { return this.indexOfFirstIndexedOrNull() }
+
+    //#endregion -------------------- Index of first --------------------
+    //#region -------------------- Index of last --------------------
+
+    public indexOfLast(..._: readonly unknown[]): never
+    public indexOfLast() { throw new EmptyCollectionHolderException() }
+
+    public findLastIndex(..._: readonly unknown[]): never
     public findLastIndex() { return this.indexOfLast() }
 
-    public indexOfLastIndexed(..._: readonly unknown[]): null
-    public indexOfLastIndexed() { return null }
 
-    public findLastIndexIndexed(..._: readonly unknown[]): null
+    public indexOfLastOrNull(..._: readonly unknown[]): null
+    public indexOfLastOrNull() { return null }
+
+    public findLastIndexOrNull(..._: readonly unknown[]): null
+    public findLastIndexOrNull() { return this.indexOfLastOrNull() }
+
+
+    public indexOfLastIndexed(..._: readonly unknown[]): never
+    public indexOfLastIndexed() { throw new EmptyCollectionHolderException() }
+
+    public findLastIndexIndexed(..._: readonly unknown[]): never
     public findLastIndexIndexed() { return this.indexOfLastIndexed() }
+
+
+    public indexOfLastIndexedOrNull(..._: readonly unknown[]): null
+    public indexOfLastIndexedOrNull() { return null }
+
+    public findLastIndexIndexedOrNull(..._: readonly unknown[]): null
+    public findLastIndexIndexedOrNull() { return this.indexOfLastIndexedOrNull() }
+
+    //#endregion -------------------- Index of last --------------------
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------

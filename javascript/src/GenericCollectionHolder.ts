@@ -41,6 +41,8 @@ import {findLastByArray}                             from "./method/findLast"
 import {findLastIndexedByArray}                      from "./method/findLastIndexed"
 import {findLastIndexedOrNullByArray}                from "./method/findLastIndexedOrNull"
 import {findLastOrNullByArray}                       from "./method/findLastOrNull"
+import {firstIndexOfByArray}                         from "./method/firstIndexOf"
+import {firstIndexOfOrNullByArray}                   from "./method/firstIndexOfOrNull"
 import {forEachByArray}                              from "./method/forEach"
 import {forEachIndexedByArray}                       from "./method/forEachIndexed"
 import {getFirstByArray}                             from "./method/getFirst"
@@ -64,11 +66,14 @@ import {hasOneWithCollectionIteratorByArray}         from "./method/hasOne.withC
 import {hasOneWithIterableByArray}                   from "./method/hasOne.withIterable"
 import {hasOneWithMinimalistCollectionHolderByArray} from "./method/hasOne.withMinimalistCollectionHolder"
 import {hasOneWithSetByArray}                        from "./method/hasOne.withSet"
-import {indexOfByArray}                              from "./method/indexOf"
 import {indexOfFirstByArray}                         from "./method/indexOfFirst"
 import {indexOfFirstIndexedByArray}                  from "./method/indexOfFirstIndexed"
+import {indexOfFirstIndexedOrNullByArray}            from "./method/indexOfFirstIndexedOrNull"
+import {indexOfFirstOrNullByArray}                   from "./method/indexOfFirstOrNull"
 import {indexOfLastByArray}                          from "./method/indexOfLast"
 import {indexOfLastIndexedByArray}                   from "./method/indexOfLastIndexed"
+import {indexOfLastIndexedOrNullByArray}             from "./method/indexOfLastIndexedOrNull"
+import {indexOfLastOrNullByArray}                    from "./method/indexOfLastOrNull"
 import {isArray}                                     from "./method/isArray"
 import {isArrayByStructure}                          from "./method/isArrayByStructure"
 import {isCollectionIterator}                        from "./method/isCollectionIterator"
@@ -81,6 +86,7 @@ import {isSet}                                       from "./method/isSet"
 import {isSetByStructure}                            from "./method/isSetByStructure"
 import {joinToStringByArray}                         from "./method/joinToString"
 import {lastIndexOfByArray}                          from "./method/lastIndexOf"
+import {lastIndexOfOrNullByArray}                    from "./method/lastIndexOfOrNull"
 import {noneByArray}                                 from "./method/none"
 import {mapByArray}                                  from "./method/map"
 import {mapIndexedByArray}                           from "./method/mapIndexed"
@@ -997,30 +1003,55 @@ export class GenericCollectionHolder<const T = unknown,
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfByArray(this._array, element, fromIndex, toIndex,)
+    public override firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+        return firstIndexOfByArray(this._array, element, fromIndex, toIndex,)
     }
 
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return firstIndexOfOrNullByArray(this._array, element, fromIndex, toIndex,)
+    }
+
+
+    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return lastIndexOfByArray(this._array, element, fromIndex, toIndex,)
     }
 
+    public override lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return lastIndexOfOrNullByArray(this._array, element, fromIndex, toIndex,)
+    }
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+
+    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfFirstByArray(this._array, predicate, fromIndex, toIndex,)
     }
 
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstOrNullByArray(this._array, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfFirstIndexedByArray(this._array, predicate, fromIndex, toIndex,)
     }
 
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedOrNullByArray(this._array, predicate, fromIndex, toIndex,)
+    }
 
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+
+    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfLastByArray(this._array, predicate, fromIndex, toIndex,)
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastOrNullByArray(this._array, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfLastIndexedByArray(this._array, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedOrNullByArray(this._array, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index methods --------------------

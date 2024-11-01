@@ -34,6 +34,8 @@ import {findLastByCollectionHolder}                             from "./method/f
 import {findLastIndexedByCollectionHolder}                      from "./method/findLastIndexed"
 import {findLastIndexedOrNullByCollectionHolder}                from "./method/findLastIndexedOrNull"
 import {findLastOrNullByCollectionHolder}                       from "./method/findLastOrNull"
+import {firstIndexOfByCollectionHolder}                         from "./method/firstIndexOf"
+import {firstIndexOfOrNullByCollectionHolder}                   from "./method/firstIndexOfOrNull"
 import {forEachByCollectionHolder}                              from "./method/forEach"
 import {forEachIndexedByCollectionHolder}                       from "./method/forEachIndexed"
 import {getFirstByCollectionHolder}                             from "./method/getFirst"
@@ -57,11 +59,14 @@ import {hasOneWithCollectionIteratorByCollectionHolder}         from "./method/h
 import {hasOneWithIterableByCollectionHolder}                   from "./method/hasOne.withIterable"
 import {hasOneWithMinimalistCollectionHolderByCollectionHolder} from "./method/hasOne.withMinimalistCollectionHolder"
 import {hasOneWithSetByCollectionHolder}                        from "./method/hasOne.withSet"
-import {indexOfByCollectionHolder}                              from "./method/indexOf"
 import {indexOfFirstByCollectionHolder}                         from "./method/indexOfFirst"
+import {indexOfFirstOrNullByCollectionHolder}                   from "./method/indexOfFirstOrNull"
 import {indexOfFirstIndexedByCollectionHolder}                  from "./method/indexOfFirstIndexed"
+import {indexOfFirstIndexedOrNullByCollectionHolder}            from "./method/indexOfFirstIndexedOrNull"
 import {indexOfLastByCollectionHolder}                          from "./method/indexOfLast"
+import {indexOfLastOrNullByCollectionHolder}                    from "./method/indexOfLastOrNull"
 import {indexOfLastIndexedByCollectionHolder}                   from "./method/indexOfLastIndexed"
+import {indexOfLastIndexedOrNullByCollectionHolder}             from "./method/indexOfLastIndexedOrNull"
 import {isArray}                                                from "./method/isArray"
 import {isArrayByStructure}                                     from "./method/isArrayByStructure"
 import {isCollectionHolder}                                     from "./method/isCollectionHolder"
@@ -76,6 +81,7 @@ import {isSet}                                                  from "./method/i
 import {isSetByStructure}                                       from "./method/isSetByStructure"
 import {joinToStringByCollectionHolder}                         from "./method/joinToString"
 import {lastIndexOfByCollectionHolder}                          from "./method/lastIndexOf"
+import {lastIndexOfOrNullByCollectionHolder}                    from "./method/lastIndexOfOrNull"
 import {noneByCollectionHolder}                                 from "./method/none"
 import {mapByCollectionHolder}                                  from "./method/map"
 import {mapIndexedByCollectionHolder}                           from "./method/mapIndexed"
@@ -428,67 +434,149 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    //#region -------------------- Index of --------------------
+    //#region -------------------- First index of --------------------
 
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfByCollectionHolder(this, element, fromIndex, toIndex,)
+    public firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+        return firstIndexOfByCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
-    //#endregion -------------------- Index of --------------------
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+        return this.firstIndexOf(element, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- First index of --------------------
+    //#region -------------------- First index of or null --------------------
+
+    public firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return firstIndexOfOrNullByCollectionHolder(this, element, fromIndex, toIndex,)
+    }
+
+    public indexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.firstIndexOfOrNull(element, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- First index of or null --------------------
 
     //#region -------------------- Last index of --------------------
 
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Last index of --------------------
+    //#region -------------------- Last index of or null --------------------
+
+    public lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return lastIndexOfOrNullByCollectionHolder(this, element, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Last index of or null --------------------
 
     //#region -------------------- Index of first --------------------
 
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
-    public findIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public findFirstIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+        return this.indexOfFirst(predicate, fromIndex, toIndex,)
+    }
+
+    public findIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return this.indexOfFirst(predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of first --------------------
+    //#region -------------------- Index of first or null --------------------
+
+    public indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstOrNullByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    public findFirstIndexOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.indexOfFirstOrNull(predicate, fromIndex, toIndex,)
+    }
+
+    public findIndexOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.indexOfFirstOrNull(predicate, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Index of first or null --------------------
     //#region -------------------- Index of first indexed --------------------
 
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
-    public findIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+        return this.indexOfFirstIndexed(predicate, fromIndex, toIndex,)
+    }
+
+    public findIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return this.indexOfFirstIndexed(predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of first indexed --------------------
+    //#region -------------------- Index of first indexed or null --------------------
+
+    public indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedOrNullByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    public findFirstIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.indexOfFirstIndexedOrNull(predicate, fromIndex, toIndex,)
+    }
+
+    public findIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.indexOfFirstIndexedOrNull(predicate, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Index of first indexed or null --------------------
 
     //#region -------------------- Index of last --------------------
 
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfLastByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
-    public findLastIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public findLastIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return this.indexOfLast(predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of last --------------------
+    //#region -------------------- Index of last or null --------------------
+
+    public indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastOrNullByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    public findLastIndexOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.indexOfLastOrNull(predicate, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Index of last or null --------------------
     //#region -------------------- Index of last indexed --------------------
 
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
-    public findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return this.indexOfLastIndexed(predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index of last indexed --------------------
+    //#region -------------------- Index of last indexed or null --------------------
+
+    public indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedOrNullByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    public findLastIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return this.indexOfLastIndexedOrNull(predicate, fromIndex, toIndex,)
+    }
+
+    //#endregion -------------------- Index of last indexed or null --------------------
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
