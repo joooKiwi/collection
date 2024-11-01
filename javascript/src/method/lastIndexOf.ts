@@ -5,16 +5,20 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullableNumber, NullOrNumber} from "@joookiwi/type"
+import type {Nullable, NullableNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {__endingIndex, __startingIndex} from "./_indexes utility"
-import {isArray}                        from "./isArray"
-import {isArrayByStructure}             from "./isArrayByStructure"
-import {isCollectionHolder}             from "./isCollectionHolder"
-import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
+import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
+import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
+import {InvalidIndexRangeException}                from "../exception/InvalidIndexRangeException"
+import {NullCollectionHolderException}             from "../exception/NullCollectionHolderException"
+import {__endingIndex, __startingIndex}            from "./_indexes utility"
+import {isArray}                                   from "./isArray"
+import {isArrayByStructure}                        from "./isArrayByStructure"
+import {isCollectionHolder}                        from "./isCollectionHolder"
+import {isCollectionHolderByStructure}             from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -28,8 +32,12 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws CollectionHolderIndexOutOfBoundsException No index could be found
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
@@ -38,9 +46,9 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
     if (collection == null)
-        return null
+        throw new NullCollectionHolderException()
     if (isCollectionHolder<T>(collection,))
         return lastIndexOfByCollectionHolder(collection, element, fromIndex, toIndex,)
     if (isArray(collection,))
@@ -63,8 +71,12 @@ export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollecti
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws CollectionHolderIndexOutOfBoundsException No index could be found
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
@@ -73,18 +85,18 @@ export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollecti
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
     if (collection == null)
-        return null
+        throw new NullCollectionHolderException()
 
     const size = collection.size
     if (size === 0)
-        return null
+        throw new EmptyCollectionHolderException()
 
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        return null
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
     return __findLastInRange(collection, element, startingIndex, endingIndex,)
 }
 
@@ -98,8 +110,12 @@ export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: N
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws CollectionHolderIndexOutOfBoundsException No index could be found
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
@@ -108,17 +124,17 @@ export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: N
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
     if (collection == null)
-        return null
+        throw new NullCollectionHolderException()
     if (collection.isEmpty)
-        return null
+        throw new EmptyCollectionHolderException()
 
     const size = collection.size
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        return null
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
     return __findLastInRange(collection, element, startingIndex, endingIndex,)
 }
 
@@ -132,8 +148,12 @@ export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<Co
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+ * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
  * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws CollectionHolderIndexOutOfBoundsException No index could be found
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
@@ -142,18 +162,18 @@ export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<Co
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function lastIndexOfByArray<const T, >(collection: Nullable<readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function lastIndexOfByArray<const T, >(collection: Nullable<readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
     if (collection == null)
-        return null
+        throw new NullCollectionHolderException()
 
     const size = collection.length
     if (size === 0)
-        return null
+        throw new EmptyCollectionHolderException()
 
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        return null
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
     return __findLastInRangeByArray(collection, element, startingIndex, endingIndex,)
 }
 
@@ -165,7 +185,7 @@ function __findLastInRange<const T, >(collection: MinimalistCollectionHolder<T>,
     while (--index >= startingIndex)
         if (collection.get(index,) === element)
             return index
-    return null
+    throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
 function __findLastInRangeByArray<const T, >(collection: readonly T[], element: T, startingIndex: number, endingIndex: number,) {
@@ -173,7 +193,7 @@ function __findLastInRangeByArray<const T, >(collection: readonly T[], element: 
     while (--index >= startingIndex)
         if (collection[index] === element)
             return index
-    return null
+    throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
 //#endregion -------------------- Loop methods --------------------
