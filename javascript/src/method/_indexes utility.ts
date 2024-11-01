@@ -44,6 +44,39 @@ export function __startingIndex(fromIndex: NullableNumber, size: number,) {
 }
 
 /**
+ * Get the starting index between 0 and the <code>{@link size} - 1</code>
+ * or <b>null</b> otherwise
+ *
+ * @param fromIndex The value to calculate
+ * @param size      The last value that should be equivalent to the {@link MinimalistCollectionHolder.size size}
+ * @internal
+ */
+export function __startingIndexOrNull(fromIndex: NullableNumber, size: number,) {
+    if (fromIndex == null)
+        return 0
+
+    if (Number.isNaN(fromIndex,))
+        return null
+    if (fromIndex == Number.NEGATIVE_INFINITY)
+        return null
+    if (fromIndex == Number.POSITIVE_INFINITY)
+        return null
+
+    if (fromIndex == size)
+        return null
+    if (fromIndex > size)
+        return null
+
+    let startingIndex = fromIndex
+    if (startingIndex < 0)
+        startingIndex += size
+    if (startingIndex < 0)
+        return null
+    return startingIndex
+}
+
+
+/**
  * Get the ending index between 0 and the <code>{@link size} - 1</code>
  *
  * @param toIndex The value to calculate
@@ -75,6 +108,39 @@ export function __endingIndex(toIndex: NullableNumber, size: number,) {
         throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is under 0.`, toIndex,)
     return endingIndex
 }
+
+/**
+ * Get the ending index between 0 and the <code>{@link size} - 1</code>
+ * or <b>null</b>
+ *
+ * @param toIndex The value to calculate
+ * @param size    The last value that should be equivalent to the {@link MinimalistCollectionHolder.size size}
+ * @internal
+ */
+export function __endingIndexOrNull(toIndex: NullableNumber, size: number,) {
+    if (toIndex == null)
+        return size - 1
+
+    if (Number.isNaN(toIndex,))
+        return null
+    if (toIndex == Number.NEGATIVE_INFINITY)
+        return null
+    if (toIndex == Number.POSITIVE_INFINITY)
+        return null
+
+    if (toIndex == size)
+        return null
+    if (toIndex > size)
+        return null
+
+    let endingIndex = toIndex
+    if (endingIndex < 0)
+        endingIndex += size
+    if (endingIndex < 0)
+        return null
+    return endingIndex
+}
+
 
 /**
  * Get the last index possible between 0 and the {@link size}
