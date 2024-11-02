@@ -99,7 +99,7 @@ export function isEmpty<const T, const COLLECTION extends Nullable<MinimalistCol
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
-export function isEmpty<const T, const COLLECTION extends Nullable<readonly T[]> = Nullable<readonly T[]>, >(collection: COLLECTION,): IsNotEmptyOnNullableArray<COLLECTION>
+export function isEmpty<const T, const COLLECTION extends Nullable<readonly T[]> = Nullable<readonly T[]>, >(collection: COLLECTION,): IsEmptyOnNullableArray<COLLECTION>
 /**
  * The {@link collection} has no values
  *
