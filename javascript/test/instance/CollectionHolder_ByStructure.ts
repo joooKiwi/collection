@@ -95,7 +95,7 @@ export class CollectionHolder_ByStructure<const T, >
     public firstIndexedOrNull(predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
     public firstIndexedOrNull(predicate?: Nullable<ReverseBooleanCallback<T>>,) { return this.reference.firstIndexedOrNull(predicate,) }
 
-    //#endregion -------------------- Firs --------------------
+    //#endregion -------------------- First --------------------
     //#region -------------------- Last --------------------
 
     public last(): T
@@ -156,7 +156,7 @@ export class CollectionHolder_ByStructure<const T, >
     public findIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public findIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this.reference.findIndexedOrNull(predicate,) }
 
-    //#region -------------------- Find first --------------------
+    //#endregion -------------------- Find first --------------------
     //#region -------------------- Find last --------------------
 
     public findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S

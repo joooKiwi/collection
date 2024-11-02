@@ -243,7 +243,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
         throw new Error("The method “findIndexedOrNull” was not expected to be called in a test.",)
     }
 
-    //#region -------------------- Find first --------------------
+    //#endregion -------------------- Find first --------------------
     //#region -------------------- Find last --------------------
 
     public abstract findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
