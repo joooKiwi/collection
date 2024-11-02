@@ -21,17 +21,14 @@ import {ForbiddenIndexException}                   from "../../src/exception/For
  * A bare-bone implementation of a {@link CollectionHolderForTest} with nothing implemented,
  * but an {@link ReadonlyArray Array} in the constructor
  */
-export abstract class AbstractCollectionHolderForTest<const T, >
+export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE extends readonly T[], >
     implements CollectionHolderForTest<T> {
 
     [index: TemplateOrNumber]: undefined
-    /** The array received in the constructor */
-    public readonly array
+
     #amountOfCall?: number
 
-    protected constructor(array: readonly T[]) {
-        this.array = array
-    }
+    public constructor(/** The array received in the constructor */ public readonly array: REFERENCE,) {}
 
     //#region -------------------- Test utility methods --------------------
 

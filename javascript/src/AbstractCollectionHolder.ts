@@ -171,14 +171,14 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Get first --------------------
 
     public getFirst(): T {
-        return getFirstByCollectionHolder<T>(this,)
+        return getFirstByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Get first --------------------
     //#region -------------------- Get last --------------------
 
     public getLast(): T {
-        return getLastByCollectionHolder<T>(this,)
+        return getLastByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Get last --------------------
@@ -208,7 +208,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Get or null --------------------
 
     public getOrNull(index: number,): NullOr<T> {
-        return getOrNullByCollectionHolder<T>(this, index,)
+        return getOrNullByCollectionHolder(this, index,)
     }
 
     public atOrNull(index: number,): NullOr<T> {
@@ -844,7 +844,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Require no nulls --------------------
 
     public requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        return requireNoNullsByCollectionHolder<T>(this,)
+        return requireNoNullsByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Require no nulls --------------------
@@ -893,7 +893,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Filter not null --------------------
 
     public filterNotNull(): CollectionHolder<NonNullable<T>> {
-        return filterNotNullByCollectionHolder<T>(this,)
+        return filterNotNullByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Filter not null --------------------
@@ -1011,52 +1011,52 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice()} */
     protected _sliceWith0Argument(): CollectionHolder<T> {
-        return sliceWithARangeByCollectionHolder<T>(this,)
+        return sliceWithARangeByCollectionHolder(this,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(fromIndex)} */
     protected _sliceWith1Argument(fromIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByCollectionHolder<T>(this, fromIndex,)
+        return sliceWithARangeByCollectionHolder(this, fromIndex,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(fromIndex, toIndex)} */
     protected _sliceWith2Argument(fromIndex: number, toIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByCollectionHolder<T>(this, fromIndex, toIndex,)
+        return sliceWithARangeByCollectionHolder(this, fromIndex, toIndex,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(null, toIndex)} */
     protected _sliceWith2ArgumentWhere1stIsNull(fromIndex: NullOrUndefined, toIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByCollectionHolder<T>(this, fromIndex, toIndex,)
+        return sliceWithARangeByCollectionHolder(this, fromIndex, toIndex,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
     protected _sliceByArray(indices: readonly number[],): CollectionHolder<T> {
-        return sliceWithArrayByCollectionHolder<T>(this, indices,)
+        return sliceWithArrayByCollectionHolder(this, indices,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
     protected _sliceBySet(indices: ReadonlySet<number>,): CollectionHolder<T> {
-        return sliceWithSetByCollectionHolder<T>(this, indices,)
+        return sliceWithSetByCollectionHolder(this, indices,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
     protected _sliceByMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
-        return sliceWithMinimalistCollectionHolderByCollectionHolder<T>(this, indices,)
+        return sliceWithMinimalistCollectionHolderByCollectionHolder(this, indices,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
     protected _sliceByCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
-        return sliceWithCollectionHolderByCollectionHolder<T>(this, indices,)
+        return sliceWithCollectionHolderByCollectionHolder(this, indices,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
     protected _sliceByCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
-        return sliceWithCollectionIteratorByCollectionHolder<T>(this, indices,)
+        return sliceWithCollectionIteratorByCollectionHolder(this, indices,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */
     protected _sliceByIterable(indices: Iterable<number>,): CollectionHolder<T> {
-        return sliceWithIterableByCollectionHolder<T>(this, indices,)
+        return sliceWithIterableByCollectionHolder(this, indices,)
     }
 
     //#endregion -------------------- Slice --------------------
@@ -1064,7 +1064,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Take --------------------
 
     public take(n: number,): CollectionHolder<T> {
-        return takeByCollectionHolder<T>(this, n,)
+        return takeByCollectionHolder(this, n,)
     }
 
     //#endregion -------------------- Take --------------------
@@ -1089,7 +1089,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Take last --------------------
 
     public takeLast(n: number,): CollectionHolder<T> {
-        return takeLastByCollectionHolder<T>(this, n,)
+        return takeLastByCollectionHolder(this, n,)
     }
 
     //#endregion -------------------- Take last --------------------
@@ -1115,7 +1115,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Drop --------------------
 
     public drop(n: number,): CollectionHolder<T> {
-        return dropByCollectionHolder<T>(this, n,)
+        return dropByCollectionHolder(this, n,)
     }
 
     //#endregion -------------------- Drop --------------------
@@ -1140,7 +1140,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Drop last --------------------
 
     public dropLast(n: number,): CollectionHolder<T> {
-        return dropLastByCollectionHolder<T>(this, n,)
+        return dropLastByCollectionHolder(this, n,)
     }
 
     //#endregion -------------------- Drop last --------------------
@@ -1232,7 +1232,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- To reverse --------------------
 
     public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByCollectionHolder<T>(this, fromIndex, toIndex,)
+        return toReverseByCollectionHolder(this, fromIndex, toIndex,)
     }
 
     public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
@@ -1249,7 +1249,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- JavaScript methods --------------------
 
     public [Symbol.iterator](): CollectionIterator<T> {
-        return toIteratorByCollectionHolder<T>(this,)
+        return toIteratorByCollectionHolder(this,)
     }
 
     public get [Symbol.toStringTag](): CollectionHolderName {
@@ -1269,33 +1269,33 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- To array --------------------
 
     public toArray(): readonly T[] {
-        return toArrayByCollectionHolder<T>(this,)
+        return toArrayByCollectionHolder(this,)
     }
 
     public toMutableArray(): T[] {
-        return toMutableArrayByCollectionHolder<T>(this,)
+        return toMutableArrayByCollectionHolder(this,)
     }
 
     //#endregion -------------------- To array --------------------
     //#region -------------------- To set --------------------
 
     public toSet(): ReadonlySet<T> {
-        return toSetByCollectionHolder<T>(this,)
+        return toSetByCollectionHolder(this,)
     }
 
     public toMutableSet(): Set<T> {
-        return toMutableSetByCollectionHolder<T>(this,)
+        return toMutableSetByCollectionHolder(this,)
     }
 
     //#endregion -------------------- To set --------------------
     //#region -------------------- To map --------------------
 
     public toMap(): ReadonlyMap<number, T> {
-        return toMapByCollectionHolder<T>(this,)
+        return toMapByCollectionHolder(this,)
     }
 
     public toMutableMap(): Map<number, T> {
-        return toMutableMapByCollectionHolder<T>(this,)
+        return toMutableMapByCollectionHolder(this,)
     }
 
     //#endregion -------------------- To map --------------------

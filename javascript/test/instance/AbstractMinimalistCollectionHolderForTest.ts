@@ -92,14 +92,11 @@ import {toStringByMinimalistCollectionHolder}                  from "../../src/m
 import {toUpperCaseStringByMinimalistCollectionHolder}         from "../../src/method/toUpperCaseString"
 import {AbstractCollectionHolderForTest}                       from "./AbstractCollectionHolderForTest"
 
-export abstract class AbstractMinimalistCollectionHolderForTest<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+/** A common ancestor that have the methods reference to the {@link MinimalistCollectionHolder} extension methuods */
+export abstract class AbstractMinimalistCollectionHolderForTest<const T, const REFERENCE extends readonly T[], >
+    extends AbstractCollectionHolderForTest<T, REFERENCE> {
 
     //#region -------------------- Size methods --------------------
-
-    public override get size(): number {
-        return this.array.length
-    }
 
     public override get isEmpty(): boolean {
         return isEmptyByMinimalistCollectionHolder(this,)

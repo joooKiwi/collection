@@ -93,13 +93,9 @@ import {toStringByArray}                  from "../../src/method/toString"
 import {toUpperCaseStringByArray}         from "../../src/method/toUpperCaseString"
 import {AbstractCollectionHolderForTest}  from "./AbstractCollectionHolderForTest"
 
-/** A test instance to test exclusively the extension methods for an {@link ReadonlyArray Array} */
-export class CollectionHolder_FromArrayFunction<const T, >
-    extends AbstractCollectionHolderForTest<T> {
-
-    public constructor(array: readonly T[],) {
-        super(array,)
-    }
+/** A test instance to exclusively test the extension methods for an {@link ReadonlyArray Array} */
+export class CollectionHolder_FromArrayFunction<const T, const REFERENCE extends readonly T[], >
+    extends AbstractCollectionHolderForTest<T, REFERENCE> {
 
     //#region -------------------- Test utility methods --------------------
 
@@ -358,7 +354,7 @@ export class CollectionHolder_FromArrayFunction<const T, >
         const array = requireNoNullsByArray(this.array,)
         if (array.length == 0)
             return CollectionConstants.EMPTY_COLLECTION_HOLDER
-        return new CollectionHolder_FromArrayFunction(array,)
+        return new CollectionHolder_FromArrayFunction<NonNullable<T>, readonly NonNullable<T>[]>(array,)
     }
 
     //#endregion -------------------- Require no nulls --------------------

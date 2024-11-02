@@ -17,15 +17,15 @@ import {AbstractMinimalistCollectionHolderForTest}        from "./AbstractMinima
  *
  * The remaining methods are from the extension methods for a {@link MinimalistCollectionHolder}
  */
-export class CollectionHolder_ByMinimalistCollection<const T, >
-    extends AbstractMinimalistCollectionHolderForTest<T> {
+export class CollectionHolder_ByMinimalistCollection<const T, const REFERENCE extends readonly T[], >
+    extends AbstractMinimalistCollectionHolderForTest<T, REFERENCE> {
 
     /** The internal instance that is tested */
-    public readonly instance
+    public readonly instance: GenericMinimalistCollectionHolder<T, REFERENCE>
 
-    public constructor(array: readonly T[],) {
+    public constructor(array: REFERENCE,) {
         super(array,)
-        this.instance = new GenericMinimalistCollectionHolder(array,)
+        this.instance = new GenericMinimalistCollectionHolder<T, REFERENCE>(array,)
     }
 
     public override get size(): number {

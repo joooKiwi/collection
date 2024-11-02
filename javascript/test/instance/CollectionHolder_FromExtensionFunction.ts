@@ -92,13 +92,9 @@ import {toStringByCollectionHolder}                  from "../../src/method/toSt
 import {toUpperCaseStringByCollectionHolder}         from "../../src/method/toUpperCaseString"
 import {AbstractCollectionHolderForTest}             from "./AbstractCollectionHolderForTest"
 
-/** A test instance to test exclusively the extension methods for a {@link CollectionHolder} */
-export class CollectionHolder_FromExtensionFunction<const T, >
-    extends AbstractCollectionHolderForTest<T> {
-
-    public constructor(array: readonly T[],) {
-        super(array,)
-    }
+/** A test instance to exclusively test the extension methods for a {@link CollectionHolder} */
+export class CollectionHolder_FromExtensionFunction<const T, const REFERENCE extends readonly T[], >
+    extends AbstractCollectionHolderForTest<T, REFERENCE> {
 
     //#region -------------------- Test utility methods --------------------
 
@@ -118,11 +114,11 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     }
 
     public get isEmpty(): boolean {
-        return isEmptyByCollectionHolder<T>(this,)
+        return isEmptyByCollectionHolder(this,)
     }
 
     public get isNotEmpty(): boolean {
-        return isNotEmptyByCollectionHolder<T>(this,)
+        return isNotEmptyByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Size methods --------------------
@@ -146,14 +142,6 @@ export class CollectionHolder_FromExtensionFunction<const T, >
         return getLastByCollectionHolder<T>(this,)
     }
 
-    public override getFirstOrNull(): NullOr<T> {
-        return getFirstOrNullByCollectionHolder<T>(this,)
-    }
-
-    public override getLastOrNull(): NullOr<T> {
-        return getLastOrNullByCollectionHolder<T>(this,)
-    }
-
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
@@ -162,6 +150,14 @@ export class CollectionHolder_FromExtensionFunction<const T, >
 
     public override getOrNull(index: number,): NullOr<T> {
         return getOrNullByCollectionHolder<T>(this, index,)
+    }
+
+    public override getFirstOrNull(): NullOr<T> {
+        return getFirstOrNullByCollectionHolder<T>(this,)
+    }
+
+    public override getLastOrNull(): NullOr<T> {
+        return getLastOrNullByCollectionHolder<T>(this,)
     }
 
     //#endregion -------------------- Get --------------------

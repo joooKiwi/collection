@@ -17,17 +17,17 @@ import {LazyGenericCollectionHolder}     from "../../src/LazyGenericCollectionHo
 import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
 
 /** A class to test the functionality of a {@link LazyGenericCollectionHolder} */
-export class CollectionHolder_ByLazyCollection<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+export class CollectionHolder_ByLazyCollection<const T, const REFERENCE extends readonly T[], >
+    extends AbstractCollectionHolderForTest<T, REFERENCE> {
 
     /** The internal instance that is tested */
-    public readonly instance
+    public readonly instance: LazyGenericCollectionHolderForTest<T, REFERENCE>
 
-    public constructor(array: readonly T[],) {
+    public constructor(array: REFERENCE,) {
         super(array,)
         const $this = this
         this.instance = new class CollectionHolder_CountingGetByLazyCollection
-            extends LazyGenericCollectionHolder<T> {
+            extends LazyGenericCollectionHolder<T, REFERENCE> {
 
             public override get(index: number,): T {
                 $this.amountOfCall++
@@ -39,7 +39,9 @@ export class CollectionHolder_ByLazyCollection<const T, >
         }(array,)
     }
 
-    public get handler(): CollectionHandler<T> { return this.instance.handler }
+    public get handler(): CollectionHandler<T> {
+        return this.instance.handler
+    }
 
     /** Retrieve the internal value of the {@link LazyGenericCollectionHolder._handler} and return the current instance afterward */
     public retrieveHandler(): this {
@@ -381,5 +383,12 @@ export class CollectionHolder_ByLazyCollection<const T, >
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string { return this.instance.joinToString(separator, prefix, postfix, limit, truncated, transform,) }
 
     //#endregion -------------------- Conversion methods --------------------
+
+}
+
+interface LazyGenericCollectionHolderForTest<T, REFERENCE extends readonly T[],>
+    extends LazyGenericCollectionHolder<T, REFERENCE> {
+
+    readonly handler: CollectionHandler<T>
 
 }

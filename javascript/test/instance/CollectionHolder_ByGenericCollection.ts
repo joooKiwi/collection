@@ -18,36 +18,35 @@ import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest
 const NUMBER_REGEX = /\d+/
 
 /** A class to test the functionality of a {@link GenericCollectionHolder} */
-export class CollectionHolder_ByGenericCollection<const T, >
-    extends AbstractCollectionHolderForTest<T> {
+export class CollectionHolder_ByGenericCollection<const T, const REFERENCE extends readonly T[], >
+    extends AbstractCollectionHolderForTest<T, REFERENCE> {
 
     /** The internal instance that is tested */
-    public readonly instance
+    public readonly instance: GenericCollectionHolder<T, REFERENCE>
 
     /** The {@link CollectionHolder_FromExtensionFunction.array array} encapsulated in a {@link Proxy} */
-    public readonly proxiedArray: readonly T[]
+    public readonly proxiedArray: REFERENCE
     /** The handler associated to the {@link proxiedArray} */
-    public readonly proxyHandler: ProxyHandler<readonly T[]>
+    public readonly proxyHandler: ProxyHandler<REFERENCE>
 
-    public constructor(array: readonly T[],) {
+    public constructor(array: REFERENCE,) {
         super(array,)
         const $this = this
         const handler = this.proxyHandler = {
-            get(target: readonly T[], property: StringOrSymbol, receiver: unknown,) {
+            get(target: REFERENCE, property: StringOrSymbol, receiver: unknown,) {
                 if (typeof property == "string")
                     if (NUMBER_REGEX.test(property,))
                         $this.amountOfCall++
                 return Reflect.get(target, property, receiver,)
             },
         }
-        const instance = this.instance = new class CollectionHolder_CountingGetByGenericCollection
-            extends GenericCollectionHolder<T> {
+        this.instance = new class CollectionHolder_CountingGetByGenericCollection
+            extends GenericCollectionHolder<T, REFERENCE> {
 
-            public get originalArray(): readonly T[] { return super._array }
-            protected override get _array(): readonly T[] { return $this.proxiedArray }
+            protected override get _array(): REFERENCE { return $this.proxiedArray }
 
         }(array,)
-        this.proxiedArray = new Proxy(instance.originalArray, handler,)
+        this.proxiedArray = new Proxy(array, handler,)
     }
 
     //#region -------------------- Size methods --------------------
