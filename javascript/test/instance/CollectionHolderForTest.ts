@@ -22,7 +22,7 @@ export interface CollectionHolderForTest<out T, >
      *
      * @param action The action to do
      */
-    executeWhileIgnoringIndexOutOfBound(action: (instance: this,) => void,): this
+    executeWhileExpectingIndexOutOfBound(action: (instance: this,) => void,): this
 
     /**
      * Do an action on the curent {@link CollectionHolderForTest instance}
@@ -31,7 +31,7 @@ export interface CollectionHolderForTest<out T, >
      *
      * @param action The action to do
      */
-    executeWhileIgnoringEmptyException(action: (instance: this,) => void,): this
+    executeWhileExpectingEmptyException(action: (instance: this,) => void,): this
 
     /**
      * Do an action on the curent {@link CollectionHolderForTest instance}
@@ -40,7 +40,7 @@ export interface CollectionHolderForTest<out T, >
      *
      * @param action The action to do
      */
-    executeWhileIgnoringForbiddenException(action: (instance: this,) => void,): this
+    executeWhileExpectingForbiddenException(action: (instance: this,) => void,): this
 
     /**
      * Do an action on the current {@link CollectionHolderForTest instance}

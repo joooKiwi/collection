@@ -102,7 +102,7 @@ describe("CollectionHolderTest (value)", () => {
         if (!isExtension)
             describe("get() being called", () => {
                 describe("get", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).executeWhileIgnoringEmptyException(it => it.get(0,),).amountOfCall,).toBe(isNormal ? 0 : 1,),)
+                    test("empty",    () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.get(0,),).amountOfCall,).toBe(isNormal ? 0 : 1,),)
                     test("1 field",  () => expect(new instance(A,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
                     test("2 fields", () => expect(new instance(AB,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
                     test("4 fields", () => expect(new instance(ABCD,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)

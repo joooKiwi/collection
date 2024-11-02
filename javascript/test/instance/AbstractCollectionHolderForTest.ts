@@ -48,7 +48,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
         return this
     }
 
-    public executeWhileIgnoringIndexOutOfBound(action: (instance: this,) => void,): this {
+    public executeWhileExpectingIndexOutOfBound(action: (instance: this,) => void,): this {
         try {
             action(this,)
         } catch (exception) {
@@ -59,7 +59,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
         throw new Error("The exception “CollectionHolderIndexOutOfBoundsException” was expected to be thrown.",)
     }
 
-    public executeWhileIgnoringEmptyException(action: (instance: this,) => void,): this {
+    public executeWhileExpectingEmptyException(action: (instance: this,) => void,): this {
         try {
             action(this,)
         } catch (exception) {
@@ -70,7 +70,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
         throw new Error("The exception “EmptyCollectionHolderException” was expected to be thrown.",)
     }
 
-    public executeWhileIgnoringForbiddenException(action: (instance: this,) => void,): this {
+    public executeWhileExpectingForbiddenException(action: (instance: this,) => void,): this {
         try {
             action(this,)
         } catch (exception) {

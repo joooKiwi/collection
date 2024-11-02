@@ -37,14 +37,14 @@ describe("CollectionHolderTest (slice)", () => {
                     describe("1 field", () => {
                         test("empty", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
                         test('0',     () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0,),),).amountOfCall,).toBe(1,),)
-                        test("01",    () => expect(new instance(A,).executeWhileIgnoringIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 1 : 0) : (isInNormalOrder ? 2 : 1),),)
-                        test("0123",  () => expect(new instance(A,).executeWhileIgnoringIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 1 : 0) : (isInNormalOrder ? 2 : 1),),)
+                        test("01",    () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 1 : 0) : (isInNormalOrder ? 2 : 1),),)
+                        test("0123",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 1 : 0) : (isInNormalOrder ? 2 : 1),),)
                     },)
                     describe("2 fields", () => {
                         test("empty", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
                         test('0',     () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0,),),).amountOfCall,).toBe(1,),)
                         test("01",    () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),).amountOfCall,).toBe(2,),)
-                        test("0123",  () => expect(new instance(AB,).executeWhileIgnoringIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 2 : 0) : (isInNormalOrder ? 3 : 1),),)
+                        test("0123",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 2 : 0) : (isInNormalOrder ? 3 : 1),),)
                     },)
                     describe("4 fields", () => {
                         test("empty", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
