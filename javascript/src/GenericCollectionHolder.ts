@@ -900,8 +900,9 @@ export class GenericCollectionHolder<const T = unknown,
         if (index == Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
 
-        if (index in this)
-            return this._array[index] as T
+        const array = this._array
+        if (index in array)
+            return array[index] as T
 
         const size = this.size
         if (index > size)
@@ -909,7 +910,7 @@ export class GenericCollectionHolder<const T = unknown,
         if (index == size)
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
         if (index >= 0)
-            return this._array[index] as T
+            return array[index] as T
 
         const indexToRetrieve = index + size
         if (indexToRetrieve < 0)
