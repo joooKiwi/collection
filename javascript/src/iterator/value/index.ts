@@ -7,5 +7,5 @@
 
 export {GenericAfterLastIteratorValue}   from "./GenericAfterLastIteratorValue"
 export {GenericBeforeFirstIteratorValue} from "./GenericBeforeFirstIteratorValue"
-export type {IteratorValue}              from "./IteratorValue"
 export {GenericIteratorValue}            from "./GenericIteratorValue"
+export type {IteratorValue}              from "./IteratorValue"
