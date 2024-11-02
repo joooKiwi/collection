@@ -18,17 +18,17 @@ import {LazyGenericCollectionHolder}     from "../../src/LazyGenericCollectionHo
 import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
 
 /** A class to test the functionality of a {@link LazyGenericCollectionHolder} */
-export class CollectionHolder_ByLazyCollection<const T, const REFERENCE extends readonly T[], >
-    extends AbstractCollectionHolderForTest<T, REFERENCE> {
+export class CollectionHolder_ByLazyCollection<const T, >
+    extends AbstractCollectionHolderForTest<T, readonly T[]> {
 
     /** The internal instance that is tested */
-    public readonly instance: LazyGenericCollectionHolderForTest<T, REFERENCE>
+    public readonly instance: LazyGenericCollectionHolderForTest<T>
 
-    public constructor(array: REFERENCE,) {
+    public constructor(array: readonly T[],) {
         super(array,)
         const $this = this
         this.instance = new class CollectionHolder_CountingGetByLazyCollection
-            extends LazyGenericCollectionHolder<T, REFERENCE> {
+            extends LazyGenericCollectionHolder<T, readonly T[]> {
 
             public override get(index: number,): T {
                 $this.amountOfCall++
@@ -387,8 +387,8 @@ export class CollectionHolder_ByLazyCollection<const T, const REFERENCE extends 
 
 }
 
-interface LazyGenericCollectionHolderForTest<T, REFERENCE extends readonly T[],>
-    extends LazyGenericCollectionHolder<T, REFERENCE> {
+interface LazyGenericCollectionHolderForTest<T,>
+    extends LazyGenericCollectionHolder<T, readonly T[]> {
 
     readonly handler: CollectionHandler<T>
 

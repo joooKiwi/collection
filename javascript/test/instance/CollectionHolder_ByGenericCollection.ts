@@ -19,22 +19,22 @@ import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest
 const NUMBER_REGEX = /\d+/
 
 /** A class to test the functionality of a {@link GenericCollectionHolder} */
-export class CollectionHolder_ByGenericCollection<const T, const REFERENCE extends readonly T[], >
-    extends AbstractCollectionHolderForTest<T, REFERENCE> {
+export class CollectionHolder_ByGenericCollection<const T, >
+    extends AbstractCollectionHolderForTest<T, readonly T[]> {
 
     /** The internal instance that is tested */
-    public readonly instance: GenericCollectionHolder<T, REFERENCE>
+    public readonly instance: GenericCollectionHolder<T, readonly T[]>
 
     /** The {@link CollectionHolder_FromExtensionFunction.array array} encapsulated in a {@link Proxy} */
-    public readonly proxiedArray: REFERENCE
+    public readonly proxiedArray: readonly T[]
     /** The handler associated to the {@link proxiedArray} */
-    public readonly proxyHandler: ProxyHandler<REFERENCE>
+    public readonly proxyHandler: ProxyHandler<readonly T[]>
 
-    public constructor(array: REFERENCE,) {
+    public constructor(array: readonly T[],) {
         super(array,)
         const $this = this
         const handler = this.proxyHandler = {
-            get(target: REFERENCE, property: StringOrSymbol, receiver: unknown,) {
+            get(target: readonly T[], property: StringOrSymbol, receiver: unknown,) {
                 if (typeof property == "string")
                     if (NUMBER_REGEX.test(property,))
                         $this.amountOfCall++
@@ -42,9 +42,9 @@ export class CollectionHolder_ByGenericCollection<const T, const REFERENCE exten
             },
         }
         this.instance = new class CollectionHolder_CountingGetByGenericCollection
-            extends GenericCollectionHolder<T, REFERENCE> {
+            extends GenericCollectionHolder<T, readonly T[]> {
 
-            protected override get _array(): REFERENCE { return $this.proxiedArray }
+            protected override get _array(): readonly T[] { return $this.proxiedArray }
 
         }(array,)
         this.proxiedArray = new Proxy(array, handler,)

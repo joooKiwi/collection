@@ -10,8 +10,8 @@ import type {MinimalistCollectionHolder} from "../../src/MinimalistCollectionHol
 import {AbstractMinimalistCollectionHolderForTest} from "./AbstractMinimalistCollectionHolderForTest"
 
 /** A test instance to exclusively test the extension methods for a {@link MinimalistCollectionHolder} */
-export class CollectionHolder_FromMinimalistExtensionFunction<const T, const REFERENCE extends readonly T[], >
-    extends AbstractMinimalistCollectionHolderForTest<T, REFERENCE> {
+export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
+    extends AbstractMinimalistCollectionHolderForTest<T, readonly T[]> {
 
     public override get amountOfCall(): never {
         throw new Error("The getter method “amountOfCall” was not expected to be called on an extension function only test instance.",)

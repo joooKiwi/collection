@@ -94,8 +94,8 @@ import {toUpperCaseStringByCollectionHolder}         from "../../src/method/toUp
 import {AbstractCollectionHolderForTest}             from "./AbstractCollectionHolderForTest"
 
 /** A test instance to exclusively test the extension methods for a {@link CollectionHolder} */
-export class CollectionHolder_FromExtensionFunction<const T, const REFERENCE extends readonly T[], >
-    extends AbstractCollectionHolderForTest<T, REFERENCE> {
+export class CollectionHolder_FromExtensionFunction<const T, >
+    extends AbstractCollectionHolderForTest<T, readonly T[]> {
 
     //#region -------------------- Test utility methods --------------------
 
