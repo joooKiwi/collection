@@ -12,79 +12,85 @@ import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, 
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                    from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
 
-import {allByMinimalistCollectionHolder}                     from "../../src/method/all"
-import {anyByMinimalistCollectionHolder}                     from "../../src/method/any"
-import {dropByMinimalistCollectionHolder}                    from "../../src/method/drop"
-import {dropLastByMinimalistCollectionHolder}                from "../../src/method/dropLast"
-import {dropLastWhileByMinimalistCollectionHolder}           from "../../src/method/dropLastWhile"
-import {dropLastWhileIndexedByMinimalistCollectionHolder}    from "../../src/method/dropLastWhileIndexed"
-import {dropWhileByMinimalistCollectionHolder}               from "../../src/method/dropWhile"
-import {dropWhileIndexedByMinimalistCollectionHolder}        from "../../src/method/dropWhileIndexed"
-import {filterByMinimalistCollectionHolder}                  from "../../src/method/filter"
-import {filterIndexedByMinimalistCollectionHolder}           from "../../src/method/filterIndexed"
-import {filterNotByMinimalistCollectionHolder}               from "../../src/method/filterNot"
-import {filterNotIndexedByMinimalistCollectionHolder}        from "../../src/method/filterNotIndexed"
-import {filterNotNullByMinimalistCollectionHolder}           from "../../src/method/filterNotNull"
-import {findFirstByMinimalistCollectionHolder}               from "../../src/method/findFirst"
-import {findFirstIndexedByMinimalistCollectionHolder}        from "../../src/method/findFirstIndexed"
-import {findFirstIndexedOrNullByMinimalistCollectionHolder}  from "../../src/method/findFirstIndexedOrNull"
-import {findFirstOrNullByMinimalistCollectionHolder}         from "../../src/method/findFirstOrNull"
-import {findLastByMinimalistCollectionHolder}                from "../../src/method/findLast"
-import {findLastIndexedByMinimalistCollectionHolder}         from "../../src/method/findLastIndexed"
-import {findLastIndexedOrNullByMinimalistCollectionHolder}   from "../../src/method/findLastIndexedOrNull"
-import {findLastOrNullByMinimalistCollectionHolder}          from "../../src/method/findLastOrNull"
-import {forEachByMinimalistCollectionHolder}                 from "../../src/method/forEach"
-import {forEachIndexedByMinimalistCollectionHolder}          from "../../src/method/forEachIndexed"
-import {getFirstByMinimalistCollectionHolder}                from "../../src/method/getFirst"
-import {getFirstOrNullByMinimalistCollectionHolder}          from "../../src/method/getFirstOrNull"
-import {getLastByMinimalistCollectionHolder}                 from "../../src/method/getLast"
-import {getLastOrNullByMinimalistCollectionHolder}           from "../../src/method/getLastOrNull"
-import {getOrElseByMinimalistCollectionHolder}               from "../../src/method/getOrElse"
-import {getOrNullByMinimalistCollectionHolder}               from "../../src/method/getOrNull"
-import {hasByMinimalistCollectionHolder}                     from "../../src/method/has"
-import {hasAllByMinimalistCollectionHolder}                  from "../../src/method/hasAll"
-import {hasDuplicateByMinimalistCollectionHolder}            from "../../src/method/hasDuplicate"
-import {hasNullByMinimalistCollectionHolder}                 from "../../src/method/hasNull"
-import {hasOneByMinimalistCollectionHolder}                  from "../../src/method/hasOne"
-import {indexOfByMinimalistCollectionHolder}                 from "../../src/method/indexOf"
-import {indexOfFirstByMinimalistCollectionHolder}            from "../../src/method/indexOfFirst"
-import {indexOfFirstIndexedByMinimalistCollectionHolder}     from "../../src/method/indexOfFirstIndexed"
-import {indexOfLastByMinimalistCollectionHolder}             from "../../src/method/indexOfLast"
-import {indexOfLastIndexedByMinimalistCollectionHolder}      from "../../src/method/indexOfLastIndexed"
-import {isEmptyByMinimalistCollectionHolder}                 from "../../src/method/isEmpty"
-import {isNotEmptyByMinimalistCollectionHolder}              from "../../src/method/isNotEmpty"
-import {joinToStringByMinimalistCollectionHolder}            from "../../src/method/joinToString"
-import {lastIndexOfByMinimalistCollectionHolder}             from "../../src/method/lastIndexOf"
-import {noneByMinimalistCollectionHolder}                    from "../../src/method/none"
-import {mapByMinimalistCollectionHolder}                     from "../../src/method/map"
-import {mapIndexedByMinimalistCollectionHolder}              from "../../src/method/mapIndexed"
-import {mapNotNullByMinimalistCollectionHolder}              from "../../src/method/mapNotNull"
-import {mapNotNullIndexedByMinimalistCollectionHolder}       from "../../src/method/mapNotNullIndexed"
-import {onEachByMinimalistCollectionHolder}                  from "../../src/method/onEach"
-import {onEachIndexedByMinimalistCollectionHolder}           from "../../src/method/onEachIndexed"
-import {requireNoNullsByMinimalistCollectionHolder}          from "../../src/method/requireNoNulls"
-import {sliceByMinimalistCollectionHolder}                   from "../../src/method/slice"
-import {takeByMinimalistCollectionHolder}                    from "../../src/method/take"
-import {takeLastByMinimalistCollectionHolder}                from "../../src/method/takeLast"
-import {takeLastWhileByMinimalistCollectionHolder}           from "../../src/method/takeLastWhile"
-import {takeLastWhileIndexedByMinimalistCollectionHolder}    from "../../src/method/takeLastWhileIndexed"
-import {takeWhileByMinimalistCollectionHolder}               from "../../src/method/takeWhile"
-import {takeWhileIndexedByMinimalistCollectionHolder}        from "../../src/method/takeWhileIndexed"
-import {toArrayByMinimalistCollectionHolder}                 from "../../src/method/toArray"
-import {toIteratorByMinimalistCollectionHolder}              from "../../src/method/toIterator"
-import {toLocaleLowerCaseStringByMinimalistCollectionHolder} from "../../src/method/toLocaleLowerCaseString"
-import {toLocaleStringByMinimalistCollectionHolder}          from "../../src/method/toLocaleString"
-import {toLocaleUpperCaseStringByMinimalistCollectionHolder} from "../../src/method/toLocaleUpperCaseString"
-import {toLowerCaseStringByMinimalistCollectionHolder}       from "../../src/method/toLowerCaseString"
-import {toMapByMinimalistCollectionHolder}                   from "../../src/method/toMap"
-import {toMutableArrayByMinimalistCollectionHolder}          from "../../src/method/toMutableArray"
-import {toMutableMapByMinimalistCollectionHolder}            from "../../src/method/toMutableMap"
-import {toMutableSetByMinimalistCollectionHolder}            from "../../src/method/toMutableSet"
-import {toReverseByMinimalistCollectionHolder}               from "../../src/method/toReverse"
-import {toSetByMinimalistCollectionHolder}                   from "../../src/method/toSet"
-import {toStringByMinimalistCollectionHolder}                from "../../src/method/toString"
-import {toUpperCaseStringByMinimalistCollectionHolder}       from "../../src/method/toUpperCaseString"
-import {AbstractCollectionHolderForTest}                     from "./AbstractCollectionHolderForTest"
+import {allByMinimalistCollectionHolder}                       from "../../src/method/all"
+import {anyByMinimalistCollectionHolder}                       from "../../src/method/any"
+import {dropByMinimalistCollectionHolder}                      from "../../src/method/drop"
+import {dropLastByMinimalistCollectionHolder}                  from "../../src/method/dropLast"
+import {dropLastWhileByMinimalistCollectionHolder}             from "../../src/method/dropLastWhile"
+import {dropLastWhileIndexedByMinimalistCollectionHolder}      from "../../src/method/dropLastWhileIndexed"
+import {dropWhileByMinimalistCollectionHolder}                 from "../../src/method/dropWhile"
+import {dropWhileIndexedByMinimalistCollectionHolder}          from "../../src/method/dropWhileIndexed"
+import {filterByMinimalistCollectionHolder}                    from "../../src/method/filter"
+import {filterIndexedByMinimalistCollectionHolder}             from "../../src/method/filterIndexed"
+import {filterNotByMinimalistCollectionHolder}                 from "../../src/method/filterNot"
+import {filterNotIndexedByMinimalistCollectionHolder}          from "../../src/method/filterNotIndexed"
+import {filterNotNullByMinimalistCollectionHolder}             from "../../src/method/filterNotNull"
+import {findFirstByMinimalistCollectionHolder}                 from "../../src/method/findFirst"
+import {findFirstIndexedByMinimalistCollectionHolder}          from "../../src/method/findFirstIndexed"
+import {findFirstIndexedOrNullByMinimalistCollectionHolder}    from "../../src/method/findFirstIndexedOrNull"
+import {findFirstOrNullByMinimalistCollectionHolder}           from "../../src/method/findFirstOrNull"
+import {findLastByMinimalistCollectionHolder}                  from "../../src/method/findLast"
+import {findLastIndexedByMinimalistCollectionHolder}           from "../../src/method/findLastIndexed"
+import {findLastIndexedOrNullByMinimalistCollectionHolder}     from "../../src/method/findLastIndexedOrNull"
+import {findLastOrNullByMinimalistCollectionHolder}            from "../../src/method/findLastOrNull"
+import {firstIndexOfByMinimalistCollectionHolder}              from "../../src/method/firstIndexOf"
+import {firstIndexOfOrNullByMinimalistCollectionHolder}        from "../../src/method/firstIndexOfOrNull"
+import {forEachByMinimalistCollectionHolder}                   from "../../src/method/forEach"
+import {forEachIndexedByMinimalistCollectionHolder}            from "../../src/method/forEachIndexed"
+import {getFirstByMinimalistCollectionHolder}                  from "../../src/method/getFirst"
+import {getFirstOrNullByMinimalistCollectionHolder}            from "../../src/method/getFirstOrNull"
+import {getLastByMinimalistCollectionHolder}                   from "../../src/method/getLast"
+import {getLastOrNullByMinimalistCollectionHolder}             from "../../src/method/getLastOrNull"
+import {getOrElseByMinimalistCollectionHolder}                 from "../../src/method/getOrElse"
+import {getOrNullByMinimalistCollectionHolder}                 from "../../src/method/getOrNull"
+import {hasByMinimalistCollectionHolder}                       from "../../src/method/has"
+import {hasAllByMinimalistCollectionHolder}                    from "../../src/method/hasAll"
+import {hasDuplicateByMinimalistCollectionHolder}              from "../../src/method/hasDuplicate"
+import {hasNullByMinimalistCollectionHolder}                   from "../../src/method/hasNull"
+import {hasOneByMinimalistCollectionHolder}                    from "../../src/method/hasOne"
+import {indexOfFirstByMinimalistCollectionHolder}              from "../../src/method/indexOfFirst"
+import {indexOfFirstIndexedByMinimalistCollectionHolder}       from "../../src/method/indexOfFirstIndexed"
+import {indexOfFirstIndexedOrNullByMinimalistCollectionHolder} from "../../src/method/indexOfFirstIndexedOrNull"
+import {indexOfFirstOrNullByMinimalistCollectionHolder}        from "../../src/method/indexOfFirstOrNull"
+import {indexOfLastByMinimalistCollectionHolder}               from "../../src/method/indexOfLast"
+import {indexOfLastIndexedByMinimalistCollectionHolder}        from "../../src/method/indexOfLastIndexed"
+import {indexOfLastIndexedOrNullByMinimalistCollectionHolder}  from "../../src/method/indexOfLastIndexedOrNull"
+import {indexOfLastOrNullByMinimalistCollectionHolder}         from "../../src/method/indexOfLastOrNull"
+import {isEmptyByMinimalistCollectionHolder}                   from "../../src/method/isEmpty"
+import {isNotEmptyByMinimalistCollectionHolder}                from "../../src/method/isNotEmpty"
+import {joinToStringByMinimalistCollectionHolder}              from "../../src/method/joinToString"
+import {lastIndexOfByMinimalistCollectionHolder}               from "../../src/method/lastIndexOf"
+import {lastIndexOfOrNullByMinimalistCollectionHolder}         from "../../src/method/lastIndexOfOrNull"
+import {noneByMinimalistCollectionHolder}                      from "../../src/method/none"
+import {mapByMinimalistCollectionHolder}                       from "../../src/method/map"
+import {mapIndexedByMinimalistCollectionHolder}                from "../../src/method/mapIndexed"
+import {mapNotNullByMinimalistCollectionHolder}                from "../../src/method/mapNotNull"
+import {mapNotNullIndexedByMinimalistCollectionHolder}         from "../../src/method/mapNotNullIndexed"
+import {onEachByMinimalistCollectionHolder}                    from "../../src/method/onEach"
+import {onEachIndexedByMinimalistCollectionHolder}             from "../../src/method/onEachIndexed"
+import {requireNoNullsByMinimalistCollectionHolder}            from "../../src/method/requireNoNulls"
+import {sliceByMinimalistCollectionHolder}                     from "../../src/method/slice"
+import {takeByMinimalistCollectionHolder}                      from "../../src/method/take"
+import {takeLastByMinimalistCollectionHolder}                  from "../../src/method/takeLast"
+import {takeLastWhileByMinimalistCollectionHolder}             from "../../src/method/takeLastWhile"
+import {takeLastWhileIndexedByMinimalistCollectionHolder}      from "../../src/method/takeLastWhileIndexed"
+import {takeWhileByMinimalistCollectionHolder}                 from "../../src/method/takeWhile"
+import {takeWhileIndexedByMinimalistCollectionHolder}          from "../../src/method/takeWhileIndexed"
+import {toArrayByMinimalistCollectionHolder}                   from "../../src/method/toArray"
+import {toIteratorByMinimalistCollectionHolder}                from "../../src/method/toIterator"
+import {toLocaleLowerCaseStringByMinimalistCollectionHolder}   from "../../src/method/toLocaleLowerCaseString"
+import {toLocaleStringByMinimalistCollectionHolder}            from "../../src/method/toLocaleString"
+import {toLocaleUpperCaseStringByMinimalistCollectionHolder}   from "../../src/method/toLocaleUpperCaseString"
+import {toLowerCaseStringByMinimalistCollectionHolder}         from "../../src/method/toLowerCaseString"
+import {toMapByMinimalistCollectionHolder}                     from "../../src/method/toMap"
+import {toMutableArrayByMinimalistCollectionHolder}            from "../../src/method/toMutableArray"
+import {toMutableMapByMinimalistCollectionHolder}              from "../../src/method/toMutableMap"
+import {toMutableSetByMinimalistCollectionHolder}              from "../../src/method/toMutableSet"
+import {toReverseByMinimalistCollectionHolder}                 from "../../src/method/toReverse"
+import {toSetByMinimalistCollectionHolder}                     from "../../src/method/toSet"
+import {toStringByMinimalistCollectionHolder}                  from "../../src/method/toString"
+import {toUpperCaseStringByMinimalistCollectionHolder}         from "../../src/method/toUpperCaseString"
+import {AbstractCollectionHolderForTest}                       from "./AbstractCollectionHolderForTest"
 
 export abstract class AbstractMinimalistCollectionHolderForTest<const T, >
     extends AbstractCollectionHolderForTest<T> {
@@ -191,31 +197,55 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
+    public override firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+        return firstIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
+    }
+
+    public override firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return firstIndexOfOrNullByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
 
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return lastIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
     }
 
+    public override lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return lastIndexOfOrNullByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
+    }
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+
+    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfFirstByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstOrNullByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfFirstIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedOrNullByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
 
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+
+    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfLastByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastOrNullByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfLastIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedOrNullByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index methods --------------------

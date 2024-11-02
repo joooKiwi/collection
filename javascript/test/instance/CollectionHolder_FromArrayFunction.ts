@@ -12,80 +12,86 @@ import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, 
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                    from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
 
-import {CollectionConstants}             from "../../src/CollectionConstants"
-import {allByArray}                      from "../../src/method/all"
-import {anyByArray}                      from "../../src/method/any"
-import {dropByArray}                     from "../../src/method/drop"
-import {dropLastByArray}                 from "../../src/method/dropLast"
-import {dropLastWhileByArray}            from "../../src/method/dropLastWhile"
-import {dropLastWhileIndexedByArray}     from "../../src/method/dropLastWhileIndexed"
-import {dropWhileByArray}                from "../../src/method/dropWhile"
-import {dropWhileIndexedByArray}         from "../../src/method/dropWhileIndexed"
-import {filterByArray}                   from "../../src/method/filter"
-import {filterIndexedByArray}            from "../../src/method/filterIndexed"
-import {filterNotByArray}                from "../../src/method/filterNot"
-import {filterNotIndexedByArray}         from "../../src/method/filterNotIndexed"
-import {filterNotNullByArray}            from "../../src/method/filterNotNull"
-import {findFirstByArray}                from "../../src/method/findFirst"
-import {findFirstIndexedByArray}         from "../../src/method/findFirstIndexed"
-import {findFirstIndexedOrNullByArray}   from "../../src/method/findFirstIndexedOrNull"
-import {findFirstOrNullByArray}          from "../../src/method/findFirstOrNull"
-import {findLastByArray}                 from "../../src/method/findLast"
-import {findLastIndexedByArray}          from "../../src/method/findLastIndexed"
-import {findLastIndexedOrNullByArray}    from "../../src/method/findLastIndexedOrNull"
-import {findLastOrNullByArray}           from "../../src/method/findLastOrNull"
-import {forEachByArray}                  from "../../src/method/forEach"
-import {forEachIndexedByArray}           from "../../src/method/forEachIndexed"
-import {getFirstByArray}                 from "../../src/method/getFirst"
-import {getFirstOrNullByArray}           from "../../src/method/getFirstOrNull"
-import {getLastByArray}                  from "../../src/method/getLast"
-import {getLastOrNullByArray}            from "../../src/method/getLastOrNull"
-import {getOrElseByArray}                from "../../src/method/getOrElse"
-import {getOrNullByArray}                from "../../src/method/getOrNull"
-import {hasByArray}                      from "../../src/method/has"
-import {hasAllByArray}                   from "../../src/method/hasAll"
-import {hasDuplicateByArray}             from "../../src/method/hasDuplicate"
-import {hasNullByArray}                  from "../../src/method/hasNull"
-import {hasOneByArray}                   from "../../src/method/hasOne"
-import {indexOfByArray}                  from "../../src/method/indexOf"
-import {indexOfFirstByArray}             from "../../src/method/indexOfFirst"
-import {indexOfFirstIndexedByArray}      from "../../src/method/indexOfFirstIndexed"
-import {indexOfLastByArray}              from "../../src/method/indexOfLast"
-import {indexOfLastIndexedByArray}       from "../../src/method/indexOfLastIndexed"
-import {isEmptyByArray}                  from "../../src/method/isEmpty"
-import {isNotEmptyByArray}               from "../../src/method/isNotEmpty"
-import {joinToStringByArray}             from "../../src/method/joinToString"
-import {lastIndexOfByArray}              from "../../src/method/lastIndexOf"
-import {noneByArray}                     from "../../src/method/none"
-import {mapByArray}                      from "../../src/method/map"
-import {mapIndexedByArray}               from "../../src/method/mapIndexed"
-import {mapNotNullByArray}               from "../../src/method/mapNotNull"
-import {mapNotNullIndexedByArray}        from "../../src/method/mapNotNullIndexed"
-import {onEachByArray}                   from "../../src/method/onEach"
-import {onEachIndexedByArray}            from "../../src/method/onEachIndexed"
-import {requireNoNullsByArray}           from "../../src/method/requireNoNulls"
-import {sliceByArray}                    from "../../src/method/slice"
-import {takeByArray}                     from "../../src/method/take"
-import {takeLastByArray}                 from "../../src/method/takeLast"
-import {takeLastWhileByArray}            from "../../src/method/takeLastWhile"
-import {takeLastWhileIndexedByArray}     from "../../src/method/takeLastWhileIndexed"
-import {takeWhileByArray}                from "../../src/method/takeWhile"
-import {takeWhileIndexedByArray}         from "../../src/method/takeWhileIndexed"
-import {toArrayByArray}                  from "../../src/method/toArray"
-import {toIteratorByArray}               from "../../src/method/toIterator"
-import {toLocaleLowerCaseStringByArray}  from "../../src/method/toLocaleLowerCaseString"
-import {toLocaleStringByArray}           from "../../src/method/toLocaleString"
-import {toLocaleUpperCaseStringByArray}  from "../../src/method/toLocaleUpperCaseString"
-import {toLowerCaseStringByArray}        from "../../src/method/toLowerCaseString"
-import {toMapByArray}                    from "../../src/method/toMap"
-import {toMutableArrayByArray}           from "../../src/method/toMutableArray"
-import {toMutableMapByArray}             from "../../src/method/toMutableMap"
-import {toMutableSetByArray}             from "../../src/method/toMutableSet"
-import {toReverseByArray}                from "../../src/method/toReverse"
-import {toSetByArray}                    from "../../src/method/toSet"
-import {toStringByArray}                 from "../../src/method/toString"
-import {toUpperCaseStringByArray}        from "../../src/method/toUpperCaseString"
-import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
+import {CollectionConstants}              from "../../src/CollectionConstants"
+import {allByArray}                       from "../../src/method/all"
+import {anyByArray}                       from "../../src/method/any"
+import {dropByArray}                      from "../../src/method/drop"
+import {dropLastByArray}                  from "../../src/method/dropLast"
+import {dropLastWhileByArray}             from "../../src/method/dropLastWhile"
+import {dropLastWhileIndexedByArray}      from "../../src/method/dropLastWhileIndexed"
+import {dropWhileByArray}                 from "../../src/method/dropWhile"
+import {dropWhileIndexedByArray}          from "../../src/method/dropWhileIndexed"
+import {filterByArray}                    from "../../src/method/filter"
+import {filterIndexedByArray}             from "../../src/method/filterIndexed"
+import {filterNotByArray}                 from "../../src/method/filterNot"
+import {filterNotIndexedByArray}          from "../../src/method/filterNotIndexed"
+import {filterNotNullByArray}             from "../../src/method/filterNotNull"
+import {findFirstByArray}                 from "../../src/method/findFirst"
+import {findFirstIndexedByArray}          from "../../src/method/findFirstIndexed"
+import {findFirstIndexedOrNullByArray}    from "../../src/method/findFirstIndexedOrNull"
+import {findFirstOrNullByArray}           from "../../src/method/findFirstOrNull"
+import {findLastByArray}                  from "../../src/method/findLast"
+import {findLastIndexedByArray}           from "../../src/method/findLastIndexed"
+import {findLastIndexedOrNullByArray}     from "../../src/method/findLastIndexedOrNull"
+import {findLastOrNullByArray}            from "../../src/method/findLastOrNull"
+import {firstIndexOfByArray}              from "../../src/method/firstIndexOf"
+import {firstIndexOfOrNullByArray}        from "../../src/method/firstIndexOfOrNull"
+import {forEachByArray}                   from "../../src/method/forEach"
+import {forEachIndexedByArray}            from "../../src/method/forEachIndexed"
+import {getFirstByArray}                  from "../../src/method/getFirst"
+import {getFirstOrNullByArray}            from "../../src/method/getFirstOrNull"
+import {getLastByArray}                   from "../../src/method/getLast"
+import {getLastOrNullByArray}             from "../../src/method/getLastOrNull"
+import {getOrElseByArray}                 from "../../src/method/getOrElse"
+import {getOrNullByArray}                 from "../../src/method/getOrNull"
+import {hasByArray}                       from "../../src/method/has"
+import {hasAllByArray}                    from "../../src/method/hasAll"
+import {hasDuplicateByArray}              from "../../src/method/hasDuplicate"
+import {hasNullByArray}                   from "../../src/method/hasNull"
+import {hasOneByArray}                    from "../../src/method/hasOne"
+import {indexOfFirstByArray}              from "../../src/method/indexOfFirst"
+import {indexOfFirstIndexedByArray}       from "../../src/method/indexOfFirstIndexed"
+import {indexOfFirstIndexedOrNullByArray} from "../../src/method/indexOfFirstIndexedOrNull"
+import {indexOfFirstOrNullByArray}        from "../../src/method/indexOfFirstOrNull"
+import {indexOfLastByArray}               from "../../src/method/indexOfLast"
+import {indexOfLastIndexedByArray}        from "../../src/method/indexOfLastIndexed"
+import {indexOfLastIndexedOrNullByArray}  from "../../src/method/indexOfLastIndexedOrNull"
+import {indexOfLastOrNullByArray}         from "../../src/method/indexOfLastOrNull"
+import {isEmptyByArray}                   from "../../src/method/isEmpty"
+import {isNotEmptyByArray}                from "../../src/method/isNotEmpty"
+import {joinToStringByArray}              from "../../src/method/joinToString"
+import {lastIndexOfByArray}               from "../../src/method/lastIndexOf"
+import {lastIndexOfOrNullByArray}         from "../../src/method/lastIndexOfOrNull"
+import {noneByArray}                      from "../../src/method/none"
+import {mapByArray}                       from "../../src/method/map"
+import {mapIndexedByArray}                from "../../src/method/mapIndexed"
+import {mapNotNullByArray}                from "../../src/method/mapNotNull"
+import {mapNotNullIndexedByArray}         from "../../src/method/mapNotNullIndexed"
+import {onEachByArray}                    from "../../src/method/onEach"
+import {onEachIndexedByArray}             from "../../src/method/onEachIndexed"
+import {requireNoNullsByArray}            from "../../src/method/requireNoNulls"
+import {sliceByArray}                     from "../../src/method/slice"
+import {takeByArray}                      from "../../src/method/take"
+import {takeLastByArray}                  from "../../src/method/takeLast"
+import {takeLastWhileByArray}             from "../../src/method/takeLastWhile"
+import {takeLastWhileIndexedByArray}      from "../../src/method/takeLastWhileIndexed"
+import {takeWhileByArray}                 from "../../src/method/takeWhile"
+import {takeWhileIndexedByArray}          from "../../src/method/takeWhileIndexed"
+import {toArrayByArray}                   from "../../src/method/toArray"
+import {toIteratorByArray}                from "../../src/method/toIterator"
+import {toLocaleLowerCaseStringByArray}   from "../../src/method/toLocaleLowerCaseString"
+import {toLocaleStringByArray}            from "../../src/method/toLocaleString"
+import {toLocaleUpperCaseStringByArray}   from "../../src/method/toLocaleUpperCaseString"
+import {toLowerCaseStringByArray}         from "../../src/method/toLowerCaseString"
+import {toMapByArray}                     from "../../src/method/toMap"
+import {toMutableArrayByArray}            from "../../src/method/toMutableArray"
+import {toMutableMapByArray}              from "../../src/method/toMutableMap"
+import {toMutableSetByArray}              from "../../src/method/toMutableSet"
+import {toReverseByArray}                 from "../../src/method/toReverse"
+import {toSetByArray}                     from "../../src/method/toSet"
+import {toStringByArray}                  from "../../src/method/toString"
+import {toUpperCaseStringByArray}         from "../../src/method/toUpperCaseString"
+import {AbstractCollectionHolderForTest}  from "./AbstractCollectionHolderForTest"
 
 /** A test instance to test exclusively the extension methods for an {@link ReadonlyArray Array} */
 export class CollectionHolder_FromArrayFunction<const T, >
@@ -213,31 +219,55 @@ export class CollectionHolder_FromArrayFunction<const T, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfByArray(this.array, element, fromIndex, toIndex,)
+    public override firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+        return firstIndexOfByArray(this.array, element, fromIndex, toIndex,)
+    }
+
+    public override firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return firstIndexOfOrNullByArray(this.array, element, fromIndex, toIndex,)
     }
 
 
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return lastIndexOfByArray(this.array, element, fromIndex, toIndex,)
     }
 
+    public override lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return lastIndexOfOrNullByArray(this.array, element, fromIndex, toIndex,)
+    }
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+
+    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfFirstByArray(this.array, predicate, fromIndex, toIndex,)
     }
 
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstOrNullByArray(this.array, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfFirstIndexedByArray(this.array, predicate, fromIndex, toIndex,)
     }
 
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedOrNullByArray(this.array, predicate, fromIndex, toIndex,)
+    }
 
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+
+    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfLastByArray(this.array, predicate, fromIndex, toIndex,)
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastOrNullByArray(this.array, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfLastIndexedByArray(this.array, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedOrNullByArray(this.array, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index methods --------------------

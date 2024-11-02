@@ -263,13 +263,41 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public abstract indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    //#region -------------------- First index of --------------------
+
+    public abstract firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+
+    public indexOf(..._: readonly unknown[]): never
+    public indexOf() {
+        throw new Error("The method “indexOf” was not expected to be called.",)
+    }
 
 
-    public abstract lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public abstract firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    public indexOfOrNull(..._: readonly unknown[]): never
+    public indexOfOrNull(): never{
+        throw new Error("The method “indexOf” was not expected to be called.",)
+
+    }
+
+    //#endregion -------------------- First index of --------------------
+    //#region -------------------- Last index of --------------------
+
+    public abstract lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
 
-    public abstract indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public abstract lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    //#endregion -------------------- Last index of --------------------
+    //#region -------------------- Index of first --------------------
+
+    public abstract indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+
+    public findFirstIndex(..._: readonly unknown[]): never
+    public findFirstIndex() {
+        throw new Error("The method “findFirstIndex” was not expected to be called.",)
+    }
 
     public findIndex(..._: readonly unknown[]): never
     public findIndex() {
@@ -277,15 +305,48 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     }
 
 
-    public abstract indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public abstract indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    public findFirstIndexOrNull(..._: readonly unknown[]): never
+    public findFirstIndexOrNull() {
+        throw new Error("The method “findFirstIndexOrNull” was not expected to be called.",)
+    }
+
+    public findIndexOrNull(..._: readonly unknown[]): never
+    public findIndexOrNull() {
+        throw new Error("The method “findIndexOrNull” was not expected to be called.",)
+    }
+
+
+    public abstract indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     public findIndexIndexed(..._: readonly unknown[]): never
     public findIndexIndexed() {
         throw new Error("The method “findIndexIndexed” was not expected to be called.",)
     }
 
+    public findFirstIndexIndexed(..._: readonly unknown[]): never
+    public findFirstIndexIndexed() {
+        throw new Error("The method “findFirstIndexIndexed” was not expected to be called.",)
+    }
 
-    public abstract indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    public abstract indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    public findIndexIndexedOrNull(..._: readonly unknown[]): never
+    public findIndexIndexedOrNull() {
+        throw new Error("The method “findIndexIndexedOrNull” was not expected to be called.",)
+    }
+
+    public findFirstIndexIndexedOrNull(..._: readonly unknown[]): never
+    public findFirstIndexIndexedOrNull() {
+        throw new Error("The method “findFirstIndexIndexedOrNull” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Index of first --------------------
+    //#region -------------------- Index of last --------------------
+
+    public abstract indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     public findLastIndex(..._: readonly unknown[]): never
     public findLastIndex() {
@@ -293,12 +354,30 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     }
 
 
-    public abstract indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public abstract indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    public findLastIndexOrNull(..._: readonly unknown[]): never
+    public findLastIndexOrNull() {
+        throw new Error("The method “findLastIndexOrNull” was not expected to be called.",)
+    }
+
+
+    public abstract indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     public findLastIndexIndexed(..._: readonly unknown[]): never
     public findLastIndexIndexed() {
         throw new Error("The method “findLastIndexIndexed” was not expected to be called.",)
     }
+
+
+    public abstract indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+
+    public findLastIndexIndexedOrNull(..._: readonly unknown[]): never
+    public findLastIndexIndexedOrNull() {
+        throw new Error("The method “findLastIndexIndexedOrNull” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Index of last --------------------
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------

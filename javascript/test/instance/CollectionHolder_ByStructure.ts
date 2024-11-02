@@ -180,21 +180,37 @@ export class CollectionHolder_ByStructure<const T, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOf(element, fromIndex, toIndex,) }
+    public firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.firstIndexOf(element, fromIndex, toIndex,) }
+    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.indexOf(element, fromIndex, toIndex,) }
+    public firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.firstIndexOfOrNull(element, fromIndex, toIndex,) }
+    public indexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfOrNull(element, fromIndex, toIndex,) }
 
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.lastIndexOf(element, fromIndex, toIndex,) }
+    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.lastIndexOf(element, fromIndex, toIndex,) }
+    public lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.lastIndexOfOrNull(element, fromIndex, toIndex,) }
 
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfFirst(predicate, fromIndex, toIndex,) }
-    public findIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.findIndex(predicate, fromIndex, toIndex,) }
+    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.indexOfFirst(predicate, fromIndex, toIndex,) }
+    public findFirstIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.findFirstIndex(predicate, fromIndex, toIndex,) }
+    public findIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.findIndex(predicate, fromIndex, toIndex,) }
+    public indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfFirstOrNull(predicate, fromIndex, toIndex,) }
+    public findFirstIndexOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.findFirstIndexOrNull(predicate, fromIndex, toIndex,) }
+    public findIndexOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.findIndexOrNull(predicate, fromIndex, toIndex,) }
 
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfFirstIndexed(predicate, fromIndex, toIndex,) }
-    public findIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.findIndexIndexed(predicate, fromIndex, toIndex,) }
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.indexOfFirstIndexed(predicate, fromIndex, toIndex,) }
+    public findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.findFirstIndexIndexed(predicate, fromIndex, toIndex,) }
+    public findIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.findIndexIndexed(predicate, fromIndex, toIndex,) }
+    public indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfFirstIndexedOrNull(predicate, fromIndex, toIndex,) }
+    public findFirstIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.findFirstIndexIndexedOrNull(predicate, fromIndex, toIndex,) }
+    public findIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.findIndexIndexedOrNull(predicate, fromIndex, toIndex,) }
 
-    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfLast(predicate, fromIndex, toIndex,) }
-    public findLastIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.findLastIndex(predicate, fromIndex, toIndex,) }
+    public indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.indexOfLast(predicate, fromIndex, toIndex,) }
+    public findLastIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.findLastIndex(predicate, fromIndex, toIndex,) }
+    public indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfLastOrNull(predicate, fromIndex, toIndex,) }
+    public findLastIndexOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.findLastIndexOrNull(predicate, fromIndex, toIndex,) }
 
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfLastIndexed(predicate, fromIndex, toIndex,) }
-    public findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.findLastIndexIndexed(predicate, fromIndex, toIndex,) }
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.indexOfLastIndexed(predicate, fromIndex, toIndex,) }
+    public findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.reference.findLastIndexIndexed(predicate, fromIndex, toIndex,) }
+    public indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.indexOfLastIndexedOrNull(predicate, fromIndex, toIndex,) }
+    public findLastIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.reference.findLastIndexIndexedOrNull(predicate, fromIndex, toIndex,) }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------

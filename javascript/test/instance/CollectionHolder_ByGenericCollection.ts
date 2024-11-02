@@ -119,15 +119,21 @@ export class CollectionHolder_ByGenericCollection<const T, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOf(element, fromIndex, toIndex,) }
+    public override firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.firstIndexOf(element, fromIndex, toIndex,) }
+    public override firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.firstIndexOfOrNull(element, fromIndex, toIndex,) }
 
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.lastIndexOf(element, fromIndex, toIndex,) }
+    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.lastIndexOf(element, fromIndex, toIndex,) }
+    public override lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.lastIndexOfOrNull(element, fromIndex, toIndex,) }
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfFirst(predicate, fromIndex, toIndex,) }
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfFirstIndexed(predicate, fromIndex, toIndex,) }
+    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.indexOfFirst(predicate, fromIndex, toIndex,) }
+    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfFirstOrNull(predicate, fromIndex, toIndex,) }
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.indexOfFirstIndexed(predicate, fromIndex, toIndex,) }
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfFirstIndexedOrNull(predicate, fromIndex, toIndex,) }
 
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfLast(predicate, fromIndex, toIndex,) }
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfLastIndexed(predicate, fromIndex, toIndex,) }
+    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.indexOfLast(predicate, fromIndex, toIndex,) }
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfLastOrNull(predicate, fromIndex, toIndex,) }
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.indexOfLastIndexed(predicate, fromIndex, toIndex,) }
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfLastIndexedOrNull(predicate, fromIndex, toIndex,) }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
