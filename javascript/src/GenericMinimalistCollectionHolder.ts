@@ -660,8 +660,6 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
 
         const indexToRetrieve = size + index
         if (indexToRetrieve < 0)
-        if (indexToRetrieve > size)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,)
             throw new IndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
         return array[indexToRetrieve] as T
     }

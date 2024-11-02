@@ -41,7 +41,7 @@ describe("CollectionHolderTest (drop)", () => {
                         test("+∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.drop(Infinity,),).amountOfCall,).toBe(0,),)
                     },)
                     describe("1 field", () => {
-                        test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.drop(NaN,),),).amountOfCall,).toBe(1,),)
+                        test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.drop(NaN,),),).amountOfCall,).toBe(1,),)
                         test("-∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.drop(-Infinity,),).amountOfCall,).toBe(1,),)
                         test("-2",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.drop(-1,),).amountOfCall,).toBe(1,),)
                         test("-1",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.drop(-1,),).amountOfCall,).toBe(1,),)
@@ -51,7 +51,7 @@ describe("CollectionHolderTest (drop)", () => {
                         test("+∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.drop(Infinity,),).amountOfCall,).toBe(0,),)
                     },)
                     describe("2 fields", () => {
-                        test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.drop(NaN,),),).amountOfCall,).toBe(2,),)
+                        test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.drop(NaN,),),).amountOfCall,).toBe(2,),)
                         test("-∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.drop(-Infinity,),).amountOfCall,).toBe(2,),)
                         test("-3",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.drop(-3,),).amountOfCall,).toBe(2,),)
                         test("-2",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.drop(-2,),).amountOfCall,).toBe(2,),)
@@ -63,7 +63,7 @@ describe("CollectionHolderTest (drop)", () => {
                         test("+∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.drop(Infinity,),).amountOfCall,).toBe(0,),)
                     },)
                     describe("4 fields", () => {
-                        test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.drop(NaN,),),).amountOfCall,).toBe(4,),)
+                        test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.drop(NaN,),),).amountOfCall,).toBe(4,),)
                         test("-∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(-Infinity,),).amountOfCall,).toBe(4,),)
                         test("-5",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(-5,),).amountOfCall,).toBe(4,),)
                         test("-4",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.drop(-4,),).amountOfCall,).toBe(4,),)
@@ -106,7 +106,7 @@ describe("CollectionHolderTest (drop)", () => {
                         test("+∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.dropLast(Infinity,),).amountOfCall,).toBe(0,),)
                     },)
                     describe("1 field", () => {
-                        test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.dropLast(NaN,),),).amountOfCall,).toBe(1,),)
+                        test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.dropLast(NaN,),),).amountOfCall,).toBe(1,),)
                         test("-∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.dropLast(-Infinity,),).amountOfCall,).toBe(0,),)
                         test("-2",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.dropLast(-2,),).amountOfCall,).toBe(0,),)
                         test("-1",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.dropLast(-1,),).amountOfCall,).toBe(0,),)
@@ -116,7 +116,7 @@ describe("CollectionHolderTest (drop)", () => {
                         test("+∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.dropLast(Infinity,),).amountOfCall,).toBe(1,),)
                     },)
                     describe("2 fields", () => {
-                        test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.dropLast(NaN,),),).amountOfCall,).toBe(2,),)
+                        test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.dropLast(NaN,),),).amountOfCall,).toBe(2,),)
                         test("-∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(-Infinity,),).amountOfCall,).toBe(0,),)
                         test("-3",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(-3,),).amountOfCall,).toBe(0,),)
                         test("-2",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(-2,),).amountOfCall,).toBe(0,),)
@@ -128,7 +128,7 @@ describe("CollectionHolderTest (drop)", () => {
                         test("+∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.dropLast(Infinity,),).amountOfCall,).toBe(2,),)
                     },)
                     describe("4 fields", () => {
-                        test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.dropLast(NaN,),),).amountOfCall,).toBe(4,),)
+                        test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.dropLast(NaN,),),).amountOfCall,).toBe(4,),)
                         test("-∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(-Infinity,),).amountOfCall,).toBe(0,),)
                         test("-5",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(-5,),).amountOfCall,).toBe(0,),)
                         test("-4",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.dropLast(-4,),).amountOfCall,).toBe(0,),)

@@ -913,8 +913,8 @@ export class GenericCollectionHolder<const T = unknown,
 
         const indexToRetrieve = index + size
         if (indexToRetrieve < 0)
-        return this._array[indexToRetrieve] as T
             throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” (${indexToRetrieve} after calculation) is under 0.`, index,)
+        return array[indexToRetrieve] as T
     }
 
     public override getFirst(): T {
