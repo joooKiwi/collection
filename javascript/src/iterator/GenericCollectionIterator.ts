@@ -7,10 +7,10 @@
 
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionIterator}         from "./CollectionIterator"
+import type {IteratorValue}              from "./value/IteratorValue"
 
 import {GenericIteratorValue}       from "./value/GenericIteratorValue"
 import {AbstractCollectionIterator} from "./AbstractCollectionIterator"
-import {IteratorValue}              from "./value"
 
 export class GenericCollectionIterator<const T = unknown,
     const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >

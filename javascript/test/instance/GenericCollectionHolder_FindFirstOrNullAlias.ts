@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 import type {NullOr}                                     from "@joookiwi/type"
-import type {BooleanCallback, RestrainedBooleanCallback} from "../../src/CollectionHolder.types"
+import type {BooleanCallback, RestrainedBooleanCallback} from "../../src/type/callback"
 import type {StraightCollectionHolderForTest}            from "./StraightCollectionHolderForTest"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"

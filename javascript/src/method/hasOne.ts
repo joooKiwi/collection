@@ -8,9 +8,9 @@
 import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
-import type {PossibleIterableArraySetOrCollectionHolder} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 import type {CollectionIterator}                         from "../iterator/CollectionIterator"
+import type {PossibleIterableArraySetOrCollectionHolder} from "../type/possibleInstance"
 
 import {hasOneWithArray, hasOneWithArrayByArray, hasOneWithArrayByCollectionHolder, hasOneWithArrayByMinimalistCollectionHolder}                                                                                     from "./hasOne.withArray"
 import {hasOneWithCollectionHolder, hasOneWithCollectionHolderByArray, hasOneWithCollectionHolderByCollectionHolder, hasOneWithCollectionHolderByMinimalistCollectionHolder}                                         from "./hasOne.withCollectionHolder"

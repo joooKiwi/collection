@@ -8,8 +8,8 @@
 import type {Nullable, NullableNumber, NullOrNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {BooleanCallback}            from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
+import type {BooleanCallback}            from "../type/callback"
 
 import {__endingIndexOrNull, __startingIndexOrNull} from "./_indexes utility"
 import {isArray}                                    from "./isArray"

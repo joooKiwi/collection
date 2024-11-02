@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {TypedArray} from "../CollectionHolder.types"
+import type {TypedArray} from "../type/TypedArray"
 
 /**
  * Tell that the value is a {@link TypedArray}

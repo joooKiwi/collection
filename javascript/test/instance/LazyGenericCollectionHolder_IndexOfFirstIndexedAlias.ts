@@ -7,7 +7,7 @@
 
 import type {NullableNumber} from "@joookiwi/type"
 
-import type {ReverseBooleanCallback}          from "../../src/CollectionHolder.types"
+import type {ReverseBooleanCallback}          from "../../src/type/callback"
 import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderForTest"
 
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"

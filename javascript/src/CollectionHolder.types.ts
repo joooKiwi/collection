@@ -14,29 +14,21 @@ import type {MinimalistCollectionHolder}        from "./MinimalistCollectionHold
 import type {IterableWithPossibleSize}          from "./iterable/IterableWithPossibleSize"
 import type {CollectionIterator}                from "./iterator/CollectionIterator"
 
-/** A type-alias of {@link CollectionHolder}[{@link Symbol.toStringTag}] */
+/**
+ * A type-alias of {@link CollectionHolder}[{@link Symbol.toStringTag}]
+ *
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
+ */
 export type CollectionHolderName = typeof CollectionConstants["COLLECTION_HOLDER_TO_STRING_TAG"]
 
 /**
  * The possible {@link Object.constructor constructor} types that are inherited
  * from a {@link MinimalistCollectionHolder} or a {@link CollectionHolder}
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type PossibleCollectionHolderConstructor = | typeof GenericMinimalistCollectionHolder
                                                   | typeof GenericCollectionHolder
                                                   | typeof LazyGenericCollectionHolder
-
-/**
- * All the possible typed-{@link ReadonlyArray array} defined in JavaScript
- *
- * @see https://developer.mozilla.org/docs/Web/JavaScript/Guide/Typed_arrays
- */
-export type TypedArray = | Int8Array | Uint8Array | Uint8ClampedArray
-                         | Int16Array | Uint16Array
-                         | Int32Array | Uint32Array
-                         | BigInt64Array | BigUint64Array
-                         | Float32Array
-                         | Float64Array
-
 
 /**
  * A type-alias for the possible type of {@link Iterable} with the size field
@@ -48,6 +40,7 @@ export type TypedArray = | Int8Array | Uint8Array | Uint8ClampedArray
  * @see CollectionHolder
  * @see MinimalistCollectionHolder
  * @see CollectionIterator
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type PossibleIterableOrCollection<T, > = | MinimalistCollectionHolder<T> | IterableWithPossibleSize<T>
 
@@ -65,11 +58,11 @@ export type PossibleIterableOrCollection<T, > = | MinimalistCollectionHolder<T> 
  * @see CollectionIterator
  * @see Iterable
  * @see IterableWithPossibleSize
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type PossibleIterableArraySetOrCollectionHolder<T, > = | readonly T[] | ReadonlySet<T>
                                                               | MinimalistCollectionHolder<T> | CollectionHolder<T>
                                                               | CollectionIterator<T> | Iterable<T> | IterableWithPossibleSize<T>
-
 
 /**
  * A callback that receive both a value and an index and return a {@link Boolean}
@@ -84,6 +77,7 @@ export type PossibleIterableArraySetOrCollectionHolder<T, > = | readonly T[] | R
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type BooleanCallback<in T, > = (value: T, index: number,) => boolean
 /**
@@ -99,6 +93,7 @@ export type BooleanCallback<in T, > = (value: T, index: number,) => boolean
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type ReverseBooleanCallback<in T, > = (index: number, value: T,) => boolean
 /**
@@ -115,6 +110,7 @@ export type ReverseBooleanCallback<in T, > = (index: number, value: T,) => boole
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type RestrainedBooleanCallback<in T, out S extends T, > = (value: T, index: number,) => value is S
 /**
@@ -131,6 +127,7 @@ export type RestrainedBooleanCallback<in T, out S extends T, > = (value: T, inde
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T1, T2, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, TResult&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type ReverseRestrainedBooleanCallback<in T, out S extends T, > = (index: number, value: T,) => value is S
 
@@ -147,6 +144,7 @@ export type ReverseRestrainedBooleanCallback<in T, out S extends T, > = (index: 
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;R&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, R&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;R&gt;
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type IndexWithReturnCallback<out R, > = (index: number,) => R
 
@@ -165,6 +163,7 @@ export type IndexWithReturnCallback<out R, > = (index: number,) => R
  * @see https://learn.microsoft.com/dotnet/api/system.action-2 C# Action&lt;T, U&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.action-1 C# Action&lt;T&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.action C# Action
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type ValueIndexCallback<in T, > = (value: T, index: number,) => void
 /**
@@ -182,6 +181,7 @@ export type ValueIndexCallback<in T, > = (value: T, index: number,) => void
  * @see https://learn.microsoft.com/dotnet/api/system.action-2 C# Action&lt;T, U&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.action-1 C# Action&lt;T&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.action C# Action
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type IndexValueCallback<in T, > = (index: number, value: T,) => void
 
@@ -200,6 +200,7 @@ export type IndexValueCallback<in T, > = (index: number, value: T,) => void
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T, U, R&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, R&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;TResult&gt;
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type ValueIndexWithReturnCallback<in T, out R, > = (value: T, index: number,) => R
 /**
@@ -217,6 +218,7 @@ export type ValueIndexWithReturnCallback<in T, out R, > = (value: T, index: numb
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T, U, R&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, R&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;R&gt;
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type IndexValueWithReturnCallback<in T, out R, > = (index: number, value: T,) => R
 
@@ -230,5 +232,6 @@ export type IndexValueWithReturnCallback<in T, out R, > = (index: number, value:
  * @see https://learn.microsoft.com/dotnet/api/system.func-3 C# Func&lt;T, U, R&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-2 C# Func&lt;T, R&gt;
  * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;R&gt;
+ * @deprecated Use the import("@joookiwi/collection/type") instead of import("@joookiwi/collection/CollectionHolder.types"). This will be removed in v1.12
  */
 export type StringCallback<in T, > = (value: T, index: number,) => string

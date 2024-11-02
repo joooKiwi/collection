@@ -76,6 +76,7 @@
       "import":  "./dist/ecmascript module/method/index.js",
       "require": "./dist/common javascript/method/index.js"
     },
+    "./type": { "types": "./dist/types/method/index.d.ts" },
 
     "./*": {
       "types":   "./dist/types/*.d.ts",
@@ -116,7 +117,8 @@
       "types":   "./dist/types/method/*.d.ts",
       "import":  "./dist/ecmascript module/method/*.js",
       "require": "./dist/common javascript/method/*.js"
-    }
+    },
+    "./type/*": { "types": "./dist/types/method/*.d.ts" }
   },
 
   "files": [

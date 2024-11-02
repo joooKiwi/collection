@@ -7,9 +7,10 @@
 
 import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
-import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                   from "../MinimalistCollectionHolder"
-import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
+import type {MinimalistCollectionHolder}                                                           from "../MinimalistCollectionHolder"
+import type {IndexValueCallback, ValueIndexCallback}                                               from "../type/callback"
+import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
+import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
 /**
  * An {@link Iterator} with a known {@link MinimalistCollectionHolder} {@link MinimalistCollectionHolder.size size}

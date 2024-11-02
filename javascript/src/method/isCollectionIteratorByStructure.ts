@@ -5,8 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {KeyOfCollectionIterator} from "../CollectionConstants.types"
 import type {CollectionIterator}      from "../iterator/CollectionIterator"
+import type {KeyOfCollectionIterator} from "../type/keyOf"
 
 import {CollectionConstants} from "../CollectionConstants"
 

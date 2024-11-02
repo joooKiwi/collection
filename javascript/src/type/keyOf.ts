@@ -5,10 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder}           from "./CollectionHolder"
-import type {TypedArray}                 from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder} from "./MinimalistCollectionHolder"
-import type {CollectionIterator}         from "./iterator/CollectionIterator"
+import type {CollectionHolder}           from "../CollectionHolder"
+import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
+import type {CollectionIterator}         from "../iterator/CollectionIterator"
+import type {TypedArray}                 from "./TypedArray"
 
 //#region -------------------- Array key --------------------
 
@@ -36,9 +36,8 @@ export type KeyOfMutableSet = keyof Set<unknown>
 //#endregion -------------------- Set key --------------------
 //#region -------------------- Weak set key --------------------
 
-type WeakSetSymbolNames = "toStringTag"
 /** The keys applicable to a {@link WeakSet} */
-export type KeyOfWeakSet = | "has" | typeof Symbol[WeakSetSymbolNames]
+export type KeyOfWeakSet = | "has" | typeof Symbol["toStringTag"]
 /** The keys applicable to a {@link WeakSet MutableWeakSet} */
 export type KeyOfMutableWeakSet = keyof WeakSet<WeakKey>
 

@@ -6,12 +6,12 @@
  ******************************************************************************/
 
 import type {CollectionHolder}                                                         from "./CollectionHolder"
-import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./CollectionHolder.types"
 import type {IterableWithCount}                                                        from "./iterable/IterableWithCount"
 import type {IterableWithLength}                                                       from "./iterable/IterableWithLength"
 import type {IterableWithPossibleSize}                                                 from "./iterable/IterableWithPossibleSize"
 import type {IterableWithSize}                                                         from "./iterable/IterableWithSize"
 import type {CollectionIterator}                                                       from "./iterator/CollectionIterator"
+import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./type/possibleInstance"
 
 import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
 import {CollectionConstants}                       from "./CollectionConstants"

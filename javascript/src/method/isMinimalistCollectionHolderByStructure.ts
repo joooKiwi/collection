@@ -5,8 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {KeyOfMinimalistCollectionHolder} from "../CollectionConstants.types"
 import type {MinimalistCollectionHolder}      from "../MinimalistCollectionHolder"
+import type {KeyOfMinimalistCollectionHolder} from "../type/keyOf"
 
 import {CollectionConstants} from "../CollectionConstants"
 

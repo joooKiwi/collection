@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../../src/CollectionHolder.types"
+import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../../src/type/callback"
 import type {StraightCollectionHolderForTest}                          from "./StraightCollectionHolderForTest"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"

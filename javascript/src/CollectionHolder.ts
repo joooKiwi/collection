@@ -7,9 +7,11 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
 
-import type {BooleanCallback, CollectionHolderName, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                          from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                                                  from "./iterator/CollectionIterator"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
+import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
+import type {PossibleIterableArraySetOrCollectionHolder}                                                                                                                                                                                                        from "./type/possibleInstance"
+import type {CollectionHolderName}                                                                                                                                                                                                                              from "./type/toStringTag"
 
 /**
  * A collection to hold data.

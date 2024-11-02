@@ -10,9 +10,9 @@ import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@
 import {lazyOf}                                                          from "@joookiwi/lazy"
 
 import type {CollectionHolder}                                                                                                                                                                              from "./CollectionHolder"
-import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableSet, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakSet} from "./CollectionConstants.types"
 import type {MinimalistCollectionHolder}                                                                                                                                                                    from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                            from "./iterator/CollectionIterator"
+import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableSet, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakSet} from "./type/keyOf"
 
 import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"

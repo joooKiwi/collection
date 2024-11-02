@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {KeyOfArray} from "../CollectionConstants.types"
+import type {KeyOfArray} from "../type/keyOf"
 
 import {CollectionConstants} from "../CollectionConstants"
 

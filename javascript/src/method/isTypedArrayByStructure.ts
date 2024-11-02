@@ -5,8 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {KeyOfTypedArray} from "../CollectionConstants.types"
-import type {TypedArray}      from "../CollectionHolder.types"
+import type {KeyOfTypedArray} from "../type/keyOf"
+import type {TypedArray}      from "../type/TypedArray"
 
 import {CollectionConstants} from "../CollectionConstants"
 

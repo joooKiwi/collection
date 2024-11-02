@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {BooleanCallback, RestrainedBooleanCallback} from "../../src/CollectionHolder.types"
+import type {BooleanCallback, RestrainedBooleanCallback} from "../../src/type/callback"
 import type {StraightCollectionHolderForTest}            from "./StraightCollectionHolderForTest"
 
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"

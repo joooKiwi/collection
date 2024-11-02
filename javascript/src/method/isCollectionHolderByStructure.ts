@@ -6,7 +6,7 @@
  ******************************************************************************/
 
 import type {CollectionHolder}      from "../CollectionHolder"
-import type {KeyOfCollectionHolder} from "../CollectionConstants.types"
+import type {KeyOfCollectionHolder} from "../type/keyOf"
 
 import {CollectionConstants} from "../CollectionConstants"
 

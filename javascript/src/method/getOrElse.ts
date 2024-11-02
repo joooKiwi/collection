@@ -8,8 +8,8 @@
 import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
-import type {IndexWithReturnCallback}    from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
+import type {IndexWithReturnCallback}    from "../type/callback"
 
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"

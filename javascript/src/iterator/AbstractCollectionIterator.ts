@@ -7,15 +7,16 @@
 
 import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
-import type {CollectionIterator}                                                                                           from "./CollectionIterator"
-import type {MinimalistCollectionHolder}                                                                                   from "../MinimalistCollectionHolder"
-import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
-import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
+import type {MinimalistCollectionHolder}                                                           from "../MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                   from "./CollectionIterator"
+import type {IteratorValue}                                                                        from "./value/IteratorValue"
+import type {IndexValueCallback, ValueIndexCallback}                                               from "../type/callback"
+import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
+import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
 import {NoElementFoundInCollectionHolderException} from "../exception/NoElementFoundInCollectionHolderException"
 import {GenericAfterLastIteratorValue}             from "./value/GenericAfterLastIteratorValue"
 import {GenericBeforeFirstIteratorValue}           from "./value/GenericBeforeFirstIteratorValue"
-import {IteratorValue}                             from "./value"
 
 export abstract class AbstractCollectionIterator<const T,
     const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >

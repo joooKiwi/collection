@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {AfterLastValueInCollectionIteratorSymbol} from "../CollectionIterator.types"
+import type {AfterLastValueInCollectionIteratorSymbol} from "../../type/symbol"
 
 import {CollectionConstants} from "../../CollectionConstants"
 

@@ -6,9 +6,9 @@
  ******************************************************************************/
 
 import type {CollectionHolder}             from "../CollectionHolder"
-import type {PossibleIterableOrCollection} from "../CollectionHolder.types"
 import type {CollectionHandler}            from "./CollectionHandler"
 import type {ValueHolder}                  from "./value/ValueHolder"
+import type {PossibleIterableOrCollection} from "../type/possibleInstance"
 
 export abstract class AbstractCollectionHandler<const T = unknown,
     const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>,

@@ -8,8 +8,8 @@
 import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                                         from "../CollectionHolder"
-import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
+import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../type/callback"
 
 import {getFirst, getFirstByArray, getFirstByCollectionHolder, getFirstByMinimalistCollectionHolder}                                 from "./getFirst"
 import {findFirstIndexed, findFirstIndexedByArray, findFirstIndexedByCollectionHolder, findFirstIndexedByMinimalistCollectionHolder} from "./findFirstIndexed"

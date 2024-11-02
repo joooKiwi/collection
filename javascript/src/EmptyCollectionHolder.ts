@@ -7,11 +7,13 @@
 
 import type {Nullable, NullableString, NumericOrObject, TemplateOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                          from "./CollectionHolder"
-import type {CollectionHolderName, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder} from "./CollectionHolder.types"
-import type {CollectionIterator}                                                                        from "./iterator/CollectionIterator"
-import type {EmptyCollectionIterator}                                                                   from "./iterator/EmptyCollectionIterator"
-import type {MinimalistCollectionHolder}                                                                from "./MinimalistCollectionHolder"
+import type {CollectionHolder}                           from "./CollectionHolder"
+import type {CollectionIterator}                         from "./iterator/CollectionIterator"
+import type {EmptyCollectionIterator}                    from "./iterator/EmptyCollectionIterator"
+import type {MinimalistCollectionHolder}                 from "./MinimalistCollectionHolder"
+import type {IndexWithReturnCallback}                    from "./type/callback"
+import type {PossibleIterableArraySetOrCollectionHolder} from "./type/possibleInstance"
+import type {CollectionHolderName}                       from "./type/toStringTag"
 
 import {EmptyCollectionHolderException}          from "./exception/EmptyCollectionHolderException"
 import {CollectionConstants}                     from "./CollectionConstants"

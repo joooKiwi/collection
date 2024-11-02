@@ -7,10 +7,11 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                                              from "../../src/CollectionHolder"
-import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                    from "../../src/MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                            from "../../src/iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
+import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
+import type {PossibleIterableArraySetOrCollectionHolder}                                                                                                                                                                                                        from "../../src/type/possibleInstance"
 
 import {CollectionConstants}              from "../../src/CollectionConstants"
 import {allByArray}                       from "../../src/method/all"

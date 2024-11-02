@@ -5,9 +5,10 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {EmptyCollectionHolder}                                                                                        from "../EmptyCollectionHolder"
-import type {CollectionIterator}                                                                                           from "./CollectionIterator"
-import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
+import type {EmptyCollectionHolder}                                                                from "../EmptyCollectionHolder"
+import type {CollectionIterator}                                                                   from "./CollectionIterator"
+import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
+import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
 import {CollectionConstants}                       from "../CollectionConstants"
 import {NoElementFoundInCollectionHolderException} from "../exception/NoElementFoundInCollectionHolderException"

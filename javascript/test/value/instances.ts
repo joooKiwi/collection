@@ -5,8 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/CollectionHolder.types"
 import type {CollectionHolder}                           from "../../src/CollectionHolder"
+import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
 
 import {GenericMinimalistCollectionHolder} from "../../src/GenericMinimalistCollectionHolder"
 import {GenericCollectionHolder}           from "../../src/GenericCollectionHolder"

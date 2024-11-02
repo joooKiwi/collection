@@ -7,7 +7,7 @@
 
 import type {Nullable, NullableNumber, NullableString} from "@joookiwi/type"
 
-import type {StringCallback}                  from "../../src/CollectionHolder.types"
+import type {StringCallback}                  from "../../src/type/callback"
 import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderForTest"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"

@@ -8,8 +8,8 @@
 import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
-import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
+import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
 import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
 import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"

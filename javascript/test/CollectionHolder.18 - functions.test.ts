@@ -17,7 +17,7 @@ import {A, B, EMPTY, NULL_UNDEFINED}            from "./value/arrays"
 import {callbackAsTrue0}                        from "./value/callbacks (boolean)"
 import {callbackAsFail0}                        from "./value/callbacks (fail)"
 
-import type {PossibleIterableArraySetOrCollectionHolder} from "../src/CollectionHolder.types"
+import type {PossibleIterableArraySetOrCollectionHolder} from "../src/type/possibleInstance"
 
 import {CollectionConstants}                                                                                                                                                                                                             from "../src/CollectionConstants"
 import {GenericCollectionHolder}                                                                                                                                                                                                         from "../src/GenericCollectionHolder"

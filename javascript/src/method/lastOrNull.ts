@@ -8,8 +8,8 @@
 import type {Nullable, NullOr} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
-import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
+import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
 import {getLastOrNull, getLastOrNullByArray, getLastOrNullByCollectionHolder, getLastOrNullByMinimalistCollectionHolder}     from "./getLastOrNull"
 import {findLastOrNull, findLastOrNullByArray, findLastOrNullByCollectionHolder, findLastOrNullByMinimalistCollectionHolder} from "./findLastOrNull"

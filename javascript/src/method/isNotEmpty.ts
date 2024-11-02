@@ -8,7 +8,7 @@
 import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                             from "../CollectionHolder"
-import type {IsNotEmptyOn, IsNotEmptyOnArray, IsNotEmptyOnCollectionHolder, IsNotEmptyOnMinimalistCollectionHolder, IsNotEmptyOnNullable, IsNotEmptyOnNullableArray, IsNotEmptyOnNullableCollectionHolder, IsNotEmptyOnNullableMinimalistCollectionHolder} from "../CollectionHolder.types"
+import type {IsNotEmptyOn, IsNotEmptyOnArray, IsNotEmptyOnCollectionHolder, IsNotEmptyOnMinimalistCollectionHolder, IsNotEmptyOnNullable, IsNotEmptyOnNullableArray, IsNotEmptyOnNullableCollectionHolder, IsNotEmptyOnNullableMinimalistCollectionHolder} from "../type/isNotEmpty"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                   from "../MinimalistCollectionHolder"
 
 import {isArray}                       from "./isArray"
