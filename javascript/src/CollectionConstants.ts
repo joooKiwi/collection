@@ -9,10 +9,10 @@ import type {Lazy}                                                       from "@
 import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
 import {lazyOf}                                                          from "@joookiwi/lazy"
 
-import type {CollectionHolder}                                                                                                                     from "./CollectionHolder"
-import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfMinimalistCollectionHolder, KeyOfSet, KeyOfTypedArray, KeyOfWeakSet} from "./CollectionConstants.types"
-import type {MinimalistCollectionHolder}                                                                                                           from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                   from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                                                                                                              from "./CollectionHolder"
+import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableSet, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakSet} from "./CollectionConstants.types"
+import type {MinimalistCollectionHolder}                                                                                                                                                                    from "./MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                            from "./iterator/CollectionIterator"
 
 import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
@@ -49,10 +49,13 @@ export class CollectionConstants {
     static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<KeyOfMinimalistCollectionHolder>
     static #COLLECTION_MEMBERS?: CollectionHolder<KeyOfCollectionHolder>
     static #ARRAY_MEMBERS?: CollectionHolder<KeyOfArray>
+    static #MUTABLE_ARRAY_MEMBERS?: CollectionHolder<KeyOfMutableArray>
     static #TYPED_ARRAY_MEMBERS?: CollectionHolder<KeyOfTypedArray>
     static #SET_MEMBERS?: CollectionHolder<KeyOfSet>
+    static #MUTABLE_SET_MEMBERS?: CollectionHolder<KeyOfMutableSet>
     static #WEAK_SET_MEMBERS?: CollectionHolder<KeyOfWeakSet>
     // static #ITERATOR_MEMBERS?: CollectionHolder<keyof Iterator<unknown, unknown, unknown>>
+    static #MUTABLE_WEAK_SET_MEMBERS?: CollectionHolder<KeyOfMutableWeakSet>
     static #COLLECTION_ITERATOR_MEMBERS?: CollectionHolder<KeyOfCollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
@@ -141,11 +144,15 @@ export class CollectionConstants {
     //#endregion -------------------- Symbol.toString references --------------------
     //#region -------------------- Members references --------------------
 
+    //#region -------------------- Members references (minimalist collection holder) --------------------
+
     /** Every method applicable to a {@link MinimalistCollectionHolder} */
     public static get MINIMALIST_COLLECTION_MEMBERS(): CollectionHolder<KeyOfMinimalistCollectionHolder> {
         return CollectionConstants.#MINIMALIST_COLLECTION_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "get",],),)
     }
 
+    //#endregion -------------------- Members references (minimalist collection holder) --------------------
+    //#region -------------------- Members references (collection holder) --------------------
 
     /** Every method applicable to a {@link CollectionHolder} */
     public static get COLLECTION_MEMBERS(): CollectionHolder<KeyOfCollectionHolder> {
@@ -201,6 +208,8 @@ export class CollectionConstants {
         ] as const,),)
     }
 
+    //#endregion -------------------- Members references (collection holder) --------------------
+    //#region -------------------- Members references (array) --------------------
 
     /** Every method applicable to an {@link ReadonlyArray Array} */
     public static get ARRAY_MEMBERS(): CollectionHolder<KeyOfArray> {
@@ -230,6 +239,39 @@ export class CollectionConstants {
     }
 
 
+    /** Every method applicable to an {@link Array MutableArray} */
+    public static get MUTABLE_ARRAY_MEMBERS(): CollectionHolder<KeyOfMutableArray> {
+        return CollectionConstants.#MUTABLE_ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "length",
+            "at", "push", "pop",
+            "shift", "unshift",
+            "indexOf", "lastIndexOf",
+            "includes",
+            "every", "some", "with",
+            "join",
+            "filter",
+            "find", "findLast",
+            "findIndex", "findLastIndex",
+            "concat",
+            "reduce", "reduceRight",
+            "fill",
+            "flat", "flatMap",
+            "map",
+            "forEach",
+            "keys", "values", "entries",
+            Symbol.iterator,
+            Symbol.unscopables,
+            "copyWithin", "with",
+            "reverse", "toReversed",
+            "toSorted",
+            "slice", "splice", "toSpliced",
+            "toString", "toLocaleString",
+        ] as const,),)
+    }
+
+    //#endregion -------------------- Members references (array) --------------------
+    //#region -------------------- Members references (typed array) --------------------
+
     /** Every method applicable to a {@link TypedArray} */
     public static get TYPED_ARRAY_MEMBERS(): CollectionHolder<KeyOfTypedArray> {
         return CollectionConstants.#TYPED_ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
@@ -249,7 +291,6 @@ export class CollectionConstants {
             "forEach",
             "keys", "values", "entries",
             Symbol.iterator,
-            Symbol.species,
             "copyWithin",
             "fill",
             "reverse", "toReversed",
@@ -261,8 +302,10 @@ export class CollectionConstants {
         ] as const,),)
     }
 
+    //#endregion -------------------- Members references (typed array) --------------------
+    //#region -------------------- Members references (set) --------------------
 
-    /** Every method applicable to an {@link ReadonlyArray Array} */
+    /** Every method applicable to an {@link ReadonlySet Set} */
     public static get SET_MEMBERS(): CollectionHolder<KeyOfSet> {
         return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "size",
@@ -274,11 +317,32 @@ export class CollectionConstants {
             "isSubsetOf", "isSupersetOf",
             "isDisjointFrom",
             Symbol.iterator,
+            // Symbol.toStringTag,
         ] as const,),)
     }
 
+    /** Every method applicable to an {@link Set MutableSet} */
+    public static get MUTABLE_SET_MEMBERS(): CollectionHolder<KeyOfMutableSet> {
+        return CollectionConstants.#MUTABLE_SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "size",
+            "clear",
+            "add", "delete",
+            "has",
+            "forEach",
+            "keys", "values", "entries",
+            "union", "intersection",
+            "difference", "symmetricDifference",
+            "isSubsetOf", "isSupersetOf",
+            "isDisjointFrom",
+            Symbol.iterator,
+            Symbol.toStringTag,
+        ] as const,),)
+    }
 
-    /** Every method applicable to an {@link WeakSet} */
+    //#endregion -------------------- Members references (set) --------------------
+    //#region -------------------- Members references (weak set) --------------------
+
+    /** Every method applicable to an immutable {@link WeakSet} */
     public static get WEAK_SET_MEMBERS(): CollectionHolder<KeyOfWeakSet> {
         return CollectionConstants.#WEAK_SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "has",
@@ -286,6 +350,17 @@ export class CollectionConstants {
         ] as const,),)
     }
 
+    /** Every method applicable to a mutable {@link WeakSet} */
+    public static get MUTABLE_WEAK_SET_MEMBERS(): CollectionHolder<KeyOfMutableWeakSet> {
+        return CollectionConstants.#MUTABLE_WEAK_SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "add", "delete",
+            "has",
+            Symbol.toStringTag,
+        ] as const,),)
+    }
+
+    //#endregion -------------------- Members references (weak set) --------------------
+    //#region -------------------- Members references (iterator) --------------------
 
     // /** Every method applicable to an {@link IteratorObject} */
     // public static get ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
@@ -300,6 +375,9 @@ export class CollectionConstants {
     //         Symbol.iterator, Symbol.toStringTag,
     //     ] as const,),)
     // }
+
+    //#endregion -------------------- Members references (iterator) --------------------
+    //#region -------------------- Members references (collection iterator) --------------------
 
     /** Every method applicable to a {@link CollectionIterator} */
     public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<KeyOfCollectionIterator> {
@@ -316,6 +394,8 @@ export class CollectionConstants {
             Symbol.iterator, Symbol.toStringTag,
         ] as const,),)
     }
+
+    //#endregion -------------------- Members references (collection iterator) --------------------
 
     //#endregion -------------------- Members references --------------------
     //#region -------------------- Constructor references --------------------
