@@ -10,15 +10,15 @@ import type {Nullable, NullableNumber} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
-import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
-import {InvalidIndexRangeException}                from "../exception/InvalidIndexRangeException"
-import {NullCollectionHolderException}             from "../exception/NullCollectionHolderException"
-import {__endingIndex, __startingIndex}            from "./_indexes utility"
-import {isArray}                                   from "./isArray"
-import {isArrayByStructure}                        from "./isArrayByStructure"
-import {isCollectionHolder}                        from "./isCollectionHolder"
-import {isCollectionHolderByStructure}             from "./isCollectionHolderByStructure"
+import {EmptyCollectionException}       from "../exception/EmptyCollectionException"
+import {IndexOutOfBoundsException}      from "../exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException}     from "../exception/InvalidIndexRangeException"
+import {NullCollectionException}        from "../exception/NullCollectionException"
+import {__endingIndex, __startingIndex} from "./_indexes utility"
+import {isArray}                        from "./isArray"
+import {isArrayByStructure}             from "./isArrayByStructure"
+import {isCollectionHolder}             from "./isCollectionHolder"
+import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -31,10 +31,10 @@ import {isCollectionHolderByStructure}             from "./isCollectionHolderByS
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @return {number} The index associated to the {@link element} within the range
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.indexOf
@@ -47,7 +47,7 @@ import {isCollectionHolderByStructure}             from "./isCollectionHolderByS
  */
 export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
     if (isCollectionHolder<T>(collection,))
         return firstIndexOfByCollectionHolder(collection, element, fromIndex, toIndex,)
     if (isArray(collection,))
@@ -69,10 +69,10 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @return {number} The index associated to the {@link element} within the range
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.indexOf
@@ -85,11 +85,11 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  */
 export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
 
     const size = collection.size
     if (size === 0)
-        throw new EmptyCollectionHolderException()
+        throw new EmptyCollectionException()
 
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
@@ -107,10 +107,10 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @return {number} The index associated to the {@link element} within the range
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.indexOf
@@ -123,9 +123,9 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  */
 export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
     if (collection.isEmpty)
-        throw new EmptyCollectionHolderException()
+        throw new EmptyCollectionException()
 
     const size = collection.size
     const startingIndex = __startingIndex(fromIndex, size,)
@@ -144,10 +144,10 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
  * @return {number} The index associated to the {@link element} within the range
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws CollectionHolderIndexOutOfBoundsException No index could be found
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
  * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.indexOf
@@ -160,11 +160,11 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  */
 export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
 
     const size = collection.length
     if (size === 0)
-        throw new EmptyCollectionHolderException()
+        throw new EmptyCollectionException()
 
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
@@ -181,7 +181,7 @@ function __findInRange<const T, >(collection: MinimalistCollectionHolder<T>, ele
     while (++index <= endingIndex)
         if (collection.get(index,) === element)
             return index
-    throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
+    throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
 function __findInRangeByArray<const T, >(collection: readonly T[], element: T, startingIndex: number, endingIndex: number,) {
@@ -189,7 +189,7 @@ function __findInRangeByArray<const T, >(collection: readonly T[], element: T, s
     while (++index <= endingIndex)
         if (collection[index] === element)
             return index
-    throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
+    throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
 //#endregion -------------------- Loop methods --------------------

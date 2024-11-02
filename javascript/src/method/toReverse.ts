@@ -28,9 +28,9 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to reverse
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
@@ -61,9 +61,9 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to reverse
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
@@ -94,9 +94,9 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to reverse
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
@@ -126,9 +126,9 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to reverse
  * @param fromIndex  The inclusive starting index
  * @param toIndex    The inclusive ending index
- * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()

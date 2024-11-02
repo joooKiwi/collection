@@ -15,9 +15,9 @@ import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, 
 import type {PossibleIterableArraySetOrCollectionHolder}                                                                                                                                                                                                        from "../../src/type/possibleInstance"
 import type {CollectionHolderName}                                                                                                                                                                                                                              from "../../src/type/toStringTag"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../../src/exception/CollectionHolderIndexOutOfBoundsException"
-import {EmptyCollectionHolderException}            from "../../src/exception/EmptyCollectionHolderException"
-import {ForbiddenIndexException}                   from "../../src/exception/ForbiddenIndexException"
+import {EmptyCollectionException}  from "../../src/exception/EmptyCollectionException"
+import {ForbiddenIndexException}   from "../../src/exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException} from "../../src/exception/IndexOutOfBoundsException"
 
 /**
  * A bare-bone implementation of a {@link CollectionHolderForTest} with nothing implemented,
@@ -51,22 +51,22 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
         try {
             action(this,)
         } catch (exception) {
-            if (exception instanceof CollectionHolderIndexOutOfBoundsException)
+            if (exception instanceof IndexOutOfBoundsException)
                 return this
             throw exception
         }
-        throw new Error("The exception “CollectionHolderIndexOutOfBoundsException” was expected to be thrown.",)
+        throw new Error("The exception “IndexOutOfBoundsException” was expected to be thrown.",)
     }
 
     public executeWhileExpectingEmptyException(action: (instance: this,) => void,): this {
         try {
             action(this,)
         } catch (exception) {
-            if (exception instanceof EmptyCollectionHolderException)
+            if (exception instanceof EmptyCollectionException)
                 return this
             throw exception
         }
-        throw new Error("The exception “EmptyCollectionHolderException” was expected to be thrown.",)
+        throw new Error("The exception “EmptyCollectionException” was expected to be thrown.",)
     }
 
     public executeWhileExpectingForbiddenException(action: (instance: this,) => void,): this {

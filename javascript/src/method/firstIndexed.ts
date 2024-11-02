@@ -20,8 +20,8 @@ import {findFirstIndexed, findFirstIndexedByArray, findFirstIndexedByCollectionH
  * Get the first element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException The {@link collection} <b>is empty</b>
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
@@ -36,9 +36,9 @@ export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollect
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @alias CollectionHolder.findFirst
@@ -53,9 +53,9 @@ export function firstIndexed<const T, const S extends T, >(collection: Nullable<
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The matching predicate
- * @throwsNullCollectionHolderException              The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @alias CollectionHolder.findFirst
@@ -74,8 +74,8 @@ export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollect
  * Get the first element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException The {@link collection} <b>is empty</b>
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
@@ -90,9 +90,9 @@ export function firstIndexedByMinimalistCollectionHolder<const T, >(collection: 
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @alias CollectionHolder.findFirst
@@ -107,9 +107,9 @@ export function firstIndexedByMinimalistCollectionHolder<const T, const S extend
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @alias CollectionHolder.findFirst
@@ -127,8 +127,8 @@ export function firstIndexedByMinimalistCollectionHolder<const T, >(collection: 
  * Get the first element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
@@ -143,9 +143,9 @@ export function firstIndexedByCollectionHolder<const T, >(collection: Nullable<C
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The matching predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @alias CollectionHolder.findFirst
@@ -160,9 +160,9 @@ export function firstIndexedByCollectionHolder<const T, const S extends T, >(col
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The matching predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} {@link CollectionHolder.isEmpty is empty}
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @alias CollectionHolder.findFirst
@@ -180,8 +180,8 @@ export function firstIndexedByCollectionHolder<const T, >(collection: Nullable<C
  * Get the first element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException The {@link collection} <b>is empty</b>
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
@@ -196,9 +196,9 @@ export function firstIndexedByArray<const T, >(collection: Nullable<readonly T[]
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The matching predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @alias CollectionHolder.findFirst
@@ -213,9 +213,9 @@ export function firstIndexedByArray<const T, const S extends T, >(collection: Nu
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The matching predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @alias CollectionHolder.findFirst

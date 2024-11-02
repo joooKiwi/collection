@@ -7,10 +7,10 @@
 
 import type {ValueHolder} from "./ValueHolder"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../../exception/CollectionHolderIndexOutOfBoundsException"
+import {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsException"
 
 /**
- * A {@link ValueHolder} meant to give a {@link CollectionHolderIndexOutOfBoundsException} {@link cause}
+ * A {@link ValueHolder} meant to give a {@link IndexOutOfBoundsException} {@link cause}
  * because of an index that was not 1 or -1
  * after it was calculated
  *
@@ -27,9 +27,9 @@ export class Not0IndexAfterCalculationValueHolder
     public get value(): null { return null }
     public get isForbidden(): false { return false }
 
-    public get cause(): CollectionHolderIndexOutOfBoundsException {
+    public get cause(): IndexOutOfBoundsException {
         const index = this.#index
-        return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${index + 1} after calculation) was not 0, or -1.`, index,)
+        return new IndexOutOfBoundsException(`Index out of bound. The index ${index} (${index + 1} after calculation) was not 0, or -1.`, index,)
     }
 
 }

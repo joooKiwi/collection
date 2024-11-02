@@ -14,9 +14,9 @@ import type {IndexValueCallback, ValueIndexCallback}                            
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
-import {NoElementFoundInCollectionHolderException} from "../exception/NoElementFoundInCollectionHolderException"
-import {GenericAfterLastIteratorValue}             from "./value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue}           from "./value/GenericBeforeFirstIteratorValue"
+import {NoElementFoundInCollectionException} from "../exception/NoElementFoundInCollectionException"
+import {GenericAfterLastIteratorValue}       from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}     from "./value/GenericBeforeFirstIteratorValue"
 
 export abstract class AbstractCollectionIterator<const T,
     const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
@@ -186,7 +186,7 @@ export abstract class AbstractCollectionIterator<const T,
 
     public get nextValue(): T {
         if (this.isEmpty)
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
+            throw new NoElementFoundInCollectionException("The collection iterator is at or after the end of the line.",)
 
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
@@ -203,10 +203,10 @@ export abstract class AbstractCollectionIterator<const T,
         }
 
         if (this._hasOnly1Element)
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
+            throw new NoElementFoundInCollectionException("The collection iterator is at or after the end of the line.",)
 
         if (this._nextIndex == null) // At the end of the line
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or after the end of the line.",)
+            throw new NoElementFoundInCollectionException("The collection iterator is at or after the end of the line.",)
 
         if (this._previousIndex == null) { // At the start of the line
             if (this._hasOnly2Elements) {
@@ -327,7 +327,7 @@ export abstract class AbstractCollectionIterator<const T,
 
     public get previousValue(): T {
         if (this.isEmpty)
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
+            throw new NoElementFoundInCollectionException("The collection iterator is at or before the start of the line.",)
 
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
@@ -344,10 +344,10 @@ export abstract class AbstractCollectionIterator<const T,
         }
 
         if (this._hasOnly1Element)
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
+            throw new NoElementFoundInCollectionException("The collection iterator is at or before the start of the line.",)
 
         if (this._previousIndex == null) // At the start of the line
-            throw new NoElementFoundInCollectionHolderException("The collection iterator is at or before the start of the line.",)
+            throw new NoElementFoundInCollectionException("The collection iterator is at or before the start of the line.",)
 
         if (this._nextIndex == null) { // At the end of the line
             if (this._hasOnly2Elements) {

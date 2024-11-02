@@ -10,12 +10,12 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {EmptyCollectionHolderException} from "../exception/EmptyCollectionHolderException"
-import {NullCollectionHolderException}  from "../exception/NullCollectionHolderException"
-import {isArray}                        from "./isArray"
-import {isArrayByStructure}             from "./isArrayByStructure"
-import {isCollectionHolder}             from "./isCollectionHolder"
-import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
+import {EmptyCollectionException}      from "../exception/EmptyCollectionException"
+import {NullCollectionException}       from "../exception/NullCollectionException"
+import {isArray}                       from "./isArray"
+import {isArrayByStructure}            from "./isArrayByStructure"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -23,8 +23,8 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  * Get the last element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException The {@link collection} <b</b>is empty</b>
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b</b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
@@ -32,7 +32,7 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  */
 export function getLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): T {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
     if (isCollectionHolder<T>(collection,))
         return getLastByCollectionHolder(collection,)
     if (isArray(collection,))
@@ -49,8 +49,8 @@ export function getLast<const T, >(collection: Nullable<| MinimalistCollectionHo
  * Get the last element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException The {@link collection} <b>is empty</b>
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
@@ -58,11 +58,11 @@ export function getLast<const T, >(collection: Nullable<| MinimalistCollectionHo
  */
 export function getLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): T {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
 
     const size = collection.size
     if (size == 0)
-        throw new EmptyCollectionHolderException()
+        throw new EmptyCollectionException()
     return collection.get(size - 1,)
 }
 
@@ -70,8 +70,8 @@ export function getLastByMinimalistCollectionHolder<const T, >(collection: Nulla
  * Get the last element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
@@ -79,9 +79,9 @@ export function getLastByMinimalistCollectionHolder<const T, >(collection: Nulla
  */
 export function getLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): T {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
     if (collection.isEmpty)
-        throw new EmptyCollectionHolderException()
+        throw new EmptyCollectionException()
 
     const lastIndex = collection.size - 1
     if (lastIndex in collection)
@@ -93,8 +93,8 @@ export function getLastByCollectionHolder<const T, >(collection: Nullable<Collec
  * Get the last element in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @throws NullCollectionHolderException  The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException The {@link collection} <b>is empty</b>
+ * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
@@ -102,11 +102,11 @@ export function getLastByCollectionHolder<const T, >(collection: Nullable<Collec
  */
 export function getLastByArray<const T, >(collection: Nullable<readonly T[]>,): T {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
 
     const size = collection.length
     if (size == 0)
-        throw new EmptyCollectionHolderException()
+        throw new EmptyCollectionException()
     return collection[size - 1] as T
 }
 

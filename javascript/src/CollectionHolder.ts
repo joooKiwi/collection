@@ -107,8 +107,8 @@ export interface CollectionHolder<out T = unknown, >
      * Get the element at the specified index in the current {@link CollectionHolder collection}
      *
      * @param index The index to retrieve a value
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link index} calculated is under zero or over the {@link size} (after calculation)
-     * @throws ForbiddenIndexException                   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws IndexOutOfBoundsException The {@link index} calculated is under zero or over the {@link size} (after calculation)
+     * @throws ForbiddenIndexException   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.at
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/get.html Kotlin get(index)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#get(int) Java get(index)
@@ -138,7 +138,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the first element in the current {@link CollectionHolder collection}
      *
-     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
@@ -151,7 +151,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the last element in the current {@link CollectionHolder collection}
      *
-     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
@@ -298,7 +298,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the first element in the current {@link CollectionHolder collection}
      *
-     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
@@ -310,8 +310,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the first element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      * @alias CollectionHolder.find
@@ -323,8 +323,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      * @alias CollectionHolder.find
@@ -377,7 +377,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the first element in the current {@link CollectionHolder collection}
      *
-     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
@@ -389,8 +389,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the first element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      * @alias CollectionHolder.findIndexed
@@ -402,8 +402,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      * @alias CollectionHolder.findIndexed
@@ -457,7 +457,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the last element in the current {@link CollectionHolder collection}
      *
-     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
@@ -469,8 +469,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      * @alias CollectionHolder.findLast
@@ -482,8 +482,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      * @alias CollectionHolder.findLast
@@ -536,7 +536,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the last element in the current {@link CollectionHolder collection}
      *
-     * @throws EmptyCollectionHolderException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
@@ -548,8 +548,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      * @alias CollectionHolder.findLastIndexed
@@ -561,8 +561,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      * @alias CollectionHolder.findLastIndexed
@@ -617,8 +617,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      * @typescriptDefinition
@@ -629,8 +629,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      */
@@ -641,8 +641,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      * @alias CollectionHolder.findFirst
@@ -654,8 +654,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
      * @alias CollectionHolder.findFirst
@@ -830,8 +830,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      * @typescriptDefinition
@@ -843,8 +843,8 @@ export interface CollectionHolder<out T = unknown, >
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      */
@@ -885,8 +885,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      * @typescriptDefinition
@@ -897,8 +897,8 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
      */
@@ -947,11 +947,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index associated to the {@link element} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
@@ -969,11 +969,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index associated to the {@link element} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
@@ -1028,11 +1028,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index associated to the {@link element} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
@@ -1071,11 +1071,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index matching the {@link predicate} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
@@ -1091,11 +1091,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index matching the {@link predicate} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias CollectionHolder.indexOfFirst
@@ -1112,11 +1112,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index matching the {@link predicate} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias CollectionHolder.indexOfFirst
@@ -1183,11 +1183,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index matching the {@link predicate} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @canReceiveNegativeValue
@@ -1203,11 +1203,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index matching the {@link predicate} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias indexOfFirstIndexed
@@ -1224,11 +1224,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index matching the {@link predicate} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias indexOfFirstIndexed
@@ -1296,11 +1296,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index matching the {@link predicate} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
@@ -1316,11 +1316,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index matching the {@link predicate} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @alias CollectionHolder.indexOfLast
@@ -1372,11 +1372,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index matching the {@link predicate} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @canReceiveNegativeValue
@@ -1392,11 +1392,11 @@ export interface CollectionHolder<out T = unknown, >
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
      * @return {number} The index matching the {@link predicate} within the range
-     * @throws EmptyCollectionHolderException            The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws CollectionHolderIndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
      * @alias CollectionHolder.indexOfLastIndexed
@@ -2176,8 +2176,8 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
@@ -2189,8 +2189,8 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      */
@@ -2201,8 +2201,8 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      */
@@ -2213,8 +2213,8 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      */
@@ -2225,8 +2225,8 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      */
@@ -2237,8 +2237,8 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      */
@@ -2249,8 +2249,8 @@ export interface CollectionHolder<out T = unknown, >
      * in the current {@link CollectionHolder collection}
      *
      * @param indices The given indices
-     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @typescriptDefinition
@@ -2271,9 +2271,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param fromIndex The starting index
      * @param toIndex   The ending index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see ReadonlyArray.slice
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
      */
@@ -2292,10 +2292,10 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param indicesOrFromIndex The given indices (or starting index)
      * @param toIndex            The ending index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link indicesOrFromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException                   The {@link indicesOrFromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
+     * @throws IndexOutOfBoundsException  The {@link indicesOrFromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws IndexOutOfBoundsException  An indice is not in the current {@link CollectionHolder collection}
+     * @throws ForbiddenIndexException    The {@link indicesOrFromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
@@ -2670,9 +2670,9 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @see Array.reverse
      * @see ReadonlyArray.toReversed
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reversed.html Kotlin reversed()
@@ -2690,9 +2690,9 @@ export interface CollectionHolder<out T = unknown, >
      * @alias toReverse
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @canReceiveNegativeValue
      */
     toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
@@ -2705,9 +2705,9 @@ export interface CollectionHolder<out T = unknown, >
      * @alias toReverse
      * @param fromIndex The inclusive starting index
      * @param toIndex   The inclusive ending index
-     * @throws CollectionHolderIndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @canReceiveNegativeValue
      */
     reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>

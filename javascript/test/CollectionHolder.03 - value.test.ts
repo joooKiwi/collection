@@ -25,9 +25,9 @@ import {callbackAsFail0}                                                from "./
 import {callbackAsNull0}                                                from "./value/callbacks (null)"
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
-import {EmptyCollectionHolderException}            from "../src/exception/EmptyCollectionHolderException"
-import {ForbiddenIndexException}                   from "../src/exception/ForbiddenIndexException"
+import {EmptyCollectionException}  from "../src/exception/EmptyCollectionException"
+import {ForbiddenIndexException}   from "../src/exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException} from "../src/exception/IndexOutOfBoundsException"
 
 describe("CollectionHolderTest (value)", () => {
     //#region -------------------- Callbacks --------------------
@@ -38,15 +38,15 @@ describe("CollectionHolderTest (value)", () => {
     //#endregion -------------------- Callbacks --------------------
 
     describe("EmptyCollectionHolder", () => {
-        test("get",                 () => expect(() => new EmptyCollectionHolderForTest().get(),).toThrow(EmptyCollectionHolderException,),)
-        test("getFirst",            () => expect(() => new EmptyCollectionHolderForTest().getFirst(),).toThrow(EmptyCollectionHolderException,),)
-        test("first",               () => expect(() => new EmptyCollectionHolderForTest().first(),).toThrow(EmptyCollectionHolderException,),)
-        test("firstIndexed",        () => expect(() => new EmptyCollectionHolderForTest().firstIndexed(),).toThrow(EmptyCollectionHolderException,),)
-        test("getLast",             () => expect(() => new EmptyCollectionHolderForTest().getLast(),).toThrow(EmptyCollectionHolderException,),)
-        test("last",                () => expect(() => new EmptyCollectionHolderForTest().last(),).toThrow(EmptyCollectionHolderException,),)
-        test("lastIndexed",         () => expect(() => new EmptyCollectionHolderForTest().lastIndexed(),).toThrow(EmptyCollectionHolderException,),)
-        test("at",                  () => expect(() => new EmptyCollectionHolderForTest().at(),).toThrow(EmptyCollectionHolderException,),)
-        test("elementAt",           () => expect(() => new EmptyCollectionHolderForTest().elementAt(),).toThrow(EmptyCollectionHolderException,),)
+        test("get",                 () => expect(() => new EmptyCollectionHolderForTest().get(),).toThrow(EmptyCollectionException,),)
+        test("getFirst",            () => expect(() => new EmptyCollectionHolderForTest().getFirst(),).toThrow(EmptyCollectionException,),)
+        test("first",               () => expect(() => new EmptyCollectionHolderForTest().first(),).toThrow(EmptyCollectionException,),)
+        test("firstIndexed",        () => expect(() => new EmptyCollectionHolderForTest().firstIndexed(),).toThrow(EmptyCollectionException,),)
+        test("getLast",             () => expect(() => new EmptyCollectionHolderForTest().getLast(),).toThrow(EmptyCollectionException,),)
+        test("last",                () => expect(() => new EmptyCollectionHolderForTest().last(),).toThrow(EmptyCollectionException,),)
+        test("lastIndexed",         () => expect(() => new EmptyCollectionHolderForTest().lastIndexed(),).toThrow(EmptyCollectionException,),)
+        test("at",                  () => expect(() => new EmptyCollectionHolderForTest().at(),).toThrow(EmptyCollectionException,),)
+        test("elementAt",           () => expect(() => new EmptyCollectionHolderForTest().elementAt(),).toThrow(EmptyCollectionException,),)
         test("getOrElse",           () => expect(new EmptyCollectionHolderForTest().getOrElse(NaN, it => it,),).toBeNaN(),)
         test("atOrElse",            () => expect(new EmptyCollectionHolderForTest().atOrElse(NaN, it => it,),).toBeNaN(),)
         test("elementAtOrElse",     () => expect(new EmptyCollectionHolderForTest().elementAtOrElse(NaN, it => it,),).toBeNaN(),)
@@ -108,13 +108,13 @@ describe("CollectionHolderTest (value)", () => {
                     test("4 fields", () => expect(new instance(ABCD,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
                 },)
                 describe("getFirst", () => {
-                    test("empty",    () => expect(() => new instance(EMPTY,).getFirst(),).toThrow(EmptyCollectionHolderException,),)
+                    test("empty",    () => expect(() => new instance(EMPTY,).getFirst(),).toThrow(EmptyCollectionException,),)
                     test("1 field",  () => expect(new instance(A,).getFirst(),).toBe('a',),)
                     test("2 fields", () => expect(new instance(AB,).getFirst(),).toBe('a',),)
                     test("4 fields", () => expect(new instance(ABCD,).getFirst(),).toBe('a',),)
                 },)
                 describe("getLast", () => {
-                    test("empty",    () => expect(() => new instance(EMPTY,).getLast(),).toThrow(EmptyCollectionHolderException,),)
+                    test("empty",    () => expect(() => new instance(EMPTY,).getLast(),).toThrow(EmptyCollectionException,),)
                     test("1 field",  () => expect(new instance(A,).getLast(),).toBe('a',),)
                     test("2 fields", () => expect(new instance(AB,).getLast(),).toBe('b',),)
                     test("4 fields", () => expect(new instance(ABCD,).getLast(),).toBe('d',),)
@@ -150,44 +150,44 @@ describe("CollectionHolderTest (value)", () => {
         if (!isExtension)
             describe("get", () => {
                 describe("empty", () => {
-                    test("NaN", () => expect(() => new instance(EMPTY,).get(NaN,),).toThrow(EmptyCollectionHolderException,),)
-                    test("-∞",  () => expect(() => new instance(EMPTY,).get(-Infinity,),).toThrow(EmptyCollectionHolderException,),)
-                    test("-2",  () => expect(() => new instance(EMPTY,).get(-2,),).toThrow(EmptyCollectionHolderException,),)
-                    test("-1",  () => expect(() => new instance(EMPTY,).get(-1,),).toThrow(EmptyCollectionHolderException,),)
-                    test('0',   () => expect(() => new instance(EMPTY,).get(0,),).toThrow(EmptyCollectionHolderException,),)
-                    test('1',   () => expect(() => new instance(EMPTY,).get(1,),).toThrow(EmptyCollectionHolderException,),)
-                    test('2',   () => expect(() => new instance(EMPTY,).get(2,),).toThrow(EmptyCollectionHolderException,),)
-                    test("+∞",  () => expect(() => new instance(EMPTY,).get(Infinity,),).toThrow(EmptyCollectionHolderException,),)
+                    test("NaN", () => expect(() => new instance(EMPTY,).get(NaN,),).toThrow(EmptyCollectionException,),)
+                    test("-∞",  () => expect(() => new instance(EMPTY,).get(-Infinity,),).toThrow(EmptyCollectionException,),)
+                    test("-2",  () => expect(() => new instance(EMPTY,).get(-2,),).toThrow(EmptyCollectionException,),)
+                    test("-1",  () => expect(() => new instance(EMPTY,).get(-1,),).toThrow(EmptyCollectionException,),)
+                    test('0',   () => expect(() => new instance(EMPTY,).get(0,),).toThrow(EmptyCollectionException,),)
+                    test('1',   () => expect(() => new instance(EMPTY,).get(1,),).toThrow(EmptyCollectionException,),)
+                    test('2',   () => expect(() => new instance(EMPTY,).get(2,),).toThrow(EmptyCollectionException,),)
+                    test("+∞",  () => expect(() => new instance(EMPTY,).get(Infinity,),).toThrow(EmptyCollectionException,),)
                 },)
                 describe("1 field", () => {
                     test("NaN", () => expect(() => new instance(A,).get(NaN,),).toThrow(ForbiddenIndexException,),)
                     test("-∞",  () => expect(() => new instance(A,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
-                    test("-3",  () => expect(() => new instance(A,).get(-3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                    test("-2",  () => expect(() => new instance(A,).get(-2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test("-3",  () => expect(() => new instance(A,).get(-3,),).toThrow(IndexOutOfBoundsException,),)
+                    test("-2",  () => expect(() => new instance(A,).get(-2,),).toThrow(IndexOutOfBoundsException,),)
                     test("-1",  () => expect(new instance(A,).get(-1,),).toBe('a',),)
                     test('0',   () => expect(new instance(A,).get(0,),).toBe('a',),)
-                    test('1',   () => expect(() => new instance(A,).get(1,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                    test('2',   () => expect(() => new instance(A,).get(2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test('1',   () => expect(() => new instance(A,).get(1,),).toThrow(IndexOutOfBoundsException,),)
+                    test('2',   () => expect(() => new instance(A,).get(2,),).toThrow(IndexOutOfBoundsException,),)
                     test("+∞",  () => expect(() => new instance(A,).get(Infinity,),).toThrow(ForbiddenIndexException,),)
                 },)
                 describe("2 fields", () => {
                     test("NaN", () => expect(() => new instance(AB,).get(NaN,),).toThrow(ForbiddenIndexException,),)
                     test("-∞",  () => expect(() => new instance(AB,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
-                    test("-4",  () => expect(() => new instance(AB,).get(-4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                    test("-3",  () => expect(() => new instance(AB,).get(-3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test("-4",  () => expect(() => new instance(AB,).get(-4,),).toThrow(IndexOutOfBoundsException,),)
+                    test("-3",  () => expect(() => new instance(AB,).get(-3,),).toThrow(IndexOutOfBoundsException,),)
                     test("-2",  () => expect(new instance(AB,).get(-2,),).toBe('a',),)
                     test("-1",  () => expect(new instance(AB,).get(-1,),).toBe('b',),)
                     test('0',   () => expect(new instance(AB,).get(0,),).toBe('a',),)
                     test('1',   () => expect(new instance(AB,).get(1,),).toBe('b',),)
-                    test('2',   () => expect(() => new instance(AB,).get(2,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                    test('3',   () => expect(() => new instance(AB,).get(3,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test('2',   () => expect(() => new instance(AB,).get(2,),).toThrow(IndexOutOfBoundsException,),)
+                    test('3',   () => expect(() => new instance(AB,).get(3,),).toThrow(IndexOutOfBoundsException,),)
                     test("+∞",  () => expect(() => new instance(AB,).get(Infinity,),).toThrow(ForbiddenIndexException,),)
                 },)
                 describe("4 fields", () => {
                     test("NaN", () => expect(() => new instance(ABCD,).get(NaN,),).toThrow(ForbiddenIndexException,),)
                     test("-∞",  () => expect(() => new instance(ABCD,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
-                    test("-6",  () => expect(() => new instance(ABCD,).get(-6,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                    test("-5",  () => expect(() => new instance(ABCD,).get(-5,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test("-6",  () => expect(() => new instance(ABCD,).get(-6,),).toThrow(IndexOutOfBoundsException,),)
+                    test("-5",  () => expect(() => new instance(ABCD,).get(-5,),).toThrow(IndexOutOfBoundsException,),)
                     test("-4",  () => expect(new instance(ABCD,).get(-4,),).toBe('a',),)
                     test("-3",  () => expect(new instance(ABCD,).get(-3,),).toBe('b',),)
                     test("-2",  () => expect(new instance(ABCD,).get(-2,),).toBe('c',),)
@@ -196,8 +196,8 @@ describe("CollectionHolderTest (value)", () => {
                     test('1',   () => expect(new instance(ABCD,).get(1,),).toBe('b',),)
                     test('2',   () => expect(new instance(ABCD,).get(2,),).toBe('c',),)
                     test('3',   () => expect(new instance(ABCD,).get(3,),).toBe('d',),)
-                    test('4',   () => expect(() => new instance(ABCD,).get(4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-                    test('5',   () => expect(() => new instance(ABCD,).get(5,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+                    test('4',   () => expect(() => new instance(ABCD,).get(4,),).toThrow(IndexOutOfBoundsException,),)
+                    test('5',   () => expect(() => new instance(ABCD,).get(5,),).toThrow(IndexOutOfBoundsException,),)
                     test("+∞",  () => expect(() => new instance(ABCD,).get(Infinity,),).toThrow(ForbiddenIndexException,),)
                 },)
             },)

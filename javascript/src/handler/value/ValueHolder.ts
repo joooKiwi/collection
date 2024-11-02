@@ -7,8 +7,8 @@
 
 import type {NullOr} from "@joookiwi/type"
 
-import type {CollectionHolderIndexOutOfBoundsException} from "../../exception/CollectionHolderIndexOutOfBoundsException"
-import type {ForbiddenIndexException}                   from "../../exception/ForbiddenIndexException"
+import type {ForbiddenIndexException}   from "../../exception/ForbiddenIndexException"
+import type {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsException"
 
 /**
  * A holder to have a singular {@link value}
@@ -25,6 +25,6 @@ export interface ValueHolder<out T = unknown, > {
     get isForbidden(): boolean
 
     /** The cause to be thrown in a case of an invalid {@link value} */
-    get cause(): NullOr<| CollectionHolderIndexOutOfBoundsException | ForbiddenIndexException>
+    get cause(): NullOr<| IndexOutOfBoundsException | ForbiddenIndexException>
 
 }

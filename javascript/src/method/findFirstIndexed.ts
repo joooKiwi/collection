@@ -11,13 +11,13 @@ import type {CollectionHolder}                                         from "../
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../type/callback"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../exception/CollectionHolderIndexOutOfBoundsException"
-import {EmptyCollectionHolderException}            from "../exception/EmptyCollectionHolderException"
-import {NullCollectionHolderException}             from "../exception/NullCollectionHolderException"
-import {isArray}                                   from "./isArray"
-import {isArrayByStructure}                        from "./isArrayByStructure"
-import {isCollectionHolder}                        from "./isCollectionHolder"
-import {isCollectionHolderByStructure}             from "./isCollectionHolderByStructure"
+import {EmptyCollectionException}      from "../exception/EmptyCollectionException"
+import {IndexOutOfBoundsException}     from "../exception/IndexOutOfBoundsException"
+import {NullCollectionException}       from "../exception/NullCollectionException"
+import {isArray}                       from "./isArray"
+import {isArrayByStructure}            from "./isArrayByStructure"
+import {isCollectionHolder}            from "./isCollectionHolder"
+import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -26,9 +26,9 @@ import {isCollectionHolderByStructure}             from "./isCollectionHolderByS
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @typescriptDefinition
@@ -40,9 +40,9 @@ export function findFirstIndexed<const T, const S extends T, >(collection: Nulla
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @extensionFunction
@@ -50,7 +50,7 @@ export function findFirstIndexed<const T, const S extends T, >(collection: Nulla
 export function findFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): T
 export function findFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
     if (isCollectionHolder<T>(collection,))
         return findFirstIndexedByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
@@ -68,9 +68,9 @@ export function findFirstIndexed<const T, >(collection: Nullable<| MinimalistCol
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @typescriptDefinition
@@ -82,9 +82,9 @@ export function findFirstIndexedByMinimalistCollectionHolder<const T, const S ex
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @extensionFunction
@@ -92,11 +92,11 @@ export function findFirstIndexedByMinimalistCollectionHolder<const T, const S ex
 export function findFirstIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): T
 export function findFirstIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
 
     const size = collection.size
     if (size == 0)
-        throw new EmptyCollectionHolderException()
+        throw new EmptyCollectionException()
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (index: number,) => boolean, size,)
     if (predicate.length >= 2)
@@ -109,9 +109,9 @@ export function findFirstIndexedByMinimalistCollectionHolder<const T, >(collecti
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @typescriptDefinition
@@ -123,9 +123,9 @@ export function findFirstIndexedByCollectionHolder<const T, const S extends T, >
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @extensionFunction
@@ -133,9 +133,9 @@ export function findFirstIndexedByCollectionHolder<const T, const S extends T, >
 export function findFirstIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): T
 export function findFirstIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
     if (collection.isEmpty)
-        throw new EmptyCollectionHolderException()
+        throw new EmptyCollectionException()
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (index: number,) => boolean, collection.size,)
     if (predicate.length >= 2)
@@ -148,9 +148,9 @@ export function findFirstIndexedByCollectionHolder<const T, >(collection: Nullab
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The given predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @typescriptDefinition
@@ -162,9 +162,9 @@ export function findFirstIndexedByArray<const T, const S extends T, >(collection
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The given predicate
- * @throws NullCollectionHolderException             The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionHolderException            The {@link collection} <b>is empty</b>
- * @throws CollectionHolderIndexOutOfBoundsException No element could be found from the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
  * @extensionFunction
@@ -172,11 +172,11 @@ export function findFirstIndexedByArray<const T, const S extends T, >(collection
 export function findFirstIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>,): T
 export function findFirstIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
-        throw new NullCollectionHolderException()
+        throw new NullCollectionException()
 
     const size = collection.length
     if (size == 0)
-        throw new EmptyCollectionHolderException()
+        throw new EmptyCollectionException()
     if (predicate.length == 1)
         return __with1ArgumentByArray(collection, predicate as (index: number,) => boolean, size,)
     if (predicate.length >= 2)
@@ -192,7 +192,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     while (++index < size)
         if (predicate())
             return collection.get(index,)
-    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
 }
 
 function __with0ArgumentByArray<const T, >(collection: readonly T[], predicate: () => boolean, size: number,) {
@@ -200,7 +200,7 @@ function __with0ArgumentByArray<const T, >(collection: readonly T[], predicate: 
     while (++index < size)
         if (predicate())
             return collection[index] as T
-    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
 }
 
 
@@ -209,7 +209,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     while (++index < size)
         if (predicate(index,))
             return collection.get(index,)
-    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
 }
 
 function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: (index: number,) => boolean, size: number,) {
@@ -217,7 +217,7 @@ function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: 
     while (++index < size)
         if (predicate(index,))
             return collection[index] as T
-    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
 }
 
 
@@ -228,7 +228,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
         if (predicate(index, value,))
             return value
     }
-    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
 }
 
 function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: (index: number, value: T,) => boolean, size: number,) {
@@ -238,7 +238,7 @@ function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: 
         if (predicate(index, value,))
             return value
     }
-    throw new CollectionHolderIndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
+    throw new IndexOutOfBoundsException("Index out of bound. No element could be found from the filter predicate received in the collection.", 0,)
 }
 
 //#endregion -------------------- Loop methods --------------------

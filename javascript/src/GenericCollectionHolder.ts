@@ -19,9 +19,9 @@ import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrColle
 
 import {AbstractCollectionHolder}                    from "./AbstractCollectionHolder"
 import {CollectionConstants}                         from "./CollectionConstants"
-import {CollectionHolderIndexOutOfBoundsException}   from "./exception/CollectionHolderIndexOutOfBoundsException"
-import {EmptyCollectionHolderException}              from "./exception/EmptyCollectionHolderException"
+import {EmptyCollectionException}                    from "./exception/EmptyCollectionException"
 import {ForbiddenIndexException}                     from "./exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}                   from "./exception/IndexOutOfBoundsException"
 import {allByArray}                                  from "./method/all"
 import {anyByArray}                                  from "./method/any"
 import {dropByArray}                                 from "./method/drop"
@@ -891,7 +891,7 @@ export class GenericCollectionHolder<const T = unknown,
 
     public override get(index: number,): T {
         if (this.isEmpty)
-            throw new EmptyCollectionHolderException(null, index,)
+            throw new EmptyCollectionException(null, index,)
 
         if (Number.isNaN(index,))
             throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
@@ -905,16 +905,16 @@ export class GenericCollectionHolder<const T = unknown,
 
         const size = this.size
         if (index > size)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
         if (index == size)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
         if (index >= 0)
             return this._array[index] as T
 
         const indexToRetrieve = index + size
         if (indexToRetrieve < 0)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index “${index}” (${indexToRetrieve} after calculation) is under 0.`, index,)
         return this._array[indexToRetrieve] as T
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” (${indexToRetrieve} after calculation) is under 0.`, index,)
     }
 
     public override getFirst(): T {

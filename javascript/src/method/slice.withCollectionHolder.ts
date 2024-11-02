@@ -26,7 +26,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws IndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -52,7 +52,7 @@ export function sliceWithCollectionHolder<const T, >(collection: Nullable<| Mini
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws IndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -73,7 +73,7 @@ export function sliceWithCollectionHolderByMinimalistCollectionHolder<const T, >
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws IndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -94,7 +94,7 @@ export function sliceWithCollectionHolderByCollectionHolder<const T, >(collectio
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws IndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */

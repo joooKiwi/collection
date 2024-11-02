@@ -13,22 +13,22 @@ import type {IterableWithSize}                                                  
 import type {CollectionIterator}                                                       from "./iterator/CollectionIterator"
 import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./type/possibleInstance"
 
-import {AbstractMinimalistCollectionHolder}        from "./AbstractMinimalistCollectionHolder"
-import {CollectionConstants}                       from "./CollectionConstants"
-import {MinimalistCollectionHolder}                from "./MinimalistCollectionHolder"
-import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
-import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
-import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
-import {isArray}                                   from "./method/isArray"
-import {isArrayByStructure}                        from "./method/isArrayByStructure"
-import {isCollectionHolder}                        from "./method/isCollectionHolder"
-import {isCollectionHolderByStructure}             from "./method/isCollectionHolderByStructure"
-import {isCollectionIterator}                      from "./method/isCollectionIterator"
-import {isCollectionIteratorByStructure}           from "./method/isCollectionIteratorByStructure"
-import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
-import {isMinimalistCollectionHolderByStructure}   from "./method/isMinimalistCollectionHolderByStructure"
-import {isSet}                                     from "./method/isSet"
-import {isSetByStructure}                          from "./method/isSetByStructure"
+import {AbstractMinimalistCollectionHolder}      from "./AbstractMinimalistCollectionHolder"
+import {CollectionConstants}                     from "./CollectionConstants"
+import {MinimalistCollectionHolder}              from "./MinimalistCollectionHolder"
+import {EmptyCollectionException}                from "./exception/EmptyCollectionException"
+import {ForbiddenIndexException}                 from "./exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}               from "./exception/IndexOutOfBoundsException"
+import {isArray}                                 from "./method/isArray"
+import {isArrayByStructure}                      from "./method/isArrayByStructure"
+import {isCollectionHolder}                      from "./method/isCollectionHolder"
+import {isCollectionHolderByStructure}           from "./method/isCollectionHolderByStructure"
+import {isCollectionIterator}                    from "./method/isCollectionIterator"
+import {isCollectionIteratorByStructure}         from "./method/isCollectionIteratorByStructure"
+import {isMinimalistCollectionHolder}            from "./method/isMinimalistCollectionHolder"
+import {isMinimalistCollectionHolderByStructure} from "./method/isMinimalistCollectionHolderByStructure"
+import {isSet}                                   from "./method/isSet"
+import {isSetByStructure}                        from "./method/isSetByStructure"
 
 export class GenericMinimalistCollectionHolder<const T = unknown,
     const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
@@ -638,7 +638,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
     public override get(index: number,): T {
         const size = this.size
         if (size == 0)
-            throw new EmptyCollectionHolderException(null, index,)
+            throw new EmptyCollectionException(null, index,)
 
         if (Number.isNaN(index,))
             throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
@@ -652,17 +652,17 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             return array[index] as T
 
         if (index > size)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is over the size of the collection (${size}).`, index,)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index "${index}" is over the size of the collection (${size}).`, index,)
         if (index == size)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is the size of the collection (${size}).`, index,)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index "${index}" is the size of the collection (${size}).`, index,)
         if (index >= 0)
             return array[index] as T
 
         const indexToRetrieve = size + index
         if (indexToRetrieve < 0)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
         if (indexToRetrieve > size)
             throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
         return array[indexToRetrieve] as T
     }
 

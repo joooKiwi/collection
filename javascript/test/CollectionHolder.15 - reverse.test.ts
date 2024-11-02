@@ -12,10 +12,10 @@ import {LazyGenericCollectionHolder_ToReverseAlias}                     from "./
 import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY}        from "./value/arrays"
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
 
-import {CollectionConstants}                       from "../src/CollectionConstants"
-import {CollectionHolderIndexOutOfBoundsException} from "../src/exception/CollectionHolderIndexOutOfBoundsException"
-import {ForbiddenIndexException}                   from "../src/exception/ForbiddenIndexException"
-import {InvalidIndexRangeException}                from "../src/exception/InvalidIndexRangeException"
+import {CollectionConstants}        from "../src/CollectionConstants"
+import {ForbiddenIndexException}    from "../src/exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}  from "../src/exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException} from "../src/exception/InvalidIndexRangeException"
 
 describe("CollectionHolderTest (reverse)", () => {
 
@@ -62,27 +62,27 @@ describe("CollectionHolderTest (reverse)", () => {
         },)
         describe("1 field", () => {
             test('0', () => expect(new instance(A,).toReverse(0,).toArray(),).toEqual(A,),)
-            test('4', () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.toReverse(4,),),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test('4', () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.toReverse(4,),),).toThrow(IndexOutOfBoundsException,),)
         },)
         describe("2 fields", () => {
             test('0', () => expect(new instance(AB,).toReverse(0,).toArray(),).toEqual(BA,),)
             test('1', () => expect(new instance(AB,).toReverse(1,).toArray(),).toEqual(B,),)
-            test('4', () => expect(() => new instance(AB,).toReverse(4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test('4', () => expect(() => new instance(AB,).toReverse(4,),).toThrow(IndexOutOfBoundsException,),)
         },)
         describe("4 fields", () => {
             test('0', () => expect(new instance(ABCD,).toReverse(0,).toArray(),).toEqual(DCBA,),)
             test('1', () => expect(new instance(ABCD,).toReverse(1,).toArray(),).toEqual(DCB,),)
             test('2', () => expect(new instance(ABCD,).toReverse(2,).toArray(),).toEqual(DC,),)
             test('3', () => expect(new instance(ABCD,).toReverse(3,).toArray(),).toEqual(D,),)
-            test('4', () => expect(() => new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.toReverse(4,),),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test('4', () => expect(() => new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.toReverse(4,),),).toThrow(IndexOutOfBoundsException,),)
         },)
 
         describe("from", () => {
             test("NaN",  () => expect(() => new instance(ABCD,).toReverse(NaN,),).toThrow(ForbiddenIndexException,),)
             test("-∞",   () => expect(() => new instance(ABCD,).toReverse(-Infinity,),).toThrow(ForbiddenIndexException,),)
-            test("-500", () => expect(() => new instance(ABCD,).toReverse(-500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-            test("-6",   () => expect(() => new instance(ABCD,).toReverse(-6,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-            test("-5",   () => expect(() => new instance(ABCD,).toReverse(-5,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-500", () => expect(() => new instance(ABCD,).toReverse(-500,),).toThrow(IndexOutOfBoundsException,),)
+            test("-6",   () => expect(() => new instance(ABCD,).toReverse(-6,),).toThrow(IndexOutOfBoundsException,),)
+            test("-5",   () => expect(() => new instance(ABCD,).toReverse(-5,),).toThrow(IndexOutOfBoundsException,),)
             test("-4",   () => expect(new instance(ABCD,).toReverse(-4,).toArray(),).toEqual(DCBA,),)
             test("-3",   () => expect(new instance(ABCD,).toReverse(-3,).toArray(),).toEqual(DCB,),)
             test("-2",   () => expect(new instance(ABCD,).toReverse(-2,).toArray(),).toEqual(DC,),)
@@ -91,17 +91,17 @@ describe("CollectionHolderTest (reverse)", () => {
             test("1",    () => expect(new instance(ABCD,).toReverse(1,).toArray(),).toEqual(DCB,),)
             test("2",    () => expect(new instance(ABCD,).toReverse(2,).toArray(),).toEqual(DC,),)
             test("3",    () => expect(new instance(ABCD,).toReverse(3,).toArray(),).toEqual(D,),)
-            test("4",    () => expect(() => new instance(ABCD,).toReverse(4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-            test("5",    () => expect(() => new instance(ABCD,).toReverse(5,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-            test("500",  () => expect(() => new instance(ABCD,).toReverse(500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("4",    () => expect(() => new instance(ABCD,).toReverse(4,),).toThrow(IndexOutOfBoundsException,),)
+            test("5",    () => expect(() => new instance(ABCD,).toReverse(5,),).toThrow(IndexOutOfBoundsException,),)
+            test("500",  () => expect(() => new instance(ABCD,).toReverse(500,),).toThrow(IndexOutOfBoundsException,),)
             test("+∞",   () => expect(() => new instance(ABCD,).toReverse(Infinity,),).toThrow(ForbiddenIndexException,),)
         },)
         describe("to", () => {
             test("NaN",  () => expect(() => new instance(ABCD,).toReverse(null, NaN,),).toThrow(ForbiddenIndexException,),)
             test("-∞",   () => expect(() => new instance(ABCD,).toReverse(null, -Infinity,),).toThrow(ForbiddenIndexException,),)
-            test("-500", () => expect(() => new instance(ABCD,).toReverse(null, -500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-            test("-6",   () => expect(() => new instance(ABCD,).toReverse(null, -6,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-            test("-5",   () => expect(() => new instance(ABCD,).toReverse(null, -5,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("-500", () => expect(() => new instance(ABCD,).toReverse(null, -500,),).toThrow(IndexOutOfBoundsException,),)
+            test("-6",   () => expect(() => new instance(ABCD,).toReverse(null, -6,),).toThrow(IndexOutOfBoundsException,),)
+            test("-5",   () => expect(() => new instance(ABCD,).toReverse(null, -5,),).toThrow(IndexOutOfBoundsException,),)
             test("-4",   () => expect(new instance(ABCD,).toReverse(null, -4,).toArray(),).toEqual(A,),)
             test("-3",   () => expect(new instance(ABCD,).toReverse(null, -3,).toArray(),).toEqual(BA,),)
             test("-2",   () => expect(new instance(ABCD,).toReverse(null, -2,).toArray(),).toEqual(CBA,),)
@@ -110,9 +110,9 @@ describe("CollectionHolderTest (reverse)", () => {
             test("1",    () => expect(new instance(ABCD,).toReverse(null, 1,).toArray(),).toEqual(BA,),)
             test("2",    () => expect(new instance(ABCD,).toReverse(null, 2,).toArray(),).toEqual(CBA,),)
             test("3",    () => expect(new instance(ABCD,).toReverse(null, 3,).toArray(),).toEqual(DCBA,),)
-            test("4",    () => expect(() => new instance(ABCD,).toReverse(null, 4,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-            test("5",    () => expect(() => new instance(ABCD,).toReverse(null, 5,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
-            test("500",  () => expect(() => new instance(ABCD,).toReverse(null, 500,),).toThrow(CollectionHolderIndexOutOfBoundsException,),)
+            test("4",    () => expect(() => new instance(ABCD,).toReverse(null, 4,),).toThrow(IndexOutOfBoundsException,),)
+            test("5",    () => expect(() => new instance(ABCD,).toReverse(null, 5,),).toThrow(IndexOutOfBoundsException,),)
+            test("500",  () => expect(() => new instance(ABCD,).toReverse(null, 500,),).toThrow(IndexOutOfBoundsException,),)
             test("+∞",   () => expect(() => new instance(ABCD,).toReverse(null, Infinity,),).toThrow(ForbiddenIndexException,),)
         },)
         describe("from + to", () => {

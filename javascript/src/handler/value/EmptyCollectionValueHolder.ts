@@ -7,11 +7,11 @@
 
 import type {ValueHolder} from "./ValueHolder"
 
-import {EmptyCollectionHolderException} from "../../exception/EmptyCollectionHolderException"
+import {EmptyCollectionException} from "../../exception/EmptyCollectionException"
 
 /**
  * A {@link ValueHolder} meant to not hold a {@link value},
- * throw a {@link EmptyCollectionHolderException}
+ * throw a {@link EmptyCollectionException}
  * and give if it {@link isForbidden is forbidden}
  *
  * @beta
@@ -41,8 +41,8 @@ export class EmptyCollectionValueHolder
         return this.#isForbidden = false
     }
 
-    public get cause(): EmptyCollectionHolderException<number> {
-        return new EmptyCollectionHolderException(null, this.#index,)
+    public get cause(): EmptyCollectionException<number> {
+        return new EmptyCollectionException(null, this.#index,)
     }
 
 }

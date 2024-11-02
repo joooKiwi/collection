@@ -7,10 +7,10 @@
 
 import type {ValueHolder} from "./ValueHolder"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../../exception/CollectionHolderIndexOutOfBoundsException"
+import {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsException"
 
 /**
- * A {@link ValueHolder} meant to throw a {@link CollectionHolderIndexOutOfBoundsException}
+ * A {@link ValueHolder} meant to throw a {@link IndexOutOfBoundsException}
  * because the <b>index</b> was over the {@link CollectionHolder collection} {@link CollectionHolder.size size}
  *
  * @beta
@@ -31,9 +31,9 @@ export class OverSizeIndexValueHolder
     public get value(): null { return null }
     public get isForbidden(): false { return false }
 
-    public get cause(): CollectionHolderIndexOutOfBoundsException<number> {
+    public get cause(): IndexOutOfBoundsException<number> {
         const index = this.#index
-        return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} is over the size of the collection (${this.#size}).`, index,)
+        return new IndexOutOfBoundsException(`Index out of bound. The index ${index} is over the size of the collection (${this.#size}).`, index,)
     }
 
 }

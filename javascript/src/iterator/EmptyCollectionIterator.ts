@@ -10,10 +10,10 @@ import type {CollectionIterator}                                                
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
-import {CollectionConstants}                       from "../CollectionConstants"
-import {NoElementFoundInCollectionHolderException} from "../exception/NoElementFoundInCollectionHolderException"
-import {GenericAfterLastIteratorValue}             from "./value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue}           from "./value/GenericBeforeFirstIteratorValue"
+import {CollectionConstants}                 from "../CollectionConstants"
+import {NoElementFoundInCollectionException} from "../exception/NoElementFoundInCollectionException"
+import {GenericAfterLastIteratorValue}       from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}     from "./value/GenericBeforeFirstIteratorValue"
 
 export class EmptyCollectionIterator
     implements CollectionIterator<never> {
@@ -63,7 +63,7 @@ export class EmptyCollectionIterator
     public get hasNext(): false { return false }
 
     public get nextIndex(): null { return null }
-    public get nextValue(): never { throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",) }
+    public get nextValue(): never { throw new NoElementFoundInCollectionException("An empty collection iterator has no value to retrieve",) }
 
     public next(... _: readonly unknown[]): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol>
     public next() { return GenericAfterLastIteratorValue.get }
@@ -74,7 +74,7 @@ export class EmptyCollectionIterator
     public get hasPrevious(): false { return false }
 
     public get previousIndex(): null { return null }
-    public get previousValue(): never { throw new NoElementFoundInCollectionHolderException("An empty collection iterator has no value to retrieve",) }
+    public get previousValue(): never { throw new NoElementFoundInCollectionException("An empty collection iterator has no value to retrieve",) }
 
     public previous(... _: readonly unknown[]): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol>
     public previous() { return GenericBeforeFirstIteratorValue.get }

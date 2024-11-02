@@ -15,8 +15,8 @@ import type {IndexWithReturnCallback}                    from "./type/callback"
 import type {PossibleIterableArraySetOrCollectionHolder} from "./type/possibleInstance"
 import type {CollectionHolderName}                       from "./type/toStringTag"
 
-import {EmptyCollectionHolderException}          from "./exception/EmptyCollectionHolderException"
 import {CollectionConstants}                     from "./CollectionConstants"
+import {EmptyCollectionException}                from "./exception/EmptyCollectionException"
 import {isArray}                                 from "./method/isArray"
 import {isArrayByStructure}                      from "./method/isArrayByStructure"
 import {isCollectionIterator}                    from "./method/isCollectionIterator"
@@ -78,7 +78,7 @@ export class EmptyCollectionHolder
 
     public get(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
     public get(index?: Nullable<NumericOrObject>,) {
-        throw new EmptyCollectionHolderException(null, index,)
+        throw new EmptyCollectionException(null, index,)
     }
 
     public at(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
@@ -88,10 +88,10 @@ export class EmptyCollectionHolder
     public elementAt(index?: Nullable<NumericOrObject>,) { return this.get(index,) }
 
     public getFirst(..._: readonly unknown[]): never
-    public getFirst() { throw new EmptyCollectionHolderException() }
+    public getFirst() { throw new EmptyCollectionException() }
 
     public getLast(..._: readonly unknown[]): never
-    public getLast() { throw new EmptyCollectionHolderException() }
+    public getLast() { throw new EmptyCollectionException() }
 
 
     public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
@@ -190,7 +190,7 @@ export class EmptyCollectionHolder
     //#region -------------------- Find first --------------------
 
     public findFirst<const S, >(..._: readonly unknown[]): never
-    public findFirst() { throw new EmptyCollectionHolderException() }
+    public findFirst() { throw new EmptyCollectionException() }
 
     public find<const S, >(..._: readonly unknown[]): never
     public find() { this.findFirst() }
@@ -204,7 +204,7 @@ export class EmptyCollectionHolder
 
 
     public findFirstIndexed<const S, >(..._: readonly unknown[]): never
-    public findFirstIndexed() { throw new EmptyCollectionHolderException() }
+    public findFirstIndexed() { throw new EmptyCollectionException() }
 
     public findIndexed<const S, >(..._: readonly unknown[]): never
     public findIndexed() { this.findFirstIndexed() }
@@ -220,13 +220,13 @@ export class EmptyCollectionHolder
     //#region -------------------- Find last --------------------
 
     public findLast<const S, >(..._: readonly unknown[]): never
-    public findLast() { throw new EmptyCollectionHolderException() }
+    public findLast() { throw new EmptyCollectionException() }
 
     public findLastOrNull<const S, >(..._: readonly unknown[]): null
     public findLastOrNull() { return null }
 
     public findLastIndexed<const S, >(..._: readonly unknown[]): never
-    public findLastIndexed() { throw new EmptyCollectionHolderException() }
+    public findLastIndexed() { throw new EmptyCollectionException() }
 
     public findLastIndexedOrNull<const S, >(..._: readonly unknown[]): null
     public findLastIndexedOrNull() { return null }
@@ -239,7 +239,7 @@ export class EmptyCollectionHolder
     //#region -------------------- First index of --------------------
 
     public firstIndexOf(..._: readonly unknown[]): never
-    public firstIndexOf() { throw new EmptyCollectionHolderException() }
+    public firstIndexOf() { throw new EmptyCollectionException() }
 
     public indexOf(..._: readonly unknown[]): never
     public indexOf() { return this.firstIndexOf() }
@@ -255,7 +255,7 @@ export class EmptyCollectionHolder
     //#region -------------------- Last index of --------------------
 
     public lastIndexOf(..._: readonly unknown[]): never
-    public lastIndexOf() { throw new EmptyCollectionHolderException() }
+    public lastIndexOf() { throw new EmptyCollectionException() }
 
 
     public lastIndexOfOrNull(..._: readonly unknown[]): null
@@ -265,7 +265,7 @@ export class EmptyCollectionHolder
     //#region -------------------- Index of first --------------------
 
     public indexOfFirst(..._: readonly unknown[]): never
-    public indexOfFirst() { throw new EmptyCollectionHolderException() }
+    public indexOfFirst() { throw new EmptyCollectionException() }
 
     public findFirstIndex(..._: readonly unknown[]): never
     public findFirstIndex() { return this.indexOfFirst() }
@@ -285,7 +285,7 @@ export class EmptyCollectionHolder
 
 
     public indexOfFirstIndexed(..._: readonly unknown[]): never
-    public indexOfFirstIndexed() { throw new EmptyCollectionHolderException() }
+    public indexOfFirstIndexed() { throw new EmptyCollectionException() }
 
     public findFirstIndexIndexed(..._: readonly unknown[]): never
     public findFirstIndexIndexed() { return this.indexOfFirstIndexed() }
@@ -307,7 +307,7 @@ export class EmptyCollectionHolder
     //#region -------------------- Index of last --------------------
 
     public indexOfLast(..._: readonly unknown[]): never
-    public indexOfLast() { throw new EmptyCollectionHolderException() }
+    public indexOfLast() { throw new EmptyCollectionException() }
 
     public findLastIndex(..._: readonly unknown[]): never
     public findLastIndex() { return this.indexOfLast() }
@@ -321,7 +321,7 @@ export class EmptyCollectionHolder
 
 
     public indexOfLastIndexed(..._: readonly unknown[]): never
-    public indexOfLastIndexed() { throw new EmptyCollectionHolderException() }
+    public indexOfLastIndexed() { throw new EmptyCollectionException() }
 
     public findLastIndexIndexed(..._: readonly unknown[]): never
     public findLastIndexIndexed() { return this.indexOfLastIndexed() }

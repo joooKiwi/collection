@@ -95,7 +95,7 @@ export interface CollectionIterator<out T = unknown, >
      * Retrieve the next value in the line
      *
      * @note This is the equivalent to the Java <b>ListIterator.next()</b> method
-     * @throws NoElementFoundInCollectionHolderException Is at the end of the line or after it
+     * @throws NoElementFoundInCollectionException Is at the end of the line or after it
      */
     get nextValue(): T
 
@@ -112,7 +112,7 @@ export interface CollectionIterator<out T = unknown, >
      * Retrieve the previous value in the line
      *
      * @note This is the equivalent to the Java <b>ListIterator.previous()</b> method
-     * @throws NoElementFoundInCollectionHolderException Is at the start of the line or before it
+     * @throws NoElementFoundInCollectionException Is at the start of the line or before it
      */
     get previousValue(): T
 

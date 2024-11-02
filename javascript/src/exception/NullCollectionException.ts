@@ -7,13 +7,18 @@
 
 import type {Nullable, NullableString, NullOr, NumericOrObject} from "@joookiwi/type"
 
-import {EmptyCollectionHolderException} from "./EmptyCollectionHolderException"
+import {EmptyCollectionException} from "./EmptyCollectionException"
 
-export class NullCollectionHolderException<const T extends NullOr<NumericOrObject> = null,
+/**
+ * An {@link Error exception} made to tell that the {@code collection}
+ * was <b>null</b> or <b>undefined</b> while not being expected to be
+ */
+export class NullCollectionException<const T extends NullOr<NumericOrObject> = null,
     const CAUSE extends Error = never, >
-    extends EmptyCollectionHolderException<T, CAUSE> {
+    extends EmptyCollectionException<T, CAUSE> {
 
     public constructor(message?: NullableString, invalidIndex?: T, cause?: Nullable<CAUSE>,) {
         super(message ?? "Null collection. No element at any index could be found since it is null.", invalidIndex, cause,)
     }
+
 }

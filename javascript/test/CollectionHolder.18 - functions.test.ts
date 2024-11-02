@@ -23,7 +23,7 @@ import {CollectionConstants}                                                    
 import {GenericCollectionHolder}                                                                                                                                                                                                         from "../src/GenericCollectionHolder"
 import {GenericMinimalistCollectionHolder}                                                                                                                                                                                               from "../src/GenericMinimalistCollectionHolder"
 import {LazyGenericCollectionHolder}                                                                                                                                                                                                     from "../src/LazyGenericCollectionHolder"
-import {NullCollectionHolderException}                                                                                                                                                                                                   from "../src/exception/NullCollectionHolderException"
+import {NullCollectionException}                                                                                                                                                                                                         from "../src/exception/NullCollectionException"
 import {GenericCollectionIterator}                                                                                                                                                                                                       from "../src/iterator/GenericCollectionIterator"
 import * as allModule                                                                                                                                                                                                                    from "../src/method/all"
 import {all, allByArray, allByCollectionHolder, allByMinimalistCollectionHolder}                                                                                                                                                         from "../src/method/all"
@@ -324,10 +324,10 @@ describe("CollectionHolderTest (functions)", () => {
         },)
 
         describe("getFirst", () => {
-            test("all",                          () => expect(() => getFirst(it,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => getFirstByMinimalistCollectionHolder(it,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => getFirstByCollectionHolder(it,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => getFirstByArray(it,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => getFirst(it,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => getFirstByMinimalistCollectionHolder(it,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => getFirstByCollectionHolder(it,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => getFirstByArray(it,),).toThrow(NullCollectionException,),)
         },)
         describe("getOrElse", () => {
             test("all",                          () => expect(getOrElse(it, NaN, callback,) === symbol,).toBeTrue(),)
@@ -348,10 +348,10 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(getFirstOrNullByArray(it,),).toBeNull(),)
         },)
         describe("getLast", () => {
-            test("all",                          () => expect(() => getLast(it,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => getLastByMinimalistCollectionHolder(it,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => getLastByCollectionHolder(it,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => getLastByArray(it,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => getLast(it,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => getLastByMinimalistCollectionHolder(it,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => getLastByCollectionHolder(it,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => getLastByArray(it,),).toThrow(NullCollectionException,),)
         },)
         describe("getLastOrNull", () => {
             test("all",                          () => expect(getLastOrNull(it,),).toBeNull(),)
@@ -360,10 +360,10 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(getLastOrNullByArray(it,),).toBeNull(),)
         },)
         describe("findFirst", () => {
-            test("all",                          () => expect(() => findFirst(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => findFirstByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => findFirstByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => findFirstByArray(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => findFirst(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => findFirstByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => findFirstByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => findFirstByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
         },)
         describe("findFirstOrNull", () => {
             test("all",                          () => expect(findFirstOrNull(it, callbackAsFail0,),).toBeNull(),)
@@ -372,10 +372,10 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(findFirstOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
         },)
         describe("findFirstIndexed", () => {
-            test("all",                          () => expect(() => findFirstIndexed(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => findFirstIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => findFirstIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => findFirstIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => findFirstIndexed(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => findFirstIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => findFirstIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => findFirstIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
         },)
         describe("findFirstIndexedOrNull", () => {
             test("all",                          () => expect(findFirstIndexedOrNull(it, callbackAsFail0,),).toBeNull(),)
@@ -384,10 +384,10 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(findFirstIndexedOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
         },)
         describe("findLast", () => {
-            test("all",                          () => expect(() => findLast(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => findLastByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => findLastByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => findLastByArray(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => findLast(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => findLastByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => findLastByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => findLastByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
         },)
         describe("findLastOrNull", () => {
             test("all",                          () => expect(findLastOrNull(it, callbackAsFail0,),).toBeNull(),)
@@ -396,10 +396,10 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(findLastOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
         },)
         describe("findLastIndexed", () => {
-            test("all",                          () => expect(() => findLastIndexed(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => findLastIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => findLastIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => findLastIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => findLastIndexed(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => findLastIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => findLastIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => findLastIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
         },)
         describe("findLastIndexedOrNull", () => {
             test("all",                          () => expect(findLastIndexedOrNull(it, callbackAsFail0,),).toBeNull(),)
@@ -409,10 +409,10 @@ describe("CollectionHolderTest (functions)", () => {
         },)
 
         describe("firstIndexOf", () => {
-            test("all",                          () => expect(() => firstIndexOf(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => firstIndexOfByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => firstIndexOfByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => firstIndexOfByArray(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => firstIndexOf(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => firstIndexOfByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => firstIndexOfByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => firstIndexOfByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
         },)
         describe("firstIndexOfOrNull", () => {
             test("all",                          () => expect(firstIndexOfOrNull(it, callbackAsFail0,),).toBeNull(),)
@@ -421,10 +421,10 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(firstIndexOfOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
         },)
         describe("lastIndexOf", () => {
-            test("all",                          () => expect(() => lastIndexOf(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => lastIndexOfByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => lastIndexOfByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => lastIndexOfByArray(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => lastIndexOf(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => lastIndexOfByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => lastIndexOfByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => lastIndexOfByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
         },)
         describe("lastIndexOfOrNull", () => {
             test("all",                          () => expect(lastIndexOfOrNull(it, callbackAsFail0,),).toBeNull(),)
@@ -433,10 +433,10 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(lastIndexOfOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
         },)
         describe("indexOfFirst", () => {
-            test("all",                          () => expect(() => indexOfFirst(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => indexOfFirstByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => indexOfFirstByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => indexOfFirstByArray(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => indexOfFirst(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => indexOfFirstByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => indexOfFirstByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => indexOfFirstByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
         },)
         describe("indexOfFirstOrNull", () => {
             test("all",                          () => expect(indexOfFirstOrNull(it, callbackAsFail0,),).toBeNull(),)
@@ -445,10 +445,10 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(indexOfFirstOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
         },)
         describe("indexOfFirstIndexed", () => {
-            test("all",                          () => expect(() => indexOfFirstIndexed(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => indexOfFirstIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => indexOfFirstIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => indexOfFirstIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => indexOfFirstIndexed(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => indexOfFirstIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => indexOfFirstIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => indexOfFirstIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
         },)
         describe("indexOfFirstIndexedOrNull", () => {
             test("all",                          () => expect(indexOfFirstIndexedOrNull(it, callbackAsFail0,),).toBeNull(),)
@@ -457,10 +457,10 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(indexOfFirstIndexedOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
         },)
         describe("indexOfLast", () => {
-            test("all",                          () => expect(() => indexOfLast(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => indexOfLastByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => indexOfLastByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => indexOfLastByArray(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => indexOfLast(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => indexOfLastByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => indexOfLastByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => indexOfLastByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
         },)
         describe("indexOfLastOrNull", () => {
             test("all",                          () => expect(indexOfLastOrNull(it, callbackAsFail0,),).toBeNull(),)
@@ -469,10 +469,10 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(indexOfLastOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
         },)
         describe("indexOfLastIndexed", () => {
-            test("all",                          () => expect(() => indexOfLastIndexed(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("minimalist collection holder", () => expect(() => indexOfLastIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("collection holder",            () => expect(() => indexOfLastIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
-            test("array",                        () => expect(() => indexOfLastIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionHolderException,),)
+            test("all",                          () => expect(() => indexOfLastIndexed(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("minimalist collection holder", () => expect(() => indexOfLastIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("collection holder",            () => expect(() => indexOfLastIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
+            test("array",                        () => expect(() => indexOfLastIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
         },)
         describe("indexOfLastIndexedOrNull", () => {
             test("all",                          () => expect(indexOfLastIndexedOrNull(it, callbackAsFail0,),).toBeNull(),)
