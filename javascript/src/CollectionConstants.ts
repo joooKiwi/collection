@@ -54,8 +54,8 @@ export class CollectionConstants {
     static #SET_MEMBERS?: CollectionHolder<KeyOfSet>
     static #MUTABLE_SET_MEMBERS?: CollectionHolder<KeyOfMutableSet>
     static #WEAK_SET_MEMBERS?: CollectionHolder<KeyOfWeakSet>
-    // static #ITERATOR_MEMBERS?: CollectionHolder<keyof Iterator<unknown, unknown, unknown>>
     static #MUTABLE_WEAK_SET_MEMBERS?: CollectionHolder<KeyOfMutableWeakSet>
+    // static #ITERATOR_MEMBERS?: CollectionHolder<KeyOfIterator>
     static #COLLECTION_ITERATOR_MEMBERS?: CollectionHolder<KeyOfCollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
@@ -363,7 +363,7 @@ export class CollectionConstants {
     //#region -------------------- Members references (iterator) --------------------
 
     // /** Every method applicable to an {@link IteratorObject} */
-    // public static get ITERATOR_MEMBERS(): CollectionHolder<keyof CollectionIterator> {
+    // public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
     //     return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
     //         "next",
     //         "every", "some",
