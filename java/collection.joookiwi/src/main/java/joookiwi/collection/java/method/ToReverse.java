@@ -6,7 +6,7 @@ import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
-import joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException;
+import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import org.jetbrains.annotations.Contract;
@@ -86,7 +86,7 @@ public final class ToReverse
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -110,7 +110,7 @@ public final class ToReverse
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -134,7 +134,7 @@ public final class ToReverse
     /// @param collection The [nullable][Nullable] collection
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -159,7 +159,7 @@ public final class ToReverse
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -181,7 +181,7 @@ public final class ToReverse
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -203,7 +203,7 @@ public final class ToReverse
     /// @param collection The [nullable][Nullable] collection
     /// @param fromIndex  The inclusive starting index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -229,7 +229,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -253,7 +253,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -277,7 +277,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -302,7 +302,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -328,7 +328,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -354,7 +354,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -381,7 +381,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -407,7 +407,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -433,7 +433,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -460,7 +460,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -491,7 +491,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
@@ -522,7 +522,7 @@ public final class ToReverse
     /// @param fromIndex  The inclusive starting index
     /// @param toIndex    The inclusive ending index
     /// @param <T>        The `collection` type
-    /// @throws CollectionHolderIndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     /// @see java.util.SequencedCollection#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>

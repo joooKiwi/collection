@@ -6,10 +6,10 @@ import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.IntObjPredicate;
-import joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException;
-import joookiwi.collection.java.exception.EmptyCollectionHolderException;
+import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.exception.NullCollectionHolderException;
+import joookiwi.collection.java.exception.IndexOutOfBoundsException;
+import joookiwi.collection.java.exception.NullCollectionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -35,8 +35,8 @@ public final class FirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException  The `collection` was `null`
-    /// @throws EmptyCollectionHolderException The `collection` **is empty**
+    /// @throws NullCollectionException  The `collection` was `null`
+    /// @throws EmptyCollectionException The `collection` **is empty**
     /// @see java.util.SequencedCollection#getFirst()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
@@ -48,8 +48,8 @@ public final class FirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException  The `collection` was `null`
-    /// @throws EmptyCollectionHolderException The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @throws NullCollectionException  The `collection` was `null`
+    /// @throws EmptyCollectionException The `collection` [is empty][CollectionHolder#isEmpty]
     /// @see java.util.SequencedCollection#getFirst()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
@@ -61,8 +61,8 @@ public final class FirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException  The `collection` was `null`
-    /// @throws EmptyCollectionHolderException The `collection` **is empty**
+    /// @throws NullCollectionException  The `collection` was `null`
+    /// @throws EmptyCollectionException The `collection` **is empty**
     /// @see java.util.SequencedCollection#getFirst()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
@@ -78,9 +78,9 @@ public final class FirstIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -97,9 +97,9 @@ public final class FirstIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` [is empty][CollectionHolder#isEmpty]
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -116,9 +116,9 @@ public final class FirstIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -138,9 +138,9 @@ public final class FirstIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -157,9 +157,9 @@ public final class FirstIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` [is empty][CollectionHolder#isEmpty]
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -176,9 +176,9 @@ public final class FirstIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -198,9 +198,9 @@ public final class FirstIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -217,9 +217,9 @@ public final class FirstIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` [is empty][CollectionHolder#isEmpty]
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -236,9 +236,9 @@ public final class FirstIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction

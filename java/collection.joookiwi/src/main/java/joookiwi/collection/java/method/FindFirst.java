@@ -6,10 +6,10 @@ import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
-import joookiwi.collection.java.exception.CollectionHolderIndexOutOfBoundsException;
-import joookiwi.collection.java.exception.EmptyCollectionHolderException;
+import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.exception.NullCollectionHolderException;
+import joookiwi.collection.java.exception.IndexOutOfBoundsException;
+import joookiwi.collection.java.exception.NullCollectionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,9 +33,9 @@ public final class FindFirst
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -43,11 +43,11 @@ public final class FindFirst
     public static <T> T findFirst(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                   final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            throw new NullCollectionHolderException();
+            throw new NullCollectionException();
 
         final var size = collection.size();
         if (size == 0)
-            throw new EmptyCollectionHolderException();
+            throw new EmptyCollectionException();
         return __with2Argument(collection, predicate, size);
     }
 
@@ -56,9 +56,9 @@ public final class FindFirst
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` [is empty][CollectionHolder#isEmpty]
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -66,9 +66,9 @@ public final class FindFirst
     public static <T> T findFirst(final @Nullable CollectionHolder<? extends T> collection,
                                   final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            throw new NullCollectionHolderException();
+            throw new NullCollectionException();
         if (collection.isEmpty())
-            throw new EmptyCollectionHolderException();
+            throw new EmptyCollectionException();
         return __with2Argument(collection, predicate, collection.size());
     }
 
@@ -77,9 +77,9 @@ public final class FindFirst
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -87,11 +87,11 @@ public final class FindFirst
     public static <T> T findFirst(final T @Nullable @Unmodifiable [] collection,
                                   final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            throw new NullCollectionHolderException();
+            throw new NullCollectionException();
 
         final var size = collection.length;
         if (size == 0)
-            throw new EmptyCollectionHolderException();
+            throw new EmptyCollectionException();
         return __with2Argument(collection, predicate, size);
     }
 
@@ -103,9 +103,9 @@ public final class FindFirst
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -113,11 +113,11 @@ public final class FindFirst
     public static <T> T findFirst(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                   final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
-            throw new NullCollectionHolderException();
+            throw new NullCollectionException();
 
         final var size = collection.size();
         if (size == 0)
-            throw new EmptyCollectionHolderException();
+            throw new EmptyCollectionException();
         return __with1Argument(collection, predicate, size);
     }
 
@@ -126,9 +126,9 @@ public final class FindFirst
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` [is empty][CollectionHolder#isEmpty]
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -136,9 +136,9 @@ public final class FindFirst
     public static <T> T findFirst(final @Nullable CollectionHolder<? extends T> collection,
                                   final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
-            throw new NullCollectionHolderException();
+            throw new NullCollectionException();
         if (collection.isEmpty())
-            throw new EmptyCollectionHolderException();
+            throw new EmptyCollectionException();
         return __with1Argument(collection, predicate, collection.size());
     }
 
@@ -147,9 +147,9 @@ public final class FindFirst
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -157,11 +157,11 @@ public final class FindFirst
     public static <T> T findFirst(final T @Nullable @Unmodifiable [] collection,
                                   final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
-            throw new NullCollectionHolderException();
+            throw new NullCollectionException();
 
         final var size = collection.length;
         if (size == 0)
-            throw new EmptyCollectionHolderException();
+            throw new EmptyCollectionException();
         return __with1Argument(collection, predicate, size);
     }
 
@@ -173,9 +173,9 @@ public final class FindFirst
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -183,11 +183,11 @@ public final class FindFirst
     public static <T> T findFirst(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                   final @NotNull BooleanSupplier predicate) {
         if (collection == null)
-            throw new NullCollectionHolderException();
+            throw new NullCollectionException();
 
         final var size = collection.size();
         if (size == 0)
-            throw new EmptyCollectionHolderException();
+            throw new EmptyCollectionException();
         return __with0Argument(collection, predicate, size);
     }
 
@@ -196,9 +196,9 @@ public final class FindFirst
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` [is empty][CollectionHolder#isEmpty]
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -206,9 +206,9 @@ public final class FindFirst
     public static <T> T findFirst(final @Nullable CollectionHolder<? extends T> collection,
                                   final @NotNull BooleanSupplier predicate) {
         if (collection == null)
-            throw new NullCollectionHolderException();
+            throw new NullCollectionException();
         if (collection.isEmpty())
-            throw new EmptyCollectionHolderException();
+            throw new EmptyCollectionException();
         return __with0Argument(collection, predicate, collection.size());
     }
 
@@ -217,9 +217,9 @@ public final class FindFirst
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The matching predicate
     /// @param <T>        The `collection` type
-    /// @throws NullCollectionHolderException             The `collection` was `null`
-    /// @throws EmptyCollectionHolderException            The `collection` **is empty**
-    /// @throws CollectionHolderIndexOutOfBoundsException No element could be found from the `predicate`
+    /// @throws NullCollectionException   The `collection` was `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No element could be found from the `predicate`
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
@@ -227,11 +227,11 @@ public final class FindFirst
     public static <T> T findFirst(final T @Nullable @Unmodifiable [] collection,
                                   final @NotNull BooleanSupplier predicate) {
         if (collection == null)
-            throw new NullCollectionHolderException();
+            throw new NullCollectionException();
 
         final var size = collection.length;
         if (size == 0)
-            throw new EmptyCollectionHolderException();
+            throw new EmptyCollectionException();
         return __with0Argument(collection, predicate, size);
     }
 
@@ -247,7 +247,7 @@ public final class FindFirst
         while (++index < size)
             if (predicate.getAsBoolean())
                 return collection.get(index);
-        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
     private static <T> T __with0Argument(final T @NotNull @Unmodifiable [] collection,
@@ -257,7 +257,7 @@ public final class FindFirst
         while (++index < size)
             if (predicate.getAsBoolean())
                 return collection[index];
-        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
 
@@ -270,7 +270,7 @@ public final class FindFirst
             if (predicate.test(value))
                 return value;
         }
-        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
     private static <T> T __with1Argument(final T @NotNull @Unmodifiable [] collection,
@@ -282,7 +282,7 @@ public final class FindFirst
             if (predicate.test(value))
                 return value;
         }
-        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
 
@@ -295,7 +295,7 @@ public final class FindFirst
             if (predicate.test(value, index))
                 return value;
         }
-        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
     private static <T> T __with2Argument(final T @NotNull @Unmodifiable [] collection,
@@ -307,7 +307,7 @@ public final class FindFirst
             if (predicate.test(value, index))
                 return value;
         }
-        throw new CollectionHolderIndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
     }
 
     //#endregion -------------------- Loop methods --------------------
