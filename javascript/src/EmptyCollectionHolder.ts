@@ -524,50 +524,100 @@ export class EmptyCollectionHolder
     public slice() { return this }
 
     //#endregion -------------------- Slice --------------------
+
     //#region -------------------- Take --------------------
 
     public take(..._: readonly unknown[]): this
     public take() { return this }
 
+    public limit(..._: readonly unknown[]): this
+    public limit() { return this.take() }
+
+
     public takeWhile(..._: readonly unknown[]): this
     public takeWhile() { return this }
+
+    public limitWhile(..._: readonly unknown[]): this
+    public limitWhile() { return this.takeWhile() }
+
 
     public takeWhileIndexed(..._: readonly unknown[]): this
     public takeWhileIndexed() { return this }
 
+    public limitWhileIndexed(..._: readonly unknown[]): this
+    public limitWhileIndexed() { return this.takeWhileIndexed() }
+
+    //#endregion -------------------- Take --------------------
+    //#region -------------------- Take last --------------------
 
     public takeLast(..._: readonly unknown[]): this
     public takeLast() { return this }
 
+    public limitLast(..._: readonly unknown[]): this
+    public limitLast() { return this.takeLast() }
+
+
     public takeLastWhile(..._: readonly unknown[]): this
     public takeLastWhile() { return this }
+
+    public limitLastWhile(..._: readonly unknown[]): this
+    public limitLastWhile() { return this.takeLastWhile() }
+
 
     public takeLastWhileIndexed(..._: readonly unknown[]): this
     public takeLastWhileIndexed() { return this }
 
-    //#endregion -------------------- Take --------------------
+    public limitLastWhileIndexed(..._: readonly unknown[]): this
+    public limitLastWhileIndexed() { return this.takeLastWhileIndexed() }
+
+    //#endregion -------------------- Take last --------------------
     //#region -------------------- Drop --------------------
 
     public drop(..._: readonly unknown[]): this
     public drop() { return this }
 
+    public skip(..._: readonly unknown[]): this
+    public skip() { return this.drop() }
+
+
     public dropWhile(..._: readonly unknown[]): this
     public dropWhile() { return this }
+
+    public skipWhile(..._: readonly unknown[]): this
+    public skipWhile() { return this.dropWhile() }
+
 
     public dropWhileIndexed(..._: readonly unknown[]): this
     public dropWhileIndexed() { return this }
 
+    public skipWhileIndexed(..._: readonly unknown[]): this
+    public skipWhileIndexed() { return this.dropWhileIndexed() }
+
+    //#endregion -------------------- Drop --------------------
+    //#region -------------------- Drop last --------------------
 
     public dropLast(..._: readonly unknown[]): this
     public dropLast() { return this }
 
+    public skipLast(..._: readonly unknown[]): this
+    public skipLast() { return this.dropLast() }
+
+
     public dropLastWhile(..._: readonly unknown[]): this
     public dropLastWhile() { return this }
+
+    public skipLastWhile(..._: readonly unknown[]): this
+    public skipLastWhile() { return this.dropLastWhile() }
+
 
     public dropLastWhileIndexed(..._: readonly unknown[]): this
     public dropLastWhileIndexed() { return this }
 
-    //#endregion -------------------- Drop --------------------
+    public skipLastWhileIndexed(..._: readonly unknown[]): this
+    public skipLastWhileIndexed() { return this.dropLastWhileIndexed() }
+
+    //#endregion -------------------- Drop last --------------------
+
     //#region -------------------- Map --------------------
 
     public map<const U, >(..._: readonly unknown[]): CollectionHolder<U>

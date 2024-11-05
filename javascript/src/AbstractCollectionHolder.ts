@@ -1069,6 +1069,10 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return takeByCollectionHolder(this, n,)
     }
 
+    public limit(n: number,): CollectionHolder<T> {
+        return this.take(n,)
+    }
+
     //#endregion -------------------- Take --------------------
     //#region -------------------- Take while --------------------
 
@@ -1076,6 +1080,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public takeWhile(predicate: BooleanCallback<T>,) {
         return takeWhileByCollectionHolder(this, predicate,)
+    }
+
+    public limitWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public limitWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public limitWhile(predicate: BooleanCallback<T>,) {
+        return this.takeWhile(predicate,)
     }
 
     //#endregion -------------------- Take while --------------------
@@ -1087,11 +1097,21 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return takeWhileIndexedByCollectionHolder(this, predicate,)
     }
 
+    public limitWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public limitWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public limitWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return this.takeWhileIndexed(predicate,)
+    }
+
     //#endregion -------------------- Take while indexed --------------------
     //#region -------------------- Take last --------------------
 
     public takeLast(n: number,): CollectionHolder<T> {
         return takeLastByCollectionHolder(this, n,)
+    }
+
+    public limitLast(n: number,): CollectionHolder<T> {
+        return this.takeLast(n,)
     }
 
     //#endregion -------------------- Take last --------------------
@@ -1103,6 +1123,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return takeLastWhileByCollectionHolder(this, predicate,)
     }
 
+    public limitLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public limitLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public limitLastWhile(predicate: BooleanCallback<T>,) {
+        return this.takeLastWhile(predicate,)
+    }
+
     //#endregion -------------------- Take last while --------------------
     //#region -------------------- Take last while indexed --------------------
 
@@ -1112,12 +1138,22 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return takeLastWhileIndexedByCollectionHolder(this, predicate,)
     }
 
+    public limitLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public limitLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public limitLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return this.takeLastWhileIndexed(predicate,)
+    }
+
     //#endregion -------------------- Take last while indexed --------------------
 
     //#region -------------------- Drop --------------------
 
     public drop(n: number,): CollectionHolder<T> {
         return dropByCollectionHolder(this, n,)
+    }
+
+    public skip(n: number,): CollectionHolder<T> {
+        return this.drop(n,)
     }
 
     //#endregion -------------------- Drop --------------------
@@ -1129,6 +1165,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return dropWhileByCollectionHolder(this, predicate,)
     }
 
+    public skipWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public skipWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public skipWhile(predicate: BooleanCallback<T>,) {
+        return this.dropWhile(predicate,)
+    }
+
     //#endregion -------------------- Drop while --------------------
     //#region -------------------- Drop while indexed --------------------
 
@@ -1138,11 +1180,21 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return dropWhileIndexedByCollectionHolder(this, predicate,)
     }
 
+    public skipWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public skipWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public skipWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return this.dropWhileIndexed(predicate,)
+    }
+
     //#endregion -------------------- Drop while indexed --------------------
     //#region -------------------- Drop last --------------------
 
     public dropLast(n: number,): CollectionHolder<T> {
         return dropLastByCollectionHolder(this, n,)
+    }
+
+    public skipLast(n: number,): CollectionHolder<T> {
+        return this.dropLast(n,)
     }
 
     //#endregion -------------------- Drop last --------------------
@@ -1154,6 +1206,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return dropLastWhileByCollectionHolder(this, predicate,)
     }
 
+    public skipLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public skipLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public skipLastWhile(predicate: BooleanCallback<T>,) {
+        return this.dropLastWhile(predicate,)
+    }
+
     //#endregion -------------------- Drop last while --------------------
     //#region -------------------- Drop last while indexed --------------------
 
@@ -1161,6 +1219,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
     public dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
         return dropLastWhileIndexedByCollectionHolder(this, predicate,)
+    }
+
+    public skipLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public skipLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public skipLastWhileIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return this.dropLastWhileIndexed(predicate,)
     }
 
     //#endregion -------------------- Drop last while indexed --------------------

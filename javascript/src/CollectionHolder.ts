@@ -2318,6 +2318,18 @@ export interface CollectionHolder<out T = unknown, >
      */
     take(n: number,): CollectionHolder<T>
 
+    /**
+     * Get a new {@link CollectionHolder} from the first {@link n} elements
+     *
+     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
+     * @canReceiveNegativeValue
+     * @alias CollectionHolder.take
+     */
+    limit(n: number,): CollectionHolder<T>
+
     //#endregion -------------------- Take --------------------
     //#region -------------------- Take while --------------------
 
@@ -2339,6 +2351,28 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#takeWhile(java.util.function.Predicate) Java takeWhile(predicate)
      */
     takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+
+
+    /**
+     * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html Kotlin takeWhile(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#takeWhile(java.util.function.Predicate) Java takeWhile(predicate)
+     * @typescriptDefinition
+     * @alias CollectionHolder.takeWhile
+     */
+    limitWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+
+    /**
+     * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html Kotlin takeWhile(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#takeWhile(java.util.function.Predicate) Java takeWhile(predicate)
+     * @alias CollectionHolder.takeWhile
+     */
+    limitWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
     //#endregion -------------------- Take while --------------------
     //#region -------------------- Take while indexed --------------------
@@ -2362,6 +2396,28 @@ export interface CollectionHolder<out T = unknown, >
      */
     takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
+
+    /**
+     * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html Kotlin takeWhile(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#takeWhile(java.util.function.Predicate) Java takeWhile(predicate)
+     * @typescriptDefinition
+     * @alias CollectionHolder.takeWhileIndexed
+     */
+    limitWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+
+    /**
+     * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html Kotlin takeWhile(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#takeWhile(java.util.function.Predicate) Java takeWhile(predicate)
+     * @alias CollectionHolder.takeWhileIndexed
+     */
+    limitWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+
     //#endregion -------------------- Take while indexed --------------------
     //#region -------------------- Take last --------------------
 
@@ -2374,6 +2430,17 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      */
     takeLast(n: number,): CollectionHolder<T>
+
+    /**
+     * Get a new {@link CollectionHolder} from the last {@link n} elements
+     *
+     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
+     * @canReceiveNegativeValue
+     * @alias CollectionHolder.takeLast
+     */
+    limitLast(n: number,): CollectionHolder<T>
 
     //#endregion -------------------- Take last --------------------
     //#region -------------------- Take last while --------------------
@@ -2395,6 +2462,26 @@ export interface CollectionHolder<out T = unknown, >
      */
     takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
+
+    /**
+     * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
+     * @typescriptDefinition
+     * @alias CollectionHolder.takeLastWhile
+     */
+    limitLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+
+    /**
+     * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
+     * @alias CollectionHolder.takeLastWhile
+     */
+    limitLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+
     //#endregion -------------------- Take last while --------------------
     //#region -------------------- Take last while indexed --------------------
 
@@ -2415,6 +2502,26 @@ export interface CollectionHolder<out T = unknown, >
      */
     takeLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
+
+    /**
+     * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
+     * @typescriptDefinition
+     * @alias CollectionHolder.takeLastWhileIndexed
+     */
+    limitLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+
+    /**
+     * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
+     * @alias CollectionHolder.takeLastWhileIndexed
+     */
+    limitLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+
     //#endregion -------------------- Take last while indexed --------------------
 
     //#region -------------------- Drop --------------------
@@ -2429,6 +2536,18 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      */
     drop(n: number,): CollectionHolder<T>
+
+    /**
+     * Get a new {@link CollectionHolder} without the first {@link n} elements
+     *
+     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)
+     * @canReceiveNegativeValue
+     * @alias CollectionHolder.drop
+     */
+    skip(n: number,): CollectionHolder<T>
 
     //#endregion -------------------- Drop --------------------
     //#region -------------------- Drop while --------------------
@@ -2452,6 +2571,28 @@ export interface CollectionHolder<out T = unknown, >
      */
     dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
+
+    /**
+     * Get a new {@link CollectionHolder} <b>not</b> having the first elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html Kotlin dropWhile(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#dropWhile(java.util.function.Predicate) Java dropWhile(predicate)
+     * @typescriptDefinition
+     * @alias CollectionHolder.dropWhile
+     */
+    skipWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+
+    /**
+     * Get a new {@link CollectionHolder} <b>not</b> having the first elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html Kotlin dropWhile(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#dropWhile(java.util.function.Predicate) Java dropWhile(predicate)
+     * @alias CollectionHolder.dropWhile
+     */
+    skipWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+
     //#endregion -------------------- Drop while --------------------
     //#region -------------------- Drop while indexed --------------------
 
@@ -2474,6 +2615,28 @@ export interface CollectionHolder<out T = unknown, >
      */
     dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
+
+    /**
+     * Get a new {@link CollectionHolder} <b>not</b> having the first elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html Kotlin dropWhile(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#dropWhile(java.util.function.Predicate) Java dropWhile(predicate)
+     * @typescriptDefinition
+     * @alias CollectionHolder.dropWhileIndexed
+     */
+    skipWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+
+    /**
+     * Get a new {@link CollectionHolder} <b>not</b> having the first elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html Kotlin dropWhile(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#dropWhile(java.util.function.Predicate) Java dropWhile(predicate)
+     * @alias CollectionHolder.dropWhileIndexed
+     */
+    skipWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+
     //#endregion -------------------- Drop while indexed --------------------
     //#region -------------------- Drop last --------------------
 
@@ -2486,6 +2649,17 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      */
     dropLast(n: number,): CollectionHolder<T>
+
+    /**
+     * Get a new {@link CollectionHolder} without the last {@link n} elements
+     *
+     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last.html Kotlin dropLast(n)
+     * @canReceiveNegativeValue
+     * @alias CollectionHolder.dropLast
+     */
+    skipLast(n: number,): CollectionHolder<T>
 
     //#endregion -------------------- Drop last --------------------
     //#region -------------------- Drop last while --------------------
@@ -2507,6 +2681,26 @@ export interface CollectionHolder<out T = unknown, >
      */
     dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
+
+    /**
+     * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
+     * @typescriptDefinition
+     * @alias CollectionHolder.dropLastWhile
+     */
+    skipLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+
+    /**
+     * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
+     * @alias CollectionHolder.dropLastWhile
+     */
+    skipLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+
     //#endregion -------------------- Drop last while --------------------
     //#region -------------------- Drop last while indexed --------------------
 
@@ -2526,6 +2720,26 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
      */
     dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+
+
+    /**
+     * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
+     * @typescriptDefinition
+     * @alias CollectionHolder.dropLastWhileIndexed
+     */
+    skipLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+
+    /**
+     * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
+     * @alias CollectionHolder.dropLastWhileIndexed
+     */
+    skipLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
     //#endregion -------------------- Drop last while indexed --------------------
 
