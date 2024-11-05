@@ -535,46 +535,120 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     public abstract slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice --------------------
+
     //#region -------------------- Take --------------------
 
     public abstract take(n: number,): CollectionHolder<T>
 
+    public limit(..._: readonly unknown[]): never
+    public limit() {
+        throw new Error("The method “limit” was not expected to be called.",)
+    }
+
+
     public abstract takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+
+    public limitWhile(..._: readonly unknown[]): never
+    public limitWhile() {
+        throw new Error("The method “limitWhile” was not expected to be called.",)
+    }
+
 
     public abstract takeWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract takeWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
+    public limitWhileIndexed(..._: readonly unknown[]): never
+    public limitWhileIndexed() {
+        throw new Error("The method “limitWhileIndexed” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Take --------------------
+    //#region -------------------- Take last --------------------
 
     public abstract takeLast(n: number,): CollectionHolder<T>
+
+    public limitLast(..._: readonly unknown[]): never
+    public limitLast() {
+        throw new Error("The method “limitLast” was not expected to be called.",)
+    }
+
 
     public abstract takeLastWhile<const S extends T, >(predicate?: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract takeLastWhile(predicate?: BooleanCallback<T>,): CollectionHolder<T>
 
+    public limitLastWhile(..._: readonly unknown[]): never
+    public limitLastWhile() {
+        throw new Error("The method “limitLastWhile” was not expected to be called.",)
+    }
+
+
     public abstract takeLastWhileIndexed<const S extends T, >(predicate?: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract takeLastWhileIndexed(predicate?: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
-    //#endregion -------------------- Take --------------------
+    public limitLastWhileIndexed(..._: readonly unknown[]): never
+    public limitLastWhileIndexed() {
+        throw new Error("The method “limitLastWhileIndexed” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Take last --------------------
     //#region -------------------- Drop --------------------
 
     public abstract drop(n: number,): CollectionHolder<T>
 
+    public skip(..._: readonly unknown[]): never
+    public skip() {
+        throw new Error("The method “skip” was not expected to be called.",)
+    }
+
+
     public abstract dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
+
+    public skipWhile(..._: readonly unknown[]): never
+    public skipWhile() {
+        throw new Error("The method “skipWhile” was not expected to be called.",)
+    }
+
 
     public abstract dropWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract dropWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
+    public skipWhileIndexed(..._: readonly unknown[]): never
+    public skipWhileIndexed() {
+        throw new Error("The method “skipWhileIndexed” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Drop --------------------
+    //#region -------------------- Drop last --------------------
 
     public abstract dropLast(n: number,): CollectionHolder<T>
+
+    public skipLast(..._: readonly unknown[]): never
+    public skipLast() {
+        throw new Error("The method “skipLast” was not expected to be called.",)
+    }
+
 
     public abstract dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
 
+    public skipLastWhile(..._: readonly unknown[]): never
+    public skipLastWhile() {
+        throw new Error("The method “skipLastWhile” was not expected to be called.",)
+    }
+
+
     public abstract dropLastWhileIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public abstract dropLastWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
-    //#endregion -------------------- Drop --------------------
+    public skipLastWhileIndexed(..._: readonly unknown[]): never
+    public skipLastWhileIndexed() {
+        throw new Error("The method “skipLastWhileIndexed” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Drop last --------------------
+
     //#region -------------------- Map --------------------
 
     public abstract map<const U, >(transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U>
