@@ -33,7 +33,7 @@ export class CollectionConstants {
 
     /** @throws {EvalError} The class cannot be created */
     private constructor() {
-        throw new EvalError("The CollectionConstants cannot be created.",)
+        throw new EvalError("The utility class “CollectionConstants” cannot be created.",)
     }
 
     //#endregion -------------------- Thrown constructor --------------------
@@ -434,4 +434,13 @@ export class CollectionConstants {
 
     //#endregion -------------------- Symbol references --------------------
 
+}
+
+export interface CollectionConstants {
+
+    /**
+     * @param args Any possible arguments sent
+     * @throws {EvalError} The class cannot be created
+     */
+    new(...args: readonly unknown[]): never
 }
