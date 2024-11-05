@@ -8,11 +8,13 @@
 import type {CollectionHolder}                           from "../../src/CollectionHolder"
 import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
 
+// import {ArrayAsCollectionHolder}           from "../../src/ArrayAsCollectionHolder"
 import {GenericMinimalistCollectionHolder} from "../../src/GenericMinimalistCollectionHolder"
 import {GenericCollectionHolder}           from "../../src/GenericCollectionHolder"
 import {LazyGenericCollectionHolder}       from "../../src/LazyGenericCollectionHolder"
 
 import {Holder}                                           from "../Holder"
+// import {CollectionHolder_ByArrayCollection}               from "../instance/CollectionHolder_ByArrayCollection"
 import {CollectionHolder_ByMinimalistCollection}          from "../instance/CollectionHolder_ByMinimalistCollection"
 import {CollectionHolder_ByGenericCollection}             from "../instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByLazyCollection}                from "../instance/CollectionHolder_ByLazyCollection"
@@ -37,6 +39,7 @@ import {MinimalistCollectionHolderFromArray}              from "../instance/Mini
 export const everyCollectionInstances = [
     new Holder({ isMinimalist: true,  isLazy: false, isExtension: false, type: "minimalist", instance: GenericMinimalistCollectionHolder,}, "minimalist",),
     new Holder({ isMinimalist: false, isLazy: false, isExtension: false, type: "normal",     instance: GenericCollectionHolder,},           "normal",),
+    // new Holder({ isMinimalist: false, isLazy: false, isExtension: false, type: "array",      instance: ArrayAsCollectionHolder,},           "array",),
     new Holder({ isMinimalist: false, isLazy: true,  isExtension: false, type: "lazy",       instance: LazyGenericCollectionHolder,},       "lazy",),
 ] as const
 
@@ -57,6 +60,7 @@ export const everyExtensionFunctionAsCollectionHolder = [
 export const everyCollectionInstancesAsCollectionHolder = [
     new Holder({isMinimalist: true,  isLazy: false, isExtension: false, type: "minimalist", instance: CollectionHolder_ByMinimalistCollection, }, "collection (by minimalist)",),
     new Holder({isMinimalist: false, isLazy: false, isExtension: false, type: "normal",     instance: CollectionHolder_ByGenericCollection, },    "collection (by normal)",),
+    // new Holder({isMinimalist: false, isLazy: false, isExtension: false, type: "array",      instance: CollectionHolder_ByArrayCollection, },      "collection (by array)",),
     new Holder({isMinimalist: false, isLazy: true,  isExtension: false, type: "lazy",       instance: CollectionHolder_ByLazyCollection, },       "collection (by lazy)",),
 ] as const
 
@@ -67,6 +71,7 @@ export const everyCollectionInstancesAsCollectionHolder = [
 export const everyCollectionInstancesAndExtensionFunctionAsCollectionHolder = [
     new Holder({isMinimalist: true,  isLazy: false, isExtension: false, type: "minimalist",           instance: CollectionHolder_ByMinimalistCollection, },         "collection (by minimalist)",),
     new Holder({isMinimalist: false, isLazy: false, isExtension: false, type: "normal",               instance: CollectionHolder_ByGenericCollection, },            "collection (by normal)",),
+    // new Holder({isMinimalist: false, isLazy: false, isExtension: false, type: "array",                instance: CollectionHolder_ByArrayCollection, },              "collection (by array)",),
     new Holder({isMinimalist: false, isLazy: true,  isExtension: false, type: "lazy",                 instance: CollectionHolder_ByLazyCollection, },               "collection (by lazy)",),
     new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  type: "minimalist extension", instance: CollectionHolder_FromMinimalistExtensionFunction,}, "collection (on minimalist extension)",),
     new Holder({isMinimalist: false, isLazy: false, isExtension: true,  type: "normal extension",     instance: CollectionHolder_FromExtensionFunction,},           "collection (on extension)",),
