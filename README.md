@@ -41,7 +41,6 @@ But other languages will have different features based on how they can handle it
 [npm-download-image-link]: https://img.shields.io/npm/dt/@joookiwi/collection.svg
 [npm-download-link]:       https://npm-stat.com/charts.html?package=@joookiwi/collection
 
-
 ## Related projects
 
 Here is a list of the related projects made by me
