@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {BeforeFirstValueInCollectionIteratorSymbol} from "../CollectionIterator.types"
+import type {BeforeFirstValueInCollectionIteratorSymbol} from "../../type/symbol"
 
 import {CollectionConstants} from "../../CollectionConstants"
 

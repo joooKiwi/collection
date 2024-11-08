@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>joookiwi</OriginalElement>
+  <nodes>
+    <node x="-796.5" y="14.0">java.util.Map.Entry</node>
+    <node x="-1040.7816534181238" y="420.00000000000006">java.util.Iterator</node>
+    <node x="-606.0445945945945" y="500.0">java.util.Spliterator.OfPrimitive</node>
+    <node x="-817.0" y="330.0">java.util.NavigableSet</node>
+    <node x="-1265.5" y="94.0">java.util.SortedMap</node>
+    <node x="-804.0" y="252.0">java.util.SortedSet</node>
+    <node x="-555.5945945945946" y="14.0">java.util.Collection</node>
+    <node x="-929.2595945945945" y="498.0">java.util.ListIterator</node>
+    <node x="-182.59459459459458" y="252.0">java.util.concurrent.TransferQueue</node>
+    <node x="-399.5945945945946" y="252.0">java.util.concurrent.BlockingDeque</node>
+    <node x="-1016.5" y="-64.0">java.util.Map</node>
+    <node x="-1278.5" y="176.0">java.util.NavigableMap</node>
+    <node x="-1283.5" y="14.0">java.util.SequencedMap</node>
+    <node x="-1228.2595945945945" y="498.0">java.util.PrimitiveIterator</node>
+    <node x="-599.0945945945946" y="92.0">java.util.SequencedCollection</node>
+    <node x="-270.0" y="92.0">java.util.Queue</node>
+    <node x="-718.2595945945945" y="580.0">java.util.Spliterator.OfDouble</node>
+    <node x="-758.3445945945946" y="172.0">java.util.SequencedSet</node>
+    <node x="-540.1345945945945" y="420.00000000000006">java.util.Spliterator</node>
+    <node x="-367.0945945945946" y="172.0">java.util.Deque</node>
+    <node x="-173.59459459459458" y="420.00000000000006">java.util.Enumeration</node>
+    <node x="-520.0945945945946" y="580.0">java.util.Spliterator.OfInt</node>
+    <node x="-183.09459459459458" y="172.0">java.util.concurrent.BlockingQueue</node>
+    <node x="-531.0945945945946" y="172.0">java.util.List</node>
+    <node x="-1262.0316534181238" y="586.0">java.util.PrimitiveIterator.OfInt</node>
+    <node x="-546.5945945945946" y="-64.0">java.lang.Iterable</node>
+    <node x="-362.8445945945946" y="580.0">java.util.Spliterator.OfLong</node>
+    <node x="-1154.0316534181238" y="586.0">java.util.PrimitiveIterator.OfDouble</node>
+    <node x="-1199.75" y="256.0">java.util.concurrent.ConcurrentNavigableMap</node>
+    <node x="-1039.5" y="14.0">java.util.concurrent.ConcurrentMap</node>
+    <node x="-778.5" y="92.0">java.util.Set</node>
+    <node x="-1011.0316534181239" y="586.0">java.util.PrimitiveIterator.OfLong</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.concurrent.TransferQueue" target="java.util.concurrent.BlockingQueue" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.BlockingQueue" target="java.util.Queue" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-84.09459459459458" y="141.0" />
+      <point x="-204.0" y="141.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Set" target="java.util.Collection" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-724.5" y="67.0" />
+      <point x="-476.0945945945946" y="67.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfLong" target="java.util.Spliterator.OfPrimitive" relationship="INTERFACE_GENERALIZATION">
+      <point x="-26.75" y="-14.0" />
+      <point x="-336.0945945945946" y="559.0" />
+      <point x="-445.0445945945945" y="559.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.ConcurrentNavigableMap" target="java.util.NavigableMap" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-1049.75" y="230.0" />
+      <point x="-1171.5" y="230.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Deque" target="java.util.SequencedCollection" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-301.0945945945946" y="141.0" />
+      <point x="-476.0945945945946" y="141.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.SequencedSet" target="java.util.Set" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-660.8445945945946" y="141.0" />
+      <point x="-724.5" y="141.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.List" target="java.util.SequencedCollection" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfInt" target="java.util.Spliterator.OfPrimitive" relationship="INTERFACE_GENERALIZATION">
+      <point x="22.0" y="-14.0" />
+      <point x="-454.0945945945946" y="559.0" />
+      <point x="-445.0445945945945" y="559.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfInt" target="java.util.PrimitiveIterator" relationship="INNER_CLASS">
+      <point x="-22.0" y="-14.0" />
+      <point x="-1240.0316534181238" y="566.0" />
+      <point x="-1097.5316534181238" y="566.0" />
+      <point x="-1097.5316534181238" y="546.0" />
+      <point x="-1158.5095945945945" y="546.0" />
+      <point x="-69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.Queue" target="java.util.Collection" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-204.0" y="67.0" />
+      <point x="-476.0945945945946" y="67.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.BlockingDeque" target="java.util.Deque" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfInt" target="java.util.Spliterator" relationship="INNER_CLASS">
+      <point x="-22.0" y="-14.0" />
+      <point x="-498.0945945945946" y="549.0" />
+      <point x="-616.5445945945945" y="549.0" />
+      <point x="-616.5445945945945" y="479.00000000000006" />
+      <point x="-463.63459459459455" y="479.00000000000006" />
+      <point x="-463.63459459459455" y="469.00000000000006" />
+      <point x="-499.38459459459455" y="469.00000000000006" />
+      <point x="-40.75" y="14.0" />
+    </edge>
+    <edge source="java.util.SortedMap" target="java.util.SequencedMap" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.SequencedCollection" target="java.util.Collection" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfDouble" target="java.util.Spliterator.OfPrimitive" relationship="INTERFACE_GENERALIZATION">
+      <point x="30.75" y="-14.0" />
+      <point x="-626.0095945945945" y="559.0" />
+      <point x="-445.0445945945945" y="559.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfLong" target="java.util.PrimitiveIterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="26.75" y="-14.0" />
+      <point x="-930.7816534181239" y="556.0" />
+      <point x="-1087.5316534181238" y="556.0" />
+      <point x="-1087.5316534181238" y="546.0" />
+      <point x="-1019.0095945945945" y="546.0" />
+      <point x="69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfDouble" target="java.util.Spliterator" relationship="INNER_CLASS">
+      <point x="-30.75" y="-14.0" />
+      <point x="-687.5095945945945" y="559.0" />
+      <point x="-645.5945945945946" y="559.0" />
+      <point x="-645.5945945945946" y="479.00000000000006" />
+      <point x="-463.63459459459455" y="479.00000000000006" />
+      <point x="-463.63459459459455" y="469.00000000000006" />
+      <point x="-499.38459459459455" y="469.00000000000006" />
+      <point x="-40.75" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfDouble" target="java.util.PrimitiveIterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="30.75" y="-14.0" />
+      <point x="-1061.7816534181238" y="556.0" />
+      <point x="-1087.5316534181238" y="556.0" />
+      <point x="-1087.5316534181238" y="546.0" />
+      <point x="-1019.0095945945945" y="546.0" />
+      <point x="69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.ConcurrentMap" target="java.util.Map" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-928.0" y="-6.0" />
+      <point x="-1049.75" y="-6.0" />
+      <point x="-1049.75" y="-16.0" />
+      <point x="-982.25" y="-16.0" />
+      <point x="-34.25" y="14.0" />
+    </edge>
+    <edge source="java.util.SequencedSet" target="java.util.SequencedCollection" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-660.8445945945946" y="151.0" />
+      <point x="-476.0945945945946" y="151.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.SortedSet" target="java.util.SequencedSet" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-724.5" y="226.0" />
+      <point x="-660.8445945945946" y="226.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Collection" target="java.lang.Iterable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.SortedSet" target="java.util.Set" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-724.5" y="226.0" />
+      <point x="-768.8445945945946" y="226.0" />
+      <point x="-768.8445945945946" y="151.0" />
+      <point x="-724.5" y="151.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfPrimitive" target="java.util.Spliterator" relationship="INNER_CLASS">
+      <point x="-80.5" y="-14.0" />
+      <point x="-525.5445945945945" y="479.00000000000006" />
+      <point x="-463.63459459459455" y="479.00000000000006" />
+      <point x="-463.63459459459455" y="469.00000000000006" />
+      <point x="-499.38459459459455" y="469.00000000000006" />
+      <point x="-40.75" y="14.0" />
+    </edge>
+    <edge source="java.util.ListIterator" target="java.util.Iterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-846.2595945945945" y="473.00000000000006" />
+      <point x="-971.2816534181238" y="473.00000000000006" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Deque" target="java.util.Queue" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-301.0945945945946" y="151.0" />
+      <point x="-204.0" y="151.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfPrimitive" target="java.util.Spliterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="80.5" y="-14.0" />
+      <point x="-364.5445945945945" y="469.00000000000006" />
+      <point x="-417.88459459459455" y="469.00000000000006" />
+      <point x="40.75" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfDouble" target="java.util.PrimitiveIterator" relationship="INNER_CLASS">
+      <point x="-30.75" y="-14.0" />
+      <point x="-1123.2816534181238" y="566.0" />
+      <point x="-1097.5316534181238" y="566.0" />
+      <point x="-1097.5316534181238" y="546.0" />
+      <point x="-1158.5095945945945" y="546.0" />
+      <point x="-69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfLong" target="java.util.Spliterator" relationship="INNER_CLASS">
+      <point x="26.75" y="-14.0" />
+      <point x="-282.5945945945946" y="559.0" />
+      <point x="-273.5445945945945" y="559.0" />
+      <point x="-273.5445945945945" y="479.00000000000006" />
+      <point x="-463.63459459459455" y="479.00000000000006" />
+      <point x="-463.63459459459455" y="469.00000000000006" />
+      <point x="-499.38459459459455" y="469.00000000000006" />
+      <point x="-40.75" y="14.0" />
+    </edge>
+    <edge source="java.util.NavigableMap" target="java.util.SortedMap" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.ConcurrentNavigableMap" target="java.util.concurrent.ConcurrentMap" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-1049.75" y="230.0" />
+      <point x="-928.0" y="230.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator" target="java.util.Iterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-1088.7595945945945" y="473.00000000000006" />
+      <point x="-971.2816534181238" y="473.00000000000006" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfInt" target="java.util.PrimitiveIterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="22.0" y="-14.0" />
+      <point x="-1196.0316534181238" y="556.0" />
+      <point x="-1087.5316534181238" y="556.0" />
+      <point x="-1087.5316534181238" y="546.0" />
+      <point x="-1019.0095945945945" y="546.0" />
+      <point x="69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.concurrent.BlockingDeque" target="java.util.concurrent.BlockingQueue" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-301.0945945945946" y="226.0" />
+      <point x="-84.09459459459458" y="226.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.SequencedMap" target="java.util.Map" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-1171.5" y="-6.0" />
+      <point x="-1049.75" y="-6.0" />
+      <point x="-1049.75" y="-16.0" />
+      <point x="-982.25" y="-16.0" />
+      <point x="-34.25" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfLong" target="java.util.PrimitiveIterator" relationship="INNER_CLASS">
+      <point x="-26.75" y="-14.0" />
+      <point x="-984.2816534181239" y="566.0" />
+      <point x="-1097.5316534181238" y="566.0" />
+      <point x="-1097.5316534181238" y="546.0" />
+      <point x="-1158.5095945945945" y="546.0" />
+      <point x="-69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.Map.Entry" target="java.util.Map" relationship="INNER_CLASS">
+      <point x="0.0" y="-14.0" />
+      <point x="-724.5" y="-6.0" />
+      <point x="-913.75" y="-6.0" />
+      <point x="34.25" y="14.0" />
+    </edge>
+    <edge source="java.util.NavigableSet" target="java.util.SortedSet" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.9808195292066263" showDependencies="false" x="-667.0001388888892" y="302.79999999999984" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

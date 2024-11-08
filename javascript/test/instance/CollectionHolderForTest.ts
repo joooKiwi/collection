@@ -17,30 +17,30 @@ export interface CollectionHolderForTest<out T, >
 
     /**
      * Do an action on the curent {@link CollectionHolderForTest instance}
-     * while ignoring any {@link CollectionHolderIndexOutOfBoundsException} being thrown
+     * while expecting a {@link IndexOutOfBoundsException} to be thrown
      * and return itself afterward
      *
      * @param action The action to do
      */
-    executeWhileIgnoringIndexOutOfBound(action: (instance: this,) => void,): this
+    executeWhileExpectingIndexOutOfBound(action: (instance: this,) => void,): this
 
     /**
      * Do an action on the curent {@link CollectionHolderForTest instance}
-     * while ignoring any {@link EmptyCollectionHolderException} being thrown
+     * while expecting a {@link EmptyCollectionException} to be thrown
      * and return itself afterward
      *
      * @param action The action to do
      */
-    executeWhileIgnoringEmptyException(action: (instance: this,) => void,): this
+    executeWhileExpectingEmptyException(action: (instance: this,) => void,): this
 
     /**
      * Do an action on the curent {@link CollectionHolderForTest instance}
-     * while ignoring any {@link ForbiddenIndexException} being thrown
+     * while expecting a {@link ForbiddenIndexException} to be thrown
      * and return itself afterward
      *
      * @param action The action to do
      */
-    executeWhileIgnoringForbiddenException(action: (instance: this,) => void,): this
+    executeWhileExpectingForbiddenException(action: (instance: this,) => void,): this
 
     /**
      * Do an action on the current {@link CollectionHolderForTest instance}

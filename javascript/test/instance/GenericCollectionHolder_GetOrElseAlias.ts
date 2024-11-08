@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {IndexWithReturnCallback}         from "../../src/CollectionHolder.types"
+import type {IndexWithReturnCallback}         from "../../src/type/callback"
 import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderForTest"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"

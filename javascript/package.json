@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin) and List (from Java/Kotlin/C#)",
 
   "scripts": {
@@ -76,6 +76,7 @@
       "import":  "./dist/ecmascript module/method/index.js",
       "require": "./dist/common javascript/method/index.js"
     },
+    "./type": { "types": "./dist/types/method/index.d.ts" },
 
     "./*": {
       "types":   "./dist/types/*.d.ts",
@@ -116,7 +117,8 @@
       "types":   "./dist/types/method/*.d.ts",
       "import":  "./dist/ecmascript module/method/*.js",
       "require": "./dist/common javascript/method/*.js"
-    }
+    },
+    "./type/*": { "types": "./dist/types/method/*.d.ts" }
   },
 
   "files": [
@@ -149,17 +151,17 @@
   "author": "JóôòKiwi",
   "license": "MIT",
   "dependencies": {
-    "@joookiwi/lazy": "^1.5.0",
-    "@joookiwi/type": "^1.0.0"
+    "@joookiwi/lazy": "^1.6.0",
+    "@joookiwi/type": "^1.1.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.13",
-    "@types/node": "^22.7.5",
-    "del-cli": "^6.0.0",
+    "@types/jest":            "^29.5.14",
+    "@types/node":            "^22.9.0",
+    "del-cli":                "^6.0.0",
     "jest-environment-jsdom": "^29.7.0",
-    "jest-extended": "^4.0.2",
-    "ts-jest": "^29.2.5",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.6.2"
+    "jest-extended":          "^4.0.2",
+    "ts-jest":                "^29.2.5",
+    "ts-node":                "^10.9.2",
+    "typescript":             "^5.6.3"
   }
 }

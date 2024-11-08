@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import {BooleanCallback, ReverseBooleanCallback} from "../../src/CollectionHolder.types"
+import {BooleanCallback, ReverseBooleanCallback} from "../../src/type/callback"
 
 export const callbackAsFail0 = (): never => {
     throw new Error("The test was not expected to have the callback being called",)

@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {BooleanCallback, ReverseBooleanCallback} from "../../src/CollectionHolder.types"
+import type {BooleanCallback, ReverseBooleanCallback} from "../../src/type/callback"
 
 export const callbackIsEven: ReverseBooleanCallback<unknown> = it => it % 2 === 0
 export const callbackIsOdd: ReverseBooleanCallback<unknown> = i => i % 2 !== 0

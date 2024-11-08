@@ -5,7 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
+import type {MinimalistCollectionHolder}      from "../MinimalistCollectionHolder"
+import type {KeyOfMinimalistCollectionHolder} from "../type/keyOf"
 
 import {CollectionConstants} from "../CollectionConstants"
 
@@ -16,9 +17,9 @@ import {CollectionConstants} from "../CollectionConstants"
  * @see isMinimalistCollectionHolder
  * @see CollectionConstants.MINIMALIST_COLLECTION_MEMBERS
  * @doesNotValidateTheTypes
- * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isMinimalistCollectionHolderByStructure(value: unknown,): value is (& object & Record<keyof MinimalistCollectionHolder, unknown>)
+export function isMinimalistCollectionHolderByStructure(value: unknown,): value is (& object & Record<KeyOfMinimalistCollectionHolder, unknown>)
 /**
  * Tell that the value has the structure of a {@link MinimalistCollectionHolder}
  *
@@ -26,9 +27,9 @@ export function isMinimalistCollectionHolderByStructure(value: unknown,): value 
  * @see isMinimalistCollectionHolder
  * @see CollectionConstants.MINIMALIST_COLLECTION_MEMBERS
  * @doesNotValidateTheTypes
- * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isMinimalistCollectionHolderByStructure<const T, >(value: unknown,): value is MinimalistCollectionHolder<T>
+export function isMinimalistCollectionHolderByStructure<const T, const INSTANCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(value: unknown,): value is INSTANCE
 export function isMinimalistCollectionHolderByStructure(value: unknown,) {
     if (value == null)
         return false

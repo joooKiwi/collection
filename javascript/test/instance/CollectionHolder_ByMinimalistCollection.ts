@@ -18,10 +18,10 @@ import {AbstractMinimalistCollectionHolderForTest}        from "./AbstractMinima
  * The remaining methods are from the extension methods for a {@link MinimalistCollectionHolder}
  */
 export class CollectionHolder_ByMinimalistCollection<const T, >
-    extends AbstractMinimalistCollectionHolderForTest<T> {
+    extends AbstractMinimalistCollectionHolderForTest<T, readonly T[]> {
 
     /** The internal instance that is tested */
-    public readonly instance
+    public readonly instance: GenericMinimalistCollectionHolder<T, readonly T[]>
 
     public constructor(array: readonly T[],) {
         super(array,)

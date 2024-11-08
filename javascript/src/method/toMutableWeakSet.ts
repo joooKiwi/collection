@@ -19,7 +19,7 @@ import {isCollectionHolderByStructure}                   from "./isCollectionHol
 //#region -------------------- Facade method --------------------
 
 /**
- * Convert the {@link collection} to an {@link WeakSet mutable weak set}
+ * Convert the {@link collection} to a new {@link WeakSet mutable weak set}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
@@ -40,7 +40,7 @@ export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable
 
 
 /**
- * Convert the {@link collection} to an {@link WeakSet mutable weak set}
+ * Convert the {@link collection} to a new {@link WeakSet mutable weak set}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
  * @extensionFunction
@@ -56,7 +56,7 @@ export function toMutableWeakSetByMinimalistCollectionHolder<const T extends Wea
 }
 
 /**
- * Convert the {@link collection} to an {@link WeakSet mutable weak set}
+ * Convert the {@link collection} to a new {@link WeakSet mutable weak set}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
  * @extensionFunction
@@ -72,7 +72,7 @@ export function toMutableWeakSetByCollectionHolder<const T extends WeakKey, >(co
 }
 
 /**
- * Convert the {@link collection} to an {@link WeakSet mutable weak set}
+ * Convert the {@link collection} to a new {@link WeakSet mutable weak set}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
  * @extensionFunction

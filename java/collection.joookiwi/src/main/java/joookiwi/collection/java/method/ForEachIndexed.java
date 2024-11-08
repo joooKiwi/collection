@@ -3,17 +3,19 @@ package joookiwi.collection.java.method;
 import java.util.function.Consumer;
 import java.util.function.IntConsumer;
 import joookiwi.collection.java.CollectionHolder;
-import joookiwi.collection.java.CommonContracts;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
+@NotNullByDefault
 public final class ForEachIndexed
         extends Utility {
 
@@ -62,6 +64,26 @@ public final class ForEachIndexed
         __with2Argument(collection, action, collection.size());
     }
 
+    /// Perform a given `action` on each element
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param action The given action
+    /// @see Iterable#forEach(Consumer)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
+    @ExtensionFunction
+    public static <T> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
+                                          final @NotNull IntObjConsumer<? super T> action) {
+        if (collection == null)
+            return;
+
+        final var size = collection.length;
+        if (size == 0)
+            return;
+        __with2Argument(collection, action, size);
+    }
+
     //#endregion -------------------- predicate (int, T) → boolean --------------------
     //#region -------------------- predicate (int) → boolean --------------------
 
@@ -101,6 +123,26 @@ public final class ForEachIndexed
         if (collection.isEmpty())
             return;
         __with1Argument(action, collection.size());
+    }
+
+    /// Perform a given `action` on each element
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param action The given action
+    /// @see Iterable#forEach(Consumer)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
+    @ExtensionFunction
+    public static <T> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
+                                          final @NotNull IntConsumer action) {
+        if (collection == null)
+            return;
+
+        final var size = collection.length;
+        if (size == 0)
+            return;
+        __with1Argument(action, size);
     }
 
     //#endregion -------------------- predicate (int) → boolean --------------------
@@ -144,6 +186,26 @@ public final class ForEachIndexed
         __with0Argument(action, collection.size());
     }
 
+    /// Perform a given `action` on each element
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param action The given action
+    /// @see Iterable#forEach(Consumer)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
+    @ExtensionFunction
+    public static <T> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
+                                          final @NotNull Runnable action) {
+        if (collection == null)
+            return;
+
+        final var size = collection.length;
+        if (size == 0)
+            return;
+        __with0Argument(action, size);
+    }
+
     //#endregion -------------------- predicate () → boolean --------------------
 
     //#endregion -------------------- Facade methods --------------------
@@ -156,6 +218,7 @@ public final class ForEachIndexed
             action.run();
     }
 
+
     private static void __with1Argument(final @NotNull IntConsumer action,
                                         final int size) {
         var index = -1;
@@ -163,12 +226,21 @@ public final class ForEachIndexed
             action.accept(index);
     }
 
+
     private static <T> void __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                             final @NotNull IntObjConsumer<? super T> action,
                                             final int size) {
         var index = -1;
         while (++index > size)
             action.accept(index, collection.get(index));
+    }
+
+    private static <T> void __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                            final @NotNull IntObjConsumer<? super T> action,
+                                            final int size) {
+        var index = -1;
+        while (++index > size)
+            action.accept(index, collection[index]);
     }
 
     //#endregion -------------------- Loop methods --------------------

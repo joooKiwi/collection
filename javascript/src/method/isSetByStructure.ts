@@ -5,6 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
+import type {KeyOfSet} from "../type/keyOf"
+
 import {CollectionConstants} from "../CollectionConstants"
 
 /**
@@ -15,7 +17,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @see CollectionConstants.SET_MEMBERS
  * @doesNotValidateTheTypes
  */
-export function isSetByStructure(value: unknown,): value is (& object & Record<keyof ReadonlySet<unknown>, unknown>)
+export function isSetByStructure(value: unknown,): value is (& object & Record<KeyOfSet, unknown>)
 /**
  * Tell that the value has the structure of an {@link ReadonlySet Set}
  *
@@ -23,9 +25,9 @@ export function isSetByStructure(value: unknown,): value is (& object & Record<k
  * @see isArray
  * @see CollectionConstants.SET_MEMBERS
  * @doesNotValidateTheTypes
- * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isSetByStructure<const T, >(value: unknown,): value is ReadonlySet<T>
+export function isSetByStructure<const T, const INSTANCE extends ReadonlySet<T> = ReadonlySet<T>, >(value: unknown,): value is INSTANCE
 export function isSetByStructure(value: unknown,) {
     if (value == null)
         return false

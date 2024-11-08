@@ -10,12 +10,14 @@ import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
+@NotNullByDefault
 public final class Map
         extends Utility {
 
@@ -157,13 +159,12 @@ public final class Map
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T, U> U @NotNull @Unmodifiable [] __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                      final @NotNull ObjIntFunction<? super T, ? extends U> transform,
-                                                                      final int size) {
+    private static <U> U @NotNull @Unmodifiable [] __with0Argument(final @NotNull Supplier<? extends U> action,
+                                                                   final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
-            newArray[index] = transform.apply(collection.get(index), index);
+            newArray[index] = action.get();
         return newArray;
     }
 
@@ -177,12 +178,13 @@ public final class Map
         return newArray;
     }
 
-    private static <U> U @NotNull @Unmodifiable [] __with0Argument(final @NotNull Supplier<? extends U> action,
-                                                                   final int size) {
+    private static <T, U> U @NotNull @Unmodifiable [] __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                      final @NotNull ObjIntFunction<? super T, ? extends U> transform,
+                                                                      final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
-            newArray[index] = action.get();
+            newArray[index] = transform.apply(collection.get(index), index);
         return newArray;
     }
 

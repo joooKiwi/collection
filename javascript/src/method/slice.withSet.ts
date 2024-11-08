@@ -26,7 +26,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws IndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -52,7 +52,7 @@ export function sliceWithSet<const T, >(collection: Nullable<| MinimalistCollect
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws IndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -75,7 +75,7 @@ export function sliceWithSetByMinimalistCollectionHolder<const T, >(collection: 
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws IndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -98,7 +98,7 @@ export function sliceWithSetByCollectionHolder<const T, >(collection: Nullable<C
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
+ * @throws IndexOutOfBoundsException An indice is not in the {@link collection}
  * @canReceiveNegativeValue
  * @extensionFunction
  */
@@ -112,22 +112,6 @@ export function sliceWithSetByArray<const T, >(collection: Nullable<readonly T[]
     if (indicesSize == 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayByArray(collection, indices, indicesSize,),)
-}
-
-/**
- * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param indices    The given indices
- * @see ReadonlyArray.slice
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
- * @throws CollectionHolderIndexOutOfBoundsException An indice is not in the {@link collection}
- * @canReceiveNegativeValue
- * @extensionFunction
- * @deprecated Use {@link sliceWithSetByCollectionHolder} instead. This will be removed in version 1.11
- */
-export function sliceByCollectionHolderWithSet<const T, >(collection: Nullable<CollectionHolder<T>>, indices: ReadonlySet<number>,): CollectionHolder<T> {
-    return sliceWithSetByCollectionHolder(collection, indices,)
 }
 
 //#endregion -------------------- Facade method --------------------

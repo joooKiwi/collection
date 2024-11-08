@@ -7,6 +7,18 @@
 
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                                                                                                                                                                                                                                             from "./value/instances"
 import {EmptyCollectionHolderForTest}                                                                                                                                                                                                                                                                                                                                                               from "./instance/EmptyCollectionHolderForTest"
+import {GenericCollectionHolder_TakeAlias}                                                                                                                                                                                                                                                                                                                                                          from "./instance/GenericCollectionHolder_TakeAlias"
+import {GenericCollectionHolder_TakeLastAlias}                                                                                                                                                                                                                                                                                                                                                      from "./instance/GenericCollectionHolder_TakeLastAlias"
+import {GenericCollectionHolder_TakeLastWhileAlias}                                                                                                                                                                                                                                                                                                                                                 from "./instance/GenericCollectionHolder_TakeLastWhileAlias"
+import {GenericCollectionHolder_TakeLastWhileIndexedAlias}                                                                                                                                                                                                                                                                                                                                          from "./instance/GenericCollectionHolder_TakeLastWhileIndexedAlias"
+import {GenericCollectionHolder_TakeWhileAlias}                                                                                                                                                                                                                                                                                                                                                     from "./instance/GenericCollectionHolder_TakeWhileAlias"
+import {GenericCollectionHolder_TakeWhileIndexedAlias}                                                                                                                                                                                                                                                                                                                                              from "./instance/GenericCollectionHolder_TakeWhileIndexedAlias"
+import {LazyGenericCollectionHolder_TakeAlias}                                                                                                                                                                                                                                                                                                                                                      from "./instance/LazyGenericCollectionHolder_TakeAlias"
+import {LazyGenericCollectionHolder_TakeLastAlias}                                                                                                                                                                                                                                                                                                                                                  from "./instance/LazyGenericCollectionHolder_TakeLastAlias"
+import {LazyGenericCollectionHolder_TakeLastWhileAlias}                                                                                                                                                                                                                                                                                                                                             from "./instance/LazyGenericCollectionHolder_TakeLastWhileAlias"
+import {LazyGenericCollectionHolder_TakeLastWhileIndexedAlias}                                                                                                                                                                                                                                                                                                                                      from "./instance/LazyGenericCollectionHolder_TakeLastWhileIndexedAlias"
+import {LazyGenericCollectionHolder_TakeWhileAlias}                                                                                                                                                                                                                                                                                                                                                 from "./instance/LazyGenericCollectionHolder_TakeWhileAlias"
+import {LazyGenericCollectionHolder_TakeWhileIndexedAlias}                                                                                                                                                                                                                                                                                                                                          from "./instance/LazyGenericCollectionHolder_TakeWhileIndexedAlias"
 import {expectToBeInstance}                                                                                                                                                                                                                                                                                                                                                                         from "./expect/expectToBeInstance"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2, falseCallbacks, trueCallbacks}                                                                                                                                                                                                                                                     from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                                                                                                                                                                                          from "./value/callbacks (fail)"
@@ -20,12 +32,37 @@ import {ForbiddenIndexException} from "../src/exception/ForbiddenIndexException"
 describe("CollectionHolderTest (take)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("take",                 () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.take(),),)
-        test("takeWhile",            () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeWhile(),),)
-        test("takeWhileIndexed",     () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeWhileIndexed(),),)
-        test("takeLast",             () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeLast(),),)
-        test("takeLastWhile",        () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeLastWhile(),),)
-        test("takeLastWhileIndexed", () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeLastWhileIndexed(),),)
+        test("take",                  () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.take(),),)
+        test("limit",                 () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limit(),),)
+        test("takeWhile",             () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeWhile(),),)
+        test("limitWhile",            () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limitWhile(),),)
+        test("takeWhileIndexed",      () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeWhileIndexed(),),)
+        test("limitWhileIndexed",     () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limitWhileIndexed(),),)
+        test("takeLast",              () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeLast(),),)
+        test("limitLast",             () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limitLast(),),)
+        test("takeLastWhile",         () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeLastWhile(),),)
+        test("limitLastWhile",        () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limitLastWhile(),),)
+        test("takeLastWhileIndexed",  () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeLastWhileIndexed(),),)
+        test("limitLastWhileIndexed", () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limitLastWhileIndexed(),),)
+    },)
+
+    describe("aliases", () => {
+        describe("GenericCollectionHolder", () => {
+            test("limit",                 () => expect(new GenericCollectionHolder_TakeAlias().execute(it => it.limit(0,),).amountOfCall,).toBe(1,),)
+            test("limitWhile",            () => expect(new GenericCollectionHolder_TakeWhileAlias().execute(it => it.limitWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("limitWhileIndexed",     () => expect(new GenericCollectionHolder_TakeWhileIndexedAlias().execute(it => it.limitWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("limitLast",             () => expect(new GenericCollectionHolder_TakeLastAlias().execute(it => it.limitLast(0,),).amountOfCall,).toBe(1,),)
+            test("limitLastWhile",        () => expect(new GenericCollectionHolder_TakeLastWhileAlias().execute(it => it.limitLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("limitLastWhileIndexed", () => expect(new GenericCollectionHolder_TakeLastWhileIndexedAlias().execute(it => it.limitLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyGenericCollectionHolder", () => {
+            test("limit",                 () => expect(new LazyGenericCollectionHolder_TakeAlias().execute(it => it.limit(0,),).amountOfCall,).toBe(1,),)
+            test("limitWhile",            () => expect(new LazyGenericCollectionHolder_TakeWhileAlias().execute(it => it.limitWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("limitWhileIndexed",     () => expect(new LazyGenericCollectionHolder_TakeWhileIndexedAlias().execute(it => it.limitWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("limitLast",             () => expect(new LazyGenericCollectionHolder_TakeLastAlias().execute(it => it.limitLast(0,),).amountOfCall,).toBe(1,),)
+            test("limitLastWhile",        () => expect(new LazyGenericCollectionHolder_TakeLastWhileAlias().execute(it => it.limitLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("limitLastWhileIndexed", () => expect(new LazyGenericCollectionHolder_TakeLastWhileIndexedAlias().execute(it => it.limitLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+        },)
     },)
 
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
@@ -41,7 +78,7 @@ describe("CollectionHolderTest (take)", () => {
                         test("+∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(0,),)
                     },)
                     describe("1 field", () => {
-                        test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(1,),)
+                        test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(1,),)
                         test("-∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
                         test("-2",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(-2,),).amountOfCall,).toBe(0,),)
                         test("-1",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(-1,),).amountOfCall,).toBe(0,),)
@@ -51,7 +88,7 @@ describe("CollectionHolderTest (take)", () => {
                         test("+∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(1,),)
                     },)
                     describe("2 fields", () => {
-                        test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(2,),)
+                        test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(2,),)
                         test("-∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
                         test("-3",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-3,),).amountOfCall,).toBe(0,),)
                         test("-2",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-2,),).amountOfCall,).toBe(0,),)
@@ -63,7 +100,7 @@ describe("CollectionHolderTest (take)", () => {
                         test("+∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(2,),)
                     },)
                     describe("4 fields", () => {
-                        test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(4,),)
+                        test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(4,),)
                         test("-∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
                         test("-5",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-5,),).amountOfCall,).toBe(0,),)
                         test("-4",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-4,),).amountOfCall,).toBe(0,),)
@@ -106,7 +143,7 @@ describe("CollectionHolderTest (take)", () => {
                         test("+∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(0,),)
                     },)
                     describe("1 field", () => {
-                        test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(1,),)
+                        test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(1,),)
                         test("-∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
                         test("-2",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(-2,),).amountOfCall,).toBe(0,),)
                         test("-1",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(-1,),).amountOfCall,).toBe(0,),)
@@ -116,7 +153,7 @@ describe("CollectionHolderTest (take)", () => {
                         test("+∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(1,),)
                     },)
                     describe("2 fields", () => {
-                        test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(2,),)
+                        test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(2,),)
                         test("-∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
                         test("-3",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-3,),).amountOfCall,).toBe(0,),)
                         test("-2",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-2,),).amountOfCall,).toBe(0,),)
@@ -128,7 +165,7 @@ describe("CollectionHolderTest (take)", () => {
                         test("+∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(2,),)
                     },)
                     describe("4 fields", () => {
-                        test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileIgnoringForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(4,),)
+                        test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(4,),)
                         test("-∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
                         test("-5",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-5,),).amountOfCall,).toBe(0,),)
                         test("-4",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-4,),).amountOfCall,).toBe(0,),)

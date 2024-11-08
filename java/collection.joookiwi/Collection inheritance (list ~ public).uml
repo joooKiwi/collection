@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>joookiwi</OriginalElement>
+  <nodes>
+    <node x="610.818658953199" y="-1337.988090134012">java.util.ArrayList</node>
+    <node x="442.41683862991465" y="-1518.5611267225124">java.util.List</node>
+    <node x="416.88715864130376" y="-1334.4278559139095">java.util.Vector</node>
+    <node x="697.280317904868" y="-1448.7524958685378">java.util.AbstractList</node>
+    <node x="414.03859044078115" y="-1245.0311482595228">java.util.LinkedList</node>
+    <node x="822.629884844344" y="-1357.336607076808">java.util.AbstractSequentialList</node>
+    <node x="102.53238061286697" y="-1378.7909412370625">java.util.concurrent.CopyOnWriteArrayList</node>
+    <node x="427.75081649545933" y="-1430.1968835811415">java.util.RandomAccess</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.concurrent.CopyOnWriteArrayList" target="java.util.RandomAccess" relationship="REALIZATION">
+      <point x="-3.8061286696233765E-4" y="13.999941237062558" />
+      <point x="229.532" y="-1199.531" />
+      <point x="593.319" y="-1199.531" />
+      <point x="593.319" y="-1358.0" />
+      <point x="512.251" y="-1358.0" />
+      <point x="1.83504540643753E-4" y="13.999883581141603" />
+    </edge>
+    <edge source="java.util.concurrent.CopyOnWriteArrayList" target="java.util.List" relationship="REALIZATION">
+      <point x="126.99961938713301" y="-5.876293744222494E-5" />
+      <point x="386.0" y="-1364.791" />
+      <point x="386.0" y="-1504.561" />
+      <point x="-54.99983862991468" y="1.267225125047844E-4" />
+    </edge>
+    <edge source="java.util.AbstractSequentialList" target="java.util.AbstractList" relationship="GENERALIZATION">
+      <point x="-127.99988484434402" y="-3.929231920665188E-4" />
+      <point x="793.0" y="-1343.337" />
+      <point x="793.0" y="-1374.837" />
+      <point x="754.319" y="-1374.837" />
+      <point x="-30.461317904867997" y="14.000495868537882" />
+    </edge>
+    <edge source="java.util.Vector" target="java.util.RandomAccess" relationship="REALIZATION">
+      <point x="-1.586413037557577E-4" y="-14.000144086090586" />
+      <point x="483.387" y="-1358.0" />
+      <point x="512.251" y="-1358.0" />
+      <point x="1.83504540643753E-4" y="13.999883581141603" />
+    </edge>
+    <edge source="java.util.AbstractList" target="java.util.List" relationship="REALIZATION">
+      <point x="-87.50031790486798" y="-12.944504131462054" />
+      <point x="386.0" y="-1447.697" />
+      <point x="386.0" y="-1504.561" />
+      <point x="-54.99983862991468" y="1.267225125047844E-4" />
+    </edge>
+    <edge source="java.util.Vector" target="java.util.AbstractList" relationship="GENERALIZATION">
+      <point x="-1.586413037557577E-4" y="13.999855913909414" />
+      <point x="483.387" y="-1288.928" />
+      <point x="793.0" y="-1288.928" />
+      <point x="793.0" y="-1374.837" />
+      <point x="754.319" y="-1374.837" />
+      <point x="-30.461317904867997" y="14.000495868537882" />
+    </edge>
+    <edge source="java.util.ArrayList" target="java.util.RandomAccess" relationship="REALIZATION">
+      <point x="8.461341046800953" y="-13.999909865988002" />
+      <point x="694.78" y="-1358.0" />
+      <point x="512.251" y="-1358.0" />
+      <point x="1.83504540643753E-4" y="13.999883581141603" />
+    </edge>
+    <edge source="java.util.ArrayList" target="java.util.List" relationship="REALIZATION">
+      <point x="-6.538658953199047" y="-13.999909865988002" />
+      <point x="679.78" y="-1374.837" />
+      <point x="386.0" y="-1374.837" />
+      <point x="386.0" y="-1504.561" />
+      <point x="-54.99983862991468" y="1.267225125047844E-4" />
+    </edge>
+    <edge source="java.util.ArrayList" target="java.util.AbstractList" relationship="GENERALIZATION">
+      <point x="75.50034104680094" y="9.013401199808868E-5" />
+      <point x="793.0" y="-1323.988" />
+      <point x="793.0" y="-1374.837" />
+      <point x="754.319" y="-1374.837" />
+      <point x="-30.461317904867997" y="14.000495868537882" />
+    </edge>
+    <edge source="java.util.Vector" target="java.util.List" relationship="REALIZATION">
+      <point x="-66.50015864130376" y="-1.4408609058591537E-4" />
+      <point x="386.0" y="-1320.428" />
+      <point x="386.0" y="-1504.561" />
+      <point x="-54.99983862991468" y="1.267225125047844E-4" />
+    </edge>
+    <edge source="java.util.LinkedList" target="java.util.AbstractSequentialList" relationship="GENERALIZATION">
+      <point x="80.0" y="0.0" />
+      <point x="950.629884844344" y="-1231.0311482595228" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.LinkedList" target="java.util.List" relationship="REALIZATION">
+      <point x="-79.99959044078116" y="1.4825952280261845E-4" />
+      <point x="386.0" y="-1231.031" />
+      <point x="386.0" y="-1504.561" />
+      <point x="-54.99983862991468" y="1.267225125047844E-4" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.5" showDependencies="false" x="579.0" y="-1188.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

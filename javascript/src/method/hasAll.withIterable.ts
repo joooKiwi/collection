@@ -26,21 +26,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: Iterable<T>,): boolean
-/**
- * Tell that all the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param values     The values to compare
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
- * @extensionFunction
- * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
- */
-export function hasAllWithIterable<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<unknown>,): boolean
-export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: Iterable<T>,) {
-    if (collection == null)
-        return false
+export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: Iterable<T>,): boolean {
     if (isCollectionHolder<T>(collection,))
         return hasAllWithIterableByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -62,26 +48,13 @@ export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistC
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,): boolean
-/**
- * Tell that all the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
- * @extensionFunction
- * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
- */
-export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<unknown>,): boolean
-export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,) {
-    if (collection == null)
-        return false
-
+export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,): boolean {
     const iterator = values[Symbol.iterator]() as IterableIterator<unknown>
     const iteratorResult: IteratorResult<unknown, unknown> = iterator.next()
     if (iteratorResult.done)
         return true
+    if (collection == null)
+        return false
 
     const size = collection.size
     if (size == 0)
@@ -98,26 +71,13 @@ export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collec
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<T>,): boolean
-/**
- * Tell that all the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
- * @extensionFunction
- * @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11
- */
-export function hasAllWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<unknown>,): boolean
-export function hasAllWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<T>,) {
-    if (collection == null)
-        return false
-
+export function hasAllWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<T>,): boolean {
     const iterator = values[Symbol.iterator]() as IterableIterator<T, unknown, unknown>
     const iteratorResult: IteratorResult<T, unknown> = iterator.next()
     if (iteratorResult.done)
         return true
+    if (collection == null)
+        return false
     if (collection.isEmpty)
         return false
     return __hasAll(collection, iterator, iteratorResult.value, collection.size,)
@@ -133,13 +93,12 @@ export function hasAllWithIterableByCollectionHolder<const T, >(collection: Null
  * @extensionFunction
  */
 export function hasAllWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterable<T>,): boolean {
-    if (collection == null)
-        return false
-
     const iterator = values[Symbol.iterator]() as IterableIterator<T, unknown, unknown>
     const iteratorResult: IteratorResult<T, unknown> = iterator.next()
     if (iteratorResult.done)
         return true
+    if (collection == null)
+        return false
 
     const size = collection.length
     if (size == 0)

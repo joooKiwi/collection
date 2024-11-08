@@ -5,7 +5,8 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {CollectionHolder} from "../CollectionHolder"
+import type {CollectionHolder}      from "../CollectionHolder"
+import type {KeyOfCollectionHolder} from "../type/keyOf"
 
 import {CollectionConstants} from "../CollectionConstants"
 
@@ -17,7 +18,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @see CollectionConstants.COLLECTION_MEMBERS
  * @doesNotValidateTheTypes
  */
-export function isCollectionHolderByStructure(value: unknown,): value is (& object & Record<keyof CollectionHolder, unknown>)
+export function isCollectionHolderByStructure(value: unknown,): value is (& object & Record<KeyOfCollectionHolder, unknown>)
 /**
  * Tell that the value has the structure of a {@link CollectionHolder}
  *
@@ -25,9 +26,9 @@ export function isCollectionHolderByStructure(value: unknown,): value is (& obje
  * @see isCollectionHolder
  * @see CollectionConstants.COLLECTION_MEMBERS
  * @doesNotValidateTheTypes
- * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in Javascript
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isCollectionHolderByStructure<const T, >(value: unknown,): value is CollectionHolder<T>
+export function isCollectionHolderByStructure<const T, const INSTANCE extends CollectionHolder<T> = CollectionHolder<T>, >(value: unknown,): value is INSTANCE
 export function isCollectionHolderByStructure(value: unknown,) {
     if (value == null)
         return false

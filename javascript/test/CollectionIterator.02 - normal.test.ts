@@ -12,14 +12,14 @@ import {CollectionHolderFromArray}                   from "./instance/Collection
 import {GenericCollectionIterator_CurrentIndexAlias} from "./instance/GenericCollectionIterator_CurrentIndexAlias"
 import {A, AB, ABCD, EMPTY}                          from "./value/arrays"
 
-import {CollectionConstants}                       from "../src/CollectionConstants"
-import {EmptyCollectionHolder}                     from "../src/EmptyCollectionHolder"
-import {NoElementFoundInCollectionHolderException} from "../src/exception/NoElementFoundInCollectionHolderException"
-import {EmptyCollectionIterator}                   from "../src/iterator/EmptyCollectionIterator"
-import {GenericCollectionIterator}                 from "../src/iterator/GenericCollectionIterator"
-import {GenericAfterLastIteratorValue}             from "../src/iterator/value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue}           from "../src/iterator/value/GenericBeforeFirstIteratorValue"
-import {GenericIteratorValue}                      from "../src/iterator/value/GenericIteratorValue"
+import {CollectionConstants}                 from "../src/CollectionConstants"
+import {EmptyCollectionHolder}               from "../src/EmptyCollectionHolder"
+import {NoElementFoundInCollectionException} from "../src/exception/NoElementFoundInCollectionException"
+import {EmptyCollectionIterator}             from "../src/iterator/EmptyCollectionIterator"
+import {GenericCollectionIterator}           from "../src/iterator/GenericCollectionIterator"
+import {GenericAfterLastIteratorValue}       from "../src/iterator/value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}     from "../src/iterator/value/GenericBeforeFirstIteratorValue"
+import {GenericIteratorValue}                from "../src/iterator/value/GenericIteratorValue"
 
 describe("CollectionIteratorTest", () => {
 
@@ -42,8 +42,8 @@ describe("CollectionIteratorTest", () => {
             test("previous", () => expect(instance.hasPrevious,).toBeFalse(),)
         },)
         describe("value", () => {
-            test("next",     () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionHolderException,),)
-            test("previous", () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionHolderException,),)
+            test("next",     () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
+            test("previous", () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionException,),)
         },)
         describe("iterator result", () => {
             describe("next", () => {
@@ -88,8 +88,8 @@ describe("CollectionIteratorTest", () => {
                 test("previous", () => expect(instance.hasPrevious,).toBeFalse(),)
             },)
             describe("value", () => {
-                test("next",     () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionHolderException,),)
-                test("previous", () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionHolderException,),)
+                test("next",     () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
+                test("previous", () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionException,),)
             },)
             describe("iterator result", () => {
                 describe("next", () => {
@@ -233,43 +233,43 @@ describe("CollectionIteratorTest", () => {
                 describe("next", () => {
                     test("initial", () => expect(instance.nextValue,).toBe(value,),)
 
-                    test("after 1 next",                () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 1 previous",            () => expect(asCallback(do1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 1 previous and 1 next", () => expect(asCallback(do1PreviousAnd1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 1 next and 1 previous", () => expect(asCallback(do1NextAnd1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 1 next",                () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 1 previous",            () => expect(asCallback(do1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 1 previous and 1 next", () => expect(asCallback(do1PreviousAnd1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 1 next and 1 previous", () => expect(asCallback(do1NextAnd1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
 
                     describe("after forEach", () => {
                         beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
                     },)
                     describe("after forEachIndexed", () => {
                         beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
                     },)
                 },)
                 describe("previous", () => {
                     test("initial", () => expect(instance.previousValue,).toBe(value,),)
 
-                    test("after 1 next",                () => expect(asCallback(do1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 1 previous",            () => expect(asCallback(do1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 1 previous and 1 next", () => expect(asCallback(do1PreviousAnd1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 1 next and 1 previous", () => expect(asCallback(do1NextAnd1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 1 next",                () => expect(asCallback(do1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 1 previous",            () => expect(asCallback(do1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 1 previous and 1 next", () => expect(asCallback(do1PreviousAnd1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 1 next and 1 previous", () => expect(asCallback(do1NextAnd1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
 
                     describe("after forEach", () => {
                         beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                        test("direct",       () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
                     },)
                     describe("after forEachIndexed", () => {
                         beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                        test("direct",       () => expect(() => instance.previousValue,).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
                     },)
                 },)
             },)
@@ -527,15 +527,15 @@ describe("CollectionIteratorTest", () => {
                     test("initial", () => expect(instance.nextValue,).toBe(value1,),)
 
                     test("after 1 next", () => expect(do1Next(instance,).nextValue,).toBe(value2,),)
-                    test("after 2 next", () => expect(asCallback(do2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 2 next", () => expect(asCallback(do2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
 
-                    test("after 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
                     test("after 2 previous", () => expect(do2Previous(instance,).nextValue,).toBe(value2,),)
 
-                    test("after 1 previous and 1 next", () => expect(asCallback(do1PreviousAnd1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 2 previous and 1 next", () => expect(asCallback(do2PreviousAnd1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 1 previous and 2 next", () => expect(asCallback(do1PreviousAnd2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 2 previous and 2 next", () => expect(asCallback(do2PreviousAnd2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 1 previous and 1 next", () => expect(asCallback(do1PreviousAnd1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 2 previous and 1 next", () => expect(asCallback(do2PreviousAnd1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 1 previous and 2 next", () => expect(asCallback(do1PreviousAnd2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 2 previous and 2 next", () => expect(asCallback(do2PreviousAnd2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
 
                     test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).nextValue,).toBe(value2,),)
                     test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).nextValue,).toBe(value2,),)
@@ -544,17 +544,17 @@ describe("CollectionIteratorTest", () => {
 
                     describe("after forEach", () => {
                         beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 2 next",     () => expect(asCallback(do2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 2 next",     () => expect(asCallback(do2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
                         test("+ 1 previous", () => expect(do1Previous(instance,).nextValue,).toBe(value2,),)
                         test("+ 2 previous", () => expect(do2Previous(instance,).nextValue,).toBe(value2,),)
                     },)
                     describe("after forEachIndexed", () => {
                         beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 2 next",     () => expect(asCallback(do2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 2 next",     () => expect(asCallback(do2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
                         test("+ 1 previous", () => expect(do1Previous(instance,).nextValue,).toBe(value2,),)
                         test("+ 2 previous", () => expect(do2Previous(instance,).nextValue,).toBe(value2,),)
                     },)
@@ -562,37 +562,37 @@ describe("CollectionIteratorTest", () => {
                 describe("previous", () => {
                     test("initial", () => expect(instance.previousValue,).toBe(value2,),)
 
-                    test("after 1 next", () => expect(asCallback(do1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 1 next", () => expect(asCallback(do1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
                     test("after 2 next", () => expect(do2Next(instance,).previousValue,).toBe(value1,),)
 
                     test("after 1 previous", () => expect(do1Previous(instance,).previousValue,).toBe(value1,),)
-                    test("after 2 previous", () => expect(asCallback(do2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 2 previous", () => expect(asCallback(do2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
 
                     test("after 1 previous and 1 next", () => expect(do1PreviousAnd1Next(instance,).previousValue,).toBe(value1),)
                     test("after 2 previous and 1 next", () => expect(do2PreviousAnd1Next(instance,).previousValue,).toBe(value1,),)
                     test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).previousValue,).toBe(value1,),)
                     test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).previousValue,).toBe(value1,),)
 
-                    test("after 1 next and 1 previous", () => expect(asCallback(do1NextAnd1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 2 next and 1 previous", () => expect(asCallback(do2NextAnd1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 1 next and 2 previous", () => expect(asCallback(do1NextAnd2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 2 next and 2 previous", () => expect(asCallback(do2NextAnd2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 1 next and 1 previous", () => expect(asCallback(do1NextAnd1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 2 next and 1 previous", () => expect(asCallback(do2NextAnd1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 1 next and 2 previous", () => expect(asCallback(do1NextAnd2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 2 next and 2 previous", () => expect(asCallback(do2NextAnd2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
 
                     describe("after forEach", () => {
                         beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
                         test("direct",       () => expect(instance.previousValue,).toBe(value1,),)
                         test("+ 1 next",     () => expect(do1Next(instance,).previousValue,).toBe(value1,),)
                         test("+ 2 next",     () => expect(do2Next(instance,).previousValue,).toBe(value1,),)
-                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 2 previous", () => expect(asCallback(do2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 2 previous", () => expect(asCallback(do2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
                     },)
                     describe("after forEachIndexed", () => {
                         beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
                         test("direct",       () => expect(instance.previousValue,).toBe(value1,),)
                         test("+ 1 next",     () => expect(do1Next(instance,).previousValue,).toBe(value1,),)
                         test("+ 2 next",     () => expect(do2Next(instance,).previousValue,).toBe(value1,),)
-                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 2 previous", () => expect(asCallback(do2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                        test("+ 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 2 previous", () => expect(asCallback(do2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
                     },)
                 },)
             },)
@@ -886,13 +886,13 @@ describe("CollectionIteratorTest", () => {
                     test("after 1 next", () => expect(do1Next(instance,).nextValue,).toBe(value2,),)
                     test("after 2 next", () => expect(do2Next(instance,).nextValue,).toBe(value3,),)
 
-                    test("after 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 1 previous", () => expect(asCallback(do1Previous(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
                     test("after 2 previous", () => expect(do2Previous(instance,).nextValue,).toBe(value4,),)
 
-                    test("after 1 previous and 1 next", () => expect(asCallback(do1PreviousAnd1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 2 previous and 1 next", () => expect(asCallback(do2PreviousAnd1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 1 previous and 2 next", () => expect(asCallback(do1PreviousAnd2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 2 previous and 2 next", () => expect(asCallback(do2PreviousAnd2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 1 previous and 1 next", () => expect(asCallback(do1PreviousAnd1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 2 previous and 1 next", () => expect(asCallback(do2PreviousAnd1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 1 previous and 2 next", () => expect(asCallback(do1PreviousAnd2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 2 previous and 2 next", () => expect(asCallback(do2PreviousAnd2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
 
                     test("after 1 next and 1 previous", () => expect(do1NextAnd1Previous(instance,).nextValue,).toBe(value2,),)
                     test("after 2 next and 1 previous", () => expect(do2NextAnd1Previous(instance,).nextValue,).toBe(value2,),)
@@ -901,17 +901,17 @@ describe("CollectionIteratorTest", () => {
 
                     describe("after forEach", () => {
                         beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 2 next",     () => expect(asCallback(do2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 2 next",     () => expect(asCallback(do2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
                         test("+ 1 previous", () => expect(do1Previous(instance,).nextValue,).toBe(value4,),)
                         test("+ 2 previous", () => expect(do2Previous(instance,).nextValue,).toBe(value3,),)
                     },)
                     describe("after forEachIndexed", () => {
                         beforeEach(() => instance.forEachIndexed(EMPTY_CALLBACK,),)
-                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                        test("+ 2 next",     () => expect(asCallback(do2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                        test("direct",       () => expect(() => instance.nextValue,).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 1 next",     () => expect(asCallback(do1Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
+                        test("+ 2 next",     () => expect(asCallback(do2Next(instance,), it => it.nextValue,),).toThrow(NoElementFoundInCollectionException,),)
                         test("+ 1 previous", () => expect(do1Previous(instance,).nextValue,).toBe(value4,),)
                         test("+ 2 previous", () => expect(do2Previous(instance,).nextValue,).toBe(value3,),)
                     },)
@@ -919,7 +919,7 @@ describe("CollectionIteratorTest", () => {
                 describe("previous", () => {
                     test("initial", () => expect(instance.previousValue,).toBe(value4,),)
 
-                    test("after 1 next", () => expect(asCallback(do1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 1 next", () => expect(asCallback(do1Next(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
                     test("after 2 next", () => expect(do2Next(instance,).previousValue,).toBe(value1,),)
 
                     test("after 1 previous", () => expect(do1Previous(instance,).previousValue,).toBe(value3,),)
@@ -930,10 +930,10 @@ describe("CollectionIteratorTest", () => {
                     test("after 1 previous and 2 next", () => expect(do1PreviousAnd2Next(instance,).previousValue,).toBe(value3,),)
                     test("after 2 previous and 2 next", () => expect(do2PreviousAnd2Next(instance,).previousValue,).toBe(value3,),)
 
-                    test("after 1 next and 1 previous", () => expect(asCallback(do1NextAnd1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 2 next and 1 previous", () => expect(asCallback(do2NextAnd1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 1 next and 2 previous", () => expect(asCallback(do1NextAnd2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
-                    test("after 2 next and 2 previous", () => expect(asCallback(do2NextAnd2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionHolderException,),)
+                    test("after 1 next and 1 previous", () => expect(asCallback(do1NextAnd1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 2 next and 1 previous", () => expect(asCallback(do2NextAnd1Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 1 next and 2 previous", () => expect(asCallback(do1NextAnd2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
+                    test("after 2 next and 2 previous", () => expect(asCallback(do2NextAnd2Previous(instance,), it => it.previousValue,),).toThrow(NoElementFoundInCollectionException,),)
 
                     describe("after forEach", () => {
                         beforeEach(() => instance.forEach(EMPTY_CALLBACK,),)

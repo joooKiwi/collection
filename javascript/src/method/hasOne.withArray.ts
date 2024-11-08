@@ -24,17 +24,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: readonly T[],): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param values     The values to compare
- * @extensionFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneWithArray<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly unknown[],): boolean
-export function hasOneWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: readonly T[],) {
+export function hasOneWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: readonly T[],): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder<T>(collection,))
@@ -56,17 +46,7 @@ export function hasOneWithArray<const T, >(collection: Nullable<| MinimalistColl
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly T[],): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly unknown[],): boolean
-export function hasOneWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly T[],) {
+export function hasOneWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly T[],): boolean {
     if (collection == null)
         return false
 
@@ -87,17 +67,7 @@ export function hasOneWithArrayByMinimalistCollectionHolder<const T, >(collectio
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: readonly T[],): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: readonly unknown[],): boolean
-export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: readonly T[],) {
+export function hasOneWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: readonly T[],): boolean {
     if (collection == null)
         return false
     if (collection.isEmpty)

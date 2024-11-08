@@ -41,7 +41,6 @@ But other languages will have different features based on how they can handle it
 [npm-download-image-link]: https://img.shields.io/npm/dt/@joookiwi/collection.svg
 [npm-download-link]:       https://npm-stat.com/charts.html?package=@joookiwi/collection
 
-
 ## Related projects
 
 Here is a list of the related projects made by me
@@ -123,19 +122,23 @@ The methods directly associated to a size
 
 The methods are made to find an element or giving a value
  - `get`|`at`|`elementAt`(index)
+ - `getFirst`|`first`()
+ - `getLast`|`last`()
  - `getOrElse`|`atOrElse`|`elementAtOrElse`(index, defaultValue)
  - `getOrDefault`|`atOrDefault`|`elementAtOrDefault`(index)
  - `getOrNull`|`atOrNull`|`elementAtOrNull`(index)
- - `first`(predicate?)
- - `firstOrDefault`(predicate?)
- - `firstOrNull`(predicate?)
- - `last`(predicate?)
- - `lastOrDefault`(predicate?)
- - `lastOrNull`(predicate?)
- - `find`(predicate?)
- - `findIndexed`(predicate?)
- - `findLast`(predicate?)
- - `findLastIndexed`(predicate?)
+ - `getFirstOrDefault`|`firstOrDefault`()
+ - `getFirstOrNull`|`firstOrNull`()
+ - `getLastOrDefault`|`lastOrDefault`()
+ - `getLastOrNull`|`lastOrNull`()
+ - `findFirst`|`find`|`first`(predicate)
+ - `findFirstOrNull`|`findOrNull`|`firstOrNull`(predicate)
+ - `findFirstIndexed`|`findIndexed`|`firstIndexed`(predicate)
+ - `findFirstIndexedOrNull`|`findIndexedOrNull`|`firstIndexedOrNull`(predicate)
+ - `findLast`|`last`(predicate)
+ - `findLastOrNull`|`lastOrNull`(predicate)
+ - `findLastIndexed`|`lastIndexed`(predicate)
+ - `findLastIndexedOrNull`|`lastIndexedOrNull`(predicate)
 
 <details><summary>get(index)</summary>
 
@@ -148,6 +151,30 @@ The methods are made to find an element or giving a value
 | **C#**         | <ul><li>[IEnumerable.ElementAt(index)][c#-i-enumerable-get]<li>[IList[index]][c#-i-list-get]                                                     |
 
 </details>
+<details><summary>getFirst()</summary>
+
+| Language       | Equivalent                                                                  |
+|:---------------|:----------------------------------------------------------------------------|
+| **Javascript** | `0 in array ? array[0] : throw`                                             |
+| **Java**       | `collection.stream().findFirst().orElseThrow()`                             |
+| **Kotlin**     | <ul><li>[Array.first()<br/>Iterable.first()<br/>List.first()][kotlin-first] |
+| **PHP**        |                                                                             |
+| **C#**         | <ul><li>[IEnumerable.First()][c#-first]                                     |
+
+</details>
+<details><summary>getLast()</summary>
+
+| Language       | Equivalent                                                              |
+|:---------------|:------------------------------------------------------------------------|
+| **Javascript** | `size - 1 in array[size - 1] : throw `                                  |
+| **Java**       | `collection.stream().reduce((_, it) -> it).orElseThrow()`               |
+| **Kotlin**     | <ul><li>[Array.last()<br/>Iterable.last()<br/>List.last()][kotlin-last] |
+| **PHP**        |                                                                         |
+| **C#**         | <ul><li>[IEnumerable.Last()][c#-last]                                   |
+
+</details>
+<br/>
+
 <details><summary>getOrElse(index, defaultValue)</summary>
 
 | Language       | Equivalent                                                                                                                                                                                                                                                                         |
@@ -159,6 +186,8 @@ The methods are made to find an element or giving a value
 | **C#**         | `enumerable.ElementAtOrDefault(index) ?? defaultValue()`                                                                                                                                                                                                                           |
 
 </details>
+<br/>
+
 <details><summary>getOrDefault(index)</summary>
 
 | Language           | Equivalent                                                         |
@@ -168,6 +197,28 @@ The methods are made to find an element or giving a value
 | **~~Kotlin~~**     |                                                                    |
 | **~~PHP~~**        |                                                                    |
 | **C#**             | <ul><li>[IEnumerable.ElementAtOrDefault(index)][c#-get-or-default] |
+
+</details>
+<details><summary>getFirstOrDefault()</summary>
+
+| Language           | Equivalent                                                  |
+|:-------------------|:------------------------------------------------------------|
+| **~~Javascript~~** |                                                             |
+| **~~Java~~**       |                                                             |
+| **~~Kotlin~~**     |                                                             |
+| **~~PHP~~**        |                                                             |
+| **C#**             | <ul><li>[IEnumerable.FirstOrDefault()][c#-first-or-default] |
+
+</details>
+<details><summary>getLastOrDefault()</summary>
+
+| Language           | Equivalent                                                |
+|:-------------------|:----------------------------------------------------------|
+| **~~Javascript~~** |                                                           |
+| **~~Java~~**       |                                                           |
+| **~~Kotlin~~**     |                                                           |
+| **~~PHP~~**        |                                                           |
+| **C#**             | <ul><li>[IEnumerable.LastOrDefault()][c#-last-or-default] |
 
 </details>
 <details><summary>getOrNull(index)</summary>
@@ -181,53 +232,7 @@ The methods are made to find an element or giving a value
 | **C#**         | `enumerable.ElementAtOrDefault(index) ?? null`                                                                                                                                                               |
 
 </details>
-<br/>
-
-<details><summary>first()</summary>
-
-| Language       | Equivalent                                                                  |
-|:---------------|:----------------------------------------------------------------------------|
-| **Javascript** | `0 in array ? array[0] : throw`                                             |
-| **Java**       | `collection.stream().findFirst().orElseThrow()`                             |
-| **Kotlin**     | <ul><li>[Array.first()<br/>Iterable.first()<br/>List.first()][kotlin-first] |
-| **PHP**        |                                                                             |
-| **C#**         | <ul><li>[IEnumerable.First()][c#-first]                                     |
-
-</details>
-<details><summary>first(predicate)</summary>
-
-| Language       | Equivalent                                                                             |
-|:---------------|:---------------------------------------------------------------------------------------|
-| **Javascript** | `array.find(predicate,) ?? throw`                                                      |
-| **Java**       | `collection.stream().findFirst().or(predicate).orElseThrow()`                          |
-| **Kotlin**     | <ul><li>[Array.first(predicate)<br/>Iterable.first(predicate)][kotlin-first-predicate] |
-| **PHP**        |                                                                                        |
-| **C#**         | <ul><li>[IEnumerable.First(predicate)][c#-first-predicate]                             |
-
-</details>
-<details><summary>firstOrDefault()</summary>
-
-| Language           | Equivalent                                                  |
-|:-------------------|:------------------------------------------------------------|
-| **~~Javascript~~** |                                                             |
-| **~~Java~~**       |                                                             |
-| **~~Kotlin~~**     |                                                             |
-| **~~PHP~~**        |                                                             |
-| **C#**             | <ul><li>[IEnumerable.FirstOrDefault()][c#-first-or-default] |
-
-</details>
-<details><summary>firstOrDefault(predicate)</summary>
-
-| Language           | Equivalent                                                                     |
-|:-------------------|:-------------------------------------------------------------------------------|
-| **~~Javascript~~** |                                                                                |
-| **~~Java~~**       |                                                                                |
-| **~~Kotlin~~**     |                                                                                |
-| **~~PHP~~**        |                                                                                |
-| **C#**             | <ul><li>[IEnumerable.FirstOrDefault(predicate)][c#-first-or-default-predicate] |
-
-</details>
-<details><summary>firstOrNull()</summary>
+<details><summary>getFirstOrNull()</summary>
 
 | Language       | Equivalent                                                                                            |
 |:---------------|:------------------------------------------------------------------------------------------------------|
@@ -238,64 +243,7 @@ The methods are made to find an element or giving a value
 | **C#**         |                                                                                                       |
 
 </details>
-<details><summary>firstOrNull(predicate)</summary>
-
-| Language       | Equivalent                                                                                                 |
-|:---------------|:-----------------------------------------------------------------------------------------------------------|
-| **Javascript** | `array.find(predicate,) ?? null`                                                                           |
-| **Java**       | `collection.stream().findFirst().or(predicate).orElse(null)`                                               |
-| **Kotlin**     | <ul><li>[Array.firstOrNull(predicate)<br/>Iterable.firstOrNull(predicate)][kotlin-first-or-null-predicate] |
-| **PHP**        |                                                                                                            |
-| **C#**         |                                                                                                            |
-
-</details>
-<br/>
-
-<details><summary>last()</summary>
-
-| Language       | Equivalent                                                              |
-|:---------------|:------------------------------------------------------------------------|
-| **Javascript** | `size - 1 in array[size - 1] : throw `                                  |
-| **Java**       | `collection.stream().reduce((_, it) -> it).orElseThrow()`               |
-| **Kotlin**     | <ul><li>[Array.last()<br/>Iterable.last()<br/>List.last()][kotlin-last] |
-| **PHP**        |                                                                         |
-| **C#**         | <ul><li>[IEnumerable.Last()][c#-last]                                   |
-
-</details>
-<details><summary>last(predicate)</summary>
-
-| Language       | Equivalent                                                                          |
-|:---------------|:------------------------------------------------------------------------------------|
-| **Javascript** | `array.findLast(predicate,) ?? throw`                                               |
-| **Java**       | `collection.stream().reduce((_, it) -> it).or(predicate).orElseThrow()`             |
-| **Kotlin**     | <ul><li>[Array.last(predicate)<br/>Iterable.last(predicate)][kotlin-last-predicate] |
-| **PHP**        |                                                                                     |
-| **C#**         | <ul><li>[IEnumerable.Last(predicate)][c#-last-predicate]                            |
-
-</details>
-<details><summary>lastOrDefault()</summary>
-
-| Language           | Equivalent                                                |
-|:-------------------|:----------------------------------------------------------|
-| **~~Javascript~~** |                                                           |
-| **~~Java~~**       |                                                           |
-| **~~Kotlin~~**     |                                                           |
-| **~~PHP~~**        |                                                           |
-| **C#**             | <ul><li>[IEnumerable.LastOrDefault()][c#-last-or-default] |
-
-</details>
-<details><summary>lastOrDefault(predicate)</summary>
-
-| Language           | Equivalent                                                                   |
-|:-------------------|:-----------------------------------------------------------------------------|
-| **~~Javascript~~** |                                                                              |
-| **~~Java~~**       |                                                                              |
-| **~~Kotlin~~**     |                                                                              |
-| **~~PHP~~**        |                                                                              |
-| **C#**             | <ul><li>[IEnumerable.LastOrDefault(predicate)][c#-last-or-default-predicate] |
-
-</details>
-<details><summary>lastOrNull()</summary>
+<details><summary>getLastOrNull()</summary>
 
 | Language       | Equivalent                                                                                        |
 |:---------------|:--------------------------------------------------------------------------------------------------|
@@ -306,53 +254,95 @@ The methods are made to find an element or giving a value
 | **C#**         |                                                                                                   |
 
 </details>
-<details><summary>lastOrNull(predicate)</summary>
+<br/>
 
-| Language       | Equivalent                                                                                                                             |
-|:---------------|:---------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | `array.findLast(predicate,) ?? null`                                                                                                   |
-| **Java**       | `collection.stream().reduce((_, it) -> it).or(predicate).orElse(null)`                                                                 |
-| **Kotlin**     | <ul><li>[Array.lastOrNull(predicate)<br/>Iterable.lastOrNull(predicate)<br/>List.lastOrNull(predicate)][kotlin-last-or-null-predicate] |
-| **PHP**        |                                                                                                                                        |
-| **C#**         |                                                                                                                                        |
+<details><summary>findFirst(predicate)<br/>findFirstIndexed(predicate)</summary>
+
+| Language       | Equivalent                                                                             |
+|:---------------|:---------------------------------------------------------------------------------------|
+| **Javascript** | `array.find(predicate,) ?? throw`                                                      |
+| **Java**       | `collection.stream().filter(predicate).findFirst().orElseThrow()`                      |
+| **Kotlin**     | <ul><li>[Array.first(predicate)<br/>Iterable.first(predicate)][kotlin-first-predicate] |
+| **PHP**        |                                                                                        |
+| **C#**         | <ul><li>[IEnumerable.First(predicate)][c#-first-predicate]                             |
+
+</details>
+<details><summary>findFirstOrDefault(predicate)<br/>findFirstIndexedOrDefault(predicate)</summary>
+
+| Language           | Equivalent                                                                     |
+|:-------------------|:-------------------------------------------------------------------------------|
+| **~~Javascript~~** |                                                                                |
+| **~~Java~~**       |                                                                                |
+| **~~Kotlin~~**     |                                                                                |
+| **~~PHP~~**        |                                                                                |
+| **C#**             | <ul><li>[IEnumerable.FirstOrDefault(predicate)][c#-first-or-default-predicate] |
+
+</details>
+<details><summary>findFirstOrNull(predicate)<br/>findFirstIndexedOrNull(predicate)</summary>
+
+| Language       | Equivalent                                                                                                                                                                      |
+|:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Javascript** | <ul><li>[Array.find(predicate)][js-find]                                                                                                                                        |
+| **Java**       | `collection.stream().filter(predicate).findFirst().orElse(null)`                                                                                                                |
+| **Kotlin**     | <ul><li>[Array.firstOrNull(predicate)<br/>Iterable.firstOrNull(predicate)][kotlin-first-or-null-predicate]<li>[Array.find(predicate)<br/>Iterable.find(predicate)][kotlin-find] |
+| **PHP**        |                                                                                                                                                                                 |
+| **C#**         | <ul><li>[IEnumerable.FirstOrDefault(predicate)][c#-first-or-default-predicate]<li>[Find(array, predicate)][c#-array-find]<li>[List.Find(predicate)][c#-list-find]               |
 
 </details>
 <br/>
 
-<details><summary>find(predicate)<br/>findIndexed(predicate)</summary>
-
-| Language       | Equivalent                                                                              |
-|:---------------|:----------------------------------------------------------------------------------------|
-| **Javascript** | <ul><li>[Array.find(predicate)][js-find]                                                |
-| **Java**       | `collection.stream().filter(predicate).findFirst().orElse(null)`                        |
-| **Kotlin**     | <ul><li>[Array.find(predicate)<br/>Iterable.find(predicate)][kotlin-find]               |
-| **PHP**        |                                                                                         |
-| **C#**         | <ul><li>[Find(array, predicate)][c#-array-find]<li>[List.Find(predicate)][c#-list-find] |
-
-</details>
 <details><summary>findLast(predicate)<br/>findLastIndexed(predicate)</summary>
 
-| Language       | Equivalent                                                                                                          |
-|:---------------|:--------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <ul><li>[Array.findLast(predicate)][js-find-last]                                                                   |
-| **Java**       | `collection.stream().filter(predicate).reduce((_, it) -> it).orElse(null)`                                          |
-| **Kotlin**     | <ul><li>[Array.findLast(predicate)<br/>Iterable.findLast(predicate)<br/>List.findLast(predicate)][kotlin-find-last] |
-| **PHP**        |                                                                                                                     |
-| **C#**         |                                                                                                                     |
+| Language       | Equivalent                                                                               |
+|:---------------|:-----------------------------------------------------------------------------------------|
+| **Javascript** | `array.findLast(predicate,) ?? throw`                                                    |
+| **Java**       | `collection.stream().filter(predicate).reduce((_, it) -> it).orElseThrow()`              |
+| **Kotlin**     | <ul><li>[Array.last(predicate)<br/>Iterable.last(predicate)][kotlin-last-predicate]      |
+| **PHP**        |                                                                                          |
+| **C#**         | <ul><li>[IEnumerable.Last(predicate)][c#-last-predicate]                                 |
 
 </details>
+<details><summary>findLastOrDefault(predicate)<br/>findLastIndexedOrDefault(predicate)</summary>
+
+| Language           | Equivalent                                                                   |
+|:-------------------|:-----------------------------------------------------------------------------|
+| **~~Javascript~~** |                                                                              |
+| **~~Java~~**       |                                                                              |
+| **~~Kotlin~~**     |                                                                              |
+| **~~PHP~~**        |                                                                              |
+| **C#**             | <ul><li>[IEnumerable.LastOrDefault(predicate)][c#-last-or-default-predicate] |
+
+</details>
+<details><summary>findLastOrNull(predicate)<br/>findLastIndexedOrNull(predicate)</summary>
+
+| Language       | Equivalent                                                                                                                                                                                                                                            |
+|:---------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Javascript** | <ul><li>[Array.findLast(predicate)][js-find-last]                                                                                                                                                                                                     |
+| **Java**       | `collection.stream().filter(predicate).reduce((_, it) -> it).orElse(null)`                                                                                                                                                                            |
+| **Kotlin**     | <ul><li>[Array.lastOrNull(predicate)<br/>Iterable.lastOrNull(predicate)<br/>List.lastOrNull(predicate)][kotlin-last-or-null-predicate]<li>[Array.findLast(predicate)<br/>Iterable.findLast(predicate)<br/>List.findLast(predicate)][kotlin-find-last] |
+| **PHP**        |                                                                                                                                                                                                                                                       |
+| **C#**         | <ul><li>[IEnumerable.LastOrDefault(predicate)][c#-last-or-default-predicate]                                                                                                                                                                          |
+
+</details>
+<br/>
 
 ### Index methods
 
 The methods are made to find an index
- - `indexOf`(element, fromIndex?, toIndex?)
+ - `firstIndexOf`|`indexOf`(element, fromIndex?, toIndex?)
+ - `firstIndexOfOrNull`|`indexOfOrNull`(element, fromIndex?, toIndex?)
  - `lastIndexOf`(element, fromIndex?, toIndex?)
- - `indexOfFirst`|`findIndex`(predicate, fromIndex?, toIndex?)
- - `indexOfFirstIndexed`|`findIndexIndexed`(predicate, fromIndex?, toIndex?)
+ - `lastIndexOfOrNull`(element, fromIndex?, toIndex?)
+ - `indexOfFirst`|`findFirstIndex`|`findIndex`(predicate, fromIndex?, toIndex?)
+ - `indexOfFirstOrNull`|`findFirstIndexOrNull`|`findIndexOrNull`(predicate, fromIndex?, toIndex?)
+ - `indexOfFirstIndexed`|`findFirstIndexIndexed`|`findIndexIndexed`(predicate, fromIndex?, toIndex?)
+ - `indexOfFirstIndexedOrNull`|`findFirstIndexIndexedOrNull`|`findIndexIndexedOrNull`(predicate, fromIndex?, toIndex?)
  - `indexOfLast`|`findLastIndex`(predicate, fromIndex?, toIndex?)
+ - `indexOfLastOrNull`|`findLastIndexOrNull`(predicate, fromIndex?, toIndex?)
  - `indexOfLastIndexed`|`findLastIndexIndexed`(predicate, fromIndex?, toIndex?)
+ - `indexOfLastIndexedOrNull`|`findLastIndexIndexedOrNull`(predicate, fromIndex?, toIndex?)
 
-<details><summary>indexOf(element)</summary>
+<details><summary>firstIndexOf(element)</summary>
 
 | Language       | Equivalent                                                                                                                                                                |
 |:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -363,7 +353,7 @@ The methods are made to find an index
 | **C#**         | <ul><li>[IndexOf(array, element)][c#-array-index-of-element]<li>[IList.IndexOf(element)][c#-i-list-index-of-element]<li>[List.IndexOf(element)][c#-list-index-of-element] |
 
 </details>
-<details><summary>indexOf(element, fromIndex)</summary><table>
+<details><summary>firstIndexOf(element, fromIndex)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
@@ -372,44 +362,39 @@ The methods are made to find an index
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-var index = startingIndex - 1;
-while (++index < size)
-    if (array[index] == element)
-        return index;
-return null;
+for (var i = calculate-starting-index(fromIndex); i < size; i++)
+    if (array[i] == element)
+        return i;
+throw
 ```
 </td></tr>
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-var index = startingIndex - 1
-while (++index < size)
-    if (element in array[index])
-        return index
-return null
+for (i in calculate-starting-index(fromIndex)..(size - 1))
+    if (element in array[i])
+        return i
+throw
 ```
 </td></tr>
 <tr><th>PHP</th><td></td></tr>
 <tr><th>C#</th><td>
 
-- [IndexOf(array, element, fromIndex)][c#-array-index-of-element-from]
-- [List.IndexOf(element, fromIndex)][c#-list-index-of-element-from]
+ - [IndexOf(array, element, fromIndex)][c#-array-index-of-element-from]
+ - [List.IndexOf(element, fromIndex)][c#-list-index-of-element-from]
 </td></tr>
 </table></details>
-<details><summary>indexOf(element, fromIndex, toIndex)</summary><table>
+<details><summary>firstIndexOf(element, fromIndex, toIndex)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
 const startingIndex = calculate-starting-index(fromIndex)
 const endingIndex = calculate-ending-index(toIndex)
-let index = startingIndex - 1
-while (++index <= endingIndex)
-    if (array[index] === element)
-        return index
-return null
+for (let i = startingIndex; i <= endingIndex; i+=)
+    if (array[i] === element)
+        return i
+throw
 ```
 
 </td></tr>
@@ -420,20 +405,59 @@ final var startingIndex = calculate-starting-index(fromIndex);
 final var endingIndex = calculate-ending-index(toIndex);
 var index = startingIndex - 1;
 while (++index <= endingIndex)
-    if (array[index] == element)
-        return index;
+    if (array[i] == element)
+        return i;
+throw
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+for (i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+    if (element in array[i])
+        return i
+throw
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+foreach (var i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+    if (array[i] == element)
+        return i;
+throw
+```
+</td></tr>
+</table></details>
+<br/>
+
+<details><summary>firstIndexOfOrNull(element)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+for (let i = 0; i < size; i++)
+    if (array[i] === element)
+        return i
+return null
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+for (var i = 0; i < size; i++)
+    if (array[i] == element)
+        return i;
 return null;
 ```
 </td></tr>
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-val endingIndex = calculate-ending-index(toIndex)
-var index = startingIndex - 1
-while (++index <= endingIndex)
-    if (element in array[index])
-        return index
+for (i in 0..(size - 1))
+    if (element in array[i])
+        return i
 return null
 ```
 </td></tr>
@@ -441,12 +465,94 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
-var index = startingIndex - 1;
-while (++index <= endingIndex)
-    if (array[index] == element)
-        return index;
+foreach (var i in 0..(size - 1))
+    if (array[i] == element)
+        return i;
+return null;
+```
+</td></tr>
+</table></details>
+<details><summary>firstIndexOfOrNull(element, fromIndex)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+for (let i = calculate-starting-index(fromIndex); i < size; i++)
+    if (element in array[i])
+        return i
+return null
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+for (var i = calculate-starting-index(fromIndex); i < size; i++)
+    if (array[i] == element)
+        return i;
+return null;
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+for (i in calculate-starting-index(fromIndex)..(size - 1))
+    if (element in array[i])
+        return i
+return null
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+foreach (i in calculate-starting-index(fromIndex)..(size - 1))
+    if (array[i] == element)
+        return i;
+return null;
+```
+</td></tr>
+</table></details>
+<details><summary>firstIndexOf(element, fromIndex, toIndex)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+const startingIndex = calculate-starting-index(fromIndex)
+const endingIndex = calculate-ending-index(toIndex)
+for (let i = startingIndex; i <= endingIndex; i++)
+    if (array[i] === element)
+        return i
+return null
+```
+
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+final var startingIndex = calculate-starting-index(fromIndex);
+final var endingIndex = calculate-ending-index(toIndex);
+for (var i = startingIndex; i < endingIndex; i++)
+    if (array[i] == element)
+        return i;
+return null;
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+for (i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+    if (element in array[i])
+        return i
+return null
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+foreach (var i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+    if (array[i] == element)
+        return i;
 return null;
 ```
 </td></tr>
@@ -478,7 +584,7 @@ var index = size;
 while (--index >= startingIndex)
     if (array[index] == element)
         return index;
-return null;
+throw
 ```
 </td></tr>
 <tr><th>Kotlin</th><td>
@@ -489,7 +595,7 @@ var index = size
 while (--index >= startingIndex)
     if (element in array[index])
         return index
-return null
+throw
 ```
 </td></tr>
 <tr><th>PHP</th><td></td></tr>
@@ -510,7 +616,7 @@ var index = endingIndex + 1
 while (--index >= startingIndex)
     if (array[index] == element)
         return index
-return null
+throw
 ```
 </td></tr>
 <tr><th>Java</th><td>
@@ -522,7 +628,7 @@ var index = endingIndex + 1;
 while (--index >= startingIndex)
     if (array[index] == element)
         return index;
-return null;
+throw
 ```
 </td></tr>
 <tr><th>Kotlin</th><td>
@@ -534,7 +640,7 @@ var index = endingIndex + 1
 while (--index >= startingIndex)
     if (element in array[index])
         return index
-return null
+throw
 ```
 </td></tr>
 <tr><th>PHP</th><td></td></tr>
@@ -553,6 +659,139 @@ return null;
 </table></details>
 <br/>
 
+<details><summary>lastIndexOfOrNull(element)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```java
+for (let i = size - 1; i > -1; i--)
+    if (array[i] === element)
+        return i
+return null
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+for (var i = size - 1; i > -1; i--)
+    if (array[i] == element)
+        return i;
+return null;
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+for (i in (size - 1) downTo 0)
+    if (element in array[i])
+        return i
+return null
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+for (var i = size - 1; i >= -1; i--)
+    if (array[i] == element)
+        return i;
+return null;
+```
+</td></tr>
+</table></details>
+<details><summary>lastIndexOfOrNull(element, fromIndex)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```java
+const startingIndex = calculate-starting-index(fromIndex)
+for (let i = size - 1; i >= startingIndex; i--)
+    if (array[i] === element)
+        return i
+return null
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+final var startingIndex = calculate-starting-index(fromIndex);
+for (var i = size - 1; i >= startingIndex; i--)
+    if (array[i] == element)
+        return i;
+return null;
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+for (i in (size - 1) downTo calculate-starting-index(fromIndex))
+    if (element in array[i])
+        return i
+return null
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+final var startingIndex = calculate-starting-index(fromIndex);
+for (var i = size - 1; i >= startingIndex; i--)
+    if (array[i] == element)
+        return i;
+return null;
+```
+</td></tr>
+</table></details>
+<details><summary>lastIndexOfOrNull(element, fromIndex, toIndex)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+const startingIndex = calculate-starting-index(fromIndex)
+const endingIndex = calculate-ending-index(toIndex)
+for (let i = endingIndex; i >= startingIndex; i--)
+    if (array[i] === element)
+        return i
+return null
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+final var startingIndex = calculate-starting-index(fromIndex);
+final var endingIndex = calculate-ending-index(toIndex);
+while (var i = endingIndex; i >= startingIndex; i--)
+    if (array[i] == element)
+        return i;
+return null;
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+val startingIndex = calculate-starting-index(fromIndex)
+val endingIndex = calculate-ending-index(toIndex)
+for (i in endingIndex downTo startingIndex)
+    if (element in array[i])
+        return i
+return null
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+var startingIndex = calculate-starting-index(fromIndex);
+var endingIndex = calculate-ending-index(toIndex);
+while (var i = endingIndex; i >= startingIndex; i--)
+    if (array[i] == element)
+        return i;
+return null;
+```
+</td></tr>
+</table></details>
+<br/>
+
 <details><summary>indexOfFirst(predicate)<br/>indexOfFirstIndexed(predicate)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
@@ -562,10 +801,9 @@ return null;
 <tr><th>Java</th><td>
 
 ```java
-var index = -1;
-while (++index < size)
+for (var i = 0; i < size; i++)
     if (predicate)
-        return index;
+        return i;
 return null;
 ```
 </td></tr>
@@ -585,33 +823,27 @@ return null;
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex)
-let index = startingIndex - 1
-while (++index < size)
+for (let i = calculate-starting-index(fromIndex); i < size; i++)
     if (predicate)
-        return index
+        return i
 return null
 ```
 </td></tr>
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-var index = startingIndex - 1;
-while (++index < size)
+for (var i = calculate-starting-index(fromIndex); i < size; i++)
     if (predicate)
-        return index;
+        return i;
 return null;
 ```
 </td></tr>
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-var index = startingIndex - 1
-while (++index < size)
+for (i in calculate-starting-index(fromIndex)..(size - 1))
     if (predicate)
-        return index
+        return i
 return null
 ```
 </td></tr>
@@ -627,12 +859,11 @@ return null
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
-const endingIndex = calculate-ending-index(toIndex,)
-let index = startingIndex - 1
-while (++index <= endingIndex)
+const startingIndex = calculate-starting-index(fromIndex)
+const endingIndex = calculate-ending-index(toIndex)
+for (let i = startingIndex; i <= endingIndex; i++)
     if (predicate)
-        return index
+        return i
 return null
 ```
 </td></tr>
@@ -641,22 +872,18 @@ return null
 ```java
 final var startingIndex = calculate-starting-index(fromIndex);
 final var endingIndex = calculate-ending-index(toIndex);
-var index = startingIndex - 1;
-while (++index <= endingIndex)
+for (var i = startingIndex; i <= endingIndex; i++)
     if (predicate)
-        return index;
+        return i;
 return null;
 ```
 </td></tr>
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-val endingIndex = calculate-ending-index(toIndex)
-var index = startingIndex - 1
-while (++index <= endingIndex)
+for (i in calculate-starting-index(fromIndex)..alculate-ending-index(toIndex))
     if (predicate)
-        return index
+        return i
 return null
 ```
 </td></tr>
@@ -664,12 +891,121 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
-var index = startingIndex - 1;
-while (++index <= endingIndex)
+foreach (var i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+    if (predicate)
+        return i;
+return null;
+```
+</td></tr>
+</table></details>
+<br/>
+
+<details><summary>indexOfFirstOrNull(predicate)<br/>indexOfFirstIndexedOrNull(predicate)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+ - [Array.findIndex(predicate)][js-index-of-first-element]
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+for (let i = 0; i < size; i++)
     if (predicate)
         return index;
+return null;
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+ - [Array.indexOfFirst(predicate)<br/>Iterable.indexOfFirst(predicate)<br/>List.indexOfFirst(predicate)][kotlin-index-of-first-element]
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+ - [FindIndex(array, predicate)][c#-array-index-of-first-element]
+ - [List.FindIndex(predicate)][c#-list-index-of-first-element]
+</td></tr>
+</table></details>
+<details><summary>indexOfFirstOrNull(predicate, fromIndex)<br/>indexOfFirstIndexedOrNull(predicate, fromIndex)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+for (let i = calculate-starting-index(fromIndex); i < size; i++)
+    if (predicate)
+        return i
+return null
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+for (var i = calculate-starting-index(fromIndex); i < size; i++)
+    if (predicate)
+        return i;
+return null;
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+for (i in calculate-starting-index(fromIndex)..(size - 1))
+    if (predicate)
+        return i
+return null
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+foreach (var i = calculate-starting-index(fromIndex)..(size - 1))
+    if (predicate)
+        return i;
+return null;
+```
+</td></tr>
+</table></details>
+<details><summary>indexOfFirstOrNull(predicate, fromIndex, toIndex)<br/>indexOfFirstIndexedOrNull(predicate, fromIndex, toIndex)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+const startingIndex = calculate-starting-index(fromIndex)
+const endingIndex = calculate-ending-index(toIndex)
+for (let i = startingIndex; i < endingIndex; i++)
+    if (predicate)
+        return i
+return null
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+final var startingIndex = calculate-starting-index(fromIndex);
+final var endingIndex = calculate-ending-index(toIndex);
+for (var i = startingIndex; i < endingIndex; i++)
+    if (predicate)
+        return i;
+return null;
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+for (i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+    if (predicate)
+        return i
+return null
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+foreach (i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+    if (predicate)
+        return i;
 return null;
 ```
 </td></tr>
@@ -685,11 +1021,10 @@ return null;
 <tr><th>Java</th><td>
 
 ```java
-var index = size;
-while (--index > 0)
+for (var i = size - 1; i > -1; i--)
     if (predicate)
-        return index;
-return null;
+        return i;
+throw
 ```
 </td></tr>
 <tr><th>Kotlin</th><td>
@@ -709,33 +1044,29 @@ return null;
 
 ```javascript
 const startingIndex = calculate-starting-index(fromIndex,)
-let index = size
-while (--index >= startingIndex)
+for (let i = size - 1; i >= startingIndex; i--)
     if (predicate)
-            return index
-return null
+        return index
+throw
 ```
 </td></tr>
 <tr><th>Java</th><td>
 
 ```java
 final var startingIndex = calculate-starting-index(fromIndex);
-var index = size;
-while (--index >= startingIndex)
+for (var i = size - 1; i >= startingIndex; i--)
     if (predicate)
-            return index;
-return null;
+        return index;
+throw
 ```
 </td></tr>
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-var index = size
-while (--index >= startingIndex)
+for (i in (size - 1) downTo calculate-starting-index(fromIndex))
     if (predicate)
-            return index
-return null
+       return index
+throw
 ```
 </td></tr>
 <tr><th>PHP</th><td></td></tr>
@@ -752,8 +1083,96 @@ return null
 ```javascript
 const startingIndex = calculate-starting-index(fromIndex,)
 const endingIndex = calculate-ending-index(toIndex,)
-let index = endingIndex + 1
-while (--index >= startingIndex)
+for (let i = endingIndex; i >= startingIndex; i--)
+    if (predicate)
+        return i
+throw
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+final var startingIndex = calculate-starting-index(fromIndex);
+final var endingIndex = calculate-ending-index(toIndex);
+for (let i = endingIndex; i >= startingIndex; i--)
+    if (predicate)
+        return i;
+throw
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+val startingIndex = calculate-starting-index(fromIndex)
+val endingIndex = calculate-ending-index(toIndex)
+for (i in endingIndex downTo startingIndex)
+    if (predicate)
+        return i
+throw
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+var startingIndex = calculate-starting-index(fromIndex);
+var endingIndex = calculate-ending-index(toIndex);
+for (let i = endingIndex; i >= startingIndex; i--)
+    if (predicate)
+        return i;
+throw
+```
+</td></tr>
+</table></details>
+<br/>
+
+<details><summary>indexOfLastOrNull(predicate)<br/>indexOfLastIndexedOrNull(predicate)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+for (let i = size - 1; i > -1; i--)
+    if (predicate)
+        return i
+return null
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+for (var i = size - 1; i > -1; i--)
+    if (predicate)
+        return i;
+return null;
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+for (i in (size - 1) downTo 0)
+    if (predicate)
+        return i;
+return null;
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+for (var i = size - 1; i > -1; i--)
+    if (predicate)
+        return i;
+return null;
+```
+</td></tr>
+</table></details>
+<details><summary>indexOfLastOrNull(predicate, fromIndex)<br/>indexOfLastIndexedOrNull(predicate, fromIndex)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+const startingIndex = calculate-starting-index(fromIndex,)
+for (let i = size - 1; i >= startingIndex; i--)
     if (predicate)
         return index
 return null
@@ -763,11 +1182,56 @@ return null
 
 ```java
 final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
-var index = endingIndex + 1;
-while (--index >= startingIndex)
+for (var i = size - 1; i >= startingIndex; i--)
     if (predicate)
-        return index;
+        return i;
+return null;
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+val startingIndex = 
+var index = size
+for (i in (size - 1) downTo calculate-starting-index(fromIndex))
+    if (predicate)
+        return i
+return null
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+var startingIndex = calculate-starting-index(fromIndex);
+for (var i = size - 1; i >= startingIndex; i--)
+    if (predicate)
+        return i;
+return null;
+```
+</td></tr>
+</table></details>
+<details><summary>indexOfLastOrNull(predicate, fromIndex, toIndex)<br/>indexOfLastIndexedOrNull(predicate, fromIndex, toIndex)</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+const startingIndex = calculate-starting-index(fromIndex,)
+const endingIndex = calculate-ending-index(toIndex,)
+for (let i = endingIndex; i >= startingIndex; i--)
+    if (predicate)
+        return i
+return null
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+final var startingIndex = calculate-starting-index(fromIndex);
+final var endingIndex = calculate-ending-index(toIndex);
+for (let i = endingIndex; i >= startingIndex; i--)
+    if (predicate)
+        return i;
 return null;
 ```
 </td></tr>
@@ -776,10 +1240,9 @@ return null;
 ```kotlin
 val startingIndex = calculate-starting-index(fromIndex)
 val endingIndex = calculate-ending-index(toIndex)
-var index = endingIndex + 1
-while (--index >= startingIndex)
+for (i in endingIndex downTo startingIndex)
     if (predicate)
-        return index
+        return i
 return null
 ```
 </td></tr>
@@ -789,10 +1252,9 @@ return null
 ```csharp
 var startingIndex = calculate-starting-index(fromIndex);
 var endingIndex = calculate-ending-index(toIndex);
-var index = endingIndex + 1;
-while (--index >= startingIndex)
+for (let i = endingIndex; i >= startingIndex; i--)
     if (predicate)
-        return index;
+        return i;
 return null;
 ```
 </td></tr>
@@ -801,8 +1263,8 @@ return null;
 ### Validation methods
 
 The methods are made to do validation on type, value or comparison
- - `all`()
- - `any`(predicate?)
+ - `all`|`every`()
+ - `any`|`some`(predicate?)
  - `none`(predicate?)
  - `hasNull`|`containsNull`|`includesNull`()
  - `hasDuplicate`|`containsDuplicate`|`includesDuplicate`()
@@ -1044,18 +1506,18 @@ The methods are made to transform the structure by different type or size
  - `filterNotNull`()
  - `slice`(indices)
  - `slice`(fromIndex?, toIndex?)
- - `take`(n)
- - `takeWhile`(predicate)
- - `takeWhileIndexed`(predicate)
- - `takeLast`(n)
- - `takeLastWhile`(predicate)
- - `takeLastWhileIndexed`(predicate)
- - `drop`(n)
- - `dropWhile`(predicate)
- - `dropWhileIndexed`(predicate)
- - `dropLast`(n)
- - `dropLastWhile`(predicate)
- - `dropLastWhileIndexed`(predicate)
+ - `take`|`limit`(n)
+ - `takeWhile`|`limitWhile`(predicate)
+ - `takeWhileIndexed`|`limitWhileIndexed`(predicate)
+ - `takeLast`|`limitLast`(n)
+ - `takeLastWhile`|`limitLastWhile`(predicate)
+ - `takeLastWhileIndexed`|`limitLastWhileIndexed`(predicate)
+ - `drop`|`skip`(n)
+ - `dropWhile`|`skipWhile`(predicate)
+ - `dropWhileIndexed`|`skipWhileIndexed`(predicate)
+ - `dropLast`|`skipLast`(n)
+ - `dropLastWhile`|`skipLastWhile`(predicate)
+ - `dropLastWhileIndexed`|`skipLastWhileIndexed`(predicate)
  - `map`(transform)
  - `mapIndexed`(transform)
  - `mapNotNull`(transform)
@@ -1635,7 +2097,7 @@ This is the most bare-bones structure
 
 | Language       | Equivalent                                                                                                                                    |
 |:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <code>\`\[${[Array.join(separator)][js-join-to-string]}]`                                                                                     |
+| **Javascript** | <code>\`\[${[array.join(separator)][js-join-to-string]}]`                                                                                     |
 | **Java**       | [String.join(separator, iterable)][java-join-to-string]                                                                                       |
 | **Kotlin**     | [Array.joinToString(separator)<br/>Iterable.joinToString(separator)][kotlin-join-to-string]                                                   |
 | **PHP**        |                                                                                                                                               |
@@ -1646,7 +2108,7 @@ This is the most bare-bones structure
 
 | Language       | Equivalent                                                                                                                                        |
 |:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <code>\`\${prefix}${[Array.join(separator)][js-join-to-string]}]`                                                                                 |
+| **Javascript** | <code>\`\${prefix}${[array.join(separator)][js-join-to-string]}]`                                                                                 |
 | **Java**       |                                                                                                                                                   |
 | **Kotlin**     | [Array.joinToString(separator, prefix)<br/>Iterable.joinToString(separator, prefix)][kotlin-join-to-string]                                       |
 | **PHP**        |                                                                                                                                                   |
@@ -1657,7 +2119,7 @@ This is the most bare-bones structure
 
 | Language       | Equivalent                                                                                                                                                |
 |:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <code>\`\${prefix}\${[Array.join(separator)][js-join-to-string]}${postfix}`                                                                               |
+| **Javascript** | <code>\`\${prefix}\${[array.join(separator)][js-join-to-string]}${postfix}`                                                                               |
 | **Java**       |                                                                                                                                                           |
 | **Kotlin**     | [Array.joinToString(separator, prefix, postfix)<br/>Iterable.joinToString(separator, prefix, postfix)][kotlin-join-to-string]                             |
 | **PHP**        |                                                                                                                                                           |
@@ -1933,28 +2395,29 @@ This is the most bare-bones structure
 
 ## Version history
 
-| JS/TS              | Date                 | Quick note                                                                                                                                                                                                                                                                                                                                                                                                                |
-|--------------------|----------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [1.10.0][js-v1.10] | October 8th, 2024    | New methods `take`, `takeWhile`, `takeLast`, `takeLastWhile`, `drop`, `dropWhile`, `dropLast` and `dropLastWhile`,<br/>New aliases `some` and `every`,<br/>Deprecation of the argument `limit` where there is a `fromIndex` and `toIndex`,<br/>Addition of `Array` to be handled in the `methods`                                                                                                                         |
-| 1.9.3              | August 15th, 2024    | Fix on the missing export for `filterNotIndexed`                                                                                                                                                                                                                                                                                                                                                                          |
-| 1.9.2              | July 23rd, 2024      | Fix on an array of 2 on `MinimalistCollectionHolder`,<br/>Fix on the `CollectionIterator` to handle properly when it has 2 values                                                                                                                                                                                                                                                                                         |
-| 1.9.1              | July 21st, 2024      | Spread of the deprecation across the inheritor of `CollectionHolder`                                                                                                                                                                                                                                                                                                                                                      |
-| [1.9.0][js-v1.9]   | July 21st, 2024      | Addition of `hasDuplicate`, `joinToString` for the `CollectionHolder`,<br/>Change on the `CollectionIterator` to use `NullableNumber` instead of `number` for the indexes,<br/>Addition of implementation for the `ValueHolder`,<br/>Deprecation of variadic parameters for `has`, `hasAll` & `hasOne`,<br/>The abstract implementations no longer have fields held,<br/>[lazy][lazy] (~~1.4.0~~ → [1.5.0][js-lazy-v1.5]) |
-| [1.8.0][js-v1.8]   | March 31st, 2024     | Addition of [type][type] to the dependency                                                                                                                                                                                                                                                                                                                                                                                |
-| 1.7.1              | February 19th, 2024  | Change from `==` to `===` on the `GenericCollectionIterator`                                                                                                                                                                                                                                                                                                                                                              |
-| [1.7.0][js-v1.7]   | February 19th, 2024  | New implementation of [MinimalistCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/MinimalistCollectionHolder.ts),<br/>New method `has`,<br/>New aliases `contains`, `includes`, `reversed`, `toReversed`,<br/>New names to the `CollectionHandler`s,<br/>[lazy][lazy] (~~1.2.1~~ → [1.3.0][js-lazy-v1.3])                                                                                |
-| 1.6.1              | December 23rd, 2023  | Addition of the missing amd (asynchronous module definition) package                                                                                                                                                                                                                                                                                                                                                      |
-| [1.6.0][js-v1.6]   | December 4th, 2023   | New implementation based on the amount of arguments received in a callback,<br/>New method variant of `toString`,<br/>Deprecation (for removal) of the `newInstance`                                                                                                                                                                                                                                                      |
-| [1.5.0][js-v1.5]   | September 28th, 2023 | The `RangeError` and `ReferenceError` has been changed to custom exceptions,<br/>[lazy][lazy] (~~1.1.0~~ → [1.2.0][js-lazy-v1.2])                                                                                                                                                                                                                                                                                         |
-| [1.4.0][js-v1.4]   | September 8th, 2023  | Addition of a `limit` on every methods where it has `fromIndex` and `toIndex`,<br/>Change on the `toIndex` to be inclusive instead of exclusive,<br/>New methods `mapNotNull`, `mapNotNullIndexed` and `slice`,<br/>New aliases `elementAt`, `elementAtOrNull` and `elementAtOrElse`                                                                                                                                      |
-| [1.3.0][js-v1.3]   | August 14th, 2023    | Small changes on some utility methods,<br/>Addition of `nextValue` and `previousValue` to the `CollectionIterator`                                                                                                                                                                                                                                                                                                        |
-| [1.2.0][js-v1.2]   | July 27th, 2023      | Fix on a "for‥of" not working properly                                                                                                                                                                                                                                                                                                                                                                                    |
-| [1.1.0][js-v1.1]   | July 23rd, 2023      | Addition of a new [CollectionIterator](https://github.com/joooKiwi/collection/blob/main/javascript/src/iterator/CollectionIterator.ts)                                                                                                                                                                                                                                                                                    |
-| 1.0.4              | July 2nd, 2023       | There were recursive import for the [EmptyCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/EmptyCollectionHolder.ts) from the [CollectionConstants](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionConstants.ts)                                                                                                                                              |
-| 1.0.3              | July 1st, 2023       | For some reason, the file [CollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionHolder.ts) had a Symbol not declared                                                                                                                                                                                                                                                               |
-| 1.0.2              | July 1st, 2023       | Small fix on the [package.json](https://github.com/joooKiwi/collection/blob/main/javascript/package.json)                                                                                                                                                                                                                                                                                                                 |
-| 1.0.1              | July 1st, 2023       | An update based on the new [lazy version][lazy]                                                                                                                                                                                                                                                                                                                                                                           |
-| [1.0.0][js-v1]     | July 1st, 2023       | The first version,<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project                                                                                                                                                                                                                                                                                                            |
+| JS/TS              | Date                 | Quick note                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|--------------------|----------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [1.11.0][js-v1.11] | November 7th, 2024   | New methods `firstIndexOfOrNull`, `lastIndexOfOrNull`, `indexOfFirstOrNull`, `indexOfLastOrNull`, `isTypedArray` (_plus the specific type_),<br/>Separation of `first`, `last` into `findFirst`, `findLast`,<br/>Addition of aliases `limit`, `skip`<br/>Re-addition of the methods (_now as alias_) `findIndex`, `findLastIndex`,<br/>New methods for the aliased methods in `CollectionHolder`<br/>[lazy][lazy] (~~1.5.0~~ → [1.6.0][js-lazy-v1.6]), [type][type] (~~1.0.0~~ → 1.1.0)                                             |
+| [1.10.0][js-v1.10] | October 8th, 2024    | New methods `take`, `takeWhile`, `takeLast`, `takeLastWhile`, `drop`, `dropWhile`, `dropLast` and `dropLastWhile`,<br/>New aliases `some` and `every`,<br/>Deprecation of the argument `limit` where there is a `fromIndex` and `toIndex`,<br/>Addition of `Array` to be handled in the `methods`                                                                                                                                                                                                                                   |
+| 1.9.3              | August 15th, 2024    | Fix on the missing export for `filterNotIndexed`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| 1.9.2              | July 23rd, 2024      | Fix on an array of 2 on `MinimalistCollectionHolder`,<br/>Fix on the `CollectionIterator` to handle properly when it has 2 values                                                                                                                                                                                                                                                                                                                                                                                                   |
+| 1.9.1              | July 21st, 2024      | Spread of the deprecation across the inheritor of `CollectionHolder`                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [1.9.0][js-v1.9]   | July 21st, 2024      | Addition of `hasDuplicate`, `joinToString` for the `CollectionHolder`,<br/>Change on the `CollectionIterator` to use `NullableNumber` instead of `number` for the indexes,<br/>Addition of implementation for the `ValueHolder`,<br/>Deprecation of variadic parameters for `has`, `hasAll` & `hasOne`,<br/>The abstract implementations no longer have fields held,<br/>[lazy][lazy] (~~1.4.0~~ → [1.5.0][js-lazy-v1.5])                                                                                                           |
+| [1.8.0][js-v1.8]   | March 31st, 2024     | Addition of [type][type] to the dependency                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 1.7.1              | February 19th, 2024  | Change from `==` to `===` on the `GenericCollectionIterator`                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| [1.7.0][js-v1.7]   | February 19th, 2024  | New implementation of [MinimalistCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/MinimalistCollectionHolder.ts),<br/>New method `has`,<br/>New aliases `contains`, `includes`, `reversed`, `toReversed`,<br/>New names to the `CollectionHandler`s,<br/>[lazy][lazy] (~~1.2.1~~ → [1.3.0][js-lazy-v1.3])                                                                                                                                                                                          |
+| 1.6.1              | December 23rd, 2023  | Addition of the missing amd (asynchronous module definition) package                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [1.6.0][js-v1.6]   | December 4th, 2023   | New implementation based on the amount of arguments received in a callback,<br/>New method variant of `toString`,<br/>Deprecation (for removal) of the `newInstance`                                                                                                                                                                                                                                                                                                                                                                |
+| [1.5.0][js-v1.5]   | September 28th, 2023 | The `RangeError` and `ReferenceError` has been changed to custom exceptions,<br/>[lazy][lazy] (~~1.1.0~~ → [1.2.0][js-lazy-v1.2])                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [1.4.0][js-v1.4]   | September 8th, 2023  | Addition of a `limit` on every methods where it has `fromIndex` and `toIndex`,<br/>Change on the `toIndex` to be inclusive instead of exclusive,<br/>New methods `mapNotNull`, `mapNotNullIndexed` and `slice`,<br/>New aliases `elementAt`, `elementAtOrNull` and `elementAtOrElse`                                                                                                                                                                                                                                                |
+| [1.3.0][js-v1.3]   | August 14th, 2023    | Small changes on some utility methods,<br/>Addition of `nextValue` and `previousValue` to the `CollectionIterator`                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [1.2.0][js-v1.2]   | July 27th, 2023      | Fix on a "for‥of" not working properly                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [1.1.0][js-v1.1]   | July 23rd, 2023      | Addition of a new [CollectionIterator](https://github.com/joooKiwi/collection/blob/main/javascript/src/iterator/CollectionIterator.ts)                                                                                                                                                                                                                                                                                                                                                                                              |
+| 1.0.4              | July 2nd, 2023       | There were recursive import for the [EmptyCollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/EmptyCollectionHolder.ts) from the [CollectionConstants](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionConstants.ts)                                                                                                                                                                                                                                                        |
+| 1.0.3              | July 1st, 2023       | For some reason, the file [CollectionHolder](https://github.com/joooKiwi/collection/blob/main/javascript/src/CollectionHolder.ts) had a Symbol not declared                                                                                                                                                                                                                                                                                                                                                                         |
+| 1.0.2              | July 1st, 2023       | Small fix on the [package.json](https://github.com/joooKiwi/collection/blob/main/javascript/package.json)                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 1.0.1              | July 1st, 2023       | An update based on the new [lazy version][lazy]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [1.0.0][js-v1]     | July 1st, 2023       | The first version,<br/>It was originally on the [enumeration](https://github.com/joooKiwi/enumeration) project                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 <!-- Version references -->
 
@@ -1969,11 +2432,13 @@ This is the most bare-bones structure
 [js-v1.8]:  https://github.com/joooKiwi/collection/releases/tag/v1.8.0-js
 [js-v1.9]:  https://github.com/joooKiwi/collection/releases/tag/v1.9.0-js
 [js-v1.10]: https://github.com/joooKiwi/collection/releases/tag/v1.10.0-js
+[js-v1.11]: https://github.com/joooKiwi/collection/releases/tag/v1.11.0-js
 
 [lazy]: https://github.com/joookiwi/lazy
 [js-lazy-v1.2]: https://github.com/joooKiwi/lazy/releases/tag/v1.2.0-js
 [js-lazy-v1.3]: https://github.com/joooKiwi/lazy/releases/tag/v1.3.0-js
 [js-lazy-v1.5]: https://github.com/joooKiwi/lazy/releases/tag/v1.5.0-js
+[js-lazy-v1.6]: https://github.com/joooKiwi/lazy/releases/tag/v1.6.0-js
 
 [type]: https://github.com/joooKiwi/type
 

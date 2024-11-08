@@ -27,7 +27,7 @@ export class CollectionHandlerByCollectionHolderOf1<const T = unknown,
             throw new TypeError(`The collection holder received in the "${this.constructor.name}" cannot have a different size than 1.`,)
     }
 
-    protected override _retrieveFirst(): T { return this._reference.first() }
+    protected override _retrieveFirst(): T { return this._reference.getFirst() }
 
     public override get hasNull(): REFERENCE["hasNull"] { return this._reference.hasNull }
 

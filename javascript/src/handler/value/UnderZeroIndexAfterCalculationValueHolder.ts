@@ -7,10 +7,10 @@
 
 import type {ValueHolder} from "./ValueHolder"
 
-import {CollectionHolderIndexOutOfBoundsException} from "../../exception/CollectionHolderIndexOutOfBoundsException"
+import {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsException"
 
 /**
- * A {@link ValueHolder} meant to throw a {@link CollectionHolderIndexOutOfBoundsException}
+ * A {@link ValueHolder} meant to throw a {@link IndexOutOfBoundsException}
  * because the <b>index</b> was under 0
  * after it was calculated
  *
@@ -32,9 +32,9 @@ export class UnderZeroIndexAfterCalculationValueHolder
     public get value(): null { return null }
     public get isForbidden(): false { return false }
 
-    public get cause(): CollectionHolderIndexOutOfBoundsException<number> {
+    public get cause(): IndexOutOfBoundsException<number> {
         const index = this.#index
-        return new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index ${index} (${this.#indexToRetrieve} after calculation) is under 0.`, index,)
+        return new IndexOutOfBoundsException(`Index out of bound. The index ${index} (${this.#indexToRetrieve} after calculation) is under 0.`, index,)
     }
 
 }

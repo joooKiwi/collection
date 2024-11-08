@@ -1,0 +1,91 @@
+package joookiwi.collection.java.method;
+
+import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.MinimalistCollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Nullable;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_1;
+
+@NotNullByDefault
+public final class RequireNoNulls
+        extends Utility {
+
+    @Contract(ALWAYS_FAIL_0)
+    private RequireNoNulls() { throw new ImpossibleConstructionException("The utility class “RequireNotNull” cannot be constructed.", RequireNoNulls.class); }
+
+    //#region -------------------- Facade methods --------------------
+
+    /// Require that no items are `null` in the `collection`
+    ///
+    /// @param collection   The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param <T>          The `collection` type
+    /// @throws NullPointerException There is a `null` or the `collection` is null
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_1)
+    public static <T extends @NotNull Object> @NotNull MinimalistCollectionHolder<T> requireNoNulls(final @Nullable MinimalistCollectionHolder<@Nullable T> collection) {
+        if (collection == null)
+            throw new NullPointerException("Forbidden null value. The current collection cannot be null.");
+
+        final var size = collection.size();
+        if (size == 0)
+            return collection;
+
+        var index = -1;
+        while(++index < size)
+            if (collection.get(index) == null)
+                throw new NullPointerException("Forbidden null value. The current collection cannot contains a null value.");
+        return collection;
+    }
+
+    /// Require that no items are `null` in the `collection`
+    ///
+    /// @param collection   The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param <T>          The `collection` type
+    /// @throws NullPointerException There is a `null` or the `collection` is null
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_1)
+    public static <T extends @NotNull Object> @NotNull CollectionHolder<T> requireNoNulls(final @Nullable CollectionHolder<@Nullable T> collection) {
+        if (collection == null)
+            throw new NullPointerException("Forbidden null value. The current collection cannot be null.");
+        if (collection.isEmpty())
+            return collection;
+
+        final var size = collection.size();
+        var index = -1;
+        while(++index < size)
+            if (collection.get(index) == null)
+                throw new NullPointerException("Forbidden null value. The current collection cannot contains a null value.");
+        return collection;
+    }
+
+    /// Require that no items are `null` in the `collection`
+    ///
+    /// @param collection   The [nullable][Nullable] collection
+    /// @param <T>          The `collection` type
+    /// @throws NullPointerException There is a `null` or the `collection` is null
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_1)
+    public static <T extends @NotNull Object> T @NotNull [] requireNoNulls(final T @Nullable [] collection) {
+        if (collection == null)
+            throw new NullPointerException("Forbidden null value. The current collection cannot be null.");
+
+        final var size = collection.length;
+        if (size == 0)
+            return collection;
+
+        var index = -1;
+        while(++index < size)
+            if (collection[index] == null)
+                throw new NullPointerException("Forbidden null value. The current collection cannot contains a null value.");
+        return collection;
+    }
+
+    //#endregion -------------------- Facade methods --------------------
+
+}

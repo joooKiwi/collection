@@ -12,6 +12,8 @@ import {CollectionHolderIndexOutOfBoundsException} from "./CollectionHolderIndex
 /**
  * An exception made to tell that the {@link CollectionHolder collection}
  * was empty while not being expected to be empty
+ *
+ * @deprecated Replace with "{@link EmptyCollectionException}". This will be removed in v1.12
  */
 export class EmptyCollectionHolderException<const T extends NullOr<NumericOrObject> = null,
     const CAUSE extends Error = never, >

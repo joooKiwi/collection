@@ -8,8 +8,8 @@
 import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
-import type {BooleanCallback, RestrainedBooleanCallback} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
+import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -93,7 +93,7 @@ export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @extensionFunction
@@ -103,7 +103,7 @@ export function allByMinimalistCollectionHolder<const T, const S extends T, >(co
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @extensionFunction

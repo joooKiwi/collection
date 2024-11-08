@@ -9,15 +9,16 @@ import type {Lazy}    from "@joookiwi/lazy"
 import type {NullOr}  from "@joookiwi/type"
 import {lazy, lazyOf} from "@joookiwi/lazy"
 
-import type {CollectionHolder}                                                                                  from "./CollectionHolder"
-import type {IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                        from "./MinimalistCollectionHolder"
-import type {CollectionHandler}                                                                                 from "./handler/CollectionHandler"
-import type {IterableWithCount}                                                                                 from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                                                                from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                                                          from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                                                  from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                                                                from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                         from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                                               from "./MinimalistCollectionHolder"
+import type {CollectionHandler}                                                        from "./handler/CollectionHandler"
+import type {IterableWithCount}                                                        from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                                       from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                                 from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                         from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                                       from "./iterator/CollectionIterator"
+import type {IndexWithReturnCallback}                                                  from "./type/callback"
+import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./type/possibleInstance"
 
 import {AbstractCollectionHolder}                         from "./AbstractCollectionHolder"
 import {CollectionConstants}                              from "./CollectionConstants"
@@ -294,7 +295,7 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
-                if (isSetByStructure(referenceFound,)) {
+                if (isSetByStructure<T>(referenceFound,)) {
                     const handler = this.#handler = this.#handlerBySet(referenceFound,)
                     if (this.#size == null)
                         this.#lazySize = lazy(() => handler.size,)

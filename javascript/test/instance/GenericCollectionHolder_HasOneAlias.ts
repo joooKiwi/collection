@@ -5,7 +5,7 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/CollectionHolder.types"
+import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
 import type {StraightCollectionHolderForTest}            from "./StraightCollectionHolderForTest"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
@@ -24,7 +24,7 @@ export class GenericCollectionHolder_HasOneAlias
         return this
     }
 
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean {
+    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<string>,): boolean {
         this.amountOfCall++
         return super.hasOne(values,)
     }

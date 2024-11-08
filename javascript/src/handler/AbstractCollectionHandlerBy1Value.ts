@@ -5,9 +5,9 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {PossibleIterableOrCollection} from "../CollectionHolder.types"
 import type {CollectionHolder}             from "../CollectionHolder"
 import type {ValueHolder}                  from "./value/ValueHolder"
+import type {PossibleIterableOrCollection} from "../type/possibleInstance"
 
 import {AbstractCollectionHandler}                 from "./AbstractCollectionHandler"
 import {NaNIndexValueHolder}                       from "./value/NaNIndexValueHolder"

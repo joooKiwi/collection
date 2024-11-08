@@ -15,14 +15,6 @@ import type {IterableWithSize}         from "./IterableWithSize"
 /**
  * Every possible type of {@link Iterable} with the size field (size, length or count)
  *
- * @deprecated Replace with PossibleIterableWithPossibleSize. It will be removed in v1.11
- */
-export type PossibleIterable<T, > = | Iterable<T>
-                                    | PossibleIterableWithSize<T>
-
-/**
- * Every possible type of {@link Iterable} with the size field (size, length or count)
- *
  * @see PossibleIterableWithSize
  */
 export type PossibleIterableWithPossibleSize<T, > = | Iterable<T>

@@ -13,6 +13,7 @@ import type {Nullable} from "@joookiwi/type"
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/NoSuchElementException.html Java NoSuchElementException
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-no-such-element-exception Kotlin NoSuchElementException
  * @see https://learn.microsoft.com/dotnet/api/system.invalidoperationexception C# InvalidOperationException
+ * @deprecated Replace with "{@link NoElementFoundInCollectionException}". This will be removed in v1.12
  */
 export class NoElementFoundInCollectionHolderException<const CAUSE extends Error = never, >
     extends ReferenceError {

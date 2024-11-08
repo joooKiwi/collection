@@ -7,9 +7,10 @@
 
 import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
-import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                   from "../MinimalistCollectionHolder"
-import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "./CollectionIterator.types"
+import type {MinimalistCollectionHolder}                                                           from "../MinimalistCollectionHolder"
+import type {IndexValueCallback, ValueIndexCallback}                                               from "../type/callback"
+import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
+import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
 /**
  * An {@link Iterator} with a known {@link MinimalistCollectionHolder} {@link MinimalistCollectionHolder.size size}
@@ -94,7 +95,7 @@ export interface CollectionIterator<out T = unknown, >
      * Retrieve the next value in the line
      *
      * @note This is the equivalent to the Java <b>ListIterator.next()</b> method
-     * @throws NoElementFoundInCollectionHolderException Is at the end of the line or after it
+     * @throws NoElementFoundInCollectionException Is at the end of the line or after it
      */
     get nextValue(): T
 
@@ -111,7 +112,7 @@ export interface CollectionIterator<out T = unknown, >
      * Retrieve the previous value in the line
      *
      * @note This is the equivalent to the Java <b>ListIterator.previous()</b> method
-     * @throws NoElementFoundInCollectionHolderException Is at the start of the line or before it
+     * @throws NoElementFoundInCollectionException Is at the start of the line or before it
      */
     get previousValue(): T
 
@@ -150,7 +151,7 @@ export interface CollectionIterator<out T = unknown, >
     forEachIndexed(operation: IndexValueCallback<T>,): this
 
     //#endregion -------------------- Loop methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     /** Create a new iterator instance with the same values */
     [Symbol.iterator](): CollectionIterator<T>
@@ -163,6 +164,6 @@ export interface CollectionIterator<out T = unknown, >
      */
     [Symbol.toStringTag]: CollectionIteratorName
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
 
 }

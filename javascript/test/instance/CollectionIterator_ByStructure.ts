@@ -7,10 +7,11 @@
 
 import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
-import type {IndexValueCallback, ValueIndexCallback}                                                                       from "../../src/CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                   from "../../src/MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                           from "../../src/iterator/CollectionIterator"
-import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol, CollectionIteratorName} from "../../src/iterator/CollectionIterator.types"
+import type {MinimalistCollectionHolder}                                                           from "../../src/MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                   from "../../src/iterator/CollectionIterator"
+import type {IndexValueCallback, ValueIndexCallback}                                               from "../../src/type/callback"
+import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
+import type {CollectionIteratorName}                                                               from "../../src/type/toStringTag"
 
 import {CollectionIteratorFromArray} from "./CollectionIteratorFromArray"
 
@@ -95,12 +96,12 @@ export class CollectionIterator_ByStructure<const T, >
     }
 
     //#endregion -------------------- Loop methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public [Symbol.iterator](): CollectionIterator<T> { return this.reference[Symbol.iterator]() }
 
     public get [Symbol.toStringTag](): CollectionIteratorName { return this.reference[Symbol.toStringTag] }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
 
 }

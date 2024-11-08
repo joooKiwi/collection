@@ -8,9 +8,9 @@
 import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
-import type {PossibleIterableArraySetOrCollectionHolder} from "../CollectionHolder.types"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
 import type {CollectionIterator}                         from "../iterator/CollectionIterator"
+import type {PossibleIterableArraySetOrCollectionHolder} from "../type/possibleInstance"
 
 import {hasOneWithArray, hasOneWithArrayByArray, hasOneWithArrayByCollectionHolder, hasOneWithArrayByMinimalistCollectionHolder}                                                                                     from "./hasOne.withArray"
 import {hasOneWithCollectionHolder, hasOneWithCollectionHolderByArray, hasOneWithCollectionHolderByCollectionHolder, hasOneWithCollectionHolderByMinimalistCollectionHolder}                                         from "./hasOne.withCollectionHolder"
@@ -95,77 +95,6 @@ export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @typescriptDefinition
  */
 export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly unknown[],): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<unknown>,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<unknown>,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @typescriptDefinition
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOne<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: PossibleIterableArraySetOrCollectionHolder<T>,) {
     if (isArray(values,))
         return hasOneWithArray(collection, values,)
@@ -256,76 +185,6 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @facadeFunction
  */
 export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly unknown[],): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<unknown>,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<unknown>,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<T>,) {
     if (isArray(values,))
         return hasOneWithArrayByMinimalistCollectionHolder(collection, values,)
@@ -415,76 +274,6 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @facadeFunction
  */
 export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: readonly unknown[],): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: ReadonlySet<unknown>,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: MinimalistCollectionHolder,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionIterator,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<unknown>,): boolean
-/**
- * Tell that one of the {@link values} exist in the {@link collection}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param values     The values to compare
- * @extensionFunction
- * @facadeFunction
- * @deprecated Use values present in the {@link collection} instead. This will be removed in version 1.11
- */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
 export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: PossibleIterableArraySetOrCollectionHolder<T>,) {
     if (isArray(values,))
         return hasOneWithArrayByCollectionHolder(collection, values,)

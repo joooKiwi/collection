@@ -30,8 +30,7 @@ export interface MinimalistCollectionHolder<out T = unknown, > {
      * Get the element at the specified index in the {@link MinimalistCollectionHolder collection}
      *
      * @param index The index to retrieve a value
-     * @throws CollectionHolderIndexOutOfBoundsException The index calculated is under zero
-     *             or over the {@link size} (after calculation)
+     * @throws IndexOutOfBoundsException The index calculated is under zero or over the {@link size} (after calculation)
      * @see ReadonlyArray.at
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/get.html Kotlin get(index)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#get(int) Java get(index)

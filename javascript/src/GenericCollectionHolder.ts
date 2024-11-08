@@ -5,96 +5,122 @@
  All the right is reserved to the author of this project.
  ******************************************************************************/
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} from "@joookiwi/type"
+import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                                                                                            from "./CollectionHolder"
-import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./CollectionHolder.types"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                                                                                  from "./MinimalistCollectionHolder"
-import type {IterableWithCount}                                                                                                                                                                                                                                                                                                           from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                                                                                                                                                                                                                                                                                          from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                                                                                                                                                                                                                                                                                    from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                                                                                                                                                                                                                                                                            from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                                                                                                                                                                                                                                                                                          from "./iterator/CollectionIterator"
+import type {CollectionHolder}                                                                                                                                                                                                                                  from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
+import type {IterableWithCount}                                                                                                                                                                                                                                 from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                                                                                                                                                                                                                from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                                                                                                                                                                                                          from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                                                                                                                                                                                                  from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
+import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
+import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection}                                                                                                                                                                          from "./type/possibleInstance"
 
-import {AbstractCollectionHolder}                  from "./AbstractCollectionHolder"
-import {CollectionConstants}                       from "./CollectionConstants"
-import {CollectionHolderIndexOutOfBoundsException} from "./exception/CollectionHolderIndexOutOfBoundsException"
-import {EmptyCollectionHolderException}            from "./exception/EmptyCollectionHolderException"
-import {ForbiddenIndexException}                   from "./exception/ForbiddenIndexException"
-import {allByArray}                                from "./method/all"
-import {anyByArray}                                from "./method/any"
-import {dropByArray}                               from "./method/drop"
-import {dropLastByArray}                           from "./method/dropLast"
-import {dropLastWhileByArray}                      from "./method/dropLastWhile"
-import {dropLastWhileIndexedByArray}               from "./method/dropLastWhileIndexed"
-import {dropWhileByArray}                          from "./method/dropWhile"
-import {dropWhileIndexedByArray}                   from "./method/dropWhileIndexed"
-import {filterByArray}                             from "./method/filter"
-import {filterIndexedByArray}                      from "./method/filterIndexed"
-import {filterNotByArray}                          from "./method/filterNot"
-import {filterNotIndexedByArray}                   from "./method/filterNotIndexed"
-import {findByArray}                               from "./method/find"
-import {findIndexedByArray}                        from "./method/findIndexed"
-import {findLastByArray}                           from "./method/findLast"
-import {findLastIndexedByArray}                    from "./method/findLastIndexed"
-import {firstByArray}                              from "./method/first"
-import {firstOrNullByArray}                        from "./method/firstOrNull"
-import {forEachByArray}                            from "./method/forEach"
-import {forEachIndexedByArray}                     from "./method/forEachIndexed"
-import {getOrElseByArray}                          from "./method/getOrElse"
-import {getOrNullByArray}                          from "./method/getOrNull"
-import {hasByArray}                                from "./method/has"
-import {hasAllByArray}                             from "./method/hasAll"
-import {hasNullByArray}                            from "./method/hasNull"
-import {hasDuplicateByArray}                       from "./method/hasDuplicate"
-import {hasOneByArray}                             from "./method/hasOne"
-import {indexOfByArray}                            from "./method/indexOf"
-import {indexOfFirstByArray}                       from "./method/indexOfFirst"
-import {indexOfFirstIndexedByArray}                from "./method/indexOfFirstIndexed"
-import {indexOfLastByArray}                        from "./method/indexOfLast"
-import {indexOfLastIndexedByArray}                 from "./method/indexOfLastIndexed"
-import {isArray}                                   from "./method/isArray"
-import {isArrayByStructure}                        from "./method/isArrayByStructure"
-import {isCollectionIterator}                      from "./method/isCollectionIterator"
-import {isCollectionIteratorByStructure}           from "./method/isCollectionIteratorByStructure"
-import {isCollectionHolder}                        from "./method/isCollectionHolder"
-import {isCollectionHolderByStructure}             from "./method/isCollectionHolderByStructure"
-import {isMinimalistCollectionHolder}              from "./method/isMinimalistCollectionHolder"
-import {isMinimalistCollectionHolderByStructure}   from "./method/isMinimalistCollectionHolderByStructure"
-import {isSet}                                     from "./method/isSet"
-import {isSetByStructure}                          from "./method/isSetByStructure"
-import {joinToStringByArray}                       from "./method/joinToString"
-import {lastByArray}                               from "./method/last"
-import {lastIndexOfByArray}                        from "./method/lastIndexOf"
-import {lastOrNullByArray}                         from "./method/lastOrNull"
-import {noneByArray}                               from "./method/none"
-import {mapByArray}                                from "./method/map"
-import {mapIndexedByArray}                         from "./method/mapIndexed"
-import {mapNotNullByArray}                         from "./method/mapNotNull"
-import {mapNotNullIndexedByArray}                  from "./method/mapNotNullIndexed"
-import {onEachByArray}                             from "./method/onEach"
-import {onEachIndexedByArray}                      from "./method/onEachIndexed"
-import {sliceByArray}                              from "./method/slice"
-import {sliceWithARangeByArray}                    from "./method/slice.withARange"
-import {takeByArray}                               from "./method/take"
-import {takeLastByArray}                           from "./method/takeLast"
-import {takeLastWhileByArray}                      from "./method/takeLastWhile"
-import {takeLastWhileIndexedByArray}               from "./method/takeLastWhileIndexed"
-import {takeWhileByArray}                          from "./method/takeWhile"
-import {takeWhileIndexedByArray}                   from "./method/takeWhileIndexed"
-import {toIteratorByArray}                         from "./method/toIterator"
-import {toLocaleLowerCaseStringByArray}            from "./method/toLocaleLowerCaseString"
-import {toLocaleStringByArray}                     from "./method/toLocaleString"
-import {toLocaleUpperCaseStringByArray}            from "./method/toLocaleUpperCaseString"
-import {toLowerCaseStringByArray}                  from "./method/toLowerCaseString"
-import {toMapByArray}                              from "./method/toMap"
-import {toMutableArrayByArray}                     from "./method/toMutableArray"
-import {toMutableMapByArray}                       from "./method/toMutableMap"
-import {toMutableSetByArray}                       from "./method/toMutableSet"
-import {toReverseByArray}                          from "./method/toReverse"
-import {toSetByArray}                              from "./method/toSet"
-import {toStringByArray}                           from "./method/toString"
-import {toUpperCaseStringByArray}                  from "./method/toUpperCaseString"
+import {AbstractCollectionHolder}                    from "./AbstractCollectionHolder"
+import {CollectionConstants}                         from "./CollectionConstants"
+import {EmptyCollectionException}                    from "./exception/EmptyCollectionException"
+import {ForbiddenIndexException}                     from "./exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}                   from "./exception/IndexOutOfBoundsException"
+import {allByArray}                                  from "./method/all"
+import {anyByArray}                                  from "./method/any"
+import {dropByArray}                                 from "./method/drop"
+import {dropLastByArray}                             from "./method/dropLast"
+import {dropLastWhileByArray}                        from "./method/dropLastWhile"
+import {dropLastWhileIndexedByArray}                 from "./method/dropLastWhileIndexed"
+import {dropWhileByArray}                            from "./method/dropWhile"
+import {dropWhileIndexedByArray}                     from "./method/dropWhileIndexed"
+import {filterByArray}                               from "./method/filter"
+import {filterIndexedByArray}                        from "./method/filterIndexed"
+import {filterNotByArray}                            from "./method/filterNot"
+import {filterNotIndexedByArray}                     from "./method/filterNotIndexed"
+import {findFirstByArray}                            from "./method/findFirst"
+import {findFirstIndexedByArray}                     from "./method/findFirstIndexed"
+import {findFirstIndexedOrNullByArray}               from "./method/findFirstIndexedOrNull"
+import {findFirstOrNullByArray}                      from "./method/findFirstOrNull"
+import {findLastByArray}                             from "./method/findLast"
+import {findLastIndexedByArray}                      from "./method/findLastIndexed"
+import {findLastIndexedOrNullByArray}                from "./method/findLastIndexedOrNull"
+import {findLastOrNullByArray}                       from "./method/findLastOrNull"
+import {firstIndexOfByArray}                         from "./method/firstIndexOf"
+import {firstIndexOfOrNullByArray}                   from "./method/firstIndexOfOrNull"
+import {forEachByArray}                              from "./method/forEach"
+import {forEachIndexedByArray}                       from "./method/forEachIndexed"
+import {getFirstByArray}                             from "./method/getFirst"
+import {getFirstOrNullByArray}                       from "./method/getFirstOrNull"
+import {getLastByArray}                              from "./method/getLast"
+import {getLastOrNullByArray}                        from "./method/getLastOrNull"
+import {getOrElseByArray}                            from "./method/getOrElse"
+import {getOrNullByArray}                            from "./method/getOrNull"
+import {hasByArray}                                  from "./method/has"
+import {hasAllWithArrayByArray}                      from "./method/hasAll.withArray"
+import {hasAllWithCollectionHolderByArray}           from "./method/hasAll.withCollectionHolder"
+import {hasAllWithCollectionIteratorByArray}         from "./method/hasAll.withCollectionIterator"
+import {hasAllWithIterableByArray}                   from "./method/hasAll.withIterable"
+import {hasAllWithMinimalistCollectionHolderByArray} from "./method/hasAll.withMinimalistCollectionHolder"
+import {hasAllWithSetByArray}                        from "./method/hasAll.withSet"
+import {hasNullByArray}                              from "./method/hasNull"
+import {hasDuplicateByArray}                         from "./method/hasDuplicate"
+import {hasOneWithArrayByArray}                      from "./method/hasOne.withArray"
+import {hasOneWithCollectionHolderByArray}           from "./method/hasOne.withCollectionHolder"
+import {hasOneWithCollectionIteratorByArray}         from "./method/hasOne.withCollectionIterator"
+import {hasOneWithIterableByArray}                   from "./method/hasOne.withIterable"
+import {hasOneWithMinimalistCollectionHolderByArray} from "./method/hasOne.withMinimalistCollectionHolder"
+import {hasOneWithSetByArray}                        from "./method/hasOne.withSet"
+import {indexOfFirstByArray}                         from "./method/indexOfFirst"
+import {indexOfFirstIndexedByArray}                  from "./method/indexOfFirstIndexed"
+import {indexOfFirstIndexedOrNullByArray}            from "./method/indexOfFirstIndexedOrNull"
+import {indexOfFirstOrNullByArray}                   from "./method/indexOfFirstOrNull"
+import {indexOfLastByArray}                          from "./method/indexOfLast"
+import {indexOfLastIndexedByArray}                   from "./method/indexOfLastIndexed"
+import {indexOfLastIndexedOrNullByArray}             from "./method/indexOfLastIndexedOrNull"
+import {indexOfLastOrNullByArray}                    from "./method/indexOfLastOrNull"
+import {isArray}                                     from "./method/isArray"
+import {isArrayByStructure}                          from "./method/isArrayByStructure"
+import {isCollectionIterator}                        from "./method/isCollectionIterator"
+import {isCollectionIteratorByStructure}             from "./method/isCollectionIteratorByStructure"
+import {isCollectionHolder}                          from "./method/isCollectionHolder"
+import {isCollectionHolderByStructure}               from "./method/isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                from "./method/isMinimalistCollectionHolder"
+import {isMinimalistCollectionHolderByStructure}     from "./method/isMinimalistCollectionHolderByStructure"
+import {isSet}                                       from "./method/isSet"
+import {isSetByStructure}                            from "./method/isSetByStructure"
+import {joinToStringByArray}                         from "./method/joinToString"
+import {lastIndexOfByArray}                          from "./method/lastIndexOf"
+import {lastIndexOfOrNullByArray}                    from "./method/lastIndexOfOrNull"
+import {noneByArray}                                 from "./method/none"
+import {mapByArray}                                  from "./method/map"
+import {mapIndexedByArray}                           from "./method/mapIndexed"
+import {mapNotNullByArray}                           from "./method/mapNotNull"
+import {mapNotNullIndexedByArray}                    from "./method/mapNotNullIndexed"
+import {onEachByArray}                               from "./method/onEach"
+import {onEachIndexedByArray}                        from "./method/onEachIndexed"
+import {sliceWithARangeByArray}                      from "./method/slice.withARange"
+import {sliceWithArrayByArray}                       from "./method/slice.withArray"
+import {sliceWithCollectionHolderByArray}            from "./method/slice.withCollectionHolder"
+import {sliceWithCollectionIteratorByArray}          from "./method/slice.withCollectionIterator"
+import {sliceWithIterableByArray}                    from "./method/slice.withIterable"
+import {sliceWithMinimalistCollectionHolderByArray}  from "./method/slice.withMinimalistCollectionHolder"
+import {sliceWithSetByArray}                         from "./method/slice.withSet"
+import {takeByArray}                                 from "./method/take"
+import {takeLastByArray}                             from "./method/takeLast"
+import {takeLastWhileByArray}                        from "./method/takeLastWhile"
+import {takeLastWhileIndexedByArray}                 from "./method/takeLastWhileIndexed"
+import {takeWhileByArray}                            from "./method/takeWhile"
+import {takeWhileIndexedByArray}                     from "./method/takeWhileIndexed"
+import {toIteratorByArray}                           from "./method/toIterator"
+import {toLocaleLowerCaseStringByArray}              from "./method/toLocaleLowerCaseString"
+import {toLocaleStringByArray}                       from "./method/toLocaleString"
+import {toLocaleUpperCaseStringByArray}              from "./method/toLocaleUpperCaseString"
+import {toLowerCaseStringByArray}                    from "./method/toLowerCaseString"
+import {toMapByArray}                                from "./method/toMap"
+import {toMutableArrayByArray}                       from "./method/toMutableArray"
+import {toMutableMapByArray}                         from "./method/toMutableMap"
+import {toMutableSetByArray}                         from "./method/toMutableSet"
+import {toReverseByArray}                            from "./method/toReverse"
+import {toSetByArray}                                from "./method/toSet"
+import {toStringByArray}                             from "./method/toString"
+import {toUpperCaseStringByArray}                    from "./method/toUpperCaseString"
 
 /**
  * A {@link CollectionHolder} having the values eagerly retrieved.
@@ -276,7 +302,7 @@ export class GenericCollectionHolder<const T = unknown,
 
             const size = this.#size = reference.size
             if (size == 1) {
-                const value = this[0] = reference.first()
+                const value = this[0] = reference.getFirst()
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -287,8 +313,8 @@ export class GenericCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const firstValue = this[0] = reference.first()
-                const secondValue = this[1] = reference.last()
+                const firstValue = this[0] = reference.getFirst()
+                const secondValue = this[1] = reference.getLast()
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -520,7 +546,7 @@ export class GenericCollectionHolder<const T = unknown,
 
             const size = this.#size = reference.size
             if (size == 1) {
-                const value = this[0] = reference.first()
+                const value = this[0] = reference.getFirst()
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -531,8 +557,8 @@ export class GenericCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 2) --------------------
 
             if (size == 2) {
-                const firstValue = this[0] = reference.first()
-                const secondValue = this[1] = reference.last()
+                const firstValue = this[0] = reference.getFirst()
+                const secondValue = this[1] = reference.getLast()
                 this.#hasNull = firstValue == null || secondValue == null
                 this.#hasDuplicate = firstValue === secondValue
                 this.#array = Object.freeze([firstValue, secondValue,],)
@@ -851,6 +877,7 @@ export class GenericCollectionHolder<const T = unknown,
     protected get _array(): readonly T[] { return this.#array }
 
     //#endregion -------------------- Reference methods --------------------
+
     //#region -------------------- Size methods --------------------
 
     public override get size(): number { return this.#size }
@@ -858,14 +885,13 @@ export class GenericCollectionHolder<const T = unknown,
     public override get isNotEmpty(): boolean { return !this.isEmpty }
 
     //#endregion -------------------- Size methods --------------------
-
     //#region -------------------- Research methods --------------------
 
-    //#region -------------------- Get methods --------------------
+    //#region -------------------- Get --------------------
 
     public override get(index: number,): T {
         if (this.isEmpty)
-            throw new EmptyCollectionHolderException(null, index,)
+            throw new EmptyCollectionException(null, index,)
 
         if (Number.isNaN(index,))
             throw new ForbiddenIndexException("Forbidden index. The index cannot be NaN.", index,)
@@ -874,24 +900,32 @@ export class GenericCollectionHolder<const T = unknown,
         if (index == Number.POSITIVE_INFINITY)
             throw new ForbiddenIndexException("Forbidden index. The index cannot be +∞.", index,)
 
-        if (index in this)
-            return this._array[index] as T
+        const array = this._array
+        if (index in array)
+            return array[index] as T
 
         const size = this.size
         if (index > size)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is over the size of the collection (${size}).`, index,)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
         if (index == size)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" is the size of the collection (${size}).`, index,)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
         if (index >= 0)
-            return this._array[index] as T
+            return array[index] as T
 
-        const indexToRetrieve = size + index
+        const indexToRetrieve = index + size
         if (indexToRetrieve < 0)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
-        if (indexToRetrieve > size)
-            throw new CollectionHolderIndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is over the size of the collection (${size}).`, index,)
-        return this._array[indexToRetrieve] as T
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” (${indexToRetrieve} after calculation) is under 0.`, index,)
+        return array[indexToRetrieve] as T
     }
+
+    public override getFirst(): T {
+        return getFirstByArray(this._array,)
+    }
+
+    public override getLast(): T {
+        return getLastByArray(this._array,)
+    }
+
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -899,126 +933,127 @@ export class GenericCollectionHolder<const T = unknown,
         return getOrElseByArray(this._array, index, defaultValue,)
     }
 
+
     public override getOrNull(index: number,): NullOr<T> {
         return getOrNullByArray(this._array, index,)
     }
 
-    //#endregion -------------------- Get methods --------------------
-    //#region -------------------- First --------------------
-
-    public override first(): T
-    public override first<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
-    public override first(predicate: Nullable<BooleanCallback<T>>,): T
-    public override first(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return firstByArray(this._array,)
-        return firstByArray(this._array, predicate,)
+    public override getFirstOrNull(): NullOr<T> {
+        return getFirstOrNullByArray(this._array,)
     }
 
-    public override firstOrNull(): NullOr<T>
-    public override firstOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public override firstOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public override firstOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return firstOrNullByArray(this._array,)
-        return firstOrNullByArray(this._array, predicate,)
+    public override getLastOrNull(): NullOr<T> {
+        return getLastOrNullByArray(this._array,)
     }
 
-    //#endregion -------------------- First --------------------
-    //#region -------------------- Last --------------------
+    //#endregion -------------------- Get --------------------
+    //#region -------------------- Find first --------------------
 
-    public override last(): T
-    public override last<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
-    public override last(predicate: Nullable<BooleanCallback<T>>,): T
-    public override last(predicate?: Nullable<BooleanCallback<T>>,) {
-        return lastByArray(this._array, predicate,)
+    public override findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+    public override findFirst(predicate: BooleanCallback<T>,): T
+    public override findFirst(predicate: BooleanCallback<T>,) {
+        return findFirstByArray(this._array, predicate,)
     }
 
-    public override lastOrNull(): NullOr<T>
-    public override lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
-    public override lastOrNull(predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-    public override lastOrNull(predicate?: Nullable<BooleanCallback<T>>,) {
-        return lastOrNullByArray(this._array, predicate,)
+    public override findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findFirstOrNull(predicate: BooleanCallback<T>,): NullOr<T>
+    public override findFirstOrNull(predicate: BooleanCallback<T>,) {
+        return findFirstOrNullByArray(this._array, predicate,)
     }
 
-    //#endregion -------------------- Last --------------------
-    //#region -------------------- Find --------------------
-
-    public override find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override find(predicate: BooleanCallback<T>,): NullOr<T>
-    public override find(predicate: BooleanCallback<T>,) {
-        return findByArray(this._array, predicate,)
+    public override findFirstIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+    public override findFirstIndexed(predicate: ReverseBooleanCallback<T>,): T
+    public override findFirstIndexed(predicate: ReverseBooleanCallback<T>,) {
+        return findFirstIndexedByArray(this._array, predicate,)
     }
 
-    public override findIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public override findIndexed(predicate: ReverseBooleanCallback<T>,)  {
-        return findIndexedByArray(this._array, predicate,)
+    public override findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,) {
+        return findFirstIndexedOrNullByArray(this._array, predicate,)
     }
 
-    public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findLast(predicate: BooleanCallback<T>,): NullOr<T>
-    public override findLast(predicate: BooleanCallback<T>,)  {
+    //#endregion -------------------- Find first --------------------
+    //#region -------------------- Find last --------------------
+
+    public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
+    public override findLast(predicate: BooleanCallback<T>,): T
+    public override findLast(predicate: BooleanCallback<T>,) {
         return findLastByArray(this._array, predicate,)
     }
 
-    public override findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
-    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,)  {
+    public override findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findLastOrNull(predicate: BooleanCallback<T>,): NullOr<T>
+    public override findLastOrNull(predicate: BooleanCallback<T>,) {
+        return findLastOrNullByArray(this._array, predicate,)
+    }
+
+    public override findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
+    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,): T
+    public override findLastIndexed(predicate: ReverseBooleanCallback<T>,) {
         return findLastIndexedByArray(this._array, predicate,)
     }
 
-    //#endregion -------------------- Find --------------------
+    public override findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
+    public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,) {
+        return findLastIndexedOrNullByArray(this._array, predicate,)
+    }
+
+    //#endregion -------------------- Find last --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override indexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public override indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
-        return indexOfByArray(this._array, element, fromIndex, toIndex,)
+    public override firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+        return firstIndexOfByArray(this._array, element, fromIndex, toIndex,)
     }
 
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override lastIndexOf(element: unknown, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public override firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return firstIndexOfOrNullByArray(this._array, element, fromIndex, toIndex,)
+    }
+
+
+    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return lastIndexOfByArray(this._array, element, fromIndex, toIndex,)
     }
 
+    public override lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return lastIndexOfOrNullByArray(this._array, element, fromIndex, toIndex,)
+    }
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+
+    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfFirstByArray(this._array, predicate, fromIndex, toIndex,)
     }
 
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstOrNullByArray(this._array, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfFirstIndexedByArray(this._array, predicate, fromIndex, toIndex,)
     }
 
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedOrNullByArray(this._array, predicate, fromIndex, toIndex,)
+    }
 
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+
+    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfLastByArray(this._array, predicate, fromIndex, toIndex,)
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.drop} or {@link CollectionHolder.takeLast} instead. This will be removed in version 1.11 */
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): NullOrNumber
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastOrNullByArray(this._array, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
         return indexOfLastIndexedByArray(this._array, predicate, fromIndex, toIndex,)
+    }
+
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedOrNullByArray(this._array, predicate, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- Index methods --------------------
@@ -1035,22 +1070,14 @@ export class GenericCollectionHolder<const T = unknown,
     //#endregion -------------------- All --------------------
     //#region -------------------- Any --------------------
 
-    public override any(): this["isNotEmpty"]
-    public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override any(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return this.isNotEmpty
+    protected override _any(predicate: BooleanCallback<T>,): boolean {
         return anyByArray(this._array, predicate,)
     }
 
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
 
-    public override none(): this["isEmpty"]
-    public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
-    public override none(predicate?: Nullable<BooleanCallback<T>>,) {
-        if (arguments.length === 0)
-            return this.isEmpty
+    protected override _none(predicate: BooleanCallback<T>,): boolean {
         return noneByArray(this._array, predicate,)
     }
 
@@ -1069,70 +1096,77 @@ export class GenericCollectionHolder<const T = unknown,
 
     //#region -------------------- Has --------------------
 
-    public override has(value: T,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override has(value: unknown,): boolean
-    public override has(value: T,) {
+    public override has(value: T,): boolean {
         return hasByArray(this._array, value,)
     }
 
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
-    public override hasOne(values: readonly T[],): boolean
-    public override hasOne(values: ReadonlySet<T>,): boolean
-    public override hasOne(values: CollectionHolder<T>,): boolean
-    public override hasOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasOne(values: CollectionIterator<T>,): boolean
-    public override hasOne(values: Iterable<T>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasOne(values: readonly unknown[],): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasOne(values: ReadonlySet<unknown>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasOne(values: CollectionHolder,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasOne(values: MinimalistCollectionHolder,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasOne(values: CollectionIterator,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasOne(values: Iterable<unknown>,): boolean
-    /** @deprecated Use a value present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
-        return hasOneByArray(this._array, values,)
+    protected override _hasOneByArray(values: readonly T[],): boolean {
+        return hasOneWithArrayByArray(this._array, values,)
+    }
+
+    protected override _hasOneBySet(values: ReadonlySet<T>,): boolean {
+        return hasOneWithSetByArray(this._array, values,)
+    }
+
+    protected override _hasOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasOneWithMinimalistCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasOneWithCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasOneWithCollectionIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasOneByIterable(values: Iterable<T>,): boolean {
+        return hasOneWithIterableByArray(this._array, values,)
     }
 
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has all --------------------
 
-    public override hasAll(values: readonly T[],): boolean
-    public override hasAll(values: ReadonlySet<T>,): boolean
-    public override hasAll(values: CollectionHolder<T>,): boolean
-    public override hasAll(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasAll(values: CollectionIterator<T>,): boolean
-    public override hasAll(values: Iterable<T>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasAll(values: readonly unknown[],): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasAll(values: ReadonlySet<unknown>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasAll(values: CollectionHolder,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasAll(values: MinimalistCollectionHolder,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasAll(values: CollectionIterator,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasAll(values: Iterable<unknown>,): boolean
-    /** @deprecated Use values present in the current {@link CollectionHolder collection} instead. This will be removed in version 1.11 */
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<unknown>,) {
-        return hasAllByArray(this._array, values,)
+    protected override _hasAllByArray(values: readonly T[],): boolean {
+        return hasAllWithArrayByArray(this._array, values,)
+    }
+
+    protected override _hasAllBySet(values: ReadonlySet<T>,): boolean {
+        return hasAllWithSetByArray(this._array, values,)
+    }
+
+    protected override _hasAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasAllWithMinimalistCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasAllWithCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasAllWithCollectionIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasAllByIterable(values: Iterable<T>,): boolean {
+        return hasAllWithIterableByArray(this._array, values,)
     }
 
     //#endregion -------------------- Has all --------------------
+
+    //#region -------------------- Require no nulls --------------------
+
+    public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
+        if (this.isEmpty)
+            return this as CollectionHolder<NonNullable<T>>
+        if (this.hasNull)
+            throw new TypeError("Forbidden null value. The current collection contains null values.",)
+        return this as CollectionHolder<NonNullable<T>>
+    }
+
+    //#endregion -------------------- Require no nulls --------------------
 
     //#endregion -------------------- Validation methods --------------------
     //#region -------------------- Transformation methods --------------------
@@ -1187,30 +1221,44 @@ export class GenericCollectionHolder<const T = unknown,
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number>,): CollectionHolder<T>
-    public override slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public override slice(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T> {
-        if (arguments.length === 0)
-            return sliceWithARangeByArray<T>(this._array,)
-        if (arguments.length === 1)
-            if (indicesOrFromIndex == null)
-                return sliceWithARangeByArray<T>(this._array, indicesOrFromIndex,)
-            else if (typeof indicesOrFromIndex == "number")
-                return sliceWithARangeByArray<T>(this._array, indicesOrFromIndex,)
-            else
-                return sliceByArray<T>(this._array, indicesOrFromIndex,)
-        return sliceWithARangeByArray<T>(this._array, indicesOrFromIndex as NullableNumber, toIndex,)
+    protected override _sliceWith0Argument(): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array,)
+    }
+
+    protected override _sliceWith1Argument(fromIndex: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, fromIndex,)
+    }
+
+    protected override _sliceWith2Argument(fromIndex: number, toIndex: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, fromIndex, toIndex,)
+    }
+
+    protected override _sliceWith2ArgumentWhere1stIsNull(fromIndex: NullOrUndefined, toIndex: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, fromIndex, toIndex,)
+    }
+
+    protected override _sliceByArray(indices: readonly number[],): CollectionHolder<T> {
+        return sliceWithArrayByArray(this._array, indices,)
+    }
+
+    protected override _sliceBySet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+        return sliceWithSetByArray(this._array, indices,)
+    }
+
+    protected override _sliceByMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithMinimalistCollectionHolderByArray(this._array, indices,)
+    }
+
+    protected override _sliceByCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithCollectionHolderByArray(this._array, indices,)
+    }
+
+    protected override _sliceByCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
+        return sliceWithCollectionIteratorByArray(this._array, indices,)
+    }
+
+    protected override _sliceByIterable(indices: Iterable<number>,): CollectionHolder<T> {
+        return sliceWithIterableByArray(this._array, indices,)
     }
 
     //#endregion -------------------- Slice --------------------
@@ -1341,21 +1389,18 @@ export class GenericCollectionHolder<const T = unknown,
 
     //#region -------------------- To reverse --------------------
 
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    /** @deprecated Remove the {@link limit} or use {@link CollectionHolder.dropLast} or {@link CollectionHolder.take} instead. This will be removed in version 1.11 */
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber, limit?: NullableNumber,): CollectionHolder<T>
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,) {
+    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
         return toReverseByArray(this._array, fromIndex, toIndex,)
     }
 
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- Javascript methods --------------------
+    //#region -------------------- JavaScript methods --------------------
 
     public override [Symbol.iterator](): CollectionIterator<T> { return toIteratorByArray(this._array,) }
 
-    //#endregion -------------------- Javascript methods --------------------
+    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To other structure --------------------

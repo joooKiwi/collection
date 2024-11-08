@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>joookiwi</OriginalElement>
+  <nodes>
+    <node x="-1008.0" y="312.0">java.util.Spliterators.AbstractDoubleSpliterator</node>
+    <node x="-138.95698924731164" y="64.0">java.util.Iterator</node>
+    <node x="-1173.0" y="144.0">java.util.Spliterator.OfPrimitive</node>
+    <node x="-944.0" y="234.0">java.util.Spliterator.OfDouble</node>
+    <node x="-920.2069892473116" y="64.0">java.util.Spliterator</node>
+    <node x="-1263.0" y="385.0">java.util.Enumeration</node>
+    <node x="77.04301075268813" y="144.0">java.util.ListIterator</node>
+    <node x="-673.0" y="234.0">java.util.Spliterator.OfInt</node>
+    <node x="-215.61424731182797" y="234.0">java.util.PrimitiveIterator.OfInt</node>
+    <node x="-1199.0" y="234.0">java.util.Spliterator.OfLong</node>
+    <node x="-221.95698924731164" y="144.0">java.util.PrimitiveIterator</node>
+    <node x="19.385752688172033" y="234.0">java.util.PrimitiveIterator.OfDouble</node>
+    <node x="-361.9462365591396" y="144.0">java.util.Scanner</node>
+    <node x="-482.6962365591396" y="234.0">java.util.Scanner.FindSpliterator</node>
+    <node x="-737.0" y="312.0">java.util.Spliterators.AbstractIntSpliterator</node>
+    <node x="-610.9462365591396" y="144.0">java.util.Spliterators.AbstractSpliterator</node>
+    <node x="-1263.0" y="312.0">java.util.Spliterators.AbstractLongSpliterator</node>
+    <node x="-1259.5" y="463.0">java.util.StringTokenizer</node>
+    <node x="-107.61424731182797" y="234.0">java.util.PrimitiveIterator.OfLong</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.Spliterator.OfDouble" target="java.util.Spliterator" relationship="INNER_CLASS">
+      <point x="30.75" y="-14.0" />
+      <point x="-851.75" y="203.0" />
+      <point x="-746.375" y="203.0" />
+      <point x="-746.375" y="123.0" />
+      <point x="-838.7069892473116" y="123.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfDouble" target="java.util.PrimitiveIterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="30.75" y="-14.0" />
+      <point x="111.63575268817203" y="203.0" />
+      <point x="40.875" y="203.0" />
+      <point x="40.875" y="193.0" />
+      <point x="-12.706989247311867" y="193.0" />
+      <point x="69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.StringTokenizer" target="java.util.Enumeration" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfLong" target="java.util.Spliterator.OfPrimitive" relationship="INTERFACE_GENERALIZATION">
+      <point x="26.75" y="-14.0" />
+      <point x="-1118.75" y="213.0" />
+      <point x="-1012.0" y="213.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfPrimitive" target="java.util.Spliterator" relationship="INNER_CLASS">
+      <point x="80.5" y="-14.0" />
+      <point x="-931.5" y="123.0" />
+      <point x="-838.7069892473116" y="123.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfPrimitive" target="java.util.Spliterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="-80.5" y="-14.0" />
+      <point x="-1092.5" y="113.0" />
+      <point x="-893.0403225806451" y="113.0" />
+      <point x="-54.33333333333337" y="14.0" />
+    </edge>
+    <edge source="java.util.ListIterator" target="java.util.Iterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="160.04301075268813" y="123.0" />
+      <point x="38.79301075268813" y="123.0" />
+      <point x="38.79301075268813" y="113.0" />
+      <point x="-34.70698924731187" y="113.0" />
+      <point x="34.75" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfDouble" target="java.util.PrimitiveIterator" relationship="INNER_CLASS">
+      <point x="-30.75" y="-14.0" />
+      <point x="50.13575268817203" y="213.0" />
+      <point x="-166.0262096774195" y="213.0" />
+      <point x="-166.0262096774195" y="193.0" />
+      <point x="-152.20698924731164" y="193.0" />
+      <point x="-69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterators.AbstractIntSpliterator" target="java.util.Spliterator.OfInt" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Scanner" target="java.util.Iterator" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-304.9462365591396" y="123.0" />
+      <point x="-104.20698924731164" y="123.0" />
+      <point x="-34.75" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfLong" target="java.util.Spliterator" relationship="INNER_CLASS">
+      <point x="-26.75" y="-14.0" />
+      <point x="-1172.25" y="213.0" />
+      <point x="-1183.5" y="213.0" />
+      <point x="-1183.5" y="123.0" />
+      <point x="-838.7069892473116" y="123.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfInt" target="java.util.Spliterator.OfPrimitive" relationship="INTERFACE_GENERALIZATION">
+      <point x="-22.0" y="-14.0" />
+      <point x="-651.0" y="213.0" />
+      <point x="-1012.0" y="213.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterators.AbstractLongSpliterator" target="java.util.Spliterator.OfLong" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfInt" target="java.util.PrimitiveIterator" relationship="INNER_CLASS">
+      <point x="-22.0" y="-14.0" />
+      <point x="-193.61424731182797" y="213.0" />
+      <point x="-166.0262096774195" y="213.0" />
+      <point x="-166.0262096774195" y="193.0" />
+      <point x="-152.20698924731164" y="193.0" />
+      <point x="-69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterators.AbstractDoubleSpliterator" target="java.util.Spliterator.OfDouble" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfInt" target="java.util.Spliterator" relationship="INNER_CLASS">
+      <point x="22.0" y="-14.0" />
+      <point x="-607.0" y="213.0" />
+      <point x="-621.4462365591396" y="213.0" />
+      <point x="-621.4462365591396" y="123.0" />
+      <point x="-838.7069892473116" y="123.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator" target="java.util.Iterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-82.45698924731164" y="123.0" />
+      <point x="38.79301075268813" y="123.0" />
+      <point x="38.79301075268813" y="113.0" />
+      <point x="-34.70698924731187" y="113.0" />
+      <point x="34.75" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfInt" target="java.util.PrimitiveIterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="22.0" y="-14.0" />
+      <point x="-149.61424731182797" y="203.0" />
+      <point x="40.875" y="203.0" />
+      <point x="40.875" y="193.0" />
+      <point x="-12.706989247311867" y="193.0" />
+      <point x="69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.Scanner.FindSpliterator" target="java.util.Spliterators.AbstractSpliterator" relationship="GENERALIZATION">
+      <point x="-41.0" y="-14.0" />
+      <point x="-441.6962365591396" y="213.0" />
+      <point x="-496.4462365591396" y="213.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterators.AbstractSpliterator" target="java.util.Spliterator" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-496.4462365591396" y="113.0" />
+      <point x="-784.3736559139784" y="113.0" />
+      <point x="54.33333333333337" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfLong" target="java.util.PrimitiveIterator" relationship="INNER_CLASS">
+      <point x="-26.75" y="-14.0" />
+      <point x="-80.86424731182797" y="213.0" />
+      <point x="-166.0262096774195" y="213.0" />
+      <point x="-166.0262096774195" y="193.0" />
+      <point x="-152.20698924731164" y="193.0" />
+      <point x="-69.75" y="14.0" />
+    </edge>
+    <edge source="java.util.Scanner.FindSpliterator" target="java.util.Scanner" relationship="INNER_CLASS">
+      <point x="41.0" y="-14.0" />
+      <point x="-359.6962365591396" y="213.0" />
+      <point x="-304.9462365591396" y="213.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.Spliterator.OfDouble" target="java.util.Spliterator.OfPrimitive" relationship="INTERFACE_GENERALIZATION">
+      <point x="-30.75" y="-14.0" />
+      <point x="-913.25" y="213.0" />
+      <point x="-1012.0" y="213.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="java.util.PrimitiveIterator.OfLong" target="java.util.PrimitiveIterator" relationship="INTERFACE_GENERALIZATION">
+      <point x="26.75" y="-14.0" />
+      <point x="-27.364247311827967" y="203.0" />
+      <point x="40.875" y="203.0" />
+      <point x="40.875" y="193.0" />
+      <point x="-12.706989247311867" y="193.0" />
+      <point x="69.75" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.8906352324819908" showDependencies="false" x="-499.4999999999999" y="287.5" />
+  <SelectedNodes>
+    <node>java.util.Scanner.FindSpliterator</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

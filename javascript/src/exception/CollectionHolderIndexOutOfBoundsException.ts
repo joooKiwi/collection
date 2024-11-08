@@ -13,6 +13,7 @@ import type {Nullable, NullOr, NumericOrObject} from "@joookiwi/type"
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/ArrayIndexOutOfBoundsException.html Java ArrayIndexOutOfBoundsException
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-index-out-of-bounds-exception Kotlin IndexOutOfBoundsException
  * @see https://learn.microsoft.com/dotnet/api/system.indexoutofrangeexception C# IndexOutOfRangeException
+ * @deprecated Replace with "{@link IndexOutOfBoundsException}". This will be removed in v1.12
  */
 export class CollectionHolderIndexOutOfBoundsException<const T extends NullOr<NumericOrObject> = NullOr<NumericOrObject>,
     const CAUSE extends Error = never, >
