@@ -72,11 +72,11 @@ export class CollectionConstants {
     /** An empty {@link ReadonlySet set} */
     public static readonly EMPTY_SET = Object.freeze(new Set<never>(),) as EmptySet
     /** An empty {@link WeakSet weak set} */
-    public static readonly EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet
+    public static readonly EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet<never>
     /** An empty {@link ReadonlyMap map} */
-    public static readonly EMPTY_MAP = Object.freeze(new Map<any, never>(),) as EmptyMap
+    public static readonly EMPTY_MAP = Object.freeze(new Map<never, never>(),) as EmptyMap<never>
     /** An empty {@link WeakSet weak set} */
-    public static readonly EMPTY_WEAK_MAP = Object.freeze(new WeakMap(),) as EmptyWeakMap
+    public static readonly EMPTY_WEAK_MAP = Object.freeze(new WeakMap(),) as EmptyWeakMap<never>
 
 
     /** An {@link EmptyCollectionHolder} instance */
