@@ -76,7 +76,7 @@ public final class Last
     /// matching the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -96,7 +96,7 @@ public final class Last
     /// matching the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][#isEmpty]
@@ -116,7 +116,7 @@ public final class Last
     /// matching the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -139,7 +139,7 @@ public final class Last
     /// matching the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -159,7 +159,7 @@ public final class Last
     /// matching the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][#isEmpty]
@@ -179,7 +179,7 @@ public final class Last
     /// matching the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -202,7 +202,7 @@ public final class Last
     /// matching the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -222,7 +222,7 @@ public final class Last
     /// matching the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][#isEmpty]
@@ -242,7 +242,7 @@ public final class Last
     /// matching the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**

@@ -22,7 +22,7 @@ public final class GetLastOrNull
     //#region -------------------- Facade methods --------------------
 
     /// Get the last element in the `collection`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
@@ -41,7 +41,7 @@ public final class GetLastOrNull
     }
 
     /// Get the last element in the `collection`
-    /// or `null` if the `collection` [is empty][CollectionHolder#isEmpty]
+    /// or `null` if it [is empty][CollectionHolder#isEmpty]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
@@ -58,7 +58,7 @@ public final class GetLastOrNull
     }
 
     /// Get the last element in the `collection`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type

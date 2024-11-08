@@ -83,7 +83,7 @@ public final class Any
     /// matches the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
@@ -109,7 +109,7 @@ public final class Any
     /// matches the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
@@ -133,7 +133,7 @@ public final class Any
     /// matches the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
@@ -162,7 +162,7 @@ public final class Any
     /// matches the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
@@ -188,7 +188,7 @@ public final class Any
     /// matches the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
@@ -212,7 +212,7 @@ public final class Any
     /// matches the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
@@ -241,7 +241,7 @@ public final class Any
     /// matches the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
@@ -267,7 +267,7 @@ public final class Any
     /// matches the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
@@ -291,7 +291,7 @@ public final class Any
     /// matches the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)

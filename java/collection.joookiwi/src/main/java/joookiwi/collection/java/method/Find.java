@@ -28,10 +28,10 @@ public final class Find
 
     //#region -------------------- predicate (T, int) → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -43,10 +43,10 @@ public final class Find
     public static <T> T find(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                              final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
@@ -58,10 +58,10 @@ public final class Find
     public static <T> T find(final @Nullable CollectionHolder<? extends T> collection,
                              final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -76,10 +76,10 @@ public final class Find
     //#endregion -------------------- predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T) → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -91,10 +91,10 @@ public final class Find
     public static <T> T find(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                              final @NotNull Predicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
@@ -106,10 +106,10 @@ public final class Find
     public static <T> T find(final @Nullable CollectionHolder<? extends T> collection,
                              final @NotNull Predicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -124,10 +124,10 @@ public final class Find
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -139,10 +139,10 @@ public final class Find
     public static <T> T find(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                              final @NotNull BooleanSupplier predicate) { return FindFirst.findFirst(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
@@ -154,10 +154,10 @@ public final class Find
     public static <T> T find(final @Nullable CollectionHolder<? extends T> collection,
                              final @NotNull BooleanSupplier predicate) { return FindFirst.findFirst(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**

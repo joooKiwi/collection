@@ -30,10 +30,10 @@ public final class FindFirstIndexed
 
     //#region -------------------- predicate (T, int) → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -53,10 +53,10 @@ public final class FindFirstIndexed
         return __with2Argument(collection, predicate, size);
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
@@ -74,10 +74,10 @@ public final class FindFirstIndexed
         return __with2Argument(collection, predicate, collection.size());
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -100,10 +100,10 @@ public final class FindFirstIndexed
     //#endregion -------------------- predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T) → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -123,10 +123,10 @@ public final class FindFirstIndexed
         return __with1Argument(collection, predicate, size);
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
@@ -144,10 +144,10 @@ public final class FindFirstIndexed
         return __with1Argument(collection, predicate, collection.size());
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -170,10 +170,10 @@ public final class FindFirstIndexed
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -193,10 +193,10 @@ public final class FindFirstIndexed
         return __with0Argument(collection, predicate, size);
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
@@ -214,10 +214,10 @@ public final class FindFirstIndexed
         return __with0Argument(collection, predicate, collection.size());
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**

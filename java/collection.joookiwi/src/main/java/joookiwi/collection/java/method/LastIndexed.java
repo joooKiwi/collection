@@ -72,10 +72,10 @@ public final class LastIndexed
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- predicate (int, T) → boolean --------------------
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -93,10 +93,10 @@ public final class LastIndexed
         return FindLastIndexed.findLastIndexed(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -114,10 +114,10 @@ public final class LastIndexed
         return FindLastIndexed.findLastIndexed(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -138,10 +138,10 @@ public final class LastIndexed
     //#endregion -------------------- predicate (int, T) → boolean --------------------
     //#region -------------------- predicate (int) → boolean --------------------
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -159,10 +159,10 @@ public final class LastIndexed
         return FindLastIndexed.findLastIndexed(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -180,10 +180,10 @@ public final class LastIndexed
         return FindLastIndexed.findLastIndexed(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -204,10 +204,10 @@ public final class LastIndexed
     //#endregion -------------------- predicate (int) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -225,10 +225,10 @@ public final class LastIndexed
         return FindLastIndexed.findLastIndexed(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -246,10 +246,10 @@ public final class LastIndexed
         return FindLastIndexed.findLastIndexed(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**

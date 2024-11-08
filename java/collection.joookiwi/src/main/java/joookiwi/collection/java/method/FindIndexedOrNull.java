@@ -27,11 +27,11 @@ public final class FindIndexedOrNull
 
     //#region -------------------- predicate (int, T) → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Javascript Array.find(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
@@ -42,11 +42,11 @@ public final class FindIndexedOrNull
     public static <T> @Nullable T findIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                               final @NotNull IntObjPredicate<? super T> predicate) { return FindFirstIndexedOrNull.findFirstIndexedOrNull(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Javascript Array.find(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
@@ -57,11 +57,11 @@ public final class FindIndexedOrNull
     public static <T> @Nullable T findIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                               final @NotNull IntObjPredicate<? super T> predicate) { return FindFirstIndexedOrNull.findFirstIndexedOrNull(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Javascript Array.find(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
@@ -75,11 +75,11 @@ public final class FindIndexedOrNull
     //#endregion -------------------- predicate (int, T) → boolean --------------------
     //#region -------------------- predicate (int) → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Javascript Array.find(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
@@ -90,11 +90,11 @@ public final class FindIndexedOrNull
     public static <T> @Nullable T findIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                               final @NotNull IntPredicate predicate) { return FindFirstIndexedOrNull.findFirstIndexedOrNull(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Javascript Array.find(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
@@ -105,11 +105,11 @@ public final class FindIndexedOrNull
     public static <T> @Nullable T findIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                               final @NotNull IntPredicate predicate) { return FindFirstIndexedOrNull.findFirstIndexedOrNull(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Javascript Array.find(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
@@ -123,11 +123,11 @@ public final class FindIndexedOrNull
     //#endregion -------------------- predicate (int) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Javascript Array.find(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
@@ -138,11 +138,11 @@ public final class FindIndexedOrNull
     public static <T> @Nullable T findIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                               final @NotNull BooleanSupplier predicate) { return FindFirstIndexedOrNull.findFirstIndexedOrNull(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Javascript Array.find(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
@@ -153,11 +153,11 @@ public final class FindIndexedOrNull
     public static <T> @Nullable T findIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                               final @NotNull BooleanSupplier predicate) { return FindFirstIndexedOrNull.findFirstIndexedOrNull(collection, predicate); }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/find">Javascript Array.find(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>

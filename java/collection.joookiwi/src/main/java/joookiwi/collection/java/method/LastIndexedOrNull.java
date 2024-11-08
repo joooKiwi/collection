@@ -29,7 +29,7 @@ public final class LastIndexedOrNull
     //#region -------------------- ∅ --------------------
 
     /// Get the last element in the `collection`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
@@ -40,7 +40,7 @@ public final class LastIndexedOrNull
     public static <T> @Nullable T lastIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) { return GetLastOrNull.getLastOrNull(collection); }
 
     /// Get the last element in the `collection`
-    /// or `null` if the `collection` [is empty][CollectionHolder#isEmpty]
+    /// or `null` if it [is empty][CollectionHolder#isEmpty]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
@@ -51,7 +51,7 @@ public final class LastIndexedOrNull
     public static <T> @Nullable T lastIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection) { return GetLastOrNull.getLastOrNull(collection); }
 
     /// Get the last element in the `collection`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
@@ -64,11 +64,11 @@ public final class LastIndexedOrNull
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (int, T) → boolean --------------------
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Javascript Array.findLast(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
@@ -83,11 +83,11 @@ public final class LastIndexedOrNull
         return FindLastIndexedOrNull.findLastIndexedOrNull(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Javascript Array.findLast(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-Null.html">kotlin lastOrNull(predicate)</a>
@@ -102,11 +102,11 @@ public final class LastIndexedOrNull
         return FindLastIndexedOrNull.findLastIndexedOrNull(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Javascript Array.findLast(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-Null.html">kotlin lastOrNull(predicate)</a>
@@ -124,11 +124,11 @@ public final class LastIndexedOrNull
     //#endregion -------------------- (int, T) → boolean --------------------
     //#region -------------------- (int) → boolean --------------------
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Javascript Array.findLast(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
@@ -143,11 +143,11 @@ public final class LastIndexedOrNull
         return FindLastIndexedOrNull.findLastIndexedOrNull(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Javascript Array.findLast(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-Null.html">kotlin lastOrNull(predicate)</a>
@@ -162,11 +162,11 @@ public final class LastIndexedOrNull
         return FindLastIndexedOrNull.findLastIndexedOrNull(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Javascript Array.findLast(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-Null.html">kotlin lastOrNull(predicate)</a>
@@ -184,11 +184,11 @@ public final class LastIndexedOrNull
     //#endregion -------------------- (int) → boolean --------------------
     //#region -------------------- () → boolean --------------------
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Javascript Array.findLast(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html">Kotlin lastOrNull(predicate)</a>
@@ -203,11 +203,11 @@ public final class LastIndexedOrNull
         return FindLastIndexedOrNull.findLastIndexedOrNull(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Javascript Array.findLast(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-Null.html">kotlin lastOrNull(predicate)</a>
@@ -222,11 +222,11 @@ public final class LastIndexedOrNull
         return FindLastIndexedOrNull.findLastIndexedOrNull(collection, predicate);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     /// or `null` otherwise
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast">Javascript Array.findLast(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-Null.html">kotlin lastOrNull(predicate)</a>

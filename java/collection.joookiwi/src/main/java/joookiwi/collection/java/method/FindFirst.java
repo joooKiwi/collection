@@ -19,7 +19,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_2;
 
 public final class FindFirst
-    extends Utility {
+        extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
     private FindFirst() { throw new ImpossibleConstructionException("The utility class “FindFirst” cannot be constructed.", FindFirst.class); }
@@ -28,10 +28,10 @@ public final class FindFirst
 
     //#region -------------------- predicate (T, int) → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -51,10 +51,10 @@ public final class FindFirst
         return __with2Argument(collection, predicate, size);
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
@@ -72,10 +72,10 @@ public final class FindFirst
         return __with2Argument(collection, predicate, collection.size());
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -98,10 +98,10 @@ public final class FindFirst
     //#endregion -------------------- predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T) → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -121,10 +121,10 @@ public final class FindFirst
         return __with1Argument(collection, predicate, size);
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
@@ -142,10 +142,10 @@ public final class FindFirst
         return __with1Argument(collection, predicate, collection.size());
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -168,10 +168,10 @@ public final class FindFirst
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -191,10 +191,10 @@ public final class FindFirst
         return __with0Argument(collection, predicate, size);
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` [is empty][CollectionHolder#isEmpty]
@@ -212,10 +212,10 @@ public final class FindFirst
         return __with0Argument(collection, predicate, collection.size());
     }
 
-    /// Get the first element found in the `collection`
+    /// Find the first element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**

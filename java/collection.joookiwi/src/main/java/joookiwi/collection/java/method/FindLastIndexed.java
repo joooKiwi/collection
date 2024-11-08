@@ -30,10 +30,10 @@ public final class FindLastIndexed
 
     //#region -------------------- predicate (int, T) → boolean --------------------
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -55,10 +55,10 @@ public final class FindLastIndexed
         return __with2Argument(collection, predicate, size);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -80,10 +80,10 @@ public final class FindLastIndexed
         return __with2Argument(collection, predicate, size);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -108,10 +108,10 @@ public final class FindLastIndexed
     //#endregion -------------------- predicate (int, T) → boolean --------------------
     //#region -------------------- predicate (int) → boolean --------------------
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -133,10 +133,10 @@ public final class FindLastIndexed
         return __with1Argument(collection, predicate, size);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -158,10 +158,10 @@ public final class FindLastIndexed
         return __with1Argument(collection, predicate, size);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -186,10 +186,10 @@ public final class FindLastIndexed
     //#endregion -------------------- predicate (int) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -211,10 +211,10 @@ public final class FindLastIndexed
         return __with0Argument(collection, predicate, size);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**
@@ -236,10 +236,10 @@ public final class FindLastIndexed
         return __with0Argument(collection, predicate, size);
     }
 
-    /// Get the last element found in the `collection`
+    /// Find the last element from the `predicate` in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException   The `collection` was `null`
     /// @throws EmptyCollectionException  The `collection` **is empty**

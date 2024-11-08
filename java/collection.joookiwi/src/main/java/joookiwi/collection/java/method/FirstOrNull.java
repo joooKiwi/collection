@@ -29,7 +29,7 @@ public final class FirstOrNull
     //#region -------------------- ∅ --------------------
 
     /// Get the first element in the `collection`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
@@ -40,7 +40,7 @@ public final class FirstOrNull
     public static <T> @Nullable T firstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) { return GetFirstOrNull.getFirstOrNull(collection); }
 
     /// Get the first element in the `collection`
-    /// or `null` if the `collection` [is empty][CollectionHolder#isEmpty]
+    /// or `null` if it [is empty][CollectionHolder#isEmpty]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
@@ -51,7 +51,7 @@ public final class FirstOrNull
     public static <T> @Nullable T firstOrNull(final @Nullable CollectionHolder<? extends T> collection) { return GetFirstOrNull.getFirstOrNull(collection); }
 
     /// Get the first element in the `collection`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
@@ -66,10 +66,10 @@ public final class FirstOrNull
 
     /// Get the first element in the `collection`
     /// matching the given `predicate`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
@@ -84,10 +84,10 @@ public final class FirstOrNull
 
     /// Get the first element in the `collection`
     /// matching the given `predicate`
-    /// or `null` if the `collection` [is empty][CollectionHolder#isEmpty]
+    /// or `null` if it [is empty][CollectionHolder#isEmpty]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
@@ -102,10 +102,10 @@ public final class FirstOrNull
 
     /// Get the first element in the `collection`
     /// matching the given `predicate`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
@@ -123,10 +123,10 @@ public final class FirstOrNull
 
     /// Get the first element in the `collection`
     /// matching the given `predicate`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
@@ -141,10 +141,10 @@ public final class FirstOrNull
 
     /// Get the first element in the `collection`
     /// matching the given `predicate`
-    /// or `null` if the `collection` [is empty][CollectionHolder#isEmpty]
+    /// or `null` if it [is empty][CollectionHolder#isEmpty]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
@@ -159,10 +159,10 @@ public final class FirstOrNull
 
     /// Get the first element in the `collection`
     /// matching the given `predicate`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
@@ -180,10 +180,10 @@ public final class FirstOrNull
 
     /// Get the first element in the `collection`
     /// matching the given `predicate`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
@@ -198,10 +198,10 @@ public final class FirstOrNull
 
     /// Get the first element in the `collection`
     /// matching the given `predicate`
-    /// or `null` if the `collection` [is empty][CollectionHolder#isEmpty]
+    /// or `null` if it [is empty][CollectionHolder#isEmpty]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
@@ -216,10 +216,10 @@ public final class FirstOrNull
 
     /// Get the first element in the `collection`
     /// matching the given `predicate`
-    /// or `null` if the `collection` **is empty**
+    /// or `null` if it **is empty**
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html">Kotlin firstOrNull(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>

@@ -31,7 +31,7 @@ public final class All
     /// match the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
@@ -55,7 +55,7 @@ public final class All
     /// match the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
@@ -77,7 +77,7 @@ public final class All
     /// match the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
@@ -104,7 +104,7 @@ public final class All
     /// match the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
@@ -128,7 +128,7 @@ public final class All
     /// match the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
@@ -151,7 +151,7 @@ public final class All
     /// match the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
@@ -178,7 +178,7 @@ public final class All
     /// match the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
@@ -202,7 +202,7 @@ public final class All
     /// match the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
@@ -224,7 +224,7 @@ public final class All
     /// match the given `predicate`
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param predicate  The matching predicate
+    /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
