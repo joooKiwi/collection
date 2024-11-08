@@ -2097,7 +2097,7 @@ This is the most bare-bones structure
 
 | Language       | Equivalent                                                                                                                                    |
 |:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <code>\`\[${[Array.join(separator)][js-join-to-string]}]`                                                                                     |
+| **Javascript** | <code>\`\[${[array.join(separator)][js-join-to-string]}]`                                                                                     |
 | **Java**       | [String.join(separator, iterable)][java-join-to-string]                                                                                       |
 | **Kotlin**     | [Array.joinToString(separator)<br/>Iterable.joinToString(separator)][kotlin-join-to-string]                                                   |
 | **PHP**        |                                                                                                                                               |
@@ -2108,7 +2108,7 @@ This is the most bare-bones structure
 
 | Language       | Equivalent                                                                                                                                        |
 |:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <code>\`\${prefix}${[Array.join(separator)][js-join-to-string]}]`                                                                                 |
+| **Javascript** | <code>\`\${prefix}${[array.join(separator)][js-join-to-string]}]`                                                                                 |
 | **Java**       |                                                                                                                                                   |
 | **Kotlin**     | [Array.joinToString(separator, prefix)<br/>Iterable.joinToString(separator, prefix)][kotlin-join-to-string]                                       |
 | **PHP**        |                                                                                                                                                   |
@@ -2119,7 +2119,7 @@ This is the most bare-bones structure
 
 | Language       | Equivalent                                                                                                                                                |
 |:---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <code>\`\${prefix}\${[Array.join(separator)][js-join-to-string]}${postfix}`                                                                               |
+| **Javascript** | <code>\`\${prefix}\${[array.join(separator)][js-join-to-string]}${postfix}`                                                                               |
 | **Java**       |                                                                                                                                                           |
 | **Kotlin**     | [Array.joinToString(separator, prefix, postfix)<br/>Iterable.joinToString(separator, prefix, postfix)][kotlin-join-to-string]                             |
 | **PHP**        |                                                                                                                                                           |
