@@ -122,19 +122,23 @@ The methods directly associated to a size
 
 The methods are made to find an element or giving a value
  - `get`|`at`|`elementAt`(index)
+ - `getFirst`|`first`()
+ - `getLast`|`last`()
  - `getOrElse`|`atOrElse`|`elementAtOrElse`(index, defaultValue)
  - `getOrDefault`|`atOrDefault`|`elementAtOrDefault`(index)
  - `getOrNull`|`atOrNull`|`elementAtOrNull`(index)
- - `first`(predicate?)
- - `firstOrDefault`(predicate?)
- - `firstOrNull`(predicate?)
- - `last`(predicate?)
- - `lastOrDefault`(predicate?)
- - `lastOrNull`(predicate?)
- - `find`(predicate?)
- - `findIndexed`(predicate?)
- - `findLast`(predicate?)
- - `findLastIndexed`(predicate?)
+ - `getFirstOrDefault`|`firstOrDefault`()
+ - `getFirstOrNull`|`firstOrNull`()
+ - `getLastOrDefault`|`lastOrDefault`()
+ - `getLastOrNull`|`lastOrNull`()
+ - `findFirst`|`find`|`first`(predicate)
+ - `findFirstOrNull`|`findOrNull`|`firstOrNull`(predicate)
+ - `findFirstIndexed`|`findIndexed`|`firstIndexed`(predicate)
+ - `findFirstIndexedOrNull`|`findIndexedOrNull`|`firstIndexedOrNull`(predicate)
+ - `findLast`|`last`(predicate)
+ - `findLastOrNull`|`lastOrNull`(predicate)
+ - `findLastIndexed`|`lastIndexed`(predicate)
+ - `findLastIndexedOrNull`|`lastIndexedOrNull`(predicate)
 
 <details><summary>get(index)</summary>
 
@@ -147,6 +151,30 @@ The methods are made to find an element or giving a value
 | **C#**         | <ul><li>[IEnumerable.ElementAt(index)][c#-i-enumerable-get]<li>[IList[index]][c#-i-list-get]                                                     |
 
 </details>
+<details><summary>getFirst()</summary>
+
+| Language       | Equivalent                                                                  |
+|:---------------|:----------------------------------------------------------------------------|
+| **Javascript** | `0 in array ? array[0] : throw`                                             |
+| **Java**       | `collection.stream().findFirst().orElseThrow()`                             |
+| **Kotlin**     | <ul><li>[Array.first()<br/>Iterable.first()<br/>List.first()][kotlin-first] |
+| **PHP**        |                                                                             |
+| **C#**         | <ul><li>[IEnumerable.First()][c#-first]                                     |
+
+</details>
+<details><summary>getLast()</summary>
+
+| Language       | Equivalent                                                              |
+|:---------------|:------------------------------------------------------------------------|
+| **Javascript** | `size - 1 in array[size - 1] : throw `                                  |
+| **Java**       | `collection.stream().reduce((_, it) -> it).orElseThrow()`               |
+| **Kotlin**     | <ul><li>[Array.last()<br/>Iterable.last()<br/>List.last()][kotlin-last] |
+| **PHP**        |                                                                         |
+| **C#**         | <ul><li>[IEnumerable.Last()][c#-last]                                   |
+
+</details>
+<br/>
+
 <details><summary>getOrElse(index, defaultValue)</summary>
 
 | Language       | Equivalent                                                                                                                                                                                                                                                                         |
@@ -158,6 +186,8 @@ The methods are made to find an element or giving a value
 | **C#**         | `enumerable.ElementAtOrDefault(index) ?? defaultValue()`                                                                                                                                                                                                                           |
 
 </details>
+<br/>
+
 <details><summary>getOrDefault(index)</summary>
 
 | Language           | Equivalent                                                         |
@@ -167,6 +197,28 @@ The methods are made to find an element or giving a value
 | **~~Kotlin~~**     |                                                                    |
 | **~~PHP~~**        |                                                                    |
 | **C#**             | <ul><li>[IEnumerable.ElementAtOrDefault(index)][c#-get-or-default] |
+
+</details>
+<details><summary>getFirstOrDefault()</summary>
+
+| Language           | Equivalent                                                  |
+|:-------------------|:------------------------------------------------------------|
+| **~~Javascript~~** |                                                             |
+| **~~Java~~**       |                                                             |
+| **~~Kotlin~~**     |                                                             |
+| **~~PHP~~**        |                                                             |
+| **C#**             | <ul><li>[IEnumerable.FirstOrDefault()][c#-first-or-default] |
+
+</details>
+<details><summary>getLastOrDefault()</summary>
+
+| Language           | Equivalent                                                |
+|:-------------------|:----------------------------------------------------------|
+| **~~Javascript~~** |                                                           |
+| **~~Java~~**       |                                                           |
+| **~~Kotlin~~**     |                                                           |
+| **~~PHP~~**        |                                                           |
+| **C#**             | <ul><li>[IEnumerable.LastOrDefault()][c#-last-or-default] |
 
 </details>
 <details><summary>getOrNull(index)</summary>
@@ -180,53 +232,7 @@ The methods are made to find an element or giving a value
 | **C#**         | `enumerable.ElementAtOrDefault(index) ?? null`                                                                                                                                                               |
 
 </details>
-<br/>
-
-<details><summary>first()</summary>
-
-| Language       | Equivalent                                                                  |
-|:---------------|:----------------------------------------------------------------------------|
-| **Javascript** | `0 in array ? array[0] : throw`                                             |
-| **Java**       | `collection.stream().findFirst().orElseThrow()`                             |
-| **Kotlin**     | <ul><li>[Array.first()<br/>Iterable.first()<br/>List.first()][kotlin-first] |
-| **PHP**        |                                                                             |
-| **C#**         | <ul><li>[IEnumerable.First()][c#-first]                                     |
-
-</details>
-<details><summary>first(predicate)</summary>
-
-| Language       | Equivalent                                                                             |
-|:---------------|:---------------------------------------------------------------------------------------|
-| **Javascript** | `array.find(predicate,) ?? throw`                                                      |
-| **Java**       | `collection.stream().findFirst().or(predicate).orElseThrow()`                          |
-| **Kotlin**     | <ul><li>[Array.first(predicate)<br/>Iterable.first(predicate)][kotlin-first-predicate] |
-| **PHP**        |                                                                                        |
-| **C#**         | <ul><li>[IEnumerable.First(predicate)][c#-first-predicate]                             |
-
-</details>
-<details><summary>firstOrDefault()</summary>
-
-| Language           | Equivalent                                                  |
-|:-------------------|:------------------------------------------------------------|
-| **~~Javascript~~** |                                                             |
-| **~~Java~~**       |                                                             |
-| **~~Kotlin~~**     |                                                             |
-| **~~PHP~~**        |                                                             |
-| **C#**             | <ul><li>[IEnumerable.FirstOrDefault()][c#-first-or-default] |
-
-</details>
-<details><summary>firstOrDefault(predicate)</summary>
-
-| Language           | Equivalent                                                                     |
-|:-------------------|:-------------------------------------------------------------------------------|
-| **~~Javascript~~** |                                                                                |
-| **~~Java~~**       |                                                                                |
-| **~~Kotlin~~**     |                                                                                |
-| **~~PHP~~**        |                                                                                |
-| **C#**             | <ul><li>[IEnumerable.FirstOrDefault(predicate)][c#-first-or-default-predicate] |
-
-</details>
-<details><summary>firstOrNull()</summary>
+<details><summary>getFirstOrNull()</summary>
 
 | Language       | Equivalent                                                                                            |
 |:---------------|:------------------------------------------------------------------------------------------------------|
@@ -237,64 +243,7 @@ The methods are made to find an element or giving a value
 | **C#**         |                                                                                                       |
 
 </details>
-<details><summary>firstOrNull(predicate)</summary>
-
-| Language       | Equivalent                                                                                                 |
-|:---------------|:-----------------------------------------------------------------------------------------------------------|
-| **Javascript** | `array.find(predicate,) ?? null`                                                                           |
-| **Java**       | `collection.stream().findFirst().or(predicate).orElse(null)`                                               |
-| **Kotlin**     | <ul><li>[Array.firstOrNull(predicate)<br/>Iterable.firstOrNull(predicate)][kotlin-first-or-null-predicate] |
-| **PHP**        |                                                                                                            |
-| **C#**         |                                                                                                            |
-
-</details>
-<br/>
-
-<details><summary>last()</summary>
-
-| Language       | Equivalent                                                              |
-|:---------------|:------------------------------------------------------------------------|
-| **Javascript** | `size - 1 in array[size - 1] : throw `                                  |
-| **Java**       | `collection.stream().reduce((_, it) -> it).orElseThrow()`               |
-| **Kotlin**     | <ul><li>[Array.last()<br/>Iterable.last()<br/>List.last()][kotlin-last] |
-| **PHP**        |                                                                         |
-| **C#**         | <ul><li>[IEnumerable.Last()][c#-last]                                   |
-
-</details>
-<details><summary>last(predicate)</summary>
-
-| Language       | Equivalent                                                                          |
-|:---------------|:------------------------------------------------------------------------------------|
-| **Javascript** | `array.findLast(predicate,) ?? throw`                                               |
-| **Java**       | `collection.stream().reduce((_, it) -> it).or(predicate).orElseThrow()`             |
-| **Kotlin**     | <ul><li>[Array.last(predicate)<br/>Iterable.last(predicate)][kotlin-last-predicate] |
-| **PHP**        |                                                                                     |
-| **C#**         | <ul><li>[IEnumerable.Last(predicate)][c#-last-predicate]                            |
-
-</details>
-<details><summary>lastOrDefault()</summary>
-
-| Language           | Equivalent                                                |
-|:-------------------|:----------------------------------------------------------|
-| **~~Javascript~~** |                                                           |
-| **~~Java~~**       |                                                           |
-| **~~Kotlin~~**     |                                                           |
-| **~~PHP~~**        |                                                           |
-| **C#**             | <ul><li>[IEnumerable.LastOrDefault()][c#-last-or-default] |
-
-</details>
-<details><summary>lastOrDefault(predicate)</summary>
-
-| Language           | Equivalent                                                                   |
-|:-------------------|:-----------------------------------------------------------------------------|
-| **~~Javascript~~** |                                                                              |
-| **~~Java~~**       |                                                                              |
-| **~~Kotlin~~**     |                                                                              |
-| **~~PHP~~**        |                                                                              |
-| **C#**             | <ul><li>[IEnumerable.LastOrDefault(predicate)][c#-last-or-default-predicate] |
-
-</details>
-<details><summary>lastOrNull()</summary>
+<details><summary>getLastOrNull()</summary>
 
 | Language       | Equivalent                                                                                        |
 |:---------------|:--------------------------------------------------------------------------------------------------|
@@ -305,41 +254,77 @@ The methods are made to find an element or giving a value
 | **C#**         |                                                                                                   |
 
 </details>
-<details><summary>lastOrNull(predicate)</summary>
+<br/>
 
-| Language       | Equivalent                                                                                                                             |
-|:---------------|:---------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | `array.findLast(predicate,) ?? null`                                                                                                   |
-| **Java**       | `collection.stream().reduce((_, it) -> it).or(predicate).orElse(null)`                                                                 |
-| **Kotlin**     | <ul><li>[Array.lastOrNull(predicate)<br/>Iterable.lastOrNull(predicate)<br/>List.lastOrNull(predicate)][kotlin-last-or-null-predicate] |
-| **PHP**        |                                                                                                                                        |
-| **C#**         |                                                                                                                                        |
+<details><summary>findFirst(predicate)<br/>findFirstIndexed(predicate)</summary>
+
+| Language       | Equivalent                                                                             |
+|:---------------|:---------------------------------------------------------------------------------------|
+| **Javascript** | `array.find(predicate,) ?? throw`                                                      |
+| **Java**       | `collection.stream().filter(predicate).findFirst().orElseThrow()`                      |
+| **Kotlin**     | <ul><li>[Array.first(predicate)<br/>Iterable.first(predicate)][kotlin-first-predicate] |
+| **PHP**        |                                                                                        |
+| **C#**         | <ul><li>[IEnumerable.First(predicate)][c#-first-predicate]                             |
+
+</details>
+<details><summary>findFirstOrDefault(predicate)<br/>findFirstIndexedOrDefault(predicate)</summary>
+
+| Language           | Equivalent                                                                     |
+|:-------------------|:-------------------------------------------------------------------------------|
+| **~~Javascript~~** |                                                                                |
+| **~~Java~~**       |                                                                                |
+| **~~Kotlin~~**     |                                                                                |
+| **~~PHP~~**        |                                                                                |
+| **C#**             | <ul><li>[IEnumerable.FirstOrDefault(predicate)][c#-first-or-default-predicate] |
+
+</details>
+<details><summary>findFirstOrNull(predicate)<br/>findFirstIndexedOrNull(predicate)</summary>
+
+| Language       | Equivalent                                                                                                                                                                      |
+|:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Javascript** | <ul><li>[Array.find(predicate)][js-find]                                                                                                                                        |
+| **Java**       | `collection.stream().filter(predicate).findFirst().orElse(null)`                                                                                                                |
+| **Kotlin**     | <ul><li>[Array.firstOrNull(predicate)<br/>Iterable.firstOrNull(predicate)][kotlin-first-or-null-predicate]<li>[Array.find(predicate)<br/>Iterable.find(predicate)][kotlin-find] |
+| **PHP**        |                                                                                                                                                                                 |
+| **C#**         | <ul><li>[IEnumerable.FirstOrDefault(predicate)][c#-first-or-default-predicate]<li>[Find(array, predicate)][c#-array-find]<li>[List.Find(predicate)][c#-list-find]               |
 
 </details>
 <br/>
 
-<details><summary>find(predicate)<br/>findIndexed(predicate)</summary>
-
-| Language       | Equivalent                                                                              |
-|:---------------|:----------------------------------------------------------------------------------------|
-| **Javascript** | <ul><li>[Array.find(predicate)][js-find]                                                |
-| **Java**       | `collection.stream().filter(predicate).findFirst().orElse(null)`                        |
-| **Kotlin**     | <ul><li>[Array.find(predicate)<br/>Iterable.find(predicate)][kotlin-find]               |
-| **PHP**        |                                                                                         |
-| **C#**         | <ul><li>[Find(array, predicate)][c#-array-find]<li>[List.Find(predicate)][c#-list-find] |
-
-</details>
 <details><summary>findLast(predicate)<br/>findLastIndexed(predicate)</summary>
 
-| Language       | Equivalent                                                                                                          |
-|:---------------|:--------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <ul><li>[Array.findLast(predicate)][js-find-last]                                                                   |
-| **Java**       | `collection.stream().filter(predicate).reduce((_, it) -> it).orElse(null)`                                          |
-| **Kotlin**     | <ul><li>[Array.findLast(predicate)<br/>Iterable.findLast(predicate)<br/>List.findLast(predicate)][kotlin-find-last] |
-| **PHP**        |                                                                                                                     |
-| **C#**         |                                                                                                                     |
+| Language       | Equivalent                                                                               |
+|:---------------|:-----------------------------------------------------------------------------------------|
+| **Javascript** | `array.findLast(predicate,) ?? throw`                                                    |
+| **Java**       | `collection.stream().filter(predicate).reduce((_, it) -> it).orElseThrow()`              |
+| **Kotlin**     | <ul><li>[Array.last(predicate)<br/>Iterable.last(predicate)][kotlin-last-predicate]      |
+| **PHP**        |                                                                                          |
+| **C#**         | <ul><li>[IEnumerable.Last(predicate)][c#-last-predicate]                                 |
 
 </details>
+<details><summary>findLastOrDefault(predicate)<br/>findLastIndexedOrDefault(predicate)</summary>
+
+| Language           | Equivalent                                                                   |
+|:-------------------|:-----------------------------------------------------------------------------|
+| **~~Javascript~~** |                                                                              |
+| **~~Java~~**       |                                                                              |
+| **~~Kotlin~~**     |                                                                              |
+| **~~PHP~~**        |                                                                              |
+| **C#**             | <ul><li>[IEnumerable.LastOrDefault(predicate)][c#-last-or-default-predicate] |
+
+</details>
+<details><summary>findLastOrNull(predicate)<br/>findLastIndexedOrNull(predicate)</summary>
+
+| Language       | Equivalent                                                                                                                                                                                                                                            |
+|:---------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Javascript** | <ul><li>[Array.findLast(predicate)][js-find-last]                                                                                                                                                                                                     |
+| **Java**       | `collection.stream().filter(predicate).reduce((_, it) -> it).orElse(null)`                                                                                                                                                                            |
+| **Kotlin**     | <ul><li>[Array.lastOrNull(predicate)<br/>Iterable.lastOrNull(predicate)<br/>List.lastOrNull(predicate)][kotlin-last-or-null-predicate]<li>[Array.findLast(predicate)<br/>Iterable.findLast(predicate)<br/>List.findLast(predicate)][kotlin-find-last] |
+| **PHP**        |                                                                                                                                                                                                                                                       |
+| **C#**         | <ul><li>[IEnumerable.LastOrDefault(predicate)][c#-last-or-default-predicate]                                                                                                                                                                          |
+
+</details>
+<br/>
 
 ### Index methods
 
