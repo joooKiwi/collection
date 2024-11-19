@@ -81,34 +81,58 @@ Those methods are associated with a size or directly compared
 Those methods are meant to find an element comparing it
 or giving a value from the **collection**
  - `get`|`at`|`elementAt`
+ - `getFirst`|`first`|`firstIndexed`
+ - `getLast`|`last`|`lastIndexed`
+
+
  - `getOrElse`|`atOrElse`|`elementAtOrElse`
+
+
  - `getOrNull`|`atOrNull`|`elementAtOrNull`
- - `first`
- - `firstOrNull`
- - `last`
- - `lastOrNull`
- - `find`
- - `findIndexed`
- - `findLast`
- - `findLastIndexed`
+ - `getFirstOrNull`|`firstOrNull`|`firstIndexedOrNull`
+ - `getLastOrNull`|`lastOrNull`|`lastIndexedOrNull`
+ 
+
+ - `findFirst`|`find`|`first`
+ - `findFirstOrNull`|`findOrNull`|`firstOrNull`
+ - `findFirstIndexed`|`findIndexed`|`firstIndexed`
+ - `findFirstIndexedOrNull`|`findIndexedOrNull`|`firstIndexedOrNull`
+
+
+ - `findLast`|`last`
+ - `findLastOrNull`|`lastOrNull`
+ - `findLastIndexed`|`lastIndexed`
+ - `findLastIndexedOrNull`|`lastIndexedOrNull`
 
 ### The index methods
 
 Those methods are giving or finding index values in the **collection**
- - `indexOf`
+ - `firstIndexOF`|`indexOf`
+ - `firstIndexOfOrNull`|`indexOfOrNull`
  - `lastIndexOf`
- - `indexOfFirst`
- - `indexOfFirstIndexed`
- - `indexOfLast`
- - `indexOfLastIndexed`
+ - `lastIndexOfOrNull`
+
+
+ - `indexOfFirst`|`findFirstIndex`|`findIndex`
+ - `indexOfFirstOrNull`|`findFirstIndexOrNull`|`findIndexOrNull`
+ - `indexOfFirstIndexed`|`findFirstIndexIndexed`|`findIndexIndexed`
+ - `indexOfFirstIndexedOrNull`|`findFirstIndexIndexedOrNull`|`findIndexIndexedOrNull`
+
+
+ - `indexOfLast`|`findLastIndex`
+ - `indexOfLastOrNull`|`findLastIndexOrNull`
+ - `indexOfLastIndexed`|`findLastIndexIndexed`
+ - `indexOfLastIndexedOrNull`|`findLastIndexIndexedOrNull`
 
 ### The validation methods
 
 Those methods are to give a validation on some type, value
 or comparison across the **collection**
- - `all`
- - `any`
+ - `all`|`every`
+ - `any`|`some`
  - `none`
+
+
  - `hasNull`|`includesNull`|`containsNull`
  - `hasDuplicate`|`includesDuplicate`|`containsDuplicate`
  - `has`|`includes`|`contains`
@@ -125,19 +149,27 @@ with a possibly different type from the original **collection**
  - `filterNot`
  - `filterIndexedNot`
  - `filterNotNull`
+
+
  - `slice`
- - `take`
- - `takeWhile`
- - `takeWhileIndexed`
- - `takeLast`
- - `takeLastWhile`
- - `takeLastWhileIndexed`
- - `drop`
- - `dropWhile`
- - `dropWhileIndexed`
- - `dropLast`
- - `dropLastWhile`
- - `dropLastWhileIndexed`
+
+
+ - `take`|`limit`
+ - `takeWhile`|`limitWhile`
+ - `takeWhileIndexed`|`limitWhileIndexed`
+ - `takeLast`|`limitLast`
+ - `takeLastWhile`|`limitLastWhile`
+ - `takeLastWhileIndexed`|`limitLastWhileIndexed`
+
+
+ - `drop`|`skip`
+ - `dropWhile`|`skipWhile`
+ - `dropWhileIndexed`|`skipWhileIndexed`
+ - `dropLast`|`skipLast`
+ - `dropLastWhile`|`skipLastWhile`
+ - `dropLastWhileIndexed`|`skipLastWhileIndexed`
+
+
  - `map`
  - `mapIndexed`
  - `mapNotNull`
@@ -161,7 +193,6 @@ Those methods are just changing the order to the elements of the **collection**
 Those methods have the sole purpose to convert the structure from a **collection**
 to another structure.
 It can also convert the value to a **string**.
- - ~~`objectValuesMap`~~ (_a no longer useful utility method that will be removed in the version 1.11_)
  - `toIterator`
  - `toArray`
  - `toMutableArray`
@@ -189,16 +220,44 @@ but are a complement to the overall robustest of the **collection**
  - `asLocaleLowerCaseString` (_This will be eventually moved in another project_)
  - `asUpperCaseString` (_This will be eventually moved in another project_)
  - `asLocaleUpperCaseString` (_This will be eventually moved in another project_)
- - `isArray`
- - `isArrayByStructure`
+
+
  - `isCollectionHolder`
  - `isCollectionHolderByStructure`
  - `isMinimalistCollectionHolder`
  - `isMinimalistCollectionHoldeByStructure`
- - `isSet`
- - `isSetByStructure`
  - `isCollectionIterator`
  - `isCollectionIteratorByStructure`
+
+
+ - `isArray`
+ - `isArrayByStructure`
+ - `isTypedArray`
+ - `isTypedArrayByStructure`
+ - `isInt8Array`
+ - `isInt8ArrayByStructure`
+ - `isUint8Array`
+ - `isUint8ArrayByStructure`
+ - `isUint8ClampedArray`
+ - `isUint8ClampedArrayByStructure`
+ - `isInt16Array`
+ - `isInt16ArrayByStructure`
+ - `isUint16Array`
+ - `isUint16ArrayByStructure`
+ - `isInt32Array`
+ - `isInt32ArrayByStructure`
+ - `isUint32Array`
+ - `isUint32ArrayByStructure`
+ - `isBigInt64Array`
+ - `isBigInt64ArrayByStructure`
+ - `isBigUint64Array`
+ - `isBigUint64ArrayByStructure`
+ - `isFloat32Array`
+ - `isFloat32ArrayByStructure`
+ - `isFloat64Array`
+ - `isFloat64ArrayByStructure`
+ - `isSet`
+ - `isSetByStructure`
  - `isIterator`
 
 ---
@@ -209,17 +268,9 @@ Almost every method is present in the `src/method` at the exception to
 `get(index)` and `get size()` that is handled differently based on the type of instance.
 
 The alias methods are not part of the extension function.
-It includes:
- - `get length()` / `get count()`
- - `includesNull()` / `containsNull()`
- - `includesDuplicate()` / `containsDuplicate()`
- - `atOrElse()` / `elementAtOrElse()`
- - `atOrDefault()` / `elementAtOrDefault()`
- - `includes()` / `contains()`
- - `includesOne()` / `containsOne()`
- - `includesAll()` / `containsAll()`
- - `join()`
- - `toReversed()` / `reversed()`.
+are `get length()` and `get count()`.
+
+Eventually, those methods should be present.
 
 ## Contribution
 You can contribute to great simple packages.

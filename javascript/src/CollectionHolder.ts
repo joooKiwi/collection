@@ -1102,7 +1102,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    findFirstIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    findFirstIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     /**
      * Get the first index matching the {@link predicate}
@@ -1123,7 +1123,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    findIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    findIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of first or null --------------------
@@ -1193,7 +1193,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     /**
      * Get the first index matching the {@link predicate}
@@ -1214,7 +1214,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    findIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    findIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     /**
      * Get the first index matching the {@link predicate}
@@ -1235,7 +1235,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     //#endregion -------------------- Index of first indexed --------------------
     //#region -------------------- Index of first indexed or null --------------------
@@ -1306,7 +1306,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     /**
      * Get the last index matching the {@link predicate}
@@ -1327,7 +1327,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    findLastIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    findLastIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     //#endregion -------------------- Index of last --------------------
     //#region -------------------- Index of last or null --------------------
@@ -1382,7 +1382,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     /**
      * Get the last index matching the {@link predicate}
@@ -1403,7 +1403,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     //#endregion -------------------- Index of last indexed --------------------
     //#region -------------------- Index of last indexed or null --------------------
