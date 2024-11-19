@@ -80,100 +80,93 @@ Those methods are associated with a size or directly compared
 
 Those methods are meant to find an element comparing it
 or giving a value from the **collection**
- - `get`|`at`|`elementAt`
- - `getFirst`|`first`|`firstIndexed`
- - `getLast`|`last`|`lastIndexed`
-
-
- - `getOrElse`|`atOrElse`|`elementAtOrElse`
-
-
- - `getOrNull`|`atOrNull`|`elementAtOrNull`
- - `getFirstOrNull`|`firstOrNull`|`firstIndexedOrNull`
- - `getLastOrNull`|`lastOrNull`|`lastIndexedOrNull`
- 
-
- - `findFirst`|`find`|`first`
- - `findFirstOrNull`|`findOrNull`|`firstOrNull`
- - `findFirstIndexed`|`findIndexed`|`firstIndexed`
- - `findFirstIndexedOrNull`|`findIndexedOrNull`|`firstIndexedOrNull`
-
-
- - `findLast`|`last`
- - `findLastOrNull`|`lastOrNull`
- - `findLastIndexed`|`lastIndexed`
- - `findLastIndexedOrNull`|`lastIndexedOrNull`
+ - get value
+   - `get`|`at`|`elementAt`
+   - `getFirst`|`first`|`firstIndexed`
+   - `getLast`|`last`|`lastIndexed`
+ - get value or else
+   - `getOrElse`|`atOrElse`|`elementAtOrElse`
+ - get value or null
+   - `getOrNull`|`atOrNull`|`elementAtOrNull`
+   - `getFirstOrNull`|`firstOrNull`|`firstIndexedOrNull`
+   - `getLastOrNull`|`lastOrNull`|`lastIndexedOrNull`
+ - find first value
+   - `findFirst`|`find`|`first`
+   - `findFirstOrNull`|`findOrNull`|`firstOrNull`
+   - `findFirstIndexed`|`findIndexed`|`firstIndexed`
+   - `findFirstIndexedOrNull`|`findIndexedOrNull`|`firstIndexedOrNull`
+ - find last value
+   - `findLast`|`last`
+   - `findLastOrNull`|`lastOrNull`
+   - `findLastIndexed`|`lastIndexed`
+   - `findLastIndexedOrNull`|`lastIndexedOrNull`
 
 ### The index methods
 
 Those methods are giving or finding index values in the **collection**
- - `firstIndexOF`|`indexOf`
- - `firstIndexOfOrNull`|`indexOfOrNull`
- - `lastIndexOf`
- - `lastIndexOfOrNull`
-
-
- - `indexOfFirst`|`findFirstIndex`|`findIndex`
- - `indexOfFirstOrNull`|`findFirstIndexOrNull`|`findIndexOrNull`
- - `indexOfFirstIndexed`|`findFirstIndexIndexed`|`findIndexIndexed`
- - `indexOfFirstIndexedOrNull`|`findFirstIndexIndexedOrNull`|`findIndexIndexedOrNull`
-
-
- - `indexOfLast`|`findLastIndex`
- - `indexOfLastOrNull`|`findLastIndexOrNull`
- - `indexOfLastIndexed`|`findLastIndexIndexed`
- - `indexOfLastIndexedOrNull`|`findLastIndexIndexedOrNull`
+ - get index
+   - `firstIndexOf`|`indexOf`
+   - `firstIndexOfOrNull`|`indexOfOrNull`
+   - `lastIndexOf`
+   - `lastIndexOfOrNull`
+ - find first index
+   - `indexOfFirst`|`findFirstIndex`|`findIndex`
+   - `indexOfFirstOrNull`|`findFirstIndexOrNull`|`findIndexOrNull`
+   - `indexOfFirstIndexed`|`findFirstIndexIndexed`|`findIndexIndexed`
+   - `indexOfFirstIndexedOrNull`|`findFirstIndexIndexedOrNull`|`findIndexIndexedOrNull`
+ - find last index
+   - `indexOfLast`|`findLastIndex`
+   - `indexOfLastOrNull`|`findLastIndexOrNull`
+   - `indexOfLastIndexed`|`findLastIndexIndexed`
+   - `indexOfLastIndexedOrNull`|`findLastIndexIndexedOrNull`
 
 ### The validation methods
 
 Those methods are to give a validation on some type, value
 or comparison across the **collection**
- - `all`|`every`
- - `any`|`some`
- - `none`
-
-
- - `hasNull`|`includesNull`|`containsNull`
- - `hasDuplicate`|`includesDuplicate`|`containsDuplicate`
- - `has`|`includes`|`contains`
- - `hasOne`|`includesOne`|`containsOne`
- - `hasAll`|`includesAll`|`containsAll`
+ -
+   - `all`|`every`
+   - `any`|`some`
+   - `none`
+ - has …
+   - `hasNull`|`includesNull`|`containsNull`
+   - `hasDuplicate`|`includesDuplicate`|`containsDuplicate`
+   - `has`|`includes`|`contains`
+   - `hasOne`|`includesOne`|`containsOne`
+   - `hasAll`|`includesAll`|`containsAll`
  - `requireNotNull`
 
 ### The transformation methods
 
 Those methods have the purpose to give a new **collection** 
 with a possibly different type from the original **collection**
- - `filter`
- - `filterIndexed`
- - `filterNot`
- - `filterIndexedNot`
- - `filterNotNull`
-
-
- - `slice`
-
-
- - `take`|`limit`
- - `takeWhile`|`limitWhile`
- - `takeWhileIndexed`|`limitWhileIndexed`
- - `takeLast`|`limitLast`
- - `takeLastWhile`|`limitLastWhile`
- - `takeLastWhileIndexed`|`limitLastWhileIndexed`
-
-
- - `drop`|`skip`
- - `dropWhile`|`skipWhile`
- - `dropWhileIndexed`|`skipWhileIndexed`
- - `dropLast`|`skipLast`
- - `dropLastWhile`|`skipLastWhile`
- - `dropLastWhileIndexed`|`skipLastWhileIndexed`
-
-
- - `map`
- - `mapIndexed`
- - `mapNotNull`
- - `mapNotNullIndexed`
+ - filter …
+   - `filter`
+   - `filterIndexed`
+   - `filterNot`
+   - `filterIndexedNot`
+   - `filterNotNull`
+ - slice …
+   - `slice`
+ - take …
+   - `take`|`limit`
+   - `takeWhile`|`limitWhile`
+   - `takeWhileIndexed`|`limitWhileIndexed`
+   - `takeLast`|`limitLast`
+   - `takeLastWhile`|`limitLastWhile`
+   - `takeLastWhileIndexed`|`limitLastWhileIndexed`
+ - drop …
+   - `drop`|`skip`
+   - `dropWhile`|`skipWhile`
+   - `dropWhileIndexed`|`skipWhileIndexed`
+   - `dropLast`|`skipLast`
+   - `dropLastWhile`|`skipLastWhile`
+   - `dropLastWhileIndexed`|`skipLastWhileIndexed`
+ - map …
+   - `map`
+   - `mapIndexed`
+   - `mapNotNull`
+   - `mapNotNullIndexed`
 
 ### The loop methods
 
@@ -214,51 +207,50 @@ It can also convert the value to a **string**.
 
 Those methods are not part of the `CollectionHolder`,
 but are a complement to the overall robustest of the **collection**
- - `asString` (_This will be eventually moved in another project_)
- - `asLocaleString` (_This will be eventually moved in another project_)
- - `asLowerCaseString` (_This will be eventually moved in another project_)
- - `asLocaleLowerCaseString` (_This will be eventually moved in another project_)
- - `asUpperCaseString` (_This will be eventually moved in another project_)
- - `asLocaleUpperCaseString` (_This will be eventually moved in another project_)
-
-
- - `isCollectionHolder`
- - `isCollectionHolderByStructure`
- - `isMinimalistCollectionHolder`
- - `isMinimalistCollectionHoldeByStructure`
- - `isCollectionIterator`
- - `isCollectionIteratorByStructure`
-
-
- - `isArray`
- - `isArrayByStructure`
- - `isTypedArray`
- - `isTypedArrayByStructure`
- - `isInt8Array`
- - `isInt8ArrayByStructure`
- - `isUint8Array`
- - `isUint8ArrayByStructure`
- - `isUint8ClampedArray`
- - `isUint8ClampedArrayByStructure`
- - `isInt16Array`
- - `isInt16ArrayByStructure`
- - `isUint16Array`
- - `isUint16ArrayByStructure`
- - `isInt32Array`
- - `isInt32ArrayByStructure`
- - `isUint32Array`
- - `isUint32ArrayByStructure`
- - `isBigInt64Array`
- - `isBigInt64ArrayByStructure`
- - `isBigUint64Array`
- - `isBigUint64ArrayByStructure`
- - `isFloat32Array`
- - `isFloat32ArrayByStructure`
- - `isFloat64Array`
- - `isFloat64ArrayByStructure`
- - `isSet`
- - `isSetByStructure`
- - `isIterator`
+ - as … string
+   - `asString` (_This will be eventually moved in another project_)
+   - `asLocaleString` (_This will be eventually moved in another project_)
+   - `asLowerCaseString` (_This will be eventually moved in another project_)
+   - `asLocaleLowerCaseString` (_This will be eventually moved in another project_)
+   - `asUpperCaseString` (_This will be eventually moved in another project_)
+   - `asLocaleUpperCaseString` (_This will be eventually moved in another project_)
+ - is framework collection
+   - `isCollectionHolder`
+   - `isCollectionHolderByStructure`
+   - `isMinimalistCollectionHolder`
+   - `isMinimalistCollectionHoldeByStructure`
+   - `isCollectionIterator`
+   - `isCollectionIteratorByStructure`
+ - is JavaScript collection
+   - `isArray`
+   - `isArrayByStructure`
+   - `isTypedArray`
+   - `isTypedArrayByStructure`
+   - `isInt8Array`
+   - `isInt8ArrayByStructure`
+   - `isUint8Array`
+   - `isUint8ArrayByStructure`
+   - `isUint8ClampedArray`
+   - `isUint8ClampedArrayByStructure`
+   - `isInt16Array`
+   - `isInt16ArrayByStructure`
+   - `isUint16Array`
+   - `isUint16ArrayByStructure`
+   - `isInt32Array`
+   - `isInt32ArrayByStructure`
+   - `isUint32Array`
+   - `isUint32ArrayByStructure`
+   - `isBigInt64Array`
+   - `isBigInt64ArrayByStructure`
+   - `isBigUint64Array`
+   - `isBigUint64ArrayByStructure`
+   - `isFloat32Array`
+   - `isFloat32ArrayByStructure`
+   - `isFloat64Array`
+   - `isFloat64ArrayByStructure`
+   - `isSet`
+   - `isSetByStructure`
+   - `isIterator`
 
 ---
 
