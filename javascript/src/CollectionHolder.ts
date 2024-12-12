@@ -1081,7 +1081,7 @@ export interface CollectionHolder<out T = unknown, >
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
 
     /**
      * Get the first index matching the {@link predicate}
