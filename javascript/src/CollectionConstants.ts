@@ -366,19 +366,19 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (weak set) --------------------
     //#region -------------------- Members references (iterator) --------------------
 
-    // /** Every method applicable to an {@link IteratorObject} */
-    // public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
-    //     return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
-    //         "next",
-    //         "every", "some",
-    //         "find", "filter", "reduce",
-    //         "take", "drop",
-    //         "forEach",
-    //         "map", "flatMap",
-    //         "toArray",
-    //         Symbol.iterator, Symbol.toStringTag,
-    //     ] as const,),)
-    // }
+    /** Every method applicable to an {@link IteratorObject} */
+    public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
+        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "next",
+            "every", "some",
+            "find", "filter", "reduce",
+            "take", "drop",
+            "forEach",
+            "map", "flatMap",
+            "toArray",
+            Symbol.iterator, Symbol.toStringTag,
+        ] as const,),)
+    }
 
     //#endregion -------------------- Members references (iterator) --------------------
     //#region -------------------- Members references (collection iterator) --------------------
