@@ -16,6 +16,7 @@ import type {TypedArray} from "../type/TypedArray"
  * {@link BigInt64Array bigint} or {@link BigUint64Array ubigint} array)
  *
  * @param value The value to identify
+ * @see isTypedArrayByStructure
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
 export function isTypedArray<const INSTANCE extends TypedArray, >(value: unknown,): value is INSTANCE {

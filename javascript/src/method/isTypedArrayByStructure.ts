@@ -14,7 +14,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * Tell that the value has the structure of an {@link TypedArray}
  *
  * @param value The value to identify
- * @see isArray
+ * @see isTypedArray
  * @see CollectionConstants.TYPED_ARRAY_MEMBERS
  * @doesNotValidateTheTypes
  */
@@ -23,7 +23,7 @@ export function isTypedArrayByStructure(value: unknown,): value is (& object & R
  * Tell that the value has the structure of an {@link TypedArray}
  *
  * @param value The value to identify
- * @see isArray
+ * @see isTypedArray
  * @see CollectionConstants.TYPED_ARRAY_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript

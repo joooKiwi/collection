@@ -13,7 +13,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * Tell that the value has the structure of an {@link WeakSet}
  *
  * @param value The value to identify
- * @see isArray
+ * @see isWeakSet
  * @see CollectionConstants.WEAK_SET_MEMBERS
  * @doesNotValidateTheTypes
  */
@@ -22,7 +22,7 @@ export function isWeakSetByStructure(value: unknown,): value is (& object & Reco
  * Tell that the value has the structure of an {@link WeakSet}
  *
  * @param value The value to identify
- * @see isArray
+ * @see isWeakSet
  * @see CollectionConstants.WEAK_SET_MEMBERS
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
