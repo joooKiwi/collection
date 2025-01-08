@@ -1,0 +1,21 @@
+/*******************************************************************************
+ Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
+
+ This project is free to use.
+ All the right is reserved to the author of this project.
+ ******************************************************************************/
+
+/**
+ * Tell that the value is a {@link Map}
+ *
+ * @param value The value to identify
+ * @see isMapByStructure
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
+ */
+export function isMap<const K, const V, const INSTANCE extends Map<K, V> = Map<K, V>, >(value: unknown,): value is INSTANCE {
+    if (value == null)
+        return false
+    if (value instanceof Map)
+        return true
+    return false
+}
