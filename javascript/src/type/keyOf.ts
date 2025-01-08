@@ -42,6 +42,22 @@ export type KeyOfWeakSet = | "has" | typeof Symbol["toStringTag"]
 export type KeyOfMutableWeakSet = keyof WeakSet<WeakKey>
 
 //#endregion -------------------- Weak set key --------------------
+//#region -------------------- Map key --------------------
+
+/** The keys applicable to a {@link ReadonlyMap Map} */
+export type KeyOfMap = keyof ReadonlyMap<unknown, unknown>
+/** The keys applicable to a {@link Map MutableMap} */
+export type KeyOfMutableMap = keyof Map<unknown, unknown>
+
+//#endregion -------------------- Map key --------------------
+//#region -------------------- Weak map key --------------------
+
+/** The keys applicable to a {@link WeakMap} */
+export type KeyOfWeakMap = | "get" | "has" | typeof Symbol["toStringTag"]
+/** The keys applicable to a {@link WeakMap MutableWeakMap} */
+export type KeyOfMutableWeakMap = keyof WeakMap<WeakKey, unknown>
+
+//#endregion -------------------- Weak map key --------------------
 //#region -------------------- Minimalist collection holder key --------------------
 
 /** The keys applicable to a {@link MinimalistCollectionHolder} */
