@@ -16,11 +16,11 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}           from "../CollectionConstants"
+import {ForbiddenIndexException}       from "../exception/ForbiddenIndexException"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
-import {ForbiddenIndexException}       from "../exception"
 
 //#region -------------------- Facade method --------------------
 
