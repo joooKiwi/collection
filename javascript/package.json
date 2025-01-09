@@ -1,6 +1,6 @@
 {
   "name": "@joookiwi/collection",
-  "version": "1.11.3",
+  "version": "1.12.0",
   "description": "A Javascript implementation of a collection based on Array (from Javascript/Java/Kotlin/C#/PHP), Set (from Javascript/Java/Kotlin) and List (from Java/Kotlin/C#)",
 
   "scripts": {
@@ -151,8 +151,8 @@
   "author": "JóôòKiwi",
   "license": "MIT",
   "dependencies": {
-    "@joookiwi/lazy": "^1.6.0",
-    "@joookiwi/type": "^1.1.0"
+    "@joookiwi/lazy": "^1.7.0",
+    "@joookiwi/type": "^1.2.0"
   },
   "devDependencies": {
     "@types/jest":            "^29.5.14",
