@@ -14,9 +14,5 @@
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
 export function isBigUint64Array<const INSTANCE extends BigUint64Array, >(value: unknown,): value is INSTANCE {
-    if (value == null)
-        return false
-    if (value instanceof BigUint64Array)
-        return true
-    return false
+    return value instanceof BigUint64Array
 }

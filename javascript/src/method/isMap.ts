@@ -13,9 +13,5 @@
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
 export function isMap<const K, const V, const INSTANCE extends Map<K, V> = Map<K, V>, >(value: unknown,): value is INSTANCE {
-    if (value == null)
-        return false
-    if (value instanceof Map)
-        return true
-    return false
+    return value instanceof Map
 }

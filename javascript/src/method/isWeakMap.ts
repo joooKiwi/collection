@@ -13,9 +13,5 @@
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
 export function isWeakMap<const K extends WeakKey, const V, const INSTANCE extends WeakMap<K, V> = WeakMap<K, V>, >(value: unknown,): value is INSTANCE {
-    if (value == null)
-        return false
-    if (value instanceof WeakMap)
-        return true
-    return false
+    return value instanceof WeakMap
 }

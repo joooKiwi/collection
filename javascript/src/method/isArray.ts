@@ -13,9 +13,5 @@
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
 export function isArray<const T, const INSTANCE extends ReadonlyArray<T> = ReadonlyArray<T>, >(value: unknown,): value is INSTANCE {
-    if (value == null)
-        return false
-    if (value instanceof Array)
-        return true
-    return false
+    return value instanceof Array
 }

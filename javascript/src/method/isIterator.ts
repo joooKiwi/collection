@@ -12,9 +12,5 @@
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
 export function isIterator<const T, const INSTANCE extends Iterator<T> = Iterator<T>, >(value: unknown,): value is INSTANCE {
-    if (value == null)
-        return false
-    if (value instanceof Iterator)
-        return true
-    return false
+    return value instanceof Iterator
 }
