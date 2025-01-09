@@ -1,6 +1,6 @@
 <component name="CopyrightManager">
   <copyright>
-    <option name="notice" value="Copyright (c) &amp;#36;originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;, &quot;&amp;#36;today.year&quot;)&amp;#36;today.year. Jonathan Bédard ~ JóôòKiwi&#10;&#10;This project is free to use.&#10;All the right is reserved to the author of this project." />
+    <option name="notice" value="Copyright (c) &amp;#36;originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;, &quot;&amp;#36;today.year&quot;)&amp;#36;today.year. Jonathan Bédard ~ JóôòKiwi&#10;&#10;This project is free to use.&#10;All the right is reserved to the author of this project.&#10;My projects:&#10; - https://github.com/joooKiwi/type&#10; - https://github.com/joooKiwi/lazy&#10; - https://github.com/joooKiwi/collection&#10; - https://github.com/joooKiwi/enumeration" />
     <option name="myName" value="Jonathan Bédard" />
   </copyright>
 </component>
