@@ -15,11 +15,11 @@ import type {Nullable, NullableNumber, NullOrNumber} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {__endingIndex, __endingIndexOrNull, __startingIndex, __startingIndexOrNull} from "./_indexes utility"
-import {isArray}                                                                    from "./isArray"
-import {isArrayByStructure}             from "./isArrayByStructure"
-import {isCollectionHolder}             from "./isCollectionHolder"
-import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
+import {__endingIndexOrNull, __startingIndexOrNull} from "./_indexes utility"
+import {isArray}                                    from "./isArray"
+import {isArrayByStructure}                         from "./isArrayByStructure"
+import {isCollectionHolder}                         from "./isCollectionHolder"
+import {isCollectionHolderByStructure}              from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
