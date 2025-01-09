@@ -156,12 +156,12 @@
   },
   "devDependencies": {
     "@types/jest":            "^29.5.14",
-    "@types/node":            "^22.9.0",
+    "@types/node":            "^22.10.5",
     "del-cli":                "^6.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-extended":          "^4.0.2",
     "ts-jest":                "^29.2.5",
     "ts-node":                "^10.9.2",
-    "typescript":             "^5.6.3"
+    "typescript":             "^5.7.3"
   }
 }
