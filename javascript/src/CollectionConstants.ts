@@ -1,9 +1,14 @@
-/*******************************************************************************
- Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
-
- This project is free to use.
- All the right is reserved to the author of this project.
- ******************************************************************************/
+//··························································
+// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+//
+// This project is free to use.
+// All the right is reserved to the author of this project.
+// My projects:
+//  - https://github.com/joooKiwi/type
+//  - https://github.com/joooKiwi/lazy
+//  - https://github.com/joooKiwi/collection
+//  - https://github.com/joooKiwi/enumeration
+//··························································
 
 import type {Lazy}                                                       from "@joookiwi/lazy"
 import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
@@ -11,8 +16,8 @@ import {lazyOf}                                                          from "@
 
 import type {CollectionHolder}                                                                                                                                                                              from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                    from "./MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                            from "./iterator/CollectionIterator"
-import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableSet, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakSet} from "./type/keyOf"
+import type {CollectionIterator}                                                                                                                                                                                                                                                         from "./iterator/CollectionIterator"
+import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfIterator, KeyOfMap, KeyOfMinimalistCollectionHolder, KeyOfMutableArray, KeyOfMutableMap, KeyOfMutableSet, KeyOfMutableWeakMap, KeyOfMutableWeakSet, KeyOfSet, KeyOfTypedArray, KeyOfWeakMap, KeyOfWeakSet} from "./type/keyOf"
 
 import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
@@ -55,7 +60,11 @@ export class CollectionConstants {
     static #MUTABLE_SET_MEMBERS?: CollectionHolder<KeyOfMutableSet>
     static #WEAK_SET_MEMBERS?: CollectionHolder<KeyOfWeakSet>
     static #MUTABLE_WEAK_SET_MEMBERS?: CollectionHolder<KeyOfMutableWeakSet>
-    // static #ITERATOR_MEMBERS?: CollectionHolder<KeyOfIterator>
+    static #MAP_MEMBERS?: CollectionHolder<KeyOfMap>
+    static #MUTABLE_MAP_MEMBERS?: CollectionHolder<KeyOfMutableMap>
+    static #WEAK_MAP_MEMBERS?: CollectionHolder<KeyOfWeakMap>
+    static #MUTABLE_WEAK_MAP_MEMBERS?: CollectionHolder<KeyOfMutableWeakMap>
+    static #ITERATOR_MEMBERS?: CollectionHolder<KeyOfIterator>
     static #COLLECTION_ITERATOR_MEMBERS?: CollectionHolder<KeyOfCollectionIterator>
 
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
@@ -364,21 +373,74 @@ export class CollectionConstants {
     }
 
     //#endregion -------------------- Members references (weak set) --------------------
+    //#region -------------------- Members references (map) --------------------
+
+    /** Every method applicable to an {@link ReadonlyMap Map} */
+    public static get MAP_MEMBERS(): CollectionHolder<KeyOfMap> {
+        return CollectionConstants.#MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "size",
+            "get",
+            "has",
+            "forEach",
+            "keys", "values", "entries",
+            Symbol.iterator,
+            // Symbol.toStringTag,
+        ] as const,),)
+    }
+
+    /** Every method applicable to an {@link Map MutableMap} */
+    public static get MUTABLE_MAP_MEMBERS(): CollectionHolder<KeyOfMutableMap> {
+        return CollectionConstants.#MUTABLE_MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "size",
+            "get",
+            "set", "delete",
+            "clear",
+            "has",
+            "forEach",
+            "keys", "values", "entries",
+            Symbol.iterator,
+            Symbol.toStringTag,
+        ] as const,),)
+    }
+
+    //#endregion -------------------- Members references (map) --------------------
+    //#region -------------------- Members references (weak map) --------------------
+
+    /** Every method applicable to an immutable {@link WeakMap} */
+    public static get WEAK_MAP_MEMBERS(): CollectionHolder<KeyOfWeakMap> {
+        return CollectionConstants.#WEAK_MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "get",
+            "has",
+            Symbol.toStringTag,
+        ] as const,),)
+    }
+
+    /** Every method applicable to a mutable {@link WeakMap} */
+    public static get MUTABLE_WEAK_MAP_MEMBERS(): CollectionHolder<KeyOfMutableWeakMap> {
+        return CollectionConstants.#MUTABLE_WEAK_MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "get",
+            "set", "delete",
+            "has",
+            Symbol.toStringTag,
+        ] as const,),)
+    }
+
+    //#endregion -------------------- Members references (weak map) --------------------
     //#region -------------------- Members references (iterator) --------------------
 
-    // /** Every method applicable to an {@link IteratorObject} */
-    // public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
-    //     return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
-    //         "next",
-    //         "every", "some",
-    //         "find", "filter", "reduce",
-    //         "take", "drop",
-    //         "forEach",
-    //         "map", "flatMap",
-    //         "toArray",
-    //         Symbol.iterator, Symbol.toStringTag,
-    //     ] as const,),)
-    // }
+    /** Every method applicable to an {@link IteratorObject} */
+    public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
+        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+            "next",
+            "every", "some",
+            "find", "filter", "reduce",
+            "take", "drop",
+            "forEach",
+            "map", "flatMap",
+            "toArray",
+            Symbol.iterator, Symbol.toStringTag,
+        ] as const,),)
+    }
 
     //#endregion -------------------- Members references (iterator) --------------------
     //#region -------------------- Members references (collection iterator) --------------------
@@ -443,4 +505,5 @@ export interface CollectionConstants {
      * @throws {EvalError} The class cannot be created
      */
     new(...args: readonly unknown[]): never
+
 }

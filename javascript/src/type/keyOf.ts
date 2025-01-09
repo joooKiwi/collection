@@ -1,9 +1,14 @@
-/*******************************************************************************
- Copyright (c) 2023-2024. Jonathan Bédard ~ JóôòKiwi
-
- This project is free to use.
- All the right is reserved to the author of this project.
- ******************************************************************************/
+//··························································
+// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+//
+// This project is free to use.
+// All the right is reserved to the author of this project.
+// My projects:
+//  - https://github.com/joooKiwi/type
+//  - https://github.com/joooKiwi/lazy
+//  - https://github.com/joooKiwi/collection
+//  - https://github.com/joooKiwi/enumeration
+//··························································
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -42,6 +47,22 @@ export type KeyOfWeakSet = | "has" | typeof Symbol["toStringTag"]
 export type KeyOfMutableWeakSet = keyof WeakSet<WeakKey>
 
 //#endregion -------------------- Weak set key --------------------
+//#region -------------------- Map key --------------------
+
+/** The keys applicable to a {@link ReadonlyMap Map} */
+export type KeyOfMap = keyof ReadonlyMap<unknown, unknown>
+/** The keys applicable to a {@link Map MutableMap} */
+export type KeyOfMutableMap = keyof Map<unknown, unknown>
+
+//#endregion -------------------- Map key --------------------
+//#region -------------------- Weak map key --------------------
+
+/** The keys applicable to a {@link WeakMap} */
+export type KeyOfWeakMap = | "get" | "has" | typeof Symbol["toStringTag"]
+/** The keys applicable to a {@link WeakMap MutableWeakMap} */
+export type KeyOfMutableWeakMap = keyof WeakMap<WeakKey, unknown>
+
+//#endregion -------------------- Weak map key --------------------
 //#region -------------------- Minimalist collection holder key --------------------
 
 /** The keys applicable to a {@link MinimalistCollectionHolder} */
@@ -57,7 +78,14 @@ export type KeyOfCollectionHolder = keyof CollectionHolder
 //#region -------------------- Iterator key --------------------
 
 /** The keys applicable to an {@link IteratorObject Iterator} */
-export type KeyOfIterator = IteratorObject<unknown>
+export type KeyOfIterator = "next"
+                            | "every" | "some"
+                            | "find" | "filter" | "reduce"
+                            | "take" | "drop"
+                            | "forEach"
+                            | "map" | "flatMap"
+                            | "toArray"
+                            | typeof Symbol["iterator"] | typeof Symbol["toStringTag"]//IteratorObject<unknown>
 
 //#endregion -------------------- Iterator key --------------------
 //#region -------------------- Collection iterator key --------------------
