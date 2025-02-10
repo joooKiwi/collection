@@ -87,7 +87,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, startingIndex, endingIndex,),)
 }
 
@@ -119,7 +119,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, startingIndex, endingIndex,),)
 }
 
@@ -152,7 +152,7 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, 
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : ` ("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRangeByArray(collection, startingIndex, endingIndex,),)
 }
 

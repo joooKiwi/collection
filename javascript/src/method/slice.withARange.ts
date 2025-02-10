@@ -83,7 +83,7 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
 }
 
@@ -113,7 +113,7 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
 }
 
@@ -144,7 +144,7 @@ export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly 
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRangeByArray(collection, startingIndex, endingIndex,),)
 }
 

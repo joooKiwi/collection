@@ -36,15 +36,15 @@ export function __startingIndex(fromIndex: NullableNumber, size: number,) {
         throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", fromIndex,)
 
     if (fromIndex == size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" is the collection size "${size}".`, fromIndex,)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${fromIndex}” is the collection size “${size}”.`, fromIndex,)
     if (fromIndex > size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" is over the collection size "${size}".`, fromIndex,)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${fromIndex}” is over the collection size “${size}”.`, fromIndex,)
 
     let startingIndex = fromIndex
     if (startingIndex < 0)
         startingIndex += size
     if (startingIndex < 0)
-        throw new IndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" ("${startingIndex}" after calculation) is under 0.`, fromIndex,)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${fromIndex}” (“${startingIndex}” after calculation) is under 0.`, fromIndex,)
     return startingIndex
 }
 
@@ -102,15 +102,15 @@ export function __endingIndex(toIndex: NullableNumber, size: number,) {
         throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", toIndex,)
 
     if (toIndex == size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" is the collection size "${size}".`, toIndex,)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${toIndex}” is the collection size “${size}”.`, toIndex,)
     if (toIndex > size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" is over the collection size "${size}".`, toIndex,)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${toIndex}” is over the collection size “${size}”.`, toIndex,)
 
     let endingIndex = toIndex
     if (endingIndex < 0)
         endingIndex += size
     if (endingIndex < 0)
-        throw new IndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is under 0.`, toIndex,)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${toIndex}” (“${endingIndex}” after calculation) is under 0.`, toIndex,)
     return endingIndex
 }
 

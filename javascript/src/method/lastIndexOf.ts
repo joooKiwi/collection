@@ -101,7 +101,7 @@ export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: N
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
     return __findLastInRange(collection, element, startingIndex, endingIndex,)
 }
 
@@ -139,7 +139,7 @@ export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<Co
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
     return __findLastInRange(collection, element, startingIndex, endingIndex,)
 }
 
@@ -178,7 +178,7 @@ export function lastIndexOfByArray<const T, >(collection: Nullable<readonly T[]>
     const startingIndex = __startingIndex(fromIndex, size,)
     const endingIndex = __endingIndex(toIndex, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
     return __findLastInRangeByArray(collection, element, startingIndex, endingIndex,)
 }
 

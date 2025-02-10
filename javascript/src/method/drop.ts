@@ -38,14 +38,14 @@ export function drop<const T, >(collection: Nullable<| MinimalistCollectionHolde
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
-        return dropByCollectionHolder(collection, n,)
+        return __dropByCollectionHolder(collection, n,)
     if (isArray(collection,))
-        return dropByArray(collection, n,)
+        return __dropByArray(collection, n,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return dropByCollectionHolder(collection, n,)
+        return __dropByCollectionHolder(collection, n,)
     if (isArrayByStructure<T>(collection,))
-        return dropByArray(collection, n,)
-    return dropByMinimalistCollectionHolder(collection, n,)
+        return __dropByArray(collection, n,)
+    return __dropByMinimalistCollectionHolder(collection, n,)
 }
 
 
@@ -62,7 +62,49 @@ export function drop<const T, >(collection: Nullable<| MinimalistCollectionHolde
 export function dropByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (isCollectionHolder<T>(collection,))
+        return __dropByCollectionHolder(collection, n,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __dropByCollectionHolder(collection, n,)
+    return __dropByMinimalistCollectionHolder(collection, n,)
+}
 
+/**
+ * Get a new {@link CollectionHolder} from the last {@link n} elements
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
+ kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
+ * @see https:/     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)
+ * @canReceiveNegativeValue
+ */
+export function dropByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, n: number,): CollectionHolder<T> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return __dropByCollectionHolder(collection, n,)
+}
+
+/**
+ * Get a new {@link CollectionHolder} from the last {@link n} elements
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)
+ * @canReceiveNegativeValue
+ */
+export function dropByArray<const T, >(collection: Nullable<readonly T[]>, n: number,): CollectionHolder<T> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return __dropByArray(collection, n,)
+}
+
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Core method --------------------
+
+function __dropByMinimalistCollectionHolder<const T,>(collection: MinimalistCollectionHolder<T>, n: number,): CollectionHolder<T> {
     const size = collection.size
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -84,19 +126,7 @@ export function dropByMinimalistCollectionHolder<const T, >(collection: Nullable
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n + size,),)
 }
 
-/**
- * Get a new {@link CollectionHolder} from the last {@link n} elements
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
- * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
- kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
- * @see https:/     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)
- * @canReceiveNegativeValue
- */
-export function dropByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, n: number,): CollectionHolder<T> {
-    if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+function __dropByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: number,): CollectionHolder<T> {
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (Number.isNaN(n,))
@@ -119,20 +149,7 @@ export function dropByCollectionHolder<const T, >(collection: Nullable<Collectio
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n + size,),)
 }
 
-/**
- * Get a new {@link CollectionHolder} from the last {@link n} elements
- *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
- * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)
- * @canReceiveNegativeValue
- */
-export function dropByArray<const T, >(collection: Nullable<readonly T[]>, n: number,): CollectionHolder<T> {
-    if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
+function __dropByArray<const T,>(collection: readonly T[], n: number,): CollectionHolder<T> {
     const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -154,7 +171,7 @@ export function dropByArray<const T, >(collection: Nullable<readonly T[]>, n: nu
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, size, n + size,),)
 }
 
-//#endregion -------------------- Facade method --------------------
+//#endregion -------------------- Core method --------------------
 //#region -------------------- Loop methods --------------------
 
 function __getAll<const T, >(collection: MinimalistCollectionHolder<T>, size: number, amount: number,): readonly T[] {
