@@ -30,7 +30,7 @@ export class CollectionHandlerByMinimalistCollectionHolderOf2<const T = unknown,
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number = reference.size,) {
         super(collection, reference,)
         if (size !== 2)
-            throw new TypeError(`The collection holder received in the "${this.constructor.name}" cannot have a different size than 2.`,)
+            throw new TypeError(`The collection holder received in the “${this.constructor.name}” cannot have a different size than 2.`,)
     }
 
     protected override _retrieveFirst(): T { return this._reference.get(0,) }
