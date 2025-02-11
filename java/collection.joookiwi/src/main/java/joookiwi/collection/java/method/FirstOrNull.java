@@ -189,7 +189,7 @@ public final class FirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T firstOrNull(final @Nullable MinimalistCollectionHolder<T> collection,
+    public static <T> @Nullable T firstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                               final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetFirstOrNull.getFirstOrNull(collection);
@@ -207,7 +207,7 @@ public final class FirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T firstOrNull(final @Nullable CollectionHolder<T> collection,
+    public static <T> @Nullable T firstOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                               final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetFirstOrNull.getFirstOrNull(collection);

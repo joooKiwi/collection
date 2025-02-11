@@ -27,7 +27,7 @@ public final class IsNotEmpty
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html">Kotlin isNotEmpty()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T> boolean isNotEmpty(final @Nullable MinimalistCollectionHolder<T> collection) {
+    public static <T> boolean isNotEmpty(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return false;
         return collection.size() != 0;
@@ -40,7 +40,7 @@ public final class IsNotEmpty
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html">Kotlin isNotEmpty()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T> boolean isNotEmpty(final @Nullable CollectionHolder<T> collection) {
+    public static <T> boolean isNotEmpty(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return false;
         return !collection.isEmpty();
