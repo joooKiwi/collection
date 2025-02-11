@@ -249,7 +249,7 @@ public final class FindFirstIndexed
         while (++index < size)
             if (predicate.getAsBoolean())
                 return collection.get(index);
-        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the “findFirstIndexed” predicate received in the collection.", 0);
     }
 
     private static <T> T __with0Argument(final T @NotNull @Unmodifiable [] collection,
@@ -259,7 +259,7 @@ public final class FindFirstIndexed
         while (++index < size)
             if (predicate.getAsBoolean())
                 return collection[index];
-        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the “findFirstIndexed” predicate received in the collection.", 0);
     }
 
 
@@ -270,7 +270,7 @@ public final class FindFirstIndexed
         while (++index < size)
             if (predicate.test(index))
                 return collection.get(index);
-        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the “findFirstIndexed” predicate received in the collection.", 0);
     }
 
     private static <T> T __with1Argument(final T @NotNull @Unmodifiable [] collection,
@@ -280,7 +280,7 @@ public final class FindFirstIndexed
         while (++index < size)
             if (predicate.test(index))
                 return collection[index];
-        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the “findFirstIndexed” predicate received in the collection.", 0);
     }
 
 
@@ -293,7 +293,7 @@ public final class FindFirstIndexed
             if (predicate.test(index, value))
                 return value;
         }
-        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the “findFirstIndexed” predicate received in the collection.", 0);
     }
 
     private static <T> T __with2Argument(final T @NotNull @Unmodifiable [] collection,
@@ -305,7 +305,7 @@ public final class FindFirstIndexed
             if (predicate.test(index, value))
                 return value;
         }
-        throw new IndexOutOfBoundsException("No element could be found from the filter predicate received in the collection.", 0);
+        throw new IndexOutOfBoundsException("No element could be found from the “findFirstIndexed” predicate received in the collection.", 0);
     }
 
     //#endregion -------------------- Loop methods --------------------
