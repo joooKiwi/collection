@@ -2884,14 +2884,14 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link toIndex ending} to the {@link fromIndex starting} index
+     * from the {@link to ending} to the {@link from starting} index
      * in the current {@link CollectionHolder collection}
      *
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @param from The inclusive starting index
+     * @param to   The inclusive ending index
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see Array.reverse
      * @see ReadonlyArray.toReversed
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reversed.html Kotlin reversed()
@@ -2899,37 +2899,47 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
      * @canReceiveNegativeValue
      */
-    toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link toIndex ending} to the {@link fromIndex starting} index
+     * from the {@link to ending} to the {@link from starting} index
      * in the current {@link CollectionHolder collection}
      *
+     * @param from The inclusive starting index
+     * @param to   The inclusive ending index
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+     * @see Array.reverse
+     * @see ReadonlyArray.toReversed
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reversed.html Kotlin reversed()
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
      * @alias CollectionHolder.toReverse
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @canReceiveNegativeValue
      */
-    toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    toReversed(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link toIndex ending} to the {@link fromIndex starting} index
+     * from the {@link to ending} to the {@link from starting} index
      * in the current {@link CollectionHolder collection}
      *
+     * @param from The inclusive starting index
+     * @param to   The inclusive ending index
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+     * @see Array.reverse
+     * @see ReadonlyArray.toReversed
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reversed.html Kotlin reversed()
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#reversed() Java reversed()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
      * @alias CollectionHolder.toReverse
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
      * @canReceiveNegativeValue
      */
-    reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    reversed(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- To reverse --------------------
 

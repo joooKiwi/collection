@@ -1394,8 +1394,8 @@ export class GenericCollectionHolder<const T = unknown,
 
     //#region -------------------- To reverse --------------------
 
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByArray(this._array, fromIndex, toIndex,)
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
+        return toReverseByArray(this._array, from, to,)
     }
 
     //#endregion -------------------- To reverse --------------------

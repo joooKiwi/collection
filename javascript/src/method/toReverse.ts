@@ -27,15 +27,15 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
 
 /**
  * Reverse to a new {@link CollectionHolder}
- * from the {@link toIndex ending} to the {@link fromIndex starting} index
+ * from the {@link to ending} to the {@link from starting} index
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to reverse
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the {@link collection} {@link CollectionHolder.size size}
- * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @param from       The inclusive starting index
+ * @param to         The inclusive ending index
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
@@ -43,18 +43,18 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
-        return toReverseByCollectionHolder(collection, fromIndex, toIndex,)
+        return toReverseByCollectionHolder(collection, from, to,)
     if (isArray(collection,))
-        return toReverseByArray(collection, fromIndex, toIndex,)
+        return toReverseByArray(collection, from, to,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return toReverseByCollectionHolder(collection, fromIndex, toIndex,)
+        return toReverseByCollectionHolder(collection, from, to,)
     if (isArrayByStructure<T>(collection,))
-        return toReverseByArray(collection, fromIndex, toIndex,)
-    return toReverseByMinimalistCollectionHolder(collection, fromIndex, toIndex,)
+        return toReverseByArray(collection, from, to,)
+    return toReverseByMinimalistCollectionHolder(collection, from, to,)
 }
 
 

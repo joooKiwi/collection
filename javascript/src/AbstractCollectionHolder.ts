@@ -1302,16 +1302,16 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- To reverse --------------------
 
-    public toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByCollectionHolder(this, fromIndex, toIndex,)
+    public toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
+        return toReverseByCollectionHolder(this, from, to,)
     }
 
-    public toReversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
-        return this.toReverse(fromIndex, toIndex,)
+    public toReversed(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
+        return this.toReverse(from, to,)
     }
 
-    public reversed(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
-        return this.toReverse(fromIndex, toIndex,)
+    public reversed(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
+        return this.toReverse(from, to,)
     }
 
     //#endregion -------------------- To reverse --------------------
