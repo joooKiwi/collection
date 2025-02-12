@@ -443,12 +443,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- First index of --------------------
 
-    public firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return firstIndexOfByCollectionHolder(this, element, fromIndex, toIndex,)
+    public firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number {
+        return firstIndexOfByCollectionHolder(this, element, from, to,)
     }
 
-    public indexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return this.firstIndexOf(element, fromIndex, toIndex,)
+    public indexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number {
+        return this.firstIndexOf(element, from, to,)
     }
 
     //#endregion -------------------- First index of --------------------
