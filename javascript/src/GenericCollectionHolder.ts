@@ -1230,16 +1230,16 @@ export class GenericCollectionHolder<const T = unknown,
         return sliceWithARangeByArray(this._array,)
     }
 
-    protected override _sliceWith1Argument(fromIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByArray(this._array, fromIndex,)
+    protected override _sliceWith1Argument(from: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, from,)
     }
 
-    protected override _sliceWith2Argument(fromIndex: number, toIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByArray(this._array, fromIndex, toIndex,)
+    protected override _sliceWith2Argument(from: number, to: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, from, to,)
     }
 
-    protected override _sliceWith2ArgumentWhere1stIsNull(fromIndex: NullOrUndefined, toIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByArray(this._array, fromIndex, toIndex,)
+    protected override _sliceWith2ArgumentWhere1stIsNull(from: NullOrUndefined, to: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, from, to,)
     }
 
     protected override _sliceByArray(indices: readonly number[],): CollectionHolder<T> {

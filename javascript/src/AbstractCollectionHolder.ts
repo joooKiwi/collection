@@ -914,9 +914,9 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public slice(indices: Iterable<number>,): CollectionHolder<T>
     public slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T> {
+    public slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T> {
         //#region -------------------- 0 arguments --------------------
 
         if (arguments.length === 0)
@@ -926,91 +926,91 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         //#region -------------------- 1 argument --------------------
 
         if (arguments.length === 1)
-            if (indicesOrFromIndex == null)
+            if (indicesOrFrom == null)
                 return this._sliceWith0Argument()
-            else if (typeof indicesOrFromIndex == "number")
-                return this._sliceWith1Argument(indicesOrFromIndex,)
-            else if (isArray(indicesOrFromIndex,))
-                return this._sliceByArray(indicesOrFromIndex,)
-            else if (isSet(indicesOrFromIndex))
-                return this._sliceBySet(indicesOrFromIndex,)
-            else if (isCollectionHolder(indicesOrFromIndex))
-                return this._sliceByCollectionHolder(indicesOrFromIndex,)
-            else if (isMinimalistCollectionHolder(indicesOrFromIndex))
-                return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
-            else if (isCollectionIterator(indicesOrFromIndex))
-                return this._sliceByCollectionIterator(indicesOrFromIndex,)
-            else if (isArrayByStructure<number>(indicesOrFromIndex,))
-                return this._sliceByArray(indicesOrFromIndex,)
-            else if (isSetByStructure<number>(indicesOrFromIndex))
-                return this._sliceBySet(indicesOrFromIndex,)
-            else if (isCollectionHolderByStructure<number>(indicesOrFromIndex))
-                return this._sliceByCollectionHolder(indicesOrFromIndex,)
-            else if (isMinimalistCollectionHolderByStructure<number>(indicesOrFromIndex))
-                return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
-            else if (isCollectionIteratorByStructure<number>(indicesOrFromIndex))
-                return this._sliceByCollectionIterator(indicesOrFromIndex,)
+            else if (typeof indicesOrFrom == "number")
+                return this._sliceWith1Argument(indicesOrFrom,)
+            else if (isArray(indicesOrFrom,))
+                return this._sliceByArray(indicesOrFrom,)
+            else if (isSet(indicesOrFrom))
+                return this._sliceBySet(indicesOrFrom,)
+            else if (isCollectionHolder(indicesOrFrom))
+                return this._sliceByCollectionHolder(indicesOrFrom,)
+            else if (isMinimalistCollectionHolder(indicesOrFrom))
+                return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
+            else if (isCollectionIterator(indicesOrFrom))
+                return this._sliceByCollectionIterator(indicesOrFrom,)
+            else if (isArrayByStructure<number>(indicesOrFrom,))
+                return this._sliceByArray(indicesOrFrom,)
+            else if (isSetByStructure<number>(indicesOrFrom))
+                return this._sliceBySet(indicesOrFrom,)
+            else if (isCollectionHolderByStructure<number>(indicesOrFrom))
+                return this._sliceByCollectionHolder(indicesOrFrom,)
+            else if (isMinimalistCollectionHolderByStructure<number>(indicesOrFrom))
+                return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
+            else if (isCollectionIteratorByStructure<number>(indicesOrFrom))
+                return this._sliceByCollectionIterator(indicesOrFrom,)
             else
-                return this._sliceByIterable(indicesOrFromIndex,)
+                return this._sliceByIterable(indicesOrFrom,)
 
         //#endregion -------------------- 1 argument --------------------
         //#region -------------------- 2 arguments --------------------
 
-        if (indicesOrFromIndex == null)
-            if (toIndex == null)
+        if (indicesOrFrom == null)
+            if (to == null)
                 return this._sliceWith0Argument()
             else
-                return this._sliceWith2ArgumentWhere1stIsNull(indicesOrFromIndex, toIndex,)
+                return this._sliceWith2ArgumentWhere1stIsNull(indicesOrFrom, to,)
 
-        if (toIndex == null)
-            if (typeof indicesOrFromIndex == "number")
-                return this._sliceWith1Argument(indicesOrFromIndex,)
-            else if (isArray(indicesOrFromIndex,))
-                return this._sliceByArray(indicesOrFromIndex,)
-            else if (isSet(indicesOrFromIndex))
-                return this._sliceBySet(indicesOrFromIndex,)
-            else if (isCollectionHolder(indicesOrFromIndex))
-                return this._sliceByCollectionHolder(indicesOrFromIndex,)
-            else if (isMinimalistCollectionHolder(indicesOrFromIndex))
-                return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
-            else if (isCollectionIterator(indicesOrFromIndex))
-                return this._sliceByCollectionIterator(indicesOrFromIndex,)
-            else if (isArrayByStructure<number>(indicesOrFromIndex,))
-                return this._sliceByArray(indicesOrFromIndex,)
-            else if (isSetByStructure<number>(indicesOrFromIndex))
-                return this._sliceBySet(indicesOrFromIndex,)
-            else if (isCollectionHolderByStructure<number>(indicesOrFromIndex))
-                return this._sliceByCollectionHolder(indicesOrFromIndex,)
-            else if (isMinimalistCollectionHolderByStructure<number>(indicesOrFromIndex))
-                return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
-            else if (isCollectionIteratorByStructure<number>(indicesOrFromIndex))
-                return this._sliceByCollectionIterator(indicesOrFromIndex,)
+        if (to == null)
+            if (typeof indicesOrFrom == "number")
+                return this._sliceWith1Argument(indicesOrFrom,)
+            else if (isArray(indicesOrFrom,))
+                return this._sliceByArray(indicesOrFrom,)
+            else if (isSet(indicesOrFrom))
+                return this._sliceBySet(indicesOrFrom,)
+            else if (isCollectionHolder(indicesOrFrom))
+                return this._sliceByCollectionHolder(indicesOrFrom,)
+            else if (isMinimalistCollectionHolder(indicesOrFrom))
+                return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
+            else if (isCollectionIterator(indicesOrFrom))
+                return this._sliceByCollectionIterator(indicesOrFrom,)
+            else if (isArrayByStructure<number>(indicesOrFrom,))
+                return this._sliceByArray(indicesOrFrom,)
+            else if (isSetByStructure<number>(indicesOrFrom))
+                return this._sliceBySet(indicesOrFrom,)
+            else if (isCollectionHolderByStructure<number>(indicesOrFrom))
+                return this._sliceByCollectionHolder(indicesOrFrom,)
+            else if (isMinimalistCollectionHolderByStructure<number>(indicesOrFrom))
+                return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
+            else if (isCollectionIteratorByStructure<number>(indicesOrFrom))
+                return this._sliceByCollectionIterator(indicesOrFrom,)
             else
-                return this._sliceByIterable(indicesOrFromIndex,)
+                return this._sliceByIterable(indicesOrFrom,)
 
-        if (typeof indicesOrFromIndex == "number")
-            return this._sliceWith2Argument(indicesOrFromIndex, toIndex,)
-        if (isArray(indicesOrFromIndex,))
-            return this._sliceByArray(indicesOrFromIndex,)
-        if (isSet(indicesOrFromIndex))
-            return this._sliceBySet(indicesOrFromIndex,)
-        if (isCollectionHolder(indicesOrFromIndex))
-            return this._sliceByCollectionHolder(indicesOrFromIndex,)
-        if (isMinimalistCollectionHolder(indicesOrFromIndex))
-            return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
-        if (isCollectionIterator(indicesOrFromIndex))
-            return this._sliceByCollectionIterator(indicesOrFromIndex,)
-        if (isArrayByStructure<number>(indicesOrFromIndex,))
-            return this._sliceByArray(indicesOrFromIndex,)
-        if (isSetByStructure<number>(indicesOrFromIndex))
-            return this._sliceBySet(indicesOrFromIndex,)
-        if (isCollectionHolderByStructure<number>(indicesOrFromIndex))
-            return this._sliceByCollectionHolder(indicesOrFromIndex,)
-        if (isMinimalistCollectionHolderByStructure<number>(indicesOrFromIndex))
-            return this._sliceByMinimalistCollectionHolder(indicesOrFromIndex,)
-        if (isCollectionIteratorByStructure<number>(indicesOrFromIndex))
-            return this._sliceByCollectionIterator(indicesOrFromIndex,)
-        return this._sliceByIterable(indicesOrFromIndex,)
+        if (typeof indicesOrFrom == "number")
+            return this._sliceWith2Argument(indicesOrFrom, to,)
+        if (isArray(indicesOrFrom,))
+            return this._sliceByArray(indicesOrFrom,)
+        if (isSet(indicesOrFrom))
+            return this._sliceBySet(indicesOrFrom,)
+        if (isCollectionHolder(indicesOrFrom))
+            return this._sliceByCollectionHolder(indicesOrFrom,)
+        if (isMinimalistCollectionHolder(indicesOrFrom))
+            return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
+        if (isCollectionIterator(indicesOrFrom))
+            return this._sliceByCollectionIterator(indicesOrFrom,)
+        if (isArrayByStructure<number>(indicesOrFrom,))
+            return this._sliceByArray(indicesOrFrom,)
+        if (isSetByStructure<number>(indicesOrFrom))
+            return this._sliceBySet(indicesOrFrom,)
+        if (isCollectionHolderByStructure<number>(indicesOrFrom))
+            return this._sliceByCollectionHolder(indicesOrFrom,)
+        if (isMinimalistCollectionHolderByStructure<number>(indicesOrFrom))
+            return this._sliceByMinimalistCollectionHolder(indicesOrFrom,)
+        if (isCollectionIteratorByStructure<number>(indicesOrFrom))
+            return this._sliceByCollectionIterator(indicesOrFrom,)
+        return this._sliceByIterable(indicesOrFrom,)
 
         //#endregion -------------------- 2 arguments --------------------
     }
@@ -1021,19 +1021,19 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return sliceWithARangeByCollectionHolder(this,)
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(fromIndex)} */
-    protected _sliceWith1Argument(fromIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByCollectionHolder(this, fromIndex,)
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from)} */
+    protected _sliceWith1Argument(from: number,): CollectionHolder<T> {
+        return sliceWithARangeByCollectionHolder(this, from,)
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(fromIndex, toIndex)} */
-    protected _sliceWith2Argument(fromIndex: number, toIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByCollectionHolder(this, fromIndex, toIndex,)
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(from, to)} */
+    protected _sliceWith2Argument(from: number, to: number,): CollectionHolder<T> {
+        return sliceWithARangeByCollectionHolder(this, from, to,)
     }
 
-    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(null, toIndex)} */
-    protected _sliceWith2ArgumentWhere1stIsNull(fromIndex: NullOrUndefined, toIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByCollectionHolder(this, fromIndex, toIndex,)
+    /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(null, to)} */
+    protected _sliceWith2ArgumentWhere1stIsNull(from: NullOrUndefined, to: number,): CollectionHolder<T> {
+        return sliceWithARangeByCollectionHolder(this, from, to,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices)} */

@@ -2267,46 +2267,46 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder}
-     * from the {@link fromIndex starting} to the {@link toIndex ending} index
+     * from the {@link from starting} to the {@link to ending} index
      * in the current {@link CollectionHolder collection}.
      *
-     * If the {@link fromIndex} is 0 and the {@link toIndex}
+     * If {@link from} is 0 and {@link to}
      * is the <code>{@link CollectionHolder.size size} - 1</code>,
      * then the current {@link CollectionHolder collection} is returned.
      *
-     * @param fromIndex The starting index
-     * @param toIndex   The ending index
-     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @param from The inclusive starting index
+     * @param to   The inclusive ending index
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException {@link to} is before the {@link from} after the calculation
      * @see ReadonlyArray.slice
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
      */
-    slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice (from, to) --------------------
 
     /**
-     * Create a new {@link CollectionHolder} from the {@link indicesOrFromIndex indices}
-     * or from the {@link indicesOrFromIndex starting} to the {@link toIndex ending} index
+     * Create a new {@link CollectionHolder} from the {@link indicesOrFrom indices}
+     * or from the {@link indicesOrFrom starting} to {@link to ending} index
      * in the current {@link CollectionHolder collection}.
      *
-     * If the {@link indicesOrFromIndex} is 0 and the {@link toIndex}
+     * If {@link indicesOrFrom from} is 0 and {@link to}
      * is the <code>{@link CollectionHolder.size size} - 1</code>,
      * then the current {@link CollectionHolder collection} is returned.
      *
-     * @param indicesOrFromIndex The given indices (or starting index)
-     * @param toIndex            The ending index
-     * @throws IndexOutOfBoundsException  The {@link indicesOrFromIndex} or {@link toIndex} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws IndexOutOfBoundsException  An indice is not in the current {@link CollectionHolder collection}
-     * @throws ForbiddenIndexException    The {@link indicesOrFromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link indicesOrFromIndex} after the calculation
+     * @param indicesOrFrom The given indices (or inclusive starting index)
+     * @param to            The inclusive ending index
+     * @throws IndexOutOfBoundsException  {@link indicesOrFrom from} or {@link to} are not within the {@link collection} {@link MinimalistCollectionHolder.size size}
+     * @throws IndexOutOfBoundsException  An indice is not in the {@link collection}
+     * @throws ForbiddenIndexException    {@link indicesOrFrom from} or {@link to} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException {@link to} is before {@link indicesOrFrom from} after the calculation
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(fromIndex, toIndex)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
      * @typescriptDefinition
      */
-    slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
+    slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice --------------------
 

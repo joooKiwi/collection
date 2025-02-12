@@ -27,52 +27,60 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
 
 /**
  * Create a new {@link CollectionHolder}
- * from the {@link fromIndex starting} to the {@link toIndex ending} index
- * in the {@link collection}
+ * from the {@link from starting} to the {@link to ending} index
+ * in the {@link collection}.
+ *
+ * If {@link from} is 0 and {@link to}
+ * is the `size - 1`,
+ * then the {@link collection} is returned.
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param fromIndex The inclusive starting index
- * @param toIndex   The inclusive ending index
+ * @param from       The inclusive starting index
+ * @param to         The inclusive ending index
  * @see ReadonlyArray.slice
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithARange<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
+export function sliceWithARange<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
-        return sliceWithARangeByCollectionHolder(collection, fromIndex, toIndex,)
+        return sliceWithARangeByCollectionHolder(collection, from, to,)
     if (isArray(collection,))
-        return sliceWithARangeByArray(collection, fromIndex, toIndex,)
+        return sliceWithARangeByArray(collection, from, to,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return sliceWithARangeByCollectionHolder(collection, fromIndex, toIndex,)
+        return sliceWithARangeByCollectionHolder(collection, from, to,)
     if (isArrayByStructure<T>(collection,))
-        return sliceWithARangeByArray(collection, fromIndex, toIndex,)
-    return sliceWithARangeByMinimalistCollectionHolder(collection, fromIndex, toIndex,)
+        return sliceWithARangeByArray(collection, from, to,)
+    return sliceWithARangeByMinimalistCollectionHolder(collection, from, to,)
 }
 
 
 /**
  * Create a new {@link CollectionHolder}
- * from the {@link fromIndex starting} to the {@link toIndex ending} index
- * in the {@link collection}
+ * from the {@link from starting} to the {@link to ending} index
+ * in the {@link collection}.
+ *
+ * If {@link from} is 0 and {@link to}
+ * is the <code>{@link MinimalistCollectionHolder.size size} - 1</code>,
+ * then the {@link collection} is returned.
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param fromIndex The inclusive starting index
- * @param toIndex   The inclusive ending index
+ * @param from       The inclusive starting index
+ * @param to         The inclusive ending index
  * @see ReadonlyArray.slice
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
+export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
@@ -80,60 +88,68 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    const startingIndex = __startingIndex(fromIndex, size,)
-    const endingIndex = __endingIndex(toIndex, size,)
+    const startingIndex = __startingIndex(from, size,)
+    const endingIndex = __endingIndex(to, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}”${to == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${from}”${from == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, from, to,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
 }
 
 /**
  * Create a new {@link CollectionHolder}
- * from the {@link fromIndex starting} to the {@link toIndex ending} index
- * in the {@link collection}
+ * from the {@link from starting} to the {@link to ending} index
+ * in the {@link collection}.
+ *
+ * If {@link from} is 0 and {@link to}
+ * is the <code>{@link CollectionHolder.size size} - 1</code>,
+ * then the {@link collection} is returned.
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param fromIndex The inclusive starting index
- * @param toIndex   The inclusive ending index
+ * @param from       The inclusive starting index
+ * @param to         The inclusive ending index
  * @see ReadonlyArray.slice
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before the {@link from} after the calculation
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
+export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const size = collection.size
-    const startingIndex = __startingIndex(fromIndex, size,)
-    const endingIndex = __endingIndex(toIndex, size,)
+    const startingIndex = __startingIndex(from, size,)
+    const endingIndex = __endingIndex(to, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}”${to == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${from}”${from == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, from, to,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
 }
 
 /**
  * Create a new {@link CollectionHolder}
- * from the {@link fromIndex starting} to the {@link toIndex ending} index
- * in the {@link collection}
+ * from the {@link from starting} to the {@link to ending} index
+ * in the {@link collection}.
+ *
+ * If {@link from} is 0 and {@link to}
+ * is the <code>{@link ReadonlyArray.length size} - 1</code>,
+ * then the {@link collection} is returned.
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @param fromIndex The inclusive starting index
- * @param toIndex   The inclusive ending index
+ * @param from       The inclusive starting index
+ * @param to         The inclusive ending index
  * @see ReadonlyArray.slice
- * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly T[]>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): CollectionHolder<T> {
+export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
@@ -141,10 +157,10 @@ export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly 
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
-    const startingIndex = __startingIndex(fromIndex, size,)
-    const endingIndex = __endingIndex(toIndex, size,)
+    const startingIndex = __startingIndex(from, size,)
+    const endingIndex = __endingIndex(to, size,)
     if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${toIndex}”${toIndex == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${fromIndex}”${fromIndex == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, fromIndex, toIndex,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}”${to == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${from}”${from == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, from, to,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRangeByArray(collection, startingIndex, endingIndex,),)
 }
 
