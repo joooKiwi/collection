@@ -481,16 +481,16 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- Index of first --------------------
 
-    public indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfFirstByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    public indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfFirstByCollectionHolder(this, predicate, from, to,)
     }
 
-    public findFirstIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return this.indexOfFirst(predicate, fromIndex, toIndex,)
+    public findFirstIndex(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return this.indexOfFirst(predicate, from, to,)
     }
 
-    public findIndex(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return this.indexOfFirst(predicate, fromIndex, toIndex,)
+    public findIndex(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return this.indexOfFirst(predicate, from, to,)
     }
 
     //#endregion -------------------- Index of first --------------------
