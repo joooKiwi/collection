@@ -511,16 +511,16 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Index of first or null --------------------
     //#region -------------------- Index of first indexed --------------------
 
-    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfFirstIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    public indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfFirstIndexedByCollectionHolder(this, predicate, from, to,)
     }
 
-    public findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return this.indexOfFirstIndexed(predicate, fromIndex, toIndex,)
+    public findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return this.indexOfFirstIndexed(predicate, from, to,)
     }
 
-    public findIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return this.indexOfFirstIndexed(predicate, fromIndex, toIndex,)
+    public findIndexIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return this.indexOfFirstIndexed(predicate, from, to,)
     }
 
     //#endregion -------------------- Index of first indexed --------------------
