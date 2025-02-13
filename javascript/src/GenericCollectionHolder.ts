@@ -1014,8 +1014,8 @@ export class GenericCollectionHolder<const T = unknown,
         return firstIndexOfByArray(this._array, element, from, to,)
     }
 
-    public override firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return firstIndexOfOrNullByArray(this._array, element, fromIndex, toIndex,)
+    public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return firstIndexOfOrNullByArray(this._array, element, from, to,)
     }
 
 

@@ -26,18 +26,18 @@ import {isCollectionHolderByStructure}              from "./isCollectionHolderBy
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
+ * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (`size - 1` by default)
+ * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOfOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function firstIndexOfOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
     if (isCollectionHolder<T>(collection,))
@@ -55,18 +55,18 @@ export function firstIndexOfOrNull<const T, >(collection: Nullable<| MinimalistC
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
+ * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
+ * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOfOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function firstIndexOfOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
 
@@ -89,18 +89,18 @@ export function firstIndexOfOrNullByMinimalistCollectionHolder<const T, >(collec
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
+ * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+ * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOfOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function firstIndexOfOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
     if (collection.isEmpty)
@@ -122,18 +122,18 @@ export function firstIndexOfOrNullByCollectionHolder<const T, >(collection: Null
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
+ * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param element    The element to find
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
+ * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOfOrNullByArray<const T, >(collection: Nullable<readonly T[]>, element: T, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function firstIndexOfOrNullByArray<const T, >(collection: Nullable<readonly T[]>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
 

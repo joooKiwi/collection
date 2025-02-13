@@ -454,12 +454,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- First index of --------------------
     //#region -------------------- First index of or null --------------------
 
-    public firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return firstIndexOfOrNullByCollectionHolder(this, element, fromIndex, toIndex,)
+    public firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return firstIndexOfOrNullByCollectionHolder(this, element, from, to,)
     }
 
-    public indexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return this.firstIndexOfOrNull(element, fromIndex, toIndex,)
+    public indexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return this.firstIndexOfOrNull(element, from, to,)
     }
 
     //#endregion -------------------- First index of or null --------------------

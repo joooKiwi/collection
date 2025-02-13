@@ -1070,31 +1070,31 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
      * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
+     * between the {@link from starting} and the {@link to ending} index
      *
      * @param element   The element to find
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
+     * @param from      The inclusive starting index (`0` by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
      * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
+     * between the {@link from starting} and the {@link to ending} index
      *
      * @param element   The element to find
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
+     * @param from      The inclusive starting index (`0` by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
      * @alias CollectionHolder.firstIndexOfOrNull
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    indexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- First index of or null --------------------
 
