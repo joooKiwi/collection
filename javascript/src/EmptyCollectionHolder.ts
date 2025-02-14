@@ -765,14 +765,14 @@ export class EmptyCollectionHolder
     //#endregion -------------------- To string --------------------
     //#region -------------------- Join to string --------------------
 
-    public join(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: readonly unknown[]): string
-    public join(separator?: unknown, prefix?: NullableString, postfix?: NullableString,) {
-        return this.joinToString(separator, prefix, postfix,)
-    }
-
     public joinToString(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: readonly unknown[]): string
     public joinToString(_separator?: unknown, prefix?: NullableString, postfix?: NullableString,) {
         return prefixAndPostfixOnly(prefix, postfix,)
+    }
+
+    public join(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: readonly unknown[]): string
+    public join(separator?: unknown, prefix?: NullableString, postfix?: NullableString,) {
+        return this.joinToString(separator, prefix, postfix,)
     }
 
     //#endregion -------------------- Join to string --------------------

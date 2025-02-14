@@ -1408,12 +1408,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- To string --------------------
     //#region -------------------- Join to string --------------------
 
-    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
-        return this.joinToString(separator, prefix, postfix, limit, truncated, transform,)
-    }
-
     public joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return joinToStringByCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
+    }
+
+    public join(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
+        return this.joinToString(separator, prefix, postfix, limit, truncated, transform,)
     }
 
     //#endregion -------------------- Join to string --------------------
