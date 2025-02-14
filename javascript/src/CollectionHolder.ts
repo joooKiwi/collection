@@ -1102,25 +1102,61 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>last</b> occurrence equivalent to the value received
-     * from a range (if provided)
      *
-     * @param element   The element to find
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @return {number} The index associated to the {@link element} within the range
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link collectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException  The {@link fromIndex} or {@link toIndex} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
-     * @throws ForbiddenIndexException    The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException The {@link toIndex} is before the {@link fromIndex} after the calculation
+     * @param element The element to find
+     * @return {number} The index associated to the {@link element} found
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, fromIndex?, toIndex?)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, from?, to?)
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+    lastIndexOf(element: T,): number
+
+    /**
+     * Get the <b>last</b> occurrence equivalent to the value received
+     * between the {@link from starting} and the end of the current {@link CollectionHolder collection}
+     *
+     * @param element The element to find
+     * @param from    The inclusive starting index (`0` by default)
+     * @return {number} The index associated to the {@link element} found
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+     * @throws IndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.lastIndexOf
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, from?, to?)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    lastIndexOf(element: T, from: NullableNumber,): number
+
+    /**
+     * Get the <b>last</b> occurrence equivalent to the value received
+     * between the {@link from starting} and the {@link to ending} index
+     *
+     * @param element The element to find
+     * @param from    The inclusive starting index (`0` by default)
+     * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @return {number} The index associated to the {@link element} found
+     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+     * @see ReadonlyArray.lastIndexOf
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item, from?, to?)
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    lastIndexOf(element: T, from: NullableNumber, to: NullableNumber,): number
 
     //#endregion -------------------- Last index of --------------------
     //#region -------------------- Last index of or null --------------------

@@ -466,8 +466,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- Last index of --------------------
 
-    public lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return lastIndexOfByCollectionHolder(this, element, fromIndex, toIndex,)
+    public lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number {
+        return lastIndexOfByCollectionHolder(this, element, from, to,)
     }
 
     //#endregion -------------------- Last index of --------------------
