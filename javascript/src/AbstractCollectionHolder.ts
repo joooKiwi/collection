@@ -473,8 +473,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Last index of --------------------
     //#region -------------------- Last index of or null --------------------
 
-    public lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return lastIndexOfOrNullByCollectionHolder(this, element, fromIndex, toIndex,)
+    public lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return lastIndexOfOrNullByCollectionHolder(this, element, from, to,)
     }
 
     //#endregion -------------------- Last index of or null --------------------

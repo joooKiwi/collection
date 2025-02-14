@@ -1164,12 +1164,12 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the <b>last</b> occurrence equivalent to the value received
      * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
+     * between the {@link from starting} and the {@link to ending} index
      *
      * @param element   The element to find
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+     * @param fromIndex The inclusive starting index (`0` by default)
+     * @param toIndex   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */

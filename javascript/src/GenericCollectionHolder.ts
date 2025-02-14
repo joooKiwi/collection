@@ -1023,8 +1023,8 @@ export class GenericCollectionHolder<const T = unknown,
         return lastIndexOfByArray(this._array, element, from, to,)
     }
 
-    public override lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return lastIndexOfOrNullByArray(this._array, element, fromIndex, toIndex,)
+    public override lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return lastIndexOfOrNullByArray(this._array, element, from, to,)
     }
 
 
