@@ -907,6 +907,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
 
     //#region -------------------- Slice --------------------
 
+    public slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
     public slice(indices: readonly number[],): CollectionHolder<T>
     public slice(indices: ReadonlySet<number>,): CollectionHolder<T>
     public slice(indices: CollectionHolder<number>,): CollectionHolder<T>
@@ -914,9 +915,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public slice(indices: Iterable<number>,): CollectionHolder<T>
     public slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
     public slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T> {
+    public slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
         //#region -------------------- 0 arguments --------------------
 
         if (arguments.length === 0)

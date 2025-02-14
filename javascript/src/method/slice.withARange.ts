@@ -27,16 +27,37 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
 
 /**
  * Create a new {@link CollectionHolder}
- * from the {@link from starting} to the {@link to ending} index
- * in the {@link collection}.
- *
- * If {@link from} is 0 and {@link to}
- * is the `size - 1`,
- * then the {@link collection} is returned.
+ * with all the values in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param from       The inclusive starting index
- * @param to         The inclusive ending index
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ */
+export function sliceWithARange<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link from starting} to the {@link to ending} index in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param from       The inclusive starting index (`0` by default)
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ */
+export function sliceWithARange<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, from: NullableNumber,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link from starting} to the {@link to ending} index
+ * in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (`size - 1` by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
@@ -45,7 +66,8 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithARange<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,): CollectionHolder<T> {
+export function sliceWithARange<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
+export function sliceWithARange<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
@@ -62,16 +84,37 @@ export function sliceWithARange<const T, >(collection: Nullable<| MinimalistColl
 
 /**
  * Create a new {@link CollectionHolder}
- * from the {@link from starting} to the {@link to ending} index
- * in the {@link collection}.
- *
- * If {@link from} is 0 and {@link to}
- * is the <code>{@link MinimalistCollectionHolder.size size} - 1</code>,
- * then the {@link collection} is returned.
+ * with all the values in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param from       The inclusive starting index
- * @param to         The inclusive ending index
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ */
+export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link from starting} to the {@link to ending} index in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param from       The inclusive starting index (`0` by default)
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @throws IndexOutOfBoundsException  {@link from} is not within a valid range
+ * @throws ForbiddenIndexException    {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ */
+export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link from starting} to the {@link to ending} index
+ * in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
@@ -80,7 +123,8 @@ export function sliceWithARange<const T, >(collection: Nullable<| MinimalistColl
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,): CollectionHolder<T> {
+export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
+export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
@@ -97,16 +141,37 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
 
 /**
  * Create a new {@link CollectionHolder}
- * from the {@link from starting} to the {@link to ending} index
- * in the {@link collection}.
- *
- * If {@link from} is 0 and {@link to}
- * is the <code>{@link CollectionHolder.size size} - 1</code>,
- * then the {@link collection} is returned.
+ * with all the values in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param from       The inclusive starting index
- * @param to         The inclusive ending index
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ */
+export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link from starting} to the {@link to ending} index in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param from       The inclusive starting index (`0` by default)
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ */
+export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link from starting} to the {@link to ending} index
+ * in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
@@ -115,7 +180,8 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,): CollectionHolder<T> {
+export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
+export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (collection.isEmpty)
@@ -131,16 +197,36 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
 
 /**
  * Create a new {@link CollectionHolder}
- * from the {@link from starting} to the {@link to ending} index
- * in the {@link collection}.
- *
- * If {@link from} is 0 and {@link to}
- * is the <code>{@link ReadonlyArray.length size} - 1</code>,
- * then the {@link collection} is returned.
+ * with all the values in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @param from       The inclusive starting index
- * @param to         The inclusive ending index
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ */
+export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly T[]>,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link from starting} to the {@link to ending} index in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param from       The inclusive starting index (`0` by default)
+ * @see ReadonlyArray.slice
+ * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @canReceiveNegativeValue
+ * @extensionFunction
+ */
+export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber,): CollectionHolder<T>
+/**
+ * Create a new {@link CollectionHolder}
+ * from the {@link from starting} to the {@link to ending} index in the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
@@ -149,7 +235,8 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,): CollectionHolder<T> {
+export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
+export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 

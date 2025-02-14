@@ -2653,6 +2653,44 @@ export interface CollectionHolder<out T = unknown, >
 
     //#region -------------------- Slice --------------------
 
+    //#region -------------------- Slice (from, to) --------------------
+
+    /**
+     * Create a new {@link CollectionHolder}
+     * with all the values from the current {@link CollectionHolder collection}
+     *
+     * @see ReadonlyArray.slice
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+     */
+    slice(): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder}
+     * from the {@link from starting index} to the end of the current {@link CollectionHolder collection}
+     *
+     * @param from The inclusive starting index (`0` by default)
+     * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.slice
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+     */
+    slice(from: NullableNumber,): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder}
+     * from the {@link from starting} to the {@link to ending} index in the current {@link CollectionHolder collection}
+     *
+     * @param from The inclusive starting index (`0` by default)
+     * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException {@link to} is before the {@link from} after the calculation
+     * @see ReadonlyArray.slice
+     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
+     */
+    slice(from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
+
+    //#endregion -------------------- Slice (from, to) --------------------
     //#region -------------------- Slice (indice) --------------------
 
     /**
@@ -2742,37 +2780,11 @@ export interface CollectionHolder<out T = unknown, >
     slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
 
     //#endregion -------------------- Slice (indice) --------------------
-    //#region -------------------- Slice (from, to) --------------------
-
-    /**
-     * Create a new {@link CollectionHolder}
-     * from the {@link from starting} to the {@link to ending} index
-     * in the current {@link CollectionHolder collection}.
-     *
-     * If {@link from} is 0 and {@link to}
-     * is the <code>{@link CollectionHolder.size size} - 1</code>,
-     * then the current {@link CollectionHolder collection} is returned.
-     *
-     * @param from The inclusive starting index
-     * @param to   The inclusive ending index
-     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
-     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException {@link to} is before the {@link from} after the calculation
-     * @see ReadonlyArray.slice
-     * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
-     */
-    slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-
-    //#endregion -------------------- Slice (from, to) --------------------
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indicesOrFrom indices}
      * or from the {@link indicesOrFrom starting} to {@link to ending} index
-     * in the current {@link CollectionHolder collection}.
-     *
-     * If {@link indicesOrFrom from} is 0 and {@link to}
-     * is the <code>{@link CollectionHolder.size size} - 1</code>,
-     * then the current {@link CollectionHolder collection} is returned.
+     * in the current {@link CollectionHolder collection}
      *
      * @param indicesOrFrom The given indices (or inclusive starting index)
      * @param to            The inclusive ending index
