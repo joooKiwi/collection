@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {NullableNumber} from "@joookiwi/type"
+import type {NullableNumber, NullOrNumber} from "@joookiwi/type"
 
 import {ForbiddenIndexException}   from "../exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException} from "../exception/IndexOutOfBoundsException"
@@ -24,7 +24,7 @@ import {IndexOutOfBoundsException} from "../exception/IndexOutOfBoundsException"
  * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @internal
  */
-export function __startingIndex(value: NullableNumber, size: number,) {
+export function __startingIndex(value: NullableNumber, size: number,): number {
     if (value == null)
         return 0
 
@@ -56,7 +56,7 @@ export function __startingIndex(value: NullableNumber, size: number,) {
  * @param size  The size (either in a {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})
  * @internal
  */
-export function __startingIndexOrNull(value: NullableNumber, size: number,) {
+export function __startingIndexOrNull(value: NullableNumber, size: number,): NullOrNumber {
     if (value == null)
         return 0
 
@@ -122,7 +122,7 @@ export function __endingIndex(value: NullableNumber, size: number,) {
  * @param size  The size (either in an {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})
  * @internal
  */
-export function __endingIndexOrNull(value: NullableNumber, size: number,) {
+export function __endingIndexOrNull(value: NullableNumber, size: number,): NullOrNumber {
     if (value == null)
         return size - 1
 
@@ -155,7 +155,7 @@ export function __endingIndexOrNull(value: NullableNumber, size: number,) {
  * @throws ForbiddenIndexException The {@link value} is {@link Number.NaN NaN}
  * @internal
  */
-export function __lastIndex(value: number, size: number,) {
+export function __lastIndex(value: number, size: number,): number {
     if (Number.isNaN(value,))
         throw new ForbiddenIndexException("Forbidden index. The value cannot be determined with NaN.", value,)
     if (value == Number.NEGATIVE_INFINITY)
