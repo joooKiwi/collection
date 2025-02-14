@@ -354,7 +354,7 @@ export class EmptyCollectionHolder
     /** @return {true} */
     public every<const S extends never, >(..._: readonly unknown[]): this is CollectionHolder<S>
     public every() {
-        return true
+        return this.all()
     }
 
     //#endregion -------------------- All --------------------
@@ -364,7 +364,7 @@ export class EmptyCollectionHolder
     public any() { return false }
 
     public some(..._: readonly unknown[]): false
-    public some() { return false }
+    public some() { return this.any() }
 
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
@@ -671,10 +671,10 @@ export class EmptyCollectionHolder
     public toReverse() { return this }
 
     public toReversed(..._: readonly unknown[]): this
-    public toReversed() { return this }
+    public toReversed() { return this.toReverse() }
 
     public reversed(..._: readonly unknown[]): this
-    public reversed() { return this }
+    public reversed() { return this.toReverse() }
 
     //#endregion -------------------- to reverse --------------------
 
