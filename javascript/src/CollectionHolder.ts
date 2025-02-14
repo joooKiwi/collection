@@ -1931,6 +1931,11 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
+     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
+     * @see ReadonlyArray.every
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java allMatch(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
      * @alias CollectionHolder.all
      * @typescriptDefinition
      */
@@ -1941,6 +1946,11 @@ export interface CollectionHolder<out T = unknown, >
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
+     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
+     * @see ReadonlyArray.every
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java allMatch(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
      * @alias CollectionHolder.all
      */
     every(predicate: BooleanCallback<T>,): boolean
@@ -1951,7 +1961,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Tell if the current {@link CollectionHolder collection} {@link CollectionHolder.isNotEmpty is not empty}
      *
-     * @return {boolean} {@link isNotEmpty}
+     * @return {boolean} {@link CollectionHolder.isNotEmpty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
@@ -1976,7 +1986,10 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Tell if the current {@link CollectionHolder collection} {@link CollectionHolder.isNotEmpty is not empty}
      *
-     * @return {boolean} {@link isNotEmpty}
+     * @return {boolean} {@link CollectionHolder.isNotEmpty}
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
      * @alias CollectionHolder.isNotEmpty
      */
     some(): this["isNotEmpty"]
@@ -1987,6 +2000,10 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The condition to check on each value
      * @return {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
+     * @see ReadonlyArray.some
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java anyMatch(predicate)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
      * @alias CollectionHolder.any
      */
     some(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -1997,6 +2014,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Tell if the current {@link CollectionHolder collection} {@link isEmpty is empty}
      *
+     * @return {boolean} {@link CollectionHolder.isEmpty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
      * @alias CollectionHolder.isEmpty
      */
@@ -2078,9 +2096,7 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
-     * @see includes
-     * @see contains
+     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder collection}
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -2095,7 +2111,14 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder collection}
+     * @see ReadonlyArray.includes
+     * @see ReadonlySet.has
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
      * @alias CollectionHolder.has
      */
     includes(value: T,): boolean
@@ -2104,7 +2127,14 @@ export interface CollectionHolder<out T = unknown, >
      * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder collection}
+     * @see ReadonlyArray.includes
+     * @see ReadonlySet.has
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
      * @alias CollectionHolder.has
      */
     contains(value: T,): boolean
@@ -2476,7 +2506,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the current collection
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
-     * @see filterNotNull
+     * @see CollectionHolder.filterNotNull
      * @return {this} The current {@link SortableCollectionHolder collection}
      */
     requireNoNulls(): CollectionHolder<NonNullable<T>>

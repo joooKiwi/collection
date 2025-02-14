@@ -27,7 +27,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
+ * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -56,7 +56,7 @@ export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
+ * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -80,7 +80,7 @@ export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
+ * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -102,7 +102,7 @@ export function hasByCollectionHolder<const T, >(collection: Nullable<Collection
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
+ * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
