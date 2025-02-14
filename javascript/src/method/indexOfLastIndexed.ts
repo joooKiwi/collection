@@ -30,26 +30,63 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
 
 /**
  * Get the last index matching the {@link predicate}
- * from a range (if provided)
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {number} The index matching the {@link predicate} within the range
+ * @return {number} The index matching the {@link predicate} found
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
  * @throws IndexOutOfBoundsException No index could be found
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
+export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting} and the {@link to ending} index
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (`0` by default)
+ * @return {number} The index matching the {@link predicate} found
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting} and the {@link to ending} index
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (`size - 1` by default)
+ * @return {number} The index matching the {@link predicate} found
+ * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws IndexOutOfBoundsException  No index could be found
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
     if (isCollectionHolder<T>(collection,))
@@ -66,26 +103,63 @@ export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistC
 
 /**
  * Get the last index matching the {@link predicate}
- * from a range (if provided)
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {number} The index matching the {@link predicate} within the range
+ * @return {number} The index matching the {@link predicate} found
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
  * @throws IndexOutOfBoundsException No index could be found
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
+export function indexOfLastIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting index} and the end of the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (`0` by default)
+ * @return {number} The index matching the {@link predicate} found
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting} and the {@link to ending} index
+ *
+ * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
+ * @return {number} The index matching the {@link predicate} found
+ * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws IndexOutOfBoundsException  No index could be found
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfLastIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
 
@@ -106,26 +180,63 @@ export function indexOfLastIndexedByMinimalistCollectionHolder<const T, >(collec
 
 /**
  * Get the last index matching the {@link predicate}
- * from a range (if provided)
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {number} The index matching the {@link predicate} within the range
+ * @return {number} The index matching the {@link predicate} found
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
  * @throws IndexOutOfBoundsException No index could be found
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
+export function indexOfLastIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting index} and the end of the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (`0` by default)
+ * @return {number} The index matching the {@link predicate} found
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting} and the {@link to ending} index
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+ * @return {number} The index matching the {@link predicate} found
+ * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws IndexOutOfBoundsException  No index could be found
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfLastIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
     if (collection.isEmpty)
@@ -145,26 +256,63 @@ export function indexOfLastIndexedByCollectionHolder<const T, >(collection: Null
 
 /**
  * Get the last index matching the {@link predicate}
- * from a range (if provided)
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {number} The index matching the {@link predicate} within the range
+ * @return {number} The index matching the {@link predicate} found
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
  * @throws IndexOutOfBoundsException No index could be found
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
+export function indexOfLastIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting index} and the end of the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (`0` by default)
+ * @return {number} The index matching the {@link predicate} found
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting} and the {@link to ending} index
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
+ * @return {number} The index matching the {@link predicate} found
+ * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws IndexOutOfBoundsException  No index could be found
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfLastIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
 

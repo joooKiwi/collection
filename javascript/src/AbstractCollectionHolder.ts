@@ -564,12 +564,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Index of last or null --------------------
     //#region -------------------- Index of last indexed --------------------
 
-    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfLastIndexedByCollectionHolder(this, predicate, fromIndex, toIndex,)
+    public indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfLastIndexedByCollectionHolder(this, predicate, from, to,)
     }
 
-    public findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return this.indexOfLastIndexed(predicate, fromIndex, toIndex,)
+    public findLastIndexIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return this.indexOfLastIndexed(predicate, from, to,)
     }
 
     //#endregion -------------------- Index of last indexed --------------------
