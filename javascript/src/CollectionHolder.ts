@@ -962,10 +962,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
-     * between the {@link from starting index} to the end of the `collection`
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param element The element to find
-     * @param from    The inclusive starting index
+     * @param from    The inclusive starting index (`0` by default)
      * @return {number} The index associated to the {@link element} found
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -985,8 +985,8 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element The element to find
-     * @param from    The inclusive starting index
-     * @param to      The inclusive ending index
+     * @param from    The inclusive starting index (`0` by default)
+     * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The index associated to the {@link element} found
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
@@ -1022,10 +1022,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
-     * between the {@link from starting index} to the end of the `collection`
+     * between the {@link from starting index} and the end of the `collection`
      *
      * @param element The element to find
-     * @param from    The inclusive starting index
+     * @param from    The inclusive starting index (`0` by default)
      * @return {number} The index associated to the {@link element} found
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1046,8 +1046,8 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element The element to find
-     * @param from    The inclusive starting index
-     * @param to      The inclusive ending index
+     * @param from    The inclusive starting index (`0` by default)
+     * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The index associated to the {@link element} found
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
@@ -1075,7 +1075,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param element   The element to find
      * @param from      The inclusive starting index (`0` by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+     * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
@@ -1089,7 +1089,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param element   The element to find
      * @param from      The inclusive starting index (`0` by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {NullOrNumber} The index associated to the {@link element} within the range or <b>null</b>
+     * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
      * @alias CollectionHolder.firstIndexOfOrNull
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue

@@ -47,11 +47,11 @@ import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
 export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T,): number
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
- * between the {@link from starting index} to the end of the {@link collection}
+ * between the {@link from starting index} and the end of the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param element    The element to find
- * @param from       The inclusive starting index
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The index associated to the {@link element} found
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -73,8 +73,8 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param element    The element to find
- * @param from       The inclusive starting index
- * @param to         The inclusive ending index
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (`size - 1` by default)
  * @return {number} The index associated to the {@link element} found
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
@@ -126,11 +126,11 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
 export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T,): number
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
- * between the {@link from starting index} to the end of the {@link collection}
+ * between the {@link from starting index} and the end of the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param element    The element to find
- * @param from       The inclusive starting index
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The index associated to the {@link element} found
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -152,8 +152,8 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param element    The element to find
- * @param from       The inclusive starting index
- * @param to         The inclusive ending index
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @return {number} The index associated to the {@link element} found
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
@@ -205,11 +205,11 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
 export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T,): number
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
- * between the {@link from starting index} to the end of the {@link collection}
+ * between the {@link from starting index} and the end of the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param element    The element to find
- * @param from       The inclusive starting index
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The index associated to the {@link element} found
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -231,8 +231,8 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param element    The element to find
- * @param from       The inclusive starting index
- * @param to         The inclusive ending index
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @return {number} The index associated to the {@link element} found
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -283,11 +283,11 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
 export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]>, element: T,): number
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
- * between the {@link from starting index} to the end of the {@link collection}
+ * between the {@link from starting index} and the end of the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param element    The element to find
- * @param from       The inclusive starting index
+ * @param from       The inclusive starting index (`0` by default)
  * @return {number} The index associated to the {@link element} found
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -309,8 +309,8 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param element    The element to find
- * @param from       The inclusive starting index
- * @param to         The inclusive ending index
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @return {number} The index associated to the {@link element} found
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
