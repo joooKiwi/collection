@@ -405,6 +405,18 @@ export class EmptyCollectionHolder
     public contains() { return this.has() }
 
     //#endregion -------------------- Has --------------------
+    //#region -------------------- Has not --------------------
+
+    public hasNot(..._: readonly unknown[]): true
+    public hasNot() { return true }
+
+    public includesNot(..._: readonly unknown[]): true
+    public includesNot() { return this.hasNot() }
+
+    public containsNot(..._: readonly unknown[]): true
+    public containsNot() { return this.hasNot() }
+
+    //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
 
     public hasOne(..._: readonly unknown[]): false

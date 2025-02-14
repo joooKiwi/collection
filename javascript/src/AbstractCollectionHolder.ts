@@ -60,6 +60,7 @@ import {hasAllWithMinimalistCollectionHolderByCollectionHolder} from "./method/h
 import {hasAllWithSetByCollectionHolder}                        from "./method/hasAll.withSet"
 import {hasNullByCollectionHolder}                              from "./method/hasNull"
 import {hasDuplicateByCollectionHolder}                         from "./method/hasDuplicate"
+import {hasNotByCollectionHolder}                               from "./method/hasNot"
 import {hasOneWithArrayByCollectionHolder}                      from "./method/hasOne.withArray"
 import {hasOneWithCollectionHolderByCollectionHolder}           from "./method/hasOne.withCollectionHolder"
 import {hasOneWithCollectionIteratorByCollectionHolder}         from "./method/hasOne.withCollectionIterator"
@@ -672,6 +673,21 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Has --------------------
+    //#region -------------------- Has not --------------------
+
+    public hasNot(value: T,): boolean {
+        return hasNotByCollectionHolder(this, value,)
+    }
+
+    public includesNot(value: T,): boolean {
+        return this.hasNot(value,)
+    }
+
+    public containsNot(value: T,): boolean {
+        return this.hasNot(value,)
+    }
+
+    //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
 
     public hasOne(values: readonly T[],): boolean

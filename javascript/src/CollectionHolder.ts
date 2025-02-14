@@ -2140,6 +2140,35 @@ export interface CollectionHolder<out T = unknown, >
     contains(value: T,): boolean
 
     //#endregion -------------------- Has --------------------
+    //#region -------------------- Has not --------------------
+
+    /**
+     * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder collection}
+     *
+     * @param value The value to compare
+     * @return {boolean} <b>true</b> if the {@link value} is not present in the current {@link CollectionHolder collection}
+     */
+    hasNot(value: T,): boolean
+
+    /**
+     * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder collection}
+     *
+     * @param value The value to compare
+     * @return {boolean} <b>false</b> if the {@link value} is not present in the current {@link CollectionHolder collection}
+     * @alias CollectionHolder.hasNot
+     */
+    includesNot(value: T,): boolean
+
+    /**
+     * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder collection}
+     *
+     * @param value The value to compare
+     * @return {boolean} <b>false</b> if the {@link value} is not present in the current {@link CollectionHolder collection}
+     * @alias CollectionHolder.hasNot
+     */
+    containsNot(value: T,): boolean
+
+    //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
 
     /**
