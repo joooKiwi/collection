@@ -1527,46 +1527,46 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the first index matching the {@link predicate}
      * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
+     * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @param from      The inclusive starting index (`0` by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     /**
      * Get the first index matching the {@link predicate}
      * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
+     * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @param from      The inclusive starting index (`0` by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
      * @alias CollectionHolder.indexOfFirstIndexed
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    findFirstIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    findFirstIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     /**
      * Get the first index matching the {@link predicate}
      * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
-     * from a range (if provided)
+     * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index
-     * @param toIndex   The inclusive ending index
-     * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+     * @param from      The inclusive starting index (`0` by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
      * @alias CollectionHolder.indexOfFirstIndexed
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    findIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    findIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Index of first indexed or null --------------------
 
