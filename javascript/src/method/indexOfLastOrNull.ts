@@ -27,18 +27,18 @@ import {isCollectionHolderByStructure}              from "./isCollectionHolderBy
 /**
  * Get the last index matching the {@link predicate}
  * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
+ * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (`size - 1` by default)
+ * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function indexOfLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
     if (isCollectionHolder<T>(collection,))
@@ -56,18 +56,18 @@ export function indexOfLastOrNull<const T, >(collection: Nullable<| MinimalistCo
 /**
  * Get the last index matching the {@link predicate}
  * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
+ * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
+ * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function indexOfLastOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
 
@@ -92,18 +92,18 @@ export function indexOfLastOrNullByMinimalistCollectionHolder<const T, >(collect
 /**
  * Get the last index matching the {@link predicate}
  * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
+ * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+ * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function indexOfLastOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
     if (collection.isEmpty)
@@ -129,18 +129,18 @@ export function indexOfLastOrNullByCollectionHolder<const T, >(collection: Nulla
 /**
  * Get the last index matching the {@link predicate}
  * or <b>null</b> if it was not in the {@link collection}
- * from a range (if provided)
+ * between the {@link from starting} and the {@link to ending} index
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {NullOrNumber} The index matching the {@link predicate} within the range or <b>null</b>
+ * @param from       The inclusive starting index (`0` by default)
+ * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
+ * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): NullOrNumber {
+export function indexOfLastOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
 

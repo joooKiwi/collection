@@ -1049,8 +1049,8 @@ export class GenericCollectionHolder<const T = unknown,
         return indexOfLastByArray(this._array, predicate, from, to,)
     }
 
-    public override indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfLastOrNullByArray(this._array, predicate, fromIndex, toIndex,)
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return indexOfLastOrNullByArray(this._array, predicate, from, to,)
     }
 
     public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
