@@ -1,5 +1,7 @@
 package joookiwi.collection.java.method;
 
+import java.util.function.BooleanSupplier;
+import java.util.function.IntPredicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -10,9 +12,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
-
-import java.util.function.BooleanSupplier;
-import java.util.function.IntPredicate;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_2;
