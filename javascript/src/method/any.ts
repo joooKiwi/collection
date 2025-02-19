@@ -16,10 +16,11 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {BooleanCallback}            from "../type/callback"
 
-import {isArray}                       from "./isArray"
-import {isArrayByStructure}            from "./isArrayByStructure"
-import {isCollectionHolder}            from "./isCollectionHolder"
-import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isArray}                                                                                             from "./isArray"
+import {isArrayByStructure}                                                                                  from "./isArrayByStructure"
+import {isCollectionHolder}                                                                                  from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                                                                       from "./isCollectionHolderByStructure"
+import {isNotEmpty, isNotEmptyByArray, isNotEmptyByCollectionHolder, isNotEmptyByMinimalistCollectionHolder} from "./isNotEmpty"
 
 //#region -------------------- Facade method --------------------
 
@@ -71,17 +72,9 @@ export function any<const T, const COLLECTION extends MinimalistCollectionHolder
  */
 export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): boolean
 export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
-    if (collection == null)
-        return false
-    if (isCollectionHolder<T>(collection,))
-        return anyByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
-        return anyByArray(collection, predicate,)
-    if (isCollectionHolderByStructure<T>(collection,))
-        return anyByCollectionHolder(collection, predicate,)
-    if (isArrayByStructure<T>(collection,))
-        return anyByArray(collection, predicate,)
-    return anyByMinimalistCollectionHolder(collection, predicate,)
+    if (predicate == null)
+        return isNotEmpty(collection,)
+    return __any(collection, predicate,)
 }
 
 
@@ -111,19 +104,9 @@ export function anyByMinimalistCollectionHolder<const T, const COLLECTION extend
  */
 export function anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
 export function anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
-    if (collection == null)
-        return false
     if (predicate == null)
-        return collection.size != 0
-
-    const size = collection.size
-    if (size == 0)
-        return false
-    if (predicate.length == 1)
-        return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
-    if (predicate.length >= 2)
-        return __with2Argument(collection, predicate, size,)
-    return __with0Argument(predicate as () => boolean, size,)
+        return isNotEmptyByMinimalistCollectionHolder(collection,)
+    return __anyByMinimalistCollectionHolder(collection, predicate,)
 }
 
 /**
@@ -152,17 +135,9 @@ export function anyByCollectionHolder<const T, const COLLECTION extends Collecti
  */
 export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
 export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
-    if (collection == null)
-        return false
     if (predicate == null)
-        return collection.size != 0
-    if (collection.isEmpty)
-        return false
-    if (predicate.length == 1)
-        return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
-    if (predicate.length >= 2)
-        return __with2Argument(collection, predicate, collection.size,)
-    return __with0Argument(predicate as () => boolean, collection.size,)
+        return isNotEmptyByCollectionHolder(collection,)
+    return __anyByCollectionHolder(collection, predicate,)
 }
 
 /**
@@ -191,10 +166,57 @@ export function anyByArray<const T, const COLLECTION extends readonly T[] = read
  */
 export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): boolean
 export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+    if (predicate == null)
+        return isNotEmptyByArray(collection,)
+    return __anyByArray(collection, predicate,)
+}
+
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Core method --------------------
+
+function __any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): boolean {
     if (collection == null)
         return false
-    if (predicate == null)
-        return collection.length != 0
+    if (isCollectionHolder<T>(collection,))
+        return __anyByCollectionHolder(collection, predicate,)
+    if (isArray(collection,))
+        return __anyByArray(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __anyByCollectionHolder(collection, predicate,)
+    if (isArrayByStructure<T>(collection,))
+        return __anyByArray(collection, predicate,)
+    return __anyByMinimalistCollectionHolder(collection, predicate,)
+}
+
+function __anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
+    if (collection == null)
+        return false
+
+    const size = collection.size
+    if (size == 0)
+        return false
+    if (predicate.length == 1)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, size,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, size,)
+    return __with0Argument(predicate as () => boolean, size,)
+}
+
+function __anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
+    if (collection == null)
+        return false
+    if (collection.isEmpty)
+        return false
+    if (predicate.length == 1)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, collection.size,)
+    return __with0Argument(predicate as () => boolean, collection.size,)
+}
+
+function __anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): boolean {
+    if (collection == null)
+        return false
 
     const size = collection.length
     if (size == 0)
@@ -206,7 +228,7 @@ export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predic
     return __with0Argument(predicate as () => boolean, size,)
 }
 
-//#endregion -------------------- Facade method --------------------
+//#endregion -------------------- Core method --------------------
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument(predicate: () => boolean, size: number,) {
