@@ -41,15 +41,14 @@ import {isCollectionHolderByStructure}              from "./isCollectionHolderBy
 export function indexOfFirstIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
-    if (isCollectionHolder<T>(collection,))
-        return indexOfFirstIndexedOrNullByCollectionHolder(collection, predicate, fromIndex, toIndex,)
-    if (isArray(collection,))
-        return indexOfFirstIndexedOrNullByArray(collection, predicate, fromIndex, toIndex,)
-    if (isCollectionHolderByStructure<T>(collection,))
-        return indexOfFirstIndexedOrNullByCollectionHolder(collection, predicate, fromIndex, toIndex,)
-    if (isArrayByStructure<T>(collection,))
-        return indexOfFirstIndexedOrNullByArray(collection, predicate, fromIndex, toIndex,)
-    return indexOfFirstIndexedOrNullByMinimalistCollectionHolder(collection, predicate, fromIndex, toIndex,)
+    if (to == null)
+        if (from == null)
+            return __core0(collection, predicate,)
+        else
+            return __core1(collection, predicate, from,)
+    if (from == null)
+        return __coreWithNoFrom(collection, predicate, to,)
+    return __core2(collection, predicate, from, to,)
 }
 
 
@@ -70,25 +69,14 @@ export function indexOfFirstIndexedOrNull<const T, >(collection: Nullable<| Mini
 export function indexOfFirstIndexedOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
-
-    const size = collection.size
-    if (size === 0)
-        return null
-
-    const startingIndex = __startingIndexOrNull(fromIndex, size,)
-    if (startingIndex == null)
-        return null
-
-    const endingIndex = __endingIndexOrNull(toIndex, size,)
-    if (endingIndex == null)
-        return null
-    if (endingIndex < startingIndex)
-        return null
-    if (predicate.length == 1)
-        return __with1Argument(predicate as (index: number,) => boolean, startingIndex, endingIndex,)
-    if (predicate.length >= 2)
-        return __with2Argument(collection, predicate, startingIndex, endingIndex,)
-    return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
+    if (to == null)
+        if (from == null)
+            return __core0ByMinimalistCollectionHolder(collection, predicate,)
+        else
+            return __core1ByMinimalistCollectionHolder(collection, predicate, from,)
+    if (from == null)
+        return __coreWithNoFromByMinimalistCollectionHolder(collection, predicate, to,)
+    return __core2ByMinimalistCollectionHolder(collection, predicate, from, to,)
 }
 
 /**
@@ -108,24 +96,14 @@ export function indexOfFirstIndexedOrNullByMinimalistCollectionHolder<const T, >
 export function indexOfFirstIndexedOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
-    if (collection.isEmpty)
-        return null
-
-    const size = collection.size
-    const startingIndex = __startingIndexOrNull(fromIndex, size,)
-    if (startingIndex == null)
-        return null
-
-    const endingIndex = __endingIndexOrNull(toIndex, size,)
-    if (endingIndex == null)
-        return null
-    if (endingIndex < startingIndex)
-        return null
-    if (predicate.length == 1)
-        return __with1Argument(predicate as (index: number,) => boolean, startingIndex, endingIndex,)
-    if (predicate.length >= 2)
-        return __with2Argument(collection, predicate, startingIndex, endingIndex,)
-    return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
+    if (to == null)
+        if (from == null)
+            return __core0ByCollectionHolder(collection, predicate,)
+        else
+            return __core1ByCollectionHolder(collection, predicate, from,)
+    if (from == null)
+        return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
+    return __core2ByCollectionHolder(collection, predicate, from, to,)
 }
 
 /**
@@ -145,28 +123,265 @@ export function indexOfFirstIndexedOrNullByCollectionHolder<const T, >(collectio
 export function indexOfFirstIndexedOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
+    if (to == null)
+        if (from == null)
+            return __core0ByArray(collection, predicate,)
+        else
+            return __core1ByArray(collection, predicate, from,)
+    if (from == null)
+        return __coreWithNoFromByArray(collection, predicate, to,)
+    return __core2ByArray(collection, predicate, from, to,)
+}
 
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Core methods --------------------
+
+//#region -------------------- predicate --------------------
+
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>,) {
+    if (isCollectionHolder<T>(collection,))
+        return __core0ByCollectionHolder(collection, predicate,)
+    if (isArray(collection,))
+        return __core0ByArray(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core0ByCollectionHolder(collection, predicate,)
+    if (isArrayByStructure<T>(collection,))
+        return __core0ByArray(collection, predicate,)
+    return __core0ByMinimalistCollectionHolder(collection, predicate,)
+}
+
+function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>,) {
+    const size = collection.size
+    if (size === 0)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, 0, size - 1,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, 0, size - 1,)
+    return __with0Argument(predicate as () => boolean, 0, size - 1,)
+}
+
+function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>,) {
+    if (collection.isEmpty)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, 0, collection.size - 1,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, 0, collection.size - 1,)
+    return __with0Argument(predicate as () => boolean, 0, collection.size - 1,)
+}
+
+function __core0ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>,): NullOrNumber {
+    const size = collection.length
+    if (size === 0)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, 0, size - 1,)
+    if (predicate.length >= 2)
+        return __with2ArgumentByArray(collection, predicate, 0, size - 1,)
+    return __with0Argument(predicate as () => boolean, 0, size - 1,)
+}
+
+//#endregion -------------------- predicate --------------------
+//#region -------------------- predicate, from --------------------
+
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number,) {
+    if (isCollectionHolder<T>(collection,))
+        return __core1ByCollectionHolder(collection, predicate, from,)
+    if (isArray(collection,))
+        return __core1ByArray(collection, predicate, from,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core1ByCollectionHolder(collection, predicate, from,)
+    if (isArrayByStructure<T>(collection,))
+        return __core1ByArray(collection, predicate, from,)
+    return __core1ByMinimalistCollectionHolder(collection, predicate, from,)
+}
+
+function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number,) {
+    const size = collection.size
+    if (size === 0)
+        return null
+
+    const startingIndex = __startingIndexOrNull(from, size,)
+    if (startingIndex == null)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, startingIndex, size - 1,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, startingIndex, size - 1,)
+    return __with0Argument(predicate as () => boolean, startingIndex, size - 1,)
+}
+
+function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number,) {
+    if (collection.isEmpty)
+        return null
+
+    const size = collection.size
+    const startingIndex = __startingIndexOrNull(from, size,)
+    if (startingIndex == null)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, startingIndex, size - 1,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, startingIndex, size - 1,)
+    return __with0Argument(predicate as () => boolean, startingIndex, size - 1,)
+}
+
+function __core1ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, from: number,) {
     const size = collection.length
     if (size === 0)
         return null
 
-    const startingIndex = __startingIndexOrNull(fromIndex, size,)
+    const startingIndex = __startingIndexOrNull(from, size,)
+    if (startingIndex == null)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, startingIndex, size - 1,)
+    if (predicate.length >= 2)
+        return __with2ArgumentByArray(collection, predicate, startingIndex, size - 1,)
+    return __with0Argument(predicate as () => boolean, startingIndex, size - 1,)
+}
+
+//#endregion -------------------- predicate, from --------------------
+//#region -------------------- predicate, from, to --------------------
+
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
+    if (isCollectionHolder<T>(collection,))
+        return __core2ByCollectionHolder(collection, predicate, from, to,)
+    if (isArray(collection,))
+        return __core2ByArray(collection, predicate, from, to,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core2ByCollectionHolder(collection, predicate, from, to,)
+    if (isArrayByStructure<T>(collection,))
+        return __core2ByArray(collection, predicate, from, to,)
+    return __core2ByMinimalistCollectionHolder(collection, predicate, from, to,)
+}
+
+function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
+    const size = collection.size
+    if (size === 0)
+        return null
+
+    const startingIndex = __startingIndexOrNull(from, size,)
     if (startingIndex == null)
         return null
 
-    const endingIndex = __endingIndexOrNull(toIndex, size,)
+    const endingIndex = __endingIndexOrNull(to, size,)
     if (endingIndex == null)
         return null
     if (endingIndex < startingIndex)
         return null
     if (predicate.length == 1)
-        return __with1Argument(predicate as (index: number,) => boolean, startingIndex, endingIndex,)
+        return __with1Argument(predicate as (value: number,) => boolean, startingIndex, endingIndex,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, startingIndex, endingIndex,)
+    return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
+}
+
+function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
+    if (collection.isEmpty)
+        return null
+
+    const size = collection.size
+    const startingIndex = __startingIndexOrNull(from, size,)
+    if (startingIndex == null)
+        return null
+
+    const endingIndex = __endingIndexOrNull(to, size,)
+    if (endingIndex == null)
+        return null
+    if (endingIndex < startingIndex)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, startingIndex, endingIndex,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, startingIndex, endingIndex,)
+    return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
+}
+
+function __core2ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
+    const size = collection.length
+    if (size === 0)
+        return null
+
+    const startingIndex = __startingIndexOrNull(from, size,)
+    if (startingIndex == null)
+        return null
+
+    const endingIndex = __endingIndexOrNull(to, size,)
+    if (endingIndex == null)
+        return null
+    if (endingIndex < startingIndex)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
         return __with2ArgumentByArray(collection, predicate, startingIndex, endingIndex,)
     return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
 }
 
-//#endregion -------------------- Facade method --------------------
+//#endregion -------------------- predicate, from, to --------------------
+//#region -------------------- predicate, to --------------------
+
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, to: number,) {
+    if (isCollectionHolder<T>(collection,))
+        return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
+    if (isArray(collection,))
+        return __coreWithNoFromByArray(collection, predicate, to,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
+    if (isArrayByStructure<T>(collection,))
+        return __coreWithNoFromByArray(collection, predicate, to,)
+    return __coreWithNoFromByMinimalistCollectionHolder(collection, predicate, to,)
+}
+
+function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>, to: number,) {
+    const size = collection.size
+    if (size === 0)
+        return null
+
+    const endingIndex = __endingIndexOrNull(to, size,)
+    if (endingIndex == null)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, 0, endingIndex,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, 0, endingIndex,)
+    return __with0Argument(predicate as () => boolean, 0, endingIndex,)
+}
+
+function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, to: number,) {
+    if (collection.isEmpty)
+        return null
+
+    const endingIndex = __endingIndexOrNull(to, collection.size,)
+    if (endingIndex == null)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, 0, endingIndex,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, 0, endingIndex,)
+    return __with0Argument(predicate as () => boolean, 0, endingIndex,)
+}
+
+function __coreWithNoFromByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, to: number,) {
+    const size = collection.length
+    if (size === 0)
+        return null
+
+    const endingIndex = __endingIndexOrNull(to, size,)
+    if (endingIndex == null)
+        return null
+    if (predicate.length == 1)
+        return __with1Argument(predicate as (value: number,) => boolean, 0, endingIndex,)
+    if (predicate.length >= 2)
+        return __with2ArgumentByArray(collection, predicate, 0, endingIndex,)
+    return __with0Argument(predicate as () => boolean, 0, endingIndex,)
+}
+
+//#endregion -------------------- predicate, to --------------------
+
+//#endregion -------------------- Core methods --------------------
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument(predicate: () => boolean, startingIndex: number, endingIndex: number,) {
