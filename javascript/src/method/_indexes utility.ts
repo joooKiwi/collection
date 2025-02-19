@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {NullableNumber, NullOrNumber} from "@joookiwi/type"
+import type {NullOrNumber} from "@joookiwi/type"
 
 import {ForbiddenIndexException}    from "../exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}  from "../exception/IndexOutOfBoundsException"
@@ -25,10 +25,7 @@ import {InvalidIndexRangeException} from "../exception/InvalidIndexRangeExceptio
  * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @internal
  */
-export function __startingIndex(value: NullableNumber, size: number,): number {
-    if (value == null)
-        return 0
-
+export function __startingIndex(value: number, size: number,): number {
     if (Number.isNaN(value,))
         throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with NaN.", value,)
     if (value == Number.NEGATIVE_INFINITY)
@@ -57,10 +54,7 @@ export function __startingIndex(value: NullableNumber, size: number,): number {
  * @param size  The size (either in a {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})
  * @internal
  */
-export function __startingIndexOrNull(value: NullableNumber, size: number,): NullOrNumber {
-    if (value == null)
-        return 0
-
+export function __startingIndexOrNull(value: number, size: number,): NullOrNumber {
     if (Number.isNaN(value,))
         return null
     if (value == Number.NEGATIVE_INFINITY)
@@ -91,10 +85,7 @@ export function __startingIndexOrNull(value: NullableNumber, size: number,): Nul
  * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @internal
  */
-export function __endingIndex(value: NullableNumber, size: number,) {
-    if (value == null)
-        return size - 1
-
+export function __endingIndex(value: number, size: number,) {
     if (Number.isNaN(value,))
         throw new ForbiddenIndexException("Forbidden index. The ending index cannot be determined with NaN.", value,)
     if (value == Number.NEGATIVE_INFINITY)
@@ -123,10 +114,7 @@ export function __endingIndex(value: NullableNumber, size: number,) {
  * @param size  The size (either in an {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})
  * @internal
  */
-export function __endingIndexOrNull(value: NullableNumber, size: number,): NullOrNumber {
-    if (value == null)
-        return size - 1
-
+export function __endingIndexOrNull(value: number, size: number,): NullOrNumber {
     if (Number.isNaN(value,))
         return null
     if (value == Number.NEGATIVE_INFINITY)
