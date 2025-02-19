@@ -24,7 +24,7 @@ _(Maybe other languages will be integrated, only the future will tell it)_
 * [Version history](#version-history)
 
 ## Publication location
-This project has only the Javascript / Typescript version uploaded.
+This project has only the JavaScript / TypeScript version uploaded.
 
 But other languages will have different features based on how they can handle it.
 
@@ -58,7 +58,7 @@ You can contribute to my projects in 2 different ways
 
 Every method used in the project has a reference in one or another language.
 They are used differently across different languages.
-But they should result to the same thing in the end.
+But they should result in the same thing in the end.
 They are meant to give a preview, but not always the most efficient.
 
 The structure can sometime have an equivalent on other languages:
