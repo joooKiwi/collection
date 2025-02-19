@@ -2528,7 +2528,7 @@ export interface CollectionHolder<out T = unknown, >
 
     //#endregion -------------------- Has all --------------------
 
-    //#region -------------------- Require not nulls --------------------
+    //#region -------------------- Require no nulls --------------------
 
     /**
      * Require that no items are <b>null</b> or <b>undefined</b> in the current {@link CollectionHolder collection}
@@ -2540,7 +2540,7 @@ export interface CollectionHolder<out T = unknown, >
      */
     requireNoNulls(): CollectionHolder<NonNullable<T>>
 
-    //#endregion -------------------- Require not nulls --------------------
+    //#endregion -------------------- Require no nulls --------------------
 
     //#endregion -------------------- Validation methods --------------------
     //#region -------------------- Transformation methods --------------------
