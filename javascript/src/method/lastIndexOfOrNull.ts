@@ -40,15 +40,14 @@ import {isCollectionHolderByStructure}              from "./isCollectionHolderBy
 export function lastIndexOfOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
-    if (isCollectionHolder<T>(collection,))
-        return lastIndexOfOrNullByCollectionHolder(collection, element, fromIndex, toIndex,)
-    if (isArray(collection,))
-        return lastIndexOfOrNullByArray(collection, element, fromIndex, toIndex,)
-    if (isCollectionHolderByStructure<T>(collection,))
-        return lastIndexOfOrNullByCollectionHolder(collection, element, fromIndex, toIndex,)
-    if (isArrayByStructure<T>(collection,))
-        return lastIndexOfOrNullByArray(collection, element, fromIndex, toIndex,)
-    return lastIndexOfOrNullByMinimalistCollectionHolder(collection, element, fromIndex, toIndex,)
+    if (to == null)
+        if (from == null)
+            return __core0(collection, element,)
+        else
+            return __core1(collection, element, from,)
+    if (from == null)
+        return __coreWithNoFrom(collection, element, to,)
+    return __core2(collection, element, from, to,)
 }
 
 
@@ -69,21 +68,14 @@ export function lastIndexOfOrNull<const T, >(collection: Nullable<| MinimalistCo
 export function lastIndexOfOrNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
-
-    const size = collection.size
-    if (size === 0)
-        return null
-
-    const startingIndex = __startingIndexOrNull(fromIndex, size,)
-    if (startingIndex == null)
-        return null
-
-    const endingIndex = __endingIndexOrNull(toIndex, size,)
-    if (endingIndex == null)
-        return null
-    if (endingIndex < startingIndex)
-        return null
-    return __findLastInRange(collection, element, startingIndex, endingIndex,)
+    if (to == null)
+        if (from == null)
+            return __core0ByMinimalistCollectionHolder(collection, element,)
+        else
+            return __core1ByMinimalistCollectionHolder(collection, element, from,)
+    if (from == null)
+        return __coreWithNoFromByMinimalistCollectionHolder(collection, element, to,)
+    return __core2ByMinimalistCollectionHolder(collection, element, from, to,)
 }
 
 /**
@@ -103,20 +95,14 @@ export function lastIndexOfOrNullByMinimalistCollectionHolder<const T, >(collect
 export function lastIndexOfOrNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
-    if (collection.isEmpty)
-        return null
-
-    const size = collection.size
-    const startingIndex = __startingIndexOrNull(fromIndex, size,)
-    if (startingIndex == null)
-        return null
-
-    const endingIndex = __endingIndexOrNull(toIndex, size,)
-    if (endingIndex == null)
-        return null
-    if (endingIndex < startingIndex)
-        return null
-    return __findLastInRange(collection, element, startingIndex, endingIndex,)
+    if (to == null)
+        if (from == null)
+            return __core0ByCollectionHolder(collection, element,)
+        else
+            return __core1ByCollectionHolder(collection, element, from,)
+    if (from == null)
+        return __coreWithNoFromByCollectionHolder(collection, element, to,)
+    return __core2ByCollectionHolder(collection, element, from, to,)
 }
 
 /**
@@ -136,27 +122,220 @@ export function lastIndexOfOrNullByCollectionHolder<const T, >(collection: Nulla
 export function lastIndexOfOrNullByArray<const T, >(collection: Nullable<readonly T[]>, element: T, from: NullableNumber = null, to: NullableNumber = null,): NullOrNumber {
     if (collection == null)
         return null
+    if (to == null)
+        if (from == null)
+            return __core0ByArray(collection, element,)
+        else
+            return __core1ByArray(collection, element, from,)
+    if (from == null)
+        return __coreWithNoFromByArray(collection, element, to,)
+    return __core2ByArray(collection, element, from, to,)
+}
 
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Core methods --------------------
+
+//#region -------------------- element --------------------
+
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], element: T,) {
+    if (isCollectionHolder<T>(collection,))
+        return __core0ByCollectionHolder(collection, element,)
+    if (isArray(collection,))
+        return __core0ByArray(collection, element,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core0ByCollectionHolder(collection, element,)
+    if (isArrayByStructure<T>(collection,))
+        return __core0ByArray(collection, element,)
+    return __core0ByMinimalistCollectionHolder(collection, element,)
+}
+
+function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T,) {
+    const size = collection.size
+    if (size === 0)
+        return null
+    return __findInRange(collection, element, 0, size - 1,)
+}
+
+function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T,) {
+    if (collection.isEmpty)
+        return null
+    return __findInRange(collection, element, 0, collection.size - 1,)
+}
+
+function __core0ByArray<const T, >(collection: readonly T[], element: T,): NullOrNumber {
+    const size = collection.length
+    if (size === 0)
+        return null
+    return __findInRangeByArray(collection, element, 0, size - 1,)
+}
+
+//#endregion -------------------- element --------------------
+//#region -------------------- element, from --------------------
+
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], element: T, from: number,) {
+    if (isCollectionHolder<T>(collection,))
+        return __core1ByCollectionHolder(collection, element, from,)
+    if (isArray(collection,))
+        return __core1ByArray(collection, element, from,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core1ByCollectionHolder(collection, element, from,)
+    if (isArrayByStructure<T>(collection,))
+        return __core1ByArray(collection, element, from,)
+    return __core1ByMinimalistCollectionHolder(collection, element, from,)
+}
+
+function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T, from: number,) {
+    const size = collection.size
+    if (size === 0)
+        return null
+
+    const startingIndex = __startingIndexOrNull(from, size,)
+    if (startingIndex == null)
+        return null
+    return __findInRange(collection, element, startingIndex, size - 1,)
+}
+
+function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T, from: number,) {
+    if (collection.isEmpty)
+        return null
+
+    const size = collection.size
+    const startingIndex = __startingIndexOrNull(from, size,)
+    if (startingIndex == null)
+        return null
+    return __findInRange(collection, element, startingIndex, size - 1,)
+}
+
+function __core1ByArray<const T, >(collection: readonly T[], element: T, from: number,) {
     const size = collection.length
     if (size === 0)
         return null
 
-    const startingIndex = __startingIndexOrNull(fromIndex, size,)
+    const startingIndex = __startingIndexOrNull(from, size,)
+    if (startingIndex == null)
+        return null
+    return __findInRangeByArray(collection, element, startingIndex, size - 1,)
+}
+
+//#endregion -------------------- element, from --------------------
+//#region -------------------- element, from, to --------------------
+
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], element: T, from: number, to: number,) {
+    if (isCollectionHolder<T>(collection,))
+        return __core2ByCollectionHolder(collection, element, from, to,)
+    if (isArray(collection,))
+        return __core2ByArray(collection, element, from, to,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core2ByCollectionHolder(collection, element, from, to,)
+    if (isArrayByStructure<T>(collection,))
+        return __core2ByArray(collection, element, from, to,)
+    return __core2ByMinimalistCollectionHolder(collection, element, from, to,)
+}
+
+function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T, from: number, to: number,) {
+    const size = collection.size
+    if (size === 0)
+        return null
+
+    const startingIndex = __startingIndexOrNull(from, size,)
     if (startingIndex == null)
         return null
 
-    const endingIndex = __endingIndexOrNull(toIndex, size,)
+    const endingIndex = __endingIndexOrNull(to, size,)
     if (endingIndex == null)
         return null
     if (endingIndex < startingIndex)
         return null
-    return __findLastInRangeByArray(collection, element, startingIndex, endingIndex,)
+    return __findInRange(collection, element, startingIndex, endingIndex,)
 }
 
-//#endregion -------------------- Facade method --------------------
+function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T, from: number, to: number,) {
+    if (collection.isEmpty)
+        return null
+
+    const size = collection.size
+    const startingIndex = __startingIndexOrNull(from, size,)
+    if (startingIndex == null)
+        return null
+
+    const endingIndex = __endingIndexOrNull(to, size,)
+    if (endingIndex == null)
+        return null
+    if (endingIndex < startingIndex)
+        return null
+    return __findInRange(collection, element, startingIndex, endingIndex,)
+}
+
+function __core2ByArray<const T, >(collection: readonly T[], element: T, from: number, to: number,) {
+    const size = collection.length
+    if (size === 0)
+        return null
+
+    const startingIndex = __startingIndexOrNull(from, size,)
+    if (startingIndex == null)
+        return null
+
+    const endingIndex = __endingIndexOrNull(to, size,)
+    if (endingIndex == null)
+        return null
+    if (endingIndex < startingIndex)
+        return null
+    return __findInRangeByArray(collection, element, startingIndex, endingIndex,)
+}
+
+//#endregion -------------------- element, from, to --------------------
+//#region -------------------- element, to --------------------
+
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], element: T, to: number,) {
+    if (isCollectionHolder<T>(collection,))
+        return __coreWithNoFromByCollectionHolder(collection, element, to,)
+    if (isArray(collection,))
+        return __coreWithNoFromByArray(collection, element, to,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __coreWithNoFromByCollectionHolder(collection, element, to,)
+    if (isArrayByStructure<T>(collection,))
+        return __coreWithNoFromByArray(collection, element, to,)
+    return __coreWithNoFromByMinimalistCollectionHolder(collection, element, to,)
+}
+
+function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T, to: number,) {
+    const size = collection.size
+    if (size === 0)
+        return null
+
+    const endingIndex = __endingIndexOrNull(to, size,)
+    if (endingIndex == null)
+        return null
+    return __findInRange(collection, element, 0, endingIndex,)
+}
+
+function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T, to: number,) {
+    if (collection.isEmpty)
+        return null
+
+    const endingIndex = __endingIndexOrNull(to, collection.size,)
+    if (endingIndex == null)
+        return null
+    return __findInRange(collection, element, 0, endingIndex,)
+}
+
+function __coreWithNoFromByArray<const T, >(collection: readonly T[], element: T, to: number,) {
+    const size = collection.length
+    if (size === 0)
+        return null
+
+    const endingIndex = __endingIndexOrNull(to, size,)
+    if (endingIndex == null)
+        return null
+    return __findInRangeByArray(collection, element, 0, endingIndex,)
+}
+
+//#endregion -------------------- element, to --------------------
+
+//#endregion -------------------- Core methods --------------------
 //#region -------------------- Loop methods --------------------
 
-function __findLastInRange<const T, >(collection: MinimalistCollectionHolder<T>, element: T, startingIndex: number, endingIndex: number,) {
+function __findInRange<const T, >(collection: MinimalistCollectionHolder<T>, element: T, startingIndex: number, endingIndex: number,) {
     let index = endingIndex + 1
     while (--index >= startingIndex)
         if (collection.get(index,) === element)
@@ -164,7 +343,7 @@ function __findLastInRange<const T, >(collection: MinimalistCollectionHolder<T>,
     return null
 }
 
-function __findLastInRangeByArray<const T, >(collection: readonly T[], element: T, startingIndex: number, endingIndex: number,) {
+function __findInRangeByArray<const T, >(collection: readonly T[], element: T, startingIndex: number, endingIndex: number,) {
     let index = endingIndex + 1
     while (--index >= startingIndex)
         if (collection[index] === element)
