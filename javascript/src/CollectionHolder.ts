@@ -1166,14 +1166,14 @@ export interface CollectionHolder<out T = unknown, >
      * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
      * between the {@link from starting} and the {@link to ending} index
      *
-     * @param element   The element to find
-     * @param fromIndex The inclusive starting index (`0` by default)
-     * @param toIndex   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @param element The element to find
+     * @param from    The inclusive starting index (`0` by default)
+     * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Last index of or null --------------------
 
@@ -1725,13 +1725,13 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index (`0` by default)
-     * @param toIndex   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @param from      The inclusive starting index (`0` by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     /**
      * Get the last index matching the {@link predicate}
@@ -1739,14 +1739,14 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index (`0` by default)
-     * @param toIndex   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @param from      The inclusive starting index (`0` by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
      * @alias CollectionHolder.indexOfLastOrNull
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    findLastIndexOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    findLastIndexOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Index of last or null --------------------
     //#region -------------------- Index of last indexed --------------------
@@ -1868,13 +1868,13 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index (`0` by default)
-     * @param toIndex   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @param from      The inclusive starting index (`0` by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     /**
      * Get the last index matching the {@link predicate}
@@ -1882,14 +1882,14 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param fromIndex The inclusive starting index (`0` by default)
-     * @param toIndex   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @param from      The inclusive starting index (`0` by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
      * @alias CollectionHolder.indexOfLastIndexedOrNull
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
      */
-    findLastIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    findLastIndexIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Index of last indexed or null --------------------
 
