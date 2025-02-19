@@ -73,11 +73,9 @@ public final class FindLastIndexed
                                         final @NotNull IntObjPredicate<? super T> predicate) {
         if (collection == null)
             throw new NullCollectionException();
-
-        final var size = collection.size();
-        if (size == 0)
+        if (collection.isEmpty())
             throw new EmptyCollectionException();
-        return __with2Argument(collection, predicate, size);
+        return __with2Argument(collection, predicate, collection.size());
     }
 
     /// Find the last element from the `predicate` in the `collection`
@@ -151,11 +149,9 @@ public final class FindLastIndexed
                                         final @NotNull IntPredicate predicate) {
         if (collection == null)
             throw new NullCollectionException();
-
-        final var size = collection.size();
-        if (size == 0)
+        if (collection.isEmpty())
             throw new EmptyCollectionException();
-        return __with1Argument(collection, predicate, size);
+        return __with1Argument(collection, predicate, collection.size());
     }
 
     /// Find the last element from the `predicate` in the `collection`
@@ -229,11 +225,9 @@ public final class FindLastIndexed
                                         final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             throw new NullCollectionException();
-
-        final var size = collection.size();
-        if (size == 0)
+        if (collection.isEmpty())
             throw new EmptyCollectionException();
-        return __with0Argument(collection, predicate, size);
+        return __with0Argument(collection, predicate, collection.size());
     }
 
     /// Find the last element from the `predicate` in the `collection`
