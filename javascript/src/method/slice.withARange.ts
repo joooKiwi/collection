@@ -15,13 +15,12 @@ import type {Nullable, NullableNumber} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}            from "../CollectionConstants"
-import {InvalidIndexRangeException}     from "../exception/InvalidIndexRangeException"
-import {__endingIndex, __startingIndex} from "./_indexes utility"
-import {isArray}                        from "./isArray"
-import {isArrayByStructure}             from "./isArrayByStructure"
-import {isCollectionHolder}             from "./isCollectionHolder"
-import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
+import {CollectionConstants}                               from "../CollectionConstants"
+import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
+import {isArray}                                           from "./isArray"
+import {isArrayByStructure}                                from "./isArrayByStructure"
+import {isCollectionHolder}                                from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                     from "./isCollectionHolderByStructure"
 
 //#region -------------------- Facade method --------------------
 
@@ -70,15 +69,14 @@ export function sliceWithARange<const T, >(collection: Nullable<| MinimalistColl
 export function sliceWithARange<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
-        return sliceWithARangeByCollectionHolder(collection, from, to,)
-    if (isArray(collection,))
-        return sliceWithARangeByArray(collection, from, to,)
-    if (isCollectionHolderByStructure<T>(collection,))
-        return sliceWithARangeByCollectionHolder(collection, from, to,)
-    if (isArrayByStructure<T>(collection,))
-        return sliceWithARangeByArray(collection, from, to,)
-    return sliceWithARangeByMinimalistCollectionHolder(collection, from, to,)
+    if (to == null)
+        if (from == null)
+            return __core0(collection,)
+        else
+            return __core1(collection, from,)
+    if (from == null)
+        return __coreWithNoFrom(collection, to,)
+    return __core2(collection, from, to,)
 }
 
 
@@ -127,16 +125,14 @@ export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collectio
 export function sliceWithARangeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
-    const size = collection.size
-    if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
-    const startingIndex = __startingIndex(from, size,)
-    const endingIndex = __endingIndex(to, size,)
-    if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}”${to == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${from}”${from == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, from, to,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
+    if (to == null)
+        if (from == null)
+            return __core0ByMinimalistCollectionHolder(collection,)
+        else
+            return __core1ByMinimalistCollectionHolder(collection, from,)
+    if (from == null)
+        return __coreWithNoFromByMinimalistCollectionHolder(collection, to,)
+    return __core2ByMinimalistCollectionHolder(collection, from, to,)
 }
 
 /**
@@ -184,15 +180,14 @@ export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullabl
 export function sliceWithARangeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
-    const size = collection.size
-    const startingIndex = __startingIndex(from, size,)
-    const endingIndex = __endingIndex(to, size,)
-    if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}”${to == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${from}”${from == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, from, to,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
+    if (to == null)
+        if (from == null)
+            return __core0ByCollectionHolder(collection,)
+        else
+            return __core1ByCollectionHolder(collection, from,)
+    if (from == null)
+        return __coreWithNoFromByCollectionHolder(collection, to,)
+    return __core2ByCollectionHolder(collection, from, to,)
 }
 
 /**
@@ -239,19 +234,176 @@ export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly 
 export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    if (to == null)
+        if (from == null)
+            return __core0ByArray(collection,)
+        else
+            return __core1ByArray(collection, from,)
+    if (from == null)
+        return __coreWithNoFromByArray(collection, to,)
+    return __core2ByArray(collection, from, to,)
+}
 
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Core method --------------------
+
+//#region -------------------- ∅ --------------------
+
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[],): CollectionHolder<T> {
+    if (isCollectionHolder<T>(collection,))
+        return __core0ByCollectionHolder(collection,)
+    if (isArray(collection,))
+        return __core0ByArray(collection,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core0ByCollectionHolder(collection,)
+    if (isArrayByStructure<T>(collection,))
+        return __core0ByArray(collection,)
+    return __core0ByMinimalistCollectionHolder(collection,)
+}
+
+function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>,): CollectionHolder<T> {
+    const size = collection.size
+    if (size === 0)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, 0, size - 1,),)
+}
+
+function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,): CollectionHolder<T> {
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, 0, collection.size - 1,),)
+}
+
+function __core0ByArray<const T, >(collection: readonly T[],): CollectionHolder<T> {
+    const size = collection.length
+    if (size === 0)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRangeByArray(collection, 0, size - 1,),)
+}
+
+//#endregion -------------------- ∅ --------------------
+//#region -------------------- from --------------------
+
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], from: number,): CollectionHolder<T> {
+    if (isCollectionHolder<T>(collection,))
+        return __core1ByCollectionHolder(collection, from,)
+    if (isArray(collection,))
+        return __core1ByArray(collection, from,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core1ByCollectionHolder(collection, from,)
+    if (isArrayByStructure<T>(collection,))
+        return __core1ByArray(collection, from,)
+    return __core1ByMinimalistCollectionHolder(collection, from,)
+}
+
+function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, from: number,): CollectionHolder<T> {
+    const size = collection.size
+    if (size === 0)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, __startingIndex(from, size,), size - 1,),)
+}
+
+function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number,): CollectionHolder<T> {
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+
+    const size = collection.size
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, __startingIndex(from, size,), size - 1,),)
+}
+
+function __core1ByArray<const T, >(collection: readonly T[], from: number,): CollectionHolder<T> {
+    const size = collection.length
+    if (size === 0)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRangeByArray(collection, __startingIndex(from, size,), size - 1,),)
+}
+
+//#endregion -------------------- from --------------------
+//#region -------------------- from, to --------------------
+
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], from: number, to: number,): CollectionHolder<T> {
+    if (isCollectionHolder<T>(collection,))
+        return __core2ByCollectionHolder(collection, from, to,)
+    if (isArray(collection,))
+        return __core2ByArray(collection, from, to,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core2ByCollectionHolder(collection, from, to,)
+    if (isArrayByStructure<T>(collection,))
+        return __core2ByArray(collection, from, to,)
+    return __core2ByMinimalistCollectionHolder(collection, from, to,)
+}
+
+function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, from: number, to: number,): CollectionHolder<T> {
+    const size = collection.size
+    if (size === 0)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+
+    const startingIndex = __startingIndex(from, size,)
+    const endingIndex = __endingIndex(to, size,)
+    __validateInRange(from, startingIndex, to, endingIndex,)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
+}
+
+function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number, to: number,): CollectionHolder<T> {
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+
+    const size = collection.size
+    const startingIndex = __startingIndex(from, size,)
+    const endingIndex = __endingIndex(to, size,)
+    __validateInRange(from, startingIndex, to, endingIndex,)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
+}
+
+function __core2ByArray<const T, >(collection: readonly T[], from: number, to: number,): CollectionHolder<T> {
     const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
-    if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}”${to == endingIndex ? "" : ` (“${endingIndex}” after calculation)`} is over the starting index “${from}”${from == startingIndex ? "" : ` (“${startingIndex}” after calculation)`}.`, from, to,)
+    __validateInRange(from, startingIndex, to, endingIndex,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRangeByArray(collection, startingIndex, endingIndex,),)
 }
 
-//#endregion -------------------- Facade method --------------------
+//#endregion -------------------- from, to --------------------
+//#region -------------------- to --------------------
+
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], to: number,): CollectionHolder<T> {
+    if (isCollectionHolder<T>(collection,))
+        return __coreWithNoFromByCollectionHolder(collection, to,)
+    if (isArray(collection,))
+        return __coreWithNoFromByArray(collection, to,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __coreWithNoFromByCollectionHolder(collection, to,)
+    if (isArrayByStructure<T>(collection,))
+        return __coreWithNoFromByArray(collection, to,)
+    return __coreWithNoFromByMinimalistCollectionHolder(collection, to,)
+}
+
+function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, to: number,): CollectionHolder<T> {
+    const size = collection.size
+    if (size === 0)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, 0, __endingIndex(to, size,),),)
+}
+
+function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, to: number,): CollectionHolder<T> {
+    if (collection.isEmpty)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, 0, __endingIndex(to, collection.size,),),)
+}
+
+function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number,): CollectionHolder<T> {
+    const size = collection.length
+    if (size === 0)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRangeByArray(collection, 0, __endingIndex(to, size,),),)
+}
+
+//#endregion -------------------- to --------------------
+
+//#endregion -------------------- Core method --------------------
 //#region -------------------- Loop methods --------------------
 
 function __newArrayInRange<const T, >(collection: MinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number,) {
