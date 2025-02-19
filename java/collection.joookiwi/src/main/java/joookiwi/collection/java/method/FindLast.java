@@ -242,9 +242,9 @@ public final class FindLast
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @Nullable T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull BooleanSupplier predicate,
-                                                   final int size) {
+    private static <T> T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                         final @NotNull BooleanSupplier predicate,
+                                         final int size) {
         var index = size;
         while (index-- > 0)
             if (predicate.getAsBoolean())
@@ -252,9 +252,9 @@ public final class FindLast
         throw new IndexOutOfBoundsException("No element could be found from the “findLast” predicate received in the collection.", size - 1);
     }
 
-    private static <T> @Nullable T __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull BooleanSupplier predicate,
-                                                   final int size) {
+    private static <T> T __with0Argument(final T @NotNull @Unmodifiable [] collection,
+                                         final @NotNull BooleanSupplier predicate,
+                                         final int size) {
         var index = size;
         while (index-- > 0)
             if (predicate.getAsBoolean())
@@ -263,9 +263,9 @@ public final class FindLast
     }
 
 
-    private static <T> @Nullable T __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull Predicate<? super T> predicate,
-                                                   final int size) {
+    private static <T> T __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                         final @NotNull Predicate<? super T> predicate,
+                                         final int size) {
         var index = size;
         while (index-- > 0) {
             final var value = collection.get(index);
@@ -275,9 +275,9 @@ public final class FindLast
         throw new IndexOutOfBoundsException("No element could be found from the “findLast” predicate received in the collection.", size - 1);
     }
 
-    private static <T> @Nullable T __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull Predicate<? super T> predicate,
-                                                   final int size) {
+    private static <T> T __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                         final @NotNull Predicate<? super T> predicate,
+                                         final int size) {
         var index = size;
         while (index-- > 0) {
             final var value = collection[index];
@@ -288,9 +288,9 @@ public final class FindLast
     }
 
 
-    private static <T> @Nullable T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull ObjIntPredicate<? super T> predicate,
-                                                   final int size) {
+    private static <T> T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                         final @NotNull ObjIntPredicate<? super T> predicate,
+                                         final int size) {
         var index = size;
         while (index-- > 0) {
             final var value = collection.get(index);
@@ -300,9 +300,9 @@ public final class FindLast
         throw new IndexOutOfBoundsException("No element could be found from the “findLast” predicate received in the collection.", size - 1);
     }
 
-    private static <T> @Nullable T __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull ObjIntPredicate<? super T> predicate,
-                                                   final int size) {
+    private static <T> T __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                         final @NotNull ObjIntPredicate<? super T> predicate,
+                                         final int size) {
         var index = size;
         while (index-- > 0) {
             final var value = collection[index];

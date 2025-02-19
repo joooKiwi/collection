@@ -32,7 +32,7 @@ public final class GetOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T extends @Nullable Object> @Nullable T getOrNull(final @Nullable MinimalistCollectionHolder<@Nullable T> collection,
+    public static <T extends @Nullable Object> @Nullable T getOrNull(final @Nullable MinimalistCollectionHolder<? extends @Nullable T> collection,
                                                                      final int index) {
         if (collection == null)
             return null;
@@ -62,7 +62,7 @@ public final class GetOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @Nullable T getOrNull(final @Nullable CollectionHolder<@Nullable T> collection,
+    public static <T extends @Nullable Object> @Nullable T getOrNull(final @Nullable CollectionHolder<? extends @Nullable T> collection,
                                                                      final int index) {
         if (collection == null)
             return null;
