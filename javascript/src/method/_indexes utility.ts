@@ -12,8 +12,9 @@
 
 import type {NullableNumber, NullOrNumber} from "@joookiwi/type"
 
-import {ForbiddenIndexException}   from "../exception/ForbiddenIndexException"
-import {IndexOutOfBoundsException} from "../exception/IndexOutOfBoundsException"
+import {ForbiddenIndexException}    from "../exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}  from "../exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException} from "../exception/InvalidIndexRangeException"
 
 /**
  * Get the starting index between 0 and the <code>{@link size} - 1</code>
@@ -171,4 +172,29 @@ export function __lastIndex(value: number, size: number,): number {
     if (maximumIndex < 0)
         return 0
     return maximumIndex
+}
+
+
+/**
+ * Validate that the {@link endingIndex} is not under the {@link startingIndex}
+ *
+ * @param from          The initial starting index
+ * @param startingIndex The computed starting index
+ * @param to            The initial ending index
+ * @param endingIndex   The computed ending index
+ * @throws InvalidIndexRangeException The {@link endingIndex} is under the {@link startingIndex}
+ * @internal
+ */
+export function __validateInRange(from: number, startingIndex: number, to: number, endingIndex: number,): void {
+    if (endingIndex >= startingIndex)
+        return
+
+    if (to == endingIndex)
+        if (from == startingIndex)
+            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” is over the starting index “${from}”.`, from, to,)
+        else
+            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” is over the starting index “${from}” (“${startingIndex}” after calculation).`, from, to,)
+    if (from == startingIndex)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” (“${endingIndex}” after calculation) is over the starting index “${from}”.`, from, to,)
+    throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” (“${endingIndex}” after calculation) is over the starting index “${from}” (“${startingIndex}” after calculation).`, from, to,)
 }
