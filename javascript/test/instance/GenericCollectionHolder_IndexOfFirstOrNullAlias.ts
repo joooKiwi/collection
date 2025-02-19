@@ -31,9 +31,9 @@ export class GenericCollectionHolder_IndexOfFirstOrNullAlias
         return this
     }
 
-    public override indexOfFirstOrNull(predicate: BooleanCallback<string>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override indexOfFirstOrNull(predicate: BooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
         this.amountOfCall++
-        return super.indexOfFirstOrNull(predicate, fromIndex, toIndex,)
+        return super.indexOfFirstOrNull(predicate, from, to,)
     }
 
 }

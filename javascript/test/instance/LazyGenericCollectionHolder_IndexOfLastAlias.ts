@@ -1,4 +1,3 @@
-
 //··························································
 // Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
 //
@@ -32,9 +31,9 @@ export class LazyGenericCollectionHolder_IndexOfLastAlias
         return this
     }
 
-    public override indexOfLast(predicate: BooleanCallback<string>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+    public override indexOfLast(predicate: BooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): number {
         this.amountOfCall++
-        return super.indexOfLast(predicate, fromIndex, toIndex,)
+        return super.indexOfLast(predicate, from, to,)
     }
 
 }

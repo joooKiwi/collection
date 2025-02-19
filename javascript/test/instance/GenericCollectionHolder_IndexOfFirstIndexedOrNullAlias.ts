@@ -31,9 +31,9 @@ export class GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias
         return this
     }
 
-    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<string>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
         this.amountOfCall++
-        return super.indexOfFirstIndexedOrNull(predicate, fromIndex, toIndex,)
+        return super.indexOfFirstIndexedOrNull(predicate, from, to,)
     }
 
 }

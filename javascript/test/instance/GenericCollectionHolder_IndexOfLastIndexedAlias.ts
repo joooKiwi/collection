@@ -31,9 +31,9 @@ export class GenericCollectionHolder_IndexOfLastIndexedAlias
         return this
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<string>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): number {
         this.amountOfCall++
-        return super.indexOfLastIndexed(predicate, fromIndex, toIndex,)
+        return super.indexOfLastIndexed(predicate, from, to,)
     }
 
 }

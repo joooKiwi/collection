@@ -30,9 +30,9 @@ export class GenericCollectionHolder_FirstIndexOfOrNullAlias
         return this
     }
 
-    public override firstIndexOfOrNull(element: string, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override firstIndexOfOrNull(element: string, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
         this.amountOfCall++
-        return super.firstIndexOfOrNull(element, fromIndex, toIndex,)
+        return super.firstIndexOfOrNull(element, from, to,)
     }
 
 }

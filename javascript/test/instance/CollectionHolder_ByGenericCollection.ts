@@ -124,21 +124,21 @@ export class CollectionHolder_ByGenericCollection<const T, >
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.firstIndexOf(element, fromIndex, toIndex,) }
-    public override firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.firstIndexOfOrNull(element, fromIndex, toIndex,) }
+    public override firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.firstIndexOf(element, from, to,) }
+    public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.firstIndexOfOrNull(element, from, to,) }
 
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.lastIndexOf(element, fromIndex, toIndex,) }
-    public override lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.lastIndexOfOrNull(element, fromIndex, toIndex,) }
+    public override lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.lastIndexOf(element, from, to,) }
+    public override lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.lastIndexOfOrNull(element, from, to,) }
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.indexOfFirst(predicate, fromIndex, toIndex,) }
-    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfFirstOrNull(predicate, fromIndex, toIndex,) }
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.indexOfFirstIndexed(predicate, fromIndex, toIndex,) }
-    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfFirstIndexedOrNull(predicate, fromIndex, toIndex,) }
+    public override indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.indexOfFirst(predicate, from, to,) }
+    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.indexOfFirstOrNull(predicate, from, to,) }
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.indexOfFirstIndexed(predicate, from, to,) }
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.indexOfFirstIndexedOrNull(predicate, from, to,) }
 
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.indexOfLast(predicate, fromIndex, toIndex,) }
-    public override indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfLastOrNull(predicate, fromIndex, toIndex,) }
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number { return this.instance.indexOfLastIndexed(predicate, fromIndex, toIndex,) }
-    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber { return this.instance.indexOfLastIndexedOrNull(predicate, fromIndex, toIndex,) }
+    public override indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.indexOfLast(predicate, from, to,) }
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.indexOfLastOrNull(predicate, from, to,) }
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number { return this.instance.indexOfLastIndexed(predicate, from, to,) }
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber { return this.instance.indexOfLastIndexedOrNull(predicate, from, to,) }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
@@ -168,6 +168,8 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override get hasDuplicate(): boolean { return this.instance.hasDuplicate }
 
     public override has(value: T,): boolean { return this.instance.has(value,) }
+
+    public override hasNot(value: T,): boolean { return this.instance.hasNot(value,) }
 
     public override hasOne(values: readonly T[],): boolean
     public override hasOne(values: ReadonlySet<T>,): boolean
@@ -224,6 +226,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
+    public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
     public override slice(indices: readonly number[],): CollectionHolder<T>
     public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
@@ -231,14 +234,13 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
     public override slice(indices: Iterable<number>,): CollectionHolder<T>
     public override slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T> {
+    public override slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
+    public override slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
         if (arguments.length === 0)
             return this.instance.slice()
         if (arguments.length === 1)
-            return this.instance.slice(indicesOrFromIndex,)
-        return this.instance.slice(indicesOrFromIndex, toIndex,)
+            return this.instance.slice(indicesOrFrom,)
+        return this.instance.slice(indicesOrFrom, to,)
     }
 
     //#endregion -------------------- Slice --------------------
@@ -346,7 +348,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
 
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> { return this.instance.toReverse(fromIndex, toIndex,) }
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> { return this.instance.toReverse(from, to,) }
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- JavaScript methods --------------------

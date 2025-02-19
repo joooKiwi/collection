@@ -10,16 +10,13 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {NullableNumber, NullOrNumber} from "@joookiwi/type"
-
-import type {ReverseBooleanCallback}          from "../../src/type/callback"
 import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderForTest"
 
-import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
-import {ABCD}                        from "../value/arrays"
+import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
+import {ABCD}                    from "../value/arrays"
 
-export class LazyGenericCollectionHolder_IndexOfFirstIndexedOrNullAlias
-    extends LazyGenericCollectionHolder<string, readonly string[]>
+export class GenericCollectionHolder_HasNotAlias
+    extends GenericCollectionHolder<string, readonly string[]>
     implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
@@ -31,9 +28,9 @@ export class LazyGenericCollectionHolder_IndexOfFirstIndexedOrNullAlias
         return this
     }
 
-    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+    public override hasNot(value: string,): boolean {
         this.amountOfCall++
-        return super.indexOfFirstIndexedOrNull(predicate, from, to,)
+        return super.hasNot(value,)
     }
 
 }

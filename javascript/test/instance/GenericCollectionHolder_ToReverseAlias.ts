@@ -31,9 +31,9 @@ export class GenericCollectionHolder_ToReverseAlias
         return this
     }
 
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<string> {
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<string> {
         this.amountOfCall++
-        return super.toReverse(fromIndex, toIndex,)
+        return super.toReverse(from, to,)
     }
 
 }
