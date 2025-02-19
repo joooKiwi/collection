@@ -13,11 +13,13 @@
 import {GenericCollectionHolder_HasAlias}                                                                                                                                                                                                                                            from "./instance/GenericCollectionHolder_HasAlias"
 import {GenericCollectionHolder_HasAllAlias}                                                                                                                                                                                                                                         from "./instance/GenericCollectionHolder_HasAllAlias"
 import {GenericCollectionHolder_HasDuplicateAlias}                                                                                                                                                                                                                                   from "./instance/GenericCollectionHolder_HasDuplicateAlias"
+import {GenericCollectionHolder_HasNotAlias}                                                                                                                                                                                                                                         from "./instance/GenericCollectionHolder_HasNotAlias"
 import {GenericCollectionHolder_HasNullAlias}                                                                                                                                                                                                                                        from "./instance/GenericCollectionHolder_HasNullAlias"
 import {GenericCollectionHolder_HasOneAlias}                                                                                                                                                                                                                                         from "./instance/GenericCollectionHolder_HasOneAlias"
 import {LazyGenericCollectionHolder_HasAlias}                                                                                                                                                                                                                                        from "./instance/LazyGenericCollectionHolder_HasAlias"
 import {LazyGenericCollectionHolder_HasAllAlias}                                                                                                                                                                                                                                     from "./instance/LazyGenericCollectionHolder_HasAllAlias"
 import {LazyGenericCollectionHolder_HasDuplicateAlias}                                                                                                                                                                                                                               from "./instance/LazyGenericCollectionHolder_HasDuplicateAlias"
+import {LazyGenericCollectionHolder_HasNotAlias}                                                                                                                                                                                                                                     from "./instance/LazyGenericCollectionHolder_HasNotAlias"
 import {LazyGenericCollectionHolder_HasNullAlias}                                                                                                                                                                                                                                    from "./instance/LazyGenericCollectionHolder_HasNullAlias"
 import {LazyGenericCollectionHolder_HasOneAlias}                                                                                                                                                                                                                                     from "./instance/LazyGenericCollectionHolder_HasOneAlias"
 import {EmptyCollectionHolderForTest}                                                                                                                                                                                                                                                from "./instance/EmptyCollectionHolderForTest"
@@ -28,8 +30,11 @@ describe("CollectionHolderTest (has)", () => {
 
     describe("EmptyCollectionHolder", () => {
         test("has",         () => expect(new EmptyCollectionHolderForTest().has(),).toBeFalse(),)
+        test("hasNot",      () => expect(new EmptyCollectionHolderForTest().hasNot(),).toBeTrue(),)
         test("includes",    () => expect(new EmptyCollectionHolderForTest().includes(),).toBeFalse(),)
+        test("includesNot", () => expect(new EmptyCollectionHolderForTest().includesNot(),).toBeTrue(),)
         test("contains",    () => expect(new EmptyCollectionHolderForTest().contains(),).toBeFalse(),)
+        test("containsNot", () => expect(new EmptyCollectionHolderForTest().containsNot(),).toBeTrue(),)
         test("hasOne",      () => expect(new EmptyCollectionHolderForTest().hasOne(),).toBeFalse(),)
         test("includesOne", () => expect(new EmptyCollectionHolderForTest().includesOne(),).toBeFalse(),)
         test("containsOne", () => expect(new EmptyCollectionHolderForTest().containsOne(),).toBeFalse(),)
@@ -54,11 +59,13 @@ describe("CollectionHolderTest (has)", () => {
         const singleValueInArray = ['a',] as const
         describe("GenericCollectionHolder", () => {
             test("includes",          () => expect(new GenericCollectionHolder_HasAlias().execute(it => it.includes(singleValue,),).amountOfCall,).toBe(1,),)
+            test("includesNot",       () => expect(new GenericCollectionHolder_HasNotAlias().execute(it => it.includesNot(singleValue,),).amountOfCall,).toBe(1,),)
             test("includesOne",       () => expect(new GenericCollectionHolder_HasOneAlias().execute(it => it.includesOne(singleValueInArray,),).amountOfCall,).toBe(1,),)
             test("includesAll",       () => expect(new GenericCollectionHolder_HasAllAlias().execute(it => it.includesAll(singleValueInArray,),).amountOfCall,).toBe(1,),)
             test("includesNull",      () => expect(new GenericCollectionHolder_HasNullAlias().execute(it => it.includesNull,).amountOfCall,).toBe(1,),)
             test("includesDuplicate", () => expect(new GenericCollectionHolder_HasDuplicateAlias().execute(it => it.includesDuplicate,).amountOfCall,).toBe(1,),)
             test("contains",          () => expect(new GenericCollectionHolder_HasAlias().execute(it => it.contains(singleValue,),).amountOfCall,).toBe(1,),)
+            test("containsNot",       () => expect(new GenericCollectionHolder_HasNotAlias().execute(it => it.containsNot(singleValue,),).amountOfCall,).toBe(1,),)
             test("containsOne",       () => expect(new GenericCollectionHolder_HasOneAlias().execute(it => it.containsOne(singleValueInArray,),).amountOfCall,).toBe(1,),)
             test("containsAll",       () => expect(new GenericCollectionHolder_HasAllAlias().execute(it => it.containsAll(singleValueInArray,),).amountOfCall,).toBe(1,),)
             test("containsNull",      () => expect(new GenericCollectionHolder_HasNullAlias().execute(it => it.containsNull,).amountOfCall,).toBe(1,),)
@@ -66,11 +73,13 @@ describe("CollectionHolderTest (has)", () => {
         },)
         describe("LazyGenericCollectionHolder", () => {
             test("includes",          () => expect(new LazyGenericCollectionHolder_HasAlias().execute(it => it.includes(singleValue,),).amountOfCall,).toBe(1,),)
+            test("includesNot",       () => expect(new LazyGenericCollectionHolder_HasNotAlias().execute(it => it.includesNot(singleValue,),).amountOfCall,).toBe(1,),)
             test("includesOne",       () => expect(new LazyGenericCollectionHolder_HasOneAlias().execute(it => it.includesOne(singleValueInArray,),).amountOfCall,).toBe(1,),)
             test("includesAll",       () => expect(new LazyGenericCollectionHolder_HasAllAlias().execute(it => it.includesAll(singleValueInArray,),).amountOfCall,).toBe(1,),)
             test("includesNull",      () => expect(new LazyGenericCollectionHolder_HasNullAlias().execute(it => it.includesNull,).amountOfCall,).toBe(1,),)
             test("includesDuplicate", () => expect(new LazyGenericCollectionHolder_HasDuplicateAlias().execute(it => it.includesDuplicate,).amountOfCall,).toBe(1,),)
             test("contains",          () => expect(new LazyGenericCollectionHolder_HasAlias().execute(it => it.contains(singleValue,),).amountOfCall,).toBe(1,),)
+            test("containsNot",       () => expect(new LazyGenericCollectionHolder_HasNotAlias().execute(it => it.containsNot(singleValue,),).amountOfCall,).toBe(1,),)
             test("containsOne",       () => expect(new LazyGenericCollectionHolder_HasOneAlias().execute(it => it.containsOne(singleValueInArray,),).amountOfCall,).toBe(1,),)
             test("containsAll",       () => expect(new LazyGenericCollectionHolder_HasAllAlias().execute(it => it.containsAll(singleValueInArray,),).amountOfCall,).toBe(1,),)
             test("containsNull",      () => expect(new LazyGenericCollectionHolder_HasNullAlias().execute(it => it.containsNull,).amountOfCall,).toBe(1,),)
@@ -89,6 +98,15 @@ describe("CollectionHolderTest (has)", () => {
                     test("2 fields (e)", () => expect(new instance<string>(AB,).execute(it => it.has('e',),).amountOfCall,).toBe(2,),)
                     test("4 fields (a)", () => expect(new instance(ABCD,).execute(it => it.has('a',),).amountOfCall,).toBe(1,),)
                     test("4 fields (e)", () => expect(new instance<string>(ABCD,).execute(it => it.has('e',),).amountOfCall,).toBe(4,),)
+                },)
+                describe("hasNot", () => {
+                    test("empty",        () => expect(new instance<string>(EMPTY,).execute(it => it.hasNot('a',),).amountOfCall,).toBe(0,),)
+                    test("1 field (a)",  () => expect(new instance(A,).execute(it => it.hasNot('a',),).amountOfCall,).toBe(1,),)
+                    test("1 field (e)",  () => expect(new instance<string>(A,).execute(it => it.hasNot('e',),).amountOfCall,).toBe(1,),)
+                    test("2 fields (a)", () => expect(new instance(AB,).execute(it => it.hasNot('a',),).amountOfCall,).toBe(1,),)
+                    test("2 fields (e)", () => expect(new instance<string>(AB,).execute(it => it.hasNot('e',),).amountOfCall,).toBe(2,),)
+                    test("4 fields (a)", () => expect(new instance(ABCD,).execute(it => it.hasNot('a',),).amountOfCall,).toBe(1,),)
+                    test("4 fields (e)", () => expect(new instance<string>(ABCD,).execute(it => it.hasNot('e',),).amountOfCall,).toBe(4,),)
                 },)
                 describe.each(everyIterableInstances,)("hasOne: “%s”", ({value: newIterable,},) => {
                     describe("empty", () => {
@@ -145,6 +163,25 @@ describe("CollectionHolderTest (has)", () => {
                 test('c', () => expect(new instance(ABCD,).has('c',),).toBeTrue(),)
                 test('d', () => expect(new instance(ABCD,).has('d',),).toBeTrue(),)
                 test('e', () => expect(new instance<string>(ABCD,).has('e',),).toBeFalse(),)
+            },)
+        },)
+        describe("hasNot", () => {
+            test("empty", () => expect(new instance<string>(EMPTY,).hasNot('a',),).toBeTrue(),)
+            describe("1 field", () => {
+                test('a', () => expect(new instance(A,).hasNot('a',),).toBeFalse(),)
+                test('e', () => expect(new instance<string>(A,).hasNot('e',),).toBeTrue(),)
+            },)
+            describe("2 fields", () => {
+                test('a', () => expect(new instance(AB,).hasNot('a',),).toBeFalse(),)
+                test('b', () => expect(new instance(AB,).hasNot('b',),).toBeFalse(),)
+                test('e', () => expect(new instance<string>(AB,).hasNot('e',),).toBeTrue(),)
+            },)
+            describe("4 fields", () => {
+                test('a', () => expect(new instance(ABCD,).hasNot('a',),).toBeFalse(),)
+                test('b', () => expect(new instance(ABCD,).hasNot('b',),).toBeFalse(),)
+                test('c', () => expect(new instance(ABCD,).hasNot('c',),).toBeFalse(),)
+                test('d', () => expect(new instance(ABCD,).hasNot('d',),).toBeFalse(),)
+                test('e', () => expect(new instance<string>(ABCD,).hasNot('e',),).toBeTrue(),)
             },)
         },)
         describe.each(everyIterableInstances,)("hasOne: “%s”", ({value: it,},) => {
