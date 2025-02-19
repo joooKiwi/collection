@@ -323,7 +323,9 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const size = collection.size
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, __startingIndex(from, size,), size - 1,),)
+
+    const startingIndex = __startingIndex(from, size,)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, startingIndex, size - 1,),)
 }
 
 function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number,): CollectionHolder<T> {
@@ -331,14 +333,17 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const size = collection.size
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, __startingIndex(from, size,), size - 1,),)
+    const startingIndex = __startingIndex(from, size,)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, startingIndex, size - 1,),)
 }
 
 function __core1ByArray<const T, >(collection: readonly T[], from: number,): CollectionHolder<T> {
     const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRangeByArray(collection, __startingIndex(from, size,), size - 1,),)
+
+    const startingIndex = __startingIndex(from, size,)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRangeByArray(collection, startingIndex, size - 1,),)
 }
 
 //#endregion -------------------- from --------------------
@@ -408,20 +413,26 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
     const size = collection.size
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, 0, __endingIndex(to, size,),),)
+
+    const endingIndex = __endingIndex(to, size,)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, 0, endingIndex,),)
 }
 
 function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, to: number,): CollectionHolder<T> {
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, 0, __endingIndex(to, collection.size,),),)
+
+    const endingIndex = __endingIndex(to, collection.size,)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, 0, endingIndex,),)
 }
 
 function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number,): CollectionHolder<T> {
     const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRangeByArray(collection, 0, __endingIndex(to, size,),),)
+
+    const endingIndex = __endingIndex(to, size,)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRangeByArray(collection, 0, endingIndex,),)
 }
 
 //#endregion -------------------- to --------------------
