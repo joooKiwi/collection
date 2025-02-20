@@ -1112,14 +1112,11 @@ export class GenericCollectionHolder<const T = unknown,
         return hasByArray(this._array, value,)
     }
 
-    //#endregion -------------------- Has --------------------
-    //#region -------------------- Has not --------------------
-
     public override hasNot(value: T,): boolean {
         return hasNotByArray(this._array, value,)
     }
 
-    //#endregion -------------------- Has not --------------------
+    //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
     protected override _hasOneByArray(values: readonly T[],): boolean {
