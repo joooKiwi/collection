@@ -1429,6 +1429,17 @@ return false
 | **C#**         | <ul><li>[IList.contains(value)][c#-has]                                       |
 
 </details>
+<details><summary>hasNot(value)</summary>
+
+| Language       | Equivalent                                                       |
+|:---------------|:-----------------------------------------------------------------|
+| **Javascript** | <ul><li>`!array.includes(value)`<li>`!set.has(value)`            |
+| **Java**       | <ul><li>`!list.contains(value)`                                  |
+| **Kotlin**     | <ul><li>`!array.contains(value)`<br/>`!iterable.contains(value)` |
+| **PHP**        |                                                                  |
+| **C#**         | <ul><li>`!list.has(vallue)`                                      |
+
+</details>
 <details><summary>hasOne(values)</summary>
 
 | Language       | Equivalent                                  |
