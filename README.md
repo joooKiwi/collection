@@ -329,18 +329,18 @@ The methods are made to find an element or giving a value
 ### Index methods
 
 The methods are made to find an index
- - `firstIndexOf`|`indexOf`(element, fromIndex?, toIndex?)
- - `firstIndexOfOrNull`|`indexOfOrNull`(element, fromIndex?, toIndex?)
- - `lastIndexOf`(element, fromIndex?, toIndex?)
- - `lastIndexOfOrNull`(element, fromIndex?, toIndex?)
- - `indexOfFirst`|`findFirstIndex`|`findIndex`(predicate, fromIndex?, toIndex?)
- - `indexOfFirstOrNull`|`findFirstIndexOrNull`|`findIndexOrNull`(predicate, fromIndex?, toIndex?)
- - `indexOfFirstIndexed`|`findFirstIndexIndexed`|`findIndexIndexed`(predicate, fromIndex?, toIndex?)
- - `indexOfFirstIndexedOrNull`|`findFirstIndexIndexedOrNull`|`findIndexIndexedOrNull`(predicate, fromIndex?, toIndex?)
- - `indexOfLast`|`findLastIndex`(predicate, fromIndex?, toIndex?)
- - `indexOfLastOrNull`|`findLastIndexOrNull`(predicate, fromIndex?, toIndex?)
- - `indexOfLastIndexed`|`findLastIndexIndexed`(predicate, fromIndex?, toIndex?)
- - `indexOfLastIndexedOrNull`|`findLastIndexIndexedOrNull`(predicate, fromIndex?, toIndex?)
+ - `firstIndexOf`|`indexOf`(element, from?, to?)
+ - `firstIndexOfOrNull`|`indexOfOrNull`(element, from?, to?)
+ - `lastIndexOf`(element, from?, to?)
+ - `lastIndexOfOrNull`(element, from?, to?)
+ - `indexOfFirst`|`findFirstIndex`|`findIndex`(predicate, from?, to?)
+ - `indexOfFirstOrNull`|`findFirstIndexOrNull`|`findIndexOrNull`(predicate, from?, to?)
+ - `indexOfFirstIndexed`|`findFirstIndexIndexed`|`findIndexIndexed`(predicate, from?, to?)
+ - `indexOfFirstIndexedOrNull`|`findFirstIndexIndexedOrNull`|`findIndexIndexedOrNull`(predicate, from?, to?)
+ - `indexOfLast`|`findLastIndex`(predicate, from?, to?)
+ - `indexOfLastOrNull`|`findLastIndexOrNull`(predicate, from?, to?)
+ - `indexOfLastIndexed`|`findLastIndexIndexed`(predicate, from?, to?)
+ - `indexOfLastIndexedOrNull`|`findLastIndexIndexedOrNull`(predicate, from?, to?)
 
 <details><summary>firstIndexOf(element)</summary>
 
@@ -353,16 +353,16 @@ The methods are made to find an index
 | **C#**         | <ul><li>[IndexOf(array, element)][c#-array-index-of-element]<li>[IList.IndexOf(element)][c#-i-list-index-of-element]<li>[List.IndexOf(element)][c#-list-index-of-element] |
 
 </details>
-<details><summary>firstIndexOf(element, fromIndex)</summary><table>
+<details><summary>firstIndexOf(element, from)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
- - [Array.indexOf(element, fromIndex)][js-index-of-element-from]
+ - [Array.indexOf(element, from)][js-index-of-element-from]
 </td></tr>
 <tr><th>Java</th><td>
 
 ```java
-for (var i = calculate-starting-index(fromIndex); i < size; i++)
+for (var i = calculate-starting-index(from); i < size; i++)
     if (array[i] == element)
         return i;
 throw
@@ -371,7 +371,7 @@ throw
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-for (i in calculate-starting-index(fromIndex)..(size - 1))
+for (i in calculate-starting-index(from)..(size - 1))
     if (element in array[i])
         return i
 throw
@@ -380,17 +380,17 @@ throw
 <tr><th>PHP</th><td></td></tr>
 <tr><th>C#</th><td>
 
- - [IndexOf(array, element, fromIndex)][c#-array-index-of-element-from]
- - [List.IndexOf(element, fromIndex)][c#-list-index-of-element-from]
+ - [IndexOf(array, element, from)][c#-array-index-of-element-from]
+ - [List.IndexOf(element, from)][c#-list-index-of-element-from]
 </td></tr>
 </table></details>
-<details><summary>firstIndexOf(element, fromIndex, toIndex)</summary><table>
+<details><summary>firstIndexOf(element, from, to)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex)
-const endingIndex = calculate-ending-index(toIndex)
+const startingIndex = calculate-starting-index(from)
+const endingIndex = calculate-ending-index(to)
 for (let i = startingIndex; i <= endingIndex; i+=)
     if (array[i] === element)
         return i
@@ -401,8 +401,8 @@ throw
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
+final var startingIndex = calculate-starting-index(from);
+final var endingIndex = calculate-ending-index(to);
 var index = startingIndex - 1;
 while (++index <= endingIndex)
     if (array[i] == element)
@@ -413,7 +413,7 @@ throw
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-for (i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+for (i in calculate-starting-index(from)..calculate-ending-index(to))
     if (element in array[i])
         return i
 throw
@@ -423,7 +423,7 @@ throw
 <tr><th>C#</th><td>
 
 ```csharp
-foreach (var i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+foreach (var i in calculate-starting-index(from)..calculate-ending-index(to))
     if (array[i] == element)
         return i;
 throw
@@ -472,12 +472,12 @@ return null;
 ```
 </td></tr>
 </table></details>
-<details><summary>firstIndexOfOrNull(element, fromIndex)</summary><table>
+<details><summary>firstIndexOfOrNull(element, from)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-for (let i = calculate-starting-index(fromIndex); i < size; i++)
+for (let i = calculate-starting-index(from); i < size; i++)
     if (element in array[i])
         return i
 return null
@@ -486,7 +486,7 @@ return null
 <tr><th>Java</th><td>
 
 ```java
-for (var i = calculate-starting-index(fromIndex); i < size; i++)
+for (var i = calculate-starting-index(from); i < size; i++)
     if (array[i] == element)
         return i;
 return null;
@@ -495,7 +495,7 @@ return null;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-for (i in calculate-starting-index(fromIndex)..(size - 1))
+for (i in calculate-starting-index(from)..(size - 1))
     if (element in array[i])
         return i
 return null
@@ -505,20 +505,20 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-foreach (i in calculate-starting-index(fromIndex)..(size - 1))
+foreach (i in calculate-starting-index(from)..(size - 1))
     if (array[i] == element)
         return i;
 return null;
 ```
 </td></tr>
 </table></details>
-<details><summary>firstIndexOf(element, fromIndex, toIndex)</summary><table>
+<details><summary>firstIndexOf(element, from, to)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex)
-const endingIndex = calculate-ending-index(toIndex)
+const startingIndex = calculate-starting-index(from)
+const endingIndex = calculate-ending-index(to)
 for (let i = startingIndex; i <= endingIndex; i++)
     if (array[i] === element)
         return i
@@ -529,8 +529,8 @@ return null
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
+final var startingIndex = calculate-starting-index(from);
+final var endingIndex = calculate-ending-index(to);
 for (var i = startingIndex; i < endingIndex; i++)
     if (array[i] == element)
         return i;
@@ -540,7 +540,7 @@ return null;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-for (i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+for (i in calculate-starting-index(from)..calculate-ending-index(to))
     if (element in array[i])
         return i
 return null
@@ -550,7 +550,7 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-foreach (var i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+foreach (var i in calculate-starting-index(from)..calculate-ending-index(to))
     if (array[i] == element)
         return i;
 return null;
@@ -570,16 +570,16 @@ return null;
 | **C#**         | <ul><li>[LastIndexOf(array, element)][c#-array-last-index-of-element]<li>[List.LastIndexOf(element)][c#-list-last-index-of-element] |
 
 </details>
-<details><summary>lastIndexOf(element, fromIndex)</summary><table>
+<details><summary>lastIndexOf(element, from)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
-- [Array.lastIndexOf(element, fromIndex)][js-last-index-of-element-from]
+- [Array.lastIndexOf(element, from)][js-last-index-of-element-from]
 </td></tr>
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
+final var startingIndex = calculate-starting-index(from);
 var index = size;
 while (--index >= startingIndex)
     if (array[index] == element)
@@ -590,7 +590,7 @@ throw
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
+val startingIndex = calculate-starting-index(from)
 var index = size
 while (--index >= startingIndex)
     if (element in array[index])
@@ -601,17 +601,17 @@ throw
 <tr><th>PHP</th><td></td></tr>
 <tr><th>C#</th><td>
 
-- [LastIndexOf(array, element, fromIndex)][c#-array-last-index-of-element-from]
-- [List.LastIndexOf(element, fromIndex)][c#-list-last-index-of-element-from]
+- [LastIndexOf(array, element, from)][c#-array-last-index-of-element-from]
+- [List.LastIndexOf(element, from)][c#-list-last-index-of-element-from]
 </td></tr>
 </table></details>
-<details><summary>lastIndexOf(element, fromIndex, toIndex)</summary><table>
+<details><summary>lastIndexOf(element, from, to)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex)
-const endingIndex = calculate-ending-index(toIndex)
+const startingIndex = calculate-starting-index(from)
+const endingIndex = calculate-ending-index(to)
 var index = endingIndex + 1
 while (--index >= startingIndex)
     if (array[index] == element)
@@ -622,8 +622,8 @@ throw
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
+final var startingIndex = calculate-starting-index(from);
+final var endingIndex = calculate-ending-index(to);
 var index = endingIndex + 1;
 while (--index >= startingIndex)
     if (array[index] == element)
@@ -634,8 +634,8 @@ throw
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-val endingIndex = calculate-ending-index(toIndex)
+val startingIndex = calculate-starting-index(from)
+val endingIndex = calculate-ending-index(to)
 var index = endingIndex + 1
 while (--index >= startingIndex)
     if (element in array[index])
@@ -647,8 +647,8 @@ throw
 <tr><th>C#</th><td>
 
 ```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
+var startingIndex = calculate-starting-index(from);
+var endingIndex = calculate-ending-index(to);
 var index = endingIndex + 1;
 while (--index >= startingIndex)
     if (array[index] == element)
@@ -699,12 +699,12 @@ return null;
 ```
 </td></tr>
 </table></details>
-<details><summary>lastIndexOfOrNull(element, fromIndex)</summary><table>
+<details><summary>lastIndexOfOrNull(element, from)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```java
-const startingIndex = calculate-starting-index(fromIndex)
+const startingIndex = calculate-starting-index(from)
 for (let i = size - 1; i >= startingIndex; i--)
     if (array[i] === element)
         return i
@@ -714,7 +714,7 @@ return null
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
+final var startingIndex = calculate-starting-index(from);
 for (var i = size - 1; i >= startingIndex; i--)
     if (array[i] == element)
         return i;
@@ -724,7 +724,7 @@ return null;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-for (i in (size - 1) downTo calculate-starting-index(fromIndex))
+for (i in (size - 1) downTo calculate-starting-index(from))
     if (element in array[i])
         return i
 return null
@@ -734,7 +734,7 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-final var startingIndex = calculate-starting-index(fromIndex);
+final var startingIndex = calculate-starting-index(from);
 for (var i = size - 1; i >= startingIndex; i--)
     if (array[i] == element)
         return i;
@@ -742,13 +742,13 @@ return null;
 ```
 </td></tr>
 </table></details>
-<details><summary>lastIndexOfOrNull(element, fromIndex, toIndex)</summary><table>
+<details><summary>lastIndexOfOrNull(element, from, to)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex)
-const endingIndex = calculate-ending-index(toIndex)
+const startingIndex = calculate-starting-index(from)
+const endingIndex = calculate-ending-index(to)
 for (let i = endingIndex; i >= startingIndex; i--)
     if (array[i] === element)
         return i
@@ -758,8 +758,8 @@ return null
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
+final var startingIndex = calculate-starting-index(from);
+final var endingIndex = calculate-ending-index(to);
 while (var i = endingIndex; i >= startingIndex; i--)
     if (array[i] == element)
         return i;
@@ -769,8 +769,8 @@ return null;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-val endingIndex = calculate-ending-index(toIndex)
+val startingIndex = calculate-starting-index(from)
+val endingIndex = calculate-ending-index(to)
 for (i in endingIndex downTo startingIndex)
     if (element in array[i])
         return i
@@ -781,8 +781,8 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
+var startingIndex = calculate-starting-index(from);
+var endingIndex = calculate-ending-index(to);
 while (var i = endingIndex; i >= startingIndex; i--)
     if (array[i] == element)
         return i;
@@ -818,12 +818,12 @@ return null;
  - [List.FindIndex(predicate)][c#-list-index-of-first-element]
 </td></tr>
 </table></details>
-<details><summary>indexOfFirst(predicate, fromIndex)<br/>indexOfFirstIndexed(predicate, fromIndex)</summary><table>
+<details><summary>indexOfFirst(predicate, from)<br/>indexOfFirstIndexed(predicate, from)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-for (let i = calculate-starting-index(fromIndex); i < size; i++)
+for (let i = calculate-starting-index(from); i < size; i++)
     if (predicate)
         return i
 return null
@@ -832,7 +832,7 @@ return null
 <tr><th>Java</th><td>
 
 ```java
-for (var i = calculate-starting-index(fromIndex); i < size; i++)
+for (var i = calculate-starting-index(from); i < size; i++)
     if (predicate)
         return i;
 return null;
@@ -841,7 +841,7 @@ return null;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-for (i in calculate-starting-index(fromIndex)..(size - 1))
+for (i in calculate-starting-index(from)..(size - 1))
     if (predicate)
         return i
 return null
@@ -850,17 +850,17 @@ return null
 <tr><th>PHP</th><td></td></tr>
 <tr><th>C#</th><td>
 
-- [FindIndex(array, fromIndex, predicate)][c#-array-index-of-first-element-from]
-- [List.FindIndex(fromIndex, predicate)][c#-list-index-of-first-element-from]
+- [FindIndex(array, from, predicate)][c#-array-index-of-first-element-from]
+- [List.FindIndex(from, predicate)][c#-list-index-of-first-element-from]
 </td></tr>
 </table></details>
-<details><summary>indexOfFirst(predicate, fromIndex, toIndex)<br/>indexOfFirstIndexed(predicate, fromIndex, toIndex)</summary><table>
+<details><summary>indexOfFirst(predicate, from, to)<br/>indexOfFirstIndexed(predicate, from, to)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex)
-const endingIndex = calculate-ending-index(toIndex)
+const startingIndex = calculate-starting-index(from)
+const endingIndex = calculate-ending-index(to)
 for (let i = startingIndex; i <= endingIndex; i++)
     if (predicate)
         return i
@@ -870,8 +870,8 @@ return null
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
+final var startingIndex = calculate-starting-index(from);
+final var endingIndex = calculate-ending-index(to);
 for (var i = startingIndex; i <= endingIndex; i++)
     if (predicate)
         return i;
@@ -881,7 +881,7 @@ return null;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-for (i in calculate-starting-index(fromIndex)..alculate-ending-index(toIndex))
+for (i in calculate-starting-index(from)..alculate-ending-index(to))
     if (predicate)
         return i
 return null
@@ -891,7 +891,7 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-foreach (var i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+foreach (var i in calculate-starting-index(from)..calculate-ending-index(to))
     if (predicate)
         return i;
 return null;
@@ -926,12 +926,12 @@ return null;
  - [List.FindIndex(predicate)][c#-list-index-of-first-element]
 </td></tr>
 </table></details>
-<details><summary>indexOfFirstOrNull(predicate, fromIndex)<br/>indexOfFirstIndexedOrNull(predicate, fromIndex)</summary><table>
+<details><summary>indexOfFirstOrNull(predicate, from)<br/>indexOfFirstIndexedOrNull(predicate, from)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-for (let i = calculate-starting-index(fromIndex); i < size; i++)
+for (let i = calculate-starting-index(from); i < size; i++)
     if (predicate)
         return i
 return null
@@ -940,7 +940,7 @@ return null
 <tr><th>Java</th><td>
 
 ```java
-for (var i = calculate-starting-index(fromIndex); i < size; i++)
+for (var i = calculate-starting-index(from); i < size; i++)
     if (predicate)
         return i;
 return null;
@@ -949,7 +949,7 @@ return null;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-for (i in calculate-starting-index(fromIndex)..(size - 1))
+for (i in calculate-starting-index(from)..(size - 1))
     if (predicate)
         return i
 return null
@@ -959,20 +959,20 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-foreach (var i = calculate-starting-index(fromIndex)..(size - 1))
+foreach (var i = calculate-starting-index(from)..(size - 1))
     if (predicate)
         return i;
 return null;
 ```
 </td></tr>
 </table></details>
-<details><summary>indexOfFirstOrNull(predicate, fromIndex, toIndex)<br/>indexOfFirstIndexedOrNull(predicate, fromIndex, toIndex)</summary><table>
+<details><summary>indexOfFirstOrNull(predicate, from, to)<br/>indexOfFirstIndexedOrNull(predicate, from, to)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex)
-const endingIndex = calculate-ending-index(toIndex)
+const startingIndex = calculate-starting-index(from)
+const endingIndex = calculate-ending-index(to)
 for (let i = startingIndex; i < endingIndex; i++)
     if (predicate)
         return i
@@ -982,8 +982,8 @@ return null
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
+final var startingIndex = calculate-starting-index(from);
+final var endingIndex = calculate-ending-index(to);
 for (var i = startingIndex; i < endingIndex; i++)
     if (predicate)
         return i;
@@ -993,7 +993,7 @@ return null;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-for (i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+for (i in calculate-starting-index(from)..calculate-ending-index(to))
     if (predicate)
         return i
 return null
@@ -1003,7 +1003,7 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-foreach (i in calculate-starting-index(fromIndex)..calculate-ending-index(toIndex))
+foreach (i in calculate-starting-index(from)..calculate-ending-index(to))
     if (predicate)
         return i;
 return null;
@@ -1038,12 +1038,12 @@ throw
  - [List.FindLastIndex(predicate)][c#-list-index-of-first-element]
 </td></tr>
 </table></details>
-<details><summary>indexOfLast(predicate, fromIndex)<br/>indexOfLastIndexed(predicate, fromIndex)</summary><table>
+<details><summary>indexOfLast(predicate, from)<br/>indexOfLastIndexed(predicate, from)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
+const startingIndex = calculate-starting-index(from,)
 for (let i = size - 1; i >= startingIndex; i--)
     if (predicate)
         return index
@@ -1053,7 +1053,7 @@ throw
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
+final var startingIndex = calculate-starting-index(from);
 for (var i = size - 1; i >= startingIndex; i--)
     if (predicate)
         return index;
@@ -1063,7 +1063,7 @@ throw
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-for (i in (size - 1) downTo calculate-starting-index(fromIndex))
+for (i in (size - 1) downTo calculate-starting-index(from))
     if (predicate)
        return index
 throw
@@ -1076,13 +1076,13 @@ throw
 - [List.FindLastIndex(predicate)][c#-list-index-of-first-element-from]
 </td></tr>
 </table></details>
-<details><summary>indexOfLast(predicate, fromIndex, toIndex)<br/>indexOfLastIndexed(predicate, fromIndex, toIndex)</summary><table>
+<details><summary>indexOfLast(predicate, from, to)<br/>indexOfLastIndexed(predicate, from, to)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
-const endingIndex = calculate-ending-index(toIndex,)
+const startingIndex = calculate-starting-index(from,)
+const endingIndex = calculate-ending-index(to,)
 for (let i = endingIndex; i >= startingIndex; i--)
     if (predicate)
         return i
@@ -1092,8 +1092,8 @@ throw
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
+final var startingIndex = calculate-starting-index(from);
+final var endingIndex = calculate-ending-index(to);
 for (let i = endingIndex; i >= startingIndex; i--)
     if (predicate)
         return i;
@@ -1103,8 +1103,8 @@ throw
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-val endingIndex = calculate-ending-index(toIndex)
+val startingIndex = calculate-starting-index(from)
+val endingIndex = calculate-ending-index(to)
 for (i in endingIndex downTo startingIndex)
     if (predicate)
         return i
@@ -1115,8 +1115,8 @@ throw
 <tr><th>C#</th><td>
 
 ```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
+var startingIndex = calculate-starting-index(from);
+var endingIndex = calculate-ending-index(to);
 for (let i = endingIndex; i >= startingIndex; i--)
     if (predicate)
         return i;
@@ -1166,12 +1166,12 @@ return null;
 ```
 </td></tr>
 </table></details>
-<details><summary>indexOfLastOrNull(predicate, fromIndex)<br/>indexOfLastIndexedOrNull(predicate, fromIndex)</summary><table>
+<details><summary>indexOfLastOrNull(predicate, from)<br/>indexOfLastIndexedOrNull(predicate, from)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
+const startingIndex = calculate-starting-index(from,)
 for (let i = size - 1; i >= startingIndex; i--)
     if (predicate)
         return index
@@ -1181,7 +1181,7 @@ return null
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
+final var startingIndex = calculate-starting-index(from);
 for (var i = size - 1; i >= startingIndex; i--)
     if (predicate)
         return i;
@@ -1193,7 +1193,7 @@ return null;
 ```kotlin
 val startingIndex = 
 var index = size
-for (i in (size - 1) downTo calculate-starting-index(fromIndex))
+for (i in (size - 1) downTo calculate-starting-index(from))
     if (predicate)
         return i
 return null
@@ -1203,7 +1203,7 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-var startingIndex = calculate-starting-index(fromIndex);
+var startingIndex = calculate-starting-index(from);
 for (var i = size - 1; i >= startingIndex; i--)
     if (predicate)
         return i;
@@ -1211,13 +1211,13 @@ return null;
 ```
 </td></tr>
 </table></details>
-<details><summary>indexOfLastOrNull(predicate, fromIndex, toIndex)<br/>indexOfLastIndexedOrNull(predicate, fromIndex, toIndex)</summary><table>
+<details><summary>indexOfLastOrNull(predicate, from, to)<br/>indexOfLastIndexedOrNull(predicate, from, to)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
-const endingIndex = calculate-ending-index(toIndex,)
+const startingIndex = calculate-starting-index(from,)
+const endingIndex = calculate-ending-index(to,)
 for (let i = endingIndex; i >= startingIndex; i--)
     if (predicate)
         return i
@@ -1227,8 +1227,8 @@ return null
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
+final var startingIndex = calculate-starting-index(from);
+final var endingIndex = calculate-ending-index(to);
 for (let i = endingIndex; i >= startingIndex; i--)
     if (predicate)
         return i;
@@ -1238,8 +1238,8 @@ return null;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex)
-val endingIndex = calculate-ending-index(toIndex)
+val startingIndex = calculate-starting-index(from)
+val endingIndex = calculate-ending-index(to)
 for (i in endingIndex downTo startingIndex)
     if (predicate)
         return i
@@ -1250,8 +1250,8 @@ return null
 <tr><th>C#</th><td>
 
 ```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
+var startingIndex = calculate-starting-index(from);
+var endingIndex = calculate-ending-index(to);
 for (let i = endingIndex; i >= startingIndex; i--)
     if (predicate)
         return i;
@@ -1269,6 +1269,7 @@ The methods are made to do validation on type, value or comparison
  - `hasNull`|`containsNull`|`includesNull`()
  - `hasDuplicate`|`containsDuplicate`|`includesDuplicate`()
  - `has`|`contains`|`includes`(value)
+ - `hasNot`|`containsNot`|`includesNot`(value)
  - `hasOne`|`containsOne`|`includesOne`(values)
  - `hasAll`|`containsAll`|`includesAll`(values)
  - `requireNoNulls`()
@@ -1505,7 +1506,7 @@ The methods are made to transform the structure by different type or size
  - `filterNotIndexed`(predicate)
  - `filterNotNull`()
  - `slice`(indices)
- - `slice`(fromIndex?, toIndex?)
+ - `slice`(from?, to?)
  - `take`|`limit`(n)
  - `takeWhile`|`limitWhile`(predicate)
  - `takeWhileIndexed`|`limitWhileIndexed`(predicate)
@@ -1621,26 +1622,26 @@ return newArray;
 | **C#**         | `array`                   |
 
 </details>
-<details><summary>slice(fromIndex)</summary>
+<details><summary>slice(from)</summary>
 
-| Language       | Equivalent                                          |
-|:---------------|:----------------------------------------------------|
-| **Javascript** | [Array.slice(fromIndex)][js-slice]                  |
-| **Java**       | `Arrays.copyOfRange(array, fromIndex, size - 1)`    |
-| **Kotlin**     | `array[fromIndex..]`<br/>`array.slice(fromIndex..)` |
-| **PHP**        |                                                     |
-| **C#**         | `array[fromIndex..^0]`                              |
+| Language       | Equivalent                                  |
+|:---------------|:--------------------------------------------|
+| **Javascript** | [Array.slice(from)][js-slice]               |
+| **Java**       | `Arrays.copyOfRange(array, from, size - 1)` |
+| **Kotlin**     | `array[from..]`<br/>`array.slice(from..)`   |
+| **PHP**        |                                             |
+| **C#**         | `array[from..^0]`                           |
 
 </details>
-<details><summary>slice(fromIndex, toIndex)</summary>
+<details><summary>slice(from, to)</summary>
 
-| Language       | Equivalent                                                        |
-|:---------------|:------------------------------------------------------------------|
-| **Javascript** | [Array.slice(fromIndex, toIndex)][js-slice]                       |
-| **Java**       | `Arrays.copyOfRange(array, fromIndex, toIndex)`                   |
-| **Kotlin**     | `array[fromIndex..toIndex]`<br/>`array.slice(fromIndex..toIndex)` |
-| **PHP**        |                                                                   |
-| **C#**         | `array[fromIndex..toIndex]`                                       |
+| Language       | Equivalent                                    |
+|:---------------|:----------------------------------------------|
+| **Javascript** | [Array.slice(from, to)][js-slice]             |
+| **Java**       | `Arrays.copyOfRange(array, from, to)`         |
+| **Kotlin**     | `array[from..to]`<br/>`array.slice(from..to)` |
+| **PHP**        |                                               |
+| **C#**         | `array[from..to]`                             |
 
 </details>
 <br/>
@@ -1866,26 +1867,26 @@ The methods are basically an embedded loop
 ### Reordering methods
 
 The methods are there to reorder the values
- - `toReverse`|`toReversed`|`reversed`(fromIndex?, toIndex?)
+ - `toReverse`|`toReversed`|`reversed`(from?, to?)
 
 <details><summary>toReverse()</summary>
 
-| Language       | Equivalent                                                                                                                                                 |
-|:---------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Javascript** | <ul><li>[Array.toReversed()][js-to-reverse]                                                                                                                |
-| **Java**       | `Collections.reverse(list)`                                                                                                                                |
-| **Kotlin**     | <ul><li>[Array.reversed()<br/>Iterable.reversed()][kotlin-to-reverse]                                                                                      |
-| **PHP**        | <ul><li>[array_reverse($array)][php-to-reverse]                                                                                                            |
-| **C#**         | <ul><li>[Reverse(array)][c#-array-to-reverse]<li>[IEnumerable.Reverse()][c#-enumerable-to-reverse]<li>[List.Reverse(fromIndex, limit)][c#-list-to-reverse] |
+| Language       | Equivalent                                                                                                                                            |
+|:---------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Javascript** | <ul><li>[Array.toReversed()][js-to-reverse]                                                                                                           |
+| **Java**       | `Collections.reverse(list)`                                                                                                                           |
+| **Kotlin**     | <ul><li>[Array.reversed()<br/>Iterable.reversed()][kotlin-to-reverse]                                                                                 |
+| **PHP**        | <ul><li>[array_reverse($array)][php-to-reverse]                                                                                                       |
+| **C#**         | <ul><li>[Reverse(array)][c#-array-to-reverse]<li>[IEnumerable.Reverse()][c#-enumerable-to-reverse]<li>[List.Reverse(from, limit)][c#-list-to-reverse] |
 
 
 </details>
-<details><summary>toReverse(fromIndex)</summary><table>
+<details><summary>toReverse(from)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
+const startingIndex = calculate-starting-index(from,)
 const newArray = new Array(size - 1 - startingIndex,)
 let indexAdded = -1
 let index = size
@@ -1897,7 +1898,7 @@ return newArray
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
+final var startingIndex = calculate-starting-index(from);
 final var newArray = (T[]) new Object[size - 1 - startingIndex];
 var indexAdded = -1;
 var index = size;
@@ -1909,7 +1910,7 @@ return newArray;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex,)
+val startingIndex = calculate-starting-index(from,)
 val newArray = arrayOfNulls<T>(size - 1 - startingIndex,)
 var indexAdded = -1
 var index = size
@@ -1922,7 +1923,7 @@ return newArray as T[]
 <tr><th>C#</th><td>
 
 ```csharp
-var startingIndex = calculate-starting-index(fromIndex);
+var startingIndex = calculate-starting-index(from);
 var newArray = new T[size - 1 - startingIndex];
 var indexAdded = -1;
 var index = size;
@@ -1932,13 +1933,13 @@ return newArray;
 ```
 </td></tr>
 </table></details>
-<details><summary>toReverse(fromIndex, toIndex)</summary><table>
+<details><summary>toReverse(from, to)</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
 <tr><th>Javascript</th><td>
 
 ```javascript
-const startingIndex = calculate-starting-index(fromIndex,)
-const endingIndex = calculate-ending-index(toIndex,)
+const startingIndex = calculate-starting-index(from,)
+const endingIndex = calculate-ending-index(to,)
 const newArray = new Array(endingIndex - startingIndex,)
 let indexAdded = -1
 let index = endingIndex + 1
@@ -1950,8 +1951,8 @@ return newArray
 <tr><th>Java</th><td>
 
 ```java
-final var startingIndex = calculate-starting-index(fromIndex);
-final var endingIndex = calculate-ending-index(toIndex);
+final var startingIndex = calculate-starting-index(from);
+final var endingIndex = calculate-ending-index(to);
 final var newArray = (T[]) new Object[endingIndex - startingIndex];
 var indexAdded = -1;
 var index = endingIndex + 1;
@@ -1963,8 +1964,8 @@ return newArray;
 <tr><th>Kotlin</th><td>
 
 ```kotlin
-val startingIndex = calculate-starting-index(fromIndex,)
-val endingIndex = calculate-ending-index(toIndex,)
+val startingIndex = calculate-starting-index(from,)
+val endingIndex = calculate-ending-index(to,)
 val newArray = arrayOfNulls<T>(endingIndex - startingIndex,)
 var indexAdded = -1
 var index = endingIndex + 1
@@ -1977,8 +1978,8 @@ return newArray as T[]
 <tr><th>C#</th><td>
 
 ```csharp
-var startingIndex = calculate-starting-index(fromIndex);
-var endingIndex = calculate-ending-index(toIndex);
+var startingIndex = calculate-starting-index(from);
+var endingIndex = calculate-ending-index(to);
 var newArray = new T[endingIndex - startingIndex];
 var indexAdded = -1;
 var index = endingIndex + 1;
