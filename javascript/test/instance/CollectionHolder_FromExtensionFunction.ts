@@ -328,9 +328,6 @@ export class CollectionHolder_FromExtensionFunction<const T, >
         return hasByCollectionHolder<T>(this, value,)
     }
 
-    //#endregion -------------------- Has --------------------
-    //#region -------------------- Has --------------------
-
     public override hasNot(value: T,): boolean {
         return hasNotByCollectionHolder<T>(this, value,)
     }

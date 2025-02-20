@@ -325,14 +325,11 @@ export class CollectionHolder_FromArrayFunction<const T, >
         return hasByArray(this.array, value,)
     }
 
-    //#endregion -------------------- Has --------------------
-    //#region -------------------- Has not --------------------
-
     public override hasNot(value: T,): boolean {
         return hasNotByArray(this.array, value,)
     }
 
-    //#endregion -------------------- Has not --------------------
+    //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
     public override hasOne(values: readonly T[],): boolean

@@ -304,14 +304,11 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return hasByMinimalistCollectionHolder(this, value,)
     }
 
-    //#endregion -------------------- Has --------------------
-    //#region -------------------- Has not --------------------
-
     public override hasNot(value: T,): boolean {
         return hasNotByMinimalistCollectionHolder(this, value,)
     }
 
-    //#endregion -------------------- Has not --------------------
+    //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
     public override hasOne(values: readonly T[],): boolean

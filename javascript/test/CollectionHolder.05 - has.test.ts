@@ -30,10 +30,10 @@ describe("CollectionHolderTest (has)", () => {
 
     describe("EmptyCollectionHolder", () => {
         test("has",         () => expect(new EmptyCollectionHolderForTest().has(),).toBeFalse(),)
-        test("hasNot",      () => expect(new EmptyCollectionHolderForTest().hasNot(),).toBeTrue(),)
         test("includes",    () => expect(new EmptyCollectionHolderForTest().includes(),).toBeFalse(),)
-        test("includesNot", () => expect(new EmptyCollectionHolderForTest().includesNot(),).toBeTrue(),)
         test("contains",    () => expect(new EmptyCollectionHolderForTest().contains(),).toBeFalse(),)
+        test("hasNot",      () => expect(new EmptyCollectionHolderForTest().hasNot(),).toBeTrue(),)
+        test("includesNot", () => expect(new EmptyCollectionHolderForTest().includesNot(),).toBeTrue(),)
         test("containsNot", () => expect(new EmptyCollectionHolderForTest().containsNot(),).toBeTrue(),)
         test("hasOne",      () => expect(new EmptyCollectionHolderForTest().hasOne(),).toBeFalse(),)
         test("includesOne", () => expect(new EmptyCollectionHolderForTest().includesOne(),).toBeFalse(),)
