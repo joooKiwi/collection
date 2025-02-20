@@ -2039,8 +2039,6 @@ export interface CollectionHolder<out T = unknown, >
      * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
      *
      * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
-     * @see includesNull
-     * @see containsNull
      */
     get hasNull(): boolean
 
@@ -2093,8 +2091,6 @@ export interface CollectionHolder<out T = unknown, >
      * The {@link CollectionHolder} has at least one duplicate value
      *
      * @return {boolean} <b>true</b> only if one element is equal (===) to another one
-     * @see includesDuplicate
-     * @see containsDuplicate
      */
     get hasDuplicate(): boolean
 
