@@ -77,7 +77,11 @@ export type KeyOfCollectionHolder = keyof CollectionHolder
 //#endregion -------------------- Collection holder key --------------------
 //#region -------------------- Iterator key --------------------
 
-/** The keys applicable to an {@link IteratorObject Iterator} */
+/**
+ * The keys applicable to an {@link IteratorObject Iterator}
+ *
+ * @note It will be changed to `keyof IteratorObject` on version 1.14
+ */
 export type KeyOfIterator = "next"
                             | "every" | "some"
                             | "find" | "filter" | "reduce"
@@ -85,7 +89,8 @@ export type KeyOfIterator = "next"
                             | "forEach"
                             | "map" | "flatMap"
                             | "toArray"
-                            | typeof Symbol["iterator"] | typeof Symbol["toStringTag"]//IteratorObject<unknown>
+                            | typeof Symbol["iterator"] | typeof Symbol["toStringTag"]
+//export type KeyOfIterator = Exclude<keyof IteratorObject<unknown, unknown, unknown>, Symbol["dispose"]>
 
 //#endregion -------------------- Iterator key --------------------
 //#region -------------------- Collection iterator key --------------------
