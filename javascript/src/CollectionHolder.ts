@@ -2115,6 +2115,32 @@ export interface CollectionHolder<out T = unknown, >
     get containsDuplicate(): this["hasDuplicate"]
 
     //#endregion -------------------- Has duplicate --------------------
+    //#region -------------------- Has no duplicates --------------------
+
+    /**
+     * The {@link CollectionHolder} has no duplicated value
+     *
+     * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+     */
+    get hasNoDuplicates(): boolean
+
+    /**
+     * The {@link CollectionHolder} has no duplicated value
+     *
+     * @alias CollectionHolder.hasNoDuplicates
+     * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+     */
+    get includesNoDuplicates(): this["hasNoDuplicates"]
+
+    /**
+     * The {@link CollectionHolder} has no duplicated value
+     *
+     * @alias CollectionHolder.hasNoDuplicates
+     * @return {boolean} <b>true</b> only if no element is equal (===) to another one
+     */
+    get containsNoDuplicates(): this["hasNoDuplicates"]
+
+    //#endregion -------------------- Has no duplicates --------------------
 
     //#region -------------------- Has --------------------
 

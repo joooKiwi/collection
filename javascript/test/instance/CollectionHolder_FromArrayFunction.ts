@@ -53,6 +53,7 @@ import {getOrNullByArray}                 from "../../src/method/getOrNull"
 import {hasByArray}                       from "../../src/method/has"
 import {hasAllByArray}                    from "../../src/method/hasAll"
 import {hasDuplicateByArray}              from "../../src/method/hasDuplicate"
+import {hasNoDuplicatesByArray}           from "../../src/method/hasNoDuplicates"
 import {hasNoNullsByArray}                from "../../src/method/hasNoNulls"
 import {hasNotByArray}                    from "../../src/method/hasNot"
 import {hasNullByArray}                   from "../../src/method/hasNull"
@@ -320,6 +321,10 @@ export class CollectionHolder_FromArrayFunction<const T, >
 
     public override get hasDuplicate(): boolean {
         return hasDuplicateByArray(this.array,)
+    }
+
+    public override get hasNoDuplicates(): boolean {
+        return hasNoDuplicatesByArray(this.array,)
     }
 
     //#endregion -------------------- Has duplicate --------------------

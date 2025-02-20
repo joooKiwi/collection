@@ -455,6 +455,19 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
     //#endregion -------------------- Has duplicate --------------------
+    //#region -------------------- Has no duplicates --------------------
+
+    public abstract get hasNoDuplicates(): boolean
+
+    public get includesNoDuplicates(): never {
+        throw new Error("The getter method “includesNoDuplicates” was not expected to be called.",)
+    }
+
+    public get containsNoDuplicates(): never {
+        throw new Error("The getter method “containsNoDuplicates” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has no duplicates --------------------
 
     //#region -------------------- Has --------------------
 

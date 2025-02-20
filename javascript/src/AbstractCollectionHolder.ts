@@ -59,6 +59,7 @@ import {hasAllWithIterableByCollectionHolder}                   from "./method/h
 import {hasAllWithMinimalistCollectionHolderByCollectionHolder} from "./method/hasAll.withMinimalistCollectionHolder"
 import {hasAllWithSetByCollectionHolder}                        from "./method/hasAll.withSet"
 import {hasDuplicateByCollectionHolder}                         from "./method/hasDuplicate"
+import {hasNoDuplicatesByCollectionHolder}                      from "./method/hasNoDuplicates"
 import {hasNoNullsByCollectionHolder}                           from "./method/hasNoNulls"
 import {hasNotByCollectionHolder}                               from "./method/hasNot"
 import {hasNullByCollectionHolder}                              from "./method/hasNull"
@@ -665,6 +666,13 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public get containsDuplicate(): this["hasDuplicate"] { return this.hasDuplicate }
 
     //#endregion -------------------- Has duplicate --------------------
+    //#region -------------------- Has no duplicates --------------------
+
+    public get hasNoDuplicates(): boolean { return hasNoDuplicatesByCollectionHolder(this,) }
+    public get includesNoDuplicates(): this["hasNoDuplicates"] { return this.hasNoDuplicates }
+    public get containsNoDuplicates(): this["hasNoDuplicates"] { return this.hasNoDuplicates }
+
+    //#endregion -------------------- Has no duplicates --------------------
 
     //#region -------------------- Has --------------------
 

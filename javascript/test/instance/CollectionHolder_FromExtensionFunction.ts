@@ -52,6 +52,7 @@ import {getOrNullByCollectionHolder}                 from "../../src/method/getO
 import {hasByCollectionHolder}                       from "../../src/method/has"
 import {hasAllByCollectionHolder}                    from "../../src/method/hasAll"
 import {hasDuplicateByCollectionHolder}              from "../../src/method/hasDuplicate"
+import {hasNoDuplicatesByCollectionHolder}           from "../../src/method/hasNoDuplicates"
 import {hasNoNullsByCollectionHolder}                from "../../src/method/hasNoNulls"
 import {hasNotByCollectionHolder}                    from "../../src/method/hasNot"
 import {hasNullByCollectionHolder}                   from "../../src/method/hasNull"
@@ -323,6 +324,10 @@ export class CollectionHolder_FromExtensionFunction<const T, >
 
     public override get hasDuplicate(): boolean {
         return hasDuplicateByCollectionHolder<T>(this,)
+    }
+
+    public override get hasNoDuplicates(): boolean {
+        return hasNoDuplicatesByCollectionHolder<T>(this,)
     }
 
     //#endregion -------------------- Has duplicate --------------------

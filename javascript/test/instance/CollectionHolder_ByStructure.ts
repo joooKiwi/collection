@@ -273,6 +273,13 @@ export class CollectionHolder_ByStructure<const T, >
     public get containsDuplicate(): this["hasDuplicate"] { return this.reference.containsDuplicate }
 
     //#endregion -------------------- Has duplicate --------------------
+    //#region -------------------- Has no duplicates --------------------
+
+    public get hasNoDuplicates(): boolean { return this.reference.hasNoDuplicates }
+    public get includesNoDuplicates(): this["hasNoDuplicates"] { return this.reference.includesNoDuplicates }
+    public get containsNoDuplicates(): this["hasNoDuplicates"] { return this.reference.containsNoDuplicates }
+
+    //#endregion -------------------- Has no duplicates --------------------
 
     //#region -------------------- Has --------------------
 

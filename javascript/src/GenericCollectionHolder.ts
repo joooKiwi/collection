@@ -65,6 +65,7 @@ import {hasAllWithIterableByArray}                   from "./method/hasAll.withI
 import {hasAllWithMinimalistCollectionHolderByArray} from "./method/hasAll.withMinimalistCollectionHolder"
 import {hasAllWithSetByArray}                        from "./method/hasAll.withSet"
 import {hasDuplicateByArray}                         from "./method/hasDuplicate"
+import {hasNoDuplicatesByArray}                      from "./method/hasNoDuplicates"
 import {hasNoNullsByArray}                           from "./method/hasNoNulls"
 import {hasNotByArray}                               from "./method/hasNot"
 import {hasNullByArray}                              from "./method/hasNull"
@@ -1100,6 +1101,8 @@ export class GenericCollectionHolder<const T = unknown,
     //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): boolean { return this.#hasDuplicate ??= hasDuplicateByArray(this._array,) }
+
+    public override get hasNoDuplicates(): boolean { return !(this.#hasDuplicate ??= !hasNoDuplicatesByArray(this._array,)) }
 
     //#endregion -------------------- Has duplicate --------------------
 

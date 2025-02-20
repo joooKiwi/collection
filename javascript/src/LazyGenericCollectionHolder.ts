@@ -862,6 +862,8 @@ export class LazyGenericCollectionHolder<const T = unknown,
         return this.#hasDuplicate = valueFromLazy
     }
 
+    public override get hasNoDuplicates(): boolean {
+        return !this.hasDuplicate
     }
 
     //#endregion -------------------- Validation methods --------------------

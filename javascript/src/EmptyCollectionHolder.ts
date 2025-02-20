@@ -401,6 +401,15 @@ export class EmptyCollectionHolder
     public get containsDuplicate(): false { return this.hasDuplicate }
 
     //#endregion -------------------- Has duplicate --------------------
+    //#region -------------------- Has no duplicates --------------------
+
+    public get hasNoDuplicates(): true { return true }
+
+    public get includesNoDuplicates(): true { return this.hasNoDuplicates }
+
+    public get containsNoDuplicates(): true { return this.hasNoDuplicates }
+
+    //#endregion -------------------- Has no duplicates --------------------
 
     //#region -------------------- Has --------------------
 
