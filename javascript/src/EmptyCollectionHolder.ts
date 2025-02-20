@@ -383,6 +383,15 @@ export class EmptyCollectionHolder
     public get containsNull(): false { return this.hasNull }
 
     //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has no nulls --------------------
+
+    public get hasNoNulls(): true { return true }
+
+    public get includesNoNulls(): true { return this.hasNoNulls }
+
+    public get containsNoNulls(): true { return this.hasNoNulls }
+
+    //#endregion -------------------- Has no nulls --------------------
     //#region -------------------- Has duplicate --------------------
 
     public get hasDuplicate(): false { return false }

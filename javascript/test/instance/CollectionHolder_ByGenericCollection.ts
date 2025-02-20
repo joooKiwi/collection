@@ -165,6 +165,8 @@ export class CollectionHolder_ByGenericCollection<const T, >
 
     public override get hasNull(): boolean { return this.instance.hasNull }
 
+    public override get hasNoNulls(): boolean { return this.instance.hasNoNulls }
+
     public override get hasDuplicate(): boolean { return this.instance.hasDuplicate }
 
     public override has(value: T,): boolean { return this.instance.has(value,) }

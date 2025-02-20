@@ -2061,6 +2061,32 @@ export interface CollectionHolder<out T = unknown, >
     get containsNull(): this["hasNull"]
 
     //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has no nulls --------------------
+
+    /**
+     * The {@link CollectionHolder} has no <b>null</b> or <b>undefined</b>
+     *
+     * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
+     */
+    get hasNoNulls(): boolean
+
+    /**
+     * The {@link CollectionHolder} has no <b>null</b> or <b>undefined</b>
+     *
+     * @alias CollectionHolder.hasNoNulls
+     * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
+     */
+    get includesNoNulls(): this["hasNoNulls"]
+
+    /**
+     * The {@link CollectionHolder} has no <b>null</b> or <b>undefined</b>
+     *
+     * @alias CollectionHolder.hasNoNulls
+     * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
+     */
+    get containsNoNulls(): this["hasNoNulls"]
+
+    //#endregion -------------------- Has no nulls --------------------
     //#region -------------------- Has duplicate --------------------
 
     /**

@@ -756,6 +756,27 @@ export class LazyGenericCollectionHolder<const T = unknown,
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
+    /** The {@link PossibleIterableOrCollection iterable or collection} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
+    protected get _reference(): REFERENCE { return this.#reference.value }
+
+    /** The {@link CollectionHandler handler} created from the {@link LazyGenericCollectionHolder} {@link LazyGenericCollectionHolder.constructor constructor} */
+    protected get _handler(): CollectionHandler<T> {
+        const value = this.#handler
+        if (value != null)
+            return value
+
+        const valueFromLazy = this.#lazyHandler!.value
+        const value2 = this.#handler
+        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
+            return this.#handler = value2
+        return this.#handler = valueFromLazy
+    }
+
+    //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Size methods --------------------
+
     public override get size(): number {
         const value = this.#size
         if (value != null)
@@ -782,49 +803,8 @@ export class LazyGenericCollectionHolder<const T = unknown,
 
     public override get isNotEmpty(): boolean { return !this.isEmpty }
 
-    public override get hasNull(): boolean {
-        const value = this.#hasNull
-        if (value != null)
-            return value
-
-        const valueFromLazy = this.#lazyHasNull!.value
-        const value2 = this.#hasNull
-        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
-            return this.#hasNull = value2
-        return this.#hasNull = valueFromLazy
-    }
-
-    public override get hasDuplicate(): boolean {
-        const value = this.#hasDuplicate
-        if (value != null)
-            return value
-
-        const valueFromLazy = this.#lazyHasDuplicate!.value
-        const value2 = this.#hasDuplicate
-        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
-            return this.#hasDuplicate = value2
-        return this.#hasDuplicate = valueFromLazy
-    }
-
-
-    /** The {@link PossibleIterableOrCollection iterable or collection} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
-    protected get _reference(): REFERENCE { return this.#reference.value }
-
-    /** The {@link CollectionHandler handler} created from the {@link LazyGenericCollectionHolder} {@link LazyGenericCollectionHolder.constructor constructor} */
-    protected get _handler(): CollectionHandler<T> {
-        const value = this.#handler
-        if (value != null)
-            return value
-
-        const valueFromLazy = this.#lazyHandler!.value
-        const value2 = this.#handler
-        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
-            return this.#handler = value2
-        return this.#handler = valueFromLazy
-    }
-
-    //#endregion -------------------- Getter methods --------------------
-    //#region -------------------- Methods --------------------
+    //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Research methods --------------------
 
     public override get(index: number,): T {
         const valueFound = this._handler.get(index,)
@@ -850,10 +830,48 @@ export class LazyGenericCollectionHolder<const T = unknown,
 
     public override getOrNull(index: number,): NullOr<T> { return this._handler.get(index,).value }
 
+    //#endregion -------------------- Research methods --------------------
+    //#region -------------------- Validation methods --------------------
+
+    public override get hasNull(): boolean {
+        const value = this.#hasNull
+        if (value != null)
+            return value
+
+        const valueFromLazy = this.#lazyHasNull!.value
+        const value2 = this.#hasNull
+        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
+            return this.#hasNull = value2
+        return this.#hasNull = valueFromLazy
+    }
+
+    public override get hasNoNulls(): boolean {
+        return !this.hasNull
+    }
+
+
+    public override get hasDuplicate(): boolean {
+        const value = this.#hasDuplicate
+        if (value != null)
+            return value
+
+        const valueFromLazy = this.#lazyHasDuplicate!.value
+        const value2 = this.#hasDuplicate
+        if (value2 != null) // It might be possible to have the value being set on the lazy value evaluation
+            return this.#hasDuplicate = value2
+        return this.#hasDuplicate = valueFromLazy
+    }
+
+    }
+
+    //#endregion -------------------- Validation methods --------------------
+    //#region -------------------- Conversion methods --------------------
 
     public override toArray(): readonly T[] { return this.#array ??= super.toArray() }
     public override toSet(): ReadonlySet<T> { return this.#set ??= super.toSet() }
     public override toMap(): ReadonlyMap<number, T> { return this.#map ??= super.toMap() }
+
+    //#endregion -------------------- Conversion methods --------------------
 
     //#endregion -------------------- Methods --------------------
 

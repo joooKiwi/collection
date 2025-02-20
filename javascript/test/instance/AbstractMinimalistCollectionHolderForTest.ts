@@ -52,6 +52,7 @@ import {getOrNullByMinimalistCollectionHolder}                 from "../../src/m
 import {hasByMinimalistCollectionHolder}                       from "../../src/method/has"
 import {hasAllByMinimalistCollectionHolder}                    from "../../src/method/hasAll"
 import {hasDuplicateByMinimalistCollectionHolder}              from "../../src/method/hasDuplicate"
+import {hasNoNullsByMinimalistCollectionHolder}                from "../../src/method/hasNoNulls"
 import {hasNotByMinimalistCollectionHolder}                    from "../../src/method/hasNot"
 import {hasNullByMinimalistCollectionHolder}                   from "../../src/method/hasNull"
 import {hasOneByMinimalistCollectionHolder}                    from "../../src/method/hasOne"
@@ -287,6 +288,10 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
 
     public override get hasNull(): boolean {
         return hasNullByMinimalistCollectionHolder(this,)
+    }
+
+    public override get hasNoNulls(): boolean {
+        return hasNoNullsByMinimalistCollectionHolder(this,)
     }
 
     //#endregion -------------------- Has null --------------------

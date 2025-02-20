@@ -429,6 +429,19 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
     //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has no nulls --------------------
+
+    public abstract get hasNoNulls(): boolean
+
+    public get includesNoNulls(): never {
+        throw new Error("The getter method “includesNoNulls” was not expected to be called.",)
+    }
+
+    public get containsNoNulls(): never {
+        throw new Error("The getter method “containsNoNulls” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has no nulls --------------------
     //#region -------------------- Has duplicate --------------------
 
     public abstract get hasDuplicate(): boolean

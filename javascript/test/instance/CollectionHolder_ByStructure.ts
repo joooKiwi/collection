@@ -259,6 +259,13 @@ export class CollectionHolder_ByStructure<const T, >
     public get containsNull(): this["hasNull"] { return this.reference.containsNull }
 
     //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has no nulls --------------------
+
+    public get hasNoNulls(): boolean { return this.reference.hasNoNulls }
+    public get includesNoNulls(): this["hasNoNulls"] { return this.reference.includesNoNulls }
+    public get containsNoNulls(): this["hasNoNulls"] { return this.reference.containsNoNulls }
+
+    //#endregion -------------------- Has no nulls --------------------
     //#region -------------------- Has duplicate --------------------
 
     public get hasDuplicate(): boolean { return this.reference.hasDuplicate }
