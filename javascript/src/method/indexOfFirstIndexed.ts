@@ -177,7 +177,7 @@ export function indexOfFirstIndexedByMinimalistCollectionHolder<const T, >(colle
  * @param predicate  The given predicate
  * @return {number} The index matching the {@link predicate} found
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No index could be found
  * @see ReadonlyArray.findIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -195,7 +195,7 @@ export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nul
  * @param from       The inclusive starting index (`0` by default)
  * @return {number} The index matching the {@link predicate} found
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
+ * @throws EmptyCollectionException   The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException  {@link from} is not within a valid range
  * @throws IndexOutOfBoundsException  No index could be found
  * @throws ForbiddenIndexException    {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -216,7 +216,7 @@ export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nul
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @return {number} The index matching the {@link predicate} found
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
+ * @throws EmptyCollectionException   The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
  * @throws IndexOutOfBoundsException  No index could be found
  * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
