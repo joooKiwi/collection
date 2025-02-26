@@ -54,7 +54,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2;
 
 @NotNullByDefault
 public final class HasOne
@@ -73,7 +73,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Iterator<? extends T> values) {
         if (collection == null)
@@ -89,7 +89,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Iterator<? extends T> values) {
         if (collection == null)
@@ -105,7 +105,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable Iterator<? extends T> values) {
         if (collection == null)
@@ -124,7 +124,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        the `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable ListIterator<? extends T> values) {
         if (collection == null)
@@ -140,7 +140,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable ListIterator<? extends T> values) {
         if (collection == null)
@@ -156,7 +156,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable ListIterator<? extends T> values) {
         if (collection == null)
@@ -175,7 +175,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Spliterator<? extends T> values) {
         if (collection == null)
@@ -191,7 +191,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Spliterator<? extends T> values) {
         if (collection == null)
@@ -207,7 +207,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable Spliterator<? extends T> values) {
         if (collection == null)
@@ -226,7 +226,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Enumeration<? extends T> values) {
         if (collection == null)
@@ -242,7 +242,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Enumeration<? extends T> values) {
         if (collection == null)
@@ -258,7 +258,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable Enumeration<? extends T> values) {
         if (collection == null)
@@ -278,7 +278,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable Iterable<? extends T> values) {
         if (collection == null)
@@ -300,7 +300,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable Iterable<? extends T> values) {
         if (collection == null)
@@ -322,7 +322,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable Iterable<? extends T> values) {
         if (collection == null)
@@ -348,7 +348,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable MinimalistCollectionHolder<? extends T> values) {
         if (collection == null)
@@ -366,7 +366,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable MinimalistCollectionHolder<? extends T> values) {
         if (collection == null)
@@ -384,7 +384,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable MinimalistCollectionHolder<? extends T> values) {
         if (collection == null)
@@ -405,7 +405,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable CollectionHolder<? extends T> values) {
         if (collection == null)
@@ -421,7 +421,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable CollectionHolder<? extends T> values) {
         if (collection == null)
@@ -437,7 +437,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable CollectionHolder<? extends T> values) {
         if (collection == null)
@@ -457,7 +457,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Collection<? extends T> values) {
         if (collection == null)
@@ -475,7 +475,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Collection<? extends T> values) {
         if (collection == null)
@@ -493,7 +493,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable Collection<? extends T> values) {
         if (collection == null)
@@ -514,7 +514,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
         if (collection == null)
@@ -532,7 +532,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
         if (collection == null)
@@ -550,7 +550,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
         if (collection == null)
@@ -572,7 +572,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable List<? extends T> values) {
         if (collection == null)
@@ -588,7 +588,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable List<? extends T> values) {
         if (collection == null)
@@ -604,7 +604,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable List<? extends T> values) {
         if (collection == null)
@@ -623,7 +623,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ArrayList<? extends T> values) {
         if (collection == null)
@@ -639,7 +639,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ArrayList<? extends T> values) {
         if (collection == null)
@@ -655,7 +655,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable ArrayList<? extends T> values) {
         if (collection == null)
@@ -674,7 +674,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
         if (collection == null)
@@ -690,7 +690,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
         if (collection == null)
@@ -706,7 +706,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
         if (collection == null)
@@ -725,7 +725,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable LinkedList<? extends T> values) {
         if (collection == null)
@@ -741,7 +741,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable LinkedList<? extends T> values) {
         if (collection == null)
@@ -757,7 +757,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable LinkedList<? extends T> values) {
         if (collection == null)
@@ -776,7 +776,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Vector<? extends T> values) {
         if (collection == null)
@@ -792,7 +792,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Vector<? extends T> values) {
         if (collection == null)
@@ -808,7 +808,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable Vector<? extends T> values) {
         if (collection == null)
@@ -828,7 +828,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Set<? extends T> values) {
         if (collection == null)
@@ -846,7 +846,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Set<? extends T> values) {
         if (collection == null)
@@ -864,7 +864,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable Set<? extends T> values) {
         if (collection == null)
@@ -885,7 +885,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
         if (collection == null)
@@ -903,7 +903,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
         if (collection == null)
@@ -921,7 +921,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
         if (collection == null)
@@ -942,7 +942,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable SortedSet<? extends T> values) {
         if (collection == null)
@@ -960,7 +960,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable SortedSet<? extends T> values) {
         if (collection == null)
@@ -978,7 +978,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable SortedSet<? extends T> values) {
         if (collection == null)
@@ -999,7 +999,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
         if (collection == null)
@@ -1017,7 +1017,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
         if (collection == null)
@@ -1035,7 +1035,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
         if (collection == null)
@@ -1056,7 +1056,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
         if (collection == null)
@@ -1074,7 +1074,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
         if (collection == null)
@@ -1092,7 +1092,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
         if (collection == null)
@@ -1113,7 +1113,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
         if (collection == null)
@@ -1131,7 +1131,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
         if (collection == null)
@@ -1149,7 +1149,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
         if (collection == null)
@@ -1170,7 +1170,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Enum<T>> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                      final @Nullable @Unmodifiable EnumSet<? extends T> values) {
         if (collection == null)
@@ -1186,7 +1186,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Enum<T>> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                                      final @Nullable @Unmodifiable EnumSet<?> values) {
         if (collection == null)
@@ -1202,7 +1202,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Enum<T>> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                                      final @Nullable @Unmodifiable EnumSet<?> values) {
         if (collection == null)
@@ -1221,7 +1221,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable HashSet<? extends T> values) {
         if (collection == null)
@@ -1239,7 +1239,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable HashSet<? extends T> values) {
         if (collection == null)
@@ -1257,7 +1257,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable HashSet<? extends T> values) {
         if (collection == null)
@@ -1278,7 +1278,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
         if (collection == null)
@@ -1296,7 +1296,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
         if (collection == null)
@@ -1314,7 +1314,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
         if (collection == null)
@@ -1335,7 +1335,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable TreeSet<? extends T> values) {
         if (collection == null)
@@ -1353,7 +1353,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable TreeSet<? extends T> values) {
         if (collection == null)
@@ -1371,7 +1371,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable TreeSet<? extends T> values) {
         if (collection == null)
@@ -1393,7 +1393,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Queue<? extends T> values) {
         if (collection == null)
@@ -1411,7 +1411,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Queue<? extends T> values) {
         if (collection == null)
@@ -1429,7 +1429,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable Queue<? extends T> values) {
         if (collection == null)
@@ -1450,7 +1450,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1468,7 +1468,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1486,7 +1486,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1507,7 +1507,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
         if (collection == null)
@@ -1525,7 +1525,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
         if (collection == null)
@@ -1543,7 +1543,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
         if (collection == null)
@@ -1564,7 +1564,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1582,7 +1582,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1600,7 +1600,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1621,7 +1621,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
         if (collection == null)
@@ -1639,7 +1639,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
         if (collection == null)
@@ -1657,7 +1657,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
         if (collection == null)
@@ -1678,7 +1678,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Delayed> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                      final @Nullable @Unmodifiable DelayQueue<? extends T> values) {
         if (collection == null)
@@ -1696,7 +1696,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Delayed> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                                      final @Nullable @Unmodifiable DelayQueue<? extends T> values) {
         if (collection == null)
@@ -1714,7 +1714,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T extends Delayed> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                                      final @Nullable @Unmodifiable DelayQueue<? extends T> values) {
         if (collection == null)
@@ -1735,7 +1735,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1753,7 +1753,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1771,7 +1771,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1792,7 +1792,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
         if (collection == null)
@@ -1810,7 +1810,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
         if (collection == null)
@@ -1828,7 +1828,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
         if (collection == null)
@@ -1849,7 +1849,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1867,7 +1867,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1885,7 +1885,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
         if (collection == null)
@@ -1906,7 +1906,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
         if (collection == null)
@@ -1924,7 +1924,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
         if (collection == null)
@@ -1942,7 +1942,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
         if (collection == null)
@@ -1963,7 +1963,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
         if (collection == null)
@@ -1981,7 +1981,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
         if (collection == null)
@@ -1999,7 +1999,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
         if (collection == null)
@@ -2021,7 +2021,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Deque<? extends T> values) {
         if (collection == null)
@@ -2039,7 +2039,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Deque<? extends T> values) {
         if (collection == null)
@@ -2057,7 +2057,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable Deque<? extends T> values) {
         if (collection == null)
@@ -2078,7 +2078,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
         if (collection == null)
@@ -2096,7 +2096,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
         if (collection == null)
@@ -2114,7 +2114,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
         if (collection == null)
@@ -2135,7 +2135,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
         if (collection == null)
@@ -2153,7 +2153,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
         if (collection == null)
@@ -2171,7 +2171,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
         if (collection == null)
@@ -2192,7 +2192,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
         if (collection == null)
@@ -2210,7 +2210,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
         if (collection == null)
@@ -2228,7 +2228,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
         if (collection == null)
@@ -2249,7 +2249,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
         if (collection == null)
@@ -2267,7 +2267,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
         if (collection == null)
@@ -2285,7 +2285,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
         if (collection == null)
@@ -2306,7 +2306,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Stack<? extends T> values) {
         if (collection == null)
@@ -2322,7 +2322,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final @Nullable @Unmodifiable Stack<? extends T> values) {
         if (collection == null)
@@ -2338,7 +2338,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final @Nullable @Unmodifiable Stack<? extends T> values) {
         if (collection == null)
@@ -2358,7 +2358,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                      final T @Nullable @Unmodifiable [] values) {
         if (collection == null)
@@ -2374,7 +2374,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final @Nullable CollectionHolder<? extends T> collection,
                                      final T @Nullable @Unmodifiable [] values) {
         if (collection == null)
@@ -2390,7 +2390,7 @@ public final class HasOne
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
+    @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
     public static <T> boolean hasOne(final T @Nullable @Unmodifiable [] collection,
                                      final T @Nullable @Unmodifiable [] values) {
         if (collection == null)

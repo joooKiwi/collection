@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_PARAMETER_2;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 
 @NotNullByDefault
 public final class OnEach
@@ -36,7 +36,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @ExtensionFunction
-    @Contract(ALWAYS_1ST_PARAMETER_2)
+    @Contract(ALWAYS_1ST_2)
     public static <T, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                               final @NotNull ObjIntConsumer<? super T> action) {
         if (collection == null)
@@ -57,7 +57,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @ExtensionFunction
-    @Contract(ALWAYS_1ST_PARAMETER_2)
+    @Contract(ALWAYS_1ST_2)
     public static <T, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                     final @NotNull ObjIntConsumer<? super T> action) {
         if (collection == null)
@@ -77,7 +77,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @ExtensionFunction
-    @Contract(ALWAYS_1ST_PARAMETER_2)
+    @Contract(ALWAYS_1ST_2)
     public static <T> T @Nullable @Unmodifiable [] __with0Argument(final T @Nullable @Unmodifiable [] collection,
                                                                    final @NotNull ObjIntConsumer<? super T> action) {
         if (collection == null)
@@ -102,7 +102,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @ExtensionFunction
-    @Contract(ALWAYS_1ST_PARAMETER_2)
+    @Contract(ALWAYS_1ST_2)
     public static <T, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                               final @NotNull Consumer<? super T> action) {
         if (collection == null)
@@ -124,7 +124,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @ExtensionFunction
-    @Contract(ALWAYS_1ST_PARAMETER_2)
+    @Contract(ALWAYS_1ST_2)
     public static <T, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                     final @NotNull Consumer<? super T> action) {
         if (collection == null)
@@ -144,7 +144,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @ExtensionFunction
-    @Contract(ALWAYS_1ST_PARAMETER_2)
+    @Contract(ALWAYS_1ST_2)
     public static <T> T @Nullable @Unmodifiable [] __with0Argument(final T @Nullable @Unmodifiable [] collection,
                                                                    final @NotNull Consumer<? super T> action) {
         if (collection == null)
@@ -167,7 +167,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
-    @Contract(ALWAYS_1ST_PARAMETER_2)
+    @Contract(ALWAYS_1ST_2)
     public static <T, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                               final @NotNull Runnable action) {
         if (collection == null)
@@ -189,7 +189,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @ExtensionFunction
-    @Contract(ALWAYS_1ST_PARAMETER_2)
+    @Contract(ALWAYS_1ST_2)
     public static <T, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
                                                                                                     final @NotNull Runnable action) {
         if (collection == null)
@@ -208,7 +208,7 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
-    @Contract(ALWAYS_1ST_PARAMETER_2)
+    @Contract(ALWAYS_1ST_2)
     public static <T> T @Nullable @Unmodifiable [] __with0Argument(final T @Nullable @Unmodifiable [] collection,
                                                                    final @NotNull Runnable action) {
         if (collection == null)
