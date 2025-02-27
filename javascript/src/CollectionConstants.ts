@@ -428,19 +428,36 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (weak map) --------------------
     //#region -------------------- Members references (iterator) --------------------
 
-    /** Every method applicable to an {@link IteratorObject} */
+    /**
+     * Every method applicable to an {@link Iterator}
+     *
+     * @note Currently, it only have "next", but it will eventually add the upcoming supported methods
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator#browser_compatibility
+     */
     public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
         return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
             "next",
-            "every", "some",
-            "find", "filter", "reduce",
-            "take", "drop",
-            "forEach",
-            "map", "flatMap",
-            "toArray",
-            Symbol.iterator, Symbol.toStringTag,
         ] as const,),)
     }
+
+    // /**
+    //  * Every method applicable to an {@link IteratorObject}
+    //  *
+    //  * @note This currently have unsupported methods on iOS, WebView, Deno and Node according to Mdn
+    //  * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator#browser_compatibility
+    //  */
+    // public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
+    //     return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+    //         "next",
+    //         "every", "some",
+    //         "find", "filter", "reduce",
+    //         "take", "drop",
+    //         "forEach",
+    //         "map", "flatMap",
+    //         "toArray",
+    //         Symbol.iterator, Symbol.toStringTag,
+    //     ] as const,),)
+    // }
 
     //#endregion -------------------- Members references (iterator) --------------------
     //#region -------------------- Members references (collection iterator) --------------------
