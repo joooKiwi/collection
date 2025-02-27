@@ -144,12 +144,14 @@ import {toUpperCaseStringByArray}                    from "./method/toUpperCaseS
  * But it is not {@link Object.isFrozen frozen} to ensure
  * the children can do their initialization.
  *
+ * @typeParam T         The element type
+ * @typeParam REFERENCE (deprecated, it will be removed in version 1.14) The reference passed in the constructor
  * @see GenericMinimalistCollectionHolder
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
  */
 export class GenericCollectionHolder<const T = unknown,
-    const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
+    const _REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -157,7 +159,7 @@ export class GenericCollectionHolder<const T = unknown,
     readonly #size: number
     readonly #isEmpty: boolean
 
-    readonly #reference: REFERENCE
+    readonly #reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>
     readonly #array: readonly T[]
     #set?: ReadonlySet<T>
     #map?: ReadonlyMap<number, T>
@@ -188,12 +190,12 @@ export class GenericCollectionHolder<const T = unknown,
     public constructor(lateIterableWithCount: () => IterableWithCount<T>,)
     public constructor(iterableWithPossibleSize: IterableWithPossibleSize<T>,)
     public constructor(lateIterableWithPossibleSize: () => IterableWithPossibleSize<T>,)
-    public constructor(reference: REFERENCE,)
-    public constructor(lateReference: () => REFERENCE,)
-    public constructor(reference: | REFERENCE | (() => REFERENCE),)
-    public constructor(reference: | REFERENCE | (() => REFERENCE),) {
     public constructor(iterable: Iterable<T, unknown, unknown>,)
     public constructor(lateIterable: () => Iterable<T, unknown, unknown>,)
+    public constructor(reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
+    public constructor(lateReference: () => PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
+    public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),)
+    public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),) {
         super()
         // README: The eager instantiation has some weird shenanigan to keep its nature pure.
         //         Also, to be efficient, there is some duplicate code in the constructor.
@@ -252,7 +254,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isSet<T>(reference,)) {
+        if (isSet(reference,)) {
             this.#hasDuplicate = false
             const size = this.#size = reference.size
 
@@ -301,7 +303,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isCollectionHolder<T>(reference,)) {
+        if (isCollectionHolder(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (this.#isEmpty = reference.isEmpty) {
@@ -349,7 +351,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isMinimalistCollectionHolder<T>(reference,)) {
+        if (isMinimalistCollectionHolder(reference,)) {
             const size = this.#size = reference.size
 
             //#region -------------------- Initialization (size = 0) --------------------
@@ -397,7 +399,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isCollectionIterator<T>(reference,)) {
+        if (isCollectionIterator(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (this.#isEmpty = !reference.hasNext) {
@@ -748,7 +750,7 @@ export class GenericCollectionHolder<const T = unknown,
         }
 
         //#endregion -------------------- initialization by a structure --------------------
-        //#region -------------------- initialization by an iterator --------------------
+        //#region -------------------- initialization by an iterable --------------------
 
         sizeIf: if ("size" in reference) {
             const size = reference.size
@@ -909,7 +911,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        const iterator = reference[Symbol.iterator]() as Iterator<T, unknown, unknown>
+        const iterator = reference[Symbol.iterator]()
         let iteratorResult = iterator.next()
 
         //#region -------------------- Initialization (size = 0) --------------------
@@ -935,7 +937,7 @@ export class GenericCollectionHolder<const T = unknown,
 
         //#endregion -------------------- Initialization (size = over 0) --------------------
 
-        //#endregion -------------------- initialization by an iterator --------------------
+        //#endregion -------------------- initialization by an iterable --------------------
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -944,7 +946,7 @@ export class GenericCollectionHolder<const T = unknown,
     //#region -------------------- Reference methods --------------------
 
     /** The iterable received in the constructor */
-    protected get _reference(): REFERENCE { return this.#reference }
+    protected get _reference(): PossibleIterableIteratorArraySetOrCollectionHolder<T> { return this.#reference }
 
     /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder collection} */
     protected get _array(): readonly T[] { return this.#array }
