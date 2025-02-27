@@ -16,13 +16,14 @@ import {CollectionIterator_ByStructure}         from "./instance/CollectionItera
 import {CollectionHolderFromArray}              from "./instance/CollectionHolderFromArray"
 import {CollectionIteratorFromArray}            from "./instance/CollectionIteratorFromArray"
 import {IterableForTest}                        from "./instance/IterableForTest"
+import {IteratorForTest}                        from "./instance/IteratorForTest"
 import {MinimalistCollectionHolder_ByStructure} from "./instance/MinimalistCollectionHolder_ByStructure"
 import {MinimalistCollectionHolderFromArray}    from "./instance/MinimalistCollectionHolderFromArray"
 import {A, B, EMPTY, NULL_UNDEFINED}            from "./value/arrays"
 import {callbackAsTrue0}                        from "./value/callbacks (boolean)"
 import {callbackAsFail0}                        from "./value/callbacks (fail)"
 
-import type {PossibleIterableArraySetOrCollectionHolder} from "../src/type/possibleInstance"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../src/type/possibleInstance"
 
 import {CollectionConstants}                                                                                                                                                                                                             from "../src/CollectionConstants"
 import {GenericCollectionHolder}                                                                                                                                                                                                         from "../src/GenericCollectionHolder"
@@ -42,15 +43,20 @@ import {containsAllWithArray, containsAllWithArrayByArray, containsAllWithArrayB
 import {containsAllWithCollectionHolder, containsAllWithCollectionHolderByArray, containsAllWithCollectionHolderByCollectionHolder, containsAllWithCollectionHolderByMinimalistCollectionHolder}                                         from "../src/method/containsAll.withCollectionHolder"
 import {containsAllWithCollectionIterator, containsAllWithCollectionIteratorByArray, containsAllWithCollectionIteratorByCollectionHolder, containsAllWithCollectionIteratorByMinimalistCollectionHolder}                                 from "../src/method/containsAll.withCollectionIterator"
 import {containsAllWithIterable, containsAllWithIterableByArray, containsAllWithIterableByCollectionHolder, containsAllWithIterableByMinimalistCollectionHolder}                                                                         from "../src/method/containsAll.withIterable"
+import {containsAllWithIterator, containsAllWithIteratorByArray, containsAllWithIteratorByCollectionHolder, containsAllWithIteratorByMinimalistCollectionHolder}                                                                         from "../src/method/containsAll.withIterator"
 import {containsAllWithMinimalistCollectionHolder, containsAllWithMinimalistCollectionHolderByArray, containsAllWithMinimalistCollectionHolderByCollectionHolder, containsAllWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "../src/method/containsAll.withMinimalistCollectionHolder"
 import {containsAllWithSet, containsAllWithSetByArray, containsAllWithSetByCollectionHolder, containsAllWithSetByMinimalistCollectionHolder}                                                                                             from "../src/method/containsAll.withSet"
 import {containsDuplicate, containsDuplicateByArray, containsDuplicateByCollectionHolder, containsDuplicateByMinimalistCollectionHolder}                                                                                                 from "../src/method/containsDuplicate"
+import {containsNot, containsNotByArray, containsNotByCollectionHolder, containsNotByMinimalistCollectionHolder}                                                                                                                         from "../src/method/containsNot"
+import {containsNoDuplicates, containsNoDuplicatesByArray, containsNoDuplicatesByCollectionHolder, containsNoDuplicatesByMinimalistCollectionHolder}                                                                                     from "../src/method/containsNoDuplicates"
+import {containsNoNulls, containsNoNullsByArray, containsNoNullsByCollectionHolder, containsNoNullsByMinimalistCollectionHolder}                                                                                                         from "../src/method/containsNoNulls"
 import {containsNull, containsNullByArray, containsNullByCollectionHolder, containsNullByMinimalistCollectionHolder}                                                                                                                     from "../src/method/containsNull"
 import {containsOne, containsOneByArray, containsOneByCollectionHolder, containsOneByMinimalistCollectionHolder}                                                                                                                         from "../src/method/containsOne"
 import {containsOneWithArray, containsOneWithArrayByArray, containsOneWithArrayByCollectionHolder, containsOneWithArrayByMinimalistCollectionHolder}                                                                                     from "../src/method/containsOne.withArray"
 import {containsOneWithCollectionHolder, containsOneWithCollectionHolderByArray, containsOneWithCollectionHolderByCollectionHolder, containsOneWithCollectionHolderByMinimalistCollectionHolder}                                         from "../src/method/containsOne.withCollectionHolder"
 import {containsOneWithCollectionIterator, containsOneWithCollectionIteratorByArray, containsOneWithCollectionIteratorByCollectionHolder, containsOneWithCollectionIteratorByMinimalistCollectionHolder}                                 from "../src/method/containsOne.withCollectionIterator"
 import {containsOneWithIterable, containsOneWithIterableByArray, containsOneWithIterableByCollectionHolder, containsOneWithIterableByMinimalistCollectionHolder}                                                                         from "../src/method/containsOne.withIterable"
+import {containsOneWithIterator, containsOneWithIteratorByArray, containsOneWithIteratorByCollectionHolder, containsOneWithIteratorByMinimalistCollectionHolder}                                                                         from "../src/method/containsOne.withIterator"
 import {containsOneWithMinimalistCollectionHolder, containsOneWithMinimalistCollectionHolderByArray, containsOneWithMinimalistCollectionHolderByCollectionHolder, containsOneWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "../src/method/containsOne.withMinimalistCollectionHolder"
 import {containsOneWithSet, containsOneWithSetByArray, containsOneWithSetByCollectionHolder, containsOneWithSetByMinimalistCollectionHolder}                                                                                             from "../src/method/containsOne.withSet"
 import * as dropModule                                                                                                                                                                                                                   from "../src/method/drop"
@@ -138,6 +144,8 @@ import * as hasAllWithCollectionIteratorModule                                  
 import {hasAllWithCollectionIterator, hasAllWithCollectionIteratorByArray, hasAllWithCollectionIteratorByCollectionHolder, hasAllWithCollectionIteratorByMinimalistCollectionHolder}                                                     from "../src/method/hasAll.withCollectionIterator"
 import * as hasAllWithIterableModule                                                                                                                                                                                                     from "../src/method/hasAll.withIterable"
 import {hasAllWithIterable, hasAllWithIterableByArray, hasAllWithIterableByCollectionHolder, hasAllWithIterableByMinimalistCollectionHolder}                                                                                             from "../src/method/hasAll.withIterable"
+import * as hasAllWithIteratorModule                                                                                                                                                                                                     from "../src/method/hasAll.withIterator"
+import {hasAllWithIterator, hasAllWithIteratorByArray, hasAllWithIteratorByCollectionHolder, hasAllWithIteratorByMinimalistCollectionHolder}                                                                                             from "../src/method/hasAll.withIterator"
 import * as hasAllWithMinimalistCollectionHolderModule                                                                                                                                                                                   from "../src/method/hasAll.withMinimalistCollectionHolder"
 import {hasAllWithMinimalistCollectionHolder, hasAllWithMinimalistCollectionHolderByArray, hasAllWithMinimalistCollectionHolderByCollectionHolder, hasAllWithMinimalistCollectionHolderByMinimalistCollectionHolder}                     from "../src/method/hasAll.withMinimalistCollectionHolder"
 import * as hasAllWithSetModule                                                                                                                                                                                                          from "../src/method/hasAll.withSet"
@@ -156,6 +164,8 @@ import * as hasOneWithCollectionIteratorModule                                  
 import {hasOneWithCollectionIterator, hasOneWithCollectionIteratorByArray, hasOneWithCollectionIteratorByCollectionHolder, hasOneWithCollectionIteratorByMinimalistCollectionHolder}                                                     from "../src/method/hasOne.withCollectionIterator"
 import * as hasOneWithIterableModule                                                                                                                                                                                                     from "../src/method/hasOne.withIterable"
 import {hasOneWithIterable, hasOneWithIterableByArray, hasOneWithIterableByCollectionHolder, hasOneWithIterableByMinimalistCollectionHolder}                                                                                             from "../src/method/hasOne.withIterable"
+import * as hasOneWithIteratorModule                                                                                                                                                                                                     from "../src/method/hasOne.withIterator"
+import {hasOneWithIterator, hasOneWithIteratorByArray, hasOneWithIteratorByCollectionHolder, hasOneWithIteratorByMinimalistCollectionHolder}                                                                                             from "../src/method/hasOne.withIterator"
 import * as hasOneWithMinimalistCollectionHolderModule                                                                                                                                                                                   from "../src/method/hasOne.withMinimalistCollectionHolder"
 import {hasOneWithMinimalistCollectionHolder, hasOneWithMinimalistCollectionHolderByArray, hasOneWithMinimalistCollectionHolderByCollectionHolder, hasOneWithMinimalistCollectionHolderByMinimalistCollectionHolder}                     from "../src/method/hasOne.withMinimalistCollectionHolder"
 import * as hasOneWithSetModule                                                                                                                                                                                                          from "../src/method/hasOne.withSet"
@@ -166,6 +176,7 @@ import {includesAllWithArray, includesAllWithArrayByArray, includesAllWithArrayB
 import {includesAllWithCollectionHolder, includesAllWithCollectionHolderByArray, includesAllWithCollectionHolderByCollectionHolder, includesAllWithCollectionHolderByMinimalistCollectionHolder}                                         from "../src/method/includesAll.withCollectionHolder"
 import {includesAllWithCollectionIterator, includesAllWithCollectionIteratorByArray, includesAllWithCollectionIteratorByCollectionHolder, includesAllWithCollectionIteratorByMinimalistCollectionHolder}                                 from "../src/method/includesAll.withCollectionIterator"
 import {includesAllWithIterable, includesAllWithIterableByArray, includesAllWithIterableByCollectionHolder, includesAllWithIterableByMinimalistCollectionHolder}                                                                         from "../src/method/includesAll.withIterable"
+import {includesAllWithIterator, includesAllWithIteratorByArray, includesAllWithIteratorByCollectionHolder, includesAllWithIteratorByMinimalistCollectionHolder}                                                                         from "../src/method/includesAll.withIterator"
 import {includesAllWithMinimalistCollectionHolder, includesAllWithMinimalistCollectionHolderByArray, includesAllWithMinimalistCollectionHolderByCollectionHolder, includesAllWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "../src/method/includesAll.withMinimalistCollectionHolder"
 import {includesAllWithSet, includesAllWithSetByArray, includesAllWithSetByCollectionHolder, includesAllWithSetByMinimalistCollectionHolder}                                                                                             from "../src/method/includesAll.withSet"
 import {includesDuplicate, includesDuplicateByArray, includesDuplicateByCollectionHolder, includesDuplicateByMinimalistCollectionHolder}                                                                                                 from "../src/method/includesDuplicate"
@@ -175,6 +186,7 @@ import {includesOneWithArray, includesOneWithArrayByArray, includesOneWithArrayB
 import {includesOneWithCollectionHolder, includesOneWithCollectionHolderByArray, includesOneWithCollectionHolderByCollectionHolder, includesOneWithCollectionHolderByMinimalistCollectionHolder}                                         from "../src/method/includesOne.withCollectionHolder"
 import {includesOneWithCollectionIterator, includesOneWithCollectionIteratorByArray, includesOneWithCollectionIteratorByCollectionHolder, includesOneWithCollectionIteratorByMinimalistCollectionHolder}                                 from "../src/method/includesOne.withCollectionIterator"
 import {includesOneWithIterable, includesOneWithIterableByArray, includesOneWithIterableByCollectionHolder, includesOneWithIterableByMinimalistCollectionHolder}                                                                         from "../src/method/includesOne.withIterable"
+import {includesOneWithIterator, includesOneWithIteratorByArray, includesOneWithIteratorByCollectionHolder, includesOneWithIteratorByMinimalistCollectionHolder}                                                                         from "../src/method/includesOne.withIterator"
 import {includesOneWithMinimalistCollectionHolder, includesOneWithMinimalistCollectionHolderByArray, includesOneWithMinimalistCollectionHolderByCollectionHolder, includesOneWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "../src/method/includesOne.withMinimalistCollectionHolder"
 import {includesOneWithSet, includesOneWithSetByArray, includesOneWithSetByCollectionHolder, includesOneWithSetByMinimalistCollectionHolder}                                                                                             from "../src/method/includesOne.withSet"
 import {indexOf, indexOfByArray, indexOfByCollectionHolder, indexOfByMinimalistCollectionHolder}                                                                                                                                         from "../src/method/indexOf"
@@ -258,6 +270,7 @@ import {sliceWithArray, sliceWithArrayByArray, sliceWithArrayByCollectionHolder,
 import {sliceWithCollectionHolder, sliceWithCollectionHolderByArray, sliceWithCollectionHolderByCollectionHolder, sliceWithCollectionHolderByMinimalistCollectionHolder}                                                                 from "../src/method/slice.withCollectionHolder"
 import {sliceWithCollectionIterator, sliceWithCollectionIteratorByArray, sliceWithCollectionIteratorByCollectionHolder, sliceWithCollectionIteratorByMinimalistCollectionHolder}                                                         from "../src/method/slice.withCollectionIterator"
 import {sliceWithIterable, sliceWithIterableByArray, sliceWithIterableByCollectionHolder, sliceWithIterableByMinimalistCollectionHolder}                                                                                                 from "../src/method/slice.withIterable"
+import {sliceWithIterator, sliceWithIteratorByArray, sliceWithIteratorByCollectionHolder, sliceWithIteratorByMinimalistCollectionHolder}                                                                                                 from "../src/method/slice.withIterator"
 import {sliceWithMinimalistCollectionHolder, sliceWithMinimalistCollectionHolderByArray, sliceWithMinimalistCollectionHolderByCollectionHolder, sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder}                         from "../src/method/slice.withMinimalistCollectionHolder"
 import {sliceWithSet, sliceWithSetByArray, sliceWithSetByCollectionHolder, sliceWithSetByMinimalistCollectionHolder}                                                                                                                     from "../src/method/slice.withSet"
 import {some, someByArray, someByCollectionHolder, someByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/some"
@@ -296,23 +309,25 @@ describe("CollectionHolderTest (functions)", () => {
     const symbol = Symbol()
     const callback = () => symbol
     const everyEmptyInstances = [
-        new Holder(EMPTY,                                           "array",),
-        new Holder(new Set(EMPTY,),                                 "set",),
-        new Holder(new CollectionHolderFromArray(EMPTY,),           "collection holder",),
-        new Holder(new MinimalistCollectionHolderFromArray(EMPTY,), "minimalist collection holder",),
-        new Holder(new MinimalistCollectionHolderFromArray(EMPTY,), "minimalist collection holder",),
-        new Holder(new CollectionIteratorFromArray(EMPTY,),         "collection iterator",),
-        new Holder(new IterableForTest(EMPTY,),                     "iterable",),
-    ] as const satisfies readonly Holder<PossibleIterableArraySetOrCollectionHolder<"">, string>[]
+        new Holder(() => EMPTY,                                           "array",),
+        new Holder(() => new Set(EMPTY,),                                 "set",),
+        new Holder(() => new CollectionHolderFromArray(EMPTY,),           "collection holder",),
+        new Holder(() => new MinimalistCollectionHolderFromArray(EMPTY,), "minimalist collection holder",),
+        new Holder(() => new MinimalistCollectionHolderFromArray(EMPTY,), "minimalist collection holder",),
+        new Holder(() => new CollectionIteratorFromArray(EMPTY,),         "collection iterator",),
+        new Holder(() => new IteratorForTest(EMPTY,),                     "iterator",),
+        new Holder(() => new IterableForTest(EMPTY,),                     "iterable",),
+    ] as const satisfies readonly Holder<() => PossibleIterableIteratorArraySetOrCollectionHolder<"">, string>[]
     const everyNonEmptyInstances = [
-        new Holder(A,                                           "array",),
-        new Holder(new Set(A,),                                 "set",),
-        new Holder(new CollectionHolderFromArray(A,),           "collection holder",),
-        new Holder(new MinimalistCollectionHolderFromArray(A,), "minimalist collection holder",),
-        new Holder(new MinimalistCollectionHolderFromArray(A,), "minimalist collection holder",),
-        new Holder(new CollectionIteratorFromArray(A,),         "collection iterator",),
-        new Holder(new IterableForTest(A,),                     "iterable",),
-    ] as const satisfies readonly Holder<PossibleIterableArraySetOrCollectionHolder<'a'>, string>[]
+        new Holder(() => A,                                           "array",),
+        new Holder(() => new Set(A,),                                 "set",),
+        new Holder(() => new CollectionHolderFromArray(A,),           "collection holder",),
+        new Holder(() => new MinimalistCollectionHolderFromArray(A,), "minimalist collection holder",),
+        new Holder(() => new MinimalistCollectionHolderFromArray(A,), "minimalist collection holder",),
+        new Holder(() => new CollectionIteratorFromArray(A,),         "collection iterator",),
+        new Holder(() => new IteratorForTest(A,),                     "iterator",),
+        new Holder(() => new IterableForTest(A,),                     "iterable",),
+    ] as const satisfies readonly Holder<() => PossibleIterableIteratorArraySetOrCollectionHolder<'a'>, string>[]
 
     describe.each(NULL_UNDEFINED,)("%s", it => {
         describe("isEmpty", () => {
@@ -524,16 +539,16 @@ describe("CollectionHolderTest (functions)", () => {
         },)
         describe("hasOne", () => {
             describe.each(everyEmptyInstances,)("%s (empty)", ({value,},) => {
-                test("all",                          () => expect(hasOne(it, value,),).toBeFalse(),)
-                test("minimalist collection holder", () => expect(hasOneByMinimalistCollectionHolder(it, value,),).toBeFalse(),)
-                test("collection holder",            () => expect(hasOneByCollectionHolder(it, value,),).toBeFalse(),)
-                test("array",                        () => expect(hasOneByArray(it, value,),).toBeFalse(),)
+                test("all",                          () => expect(hasOne(it, value(),),).toBeFalse(),)
+                test("minimalist collection holder", () => expect(hasOneByMinimalistCollectionHolder(it, value(),),).toBeFalse(),)
+                test("collection holder",            () => expect(hasOneByCollectionHolder(it, value(),),).toBeFalse(),)
+                test("array",                        () => expect(hasOneByArray(it, value(),),).toBeFalse(),)
             },)
             describe.each(everyNonEmptyInstances,)("%s (non-empty)", ({value,},) => {
-                test("all",                          () => expect(hasOne(it, value,),).toBeFalse(),)
-                test("minimalist collection holder", () => expect(hasOneByMinimalistCollectionHolder(it, value,),).toBeFalse(),)
-                test("collection holder",            () => expect(hasOneByCollectionHolder(it, value,),).toBeFalse(),)
-                test("array",                        () => expect(hasOneByArray(it, value,),).toBeFalse(),)
+                test("all",                          () => expect(hasOne(it, value(),),).toBeFalse(),)
+                test("minimalist collection holder", () => expect(hasOneByMinimalistCollectionHolder(it, value(),),).toBeFalse(),)
+                test("collection holder",            () => expect(hasOneByCollectionHolder(it, value(),),).toBeFalse(),)
+                test("array",                        () => expect(hasOneByArray(it, value(),),).toBeFalse(),)
             },)
         },)
         describe("hasOne (array)", () => {
@@ -606,6 +621,20 @@ describe("CollectionHolderTest (functions)", () => {
                 test("array",                        () => expect(hasOneWithCollectionIteratorByArray(it, new CollectionIteratorFromArray(A,),),).toBeFalse(),)
             },)
         },)
+        describe("hasOne (iterator)", () => {
+            describe("empty", () => {
+                test("all",                          () => expect(hasOneWithIterator(it, EMPTY[Symbol.iterator](),),).toBeFalse(),)
+                test("minimalist collection holder", () => expect(hasOneWithIteratorByMinimalistCollectionHolder(it, EMPTY[Symbol.iterator](),),).toBeFalse(),)
+                test("collection holder",            () => expect(hasOneWithIteratorByCollectionHolder(it, EMPTY[Symbol.iterator](),),).toBeFalse(),)
+                test("array",                        () => expect(hasOneWithIteratorByArray(it, EMPTY[Symbol.iterator](),),).toBeFalse(),)
+            },)
+            describe("non-empty", () => {
+                test("all",                          () => expect(hasOneWithIterator(it, A[Symbol.iterator](),),).toBeFalse(),)
+                test("minimalist collection holder", () => expect(hasOneWithIteratorByMinimalistCollectionHolder(it, A[Symbol.iterator](),),).toBeFalse(),)
+                test("collection holder",            () => expect(hasOneWithIteratorByCollectionHolder(it, A[Symbol.iterator](),),).toBeFalse(),)
+                test("array",                        () => expect(hasOneWithIteratorByArray(it, A[Symbol.iterator](),),).toBeFalse(),)
+            },)
+        },)
         describe("hasOne (iterable)", () => {
             describe("empty", () => {
                 test("all",                          () => expect(hasOneWithIterable(it, EMPTY,),).toBeFalse(),)
@@ -622,16 +651,16 @@ describe("CollectionHolderTest (functions)", () => {
         },)
         describe("hasAll", () => {
             describe.each(everyEmptyInstances,)("%s (empty)", ({value,},) => {
-                test("all",                          () => expect(hasAll(it, value,),).toBeTrue(),)
-                test("minimalist collection holder", () => expect(hasAllByMinimalistCollectionHolder(it, value,),).toBeTrue(),)
-                test("collection holder",            () => expect(hasAllByCollectionHolder(it, value,),).toBeTrue(),)
-                test("array",                        () => expect(hasAllByArray(it, value,),).toBeTrue(),)
+                test("all",                          () => expect(hasAll(it, value(),),).toBeTrue(),)
+                test("minimalist collection holder", () => expect(hasAllByMinimalistCollectionHolder(it, value(),),).toBeTrue(),)
+                test("collection holder",            () => expect(hasAllByCollectionHolder(it, value(),),).toBeTrue(),)
+                test("array",                        () => expect(hasAllByArray(it, value(),),).toBeTrue(),)
             },)
             describe.each(everyNonEmptyInstances,)("%s (non-empty)", ({value,},) => {
-                test("all",                          () => expect(hasAll(it, value,),).toBeFalse(),)
-                test("minimalist collection holder", () => expect(hasAllByMinimalistCollectionHolder(it, value,),).toBeFalse(),)
-                test("collection holder",            () => expect(hasAllByCollectionHolder(it, value,),).toBeFalse(),)
-                test("array",                        () => expect(hasAllByArray(it, value,),).toBeFalse(),)
+                test("all",                          () => expect(hasAll(it, value(),),).toBeFalse(),)
+                test("minimalist collection holder", () => expect(hasAllByMinimalistCollectionHolder(it, value(),),).toBeFalse(),)
+                test("collection holder",            () => expect(hasAllByCollectionHolder(it, value(),),).toBeFalse(),)
+                test("array",                        () => expect(hasAllByArray(it, value(),),).toBeFalse(),)
             },)
         },)
         describe("hasAll (array)", () => {
@@ -702,6 +731,20 @@ describe("CollectionHolderTest (functions)", () => {
                 test("minimalist collection holder", () => expect(hasAllWithCollectionIteratorByMinimalistCollectionHolder(it, new CollectionIteratorFromArray(A,),),).toBeFalse(),)
                 test("collection holder",            () => expect(hasAllWithCollectionIteratorByCollectionHolder(it, new CollectionIteratorFromArray(A,),),).toBeFalse(),)
                 test("array",                        () => expect(hasAllWithCollectionIteratorByArray(it, new CollectionIteratorFromArray(A,),),).toBeFalse(),)
+            },)
+        },)
+        describe("hasAll (iterator)", () => {
+            describe("empty", () => {
+                test("all",                          () => expect(hasAllWithIterator(it, EMPTY[Symbol.iterator](),),).toBeTrue(),)
+                test("minimalist collection holder", () => expect(hasAllWithIteratorByMinimalistCollectionHolder(it, EMPTY[Symbol.iterator](),),).toBeTrue(),)
+                test("collection holder",            () => expect(hasAllWithIteratorByCollectionHolder(it, EMPTY[Symbol.iterator](),),).toBeTrue(),)
+                test("array",                        () => expect(hasAllWithIteratorByArray(it, EMPTY[Symbol.iterator](),),).toBeTrue(),)
+            },)
+            describe("non-empty", () => {
+                test("all",                          () => expect(hasAllWithIterator(it, A[Symbol.iterator](),),).toBeFalse(),)
+                test("minimalist collection holder", () => expect(hasAllWithIteratorByMinimalistCollectionHolder(it, A[Symbol.iterator](),),).toBeFalse(),)
+                test("collection holder",            () => expect(hasAllWithIteratorByCollectionHolder(it, A[Symbol.iterator](),),).toBeFalse(),)
+                test("array",                        () => expect(hasAllWithIteratorByArray(it, A[Symbol.iterator](),),).toBeFalse(),)
             },)
         },)
         describe("hasAll (iterable)", () => {
@@ -796,6 +839,12 @@ describe("CollectionHolderTest (functions)", () => {
             test("minimalist collection holder", () => expect(sliceWithCollectionIteratorByMinimalistCollectionHolder(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             test("collection holder",            () => expect(sliceWithCollectionIteratorByCollectionHolder(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             test("array",                        () => expect(sliceWithCollectionIteratorByArray(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("slice (iterator)", () => {
+            test("all",                          () => expect(sliceWithIterator(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(sliceWithIteratorByMinimalistCollectionHolder(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(sliceWithIteratorByCollectionHolder(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(sliceWithIteratorByArray(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
         },)
         describe("slice (iterable)", () => {
             test("all",                          () => expect(sliceWithIterable(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -2240,6 +2289,28 @@ describe("CollectionHolderTest (functions)", () => {
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
+        describe("containsOne (iterator)", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIterator",)
+                containsOneWithIterator(A, new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByMinimalistCollectionHolder",)
+                containsOneWithIteratorByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByCollectionHolder",)
+                containsOneWithIteratorByCollectionHolder(new CollectionHolderFromArray(A,), new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByArray",)
+                containsOneWithIteratorByArray(A, new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
         describe("containsOne (iterable)", () => {
             test("all", () => {
                 const method = jest.spyOn(hasOneWithIterableModule, "hasOneWithIterable",)
@@ -2391,6 +2462,28 @@ describe("CollectionHolderTest (functions)", () => {
             test("array", () => {
                 const method = jest.spyOn(hasOneWithCollectionIteratorModule, "hasOneWithCollectionIteratorByArray",)
                 includesOneWithCollectionIteratorByArray(A, new CollectionIteratorFromArray(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("includesOne (iterator)", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIterator",)
+                includesOneWithIterator(A, new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByMinimalistCollectionHolder",)
+                includesOneWithIteratorByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByCollectionHolder",)
+                includesOneWithIteratorByCollectionHolder(new CollectionHolderFromArray(A,), new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasOneWithIteratorModule, "hasOneWithIteratorByArray",)
+                includesOneWithIteratorByArray(A, new IteratorForTest(B,),)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
@@ -2548,6 +2641,28 @@ describe("CollectionHolderTest (functions)", () => {
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
+        describe("containsAll (iterator)", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIterator",)
+                containsAllWithIterator(A, new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByMinimalistCollectionHolder",)
+                containsAllWithIteratorByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByCollectionHolder",)
+                containsAllWithIteratorByCollectionHolder(new CollectionHolderFromArray(A,), new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByArray",)
+                containsAllWithIteratorByArray(A, new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
         describe("containsAll (iterable)", () => {
             test("all", () => {
                 const method = jest.spyOn(hasAllWithIterableModule, "hasAllWithIterable",)
@@ -2699,6 +2814,28 @@ describe("CollectionHolderTest (functions)", () => {
             test("array", () => {
                 const method = jest.spyOn(hasAllWithCollectionIteratorModule, "hasAllWithCollectionIteratorByArray",)
                 includesAllWithCollectionIteratorByArray(A, new CollectionIteratorFromArray(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("includesAll (iterator)", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIterator",)
+                includesAllWithIterator(A, new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByMinimalistCollectionHolder",)
+                includesAllWithIteratorByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByCollectionHolder",)
+                includesAllWithIteratorByCollectionHolder(new CollectionHolderFromArray(A,), new IteratorForTest(B,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasAllWithIteratorModule, "hasAllWithIteratorByArray",)
+                includesAllWithIteratorByArray(A, new IteratorForTest(B,),)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)

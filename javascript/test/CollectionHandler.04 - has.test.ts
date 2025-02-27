@@ -30,6 +30,7 @@ import {expectIndexesInCollectionOf2ToBePresent}                                
 import {expectIndexesInCollectionOf4ToBePresent}                                                                                                                                                                                                               from "./expect/expectIndexesInCollectionOf4ToBePresent"
 import {expectIndexesInCollectionOf2ToOnlyHave1stPresent}                                                                                                                                                                                                      from "./expect/expectIndexesInCollectionOf2ToOnlyHave1stPresent"
 import {expectIndexesInCollectionOf4ToOnlyHave1stPresent}                                                                                                                                                                                                      from "./expect/expectIndexesInCollectionOf4ToOnlyHave1stPresent"
+import {newIteratorHandler}                                                                                                                                                                                                                                    from "./helper/newIteratorHandlers"
 
 describe("CollectionHandlerTest (has)", () => {
 
@@ -64,6 +65,10 @@ describe("CollectionHandlerTest (has)", () => {
             test("collection holder: 4 fields", () => expectIndexesInCollectionOf4ToBeNotPresent(execute(it => newCollectionHandler(ABCD, it,), it => it.hasNull,),),)
             test("collection holder of 1",      () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionOf1Handler(A, it,), it => it.hasNull,),),)
             test("collection holder of 2",      () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionOf2Handler(AB, it,), it => it.hasNull,),),)
+
+            test("iterator: 1 field",  () => expectIndexesInCollectionOf1ToBePresent(execute(it => newIteratorHandler(A, it,), it => it.hasNull,),),)
+            test("iterator: 2 fields", () => expectIndexesInCollectionOf2ToBePresent(execute(it => newIteratorHandler(AB, it,), it => it.hasNull,),),)
+            test("iterator: 4 fields", () => expectIndexesInCollectionOf4ToBePresent(execute(it => newIteratorHandler(ABCD, it,), it => it.hasNull,),),)
 
             test("collection iterator: 1 field",  () => expectIndexesInCollectionOf1ToBePresent(execute(it => newCollectionIteratorHandler(A, it,), it => it.hasNull,),),)
             test("collection iterator: 2 fields", () => expectIndexesInCollectionOf2ToBePresent(execute(it => newCollectionIteratorHandler(AB, it,), it => it.hasNull,),),)
@@ -106,6 +111,10 @@ describe("CollectionHandlerTest (has)", () => {
             test("collection holder of 1",      () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionOf1Handler(A, it,), it => it.hasDuplicate,),),)
             test("collection holder of 2",      () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionOf2Handler(AB, it,), it => it.hasDuplicate,),),)
 
+            test("iterator: 1 field",  () => expectIndexesInCollectionOf1ToBePresent(execute(it => newIteratorHandler(A, it,), it => it.hasDuplicate,),),)
+            test("iterator: 2 fields", () => expectIndexesInCollectionOf2ToBePresent(execute(it => newIteratorHandler(AB, it,), it => it.hasDuplicate,),),)
+            test("iterator: 4 fields", () => expectIndexesInCollectionOf4ToBePresent(execute(it => newIteratorHandler(ABCD, it,), it => it.hasDuplicate,),),)
+
             test("collection iterator: 1 field",  () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionIteratorHandler(A, it,), it => it.hasDuplicate,),),)
             test("collection iterator: 2 fields", () => expectIndexesInCollectionOf2ToBePresent(execute(it => newCollectionIteratorHandler(AB, it,), it => it.hasDuplicate,),),)
             test("collection iterator: 4 fields", () => expectIndexesInCollectionOf4ToBePresent(execute(it => newCollectionIteratorHandler(ABCD, it,), it => it.hasDuplicate,),),)
@@ -146,6 +155,10 @@ describe("CollectionHandlerTest (has)", () => {
             test("collection holder: 4 fields", () => expectIndexesInCollectionOf4ToBeNotPresent(execute(it => newCollectionHandler(ABCD, it,), it => it.hasFinished,),),)
             test("collection holder of 1",      () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionOf1Handler(A, it,), it => it.hasFinished,),),)
             test("collection holder of 2",      () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionOf2Handler(AB, it,), it => it.hasFinished,),),)
+
+            test("iterator: 1 field",  () => expectIndexesInCollectionOf1ToBePresent(execute(it => newIteratorHandler(A, it,), it => it.hasFinished,),),)
+            test("iterator: 2 fields", () => expectIndexesInCollectionOf2ToOnlyHave1stPresent(execute(it => newIteratorHandler(AB, it,), it => it.hasFinished,),),)
+            test("iterator: 4 fields", () => expectIndexesInCollectionOf4ToOnlyHave1stPresent(execute(it => newIteratorHandler(ABCD, it,), it => it.hasFinished,),),)
 
             test("collection iterator: 1 field",  () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionIteratorHandler(A, it,), it => it.hasFinished,),),)
             test("collection iterator: 2 fields", () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionIteratorHandler(AB, it,), it => it.hasFinished,),),)
@@ -313,6 +326,31 @@ describe("CollectionHandlerTest (has)", () => {
             test("null at end",        () => expect(newCollectionOf2Handler(A_NULL,).hasNull,).toBeTrue(),)
             test("undefined at start", () => expect(newCollectionOf2Handler(UNDEFINED_A,).hasNull,).toBeTrue(),)
             test("undefined at end",   () => expect(newCollectionOf2Handler(A_UNDEFINED,).hasNull,).toBeTrue(),)
+        },)
+        describe("iterator", () => {
+            test("empty", () => expect(newIteratorHandler(EMPTY,).hasNull,).toBeFalse(),)
+            describe("1 field", () => {
+                test("non-null",  () => expect(newIteratorHandler(A,).hasNull,).toBeFalse(),)
+                test("null",      () => expect(newIteratorHandler(NULL,).hasNull,).toBeTrue(),)
+                test("undefined", () => expect(newIteratorHandler(UNDEFINED,).hasNull,).toBeTrue(),)
+            },)
+            describe("2 fields", () => {
+                test("non-null",           () => expect(newIteratorHandler(AB,).hasNull,).toBeFalse(),)
+                test("null at start",      () => expect(newIteratorHandler(NULL_A,).hasNull,).toBeTrue(),)
+                test("null at end",        () => expect(newIteratorHandler(A_NULL,).hasNull,).toBeTrue(),)
+                test("undefined at start", () => expect(newIteratorHandler(UNDEFINED_A,).hasNull,).toBeTrue(),)
+                test("undefined at end",   () => expect(newIteratorHandler(A_UNDEFINED,).hasNull,).toBeTrue(),)
+            },)
+            describe("4 fields", () => {
+                test("non-null",            () => expect(newIteratorHandler(ABCD,).hasNull,).toBeFalse(),)
+                test("null at start",       () => expect(newIteratorHandler(NULL_AB,).hasNull,).toBeTrue(),)
+                test("null at center",      () => expect(newIteratorHandler(A_NULL_B,).hasNull,).toBeTrue(),)
+                test("null at end",         () => expect(newIteratorHandler(AB_NULL,).hasNull,).toBeTrue(),)
+                test("undefined at start",  () => expect(newIteratorHandler(UNDEFINED_AB,).hasNull,).toBeTrue(),)
+                test("undefined at center", () => expect(newIteratorHandler(A_UNDEFINED_B,).hasNull,).toBeTrue(),)
+                test("undefined at end",    () => expect(newIteratorHandler(AB_UNDEFINED,).hasNull,).toBeTrue(),)
+                test("null + undefined",    () => expect(newIteratorHandler(A_NULL_UNDEFINED_B,).hasNull,).toBeTrue(),)
+            },)
         },)
         describe("collection iterator", () => {
             test("empty", () => expect(newCollectionIteratorHandler(EMPTY,).hasNull,).toBeFalse(),)
@@ -489,6 +527,23 @@ describe("CollectionHandlerTest (has)", () => {
             test("unique",     () => expect(newCollectionOf2Handler(AB,).hasDuplicate,).toBeFalse(),)
             test("duplicated", () => expect(newCollectionOf2Handler(AA,).hasDuplicate,).toBeTrue(),)
         },)
+        describe("iterator", () => {
+            test("empty", () => expect(newIteratorHandler(EMPTY,).hasDuplicate,).toBeFalse(),)
+            test("1 field", () => expect(newIteratorHandler(A,).hasDuplicate,).toBeFalse(),)
+            describe("2 fields", () => {
+                test("unique",     () => expect(newIteratorHandler(AB,).hasDuplicate,).toBeFalse(),)
+                test("duplicated", () => expect(newIteratorHandler(AA,).hasDuplicate,).toBeTrue(),)
+            },)
+            describe("4|5 fields", () => {
+                test("unique",               () => expect(newIteratorHandler(ABCD,).hasDuplicate,).toBeFalse(),)
+                test("duplicative",          () => expect(newIteratorHandler(ABAB,).hasDuplicate,).toBeTrue(),)
+                test("1 null + 1 undefined", () => expect(newIteratorHandler(A_NULL_UNDEFINED_B,).hasDuplicate,).toBeFalse(),)
+                test("2 null + 1 undefined", () => expect(newIteratorHandler(A_NULL_NULL_UNDEFINED_B,).hasDuplicate,).toBeTrue(),)
+                test("1 null + 2 undefined", () => expect(newIteratorHandler(A_NULL_UNDEFINED_UNDEFINED_B,).hasDuplicate,).toBeTrue(),)
+                test("2 a + 1 b",            () => expect(newIteratorHandler(AABC,).hasDuplicate,).toBeTrue(),)
+                test("1 a + 2 b",            () => expect(newIteratorHandler(ABBC,).hasDuplicate,).toBeTrue(),)
+            },)
+        },)
         describe("collection iterator", () => {
             test("empty", () => expect(newCollectionIteratorHandler(EMPTY,).hasDuplicate,).toBeFalse(),)
             test("1 field", () => expect(newCollectionIteratorHandler(A,).hasDuplicate,).toBeFalse(),)
@@ -552,7 +607,7 @@ describe("CollectionHandlerTest (has)", () => {
         },)
     },)
     describe("hasFinished", () => {
-        //TODO add tests "after the get" for Set, MinimalistCollectionHolder, CollectionHolder, CollectionIterator, Iterable & IterableWithSize
+        //TODO add tests "after the get" for Set, MinimalistCollectionHolder, CollectionHolder, Iterator, CollectionIterator, Iterable & IterableWithSize
         describe("array", () => {
             test("empty", () => expect(newArrayHandler(EMPTY,).hasFinished,).toBeTrue(),)
             describe("1 field", () => {
@@ -629,6 +684,11 @@ describe("CollectionHandlerTest (has)", () => {
             test("after 2nd get", () => expect(retrieve2nd(newCollectionOf2Handler(AB, new CollectionHolderHoldingNothing(),),).hasFinished,).toBeFalse(),)
             test("after all get", () => expect(retrieve1stTo2nd(newCollectionOf2Handler(AB, new CollectionHolderHoldingNothing(),),).hasFinished,).toBeTrue(),)
         },)
+
+        test("iterator: empty",    () => expect(newIteratorHandler(EMPTY,).hasFinished,).toBeTrue(),)
+        test("iterator: 1 field",  () => expect(newIteratorHandler(A,).hasFinished,).toBeFalse(),)
+        test("iterator: 2 fields", () => expect(newIteratorHandler(AB,).hasFinished,).toBeFalse(),)
+        test("iterator: 4 fields", () => expect(newIteratorHandler(ABCD,).hasFinished,).toBeFalse(),)
 
         test("collection iterator: empty",    () => expect(newCollectionIteratorHandler(EMPTY,).hasFinished,).toBeTrue(),)
         test("collection iterator: 1 field",  () => expect(newCollectionIteratorHandler(A,).hasFinished,).toBeFalse(),)

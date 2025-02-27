@@ -30,8 +30,8 @@ describe("CollectionHolderTest (slice)", () => {
         if (!isExtension)
             describe("get() being called", () => {
                 describe.each(everyIterableInstances,)("by indices: %s", ({value: newIterable, message,},) => {
-                    /** The iterable instance is either an {@link Iterable} or a {@link ReadonlySet} */
-                    const isInNormalOrder = message.startsWith("iterable",) || message == "set"
+                    /** The iterable instance is either an {@link Iterable}, an {@link Iterator} or a {@link ReadonlySet} */
+                    const isInNormalOrder = message.startsWith("iterable",) || message == "iterator" || message == "set"
 
                     describe("empty", () => {
                         test("empty", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)

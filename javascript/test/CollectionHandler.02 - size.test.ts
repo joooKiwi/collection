@@ -26,6 +26,7 @@ import {newCollectionIteratorHandler, newCollectionIteratorOf1Handler, newCollec
 import {newEmptyHandler}                                                                                      from "./helper/newEmptyHandler"
 import {newIterableHandler}                                                                                   from "./helper/newIterableHandler"
 import {newIterableWithSizeHandler, newIterableWithSizeOf1Handler, newIterableWithSizeOf2Handler}             from "./helper/newIterableWithSizeHandlers"
+import {newIteratorHandler}                                                                                   from "./helper/newIteratorHandlers"
 import {newMinimalistCollectionHandler, newMinimalistCollectionOf1Handler, newMinimalistCollectionOf2Handler} from "./helper/newMinimalistCollectionHandlers"
 import {newSetHandler, newSetOf1Handler, newSetOf2Handler}                                                    from "./helper/newSetHandlers"
 import {sizeValues}                                                                                           from "./value/sizes"
@@ -64,6 +65,10 @@ describe("CollectionHandlerTest (size)", () => {
             test("collection holder: 4 fields", () => expectIndexesInCollectionOf4ToBeNotPresent(execute(it => newCollectionHandler(ABCD, it,), it => it.size,),),)
             test("collection holder of 1",      () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionOf1Handler(A, it,), it => it.size,),),)
             test("collection holder of 2",      () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionOf2Handler(AB, it,), it => it.size,),),)
+
+            test("iterator: 1 field",  () => expectIndexesInCollectionOf1ToBePresent(execute(it => newIteratorHandler(A, it,), it => it.size,),),)
+            test("iterator: 2 fields", () => expectIndexesInCollectionOf2ToBePresent(execute(it => newIteratorHandler(AB, it,), it => it.size,),),)
+            test("iterator: 4 fields", () => expectIndexesInCollectionOf4ToBePresent(execute(it => newIteratorHandler(ABCD, it,), it => it.size,),),)
 
             test("collection iterator: 1 field",  () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionIteratorHandler(A, it,), it => it.size,),),)
             test("collection iterator: 2 fields", () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionIteratorHandler(AB, it,), it => it.size,),),)
@@ -106,6 +111,10 @@ describe("CollectionHandlerTest (size)", () => {
             test("collection holder of 1",      () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionOf1Handler(A, it,), it => it.isEmpty,),),)
             test("collection holder of 2",      () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionOf2Handler(AB, it,), it => it.isEmpty,),),)
 
+            test("iterator: 1 field",  () => expectIndexesInCollectionOf1ToBePresent(execute(it => newIteratorHandler(A, it,), it => it.isEmpty,),),)
+            test("iterator: 2 fields", () => expectIndexesInCollectionOf2ToOnlyHave1stPresent(execute(it => newIteratorHandler(AB, it,), it => it.isEmpty,),),)
+            test("iterator: 4 fields", () => expectIndexesInCollectionOf4ToOnlyHave1stPresent(execute(it => newIteratorHandler(ABCD, it,), it => it.isEmpty,),),)
+
             test("collection iterator: 1 field",  () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionIteratorHandler(A, it,), it => it.isEmpty,),),)
             test("collection iterator: 2 fields", () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionIteratorHandler(AB, it,), it => it.isEmpty,),),)
             test("collection iterator: 4 fields", () => expectIndexesInCollectionOf4ToBeNotPresent(execute(it => newCollectionIteratorHandler(ABCD, it,), it => it.isEmpty,),),)
@@ -140,6 +149,10 @@ describe("CollectionHandlerTest (size)", () => {
         describe("collection holder", () => {
             test("size",    () => expect(newCollectionHandler(array,).size,).toBe(size,),)
             test("isEmpty", () => expect(newCollectionHandler(array,).isEmpty,)[size == 0 ? "toBeTrue" : "toBeFalse"](),)
+        },)
+        describe("iterator", () => {
+            test("size",    () => expect(newIteratorHandler(array,).size,).toBe(size,),)
+            test("isEmpty", () => expect(newIteratorHandler(array,).isEmpty,)[size == 0 ? "toBeTrue" : "toBeFalse"](),)
         },)
         describe("collection iterator", () => {
             test("size",    () => expect(newCollectionIteratorHandler(array,).size,).toBe(size,),)

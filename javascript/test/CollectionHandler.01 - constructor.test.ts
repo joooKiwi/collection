@@ -14,8 +14,9 @@ import {newArrayHandler, newArrayOf1Handler, newArrayOf2Handler}                
 import {newCollectionHandler, newCollectionOf1Handler, newCollectionOf2Handler}                               from "./helper/newCollectionHandlers"
 import {newCollectionIteratorHandler, newCollectionIteratorOf1Handler, newCollectionIteratorOf2Handler}       from "./helper/newCollectionIteratorHandlers"
 import {newEmptyHandler}                                                                                      from "./helper/newEmptyHandler"
-import {newIterableHandler}                                                                                   from "./helper/newIterableHandler"
+import {newIteratorHandler}                                                                                   from "./helper/newIteratorHandlers"
 import {newIterableWithSizeHandler, newIterableWithSizeOf1Handler, newIterableWithSizeOf2Handler}             from "./helper/newIterableWithSizeHandlers"
+import {newIterableHandler}                                                                                   from "./helper/newIterableHandler"
 import {newMinimalistCollectionHandler, newMinimalistCollectionOf1Handler, newMinimalistCollectionOf2Handler} from "./helper/newMinimalistCollectionHandlers"
 import {newSetHandler, newSetOf1Handler, newSetOf2Handler}                                                    from "./helper/newSetHandlers"
 import {A, AB, ABC, ABCD, EMPTY}                                                                              from "./value/arrays"
@@ -106,6 +107,13 @@ describe("CollectionHandlerTest (constructor)", () => {
         test("2 fields", () => expect(() => newCollectionOf2Handler(AB,),).not.toThrow(),)
         test("3 fields", () => expect(() => newCollectionOf2Handler(ABC,),).toThrow(),)
         test("4 fields", () => expect(() => newCollectionOf2Handler(ABCD,),).toThrow(),)
+    },)
+    describe("iterator", () => {
+        test("empty",    () => expect(() => newIteratorHandler(EMPTY,),).not.toThrow(),)
+        test("1 field",  () => expect(() => newIteratorHandler(A,),).not.toThrow(),)
+        test("2 fields", () => expect(() => newIteratorHandler(AB,),).not.toThrow(),)
+        test("3 fields", () => expect(() => newIteratorHandler(ABC,),).not.toThrow(),)
+        test("4 fields", () => expect(() => newIteratorHandler(ABCD,),).not.toThrow(),)
     },)
     describe("collection iterator", () => {
         test("empty",    () => expect(() => newCollectionIteratorHandler(EMPTY,),).not.toThrow(),)

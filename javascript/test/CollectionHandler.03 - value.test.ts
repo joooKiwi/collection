@@ -16,6 +16,7 @@ import {newCollectionIteratorHandler, newCollectionIteratorOf1Handler, newCollec
 import {newEmptyHandler}                                                                                      from "./helper/newEmptyHandler"
 import {newIterableHandler}                                                                                   from "./helper/newIterableHandler"
 import {newIterableWithSizeHandler, newIterableWithSizeOf1Handler, newIterableWithSizeOf2Handler}             from "./helper/newIterableWithSizeHandlers"
+import {newIteratorHandler}                                                                                   from "./helper/newIteratorHandlers"
 import {newMinimalistCollectionHandler, newMinimalistCollectionOf1Handler, newMinimalistCollectionOf2Handler} from "./helper/newMinimalistCollectionHandlers"
 import {newSetHandler, newSetOf1Handler, newSetOf2Handler}                                                    from "./helper/newSetHandlers"
 import {A, AB, ABCD, EMPTY}                                                                                   from "./value/arrays"
@@ -451,6 +452,65 @@ describe("CollectionHandlerTest (value)", () => {
             test('5',    () => expect(newCollectionIteratorHandler(ABCD,).get(5,),).toBeInstanceOf(OverSizeIndexValueHolder,),)
             test("500",  () => expect(newCollectionIteratorHandler(ABCD,).get(500,),).toBeInstanceOf(OverSizeIndexValueHolder,),)
             test("+∞",   () => expect(newCollectionIteratorHandler(ABCD,).get(Infinity,),).toBeInstanceOf(PositiveInfinityIndexValueHolder,),)
+        },)
+    },)
+    describe("iterator", () => {
+        describe("empty", () => {
+            test("NaN", () => expect(newIteratorHandler(EMPTY,).get(NaN,),).toBeInstanceOf(EmptyCollectionValueHolder,),)
+            test("-∞",  () => expect(newIteratorHandler(EMPTY,).get(-Infinity,),).toBeInstanceOf(EmptyCollectionValueHolder,),)
+            test("-2",  () => expect(newIteratorHandler(EMPTY,).get(-2,),).toBeInstanceOf(EmptyCollectionValueHolder,),)
+            test("-1",  () => expect(newIteratorHandler(EMPTY,).get(-1,),).toBeInstanceOf(EmptyCollectionValueHolder,),)
+            test('0',   () => expect(newIteratorHandler(EMPTY,).get(0,),).toBeInstanceOf(EmptyCollectionValueHolder,),)
+            test('1',   () => expect(newIteratorHandler(EMPTY,).get(1,),).toBeInstanceOf(EmptyCollectionValueHolder,),)
+            test('2',   () => expect(newIteratorHandler(EMPTY,).get(2,),).toBeInstanceOf(EmptyCollectionValueHolder,),)
+            test("+∞",  () => expect(newIteratorHandler(EMPTY,).get(Infinity,),).toBeInstanceOf(EmptyCollectionValueHolder,),)
+        },)
+        describe("1 field", () => {
+            test("NaN",  () => expect(newIteratorHandler(A,).get(NaN,),).toBeInstanceOf(NaNIndexValueHolder,),)
+            test("-∞",   () => expect(newIteratorHandler(A,).get(-Infinity,),).toBeInstanceOf(NegativeInfinityIndexValueHolder,),)
+            test("-500", () => expect(newIteratorHandler(A,).get(-500,),).toBeInstanceOf(UnderZeroIndexAfterCalculationValueHolder,),)
+            test("-3",   () => expect(newIteratorHandler(A,).get(-3,),).toBeInstanceOf(UnderZeroIndexAfterCalculationValueHolder,),)
+            test("-2",   () => expect(newIteratorHandler(A,).get(-2,),).toBeInstanceOf(UnderZeroIndexAfterCalculationValueHolder,),)
+            test("-1",   () => expect(newIteratorHandler(A,).get(-1,),).toBeInstanceOf(ValidValueHolder,),)
+            test('0',    () => expect(newIteratorHandler(A,).get(0,),).toBeInstanceOf(ValidValueHolder,),)
+            test('1',    () => expect(newIteratorHandler(A,).get(1,),).toBeInstanceOf(SizeIndexValueHolder,),)
+            test('2',    () => expect(newIteratorHandler(A,).get(2,),).toBeInstanceOf(OverSizeIndexValueHolder,),)
+            test("500",  () => expect(newIteratorHandler(A,).get(500,),).toBeInstanceOf(OverSizeIndexValueHolder,),)
+            test("+∞",   () => expect(newIteratorHandler(A,).get(Infinity,),).toBeInstanceOf(PositiveInfinityIndexValueHolder,),)
+        },)
+        describe("2 fields", () => {
+            test("NaN",  () => expect(newIteratorHandler(AB,).get(NaN,),).toBeInstanceOf(NaNIndexValueHolder,),)
+            test("-∞",   () => expect(newIteratorHandler(AB,).get(-Infinity,),).toBeInstanceOf(NegativeInfinityIndexValueHolder,),)
+            test("-500", () => expect(newIteratorHandler(AB,).get(-500,),).toBeInstanceOf(UnderZeroIndexAfterCalculationValueHolder,),)
+            test("-4",   () => expect(newIteratorHandler(AB,).get(-4,),).toBeInstanceOf(UnderZeroIndexAfterCalculationValueHolder,),)
+            test("-3",   () => expect(newIteratorHandler(AB,).get(-3,),).toBeInstanceOf(UnderZeroIndexAfterCalculationValueHolder,),)
+            test("-2",   () => expect(newIteratorHandler(AB,).get(-2,),).toBeInstanceOf(ValidValueHolder,),)
+            test("-1",   () => expect(newIteratorHandler(AB,).get(-1,),).toBeInstanceOf(ValidValueHolder,),)
+            test('0',    () => expect(newIteratorHandler(AB,).get(0,),).toBeInstanceOf(ValidValueHolder,),)
+            test('1',    () => expect(newIteratorHandler(AB,).get(1,),).toBeInstanceOf(ValidValueHolder,),)
+            test('2',    () => expect(newIteratorHandler(AB,).get(2,),).toBeInstanceOf(SizeIndexValueHolder,),)
+            test('3',    () => expect(newIteratorHandler(AB,).get(3,),).toBeInstanceOf(OverSizeIndexValueHolder,),)
+            test("500",  () => expect(newIteratorHandler(AB,).get(500,),).toBeInstanceOf(OverSizeIndexValueHolder,),)
+            test("+∞",   () => expect(newIteratorHandler(AB,).get(Infinity,),).toBeInstanceOf(PositiveInfinityIndexValueHolder,),)
+        },)
+        describe("4 fields", () => {
+            test("NaN",  () => expect(newIteratorHandler(ABCD,).get(NaN,),).toBeInstanceOf(NaNIndexValueHolder,),)
+            test("-∞",   () => expect(newIteratorHandler(ABCD,).get(-Infinity,),).toBeInstanceOf(NegativeInfinityIndexValueHolder,),)
+            test("-500", () => expect(newIteratorHandler(ABCD,).get(-500,),).toBeInstanceOf(UnderZeroIndexAfterCalculationValueHolder,),)
+            test("-6",   () => expect(newIteratorHandler(ABCD,).get(-6,),).toBeInstanceOf(UnderZeroIndexAfterCalculationValueHolder,),)
+            test("-5",   () => expect(newIteratorHandler(ABCD,).get(-5,),).toBeInstanceOf(UnderZeroIndexAfterCalculationValueHolder,),)
+            test("-4",   () => expect(newIteratorHandler(ABCD,).get(-4,),).toBeInstanceOf(ValidValueHolder,),)
+            test("-3",   () => expect(newIteratorHandler(ABCD,).get(-3,),).toBeInstanceOf(ValidValueHolder,),)
+            test("-2",   () => expect(newIteratorHandler(ABCD,).get(-2,),).toBeInstanceOf(ValidValueHolder,),)
+            test("-1",   () => expect(newIteratorHandler(ABCD,).get(-1,),).toBeInstanceOf(ValidValueHolder,),)
+            test('0',    () => expect(newIteratorHandler(ABCD,).get(0,),).toBeInstanceOf(ValidValueHolder,),)
+            test('1',    () => expect(newIteratorHandler(ABCD,).get(1,),).toBeInstanceOf(ValidValueHolder,),)
+            test('2',    () => expect(newIteratorHandler(ABCD,).get(2,),).toBeInstanceOf(ValidValueHolder,),)
+            test('3',    () => expect(newIteratorHandler(ABCD,).get(3,),).toBeInstanceOf(ValidValueHolder,),)
+            test('4',    () => expect(newIteratorHandler(ABCD,).get(4,),).toBeInstanceOf(SizeIndexValueHolder,),)
+            test('5',    () => expect(newIteratorHandler(ABCD,).get(5,),).toBeInstanceOf(OverSizeIndexValueHolder,),)
+            test("500",  () => expect(newIteratorHandler(ABCD,).get(500,),).toBeInstanceOf(OverSizeIndexValueHolder,),)
+            test("+∞",   () => expect(newIteratorHandler(ABCD,).get(Infinity,),).toBeInstanceOf(PositiveInfinityIndexValueHolder,),)
         },)
     },)
     describe("collection iterator of 1", () => {
