@@ -11,6 +11,7 @@
 //··························································
 
 export {AbstractCollectionHandler}                        from "./AbstractCollectionHandler"
+export {AbstractCollectionHandlerWithIterableOrIterator}  from "./AbstractCollectionHandlerWithIterableOrIterator"
 export type {CollectionHandler}                           from "./CollectionHandler"
 export {CollectionHandlerByArray}                         from "./CollectionHandlerByArray"
 export {CollectionHandlerByArrayOf1}                      from "./CollectionHandlerByArrayOf1"
@@ -22,6 +23,7 @@ export {CollectionHandlerByCollectionIterator}            from "./CollectionHand
 export {CollectionHandlerByCollectionIteratorOf1}         from "./CollectionHandlerByCollectionIteratorOf1"
 export {CollectionHandlerByCollectionIteratorOf2}         from "./CollectionHandlerByCollectionIteratorOf2"
 export {CollectionHandlerByIterable}                      from "./CollectionHandlerByIterable"
+export {CollectionHandlerByIterator}                      from "./CollectionHandlerByIterator"
 export {CollectionHandlerByIterableWithSize}              from "./CollectionHandlerByIterableWithSize"
 export {CollectionHandlerByIterableWithSizeOf1}           from "./CollectionHandlerByIterableWithSizeOf1"
 export {CollectionHandlerByIterableWithSizeOf2}           from "./CollectionHandlerByIterableWithSizeOf2"
