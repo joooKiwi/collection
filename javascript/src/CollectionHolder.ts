@@ -15,7 +15,7 @@ import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, Tem
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder}                                                                                                                                                                                                        from "./type/possibleInstance"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                from "./type/possibleInstance"
 import type {CollectionHolderName}                                                                                                                                                                                                                              from "./type/toStringTag"
 
 /**
@@ -2259,7 +2259,14 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      */
-    hasOne(values: Iterable<T>,): boolean
+    hasOne(values: Iterator<T, unknown, unknown>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     */
+    hasOne(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
@@ -2267,7 +2274,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @typescriptDefinition
      */
-    hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
 
     //#region -------------------- Has one methods (aliases) --------------------
 
@@ -2317,7 +2324,15 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: Iterable<T>,): boolean
+    includesOne(values: Iterator<T, unknown, unknown>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    includesOne(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
@@ -2326,7 +2341,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasOne
      * @typescriptDefinition
      */
-    includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    includesOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
 
 
     /**
@@ -2375,7 +2390,15 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    containsOne(values: Iterable<T>,): boolean
+    containsOne(values: Iterator<T, unknown, unknown>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
@@ -2384,7 +2407,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasOne
      * @typescriptDefinition
      */
-    containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    containsOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
 
     //#endregion -------------------- Has one methods (aliases) --------------------
 
@@ -2443,7 +2466,16 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: Iterable<T>,): boolean
+    hasAll(values: Iterator<T, unknown, unknown>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+     */
+    hasAll(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
@@ -2453,7 +2485,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      * @typescriptDefinition
      */
-    hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
 
     //#region -------------------- Has all methods (aliases) --------------------
 
@@ -2503,7 +2535,15 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: Iterable<T>,): boolean
+    includesAll(values: Iterator<T, unknown, unknown>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    includesAll(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
@@ -2512,7 +2552,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasAll
      * @typescriptDefinition
      */
-    includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
 
 
     /**
@@ -2561,7 +2601,15 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    containsAll(values: Iterable<T>,): boolean
+    containsAll(values: Iterator<T, unknown, unknown>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
@@ -2570,7 +2618,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasAll
      * @typescriptDefinition
      */
-    containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
 
     //#endregion -------------------- Has all methods (aliases) --------------------
 
@@ -2841,7 +2889,19 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      */
-    slice(indices: Iterable<number>,): CollectionHolder<T>
+    slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder} from the {@link indices}
+     * in the current {@link CollectionHolder collection}
+     *
+     * @param indices The given indices
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.slice
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     */
+    slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
@@ -2854,7 +2914,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @typescriptDefinition
      */
-    slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
+    slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
 
     //#endregion -------------------- Slice (indice) --------------------
 
@@ -2874,7 +2934,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
      * @typescriptDefinition
      */
-    slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
+    slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice --------------------
 
