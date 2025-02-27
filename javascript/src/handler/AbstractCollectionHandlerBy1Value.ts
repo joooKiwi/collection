@@ -10,20 +10,20 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {CollectionHolder}             from "../CollectionHolder"
-import type {ValueHolder}                  from "./value/ValueHolder"
-import type {PossibleIterableOrCollection} from "../type/possibleInstance"
+import type {CollectionHolder}                                   from "../CollectionHolder"
+import type {ValueHolder}                                        from "./value/ValueHolder"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../type/possibleInstance"
 
-import {AbstractCollectionHandler}                 from "./AbstractCollectionHandler"
-import {NaNIndexValueHolder}                       from "./value/NaNIndexValueHolder"
-import {NegativeInfinityIndexValueHolder}          from "./value/NegativeInfinityIndexValueHolder"
-import {Not0IndexValueHolder}                      from "./value/Not0IndexValueHolder"
-import {Not0IndexAfterCalculationValueHolder}      from "./value/Not0IndexAfterCalculationValueHolder"
-import {PositiveInfinityIndexValueHolder}          from "./value/PositiveInfinityIndexValueHolder"
-import {ValidValueHolder}                          from "./value/ValidValueHolder"
+import {AbstractCollectionHandler}            from "./AbstractCollectionHandler"
+import {NaNIndexValueHolder}                  from "./value/NaNIndexValueHolder"
+import {NegativeInfinityIndexValueHolder}     from "./value/NegativeInfinityIndexValueHolder"
+import {Not0IndexValueHolder}                 from "./value/Not0IndexValueHolder"
+import {Not0IndexAfterCalculationValueHolder} from "./value/Not0IndexAfterCalculationValueHolder"
+import {PositiveInfinityIndexValueHolder}     from "./value/PositiveInfinityIndexValueHolder"
+import {ValidValueHolder}                     from "./value/ValidValueHolder"
 
 export abstract class AbstractCollectionHandlerBy1Value<const T = unknown,
-    const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>,
+    const REFERENCE extends PossibleIterableIteratorArraySetOrCollectionHolder<T> = PossibleIterableIteratorArraySetOrCollectionHolder<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 
