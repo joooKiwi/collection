@@ -31,16 +31,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: Iterable<T>,): boolean {
+export function hasAllWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: Iterator<T>,): boolean {
     if (isCollectionHolder<T>(collection,))
-        return hasAllWithIterableByCollectionHolder(collection, values,)
+        return hasAllWithIteratorByCollectionHolder(collection, values,)
     if (isArray(collection,))
-        return hasAllWithIterableByArray(collection, values,)
+        return hasAllWithIteratorByArray(collection, values,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return hasAllWithIterableByCollectionHolder(collection, values,)
+        return hasAllWithIteratorByCollectionHolder(collection, values,)
     if (isArrayByStructure<T>(collection,))
-        return hasAllWithIterableByArray(collection, values,)
-    return hasAllWithIterableByMinimalistCollectionHolder(collection, values,)
+        return hasAllWithIteratorByArray(collection, values,)
+    return hasAllWithIteratorByMinimalistCollectionHolder(collection, values,)
 }
 
 
@@ -53,9 +53,8 @@ export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistC
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,): boolean {
-    const iterator = values[Symbol.iterator]() as IterableIterator<unknown>
-    const iteratorResult: IteratorResult<unknown, unknown> = iterator.next()
+export function hasAllWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterator<T>,): boolean {
+    const iteratorResult: IteratorResult<unknown, unknown> = values.next()
     if (iteratorResult.done)
         return true
     if (collection == null)
@@ -64,7 +63,7 @@ export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collec
     const size = collection.size
     if (size == 0)
         return false
-    return __hasAll(collection, iterator, iteratorResult.value, size,)
+    return __hasAll(collection, values, iteratorResult.value, size,)
 }
 
 /**
@@ -76,16 +75,15 @@ export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collec
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<T>,): boolean {
-    const iterator = values[Symbol.iterator]() as IterableIterator<T, unknown, unknown>
-    const iteratorResult: IteratorResult<T, unknown> = iterator.next()
+export function hasAllWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterator<T>,): boolean {
+    const iteratorResult: IteratorResult<T, unknown> = values.next()
     if (iteratorResult.done)
         return true
     if (collection == null)
         return false
     if (collection.isEmpty)
         return false
-    return __hasAll(collection, iterator, iteratorResult.value, collection.size,)
+    return __hasAll(collection, values, iteratorResult.value, collection.size,)
 }
 
 /**
@@ -97,9 +95,8 @@ export function hasAllWithIterableByCollectionHolder<const T, >(collection: Null
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterable<T>,): boolean {
-    const iterator = values[Symbol.iterator]() as IterableIterator<T, unknown, unknown>
-    const iteratorResult: IteratorResult<T, unknown> = iterator.next()
+export function hasAllWithIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterator<T>,): boolean {
+    const iteratorResult: IteratorResult<T, unknown> = values.next()
     if (iteratorResult.done)
         return true
     if (collection == null)
@@ -108,13 +105,13 @@ export function hasAllWithIterableByArray<const T, >(collection: Nullable<readon
     const size = collection.length
     if (size == 0)
         return false
-    return __hasAllByArray(collection, iterator, iteratorResult.value, size,)
+    return __hasAllByArray(collection, values, iteratorResult.value, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, values: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     firstValueLoop: {
         let index1 = -1
         while (++index1 < size)
@@ -124,7 +121,7 @@ function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, iterator
     }
 
     let iteratorResult: IteratorResult<T, unknown>
-    valueLoop: while (!(iteratorResult = iterator.next()).done) {
+    valueLoop: while (!(iteratorResult = values.next()).done) {
         const value = iteratorResult.value
         let index2 = -1
         while (++index2 < size)
@@ -135,7 +132,7 @@ function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, iterator
     return true
 }
 
-function __hasAllByArray<const T, >(collection: readonly T[], iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __hasAllByArray<const T, >(collection: readonly T[], values: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     firstValueLoop: {
         let index1 = -1
         while (++index1 < size)
@@ -145,7 +142,7 @@ function __hasAllByArray<const T, >(collection: readonly T[], iterator: Iterator
     }
 
     let iteratorResult: IteratorResult<T, unknown>
-    valueLoop: while (!(iteratorResult = iterator.next()).done) {
+    valueLoop: while (!(iteratorResult = values.next()).done) {
         const value = iteratorResult.value
         let index2 = -1
         while (++index2 < size)
