@@ -20,7 +20,7 @@ import type {IterableWithPossibleSize}                                          
 import type {IterableWithSize}                                                                                                                                                                                                                                  from "./iterable/IterableWithSize"
 import type {CollectionIterator}                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection}                                                                                                                                                                          from "./type/possibleInstance"
+import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableIteratorArraySetOrCollectionHolder, PossibleIterableOrCollection}                                                                                                                      from "./type/possibleInstance"
 
 import {AbstractCollectionHolder}                    from "./AbstractCollectionHolder"
 import {CollectionConstants}                         from "./CollectionConstants"
@@ -62,6 +62,7 @@ import {hasAllWithArrayByArray}                      from "./method/hasAll.withA
 import {hasAllWithCollectionHolderByArray}           from "./method/hasAll.withCollectionHolder"
 import {hasAllWithCollectionIteratorByArray}         from "./method/hasAll.withCollectionIterator"
 import {hasAllWithIterableByArray}                   from "./method/hasAll.withIterable"
+import {hasAllWithIteratorByArray}                   from "./method/hasAll.withIterator"
 import {hasAllWithMinimalistCollectionHolderByArray} from "./method/hasAll.withMinimalistCollectionHolder"
 import {hasAllWithSetByArray}                        from "./method/hasAll.withSet"
 import {hasDuplicateByArray}                         from "./method/hasDuplicate"
@@ -73,6 +74,7 @@ import {hasOneWithArrayByArray}                      from "./method/hasOne.withA
 import {hasOneWithCollectionHolderByArray}           from "./method/hasOne.withCollectionHolder"
 import {hasOneWithCollectionIteratorByArray}         from "./method/hasOne.withCollectionIterator"
 import {hasOneWithIterableByArray}                   from "./method/hasOne.withIterable"
+import {hasOneWithIteratorByArray}                   from "./method/hasOne.withIterator"
 import {hasOneWithMinimalistCollectionHolderByArray} from "./method/hasOne.withMinimalistCollectionHolder"
 import {hasOneWithSetByArray}                        from "./method/hasOne.withSet"
 import {indexOfFirstByArray}                         from "./method/indexOfFirst"
@@ -89,6 +91,8 @@ import {isCollectionIterator}                        from "./method/isCollection
 import {isCollectionIteratorByStructure}             from "./method/isCollectionIteratorByStructure"
 import {isCollectionHolder}                          from "./method/isCollectionHolder"
 import {isCollectionHolderByStructure}               from "./method/isCollectionHolderByStructure"
+import {isIterator}                                  from "./method/isIterator"
+import {isIteratorByStructure}                       from "./method/isIteratorByStructure"
 import {isMinimalistCollectionHolder}                from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}     from "./method/isMinimalistCollectionHolderByStructure"
 import {isSet}                                       from "./method/isSet"
@@ -108,6 +112,7 @@ import {sliceWithArrayByArray}                       from "./method/slice.withAr
 import {sliceWithCollectionHolderByArray}            from "./method/slice.withCollectionHolder"
 import {sliceWithCollectionIteratorByArray}          from "./method/slice.withCollectionIterator"
 import {sliceWithIterableByArray}                    from "./method/slice.withIterable"
+import {sliceWithIteratorByArray}                    from "./method/slice.withIterator"
 import {sliceWithMinimalistCollectionHolderByArray}  from "./method/slice.withMinimalistCollectionHolder"
 import {sliceWithSetByArray}                         from "./method/slice.withSet"
 import {takeByArray}                                 from "./method/take"
@@ -171,8 +176,10 @@ export class GenericCollectionHolder<const T = unknown,
     public constructor(lateCollectionHolder: () => CollectionHolder<T>,)
     public constructor(minimalistCollectionHolder: MinimalistCollectionHolder<T>,)
     public constructor(lateMinimalistCollectionHolder: () => MinimalistCollectionHolder<T>,)
-    public constructor(collectionIterable: CollectionIterator<T>,)
-    public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
+    public constructor(collectionIterator: CollectionIterator<T>,)
+    public constructor(lateCollectionIterator: () => CollectionIterator<T>,)
+    public constructor(iterator: Iterator<T, unknown, unknown>,)
+    public constructor(lateIterator: () => Iterator<T, unknown, unknown>,)
     public constructor(iterableWithSize: IterableWithSize<T>,)
     public constructor(lateIterableWithSize: () => IterableWithSize<T>,)
     public constructor(iterableWithLength: IterableWithLength<T>,)
@@ -181,12 +188,12 @@ export class GenericCollectionHolder<const T = unknown,
     public constructor(lateIterableWithCount: () => IterableWithCount<T>,)
     public constructor(iterableWithPossibleSize: IterableWithPossibleSize<T>,)
     public constructor(lateIterableWithPossibleSize: () => IterableWithPossibleSize<T>,)
-    public constructor(iterable: Iterable<T>,)
-    public constructor(lateIterable: () => Iterable<T>,)
     public constructor(reference: REFERENCE,)
     public constructor(lateReference: () => REFERENCE,)
     public constructor(reference: | REFERENCE | (() => REFERENCE),)
     public constructor(reference: | REFERENCE | (() => REFERENCE),) {
+    public constructor(iterable: Iterable<T, unknown, unknown>,)
+    public constructor(lateIterable: () => Iterable<T, unknown, unknown>,)
         super()
         // README: The eager instantiation has some weird shenanigan to keep its nature pure.
         //         Also, to be efficient, there is some duplicate code in the constructor.
@@ -438,6 +445,35 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        if (isIterator(reference,)) {
+            let iteratorResult = reference.next()
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = iteratorResult.done === true) {
+                this.#size = 0
+                this.#hasNull = this.#hasDuplicate = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = over 0) --------------------
+
+            const array: T[] = []
+            this[0] = array[0] = iteratorResult.value
+            let size = 0
+            while (++size, !(iteratorResult = reference.next()).done)
+                this[size] = array[size] = iteratorResult.value
+            this.#size = size
+            this.#array = Object.freeze(array,)
+
+            //#endregion -------------------- Initialization (size = over 0) --------------------
+
+            return
+        }
+
         //#endregion -------------------- initialization by a known instance --------------------
         //#region -------------------- initialization by a structure --------------------
 
@@ -680,6 +716,35 @@ export class GenericCollectionHolder<const T = unknown,
             return
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        if (isIteratorByStructure<T>(reference,)) {
+            let iteratorResult = reference.next()
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = iteratorResult.done === true) {
+                this.#size = 0
+                this.#hasNull = this.#hasDuplicate = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = over 0) --------------------
+
+            const array: T[] = []
+            this[0] = array[0] = iteratorResult.value
+            let size = 0
+            while (++size, !(iteratorResult = reference.next()).done)
+                this[size] = array[size] = iteratorResult.value
+            this.#size = size
+            this.#array = Object.freeze(array,)
+
+            //#endregion -------------------- Initialization (size = over 0) --------------------
+
+            return
         }
 
         //#endregion -------------------- initialization by a structure --------------------
@@ -1139,7 +1204,11 @@ export class GenericCollectionHolder<const T = unknown,
         return hasOneWithCollectionIteratorByArray(this._array, values,)
     }
 
-    protected override _hasOneByIterable(values: Iterable<T>,): boolean {
+    protected override _hasOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+        return hasOneWithIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
         return hasOneWithIterableByArray(this._array, values,)
     }
 
@@ -1166,7 +1235,11 @@ export class GenericCollectionHolder<const T = unknown,
         return hasAllWithCollectionIteratorByArray(this._array, values,)
     }
 
-    protected override _hasAllByIterable(values: Iterable<T>,): boolean {
+    protected override _hasAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+        return hasAllWithIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
         return hasAllWithIterableByArray(this._array, values,)
     }
 
@@ -1273,7 +1346,11 @@ export class GenericCollectionHolder<const T = unknown,
         return sliceWithCollectionIteratorByArray(this._array, indices,)
     }
 
-    protected override _sliceByIterable(indices: Iterable<number>,): CollectionHolder<T> {
+    protected override _sliceByIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
+        return sliceWithIteratorByArray(this._array, indices,)
+    }
+
+    protected override _sliceByIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T> {
         return sliceWithIterableByArray(this._array, indices,)
     }
 
