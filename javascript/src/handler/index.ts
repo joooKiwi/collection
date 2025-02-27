@@ -11,6 +11,8 @@
 //··························································
 
 export {AbstractCollectionHandler}                        from "./AbstractCollectionHandler"
+export {AbstractCollectionHandlerBy1Value}                from "./AbstractCollectionHandlerBy1Value"
+export {AbstractCollectionHandlerBy2Values}               from "./AbstractCollectionHandlerBy2Values"
 export {AbstractCollectionHandlerWithIterableOrIterator}  from "./AbstractCollectionHandlerWithIterableOrIterator"
 export type {CollectionHandler}                           from "./CollectionHandler"
 export {CollectionHandlerByArray}                         from "./CollectionHandlerByArray"
