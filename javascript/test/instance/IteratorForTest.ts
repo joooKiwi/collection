@@ -10,17 +10,21 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
+/** An {@link Iterator} that is made for the tests with an {@link ReadonlyArray Array} under the hood */
+export class IteratorForTest<const T, >
+    extends Iterator<T, undefined> {
 
-import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
+    public readonly array
+    public iterator?: ArrayIterator<T>
 
-export class LazyGenericCollectionHolder_ConstructorTest<T>
-    extends LazyGenericCollectionHolder<T> {
+    public constructor(array: readonly T[],) {
+        super()
+        this.array = array
+    }
 
-    public constructor(reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
-        super(reference,)
-        this.forEach(_ => {
-        },)
+    next(): IteratorResult<T, undefined> {
+        const iterator = this.iterator ??= this.array[Symbol.iterator]()
+        return iterator.next()
     }
 
 }

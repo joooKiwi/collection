@@ -17,7 +17,7 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 import type {CollectionHolderForTest}                                                                                                                                                                                                                           from "./CollectionHolderForTest"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder}                                                                                                                                                                                                        from "../../src/type/possibleInstance"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                from "../../src/type/possibleInstance"
 import type {CollectionHolderName}                                                                                                                                                                                                                              from "../../src/type/toStringTag"
 
 import {EmptyCollectionException}  from "../../src/exception/EmptyCollectionException"
@@ -506,8 +506,9 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     public abstract hasOne(values: CollectionHolder<T>,): boolean
     public abstract hasOne(values: MinimalistCollectionHolder<T>,): boolean
     public abstract hasOne(values: CollectionIterator<T>,): boolean
-    public abstract hasOne(values: Iterable<T>,): boolean
-    public abstract hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    public abstract hasOne(values: Iterator<T, unknown, unknown>,): boolean
+    public abstract hasOne(values: Iterable<T, unknown, unknown>,): boolean
+    public abstract hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
 
     public includesOne(..._: readonly unknown[]): never
     public includesOne() {
@@ -527,8 +528,9 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     public abstract hasAll(values: CollectionHolder<T>,): boolean
     public abstract hasAll(values: MinimalistCollectionHolder<T>,): boolean
     public abstract hasAll(values: CollectionIterator<T>,): boolean
-    public abstract hasAll(values: Iterable<T>,): boolean
-    public abstract hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    public abstract hasAll(values: Iterator<T, unknown, unknown>,): boolean
+    public abstract hasAll(values: Iterable<T, unknown, unknown>,): boolean
+    public abstract hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
 
     public includesAll(..._: readonly unknown[]): never
     public includesAll() {
@@ -576,9 +578,10 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     public abstract slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public abstract slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public abstract slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public abstract slice(indices: Iterable<number>,): CollectionHolder<T>
-    public abstract slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public abstract slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
+    public abstract slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
+    public abstract slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
+    public abstract slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
+    public abstract slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice --------------------
 

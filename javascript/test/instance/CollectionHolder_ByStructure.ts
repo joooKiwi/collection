@@ -16,7 +16,7 @@ import type {CollectionHolder}                                                  
 import type {CollectionIterator}                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder}                                                                                                                                                                                                        from "../../src/type/possibleInstance"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                from "../../src/type/possibleInstance"
 import type {CollectionHolderName}                                                                                                                                                                                                                              from "../../src/type/toStringTag"
 
 import {CollectionHolderFromArray} from "./CollectionHolderFromArray"
@@ -306,27 +306,30 @@ export class CollectionHolder_ByStructure<const T, >
     public hasOne(values: CollectionHolder<T>,): boolean
     public hasOne(values: MinimalistCollectionHolder<T>,): boolean
     public hasOne(values: CollectionIterator<T>,): boolean
-    public hasOne(values: Iterable<T>,): boolean
-    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) { return this.reference.hasOne(values,) }
+    public hasOne(values: Iterator<T, unknown, unknown>,): boolean
+    public hasOne(values: Iterable<T, unknown, unknown>,): boolean
+    public hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.hasOne(values,) }
 
     public includesOne(values: readonly T[],): boolean
     public includesOne(values: ReadonlySet<T>,): boolean
     public includesOne(values: CollectionHolder<T>,): boolean
     public includesOne(values: MinimalistCollectionHolder<T>,): boolean
     public includesOne(values: CollectionIterator<T>,): boolean
-    public includesOne(values: Iterable<T>,): boolean
-    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public includesOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) { return this.reference.includesOne(values,) }
+    public includesOne(values: Iterator<T, unknown, unknown>,): boolean
+    public includesOne(values: Iterable<T, unknown, unknown>,): boolean
+    public includesOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public includesOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.includesOne(values,) }
 
     public containsOne(values: readonly T[],): boolean
     public containsOne(values: ReadonlySet<T>,): boolean
     public containsOne(values: CollectionHolder<T>,): boolean
     public containsOne(values: MinimalistCollectionHolder<T>,): boolean
     public containsOne(values: CollectionIterator<T>,): boolean
-    public containsOne(values: Iterable<T>,): boolean
-    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public containsOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) { return this.reference.containsOne(values,) }
+    public containsOne(values: Iterator<T, unknown, unknown>,): boolean
+    public containsOne(values: Iterable<T, unknown, unknown>,): boolean
+    public containsOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public containsOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.containsOne(values,) }
 
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has all --------------------
@@ -336,27 +339,30 @@ export class CollectionHolder_ByStructure<const T, >
     public hasAll(values: CollectionHolder<T>,): boolean
     public hasAll(values: MinimalistCollectionHolder<T>,): boolean
     public hasAll(values: CollectionIterator<T>,): boolean
-    public hasAll(values: Iterable<T>,): boolean
-    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) { return this.reference.hasAll(values,) }
+    public hasAll(values: Iterator<T, unknown, unknown>,): boolean
+    public hasAll(values: Iterable<T, unknown, unknown>,): boolean
+    public hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.hasAll(values,) }
 
     public includesAll(values: readonly T[],): boolean
     public includesAll(values: ReadonlySet<T>,): boolean
     public includesAll(values: CollectionHolder<T>,): boolean
     public includesAll(values: MinimalistCollectionHolder<T>,): boolean
     public includesAll(values: CollectionIterator<T>,): boolean
-    public includesAll(values: Iterable<T>,): boolean
-    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public includesAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) { return this.reference.includesAll(values,) }
+    public includesAll(values: Iterator<T, unknown, unknown>,): boolean
+    public includesAll(values: Iterable<T, unknown, unknown>,): boolean
+    public includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.includesAll(values,) }
 
     public containsAll(values: readonly T[],): boolean
     public containsAll(values: ReadonlySet<T>,): boolean
     public containsAll(values: CollectionHolder<T>,): boolean
     public containsAll(values: MinimalistCollectionHolder<T>,): boolean
     public containsAll(values: CollectionIterator<T>,): boolean
-    public containsAll(values: Iterable<T>,): boolean
-    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public containsAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) { return this.reference.containsAll(values,) }
+    public containsAll(values: Iterator<T, unknown, unknown>,): boolean
+    public containsAll(values: Iterable<T, unknown, unknown>,): boolean
+    public containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.containsAll(values,) }
 
     //#endregion -------------------- Has all --------------------
 
@@ -399,10 +405,11 @@ export class CollectionHolder_ByStructure<const T, >
     public slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public slice(indices: Iterable<number>,): CollectionHolder<T>
-    public slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
-    public slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) { return this.reference.slice(indicesOrFrom, to,) }
+    public slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
+    public slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
+    public slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
+    public slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
+    public slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) { return this.reference.slice(indicesOrFrom, to,) }
 
     //#endregion -------------------- Slice --------------------
 

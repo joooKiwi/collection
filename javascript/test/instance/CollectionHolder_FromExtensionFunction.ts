@@ -16,7 +16,7 @@ import type {CollectionHolder}                                                  
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder}                                                                                                                                                                                                        from "../../src/type/possibleInstance"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
 import {allByCollectionHolder}                       from "../../src/method/all"
 import {anyByCollectionHolder}                       from "../../src/method/any"
@@ -350,9 +350,10 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override hasOne(values: CollectionHolder<T>,): boolean
     public override hasOne(values: MinimalistCollectionHolder<T>,): boolean
     public override hasOne(values: CollectionIterator<T>,): boolean
-    public override hasOne(values: Iterable<T>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
+    public override hasOne(values: Iterator<T, unknown, unknown>,): boolean
+    public override hasOne(values: Iterable<T, unknown, unknown>,): boolean
+    public override hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public override hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
         return hasOneByCollectionHolder<T>(this, values,)
     }
 
@@ -364,9 +365,10 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override hasAll(values: CollectionHolder<T>,): boolean
     public override hasAll(values: MinimalistCollectionHolder<T>,): boolean
     public override hasAll(values: CollectionIterator<T>,): boolean
-    public override hasAll(values: Iterable<T>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
+    public override hasAll(values: Iterator<T, unknown, unknown>,): boolean
+    public override hasAll(values: Iterable<T, unknown, unknown>,): boolean
+    public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
         return hasAllByCollectionHolder<T>(this, values,)
     }
 
@@ -424,10 +426,11 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number>,): CollectionHolder<T>
-    public override slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
+    public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
+    public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
+    public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
+    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
+    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
         return sliceByCollectionHolder<T>(this, indicesOrFrom, to,)
     }
 
