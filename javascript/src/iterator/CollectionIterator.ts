@@ -24,7 +24,7 @@ import type {CollectionIteratorName}                                            
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list-iterator Kotlin ListIterator
  */
 export interface CollectionIterator<out T = unknown, >
-    extends IterableIterator<T> {
+    extends IterableIterator<T, AfterLastValueInCollectionIteratorSymbol, unknown> {
 
     //#region -------------------- Reference methods --------------------
 
