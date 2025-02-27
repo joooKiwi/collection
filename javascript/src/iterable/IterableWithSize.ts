@@ -14,7 +14,7 @@
 
 /** An {@link Iterable} with a size field */
 export interface IterableWithSize<out T, >
-    extends Iterable<T> {
+    extends Iterable<T, unknown, unknown> {
 
     /** The value equivalent to the amount of iteration to do */
     readonly size: number

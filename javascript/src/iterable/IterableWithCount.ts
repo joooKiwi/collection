@@ -14,7 +14,7 @@
 
 /** An {@link Iterable} with a count field */
 export interface IterableWithCount<out T, >
-    extends Iterable<T> {
+    extends Iterable<T, unknown, unknown> {
 
     /** The value equivalent to the amount of iteration to do */
     readonly count: number

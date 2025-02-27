@@ -24,7 +24,7 @@ import type {NullableNumber} from "@joookiwi/type"
  * @see IterableWithCount
  */
 export interface IterableWithPossibleSize<out T, >
-    extends Iterable<T> {
+    extends Iterable<T, unknown, unknown> {
 
     /** The value equivalent to the amount of iteration to do */
     readonly size?: NullableNumber
