@@ -32,7 +32,7 @@ import {isCollectionHolderByStructure}                     from "./isCollectionH
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException No index could be found
@@ -50,7 +50,7 @@ export function indexOfFirst<const T, >(collection: Nullable<| MinimalistCollect
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -71,7 +71,7 @@ export function indexOfFirst<const T, >(collection: Nullable<| MinimalistCollect
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (`size - 1` by default)
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
@@ -104,7 +104,7 @@ export function indexOfFirst<const T, >(collection: Nullable<| MinimalistCollect
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException No index could be found
@@ -122,7 +122,7 @@ export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: 
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -143,7 +143,7 @@ export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: 
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
@@ -175,7 +175,7 @@ export function indexOfFirstByMinimalistCollectionHolder<const T, >(collection: 
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException No index could be found
@@ -193,7 +193,7 @@ export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<C
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -214,7 +214,7 @@ export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<C
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
@@ -246,7 +246,7 @@ export function indexOfFirstByCollectionHolder<const T, >(collection: Nullable<C
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The given predicate
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException No index could be found
@@ -264,7 +264,7 @@ export function indexOfFirstByArray<const T, >(collection: Nullable<readonly T[]
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -285,7 +285,7 @@ export function indexOfFirstByArray<const T, >(collection: Nullable<readonly T[]
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
- * @return {number} The index matching the {@link predicate} found
+ * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range

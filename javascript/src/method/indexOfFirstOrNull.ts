@@ -33,7 +33,7 @@ import {isCollectionHolderByStructure}              from "./isCollectionHolderBy
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (`size - 1` by default)
- * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -61,7 +61,7 @@ export function indexOfFirstOrNull<const T, >(collection: Nullable<| MinimalistC
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -88,7 +88,7 @@ export function indexOfFirstOrNullByMinimalistCollectionHolder<const T, >(collec
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -115,7 +115,7 @@ export function indexOfFirstOrNullByCollectionHolder<const T, >(collection: Null
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
- * @return {NullOrNumber} The index matching the {@link predicate} found or <b>null</b>
+ * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction

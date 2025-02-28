@@ -32,7 +32,7 @@ import {isCollectionHolderByStructure}              from "./isCollectionHolderBy
  * @param element    The element to find
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (`size - 1` by default)
- * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
+ * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -60,7 +60,7 @@ export function lastIndexOfOrNull<const T, >(collection: Nullable<| MinimalistCo
  * @param element    The element to find
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
+ * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -87,7 +87,7 @@ export function lastIndexOfOrNullByMinimalistCollectionHolder<const T, >(collect
  * @param element    The element to find
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
- * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
+ * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
@@ -114,7 +114,7 @@ export function lastIndexOfOrNullByCollectionHolder<const T, >(collection: Nulla
  * @param element    The element to find
  * @param from       The inclusive starting index (`0` by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
- * @return {NullOrNumber} The index associated to the {@link element} found or <b>null</b>
+ * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
