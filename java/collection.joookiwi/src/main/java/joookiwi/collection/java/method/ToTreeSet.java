@@ -11,12 +11,14 @@ import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.ImmutableTreeSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.emptyTreeSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
+@NotNullByDefault
 public final class ToTreeSet
         extends UtilityWithTable {
 

@@ -11,12 +11,14 @@ import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.ImmutableConcurrentSkipListSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.emptyConcurrentSkipListSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
+@NotNullByDefault
 public final class ToConcurrentSkipListSet
         extends UtilityWithTable {
 
