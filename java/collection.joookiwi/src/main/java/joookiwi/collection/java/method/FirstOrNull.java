@@ -8,7 +8,6 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
