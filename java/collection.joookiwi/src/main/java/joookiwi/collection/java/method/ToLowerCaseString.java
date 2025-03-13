@@ -29,7 +29,7 @@ public final class ToLowerCaseString
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @see String#toLowerCase()
     @ExtensionFunction
-    public static <T> @NotNull String toLowerCaseString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull String toLowerCaseString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -45,7 +45,7 @@ public final class ToLowerCaseString
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @see String#toLowerCase()
     @ExtensionFunction
-    public static <T> @NotNull String toLowerCaseString(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull String toLowerCaseString(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -59,7 +59,7 @@ public final class ToLowerCaseString
     /// @param collection The [nullable][Nullable] collection
     /// @see String#toLowerCase()
     @ExtensionFunction
-    public static <T> @NotNull String toLowerCaseString(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> @NotNull String toLowerCaseString(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -72,8 +72,8 @@ public final class ToLowerCaseString
     //#endregion -------------------- Facade method --------------------
     //#region -------------------- Loop method --------------------
 
-    private static <T> @NotNull String __toString(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                  final int size) {
+    private static <T extends @Nullable Object> @NotNull String __toString(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                           final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;
@@ -82,8 +82,8 @@ public final class ToLowerCaseString
         return DEFAULT_JOIN_POSTFIX_STRING + string + asLowerCaseString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
     }
 
-    private static <T> @NotNull String __toString(final T @NotNull @Unmodifiable [] collection,
-                                                  final int size) {
+    private static <T extends @Nullable Object> @NotNull String __toString(final T @NotNull @Unmodifiable [] collection,
+                                                                           final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;

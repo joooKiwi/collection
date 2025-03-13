@@ -32,7 +32,7 @@ public final class ToTreeSet
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Comparable<T>> @NotNull @Unmodifiable TreeSet<T> toTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Comparable<T>> @NotNull @Unmodifiable TreeSet<T> toTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyTreeSet();
 
@@ -47,7 +47,7 @@ public final class ToTreeSet
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Comparable<T>> @NotNull @Unmodifiable TreeSet<T> toTreeSet(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Comparable<T>> @NotNull @Unmodifiable TreeSet<T> toTreeSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyTreeSet();
         if (collection.isEmpty())
@@ -62,7 +62,7 @@ public final class ToTreeSet
     /// @param collection The [nullable][Nullable] collection to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Comparable<T>> @NotNull @Unmodifiable TreeSet<T> toTreeSet(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Comparable<T>> @NotNull @Unmodifiable TreeSet<T> toTreeSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyTreeSet();
 
@@ -83,8 +83,8 @@ public final class ToTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                              final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyTreeSet();
 
@@ -102,8 +102,8 @@ public final class ToTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                              final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyTreeSet();
         if (collection.isEmpty())
@@ -119,8 +119,8 @@ public final class ToTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                              final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyTreeSet();
 
@@ -141,8 +141,8 @@ public final class ToTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                              final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyTreeSet();
 
@@ -160,8 +160,8 @@ public final class ToTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                              final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyTreeSet();
         if (collection.isEmpty())
@@ -177,8 +177,8 @@ public final class ToTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                              final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyTreeSet();
 
@@ -199,8 +199,8 @@ public final class ToTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                              final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptyTreeSet();
 
@@ -218,8 +218,8 @@ public final class ToTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                              final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptyTreeSet();
         if (collection.isEmpty())
@@ -235,8 +235,8 @@ public final class ToTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable TreeSet<U> toTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                              final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptyTreeSet();
 
@@ -251,49 +251,49 @@ public final class ToTreeSet
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @NotNull @Unmodifiable TreeSet<T> __withNoDuplicate(final @NotNull CollectionHolder<? extends T> collection,
-                                                                           final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable TreeSet<T> __withNoDuplicate(final @NotNull CollectionHolder<? extends T> collection,
+                                                                                                    final int size) {
         return new ImmutableTreeSet<>(_uniqueValues(collection, size));
     }
 
 
-    private static <T> @NotNull @Unmodifiable TreeSet<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                           final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable TreeSet<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                    final int size) {
         return new ImmutableTreeSet<>(_values(collection, size));
     }
 
-    private static <T> @NotNull @Unmodifiable TreeSet<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
-                                                                           final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable TreeSet<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
+                                                                                                    final int size) {
         return new ImmutableTreeSet<>(_values(collection, size));
     }
 
 
-    private static <U> @NotNull @Unmodifiable TreeSet<U> __with0Argument(final int size,
-                                                                         final @NotNull Supplier<? extends U> transform) {
+    private static <U extends @Nullable Object> @NotNull @Unmodifiable TreeSet<U> __with0Argument(final int size,
+                                                                                                  final @NotNull Supplier<? extends U> transform) {
         return new ImmutableTreeSet<>(_uniqueValues(size, transform));
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable TreeSet<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                            final int size,
-                                                                            final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable TreeSet<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                              final int size,
+                                                                                                                              final @NotNull Function<? super T, ? extends U> transform) {
         return new ImmutableTreeSet<>(_uniqueValues(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable TreeSet<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                            final int size,
-                                                                            final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable TreeSet<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                              final int size,
+                                                                                                                              final @NotNull Function<? super T, ? extends U> transform) {
         return new ImmutableTreeSet<>(_uniqueValues(collection, size, transform));
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable TreeSet<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, int size,
-                                                                            final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable TreeSet<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, int size,
+                                                                                                                              final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ImmutableTreeSet<>(_uniqueValues(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable TreeSet<U> __with2Argument(final T @NotNull @Unmodifiable [] collection, int size,
-                                                                            final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable TreeSet<U> __with2Argument(final T @NotNull @Unmodifiable [] collection, int size,
+                                                                                                                              final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ImmutableTreeSet<>(_uniqueValues(collection, size, transform));
     }
 

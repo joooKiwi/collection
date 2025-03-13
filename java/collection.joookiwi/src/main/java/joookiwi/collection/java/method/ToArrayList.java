@@ -32,7 +32,7 @@ public final class ToArrayList
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @NotNull @Unmodifiable ArrayList<T> toArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull @Unmodifiable ArrayList<T> toArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyArrayList();
 
@@ -47,7 +47,7 @@ public final class ToArrayList
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @NotNull @Unmodifiable ArrayList<T> toArrayList(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull @Unmodifiable ArrayList<T> toArrayList(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyArrayList();
         if (collection.isEmpty())
@@ -60,7 +60,7 @@ public final class ToArrayList
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @NotNull @Unmodifiable ArrayList<T> toArrayList(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> @NotNull @Unmodifiable ArrayList<T> toArrayList(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyArrayList();
 
@@ -81,8 +81,8 @@ public final class ToArrayList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable ArrayList<U> toArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                         final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> toArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                           final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyArrayList();
 
@@ -100,8 +100,8 @@ public final class ToArrayList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable ArrayList<U> toArrayList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                         final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> toArrayList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                           final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyArrayList();
         if (collection.isEmpty())
@@ -117,8 +117,8 @@ public final class ToArrayList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable ArrayList<U> toArrayList(final T @Nullable @Unmodifiable [] collection,
-                                                                         final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> toArrayList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                           final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyArrayList();
 
@@ -139,8 +139,8 @@ public final class ToArrayList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable ArrayList<U> toArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                         final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> toArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                           final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyArrayList();
 
@@ -158,8 +158,8 @@ public final class ToArrayList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable ArrayList<U> toArrayList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                         final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> toArrayList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                           final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyArrayList();
         if (collection.isEmpty())
@@ -175,8 +175,8 @@ public final class ToArrayList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable ArrayList<U> toArrayList(final T @Nullable @Unmodifiable [] collection,
-                                                                         final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> toArrayList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                           final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyArrayList();
 
@@ -249,45 +249,45 @@ public final class ToArrayList
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @NotNull @Unmodifiable ArrayList<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                             final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable ArrayList<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                      final int size) {
         return new ImmutableArrayList<>(_values(collection, size));
     }
 
-    private static <T> @NotNull @Unmodifiable ArrayList<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
-                                                                             final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable ArrayList<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
+                                                                                                      final int size) {
         return new ImmutableArrayList<>(_values(collection, size));
     }
 
 
-    private static <U> @NotNull @Unmodifiable ArrayList<U> __with0Argument(final int size,
-                                                                           final @NotNull Supplier<? extends U> transform) {
+    private static <U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> __with0Argument(final int size,
+                                                                                                    final @NotNull Supplier<? extends U> transform) {
         return new ImmutableArrayList<>(_values(size, transform));
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable ArrayList<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                              final int size,
-                                                                              final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U> @NotNull @Unmodifiable ArrayList<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final int size,
+                                                                                                       final @NotNull Function<? super T, ? extends U> transform) {
         return new ImmutableArrayList<>(_values(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable ArrayList<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                              final int size,
-                                                                              final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                                final int size,
+                                                                                                                                final @NotNull Function<? super T, ? extends U> transform) {
         return new ImmutableArrayList<>(_values(collection, size, transform));
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable ArrayList<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                              final int size,
-                                                                              final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                                final int size,
+                                                                                                                                final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ImmutableArrayList<>(_values(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable ArrayList<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                              final int size,
-                                                                              final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                                final int size,
+                                                                                                                                final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ImmutableArrayList<>(_values(collection, size, transform));
     }
 

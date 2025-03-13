@@ -76,8 +76,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Iterator<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable Iterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -94,8 +94,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Iterator<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable Iterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -112,8 +112,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable Iterator<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable Iterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -133,8 +133,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable ListIterator<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable ListIterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -151,8 +151,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable ListIterator<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable ListIterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -169,8 +169,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable ListIterator<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable ListIterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -190,8 +190,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Spliterator<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable Spliterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -208,8 +208,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Spliterator<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable Spliterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -226,8 +226,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable Spliterator<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable Spliterator<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -247,8 +247,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Enumeration<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable Enumeration<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -265,8 +265,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Enumeration<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable Enumeration<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -283,8 +283,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable Enumeration<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable Enumeration<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -305,8 +305,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable Iterable<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable Iterable<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -329,8 +329,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable Iterable<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable Iterable<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -353,8 +353,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable Iterable<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable Iterable<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -381,8 +381,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable MinimalistCollectionHolder<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable MinimalistCollectionHolder<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -401,8 +401,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable MinimalistCollectionHolder<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable MinimalistCollectionHolder<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -421,8 +421,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable MinimalistCollectionHolder<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable MinimalistCollectionHolder<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -444,8 +444,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable CollectionHolder<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable CollectionHolder<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -462,8 +462,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable CollectionHolder<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable CollectionHolder<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -480,8 +480,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable CollectionHolder<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable CollectionHolder<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -502,8 +502,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Collection<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Collection<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -522,8 +522,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Collection<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Collection<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -542,8 +542,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable Collection<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable Collection<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -565,8 +565,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -585,8 +585,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -605,8 +605,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -629,8 +629,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable List<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable List<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -647,8 +647,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable List<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable List<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -665,8 +665,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable List<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable List<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -686,8 +686,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ArrayList<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ArrayList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -704,8 +704,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ArrayList<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ArrayList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -722,8 +722,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable ArrayList<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable ArrayList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -743,8 +743,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -761,8 +761,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -779,8 +779,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -800,8 +800,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable LinkedList<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable LinkedList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -818,8 +818,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable LinkedList<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable LinkedList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -836,8 +836,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable LinkedList<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable LinkedList<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -857,8 +857,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Vector<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Vector<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -875,8 +875,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Vector<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Vector<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -893,8 +893,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable Vector<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable Vector<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -915,8 +915,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Set<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Set<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -935,8 +935,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Set<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Set<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -955,8 +955,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable Set<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable Set<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -978,8 +978,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -998,8 +998,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1018,8 +1018,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1041,8 +1041,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable SortedSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable SortedSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1061,8 +1061,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable SortedSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable SortedSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1081,8 +1081,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable SortedSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable SortedSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1104,8 +1104,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1124,8 +1124,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1144,8 +1144,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1167,8 +1167,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1187,8 +1187,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1207,8 +1207,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1230,8 +1230,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1250,8 +1250,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1270,8 +1270,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1350,8 +1350,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable HashSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable HashSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1370,8 +1370,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable HashSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable HashSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1390,8 +1390,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable HashSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable HashSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1413,8 +1413,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1433,8 +1433,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1453,8 +1453,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1476,8 +1476,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable TreeSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable TreeSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1496,8 +1496,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable TreeSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable TreeSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1516,8 +1516,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable TreeSet<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable TreeSet<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1540,8 +1540,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Queue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Queue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1560,8 +1560,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Queue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Queue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1580,8 +1580,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable Queue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable Queue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1603,8 +1603,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1623,8 +1623,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1643,8 +1643,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1666,8 +1666,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1686,8 +1686,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1706,8 +1706,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1729,8 +1729,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1749,8 +1749,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1769,8 +1769,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1792,8 +1792,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1812,8 +1812,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1832,8 +1832,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1918,8 +1918,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1938,8 +1938,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1958,8 +1958,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -1981,8 +1981,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2001,8 +2001,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2021,8 +2021,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2044,8 +2044,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2064,8 +2064,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2084,8 +2084,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2107,8 +2107,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2127,8 +2127,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2147,8 +2147,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2170,8 +2170,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2190,8 +2190,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2210,8 +2210,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2234,8 +2234,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Deque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Deque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2254,8 +2254,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Deque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Deque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2274,8 +2274,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable Deque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable Deque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2297,8 +2297,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2317,8 +2317,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2337,8 +2337,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2360,8 +2360,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2380,8 +2380,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2400,8 +2400,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2423,8 +2423,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2443,8 +2443,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2463,8 +2463,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2486,8 +2486,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2506,8 +2506,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2526,8 +2526,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2549,8 +2549,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Stack<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Stack<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2567,8 +2567,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final @Nullable @Unmodifiable Stack<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final @Nullable @Unmodifiable Stack<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2585,8 +2585,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final @Nullable @Unmodifiable Stack<? extends T> values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final @Nullable @Unmodifiable Stack<? extends T> values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2607,8 +2607,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                     final T @Nullable @Unmodifiable [] values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                              final T @Nullable @Unmodifiable [] values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2625,8 +2625,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
-                                     final T @Nullable @Unmodifiable [] values) {
+    public static <T extends @Nullable Object> boolean hasAll(final @Nullable CollectionHolder<? extends T> collection,
+                                                              final T @Nullable @Unmodifiable [] values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2643,8 +2643,8 @@ public final class HasAll
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html">Kotlin containsAll(values)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_OR_2ND_NULL_THEN_TRUE_2)
-    public static <T> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
-                                     final T @Nullable @Unmodifiable [] values) {
+    public static <T extends @Nullable Object> boolean hasAll(final T @Nullable @Unmodifiable [] collection,
+                                                              final T @Nullable @Unmodifiable [] values) {
         if (collection == null)
             return false;
         if (values == null)
@@ -2659,8 +2659,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (iterator) --------------------
 
-    private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull Iterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull Iterator<? extends T> values) {
 
         if (!values.hasNext())
             return true;
@@ -2671,8 +2671,8 @@ public final class HasAll
         return __fromIterator(collection, size, values);
     }
 
-    private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull Iterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
+                                                                 final @NotNull Iterator<? extends T> values) {
 
         if (!values.hasNext())
             return true;
@@ -2681,8 +2681,8 @@ public final class HasAll
         return __fromIterator(collection, collection.size(), values);
     }
 
-    private static <T> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                        final @NotNull Iterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
+                                                                 final @NotNull Iterator<? extends T> values) {
 
         if (!values.hasNext())
             return true;
@@ -2696,8 +2696,8 @@ public final class HasAll
     //#endregion -------------------- Core methods (iterator) --------------------
     //#region -------------------- Core methods (spliterator) --------------------
 
-    private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
 
@@ -2707,8 +2707,8 @@ public final class HasAll
         return __fromSpliterator(collection, size, values);
     }
 
-    private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
+                                                                 final @NotNull Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
         if (collection.isEmpty())
@@ -2716,8 +2716,8 @@ public final class HasAll
         return __fromSpliterator(collection, collection.size(), values);
     }
 
-    private static <T> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                        final @NotNull Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
+                                                                 final @NotNull Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
 
@@ -2730,8 +2730,8 @@ public final class HasAll
     //#endregion -------------------- Core methods (spliterator) --------------------
     //#region -------------------- Core methods (enumeration) --------------------
 
-    private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull Enumeration<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
 
@@ -2741,8 +2741,8 @@ public final class HasAll
         return __fromEnumeration(collection, size, values);
     }
 
-    private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull Enumeration<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
+                                                                 final @NotNull Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
         if (collection.isEmpty())
@@ -2750,8 +2750,8 @@ public final class HasAll
         return __fromEnumeration(collection, collection.size(), values);
     }
 
-    private static <T> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                        final @NotNull Enumeration<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
+                                                                 final @NotNull Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
 
@@ -2765,8 +2765,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (iterable) --------------------
 
-    private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull Iterable<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -2777,8 +2777,8 @@ public final class HasAll
         return __fromIterator(collection, size, iterator);
     }
 
-    private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull Iterable<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
+                                                                 final @NotNull Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -2787,8 +2787,8 @@ public final class HasAll
         return __fromIterator(collection, collection.size(), iterator);
     }
 
-    private static <T> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                        final @NotNull Iterable<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
+                                                                 final @NotNull Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -2803,8 +2803,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (minimalist collection holder) --------------------
 
-    private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull MinimalistCollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull MinimalistCollectionHolder<? extends T> values) {
 
         final var valuesSize = values.size();
         if (valuesSize == 0)
@@ -2816,8 +2816,8 @@ public final class HasAll
         return __fromMinimalistCollectionHolder(collection, size, values, valuesSize);
     }
 
-    private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull MinimalistCollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
+                                                                 final @NotNull MinimalistCollectionHolder<? extends T> values) {
 
         final var valuesSize = values.size();
         if (valuesSize == 0)
@@ -2827,8 +2827,8 @@ public final class HasAll
         return __fromMinimalistCollectionHolder(collection, collection.size(), values, valuesSize);
     }
 
-    private static <T> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                        final @NotNull MinimalistCollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
+                                                                 final @NotNull MinimalistCollectionHolder<? extends T> values) {
 
         final var valuesSize = values.size();
         if (valuesSize == 0)
@@ -2843,8 +2843,8 @@ public final class HasAll
     //#endregion -------------------- Core methods (minimalist collection holder) --------------------
     //#region -------------------- Core methods (collection holder) --------------------
 
-    private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull CollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull CollectionHolder<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2857,8 +2857,8 @@ public final class HasAll
         return __fromIterator(collection, size, values.iterator());
     }
 
-    private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull CollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
+                                                                 final @NotNull CollectionHolder<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2870,8 +2870,8 @@ public final class HasAll
         return __fromIterator(collection, collection.size(), values.iterator());
     }
 
-    private static <T> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                        final @NotNull CollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
+                                                                 final @NotNull CollectionHolder<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2888,8 +2888,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (collection) --------------------
 
-    private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull @Unmodifiable Collection<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull @Unmodifiable Collection<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2900,8 +2900,8 @@ public final class HasAll
         return __fromIterator(collection, size, values.iterator());
     }
 
-    private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull @Unmodifiable Collection<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
+                                                                 final @NotNull @Unmodifiable Collection<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2910,8 +2910,8 @@ public final class HasAll
         return __fromIterator(collection, collection.size(), values.iterator());
     }
 
-    private static <T> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                        final @NotNull @Unmodifiable Collection<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
+                                                                 final @NotNull @Unmodifiable Collection<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2926,8 +2926,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (list) --------------------
 
-    private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull @Unmodifiable List<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull @Unmodifiable List<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2940,8 +2940,8 @@ public final class HasAll
         return __fromIterator(collection, size, values.iterator());
     }
 
-    private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                        final @NotNull @Unmodifiable List<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
+                                                                 final @NotNull @Unmodifiable List<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2952,8 +2952,8 @@ public final class HasAll
         return __fromIterator(collection, collection.size(), values.iterator());
     }
 
-    private static <T> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                        final @NotNull @Unmodifiable List<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
+                                                                 final @NotNull @Unmodifiable List<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2970,8 +2970,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (array) --------------------
 
-    private static <T> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                        final T @NotNull @Unmodifiable [] values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                 final T @NotNull @Unmodifiable [] values) {
 
         final var valuesSize = values.length;
         if (valuesSize == 0)
@@ -2983,8 +2983,8 @@ public final class HasAll
         return __fromArray(collection, size, values, valuesSize);
     }
 
-    private static <T> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                        final T @NotNull @Unmodifiable [] values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
+                                                                 final T @NotNull @Unmodifiable [] values) {
 
         final var valuesSize = values.length;
         if (valuesSize == 0)
@@ -2994,8 +2994,8 @@ public final class HasAll
         return __fromArray(collection, collection.size(), values, valuesSize);
     }
 
-    private static <T> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                        final T @NotNull @Unmodifiable [] values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
+                                                                 final T @NotNull @Unmodifiable [] values) {
 
         final var valuesSize = values.length;
         if (valuesSize == 0)
@@ -3014,10 +3014,11 @@ public final class HasAll
 
     //README: The iterator always has at least one element
 
-    private static <T> boolean __fromIterator(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                              final int size,
-                                              final @NotNull Iterator<? extends T> values) {
-        valueLoop: while (values.hasNext()) {
+    private static <T extends @Nullable Object> boolean __fromIterator(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                       final int size,
+                                                                       final @NotNull Iterator<? extends T> values) {
+        valueLoop:
+        while (values.hasNext()) {
             final var value = values.next();
             var index = -1;
             while (++index < size)
@@ -3028,10 +3029,11 @@ public final class HasAll
         return true;
     }
 
-    private static <T> boolean __fromIterator(final T @NotNull @Unmodifiable [] collection,
-                                              final int size,
-                                              final @NotNull Iterator<? extends T> values) {
-        valueLoop: while (values.hasNext()) {
+    private static <T extends @Nullable Object> boolean __fromIterator(final T @NotNull @Unmodifiable [] collection,
+                                                                       final int size,
+                                                                       final @NotNull Iterator<? extends T> values) {
+        valueLoop:
+        while (values.hasNext()) {
             final var value = values.next();
             var index = -1;
             while (++index < size)
@@ -3043,9 +3045,9 @@ public final class HasAll
     }
 
 
-    private static <T> boolean __fromSpliterator(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                 final int size,
-                                                 final @NotNull Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __fromSpliterator(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                          final int size,
+                                                                          final @NotNull Spliterator<? extends T> values) {
         final var valueReturned = new AtomicBoolean(true);
         final Consumer<T> action = it -> {
             var index = -1;
@@ -3060,9 +3062,9 @@ public final class HasAll
         return false;
     }
 
-    private static <T> boolean __fromSpliterator(final T @NotNull @Unmodifiable [] collection,
-                                                 final int size,
-                                                 final @NotNull Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __fromSpliterator(final T @NotNull @Unmodifiable [] collection,
+                                                                          final int size,
+                                                                          final @NotNull Spliterator<? extends T> values) {
         final var valueReturned = new AtomicBoolean(true);
         final Consumer<T> action = it -> {
             var index = -1;
@@ -3078,10 +3080,11 @@ public final class HasAll
     }
 
 
-    private static <T> boolean __fromEnumeration(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                 final int size,
-                                                 final @NotNull Enumeration<? extends T> values) {
-        valueLoop: while (values.hasMoreElements()) {
+    private static <T extends @Nullable Object> boolean __fromEnumeration(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                          final int size,
+                                                                          final @NotNull Enumeration<? extends T> values) {
+        valueLoop:
+        while (values.hasMoreElements()) {
             final var value = values.nextElement();
             var index = -1;
             while (++index < size)
@@ -3092,10 +3095,11 @@ public final class HasAll
         return true;
     }
 
-    private static <T> boolean __fromEnumeration(final T @NotNull @Unmodifiable [] collection,
-                                                 final int size,
-                                                 final @NotNull Enumeration<? extends T> values) {
-        valueLoop: while (values.hasMoreElements()) {
+    private static <T extends @Nullable Object> boolean __fromEnumeration(final T @NotNull @Unmodifiable [] collection,
+                                                                          final int size,
+                                                                          final @NotNull Enumeration<? extends T> values) {
+        valueLoop:
+        while (values.hasMoreElements()) {
             final var value = values.nextElement();
             var index = -1;
             while (++index < size)
@@ -3107,12 +3111,13 @@ public final class HasAll
     }
 
 
-    private static <T> boolean __fromMinimalistCollectionHolder(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                final int size,
-                                                                final @NotNull MinimalistCollectionHolder<? extends T> values,
-                                                                final int valuesSize) {
+    private static <T extends @Nullable Object> boolean __fromMinimalistCollectionHolder(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                         final int size,
+                                                                                         final @NotNull MinimalistCollectionHolder<? extends T> values,
+                                                                                         final int valuesSize) {
         var valuesIndex = -1;
-        valueLoop: while (++valuesIndex < valuesSize) {
+        valueLoop:
+        while (++valuesIndex < valuesSize) {
             final var value = values.get(valuesIndex);
             var index = -1;
             while (++index < size)
@@ -3123,12 +3128,13 @@ public final class HasAll
         return true;
     }
 
-    private static <T> boolean __fromMinimalistCollectionHolder(final T @NotNull @Unmodifiable [] collection,
-                                                                final int size,
-                                                                final @NotNull MinimalistCollectionHolder<? extends T> values,
-                                                                final int valuesSize) {
+    private static <T extends @Nullable Object> boolean __fromMinimalistCollectionHolder(final T @NotNull @Unmodifiable [] collection,
+                                                                                         final int size,
+                                                                                         final @NotNull MinimalistCollectionHolder<? extends T> values,
+                                                                                         final int valuesSize) {
         var valuesIndex = -1;
-        valueLoop: while (++valuesIndex < valuesSize) {
+        valueLoop:
+        while (++valuesIndex < valuesSize) {
             final var value = values.get(valuesIndex);
             var index = -1;
             while (++index < size)
@@ -3140,12 +3146,13 @@ public final class HasAll
     }
 
 
-    private static <T> boolean __fromList(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                          final int size,
-                                          final @NotNull @Unmodifiable List<? extends T> values,
-                                          final int valuesSize) {
+    private static <T extends @Nullable Object> boolean __fromList(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final @NotNull @Unmodifiable List<? extends T> values,
+                                                                   final int valuesSize) {
         var valuesIndex = -1;
-        valueLoop: while (++valuesIndex < valuesSize) {
+        valueLoop:
+        while (++valuesIndex < valuesSize) {
             final var value = values.get(valuesIndex);
             var index = -1;
             while (++index < size)
@@ -3156,12 +3163,13 @@ public final class HasAll
         return true;
     }
 
-    private static <T> boolean __fromList(final T @NotNull @Unmodifiable [] collection,
-                                          final int size,
-                                          final @NotNull @Unmodifiable List<? extends T> values,
-                                          final int valuesSize) {
+    private static <T extends @Nullable Object> boolean __fromList(final T @NotNull @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final @NotNull @Unmodifiable List<? extends T> values,
+                                                                   final int valuesSize) {
         var valuesIndex = -1;
-        valueLoop: while (++valuesIndex < valuesSize) {
+        valueLoop:
+        while (++valuesIndex < valuesSize) {
             final var value = values.get(valuesIndex);
             var index = -1;
             while (++index < size)
@@ -3173,12 +3181,13 @@ public final class HasAll
     }
 
 
-    private static <T> boolean __fromArray(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                           final int size,
-                                           final T @NotNull @Unmodifiable [] values,
-                                           final int valuesSize) {
+    private static <T extends @Nullable Object> boolean __fromArray(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                    final int size,
+                                                                    final T @NotNull @Unmodifiable [] values,
+                                                                    final int valuesSize) {
         var valuesIndex = -1;
-        valueLoop: while (++valuesIndex < valuesSize) {
+        valueLoop:
+        while (++valuesIndex < valuesSize) {
             final var value = values[valuesIndex];
             var index = -1;
             while (++index < size)
@@ -3189,12 +3198,13 @@ public final class HasAll
         return true;
     }
 
-    private static <T> boolean __fromArray(final T @NotNull @Unmodifiable [] collection,
-                                           final int size,
-                                           final T @NotNull @Unmodifiable [] values,
-                                           final int valuesSize) {
+    private static <T extends @Nullable Object> boolean __fromArray(final T @NotNull @Unmodifiable [] collection,
+                                                                    final int size,
+                                                                    final T @NotNull @Unmodifiable [] values,
+                                                                    final int valuesSize) {
         var valuesIndex = -1;
-        valueLoop: while (++valuesIndex < valuesSize) {
+        valueLoop:
+        while (++valuesIndex < valuesSize) {
             final var value = values[valuesIndex];
             var index = -1;
             while (++index < size)

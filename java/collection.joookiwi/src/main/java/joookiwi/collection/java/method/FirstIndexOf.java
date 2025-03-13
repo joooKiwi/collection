@@ -50,8 +50,8 @@ public final class FirstIndexOf
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                        final T element) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final T element) {
         if (collection == null)
             throw new NullCollectionException();
         return __core0(collection, element);
@@ -72,8 +72,8 @@ public final class FirstIndexOf
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                        final T element) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                 final T element) {
         if (collection == null)
             throw new NullCollectionException();
         return __core0(collection, element);
@@ -94,8 +94,8 @@ public final class FirstIndexOf
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                        final T element) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                 final T element) {
         if (collection == null)
             throw new NullCollectionException();
         return __core0(collection, element);
@@ -123,9 +123,9 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final int from) {
         if (collection == null)
             throw new NullCollectionException();
         return __core1(collection, element, from);
@@ -150,9 +150,9 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final int from) {
         if (collection == null)
             throw new NullCollectionException();
         return __core1(collection, element, from);
@@ -177,9 +177,9 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                        final T element,
-                                                                        final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                 final T element,
+                                                                                                 final int from) {
         if (collection == null)
             throw new NullCollectionException();
         return __core1(collection, element, from);
@@ -205,9 +205,9 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -234,9 +234,9 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -263,9 +263,9 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                        final T element,
-                                                                        final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                 final T element,
+                                                                                                 final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -297,10 +297,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final int from,
-                                                                        final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final int from,
+                                                                                                 final int to) {
         if (collection == null)
             throw new NullCollectionException();
         return __core2(collection, element, from, to);
@@ -327,10 +327,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final int from,
-                                                                        final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final int from,
+                                                                                                 final int to) {
         if (collection == null)
             throw new NullCollectionException();
         return __core2(collection, element, from, to);
@@ -357,10 +357,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                        final T element,
-                                                                        final int from,
-                                                                        final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                 final T element,
+                                                                                                 final int from,
+                                                                                                 final int to) {
         if (collection == null)
             throw new NullCollectionException();
         return __core2(collection, element, from, to);
@@ -388,10 +388,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final int from,
-                                                                        final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final int from,
+                                                                                                 final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -420,10 +420,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final int from,
-                                                                        final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final int from,
+                                                                                                 final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -452,10 +452,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                        final T element,
-                                                                        final int from,
-                                                                        final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                 final T element,
+                                                                                                 final int from,
+                                                                                                 final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -485,10 +485,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final @Nullable Integer from,
-                                                                        final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final @Nullable Integer from,
+                                                                                                 final int to) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -517,10 +517,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final @Nullable Integer from,
-                                                                        final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final @Nullable Integer from,
+                                                                                                 final int to) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -549,10 +549,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                        final T element,
-                                                                        final @Nullable Integer from,
-                                                                        final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                 final T element,
+                                                                                                 final @Nullable Integer from,
+                                                                                                 final int to) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -582,10 +582,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final @Nullable Integer from,
-                                                                        final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final @Nullable Integer from,
+                                                                                                 final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -619,10 +619,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                        final T element,
-                                                                        final @Nullable Integer from,
-                                                                        final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                 final T element,
+                                                                                                 final @Nullable Integer from,
+                                                                                                 final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -656,10 +656,10 @@ public final class FirstIndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                        final T element,
-                                                                        final @Nullable Integer from,
-                                                                        final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int firstIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                 final T element,
+                                                                                                 final @Nullable Integer from,
+                                                                                                 final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -679,23 +679,23 @@ public final class FirstIndexOf
 
     //#region -------------------- element --------------------
 
-    private static <T> int __core0(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                   final T element) {
+    private static <T extends @Nullable Object> int __core0(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                            final T element) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
         return __findInRange(collection, element, 0, size - 1);
     }
 
-    private static <T> int __core0(final @NotNull CollectionHolder<? extends T> collection,
-                                   final T element) {
+    private static <T extends @Nullable Object> int __core0(final @NotNull CollectionHolder<? extends T> collection,
+                                                            final T element) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
         return __findInRange(collection, element, 0, collection.size() - 1);
     }
 
-    private static <T> int __core0(final T @NotNull @Unmodifiable [] collection,
-                                   final T element) {
+    private static <T extends @Nullable Object> int __core0(final T @NotNull @Unmodifiable [] collection,
+                                                            final T element) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
@@ -705,18 +705,18 @@ public final class FirstIndexOf
     //#endregion -------------------- element --------------------
     //#region -------------------- element, from --------------------
 
-    private static <T> int __core1(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                   final T element,
-                                   final int from) {
+    private static <T extends @Nullable Object> int __core1(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                            final T element,
+                                                            final int from) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
         return __findInRange(collection, element, _startingIndex(from, size), size - 1);
     }
 
-    private static <T> int __core1(final @NotNull CollectionHolder<? extends T> collection,
-                                   final T element,
-                                   final int from) {
+    private static <T extends @Nullable Object> int __core1(final @NotNull CollectionHolder<? extends T> collection,
+                                                            final T element,
+                                                            final int from) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
 
@@ -724,9 +724,9 @@ public final class FirstIndexOf
         return __findInRange(collection, element, _startingIndex(from, size), size - 1);
     }
 
-    private static <T> int __core1(final T @NotNull @Unmodifiable [] collection,
-                                   final T element,
-                                   final int from) {
+    private static <T extends @Nullable Object> int __core1(final T @NotNull @Unmodifiable [] collection,
+                                                            final T element,
+                                                            final int from) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
@@ -736,10 +736,10 @@ public final class FirstIndexOf
     //#endregion -------------------- element, from --------------------
     //#region -------------------- element, from, to --------------------
 
-    private static <T> int __core2(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                   final T element,
-                                   final int from,
-                                   final int to) {
+    private static <T extends @Nullable Object> int __core2(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                            final T element,
+                                                            final int from,
+                                                            final int to) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
@@ -750,10 +750,10 @@ public final class FirstIndexOf
         return __findInRange(collection, element, startingIndex, endingIndex);
     }
 
-    private static <T> int __core2(final @NotNull CollectionHolder<? extends T> collection,
-                                   final T element,
-                                   final int from,
-                                   final int to) {
+    private static <T extends @Nullable Object> int __core2(final @NotNull CollectionHolder<? extends T> collection,
+                                                            final T element,
+                                                            final int from,
+                                                            final int to) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
 
@@ -764,10 +764,10 @@ public final class FirstIndexOf
         return __findInRange(collection, element, startingIndex, endingIndex);
     }
 
-    private static <T> int __core2(final T @NotNull @Unmodifiable [] collection,
-                                   final T element,
-                                   final int from,
-                                   final int to) {
+    private static <T extends @Nullable Object> int __core2(final T @NotNull @Unmodifiable [] collection,
+                                                            final T element,
+                                                            final int from,
+                                                            final int to) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
@@ -781,26 +781,26 @@ public final class FirstIndexOf
     //#endregion -------------------- element, from, to --------------------
     //#region -------------------- element, to --------------------
 
-    private static <T> int __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                            final T element,
-                                            final int to) {
+    private static <T extends @Nullable Object> int __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                     final T element,
+                                                                     final int to) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
         return __findInRange(collection, element, 0, _endingIndex(to, size));
     }
 
-    private static <T> int __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
-                                            final T element,
-                                            final int to) {
+    private static <T extends @Nullable Object> int __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+                                                                     final T element,
+                                                                     final int to) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
         return __findInRange(collection, element, 0, _endingIndex(to, collection.size()));
     }
 
-    private static <T> int __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
-                                            final T element,
-                                            final int to) {
+    private static <T extends @Nullable Object> int __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
+                                                                     final T element,
+                                                                     final int to) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();

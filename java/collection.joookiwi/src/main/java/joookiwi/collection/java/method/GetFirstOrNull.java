@@ -30,7 +30,7 @@ public final class GetFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T getFirstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return null;
         if (collection.size() == 0)
@@ -47,7 +47,7 @@ public final class GetFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T getFirstOrNull(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNull(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -64,7 +64,7 @@ public final class GetFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T getFirstOrNull(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> @Nullable T getFirstOrNull(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return null;
         if (collection.length == 0)

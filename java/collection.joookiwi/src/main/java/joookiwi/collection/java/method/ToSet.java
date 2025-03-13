@@ -34,7 +34,7 @@ public final class ToSet
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @NotNull @Unmodifiable Set<T> toSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull @Unmodifiable Set<T> toSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptySet();
 
@@ -49,7 +49,7 @@ public final class ToSet
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @NotNull @Unmodifiable Set<T> toSet(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull @Unmodifiable Set<T> toSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptySet();
         if (collection.isEmpty())
@@ -64,7 +64,7 @@ public final class ToSet
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @NotNull @Unmodifiable Set<T> toSet(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> @NotNull @Unmodifiable Set<T> toSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptySet();
 
@@ -85,8 +85,8 @@ public final class ToSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Set<U> toSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> toSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                               final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySet();
 
@@ -104,8 +104,8 @@ public final class ToSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Set<U> toSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> toSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                               final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySet();
         if (collection.isEmpty())
@@ -121,8 +121,8 @@ public final class ToSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Set<U> toSet(final @Nullable T @Nullable @Unmodifiable [] collection,
-                                                             final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> toSet(final @Nullable T @Nullable @Unmodifiable [] collection,
+                                                                                                               final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySet();
 
@@ -143,8 +143,8 @@ public final class ToSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Set<U> toSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> toSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                               final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySet();
 
@@ -162,8 +162,8 @@ public final class ToSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Set<U> toSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> toSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                               final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySet();
         if (collection.isEmpty())
@@ -179,8 +179,8 @@ public final class ToSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Set<U> toSet(final T @Nullable @Unmodifiable [] collection,
-                                                             final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> toSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                               final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySet();
 
@@ -201,8 +201,8 @@ public final class ToSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Set<U> toSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                             final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> toSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                               final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptySet();
 
@@ -220,8 +220,8 @@ public final class ToSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Set<U> toSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                             final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> toSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                               final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptySet();
         if (collection.isEmpty())
@@ -237,8 +237,8 @@ public final class ToSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Set<U> toSet(final T @Nullable @Unmodifiable [] collection,
-                                                             final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> toSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                               final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptySet();
 
@@ -253,51 +253,51 @@ public final class ToSet
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @NotNull @Unmodifiable Set<T> __withNoDuplicate(final @NotNull CollectionHolder<? extends T> collection,
-                                                                       final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable Set<T> __withNoDuplicate(final @NotNull CollectionHolder<? extends T> collection,
+                                                                                                final int size) {
         return new ArrayAsSet<>(_values(collection, size));
     }
 
 
-    private static <T> @NotNull @Unmodifiable Set<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                       final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable Set<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final int size) {
         return new ArrayAsSet<>(_uniqueValues(collection, size));
     }
 
-    private static <T> @NotNull @Unmodifiable Set<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
-                                                                       final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable Set<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
+                                                                                                final int size) {
         return new ArrayAsSet<>(_uniqueValues(collection, size));
     }
 
 
-    private static <U> @NotNull @Unmodifiable Set<U> __with0Argument(final int size,
-                                                                     final @NotNull Supplier<? extends U> transform) {
+    private static <U extends @Nullable Object> @NotNull @Unmodifiable Set<U> __with0Argument(final int size,
+                                                                                              final @NotNull Supplier<? extends U> transform) {
         return new ArrayAsSet<>(_values(size, transform));
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable Set<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                        final int size,
-                                                                        final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                          final int size,
+                                                                                                                          final @NotNull Function<? super T, ? extends U> transform) {
         return new ArrayAsSet<>(_values(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable Set<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                        final int size,
-                                                                        final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                          final int size,
+                                                                                                                          final @NotNull Function<? super T, ? extends U> transform) {
         return new ArrayAsSet<>(_values(collection, size, transform));
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable Set<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                        final int size,
-                                                                        final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                          final int size,
+                                                                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ArrayAsSet<>(_values(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable Set<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                        final int size,
-                                                                        final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Set<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                          final int size,
+                                                                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ArrayAsSet<>(_values(collection, size, transform));
     }
 

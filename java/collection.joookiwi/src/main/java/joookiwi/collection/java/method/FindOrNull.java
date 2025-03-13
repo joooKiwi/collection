@@ -39,8 +39,8 @@ public final class FindOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+    public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                      final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -54,8 +54,8 @@ public final class FindOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                             final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+    public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                      final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -69,8 +69,8 @@ public final class FindOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findOrNull(final T @Nullable @Unmodifiable [] collection,
-                                             final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+    public static <T extends @Nullable Object> @Nullable T findOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                      final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     //#endregion -------------------- predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T) → boolean --------------------
@@ -87,8 +87,8 @@ public final class FindOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             final @NotNull Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+    public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                      final @NotNull Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -102,8 +102,8 @@ public final class FindOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                             final @NotNull Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+    public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                      final @NotNull Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -117,8 +117,8 @@ public final class FindOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findOrNull(final T @Nullable @Unmodifiable [] collection,
-                                             final @NotNull Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+    public static <T extends @Nullable Object> @Nullable T findOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                      final @NotNull Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
@@ -135,8 +135,8 @@ public final class FindOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             final @NotNull BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+    public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                      final @NotNull BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -150,8 +150,8 @@ public final class FindOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                             final @NotNull BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+    public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                      final @NotNull BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -165,8 +165,8 @@ public final class FindOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findOrNull(final T @Nullable @Unmodifiable [] collection,
-                                             final @NotNull BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+    public static <T extends @Nullable Object> @Nullable T findOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                      final @NotNull BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     //#endregion -------------------- predicate () → boolean --------------------
 

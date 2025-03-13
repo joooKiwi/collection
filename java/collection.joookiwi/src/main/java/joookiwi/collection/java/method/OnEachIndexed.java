@@ -38,8 +38,8 @@ public final class OnEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html">Kotlin onEachIndexed(action)</a>
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
-    public static <T, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEachIndexed(final COLLECTION collection,
-                                                                                                                     final @NotNull IntObjConsumer<? super T> action) {
+    public static <T extends @Nullable Object, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEachIndexed(final COLLECTION collection,
+                                                                                                                                              final @NotNull IntObjConsumer<? super T> action) {
         if (collection == null)
             return null;
 
@@ -60,8 +60,8 @@ public final class OnEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html">Kotlin onEachIndexed(action)</a>
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
-    public static <T, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEachIndexed(final COLLECTION collection,
-                                                                                                           final @NotNull IntObjConsumer<? super T> action) {
+    public static <T extends @Nullable Object, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEachIndexed(final COLLECTION collection,
+                                                                                                                                    final @NotNull IntObjConsumer<? super T> action) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -80,8 +80,8 @@ public final class OnEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html">Kotlin onEachIndexed(action)</a>
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
-    public static <T> T @Nullable @Unmodifiable [] onEachIndexed(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @NotNull IntObjConsumer<? super T> action) {
+    public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] onEachIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                                          final @NotNull IntObjConsumer<? super T> action) {
         if (collection == null)
             return null;
 
@@ -105,8 +105,8 @@ public final class OnEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html">Kotlin onEachIndexed(action)</a>
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
-    public static <T, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEachIndexed(final COLLECTION collection,
-                                                                                                                     final @NotNull IntConsumer action) {
+    public static <T extends @Nullable Object, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEachIndexed(final COLLECTION collection,
+                                                                                                                                              final @NotNull IntConsumer action) {
         if (collection == null)
             return null;
 
@@ -127,8 +127,8 @@ public final class OnEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html">Kotlin onEachIndexed(action)</a>
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
-    public static <T, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEachIndexed(final COLLECTION collection,
-                                                                                                           final @NotNull IntConsumer action) {
+    public static <T extends @Nullable Object, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEachIndexed(final COLLECTION collection,
+                                                                                                                                    final @NotNull IntConsumer action) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -147,8 +147,8 @@ public final class OnEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html">Kotlin onEachIndexed(action)</a>
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
-    public static <T> T @Nullable @Unmodifiable [] onEachIndexed(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @NotNull IntConsumer action) {
+    public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] onEachIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                                          final @NotNull IntConsumer action) {
         if (collection == null)
             return null;
 
@@ -194,8 +194,8 @@ public final class OnEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html">Kotlin onEachIndexed(action)</a>
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
-    public static <T, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEachIndexed(final COLLECTION collection,
-                                                                                                           final @NotNull Runnable action) {
+    public static <T extends @Nullable Object, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEachIndexed(final COLLECTION collection,
+                                                                                                                                    final @NotNull Runnable action) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -214,8 +214,8 @@ public final class OnEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each-indexed.html">Kotlin onEachIndexed(action)</a>
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
-    public static <T> T @Nullable @Unmodifiable [] onEachIndexed(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @NotNull Runnable action) {
+    public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] onEachIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                                          final @NotNull Runnable action) {
         if (collection == null)
             return null;
 
@@ -230,18 +230,18 @@ public final class OnEachIndexed
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T, COLLECTION extends @NotNull MinimalistCollectionHolder<? extends T>> COLLECTION __with0Argument(final COLLECTION collection,
-                                                                                                                       final @NotNull Runnable action,
-                                                                                                                       final int size) {
+    private static <T extends @Nullable Object, COLLECTION extends @NotNull MinimalistCollectionHolder<? extends T>> COLLECTION __with0Argument(final COLLECTION collection,
+                                                                                                                                                final @NotNull Runnable action,
+                                                                                                                                                final int size) {
         var index = size;
         while (index-- > 0)
             action.run();
         return collection;
     }
 
-    private static <T> T @NotNull @Unmodifiable [] __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                   final @NotNull Runnable action,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with0Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                            final @NotNull Runnable action,
+                                                                                            final int size) {
         var index = size;
         while (index-- > 0)
             action.run();
@@ -249,18 +249,18 @@ public final class OnEachIndexed
     }
 
 
-    private static <T, COLLECTION extends @NotNull MinimalistCollectionHolder<? extends T>> COLLECTION __with1Argument(final COLLECTION collection,
-                                                                                                                       final @NotNull IntConsumer action,
-                                                                                                                       final int size) {
+    private static <T extends @Nullable Object, COLLECTION extends @NotNull MinimalistCollectionHolder<? extends T>> COLLECTION __with1Argument(final COLLECTION collection,
+                                                                                                                                                final @NotNull IntConsumer action,
+                                                                                                                                                final int size) {
         var index = -1;
         while (++index < size)
             action.accept(index);
         return collection;
     }
 
-    private static <T> T @NotNull @Unmodifiable [] __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                   final @NotNull IntConsumer action,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                            final @NotNull IntConsumer action,
+                                                                                            final int size) {
         var index = -1;
         while (++index < size)
             action.accept(index);
@@ -268,18 +268,18 @@ public final class OnEachIndexed
     }
 
 
-    private static <T, COLLECTION extends @NotNull MinimalistCollectionHolder<? extends T>> COLLECTION __with2Argument(final COLLECTION collection,
-                                                                                                                       final @NotNull IntObjConsumer<? super T> action,
-                                                                                                                       final int size) {
+    private static <T extends @Nullable Object, COLLECTION extends @NotNull MinimalistCollectionHolder<? extends T>> COLLECTION __with2Argument(final COLLECTION collection,
+                                                                                                                                                final @NotNull IntObjConsumer<? super T> action,
+                                                                                                                                                final int size) {
         var index = -1;
         while (++index < size)
             action.accept(index, collection.get(index));
         return collection;
     }
 
-    private static <T> T @NotNull @Unmodifiable [] __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                   final @NotNull IntObjConsumer<? super T> action,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                            final @NotNull IntObjConsumer<? super T> action,
+                                                                                            final int size) {
         var index = -1;
         while (++index < size)
             action.accept(index, collection[index]);

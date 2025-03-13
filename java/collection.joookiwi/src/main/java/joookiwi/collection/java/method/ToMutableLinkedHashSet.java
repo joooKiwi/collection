@@ -34,7 +34,7 @@ public final class ToMutableLinkedHashSet
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> @NotNull LinkedHashSet<T> toMutableLinkedHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull LinkedHashSet<T> toMutableLinkedHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
 
@@ -50,7 +50,7 @@ public final class ToMutableLinkedHashSet
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> @NotNull LinkedHashSet<T> toMutableLinkedHashSet(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull LinkedHashSet<T> toMutableLinkedHashSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
         if (collection.isEmpty())
@@ -66,7 +66,7 @@ public final class ToMutableLinkedHashSet
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> @NotNull LinkedHashSet<T> toMutableLinkedHashSet(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> @NotNull LinkedHashSet<T> toMutableLinkedHashSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
 
@@ -88,8 +88,8 @@ public final class ToMutableLinkedHashSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                            final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
 
@@ -108,8 +108,8 @@ public final class ToMutableLinkedHashSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                            final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
         if (collection.isEmpty())
@@ -128,8 +128,8 @@ public final class ToMutableLinkedHashSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final T @Nullable @Unmodifiable [] collection,
-                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                            final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
 
@@ -151,8 +151,8 @@ public final class ToMutableLinkedHashSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                          final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                            final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
 
@@ -171,8 +171,8 @@ public final class ToMutableLinkedHashSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                          final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                            final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
         if (collection.isEmpty())
@@ -191,8 +191,8 @@ public final class ToMutableLinkedHashSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final T @Nullable @Unmodifiable [] collection,
-                                                                          final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                            final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
 
@@ -214,8 +214,8 @@ public final class ToMutableLinkedHashSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                          final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                            final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
 
@@ -234,8 +234,8 @@ public final class ToMutableLinkedHashSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                          final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                            final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
         if (collection.isEmpty())
@@ -254,8 +254,8 @@ public final class ToMutableLinkedHashSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final T @Nullable @Unmodifiable [] collection,
-                                                                          final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> toMutableLinkedHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                            final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableLinkedHashSet<>();
 
@@ -270,51 +270,51 @@ public final class ToMutableLinkedHashSet
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @NotNull LinkedHashSet<T> __withNoDuplicate(final @NotNull CollectionHolder<? extends T> collection,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> @NotNull LinkedHashSet<T> __withNoDuplicate(final @NotNull CollectionHolder<? extends T> collection,
+                                                                                            final int size) {
         return new MutableLinkedHashSet<>(_uniqueValues(collection, size));
     }
 
 
-    private static <T> @NotNull LinkedHashSet<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> @NotNull LinkedHashSet<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final int size) {
         return new MutableLinkedHashSet<>(_values(collection, size));
     }
 
-    private static <T> @NotNull LinkedHashSet<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> @NotNull LinkedHashSet<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
+                                                                                            final int size) {
         return new MutableLinkedHashSet<>(_values(collection, size));
     }
 
 
-    private static <U> @NotNull LinkedHashSet<U> __with0Argument(final int size,
-                                                                 final @NotNull Supplier<? extends U> transform) {
+    private static <U extends @Nullable Object> @NotNull LinkedHashSet<U> __with0Argument(final int size,
+                                                                                          final @NotNull Supplier<? extends U> transform) {
         return new MutableLinkedHashSet<>(_values(size, transform));
     }
 
 
-    private static <T, U> @NotNull LinkedHashSet<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                    final int size,
-                                                                    final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                      final int size,
+                                                                                                                      final @NotNull Function<? super T, ? extends U> transform) {
         return new MutableLinkedHashSet<>(_values(collection, size, transform));
     }
 
-    private static <T, U> @NotNull LinkedHashSet<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                    final int size,
-                                                                    final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                      final int size,
+                                                                                                                      final @NotNull Function<? super T, ? extends U> transform) {
         return new MutableLinkedHashSet<>(_values(collection, size, transform));
     }
 
 
-    private static <T, U> @NotNull LinkedHashSet<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                    final int size,
-                                                                    final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                      final int size,
+                                                                                                                      final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new MutableLinkedHashSet<>(_values(collection, size, transform));
     }
 
-    private static <T, U> @NotNull LinkedHashSet<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                    final int size,
-                                                                    final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull LinkedHashSet<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                      final int size,
+                                                                                                                      final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new MutableLinkedHashSet<>(_values(collection, size, transform));
     }
 

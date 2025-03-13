@@ -32,7 +32,7 @@ public final class ToConcurrentSkipListSet
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Comparable<T>> @NotNull @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Comparable<T>> @NotNull @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -47,7 +47,7 @@ public final class ToConcurrentSkipListSet
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Comparable<T>> @NotNull @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Comparable<T>> @NotNull @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
@@ -62,7 +62,7 @@ public final class ToConcurrentSkipListSet
     /// @param collection The [nullable][Nullable] collection to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Comparable<T>> @NotNull @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Comparable<T>> @NotNull @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -83,8 +83,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                       final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -102,8 +102,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                       final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
@@ -119,8 +119,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                       final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -141,8 +141,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                       final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                                                          final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -160,8 +160,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                       final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                                                          final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
@@ -177,8 +177,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U extends Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                       final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                                                          final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -219,7 +219,7 @@ public final class ToConcurrentSkipListSet
     /// @param <U>        The new type
     @ExtensionFunction
     public static <T, U extends Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                 final @NotNull Supplier<? extends U> transform) {
+                                                                                                                       final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
@@ -236,7 +236,7 @@ public final class ToConcurrentSkipListSet
     /// @param <U>        The new type
     @ExtensionFunction
     public static <T, U extends Comparable<U>> @NotNull @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                 final @NotNull Supplier<? extends U> transform) {
+                                                                                                                       final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -251,49 +251,49 @@ public final class ToConcurrentSkipListSet
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @NotNull @Unmodifiable ConcurrentSkipListSet<T> __withNoDuplicate(final @NotNull CollectionHolder<? extends T> collection,
-                                                                                         final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable ConcurrentSkipListSet<T> __withNoDuplicate(final @NotNull CollectionHolder<? extends T> collection,
+                                                                                                                  final int size) {
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size));
     }
 
 
-    private static <T> @NotNull @Unmodifiable ConcurrentSkipListSet<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                         final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable ConcurrentSkipListSet<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                  final int size) {
         return new ImmutableConcurrentSkipListSet<>(_values(collection, size));
     }
 
-    private static <T> @NotNull @Unmodifiable ConcurrentSkipListSet<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
-                                                                                         final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable ConcurrentSkipListSet<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                  final int size) {
         return new ImmutableConcurrentSkipListSet<>(_values(collection, size));
     }
 
 
-    private static <U> @NotNull @Unmodifiable ConcurrentSkipListSet<U> __with0Argument(final int size,
-                                                                                       final @NotNull Supplier<? extends U> transform) {
+    private static <U extends @Nullable Object> @NotNull @Unmodifiable ConcurrentSkipListSet<U> __with0Argument(final int size,
+                                                                                                                final @NotNull Supplier<? extends U> transform) {
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(size, transform));
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable ConcurrentSkipListSet<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                          final int size,
-                                                                                          final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ConcurrentSkipListSet<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                                            final int size,
+                                                                                                                                            final @NotNull Function<? super T, ? extends U> transform) {
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable ConcurrentSkipListSet<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                                          final int size,
-                                                                                          final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ConcurrentSkipListSet<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                                            final int size,
+                                                                                                                                            final @NotNull Function<? super T, ? extends U> transform) {
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform));
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable ConcurrentSkipListSet<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, int size,
-                                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ConcurrentSkipListSet<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection, int size,
+                                                                                                                                            final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable ConcurrentSkipListSet<U> __with2Argument(final T @NotNull @Unmodifiable [] collection, int size,
-                                                                                          final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ConcurrentSkipListSet<U> __with2Argument(final T @NotNull @Unmodifiable [] collection, int size,
+                                                                                                                                            final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform));
     }
 

@@ -34,7 +34,7 @@ public final class ToMutableVector
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> @NotNull Vector<T> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull Vector<T> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableVector<>();
 
@@ -50,7 +50,7 @@ public final class ToMutableVector
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> @NotNull Vector<T> toMutableVector(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull Vector<T> toMutableVector(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableVector<>();
         if (collection.isEmpty())
@@ -64,7 +64,7 @@ public final class ToMutableVector
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> @NotNull Vector<T> toMutableVector(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> @NotNull Vector<T> toMutableVector(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableVector<>();
 
@@ -86,8 +86,8 @@ public final class ToMutableVector
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull Vector<U> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                            final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull Vector<U> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableVector<>();
 
@@ -106,8 +106,8 @@ public final class ToMutableVector
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull Vector<U> toMutableVector(final @Nullable CollectionHolder<? extends T> collection,
-                                                            final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull Vector<U> toMutableVector(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableVector<>();
         if (collection.isEmpty())
@@ -124,8 +124,8 @@ public final class ToMutableVector
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull Vector<U> toMutableVector(final T @Nullable @Unmodifiable [] collection,
-                                                            final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull Vector<U> toMutableVector(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableVector<>();
 
@@ -147,8 +147,8 @@ public final class ToMutableVector
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull Vector<U> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                            final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull Vector<U> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableVector<>();
 
@@ -167,8 +167,8 @@ public final class ToMutableVector
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull Vector<U> toMutableVector(final @Nullable CollectionHolder<? extends T> collection,
-                                                            final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull Vector<U> toMutableVector(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableVector<>();
         if (collection.isEmpty())
@@ -185,8 +185,8 @@ public final class ToMutableVector
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull Vector<U> toMutableVector(final T @Nullable @Unmodifiable [] collection,
-                                                            final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull Vector<U> toMutableVector(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableVector<>();
 
@@ -208,8 +208,8 @@ public final class ToMutableVector
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                          final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                            final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableVector<>();
 
@@ -228,8 +228,8 @@ public final class ToMutableVector
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toMutableVector(final @Nullable CollectionHolder<? extends T> collection,
-                                                                          final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toMutableVector(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                            final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableVector<>();
         if (collection.isEmpty())
@@ -246,8 +246,8 @@ public final class ToMutableVector
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toMutableVector(final T @Nullable @Unmodifiable [] collection,
-                                                                          final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toMutableVector(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                            final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableVector<>();
 
@@ -262,45 +262,45 @@ public final class ToMutableVector
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @NotNull Vector<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                            final int size) {
+    private static <T extends @Nullable Object> @NotNull Vector<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                     final int size) {
         return new MutableVector<>(_values(collection, size));
     }
 
-    private static <T> @NotNull Vector<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
-                                                            final int size) {
+    private static <T extends @Nullable Object> @NotNull Vector<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
+                                                                                     final int size) {
         return new MutableVector<>(_values(collection, size));
     }
 
 
-    private static <U> @NotNull Vector<U> __with0Argument(final int size,
-                                                          final @NotNull Supplier<? extends U> transform) {
+    private static <U extends @Nullable Object> @NotNull Vector<U> __with0Argument(final int size,
+                                                                                   final @NotNull Supplier<? extends U> transform) {
         return new MutableVector<>(_values(size, transform));
     }
 
 
-    private static <T, U> @NotNull Vector<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                             final int size,
-                                                             final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull Vector<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                               final int size,
+                                                                                                               final @NotNull Function<? super T, ? extends U> transform) {
         return new MutableVector<>(_values(collection, size, transform));
     }
 
-    private static <T, U> @NotNull Vector<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                             final int size,
-                                                             final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull Vector<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                               final int size,
+                                                                                                               final @NotNull Function<? super T, ? extends U> transform) {
         return new MutableVector<>(_values(collection, size, transform));
     }
 
 
-    private static <T, U> @NotNull Vector<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                             final int size,
-                                                             final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull Vector<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                               final int size,
+                                                                                                               final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new MutableVector<>(_values(collection, size, transform));
     }
 
-    private static <T, U> @NotNull Vector<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                             final int size,
-                                                             final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull Vector<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                               final int size,
+                                                                                                               final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new MutableVector<>(_values(collection, size, transform));
     }
 

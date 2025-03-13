@@ -39,8 +39,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T, U> @NotNull CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull IntObjFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                   final @NotNull IntObjFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -60,8 +60,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T, U> @NotNull CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @NotNull IntObjFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                   final @NotNull IntObjFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
         if (collection.isEmpty())
@@ -82,8 +82,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T, U> @NotNull CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull IntFunction<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                   final @NotNull IntFunction<? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -103,8 +103,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T, U> @NotNull CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @NotNull IntFunction<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                   final @NotNull IntFunction<? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
         if (collection.isEmpty())
@@ -125,8 +125,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T, U> @NotNull CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                   final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -146,8 +146,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T, U> @NotNull CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                   final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
         if (collection.isEmpty())

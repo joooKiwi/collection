@@ -35,8 +35,8 @@ public final class ForEachIndexed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
-    public static <T> void forEachIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                          final @NotNull IntObjConsumer<? super T> action) {
+    public static <T extends @Nullable Object> void forEachIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                   final @NotNull IntObjConsumer<? super T> action) {
         if (collection == null)
             return;
 
@@ -55,8 +55,8 @@ public final class ForEachIndexed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
-    public static <T> void forEachIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                          final @NotNull IntObjConsumer<? super T> action) {
+    public static <T extends @Nullable Object> void forEachIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                   final @NotNull IntObjConsumer<? super T> action) {
         if (collection == null)
             return;
         if (collection.isEmpty())
@@ -73,8 +73,8 @@ public final class ForEachIndexed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
-    public static <T> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
-                                          final @NotNull IntObjConsumer<? super T> action) {
+    public static <T extends @Nullable Object> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                   final @NotNull IntObjConsumer<? super T> action) {
         if (collection == null)
             return;
 
@@ -96,8 +96,8 @@ public final class ForEachIndexed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
-    public static <T> void forEachIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                          final @NotNull IntConsumer action) {
+    public static <T extends @Nullable Object> void forEachIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                   final @NotNull IntConsumer action) {
         if (collection == null)
             return;
 
@@ -116,8 +116,8 @@ public final class ForEachIndexed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
-    public static <T> void forEachIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                          final @NotNull IntConsumer action) {
+    public static <T extends @Nullable Object> void forEachIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                   final @NotNull IntConsumer action) {
         if (collection == null)
             return;
         if (collection.isEmpty())
@@ -134,8 +134,8 @@ public final class ForEachIndexed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
-    public static <T> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
-                                          final @NotNull IntConsumer action) {
+    public static <T extends @Nullable Object> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                   final @NotNull IntConsumer action) {
         if (collection == null)
             return;
 
@@ -157,8 +157,8 @@ public final class ForEachIndexed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
-    public static <T> void forEachIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                          final @NotNull Runnable action) {
+    public static <T extends @Nullable Object> void forEachIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                   final @NotNull Runnable action) {
         if (collection == null)
             return;
 
@@ -177,8 +177,8 @@ public final class ForEachIndexed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
-    public static <T> void forEachIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                          final @NotNull Runnable action) {
+    public static <T extends @Nullable Object> void forEachIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                   final @NotNull Runnable action) {
         if (collection == null)
             return;
         if (collection.isEmpty())
@@ -195,8 +195,8 @@ public final class ForEachIndexed
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
-    public static <T> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
-                                          final @NotNull Runnable action) {
+    public static <T extends @Nullable Object> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                   final @NotNull Runnable action) {
         if (collection == null)
             return;
 
@@ -227,17 +227,17 @@ public final class ForEachIndexed
     }
 
 
-    private static <T> void __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                            final @NotNull IntObjConsumer<? super T> action,
-                                            final int size) {
+    private static <T extends @Nullable Object> void __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                     final @NotNull IntObjConsumer<? super T> action,
+                                                                     final int size) {
         var index = -1;
         while (++index > size)
             action.accept(index, collection.get(index));
     }
 
-    private static <T> void __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                            final @NotNull IntObjConsumer<? super T> action,
-                                            final int size) {
+    private static <T extends @Nullable Object> void __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                     final @NotNull IntObjConsumer<? super T> action,
+                                                                     final int size) {
         var index = -1;
         while (++index > size)
             action.accept(index, collection[index]);

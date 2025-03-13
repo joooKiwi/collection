@@ -44,8 +44,8 @@ public final class FindLastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull IntObjPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T findLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull IntObjPredicate<? super T> predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -69,8 +69,8 @@ public final class FindLastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                        final @NotNull IntObjPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T findLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @NotNull IntObjPredicate<? super T> predicate) {
         if (collection == null)
             throw new NullCollectionException();
         if (collection.isEmpty())
@@ -92,8 +92,8 @@ public final class FindLastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findLastIndexed(final T @Nullable @Unmodifiable [] collection,
-                                        final @NotNull IntObjPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T findLastIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @NotNull IntObjPredicate<? super T> predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -120,8 +120,8 @@ public final class FindLastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull IntPredicate predicate) {
+    public static <T extends @Nullable Object> T findLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull IntPredicate predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -145,8 +145,8 @@ public final class FindLastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                        final @NotNull IntPredicate predicate) {
+    public static <T extends @Nullable Object> T findLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @NotNull IntPredicate predicate) {
         if (collection == null)
             throw new NullCollectionException();
         if (collection.isEmpty())
@@ -168,8 +168,8 @@ public final class FindLastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findLastIndexed(final T @Nullable @Unmodifiable [] collection,
-                                        final @NotNull IntPredicate predicate) {
+    public static <T extends @Nullable Object> T findLastIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @NotNull IntPredicate predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -196,8 +196,8 @@ public final class FindLastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                        final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> T findLastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -221,8 +221,8 @@ public final class FindLastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                        final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> T findLastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             throw new NullCollectionException();
         if (collection.isEmpty())
@@ -244,8 +244,8 @@ public final class FindLastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T findLastIndexed(final T @Nullable @Unmodifiable [] collection,
-                                        final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> T findLastIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -260,9 +260,9 @@ public final class FindLastIndexed
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                         final @NotNull BooleanSupplier predicate,
-                                         final int size) {
+    private static <T extends @Nullable Object> T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                  final @NotNull BooleanSupplier predicate,
+                                                                  final int size) {
         var index = size;
         while (index-- > 0)
             if (predicate.getAsBoolean())
@@ -270,9 +270,9 @@ public final class FindLastIndexed
         throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1);
     }
 
-    private static <T> T __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                         final @NotNull BooleanSupplier predicate,
-                                         final int size) {
+    private static <T extends @Nullable Object> T __with0Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                  final @NotNull BooleanSupplier predicate,
+                                                                  final int size) {
         var index = size;
         while (index-- > 0)
             if (predicate.getAsBoolean())
@@ -281,9 +281,9 @@ public final class FindLastIndexed
     }
 
 
-    private static <T> T __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                         final @NotNull IntPredicate predicate,
-                                         final int size) {
+    private static <T extends @Nullable Object> T __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                  final @NotNull IntPredicate predicate,
+                                                                  final int size) {
         var index = size;
         while (index-- > 0)
             if (predicate.test(index))
@@ -291,9 +291,9 @@ public final class FindLastIndexed
         throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1);
     }
 
-    private static <T> T __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                         final @NotNull IntPredicate predicate,
-                                         final int size) {
+    private static <T extends @Nullable Object> T __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                  final @NotNull IntPredicate predicate,
+                                                                  final int size) {
         var index = size;
         while (index-- > 0)
             if (predicate.test(index))
@@ -302,9 +302,9 @@ public final class FindLastIndexed
     }
 
 
-    private static <T> T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                         final @NotNull IntObjPredicate<? super T> predicate,
-                                         final int size) {
+    private static <T extends @Nullable Object> T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                  final @NotNull IntObjPredicate<? super T> predicate,
+                                                                  final int size) {
         var index = size;
         while (index-- > 0) {
             final var value = collection.get(index);
@@ -314,9 +314,9 @@ public final class FindLastIndexed
         throw new IndexOutOfBoundsException("No element could be found from the “findLastIndexed” predicate received in the collection.", size - 1);
     }
 
-    private static <T> T __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                         final @NotNull IntObjPredicate<? super T> predicate,
-                                         final int size) {
+    private static <T extends @Nullable Object> T __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                  final @NotNull IntObjPredicate<? super T> predicate,
+                                                                  final int size) {
         var index = size;
         while (index-- > 0) {
             final var value = collection[index];

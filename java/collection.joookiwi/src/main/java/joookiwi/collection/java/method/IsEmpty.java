@@ -31,7 +31,7 @@ public final class IsEmpty
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html">Kotlin Map.isEmpty()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_1)
-    public static <T> boolean isEmpty(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> boolean isEmpty(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return true;
         return collection.size() == 0;
@@ -48,7 +48,7 @@ public final class IsEmpty
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html">Kotlin Map.isEmpty()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_1)
-    public static <T> boolean isEmpty(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> boolean isEmpty(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return true;
         return collection.size() == 0;
@@ -65,7 +65,7 @@ public final class IsEmpty
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html">Kotlin Map.isEmpty()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_TRUE_1)
-    public static <T> boolean isEmpty(final T @Nullable [] collection) {
+    public static <T extends @Nullable Object> boolean isEmpty(final T @Nullable [] collection) {
         if (collection == null)
             return true;
         return collection.length == 0;

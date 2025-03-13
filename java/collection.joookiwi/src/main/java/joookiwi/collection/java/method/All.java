@@ -40,8 +40,8 @@ public final class All
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                           final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return false;
 
@@ -64,8 +64,8 @@ public final class All
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
-                                  final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean all(final @Nullable CollectionHolder<? extends T> collection,
+                                                           final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return false;
         if (collection.isEmpty())
@@ -86,8 +86,8 @@ public final class All
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean all(final T @Nullable @Unmodifiable [] collection,
-                                  final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean all(final T @Nullable @Unmodifiable [] collection,
+                                                           final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return false;
 
@@ -113,8 +113,8 @@ public final class All
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                           final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
             return false;
 
@@ -137,8 +137,8 @@ public final class All
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
-                                  final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean all(final @Nullable CollectionHolder<? extends T> collection,
+                                                           final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
             return false;
 
@@ -160,8 +160,8 @@ public final class All
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean all(final T @Nullable @Unmodifiable [] collection,
-                                  final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean all(final T @Nullable @Unmodifiable [] collection,
+                                                           final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
             return false;
 
@@ -187,8 +187,8 @@ public final class All
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                           final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return false;
 
@@ -211,8 +211,8 @@ public final class All
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean all(final @Nullable CollectionHolder<? extends T> collection,
-                                  final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> boolean all(final @Nullable CollectionHolder<? extends T> collection,
+                                                           final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return false;
         if (collection.isEmpty())
@@ -233,8 +233,8 @@ public final class All
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean all(final T @Nullable @Unmodifiable [] collection,
-                                  final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> boolean all(final T @Nullable @Unmodifiable [] collection,
+                                                           final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return false;
 
@@ -259,9 +259,9 @@ public final class All
     }
 
 
-    private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                               final @NotNull Predicate<? super T> predicate,
-                                               final int size) {
+    private static <T extends @Nullable Object> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                        final @NotNull Predicate<? super T> predicate,
+                                                                        final int size) {
         var index = -1;
         while (++index < size)
             if (!predicate.test(collection.get(index)))
@@ -269,9 +269,9 @@ public final class All
         return true;
     }
 
-    private static <T> boolean __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                               final @NotNull Predicate<? super T> predicate,
-                                               final int size) {
+    private static <T extends @Nullable Object> boolean __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                        final @NotNull Predicate<? super T> predicate,
+                                                                        final int size) {
         var index = -1;
         while (++index < size)
             if (!predicate.test(collection[index]))
@@ -280,9 +280,9 @@ public final class All
     }
 
 
-    private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                               final @NotNull ObjIntPredicate<? super T> predicate,
-                                               final int size) {
+    private static <T extends @Nullable Object> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                        final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                        final int size) {
         var index = -1;
         while (++index < size)
             if (!predicate.test(collection.get(index), index))
@@ -290,9 +290,9 @@ public final class All
         return true;
     }
 
-    private static <T> boolean __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                               final @NotNull ObjIntPredicate<? super T> predicate,
-                                               final int size) {
+    private static <T extends @Nullable Object> boolean __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                        final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                        final int size) {
         var index = -1;
         while (++index < size)
             if (!predicate.test(collection[index], index))

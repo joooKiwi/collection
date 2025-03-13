@@ -32,7 +32,7 @@ public final class ToLocaleUpperCaseString
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @see String#toUpperCase(Locale)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleUpperCaseString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull String toLocaleUpperCaseString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -48,7 +48,7 @@ public final class ToLocaleUpperCaseString
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @see String#toUpperCase(Locale)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleUpperCaseString(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull String toLocaleUpperCaseString(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -62,7 +62,7 @@ public final class ToLocaleUpperCaseString
     /// @param collection The [nullable][Nullable] collection
     /// @see String#toUpperCase(Locale)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleUpperCaseString(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> @NotNull String toLocaleUpperCaseString(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -82,8 +82,8 @@ public final class ToLocaleUpperCaseString
     /// @param locale     The possible locale to apply on each value
     /// @see String#toUpperCase(Locale)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleUpperCaseString(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                              final @Nullable Locale locale) {
+    public static <T extends @Nullable Object> @NotNull String toLocaleUpperCaseString(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                       final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -102,8 +102,8 @@ public final class ToLocaleUpperCaseString
     /// @param locale     The possible locale to apply on each value
     /// @see String#toUpperCase(Locale)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleUpperCaseString(final @Nullable CollectionHolder<? extends T> collection,
-                                                              final @Nullable Locale locale) {
+    public static <T extends @Nullable Object> @NotNull String toLocaleUpperCaseString(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                       final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -120,8 +120,8 @@ public final class ToLocaleUpperCaseString
     /// @param locale     The possible locale to apply on each value
     /// @see String#toUpperCase(Locale)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleUpperCaseString(final T @Nullable @Unmodifiable [] collection,
-                                                              final @Nullable Locale locale) {
+    public static <T extends @Nullable Object> @NotNull String toLocaleUpperCaseString(final T @Nullable @Unmodifiable [] collection,
+                                                                                       final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -138,8 +138,8 @@ public final class ToLocaleUpperCaseString
     //#endregion -------------------- Facade method --------------------
     //#region -------------------- Locale method --------------------
 
-    private static <T> @NotNull String __withNoLocale(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                      final int size) {
+    private static <T extends @Nullable Object> @NotNull String __withNoLocale(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                               final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;
@@ -148,8 +148,8 @@ public final class ToLocaleUpperCaseString
         return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleUpperCaseString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
     }
 
-    private static <T> @NotNull String __withNoLocale(final T @NotNull @Unmodifiable [] collection,
-                                                      final int size) {
+    private static <T extends @Nullable Object> @NotNull String __withNoLocale(final T @NotNull @Unmodifiable [] collection,
+                                                                               final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;
@@ -159,9 +159,9 @@ public final class ToLocaleUpperCaseString
     }
 
 
-    private static <T> @NotNull String __withLocale(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                    final @NotNull Locale locale,
-                                                    final int size) {
+    private static <T extends @Nullable Object> @NotNull String __withLocale(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                             final @NotNull Locale locale,
+                                                                             final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;
@@ -170,9 +170,9 @@ public final class ToLocaleUpperCaseString
         return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleUpperCaseString(collection.get(index), locale) + DEFAULT_JOIN_POSTFIX;
     }
 
-    private static <T> @NotNull String __withLocale(final T @NotNull @Unmodifiable [] collection,
-                                                    final @NotNull Locale locale,
-                                                    final int size) {
+    private static <T extends @Nullable Object> @NotNull String __withLocale(final T @NotNull @Unmodifiable [] collection,
+                                                                             final @NotNull Locale locale,
+                                                                             final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;

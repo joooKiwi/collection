@@ -28,7 +28,7 @@ public final class HasDuplicate
     /// @return **true** only if one element is equal (== or [equals][#equals]) to another one
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T> boolean hasDuplicate(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> boolean hasDuplicate(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return false;
 
@@ -44,7 +44,7 @@ public final class HasDuplicate
     /// @return **true** only if one element is equal (== or [equals][#equals]) to another one
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T> boolean hasDuplicate(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> boolean hasDuplicate(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return false;
         if (collection.isEmpty())
@@ -58,7 +58,7 @@ public final class HasDuplicate
     /// @return **true** only if one element is equal (== or [equals][#equals]) to another one
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T> boolean hasDuplicate(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> boolean hasDuplicate(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return false;
 
@@ -71,8 +71,8 @@ public final class HasDuplicate
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> boolean __hasDuplicate(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                              final int size) {
+    private static <T extends @Nullable Object> boolean __hasDuplicate(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                       final int size) {
         @SuppressWarnings("unchecked cast") final var temporaryArray = (T[]) new Object[size];
         temporaryArray[0] = collection.get(0);
         var amountOfItemAdded = 1;
@@ -100,8 +100,8 @@ public final class HasDuplicate
         return amountOfItemAdded != size;
     }
 
-    private static <T> boolean __hasDuplicate(final T @NotNull @Unmodifiable [] collection,
-                                              final int size) {
+    private static <T extends @Nullable Object> boolean __hasDuplicate(final T @NotNull @Unmodifiable [] collection,
+                                                                       final int size) {
         @SuppressWarnings("unchecked cast") final var temporaryArray = (T[]) new Object[size];
         temporaryArray[0] = collection[0];
         var amountOfItemAdded = 1;

@@ -32,7 +32,7 @@ public final class ToVector
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @NotNull @Unmodifiable Vector<T> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull @Unmodifiable Vector<T> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyVector();
 
@@ -47,7 +47,7 @@ public final class ToVector
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @NotNull @Unmodifiable Vector<T> toVector(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull @Unmodifiable Vector<T> toVector(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyVector();
         if (collection.isEmpty())
@@ -60,7 +60,7 @@ public final class ToVector
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @NotNull @Unmodifiable Vector<T> toVector(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> @NotNull @Unmodifiable Vector<T> toVector(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyVector();
 
@@ -81,8 +81,8 @@ public final class ToVector
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                   final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                     final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyVector();
 
@@ -100,8 +100,8 @@ public final class ToVector
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable CollectionHolder<? extends T> collection,
-                                                                   final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                     final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyVector();
         if (collection.isEmpty())
@@ -117,8 +117,8 @@ public final class ToVector
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toVector(final T @Nullable @Unmodifiable [] collection,
-                                                                   final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toVector(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                     final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyVector();
 
@@ -139,8 +139,8 @@ public final class ToVector
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                   final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                     final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyVector();
 
@@ -158,8 +158,8 @@ public final class ToVector
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable CollectionHolder<? extends T> collection,
-                                                                   final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                     final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyVector();
         if (collection.isEmpty())
@@ -175,8 +175,8 @@ public final class ToVector
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toVector(final T @Nullable @Unmodifiable [] collection,
-                                                                   final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toVector(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                     final @NotNull Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyVector();
 
@@ -197,8 +197,8 @@ public final class ToVector
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                   final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                     final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptyVector();
 
@@ -216,8 +216,8 @@ public final class ToVector
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable CollectionHolder<? extends T> collection,
-                                                                   final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toVector(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                     final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptyVector();
         if (collection.isEmpty())
@@ -233,8 +233,8 @@ public final class ToVector
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @NotNull @Unmodifiable Vector<U> toVector(final T @Nullable @Unmodifiable [] collection,
-                                                                   final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> toVector(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                     final @NotNull Supplier<? extends U> transform) {
         if (collection == null)
             return emptyVector();
 
@@ -249,45 +249,45 @@ public final class ToVector
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @NotNull @Unmodifiable Vector<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                          final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable Vector<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                   final int size) {
         return new ImmutableVector<>(_values(collection, size));
     }
 
-    private static <T> @NotNull @Unmodifiable Vector<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
-                                                                          final int size) {
+    private static <T extends @Nullable Object> @NotNull @Unmodifiable Vector<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
+                                                                                                   final int size) {
         return new ImmutableVector<>(_values(collection, size));
     }
 
 
-    private static <U> @NotNull @Unmodifiable Vector<U> __with0Argument(final int size,
-                                                                        final @NotNull Supplier<? extends U> transform) {
+    private static <U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> __with0Argument(final int size,
+                                                                                                 final @NotNull Supplier<? extends U> transform) {
         return new ImmutableVector<>(_values(size, transform));
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable Vector<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                           final int size,
-                                                                           final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                             final int size,
+                                                                                                                             final @NotNull Function<? super T, ? extends U> transform) {
         return new ImmutableVector<>(_values(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable Vector<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                           final int size,
-                                                                           final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                             final int size,
+                                                                                                                             final @NotNull Function<? super T, ? extends U> transform) {
         return new ImmutableVector<>(_values(collection, size, transform));
     }
 
 
-    private static <T, U> @NotNull @Unmodifiable Vector<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                           final int size,
-                                                                           final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                             final int size,
+                                                                                                                             final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ImmutableVector<>(_values(collection, size, transform));
     }
 
-    private static <T, U> @NotNull @Unmodifiable Vector<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                           final int size,
-                                                                           final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable Vector<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                                                             final int size,
+                                                                                                                             final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
         return new ImmutableVector<>(_values(collection, size, transform));
     }
 

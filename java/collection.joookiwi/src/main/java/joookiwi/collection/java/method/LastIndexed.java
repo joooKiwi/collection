@@ -41,7 +41,7 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T lastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection) { return GetLast.getLast(collection); }
+    public static <T extends @Nullable Object> T lastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection) { return GetLast.getLast(collection); }
 
     /// Get the last element in the current `collection`
     ///
@@ -54,7 +54,7 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T lastIndexed(final @Nullable CollectionHolder<? extends T> collection) { return GetLast.getLast(collection); }
+    public static <T extends @Nullable Object> T lastIndexed(final @Nullable CollectionHolder<? extends T> collection) { return GetLast.getLast(collection); }
 
     /// Get the last element in the current `collection`
     ///
@@ -67,7 +67,7 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T lastIndexed(final T @Nullable @Unmodifiable [] collection) { return GetLast.getLast(collection); }
+    public static <T extends @Nullable Object> T lastIndexed(final T @Nullable @Unmodifiable [] collection) { return GetLast.getLast(collection); }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- predicate (int, T) → boolean --------------------
@@ -86,8 +86,8 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T lastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                    final @Nullable IntObjPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T lastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                             final @Nullable IntObjPredicate<? super T> predicate) {
         if (predicate == null)
             return GetLast.getLast(collection);
         return FindLastIndexed.findLastIndexed(collection, predicate);
@@ -107,8 +107,8 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T lastIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                    final @Nullable IntObjPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T lastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                             final @Nullable IntObjPredicate<? super T> predicate) {
         if (predicate == null)
             return GetLast.getLast(collection);
         return FindLastIndexed.findLastIndexed(collection, predicate);
@@ -128,8 +128,8 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T lastIndexed(final T @Nullable @Unmodifiable [] collection,
-                                    final @Nullable IntObjPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T lastIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                             final @Nullable IntObjPredicate<? super T> predicate) {
         if (predicate == null)
             return GetLast.getLast(collection);
         return FindLastIndexed.findLastIndexed(collection, predicate);
@@ -152,8 +152,8 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T lastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                    final @Nullable IntPredicate predicate) {
+    public static <T extends @Nullable Object> T lastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                             final @Nullable IntPredicate predicate) {
         if (predicate == null)
             return GetLast.getLast(collection);
         return FindLastIndexed.findLastIndexed(collection, predicate);
@@ -173,8 +173,8 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T lastIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                    final @Nullable IntPredicate predicate) {
+    public static <T extends @Nullable Object> T lastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                             final @Nullable IntPredicate predicate) {
         if (predicate == null)
             return GetLast.getLast(collection);
         return FindLastIndexed.findLastIndexed(collection, predicate);
@@ -194,8 +194,8 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T lastIndexed(final T @Nullable @Unmodifiable [] collection,
-                                    final @Nullable IntPredicate predicate) {
+    public static <T extends @Nullable Object> T lastIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                             final @Nullable IntPredicate predicate) {
         if (predicate == null)
             return GetLast.getLast(collection);
         return FindLastIndexed.findLastIndexed(collection, predicate);
@@ -218,8 +218,8 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T lastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                    final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> T lastIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                             final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetLast.getLast(collection);
         return FindLastIndexed.findLastIndexed(collection, predicate);
@@ -239,8 +239,8 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T lastIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                    final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> T lastIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                             final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetLast.getLast(collection);
         return FindLastIndexed.findLastIndexed(collection, predicate);
@@ -260,8 +260,8 @@ public final class LastIndexed
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T lastIndexed(final T @Nullable @Unmodifiable [] collection,
-                                    final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> T lastIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                             final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetLast.getLast(collection);
         return FindLastIndexed.findLastIndexed(collection, predicate);

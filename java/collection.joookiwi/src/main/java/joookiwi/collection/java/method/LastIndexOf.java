@@ -48,8 +48,8 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                       final T element) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element) {
         if (collection == null)
             throw new NullCollectionException();
         return __core(collection, element);
@@ -69,8 +69,8 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                       final T element) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element) {
         if (collection == null)
             throw new NullCollectionException();
         return __core(collection, element);
@@ -90,8 +90,8 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                       final T element) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element) {
         if (collection == null)
             throw new NullCollectionException();
         return __core(collection, element);
@@ -118,9 +118,9 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from) {
         if (collection == null)
             throw new NullCollectionException();
         return __core(collection, element, from);
@@ -144,9 +144,9 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from) {
         if (collection == null)
             throw new NullCollectionException();
         return __core(collection, element, from);
@@ -170,9 +170,9 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                       final T element,
-                                                                       final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final int from) {
         if (collection == null)
             throw new NullCollectionException();
         return __core(collection, element, from);
@@ -197,9 +197,9 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -225,9 +225,9 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -253,9 +253,9 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                       final T element,
-                                                                       final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -286,10 +286,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final int from,
-                                                                       final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final int to) {
         if (collection == null)
             throw new NullCollectionException();
         return __core(collection, element, from, to);
@@ -315,10 +315,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final int from,
-                                                                       final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final int to) {
         if (collection == null)
             throw new NullCollectionException();
         return __core(collection, element, from, to);
@@ -344,10 +344,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                       final T element,
-                                                                       final int from,
-                                                                       final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final int to) {
         if (collection == null)
             throw new NullCollectionException();
         return __core(collection, element, from, to);
@@ -374,10 +374,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final int from,
-                                                                       final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -405,10 +405,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final int from,
-                                                                       final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -436,10 +436,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                       final T element,
-                                                                       final int from,
-                                                                       final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -468,10 +468,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final @Nullable Integer from,
-                                                                       final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final int to) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -499,10 +499,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final @Nullable Integer from,
-                                                                       final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final int to) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -530,10 +530,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                       final T element,
-                                                                       final @Nullable Integer from,
-                                                                       final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final int to) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
@@ -562,10 +562,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final @Nullable Integer from,
-                                                                       final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -598,10 +598,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                       final T element,
-                                                                       final @Nullable Integer from,
-                                                                       final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -634,10 +634,10 @@ public final class LastIndexOf
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                       final T element,
-                                                                       final @Nullable Integer from,
-                                                                       final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
         if (to == null)
@@ -657,44 +657,44 @@ public final class LastIndexOf
 
     //#region -------------------- Core methods (element) --------------------
 
-    private static <T> int __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                  final T element) {
+    private static <T extends @Nullable Object> int __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                           final T element) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
-        return __findLastInRange(collection, element, -1, size -1);
+        return __findLastInRange(collection, element, -1, size - 1);
     }
 
-    private static <T> int __core(final @NotNull CollectionHolder<? extends T> collection,
-                                  final T element) {
+    private static <T extends @Nullable Object> int __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                           final T element) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
-        return __findLastInRange(collection, element, -1, collection.size() -1);
+        return __findLastInRange(collection, element, -1, collection.size() - 1);
     }
 
-    private static <T> int __core(final T @NotNull @Unmodifiable [] collection,
-                                  final T element) {
+    private static <T extends @Nullable Object> int __core(final T @NotNull @Unmodifiable [] collection,
+                                                           final T element) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
-        return __findLastInRange(collection, element, -1, size -1);
+        return __findLastInRange(collection, element, -1, size - 1);
     }
 
     //#endregion -------------------- Core methods (element) --------------------
     //#region -------------------- Core methods (element, from) --------------------
 
-    private static <T> int __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                  final T element,
-                                  final int from) {
+    private static <T extends @Nullable Object> int __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                           final T element,
+                                                           final int from) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
         return __findLastInRange(collection, element, _startingIndex(from, size), size - 1);
     }
 
-    private static <T> int __core(final @NotNull CollectionHolder<? extends T> collection,
-                                  final T element,
-                                  final int from) {
+    private static <T extends @Nullable Object> int __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                           final T element,
+                                                           final int from) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
 
@@ -702,9 +702,9 @@ public final class LastIndexOf
         return __findLastInRange(collection, element, _startingIndex(from, size), size - 1);
     }
 
-    private static <T> int __core(final T @NotNull @Unmodifiable [] collection,
-                                  final T element,
-                                  final int from) {
+    private static <T extends @Nullable Object> int __core(final T @NotNull @Unmodifiable [] collection,
+                                                           final T element,
+                                                           final int from) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
@@ -714,10 +714,10 @@ public final class LastIndexOf
     //#endregion -------------------- Core methods (element, from) --------------------
     //#region -------------------- Core methods (element, from, to) --------------------
 
-    private static <T> int __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                  final T element,
-                                  final int from,
-                                  final int to) {
+    private static <T extends @Nullable Object> int __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                           final T element,
+                                                           final int from,
+                                                           final int to) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
@@ -728,10 +728,10 @@ public final class LastIndexOf
         return __findLastInRange(collection, element, startingIndex, endingIndex);
     }
 
-    private static <T> int __core(final @NotNull CollectionHolder<? extends T> collection,
-                                  final T element,
-                                  final int from,
-                                  final int to) {
+    private static <T extends @Nullable Object> int __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                           final T element,
+                                                           final int from,
+                                                           final int to) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
 
@@ -742,10 +742,10 @@ public final class LastIndexOf
         return __findLastInRange(collection, element, startingIndex, endingIndex);
     }
 
-    private static <T> int __core(final T @NotNull @Unmodifiable [] collection,
-                                  final T element,
-                                  final int from,
-                                  final int to) {
+    private static <T extends @Nullable Object> int __core(final T @NotNull @Unmodifiable [] collection,
+                                                           final T element,
+                                                           final int from,
+                                                           final int to) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
@@ -759,26 +759,26 @@ public final class LastIndexOf
     //#endregion -------------------- Core methods (element, from, to) --------------------
     //#region -------------------- Core methods (element, to) --------------------
 
-    private static <T> int __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                            final T element,
-                                            final int to) {
+    private static <T extends @Nullable Object> int __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                     final T element,
+                                                                     final int to) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
         return __findLastInRange(collection, element, 0, _endingIndex(to, size));
     }
 
-    private static <T> int __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
-                                            final T element,
-                                            final int to) {
+    private static <T extends @Nullable Object> int __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+                                                                     final T element,
+                                                                     final int to) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
         return __findLastInRange(collection, element, 0, _endingIndex(to, collection.size()));
     }
 
-    private static <T> int __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
-                                            final T element,
-                                            final int to) {
+    private static <T extends @Nullable Object> int __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
+                                                                     final T element,
+                                                                     final int to) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();

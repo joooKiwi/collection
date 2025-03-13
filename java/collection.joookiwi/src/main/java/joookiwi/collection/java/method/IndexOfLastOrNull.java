@@ -42,8 +42,8 @@ public final class IndexOfLastOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         return __core(collection, predicate);
@@ -58,8 +58,8 @@ public final class IndexOfLastOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         return __core(collection, predicate);
@@ -74,8 +74,8 @@ public final class IndexOfLastOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         return __core(collection, predicate);
@@ -93,8 +93,8 @@ public final class IndexOfLastOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
             return null;
         return __core(collection, predicate);
@@ -109,8 +109,8 @@ public final class IndexOfLastOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
             return null;
         return __core(collection, predicate);
@@ -125,8 +125,8 @@ public final class IndexOfLastOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate) {
         if (collection == null)
             return null;
         return __core(collection, predicate);
@@ -144,8 +144,8 @@ public final class IndexOfLastOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return null;
         return __core(collection, predicate);
@@ -160,8 +160,8 @@ public final class IndexOfLastOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return null;
         return __core(collection, predicate);
@@ -176,8 +176,8 @@ public final class IndexOfLastOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate) {
         if (collection == null)
             return null;
         return __core(collection, predicate);
@@ -199,9 +199,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final int from) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from);
@@ -219,9 +219,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final int from) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from);
@@ -239,9 +239,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final int from) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from);
@@ -260,9 +260,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -282,9 +282,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -304,9 +304,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -329,9 +329,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final int from) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from);
@@ -349,9 +349,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final int from) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from);
@@ -369,9 +369,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final int from) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from);
@@ -390,9 +390,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -412,9 +412,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -434,9 +434,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -459,9 +459,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final int from) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from);
@@ -479,9 +479,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final int from) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from);
@@ -499,9 +499,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final int from) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from);
@@ -520,9 +520,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -542,9 +542,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -564,9 +564,9 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -591,10 +591,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from, to);
@@ -613,10 +613,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from, to);
@@ -635,10 +635,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from, to);
@@ -658,10 +658,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -682,10 +682,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -706,10 +706,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -731,10 +731,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -755,10 +755,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -779,10 +779,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -804,10 +804,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -833,10 +833,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -862,10 +862,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -894,10 +894,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from, to);
@@ -916,10 +916,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from, to);
@@ -938,10 +938,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from, to);
@@ -961,10 +961,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -985,10 +985,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1009,10 +1009,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final int from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1034,10 +1034,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -1058,10 +1058,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -1082,10 +1082,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -1107,10 +1107,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1136,10 +1136,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1165,10 +1165,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull Predicate<? super T> predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull Predicate<? super T> predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1197,10 +1197,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final int from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final int from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from, to);
@@ -1219,10 +1219,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final int from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final int from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from, to);
@@ -1241,10 +1241,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final int from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final int from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         return __core(collection, predicate, from, to);
@@ -1264,10 +1264,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final int from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1288,10 +1288,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final int from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1312,10 +1312,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final int from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1337,10 +1337,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -1361,10 +1361,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -1385,10 +1385,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -1410,10 +1410,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1439,10 +1439,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1468,10 +1468,10 @@ public final class IndexOfLastOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                           final @NotNull BooleanSupplier predicate,
-                                                                                           final @Nullable Integer from,
-                                                                                           final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfLastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final @NotNull BooleanSupplier predicate,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -1491,23 +1491,23 @@ public final class IndexOfLastOrNull
 
     //#region -------------------- Core methods (predicate (T, int) → boolean) --------------------
 
-    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                final @NotNull ObjIntPredicate<? super T> predicate) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                         final @NotNull ObjIntPredicate<? super T> predicate) {
         final var size = collection.size();
         if (size == 0)
             return null;
         return __with2Argument(collection, predicate, 0, size - 1);
     }
 
-    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                final @NotNull ObjIntPredicate<? super T> predicate) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                                         final @NotNull ObjIntPredicate<? super T> predicate) {
         if (collection.isEmpty())
             return null;
         return __with2Argument(collection, predicate, 0, collection.size() - 1);
     }
 
-    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
-                                                final @NotNull ObjIntPredicate<? super T> predicate) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                                         final @NotNull ObjIntPredicate<? super T> predicate) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1517,23 +1517,23 @@ public final class IndexOfLastOrNull
     //#endregion -------------------- Core methods (predicate (T, int) → boolean) --------------------
     //#region -------------------- Core methods (predicate (T) → boolean) --------------------
 
-    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                final @NotNull Predicate<? super T> predicate) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                         final @NotNull Predicate<? super T> predicate) {
         final var size = collection.size();
         if (size == 0)
             return null;
         return __with1Argument(collection, predicate, 0, size - 1);
     }
 
-    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                final @NotNull Predicate<? super T> predicate) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                                         final @NotNull Predicate<? super T> predicate) {
         if (collection.isEmpty())
             return null;
         return __with1Argument(collection, predicate, 0, collection.size() - 1);
     }
 
-    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
-                                                final @NotNull Predicate<? super T> predicate) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                                         final @NotNull Predicate<? super T> predicate) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1543,23 +1543,23 @@ public final class IndexOfLastOrNull
     //#endregion -------------------- Core methods (predicate (T) → boolean) --------------------
     //#region -------------------- Core methods (predicate () → boolean) --------------------
 
-    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                final @NotNull BooleanSupplier predicate) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                         final @NotNull BooleanSupplier predicate) {
         final var size = collection.size();
         if (size == 0)
             return null;
         return __with0Argument(predicate, 0, size - 1);
     }
 
-    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                final @NotNull BooleanSupplier predicate) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                                         final @NotNull BooleanSupplier predicate) {
         if (collection.isEmpty())
             return null;
         return __with0Argument(predicate, 0, collection.size() - 1);
     }
 
-    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
-                                                final @NotNull BooleanSupplier predicate) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                                         final @NotNull BooleanSupplier predicate) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1570,9 +1570,9 @@ public final class IndexOfLastOrNull
 
     //#region -------------------- Core methods (predicate (T, int) → boolean, from) --------------------
 
-    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                final @NotNull ObjIntPredicate<? super T> predicate,
-                                                final int from) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                         final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                         final int from) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -1583,9 +1583,9 @@ public final class IndexOfLastOrNull
         return __with2Argument(collection, predicate, startingIndex, size - 1);
     }
 
-    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                final @NotNull ObjIntPredicate<? super T> predicate,
-                                                final int from) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                                         final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                         final int from) {
         if (collection.isEmpty())
             return null;
 
@@ -1596,9 +1596,9 @@ public final class IndexOfLastOrNull
         return __with2Argument(collection, predicate, startingIndex, size - 1);
     }
 
-    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
-                                                final @NotNull ObjIntPredicate<? super T> predicate,
-                                                final int from) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                                         final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                         final int from) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1612,9 +1612,9 @@ public final class IndexOfLastOrNull
     //#endregion -------------------- Core methods (predicate (T, int) → boolean, from) --------------------
     //#region -------------------- Core methods (predicate (T) → boolean, from) --------------------
 
-    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                final @NotNull Predicate<? super T> predicate,
-                                                final int from) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                         final @NotNull Predicate<? super T> predicate,
+                                                                         final int from) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -1625,9 +1625,9 @@ public final class IndexOfLastOrNull
         return __with1Argument(collection, predicate, startingIndex, size - 1);
     }
 
-    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                final @NotNull Predicate<? super T> predicate,
-                                                final int from) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                                         final @NotNull Predicate<? super T> predicate,
+                                                                         final int from) {
         if (collection.isEmpty())
             return null;
 
@@ -1638,9 +1638,9 @@ public final class IndexOfLastOrNull
         return __with1Argument(collection, predicate, startingIndex, size - 1);
     }
 
-    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
-                                                final @NotNull Predicate<? super T> predicate,
-                                                final int from) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                                         final @NotNull Predicate<? super T> predicate,
+                                                                         final int from) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1654,9 +1654,9 @@ public final class IndexOfLastOrNull
     //#endregion -------------------- Core methods (predicate (T) → boolean, from) --------------------
     //#region -------------------- Core methods (predicate () → boolean, from) --------------------
 
-    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                final @NotNull BooleanSupplier predicate,
-                                                final int from) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                         final @NotNull BooleanSupplier predicate,
+                                                                         final int from) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -1667,9 +1667,9 @@ public final class IndexOfLastOrNull
         return __with0Argument(predicate, startingIndex, size - 1);
     }
 
-    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                final @NotNull BooleanSupplier predicate,
-                                                final int from) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                                         final @NotNull BooleanSupplier predicate,
+                                                                         final int from) {
         if (collection.isEmpty())
             return null;
 
@@ -1680,9 +1680,9 @@ public final class IndexOfLastOrNull
         return __with0Argument(predicate, startingIndex, size - 1);
     }
 
-    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
-                                                final @NotNull BooleanSupplier predicate,
-                                                final int from) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                                         final @NotNull BooleanSupplier predicate,
+                                                                         final int from) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1697,10 +1697,10 @@ public final class IndexOfLastOrNull
 
     //#region -------------------- Core methods (predicate (T, int) → boolean, from, to) --------------------
 
-    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                final @NotNull ObjIntPredicate<? super T> predicate,
-                                                final int from,
-                                                final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                         final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -1716,10 +1716,10 @@ public final class IndexOfLastOrNull
         return __with2Argument(collection, predicate, startingIndex, endingIndex);
     }
 
-    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                final @NotNull ObjIntPredicate<? super T> predicate,
-                                                final int from,
-                                                final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                                         final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                         final int from,
+                                                                         final int to) {
         if (collection.isEmpty())
             return null;
 
@@ -1735,10 +1735,10 @@ public final class IndexOfLastOrNull
         return __with2Argument(collection, predicate, startingIndex, endingIndex);
     }
 
-    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
-                                                final @NotNull ObjIntPredicate<? super T> predicate,
-                                                final int from,
-                                                final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                                         final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1757,10 +1757,10 @@ public final class IndexOfLastOrNull
     //#endregion -------------------- Core methods (predicate (T, int) → boolean, from, to) --------------------
     //#region -------------------- Core methods (predicate (T) → boolean, from, to) --------------------
 
-    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                final @NotNull Predicate<? super T> predicate,
-                                                final int from,
-                                                final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                         final @NotNull Predicate<? super T> predicate,
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -1776,10 +1776,10 @@ public final class IndexOfLastOrNull
         return __with1Argument(collection, predicate, startingIndex, endingIndex);
     }
 
-    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                final @NotNull Predicate<? super T> predicate,
-                                                final int from,
-                                                final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                                         final @NotNull Predicate<? super T> predicate,
+                                                                         final int from,
+                                                                         final int to) {
         if (collection.isEmpty())
             return null;
 
@@ -1795,10 +1795,10 @@ public final class IndexOfLastOrNull
         return __with1Argument(collection, predicate, startingIndex, endingIndex);
     }
 
-    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
-                                                final @NotNull Predicate<? super T> predicate,
-                                                final int from,
-                                                final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                                         final @NotNull Predicate<? super T> predicate,
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1817,10 +1817,10 @@ public final class IndexOfLastOrNull
     //#endregion -------------------- Core methods (predicate (T) → boolean, from, to) --------------------
     //#region -------------------- Core methods (predicate () → boolean, from, to) --------------------
 
-    private static <T> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                final @NotNull BooleanSupplier predicate,
-                                                final int from,
-                                                final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                         final @NotNull BooleanSupplier predicate,
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -1836,10 +1836,10 @@ public final class IndexOfLastOrNull
         return __with0Argument(predicate, startingIndex, endingIndex);
     }
 
-    private static <T> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                final @NotNull BooleanSupplier predicate,
-                                                final int from,
-                                                final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+                                                                         final @NotNull BooleanSupplier predicate,
+                                                                         final int from,
+                                                                         final int to) {
         if (collection.isEmpty())
             return null;
 
@@ -1855,10 +1855,10 @@ public final class IndexOfLastOrNull
         return __with0Argument(predicate, startingIndex, endingIndex);
     }
 
-    private static <T> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
-                                                final @NotNull BooleanSupplier predicate,
-                                                final int from,
-                                                final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+                                                                         final @NotNull BooleanSupplier predicate,
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1878,9 +1878,9 @@ public final class IndexOfLastOrNull
 
     //#region -------------------- Core methods (predicate (T, int) → boolean, to) --------------------
 
-    private static <T> @Nullable Integer __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                          final @NotNull ObjIntPredicate<? super T> predicate,
-                                                          final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                   final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                   final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -1891,9 +1891,9 @@ public final class IndexOfLastOrNull
         return __with2Argument(collection, predicate, 0, endingIndex);
     }
 
-    private static <T> @Nullable Integer __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
-                                                          final @NotNull ObjIntPredicate<? super T> predicate,
-                                                          final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+                                                                                   final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                   final int to) {
         if (collection.isEmpty())
             return null;
 
@@ -1903,9 +1903,9 @@ public final class IndexOfLastOrNull
         return __with2Argument(collection, predicate, 0, endingIndex);
     }
 
-    private static <T> @Nullable Integer __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
-                                                          final @NotNull ObjIntPredicate<? super T> predicate,
-                                                          final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
+                                                                                   final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                   final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1919,9 +1919,9 @@ public final class IndexOfLastOrNull
     //#endregion -------------------- Core methods (predicate (T, int) → boolean, to) --------------------
     //#region -------------------- Core methods (predicate (T) → boolean, to) --------------------
 
-    private static <T> @Nullable Integer __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                          final @NotNull Predicate<? super T> predicate,
-                                                          final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                   final @NotNull Predicate<? super T> predicate,
+                                                                                   final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -1932,9 +1932,9 @@ public final class IndexOfLastOrNull
         return __with1Argument(collection, predicate, 0, endingIndex);
     }
 
-    private static <T> @Nullable Integer __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
-                                                          final @NotNull Predicate<? super T> predicate,
-                                                          final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+                                                                                   final @NotNull Predicate<? super T> predicate,
+                                                                                   final int to) {
         if (collection.isEmpty())
             return null;
 
@@ -1944,9 +1944,9 @@ public final class IndexOfLastOrNull
         return __with1Argument(collection, predicate, 0, endingIndex);
     }
 
-    private static <T> @Nullable Integer __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
-                                                          final @NotNull Predicate<? super T> predicate,
-                                                          final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
+                                                                                   final @NotNull Predicate<? super T> predicate,
+                                                                                   final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -1960,9 +1960,9 @@ public final class IndexOfLastOrNull
     //#endregion -------------------- Core methods (predicate (T) → boolean, to) --------------------
     //#region -------------------- Core methods (predicate () → boolean, to) --------------------
 
-    private static <T> @Nullable Integer __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                          final @NotNull BooleanSupplier predicate,
-                                                          final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                   final @NotNull BooleanSupplier predicate,
+                                                                                   final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
@@ -1973,9 +1973,9 @@ public final class IndexOfLastOrNull
         return __with0Argument(predicate, 0, endingIndex);
     }
 
-    private static <T> @Nullable Integer __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
-                                                          final @NotNull BooleanSupplier predicate,
-                                                          final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+                                                                                   final @NotNull BooleanSupplier predicate,
+                                                                                   final int to) {
         if (collection.isEmpty())
             return null;
 
@@ -1985,9 +1985,9 @@ public final class IndexOfLastOrNull
         return __with0Argument(predicate, 0, endingIndex);
     }
 
-    private static <T> @Nullable Integer __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
-                                                          final @NotNull BooleanSupplier predicate,
-                                                          final int to) {
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
+                                                                                   final @NotNull BooleanSupplier predicate,
+                                                                                   final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
@@ -2014,10 +2014,10 @@ public final class IndexOfLastOrNull
     }
 
 
-    private static <T> @Nullable Integer __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                         final @NotNull Predicate<? super T> predicate,
-                                                         final int startingIndex,
-                                                         final int endingIndex) {
+    private static <T extends @Nullable Object> @Nullable Integer __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                  final @NotNull Predicate<? super T> predicate,
+                                                                                  final int startingIndex,
+                                                                                  final int endingIndex) {
         var index = endingIndex + 1;
         while (--index >= startingIndex)
             if (predicate.test(collection.get(index)))
@@ -2025,10 +2025,10 @@ public final class IndexOfLastOrNull
         return null;
     }
 
-    private static <T> @Nullable Integer __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                         final @NotNull Predicate<? super T> predicate,
-                                                         final int startingIndex,
-                                                         final int endingIndex) {
+    private static <T extends @Nullable Object> @Nullable Integer __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                  final @NotNull Predicate<? super T> predicate,
+                                                                                  final int startingIndex,
+                                                                                  final int endingIndex) {
         var index = endingIndex + 1;
         while (--index >= startingIndex)
             if (predicate.test(collection[index]))
@@ -2037,10 +2037,10 @@ public final class IndexOfLastOrNull
     }
 
 
-    private static <T> @Nullable Integer __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                         final @NotNull ObjIntPredicate<? super T> predicate,
-                                                         final int startingIndex,
-                                                         final int endingIndex) {
+    private static <T extends @Nullable Object> @Nullable Integer __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                  final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                  final int startingIndex,
+                                                                                  final int endingIndex) {
         var index = endingIndex + 1;
         while (--index >= startingIndex)
             if (predicate.test(collection.get(index), index))
@@ -2048,10 +2048,10 @@ public final class IndexOfLastOrNull
         return null;
     }
 
-    private static <T> @Nullable Integer __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                         final @NotNull ObjIntPredicate<? super T> predicate,
-                                                         final int startingIndex,
-                                                         final int endingIndex) {
+    private static <T extends @Nullable Object> @Nullable Integer __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                  final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                  final int startingIndex,
+                                                                                  final int endingIndex) {
         var index = endingIndex + 1;
         while (--index >= startingIndex)
             if (predicate.test(collection[index], index))

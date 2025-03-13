@@ -28,7 +28,7 @@ public final class ToString
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @see Object#toString()
     @ExtensionFunction
-    public static <T> @NotNull String toString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull String toString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -44,7 +44,7 @@ public final class ToString
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @see Object#toString()
     @ExtensionFunction
-    public static <T> @NotNull String toString(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @NotNull String toString(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -58,7 +58,7 @@ public final class ToString
     /// @param collection The [nullable][Nullable] collection
     /// @see Object#toString()
     @ExtensionFunction
-    public static <T> @NotNull String toString(final T @Nullable [] collection) {
+    public static <T extends @Nullable Object> @NotNull String toString(final T @Nullable [] collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
