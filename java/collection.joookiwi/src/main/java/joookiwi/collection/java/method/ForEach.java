@@ -27,7 +27,7 @@ public final class ForEach
     /// Perform a given `action` on each element
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param action The given action
+    /// @param action     The given action
     /// @see Iterable#forEach(Consumer)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
@@ -47,7 +47,7 @@ public final class ForEach
     /// Perform a given `action` on each element
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param action The given action
+    /// @param action     The given action
     /// @see Iterable#forEach(Consumer)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
@@ -65,7 +65,7 @@ public final class ForEach
     /// Perform a given `action` on each element
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param action The given action
+    /// @param action     The given action
     /// @see Iterable#forEach(Consumer)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
@@ -88,7 +88,7 @@ public final class ForEach
     /// Perform a given `action` on each element
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param action The given action
+    /// @param action     The given action
     /// @see Iterable#forEach(Consumer)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
@@ -108,7 +108,7 @@ public final class ForEach
     /// Perform a given `action` on each element
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param action The given action
+    /// @param action     The given action
     /// @see Iterable#forEach(Consumer)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
@@ -126,7 +126,7 @@ public final class ForEach
     /// Perform a given `action` on each element
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param action The given action
+    /// @param action     The given action
     /// @see Iterable#forEach(Consumer)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
@@ -149,7 +149,7 @@ public final class ForEach
     /// Perform a given `action` on each element
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param action The given action
+    /// @param action     The given action
     /// @see Iterable#forEach(Consumer)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
@@ -169,7 +169,7 @@ public final class ForEach
     /// Perform a given `action` on each element
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param action The given action
+    /// @param action     The given action
     /// @see Iterable#forEach(Consumer)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
@@ -187,7 +187,7 @@ public final class ForEach
     /// Perform a given `action` on each element
     ///
     /// @param collection The [nullable][Nullable] collection
-    /// @param action The given action
+    /// @param action     The given action
     /// @see Iterable#forEach(Consumer)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
