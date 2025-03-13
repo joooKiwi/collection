@@ -1,5 +1,11 @@
 package joookiwi.collection.java.extended;
 
+import java.io.Serial;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -7,15 +13,10 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import java.io.Serial;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
-
-import static joookiwi.collection.java.CommonContracts.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [LinkedList]
 ///

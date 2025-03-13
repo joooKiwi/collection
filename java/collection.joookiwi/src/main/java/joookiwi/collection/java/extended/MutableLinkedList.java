@@ -1,14 +1,12 @@
 package joookiwi.collection.java.extended;
 
+import java.io.Serial;
+import java.util.Collection;
+import java.util.LinkedList;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
-
-import java.io.Serial;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /// A mutable behaviour of a [LinkedList]
 ///

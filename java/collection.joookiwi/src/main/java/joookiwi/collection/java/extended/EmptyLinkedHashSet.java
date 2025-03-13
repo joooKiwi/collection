@@ -18,8 +18,19 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.*;
-import static joookiwi.collection.java.CommonContracts.*;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
+import static joookiwi.collection.java.CollectionConstants.emptyIterator;
+import static joookiwi.collection.java.CollectionConstants.emptyParellelStream;
+import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
+import static joookiwi.collection.java.CollectionConstants.emptyStream;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
 /// A [Singleton] implementation of the [java.util.LinkedHashSet],
 /// but in an empty form

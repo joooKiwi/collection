@@ -1,22 +1,15 @@
 package joookiwi.collection.java.extended;
 
+import java.io.Serial;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.SortedSet;
+import java.util.concurrent.ConcurrentSkipListSet;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
-
-import java.io.Serial;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.SortedSet;
-import java.util.concurrent.ConcurrentSkipListSet;
-
-import static java.lang.Integer.MAX_VALUE;
-import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
-import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 
 /// A mutable behaviour of a [ConcurrentSkipListSet]
 ///

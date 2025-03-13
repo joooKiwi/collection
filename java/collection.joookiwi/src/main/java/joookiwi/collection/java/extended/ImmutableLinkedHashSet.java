@@ -11,7 +11,9 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.*;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_INITIAL_CAPACITY;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_LOAD_FACTOR;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 

@@ -1,17 +1,15 @@
 package joookiwi.collection.java.extended;
 
-import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.NotNullByDefault;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Unmodifiable;
-
 import java.io.Serial;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.concurrent.ConcurrentSkipListSet;
+import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 /// A mutable behaviour of a [TreeSet]
 ///
