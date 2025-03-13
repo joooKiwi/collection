@@ -22,7 +22,7 @@ import org.jetbrains.annotations.UnknownNullability;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static java.lang.Integer.MAX_VALUE;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_PARAMETER_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
@@ -115,7 +115,7 @@ public class ArrayAsCollection<T extends @Nullable Object>
     /// @param newArray The source array to put the values
     /// @param <U>      The new type
     @SuppressWarnings("unchecked cast")
-    @Contract(value = ALWAYS_1ST_PARAMETER_1, mutates = "param1")
+    @Contract(value = ALWAYS_1ST_1, mutates = "param1")
     @Override public <U extends @Nullable Object> U @NotNull [] toArray(U @NotNull [] newArray) {
         final var reference = _reference();
         final var size = newArray.length;

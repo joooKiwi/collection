@@ -94,9 +94,9 @@ public class EmptyLinkedHashSet<T>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)           @Override public     Object @NotNull [] toArray(                                                   ) { return new Object[0]; }
-    @Contract(value = ALWAYS_1ST_PARAMETER_1, pure = true) @Override public <U> U @NotNull []      toArray(final U @NotNull []                           array) { return array; }
-    @Contract(pure = true)                                 @Override public <U> U @NotNull []      toArray(final @NotNull IntFunction<U @NotNull []> generator) { return generator.apply(0); }
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public     Object @NotNull [] toArray(                                                   ) { return new Object[0]; }
+    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U> U @NotNull []      toArray(final U @NotNull []                           array) { return array; }
+    @Contract(pure = true)                       @Override public <U> U @NotNull []      toArray(final @NotNull IntFunction<U @NotNull []> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
