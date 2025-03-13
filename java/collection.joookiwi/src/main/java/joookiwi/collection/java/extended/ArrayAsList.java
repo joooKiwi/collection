@@ -5,8 +5,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.function.UnaryOperator;
-import joookiwi.collection.java.method.IndexOf;
-import joookiwi.collection.java.method.LastIndexOf;
+import joookiwi.collection.java.method.FirstIndexOfOrNull;
+import joookiwi.collection.java.method.LastIndexOfOrNull;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -58,14 +58,14 @@ public class ArrayAsList<T extends @Nullable Object>
     }
 
     @Override public @Range(from = -1, to = MAX_VALUE) int indexOf(@Nullable Object value) {
-        final var index = IndexOf.indexOf(_reference(), value);
+        final var index = FirstIndexOfOrNull.firstIndexOfOrNull(_reference(), value);
         if (index == null)
             return -1;
         return index;
     }
 
     @Override public @Range(from = -1, to = MAX_VALUE) int lastIndexOf(@Nullable Object value) {
-        final var index = LastIndexOf.lastIndexOf(_reference(), value);
+        final var index = LastIndexOfOrNull.lastIndexOfOrNull(_reference(), value);
         if (index == null)
             return -1;
         return index;
