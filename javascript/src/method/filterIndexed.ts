@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -37,7 +38,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @typescriptDefinition
  * @extensionFunction
  */
-export function filterIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function filterIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
  * matching only the given {@link predicate}
@@ -50,14 +51,17 @@ export function filterIndexed<const T, const S extends T, >(collection: Nullable
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @extensionFunction
  */
-export function filterIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-export function filterIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
+export function filterIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+export function filterIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return filterIndexedByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
         return filterIndexedByArray(collection, predicate)
+    if (isMinimalistCollectionHolder(collection,))
+        return filterIndexedByMinimalistCollectionHolder(collection, predicate,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return filterIndexedByCollectionHolder(collection, predicate,)
     if (isArrayByStructure<T>(collection,))

@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -38,7 +39,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @typescriptDefinition
  * @extensionFunction
  */
-export function filter<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function filter<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
  * matching only the given {@link predicate}
@@ -52,14 +53,17 @@ export function filter<const T, const S extends T, >(collection: Nullable<| Mini
  * @see filterNot
  * @extensionFunction
  */
-export function filter<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): CollectionHolder<T>
-export function filter<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
+export function filter<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): CollectionHolder<T>
+export function filter<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return filterByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
         return filterByArray(collection, predicate,)
+    if (isMinimalistCollectionHolder(collection,))
+        return filterByMinimalistCollectionHolder(collection, predicate,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return filterByCollectionHolder(collection, predicate,)
     if (isArrayByStructure<T>(collection,))
