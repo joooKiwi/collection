@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -44,13 +45,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
  * @canReceiveNegativeValue
  */
-export function joinToString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
+export function joinToString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
     if (collection == null)
         return prefixAndPostfixOnly(prefix, postfix,)
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return joinToStringByCollectionHolder(collection, separator, prefix, postfix, limit, truncated, transform,)
     if (isArray(collection,))
         return joinToStringByArray(collection, separator, prefix, postfix, limit, truncated, transform,)
+    if (isMinimalistCollectionHolder(collection,))
+        return joinToStringByMinimalistCollectionHolder(collection, separator, prefix, postfix, limit, truncated, transform,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return joinToStringByCollectionHolder(collection, separator, prefix, postfix, limit, truncated, transform,)
     if (isArrayByStructure<T>(collection,))
