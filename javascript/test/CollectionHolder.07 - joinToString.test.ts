@@ -19,11 +19,11 @@ import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                      
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0, callbackToUpperString1, callbackToUpperString2} from "./value/callbacks (string)"
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                             from "./value/instances"
 
+import {CollectionConstants}                                                                                         from "../src/CollectionConstants"
+import {ForbiddenIndexException}                                                                                     from "../src/exception/ForbiddenIndexException"
 import {join, joinByArray, joinByCollectionHolder, joinByMinimalistCollectionHolder}                                 from "../src/method/join"
 import * as joinToStringModule                                                                                       from "../src/method/joinToString"
 import {joinToString, joinToStringByArray, joinToStringByCollectionHolder, joinToStringByMinimalistCollectionHolder} from "../src/method/joinToString"
-import {CollectionConstants}                                                                                         from "../src/CollectionConstants"
-import {ForbiddenIndexException}                                                                                     from "../src/exception/ForbiddenIndexException"
 
 describe("CollectionHolderTest (joinToString)", () => {
 

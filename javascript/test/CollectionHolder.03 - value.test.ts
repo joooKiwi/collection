@@ -31,6 +31,10 @@ import {callbackAsFail0}                                                from "./
 import {callbackAsNull0}                                                from "./value/callbacks (null)"
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
 
+import {EmptyCollectionException}                                                                                                            from "../src/exception/EmptyCollectionException"
+import {ForbiddenIndexException}                                                                                                             from "../src/exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}                                                                                                           from "../src/exception/IndexOutOfBoundsException"
+import {NullCollectionException}                                                                                                             from "../src/exception/NullCollectionException"
 import {atOrElse, atOrElseByArray, atOrElseByCollectionHolder, atOrElseByMinimalistCollectionHolder}                                         from "../src/method/atOrElse"
 import {atOrNull, atOrNullByArray, atOrNullByCollectionHolder, atOrNullByMinimalistCollectionHolder}                                         from "../src/method/atOrNull"
 import {elementAtOrElse, elementAtOrElseByArray, elementAtOrElseByCollectionHolder, elementAtOrElseByMinimalistCollectionHolder}             from "../src/method/elementAtOrElse"
@@ -55,10 +59,6 @@ import {last, lastByArray, lastByCollectionHolder, lastByMinimalistCollectionHol
 import {lastIndexed, lastIndexedByArray, lastIndexedByCollectionHolder, lastIndexedByMinimalistCollectionHolder}                             from "../src/method/lastIndexed"
 import {lastIndexedOrNull, lastIndexedOrNullByArray, lastIndexedOrNullByCollectionHolder, lastIndexedOrNullByMinimalistCollectionHolder}     from "../src/method/lastIndexedOrNull"
 import {lastOrNull, lastOrNullByArray, lastOrNullByCollectionHolder, lastOrNullByMinimalistCollectionHolder}                                 from "../src/method/lastOrNull"
-import {EmptyCollectionException}                                                                                                            from "../src/exception/EmptyCollectionException"
-import {ForbiddenIndexException}                                                                                                             from "../src/exception/ForbiddenIndexException"
-import {IndexOutOfBoundsException}                                                                                                           from "../src/exception/IndexOutOfBoundsException"
-import {NullCollectionException}                                                                                                             from "../src/exception/NullCollectionException"
 
 describe("CollectionHolderTest (value)", () => {
     //#region -------------------- Callbacks --------------------

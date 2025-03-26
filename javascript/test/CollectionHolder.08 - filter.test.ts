@@ -19,13 +19,13 @@ import {callbackIs0, callbackIs0Alt, callbackIs1, callbackIs1Alt, callbackIs2, c
 import {callbackIsA, callbackIsAAlt, callbackIsB, callbackIsBAlt, callbackIsC, callbackIsCAlt, callbackIsD, callbackIsDAlt, callbackIsE, callbackIsEAlt}                                                                               from "./value/callbacks (string)"
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                                                                                from "./value/instances"
 
+import {CollectionConstants}                                                                                                         from "../src/CollectionConstants"
 import {filter, filterByArray, filterByCollectionHolder, filterByMinimalistCollectionHolder}                                         from "../src/method/filter"
 import {filterIndexed, filterIndexedByArray, filterIndexedByCollectionHolder, filterIndexedByMinimalistCollectionHolder}             from "../src/method/filterIndexed"
 import {filterNot, filterNotByArray, filterNotByCollectionHolder, filterNotByMinimalistCollectionHolder}                             from "../src/method/filterNot"
 import {filterNotIndexed, filterNotIndexedByArray, filterNotIndexedByCollectionHolder, filterNotIndexedByMinimalistCollectionHolder} from "../src/method/filterNotIndexed"
 import {filterNotNull, filterNotNullByArray, filterNotNullByCollectionHolder, filterNotNullByMinimalistCollectionHolder}             from "../src/method/filterNotNull"
 import {requireNoNulls, requireNoNullsByArray, requireNoNullsByCollectionHolder, requireNoNullsByMinimalistCollectionHolder}         from "../src/method/requireNoNulls"
-import {CollectionConstants}                                                                                                         from "../src/CollectionConstants"
 
 describe("CollectionHolderTest (filter)", () => {
 

@@ -39,6 +39,11 @@ import {callbackIs0, callbackIs0Alt, callbackIs1, callbackIs1Alt, callbackIs2, c
 import {callbackIsA, callbackIsAAlt, callbackIsB, callbackIsBAlt, callbackIsC, callbackIsCAlt, callbackIsD, callbackIsDAlt, callbackIsE, callbackIsEAlt}                                                                     from "./value/callbacks (string)"
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                                                                      from "./value/instances"
 
+import {EmptyCollectionException}                                                                                                                                                from "../src/exception/EmptyCollectionException"
+import {ForbiddenIndexException}                                                                                                                                                 from "../src/exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}                                                                                                                                               from "../src/exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException}                                                                                                                                              from "../src/exception/InvalidIndexRangeException"
+import {NullCollectionException}                                                                                                                                                 from "../src/exception/NullCollectionException"
 import {findFirstIndex, findFirstIndexByArray, findFirstIndexByCollectionHolder, findFirstIndexByMinimalistCollectionHolder}                                                     from "../src/method/findFirstIndex"
 import {findFirstIndexIndexed, findFirstIndexIndexedByArray, findFirstIndexIndexedByCollectionHolder, findFirstIndexIndexedByMinimalistCollectionHolder}                         from "../src/method/findFirstIndexIndexed"
 import {findFirstIndexIndexedOrNull, findFirstIndexIndexedOrNullByArray, findFirstIndexIndexedOrNullByCollectionHolder, findFirstIndexIndexedOrNullByMinimalistCollectionHolder} from "../src/method/findFirstIndexIndexedOrNull"
@@ -75,11 +80,6 @@ import * as indexOfLastOrNullModule                                             
 import {indexOfLastOrNull, indexOfLastOrNullByArray, indexOfLastOrNullByCollectionHolder, indexOfLastOrNullByMinimalistCollectionHolder}                                         from "../src/method/indexOfLastOrNull"
 import {lastIndexOf, lastIndexOfByArray, lastIndexOfByCollectionHolder, lastIndexOfByMinimalistCollectionHolder}                                                                 from "../src/method/lastIndexOf"
 import {lastIndexOfOrNull, lastIndexOfOrNullByArray, lastIndexOfOrNullByCollectionHolder, lastIndexOfOrNullByMinimalistCollectionHolder}                                         from "../src/method/lastIndexOfOrNull"
-import {EmptyCollectionException}                                                                                                                                                from "../src/exception/EmptyCollectionException"
-import {ForbiddenIndexException}                                                                                                                                                 from "../src/exception/ForbiddenIndexException"
-import {IndexOutOfBoundsException}                                                                                                                                               from "../src/exception/IndexOutOfBoundsException"
-import {InvalidIndexRangeException}                                                                                                                                              from "../src/exception/InvalidIndexRangeException"
-import {NullCollectionException}                                                                                                                                                 from "../src/exception/NullCollectionException"
 
 describe("CollectionHolderTest (index)", () => {
 
