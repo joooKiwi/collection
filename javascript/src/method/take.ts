@@ -35,15 +35,16 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
  * @canReceiveNegativeValue
  */
-export function take<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, n: number,): CollectionHolder<T> {
+export function take<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, n: number,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return __coreByCollectionHolder(collection, n,)
-    if (isMinimalistCollectionHolder(collection,))
-        return __coreByMinimalistCollectionHolder(collection, n,)
     if (isArray(collection,))
         return __coreByArray(collection, n,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __coreByMinimalistCollectionHolder(collection, n,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __coreByCollectionHolder(collection, n,)
     if (isArrayByStructure<T>(collection,))

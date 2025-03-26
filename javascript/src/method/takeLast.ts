@@ -34,15 +34,16 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
  * @canReceiveNegativeValue
  */
-export function takeLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, n: number,): CollectionHolder<T> {
+export function takeLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, n: number,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return __coreByCollectionHolder(collection, n,)
-    if (isMinimalistCollectionHolder(collection,))
-        return __coreByMinimalistCollectionHolder(collection, n,)
     if (isArray(collection,))
         return __coreByArray(collection, n,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __coreByMinimalistCollectionHolder(collection, n,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __coreByCollectionHolder(collection, n,)
     if (isArrayByStructure<T>(collection,))
