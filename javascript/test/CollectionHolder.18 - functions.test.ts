@@ -153,12 +153,6 @@ import {isWeakMap}                                                              
 import {isWeakMapByStructure}                                                                                                                                                                                                            from "../src/method/isWeakMapByStructure"
 import {isWeakSet}                                                                                                                                                                                                                       from "../src/method/isWeakSet"
 import {isWeakSetByStructure}                                                                                                                                                                                                            from "../src/method/isWeakSetByStructure"
-import {limit, limitByArray, limitByCollectionHolder, limitByMinimalistCollectionHolder}                                                                                                                                                 from "../src/method/limit"
-import {limitLast, limitLastByArray, limitLastByCollectionHolder, limitLastByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/limitLast"
-import {limitLastWhile, limitLastWhileByArray, limitLastWhileByCollectionHolder, limitLastWhileByMinimalistCollectionHolder}                                                                                                             from "../src/method/limitLastWhile"
-import {limitLastWhileIndexed, limitLastWhileIndexedByArray, limitLastWhileIndexedByCollectionHolder, limitLastWhileIndexedByMinimalistCollectionHolder}                                                                                 from "../src/method/limitLastWhileIndexed"
-import {limitWhile, limitWhileByArray, limitWhileByCollectionHolder, limitWhileByMinimalistCollectionHolder}                                                                                                                             from "../src/method/limitWhile"
-import {limitWhileIndexed, limitWhileIndexedByArray, limitWhileIndexedByCollectionHolder, limitWhileIndexedByMinimalistCollectionHolder}                                                                                                 from "../src/method/limitWhileIndexed"
 import {map, mapByArray, mapByCollectionHolder, mapByMinimalistCollectionHolder}                                                                                                                                                         from "../src/method/map"
 import {mapIndexed, mapIndexedByArray, mapIndexedByCollectionHolder, mapIndexedByMinimalistCollectionHolder}                                                                                                                             from "../src/method/mapIndexed"
 import {mapNotNull, mapNotNullByArray, mapNotNullByCollectionHolder, mapNotNullByMinimalistCollectionHolder}                                                                                                                             from "../src/method/mapNotNull"
@@ -172,18 +166,6 @@ import {skipLastWhile, skipLastWhileByArray, skipLastWhileByCollectionHolder, sk
 import {skipLastWhileIndexed, skipLastWhileIndexedByArray, skipLastWhileIndexedByCollectionHolder, skipLastWhileIndexedByMinimalistCollectionHolder}                                                                                     from "../src/method/skipLastWhileIndexed"
 import {skipWhile, skipWhileByArray, skipWhileByCollectionHolder, skipWhileByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/skipWhile"
 import {skipWhileIndexed, skipWhileIndexedByArray, skipWhileIndexedByCollectionHolder, skipWhileIndexedByMinimalistCollectionHolder}                                                                                                     from "../src/method/skipWhileIndexed"
-import * as takeModule                                                                                                                                                                                                                   from "../src/method/take"
-import {take, takeByArray, takeByCollectionHolder, takeByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/take"
-import * as takeLastModule                                                                                                                                                                                                               from "../src/method/takeLast"
-import {takeLast, takeLastByArray, takeLastByCollectionHolder, takeLastByMinimalistCollectionHolder}                                                                                                                                     from "../src/method/takeLast"
-import * as takeLastWhileModule                                                                                                                                                                                                          from "../src/method/takeLastWhile"
-import {takeLastWhile, takeLastWhileByArray, takeLastWhileByCollectionHolder, takeLastWhileByMinimalistCollectionHolder}                                                                                                                 from "../src/method/takeLastWhile"
-import * as takeLastWhileIndexedModule                                                                                                                                                                                                   from "../src/method/takeLastWhileIndexed"
-import {takeLastWhileIndexed, takeLastWhileIndexedByArray, takeLastWhileIndexedByCollectionHolder, takeLastWhileIndexedByMinimalistCollectionHolder}                                                                                     from "../src/method/takeLastWhileIndexed"
-import * as takeWhileModule                                                                                                                                                                                                              from "../src/method/takeWhile"
-import {takeWhile, takeWhileByArray, takeWhileByCollectionHolder, takeWhileByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/takeWhile"
-import * as takeWhileIndexedModule                                                                                                                                                                                                       from "../src/method/takeWhileIndexed"
-import {takeWhileIndexed, takeWhileIndexedByArray, takeWhileIndexedByCollectionHolder, takeWhileIndexedByMinimalistCollectionHolder}                                                                                                     from "../src/method/takeWhileIndexed"
 import {toArray, toArrayByArray, toArrayByCollectionHolder, toArrayByMinimalistCollectionHolder}                                                                                                                                         from "../src/method/toArray"
 import {toIterator, toIteratorByArray, toIteratorByCollectionHolder, toIteratorByMinimalistCollectionHolder}                                                                                                                             from "../src/method/toIterator"
 import {toLocaleLowerCaseString, toLocaleLowerCaseStringByArray, toLocaleLowerCaseStringByCollectionHolder, toLocaleLowerCaseStringByMinimalistCollectionHolder}                                                                         from "../src/method/toLocaleLowerCaseString"
@@ -469,42 +451,6 @@ describe("CollectionHolderTest (functions)", () => {
             },)
         },)
 
-        describe("take", () => {
-            test("all",                          () => expect(take(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeByMinimalistCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeByCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeByArray(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("takeWhile", () => {
-            test("all",                          () => expect(takeWhile(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeWhileByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeWhileByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeWhileByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("takeWhileIndexed", () => {
-            test("all",                          () => expect(takeWhileIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeWhileIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeWhileIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeWhileIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("takeLast", () => {
-            test("all",                          () => expect(takeLast(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeLastByMinimalistCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeLastByCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeLastByArray(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("takeLastWhile", () => {
-            test("all",                          () => expect(takeLastWhile(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeLastWhileByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeLastWhileByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeLastWhileByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("takeLastWhileIndexed", () => {
-            test("all",                          () => expect(takeLastWhileIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeLastWhileIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeLastWhileIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeLastWhileIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
         describe("drop", () => {
             test("all",                          () => expect(drop(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             test("minimalist collection holder", () => expect(dropByMinimalistCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -1626,138 +1572,6 @@ describe("CollectionHolderTest (functions)", () => {
             },)
         },)
 
-        describe("limit", () => {
-            test("all", () => {
-                const method = jest.spyOn(takeModule, "take",)
-                limit(A, 0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeModule, "takeByMinimalistCollectionHolder",)
-                limitByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), 0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(takeModule, "takeByCollectionHolder",)
-                limitByCollectionHolder(new CollectionHolderFromArray(A,), 0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(takeModule, "takeByArray",)
-                limitByArray(A, 0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("limitWhile", () => {
-            test("all", () => {
-                const method = jest.spyOn(takeWhileModule, "takeWhile",)
-                limitWhile(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeWhileModule, "takeWhileByMinimalistCollectionHolder",)
-                limitWhileByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(takeWhileModule, "takeWhileByCollectionHolder",)
-                limitWhileByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(takeWhileModule, "takeWhileByArray",)
-                limitWhileByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("limitWhileIndexed", () => {
-            test("all", () => {
-                const method = jest.spyOn(takeWhileIndexedModule, "takeWhileIndexed",)
-                limitWhileIndexed(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeWhileIndexedModule, "takeWhileIndexedByMinimalistCollectionHolder",)
-                limitWhileIndexedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(takeWhileIndexedModule, "takeWhileIndexedByCollectionHolder",)
-                limitWhileIndexedByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(takeWhileIndexedModule, "takeWhileIndexedByArray",)
-                limitWhileIndexedByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("limitLast", () => {
-            test("all", () => {
-                const method = jest.spyOn(takeLastModule, "takeLast",)
-                limitLast(A, 0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeLastModule, "takeLastByMinimalistCollectionHolder",)
-                limitLastByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), 0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(takeLastModule, "takeLastByCollectionHolder",)
-                limitLastByCollectionHolder(new CollectionHolderFromArray(A,), 0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(takeLastModule, "takeLastByArray",)
-                limitLastByArray(A, 0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("limitLastWhile", () => {
-            test("all", () => {
-                const method = jest.spyOn(takeLastWhileModule, "takeLastWhile",)
-                limitLastWhile(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeLastWhileModule, "takeLastWhileByMinimalistCollectionHolder",)
-                limitLastWhileByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(takeLastWhileModule, "takeLastWhileByCollectionHolder",)
-                limitLastWhileByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(takeLastWhileModule, "takeLastWhileByArray",)
-                limitLastWhileByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("limitLastWhileIndexed", () => {
-            test("all", () => {
-                const method = jest.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexed",)
-                limitLastWhileIndexed(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexedByMinimalistCollectionHolder",)
-                limitLastWhileIndexedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexedByCollectionHolder",)
-                limitLastWhileIndexedByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(takeLastWhileIndexedModule, "takeLastWhileIndexedByArray",)
-                limitLastWhileIndexedByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
         describe("skip", () => {
             test("all", () => {
                 const method = jest.spyOn(dropModule, "drop",)
