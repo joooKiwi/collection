@@ -250,7 +250,7 @@ export function sliceWithARangeByArray<const T, >(collection: Nullable<readonly 
 
 //#region -------------------- ∅ --------------------
 
-function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[],): CollectionHolder<T> {
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[],) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection,)
     if (isArray(collection,))
@@ -265,20 +265,20 @@ function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
     return __core0ByMinimalistCollectionHolder(collection,)
 }
 
-function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>,): CollectionHolder<T> {
+function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>,) {
     const size = collection.size
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, 0, size - 1,),)
 }
 
-function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,): CollectionHolder<T> {
+function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,) {
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, 0, collection.size - 1,),)
 }
 
-function __core0ByArray<const T, >(collection: readonly T[],): CollectionHolder<T> {
+function __core0ByArray<const T, >(collection: readonly T[],) {
     const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -288,7 +288,7 @@ function __core0ByArray<const T, >(collection: readonly T[],): CollectionHolder<
 //#endregion -------------------- ∅ --------------------
 //#region -------------------- from --------------------
 
-function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], from: number,): CollectionHolder<T> {
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, from,)
     if (isArray(collection,))
@@ -303,7 +303,7 @@ function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
     return __core1ByMinimalistCollectionHolder(collection, from,)
 }
 
-function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, from: number,): CollectionHolder<T> {
+function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, from: number,) {
     const size = collection.size
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -312,7 +312,7 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, size - 1,),)
 }
 
-function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number,): CollectionHolder<T> {
+function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number,) {
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
@@ -321,7 +321,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, size - 1,),)
 }
 
-function __core1ByArray<const T, >(collection: readonly T[], from: number,): CollectionHolder<T> {
+function __core1ByArray<const T, >(collection: readonly T[], from: number,) {
     const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -333,7 +333,7 @@ function __core1ByArray<const T, >(collection: readonly T[], from: number,): Col
 //#endregion -------------------- from --------------------
 //#region -------------------- from, to --------------------
 
-function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], from: number, to: number,): CollectionHolder<T> {
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, from, to,)
     if (isArray(collection,))
@@ -348,7 +348,7 @@ function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
     return __core2ByMinimalistCollectionHolder(collection, from, to,)
 }
 
-function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, from: number, to: number,): CollectionHolder<T> {
+function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, from: number, to: number,) {
     const size = collection.size
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -359,7 +359,7 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
 }
 
-function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number, to: number,): CollectionHolder<T> {
+function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number, to: number,) {
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
@@ -370,7 +370,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, startingIndex, endingIndex,),)
 }
 
-function __core2ByArray<const T, >(collection: readonly T[], from: number, to: number,): CollectionHolder<T> {
+function __core2ByArray<const T, >(collection: readonly T[], from: number, to: number,) {
     const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -384,7 +384,7 @@ function __core2ByArray<const T, >(collection: readonly T[], from: number, to: n
 //#endregion -------------------- from, to --------------------
 //#region -------------------- to --------------------
 
-function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], to: number,): CollectionHolder<T> {
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, to,)
     if (isArray(collection,))
@@ -399,7 +399,7 @@ function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T>
     return __coreWithNoFromByMinimalistCollectionHolder(collection, to,)
 }
 
-function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, to: number,): CollectionHolder<T> {
+function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, to: number,) {
     const size = collection.size
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -408,7 +408,7 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, 0, endingIndex,),)
 }
 
-function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, to: number,): CollectionHolder<T> {
+function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, to: number,) {
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
@@ -416,7 +416,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayInRange(collection, 0, endingIndex,),)
 }
 
-function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number,): CollectionHolder<T> {
+function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number,) {
     const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER

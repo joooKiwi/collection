@@ -318,7 +318,7 @@ export function indexOfLastIndexedByArray<const T, >(collection: Nullable<readon
 
 //#region -------------------- predicate --------------------
 
-function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>,): number {
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
@@ -333,7 +333,7 @@ function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
     return __core0ByMinimalistCollectionHolder(collection, predicate,)
 }
 
-function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>,): number {
+function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>,) {
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
@@ -344,7 +344,7 @@ function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     return __with0Argument(predicate as () => boolean, 0, size - 1,)
 }
 
-function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>,): number {
+function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
     if (predicate.length == 1)
@@ -354,7 +354,7 @@ function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, p
     return __with0Argument(predicate as () => boolean, 0, collection.size - 1,)
 }
 
-function __core0ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>,): number {
+function __core0ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -368,7 +368,7 @@ function __core0ByArray<const T, >(collection: readonly T[], predicate: ReverseB
 //#endregion -------------------- predicate --------------------
 //#region -------------------- predicate, from --------------------
 
-function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number,): number {
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, predicate, from,)
     if (isArray(collection,))
@@ -383,7 +383,7 @@ function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
     return __core1ByMinimalistCollectionHolder(collection, predicate, from,)
 }
 
-function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number,): number {
+function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number,) {
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
@@ -394,7 +394,7 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     return __with0Argument(predicate as () => boolean, __startingIndex(from, size,), size - 1,)
 }
 
-function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number,): number {
+function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
 
@@ -406,7 +406,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, p
     return __with0Argument(predicate as () => boolean, __startingIndex(from, size,), size - 1,)
 }
 
-function __core1ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, from: number,): number {
+function __core1ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, from: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -420,7 +420,7 @@ function __core1ByArray<const T, >(collection: readonly T[], predicate: ReverseB
 //#endregion -------------------- predicate, from --------------------
 //#region -------------------- predicate, from, to --------------------
 
-function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number, to: number,): number {
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, predicate, from, to,)
     if (isArray(collection,))
@@ -435,7 +435,7 @@ function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
     return __core2ByMinimalistCollectionHolder(collection, predicate, from, to,)
 }
 
-function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number, to: number,): number {
+function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
@@ -450,7 +450,7 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
 }
 
-function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number, to: number,): number {
+function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
 
@@ -465,7 +465,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, p
     return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
 }
 
-function __core2ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, from: number, to: number,): number {
+function __core2ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -483,7 +483,7 @@ function __core2ByArray<const T, >(collection: readonly T[], predicate: ReverseB
 //#endregion -------------------- predicate, from, to --------------------
 //#region -------------------- predicate, to --------------------
 
-function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, to: number,): number {
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
     if (isArray(collection,))
@@ -498,7 +498,7 @@ function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T>
     return __coreWithNoFromByMinimalistCollectionHolder(collection, predicate, to,)
 }
 
-function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>, to: number,): number {
+function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: ReverseBooleanCallback<T>, to: number,) {
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
@@ -509,7 +509,7 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
     return __with0Argument(predicate as () => boolean, 0, __endingIndex(to, size,),)
 }
 
-function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, to: number,): number {
+function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: ReverseBooleanCallback<T>, to: number,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
     if (predicate.length == 1)
@@ -519,7 +519,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
     return __with0Argument(predicate as () => boolean, 0, __endingIndex(to, collection.size,),)
 }
 
-function __coreWithNoFromByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, to: number,): number {
+function __coreWithNoFromByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, to: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()

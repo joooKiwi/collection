@@ -341,7 +341,7 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]
 
 //#region -------------------- element --------------------
 
-function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T,): number {
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, element,)
     if (isArray(collection,))
@@ -356,20 +356,20 @@ function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
     return __core0ByMinimalistCollectionHolder(collection, element,)
 }
 
-function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T,): number {
+function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T,) {
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
     return __findInRange(collection, element, 0, size - 1,)
 }
 
-function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T,): number {
+function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
     return __findInRange(collection, element, 0, collection.size - 1,)
 }
 
-function __core0ByArray<const T, >(collection: readonly T[], element: T,): number {
+function __core0ByArray<const T, >(collection: readonly T[], element: T,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -379,7 +379,7 @@ function __core0ByArray<const T, >(collection: readonly T[], element: T,): numbe
 //#endregion -------------------- element --------------------
 //#region -------------------- element, from --------------------
 
-function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, from: number,): number {
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, element, from,)
     if (isArray(collection,))
@@ -394,14 +394,14 @@ function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
     return __core1ByMinimalistCollectionHolder(collection, element, from,)
 }
 
-function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T, from: number,): number {
+function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T, from: number,) {
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
     return __findInRange(collection, element, __startingIndex(from, size,), size - 1,)
 }
 
-function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T, from: number,): number {
+function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T, from: number,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
 
@@ -409,7 +409,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, e
     return __findInRange(collection, element, __startingIndex(from, size,), size - 1,)
 }
 
-function __core1ByArray<const T, >(collection: readonly T[], element: T, from: number,): number {
+function __core1ByArray<const T, >(collection: readonly T[], element: T, from: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -419,7 +419,7 @@ function __core1ByArray<const T, >(collection: readonly T[], element: T, from: n
 //#endregion -------------------- element, from --------------------
 //#region -------------------- element, from, to --------------------
 
-function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, from: number, to: number,): number {
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, element, from, to,)
     if (isArray(collection,))
@@ -434,7 +434,7 @@ function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
     return __core2ByMinimalistCollectionHolder(collection, element, from, to,)
 }
 
-function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T, from: number, to: number,): number {
+function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T, from: number, to: number,) {
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
@@ -445,7 +445,7 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     return __findInRange(collection, element, startingIndex, endingIndex,)
 }
 
-function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T, from: number, to: number,): number {
+function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T, from: number, to: number,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
 
@@ -456,7 +456,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, e
     return __findInRange(collection, element, startingIndex, endingIndex,)
 }
 
-function __core2ByArray<const T, >(collection: readonly T[], element: T, from: number, to: number,): number {
+function __core2ByArray<const T, >(collection: readonly T[], element: T, from: number, to: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -470,7 +470,7 @@ function __core2ByArray<const T, >(collection: readonly T[], element: T, from: n
 //#endregion -------------------- element, from, to --------------------
 //#region -------------------- element, to --------------------
 
-function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, to: number,): number {
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, element, to,)
     if (isArray(collection,))
@@ -485,20 +485,20 @@ function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T>
     return __coreWithNoFromByMinimalistCollectionHolder(collection, element, to,)
 }
 
-function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T, to: number,): number {
+function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, element: T, to: number,) {
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
     return __findInRange(collection, element, 0, __endingIndex(to, size,),)
 }
 
-function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T, to: number,): number {
+function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, element: T, to: number,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
     return __findInRange(collection, element, 0, __endingIndex(to, collection.size,),)
 }
 
-function __coreWithNoFromByArray<const T, >(collection: readonly T[], element: T, to: number,): number {
+function __coreWithNoFromByArray<const T, >(collection: readonly T[], element: T, to: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
