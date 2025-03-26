@@ -21,6 +21,7 @@ import {isArrayByStructure}                                                     
 import {isCollectionHolder}                                                                                  from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                                                                       from "./isCollectionHolderByStructure"
 import {isNotEmpty, isNotEmptyByArray, isNotEmptyByCollectionHolder, isNotEmptyByMinimalistCollectionHolder} from "./isNotEmpty"
+import {isMinimalistCollectionHolder}                                                                        from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -70,8 +71,8 @@ export function any<const T, const COLLECTION extends MinimalistCollectionHolder
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
  * @extensionFunction
  */
-export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): boolean
-export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): boolean
+export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return isNotEmpty(collection,)
     return __any(collection, predicate,)
@@ -174,11 +175,13 @@ export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predic
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Core method --------------------
 
-function __any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): boolean {
+function __any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): boolean {
     if (collection == null)
         return false
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return __anyByCollectionHolder(collection, predicate,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __anyByMinimalistCollectionHolder(collection, predicate,)
     if (isArray(collection,))
         return __anyByArray(collection, predicate,)
     if (isCollectionHolderByStructure<T>(collection,))
