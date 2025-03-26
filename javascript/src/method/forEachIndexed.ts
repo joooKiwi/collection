@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -34,13 +35,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
  * @extensionFunction
  */
-export function forEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, action: IndexValueCallback<T>,): void {
+export function forEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, action: IndexValueCallback<T>,): void {
     if (collection == null)
         return
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         forEachIndexedByCollectionHolder(collection, action,)
     else if (isArray(collection,))
         forEachIndexedByArray(collection, action,)
+    else if (isMinimalistCollectionHolder(collection,))
+        forEachIndexedByMinimalistCollectionHolder(collection, action,)
+
     else if (isCollectionHolderByStructure<T>(collection,))
         return forEachIndexedByCollectionHolder(collection, action,)
     else if (isArrayByStructure<T>(collection,))
