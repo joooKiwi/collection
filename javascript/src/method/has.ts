@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -36,13 +37,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
-export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, value: T,): boolean {
+export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, value: T,): boolean {
     if (collection == null)
         return false
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return hasByCollectionHolder(collection, value,)
     if (isArray(collection,))
         return hasByArray(collection, value,)
+    if (isMinimalistCollectionHolder(collection,))
+        return hasByMinimalistCollectionHolder(collection, value,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return hasByCollectionHolder(collection, value,)
     if (isArrayByStructure<T>(collection,))

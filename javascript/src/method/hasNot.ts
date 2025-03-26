@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param value      The value to compare
  * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
  */
-export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, value: T,): boolean {
+export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, value: T,): boolean {
     if (collection == null)
         return true
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return hasNotByCollectionHolder(collection, value,)
     if (isArray(collection,))
         return hasNotByArray(collection, value,)
+    if (isMinimalistCollectionHolder(collection,))
+        return hasNotByMinimalistCollectionHolder(collection, value,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return hasNotByCollectionHolder(collection, value,)
     if (isArrayByStructure<T>(collection,))
