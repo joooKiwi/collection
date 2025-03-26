@@ -19,6 +19,9 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
+
+//#region -------------------- Facade method --------------------
 
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
@@ -53,13 +56,16 @@ export function requireNoNulls<const T, >(collection: Nullable<MinimalistCollect
  * @extensionFunction
  */
 export function requireNoNulls<const T, >(collection: Nullable<readonly T[]>,): readonly NonNullable<T>[]
-export function requireNoNulls<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,) {
+export function requireNoNulls<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,) {
     if (collection == null)
         throw new TypeError("Forbidden null value. The current collection cannot be null.",)
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return requireNoNullsByCollectionHolder(collection,)
     if (isArray(collection,))
         return requireNoNullsByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return requireNoNullsByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return requireNoNullsByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -151,3 +157,5 @@ export function requireNoNullsByArray<const T, >(collection: Nullable<readonly T
             throw new TypeError("Forbidden null value. The current collection contains null values.",)
     return collection
 }
+
+//#endregion -------------------- Facade method --------------------
