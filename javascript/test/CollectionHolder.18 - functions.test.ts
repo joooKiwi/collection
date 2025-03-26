@@ -31,10 +31,6 @@ import {GenericMinimalistCollectionHolder}                                      
 import {LazyGenericCollectionHolder}                                                                                                                                                                                                     from "../src/LazyGenericCollectionHolder"
 import {NullCollectionException}                                                                                                                                                                                                         from "../src/exception/NullCollectionException"
 import {GenericCollectionIterator}                                                                                                                                                                                                       from "../src/iterator/GenericCollectionIterator"
-import * as allModule                                                                                                                                                                                                                    from "../src/method/all"
-import {all, allByArray, allByCollectionHolder, allByMinimalistCollectionHolder}                                                                                                                                                         from "../src/method/all"
-import * as anyModule                                                                                                                                                                                                                    from "../src/method/any"
-import {any, anyByArray, anyByCollectionHolder, anyByMinimalistCollectionHolder}                                                                                                                                                         from "../src/method/any"
 import {contains, containsByArray, containsByCollectionHolder, containsByMinimalistCollectionHolder}                                                                                                                                     from "../src/method/contains"
 import {containsAll, containsAllByArray, containsAllByCollectionHolder, containsAllByMinimalistCollectionHolder}                                                                                                                         from "../src/method/containsAll"
 import {containsAllWithArray, containsAllWithArrayByArray, containsAllWithArrayByCollectionHolder, containsAllWithArrayByMinimalistCollectionHolder}                                                                                     from "../src/method/containsAll.withArray"
@@ -69,7 +65,6 @@ import * as dropWhileModule                                                     
 import {dropWhile, dropWhileByArray, dropWhileByCollectionHolder, dropWhileByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/dropWhile"
 import * as dropWhileIndexedModule                                                                                                                                                                                                       from "../src/method/dropWhileIndexed"
 import {dropWhileIndexed, dropWhileIndexedByArray, dropWhileIndexedByCollectionHolder, dropWhileIndexedByMinimalistCollectionHolder}                                                                                                     from "../src/method/dropWhileIndexed"
-import {every, everyByArray, everyByCollectionHolder, everyByMinimalistCollectionHolder}                                                                                                                                                 from "../src/method/every"
 import {filter, filterByArray, filterByCollectionHolder, filterByMinimalistCollectionHolder}                                                                                                                                             from "../src/method/filter"
 import {filterIndexed, filterIndexedByArray, filterIndexedByCollectionHolder, filterIndexedByMinimalistCollectionHolder}                                                                                                                 from "../src/method/filterIndexed"
 import {filterNot, filterNotByArray, filterNotByCollectionHolder, filterNotByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/filterNot"
@@ -205,7 +200,6 @@ import {map, mapByArray, mapByCollectionHolder, mapByMinimalistCollectionHolder}
 import {mapIndexed, mapIndexedByArray, mapIndexedByCollectionHolder, mapIndexedByMinimalistCollectionHolder}                                                                                                                             from "../src/method/mapIndexed"
 import {mapNotNull, mapNotNullByArray, mapNotNullByCollectionHolder, mapNotNullByMinimalistCollectionHolder}                                                                                                                             from "../src/method/mapNotNull"
 import {mapNotNullIndexed, mapNotNullIndexedByArray, mapNotNullIndexedByCollectionHolder, mapNotNullIndexedByMinimalistCollectionHolder}                                                                                                 from "../src/method/mapNotNullIndexed"
-import {none, noneByArray, noneByCollectionHolder, noneByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/none"
 import {onEach, onEachByArray, onEachByCollectionHolder, onEachByMinimalistCollectionHolder}                                                                                                                                             from "../src/method/onEach"
 import {onEachIndexed, onEachIndexedByArray, onEachIndexedByCollectionHolder, onEachIndexedByMinimalistCollectionHolder}                                                                                                                 from "../src/method/onEachIndexed"
 import {requireNoNulls, requireNoNullsByArray, requireNoNullsByCollectionHolder, requireNoNullsByMinimalistCollectionHolder}                                                                                                             from "../src/method/requireNoNulls"
@@ -225,7 +219,6 @@ import {sliceWithIterable, sliceWithIterableByArray, sliceWithIterableByCollecti
 import {sliceWithIterator, sliceWithIteratorByArray, sliceWithIteratorByCollectionHolder, sliceWithIteratorByMinimalistCollectionHolder}                                                                                                 from "../src/method/slice.withIterator"
 import {sliceWithMinimalistCollectionHolder, sliceWithMinimalistCollectionHolderByArray, sliceWithMinimalistCollectionHolderByCollectionHolder, sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder}                         from "../src/method/slice.withMinimalistCollectionHolder"
 import {sliceWithSet, sliceWithSetByArray, sliceWithSetByCollectionHolder, sliceWithSetByMinimalistCollectionHolder}                                                                                                                     from "../src/method/slice.withSet"
-import {some, someByArray, someByCollectionHolder, someByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/some"
 import * as takeModule                                                                                                                                                                                                                   from "../src/method/take"
 import {take, takeByArray, takeByCollectionHolder, takeByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/take"
 import * as takeLastModule                                                                                                                                                                                                               from "../src/method/takeLast"
@@ -329,24 +322,6 @@ describe("CollectionHolderTest (functions)", () => {
             test("array",                        () => expect(findLastIndexedOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
         },)
 
-        describe("all", () => {
-            test("all",                          () => expect(all(it, callbackAsFail0,),).toBeTrue(),)
-            test("minimalist collection holder", () => expect(allByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeTrue(),)
-            test("collection holder",            () => expect(allByCollectionHolder(it, callbackAsFail0,),).toBeTrue(),)
-            test("array",                        () => expect(allByArray(it, callbackAsFail0,),).toBeTrue(),)
-        },)
-        describe("any", () => {
-            test("all",                          () => expect(any(it,),).toBeFalse(),)
-            test("minimalist collection holder", () => expect(anyByMinimalistCollectionHolder(it,),).toBeFalse(),)
-            test("collection holder",            () => expect(anyByCollectionHolder(it,),).toBeFalse(),)
-            test("array",                        () => expect(anyByArray(it,),).toBeFalse(),)
-        },)
-        describe("none", () => {
-            test("all",                          () => expect(none(it,),).toBeTrue(),)
-            test("minimalist collection holder", () => expect(noneByMinimalistCollectionHolder(it,),).toBeTrue(),)
-            test("collection holder",            () => expect(noneByCollectionHolder(it,),).toBeTrue(),)
-            test("array",                        () => expect(noneByArray(it,),).toBeTrue(),)
-        },)
         describe("hasNull", () => {
             test("all",                          () => expect(hasNull(it,),).toBeFalse(),)
             test("minimalist collection holder", () => expect(hasNullByMinimalistCollectionHolder(it,),).toBeFalse(),)
@@ -1271,50 +1246,6 @@ describe("CollectionHolderTest (functions)", () => {
             },)
         },)
 
-        describe("every", () => {
-            test("all", () => {
-                const method = jest.spyOn(allModule, "all",)
-                every(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(allModule, "allByMinimalistCollectionHolder",)
-                everyByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(allModule, "allByCollectionHolder",)
-                everyByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(allModule, "allByArray",)
-                everyByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("some", () => {
-            test("all", () => {
-                const method = jest.spyOn(anyModule, "any",)
-                some(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(anyModule, "anyByMinimalistCollectionHolder",)
-                someByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(anyModule, "anyByCollectionHolder",)
-                someByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(anyModule, "anyByArray",)
-                someByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
         describe("containsNull", () => {
             test("all", () => {
                 const method = jest.spyOn(hasNullModule, "hasNull",)

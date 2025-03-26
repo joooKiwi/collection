@@ -10,6 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {CollectionHolderFromArray}                                                                                                              from "./instance/CollectionHolderFromArray"
 import {EmptyCollectionHolderForTest}                                                                                                           from "./instance/EmptyCollectionHolderForTest"
 import {GenericCollectionHolder_AllAlias}                                                                                                       from "./instance/GenericCollectionHolder_AllAlias"
 import {GenericCollectionHolder_AnyAlias}                                                                                                       from "./instance/GenericCollectionHolder_AnyAlias"
@@ -21,6 +22,14 @@ import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                      
 import {callbackIs0Alt, callbackIs1Alt, callbackIs2Alt, callbackIs3Alt, callbackIs4Alt, callbackIsEvenAlt, callbackIsOddAlt}                    from "./value/callbacks (number)"
 import {callbackIsA, callbackIsB, callbackIsC, callbackIsD, callbackIsE}                                                                        from "./value/callbacks (string)"
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                         from "./value/instances"
+
+import * as allModule                                                                    from "../src/method/all"
+import {all, allByArray, allByCollectionHolder, allByMinimalistCollectionHolder}         from "../src/method/all"
+import * as anyModule                                                                    from "../src/method/any"
+import {any, anyByArray, anyByCollectionHolder, anyByMinimalistCollectionHolder}         from "../src/method/any"
+import {every, everyByArray, everyByCollectionHolder, everyByMinimalistCollectionHolder} from "../src/method/every"
+import {none, noneByArray, noneByCollectionHolder, noneByMinimalistCollectionHolder}     from "../src/method/none"
+import {some, someByArray, someByCollectionHolder, someByMinimalistCollectionHolder}     from "../src/method/some"
 
 describe("CollectionHolderTest (all / any / none)", () => {
 
@@ -40,6 +49,72 @@ describe("CollectionHolderTest (all / any / none)", () => {
         describe("LazyGenericCollectionHolder", () => {
             test("every", () => expect(new LazyGenericCollectionHolder_AllAlias().execute(it => it.every(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
             test("some",  () => expect(new LazyGenericCollectionHolder_AnyAlias().execute(it => it.some(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+        },)
+
+        describe("every", () => {
+            test("all", () => {
+                const method = jest.spyOn(allModule, "all",)
+                every(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(allModule, "allByMinimalistCollectionHolder",)
+                everyByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(allModule, "allByCollectionHolder",)
+                everyByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(allModule, "allByArray",)
+                everyByArray(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("some", () => {
+            test("all", () => {
+                const method = jest.spyOn(anyModule, "any",)
+                some(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(anyModule, "anyByMinimalistCollectionHolder",)
+                someByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(anyModule, "anyByCollectionHolder",)
+                someByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(anyModule, "anyByArray",)
+                someByArray(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+    },)
+
+    describe.each(NULL_UNDEFINED,)("%s", it => {
+        describe("all", () => {
+            test("all",                          () => expect(all(it, callbackAsFail0,),).toBeTrue(),)
+            test("minimalist collection holder", () => expect(allByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeTrue(),)
+            test("collection holder",            () => expect(allByCollectionHolder(it, callbackAsFail0,),).toBeTrue(),)
+            test("array",                        () => expect(allByArray(it, callbackAsFail0,),).toBeTrue(),)
+        },)
+        describe("any", () => {
+            test("all",                          () => expect(any(it,),).toBeFalse(),)
+            test("minimalist collection holder", () => expect(anyByMinimalistCollectionHolder(it,),).toBeFalse(),)
+            test("collection holder",            () => expect(anyByCollectionHolder(it,),).toBeFalse(),)
+            test("array",                        () => expect(anyByArray(it,),).toBeFalse(),)
+        },)
+        describe("none", () => {
+            test("all",                          () => expect(none(it,),).toBeTrue(),)
+            test("minimalist collection holder", () => expect(noneByMinimalistCollectionHolder(it,),).toBeTrue(),)
+            test("collection holder",            () => expect(noneByCollectionHolder(it,),).toBeTrue(),)
+            test("array",                        () => expect(noneByArray(it,),).toBeTrue(),)
         },)
     },)
 
