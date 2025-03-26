@@ -172,7 +172,7 @@ public final class Drop
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(sizeMinus1)});
+            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getLast()});
         return new GenericCollectionHolder<>(() -> __getAll(collection, size, n2));
     }
 
