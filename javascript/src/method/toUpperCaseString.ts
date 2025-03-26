@@ -20,6 +20,7 @@ import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -31,13 +32,16 @@ import {isArrayByStructure}            from "./isArrayByStructure"
  * @see String.toUpperCase
  * @extensionFunction
  */
-export function toUpperCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): string {
+export function toUpperCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): string {
     if (collection == null)
         return "[]"
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toUpperCaseStringByCollectionHolder(collection,)
     if (isArray(collection,))
         return toUpperCaseStringByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toUpperCaseStringByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toUpperCaseStringByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))

@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -32,13 +33,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see Object.toString
  * @extensionFunction
  */
-export function toString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): string {
+export function toString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): string {
     if (collection == null)
         return "[]"
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toStringByCollectionHolder(collection,)
     if (isArray(collection,))
         return toStringByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toStringByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toStringByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))

@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -36,13 +37,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see BigInt.toLocaleString
  * @extensionFunction
  */
-export function toLocaleString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, locale?: NullableString,): string {
+export function toLocaleString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toLocaleStringByCollectionHolder(collection, locale,)
     if (isArray(collection,))
         return toLocaleStringByArray(collection, locale,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toLocaleStringByMinimalistCollectionHolder(collection, locale,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toLocaleStringByCollectionHolder(collection, locale,)
     if (isArrayByStructure<T>(collection,))
