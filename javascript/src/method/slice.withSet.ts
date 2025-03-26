@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -35,13 +36,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, indices: ReadonlySet<number>,): CollectionHolder<T> {
+export function sliceWithSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, indices: ReadonlySet<number>,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return sliceWithSetByCollectionHolder(collection, indices,)
-    if (isArray<T>(collection,))
+    if (isArray(collection,))
         return sliceWithSetByArray(collection, indices,)
+    if (isMinimalistCollectionHolder(collection,))
+        return sliceWithSetByMinimalistCollectionHolder(collection, indices,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return sliceWithSetByCollectionHolder(collection, indices,)
     if (isArrayByStructure<T>(collection,))
