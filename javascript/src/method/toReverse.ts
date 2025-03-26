@@ -21,6 +21,7 @@ import {isArray}                                           from "./isArray"
 import {isArrayByStructure}                                from "./isArrayByStructure"
 import {isCollectionHolder}                                from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                     from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                      from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -35,7 +36,7 @@ import {isCollectionHolderByStructure}                     from "./isCollectionH
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): CollectionHolder<T>
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
  * from the start of the {@link collection} to the {@link from starting} index
@@ -51,7 +52,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, from: NullableNumber,): CollectionHolder<T>
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
  * from the {@link to ending} to the {@link from starting} index
@@ -70,8 +71,8 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (to == null)
@@ -272,11 +273,14 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, 
 
 //#region -------------------- ∅ --------------------
 
-function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[],): CollectionHolder<T> {
-    if (isCollectionHolder<T>(collection,))
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[],): CollectionHolder<T> {
+    if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection,)
     if (isArray(collection,))
         return __core0ByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __core0ByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __core0ByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -307,11 +311,14 @@ function __core0ByArray<const T, >(collection: readonly T[],): CollectionHolder<
 //#endregion -------------------- ∅ --------------------
 //#region -------------------- from --------------------
 
-function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], from: number,): CollectionHolder<T> {
-    if (isCollectionHolder<T>(collection,))
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], from: number,): CollectionHolder<T> {
+    if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, from,)
     if (isArray(collection,))
         return __core1ByArray(collection, from,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __core1ByMinimalistCollectionHolder(collection, from,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __core1ByCollectionHolder(collection, from,)
     if (isArrayByStructure<T>(collection,))
@@ -349,11 +356,14 @@ function __core1ByArray<const T, >(collection: readonly T[], from: number,): Col
 //#endregion -------------------- from --------------------
 //#region -------------------- from, to --------------------
 
-function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], from: number, to: number,): CollectionHolder<T> {
-    if (isCollectionHolder<T>(collection,))
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], from: number, to: number,): CollectionHolder<T> {
+    if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, from, to,)
     if (isArray(collection,))
         return __core2ByArray(collection, from, to,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __core2ByMinimalistCollectionHolder(collection, from, to,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __core2ByCollectionHolder(collection, from, to,)
     if (isArrayByStructure<T>(collection,))
@@ -397,11 +407,14 @@ function __core2ByArray<const T, >(collection: readonly T[], from: number, to: n
 //#endregion -------------------- from, to --------------------
 //#region -------------------- to --------------------
 
-function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], to: number,): CollectionHolder<T> {
-    if (isCollectionHolder<T>(collection,))
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], to: number,): CollectionHolder<T> {
+    if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, to,)
     if (isArray(collection,))
         return __coreWithNoFromByArray(collection, to,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __coreWithNoFromByMinimalistCollectionHolder(collection, to,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __coreWithNoFromByCollectionHolder(collection, to,)
     if (isArrayByStructure<T>(collection,))
