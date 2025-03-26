@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -38,14 +39,16 @@ export function take<const T, >(collection: Nullable<| MinimalistCollectionHolde
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder<T>(collection,))
-        return takeByCollectionHolder(collection, n,)
+        return __coreByCollectionHolder(collection, n,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __coreByMinimalistCollectionHolder(collection, n,)
     if (isArray(collection,))
-        return takeByArray(collection, n,)
+        return __coreByArray(collection, n,)
     if (isCollectionHolderByStructure<T>(collection,))
-        return takeByCollectionHolder(collection, n,)
+        return __coreByCollectionHolder(collection, n,)
     if (isArrayByStructure<T>(collection,))
-        return takeByArray(collection, n,)
-    return takeByMinimalistCollectionHolder(collection, n,)
+        return __coreByArray(collection, n,)
+    return __coreByMinimalistCollectionHolder(collection, n,)
 }
 
 
@@ -62,7 +65,45 @@ export function take<const T, >(collection: Nullable<| MinimalistCollectionHolde
 export function takeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return __coreByMinimalistCollectionHolder(collection, n,)
+}
 
+/**
+ * Get a new {@link CollectionHolder} from the first {@link n} elements
+ *
+ * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
+ * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
+ * @canReceiveNegativeValue
+ */
+export function takeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, n: number,): CollectionHolder<T> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return __coreByCollectionHolder(collection, n,)
+}
+
+/**
+ * Get a new {@link CollectionHolder} from the first {@link n} elements
+ *
+ * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
+ * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
+ * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
+ * @canReceiveNegativeValue
+ */
+export function takeByArray<const T, >(collection: Nullable<readonly T[]>, n: number,): CollectionHolder<T> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return __coreByArray(collection, n,)
+}
+
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Core method --------------------
+
+function __coreByMinimalistCollectionHolder<const T,>(collection: MinimalistCollectionHolder<T>, n: number,): CollectionHolder<T> {
     const size = collection.size
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -90,19 +131,7 @@ export function takeByMinimalistCollectionHolder<const T, >(collection: Nullable
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n2,),)
 }
 
-/**
- * Get a new {@link CollectionHolder} from the first {@link n} elements
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param n          The number of arguments (if negative, then it is plus {@link size})
- * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
- * @canReceiveNegativeValue
- */
-export function takeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, n: number,): CollectionHolder<T> {
-    if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: number,): CollectionHolder<T> {
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (Number.isNaN(n,))
@@ -131,20 +160,7 @@ export function takeByCollectionHolder<const T, >(collection: Nullable<Collectio
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n + size,),)
 }
 
-/**
- * Get a new {@link CollectionHolder} from the first {@link n} elements
- *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @param n          The number of arguments (if negative, then it is plus {@link size})
- * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
- * @canReceiveNegativeValue
- */
-export function takeByArray<const T, >(collection: Nullable<readonly T[]>, n: number,): CollectionHolder<T> {
-    if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
+function __coreByArray<const T,>(collection: readonly T[], n: number,): CollectionHolder<T> {
     const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -172,7 +188,7 @@ export function takeByArray<const T, >(collection: Nullable<readonly T[]>, n: nu
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, n + size,),)
 }
 
-//#endregion -------------------- Facade method --------------------
+//#endregion -------------------- Core method --------------------
 //#region -------------------- Loop methods --------------------
 
 function __getAll<const T, >(collection: MinimalistCollectionHolder<T>, amount: number,): readonly T[] {
