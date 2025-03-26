@@ -65,11 +65,6 @@ import * as dropWhileModule                                                     
 import {dropWhile, dropWhileByArray, dropWhileByCollectionHolder, dropWhileByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/dropWhile"
 import * as dropWhileIndexedModule                                                                                                                                                                                                       from "../src/method/dropWhileIndexed"
 import {dropWhileIndexed, dropWhileIndexedByArray, dropWhileIndexedByCollectionHolder, dropWhileIndexedByMinimalistCollectionHolder}                                                                                                     from "../src/method/dropWhileIndexed"
-import {filter, filterByArray, filterByCollectionHolder, filterByMinimalistCollectionHolder}                                                                                                                                             from "../src/method/filter"
-import {filterIndexed, filterIndexedByArray, filterIndexedByCollectionHolder, filterIndexedByMinimalistCollectionHolder}                                                                                                                 from "../src/method/filterIndexed"
-import {filterNot, filterNotByArray, filterNotByCollectionHolder, filterNotByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/filterNot"
-import {filterNotIndexed, filterNotIndexedByArray, filterNotIndexedByCollectionHolder, filterNotIndexedByMinimalistCollectionHolder}                                                                                                     from "../src/method/filterNotIndexed"
-import {filterNotNull, filterNotNullByArray, filterNotNullByCollectionHolder, filterNotNullByMinimalistCollectionHolder}                                                                                                                 from "../src/method/filterNotNull"
 import {find, findByArray, findByCollectionHolder, findByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/find"
 import * as findFirstModule                                                                                                                                                                                                              from "../src/method/findFirst"
 import {findFirst, findFirstByArray, findFirstByCollectionHolder, findFirstByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/findFirst"
@@ -199,7 +194,6 @@ import {mapNotNull, mapNotNullByArray, mapNotNullByCollectionHolder, mapNotNullB
 import {mapNotNullIndexed, mapNotNullIndexedByArray, mapNotNullIndexedByCollectionHolder, mapNotNullIndexedByMinimalistCollectionHolder}                                                                                                 from "../src/method/mapNotNullIndexed"
 import {onEach, onEachByArray, onEachByCollectionHolder, onEachByMinimalistCollectionHolder}                                                                                                                                             from "../src/method/onEach"
 import {onEachIndexed, onEachIndexedByArray, onEachIndexedByCollectionHolder, onEachIndexedByMinimalistCollectionHolder}                                                                                                                 from "../src/method/onEachIndexed"
-import {requireNoNulls, requireNoNullsByArray, requireNoNullsByCollectionHolder, requireNoNullsByMinimalistCollectionHolder}                                                                                                             from "../src/method/requireNoNulls"
 import {reversed, reversedByArray, reversedByCollectionHolder, reversedByMinimalistCollectionHolder}                                                                                                                                     from "../src/method/reversed"
 import {skip, skipByArray, skipByCollectionHolder, skipByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/skip"
 import {skipLast, skipLastByArray, skipLastByCollectionHolder, skipLastByMinimalistCollectionHolder}                                                                                                                                     from "../src/method/skipLast"
@@ -561,43 +555,7 @@ describe("CollectionHolderTest (functions)", () => {
                 test("array",                        () => expect(hasAllWithIterableByArray(it, A,),).toBeFalse(),)
             },)
         },)
-        describe("requireNoNulls", () => {
-            test("all",                          () => expect(() => requireNoNulls(it,),).toThrow(TypeError,),)
-            test("minimalist collection holder", () => expect(() => requireNoNullsByMinimalistCollectionHolder(it,),).toThrow(TypeError,),)
-            test("collection holder",            () => expect(() => requireNoNullsByCollectionHolder(it,),).toThrow(TypeError,),)
-            test("array",                        () => expect(() => requireNoNullsByArray(it,),).toThrow(TypeError,),)
-        },)
 
-        describe("filter", () => {
-            test("all",                          () => expect(filter(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(filterByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(filterByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(filterByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("filterIndexed", () => {
-            test("all",                          () => expect(filterIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(filterIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(filterIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(filterIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("filterNot", () => {
-            test("all",                          () => expect(filterNot(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(filterNotByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(filterNotByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(filterNotByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("filterNotIndexed", () => {
-            test("all",                          () => expect(filterNotIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(filterNotIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(filterNotIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(filterNotIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("filterNotNull", () => {
-            test("all",                          () => expect(filterNotNull(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(filterNotNullByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(filterNotNullByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(filterNotNullByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
         describe("slice", () => {
             test("all",                          () => expect(slice(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             test("minimalist collection holder", () => expect(sliceByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)

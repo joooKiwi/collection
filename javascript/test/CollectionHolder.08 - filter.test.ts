@@ -19,7 +19,13 @@ import {callbackIs0, callbackIs0Alt, callbackIs1, callbackIs1Alt, callbackIs2, c
 import {callbackIsA, callbackIsAAlt, callbackIsB, callbackIsBAlt, callbackIsC, callbackIsCAlt, callbackIsD, callbackIsDAlt, callbackIsE, callbackIsEAlt}                                                                               from "./value/callbacks (string)"
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                                                                                from "./value/instances"
 
-import {CollectionConstants} from "../src/CollectionConstants"
+import {filter, filterByArray, filterByCollectionHolder, filterByMinimalistCollectionHolder}                                         from "../src/method/filter"
+import {filterIndexed, filterIndexedByArray, filterIndexedByCollectionHolder, filterIndexedByMinimalistCollectionHolder}             from "../src/method/filterIndexed"
+import {filterNot, filterNotByArray, filterNotByCollectionHolder, filterNotByMinimalistCollectionHolder}                             from "../src/method/filterNot"
+import {filterNotIndexed, filterNotIndexedByArray, filterNotIndexedByCollectionHolder, filterNotIndexedByMinimalistCollectionHolder} from "../src/method/filterNotIndexed"
+import {filterNotNull, filterNotNullByArray, filterNotNullByCollectionHolder, filterNotNullByMinimalistCollectionHolder}             from "../src/method/filterNotNull"
+import {requireNoNulls, requireNoNullsByArray, requireNoNullsByCollectionHolder, requireNoNullsByMinimalistCollectionHolder}         from "../src/method/requireNoNulls"
+import {CollectionConstants}                                                                                                         from "../src/CollectionConstants"
 
 describe("CollectionHolderTest (filter)", () => {
 
@@ -30,6 +36,45 @@ describe("CollectionHolderTest (filter)", () => {
         test("filterNotIndexed", () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.filterNotIndexed(),),)
         test("filterNotNull",    () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.filterNotNull(),),)
         test("requireNoNulls",   () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.requireNoNulls(),),)
+    },)
+
+    describe.each(NULL_UNDEFINED,)("%s", it => {
+        describe("filter", () => {
+            test("all",                          () => expect(filter(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(filterByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(filterByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(filterByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("filterIndexed", () => {
+            test("all",                          () => expect(filterIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(filterIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(filterIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(filterIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("filterNot", () => {
+            test("all",                          () => expect(filterNot(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(filterNotByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(filterNotByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(filterNotByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("filterNotIndexed", () => {
+            test("all",                          () => expect(filterNotIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(filterNotIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(filterNotIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(filterNotIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("filterNotNull", () => {
+            test("all",                          () => expect(filterNotNull(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(filterNotNullByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(filterNotNullByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(filterNotNullByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("requireNoNulls", () => {
+            test("all",                          () => expect(() => requireNoNulls(it,),).toThrow(TypeError,),)
+            test("minimalist collection holder", () => expect(() => requireNoNullsByMinimalistCollectionHolder(it,),).toThrow(TypeError,),)
+            test("collection holder",            () => expect(() => requireNoNullsByCollectionHolder(it,),).toThrow(TypeError,),)
+            test("array",                        () => expect(() => requireNoNullsByArray(it,),).toThrow(TypeError,),)
+        },)
     },)
 
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
