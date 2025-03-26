@@ -22,6 +22,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
  * Convert the {@link collection} to a new {@link CollectionIterator}
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @extensionFunction
  */
-export function toIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): CollectionIterator<T> {
+export function toIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionIterator<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_ITERATOR
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toIteratorByCollectionHolder(collection,)
     if (isArray(collection,))
         return toIteratorByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toIteratorByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toIteratorByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
