@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */
-export function hasNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): boolean {
+export function hasNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): boolean {
     if (collection == null)
         return false
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return hasNullByCollectionHolder(collection,)
     if (isArray(collection,))
         return hasNullByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return hasNullByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return hasNullByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
