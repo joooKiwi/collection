@@ -115,6 +115,10 @@ function __coreByMinimalistCollectionHolder<const T,>(collection: MinimalistColl
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (n === 0)
         return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+
+    const sizeMinus1 = size - 1
+    if (n === sizeMinus1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.get(sizeMinus1,),],)
     if (n > 0)
         if (n >= size)
             return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -122,7 +126,11 @@ function __coreByMinimalistCollectionHolder<const T,>(collection: MinimalistColl
             return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n,),)
     if (n <= -size)
         return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n + size,),)
+
+    const n2 = n + size
+    if (n2 === sizeMinus1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.get(sizeMinus1,),],)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n2,),)
 }
 
 function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: number,): CollectionHolder<T> {
@@ -138,6 +146,9 @@ function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: 
         return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
 
     const size = collection.size
+    const sizeMinus1 = size - 1
+    if (n === sizeMinus1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getLast(),],)
     if (n > 0)
         if (n >= size)
             return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -145,7 +156,11 @@ function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: 
             return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n,),)
     if (n <= -size)
         return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n + size,),)
+
+    const n2 = n + size
+    if (n2 === sizeMinus1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getLast(),],)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n2,),)
 }
 
 function __coreByArray<const T,>(collection: readonly T[], n: number,): CollectionHolder<T> {
@@ -160,6 +175,10 @@ function __coreByArray<const T,>(collection: readonly T[], n: number,): Collecti
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (n === 0)
         return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+
+    const sizeMinus1 = size - 1
+    if (n === sizeMinus1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection[sizeMinus1] as T,],)
     if (n > 0)
         if (n >= size)
             return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -167,7 +186,11 @@ function __coreByArray<const T,>(collection: readonly T[], n: number,): Collecti
             return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, size, n,),)
     if (n <= -size)
         return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, size, n + size,),)
+
+    const n2 = n + size
+    if (n2 === sizeMinus1)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection[sizeMinus1] as T,],)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, size, n2,),)
 }
 
 //#endregion -------------------- Core method --------------------
