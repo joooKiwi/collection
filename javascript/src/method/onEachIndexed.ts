@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -35,14 +36,17 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
  * @extensionFunction
  */
-export function onEachIndexed<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION
-export function onEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, action: IndexValueCallback<T>,) {
+export function onEachIndexed<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION
+export function onEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, action: IndexValueCallback<T>,) {
     if (collection == null)
         return collection
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return onEachIndexedByCollectionHolder(collection, action,)
     if (isArray(collection,))
         return onEachIndexedByArray(collection, action,)
+    if (isMinimalistCollectionHolder(collection,))
+        return onEachIndexedByMinimalistCollectionHolder(collection, action,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return onEachIndexedByCollectionHolder(collection, action,)
     if (isArrayByStructure<T>(collection,))
