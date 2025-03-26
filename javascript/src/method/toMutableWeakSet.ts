@@ -20,6 +20,7 @@ import {isArray}                                         from "./isArray"
 import {isArrayByStructure}                              from "./isArrayByStructure"
 import {isCollectionHolder}                              from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                    from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure}                   from "./isCollectionHol
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): WeakSet<T> {
+export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): WeakSet<T> {
     if (collection == null)
         return new WeakSet()
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toMutableWeakSetByCollectionHolder(collection,)
     if (isArray(collection,))
         return toMutableWeakSetByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toMutableWeakSetByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toMutableWeakSetByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
