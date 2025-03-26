@@ -21,6 +21,7 @@ import {isArray}                                         from "./isArray"
 import {isArrayByStructure}                              from "./isArrayByStructure"
 import {isCollectionHolder}                              from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                    from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -30,13 +31,16 @@ import {isCollectionHolderByStructure}                   from "./isCollectionHol
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toMap<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): ReadonlyMap<number, T> {
+export function toMap<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): ReadonlyMap<number, T> {
     if (collection == null)
         return CollectionConstants.EMPTY_MAP
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toMapByCollectionHolder(collection,)
     if (isArray(collection,))
         return toMapByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toMapByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toMapByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
