@@ -12,6 +12,7 @@
 
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                                                                                                                                                                                                                                             from "./value/instances"
 import {expectToBeInstance}                                                                                                                                                                                                                                                                                                                                                                         from "./expect/expectToBeInstance"
+import {CollectionHolderFromArray}                                                                                                                                                                                                                                                                                                                                                                  from "./instance/CollectionHolderFromArray"
 import {GenericCollectionHolder_DropAlias}                                                                                                                                                                                                                                                                                                                                                          from "./instance/GenericCollectionHolder_DropAlias"
 import {GenericCollectionHolder_DropLastAlias}                                                                                                                                                                                                                                                                                                                                                      from "./instance/GenericCollectionHolder_DropLastAlias"
 import {GenericCollectionHolder_DropLastWhileAlias}                                                                                                                                                                                                                                                                                                                                                 from "./instance/GenericCollectionHolder_DropLastWhileAlias"
@@ -29,10 +30,28 @@ import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                      
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2, falseCallbacks, trueCallbacks}                                                                                                                                                                                                                                                     from "./value/callbacks (boolean)"
 import {callbackIsOver0, callbackIsOver0Alt, callbackIsOver1, callbackIsOver1Alt, callbackIsOver2, callbackIsOver2Alt, callbackIsOver3, callbackIsOver3Alt, callbackIsOver4, callbackIsOver4Alt, callbackIsUnder0, callbackIsUnder0Alt, callbackIsUnder1, callbackIsUnder1Alt, callbackIsUnder2, callbackIsUnder2Alt, callbackIsUnder3, callbackIsUnder3Alt, callbackIsUnder4, callbackIsUnder4Alt} from "./value/callbacks (number)"
 import {callbackIsOverA, callbackIsOverAAlt, callbackIsOverB, callbackIsOverBAlt, callbackIsOverC, callbackIsOverCAlt, callbackIsOverD, callbackIsOverDAlt, callbackIsOverE, callbackIsOverEAlt, callbackIsUnderA, callbackIsUnderAAlt, callbackIsUnderB, callbackIsUnderBAlt, callbackIsUnderC, callbackIsUnderCAlt, callbackIsUnderD, callbackIsUnderDAlt, callbackIsUnderE, callbackIsUnderEAlt} from "./value/callbacks (string)"
-import {A, AB, ABC, ABCD, B, BCD, CD, D, EMPTY}                                                                                                                                                                                                                                                                                                                                                     from "./value/arrays"
+import {A, AB, ABC, ABCD, B, BCD, CD, D, EMPTY, NULL_UNDEFINED}                                                                                                                                                                                                                                                                                                                                     from "./value/arrays"
 
-import {CollectionConstants}     from "../src/CollectionConstants"
-import {ForbiddenIndexException} from "../src/exception/ForbiddenIndexException"
+import {CollectionConstants}                                                                                                                         from "../src/CollectionConstants"
+import {ForbiddenIndexException}                                                                                                                     from "../src/exception/ForbiddenIndexException"
+import * as dropModule                                                                                                                               from "../src/method/drop"
+import {drop, dropByArray, dropByCollectionHolder, dropByMinimalistCollectionHolder}                                                                 from "../src/method/drop"
+import * as dropLastModule                                                                                                                           from "../src/method/dropLast"
+import {dropLast, dropLastByArray, dropLastByCollectionHolder, dropLastByMinimalistCollectionHolder}                                                 from "../src/method/dropLast"
+import * as dropLastWhileModule                                                                                                                      from "../src/method/dropLastWhile"
+import {dropLastWhile, dropLastWhileByArray, dropLastWhileByCollectionHolder, dropLastWhileByMinimalistCollectionHolder}                             from "../src/method/dropLastWhile"
+import * as dropLastWhileIndexedModule                                                                                                               from "../src/method/dropLastWhileIndexed"
+import {dropLastWhileIndexed, dropLastWhileIndexedByArray, dropLastWhileIndexedByCollectionHolder, dropLastWhileIndexedByMinimalistCollectionHolder} from "../src/method/dropLastWhileIndexed"
+import * as dropWhileModule                                                                                                                          from "../src/method/dropWhile"
+import {dropWhile, dropWhileByArray, dropWhileByCollectionHolder, dropWhileByMinimalistCollectionHolder}                                             from "../src/method/dropWhile"
+import * as dropWhileIndexedModule                                                                                                                   from "../src/method/dropWhileIndexed"
+import {dropWhileIndexed, dropWhileIndexedByArray, dropWhileIndexedByCollectionHolder, dropWhileIndexedByMinimalistCollectionHolder}                 from "../src/method/dropWhileIndexed"
+import {skip, skipByArray, skipByCollectionHolder, skipByMinimalistCollectionHolder}                                                                 from "../src/method/skip"
+import {skipLast, skipLastByArray, skipLastByCollectionHolder, skipLastByMinimalistCollectionHolder}                                                 from "../src/method/skipLast"
+import {skipLastWhile, skipLastWhileByArray, skipLastWhileByCollectionHolder, skipLastWhileByMinimalistCollectionHolder}                             from "../src/method/skipLastWhile"
+import {skipLastWhileIndexed, skipLastWhileIndexedByArray, skipLastWhileIndexedByCollectionHolder, skipLastWhileIndexedByMinimalistCollectionHolder} from "../src/method/skipLastWhileIndexed"
+import {skipWhile, skipWhileByArray, skipWhileByCollectionHolder, skipWhileByMinimalistCollectionHolder}                                             from "../src/method/skipWhile"
+import {skipWhileIndexed, skipWhileIndexedByArray, skipWhileIndexedByCollectionHolder, skipWhileIndexedByMinimalistCollectionHolder}                 from "../src/method/skipWhileIndexed"
 
 describe("CollectionHolderTest (drop)", () => {
 
@@ -67,6 +86,180 @@ describe("CollectionHolderTest (drop)", () => {
             test("skipLast",             () => expect(new LazyGenericCollectionHolder_DropLastAlias().execute(it => it.skipLast(0,),).amountOfCall,).toBe(1,),)
             test("skipLastWhile",        () => expect(new LazyGenericCollectionHolder_DropLastWhileAlias().execute(it => it.skipLastWhile(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
             test("skipLastWhileIndexed", () => expect(new LazyGenericCollectionHolder_DropLastWhileIndexedAlias().execute(it => it.skipLastWhileIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+        },)
+
+        describe("skip", () => {
+            test("all", () => {
+                const method = jest.spyOn(dropModule, "drop",)
+                skip(A, 0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(dropModule, "dropByMinimalistCollectionHolder",)
+                skipByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), 0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(dropModule, "dropByCollectionHolder",)
+                skipByCollectionHolder(new CollectionHolderFromArray(A,), 0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(dropModule, "dropByArray",)
+                skipByArray(A, 0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("skipWhile", () => {
+            test("all", () => {
+                const method = jest.spyOn(dropWhileModule, "dropWhile",)
+                skipWhile(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(dropWhileModule, "dropWhileByMinimalistCollectionHolder",)
+                skipWhileByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(dropWhileModule, "dropWhileByCollectionHolder",)
+                skipWhileByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(dropWhileModule, "dropWhileByArray",)
+                skipWhileByArray(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("skipWhileIndexed", () => {
+            test("all", () => {
+                const method = jest.spyOn(dropWhileIndexedModule, "dropWhileIndexed",)
+                skipWhileIndexed(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(dropWhileIndexedModule, "dropWhileIndexedByMinimalistCollectionHolder",)
+                skipWhileIndexedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(dropWhileIndexedModule, "dropWhileIndexedByCollectionHolder",)
+                skipWhileIndexedByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(dropWhileIndexedModule, "dropWhileIndexedByArray",)
+                skipWhileIndexedByArray(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+
+        describe("skipLast", () => {
+            test("all", () => {
+                const method = jest.spyOn(dropLastModule, "dropLast",)
+                skipLast(A, 0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(dropLastModule, "dropLastByMinimalistCollectionHolder",)
+                skipLastByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), 0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(dropLastModule, "dropLastByCollectionHolder",)
+                skipLastByCollectionHolder(new CollectionHolderFromArray(A,), 0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(dropLastModule, "dropLastByArray",)
+                skipLastByArray(A, 0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("skipLastWhile", () => {
+            test("all", () => {
+                const method = jest.spyOn(dropLastWhileModule, "dropLastWhile",)
+                skipLastWhile(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(dropLastWhileModule, "dropLastWhileByMinimalistCollectionHolder",)
+                skipLastWhileByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(dropLastWhileModule, "dropLastWhileByCollectionHolder",)
+                skipLastWhileByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(dropLastWhileModule, "dropLastWhileByArray",)
+                skipLastWhileByArray(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("skipLastWhileIndexed", () => {
+            test("all", () => {
+                const method = jest.spyOn(dropLastWhileIndexedModule, "dropLastWhileIndexed",)
+                skipLastWhileIndexed(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(dropLastWhileIndexedModule, "dropLastWhileIndexedByMinimalistCollectionHolder",)
+                skipLastWhileIndexedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(dropLastWhileIndexedModule, "dropLastWhileIndexedByCollectionHolder",)
+                skipLastWhileIndexedByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(dropLastWhileIndexedModule, "dropLastWhileIndexedByArray",)
+                skipLastWhileIndexedByArray(A, callbackAsTrue0,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+    },)
+
+    describe.each(NULL_UNDEFINED,)("%s", it => {
+        describe("drop", () => {
+            test("all",                          () => expect(drop(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(dropByMinimalistCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(dropByCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(dropByArray(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("dropWhile", () => {
+            test("all",                          () => expect(dropWhile(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(dropWhileByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(dropWhileByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(dropWhileByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("dropWhileIndexed", () => {
+            test("all",                          () => expect(dropWhileIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(dropWhileIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(dropWhileIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(dropWhileIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+
+        describe("dropLast", () => {
+            test("all",                          () => expect(dropLast(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(dropLastByMinimalistCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(dropLastByCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(dropLastByArray(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("dropLastWhile", () => {
+            test("all",                          () => expect(dropLastWhile(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(dropLastWhileByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(dropLastWhileByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(dropLastWhileByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("dropLastWhileIndexed", () => {
+            test("all",                          () => expect(dropLastWhileIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(dropLastWhileIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(dropLastWhileIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(dropLastWhileIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
         },)
     },)
 
