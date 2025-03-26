@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -35,13 +36,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
-export function getLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): T {
+export function getLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T {
     if (collection == null)
         throw new NullCollectionException()
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return getLastByCollectionHolder(collection,)
     if (isArray(collection,))
         return getLastByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return getLastByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return getLastByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))

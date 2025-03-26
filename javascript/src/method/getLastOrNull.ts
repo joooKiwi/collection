@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -31,13 +32,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction
  */
-export function getLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,) {
+export function getLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): NullOr<T> {
     if (collection == null)
         return null
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return getLastOrNullByCollectionHolder(collection,)
     if (isArray(collection,))
         return getLastOrNullByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return getLastOrNullByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return getLastOrNullByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
