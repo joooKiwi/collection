@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: Iterator<T>,): boolean {
+export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Iterator<T>,): boolean {
     if (collection == null)
         return false
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return hasOneWithIteratorByCollectionHolder(collection, values,)
     if (isArray(collection,))
         return hasOneWithIteratorByArray(collection, values,)
+    if (isMinimalistCollectionHolder(collection,))
+        return hasOneWithIteratorByMinimalistCollectionHolder(collection, values,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return hasOneWithIteratorByCollectionHolder(collection, values,)
     if (isArrayByStructure<T>(collection,))
