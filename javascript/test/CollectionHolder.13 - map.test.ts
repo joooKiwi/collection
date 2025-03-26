@@ -10,15 +10,19 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {expectToBeInstance}                                                                                                                                                        from "./expect/expectToBeInstance"
-import {EmptyCollectionHolderForTest}                                                                                                                                              from "./instance/EmptyCollectionHolderForTest"
-import {A, A_NULL, A_NULL_C_NULL, AB, ABCD, AC, B, BD, EMPTY, NULL, NULL_B, NULL_B_NULL_D, NULL_x2, NULL_x4, UNDEFINED, UNDEFINED_x2, UNDEFINED_x4, UPPER_E, UPPER_EE, UPPER_EEEE} from "./value/arrays"
-import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                         from "./value/callbacks (fail)"
-import {callbackAsNull0, callbackAsUndefined0, callbackOnlyIfEven, callbackOnlyIfEvenAlt, callbackOnlyIfOdd, callbackOnlyIfOddAlt}                                                 from "./value/callbacks (null)"
-import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0}                                                                                                from "./value/callbacks (string)"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                            from "./value/instances"
+import {expectToBeInstance}                                                                                                                                                                        from "./expect/expectToBeInstance"
+import {EmptyCollectionHolderForTest}                                                                                                                                                              from "./instance/EmptyCollectionHolderForTest"
+import {A, A_NULL, A_NULL_C_NULL, AB, ABCD, AC, B, BD, EMPTY, NULL, NULL_B, NULL_B_NULL_D, NULL_UNDEFINED, NULL_x2, NULL_x4, UNDEFINED, UNDEFINED_x2, UNDEFINED_x4, UPPER_E, UPPER_EE, UPPER_EEEE} from "./value/arrays"
+import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                         from "./value/callbacks (fail)"
+import {callbackAsNull0, callbackAsUndefined0, callbackOnlyIfEven, callbackOnlyIfEvenAlt, callbackOnlyIfOdd, callbackOnlyIfOddAlt}                                                                 from "./value/callbacks (null)"
+import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0}                                                                                                                from "./value/callbacks (string)"
+import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                                            from "./value/instances"
 
-import {CollectionConstants} from "../src/CollectionConstants"
+import {CollectionConstants}                                                                                                             from "../src/CollectionConstants"
+import {map, mapByArray, mapByCollectionHolder, mapByMinimalistCollectionHolder}                                                         from "../src/method/map"
+import {mapIndexed, mapIndexedByArray, mapIndexedByCollectionHolder, mapIndexedByMinimalistCollectionHolder}                             from "../src/method/mapIndexed"
+import {mapNotNull, mapNotNullByArray, mapNotNullByCollectionHolder, mapNotNullByMinimalistCollectionHolder}                             from "../src/method/mapNotNull"
+import {mapNotNullIndexed, mapNotNullIndexedByArray, mapNotNullIndexedByCollectionHolder, mapNotNullIndexedByMinimalistCollectionHolder} from "../src/method/mapNotNullIndexed"
 
 describe("CollectionHolderTest (map)", () => {
 
@@ -27,6 +31,34 @@ describe("CollectionHolderTest (map)", () => {
         test("mapIndexed",          () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.mapIndexed(),),)
         test("mapNotNull",          () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.mapNotNull(),),)
         test("mapNotNullIndexed",   () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.mapNotNullIndexed(),),)
+    },)
+
+    describe.each(NULL_UNDEFINED,)("%s", it => {
+        describe("map", () => {
+            test("all",                          () => expect(map(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(mapByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(mapByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(mapByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("mapIndexed", () => {
+            test("all",                          () => expect(mapIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(mapIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(mapIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(mapIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+
+        describe("mapNotNull", () => {
+            test("all",                          () => expect(mapNotNull(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(mapNotNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(mapNotNullByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(mapNotNullByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("mapNotNullIndexed", () => {
+            test("all",                          () => expect(mapNotNullIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(mapNotNullIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(mapNotNullIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(mapNotNullIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
     },)
 
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
