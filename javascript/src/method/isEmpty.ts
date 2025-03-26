@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
  * The {@link collection} has no values
@@ -68,7 +69,7 @@ export function isEmpty<const T, const COLLECTION extends readonly T[] = readonl
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
-export function isEmpty<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | readonly T[] = | MinimalistCollectionHolder<T> | readonly T[], >(collection: COLLECTION,): IsEmptyOn<COLLECTION>
+export function isEmpty<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[] = | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], >(collection: COLLECTION,): IsEmptyOn<COLLECTION>
 /**
  * The {@link collection} has no values
  *
@@ -116,14 +117,17 @@ export function isEmpty<const T, const COLLECTION extends Nullable<readonly T[]>
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
-export function isEmpty<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | readonly T[]> = Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, >(collection: COLLECTION,): IsEmptyOnNullable<COLLECTION>
-export function isEmpty<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,) {
+export function isEmpty<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, >(collection: COLLECTION,): IsEmptyOnNullable<COLLECTION>
+export function isEmpty<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,) {
     if (collection == null)
         return true
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return isEmptyByCollectionHolder(collection,)
     if (isArray(collection,))
         return isEmptyByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return isEmptyByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return isEmptyByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))

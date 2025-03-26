@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
  * The {@link collection} has at least one value
@@ -52,7 +53,7 @@ export function isNotEmpty<const T, const COLLECTION extends readonly T[] = read
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
-export function isNotEmpty<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | readonly T[] = | MinimalistCollectionHolder<T> | readonly T[], >(collection: COLLECTION,): IsNotEmptyOn<COLLECTION>
+export function isNotEmpty<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[] = | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], >(collection: COLLECTION,): IsNotEmptyOn<COLLECTION>
 /**
  * The {@link collection} has at least one value
  *
@@ -84,14 +85,17 @@ export function isNotEmpty<const T, const COLLECTION extends Nullable<readonly T
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
-export function isNotEmpty<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | readonly T[]> = Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, >(collection: COLLECTION,): IsNotEmptyOnNullable<COLLECTION>
-export function isNotEmpty<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,) {
+export function isNotEmpty<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, >(collection: COLLECTION,): IsNotEmptyOnNullable<COLLECTION>
+export function isNotEmpty<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,) {
     if (collection == null)
         return false
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return isNotEmptyByCollectionHolder(collection,)
     if (isArray(collection,))
         return isNotEmptyByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return isNotEmptyByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return isNotEmptyByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
