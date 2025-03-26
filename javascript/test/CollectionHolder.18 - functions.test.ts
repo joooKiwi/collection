@@ -183,9 +183,6 @@ import {isWeakMap}                                                              
 import {isWeakMapByStructure}                                                                                                                                                                                                            from "../src/method/isWeakMapByStructure"
 import {isWeakSet}                                                                                                                                                                                                                       from "../src/method/isWeakSet"
 import {isWeakSetByStructure}                                                                                                                                                                                                            from "../src/method/isWeakSetByStructure"
-import {join, joinByArray, joinByCollectionHolder, joinByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/join"
-import * as joinToStringModule                                                                                                                                                                                                           from "../src/method/joinToString"
-import {joinToString, joinToStringByArray, joinToStringByCollectionHolder, joinToStringByMinimalistCollectionHolder}                                                                                                                     from "../src/method/joinToString"
 import {last, lastByArray, lastByCollectionHolder, lastByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/last"
 import {lastIndexed, lastIndexedByArray, lastIndexedByCollectionHolder, lastIndexedByMinimalistCollectionHolder}                                                                                                                         from "../src/method/lastIndexed"
 import {lastIndexedOrNull, lastIndexedOrNullByArray, lastIndexedOrNullByCollectionHolder, lastIndexedOrNullByMinimalistCollectionHolder}                                                                                                 from "../src/method/lastIndexedOrNull"
@@ -873,12 +870,6 @@ describe("CollectionHolderTest (functions)", () => {
             test("minimalist collection holder", () => expect(toLocaleUpperCaseStringByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
             test("collection holder",            () => expect(toLocaleUpperCaseStringByCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
             test("array",                        () => expect(toLocaleUpperCaseStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        },)
-        describe("joinToString", () => {
-            test("all",                          () => expect(joinToString(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("minimalist collection holder", () => expect(joinToStringByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("collection holder",            () => expect(joinToStringByCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("array",                        () => expect(joinToStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
         },)
     },)
 
@@ -2393,28 +2384,6 @@ describe("CollectionHolderTest (functions)", () => {
             },)
         },)
 
-        describe("join", () => {
-            test("all", () => {
-                const method = jest.spyOn(joinToStringModule, "joinToString",)
-                join(A,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(joinToStringModule, "joinToStringByMinimalistCollectionHolder",)
-                joinByMinimalistCollectionHolder(new CollectionHolderFromArray(A,),)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(joinToStringModule, "joinToStringByCollectionHolder",)
-                joinByCollectionHolder(new CollectionHolderFromArray(A,),)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(joinToStringModule, "joinToStringByArray",)
-                joinByArray(A,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
     },)
 
 },)

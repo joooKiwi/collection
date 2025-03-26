@@ -10,16 +10,20 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {CollectionHolderFromArray}                                                                                                  from "./instance/CollectionHolderFromArray"
 import {EmptyCollectionHolderForTest}                                                                                               from "./instance/EmptyCollectionHolderForTest"
 import {GenericCollectionHolder_JoinToStringAlias}                                                                                  from "./instance/GenericCollectionHolder_JoinToStringAlias"
 import {LazyGenericCollectionHolder_JoinToStringAlias}                                                                              from "./instance/LazyGenericCollectionHolder_JoinToStringAlias"
-import {A, AB, ABCD, EMPTY}                                                                                                         from "./value/arrays"
+import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                                                                         from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                          from "./value/callbacks (fail)"
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0, callbackToUpperString1, callbackToUpperString2} from "./value/callbacks (string)"
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                             from "./value/instances"
 
-import {CollectionConstants}     from "../src/CollectionConstants"
-import {ForbiddenIndexException} from "../src/exception/ForbiddenIndexException"
+import {join, joinByArray, joinByCollectionHolder, joinByMinimalistCollectionHolder}                                 from "../src/method/join"
+import * as joinToStringModule                                                                                       from "../src/method/joinToString"
+import {joinToString, joinToStringByArray, joinToStringByCollectionHolder, joinToStringByMinimalistCollectionHolder} from "../src/method/joinToString"
+import {CollectionConstants}                                                                                         from "../src/CollectionConstants"
+import {ForbiddenIndexException}                                                                                     from "../src/exception/ForbiddenIndexException"
 
 describe("CollectionHolderTest (joinToString)", () => {
 
@@ -32,9 +36,37 @@ describe("CollectionHolderTest (joinToString)", () => {
         test("join: postfix", () => expect(new EmptyCollectionHolderForTest().join(null, null, '>',),).toBe("[>",),)
     },)
 
-    describe("alias", () => {
-        describe("GenericCollectionHolder",     () => test("join", () => expect(new GenericCollectionHolder_JoinToStringAlias().execute(it => it.join(),).amountOfCall,).toBe(1,),),)
-        describe("LazyGenericCollectionHolder", () => test("join", () => expect(new LazyGenericCollectionHolder_JoinToStringAlias().execute(it => it.join(),).amountOfCall,).toBe(1,),),)
+    describe("alias (join)", () => {
+        test("GenericCollectionHolder",     () => expect(new GenericCollectionHolder_JoinToStringAlias().execute(it => it.join(),).amountOfCall,).toBe(1,),)
+        test("LazyGenericCollectionHolder", () => expect(new LazyGenericCollectionHolder_JoinToStringAlias().execute(it => it.join(),).amountOfCall,).toBe(1,),)
+
+        test("all", () => {
+            const method = jest.spyOn(joinToStringModule, "joinToString",)
+            join(A,)
+            expect(method,).toHaveBeenCalledOnce()
+        },)
+        test("minimalist collection holder", () => {
+            const method = jest.spyOn(joinToStringModule, "joinToStringByMinimalistCollectionHolder",)
+            joinByMinimalistCollectionHolder(new CollectionHolderFromArray(A,),)
+            expect(method,).toHaveBeenCalledOnce()
+        },)
+        test("collection holder", () => {
+            const method = jest.spyOn(joinToStringModule, "joinToStringByCollectionHolder",)
+            joinByCollectionHolder(new CollectionHolderFromArray(A,),)
+            expect(method,).toHaveBeenCalledOnce()
+        },)
+        test("array", () => {
+            const method = jest.spyOn(joinToStringModule, "joinToStringByArray",)
+            joinByArray(A,)
+            expect(method,).toHaveBeenCalledOnce()
+        },)
+    },)
+
+    describe.each(NULL_UNDEFINED,)("%s", it => {
+        test("all",                          () => expect(joinToString(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("minimalist collection holder", () => expect(joinToStringByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("collection holder",            () => expect(joinToStringByCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("array",                        () => expect(joinToStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
     },)
 
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
