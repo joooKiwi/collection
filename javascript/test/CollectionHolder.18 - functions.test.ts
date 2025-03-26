@@ -20,7 +20,6 @@ import {IteratorForTest}                        from "./instance/IteratorForTest
 import {MinimalistCollectionHolder_ByStructure} from "./instance/MinimalistCollectionHolder_ByStructure"
 import {MinimalistCollectionHolderFromArray}    from "./instance/MinimalistCollectionHolderFromArray"
 import {A, B, EMPTY, NULL_UNDEFINED}            from "./value/arrays"
-import {callbackAsFail0}                        from "./value/callbacks (fail)"
 
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../src/type/possibleInstance"
 
@@ -51,8 +50,6 @@ import {containsOneWithIterable, containsOneWithIterableByArray, containsOneWith
 import {containsOneWithIterator, containsOneWithIteratorByArray, containsOneWithIteratorByCollectionHolder, containsOneWithIteratorByMinimalistCollectionHolder}                                                                         from "../src/method/containsOne.withIterator"
 import {containsOneWithMinimalistCollectionHolder, containsOneWithMinimalistCollectionHolderByArray, containsOneWithMinimalistCollectionHolderByCollectionHolder, containsOneWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "../src/method/containsOne.withMinimalistCollectionHolder"
 import {containsOneWithSet, containsOneWithSetByArray, containsOneWithSetByCollectionHolder, containsOneWithSetByMinimalistCollectionHolder}                                                                                             from "../src/method/containsOne.withSet"
-import {forEach, forEachByArray, forEachByCollectionHolder, forEachByMinimalistCollectionHolder}                                                                                                                                         from "../src/method/forEach"
-import {forEachIndexed, forEachIndexedByArray, forEachIndexedByCollectionHolder, forEachIndexedByMinimalistCollectionHolder}                                                                                                             from "../src/method/forEachIndexed"
 import * as hasModule                                                                                                                                                                                                                    from "../src/method/has"
 import {has, hasByArray, hasByCollectionHolder, hasByMinimalistCollectionHolder}                                                                                                                                                         from "../src/method/has"
 import * as hasAllModule                                                                                                                                                                                                                 from "../src/method/hasAll"
@@ -140,8 +137,6 @@ import {isWeakMap}                                                              
 import {isWeakMapByStructure}                                                                                                                                                                                                            from "../src/method/isWeakMapByStructure"
 import {isWeakSet}                                                                                                                                                                                                                       from "../src/method/isWeakSet"
 import {isWeakSetByStructure}                                                                                                                                                                                                            from "../src/method/isWeakSetByStructure"
-import {onEach, onEachByArray, onEachByCollectionHolder, onEachByMinimalistCollectionHolder}                                                                                                                                             from "../src/method/onEach"
-import {onEachIndexed, onEachIndexedByArray, onEachIndexedByCollectionHolder, onEachIndexedByMinimalistCollectionHolder}                                                                                                                 from "../src/method/onEachIndexed"
 import {reversed, reversedByArray, reversedByCollectionHolder, reversedByMinimalistCollectionHolder}                                                                                                                                     from "../src/method/reversed"
 import {toArray, toArrayByArray, toArrayByCollectionHolder, toArrayByMinimalistCollectionHolder}                                                                                                                                         from "../src/method/toArray"
 import {toIterator, toIteratorByArray, toIteratorByCollectionHolder, toIteratorByMinimalistCollectionHolder}                                                                                                                             from "../src/method/toIterator"
@@ -426,31 +421,6 @@ describe("CollectionHolderTest (functions)", () => {
                 test("collection holder",            () => expect(hasAllWithIterableByCollectionHolder(it, A,),).toBeFalse(),)
                 test("array",                        () => expect(hasAllWithIterableByArray(it, A,),).toBeFalse(),)
             },)
-        },)
-
-        describe("forEach", () => {
-            test("all",                          () => expect(() => forEach(it, callbackAsFail0,),).not.toThrow(),)
-            test("minimalist collection holder", () => expect(() => forEachByMinimalistCollectionHolder(it, callbackAsFail0,),).not.toThrow(),)
-            test("collection holder",            () => expect(() => forEachByCollectionHolder(it, callbackAsFail0,),).not.toThrow(),)
-            test("array",                        () => expect(() => forEachByArray(it, callbackAsFail0,),).not.toThrow(),)
-        },)
-        describe("forEachIndexed", () => {
-            test("all",                          () => expect(() => forEachIndexed(it, callbackAsFail0,),).not.toThrow(),)
-            test("minimalist collection holder", () => expect(() => forEachIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).not.toThrow(),)
-            test("collection holder",            () => expect(() => forEachIndexedByCollectionHolder(it, callbackAsFail0,),).not.toThrow(),)
-            test("array",                        () => expect(() => forEachIndexedByArray(it, callbackAsFail0,),).not.toThrow(),)
-        },)
-        describe("onEach", () => {
-            test("all",                          () => expect(onEach(it, callbackAsFail0,) === it,).toBeTrue(),)
-            test("minimalist collection holder", () => expect(onEachByMinimalistCollectionHolder(it, callbackAsFail0,) === it,).toBeTrue(),)
-            test("collection holder",            () => expect(onEachByCollectionHolder(it, callbackAsFail0,) === it,).toBeTrue(),)
-            test("array",                        () => expect(onEachByArray(it, callbackAsFail0,) === it,).toBeTrue(),)
-        },)
-        describe("onEachIndexed", () => {
-            test("all",                          () => expect(onEachIndexed(it, callbackAsFail0,) === it,).toBeTrue(),)
-            test("minimalist collection holder", () => expect(onEachIndexedByMinimalistCollectionHolder(it, callbackAsFail0,) === it,).toBeTrue(),)
-            test("collection holder",            () => expect(onEachIndexedByCollectionHolder(it, callbackAsFail0,) === it,).toBeTrue(),)
-            test("array",                        () => expect(onEachIndexedByArray(it, callbackAsFail0,) === it,).toBeTrue(),)
         },)
 
         describe("toReverse", () => {
