@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toMutableArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): T[] {
+export function toMutableArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T[] {
     if (collection == null)
         return []
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toMutableArrayByCollectionHolder(collection,)
     if (isArray(collection,))
         return toMutableArrayByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toMutableArrayByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toMutableArrayByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
