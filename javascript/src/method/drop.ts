@@ -28,7 +28,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * Get a new {@link CollectionHolder} without the first {@link n} elements
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)
@@ -53,7 +53,7 @@ export function drop<const T, >(collection: Nullable<| MinimalistCollectionHolde
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @param n          The number of arguments (if negative, then it is plus {@link MinimalistCollectionHolder.size size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)
@@ -73,7 +73,7 @@ export function dropByMinimalistCollectionHolder<const T, >(collection: Nullable
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
  * @see https:/     * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)
@@ -89,7 +89,7 @@ export function dropByCollectionHolder<const T, >(collection: Nullable<Collectio
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
  * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)

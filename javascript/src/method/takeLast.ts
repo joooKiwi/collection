@@ -28,7 +28,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
  * @canReceiveNegativeValue
@@ -51,7 +51,7 @@ export function takeLast<const T, >(collection: Nullable<| MinimalistCollectionH
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
  * @canReceiveNegativeValue
@@ -91,7 +91,7 @@ export function takeLastByMinimalistCollectionHolder<const T, >(collection: Null
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
  * @canReceiveNegativeValue
@@ -131,7 +131,7 @@ export function takeLastByCollectionHolder<const T, >(collection: Nullable<Colle
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
  * @canReceiveNegativeValue

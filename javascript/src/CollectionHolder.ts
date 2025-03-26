@@ -2943,7 +2943,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get a new {@link CollectionHolder} from the first {@link n} elements
      *
-     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @param n The number of arguments (if negative, then it is plus {@link size})
      * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
@@ -2954,7 +2954,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get a new {@link CollectionHolder} from the first {@link n} elements
      *
-     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @param n The number of arguments (if negative, then it is plus {@link size})
      * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
@@ -3057,7 +3057,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get a new {@link CollectionHolder} from the last {@link n} elements
      *
-     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @param n The number of arguments (if negative, then it is plus {@link size})
      * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
      * @canReceiveNegativeValue
@@ -3067,7 +3067,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get a new {@link CollectionHolder} from the last {@link n} elements
      *
-     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @param n The number of arguments (if negative, then it is plus {@link size})
      * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
      * @canReceiveNegativeValue
@@ -3162,7 +3162,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get a new {@link CollectionHolder} without the first {@link n} elements
      *
-     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @param n The number of arguments (if negative, then it is plus {@link size})
      * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)
@@ -3173,7 +3173,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get a new {@link CollectionHolder} without the first {@link n} elements
      *
-     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @param n The number of arguments (if negative, then it is plus {@link size})
      * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
      * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#skip(long) Java skip(n)
@@ -3276,7 +3276,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get a new {@link CollectionHolder} without the last {@link n} elements
      *
-     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @param n The number of arguments (if negative, then it is plus {@link size})
      * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last.html Kotlin dropLast(n)
      * @canReceiveNegativeValue
@@ -3286,7 +3286,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get a new {@link CollectionHolder} without the last {@link n} elements
      *
-     * @param n The number of arguments (if negative then it is plus {@link size})
+     * @param n The number of arguments (if negative, then it is plus {@link size})
      * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last.html Kotlin dropLast(n)
      * @canReceiveNegativeValue
