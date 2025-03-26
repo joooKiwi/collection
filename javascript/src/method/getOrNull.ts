@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade methods --------------------
 
@@ -33,13 +34,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function getOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, index: number,): NullOr<T> {
+export function getOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, index: number,): NullOr<T> {
     if (collection == null)
         return null
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return getOrNullByCollectionHolder(collection, index,)
     if (isArray(collection,))
         return getOrNullByArray(collection, index,)
+    if (isMinimalistCollectionHolder(collection,))
+        return getOrNullByMinimalistCollectionHolder(collection, index,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return getOrNullByCollectionHolder(collection, index,)
     if (isArrayByStructure<T>(collection,))
