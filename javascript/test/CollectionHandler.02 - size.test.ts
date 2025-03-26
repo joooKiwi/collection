@@ -43,7 +43,10 @@ import {newSetOf1Handler}                                 from "./helper/newSetO
 import {newSetOf2Handler}                                 from "./helper/newSetOf2Handler"
 import {sizeValues}                                       from "./value/sizes"
 import {CollectionHolderHoldingNothing}                   from "./instance/CollectionHolderHoldingNothing"
-import {A, AB, ABCD}                                      from "./value/arrays"
+import {A, AB, ABCD, NULL_UNDEFINED}                      from "./value/arrays"
+
+import {isEmpty, isEmptyByArray, isEmptyByCollectionHolder, isEmptyByMinimalistCollectionHolder}             from "../src/method/isEmpty"
+import {isNotEmpty, isNotEmptyByArray, isNotEmptyByCollectionHolder, isNotEmptyByMinimalistCollectionHolder} from "../src/method/isNotEmpty"
 
 describe("CollectionHandlerTest (size)", () => {
 
@@ -142,6 +145,21 @@ describe("CollectionHandlerTest (size)", () => {
             test("iterable with size: 4 fields", () => expectIndexesInCollectionOf4ToBeNotPresent(execute(it => newIterableWithSizeHandler(ABCD, it,), it => it.isEmpty,),),)
             test("iterable with size of 1",      () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newIterableWithSizeOf1Handler(A, it,), it => it.isEmpty,),),)
             test("iterable with size of 2",      () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newIterableWithSizeOf2Handler(AB, it,), it => it.isEmpty,),),)
+        },)
+    },)
+
+    describe.each(NULL_UNDEFINED,)("%s", it => {
+        describe("isEmpty", () => {
+            test("all",                          () => expect(isEmpty(it,),).toBeTrue(),)
+            test("minimalist collection holder", () => expect(isEmptyByMinimalistCollectionHolder(it,),).toBeTrue(),)
+            test("collection holder",            () => expect(isEmptyByCollectionHolder(it,),).toBeTrue(),)
+            test("array",                        () => expect(isEmptyByArray(it,),).toBeTrue(),)
+        },)
+        describe("isNotEmpty", () => {
+            test("all",                          () => expect(isNotEmpty(it,),).toBeFalse(),)
+            test("minimalist collection holder", () => expect(isNotEmptyByMinimalistCollectionHolder(it,),).toBeFalse(),)
+            test("collection holder",            () => expect(isNotEmptyByCollectionHolder(it,),).toBeFalse(),)
+            test("array",                        () => expect(isNotEmptyByArray(it,),).toBeFalse(),)
         },)
     },)
 

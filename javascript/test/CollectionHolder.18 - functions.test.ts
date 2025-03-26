@@ -216,7 +216,6 @@ import {isCollectionHolder}                                                     
 import {isCollectionHolderByStructure}                                                                                                                                                                                                   from "../src/method/isCollectionHolderByStructure"
 import {isCollectionIterator}                                                                                                                                                                                                            from "../src/method/isCollectionIterator"
 import {isCollectionIteratorByStructure}                                                                                                                                                                                                 from "../src/method/isCollectionIteratorByStructure"
-import {isEmpty, isEmptyByArray, isEmptyByCollectionHolder, isEmptyByMinimalistCollectionHolder}                                                                                                                                         from "../src/method/isEmpty"
 import {isFloat32Array}                                                                                                                                                                                                                  from "../src/method/isFloat32Array"
 import {isFloat64Array}                                                                                                                                                                                                                  from "../src/method/isFloat64Array"
 import {isInt8Array}                                                                                                                                                                                                                     from "../src/method/isInt8Array"
@@ -227,7 +226,6 @@ import {isMap}                                                                  
 import {isMapByStructure}                                                                                                                                                                                                                from "../src/method/isMapByStructure"
 import {isMinimalistCollectionHolder}                                                                                                                                                                                                    from "../src/method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}                                                                                                                                                                                         from "../src/method/isMinimalistCollectionHolderByStructure"
-import {isNotEmpty, isNotEmptyByArray, isNotEmptyByCollectionHolder, isNotEmptyByMinimalistCollectionHolder}                                                                                                                             from "../src/method/isNotEmpty"
 import {isSet}                                                                                                                                                                                                                           from "../src/method/isSet"
 import {isSetByStructure}                                                                                                                                                                                                                from "../src/method/isSetByStructure"
 import {isTypedArray}                                                                                                                                                                                                                    from "../src/method/isTypedArray"
@@ -336,19 +334,6 @@ describe("CollectionHolderTest (functions)", () => {
     ] as const satisfies readonly Holder<() => PossibleIterableIteratorArraySetOrCollectionHolder<'a'>, string>[]
 
     describe.each(NULL_UNDEFINED,)("%s", it => {
-        describe("isEmpty", () => {
-            test("all",                          () => expect(isEmpty(it,),).toBeTrue(),)
-            test("minimalist collection holder", () => expect(isEmptyByMinimalistCollectionHolder(it,),).toBeTrue(),)
-            test("collection holder",            () => expect(isEmptyByCollectionHolder(it,),).toBeTrue(),)
-            test("array",                        () => expect(isEmptyByArray(it,),).toBeTrue(),)
-        },)
-        describe("isNotEmpty", () => {
-            test("all",                          () => expect(isNotEmpty(it,),).toBeFalse(),)
-            test("minimalist collection holder", () => expect(isNotEmptyByMinimalistCollectionHolder(it,),).toBeFalse(),)
-            test("collection holder",            () => expect(isNotEmptyByCollectionHolder(it,),).toBeFalse(),)
-            test("array",                        () => expect(isNotEmptyByArray(it,),).toBeFalse(),)
-        },)
-
         describe("getFirst", () => {
             test("all",                          () => expect(() => getFirst(it,),).toThrow(NullCollectionException,),)
             test("minimalist collection holder", () => expect(() => getFirstByMinimalistCollectionHolder(it,),).toThrow(NullCollectionException,),)
