@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -36,13 +37,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
-export function mapNotNull<const T, const U extends NonNullable<unknown>, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+export function mapNotNull<const T, const U extends NonNullable<unknown>, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return mapNotNullByCollectionHolder(collection, transform,)
     if (isArray(collection,))
         return mapNotNullByArray(collection, transform,)
+    if (isMinimalistCollectionHolder(collection,))
+        return mapNotNullByMinimalistCollectionHolder(collection, transform,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return mapNotNullByCollectionHolder(collection, transform,)
     if (isArrayByStructure<T>(collection,))
