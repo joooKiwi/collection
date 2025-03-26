@@ -143,4 +143,3 @@ function __hasAllByArray<const T, >(collection: readonly T[], values: Collection
 }
 
 //#endregion -------------------- Loop methods --------------------
-
