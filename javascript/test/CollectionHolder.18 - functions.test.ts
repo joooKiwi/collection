@@ -78,42 +78,26 @@ import {filterNotNull, filterNotNullByArray, filterNotNullByCollectionHolder, fi
 import {find, findByArray, findByCollectionHolder, findByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/find"
 import * as findFirstModule                                                                                                                                                                                                              from "../src/method/findFirst"
 import {findFirst, findFirstByArray, findFirstByCollectionHolder, findFirstByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/findFirst"
-import {findFirstIndex, findFirstIndexByArray, findFirstIndexByCollectionHolder, findFirstIndexByMinimalistCollectionHolder}                                                                                                             from "../src/method/findFirstIndex"
 import * as findFirstIndexedModule                                                                                                                                                                                                       from "../src/method/findFirstIndexed"
 import {findFirstIndexed, findFirstIndexedByArray, findFirstIndexedByCollectionHolder, findFirstIndexedByMinimalistCollectionHolder}                                                                                                     from "../src/method/findFirstIndexed"
 import * as findFirstIndexedOrNullModule                                                                                                                                                                                                 from "../src/method/findFirstIndexedOrNull"
 import {findFirstIndexedOrNull, findFirstIndexedOrNullByArray, findFirstIndexedOrNullByCollectionHolder, findFirstIndexedOrNullByMinimalistCollectionHolder}                                                                             from "../src/method/findFirstIndexedOrNull"
-import {findFirstIndexIndexed, findFirstIndexIndexedByArray, findFirstIndexIndexedByCollectionHolder, findFirstIndexIndexedByMinimalistCollectionHolder}                                                                                 from "../src/method/findFirstIndexIndexed"
-import {findFirstIndexIndexedOrNull, findFirstIndexIndexedOrNullByArray, findFirstIndexIndexedOrNullByCollectionHolder, findFirstIndexIndexedOrNullByMinimalistCollectionHolder}                                                         from "../src/method/findFirstIndexIndexedOrNull"
-import {findFirstIndexOrNull, findFirstIndexOrNullByArray, findFirstIndexOrNullByCollectionHolder, findFirstIndexOrNullByMinimalistCollectionHolder}                                                                                     from "../src/method/findFirstIndexOrNull"
 import * as findFirstOrNullModule                                                                                                                                                                                                        from "../src/method/findFirstOrNull"
 import {findFirstOrNull, findFirstOrNullByArray, findFirstOrNullByCollectionHolder, findFirstOrNullByMinimalistCollectionHolder}                                                                                                         from "../src/method/findFirstOrNull"
-import {findIndex, findIndexByArray, findIndexByCollectionHolder, findIndexByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/findIndex"
 import {findIndexed, findIndexedByArray, findIndexedByCollectionHolder, findIndexedByMinimalistCollectionHolder}                                                                                                                         from "../src/method/findIndexed"
 import {findIndexedOrNull, findIndexedOrNullByArray, findIndexedOrNullByCollectionHolder, findIndexedOrNullByMinimalistCollectionHolder}                                                                                                 from "../src/method/findIndexedOrNull"
-import {findIndexIndexed, findIndexIndexedByArray, findIndexIndexedByCollectionHolder, findIndexIndexedByMinimalistCollectionHolder}                                                                                                     from "../src/method/findIndexIndexed"
-import {findIndexIndexedOrNull, findIndexIndexedOrNullByArray, findIndexIndexedOrNullByCollectionHolder, findIndexIndexedOrNullByMinimalistCollectionHolder}                                                                             from "../src/method/findIndexIndexedOrNull"
-import {findIndexOrNull, findIndexOrNullByArray, findIndexOrNullByCollectionHolder, findIndexOrNullByMinimalistCollectionHolder}                                                                                                         from "../src/method/findIndexOrNull"
 import * as findLastModule                                                                                                                                                                                                               from "../src/method/findLast"
 import {findLast, findLastByArray, findLastByCollectionHolder, findLastByMinimalistCollectionHolder}                                                                                                                                     from "../src/method/findLast"
-import {findLastIndex, findLastIndexByArray, findLastIndexByCollectionHolder, findLastIndexByMinimalistCollectionHolder}                                                                                                                 from "../src/method/findLastIndex"
 import * as findLastIndexedModule                                                                                                                                                                                                        from "../src/method/findLastIndexed"
 import {findLastIndexed, findLastIndexedByArray, findLastIndexedByCollectionHolder, findLastIndexedByMinimalistCollectionHolder}                                                                                                         from "../src/method/findLastIndexed"
 import * as findLastIndexedOrNullModule                                                                                                                                                                                                  from "../src/method/findLastIndexedOrNull"
 import {findLastIndexedOrNull, findLastIndexedOrNullByArray, findLastIndexedOrNullByCollectionHolder, findLastIndexedOrNullByMinimalistCollectionHolder}                                                                                 from "../src/method/findLastIndexedOrNull"
-import {findLastIndexIndexed, findLastIndexIndexedByArray, findLastIndexIndexedByCollectionHolder, findLastIndexIndexedByMinimalistCollectionHolder}                                                                                     from "../src/method/findLastIndexIndexed"
-import {findLastIndexIndexedOrNull, findLastIndexIndexedOrNullByArray, findLastIndexIndexedOrNullByCollectionHolder, findLastIndexIndexedOrNullByMinimalistCollectionHolder}                                                             from "../src/method/findLastIndexIndexedOrNull"
-import {findLastIndexOrNull, findLastIndexOrNullByArray, findLastIndexOrNullByCollectionHolder, findLastIndexOrNullByMinimalistCollectionHolder}                                                                                         from "../src/method/findLastIndexOrNull"
 import * as findLastOrNullModule                                                                                                                                                                                                         from "../src/method/findLastOrNull"
 import {findLastOrNull, findLastOrNullByArray, findLastOrNullByCollectionHolder, findLastOrNullByMinimalistCollectionHolder}                                                                                                             from "../src/method/findLastOrNull"
 import {findOrNull, findOrNullByArray, findOrNullByCollectionHolder, findOrNullByMinimalistCollectionHolder}                                                                                                                             from "../src/method/findOrNull"
 import {first, firstByArray, firstByCollectionHolder, firstByMinimalistCollectionHolder}                                                                                                                                                 from "../src/method/first"
 import {firstIndexed, firstIndexedByArray, firstIndexedByCollectionHolder, firstIndexedByMinimalistCollectionHolder}                                                                                                                     from "../src/method/firstIndexed"
 import {firstIndexedOrNull, firstIndexedOrNullByArray, firstIndexedOrNullByCollectionHolder, firstIndexedOrNullByMinimalistCollectionHolder}                                                                                             from "../src/method/firstIndexedOrNull"
-import * as firstIndexOfModule                                                                                                                                                                                                           from "../src/method/firstIndexOf"
-import {firstIndexOf, firstIndexOfByArray, firstIndexOfByCollectionHolder, firstIndexOfByMinimalistCollectionHolder}                                                                                                                     from "../src/method/firstIndexOf"
-import * as firstIndexOfOrNullModule                                                                                                                                                                                                     from "../src/method/firstIndexOfOrNull"
-import {firstIndexOfOrNull, firstIndexOfOrNullByArray, firstIndexOfOrNullByCollectionHolder, firstIndexOfOrNullByMinimalistCollectionHolder}                                                                                             from "../src/method/firstIndexOfOrNull"
 import {firstOrNull, firstOrNullByArray, firstOrNullByCollectionHolder, firstOrNullByMinimalistCollectionHolder}                                                                                                                         from "../src/method/firstOrNull"
 import {forEach, forEachByArray, forEachByCollectionHolder, forEachByMinimalistCollectionHolder}                                                                                                                                         from "../src/method/forEach"
 import {forEachIndexed, forEachIndexedByArray, forEachIndexedByCollectionHolder, forEachIndexedByMinimalistCollectionHolder}                                                                                                             from "../src/method/forEachIndexed"
@@ -174,24 +158,6 @@ import {includesOneWithIterable, includesOneWithIterableByArray, includesOneWith
 import {includesOneWithIterator, includesOneWithIteratorByArray, includesOneWithIteratorByCollectionHolder, includesOneWithIteratorByMinimalistCollectionHolder}                                                                         from "../src/method/includesOne.withIterator"
 import {includesOneWithMinimalistCollectionHolder, includesOneWithMinimalistCollectionHolderByArray, includesOneWithMinimalistCollectionHolderByCollectionHolder, includesOneWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "../src/method/includesOne.withMinimalistCollectionHolder"
 import {includesOneWithSet, includesOneWithSetByArray, includesOneWithSetByCollectionHolder, includesOneWithSetByMinimalistCollectionHolder}                                                                                             from "../src/method/includesOne.withSet"
-import {indexOf, indexOfByArray, indexOfByCollectionHolder, indexOfByMinimalistCollectionHolder}                                                                                                                                         from "../src/method/indexOf"
-import {indexOfOrNull, indexOfOrNullByArray, indexOfOrNullByCollectionHolder, indexOfOrNullByMinimalistCollectionHolder}                                                                                                                 from "../src/method/indexOfOrNull"
-import * as indexOfFirstModule                                                                                                                                                                                                           from "../src/method/indexOfFirst"
-import {indexOfFirst, indexOfFirstByArray, indexOfFirstByCollectionHolder, indexOfFirstByMinimalistCollectionHolder}                                                                                                                     from "../src/method/indexOfFirst"
-import * as indexOfFirstIndexedModule                                                                                                                                                                                                    from "../src/method/indexOfFirstIndexed"
-import {indexOfFirstIndexed, indexOfFirstIndexedByArray, indexOfFirstIndexedByCollectionHolder, indexOfFirstIndexedByMinimalistCollectionHolder}                                                                                         from "../src/method/indexOfFirstIndexed"
-import * as indexOfFirstIndexedOrNullModule                                                                                                                                                                                              from "../src/method/indexOfFirstIndexedOrNull"
-import {indexOfFirstIndexedOrNull, indexOfFirstIndexedOrNullByArray, indexOfFirstIndexedOrNullByCollectionHolder, indexOfFirstIndexedOrNullByMinimalistCollectionHolder}                                                                 from "../src/method/indexOfFirstIndexedOrNull"
-import * as indexOfFirstOrNullModule                                                                                                                                                                                                     from "../src/method/indexOfFirstOrNull"
-import {indexOfFirstOrNull, indexOfFirstOrNullByArray, indexOfFirstOrNullByCollectionHolder, indexOfFirstOrNullByMinimalistCollectionHolder}                                                                                             from "../src/method/indexOfFirstOrNull"
-import * as indexOfLastModule                                                                                                                                                                                                            from "../src/method/indexOfLast"
-import {indexOfLast, indexOfLastByArray, indexOfLastByCollectionHolder, indexOfLastByMinimalistCollectionHolder}                                                                                                                         from "../src/method/indexOfLast"
-import * as indexOfLastIndexedModule                                                                                                                                                                                                     from "../src/method/indexOfLastIndexed"
-import {indexOfLastIndexed, indexOfLastIndexedByArray, indexOfLastIndexedByCollectionHolder, indexOfLastIndexedByMinimalistCollectionHolder}                                                                                             from "../src/method/indexOfLastIndexed"
-import * as indexOfLastIndexedOrNullModule                                                                                                                                                                                               from "../src/method/indexOfLastIndexedOrNull"
-import {indexOfLastIndexedOrNull, indexOfLastIndexedOrNullByArray, indexOfLastIndexedOrNullByCollectionHolder, indexOfLastIndexedOrNullByMinimalistCollectionHolder}                                                                     from "../src/method/indexOfLastIndexedOrNull"
-import * as indexOfLastOrNullModule                                                                                                                                                                                                      from "../src/method/indexOfLastOrNull"
-import {indexOfLastOrNull, indexOfLastOrNullByArray, indexOfLastOrNullByCollectionHolder, indexOfLastOrNullByMinimalistCollectionHolder}                                                                                                 from "../src/method/indexOfLastOrNull"
 import {isArray}                                                                                                                                                                                                                         from "../src/method/isArray"
 import {isArrayByStructure}                                                                                                                                                                                                              from "../src/method/isArrayByStructure"
 import {isBigInt64Array}                                                                                                                                                                                                                 from "../src/method/isBigInt64Array"
@@ -228,8 +194,6 @@ import {joinToString, joinToStringByArray, joinToStringByCollectionHolder, joinT
 import {last, lastByArray, lastByCollectionHolder, lastByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/last"
 import {lastIndexed, lastIndexedByArray, lastIndexedByCollectionHolder, lastIndexedByMinimalistCollectionHolder}                                                                                                                         from "../src/method/lastIndexed"
 import {lastIndexedOrNull, lastIndexedOrNullByArray, lastIndexedOrNullByCollectionHolder, lastIndexedOrNullByMinimalistCollectionHolder}                                                                                                 from "../src/method/lastIndexedOrNull"
-import {lastIndexOf, lastIndexOfByArray, lastIndexOfByCollectionHolder, lastIndexOfByMinimalistCollectionHolder}                                                                                                                         from "../src/method/lastIndexOf"
-import {lastIndexOfOrNull, lastIndexOfOrNullByArray, lastIndexOfOrNullByCollectionHolder, lastIndexOfOrNullByMinimalistCollectionHolder}                                                                                                 from "../src/method/lastIndexOfOrNull"
 import {lastOrNull, lastOrNullByArray, lastOrNullByCollectionHolder, lastOrNullByMinimalistCollectionHolder}                                                                                                                             from "../src/method/lastOrNull"
 import {limit, limitByArray, limitByCollectionHolder, limitByMinimalistCollectionHolder}                                                                                                                                                 from "../src/method/limit"
 import {limitLast, limitLastByArray, limitLastByCollectionHolder, limitLastByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/limitLast"
@@ -363,79 +327,6 @@ describe("CollectionHolderTest (functions)", () => {
             test("minimalist collection holder", () => expect(findLastIndexedOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
             test("collection holder",            () => expect(findLastIndexedOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
             test("array",                        () => expect(findLastIndexedOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
-
-        describe("firstIndexOf", () => {
-            test("all",                          () => expect(() => firstIndexOf(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => firstIndexOfByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => firstIndexOfByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => firstIndexOfByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("firstIndexOfOrNull", () => {
-            test("all",                          () => expect(firstIndexOfOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(firstIndexOfOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(firstIndexOfOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(firstIndexOfOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
-        describe("lastIndexOf", () => {
-            test("all",                          () => expect(() => lastIndexOf(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => lastIndexOfByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => lastIndexOfByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => lastIndexOfByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("lastIndexOfOrNull", () => {
-            test("all",                          () => expect(lastIndexOfOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(lastIndexOfOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(lastIndexOfOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(lastIndexOfOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
-        describe("indexOfFirst", () => {
-            test("all",                          () => expect(() => indexOfFirst(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => indexOfFirstByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => indexOfFirstByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => indexOfFirstByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("indexOfFirstOrNull", () => {
-            test("all",                          () => expect(indexOfFirstOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(indexOfFirstOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(indexOfFirstOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(indexOfFirstOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
-        describe("indexOfFirstIndexed", () => {
-            test("all",                          () => expect(() => indexOfFirstIndexed(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => indexOfFirstIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => indexOfFirstIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => indexOfFirstIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("indexOfFirstIndexedOrNull", () => {
-            test("all",                          () => expect(indexOfFirstIndexedOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(indexOfFirstIndexedOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(indexOfFirstIndexedOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(indexOfFirstIndexedOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
-        describe("indexOfLast", () => {
-            test("all",                          () => expect(() => indexOfLast(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => indexOfLastByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => indexOfLastByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => indexOfLastByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("indexOfLastOrNull", () => {
-            test("all",                          () => expect(indexOfLastOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(indexOfLastOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(indexOfLastOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(indexOfLastOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
-        describe("indexOfLastIndexed", () => {
-            test("all",                          () => expect(() => indexOfLastIndexed(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => indexOfLastIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => indexOfLastIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => indexOfLastIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("indexOfLastIndexedOrNull", () => {
-            test("all",                          () => expect(indexOfLastIndexedOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(indexOfLastIndexedOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(indexOfLastIndexedOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(indexOfLastIndexedOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
         },)
 
         describe("all", () => {
@@ -1376,315 +1267,6 @@ describe("CollectionHolderTest (functions)", () => {
             test("array", () => {
                 const method = jest.spyOn(findLastIndexedOrNullModule, "findLastIndexedOrNullByArray",)
                 lastIndexedOrNullByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-
-        describe("indexOf", () => {
-            test("all", () => {
-                const method = jest.spyOn(firstIndexOfModule, "firstIndexOf",)
-                indexOf(A, "a",)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(firstIndexOfModule, "firstIndexOfByMinimalistCollectionHolder",)
-                indexOfByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), "a",)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(firstIndexOfModule, "firstIndexOfByCollectionHolder",)
-                indexOfByCollectionHolder(new CollectionHolderFromArray(A,), "a",)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(firstIndexOfModule, "firstIndexOfByArray",)
-                indexOfByArray(A, "a",)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("indexOfOrNull", () => {
-            test("all", () => {
-                const method = jest.spyOn(firstIndexOfOrNullModule, "firstIndexOfOrNull",)
-                indexOfOrNull(A, "a",)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(firstIndexOfOrNullModule, "firstIndexOfOrNullByMinimalistCollectionHolder",)
-                indexOfOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), "a",)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(firstIndexOfOrNullModule, "firstIndexOfOrNullByCollectionHolder",)
-                indexOfOrNullByCollectionHolder(new CollectionHolderFromArray(A,), "a",)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(firstIndexOfOrNullModule, "firstIndexOfOrNullByArray",)
-                indexOfOrNullByArray(A, "a",)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findFirstIndex", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfFirstModule, "indexOfFirst",)
-                findFirstIndex(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByMinimalistCollectionHolder",)
-                findFirstIndexByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByCollectionHolder",)
-                findFirstIndexByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByArray",)
-                findFirstIndexByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findIndex", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfFirstModule, "indexOfFirst",)
-                findIndex(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByMinimalistCollectionHolder",)
-                findIndexByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByCollectionHolder",)
-                findIndexByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByArray",)
-                findIndexByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findFirstIndexOrNull", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNull",)
-                findFirstIndexOrNull(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByMinimalistCollectionHolder",)
-                findFirstIndexOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByCollectionHolder",)
-                findFirstIndexOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByArray",)
-                findFirstIndexOrNullByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findIndexOrNull", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNull",)
-                findIndexOrNull(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByMinimalistCollectionHolder",)
-                findIndexOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByCollectionHolder",)
-                findIndexOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByArray",)
-                findIndexOrNullByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findFirstIndexIndexed", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexed",)
-                findFirstIndexIndexed(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByMinimalistCollectionHolder",)
-                findFirstIndexIndexedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByCollectionHolder",)
-                findFirstIndexIndexedByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByArray",)
-                findFirstIndexIndexedByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findIndexIndexed", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexed",)
-                findIndexIndexed(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByMinimalistCollectionHolder",)
-                findIndexIndexedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByCollectionHolder",)
-                findIndexIndexedByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByArray",)
-                findIndexIndexedByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findFirstIndexIndexedOrNull", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNull",)
-                findFirstIndexIndexedOrNull(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByMinimalistCollectionHolder",)
-                findFirstIndexIndexedOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByCollectionHolder",)
-                findFirstIndexIndexedOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByArray",)
-                findFirstIndexIndexedOrNullByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findIndexIndexed", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNull",)
-                findIndexIndexedOrNull(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByMinimalistCollectionHolder",)
-                findIndexIndexedOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByCollectionHolder",)
-                findIndexIndexedOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByArray",)
-                findIndexIndexedOrNullByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findLastIndex", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfLastModule, "indexOfLast",)
-                findLastIndex(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfLastModule, "indexOfLastByMinimalistCollectionHolder",)
-                findLastIndexByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfLastModule, "indexOfLastByCollectionHolder",)
-                findLastIndexByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfLastModule, "indexOfLastByArray",)
-                findLastIndexByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findLastIndexOrNull", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfLastOrNullModule, "indexOfLastOrNull",)
-                findLastIndexOrNull(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfLastOrNullModule, "indexOfLastOrNullByMinimalistCollectionHolder",)
-                findLastIndexOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfLastOrNullModule, "indexOfLastOrNullByCollectionHolder",)
-                findLastIndexOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfLastOrNullModule, "indexOfLastOrNullByArray",)
-                findLastIndexOrNullByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findLastIndexIndexed", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfLastIndexedModule, "indexOfLastIndexed",)
-                findLastIndexIndexed(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfLastIndexedModule, "indexOfLastIndexedByMinimalistCollectionHolder",)
-                findLastIndexIndexedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfLastIndexedModule, "indexOfLastIndexedByCollectionHolder",)
-                findLastIndexIndexedByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfLastIndexedModule, "indexOfLastIndexedByArray",)
-                findLastIndexIndexedByArray(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("findLastIndexIndexedOrNull", () => {
-            test("all", () => {
-                const method = jest.spyOn(indexOfLastIndexedOrNullModule, "indexOfLastIndexedOrNull",)
-                findLastIndexIndexedOrNull(A, callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(indexOfLastIndexedOrNullModule, "indexOfLastIndexedOrNullByMinimalistCollectionHolder",)
-                findLastIndexIndexedOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(indexOfLastIndexedOrNullModule, "indexOfLastIndexedOrNullByCollectionHolder",)
-                findLastIndexIndexedOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(indexOfLastIndexedOrNullModule, "indexOfLastIndexedOrNullByArray",)
-                findLastIndexIndexedOrNullByArray(A, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
