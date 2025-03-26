@@ -20,10 +20,10 @@ import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}         
 describe("CollectionHolderTest (forEach / onEach)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test.skip("forEach",        () => {},)
-        test.skip("forEachIndexed", () => {},)
-        test("onEach",              () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.onEach(),),)
-        test("onEachIndexed",       () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.onEachIndexed(),),)
+        test("forEach",        () => expect(() => new EmptyCollectionHolderForTest().forEach(callbackAsFail0,),).not.toThrow(),)
+        test("forEachIndexed", () => expect(() => new EmptyCollectionHolderForTest().forEachIndexed(callbackAsFail0,),).not.toThrow(),)
+        test("onEach",         () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.onEach(),),)
+        test("onEachIndexed",  () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.onEachIndexed(),),)
     },)
 
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
