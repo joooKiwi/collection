@@ -40,10 +40,11 @@ export function drop<const T, >(collection: Nullable<| MinimalistCollectionHolde
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (isCollectionHolder(collection,))
         return __coreByCollectionHolder(collection, n,)
-    if (isMinimalistCollectionHolder(collection,))
-        return __coreByMinimalistCollectionHolder(collection, n,)
     if (isArray(collection,))
         return __coreByArray(collection, n,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __coreByMinimalistCollectionHolder(collection, n,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __coreByCollectionHolder(collection, n,)
     if (isArrayByStructure<T>(collection,))
