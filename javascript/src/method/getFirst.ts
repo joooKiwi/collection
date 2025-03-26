@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -35,13 +36,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
  * @extensionFunction
  */
-export function getFirst<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): T {
+export function getFirst<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T {
     if (collection == null)
         throw new NullCollectionException()
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return getFirstByCollectionHolder(collection,)
     if (isArray(collection,))
         return getFirstByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return getFirstByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return getFirstByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
