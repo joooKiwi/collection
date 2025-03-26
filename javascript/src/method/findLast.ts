@@ -23,6 +23,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -39,7 +40,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findLast<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): S
+export function findLast<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -52,14 +53,17 @@ export function findLast<const T, const S extends T, >(collection: Nullable<| Mi
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
  * @extensionFunction
  */
-export function findLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): T
-export function findLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
+export function findLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): T
+export function findLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         throw new NullCollectionException()
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return findLastByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
         return findLastByArray(collection, predicate,)
+    if (isMinimalistCollectionHolder(collection,))
+        return findLastByMinimalistCollectionHolder(collection, predicate,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return findLastByCollectionHolder(collection, predicate,)
     if (isArrayByStructure<T>(collection,))
