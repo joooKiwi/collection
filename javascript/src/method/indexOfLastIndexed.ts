@@ -24,6 +24,7 @@ import {isArray}                                           from "./isArray"
 import {isArrayByStructure}                                from "./isArrayByStructure"
 import {isCollectionHolder}                                from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                     from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                      from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -42,7 +43,7 @@ import {isCollectionHolderByStructure}                     from "./isCollectionH
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): number
+export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): number
 /**
  * Get the last index matching the {@link predicate}
  * between the {@link from starting} and the {@link to ending} index
@@ -62,7 +63,7 @@ export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistC
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
+export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
 /**
  * Get the last index matching the {@link predicate}
  * between the {@link from starting} and the {@link to ending} index
@@ -84,8 +85,8 @@ export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistC
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
-export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
+export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfLastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
     if (to == null)
@@ -317,11 +318,14 @@ export function indexOfLastIndexedByArray<const T, >(collection: Nullable<readon
 
 //#region -------------------- predicate --------------------
 
-function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>,): number {
-    if (isCollectionHolder<T>(collection,))
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>,): number {
+    if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
         return __core0ByArray(collection, predicate,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __core0ByMinimalistCollectionHolder(collection, predicate,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __core0ByCollectionHolder(collection, predicate,)
     if (isArrayByStructure<T>(collection,))
@@ -364,11 +368,14 @@ function __core0ByArray<const T, >(collection: readonly T[], predicate: ReverseB
 //#endregion -------------------- predicate --------------------
 //#region -------------------- predicate, from --------------------
 
-function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number,): number {
-    if (isCollectionHolder<T>(collection,))
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number,): number {
+    if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, predicate, from,)
     if (isArray(collection,))
         return __core1ByArray(collection, predicate, from,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __core1ByMinimalistCollectionHolder(collection, predicate, from,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __core1ByCollectionHolder(collection, predicate, from,)
     if (isArrayByStructure<T>(collection,))
@@ -413,11 +420,14 @@ function __core1ByArray<const T, >(collection: readonly T[], predicate: ReverseB
 //#endregion -------------------- predicate, from --------------------
 //#region -------------------- predicate, from, to --------------------
 
-function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number, to: number,): number {
-    if (isCollectionHolder<T>(collection,))
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number, to: number,): number {
+    if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, predicate, from, to,)
     if (isArray(collection,))
         return __core2ByArray(collection, predicate, from, to,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __core2ByMinimalistCollectionHolder(collection, predicate, from, to,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __core2ByCollectionHolder(collection, predicate, from, to,)
     if (isArrayByStructure<T>(collection,))
@@ -473,11 +483,14 @@ function __core2ByArray<const T, >(collection: readonly T[], predicate: ReverseB
 //#endregion -------------------- predicate, from, to --------------------
 //#region -------------------- predicate, to --------------------
 
-function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, to: number,): number {
-    if (isCollectionHolder<T>(collection,))
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, to: number,): number {
+    if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
     if (isArray(collection,))
         return __coreWithNoFromByArray(collection, predicate, to,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __coreWithNoFromByMinimalistCollectionHolder(collection, predicate, to,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
     if (isArrayByStructure<T>(collection,))
