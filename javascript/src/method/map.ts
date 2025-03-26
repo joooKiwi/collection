@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -36,13 +37,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
-export function map<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
+export function map<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, transform: ValueIndexWithReturnCallback<T, U>,): CollectionHolder<U> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return mapByCollectionHolder(collection, transform,)
     if (isArray(collection,))
         return mapByArray(collection, transform,)
+    if (isMinimalistCollectionHolder(collection,))
+        return mapByMinimalistCollectionHolder(collection, transform,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return mapByCollectionHolder(collection, transform,)
     if (isArrayByStructure<T>(collection,))
