@@ -172,15 +172,6 @@ import {skipLastWhile, skipLastWhileByArray, skipLastWhileByCollectionHolder, sk
 import {skipLastWhileIndexed, skipLastWhileIndexedByArray, skipLastWhileIndexedByCollectionHolder, skipLastWhileIndexedByMinimalistCollectionHolder}                                                                                     from "../src/method/skipLastWhileIndexed"
 import {skipWhile, skipWhileByArray, skipWhileByCollectionHolder, skipWhileByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/skipWhile"
 import {skipWhileIndexed, skipWhileIndexedByArray, skipWhileIndexedByCollectionHolder, skipWhileIndexedByMinimalistCollectionHolder}                                                                                                     from "../src/method/skipWhileIndexed"
-import {slice, sliceByArray, sliceByCollectionHolder, sliceByMinimalistCollectionHolder}                                                                                                                                                 from "../src/method/slice"
-import {sliceWithARange, sliceWithARangeByArray, sliceWithARangeByCollectionHolder, sliceWithARangeByMinimalistCollectionHolder}                                                                                                         from "../src/method/slice.withARange"
-import {sliceWithArray, sliceWithArrayByArray, sliceWithArrayByCollectionHolder, sliceWithArrayByMinimalistCollectionHolder}                                                                                                             from "../src/method/slice.withArray"
-import {sliceWithCollectionHolder, sliceWithCollectionHolderByArray, sliceWithCollectionHolderByCollectionHolder, sliceWithCollectionHolderByMinimalistCollectionHolder}                                                                 from "../src/method/slice.withCollectionHolder"
-import {sliceWithCollectionIterator, sliceWithCollectionIteratorByArray, sliceWithCollectionIteratorByCollectionHolder, sliceWithCollectionIteratorByMinimalistCollectionHolder}                                                         from "../src/method/slice.withCollectionIterator"
-import {sliceWithIterable, sliceWithIterableByArray, sliceWithIterableByCollectionHolder, sliceWithIterableByMinimalistCollectionHolder}                                                                                                 from "../src/method/slice.withIterable"
-import {sliceWithIterator, sliceWithIteratorByArray, sliceWithIteratorByCollectionHolder, sliceWithIteratorByMinimalistCollectionHolder}                                                                                                 from "../src/method/slice.withIterator"
-import {sliceWithMinimalistCollectionHolder, sliceWithMinimalistCollectionHolderByArray, sliceWithMinimalistCollectionHolderByCollectionHolder, sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder}                         from "../src/method/slice.withMinimalistCollectionHolder"
-import {sliceWithSet, sliceWithSetByArray, sliceWithSetByCollectionHolder, sliceWithSetByMinimalistCollectionHolder}                                                                                                                     from "../src/method/slice.withSet"
 import * as takeModule                                                                                                                                                                                                                   from "../src/method/take"
 import {take, takeByArray, takeByCollectionHolder, takeByMinimalistCollectionHolder}                                                                                                                                                     from "../src/method/take"
 import * as takeLastModule                                                                                                                                                                                                               from "../src/method/takeLast"
@@ -478,60 +469,6 @@ describe("CollectionHolderTest (functions)", () => {
             },)
         },)
 
-        describe("slice", () => {
-            test("all",                          () => expect(slice(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (range)", () => {
-            test("all",                          () => expect(sliceWithARange(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithARangeByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithARangeByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithARangeByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (array)", () => {
-            test("all",                          () => expect(sliceWithArray(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithArrayByMinimalistCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithArrayByCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithArrayByArray(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (set)", () => {
-            test("all",                          () => expect(sliceWithSet(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithSetByMinimalistCollectionHolder(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithSetByCollectionHolder(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithSetByArray(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (collection holder)", () => {
-            test("all",                          () => expect(sliceWithCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithCollectionHolderByMinimalistCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithCollectionHolderByCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithCollectionHolderByArray(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (minimalist collection holder)", () => {
-            test("all",                          () => expect(sliceWithMinimalistCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithMinimalistCollectionHolderByCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithMinimalistCollectionHolderByArray(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (collection iterator)", () => {
-            test("all",                          () => expect(sliceWithCollectionIterator(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithCollectionIteratorByMinimalistCollectionHolder(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithCollectionIteratorByCollectionHolder(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithCollectionIteratorByArray(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (iterator)", () => {
-            test("all",                          () => expect(sliceWithIterator(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithIteratorByMinimalistCollectionHolder(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithIteratorByCollectionHolder(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithIteratorByArray(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (iterable)", () => {
-            test("all",                          () => expect(sliceWithIterable(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithIterableByMinimalistCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithIterableByCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithIterableByArray(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
         describe("take", () => {
             test("all",                          () => expect(take(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             test("minimalist collection holder", () => expect(takeByMinimalistCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)

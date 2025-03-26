@@ -10,19 +10,87 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {expectToBeInstance}                                                                        from "./expect/expectToBeInstance"
-import {EmptyCollectionHolderForTest}                                                              from "./instance/EmptyCollectionHolderForTest"
-import {_0, _01, _0123, _1, _2, _3, _4, _45, _4567, A, AB, ABC, ABCD, B, BC, BCD, C, CD, D, EMPTY} from "./value/arrays"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder, everyIterableInstances}    from "./value/instances"
+import {expectToBeInstance}                                                                                        from "./expect/expectToBeInstance"
+import {CollectionHolderFromArray}                                                                                 from "./instance/CollectionHolderFromArray"
+import {CollectionIteratorFromArray}                                                                               from "./instance/CollectionIteratorFromArray"
+import {EmptyCollectionHolderForTest}                                                                              from "./instance/EmptyCollectionHolderForTest"
+import {_0, _01, _0123, _1, _2, _3, _4, _45, _4567, A, AB, ABC, ABCD, B, BC, BCD, C, CD, D, EMPTY, NULL_UNDEFINED} from "./value/arrays"
+import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder, everyIterableInstances}                    from "./value/instances"
 
-import {CollectionConstants}        from "../src/CollectionConstants"
-import {ForbiddenIndexException}    from "../src/exception/ForbiddenIndexException"
-import {IndexOutOfBoundsException}  from "../src/exception/IndexOutOfBoundsException"
-import {InvalidIndexRangeException} from "../src/exception/InvalidIndexRangeException"
+import {CollectionConstants}                                                                                                                                                                                     from "../src/CollectionConstants"
+import {ForbiddenIndexException}                                                                                                                                                                                 from "../src/exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}                                                                                                                                                                               from "../src/exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException}                                                                                                                                                                              from "../src/exception/InvalidIndexRangeException"
+import {slice, sliceByArray, sliceByCollectionHolder, sliceByMinimalistCollectionHolder}                                                                                                                         from "../src/method/slice"
+import {sliceWithARange, sliceWithARangeByArray, sliceWithARangeByCollectionHolder, sliceWithARangeByMinimalistCollectionHolder}                                                                                 from "../src/method/slice.withARange"
+import {sliceWithArray, sliceWithArrayByArray, sliceWithArrayByCollectionHolder, sliceWithArrayByMinimalistCollectionHolder}                                                                                     from "../src/method/slice.withArray"
+import {sliceWithCollectionHolder, sliceWithCollectionHolderByArray, sliceWithCollectionHolderByCollectionHolder, sliceWithCollectionHolderByMinimalistCollectionHolder}                                         from "../src/method/slice.withCollectionHolder"
+import {sliceWithCollectionIterator, sliceWithCollectionIteratorByArray, sliceWithCollectionIteratorByCollectionHolder, sliceWithCollectionIteratorByMinimalistCollectionHolder}                                 from "../src/method/slice.withCollectionIterator"
+import {sliceWithIterable, sliceWithIterableByArray, sliceWithIterableByCollectionHolder, sliceWithIterableByMinimalistCollectionHolder}                                                                         from "../src/method/slice.withIterable"
+import {sliceWithIterator, sliceWithIteratorByArray, sliceWithIteratorByCollectionHolder, sliceWithIteratorByMinimalistCollectionHolder}                                                                         from "../src/method/slice.withIterator"
+import {sliceWithMinimalistCollectionHolder, sliceWithMinimalistCollectionHolderByArray, sliceWithMinimalistCollectionHolderByCollectionHolder, sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "../src/method/slice.withMinimalistCollectionHolder"
+import {sliceWithSet, sliceWithSetByArray, sliceWithSetByCollectionHolder, sliceWithSetByMinimalistCollectionHolder}                                                                                             from "../src/method/slice.withSet"
 
 describe("CollectionHolderTest (slice)", () => {
 
     test("EmptyCollectionHolder", () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.slice(),),)
+
+    describe.each(NULL_UNDEFINED,)("%s", it => {
+        describe("slice", () => {
+            test("all",                          () => expect(slice(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(sliceByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(sliceByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(sliceByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("slice (range)", () => {
+            test("all",                          () => expect(sliceWithARange(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(sliceWithARangeByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(sliceWithARangeByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(sliceWithARangeByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("slice (array)", () => {
+            test("all",                          () => expect(sliceWithArray(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(sliceWithArrayByMinimalistCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(sliceWithArrayByCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(sliceWithArrayByArray(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("slice (set)", () => {
+            test("all",                          () => expect(sliceWithSet(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(sliceWithSetByMinimalistCollectionHolder(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(sliceWithSetByCollectionHolder(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(sliceWithSetByArray(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("slice (collection holder)", () => {
+            test("all",                          () => expect(sliceWithCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(sliceWithCollectionHolderByMinimalistCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(sliceWithCollectionHolderByCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(sliceWithCollectionHolderByArray(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("slice (minimalist collection holder)", () => {
+            test("all",                          () => expect(sliceWithMinimalistCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(sliceWithMinimalistCollectionHolderByCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(sliceWithMinimalistCollectionHolderByArray(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("slice (collection iterator)", () => {
+            test("all",                          () => expect(sliceWithCollectionIterator(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(sliceWithCollectionIteratorByMinimalistCollectionHolder(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(sliceWithCollectionIteratorByCollectionHolder(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(sliceWithCollectionIteratorByArray(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("slice (iterator)", () => {
+            test("all",                          () => expect(sliceWithIterator(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(sliceWithIteratorByMinimalistCollectionHolder(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(sliceWithIteratorByCollectionHolder(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(sliceWithIteratorByArray(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+        describe("slice (iterable)", () => {
+            test("all",                          () => expect(sliceWithIterable(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("minimalist collection holder", () => expect(sliceWithIterableByMinimalistCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("collection holder",            () => expect(sliceWithIterableByCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("array",                        () => expect(sliceWithIterableByArray(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        },)
+    },)
 
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension, type,},},) => {
         /** The instance is a {@link GenericCollectionHolder} */
