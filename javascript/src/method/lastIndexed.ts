@@ -33,7 +33,7 @@ import {findLastIndexed, findLastIndexedByArray, findLastIndexedByCollectionHold
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): T
+export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -48,7 +48,7 @@ export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollecti
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+export function lastIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -62,8 +62,8 @@ export function lastIndexed<const T, const S extends T, >(collection: Nullable<|
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
-export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
+export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
+export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
     if (predicate == null)
         return getLast(collection,)
     return findLastIndexed(collection, predicate,)

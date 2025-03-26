@@ -34,7 +34,7 @@ import {findFirstIndexed, findFirstIndexedByArray, findFirstIndexedByCollectionH
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): T
+export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -51,7 +51,7 @@ export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollect
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+export function firstIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -67,8 +67,8 @@ export function firstIndexed<const T, const S extends T, >(collection: Nullable<
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
-export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
+export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
+export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
     if (predicate == null)
         return getFirst(collection,)
     return findFirstIndexed(collection, predicate,)

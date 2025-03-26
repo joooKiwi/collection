@@ -33,7 +33,7 @@ import {findLast, findLastByArray, findLastByCollectionHolder, findLastByMinimal
  * @extensionFunction
  * @facadeFunction
  */
-export function last<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): T
+export function last<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -48,7 +48,7 @@ export function last<const T, >(collection: Nullable<| MinimalistCollectionHolde
  * @extensionFunction
  * @facadeFunction
  */
-export function last<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+export function last<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -62,8 +62,8 @@ export function last<const T, const S extends T, >(collection: Nullable<| Minima
  * @extensionFunction
  * @facadeFunction
  */
-export function last<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): T
-export function last<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function last<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): T
+export function last<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getLast(collection,)
     return findLast(collection, predicate,)

@@ -34,7 +34,7 @@ import {findFirst, findFirstByArray, findFirstByCollectionHolder, findFirstByMin
  * @extensionFunction
  * @facadeFunction
  */
-export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): T
+export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -51,7 +51,7 @@ export function first<const T, >(collection: Nullable<| MinimalistCollectionHold
  * @extensionFunction
  * @facadeFunction
  */
-export function first<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+export function first<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -67,8 +67,8 @@ export function first<const T, const S extends T, >(collection: Nullable<| Minim
  * @extensionFunction
  * @facadeFunction
  */
-export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): T
-export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): T
+export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getFirst(collection,)
     return findFirst(collection, predicate,)
