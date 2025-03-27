@@ -163,12 +163,12 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection.get(index + 1,),]
-            const newArrayWithDrop = new Array<T>(newSize,)
 
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = collection.get(index,)
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = collection.get(index,)
+            return newArrayFromIndexToLast
         }
 
     const newArray = new Array<T>(size,)
@@ -186,12 +186,12 @@ function __with0ArgumentByArray<const T, >(collection: readonly T[], size: numbe
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection[index + 1] as T,]
-            const newArrayWithDrop = new Array<T>(newSize,)
 
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = collection[index] as T
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = collection[index] as T
+            return newArrayFromIndexToLast
         }
     return collection
 }
@@ -206,12 +206,12 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection.get(index + 1,),]
-            const newArrayWithDrop = new Array<T>(newSize,)
 
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = collection.get(index,)
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = collection.get(index,)
+            return newArrayFromIndexToLast
         }
 
     const newArray = new Array<T>(size,)
@@ -229,12 +229,12 @@ function __with1ArgumentByArray<const T, >(collection: readonly T[], size: numbe
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection[index + 1] as T,]
-            const newArrayWithDrop = new Array<T>(newSize,)
 
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = collection[index] as T
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = collection[index] as T
+            return newArrayFromIndexToLast
         }
     return collection
 }
@@ -250,12 +250,12 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [newArray[index + 1] as T,]
-            const newArrayWithDrop = new Array<T>(newSize,)
 
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = newArray[index] as T
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = newArray[index] as T
+            return newArrayFromIndexToLast
         }
     return newArray
 }
@@ -270,12 +270,12 @@ function __with2ArgumentByArray<const T, >(collection: readonly T[], size: numbe
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [newArray[index + 1] as T,]
-            const newArrayWithDrop = new Array<T>(newSize,)
 
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = newArray[index] as T
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = newArray[index] as T
+            return newArrayFromIndexToLast
         }
     return newArray
 }
