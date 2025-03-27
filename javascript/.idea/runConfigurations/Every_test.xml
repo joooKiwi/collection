@@ -4,6 +4,7 @@
     <toRun name="Every test on CollectionHolder" type="CompoundRunConfigurationType" />
     <toRun name="Every test on CollectionIterator" type="CompoundRunConfigurationType" />
     <toRun name="Every test on LazyCollectionHolder" type="CompoundRunConfigurationType" />
+    <toRun name="function tests (is)" type="JavaScriptTestRunnerJest" />
     <method v="2" />
   </configuration>
 </component>
