@@ -17,6 +17,7 @@ import type {MinimalistCollectionHolder}                               from "../
 import type {ReverseBooleanCallback, ReverseRestrainedBooleanCallback} from "../type/callback"
 
 import {CollectionConstants}           from "../CollectionConstants"
+import {__reduceTo}                    from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -163,73 +164,73 @@ export function takeWhileIndexedByArray<const T, >(collection: Nullable<readonly
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: () => boolean,): readonly T[] {
-    const newArray: T[] = []
+    const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size)
-        if (!predicate())
-            break
+        if (predicate())
+            newArray[index] = collection.get(index,)
         else
-            newArray.push(collection.get(index,),)
+            return __reduceTo(newArray, index,)
     return newArray
 }
 
 function __with0ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: () => boolean,): readonly T[] {
-    const newArray: T[] = []
+    const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size)
-        if (!predicate())
-            break
+        if (predicate())
+            newArray[index] = collection[index] as T
         else
-            newArray.push(collection[index] as T,)
+            return __reduceTo(newArray, index,)
     return newArray
 }
 
 
 function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (index: number,) => boolean,): readonly T[] {
-    const newArray: T[] = []
+    const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size)
-        if (!predicate(index,))
-            break
+        if (predicate(index,))
+            newArray[index] = collection.get(index,)
         else
-            newArray.push(collection.get(index,),)
+            return __reduceTo(newArray, index,)
     return newArray
 }
 
 function __with1ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: (index: number,) => boolean,): readonly T[] {
-    const newArray: T[] = []
+    const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size)
-        if (!predicate(index,))
-            break
+        if (predicate(index,))
+            newArray[index] = collection[index] as T
         else
-            newArray.push(collection[index] as T,)
+            return __reduceTo(newArray, index,)
     return newArray
 }
 
 
 function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (index: number, value: T,) => boolean,): readonly T[] {
-    const newArray: T[] = []
+    const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size) {
         const value = collection.get(index,)
-        if (!predicate(index, value,))
-            break
+        if (predicate(index, value,))
+            newArray[index] = value
         else
-            newArray.push(value,)
+            return __reduceTo(newArray, index,)
     }
     return newArray
 }
 
 function __with2ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: (index: number, value: T,) => boolean,): readonly T[] {
-    const newArray: T[] = []
+    const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size) {
         const value = collection[index] as T
-        if (!predicate(index, value,))
-            break
+        if (predicate(index, value,))
+            newArray[index] = value
         else
-            newArray.push(value,)
+            return __reduceTo(newArray, index,)
     }
     return newArray
 }
