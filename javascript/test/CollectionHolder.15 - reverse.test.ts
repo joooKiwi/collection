@@ -10,17 +10,22 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {expectToBeInstance}                                             from "./expect/expectToBeInstance"
-import {EmptyCollectionHolderForTest}                                   from "./instance/EmptyCollectionHolderForTest"
-import {GenericCollectionHolder_ToReverseAlias}                         from "./instance/GenericCollectionHolder_ToReverseAlias"
-import {LazyGenericCollectionHolder_ToReverseAlias}                     from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
-import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY}        from "./value/arrays"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
+import {expectToBeInstance}                                                      from "./expect/expectToBeInstance"
+import {CollectionHolderFromArray}                                               from "./instance/CollectionHolderFromArray"
+import {EmptyCollectionHolderForTest}                                            from "./instance/EmptyCollectionHolderForTest"
+import {GenericCollectionHolder_ToReverseAlias}                                  from "./instance/GenericCollectionHolder_ToReverseAlias"
+import {LazyGenericCollectionHolder_ToReverseAlias}                              from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
+import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY, NULL_UNDEFINED} from "./value/arrays"
+import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}          from "./value/instances"
 
-import {CollectionConstants}        from "../src/CollectionConstants"
-import {ForbiddenIndexException}    from "../src/exception/ForbiddenIndexException"
-import {IndexOutOfBoundsException}  from "../src/exception/IndexOutOfBoundsException"
-import {InvalidIndexRangeException} from "../src/exception/InvalidIndexRangeException"
+import {CollectionConstants}                                                                                 from "../src/CollectionConstants"
+import {ForbiddenIndexException}                                                                             from "../src/exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}                                                                           from "../src/exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException}                                                                          from "../src/exception/InvalidIndexRangeException"
+import {reversed, reversedByArray, reversedByCollectionHolder, reversedByMinimalistCollectionHolder}         from "../src/method/reversed"
+import * as toReverseModule                                                                                  from "../src/method/toReverse"
+import {toReverse, toReverseByArray, toReverseByCollectionHolder, toReverseByMinimalistCollectionHolder}     from "../src/method/toReverse"
+import {toReversed, toReversedByArray, toReversedByCollectionHolder, toReversedByMinimalistCollectionHolder} from "../src/method/toReversed"
 
 describe("CollectionHolderTest (reverse)", () => {
 
@@ -39,6 +44,58 @@ describe("CollectionHolderTest (reverse)", () => {
             test("toReversed", () => expect(new LazyGenericCollectionHolder_ToReverseAlias().execute(it => it.toReversed(),).amountOfCall,).toBe(1,),)
             test("reversed",   () => expect(new LazyGenericCollectionHolder_ToReverseAlias().execute(it => it.reversed(),).amountOfCall,).toBe(1,),)
         },)
+
+        describe("toReversed", () => {
+            test("all", () => {
+                const method = jest.spyOn(toReverseModule, "toReverse",)
+                toReversed(A,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(toReverseModule, "toReverseByMinimalistCollectionHolder",)
+                toReversedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(toReverseModule, "toReverseByCollectionHolder",)
+                toReversedByCollectionHolder(new CollectionHolderFromArray(A,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(toReverseModule, "toReverseByArray",)
+                toReversedByArray(A,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("reversed", () => {
+            test("all", () => {
+                const method = jest.spyOn(toReverseModule, "toReverse",)
+                reversed(A,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(toReverseModule, "toReverseByMinimalistCollectionHolder",)
+                reversedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(toReverseModule, "toReverseByCollectionHolder",)
+                reversedByCollectionHolder(new CollectionHolderFromArray(A,),)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(toReverseModule, "toReverseByArray",)
+                reversedByArray(A,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+    },)
+
+    describe.each(NULL_UNDEFINED,)("%s", it => {
+        test("all",                          () => expect(toReverse(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        test("minimalist collection holder", () => expect(toReverseByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        test("collection holder",            () => expect(toReverseByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        test("array",                        () => expect(toReverseByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
     },)
 
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {

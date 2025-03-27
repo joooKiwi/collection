@@ -137,7 +137,6 @@ import {isWeakMap}                                                              
 import {isWeakMapByStructure}                                                                                                                                                                                                            from "../src/method/isWeakMapByStructure"
 import {isWeakSet}                                                                                                                                                                                                                       from "../src/method/isWeakSet"
 import {isWeakSetByStructure}                                                                                                                                                                                                            from "../src/method/isWeakSetByStructure"
-import {reversed, reversedByArray, reversedByCollectionHolder, reversedByMinimalistCollectionHolder}                                                                                                                                     from "../src/method/reversed"
 import {toArray, toArrayByArray, toArrayByCollectionHolder, toArrayByMinimalistCollectionHolder}                                                                                                                                         from "../src/method/toArray"
 import {toIterator, toIteratorByArray, toIteratorByCollectionHolder, toIteratorByMinimalistCollectionHolder}                                                                                                                             from "../src/method/toIterator"
 import {toLocaleLowerCaseString, toLocaleLowerCaseStringByArray, toLocaleLowerCaseStringByCollectionHolder, toLocaleLowerCaseStringByMinimalistCollectionHolder}                                                                         from "../src/method/toLocaleLowerCaseString"
@@ -149,9 +148,6 @@ import {toMutableArray, toMutableArrayByArray, toMutableArrayByCollectionHolder,
 import {toMutableMap, toMutableMapByArray, toMutableMapByCollectionHolder, toMutableMapByMinimalistCollectionHolder}                                                                                                                     from "../src/method/toMutableMap"
 import {toMutableSet, toMutableSetByArray, toMutableSetByCollectionHolder, toMutableSetByMinimalistCollectionHolder}                                                                                                                     from "../src/method/toMutableSet"
 import {toMutableWeakSet, toMutableWeakSetByArray, toMutableWeakSetByCollectionHolder, toMutableWeakSetByMinimalistCollectionHolder}                                                                                                     from "../src/method/toMutableWeakSet"
-import * as toReverseModule                                                                                                                                                                                                              from "../src/method/toReverse"
-import {toReverse, toReverseByArray, toReverseByCollectionHolder, toReverseByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/toReverse"
-import {toReversed, toReversedByArray, toReversedByCollectionHolder, toReversedByMinimalistCollectionHolder}                                                                                                                             from "../src/method/toReversed"
 import {toSet, toSetByArray, toSetByCollectionHolder, toSetByMinimalistCollectionHolder}                                                                                                                                                 from "../src/method/toSet"
 import {toString, toStringByArray, toStringByCollectionHolder, toStringByMinimalistCollectionHolder}                                                                                                                                     from "../src/method/toString"
 import {toUpperCaseString, toUpperCaseStringByArray, toUpperCaseStringByCollectionHolder, toUpperCaseStringByMinimalistCollectionHolder}                                                                                                 from "../src/method/toUpperCaseString"
@@ -421,13 +417,6 @@ describe("CollectionHolderTest (functions)", () => {
                 test("collection holder",            () => expect(hasAllWithIterableByCollectionHolder(it, A,),).toBeFalse(),)
                 test("array",                        () => expect(hasAllWithIterableByArray(it, A,),).toBeFalse(),)
             },)
-        },)
-
-        describe("toReverse", () => {
-            test("all",                          () => expect(toReverse(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(toReverseByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(toReverseByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(toReverseByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
         },)
 
         describe("toIterator", () => {
@@ -1454,51 +1443,6 @@ describe("CollectionHolderTest (functions)", () => {
             test("array", () => {
                 const method = jest.spyOn(hasAllWithIterableModule, "hasAllWithIterableByArray",)
                 includesAllWithIterableByArray(A, new IterableForTest(B,),)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-
-        describe("toReversed", () => {
-            test("all", () => {
-                const method = jest.spyOn(toReverseModule, "toReverse",)
-                toReversed(A,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByMinimalistCollectionHolder",)
-                toReversedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,),)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByCollectionHolder",)
-                toReversedByCollectionHolder(new CollectionHolderFromArray(A,),)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByArray",)
-                toReversedByArray(A,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-        },)
-        describe("reversed", () => {
-            test("all", () => {
-                const method = jest.spyOn(toReverseModule, "toReverse",)
-                reversed(A,)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("minimalist collection holder", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByMinimalistCollectionHolder",)
-                reversedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,),)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("collection holder", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByCollectionHolder",)
-                reversedByCollectionHolder(new CollectionHolderFromArray(A,),)
-                expect(method,).toHaveBeenCalledOnce()
-            },)
-            test("array", () => {
-                const method = jest.spyOn(toReverseModule, "toReverseByArray",)
-                reversedByArray(A,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
