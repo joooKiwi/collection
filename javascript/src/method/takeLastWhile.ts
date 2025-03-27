@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeWhile(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  * @typescriptDefinition
  */
 export function takeLastWhile<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
@@ -163,6 +163,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection.get(index + 1,),]
+
             const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
@@ -205,6 +206,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [newArray[index + 1] as T,]
+
             const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
@@ -224,6 +226,7 @@ function __with1ArgumentByArray<const T, >(collection: readonly T[], size: numbe
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [newArray[index + 1] as T,]
+
             const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
