@@ -195,9 +195,9 @@ public final class DropLastWhile
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> T @NotNull @Unmodifiable [] __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                   final @NotNull BooleanSupplier predicate,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull BooleanSupplier predicate,
+                                                                                            final int size) {
         var index = size;
         while (--index >= 0)
             if (!predicate.getAsBoolean()) {
@@ -210,9 +210,9 @@ public final class DropLastWhile
         return emptyArray();
     }
 
-    private static <T> T @NotNull @Unmodifiable [] __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                   final @NotNull BooleanSupplier predicate,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with0Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                            final @NotNull BooleanSupplier predicate,
+                                                                                            final int size) {
         var index = size;
         while (--index >= 0)
             if (!predicate.getAsBoolean()) {
@@ -226,9 +226,9 @@ public final class DropLastWhile
     }
 
 
-    private static <T> T @NotNull @Unmodifiable [] __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                   final @NotNull Predicate<? super T> predicate,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull Predicate<? super T> predicate,
+                                                                                            final int size) {
         var index = size;
         while (--index >= 0) {
             final var value = collection.get(index);
@@ -244,9 +244,9 @@ public final class DropLastWhile
         return emptyArray();
     }
 
-    private static <T> T @NotNull @Unmodifiable [] __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                   final @NotNull Predicate<? super T> predicate,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with1Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                            final @NotNull Predicate<? super T> predicate,
+                                                                                            final int size) {
         var index = size;
         while (--index >= 0) {
             final var value = collection[index];
@@ -263,9 +263,9 @@ public final class DropLastWhile
     }
 
 
-    private static <T> T @NotNull @Unmodifiable [] __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                   final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                            final int size) {
         var index = size;
         while (--index >= 0) {
             final var value = collection.get(index);
@@ -281,9 +281,9 @@ public final class DropLastWhile
         return emptyArray();
     }
 
-    private static <T> T @NotNull @Unmodifiable [] __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                   final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                   final int size) {
+    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                                            final @NotNull ObjIntPredicate<? super T> predicate,
+                                                                                            final int size) {
         var index = size;
         while (--index >= 0) {
             final var value = collection[index];
