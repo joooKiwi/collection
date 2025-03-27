@@ -163,97 +163,101 @@ export function dropWhileByArray<const T, >(collection: Nullable<readonly T[]>, 
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: () => boolean,): readonly T[] {
-    let isKept = false
-    const newArray: T[] = []
     let index = -1
     while (++index < size)
-        if (isKept)
-            newArray.push(collection.get(index,),)
-        else if (!predicate()) {
-            newArray.push(collection.get(index,),)
-            isKept = true
+        if (!predicate()) {
+            const newArray = new Array<T>(size - index,)
+            let indexToRetrieve = index - 1;
+            let indexToAdd = -1
+            while (++indexToRetrieve < size)
+                newArray[++indexToAdd] = collection.get(indexToRetrieve,)
+            return newArray
         }
-    return newArray
+    return CollectionConstants.EMPTY_ARRAY
 }
 
 function __with0ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: () => boolean,): readonly T[] {
-    let isKept = false
-    const newArray: T[] = []
     let index = -1
     while (++index < size)
-        if (isKept)
-            newArray.push(collection[index] as T,)
-        else if (!predicate()) {
-            newArray.push(collection[index] as T,)
-            isKept = true
+        if (!predicate()) {
+            const newArray = new Array<T>(size - index,)
+            let indexToRetrieve = index - 1;
+            let indexToAdd = -1
+            while (++indexToRetrieve < size)
+                newArray[++indexToAdd] = collection[indexToRetrieve] as T
+            return newArray
         }
-    return newArray
+    return CollectionConstants.EMPTY_ARRAY
 }
 
 
 function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (value: T,) => boolean,): readonly T[] {
-    let isKept = false
-    const newArray: T[] = []
     let index = -1
     while (++index < size) {
         const value = collection.get(index,)
-        if (isKept)
-            newArray.push(value,)
-        else if (!predicate(value,)) {
-            newArray.push(value,)
-            isKept = true
+        if (!predicate(value,)) {
+            const newArray = new Array<T>(size - index,)
+            newArray[0] = value
+            let indexToRetrieve = index
+            let indexToAdd = 0
+            while (++indexToRetrieve < size)
+                newArray[++indexToAdd] = collection.get(indexToRetrieve,)
+            return newArray
         }
     }
-    return newArray
+    return CollectionConstants.EMPTY_ARRAY
 }
 
 function __with1ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: (value: T,) => boolean,): readonly T[] {
-    let isKept = false
-    const newArray: T[] = []
     let index = -1
     while (++index < size) {
         const value = collection[index] as T
-        if (isKept)
-            newArray.push(value,)
-        else if (!predicate(value,)) {
-            newArray.push(value,)
-            isKept = true
+        if (!predicate(value,)) {
+            const newArray = new Array<T>(size - index,)
+            newArray[0] = value
+            let indexToRetrieve = index
+            let indexToAdd = 0
+            while (++indexToRetrieve < size)
+                newArray[++indexToAdd] = collection[indexToRetrieve] as T
+            return newArray
         }
     }
-    return newArray
+    return CollectionConstants.EMPTY_ARRAY
 }
 
 
 function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (value: T, index: number,) => boolean,): readonly T[] {
-    let isKept = false
-    const newArray: T[] = []
     let index = -1
     while (++index < size) {
         const value = collection.get(index,)
-        if (isKept)
-            newArray.push(value,)
-        else if (!predicate(value, index,)) {
-            newArray.push(value,)
-            isKept = true
+        if (!predicate(value, index,)) {
+            const newArray = new Array<T>(size - index,)
+            newArray[0] = value
+            let indexToRetrieve = index
+            let indexToAdd = 0
+            while (++indexToRetrieve < size)
+                newArray[++indexToAdd] = collection.get(indexToRetrieve,)
+            return newArray
         }
     }
-    return newArray
+    return CollectionConstants.EMPTY_ARRAY
 }
 
 function __with2ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: (value: T, index: number,) => boolean,): readonly T[] {
-    let isKept = false
-    const newArray: T[] = []
     let index = -1
     while (++index < size) {
         const value = collection[index] as T
-        if (isKept)
-            newArray.push(value,)
-        else if (!predicate(value, index,)) {
-            newArray.push(value,)
-            isKept = true
+        if (!predicate(value, index,)) {
+            const newArray = new Array<T>(size - index,)
+            newArray[0] = value
+            let indexToRetrieve = index
+            let indexToAdd = 0
+            while (++indexToRetrieve < size)
+                newArray[++indexToAdd] = collection[indexToRetrieve] as T
+            return newArray
         }
     }
-    return newArray
+    return CollectionConstants.EMPTY_ARRAY
 }
 
 //#endregion -------------------- Loop methods --------------------
