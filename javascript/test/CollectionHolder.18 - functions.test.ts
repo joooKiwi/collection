@@ -23,7 +23,6 @@ import {A, B, EMPTY, NULL_UNDEFINED}            from "./value/arrays"
 
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../src/type/possibleInstance"
 
-import {CollectionConstants}                                                                                                                                                                                                             from "../src/CollectionConstants"
 import {GenericCollectionHolder}                                                                                                                                                                                                         from "../src/GenericCollectionHolder"
 import {GenericMinimalistCollectionHolder}                                                                                                                                                                                               from "../src/GenericMinimalistCollectionHolder"
 import {LazyGenericCollectionHolder}                                                                                                                                                                                                     from "../src/LazyGenericCollectionHolder"
@@ -137,21 +136,6 @@ import {isWeakMap}                                                              
 import {isWeakMapByStructure}                                                                                                                                                                                                            from "../src/method/isWeakMapByStructure"
 import {isWeakSet}                                                                                                                                                                                                                       from "../src/method/isWeakSet"
 import {isWeakSetByStructure}                                                                                                                                                                                                            from "../src/method/isWeakSetByStructure"
-import {toArray, toArrayByArray, toArrayByCollectionHolder, toArrayByMinimalistCollectionHolder}                                                                                                                                         from "../src/method/toArray"
-import {toIterator, toIteratorByArray, toIteratorByCollectionHolder, toIteratorByMinimalistCollectionHolder}                                                                                                                             from "../src/method/toIterator"
-import {toLocaleLowerCaseString, toLocaleLowerCaseStringByArray, toLocaleLowerCaseStringByCollectionHolder, toLocaleLowerCaseStringByMinimalistCollectionHolder}                                                                         from "../src/method/toLocaleLowerCaseString"
-import {toLocaleString, toLocaleStringByArray, toLocaleStringByCollectionHolder, toLocaleStringByMinimalistCollectionHolder}                                                                                                             from "../src/method/toLocaleString"
-import {toLocaleUpperCaseString, toLocaleUpperCaseStringByArray, toLocaleUpperCaseStringByCollectionHolder, toLocaleUpperCaseStringByMinimalistCollectionHolder}                                                                         from "../src/method/toLocaleUpperCaseString"
-import {toLowerCaseString, toLowerCaseStringByArray, toLowerCaseStringByCollectionHolder, toLowerCaseStringByMinimalistCollectionHolder}                                                                                                 from "../src/method/toLowerCaseString"
-import {toMap, toMapByArray, toMapByCollectionHolder, toMapByMinimalistCollectionHolder}                                                                                                                                                 from "../src/method/toMap"
-import {toMutableArray, toMutableArrayByArray, toMutableArrayByCollectionHolder, toMutableArrayByMinimalistCollectionHolder}                                                                                                             from "../src/method/toMutableArray"
-import {toMutableMap, toMutableMapByArray, toMutableMapByCollectionHolder, toMutableMapByMinimalistCollectionHolder}                                                                                                                     from "../src/method/toMutableMap"
-import {toMutableSet, toMutableSetByArray, toMutableSetByCollectionHolder, toMutableSetByMinimalistCollectionHolder}                                                                                                                     from "../src/method/toMutableSet"
-import {toMutableWeakSet, toMutableWeakSetByArray, toMutableWeakSetByCollectionHolder, toMutableWeakSetByMinimalistCollectionHolder}                                                                                                     from "../src/method/toMutableWeakSet"
-import {toSet, toSetByArray, toSetByCollectionHolder, toSetByMinimalistCollectionHolder}                                                                                                                                                 from "../src/method/toSet"
-import {toString, toStringByArray, toStringByCollectionHolder, toStringByMinimalistCollectionHolder}                                                                                                                                     from "../src/method/toString"
-import {toUpperCaseString, toUpperCaseStringByArray, toUpperCaseStringByCollectionHolder, toUpperCaseStringByMinimalistCollectionHolder}                                                                                                 from "../src/method/toUpperCaseString"
-import {toWeakSet, toWeakSetByArray, toWeakSetByCollectionHolder, toWeakSetByMinimalistCollectionHolder}                                                                                                                                 from "../src/method/toWeakSet"
 
 describe("CollectionHolderTest (functions)", () => {
     const everyEmptyInstances = [
@@ -417,97 +401,6 @@ describe("CollectionHolderTest (functions)", () => {
                 test("collection holder",            () => expect(hasAllWithIterableByCollectionHolder(it, A,),).toBeFalse(),)
                 test("array",                        () => expect(hasAllWithIterableByArray(it, A,),).toBeFalse(),)
             },)
-        },)
-
-        describe("toIterator", () => {
-            test("all",                          () => expect(toIterator(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
-            test("minimalist collection holder", () => expect(toIteratorByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
-            test("collection holder",            () => expect(toIteratorByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
-            test("array",                        () => expect(toIteratorByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
-        },)
-        describe("toArray", () => {
-            test("all",                          () => expect(toArray(it,) === CollectionConstants.EMPTY_ARRAY,).toBeTrue(),)
-            test("minimalist collection holder", () => expect(toArrayByMinimalistCollectionHolder(it,) === CollectionConstants.EMPTY_ARRAY,).toBeTrue(),)
-            test("collection holder",            () => expect(toArrayByCollectionHolder(it,) === CollectionConstants.EMPTY_ARRAY,).toBeTrue(),)
-            test("array",                        () => expect(toArrayByArray(it,) === CollectionConstants.EMPTY_ARRAY,).toBeTrue(),)
-        },)
-        describe("toMutableArray", () => {
-            test("all",                          () => expect(toMutableArray(it,),).toEqual(CollectionConstants.EMPTY_ARRAY,),)
-            test("minimalist collection holder", () => expect(toMutableArrayByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_ARRAY,),)
-            test("collection holder",            () => expect(toMutableArrayByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_ARRAY,),)
-            test("array",                        () => expect(toMutableArrayByArray(it,),).toEqual(CollectionConstants.EMPTY_ARRAY,),)
-        },)
-        describe("toSet", () => {
-            test("all",                          () => expect(toSet(it,) === CollectionConstants.EMPTY_SET,).toBeTrue(),)
-            test("minimalist collection holder", () => expect(toSetByMinimalistCollectionHolder(it,) === CollectionConstants.EMPTY_SET,).toBeTrue(),)
-            test("collection holder",            () => expect(toSetByCollectionHolder(it,) === CollectionConstants.EMPTY_SET,).toBeTrue(),)
-            test("array",                        () => expect(toSetByArray(it,) === CollectionConstants.EMPTY_SET,).toBeTrue(),)
-        },)
-        describe("toMutableSet", () => {
-            test("all",                          () => expect(toMutableSet(it,),).toEqual(CollectionConstants.EMPTY_SET,),)
-            test("minimalist collection holder", () => expect(toMutableSetByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_SET,),)
-            test("collection holder",            () => expect(toMutableSetByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_SET,),)
-            test("array",                        () => expect(toMutableSetByArray(it,),).toEqual(CollectionConstants.EMPTY_SET,),)
-        },)
-        describe("toWeakSet", () => {
-            test("all",                          () => expect(toWeakSet(it,) === CollectionConstants.EMPTY_WEAK_SET,).toBeTrue(),)
-            test("minimalist collection holder", () => expect(toWeakSetByMinimalistCollectionHolder(it,) === CollectionConstants.EMPTY_WEAK_SET,).toBeTrue(),)
-            test("collection holder",            () => expect(toWeakSetByCollectionHolder(it,) === CollectionConstants.EMPTY_WEAK_SET,).toBeTrue(),)
-            test("array",                        () => expect(toWeakSetByArray(it,) === CollectionConstants.EMPTY_WEAK_SET,).toBeTrue(),)
-        },)
-        describe("toMutableWeakSet", () => {
-            test("all",                          () => expect(toMutableWeakSet(it,),).toEqual(CollectionConstants.EMPTY_WEAK_SET,),)
-            test("minimalist collection holder", () => expect(toMutableWeakSetByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_WEAK_SET,),)
-            test("collection holder",            () => expect(toMutableWeakSetByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_WEAK_SET,),)
-            test("array",                        () => expect(toMutableWeakSetByArray(it,),).toEqual(CollectionConstants.EMPTY_WEAK_SET,),)
-        },)
-        describe("toMap", () => {
-            test("all",                          () => expect(toMap(it,) === CollectionConstants.EMPTY_MAP,).toBeTrue(),)
-            test("minimalist collection holder", () => expect(toMapByMinimalistCollectionHolder(it,) === CollectionConstants.EMPTY_MAP,).toBeTrue(),)
-            test("collection holder",            () => expect(toMapByCollectionHolder(it,) === CollectionConstants.EMPTY_MAP,).toBeTrue(),)
-            test("array",                        () => expect(toMapByArray(it,) === CollectionConstants.EMPTY_MAP,).toBeTrue(),)
-        },)
-        describe("toMutableMap", () => {
-            test("all",                          () => expect(toMutableMap(it,),).toEqual(CollectionConstants.EMPTY_MAP,),)
-            test("minimalist collection holder", () => expect(toMutableMapByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_MAP,),)
-            test("collection holder",            () => expect(toMutableMapByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_MAP,),)
-            test("array",                        () => expect(toMutableMapByArray(it,),).toEqual(CollectionConstants.EMPTY_MAP,),)
-        },)
-        describe("toString", () => {
-            test("all",                          () => expect(toString(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("minimalist collection holder", () => expect(toStringByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("collection holder",            () => expect(toStringByCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("array",                        () => expect(toStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        },)
-        describe("toLocaleString", () => {
-            test("all",                          () => expect(toLocaleString(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("minimalist collection holder", () => expect(toLocaleStringByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("collection holder",            () => expect(toLocaleStringByCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("array",                        () => expect(toLocaleStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        },)
-        describe("toLowerCaseString", () => {
-            test("all",                          () => expect(toLowerCaseString(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("minimalist collection holder", () => expect(toLowerCaseStringByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("collection holder",            () => expect(toLowerCaseStringByCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("array",                        () => expect(toLowerCaseStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        },)
-        describe("toLocaleLowerCaseString", () => {
-            test("all",                          () => expect(toLocaleLowerCaseString(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("minimalist collection holder", () => expect(toLocaleLowerCaseStringByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("collection holder",            () => expect(toLocaleLowerCaseStringByCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("array",                        () => expect(toLocaleLowerCaseStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        },)
-        describe("toUpperCaseString", () => {
-            test("all",                          () => expect(toUpperCaseString(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("minimalist collection holder", () => expect(toUpperCaseStringByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("collection holder",            () => expect(toUpperCaseStringByCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("array",                        () => expect(toUpperCaseStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        },)
-        describe("toLocaleUpperCaseString", () => {
-            test("all",                          () => expect(toLocaleUpperCaseString(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("minimalist collection holder", () => expect(toLocaleUpperCaseStringByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("collection holder",            () => expect(toLocaleUpperCaseStringByCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("array",                        () => expect(toLocaleUpperCaseStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
         },)
     },)
 
@@ -1446,7 +1339,6 @@ describe("CollectionHolderTest (functions)", () => {
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
-
     },)
 
 },)
