@@ -52,6 +52,16 @@ import {isWeakSet}                               from "../src/method/isWeakSet"
 import {isWeakSetByStructure}                    from "../src/method/isWeakSetByStructure"
 
 describe("is", () => {
+    const everyNonInstances = [
+        new Holder(null,           "null",),
+        new Holder(undefined,      "undefined",),
+        new Holder("",             "string",),
+        new Holder(0,              "number",),
+        new Holder(0n,             "bigint",),
+        new Holder(true,           "boolean",),
+        new Holder(Symbol(),       "symbol",),
+        new Holder(() => {}, "function",),
+    ] as const
     const everyInstances = [
         new Holder([],                                                                 "array",),
         //TODO add array by structure
@@ -97,6 +107,39 @@ describe("is", () => {
         new Holder(new GenericCollectionIterator(new CollectionHolderFromArray([],),), "collection iterator (normal)",),
         new Holder(new CollectionIterator_ByStructure([],),                            "collection iterator (by structure)",),
     ] as const
+
+    describe.each(everyNonInstances,)("%s", ({value: it,},) => {
+        test("isArray",                                 () => expect(isArray(it,),).toBeFalse(),)
+        test("isArrayByStructure",                      () => expect(isArrayByStructure(it,),).toBeFalse(),)
+        test("isByteArray",                             () => expect(isInt8Array(it,),).toBeFalse(),)
+        test("isUbyteArray",                            () => expect(isUint8Array(it,),).toBeFalse(),)
+        test("isUbyteClampedArray",                     () => expect(isUint8ClampedArray(it,),).toBeFalse(),)
+        test("isShortArray",                            () => expect(isInt16Array(it,),).toBeFalse(),)
+        test("isUshortArray",                           () => expect(isUint16Array(it,),).toBeFalse(),)
+        test("isLongArray",                             () => expect(isInt32Array(it,),).toBeFalse(),)
+        test("isUlongArray",                            () => expect(isUint32Array(it,),).toBeFalse(),)
+        test("isBigintArray",                           () => expect(isBigInt64Array(it,),).toBeFalse(),)
+        test("isUbigintArray",                          () => expect(isBigUint64Array(it,),).toBeFalse(),)
+        test("isFloatArray",                            () => expect(isFloat32Array(it,),).toBeFalse(),)
+        test("isDoubleArray",                           () => expect(isFloat64Array(it,),).toBeFalse(),)
+        test("isTypedArray",                            () => expect(isTypedArray(it,),).toBeFalse(),)
+        test("isTypedArrayByStructure",                 () => expect(isTypedArrayByStructure(it,),).toBeFalse(),)
+        test("isSet",                                   () => expect(isSet(it,),).toBeFalse(),)
+        test("isSetByStructure",                        () => expect(isSetByStructure(it,),).toBeFalse(),)
+        test("isWeakSet",                               () => expect(isWeakSet(it,),).toBeFalse(),)
+        test("isWeakSetByStructure",                    () => expect(isWeakSetByStructure(it,),).toBeFalse(),)
+        test("isMap",                                   () => expect(isMap(it,),).toBeFalse(),)
+        test("isMapByStructure",                        () => expect(isMapByStructure(it,),).toBeFalse(),)
+        test("isWeakMap",                               () => expect(isWeakMap(it,),).toBeFalse(),)
+        test("isWeakMapByStructure",                    () => expect(isWeakMapByStructure(it,),).toBeFalse(),)
+        test("isMinimalistCollectionHolder",            () => expect(isMinimalistCollectionHolder(it,),).toBeFalse(),)
+        test("isMinimalistCollectionHolderByStructure", () => expect(isMinimalistCollectionHolderByStructure(it,),).toBeFalse(),)
+        test("isCollectionHolder",                      () => expect(isCollectionHolder(it,),).toBeFalse(),)
+        test("isCollectionHolderByStructure",           () => expect(isCollectionHolderByStructure(it,),).toBeFalse(),)
+        test("isIterator",                              () => expect(isIterator(it,),).toBeFalse(),)
+        test("isCollectionIterator",                    () => expect(isCollectionIterator(it,),).toBeFalse(),)
+        test("isCollectionIteratorByStructure",         () => expect(isCollectionIteratorByStructure(it,),).toBeFalse(),)
+    },)
 
     describe.each(everyInstances,)("%s", ({value: instance, message: type,},) => {
         /** Tell that the instance is structurally a {@link MinimalistCollectionHolder} */
