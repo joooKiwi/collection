@@ -47,7 +47,7 @@ public final class MapIndexed
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(__with2Argument(collection, transform, size));
+        return new GenericCollectionHolder<>(() -> __with2Argument(collection, transform, size));
     }
 
     /// Create a new [CollectionHolder] applying a `transform` function
@@ -66,7 +66,28 @@ public final class MapIndexed
             return emptyCollectionHolder();
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(__with2Argument(collection, transform, collection.size()));
+        return new GenericCollectionHolder<>(() -> __with2Argument(collection, transform, collection.size()));
+    }
+
+    /// Create a new [CollectionHolder] applying a `transform` function
+    /// on each element of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param transform  The given transform
+    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                   final @NotNull IntObjFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptyCollectionHolder();
+
+        final var size = collection.length;
+        if (size == 0)
+            return emptyCollectionHolder();
+        return new GenericCollectionHolder<>(() -> __with2Argument(collection, transform, size));
     }
 
     //#endregion -------------------- predicate (int, T) → boolean --------------------
@@ -90,7 +111,7 @@ public final class MapIndexed
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(__with1Argument(transform, size));
+        return new GenericCollectionHolder<>(() -> __with1Argument(transform, size));
     }
 
     /// Create a new [CollectionHolder] applying a `transform` function
@@ -109,7 +130,28 @@ public final class MapIndexed
             return emptyCollectionHolder();
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(__with1Argument(transform, collection.size()));
+        return new GenericCollectionHolder<>(() -> __with1Argument(transform, collection.size()));
+    }
+
+    /// Create a new [CollectionHolder] applying a `transform` function
+    /// on each element of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param transform  The given transform
+    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                   final @NotNull IntFunction<? extends U> transform) {
+        if (collection == null)
+            return emptyCollectionHolder();
+
+        final var size = collection.length;
+        if (size == 0)
+            return emptyCollectionHolder();
+        return new GenericCollectionHolder<>(() -> __with1Argument(transform, size));
     }
 
     //#endregion -------------------- predicate (int) → boolean --------------------
@@ -133,7 +175,7 @@ public final class MapIndexed
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(__with0Argument(transform, size));
+        return new GenericCollectionHolder<>(() -> __with0Argument(transform, size));
     }
 
     /// Create a new [CollectionHolder] applying a `transform` function
@@ -152,7 +194,28 @@ public final class MapIndexed
             return emptyCollectionHolder();
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(__with0Argument(transform, collection.size()));
+        return new GenericCollectionHolder<>(() -> __with0Argument(transform, collection.size()));
+    }
+
+    /// Create a new [CollectionHolder] applying a `transform` function
+    /// on each element of the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param transform  The given transform
+    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                   final @NotNull Supplier<? extends U> transform) {
+        if (collection == null)
+            return emptyCollectionHolder();
+
+        final var size = collection.length;
+        if (size == 0)
+            return emptyCollectionHolder();
+        return new GenericCollectionHolder<>(() -> __with0Argument(transform, size));
     }
 
     //#endregion -------------------- predicate () → boolean --------------------
@@ -169,6 +232,7 @@ public final class MapIndexed
         return newArray;
     }
 
+
     private static <U> U @NotNull @Unmodifiable [] __with1Argument(final @NotNull IntFunction<? extends U> transform,
                                                                    final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
@@ -178,6 +242,7 @@ public final class MapIndexed
         return newArray;
     }
 
+
     private static <T, U> U @NotNull @Unmodifiable [] __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
                                                                       final @NotNull IntObjFunction<? super T, ? extends U> transform,
                                                                       final int size) {
@@ -185,6 +250,16 @@ public final class MapIndexed
         var index = -1;
         while (++index < size)
             newArray[index] = transform.apply(index, collection.get(index));
+        return newArray;
+    }
+
+    private static <T, U> U @NotNull @Unmodifiable [] __with2Argument(final T @NotNull @Unmodifiable [] collection,
+                                                                      final @NotNull IntObjFunction<? super T, ? extends U> transform,
+                                                                      final int size) {
+        @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
+        var index = -1;
+        while (++index < size)
+            newArray[index] = transform.apply(index, collection[index]);
         return newArray;
     }
 
