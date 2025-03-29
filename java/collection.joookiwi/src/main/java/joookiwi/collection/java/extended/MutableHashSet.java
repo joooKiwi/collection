@@ -4,7 +4,6 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.HashSet;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -18,7 +17,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class MutableHashSet<T>
+public class MutableHashSet<T extends @Nullable Object>
         extends HashSet<T> {
 
     @Serial private static final long serialVersionUID = -8220050431323577746L;
@@ -174,7 +173,7 @@ public class MutableHashSet<T>
     /// Create a mutable instance of [HashSet]
     /// with the capacity of the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length, DEFAULT_LOAD_FACTOR);
         final var size = values.length;
         if (size == 0)
@@ -187,7 +186,7 @@ public class MutableHashSet<T>
     /// Create a mutable instance of [HashSet]
     /// with the capacity of <code>values.[size][Collection#size()]</code>
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size(), DEFAULT_LOAD_FACTOR);
         if (values.isEmpty())
             return;
@@ -202,7 +201,7 @@ public class MutableHashSet<T>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `loadFactor` was negative
-    public MutableHashSet(final T@Flow(sourceIsContainer = true, targetIsContainer = true)  @NotNull @Unmodifiable [] values,
+    public MutableHashSet(final T@Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
                           final float loadFactor) {
         super(values.length, loadFactor);
         final var size = values.length;
@@ -218,7 +217,7 @@ public class MutableHashSet<T>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was negative
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values,
+    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
                           final @Nullable Float loadFactor) {
         super(values.length, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
@@ -235,7 +234,7 @@ public class MutableHashSet<T>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was negative
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final float loadFactor) {
         super(values.size(), loadFactor);
         if (values.isEmpty())
@@ -248,7 +247,7 @@ public class MutableHashSet<T>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was negative
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final @Nullable Float loadFactor) {
         super(values.size(), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())

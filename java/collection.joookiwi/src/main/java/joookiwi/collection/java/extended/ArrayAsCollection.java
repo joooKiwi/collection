@@ -14,7 +14,6 @@ import joookiwi.collection.java.method.ForEach;
 import joookiwi.collection.java.method.ToArray;
 import joookiwi.collection.java.method.ToString;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -48,7 +47,7 @@ public class ArrayAsCollection<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    private final T @NotNull [] __reference;
+    private final T[] __reference;
 
     private final int __size;
     private final boolean __isEmpty;
@@ -62,7 +61,7 @@ public class ArrayAsCollection<T extends @Nullable Object>
     /// but allowing `null` in the `reference`
     ///
     /// @param reference The array to be the internal structure
-    public ArrayAsCollection(final T @NotNull @Unmodifiable [] reference) {
+    public ArrayAsCollection(final T[] reference) {
         super();
         if (__isEmpty = (__size = (__reference = reference).length) == 0)
             return;
@@ -73,7 +72,7 @@ public class ArrayAsCollection<T extends @Nullable Object>
     //#region -------------------- Methods --------------------
 
     /// The internal reference passed through the constructor
-    protected T @NotNull [] _reference() { return __reference; }
+    protected T[] _reference() { return __reference; }
 
     //#region -------------------- Supported methods --------------------
 
@@ -94,13 +93,13 @@ public class ArrayAsCollection<T extends @Nullable Object>
     /// Tell that all the `values` are in the current [Collection]
     ///
     /// @param values The values to compare
-    @Override public boolean containsAll(final @NotNull @Unmodifiable Collection<?> values) { return hasAll(_reference(), values); }
+    @Override public boolean containsAll(final @Unmodifiable Collection<?> values) { return hasAll(_reference(), values); }
 
 
     /// Perform a given `action` on each element
     ///
     /// @param action The given action
-    @Override public void forEach(final @NotNull Consumer<? super T> action) { ForEach.forEach(_reference(), action); }
+    @Override public void forEach(final Consumer<? super T> action) { ForEach.forEach(_reference(), action); }
 
 
     /// Convert the current [Collection] to a [String] by calling its [toString\(\)][Object#toString()] method
@@ -108,7 +107,7 @@ public class ArrayAsCollection<T extends @Nullable Object>
 
     /// Convert the current [Collection] to an `array`
     @Contract(pure = true)
-    @Override public @UnknownNullability Object @NotNull [] toArray() { return ToArray.toArray(_reference()); }
+    @Override public @UnknownNullability Object[] toArray() { return ToArray.toArray(_reference()); }
 
     /// Put the values inside the `newArray`
     ///
@@ -116,7 +115,7 @@ public class ArrayAsCollection<T extends @Nullable Object>
     /// @param <U>      The new type
     @SuppressWarnings("unchecked cast")
     @Contract(value = ALWAYS_1ST_1, mutates = "param1")
-    @Override public <U extends @Nullable Object> U @NotNull [] toArray(U @NotNull [] newArray) {
+    @Override public <U extends @Nullable Object> U[] toArray(final U[] newArray) {
         final var reference = _reference();
         final var size = newArray.length;
         var index = -1;
@@ -131,7 +130,7 @@ public class ArrayAsCollection<T extends @Nullable Object>
     /// @param <U>       The new type
     @SuppressWarnings("unchecked cast")
     @Contract(ALWAYS_NEW_1)
-    @Override public <U extends @Nullable Object> U @NotNull [] toArray(@NotNull IntFunction<U[]> generator) {
+    @Override public <U extends @Nullable Object> U[] toArray(final IntFunction<U[]> generator) {
         final var reference = _reference();
         final var newArray = generator.apply(0);
         final var size = newArray.length;
@@ -144,7 +143,7 @@ public class ArrayAsCollection<T extends @Nullable Object>
 
     @Override public Stream<T> stream() { return Arrays.stream(_reference()); }
 
-    @Override public @NotNull Iterator<T> iterator() { return new ArrayAsIterator<>(_reference()); }
+    @Override public Iterator<T> iterator() { return new ArrayAsIterator<>(_reference()); }
 
     @Override public Spliterator<T> spliterator() { return Arrays.spliterator(_reference()); }
 

@@ -4,7 +4,6 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.Vector;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -72,7 +71,7 @@ public class MutableVector<T>
 
     /// Create a mutable instance of [Vector]
     /// with the capacity of the `values.length`
-    public MutableVector(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public MutableVector(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length, 0);
         final var size = elementCount = values.length;
         if (size == 0)
@@ -86,7 +85,7 @@ public class MutableVector<T>
 
     /// Create a mutable instance of [Vector]
     /// with the capacity of <code>values.[size][Collection#size()]</code>
-    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size(), 0);
         if (values.isEmpty())
             return;

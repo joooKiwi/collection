@@ -8,7 +8,6 @@ import java.util.function.UnaryOperator;
 import joookiwi.collection.java.method.FirstIndexOfOrNull;
 import joookiwi.collection.java.method.LastIndexOfOrNull;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -43,7 +42,7 @@ public class ArrayAsList<T extends @Nullable Object>
     /// but allowing `null` in the `reference`
     ///
     /// @param reference The array to be the internal structure
-    public ArrayAsList(final T @NotNull @Unmodifiable [] reference) { super(reference); }
+    public ArrayAsList(final T[] reference) { super(reference); }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
@@ -57,14 +56,14 @@ public class ArrayAsList<T extends @Nullable Object>
         return _reference()[index];
     }
 
-    @Override public @Range(from = -1, to = MAX_VALUE) int indexOf(@Nullable Object value) {
+    @Override public @Range(from = -1, to = MAX_VALUE) int indexOf(final @Nullable Object value) {
         final var index = FirstIndexOfOrNull.firstIndexOfOrNull(_reference(), value);
         if (index == null)
             return -1;
         return index;
     }
 
-    @Override public @Range(from = -1, to = MAX_VALUE) int lastIndexOf(@Nullable Object value) {
+    @Override public @Range(from = -1, to = MAX_VALUE) int lastIndexOf(final @Nullable Object value) {
         final var index = LastIndexOfOrNull.lastIndexOfOrNull(_reference(), value);
         if (index == null)
             return -1;
@@ -72,12 +71,12 @@ public class ArrayAsList<T extends @Nullable Object>
     }
 
 
-    @Override public @NotNull ListIterator<T> listIterator() { return new ArrayAsListIterator<>(_reference()); }
+    @Override public ListIterator<T> listIterator() { return new ArrayAsListIterator<>(_reference()); }
 
-    @Override public @NotNull ListIterator<T> listIterator(int index) { return new ArrayAsListIterator<>(_reference(), index); }
+    @Override public ListIterator<T> listIterator(final int index) { return new ArrayAsListIterator<>(_reference(), index); }
 
 
-    @Override public @NotNull List<T> subList(int from, int to) {
+    @Override public List<T> subList(final int from, final int to) {
         if (isEmpty())
             return emptyList();
         if (from == to)
@@ -91,7 +90,7 @@ public class ArrayAsList<T extends @Nullable Object>
         return new ArrayAsList<>(newArray);
     }
 
-    @Override public @NotNull List<T> reversed() {
+    @Override public List<T> reversed() {
         if (isEmpty())
             return emptyList();
 
@@ -127,7 +126,7 @@ public class ArrayAsList<T extends @Nullable Object>
     /// @param value The (_never used_) value to set
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public T set(int index, T value) { throw new UnsupportedOperationException("The method “set” is not supported in an immutable List."); }
+    @Override public T set(final int index, final T value) { throw new UnsupportedOperationException("The method “set” is not supported in an immutable List."); }
 
     /// Fail to add a `value` to the current [ArrayAsList]
     ///
@@ -135,7 +134,7 @@ public class ArrayAsList<T extends @Nullable Object>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public void add(int index, T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable List."); }
+    @Override public void add(final int index, final T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable List."); }
 
     /// Fail to add the `values` in the current [ArrayAsList]
     ///
@@ -150,7 +149,7 @@ public class ArrayAsList<T extends @Nullable Object>
     /// @param index The (_never used_) index
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public T remove(int index) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable List."); }
+    @Override public T remove(final int index) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable List."); }
 
     /// Fail to replace any value in the current [ArrayAsList]
     ///

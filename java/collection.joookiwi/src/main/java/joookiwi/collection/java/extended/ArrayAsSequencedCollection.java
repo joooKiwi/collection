@@ -2,10 +2,8 @@ package joookiwi.collection.java.extended;
 
 import java.util.SequencedCollection;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.emptySequencedCollection;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
@@ -15,7 +13,7 @@ import static joookiwi.collection.java.method.First.first;
 import static joookiwi.collection.java.method.Last.last;
 
 /// A bare-bone implementation of a [java SequencedCollection][SequencedCollection]
-/// with the [immutability][Unmodifiable] in place.
+/// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
 /// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
@@ -36,7 +34,7 @@ public class ArrayAsSequencedCollection<T extends @Nullable Object>
     /// Create an instance of a [SequencedCollection] and allowing `null` in the `reference`
     ///
     /// @param reference The array to be the internal structure
-    public ArrayAsSequencedCollection(final T @NotNull @Unmodifiable [] reference) {
+    public ArrayAsSequencedCollection(final T[] reference) {
         super(reference);
     }
 
@@ -49,7 +47,7 @@ public class ArrayAsSequencedCollection<T extends @Nullable Object>
 
     @Override public T getLast() { return last(_reference()); }
 
-    @Override public @NotNull SequencedCollection<T> reversed() {
+    @Override public SequencedCollection<T> reversed() {
         if (isEmpty())
             return emptySequencedCollection();
 

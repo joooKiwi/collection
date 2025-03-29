@@ -6,7 +6,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.function.Predicate;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -43,7 +42,7 @@ public class ImmutableCopyOnWriteArraySet<T>
     /// (similar to {@link java.util.Set#of(Object[])})
     /// with a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR]
     /// and the capacity is the `values.length`
-    public ImmutableCopyOnWriteArraySet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public ImmutableCopyOnWriteArraySet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super();
         final var size = values.length;
         if (size == 0)
@@ -57,7 +56,7 @@ public class ImmutableCopyOnWriteArraySet<T>
     /// (similar to [java.util.Set#copyOf(Collection)])
     /// with a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR]
     /// and the capacity is the <code>values.[size][Collection#size()]</code>
-    public ImmutableCopyOnWriteArraySet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public ImmutableCopyOnWriteArraySet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super();
         if (values.isEmpty())
             return;

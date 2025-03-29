@@ -8,7 +8,6 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -44,7 +43,7 @@ public class ImmutableVector<T>
     /// Create an [immutable-like][Unmodifiable] instance of [Vector]
     /// (similar to {@link java.util.List#of(Object[])})
     /// with the capacity is the `values.length`
-    public ImmutableVector(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public ImmutableVector(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length, 0);
         final var size = elementCount = values.length;
         if (size == 0)
@@ -59,7 +58,7 @@ public class ImmutableVector<T>
     /// Create an [immutable-like][Unmodifiable] instance of [Vector]
     /// (similar to [java.util.List#copyOf(Collection)])
     /// with the capacity is the <code>values.[size][Collection#size()]</code>
-    public ImmutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public ImmutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size(), 0);
         if (values.isEmpty())
             return;
@@ -265,7 +264,6 @@ public class ImmutableVector<T>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public void sort(final @Nullable Comparator<? super T> comparator) { throw new UnsupportedOperationException("The method “sort” is not supported in an immutable Vector."); }
-
 
     //#endregion -------------------- Unsupported methods --------------------
 

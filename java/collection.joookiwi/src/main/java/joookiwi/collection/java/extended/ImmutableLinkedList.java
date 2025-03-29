@@ -8,7 +8,6 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -22,7 +21,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class ImmutableLinkedList<T>
+public class ImmutableLinkedList<T extends @Nullable Object>
         extends LinkedList<T> {
 
     //#region -------------------- Fields --------------------
@@ -43,7 +42,7 @@ public class ImmutableLinkedList<T>
 
     /// Create an [immutable-like][Unmodifiable] instance of [LinkedList]
     /// (similar to {@link java.util.List#of(Object[])})
-    public ImmutableLinkedList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public ImmutableLinkedList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super();
         final var size = values.length;
         if (size == 0)
@@ -55,7 +54,7 @@ public class ImmutableLinkedList<T>
 
     /// Create an [immutable-like][Unmodifiable] instance of [LinkedList]
     /// (similar to [java.util.List#copyOf(Collection)])
-    public ImmutableLinkedList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public ImmutableLinkedList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super();
         if (values.isEmpty())
             return;

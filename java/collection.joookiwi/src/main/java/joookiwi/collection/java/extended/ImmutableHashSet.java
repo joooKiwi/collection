@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.function.Predicate;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -21,7 +20,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class ImmutableHashSet<T>
+public class ImmutableHashSet<T extends @Nullable Object>
         extends HashSet<T> {
 
     //#region -------------------- Fields --------------------
@@ -46,7 +45,7 @@ public class ImmutableHashSet<T>
     /// (similar to {@link java.util.Set#of(Object[])})
     /// with a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR]
     /// and the capacity is the `values.length`
-    public ImmutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public ImmutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length);
         final var size = values.length;
         if (size == 0)
@@ -60,7 +59,7 @@ public class ImmutableHashSet<T>
     /// (similar to [java.util.Set#copyOf(Collection)])
     /// with a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR]
     /// and the capacity is the <code>values.[size][Collection#size()]</code>
-    public ImmutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public ImmutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size());
         if (values.isEmpty())
             return;
@@ -76,7 +75,7 @@ public class ImmutableHashSet<T>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `loadFactor` was negative
-    public ImmutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values,
+    public ImmutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
                             final float loadFactor) {
         super(values.length, loadFactor);
         final var size = values.length;
@@ -93,7 +92,7 @@ public class ImmutableHashSet<T>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was negative
-    public ImmutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values,
+    public ImmutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
                             final @Nullable Float loadFactor) {
         super(values.length, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
@@ -111,7 +110,7 @@ public class ImmutableHashSet<T>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `loadFactor` was negative
-    public ImmutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values,
+    public ImmutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                             final float loadFactor) {
         super(values.size(), loadFactor);
         if (values.isEmpty())
@@ -125,7 +124,7 @@ public class ImmutableHashSet<T>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was negative
-    public ImmutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values,
+    public ImmutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                             final @Nullable Float loadFactor) {
         super(values.size(), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())

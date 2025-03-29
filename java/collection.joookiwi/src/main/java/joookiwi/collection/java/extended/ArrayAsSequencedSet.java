@@ -1,15 +1,13 @@
 package joookiwi.collection.java.extended;
 
 import java.util.SequencedSet;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.emptySequencedSet;
 
 /// A bare-bone implementation of a [java SequencedSet][SequencedSet]
-/// with the [immutability][Unmodifiable] in place.
+/// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
 /// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
@@ -28,7 +26,7 @@ public class ArrayAsSequencedSet<T extends @Nullable Object>
     /// Create an instance of a [SequencedSet] but allowing `null` in the `reference`
     ///
     /// @param reference The array to be the internal structure
-    public ArrayAsSequencedSet(final T @NotNull @Unmodifiable [] reference) { super(reference); }
+    public ArrayAsSequencedSet(final T[] reference) { super(reference); }
 
     @Override public SequencedSet<T> reversed() {
         if (isEmpty())

@@ -8,7 +8,6 @@ import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.function.Predicate;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -45,7 +44,7 @@ public class ImmutableConcurrentSkipListSet<T>
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to be safe
-    public ImmutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public ImmutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super();
         final var size = values.length;
         if (size == 0)
@@ -59,7 +58,7 @@ public class ImmutableConcurrentSkipListSet<T>
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to be safe
-    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super();
         if (values.isEmpty())
             return;
@@ -70,7 +69,7 @@ public class ImmutableConcurrentSkipListSet<T>
     /// ordered according to the <code>values.[comparator][SortedSet#comparator]</code>
     ///
     /// @implNote Use a [Comparable] type on [T] to be safe
-    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable SortedSet<T> values) {
+    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<T> values) {
         super(values.comparator());
         if (values.isEmpty())
             return;
@@ -82,7 +81,7 @@ public class ImmutableConcurrentSkipListSet<T>
 
     /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
     /// ordered according to the `comparator` received
-    public ImmutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values,
+    public ImmutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
                                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         final var size = values.length;
@@ -95,7 +94,7 @@ public class ImmutableConcurrentSkipListSet<T>
 
     /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
     /// ordered according to the `comparator` received
-    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values,
+    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         if (values.isEmpty())
@@ -105,7 +104,7 @@ public class ImmutableConcurrentSkipListSet<T>
 
     /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
     /// ordered according to the `comparator` received
-    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable SortedSet<? extends T> values,
+    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> values,
                                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         if (values.isEmpty())

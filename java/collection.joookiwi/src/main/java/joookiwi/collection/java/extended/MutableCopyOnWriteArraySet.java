@@ -4,7 +4,6 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArraySet;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
 
@@ -30,7 +29,7 @@ public class MutableCopyOnWriteArraySet<T>
     /// Create a mutable instance of [CopyOnWriteArraySet]
     /// with the capacity of the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableCopyOnWriteArraySet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public MutableCopyOnWriteArraySet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super();
         final var size = values.length;
         if (size == 0)
@@ -43,7 +42,7 @@ public class MutableCopyOnWriteArraySet<T>
     /// Create a mutable instance of [CopyOnWriteArraySet]
     /// with the capacity of <code>values.[size][Collection#size()]</code>
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableCopyOnWriteArraySet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public MutableCopyOnWriteArraySet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super();
         if (values.isEmpty())
             return;

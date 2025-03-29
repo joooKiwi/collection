@@ -8,7 +8,6 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -21,7 +20,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class ImmutableArrayList<T>
+public class ImmutableArrayList<T extends @Nullable Object>
         extends ArrayList<T> {
 
     //#region -------------------- Fields --------------------
@@ -44,7 +43,7 @@ public class ImmutableArrayList<T>
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ArrayList]
     /// (similar to {@link java.util.List#of(Object[])})
     /// with the capacity is the `values.length`
-    public ImmutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public ImmutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length);
         final var size = values.length;
         if (size == 0)
@@ -57,7 +56,7 @@ public class ImmutableArrayList<T>
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ArrayList]
     /// (similar to [java.util.List#copyOf(Collection)])
     /// with the capacity is the <code>values.[size][Collection#size()]</code>
-    public ImmutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public ImmutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size());
         if (values.isEmpty())
             return;

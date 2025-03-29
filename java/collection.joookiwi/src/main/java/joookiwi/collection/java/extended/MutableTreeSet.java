@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -35,7 +34,7 @@ public class MutableTreeSet<T>
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutableTreeSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public MutableTreeSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super();
         final var size = values.length;
         if (size == 0)
@@ -49,7 +48,7 @@ public class MutableTreeSet<T>
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super();
         if (values.isEmpty())
             return;
@@ -60,7 +59,7 @@ public class MutableTreeSet<T>
     /// ordered according to the <code>values.[comparator][SortedSet#comparator]</code>
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable SortedSet<T> values) {
+    public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<T> values) {
         super(values.comparator());
         if (values.isEmpty())
             return;
@@ -72,7 +71,7 @@ public class MutableTreeSet<T>
 
     /// Create a mutable instance of [TreeSet]
     /// ordered according to the `comparator` received
-    public MutableTreeSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values,
+    public MutableTreeSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         final var size = values.length;
@@ -85,7 +84,7 @@ public class MutableTreeSet<T>
 
     /// Create a mutable instance of [TreeSet]
     /// ordered according to the `comparator` received
-    public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values,
+    public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         if (values.isEmpty())
@@ -95,7 +94,7 @@ public class MutableTreeSet<T>
 
     /// Create a mutable instance of [TreeSet]
     /// ordered according to the `comparator` received
-    public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable SortedSet<? extends T> values,
+    public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> values,
                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         if (values.isEmpty())

@@ -13,7 +13,6 @@ import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -45,7 +44,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @see joookiwi.collection.java.CollectionConstants#emptyLinkedList
 @Singleton
 @NotNullByDefault
-public class EmptyLinkedList<T>
+public class EmptyLinkedList<T extends @Nullable Object>
         extends ImmutableLinkedList<T> {
 
     @Serial private static final long serialVersionUID = 6750406829824846383L;
@@ -94,9 +93,9 @@ public class EmptyLinkedList<T>
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Index methods --------------------
 
-    @Contract(pure = true) @Override public @Range(from = -1, to = -1) int indexOf(@Nullable Object value) { return -1; }
+    @Contract(pure = true) @Override public @Range(from = -1, to = -1) int indexOf(final @Nullable Object value) { return -1; }
 
-    @Contract(pure = true) @Override public @Range(from = -1, to = -1) int lastIndexOf(@Nullable Object value) { return -1; }
+    @Contract(pure = true) @Override public @Range(from = -1, to = -1) int lastIndexOf(final @Nullable Object value) { return -1; }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Has methods --------------------
@@ -117,35 +116,35 @@ public class EmptyLinkedList<T>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) @Override public @NotNull Iterator<T>     iterator(                   ) { return emptyIterator(); }
-    @Contract(pure = true) @Override public @NotNull Iterator<T>     descendingIterator(         ) { return emptyIterator(); }
-    @Contract(pure = true) @Override public @NotNull ListIterator<T> listIterator(               ) { return emptyListIterator(); }
-    @Contract(pure = true) @Override public @NotNull ListIterator<T> listIterator(final int index) { return emptyListIterator(); }
-    @Contract(pure = true) @Override public @NotNull Spliterator<T>  spliterator(                ) { return emptySpliterator(); }
+    @Contract(pure = true) @Override public Iterator<T>     iterator(                   ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public Iterator<T>     descendingIterator(         ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public ListIterator<T> listIterator(               ) { return emptyListIterator(); }
+    @Contract(pure = true) @Override public ListIterator<T> listIterator(final int index) { return emptyListIterator(); }
+    @Contract(pure = true) @Override public Spliterator<T>  spliterator(                ) { return emptySpliterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public     Object @NotNull [] toArray(                                                   ) { return new Object[0]; }
-    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U> U @NotNull []      toArray(final U @NotNull []                           array) { return array; }
-    @Contract(pure = true)                       @Override public <U> U @NotNull []      toArray(final @NotNull IntFunction<U @NotNull []> generator) { return generator.apply(0); }
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public     Object[] toArray(                                ) { return new Object[0]; }
+    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U> U[]      toArray(final U[]                  array) { return array; }
+    @Contract(pure = true)                       @Override public <U> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public @NotNull Stream<T> stream() { return emptyStream(); }
+    @Contract(pure = true) @Override public Stream<T> stream() { return emptyStream(); }
 
-    @Contract(pure = true) @Override public @NotNull Stream<T> parallelStream() { return emptyParellelStream(); }
+    @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParellelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Sublist methods --------------------
 
-    @Override public @NotNull List<T> subList(int fromIndex, int toIndex) { return emptyList(); }
+    @Override public List<T> subList(final int from, final int to) { return emptyList(); }
 
     //#endregion -------------------- Sublist methods --------------------
     //#region -------------------- To reverse methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public @NotNull @Unmodifiable LinkedList<T> reversed() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public @Unmodifiable LinkedList<T> reversed() { return this; }
 
     //#endregion -------------------- To reverse methods --------------------
     //#region -------------------- Equals methods --------------------

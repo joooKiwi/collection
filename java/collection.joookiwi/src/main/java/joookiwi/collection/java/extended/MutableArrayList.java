@@ -4,7 +4,6 @@ import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -17,7 +16,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPAC
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class MutableArrayList<T>
+public class MutableArrayList<T extends @Nullable Object>
         extends ArrayList<T> {
 
     @Serial private static final long serialVersionUID = 7760420228348183846L;
@@ -72,7 +71,7 @@ public class MutableArrayList<T>
 
     /// Create a mutable instance of [ArrayList]
     /// with the capacity of the `values.length`
-    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) {
+    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length);
         final var size = values.length;
         if (size == 0)
@@ -84,7 +83,7 @@ public class MutableArrayList<T>
 
     /// Create a mutable instance of [ArrayList]
     /// with the capacity of <code>values.[size][Collection#size()]</code>
-    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) {
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size());
         if (values.isEmpty())
             return;

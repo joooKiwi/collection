@@ -8,7 +8,6 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -21,7 +20,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class ImmutableCopyOnWriteArrayList<T>
+public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
         extends CopyOnWriteArrayList<T> {
 
     //#region -------------------- Fields --------------------
@@ -42,11 +41,11 @@ public class ImmutableCopyOnWriteArrayList<T>
 
     /// Create an [immutable-like][Unmodifiable] instance of [CopyOnWriteArrayList]
     /// (similar to {@link java.util.List#of(Object[])})
-    public ImmutableCopyOnWriteArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable [] values) { super(values); }
+    public ImmutableCopyOnWriteArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) { super(values); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [CopyOnWriteArrayList]
     /// (similar to [java.util.List#copyOf(Collection)])
-    public ImmutableCopyOnWriteArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @NotNull @Unmodifiable Collection<? extends T> values) { super(values); }
+    public ImmutableCopyOnWriteArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(values); }
 
     //#endregion -------------------- values --------------------
 
