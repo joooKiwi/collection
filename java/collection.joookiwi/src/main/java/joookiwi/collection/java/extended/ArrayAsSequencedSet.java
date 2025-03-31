@@ -3,6 +3,7 @@ package joookiwi.collection.java.extended;
 import java.util.SequencedSet;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.UnmodifiableView;
 
 import static joookiwi.collection.java.CollectionConstants.emptySequencedSet;
 
@@ -18,6 +19,7 @@ import static joookiwi.collection.java.CollectionConstants.emptySequencedSet;
 /// when possible.
 ///
 /// @param <T> The type
+/// @see ReversedArrayAsSequencedSet
 @NotNullByDefault
 public class ArrayAsSequencedSet<T extends @Nullable Object>
         extends ArrayAsSet<T>
@@ -28,17 +30,10 @@ public class ArrayAsSequencedSet<T extends @Nullable Object>
     /// @param reference The array to be the internal structure
     public ArrayAsSequencedSet(final T[] reference) { super(reference); }
 
-    @Override public SequencedSet<T> reversed() {
+    @Override public @UnmodifiableView SequencedSet<T> reversed() {
         if (isEmpty())
             return emptySequencedSet();
-
-        final var reference = _reference();
-        final var size = size();
-        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
-        var index = size;
-        while (--index >= 0)
-            newArray[index] = reference[index];
-        return new ArrayAsSequencedSet<>(newArray);
+        return new ReversedArrayAsSequencedSet<>(this, new ReversedArray<>(_reference()));
     }
 
 }
