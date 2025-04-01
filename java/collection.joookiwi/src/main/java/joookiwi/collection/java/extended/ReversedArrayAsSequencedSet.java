@@ -1,5 +1,7 @@
 package joookiwi.collection.java.extended;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -34,7 +36,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.method.Has.has;
 import static joookiwi.collection.java.method.HasAll.hasAll;
 
-/// An implementation of a sub-[SequencedSet] similar to the [ArrayAsSequencedSet] in its behaviour.
+/// An implementation of a reversed-order [SequencedSet] similar to the [ArrayAsSequencedSet] in its behaviour.
 /// During its creation, it <u>implies</u> that the [REVERSED_ARRAY] received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
@@ -45,16 +47,21 @@ import static joookiwi.collection.java.method.HasAll.hasAll;
 /// when possible.
 ///
 /// @param <T>               The type
+/// @param <SOURCE>          The original source of the instance
+///                          (generally a [ArrayAsSequencedSet] or [ReversedArrayAsSequencedSet])
 /// @param <REVERSED_ARRAY>> The array that should contain the new reference
-/// @param <SOURCE>          The original source of the instance (generally a [ArrayAsSequencedSet] or [ReversedArrayAsSequencedSet])
 /// @see ArrayAsSequencedSet
 @NotNullByDefault
 public class ReversedArrayAsSequencedSet<T extends @Nullable Object,
         SOURCE extends SequencedSet<? super T>,
         REVERSED_ARRAY extends ReversedArray<? extends T>>
-        implements SequencedSet<T> {
+        implements SequencedSet<T>,
+        Serializable {
 
     //#region -------------------- Fields --------------------
+
+    @Serial private static final long serialVersionUID = 9114026084459089025L;
+
 
     private final SOURCE __source;
     private final REVERSED_ARRAY __reversedArray;
