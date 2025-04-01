@@ -123,7 +123,7 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
 
     protected int _compare(final T value1, final T value2) throws ClassCastException { return _comparatorHelper().compare(value1, value2, comparator()); }
 
-    protected int _hashCodeHigherOrEqualFromCompare(final T value, final int size, final T @Unmodifiable [] reference) {
+    protected int _indexFromHashCodeHigherOrEqual(final T value, final int size, final T @Unmodifiable [] reference) {
         var index = -1;
         while (++index < size)
             if (_compare(value, reference[index]) >= 0)
@@ -131,7 +131,7 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
         return index - 1;
     }
 
-    protected int _hashCodeHigherFromCompare(final T value, final int size, final T @Unmodifiable [] reference) {
+    protected int _indexFromHashCodeHigher(final T value, final int size, final T @Unmodifiable [] reference) {
         var index = -1;
         while (++index < size)
             if (_compare(value, reference[index]) > 0)
@@ -206,7 +206,7 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
 
         final var size = size();
         final var reference = _reference();
-        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, _hashCodeHigherOrEqualFromCompare(from, size, reference), _hashCodeHigherFromCompare(to, size, reference)));
+        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, size, reference), _indexFromHashCodeHigher(to, size, reference)));
     }
 
     @Override public @UnmodifiableView SortedSet<T> headSet(final T to) {
@@ -215,7 +215,7 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
 
         final var size = size();
         final var reference = _reference();
-        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, 0, _hashCodeHigherFromCompare(to, size, reference)));
+        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, size, reference)));
     }
 
     @Override public @UnmodifiableView SortedSet<T> tailSet(final T from) {
@@ -224,7 +224,7 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
 
         final var size = size();
         final var reference = _reference();
-        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, _hashCodeHigherOrEqualFromCompare(from, size, reference), size - 1));
+        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, size, reference), size - 1));
     }
 
     //#endregion -------------------- Subset methods --------------------
