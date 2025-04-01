@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.RandomAccess;
 import java.util.function.UnaryOperator;
 import joookiwi.collection.java.method.FirstIndexOfOrNull;
 import joookiwi.collection.java.method.LastIndexOfOrNull;
@@ -34,7 +35,8 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 @NotNullByDefault
 public class ArrayAsList<T extends @Nullable Object>
         extends ArrayAsSequencedCollection<T>
-        implements List<T> {
+        implements List<T>,
+        RandomAccess {
 
     //#region -------------------- Constructor --------------------
 

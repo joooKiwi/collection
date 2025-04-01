@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
+import java.util.RandomAccess;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
@@ -45,7 +46,8 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 @Singleton
 @NotNullByDefault
 public class EmptyLinkedList<T extends @Nullable Object>
-        extends ImmutableLinkedList<T> {
+        extends ImmutableLinkedList<T>
+        implements RandomAccess {
 
     @Serial private static final long serialVersionUID = 6750406829824846383L;
 
