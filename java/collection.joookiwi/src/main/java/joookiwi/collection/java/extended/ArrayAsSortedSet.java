@@ -86,6 +86,8 @@ public class ArrayAsSortedSet<T extends @Nullable Object>
 
     protected int _compare(final T value1, final T value2) throws ClassCastException { return _comparatorHelper().compare(value1, value2, comparator()); }
 
+    protected int _indexFromHashCodeHigherOrEqual(final T value) { return _indexFromHashCodeHigherOrEqual(value, _reference(), size()); }
+    protected int _indexFromHashCodeHigherOrEqual(final T value, final T @Unmodifiable [] reference) { return _indexFromHashCodeHigherOrEqual(value, reference, size()); }
     protected int _indexFromHashCodeHigherOrEqual(final T value, final T @Unmodifiable [] reference, final int size) {
         var index = -1;
         while (++index < size)
@@ -94,6 +96,8 @@ public class ArrayAsSortedSet<T extends @Nullable Object>
         return index - 1;
     }
 
+    protected int _indexFromHashCodeHigher(final T value) { return _indexFromHashCodeHigher(value, _reference(), size()); }
+    protected int _indexFromHashCodeHigher(final T value, final T @Unmodifiable [] reference) { return _indexFromHashCodeHigher(value, reference, size()); }
     protected int _indexFromHashCodeHigher(final T value, final T @Unmodifiable [] reference, final int size) {
         var index = -1;
         while (++index < size)
@@ -146,9 +150,8 @@ public class ArrayAsSortedSet<T extends @Nullable Object>
         if (!contains(to))
             throw new IllegalArgumentException("The ending value (“to”) does not exist in the SortedSet.");
 
-        final var size = size();
         final var reference = _reference();
-        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size)));
+        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference)));
     }
 
     @Override public @UnmodifiableView SortedSet<T> tailSet(final T from) {
