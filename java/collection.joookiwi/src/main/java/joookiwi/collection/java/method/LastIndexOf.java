@@ -45,7 +45,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -66,7 +66,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
@@ -87,7 +87,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
@@ -114,7 +114,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
@@ -140,7 +140,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
@@ -166,7 +166,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
@@ -193,7 +193,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
@@ -221,7 +221,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
@@ -249,7 +249,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
@@ -282,7 +282,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -311,7 +311,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -340,7 +340,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -370,7 +370,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -401,7 +401,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -432,7 +432,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -464,7 +464,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -495,7 +495,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -526,7 +526,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -558,7 +558,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -594,7 +594,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
@@ -630,7 +630,7 @@ public final class LastIndexOf
     /// @see java.util.List#lastIndexOf(Object)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
-    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, limit?)</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
