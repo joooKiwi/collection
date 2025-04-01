@@ -100,7 +100,8 @@ public final class Has
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> boolean __has(final @NotNull MinimalistCollectionHolder<? extends T> collection, int size,
+    private static <T extends @Nullable Object> boolean __has(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+                                                              final int size,
                                                               final T value) {
         var index = -1;
         if (value == null) {
@@ -118,7 +119,8 @@ public final class Has
         return false;
     }
 
-    private static <T extends @Nullable Object> boolean __has(final T @NotNull @Unmodifiable [] collection, int size,
+    private static <T extends @Nullable Object> boolean __has(final T @NotNull @Unmodifiable [] collection,
+                                                              final int size,
                                                               final T value) {
         var index = -1;
         if (value == null) {

@@ -41,7 +41,8 @@ public final class AsString
     ///
     /// @param value  The value to convert
     /// @param locale The locale to possibly apply
-    public static @NotNull String asLocaleString(final @Nullable Object value, final @Nullable Locale locale) {
+    public static @NotNull String asLocaleString(final @Nullable Object value,
+                                                 final @Nullable Locale locale) {
         if (locale == null) {
             if (value == null)
                 return new Formatter(Locale.getDefault()).format("%s", "null").toString();
@@ -83,7 +84,8 @@ public final class AsString
     ///
     /// @param value  The value to convert
     /// @param locale The locale to possibly apply
-    public static @NotNull String asLocaleLowerCaseString(final @Nullable Object value, final @Nullable Locale locale) {
+    public static @NotNull String asLocaleLowerCaseString(final @Nullable Object value,
+                                                          final @Nullable Locale locale) {
         if (locale == null) {
             var currentLocale = Locale.getDefault();
 
@@ -131,7 +133,8 @@ public final class AsString
     ///
     /// @param value  The value to convert
     /// @param locale The locale to possibly apply
-    public static @NotNull String asLocaleUpperCaseString(final @Nullable Object value, final @Nullable Locale locale) {
+    public static @NotNull String asLocaleUpperCaseString(final @Nullable Object value,
+                                                          final @Nullable Locale locale) {
         if (locale == null) {
             var currentLocale = Locale.getDefault();
 
