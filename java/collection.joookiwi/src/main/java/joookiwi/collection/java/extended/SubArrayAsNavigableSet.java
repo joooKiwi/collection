@@ -33,7 +33,7 @@ import static joookiwi.collection.java.CommonContracts.*;
 /// @see ReversedArrayAsNavigableSet
 @NotNullByDefault
 public class SubArrayAsNavigableSet<T extends @Nullable Object,
-        SOURCE extends SortedSet<? super T>,
+        SOURCE extends NavigableSet<? super T>,
         SUB_ARRAY extends SubArray<? extends T>>
         extends SubArrayAsSortedSet<T, SOURCE, SUB_ARRAY>
         implements NavigableSet<T> {
