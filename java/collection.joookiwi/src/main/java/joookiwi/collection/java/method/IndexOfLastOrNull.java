@@ -193,7 +193,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -213,7 +213,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -233,7 +233,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -254,7 +254,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -276,7 +276,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -298,7 +298,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -323,7 +323,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -343,7 +343,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -363,7 +363,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -384,7 +384,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -406,7 +406,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -428,7 +428,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -453,7 +453,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -473,7 +473,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -493,7 +493,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -514,7 +514,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -536,7 +536,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -558,7 +558,7 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -584,8 +584,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -606,8 +606,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -628,8 +628,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -651,8 +651,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -675,8 +675,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -699,8 +699,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -724,8 +724,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -748,8 +748,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -772,8 +772,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -797,8 +797,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -826,8 +826,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -855,8 +855,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -887,8 +887,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -909,8 +909,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -931,8 +931,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -954,8 +954,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -978,8 +978,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1002,8 +1002,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1027,8 +1027,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1051,8 +1051,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1075,8 +1075,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1100,8 +1100,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1129,8 +1129,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1158,8 +1158,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1190,8 +1190,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1212,8 +1212,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1234,8 +1234,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1257,8 +1257,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1281,8 +1281,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1305,8 +1305,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1330,8 +1330,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1354,8 +1354,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1378,8 +1378,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1403,8 +1403,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1432,8 +1432,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1461,8 +1461,8 @@ public final class IndexOfLastOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param from       The inclusive starting index
-    /// @param to         The inclusive ending index
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
