@@ -50,8 +50,10 @@ import static joookiwi.collection.java.method.HasAll.hasAll;
 ///
 /// @param <T>         The type
 /// @param <SUB_ARRAY> The array that should contain the new reference
-/// @param <SOURCE>    The original source of the instance (generally a [ArrayAsSortedSet] or [SubArrayAsSortedSet])
+/// @param <SOURCE>    The original source of the instance
+///                    (generally a [ArrayAsSortedSet], [SubArrayAsSortedSet] or [ReversedArrayAsSortedSet])
 /// @see ArrayAsSortedSet
+/// @see ReversedArrayAsSortedSet
 @NotNullByDefault
 public class SubArrayAsSortedSet<T extends @Nullable Object,
         SOURCE extends SortedSet<? super T>,
@@ -121,6 +123,22 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
 
     protected int _compare(final T value1, final T value2) throws ClassCastException { return _comparatorHelper().compare(value1, value2, comparator()); }
 
+    protected int _hashCodeHigherOrEqualFromCompare(final T value, final int size, final T @Unmodifiable [] reference) {
+        var index = -1;
+        while (++index < size)
+            if (_compare(value, reference[index]) >= 0)
+                return index - 1;
+        return index - 1;
+    }
+
+    protected int _hashCodeHigherFromCompare(final T value, final int size, final T @Unmodifiable [] reference) {
+        var index = -1;
+        while (++index < size)
+            if (_compare(value, reference[index]) > 0)
+                return index - 1;
+        return index - 1;
+    }
+
     //#region -------------------- Supported methods --------------------
 
     //#region -------------------- Size methods --------------------
@@ -188,17 +206,7 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
 
         final var size = size();
         final var reference = _reference();
-        var firstIndex = -1;
-        while (++firstIndex < size)
-            if (_compare(from, reference[firstIndex]) >= 0)
-                break;
-
-        var secondIndex = size;
-        while (--secondIndex > 0)
-            if (_compare(to, reference[secondIndex]) > 0)
-                break;
-
-        return new SubArrayAsSortedSet<>(this, new SubArray<T>(reference, firstIndex - 1, secondIndex - 1));
+        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, _hashCodeHigherOrEqualFromCompare(from, size, reference), _hashCodeHigherFromCompare(to, size, reference)));
     }
 
     @Override public @UnmodifiableView SortedSet<T> headSet(final T to) {
@@ -207,12 +215,7 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
 
         final var size = size();
         final var reference = _reference();
-        var indexFound = size;
-        while (--indexFound > 0)
-            if (_compare(to, reference[indexFound]) > 0)
-                break;
-
-        return new SubArrayAsSortedSet<>(this, new SubArray<T>(reference, 0, indexFound - 1));
+        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, 0, _hashCodeHigherFromCompare(to, size, reference)));
     }
 
     @Override public @UnmodifiableView SortedSet<T> tailSet(final T from) {
@@ -221,12 +224,7 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
 
         final var size = size();
         final var reference = _reference();
-        var indexFound = -1;
-        while (++indexFound < size)
-            if (_compare(from, reference[indexFound]) >= 0)
-                break;
-
-        return new SubArrayAsSortedSet<>(this, new SubArray<T>(reference, indexFound - 1, size - 1));
+        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, _hashCodeHigherOrEqualFromCompare(from, size, reference), size - 1));
     }
 
     //#endregion -------------------- Subset methods --------------------
@@ -240,17 +238,10 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- To reverse methods --------------------
 
-    @Override public SortedSet<T> reversed() {
+    @Override public @UnmodifiableView SortedSet<T> reversed() {
         if (isEmpty())
             return emptySortedSet();
-
-        final var reference = _reference();
-        final var size = size();
-        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
-        var index = size;
-        while (--index >= 0)
-            newArray[index] = reference[index];
-        return new ArrayAsSortedSet<>(newArray, comparator());
+        return new ReversedArrayAsSortedSet<>(this, new ReversedArray<>(_reference()));
     }
 
     //#endregion -------------------- To reverse methods --------------------

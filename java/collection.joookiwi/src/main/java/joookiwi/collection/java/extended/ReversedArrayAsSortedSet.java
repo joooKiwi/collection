@@ -1,9 +1,7 @@
 package joookiwi.collection.java.extended;
 
 import java.io.Serial;
-import java.io.Serializable;
 import java.util.Comparator;
-import java.util.NoSuchElementException;
 import java.util.SortedSet;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.Contract;
@@ -16,31 +14,32 @@ import static joookiwi.collection.java.CollectionConstants.emptySortedSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 
-/// A bare-bone implementation of a [java SortedSet][SortedSet]
-/// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
-/// During its creation, it <u>implies</u> that the array received has no duplicate.
+/// An implementation of a reversed-order [SortedSet] similar to the [ArrayAsSortedSet] in its behaviour.
+/// During its creation, it <u>implies</u> that the [REVERSED_ARRAY] received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.
 ///
-/// The instance uses the [methods][joookiwi.collection.java.method] and [ComparatorHelper]
+/// The instance uses the [methods][joookiwi.collection.java.method]
 /// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
 /// when possible.
 ///
-/// @param <T> The type
+/// @param <T>               The type
+/// @param <SOURCE>          The original source of the instance
+///                          (generally a [ArrayAsSortedSet], [SubArrayAsSortedSet] or [ReversedArrayAsSortedSet])
+/// @param <REVERSED_ARRAY>> The array that should contain the new reference
+/// @see ArrayAsSortedSet
 /// @see SubArrayAsSortedSet
-/// @see ReversedArrayAsSortedSet
 @NotNullByDefault
-public class ArrayAsSortedSet<T extends @Nullable Object>
-        extends ArrayAsSequencedSet<T>
-        implements SortedSet<T>,
-        Serializable {
+public class ReversedArrayAsSortedSet<T extends @Nullable Object,
+        SOURCE extends SortedSet<? super T>,
+        REVERSED_ARRAY extends ReversedArray<? extends T>>
+        extends ReversedArrayAsSequencedSet<T, SOURCE, REVERSED_ARRAY>
+        implements SortedSet<T> {
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 124450328781938963L;
-
-    private final @Nullable Comparator<? super T> __comparator;
+    @Serial private static final long serialVersionUID = -7946450679975875189L;
 
     //#region -------------------- Helper fields --------------------
 
@@ -49,27 +48,9 @@ public class ArrayAsSortedSet<T extends @Nullable Object>
     //#endregion -------------------- Helper fields --------------------
 
     //#endregion -------------------- Fields --------------------
-    //#region -------------------- Constructors --------------------
+    //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [SortedSet] but allowing `null` in the `reference`.
-    /// It also has by default its natural ordering.
-    ///
-    /// @param reference The array to be the internal structure
-    public ArrayAsSortedSet(final T[] reference) {
-        super(reference);
-        this.__comparator = null;
-    }
-
-    /// Create an instance of a [SortedSet] but allowing `null` in the `reference`
-    /// using a `comparator` to compare its values
-    ///
-    /// @param reference  The array to be the internal structure
-    /// @param comparator The [Comparator] to use on its comparisons
-    public ArrayAsSortedSet(final T[] reference,
-                            final @Nullable Comparator<? super T> comparator) {
-        super(reference);
-        this.__comparator = comparator;
-    }
+    public ReversedArrayAsSortedSet(SOURCE source, REVERSED_ARRAY reversedArray) { super(source, reversedArray); }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
@@ -83,6 +64,8 @@ public class ArrayAsSortedSet<T extends @Nullable Object>
 
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
+
+    //#region -------------------- Supported methods --------------------
 
     protected int _compare(final T value1, final T value2) throws ClassCastException { return _comparatorHelper().compare(value1, value2, comparator()); }
 
@@ -102,26 +85,11 @@ public class ArrayAsSortedSet<T extends @Nullable Object>
         return index - 1;
     }
 
-    //#region -------------------- Supported methods --------------------
-
     //#region -------------------- Get methods --------------------
 
     @Contract(pure = true) @Override public T first() { return getFirst(); }
 
-    @Override public T getFirst() {
-        if (isEmpty())
-            throw new NoSuchElementException("No element could be found in an empty SortedSet.");
-        return _reference()[0];
-    }
-
-
     @Contract(pure = true) @Override public T last() { return getLast(); }
-
-    @Override public T getLast() {
-        if (isEmpty())
-            throw new NoSuchElementException("No element could be found in an empty SortedSet.");
-        return _reference()[size() - 1];
-    }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Subset methods --------------------
@@ -153,7 +121,7 @@ public class ArrayAsSortedSet<T extends @Nullable Object>
 
     @Override public @UnmodifiableView SortedSet<T> tailSet(final T from) {
         if (!contains(from))
-                throw new IllegalArgumentException("The starting value (“from”) does not exist in the SortedSet.");
+            throw new IllegalArgumentException("The starting value (“from”) does not exist in the SortedSet.");
 
         final var size = size();
         final var reference = _reference();
@@ -172,7 +140,7 @@ public class ArrayAsSortedSet<T extends @Nullable Object>
     //#endregion -------------------- To reverse methods --------------------
     //#region -------------------- Comparator methods --------------------
 
-    @Override public @Nullable Comparator<? super T> comparator() { return __comparator; }
+    @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 
     //#endregion -------------------- Comparator methods --------------------
 
