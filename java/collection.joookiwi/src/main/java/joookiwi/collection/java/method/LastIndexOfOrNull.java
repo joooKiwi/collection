@@ -209,7 +209,7 @@ public final class LastIndexOfOrNull
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param element    The element to find
     /// @param from       The inclusive starting index (`0` by default)
-    /// @param to         The inclusive ending index (`[size][MinimalistCollectionHolder#size] - 1` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -230,7 +230,7 @@ public final class LastIndexOfOrNull
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param element    The element to find
     /// @param from       The inclusive starting index (`0` by default)
-    /// @param to         The inclusive ending index (`[size][CollectionHolder#size] - 1` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -273,7 +273,7 @@ public final class LastIndexOfOrNull
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param element    The element to find
     /// @param from       The inclusive starting index (`0` by default)
-    /// @param to         The inclusive ending index (`[size][MinimalistCollectionHolder#size] - 1` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -296,7 +296,7 @@ public final class LastIndexOfOrNull
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param element    The element to find
     /// @param from       The inclusive starting index (`0` by default)
-    /// @param to         The inclusive ending index (`[size][CollectionHolder#size] - 1` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -343,7 +343,7 @@ public final class LastIndexOfOrNull
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param element    The element to find
     /// @param from       The inclusive starting index (`0` by default)
-    /// @param to         The inclusive ending index (`[size][MinimalistCollectionHolder#size] - 1` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -366,7 +366,7 @@ public final class LastIndexOfOrNull
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param element    The element to find
     /// @param from       The inclusive starting index (`0` by default)
-    /// @param to         The inclusive ending index (`[size][CollectionHolder#size] - 1` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -413,7 +413,7 @@ public final class LastIndexOfOrNull
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param element    The element to find
     /// @param from       The inclusive starting index (`0` by default)
-    /// @param to         The inclusive ending index (`[size][MinimalistCollectionHolder#size] - 1` by default)
+    /// @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -441,7 +441,7 @@ public final class LastIndexOfOrNull
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param element    The element to find
     /// @param from       The inclusive starting index (`0` by default)
-    /// @param to         The inclusive ending index (`[size][CollectionHolder#size] - 1` by default)
+    /// @param to         The inclusive ending index (<code>{@link CollectionHolder#size size} - 1</code> by default)
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
