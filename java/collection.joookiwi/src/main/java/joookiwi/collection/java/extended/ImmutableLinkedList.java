@@ -28,6 +28,9 @@ public class ImmutableLinkedList<T extends @Nullable Object>
 
     @Serial private static final long serialVersionUID = 289988958485231040L;
 
+    private final int __size;
+    private final boolean __isEmpty;
+
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
@@ -35,7 +38,11 @@ public class ImmutableLinkedList<T extends @Nullable Object>
 
     /// Create an empty [immutable-like][Unmodifiable] instance of [LinkedList]
     /// (similar to [java.util.List#of()])
-    public ImmutableLinkedList() { super(); }
+    public ImmutableLinkedList() {
+        super();
+        __size = 0;
+        __isEmpty = true;
+    }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- values --------------------
@@ -44,8 +51,8 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     /// (similar to {@link java.util.List#of(Object[])})
     public ImmutableLinkedList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super();
-        final var size = values.length;
-        if (size == 0)
+        final var size = __size = values.length;
+        if (__isEmpty = size == 0)
             return;
         var index = -1;
         while (++index < size)
@@ -56,7 +63,8 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     /// (similar to [java.util.List#copyOf(Collection)])
     public ImmutableLinkedList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super();
-        if (values.isEmpty())
+        final var size = __size = values.size();
+        if (__isEmpty = size == 0)
             return;
         super.addAll(values); //TODO change to setAll or set(index, value) if it is possible
     }
@@ -64,6 +72,17 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     //#endregion -------------------- values --------------------
 
     //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Supported methods --------------------
+
+    @Contract(pure = true)
+    @Override public int size() { return __size; }
+
+    @Contract(pure = true)
+    @Override public boolean isEmpty() { return __isEmpty; }
+
+    //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
     /// Fail to set the `value` at the `index` specified
@@ -267,5 +286,7 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     @Override public void sort(final @Nullable Comparator<? super T> comparator) { throw new UnsupportedOperationException("The method “sort” is not supported in an immutable LinkedList."); }
 
     //#endregion -------------------- Unsupported methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }
