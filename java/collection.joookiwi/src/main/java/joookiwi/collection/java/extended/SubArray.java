@@ -9,7 +9,9 @@ import static java.lang.Integer.MAX_VALUE;
 /// A container to create a subdivided array lazily via [#subSource]
 ///
 /// @param <T> The type
+/// @see SubArrayAsList
 /// @see SubArrayAsSortedSet
+/// @see SubArrayAsNavigableSet
 @NotNullByDefault
 public class SubArray<T extends @Nullable Object> {
 

@@ -6,6 +6,11 @@ import org.jetbrains.annotations.Nullable;
 /// A container to reverse an array lazily via [#reversedSource]
 ///
 /// @param <T> The type
+/// @see ReversedArrayAsSequencedCollection
+/// @see ReversedArrayAsList
+/// @see ReversedArrayAsSequencedSet
+/// @see ReversedArrayAsSortedSet
+/// @see ReversedArrayAsNavigableSet
 @NotNullByDefault
 public class ReversedArray<T extends @Nullable Object> {
 
