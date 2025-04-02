@@ -145,6 +145,7 @@ public class ImmutableConcurrentSkipListSet<T>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable ConcurrentSkipListSet."); }
 
+
     /// Fail to clear the current [ImmutableConcurrentSkipListSet]
     ///
     /// @throws UnsupportedOperationException The method is not supported

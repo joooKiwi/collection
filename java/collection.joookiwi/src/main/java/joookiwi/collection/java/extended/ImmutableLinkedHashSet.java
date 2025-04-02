@@ -206,6 +206,7 @@ public class ImmutableLinkedHashSet<T>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable LinkedHashSet."); }
 
+
     /// Fail to keep the `values` in the current [ImmutableLinkedHashSet]
     ///
     /// @param values The (_never used_) values to keep

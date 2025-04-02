@@ -111,6 +111,7 @@ public class ImmutableCopyOnWriteArraySet<T>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable CopyOnWriteArraySet."); }
 
+
     /// Fail to keep the `values` in the current [ImmutableCopyOnWriteArraySet]
     ///
     /// @param values The (_never used_) values to keep

@@ -180,6 +180,7 @@ public class ImmutableHashSet<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable HashSet."); }
 
+
     /// Fail to keep the `values` in the current [ImmutableHashSet]
     ///
     /// @param values The (_never used_) values to keep
