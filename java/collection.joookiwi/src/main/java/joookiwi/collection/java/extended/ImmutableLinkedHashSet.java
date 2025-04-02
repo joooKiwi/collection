@@ -27,6 +27,10 @@ public class ImmutableLinkedHashSet<T>
 
     @Serial private static final long serialVersionUID = 6680528145384761051L;
 
+    private boolean __isInitialized = false;
+    private int __size = -1;
+    private boolean __isEmpty;
+
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
@@ -36,7 +40,12 @@ public class ImmutableLinkedHashSet<T>
     /// (similar to [java.util.Set#of()])
     /// with a load factor of [1][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     /// and a capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
-    public ImmutableLinkedHashSet() { super(DEFAULT_EMPTY_INITIAL_CAPACITY, DEFAULT_EMPTY_LOAD_FACTOR); }
+    public ImmutableLinkedHashSet() {
+        super(DEFAULT_EMPTY_INITIAL_CAPACITY, DEFAULT_EMPTY_LOAD_FACTOR);
+        __size = 0;
+        __isEmpty = true;
+        __isInitialized = true;
+    }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- values --------------------
@@ -48,8 +57,11 @@ public class ImmutableLinkedHashSet<T>
     public ImmutableLinkedHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length);
         final var size = values.length;
-        if (size == 0)
+        if (__isEmpty = size == 0) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         var index = -1;
         while (++index < size)
             super.add(values[index]);
@@ -61,8 +73,11 @@ public class ImmutableLinkedHashSet<T>
     /// and the capacity is the <code>values.[size][Collection#size()]</code>
     public ImmutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size());
-        if (values.isEmpty())
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         super.addAll(values);
     }
 
@@ -79,8 +94,11 @@ public class ImmutableLinkedHashSet<T>
                                   final float loadFactor) {
         super(values.length, loadFactor);
         final var size = values.length;
-        if (size == 0)
+        if (__isEmpty = size == 0) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         var index = -1;
         while (++index < size)
             super.add(values[index]);
@@ -96,8 +114,11 @@ public class ImmutableLinkedHashSet<T>
                                   final @Nullable Float loadFactor) {
         super(values.length, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
-        if (size == 0)
+        if (__isEmpty = size == 0) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         var index = -1;
         while (++index < size)
             super.add(values[index]);
@@ -113,8 +134,11 @@ public class ImmutableLinkedHashSet<T>
     public ImmutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                   final float loadFactor) {
         super(values.size(), loadFactor);
-        if (values.isEmpty())
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         super.addAll(values);
     }
 
@@ -127,14 +151,41 @@ public class ImmutableLinkedHashSet<T>
     public ImmutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                   final @Nullable Float loadFactor) {
         super(values.size(), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
-        if (values.isEmpty())
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         super.addAll(values);
     }
 
     //#endregion -------------------- values, loadFactor --------------------
 
     //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Supported methods --------------------
+
+    @Override public int size() {
+        if (__isInitialized)
+            return __size;
+
+        final var value = __size = super.size();
+        __isEmpty = value == 0;
+        __isInitialized = true;
+        return value;
+    }
+
+    @Override public boolean isEmpty() {
+        if (__isInitialized)
+            return __isEmpty;
+
+        final var value = __isEmpty = (__size = super.size()) == 0;
+        __isInitialized = true;
+        return value;
+    }
+
+    //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
     /// Fail to add a `value` to the current [ImmutableLinkedHashSet]
@@ -215,5 +266,7 @@ public class ImmutableLinkedHashSet<T>
     @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable LinkedHashSet."); }
 
     //#endregion -------------------- Unsupported methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }
