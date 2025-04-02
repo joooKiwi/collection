@@ -20,7 +20,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class ImmutableVector<T>
+public class ImmutableVector<T extends @Nullable Object>
         extends Vector<T> {
 
     //#region -------------------- Fields --------------------

@@ -36,7 +36,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @see joookiwi.collection.java.CollectionConstants#emptyHashSet
 @Singleton
 @NotNullByDefault
-public class EmptyHashSet<T>
+public class EmptyHashSet<T extends @Nullable Object>
         extends ImmutableHashSet<T> {
 
     @Serial private static final long serialVersionUID = -7946969251055106175L;

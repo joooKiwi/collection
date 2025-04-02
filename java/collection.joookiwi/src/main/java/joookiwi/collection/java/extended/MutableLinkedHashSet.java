@@ -17,7 +17,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class MutableLinkedHashSet<T>
+public class MutableLinkedHashSet<T extends @Nullable Object>
         extends LinkedHashSet<T> {
 
     @Serial private static final long serialVersionUID = -6995556967288013676L;

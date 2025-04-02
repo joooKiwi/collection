@@ -43,7 +43,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @see joookiwi.collection.java.CollectionConstants#emptyArrayList
 @Singleton
 @NotNullByDefault
-public class EmptyArrayList<T>
+public class EmptyArrayList<T extends @Nullable Object>
         extends ImmutableArrayList<T> {
 
     @Serial private static final long serialVersionUID = 4648897985993440076L;

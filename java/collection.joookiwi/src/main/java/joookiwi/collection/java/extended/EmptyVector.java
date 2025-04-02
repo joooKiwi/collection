@@ -45,7 +45,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @see joookiwi.collection.java.CollectionConstants#emptyVector
 @Singleton
 @NotNullByDefault
-public class EmptyVector<T>
+public class EmptyVector<T extends @Nullable Object>
         extends ImmutableVector<T> {
 
     @Serial private static final long serialVersionUID = -1133158317449474042L;

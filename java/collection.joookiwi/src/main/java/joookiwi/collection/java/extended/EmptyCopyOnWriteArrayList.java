@@ -43,7 +43,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @see joookiwi.collection.java.CollectionConstants#emptyCopyOnWriteArrayList
 @Singleton
 @NotNullByDefault
-public class EmptyCopyOnWriteArrayList<T>
+public class EmptyCopyOnWriteArrayList<T extends @Nullable Object>
         extends ImmutableCopyOnWriteArrayList<T> {
 
     @Serial private static final long serialVersionUID = 6214178640104982090L;

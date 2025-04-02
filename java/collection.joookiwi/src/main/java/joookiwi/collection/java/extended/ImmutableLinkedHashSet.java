@@ -20,7 +20,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class ImmutableLinkedHashSet<T>
+public class ImmutableLinkedHashSet<T extends @Nullable Object>
         extends LinkedHashSet<T> {
 
     //#region -------------------- Fields --------------------

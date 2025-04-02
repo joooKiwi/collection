@@ -16,7 +16,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPAC
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class MutableVector<T>
+public class MutableVector<T extends @Nullable Object>
         extends Vector<T> {
 
     @Serial private static final long serialVersionUID = -5379583952948526076L;
