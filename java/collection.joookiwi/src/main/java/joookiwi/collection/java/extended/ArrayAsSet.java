@@ -1,13 +1,13 @@
 package joookiwi.collection.java.extended;
 
-import java.util.Set;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
+import static java.lang.Integer.MAX_VALUE;
 
-/// A bare-bone implementation of a [java Set][Set]
+/// A bare-bone implementation of a [java Set][java.util.Set]
 /// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
 /// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
@@ -21,26 +21,41 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @param <T> The type
 @NotNullByDefault
 public class ArrayAsSet<T extends @Nullable Object>
-        extends ArrayAsCollection<T>
-        implements Set<T> {
+        extends AbstractArrayAsSet<T> {
+
+    //#region -------------------- Fields --------------------
+
+    private final T[] __reference;
+
+    private final int __size;
+    private final boolean __isEmpty;
+
+    //#endregion -------------------- Fields --------------------
+    //#region -------------------- Constructor --------------------
 
     /// Create an instance similar to {@link java.util.Set#of(Object[])},
     /// but allowing `null` and implying that it has no duplicate in the `reference`
     ///
     /// @param reference The array to be the internal structure
-    public ArrayAsSet(final T[] reference) { super(reference); }
-
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)
-    @Override public boolean equals(final @Nullable Object other) {
-        if (other == null)
-            return false;
-        if (other == this)
-            return true;
-        if (!(other instanceof Set<?> otherConverted))
-            return false;
-        if (size() != otherConverted.size())
-            return false;
-        return containsAll(otherConverted);
+    public ArrayAsSet(final T[] reference) {
+        super();
+        if (__isEmpty = (__size = (__reference = reference).length) == 0)
+            return;
+        _hashCode = 0;
     }
+
+    //#endregion -------------------- Constructor --------------------
+    //#region -------------------- Methods --------------------
+
+    /// The internal reference passed through the constructor
+    @Override protected T[] _reference() { return __reference; }
+
+    @Contract(pure = true)
+    @Override public @Range(from = 0, to = MAX_VALUE) int size() { return __size; }
+
+    @Contract(pure = true)
+    @Override public boolean isEmpty() { return __isEmpty; }
+
+    //#endregion -------------------- Methods --------------------
 
 }
