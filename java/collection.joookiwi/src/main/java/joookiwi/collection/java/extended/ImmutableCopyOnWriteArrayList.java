@@ -27,6 +27,9 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     @Serial private static final long serialVersionUID = -8566323480717083241L;
 
+    private final int __size;
+    private final boolean __isEmpty;
+
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
@@ -34,22 +37,43 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     /// Create an empty [immutable-like][Unmodifiable] instance of [CopyOnWriteArrayList]
     /// (similar to [java.util.List#of()])
-    public ImmutableCopyOnWriteArrayList() { super(); }
+    public ImmutableCopyOnWriteArrayList() {
+        super();
+        __size = 0;
+        __isEmpty = true;
+    }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- values --------------------
 
     /// Create an [immutable-like][Unmodifiable] instance of [CopyOnWriteArrayList]
     /// (similar to {@link java.util.List#of(Object[])})
-    public ImmutableCopyOnWriteArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) { super(values); }
+    public ImmutableCopyOnWriteArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+        super(values);
+        __isEmpty = (__size = values.length) == 0;
+    }
 
     /// Create an [immutable-like][Unmodifiable] instance of [CopyOnWriteArrayList]
     /// (similar to [java.util.List#copyOf(Collection)])
-    public ImmutableCopyOnWriteArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(values); }
+    public ImmutableCopyOnWriteArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
+        super(values);
+        __isEmpty = (__size = values.size()) == 0;
+    }
 
     //#endregion -------------------- values --------------------
 
     //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Supported methods --------------------
+
+    @Contract(pure = true)
+    @Override public int size() { return __size; }
+
+    @Contract(pure = true)
+    @Override public boolean isEmpty() { return __isEmpty; }
+
+    //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
     /// Fail to set the `value` at the `index` specified
@@ -191,5 +215,7 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
     @Override public void sort(final @Nullable Comparator<? super T> comparator) { throw new UnsupportedOperationException("The method “sort” is not supported in an immutable CopyOnWriteArrayList."); }
 
     //#endregion -------------------- Unsupported methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }
