@@ -1,18 +1,12 @@
 package joookiwi.collection.java.extended;
 
-import java.io.Serial;
 import java.util.Comparator;
 import java.util.SortedSet;
-import joookiwi.collection.java.helper.ComparatorHelper;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Unmodifiable;
-import org.jetbrains.annotations.UnmodifiableView;
+import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptySortedSet;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static java.lang.Integer.MAX_VALUE;
 
 /// An implementation of a reversed-order [SortedSet] similar to the [ArrayAsSortedSet] in its behaviour.
 /// During its creation, it <u>implies</u> that the [REVERSED_ARRAY] received has no duplicate.
@@ -34,150 +28,62 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 public class ReversedArrayAsSortedSet<T extends @Nullable Object,
         SOURCE extends SortedSet<? super T>,
         REVERSED_ARRAY extends ReversedArray<? extends T>>
-        extends ReversedArrayAsSequencedSet<T, SOURCE, REVERSED_ARRAY>
-        implements SortedSet<T> {
+        extends AbstractArrayAsSortedSet<T> {
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -7946450679975875189L;
+    private final SOURCE __source;
+    private final REVERSED_ARRAY __reversedArray;
 
-    //#region -------------------- Helper fields --------------------
+    private boolean __isInitialized = false;
+    private T @Nullable [] __reference;
 
-    private @Nullable ComparatorHelper __comparatorHelper;
-
-    //#endregion -------------------- Helper fields --------------------
+    private int __size = -1;
+    private boolean __isEmpty;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public ReversedArrayAsSortedSet(SOURCE source, REVERSED_ARRAY reversedArray) { super(source, reversedArray); }
+    public ReversedArrayAsSortedSet(final SOURCE source,
+                                    final REVERSED_ARRAY reversedArray) {
+        super();
+        __source = source;
+        __reversedArray = reversedArray;
+    }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
-
-    protected ComparatorHelper _comparatorHelper() {
-        final var value = __comparatorHelper;
-        if (value != null)
-            return value;
-        return __comparatorHelper = ComparatorHelper.getInstance();
-    }
-
-    //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
-    //#region -------------------- Supported methods --------------------
+    /// The source passed through the constructor
+    protected SOURCE _source() { return __source; }
 
-    protected int _compare(final T value1, final T value2) throws ClassCastException { return _comparatorHelper().compare(value1, value2, comparator()); }
+    /// The [ReversedArray] passed through the constructor
+    protected REVERSED_ARRAY _reversedArray() { return __reversedArray; }
 
-    protected int _indexFromHashCodeHigherOrEqual(final T value) { return _indexFromHashCodeHigherOrEqual(value, _reference(), size()); }
-    protected int _indexFromHashCodeHigherOrEqual(final T value, final T @Unmodifiable [] reference) { return _indexFromHashCodeHigherOrEqual(value, reference, size()); }
-    protected int _indexFromHashCodeHigherOrEqual(final T value, final T @Unmodifiable [] reference, final int size) {
-        var index = -1;
-        while (++index < size)
-            if (_compare(value, reference[index]) >= 0)
-                return index - 1;
-        return index - 1;
+    /// The internal referenced generated from the [reversed-array][#_reversedArray] [source][ReversedArray#reversedSource]
+    protected T[] _reference() {
+        final var value = __reference;
+        if (value != null)
+            return value;
+
+        final var reference = __reference = _reversedArray().reversedSource();
+        __isInitialized = true;
+        return reference;
     }
 
-    protected int _indexFromHashCodeHigher(final T value) { return _indexFromHashCodeHigher(value, _reference(), size()); }
-    protected int _indexFromHashCodeHigher(final T value, final T @Unmodifiable [] reference) { return _indexFromHashCodeHigher(value, reference, size()); }
-    protected int _indexFromHashCodeHigher(final T value, final T @Unmodifiable [] reference, final int size) {
-        var index = -1;
-        while (++index < size)
-            if (_compare(value, reference[index]) > 0)
-                return index - 1;
-        return index - 1;
+    @Override public @Range(from = 0, to = MAX_VALUE) int size() {
+        if (__isInitialized)
+            return __size;
+        return __size = _reference().length;
     }
 
-    //#region -------------------- Get methods --------------------
-
-    @Contract(pure = true) @Override public T first() { return getFirst(); }
-
-    @Contract(pure = true) @Override public T last() { return getLast(); }
-
-    //#endregion -------------------- Get methods --------------------
-    //#region -------------------- Subset methods --------------------
-
-    // README: By default, “from” is inclusive and “to” is exclusive
-
-    @Override public @UnmodifiableView SortedSet<T> subSet(final T from, final T to) {
-        if (!contains(from))
-            if (!contains(to))
-                throw new IllegalArgumentException("Both starting and ending values (“from” and “to”) do not exist in the SortedSet.");
-            else
-                throw new IllegalArgumentException("The starting value (“from”) does not exist in the SortedSet.");
-        if (!contains(to))
-            throw new IllegalArgumentException("The ending value (“to”) does not exist in the SortedSet.");
-
-        final var size = size();
-        final var reference = _reference();
-        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size), _indexFromHashCodeHigher(to, reference, size)));
+    @Override public boolean isEmpty() {
+        if (__isInitialized)
+            return __isEmpty;
+        return __isEmpty = size() == 0;
     }
-
-    @Override public @UnmodifiableView SortedSet<T> headSet(final T to) {
-        if (!contains(to))
-            throw new IllegalArgumentException("The ending value (“to”) does not exist in the SortedSet.");
-
-        final var reference = _reference();
-        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference)));
-    }
-
-    @Override public @UnmodifiableView SortedSet<T> tailSet(final T from) {
-        if (!contains(from))
-            throw new IllegalArgumentException("The starting value (“from”) does not exist in the SortedSet.");
-
-        final var size = size();
-        final var reference = _reference();
-        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size), size - 1));
-    }
-
-    //#endregion -------------------- Subset methods --------------------
-    //#region -------------------- To reverse methods --------------------
-
-    @Override public @UnmodifiableView SortedSet<T> reversed() {
-        if (isEmpty())
-            return emptySortedSet();
-        return new ReversedArrayAsSortedSet<>(this, new ReversedArray<>(_reference()));
-    }
-
-    //#endregion -------------------- To reverse methods --------------------
-    //#region -------------------- Comparator methods --------------------
 
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
-
-    //#endregion -------------------- Comparator methods --------------------
-
-    //#endregion -------------------- Supported methods --------------------
-    //#region -------------------- Unsupported methods --------------------
-
-    /// Fail to add a `value` as the start of the current [ArrayAsSortedSet]
-    ///
-    /// @param value the (_never used_) element to add
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_1)
-    @Override public void addFirst(final @Nullable T value) { throw new UnsupportedOperationException("The method “addFirst” is not supported in an immutable SortedSet."); }
-
-    /// Fail to add a `value` as the end of the current [ArrayAsSortedSet]
-    ///
-    /// @param value the (_never used_) element to add
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_1)
-    @Override public void addLast(final @Nullable T value) { throw new UnsupportedOperationException("The method “addLast” is not supported in an immutable SortedSet."); }
-
-
-    /// Fail to remove the first value of the current [ArrayAsSortedSet]
-    ///
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_0)
-    @Override public T removeFirst() { throw new UnsupportedOperationException("The method “removeFirst” is not supported in an immutable SortedSet."); }
-
-    /// Fail to remove the last value of the current [ArrayAsSortedSet]
-    ///
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_0)
-    @Override public T removeLast() { throw new UnsupportedOperationException("The method “removeLast” is not supported in an immutable SortedSet."); }
-
-    //#endregion -------------------- Unsupported methods --------------------
 
     //#endregion -------------------- Methods --------------------
 
