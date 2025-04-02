@@ -26,6 +26,10 @@ public class ImmutableConcurrentSkipListSet<T>
 
     @Serial private static final long serialVersionUID = -4751923563154012949L;
 
+    private boolean __isInitialized = false;
+    private int __size = -1;
+    private boolean __isEmpty;
+
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
@@ -35,7 +39,12 @@ public class ImmutableConcurrentSkipListSet<T>
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to be safe
-    public ImmutableConcurrentSkipListSet() { super(); }
+    public ImmutableConcurrentSkipListSet() {
+        super();
+        __size = 0;
+        __isEmpty = true;
+        __isInitialized = true;
+    }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- values --------------------
@@ -47,8 +56,11 @@ public class ImmutableConcurrentSkipListSet<T>
     public ImmutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super();
         final var size = values.length;
-        if (size == 0)
+        if (__isEmpty = size == 0) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         var index = -1;
         while (++index < size)
             super.add(values[index]);
@@ -60,8 +72,11 @@ public class ImmutableConcurrentSkipListSet<T>
     /// @implNote Use a [Comparable] type on [T] to be safe
     public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super();
-        if (values.isEmpty())
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         super.addAll(values);
     }
 
@@ -71,8 +86,11 @@ public class ImmutableConcurrentSkipListSet<T>
     /// @implNote Use a [Comparable] type on [T] to be safe
     public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<T> values) {
         super(values.comparator());
-        if (values.isEmpty())
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         super.addAll(values);
     }
 
@@ -85,8 +103,11 @@ public class ImmutableConcurrentSkipListSet<T>
                                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         final var size = values.length;
-        if (size == 0)
+        if (__isEmpty = size == 0) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         var index = -1;
         while (++index < size)
             super.add(values[index]);
@@ -97,8 +118,11 @@ public class ImmutableConcurrentSkipListSet<T>
     public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
-        if (values.isEmpty())
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         super.addAll(values);
     }
 
@@ -107,14 +131,41 @@ public class ImmutableConcurrentSkipListSet<T>
     public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> values,
                                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
-        if (values.isEmpty())
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         super.addAll(values);
     }
 
     //#endregion -------------------- values, comparator --------------------
 
     //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Supported methods --------------------
+
+    @Override public int size() {
+        if (__isInitialized)
+            return __size;
+
+        final var value = __size = super.size();
+        __isEmpty = value == 0;
+        __isInitialized = true;
+        return value;
+    }
+
+    @Override public boolean isEmpty() {
+        if (__isInitialized)
+            return __isEmpty;
+
+        final var value = __isEmpty = (__size = super.size()) == 0;
+        __isInitialized = true;
+        return value;
+    }
+
+    //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
     /// Fail to add a `value` to the current [ImmutableConcurrentSkipListSet]
@@ -208,5 +259,7 @@ public class ImmutableConcurrentSkipListSet<T>
     @Override public T pollLast() { throw new UnsupportedOperationException("The method “pollLast” is not supported in an immutable ConcurrentSkipListSet."); }
 
     //#endregion -------------------- Unsupported methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }
