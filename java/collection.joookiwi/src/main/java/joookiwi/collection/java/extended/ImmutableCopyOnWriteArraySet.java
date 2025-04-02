@@ -24,6 +24,10 @@ public class ImmutableCopyOnWriteArraySet<T>
 
     @Serial private static final long serialVersionUID = -7724536483598230951L;
 
+    private boolean __isInitialized = false;
+    private int __size = -1;
+    private boolean __isEmpty;
+
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
@@ -33,7 +37,12 @@ public class ImmutableCopyOnWriteArraySet<T>
     /// (similar to [java.util.Set#of()])
     /// with a load factor of [1][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     /// and a capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
-    public ImmutableCopyOnWriteArraySet() { super(); }
+    public ImmutableCopyOnWriteArraySet() {
+        super();
+        __size = 0;
+        __isEmpty = true;
+        __isInitialized = true;
+    }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- values --------------------
@@ -45,8 +54,11 @@ public class ImmutableCopyOnWriteArraySet<T>
     public ImmutableCopyOnWriteArraySet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super();
         final var size = values.length;
-        if (size == 0)
+        if (__isEmpty = size == 0) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         var index = -1;
         while (++index < size)
             super.add(values[index]);
@@ -58,14 +70,41 @@ public class ImmutableCopyOnWriteArraySet<T>
     /// and the capacity is the <code>values.[size][Collection#size()]</code>
     public ImmutableCopyOnWriteArraySet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super();
-        if (values.isEmpty())
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
             return;
+        }
         super.addAll(values);
     }
 
     //#endregion -------------------- values --------------------
 
     //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Supported methods --------------------
+
+    @Override public int size() {
+        if (__isInitialized)
+            return __size;
+
+        final var value = __size = super.size();
+        __isEmpty = value == 0;
+        __isInitialized = true;
+        return value;
+    }
+
+    @Override public boolean isEmpty() {
+        if (__isInitialized)
+            return __isEmpty;
+
+        final var value = __isEmpty = (__size = super.size()) == 0;
+        __isInitialized = true;
+        return value;
+    }
+
+    //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
     /// Fail to add a `value` to the current [ImmutableCopyOnWriteArraySet]
@@ -120,5 +159,7 @@ public class ImmutableCopyOnWriteArraySet<T>
     @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable CopyOnWriteArraySet."); }
 
     //#endregion -------------------- Unsupported methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }
