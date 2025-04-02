@@ -25,7 +25,7 @@ import static joookiwi.collection.java.CollectionConstants.emptyEnumeration;
 import static joookiwi.collection.java.CollectionConstants.emptyIterator;
 import static joookiwi.collection.java.CollectionConstants.emptyList;
 import static joookiwi.collection.java.CollectionConstants.emptyListIterator;
-import static joookiwi.collection.java.CollectionConstants.emptyParellelStream;
+import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CollectionConstants.emptyStream;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
@@ -137,7 +137,7 @@ public class EmptyVector<T>
 
     @Contract(pure = true) @Override public Stream<T> stream() { return emptyStream(); }
 
-    @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParellelStream(); }
+    @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Sublist methods --------------------
