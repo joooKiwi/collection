@@ -27,6 +27,9 @@ public class ImmutableVector<T>
 
     @Serial private static final long serialVersionUID = -1409591874005272165L;
 
+    private final int __size;
+    private final boolean __isEmpty;
+
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
@@ -35,7 +38,11 @@ public class ImmutableVector<T>
     /// Create an empty [immutable-like][Unmodifiable] instance of [Vector]
     /// (similar to [java.util.List#of()])
     /// with a capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
-    public ImmutableVector() { super(0, 0); }
+    public ImmutableVector() {
+        super(0, 0);
+        __size = 0;
+        __isEmpty = true;
+    }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- values --------------------
@@ -45,8 +52,8 @@ public class ImmutableVector<T>
     /// with the capacity is the `values.length`
     public ImmutableVector(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length, 0);
-        final var size = elementCount = values.length;
-        if (size == 0)
+        final var size = __size = elementCount = values.length;
+        if (__isEmpty =- size == 0)
             return;
 
         final var array = elementData;
@@ -60,7 +67,8 @@ public class ImmutableVector<T>
     /// with the capacity is the <code>values.[size][Collection#size()]</code>
     public ImmutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size(), 0);
-        if (values.isEmpty())
+        final var size = __size = values.size();
+        if (__isEmpty = size == 0)
             return;
         super.addAll(values); //TODO change to setAll or set(index, value) if it is possible
     }
@@ -68,6 +76,17 @@ public class ImmutableVector<T>
     //#endregion -------------------- values --------------------
 
     //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Supported methods --------------------
+
+    @Contract(pure = true)
+    @Override public int size() { return __size; }
+
+    @Contract(pure = true)
+    @Override public boolean isEmpty() { return __isEmpty; }
+
+    //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
     /// Fail to mutate the [size][#size()] of the current [ImmutableVector]
@@ -266,5 +285,7 @@ public class ImmutableVector<T>
     @Override public void sort(final @Nullable Comparator<? super T> comparator) { throw new UnsupportedOperationException("The method “sort” is not supported in an immutable Vector."); }
 
     //#endregion -------------------- Unsupported methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }
