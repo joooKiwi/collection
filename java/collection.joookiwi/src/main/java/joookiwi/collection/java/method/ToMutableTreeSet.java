@@ -8,9 +8,8 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.ImmutableTreeSet;
+import joookiwi.collection.java.extended.MutableTreeSet;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -36,11 +35,11 @@ public final class ToMutableTreeSet
     @ExtensionFunction
     public static <T> @Unmodifiable TreeSet<T> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
 
         var size = collection.size();
         if (size == 0)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __withNoTransform(collection, size);
     }
 
@@ -51,9 +50,9 @@ public final class ToMutableTreeSet
     @ExtensionFunction
     public static <T> @Unmodifiable TreeSet<T> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         if (collection.isEmpty())
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         if (collection.hasDuplicate())
             return __withNoDuplicate(collection, collection.size());
         return __withNoTransform(collection, collection.size());
@@ -66,11 +65,11 @@ public final class ToMutableTreeSet
     @ExtensionFunction
     public static <T> @Unmodifiable TreeSet<T> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
 
         var size = collection.length;
         if (size == 0)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __withNoTransform(collection, size);
     }
 
@@ -88,11 +87,11 @@ public final class ToMutableTreeSet
     public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
 
         var size = collection.size();
         if (size == 0)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __with2Argument(collection, size, transform);
     }
 
@@ -107,9 +106,9 @@ public final class ToMutableTreeSet
     public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         if (collection.isEmpty())
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __with2Argument(collection, collection.size(), transform);
     }
 
@@ -124,11 +123,11 @@ public final class ToMutableTreeSet
     public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
 
         var size = collection.length;
         if (size == 0)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __with2Argument(collection, size, transform);
     }
 
@@ -146,11 +145,11 @@ public final class ToMutableTreeSet
     public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
 
         var size = collection.size();
         if (size == 0)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __with1Argument(collection, size, transform);
     }
 
@@ -165,9 +164,9 @@ public final class ToMutableTreeSet
     public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         if (collection.isEmpty())
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __with1Argument(collection, collection.size(), transform);
     }
 
@@ -182,11 +181,11 @@ public final class ToMutableTreeSet
     public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
 
         var size = collection.length;
         if (size == 0)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __with1Argument(collection, size, transform);
     }
 
@@ -204,11 +203,11 @@ public final class ToMutableTreeSet
     public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
 
         var size = collection.size();
         if (size == 0)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __with0Argument(size, transform);
     }
 
@@ -223,9 +222,9 @@ public final class ToMutableTreeSet
     public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         if (collection.isEmpty())
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __with0Argument(collection.size(), transform);
     }
 
@@ -240,11 +239,11 @@ public final class ToMutableTreeSet
     public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
 
         var size = collection.length;
         if (size == 0)
-            return emptyTreeSet();
+            return new MutableTreeSet<>();
         return __with0Argument(size, transform);
     }
 
@@ -253,50 +252,50 @@ public final class ToMutableTreeSet
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-        return new ImmutableTreeSet<>(_uniqueValues(collection, size));
     private static <T> @Unmodifiable TreeSet<T> __withNoDuplicate(final CollectionHolder<? extends T> collection,
                                                                   final int size) {
+        return new MutableTreeSet<>(_uniqueValues(collection, size));
     }
 
 
-        return new ImmutableTreeSet<>(_values(collection, size));
     private static <T> @Unmodifiable TreeSet<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
                                                                   final int size) {
+        return new MutableTreeSet<>(_values(collection, size));
     }
 
-        return new ImmutableTreeSet<>(_values(collection, size));
     private static <T> @Unmodifiable TreeSet<T> __withNoTransform(final T @Unmodifiable [] collection,
                                                                   final int size) {
+        return new MutableTreeSet<>(_values(collection, size));
     }
 
 
-        return new ImmutableTreeSet<>(_uniqueValues(size, transform));
     private static <U> @Unmodifiable TreeSet<U> __with0Argument(final int size,
                                                                 final Supplier<? extends U> transform) {
+        return new MutableTreeSet<>(_uniqueValues(size, transform));
     }
 
 
-        return new ImmutableTreeSet<>(_uniqueValues(collection, size, transform));
     private static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
                                                                                             final int size,
                                                                                             final Function<? super T, ? extends U> transform) {
+        return new MutableTreeSet<>(_uniqueValues(collection, size, transform));
     }
 
-                                                                                                                              final @NotNull Function<? super T, ? extends U> transform) {
     private static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> __with1Argument(final T @Unmodifiable [] collection,
                                                                                             final int size,
-        return new ImmutableTreeSet<>(_uniqueValues(collection, size, transform));
+                                                                                            final Function<? super T, ? extends U> transform) {
+        return new MutableTreeSet<>(_uniqueValues(collection, size, transform));
     }
 
 
-        return new ImmutableTreeSet<>(_uniqueValues(collection, size, transform));
     private static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection, int size,
                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+        return new MutableTreeSet<>(_uniqueValues(collection, size, transform));
     }
 
-        return new ImmutableTreeSet<>(_uniqueValues(collection, size, transform));
     private static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> __with2Argument(final T @Unmodifiable [] collection, int size,
                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+        return new MutableTreeSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- Loop methods --------------------
