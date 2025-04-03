@@ -10,7 +10,6 @@ import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.MutableArrayList;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -36,7 +35,7 @@ public final class ToMutableArrayList
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> @NotNull ArrayList<T> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> ArrayList<T> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableArrayList<>();
 
@@ -52,7 +51,7 @@ public final class ToMutableArrayList
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> @NotNull ArrayList<T> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> ArrayList<T> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableArrayList<>();
         if (collection.isEmpty())
@@ -66,7 +65,7 @@ public final class ToMutableArrayList
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> @NotNull ArrayList<T> toMutableArrayList(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> ArrayList<T> toMutableArrayList(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableArrayList<>();
 
@@ -88,8 +87,8 @@ public final class ToMutableArrayList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull ArrayList<U> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayList<>();
 
@@ -108,8 +107,8 @@ public final class ToMutableArrayList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull ArrayList<U> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayList<>();
         if (collection.isEmpty())
@@ -126,8 +125,8 @@ public final class ToMutableArrayList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull ArrayList<U> toMutableArrayList(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayList<>();
 
@@ -149,8 +148,8 @@ public final class ToMutableArrayList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull ArrayList<U> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayList<>();
 
@@ -169,8 +168,8 @@ public final class ToMutableArrayList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull ArrayList<U> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayList<>();
         if (collection.isEmpty())
@@ -187,8 +186,8 @@ public final class ToMutableArrayList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull ArrayList<U> toMutableArrayList(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final @NotNull Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayList<>();
 
@@ -210,8 +209,8 @@ public final class ToMutableArrayList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                                  final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable ArrayList<U> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                         final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayList<>();
 
@@ -230,8 +229,8 @@ public final class ToMutableArrayList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                                  final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable ArrayList<U> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                         final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayList<>();
         if (collection.isEmpty())
@@ -248,8 +247,8 @@ public final class ToMutableArrayList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull @Unmodifiable ArrayList<U> toMutableArrayList(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                                  final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable ArrayList<U> toMutableArrayList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                         final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayList<>();
 
@@ -264,45 +263,45 @@ public final class ToMutableArrayList
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> @NotNull ArrayList<T> __withNoTransform(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                        final int size) {
+    private static <T extends @Nullable Object> ArrayList<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
+                                                                               final int size) {
         return new MutableArrayList<>(_values(collection, size));
     }
 
-    private static <T extends @Nullable Object> @NotNull ArrayList<T> __withNoTransform(final T @NotNull @Unmodifiable [] collection,
-                                                                                        final int size) {
+    private static <T extends @Nullable Object> ArrayList<T> __withNoTransform(final T @Unmodifiable [] collection,
+                                                                               final int size) {
         return new MutableArrayList<>(_values(collection, size));
     }
 
 
-    private static <U extends @Nullable Object> @NotNull ArrayList<U> __with0Argument(final int size,
-                                                                                      final @NotNull Supplier<? extends U> transform) {
+    private static <U extends @Nullable Object> ArrayList<U> __with0Argument(final int size,
+                                                                             final Supplier<? extends U> transform) {
         return new MutableArrayList<>(_values(size, transform));
     }
 
 
-    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull ArrayList<U> __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                  final int size,
-                                                                                                                  final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                                         final int size,
+                                                                                                         final Function<? super T, ? extends U> transform) {
         return new MutableArrayList<>(_values(collection, size, transform));
     }
 
-    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull ArrayList<U> __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                                                                  final int size,
-                                                                                                                  final @NotNull Function<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> __with1Argument(final T @Unmodifiable [] collection,
+                                                                                                         final int size,
+                                                                                                         final Function<? super T, ? extends U> transform) {
         return new MutableArrayList<>(_values(collection, size, transform));
     }
 
 
-    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull ArrayList<U> __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                  final int size,
-                                                                                                                  final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                                         final int size,
+                                                                                                         final ObjIntFunction<? super T, ? extends U> transform) {
         return new MutableArrayList<>(_values(collection, size, transform));
     }
 
-    private static <T extends @Nullable Object, U extends @Nullable Object> @NotNull ArrayList<U> __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                                                                  final int size,
-                                                                                                                  final @NotNull ObjIntFunction<? super T, ? extends U> transform) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> __with2Argument(final T @Unmodifiable [] collection,
+                                                                                                         final int size,
+                                                                                                         final ObjIntFunction<? super T, ? extends U> transform) {
         return new MutableArrayList<>(_values(collection, size, transform));
     }
 
