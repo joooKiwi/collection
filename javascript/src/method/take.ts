@@ -32,7 +32,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
  * @canReceiveNegativeValue
  */
 export function take<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, n: number,): CollectionHolder<T> {
@@ -60,7 +60,7 @@ export function take<const T, >(collection: Nullable<| MinimalistCollectionHolde
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
  * @canReceiveNegativeValue
  */
 export function takeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, n: number,): CollectionHolder<T> {
@@ -76,7 +76,7 @@ export function takeByMinimalistCollectionHolder<const T, >(collection: Nullable
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
  * @canReceiveNegativeValue
  */
 export function takeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, n: number,): CollectionHolder<T> {
@@ -92,7 +92,7 @@ export function takeByCollectionHolder<const T, >(collection: Nullable<Collectio
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#limit(long) Java limit(n)
  * @canReceiveNegativeValue
  */
 export function takeByArray<const T, >(collection: Nullable<readonly T[]>, n: number,): CollectionHolder<T> {

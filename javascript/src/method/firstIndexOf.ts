@@ -38,7 +38,7 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
  * @throws IndexOutOfBoundsException No index could be found
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -60,7 +60,7 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -84,7 +84,7 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -116,7 +116,7 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @throws IndexOutOfBoundsException No index could be found
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -138,7 +138,7 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -162,7 +162,7 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -193,7 +193,7 @@ export function firstIndexOfByMinimalistCollectionHolder<const T, >(collection: 
  * @throws IndexOutOfBoundsException No index could be found
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -215,7 +215,7 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -239,7 +239,7 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -270,7 +270,7 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @throws IndexOutOfBoundsException No index could be found
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -292,7 +292,7 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -316,7 +316,7 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.indexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#indexOf(java.lang.Object) Java indexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof C# IndexOf(item, from?, to?)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue

@@ -39,7 +39,7 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
  * @throws IndexOutOfBoundsException No index could be found
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -62,7 +62,7 @@ export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollecti
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -87,7 +87,7 @@ export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollecti
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -120,7 +120,7 @@ export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollecti
  * @throws IndexOutOfBoundsException No index could be found
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -143,7 +143,7 @@ export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: N
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -168,7 +168,7 @@ export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: N
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -200,7 +200,7 @@ export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: N
  * @throws IndexOutOfBoundsException No index could be found
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -223,7 +223,7 @@ export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<Co
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -248,7 +248,7 @@ export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<Co
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -280,7 +280,7 @@ export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<Co
  * @throws IndexOutOfBoundsException No index could be found
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -303,7 +303,7 @@ export function lastIndexOfByArray<const T, >(collection: Nullable<readonly T[]>
  * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
@@ -328,7 +328,7 @@ export function lastIndexOfByArray<const T, >(collection: Nullable<readonly T[]>
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
  * @see ReadonlyArray.lastIndexOf
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html Kotlin lastIndexOf(element)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#lastIndexOf(java.lang.Object) Java lastIndexOf(element)
  * @see https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof C# LastIndexOf(item)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue

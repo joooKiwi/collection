@@ -29,8 +29,8 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmpty<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): IsEmptyOnCollectionHolder<COLLECTION>
@@ -41,8 +41,8 @@ export function isEmpty<const T, const COLLECTION extends CollectionHolder<T> = 
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmpty<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION,): IsEmptyOnMinimalistCollectionHolder<COLLECTION>
@@ -53,8 +53,8 @@ export function isEmpty<const T, const COLLECTION extends MinimalistCollectionHo
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmpty<const T, const COLLECTION extends readonly T[] = readonly T[], >(collection: COLLECTION,): IsEmptyOnArray<COLLECTION>
@@ -65,8 +65,8 @@ export function isEmpty<const T, const COLLECTION extends readonly T[] = readonl
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmpty<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[] = | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], >(collection: COLLECTION,): IsEmptyOn<COLLECTION>
@@ -77,8 +77,8 @@ export function isEmpty<const T, const COLLECTION extends | MinimalistCollection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmpty<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): IsEmptyOnNullableCollectionHolder<COLLECTION>
@@ -89,8 +89,8 @@ export function isEmpty<const T, const COLLECTION extends Nullable<CollectionHol
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmpty<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION,): IsEmptyOnNullableMinimalistCollectionHolder<COLLECTION>
@@ -101,8 +101,8 @@ export function isEmpty<const T, const COLLECTION extends Nullable<MinimalistCol
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmpty<const T, const COLLECTION extends Nullable<readonly T[]> = Nullable<readonly T[]>, >(collection: COLLECTION,): IsEmptyOnNullableArray<COLLECTION>
@@ -113,8 +113,8 @@ export function isEmpty<const T, const COLLECTION extends Nullable<readonly T[]>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmpty<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, >(collection: COLLECTION,): IsEmptyOnNullable<COLLECTION>
@@ -143,8 +143,8 @@ export function isEmpty<const T, >(collection: Nullable<| MinimalistCollectionHo
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): IsEmptyOnCollectionHolder<COLLECTION>
@@ -155,8 +155,8 @@ export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION ex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): IsEmptyOnNullableCollectionHolder<COLLECTION>
@@ -167,8 +167,8 @@ export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION ex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >(collection: COLLECTION,): IsEmptyOnMinimalistCollectionHolder<COLLECTION>
@@ -179,8 +179,8 @@ export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION ex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmptyByMinimalistCollectionHolder<const T, const COLLECTION extends Nullable<MinimalistCollectionHolder<T>> = Nullable<MinimalistCollectionHolder<T>>, >(collection: COLLECTION,): IsEmptyOnNullableMinimalistCollectionHolder<COLLECTION>
@@ -197,8 +197,8 @@ export function isEmptyByMinimalistCollectionHolder<const T, >(collection: Nulla
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmptyByCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: COLLECTION,): IsEmptyOnCollectionHolder<COLLECTION>
@@ -209,8 +209,8 @@ export function isEmptyByCollectionHolder<const T, const COLLECTION extends Coll
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmptyByCollectionHolder<const T, const COLLECTION extends Nullable<CollectionHolder<T>> = Nullable<CollectionHolder<T>>, >(collection: COLLECTION,): IsEmptyOnNullableCollectionHolder<COLLECTION>
@@ -227,8 +227,8 @@ export function isEmptyByCollectionHolder<const T, >(collection: Nullable<Collec
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmptyByArray<const T, const COLLECTION extends readonly T[] = readonly T[], >(collection: COLLECTION,): IsEmptyOnArray<COLLECTION>
@@ -239,8 +239,8 @@ export function isEmptyByArray<const T, const COLLECTION extends readonly T[] = 
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
 export function isEmptyByArray<const T, const COLLECTION extends Nullable<readonly T[]> = Nullable<readonly T[]>, >(collection: COLLECTION,): IsEmptyOnNullableArray<COLLECTION>
