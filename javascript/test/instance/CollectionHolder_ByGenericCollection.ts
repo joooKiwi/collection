@@ -81,6 +81,14 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.instance.getOrElse(index, defaultValue,) }
 
+    public override getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public override getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public override getFirstOrElse(defaultValue: IndexWithReturnCallback<unknown>,) { return this.instance.getFirstOrElse(defaultValue,) }
+
+    public override getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public override getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public override getLastOrElse(defaultValue: IndexWithReturnCallback<unknown>,) { return this.instance.getLastOrElse(defaultValue,) }
+
     public override getOrNull(index: number,): NullOr<T> { return this.instance.getOrNull(index,) }
 
     //#endregion -------------------- Get --------------------

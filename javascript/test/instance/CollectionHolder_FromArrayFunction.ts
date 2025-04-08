@@ -45,8 +45,10 @@ import {firstIndexOfOrNullByArray}        from "../../src/method/firstIndexOfOrN
 import {forEachByArray}                   from "../../src/method/forEach"
 import {forEachIndexedByArray}            from "../../src/method/forEachIndexed"
 import {getFirstByArray}                  from "../../src/method/getFirst"
+import {getFirstOrElseByArray}            from "../../src/method/getFirstOrElse"
 import {getFirstOrNullByArray}            from "../../src/method/getFirstOrNull"
 import {getLastByArray}                   from "../../src/method/getLast"
+import {getLastOrElseByArray}             from "../../src/method/getLastOrElse"
 import {getLastOrNullByArray}             from "../../src/method/getLastOrNull"
 import {getOrElseByArray}                 from "../../src/method/getOrElse"
 import {getOrNullByArray}                 from "../../src/method/getOrNull"
@@ -149,13 +151,6 @@ export class CollectionHolder_FromArrayFunction<const T, >
         return getLastByArray(this.array,)
     }
 
-    public override getFirstOrNull(): NullOr<T> {
-        return getFirstOrNullByArray(this.array,)
-    }
-
-    public override getLastOrNull(): NullOr<T> {
-        return getLastOrNullByArray(this.array,)
-    }
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -163,8 +158,25 @@ export class CollectionHolder_FromArrayFunction<const T, >
         return getOrElseByArray(this.array, index, defaultValue,)
     }
 
+    public override getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public override getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public override getFirstOrElse(defaultValue: IndexWithReturnCallback<unknown>,) { return getFirstOrElseByArray(this.array, defaultValue,) }
+
+    public override getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public override getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public override getLastOrElse(defaultValue: IndexWithReturnCallback<unknown>,) { return getLastOrElseByArray(this.array, defaultValue,) }
+
+
     public override getOrNull(index: number,): NullOr<T> {
         return getOrNullByArray(this.array, index,)
+    }
+
+    public override getFirstOrNull(): NullOr<T> {
+        return getFirstOrNullByArray(this.array,)
+    }
+
+    public override getLastOrNull(): NullOr<T> {
+        return getLastOrNullByArray(this.array,)
     }
 
     //#endregion -------------------- Get --------------------

@@ -62,6 +62,14 @@ export class CollectionHolder_ByStructure<const T, >
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.getOrElse(index, defaultValue,) }
 
+    public getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public getFirstOrElse(defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.getFirstOrElse(defaultValue,) }
+
+    public getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public getLastOrElse(defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.getLastOrElse(defaultValue,) }
+
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.atOrElse(index, defaultValue,) }

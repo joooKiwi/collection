@@ -135,6 +135,12 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     public abstract getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public abstract getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
+    public abstract getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public abstract getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+
+    public abstract getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public abstract getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+
     public atOrElse(..._: readonly unknown[]): never
     public atOrElse() {
         throw new Error("The method “atOrElse” was not expected to be called in a test.",)

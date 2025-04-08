@@ -44,8 +44,10 @@ import {forEachIndexedByCollectionHolder}            from "../../src/method/forE
 import {firstIndexOfByCollectionHolder}              from "../../src/method/firstIndexOf"
 import {firstIndexOfOrNullByCollectionHolder}        from "../../src/method/firstIndexOfOrNull"
 import {getFirstByCollectionHolder}                  from "../../src/method/getFirst"
+import {getFirstOrElseByCollectionHolder}            from "../../src/method/getFirstOrElse"
 import {getFirstOrNullByCollectionHolder}            from "../../src/method/getFirstOrNull"
 import {getLastByCollectionHolder}                   from "../../src/method/getLast"
+import {getLastOrElseByCollectionHolder}             from "../../src/method/getLastOrElse"
 import {getLastOrNullByCollectionHolder}             from "../../src/method/getLastOrNull"
 import {getOrElseByCollectionHolder}                 from "../../src/method/getOrElse"
 import {getOrNullByCollectionHolder}                 from "../../src/method/getOrNull"
@@ -154,8 +156,16 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
-        return getOrElseByCollectionHolder(this as CollectionHolder, index, defaultValue,)
+        return getOrElseByCollectionHolder(this, index, defaultValue,)
     }
+
+    public override getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public override getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public override getFirstOrElse(defaultValue: IndexWithReturnCallback<unknown>,) { return getFirstOrElseByCollectionHolder(this, defaultValue,) }
+
+    public override getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public override getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public override getLastOrElse(defaultValue: IndexWithReturnCallback<unknown>,) { return getLastOrElseByCollectionHolder(this, defaultValue,) }
 
     public override getOrNull(index: number,): NullOr<T> {
         return getOrNullByCollectionHolder<T>(this, index,)

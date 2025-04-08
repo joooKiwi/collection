@@ -44,8 +44,10 @@ import {firstIndexOfOrNullByMinimalistCollectionHolder}        from "../../src/m
 import {forEachByMinimalistCollectionHolder}                   from "../../src/method/forEach"
 import {forEachIndexedByMinimalistCollectionHolder}            from "../../src/method/forEachIndexed"
 import {getFirstByMinimalistCollectionHolder}                  from "../../src/method/getFirst"
+import {getFirstOrElseByMinimalistCollectionHolder}            from "../../src/method/getFirstOrElse"
 import {getFirstOrNullByMinimalistCollectionHolder}            from "../../src/method/getFirstOrNull"
 import {getLastByMinimalistCollectionHolder}                   from "../../src/method/getLast"
+import {getLastOrElseByMinimalistCollectionHolder}             from "../../src/method/getLastOrElse"
 import {getLastOrNullByMinimalistCollectionHolder}             from "../../src/method/getLastOrNull"
 import {getOrElseByMinimalistCollectionHolder}                 from "../../src/method/getOrElse"
 import {getOrNullByMinimalistCollectionHolder}                 from "../../src/method/getOrNull"
@@ -140,6 +142,18 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         return getOrElseByMinimalistCollectionHolder(this, index, defaultValue,)
+    }
+
+    public override getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public override getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public override getFirstOrElse(defaultValue: IndexWithReturnCallback<unknown>,) {
+        return getFirstOrElseByMinimalistCollectionHolder(this, defaultValue,)
+    }
+
+    public override getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public override getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public override getLastOrElse(defaultValue: IndexWithReturnCallback<unknown>,) {
+        return getLastOrElseByMinimalistCollectionHolder(this, defaultValue,)
     }
 
     public override getOrNull(index: number,): NullOr<T> {
