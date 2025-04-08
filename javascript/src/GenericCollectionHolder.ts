@@ -55,6 +55,7 @@ import {getFirstByArray}                             from "./method/getFirst"
 import {getFirstOrElseByArray}                       from "./method/getFirstOrElse"
 import {getFirstOrNullByArray}                       from "./method/getFirstOrNull"
 import {getLastByArray}                              from "./method/getLast"
+import {getLastOrElseByArray}                        from "./method/getLastOrElse"
 import {getLastOrNullByArray}                        from "./method/getLastOrNull"
 import {getOrElseByArray}                            from "./method/getOrElse"
 import {getOrNullByArray}                            from "./method/getOrNull"
@@ -1014,6 +1015,13 @@ export class GenericCollectionHolder<const T = unknown,
     public override getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): T
     public override getFirstOrElse(defaultValue: IndexWithReturnCallback<unknown>,) {
         return getFirstOrElseByArray(this._array, defaultValue,)
+    }
+
+
+    public override getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public override getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public override getLastOrElse(defaultValue: IndexWithReturnCallback<unknown>,) {
+        return getLastOrElseByArray(this._array, defaultValue,)
     }
 
 

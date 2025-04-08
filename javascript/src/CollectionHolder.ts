@@ -257,6 +257,23 @@ export interface CollectionHolder<out T = unknown, >
     getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): NullOr<T>
 
     //#endregion -------------------- Get first or else --------------------
+    //#region -------------------- Get last or else --------------------
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
+     */
+    getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): NullOr<| T | U>
+
+    /**
+     * Get the last element in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
+     */
+    getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): NullOr<T>
+
+    //#endregion -------------------- Get last or else --------------------
 
     //#region -------------------- Get or null --------------------
 

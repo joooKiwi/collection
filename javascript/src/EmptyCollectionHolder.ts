@@ -123,6 +123,13 @@ export class EmptyCollectionHolder
     }
 
 
+    public getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
+    public getLastOrElse(defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
+    public getLastOrElse(defaultValue: IndexWithReturnCallback<unknown>,) {
+        return defaultValue(-1,)
+    }
+
+
     public getOrNull(..._: readonly unknown[]): null
     public getOrNull() { return null }
 

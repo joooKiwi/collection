@@ -50,6 +50,7 @@ import {getFirstOrElseByCollectionHolder}                       from "./method/g
 import {getFirstOrNullByCollectionHolder}                       from "./method/getFirstOrNull"
 import {getLastByCollectionHolder}                              from "./method/getLast"
 import {getLastOrNullByCollectionHolder}                        from "./method/getLastOrNull"
+import {getLastOrElseByCollectionHolder}                        from "./method/getLastOrElse"
 import {getOrElseByCollectionHolder}                            from "./method/getOrElse"
 import {getOrNullByCollectionHolder}                            from "./method/getOrNull"
 import {hasByCollectionHolder}                                  from "./method/has"
@@ -229,6 +230,15 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Get first or else --------------------
+    //#region -------------------- Get last or else --------------------
+
+    public getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
+    public getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public getLastOrElse(defaultValue: IndexWithReturnCallback<unknown>,) {
+        return getLastOrElseByCollectionHolder(this, defaultValue,)
+    }
+
+    //#endregion -------------------- Get last or else --------------------
 
     //#region -------------------- Get or null --------------------
 
