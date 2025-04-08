@@ -27,7 +27,7 @@ public class MutableTreeSet<T>
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutableTreeSet() { super(); }
+    public MutableTreeSet() { super((Comparator<? super T>) null); }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- comparator --------------------
@@ -44,7 +44,7 @@ public class MutableTreeSet<T>
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableTreeSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
-        super();
+        super((Comparator<? super T>) null);
         final var size = values.length;
         if (size == 0)
             return;
@@ -58,7 +58,7 @@ public class MutableTreeSet<T>
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
-        super();
+        super((Comparator<? super T>) null);
         if (values.isEmpty())
             return;
         super.addAll(values);

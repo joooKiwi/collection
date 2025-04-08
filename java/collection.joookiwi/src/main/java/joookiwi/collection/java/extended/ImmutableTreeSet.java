@@ -42,7 +42,7 @@ public class ImmutableTreeSet<T>
     ///
     /// @implNote Use a [Comparable] type on [T] to be safe
     public ImmutableTreeSet() {
-        super();
+        super((Comparator<? super T>) null);
         __size = 0;
         __isEmpty = true;
         __isInitialized = true;
@@ -68,7 +68,7 @@ public class ImmutableTreeSet<T>
     ///
     /// @implNote Use a [Comparable] type on [T] to be safe
     public ImmutableTreeSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
-        super();
+        super((Comparator<? super T>) null);
         final var size = values.length;
         if (__isEmpty = size == 0) {
             __isInitialized = true;
@@ -85,7 +85,7 @@ public class ImmutableTreeSet<T>
     ///
     /// @implNote Use a [Comparable] type on [T] to be safe
     public ImmutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
-        super();
+        super((Comparator<? super T>) null);
         if (__isEmpty = values.isEmpty()) {
             __isInitialized = true;
             __size = 0;
