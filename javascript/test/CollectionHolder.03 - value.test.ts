@@ -46,10 +46,12 @@ import {firstOrNull, firstOrNullByArray, firstOrNullByCollectionHolder, firstOrN
 import * as getFirstModule                                                                                                                   from "../src/method/getFirst"
 import {getFirst, getFirstByArray, getFirstByCollectionHolder, getFirstByMinimalistCollectionHolder}                                         from "../src/method/getFirst"
 import * as getFirstOrNullModule                                                                                                             from "../src/method/getFirstOrNull"
+import {getFirstOrElse, getFirstOrElseByArray, getFirstOrElseByCollectionHolder, getFirstOrElseByMinimalistCollectionHolder}                 from "../src/method/getFirstOrElse"
 import {getFirstOrNull, getFirstOrNullByArray, getFirstOrNullByCollectionHolder, getFirstOrNullByMinimalistCollectionHolder}                 from "../src/method/getFirstOrNull"
 import * as getLastModule                                                                                                                    from "../src/method/getLast"
 import {getLast, getLastByArray, getLastByCollectionHolder, getLastByMinimalistCollectionHolder}                                             from "../src/method/getLast"
 import * as getLastOrNullModule                                                                                                              from "../src/method/getLastOrNull"
+import {getLastOrElse, getLastOrElseByArray, getLastOrElseByCollectionHolder, getLastOrElseByMinimalistCollectionHolder}                     from "../src/method/getLastOrElse"
 import {getLastOrNull, getLastOrNullByArray, getLastOrNullByCollectionHolder, getLastOrNullByMinimalistCollectionHolder}                     from "../src/method/getLastOrNull"
 import * as getOrElseModule                                                                                                                  from "../src/method/getOrElse"
 import {getOrElse, getOrElseByArray, getOrElseByCollectionHolder, getOrElseByMinimalistCollectionHolder}                                     from "../src/method/getOrElse"
@@ -83,9 +85,11 @@ describe("CollectionHolderTest (value)", () => {
         test("elementAtOrElse",     () => expect(new EmptyCollectionHolderForTest().elementAtOrElse(NaN, it => it,),).toBeNaN(),)
         test("getOrNull",           () => expect(new EmptyCollectionHolderForTest().getOrNull(),).toBeNull(),)
         test("getFirstOrNull",      () => expect(new EmptyCollectionHolderForTest().getFirstOrNull(),).toBeNull(),)
+        test("getFirstOrElse",      () => expect(new EmptyCollectionHolderForTest().getFirstOrElse(it => it,),).toBe(0,),)
         test("firstOrNull",         () => expect(new EmptyCollectionHolderForTest().firstOrNull(),).toBeNull(),)
         test("firstIndexedOrNull",  () => expect(new EmptyCollectionHolderForTest().firstIndexedOrNull(),).toBeNull(),)
         test("getLastOrNull",       () => expect(new EmptyCollectionHolderForTest().getLastOrNull(),).toBeNull(),)
+        test("getLastOrElse",       () => expect(new EmptyCollectionHolderForTest().getLastOrElse(it => it,),).toBe(-1,),)
         test("lastOrNull",          () => expect(new EmptyCollectionHolderForTest().lastOrNull(),).toBeNull(),)
         test("lastIndexedOrNull",   () => expect(new EmptyCollectionHolderForTest().lastIndexedOrNull(),).toBeNull(),)
         test("atOrNull",            () => expect(new EmptyCollectionHolderForTest().atOrNull(),).toBeNull(),)
@@ -420,6 +424,12 @@ describe("CollectionHolderTest (value)", () => {
             test("collection holder",            () => expect(getFirstOrNullByCollectionHolder(it,),).toBeNull(),)
             test("array",                        () => expect(getFirstOrNullByArray(it,),).toBeNull(),)
         },)
+        describe("getFirstOrElse", () => {
+            test("all",                          () => expect(getFirstOrElse(it, it => it,),).toBe(0,),)
+            test("minimalist collection holder", () => expect(getFirstOrElseByMinimalistCollectionHolder(it, it => it,),).toBe(0,),)
+            test("collection holder",            () => expect(getFirstOrElseByCollectionHolder(it, it => it,),).toBe(0,),)
+            test("array",                        () => expect(getFirstOrElseByArray(it, it => it,),).toBe(0,),)
+        },)
 
         describe("getLast", () => {
             test("all",                          () => expect(() => getLast(it,),).toThrow(NullCollectionException,),)
@@ -432,6 +442,12 @@ describe("CollectionHolderTest (value)", () => {
             test("minimalist collection holder", () => expect(getLastOrNullByMinimalistCollectionHolder(it,),).toBeNull(),)
             test("collection holder",            () => expect(getLastOrNullByCollectionHolder(it,),).toBeNull(),)
             test("array",                        () => expect(getLastOrNullByArray(it,),).toBeNull(),)
+        },)
+        describe("getLastOrElse", () => {
+            test("all",                          () => expect(getLastOrElse(it, it => it,),).toBe(-1,),)
+            test("minimalist collection holder", () => expect(getLastOrElseByMinimalistCollectionHolder(it, it => it,),).toBe(-1,),)
+            test("collection holder",            () => expect(getLastOrElseByCollectionHolder(it, it => it,),).toBe(-1,),)
+            test("array",                        () => expect(getLastOrElseByArray(it, it => it,),).toBe(-1,),)
         },)
     },)
 
@@ -447,16 +463,16 @@ describe("CollectionHolderTest (value)", () => {
                     test("4 fields", () => expect(new instance(ABCD,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
                 },)
                 describe("getFirst", () => {
-                    test("empty",    () => expect(() => new instance(EMPTY,).getFirst(),).toThrow(EmptyCollectionException,),)
-                    test("1 field",  () => expect(new instance(A,).getFirst(),).toBe('a',),)
-                    test("2 fields", () => expect(new instance(AB,).getFirst(),).toBe('a',),)
-                    test("4 fields", () => expect(new instance(ABCD,).getFirst(),).toBe('a',),)
+                    test("empty",    () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.getFirst(),).amountOfCall,).toBe(0,),)
+                    test("1 field",  () => expect(new instance(A,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
                 },)
                 describe("getLast", () => {
-                    test("empty",    () => expect(() => new instance(EMPTY,).getLast(),).toThrow(EmptyCollectionException,),)
-                    test("1 field",  () => expect(new instance(A,).getLast(),).toBe('a',),)
-                    test("2 fields", () => expect(new instance(AB,).getLast(),).toBe('b',),)
-                    test("4 fields", () => expect(new instance(ABCD,).getLast(),).toBe('d',),)
+                    test("empty",    () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.getLast(),).amountOfCall,).toBe(0,),)
+                    test("1 field",  () => expect(new instance(A,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
                 },)
 
                 describe("getOrElse", () => {
@@ -464,6 +480,18 @@ describe("CollectionHolderTest (value)", () => {
                     test("1 field",  () => expect(new instance(A,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
                     test("2 fields", () => expect(new instance(AB,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
                     test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
+                },)
+                describe("getFirstOrElse", () => {
+                    test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getFirstOrElse(callback,),).amountOfCall,).toBe(0,),)
+                    test("1 field",  () => expect(new instance(A,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getFirstOrElse( callbackAsFail0,),).amountOfCall,).toBe(1,),)
+                },)
+                describe("getLastOrElse", () => {
+                    test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getLastOrElse(callback,),).amountOfCall,).toBe(0,),)
+                    test("1 field",  () => expect(new instance(A,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getLastOrElse( callbackAsFail0,),).amountOfCall,).toBe(1,),)
                 },)
 
                 describe("getOrNull", () => {
@@ -473,16 +501,16 @@ describe("CollectionHolderTest (value)", () => {
                     test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
                 },)
                 describe("getFirstOrNull", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).getFirstOrNull(),).toBeNull(),)
-                    test("1 field",  () => expect(new instance(A,).getFirstOrNull(),).toBe('a',),)
-                    test("2 fields", () => expect(new instance(AB,).getFirstOrNull(),).toBe('a',),)
-                    test("4 fields", () => expect(new instance(ABCD,).getFirstOrNull(),).toBe('a',),)
+                    test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(0,),)
+                    test("1 field",  () => expect(new instance(A,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
                 },)
                 describe("getLastOrNull", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).getLastOrNull(),).toBeNull(),)
-                    test("1 field",  () => expect(new instance(A,).getLastOrNull(),).toBe('a',),)
-                    test("2 fields", () => expect(new instance(AB,).getLastOrNull(),).toBe('b',),)
-                    test("4 fields", () => expect(new instance(ABCD,).getLastOrNull(),).toBe('d',),)
+                    test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(0,),)
+                    test("1 field",  () => expect(new instance(A,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
                 },)
             },)
 
@@ -540,6 +568,19 @@ describe("CollectionHolderTest (value)", () => {
                     test("+∞",  () => expect(() => new instance(ABCD,).get(Infinity,),).toThrow(ForbiddenIndexException,),)
                 },)
             },)
+        describe("getFirst", () => {
+            test("empty",    () => expect(() => new instance(EMPTY,).getFirst(),).toThrow(EmptyCollectionException,),)
+            test("1 field",  () => expect(new instance(A,).getFirst(),).toBe('a',),)
+            test("2 fields", () => expect(new instance(AB,).getFirst(),).toBe('a',),)
+            test("4 fields", () => expect(new instance(ABCD,).getFirst(),).toBe('a',),)
+        },)
+        describe("getLast", () => {
+            test("empty",    () => expect(() => new instance(EMPTY,).getLast(),).toThrow(EmptyCollectionException,),)
+            test("1 field",  () => expect(new instance(A,).getLast(),).toBe('a',),)
+            test("2 fields", () => expect(new instance(AB,).getLast(),).toBe('b',),)
+            test("4 fields", () => expect(new instance(ABCD,).getLast(),).toBe('d',),)
+        },)
+
         describe("getOrElse", () => {
             describe("empty", () => {
                 test("NaN", () => expect(new instance(EMPTY,).getOrElse(NaN, callback,),).toBe(value,),)
@@ -593,6 +634,19 @@ describe("CollectionHolderTest (value)", () => {
                 test("+∞",  () => expect(new instance(ABCD,).getOrElse(Infinity, callback,),).toBe(value,),)
             },)
         },)
+        describe("getFirstOrElse", () => {
+            test("empty",    () => expect(new instance(EMPTY,).getFirstOrElse(callback,),).toBe(value,),)
+            test("1 field",  () => expect(new instance(A,).getFirstOrElse(callbackAsFail0,),).toBe('a',),)
+            test("2 fields", () => expect(new instance(AB,).getFirstOrElse(callbackAsFail0,),).toBe('a',),)
+            test("4 fields", () => expect(new instance(ABCD,).getFirstOrElse(callbackAsFail0,),).toBe('a',),)
+        },)
+        describe("getLastOrElse", () => {
+            test("empty",    () => expect(new instance(EMPTY,).getLastOrElse(callback,),).toBe(value,),)
+            test("1 field",  () => expect(new instance(A,).getLastOrElse(callbackAsFail0,),).toBe('a',),)
+            test("2 fields", () => expect(new instance(AB,).getLastOrElse(callbackAsFail0,),).toBe('b',),)
+            test("4 fields", () => expect(new instance(ABCD,).getLastOrElse(callbackAsFail0,),).toBe('d',),)
+        },)
+
         describe("getOrNull", () => {
             describe("empty", () => {
                 test("NaN", () => expect(new instance(EMPTY,).getOrNull(NaN,),).toBeNull(),)
@@ -645,6 +699,18 @@ describe("CollectionHolderTest (value)", () => {
                 test('5',   () => expect(new instance(ABCD,).getOrNull(5,),).toBeNull(),)
                 test("+∞",  () => expect(new instance(ABCD,).getOrNull(Infinity,),).toBeNull(),)
             },)
+        },)
+        describe("getFirstOrNull", () => {
+            test("empty",    () => expect(new instance(EMPTY,).getFirstOrNull(),).toBeNull(),)
+            test("1 field",  () => expect(new instance(A,).getFirstOrNull(),).toBe('a',),)
+            test("2 fields", () => expect(new instance(AB,).getFirstOrNull(),).toBe('a',),)
+            test("4 fields", () => expect(new instance(ABCD,).getFirstOrNull(),).toBe('a',),)
+        },)
+        describe("getLastOrNull", () => {
+            test("empty",    () => expect(new instance(EMPTY,).getLastOrNull(),).toBeNull(),)
+            test("1 field",  () => expect(new instance(A,).getLastOrNull(),).toBe('a',),)
+            test("2 fields", () => expect(new instance(AB,).getLastOrNull(),).toBe('b',),)
+            test("4 fields", () => expect(new instance(ABCD,).getLastOrNull(),).toBe('d',),)
         },)
     },)
 
