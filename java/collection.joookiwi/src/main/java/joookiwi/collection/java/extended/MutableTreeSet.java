@@ -17,7 +17,8 @@ import org.jetbrains.annotations.Unmodifiable;
 /// @param <T> The type of the element
 @NotNullByDefault
 public class MutableTreeSet<T>
-        extends TreeSet<T> {
+        extends TreeSet<T>
+        implements OrderableCollection<T> {
 
     @Serial private static final long serialVersionUID = -6539173170045676655L;
 
@@ -59,6 +60,17 @@ public class MutableTreeSet<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super((Comparator<? super T>) null);
+        if (values.isEmpty())
+            return;
+        super.addAll(values);
+    }
+
+    /// Create a mutable instance of [TreeSet]
+    /// ordered according to the <code>values.[comparator][OrderableCollection#comparator]</code>
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutableTreeSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable OrderableCollection<T> values) {
+        super(values.comparator());
         if (values.isEmpty())
             return;
         super.addAll(values);

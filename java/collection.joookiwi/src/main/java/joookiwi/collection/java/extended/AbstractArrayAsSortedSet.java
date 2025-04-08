@@ -23,7 +23,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 @NotNullByDefault
 public abstract class AbstractArrayAsSortedSet<T extends @Nullable Object>
         extends AbstractArrayAsSequencedSet<T>
-        implements SortedSet<T> {
+        implements SortedSet<T>,
+        OrderableCollection<T> {
 
     //#region -------------------- Fields --------------------
 

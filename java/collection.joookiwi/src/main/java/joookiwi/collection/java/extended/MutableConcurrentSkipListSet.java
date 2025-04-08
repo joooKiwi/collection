@@ -17,7 +17,8 @@ import org.jetbrains.annotations.Unmodifiable;
 /// @param <T> The type of the element
 @NotNullByDefault
 public class MutableConcurrentSkipListSet<T>
-        extends ConcurrentSkipListSet<T> {
+        extends ConcurrentSkipListSet<T>
+        implements OrderableCollection<T> {
 
     @Serial private static final long serialVersionUID = 4781415824411035935L;
 
@@ -59,6 +60,17 @@ public class MutableConcurrentSkipListSet<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super();
+        if (values.isEmpty())
+            return;
+        super.addAll(values);
+    }
+
+    /// Create a mutable instance of [ConcurrentSkipListSet]
+    /// ordered according to the <code>values.[comparator][OrderableCollection#comparator]</code>
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable OrderableCollection<T> values) {
+        super(values.comparator());
         if (values.isEmpty())
             return;
         super.addAll(values);

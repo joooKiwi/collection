@@ -22,7 +22,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 /// @param <T> The type of the element
 @NotNullByDefault
 public class ImmutableConcurrentSkipListSet<T>
-        extends ConcurrentSkipListSet<T> {
+        extends ConcurrentSkipListSet<T>
+        implements OrderableCollection<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -74,6 +75,20 @@ public class ImmutableConcurrentSkipListSet<T>
     /// @implNote Use a [Comparable] type on [T] to be safe
     public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super();
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
+            return;
+        }
+        super.addAll(values);
+    }
+
+    /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
+    /// ordered according to the <code>values.[comparator][OrderableCollection#comparator]</code>
+    ///
+    /// @implNote Use a [Comparable] type on [T] to be safe
+    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable OrderableCollection<T> values) {
+        super(values.comparator());
         if (__isEmpty = values.isEmpty()) {
             __isInitialized = true;
             __size = 0;
