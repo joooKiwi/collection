@@ -3,8 +3,10 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.SortedSet;
 import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.function.Predicate;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
@@ -94,6 +96,34 @@ public class ImmutableConcurrentSkipListSet<T>
         super.addAll(values);
     }
 
+    /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
+    /// ordered according to the <code>values.[comparator][PriorityBlockingQueue#comparator()]</code>
+    ///
+    /// @implNote Use a [Comparable] type on [T] to be safe
+    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityBlockingQueue<T> values) {
+        super(values.comparator());
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
+            return;
+        }
+        super.addAll(values);
+    }
+
+    /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
+    /// ordered according to the <code>values.[comparator][PriorityQueue#comparator()]</code>
+    ///
+    /// @implNote Use a [Comparable] type on [T] to be safe
+    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityQueue<T> values) {
+        super(values.comparator());
+        if (__isEmpty = values.isEmpty()) {
+            __isInitialized = true;
+            __size = 0;
+            return;
+        }
+        super.addAll(values);
+    }
+
     //#endregion -------------------- values --------------------
     //#region -------------------- values, comparator --------------------
 
@@ -116,19 +146,6 @@ public class ImmutableConcurrentSkipListSet<T>
     /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
     /// ordered according to the `comparator` received
     public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                          final @Nullable Comparator<? super T> comparator) {
-        super(comparator);
-        if (__isEmpty = values.isEmpty()) {
-            __isInitialized = true;
-            __size = 0;
-            return;
-        }
-        super.addAll(values);
-    }
-
-    /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
-    /// ordered according to the `comparator` received
-    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> values,
                                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         if (__isEmpty = values.isEmpty()) {

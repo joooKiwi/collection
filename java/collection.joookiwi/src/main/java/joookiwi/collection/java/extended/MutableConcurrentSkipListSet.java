@@ -3,8 +3,10 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.SortedSet;
 import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.PriorityBlockingQueue;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -28,6 +30,13 @@ public class MutableConcurrentSkipListSet<T>
     public MutableConcurrentSkipListSet() { super(); }
 
     //#endregion -------------------- ∅ --------------------
+    //#region -------------------- comparator --------------------
+
+    /// Create a mutable instance of [ConcurrentSkipListSet]
+    /// ordered according to the `comparator` received
+    public MutableConcurrentSkipListSet(final @Nullable Comparator<? super T> comparator) { super(comparator); }
+
+    //#endregion -------------------- comparator --------------------
     //#region -------------------- values --------------------
 
     /// Create a mutable instance of [ConcurrentSkipListSet]
@@ -66,6 +75,28 @@ public class MutableConcurrentSkipListSet<T>
         super.addAll(values);
     }
 
+    /// Create a mutable instance of [ConcurrentSkipListSet]
+    /// ordered according to the <code>values.[comparator][PriorityBlockingQueue#comparator()]</code>
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityBlockingQueue<T> values) {
+        super(values.comparator());
+        if (values.isEmpty())
+            return;
+        super.addAll(values);
+    }
+
+    /// Create a mutable instance of [ConcurrentSkipListSet]
+    /// ordered according to the <code>values.[comparator][PriorityQueue#comparator()]</code>
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityQueue<T> values) {
+        super(values.comparator());
+        if (values.isEmpty())
+            return;
+        super.addAll(values);
+    }
+
     //#endregion -------------------- values --------------------
     //#region -------------------- values, comparator --------------------
 
@@ -85,16 +116,6 @@ public class MutableConcurrentSkipListSet<T>
     /// Create a mutable instance of [ConcurrentSkipListSet]
     /// ordered according to the `comparator` received
     public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                        final @Nullable Comparator<? super T> comparator) {
-        super(comparator);
-        if (values.isEmpty())
-            return;
-        super.addAll(values);
-    }
-
-    /// Create a mutable instance of [ConcurrentSkipListSet]
-    /// ordered according to the `comparator` received
-    public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> values,
                                         final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         if (values.isEmpty())
