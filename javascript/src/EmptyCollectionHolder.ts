@@ -116,6 +116,13 @@ export class EmptyCollectionHolder
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,)  { return this.getOrElse(index, defaultValue,) }
 
 
+    public getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
+    public getFirstOrElse(defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
+    public getFirstOrElse(defaultValue: IndexWithReturnCallback<unknown>,) {
+        return defaultValue(0,)
+    }
+
+
     public getOrNull(..._: readonly unknown[]): null
     public getOrNull() { return null }
 

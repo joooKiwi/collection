@@ -240,6 +240,23 @@ export interface CollectionHolder<out T = unknown, >
     elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
     //#endregion -------------------- Get or else --------------------
+    //#region -------------------- Get first or else --------------------
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
+     */
+    getFirstOrNull<const U, >(defaultValue: IndexWithReturnCallback<U>,): NullOr<| T | U>
+
+    /**
+     * Get the first element in the current {@link CollectionHolder collection}
+     * or calling the {@link defaultValue} function
+     * if it is out of bound of the current {@link CollectionHolder collection}
+     */
+    getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): NullOr<T>
+
+    //#endregion -------------------- Get first or else --------------------
 
     //#region -------------------- Get or null --------------------
 
