@@ -50,6 +50,18 @@ public class ImmutableConcurrentSkipListSet<T>
     }
 
     //#endregion -------------------- ∅ --------------------
+    //#region -------------------- comparator --------------------
+
+    /// Create an empty [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
+    /// ordered according to the `comparator` received
+    public ImmutableConcurrentSkipListSet(final @Nullable Comparator<? super T> comparator) {
+        super(comparator);
+        __size = 0;
+        __isEmpty = true;
+        __isInitialized = true;
+    }
+
+    //#endregion -------------------- values, comparator --------------------
     //#region -------------------- values --------------------
 
     /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
