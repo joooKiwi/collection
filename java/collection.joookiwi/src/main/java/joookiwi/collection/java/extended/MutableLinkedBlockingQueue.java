@@ -33,37 +33,37 @@ public class MutableLinkedBlockingQueue<T>
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
     ///
-    /// @throws IllegalArgumentException The capacity is under `1`
+    /// @throws IllegalArgumentException The capacity was under `1`
     public MutableLinkedBlockingQueue(final @Range(from = 1, to = Byte.MAX_VALUE) byte capacity) { super(capacity); }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
     ///
-    /// @throws IllegalArgumentException The capacity is under `1`
+    /// @throws IllegalArgumentException The capacity was under `1`
     public MutableLinkedBlockingQueue(final @Range(from = 1, to = Byte.MAX_VALUE) @Nullable Byte capacity) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity); }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
     ///
-    /// @throws IllegalArgumentException The capacity is under `1`
+    /// @throws IllegalArgumentException The capacity was under `1`
     public MutableLinkedBlockingQueue(final @Range(from = 1, to = Short.MAX_VALUE) short capacity) { super(capacity); }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
     ///
-    /// @throws IllegalArgumentException The capacity is under `1`
+    /// @throws IllegalArgumentException The capacity was under `1`
     public MutableLinkedBlockingQueue(final @Range(from = 1, to = Short.MAX_VALUE) @Nullable Short capacity) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity); }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received
     ///
-    /// @throws IllegalArgumentException The capacity is under `1`
+    /// @throws IllegalArgumentException The capacity was under `1`
     public MutableLinkedBlockingQueue(final @Range(from = 1, to = Integer.MAX_VALUE) int capacity) { super(capacity); }
 
     /// Create an empty mutable instance of [LinkedBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
     ///
-    /// @throws IllegalArgumentException The capacity is under `1`
+    /// @throws IllegalArgumentException The capacity was under `1`
     public MutableLinkedBlockingQueue(final @Range(from = 1, to = Integer.MAX_VALUE) @Nullable Integer capacity) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity); }
 
     //#endregion -------------------- capacity --------------------
