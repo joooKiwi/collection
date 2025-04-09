@@ -7,7 +7,7 @@ import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.method.ToList.toList;
+import static joookiwi.collection.java.method.ToCollection.toCollection;
 
 /// A mutable behaviour of a [LinkedTransferQueue]
 ///
@@ -28,7 +28,7 @@ public class MutableLinkedTransferQueue<T>
 
     /// Create a mutable instance of [LinkedTransferQueue]
     /// that starts with the `values` received
-    public MutableLinkedTransferQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) { super(toList(values)); }
+    public MutableLinkedTransferQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) { super(toCollection(values)); }
 
     /// Create a mutable instance of [LinkedTransferQueue]
     /// that starts with the `values` received

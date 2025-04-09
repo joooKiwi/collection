@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_QUEUE_CAPACITY;
-import static joookiwi.collection.java.method.ToList.toList;
+import static joookiwi.collection.java.method.ToCollection.toCollection;
 
 /// A mutable behaviour of a [ArrayBlockingQueue]
 ///
@@ -202,7 +202,7 @@ public class MutableArrayBlockingQueue<T>
     /// with a capacity as the `values.length` (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length == 0 ? DEFAULT_QUEUE_CAPACITY : values.length, DEFAULT_FAIRNESS, toList(values));
+        super(values.length == 0 ? DEFAULT_QUEUE_CAPACITY : values.length, DEFAULT_FAIRNESS, toCollection(values));
     }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
@@ -222,7 +222,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under `1`
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                     final byte capacity) { super(capacity, DEFAULT_FAIRNESS, toList(values)); }
+                                     final byte capacity) { super(capacity, DEFAULT_FAIRNESS, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
@@ -231,7 +231,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under `1`
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                     final @Nullable Byte capacity) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, DEFAULT_FAIRNESS, toList(values)); }
+                                     final @Nullable Byte capacity) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, DEFAULT_FAIRNESS, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received
@@ -240,7 +240,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under `1`
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                     final short capacity) { super(capacity, DEFAULT_FAIRNESS, toList(values)); }
+                                     final short capacity) { super(capacity, DEFAULT_FAIRNESS, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
@@ -249,7 +249,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under `1`
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                     final @Nullable Short capacity) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, DEFAULT_FAIRNESS, toList(values)); }
+                                     final @Nullable Short capacity) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, DEFAULT_FAIRNESS, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received
@@ -258,7 +258,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under `1`
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                     final int capacity) { super(capacity, DEFAULT_FAIRNESS, toList(values)); }
+                                     final int capacity) { super(capacity, DEFAULT_FAIRNESS, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
@@ -267,7 +267,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under `1`
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                     final @Nullable Integer capacity) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, DEFAULT_FAIRNESS, toList(values)); }
+                                     final @Nullable Integer capacity) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, DEFAULT_FAIRNESS, toCollection(values)); }
 
 
     /// Create a mutable instance of [ArrayBlockingQueue]
@@ -335,7 +335,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final byte capacity,
-                                     final boolean isFair) { super(capacity, isFair, toList(values)); }
+                                     final boolean isFair) { super(capacity, isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received
@@ -345,7 +345,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final byte capacity,
-                                     final @Nullable Boolean isFair) { super(capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toList(values)); }
+                                     final @Nullable Boolean isFair) { super(capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
@@ -356,7 +356,7 @@ public class MutableArrayBlockingQueue<T>
     public MutableArrayBlockingQueue(final
                                      @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final @Nullable Byte capacity,
-                                     final boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair, toList(values)); }
+                                     final boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
@@ -366,7 +366,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final @Nullable Byte capacity,
-                                     final @Nullable Boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toList(values)); }
+                                     final @Nullable Boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received
@@ -376,7 +376,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final short capacity,
-                                     final boolean isFair) { super(capacity, isFair, toList(values)); }
+                                     final boolean isFair) { super(capacity, isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received
@@ -386,7 +386,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final short capacity,
-                                     final @Nullable Boolean isFair) { super(capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toList(values)); }
+                                     final @Nullable Boolean isFair) { super(capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
@@ -396,7 +396,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final @Nullable Short capacity,
-                                     final boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair, toList(values)); }
+                                     final boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
@@ -406,7 +406,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final @Nullable Short capacity,
-                                     final @Nullable Boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toList(values)); }
+                                     final @Nullable Boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received
@@ -416,7 +416,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final int capacity,
-                                     final boolean isFair) { super(capacity, isFair, toList(values)); }
+                                     final boolean isFair) { super(capacity, isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received
@@ -426,7 +426,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final int capacity,
-                                     final @Nullable Boolean isFair) { super(capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toList(values)); }
+                                     final @Nullable Boolean isFair) { super(capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
@@ -436,7 +436,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final @Nullable Integer capacity,
-                                     final boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair, toList(values)); }
+                                     final boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
@@ -446,7 +446,7 @@ public class MutableArrayBlockingQueue<T>
     /// @throws IllegalArgumentException The capacity is under the `values.length`
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                      final @Nullable Integer capacity,
-                                     final @Nullable Boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toList(values)); }
+                                     final @Nullable Boolean isFair) { super(capacity == null ? DEFAULT_QUEUE_CAPACITY : capacity, isFair == null ? DEFAULT_FAIRNESS : isFair, toCollection(values)); }
 
 
     /// Create a mutable instance of [ArrayBlockingQueue]
@@ -576,13 +576,13 @@ public class MutableArrayBlockingQueue<T>
     /// with a capacity as the `values.length` (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
     /// and the fairness received
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                     final boolean isFair) { super(values.length == 0 ? DEFAULT_QUEUE_CAPACITY : values.length, isFair, toList(values)); }
+                                     final boolean isFair) { super(values.length == 0 ? DEFAULT_QUEUE_CAPACITY : values.length, isFair, toCollection(values)); }
 
     /// Create a mutable instance of [ArrayBlockingQueue]
     /// with a capacity as the `values.length` (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
     /// and the fairness received (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
     public MutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                     final @Nullable Boolean isFair) { super(values.length == 0 ? DEFAULT_QUEUE_CAPACITY : values.length, isFair == null ? DEFAULT_FAIRNESS : isFair, toList(values)); }
+                                     final @Nullable Boolean isFair) { super(values.length == 0 ? DEFAULT_QUEUE_CAPACITY : values.length, isFair == null ? DEFAULT_FAIRNESS : isFair, toCollection(values)); }
 
 
     /// Create a mutable instance of [ArrayBlockingQueue]
