@@ -8,6 +8,7 @@ import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
+import joookiwi.collection.java.annotation.Singleton;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -29,9 +30,11 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
-/// An [immutable-like][Unmodifiable] behaviour of a [java.util.concurrent.LinkedBlockingQueue]
+/// A [Singleton] implementation of the [java.util.concurrent.LinkedBlockingQueue],
+/// but in an empty form
 ///
 /// @param <T> The type of the element
+/// @see joookiwi.collection.java.CollectionConstants#emptyLinkedBlockingQueue
 @NotNullByDefault
 public class EmptyLinkedBlockingQueue<T>
         extends ImmutableLinkedBlockingQueue<T>
