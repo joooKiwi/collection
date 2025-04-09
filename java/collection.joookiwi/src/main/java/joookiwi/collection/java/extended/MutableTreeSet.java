@@ -24,7 +24,7 @@ public class MutableTreeSet<T>
 
     //#region -------------------- ∅ --------------------
 
-    /// Create a mutable instance of [TreeSet] that start empty
+    /// Create a mutable instance of [TreeSet] that starts empty
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]

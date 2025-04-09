@@ -49,7 +49,7 @@ public class ImmutableArrayList<T extends @Nullable Object>
 
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ArrayList]
     /// (similar to {@link java.util.List#of(Object[])})
-    /// with the capacity is the `values.length`
+    /// with the capacity as the `values.length`
     public ImmutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length);
         final var size = __size = values.length;
@@ -62,7 +62,7 @@ public class ImmutableArrayList<T extends @Nullable Object>
 
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ArrayList]
     /// (similar to [java.util.List#copyOf(Collection)])
-    /// with the capacity is the <code>values.[size][Collection#size()]</code>
+    /// with the capacity as the <code>values.[size][Collection#size()]</code>
     public ImmutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size());
         final var size = __size = values.size();

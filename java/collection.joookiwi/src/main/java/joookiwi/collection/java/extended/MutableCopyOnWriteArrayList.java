@@ -19,7 +19,7 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     //#region -------------------- ∅ --------------------
 
-    /// Create a mutable instance of [CopyOnWriteArrayList] that start empty
+    /// Create a mutable instance of [CopyOnWriteArrayList] that starts empty
     public MutableCopyOnWriteArrayList() { super(); }
 
     //#endregion -------------------- ∅ --------------------

@@ -24,7 +24,7 @@ public class MutableConcurrentSkipListSet<T>
 
     //#region -------------------- ∅ --------------------
 
-    /// Create a mutable instance of [ConcurrentSkipListSet] that start empty
+    /// Create a mutable instance of [ConcurrentSkipListSet] that starts empty
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]

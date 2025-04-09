@@ -37,7 +37,8 @@ public class ImmutableVector<T extends @Nullable Object>
 
     /// Create an empty [immutable-like][Unmodifiable] instance of [Vector]
     /// (similar to [java.util.List#of()])
-    /// with a capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
+    /// with an initial capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
+    /// and the capacity increment of `0`
     public ImmutableVector() {
         super(0, 0);
         __size = 0;
@@ -49,7 +50,8 @@ public class ImmutableVector<T extends @Nullable Object>
 
     /// Create an [immutable-like][Unmodifiable] instance of [Vector]
     /// (similar to {@link java.util.List#of(Object[])})
-    /// with the capacity is the `values.length`
+    /// with the initial capacity as the `values.length`
+    /// and the capacity increment of `0`
     public ImmutableVector(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length, 0);
         final var size = __size = elementCount = values.length;
@@ -64,7 +66,8 @@ public class ImmutableVector<T extends @Nullable Object>
 
     /// Create an [immutable-like][Unmodifiable] instance of [Vector]
     /// (similar to [java.util.List#copyOf(Collection)])
-    /// with the capacity is the <code>values.[size][Collection#size()]</code>
+    /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
+    /// and the capacity increment of `0`
     public ImmutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size(), 0);
         final var size = __size = values.size();

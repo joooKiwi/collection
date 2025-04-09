@@ -18,7 +18,7 @@ public class MutableCopyOnWriteArraySet<T>
 
     //#region -------------------- ∅ --------------------
 
-    /// Create a mutable instance of [CopyOnWriteArraySet] that start empty
+    /// Create a mutable instance of [CopyOnWriteArraySet] that starts empty
     /// with an initial capacity of [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY]
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     public MutableCopyOnWriteArraySet() { super(); }

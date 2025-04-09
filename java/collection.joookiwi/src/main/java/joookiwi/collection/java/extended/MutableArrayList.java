@@ -23,7 +23,7 @@ public class MutableArrayList<T extends @Nullable Object>
 
     //#region -------------------- ∅ --------------------
 
-    /// Create a mutable instance of [ArrayList] that start empty
+    /// Create a mutable instance of [ArrayList] that starts empty
     /// with an initial capacity of [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY]
     public MutableArrayList() { super(DEFAULT_INITIAL_CAPACITY); }
 
@@ -70,7 +70,7 @@ public class MutableArrayList<T extends @Nullable Object>
     //#region -------------------- values --------------------
 
     /// Create a mutable instance of [ArrayList]
-    /// with the capacity of the `values.length`
+    /// with the initial capacity as the `values.length`
     public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length);
         final var size = values.length;
@@ -82,7 +82,7 @@ public class MutableArrayList<T extends @Nullable Object>
     }
 
     /// Create a mutable instance of [ArrayList]
-    /// with the capacity of <code>values.[size][Collection#size()]</code>
+    /// with the initial capacity as <code>values.[size][Collection#size()]</code>
     public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size());
         if (values.isEmpty())

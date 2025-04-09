@@ -19,7 +19,7 @@ public class MutableLinkedList<T extends @Nullable Object>
 
     //#region -------------------- ∅ --------------------
 
-    /// Create a mutable instance of [LinkedList] that start empty
+    /// Create a mutable instance of [LinkedList] that starts empty
     public MutableLinkedList() { super(); }
 
     //#endregion -------------------- ∅ --------------------

@@ -23,8 +23,9 @@ public class MutableVector<T extends @Nullable Object>
 
     //#region -------------------- ∅ --------------------
 
-    /// Create a mutable instance of [Vector] that start empty
+    /// Create a mutable instance of [Vector] that starts empty
     /// with an initial capacity of [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY]
+    /// and the capacity increment of `0`
     public MutableVector() { super(DEFAULT_INITIAL_CAPACITY, 0); }
 
     //#endregion -------------------- ∅ --------------------
@@ -70,7 +71,8 @@ public class MutableVector<T extends @Nullable Object>
     //#region -------------------- values --------------------
 
     /// Create a mutable instance of [Vector]
-    /// with the capacity of the `values.length`
+    /// with the initial capacity as the `values.length`
+    /// and the capacity increment of `0`
     public MutableVector(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
         super(values.length, 0);
         final var size = elementCount = values.length;
@@ -84,7 +86,8 @@ public class MutableVector<T extends @Nullable Object>
     }
 
     /// Create a mutable instance of [Vector]
-    /// with the capacity of <code>values.[size][Collection#size()]</code>
+    /// with the initial capacity as <code>values.[size][Collection#size()]</code>
+    /// and the capacity increment of `0`
     public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size(), 0);
         if (values.isEmpty())
