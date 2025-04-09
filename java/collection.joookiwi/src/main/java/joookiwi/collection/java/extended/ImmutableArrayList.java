@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
@@ -39,7 +40,7 @@ public class ImmutableArrayList<T extends @Nullable Object>
     /// (similar to [java.util.List#of()])
     /// with a capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
     public ImmutableArrayList() {
-        super(0);
+        super(DEFAULT_EMPTY_INITIAL_CAPACITY);
         __size = 0;
         __isEmpty = true;
     }

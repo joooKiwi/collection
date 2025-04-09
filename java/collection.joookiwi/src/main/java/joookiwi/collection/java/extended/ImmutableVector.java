@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
@@ -40,7 +41,7 @@ public class ImmutableVector<T extends @Nullable Object>
     /// with an initial capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
     /// and the capacity increment of `0`
     public ImmutableVector() {
-        super(0, 0);
+        super(DEFAULT_EMPTY_INITIAL_CAPACITY, 0);
         __size = 0;
         __isEmpty = true;
     }
