@@ -85,11 +85,11 @@ describe("CollectionHolderTest (value)", () => {
         test("elementAtOrElse",     () => expect(new EmptyCollectionHolderForTest().elementAtOrElse(NaN, it => it,),).toBeNaN(),)
         test("getOrNull",           () => expect(new EmptyCollectionHolderForTest().getOrNull(),).toBeNull(),)
         test("getFirstOrNull",      () => expect(new EmptyCollectionHolderForTest().getFirstOrNull(),).toBeNull(),)
-        test("getFirstOrElse",      () => expect(new EmptyCollectionHolderForTest().getFirstOrElse(it => it,),).toBe(0,),)
+        test("getFirstOrElse",      () => expect(new EmptyCollectionHolderForTest().getFirstOrElse(callback,),).toBe(value,),)
         test("firstOrNull",         () => expect(new EmptyCollectionHolderForTest().firstOrNull(),).toBeNull(),)
         test("firstIndexedOrNull",  () => expect(new EmptyCollectionHolderForTest().firstIndexedOrNull(),).toBeNull(),)
         test("getLastOrNull",       () => expect(new EmptyCollectionHolderForTest().getLastOrNull(),).toBeNull(),)
-        test("getLastOrElse",       () => expect(new EmptyCollectionHolderForTest().getLastOrElse(it => it,),).toBe(-1,),)
+        test("getLastOrElse",       () => expect(new EmptyCollectionHolderForTest().getLastOrElse(callback,),).toBe(value,),)
         test("lastOrNull",          () => expect(new EmptyCollectionHolderForTest().lastOrNull(),).toBeNull(),)
         test("lastIndexedOrNull",   () => expect(new EmptyCollectionHolderForTest().lastIndexedOrNull(),).toBeNull(),)
         test("atOrNull",            () => expect(new EmptyCollectionHolderForTest().atOrNull(),).toBeNull(),)
@@ -425,10 +425,10 @@ describe("CollectionHolderTest (value)", () => {
             test("array",                        () => expect(getFirstOrNullByArray(it,),).toBeNull(),)
         },)
         describe("getFirstOrElse", () => {
-            test("all",                          () => expect(getFirstOrElse(it, it => it,),).toBe(0,),)
-            test("minimalist collection holder", () => expect(getFirstOrElseByMinimalistCollectionHolder(it, it => it,),).toBe(0,),)
-            test("collection holder",            () => expect(getFirstOrElseByCollectionHolder(it, it => it,),).toBe(0,),)
-            test("array",                        () => expect(getFirstOrElseByArray(it, it => it,),).toBe(0,),)
+            test("all",                          () => expect(getFirstOrElse(it, callback,),).toBe(value,),)
+            test("minimalist collection holder", () => expect(getFirstOrElseByMinimalistCollectionHolder(it, callback,),).toBe(value,),)
+            test("collection holder",            () => expect(getFirstOrElseByCollectionHolder(it, callback,),).toBe(value,),)
+            test("array",                        () => expect(getFirstOrElseByArray(it, callback,),).toBe(value,),)
         },)
 
         describe("getLast", () => {
@@ -444,10 +444,10 @@ describe("CollectionHolderTest (value)", () => {
             test("array",                        () => expect(getLastOrNullByArray(it,),).toBeNull(),)
         },)
         describe("getLastOrElse", () => {
-            test("all",                          () => expect(getLastOrElse(it, it => it,),).toBe(-1,),)
-            test("minimalist collection holder", () => expect(getLastOrElseByMinimalistCollectionHolder(it, it => it,),).toBe(-1,),)
-            test("collection holder",            () => expect(getLastOrElseByCollectionHolder(it, it => it,),).toBe(-1,),)
-            test("array",                        () => expect(getLastOrElseByArray(it, it => it,),).toBe(-1,),)
+            test("all",                          () => expect(getLastOrElse(it, callback,),).toBe(value,),)
+            test("minimalist collection holder", () => expect(getLastOrElseByMinimalistCollectionHolder(it, callback,),).toBe(value,),)
+            test("collection holder",            () => expect(getLastOrElseByCollectionHolder(it, callback,),).toBe(value,),)
+            test("array",                        () => expect(getLastOrElseByArray(it, callback,),).toBe(value,),)
         },)
     },)
 
