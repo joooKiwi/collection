@@ -117,7 +117,7 @@ export function getLastOrElseByCollectionHolder<const T, >(collection: Nullable<
         return defaultValue(-1,)
     if (collection.isEmpty)
         return defaultValue(-1,)
-    return collection.get(collection.size - 1,)
+    return collection.getLast()
 }
 
 

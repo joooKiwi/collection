@@ -85,7 +85,7 @@ export function getFirstOrNullByCollectionHolder<const T, >(collection: Nullable
         return null
     if (0 in collection)
         return collection[0] as T
-    return collection.get(0,)
+    return collection.getFirst()
 }
 
 /**

@@ -83,11 +83,7 @@ export function getLastOrNullByCollectionHolder<const T, >(collection: Nullable<
         return null
     if (collection.isEmpty)
         return null
-
-    const lastIndex = collection.size - 1
-    if (lastIndex in collection)
-        return collection[lastIndex] as T
-    return collection.get(lastIndex,)
+    return collection.getLast()
 }
 
 /**

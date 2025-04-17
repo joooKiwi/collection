@@ -117,7 +117,7 @@ export function getFirstOrElseByCollectionHolder<const T, >(collection: Nullable
         return defaultValue(0,)
     if (collection.isEmpty)
         return defaultValue(0,)
-    return collection.get(0,)
+    return collection.getFirst()
 }
 
 
