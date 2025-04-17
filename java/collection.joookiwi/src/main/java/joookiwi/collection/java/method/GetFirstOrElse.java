@@ -22,63 +22,6 @@ public final class GetFirstOrElse
 
     //#region -------------------- Facade methods --------------------
 
-    //#region -------------------- predicate (int) → boolean --------------------
-
-    /// Get the **first** element at the specified index in the `collection`
-    /// or calling the `defaultValue` function
-    /// if it is out of bound of the `collection`
-    ///
-    /// @param collection   The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param defaultValue The callback to retrieve the default value if it is over the [size][MinimalistCollectionHolder#size] (after calculation)
-    @ExtensionFunction
-    public static <T extends @Nullable Object> T getFirstOrElse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                final @NotNull IntFunction<? extends T> defaultValue) {
-        if (collection == null)
-            return defaultValue.apply(0);
-
-        final var size = collection.size();
-        if (size == 0)
-            return defaultValue.apply(0);
-        return collection.get(0);
-    }
-
-    /// Get the **first** element at the specified index in the `collection`
-    /// or calling the `defaultValue` function
-    /// if it is out of bound of the `collection`
-    ///
-    /// @param collection   The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param defaultValue The callback to retrieve the default value if it is over the [size][CollectionHolder#size] (after calculation)
-    @ExtensionFunction
-    public static <T extends @Nullable Object> T getFirstOrElse(final @Nullable CollectionHolder<? extends T> collection,
-                                                                final @NotNull IntFunction<? extends T> defaultValue) {
-        if (collection == null)
-            return defaultValue.apply(0);
-        if (collection.isEmpty())
-            return defaultValue.apply(0);
-        return collection.getFirst();
-    }
-
-    /// Get the **first** element at the specified index in the `collection`
-    /// or calling the `defaultValue` function
-    /// if it is out of bound of the `collection`
-    ///
-    /// @param collection   The [nullable][Nullable] collection
-    /// @param defaultValue The callback to retrieve the default value if it is over the `size` (after calculation)
-    @ExtensionFunction
-    public static <T extends @Nullable Object> T getFirstOrElse(final T @Nullable [] collection,
-                                                                final @NotNull IntFunction<? extends T> defaultValue) {
-        if (collection == null)
-            return defaultValue.apply(0);
-
-        final var size = collection.length;
-        if (size == 0)
-            return defaultValue.apply(0);
-        return collection[0];
-    }
-
-    //#endregion -------------------- predicate (int) → boolean --------------------
-    //#region -------------------- predicate () → boolean --------------------
-
     /// Get the **first** element at the specified index in the `collection`
     /// or calling the `defaultValue` function
     /// if it is out of bound of the `collection`
@@ -130,8 +73,6 @@ public final class GetFirstOrElse
             return defaultValue.get();
         return collection[0];
     }
-
-    //#endregion -------------------- predicate () → boolean --------------------
 
     //#endregion -------------------- Facade methods --------------------
 
