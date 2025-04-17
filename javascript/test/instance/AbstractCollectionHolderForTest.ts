@@ -12,13 +12,13 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
-import type {CollectionHolderForTest}                                                                                                                                                                                                                           from "./CollectionHolderForTest"
-import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
-import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                from "../../src/type/possibleInstance"
-import type {CollectionHolderName}                                                                                                                                                                                                                              from "../../src/type/toStringTag"
+import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
+import type {CollectionHolderForTest}                                                                                                                                                                                                                                           from "./CollectionHolderForTest"
+import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
+import type {CollectionHolderName}                                                                                                                                                                                                                                              from "../../src/type/toStringTag"
 
 import {EmptyCollectionException}  from "../../src/exception/EmptyCollectionException"
 import {ForbiddenIndexException}   from "../../src/exception/ForbiddenIndexException"
@@ -135,11 +135,11 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     public abstract getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public abstract getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
 
-    public abstract getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public abstract getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public abstract getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
+    public abstract getFirstOrElse(defaultValue: ReturnCallback<T>,): T
 
-    public abstract getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public abstract getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): T
+    public abstract getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
+    public abstract getLastOrElse(defaultValue: ReturnCallback<T>,): T
 
     public atOrElse(..._: readonly unknown[]): never
     public atOrElse() {

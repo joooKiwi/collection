@@ -12,12 +12,12 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
-import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
-import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                from "../../src/type/possibleInstance"
-import type {CollectionHolderName}                                                                                                                                                                                                                              from "../../src/type/toStringTag"
+import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
+import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
+import type {CollectionHolderName}                                                                                                                                                                                                                                              from "../../src/type/toStringTag"
 
 import {CollectionHolderFromArray} from "./CollectionHolderFromArray"
 
@@ -62,13 +62,13 @@ export class CollectionHolder_ByStructure<const T, >
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.getOrElse(index, defaultValue,) }
 
-    public getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public getFirstOrElse(defaultValue: IndexWithReturnCallback<T>,): T
-    public getFirstOrElse(defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.getFirstOrElse(defaultValue,) }
+    public getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
+    public getFirstOrElse(defaultValue: ReturnCallback<T>,): T
+    public getFirstOrElse(defaultValue: ReturnCallback<unknown>,) { return this.reference.getFirstOrElse(defaultValue,) }
 
-    public getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): | T | U
-    public getLastOrElse(defaultValue: IndexWithReturnCallback<T>,): T
-    public getLastOrElse(defaultValue: IndexWithReturnCallback<unknown>,) { return this.reference.getLastOrElse(defaultValue,) }
+    public getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
+    public getLastOrElse(defaultValue: ReturnCallback<T>,): T
+    public getLastOrElse(defaultValue: ReturnCallback<unknown>,) { return this.reference.getLastOrElse(defaultValue,) }
 
     public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public atOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T

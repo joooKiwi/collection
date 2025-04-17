@@ -14,7 +14,7 @@ import type {Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
-import type {IndexWithReturnCallback}    from "../type/callback"
+import type {ReturnCallback}             from "../type/callback"
 
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -33,7 +33,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param defaultValue The callback to retrieve the default value if it is over the size (after calculation)
  * @extensionFunction
  */
-export function getLastOrElse<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, defaultValue: IndexWithReturnCallback<U>,): | T | U
+export function getLastOrElse<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, defaultValue: ReturnCallback<U>,): | T | U
 /**
  * Get the last element in the {@link collection}
  * or calling the {@link defaultValue} function
@@ -43,10 +43,10 @@ export function getLastOrElse<const T, const U, >(collection: Nullable<| Minimal
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
-export function getLastOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, defaultValue: IndexWithReturnCallback<T>,): T
-export function getLastOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, defaultValue: IndexWithReturnCallback<unknown>,) {
+export function getLastOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, defaultValue: ReturnCallback<T>,): T
+export function getLastOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, defaultValue: ReturnCallback<unknown>,) {
     if (collection == null)
-        return defaultValue(-1,)
+        return defaultValue()
     if (isCollectionHolder(collection,))
         return getLastOrElseByCollectionHolder(collection, defaultValue,)
     if (isArray(collection,))
@@ -71,7 +71,7 @@ export function getLastOrElse<const T, >(collection: Nullable<| MinimalistCollec
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
-export function getLastOrElseByMinimalistCollectionHolder<const T, const U, >(collection: Nullable<MinimalistCollectionHolder<T>>, defaultValue: IndexWithReturnCallback<U>,): | T | U
+export function getLastOrElseByMinimalistCollectionHolder<const T, const U, >(collection: Nullable<MinimalistCollectionHolder<T>>, defaultValue: ReturnCallback<U>,): | T | U
 /**
  * Get the last element in the {@link collection}
  * or calling the {@link defaultValue} function
@@ -81,14 +81,14 @@ export function getLastOrElseByMinimalistCollectionHolder<const T, const U, >(co
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
-export function getLastOrElseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, defaultValue: IndexWithReturnCallback<T>,): T
-export function getLastOrElseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, defaultValue: IndexWithReturnCallback<unknown>,) {
+export function getLastOrElseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, defaultValue: ReturnCallback<T>,): T
+export function getLastOrElseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, defaultValue: ReturnCallback<unknown>,) {
     if (collection == null)
-        return defaultValue(-1,)
+        return defaultValue()
 
     const size = collection.size
     if (size == 0)
-        return defaultValue(-1,)
+        return defaultValue()
     return collection.get(collection.size - 1,)
 }
 
@@ -101,7 +101,7 @@ export function getLastOrElseByMinimalistCollectionHolder<const T, >(collection:
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
-export function getLastOrElseByCollectionHolder<const T, const U, >(collection: Nullable<CollectionHolder<T>>, defaultValue: IndexWithReturnCallback<U>,): | T | U
+export function getLastOrElseByCollectionHolder<const T, const U, >(collection: Nullable<CollectionHolder<T>>, defaultValue: ReturnCallback<U>,): | T | U
 /**
  * Get the last element in the {@link collection}
  * or calling the {@link defaultValue} function
@@ -111,12 +111,12 @@ export function getLastOrElseByCollectionHolder<const T, const U, >(collection: 
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
-export function getLastOrElseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, defaultValue: IndexWithReturnCallback<T>,): T
-export function getLastOrElseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, defaultValue: IndexWithReturnCallback<unknown>,) {
+export function getLastOrElseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, defaultValue: ReturnCallback<T>,): T
+export function getLastOrElseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, defaultValue: ReturnCallback<unknown>,) {
     if (collection == null)
-        return defaultValue(-1,)
+        return defaultValue()
     if (collection.isEmpty)
-        return defaultValue(-1,)
+        return defaultValue()
     return collection.getLast()
 }
 
@@ -130,7 +130,7 @@ export function getLastOrElseByCollectionHolder<const T, >(collection: Nullable<
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
-export function getLastOrElseByArray<const T, const U, >(collection: Nullable<readonly T[]>, defaultValue: IndexWithReturnCallback<U>,): | T | U
+export function getLastOrElseByArray<const T, const U, >(collection: Nullable<readonly T[]>, defaultValue: ReturnCallback<U>,): | T | U
 /**
  * Get the last element in the {@link collection}
  * or calling the {@link defaultValue} function
@@ -140,13 +140,13 @@ export function getLastOrElseByArray<const T, const U, >(collection: Nullable<re
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
-export function getLastOrElseByArray<const T, >(collection: Nullable<readonly T[]>, defaultValue: IndexWithReturnCallback<T>,): T
-export function getLastOrElseByArray<const T, >(collection: Nullable<readonly T[]>, defaultValue: IndexWithReturnCallback<unknown>,) {
+export function getLastOrElseByArray<const T, >(collection: Nullable<readonly T[]>, defaultValue: ReturnCallback<T>,): T
+export function getLastOrElseByArray<const T, >(collection: Nullable<readonly T[]>, defaultValue: ReturnCallback<unknown>,) {
     if (collection == null)
-        return defaultValue(-1,)
+        return defaultValue()
     const size = collection.length
     if (size == 0)
-        return defaultValue(-1,)
+        return defaultValue()
     return collection[collection.length - 1]
 }
 

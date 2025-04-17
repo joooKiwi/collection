@@ -73,11 +73,27 @@ export type RestrainedBooleanCallback<in T, out S extends T, > = (value: T, inde
  */
 export type ReverseRestrainedBooleanCallback<in T, out S extends T, > = (index: number, value: T,) => value is S
 
+
+/**
+ * A callback that only return a value <b>R</b>
+ *
+ * @typescriptExclusive
+ * @see IndexWithReturnCallback
+ * @see ValueIndexCallback
+ * @see IndexValueCallback
+ * @see ValueIndexWithReturnCallback
+ * @see IndexValueWithReturnCallback
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/function/Supplier.html Java Supplier&lt;R&gt;
+ * @see https://learn.microsoft.com/dotnet/api/system.func-1 C# Func&lt;R&gt;
+ */
+export type ReturnCallback<out R, > = () => R
+
 /**
  * A callback that receive only an index and return a value <b>R</b>
  *
  * @typescriptExclusive
  * @note The argument is optional
+ * @see ReturnCallback
  * @see ValueIndexCallback
  * @see IndexValueCallback
  * @see ValueIndexWithReturnCallback
@@ -94,6 +110,7 @@ export type IndexWithReturnCallback<out R, > = (index: number,) => R
  *
  * @typescriptExclusive
  * @note The arguments are optionals
+ * @see ReturnCallback
  * @see IndexWithReturnCallback
  * @see IndexValueCallback
  * @see ValueIndexWithReturnCallback
@@ -111,6 +128,7 @@ export type ValueIndexCallback<in T, > = (value: T, index: number,) => void
  *
  * @typescriptExclusive
  * @note The arguments are optionals
+ * @see ReturnCallback
  * @see IndexWithReturnCallback
  * @see ValueIndexCallback
  * @see ValueIndexWithReturnCallback
@@ -129,6 +147,7 @@ export type IndexValueCallback<in T, > = (index: number, value: T,) => void
  *
  * @typescriptExclusive
  * @note The arguments are optionals
+ * @see ReturnCallback
  * @see IndexWithReturnCallback
  * @see ValueIndexCallback
  * @see IndexValueCallback
@@ -146,6 +165,7 @@ export type ValueIndexWithReturnCallback<in T, out R, > = (value: T, index: numb
  *
  * @typescriptExclusive
  * @note The arguments are optionals
+ * @see ReturnCallback
  * @see IndexWithReturnCallback
  * @see ValueIndexCallback
  * @see IndexValueCallback

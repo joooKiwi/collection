@@ -16,7 +16,7 @@ import type {CollectionHolder}                                   from "./Collect
 import type {CollectionIterator}                                 from "./iterator/CollectionIterator"
 import type {EmptyCollectionIterator}                            from "./iterator/EmptyCollectionIterator"
 import type {MinimalistCollectionHolder}                         from "./MinimalistCollectionHolder"
-import type {IndexWithReturnCallback}                            from "./type/callback"
+import type {IndexWithReturnCallback, ReturnCallback}            from "./type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "./type/possibleInstance"
 import type {CollectionHolderName}                               from "./type/toStringTag"
 
@@ -116,17 +116,17 @@ export class EmptyCollectionHolder
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,)  { return this.getOrElse(index, defaultValue,) }
 
 
-    public getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
-    public getFirstOrElse(defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
-    public getFirstOrElse(defaultValue: IndexWithReturnCallback<unknown>,) {
-        return defaultValue(0,)
+    public getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>, ..._: readonly unknown[]): U
+    public getFirstOrElse(defaultValue: ReturnCallback<never>, ..._: readonly unknown[]): never
+    public getFirstOrElse(defaultValue: ReturnCallback<unknown>,) {
+        return defaultValue()
     }
 
 
-    public getLastOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
-    public getLastOrElse(defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
-    public getLastOrElse(defaultValue: IndexWithReturnCallback<unknown>,) {
-        return defaultValue(-1,)
+    public getLastOrElse<const U, >(defaultValue: ReturnCallback<U>, ..._: readonly unknown[]): U
+    public getLastOrElse(defaultValue: ReturnCallback<never>, ..._: readonly unknown[]): never
+    public getLastOrElse(defaultValue: ReturnCallback<unknown>,) {
+        return defaultValue()
     }
 
 
