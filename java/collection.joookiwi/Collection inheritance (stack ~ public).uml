@@ -3,85 +3,92 @@
   <ID>JAVA</ID>
   <OriginalElement>java.util.Deque</OriginalElement>
   <nodes>
-    <node x="188.46243106025463" y="-14.0">java.util.AbstractCollection</node>
-    <node x="273.0" y="66.0">java.util.concurrent.ConcurrentLinkedDeque</node>
-    <node x="574.7068965517242" y="-14.0">java.util.concurrent.BlockingDeque</node>
-    <node x="563.0" y="66.0">java.util.concurrent.LinkedBlockingDeque</node>
-    <node x="80.0" y="66.0">java.util.ArrayDeque</node>
-    <node x="-100.0" y="66.0">java.util.LinkedList</node>
-    <node x="346.96120689655174" y="-94.0">java.util.Deque</node>
+    <node x="115.16666666666663" y="-154.33333333333334">java.util.ArrayDeque</node>
+    <node x="128.16666666666663" y="18.866666666666703">java.util.LinkedList</node>
+    <node x="162.16666666666663" y="76.60000000000005">java.util.Stack</node>
+    <node x="380.0" y="-242.09999999999997">java.util.Deque</node>
+    <node x="40.16666666666666" y="-38.866666666666646">java.util.concurrent.LinkedBlockingDeque</node>
+    <node x="518.5" y="-186.0">java.util.concurrent.BlockingDeque</node>
+    <node x="-172.0" y="-242.09999999999997">java.util.AbstractCollection</node>
+    <node x="18.16666666666663" y="-96.6">java.util.concurrent.ConcurrentLinkedDeque</node>
+    <node x="-158.5" y="-161.33333333333334">java.util.AbstractQueue</node>
   </nodes>
   <notes />
   <edges>
     <edge source="java.util.concurrent.ConcurrentLinkedDeque" target="java.util.Deque" relationship="REALIZATION">
-      <point x="67.5" y="-14.0" />
-      <point x="475.5" y="35.0" />
-      <point x="426.74568965517244" y="35.0" />
-      <point x="426.74568965517244" y="-35.0" />
-      <point x="66.62499999999997" y="-35.0" />
-      <point x="66.625" y="-45.0" />
-      <point x="379.96120689655174" y="-45.0" />
-      <point x="-33.0" y="14.0" />
+      <point x="135.00033333333334" y="0.0" />
+      <point x="345.0" y="-82.6" />
+      <point x="345.0" y="-228.1" />
+      <point x="-66.0" y="-2.842170943040401E-14" />
     </edge>
-    <edge source="java.util.concurrent.LinkedBlockingDeque" target="java.util.AbstractCollection" relationship="GENERALIZATION">
-      <point x="-62.0" y="-14.0" />
-      <point x="625.0" y="45.0" />
-      <point x="300.96243106025463" y="45.0" />
+    <edge source="java.util.concurrent.LinkedBlockingDeque" target="java.util.AbstractQueue" relationship="GENERALIZATION">
+      <point x="-124.0" y="0.0" />
+      <point x="-59.5" y="-24.866666666666646" />
       <point x="0.0" y="14.0" />
     </edge>
+    <edge source="java.util.Stack" target="java.util.AbstractCollection" relationship="GENERALIZATION">
+      <point x="52.17258424774457" y="-1.7851711777617822" />
+      <point x="182.3087549378201" y="88.81482882223827" />
+      <point x="182.3087549378201" y="90.60000000000005" />
+      <point x="-215.72348207754203" y="90.60000000000005" />
+      <point x="-215.72348207754203" y="-187.0" />
+      <point x="-59.5" y="-187.0" />
+      <point x="0.0" y="13.999999999999972" />
+    </edge>
     <edge source="java.util.concurrent.LinkedBlockingDeque" target="java.util.concurrent.BlockingDeque" relationship="REALIZATION">
-      <point x="62.0" y="-14.0" />
-      <point x="749.0" y="45.0" />
-      <point x="673.2068965517242" y="45.0" />
+      <point x="123.99999999999997" y="0.0" />
+      <point x="617.0" y="-24.866666666666646" />
       <point x="0.0" y="14.0" />
     </edge>
     <edge source="java.util.concurrent.BlockingDeque" target="java.util.Deque" relationship="INTERFACE_GENERALIZATION">
       <point x="0.0" y="-14.0" />
-      <point x="673.2068965517242" y="-35.0" />
-      <point x="445.96120689655174" y="-35.0" />
-      <point x="33.0" y="14.0" />
+      <point x="617.0" y="-228.09999999999997" />
+      <point x="66.0" y="0.0" />
     </edge>
     <edge source="java.util.ArrayDeque" target="java.util.Deque" relationship="REALIZATION">
-      <point x="-43.25" y="-14.0" />
-      <point x="123.25" y="35.0" />
-      <point x="66.625" y="35.0" />
-      <point x="66.625" y="-45.0" />
-      <point x="379.96120689655174" y="-45.0" />
-      <point x="-33.0" y="14.0" />
+      <point x="86.50033333333334" y="3.3333333334439885E-4" />
+      <point x="345.0" y="-140.333" />
+      <point x="345.0" y="-228.1" />
+      <point x="-66.0" y="-2.842170943040401E-14" />
     </edge>
     <edge source="java.util.LinkedList" target="java.util.Deque" relationship="REALIZATION">
-      <point x="-40.0" y="-14.0" />
-      <point x="-60.0" y="45.0" />
-      <point x="-31.193965517241338" y="45.0" />
-      <point x="-31.193965517241338" y="-35.0" />
-      <point x="66.625" y="-35.0" />
-      <point x="66.625" y="-45.0" />
-      <point x="379.96120689655174" y="-45.0" />
-      <point x="-33.0" y="14.0" />
+      <point x="-66.9201414289198" y="-1.4668861253353214" />
+      <point x="211.69568397951713" y="31.39978054133138" />
+      <point x="211.69568397951713" y="32.8666666666667" />
+      <point x="256.903803950256" y="32.8666666666667" />
+      <point x="256.903803950256" y="32.866666666666674" />
+      <point x="345.0" y="32.866666666666674" />
+      <point x="345.0" y="-228.1" />
+      <point x="-66.0" y="-2.842170943040401E-14" />
+    </edge>
+    <edge source="java.util.AbstractQueue" target="java.util.AbstractCollection" relationship="GENERALIZATION">
+      <point x="0.0" y="-13.999666666666656" />
+      <point x="0.0" y="13.999999999999972" />
     </edge>
     <edge source="java.util.concurrent.ConcurrentLinkedDeque" target="java.util.AbstractCollection" relationship="GENERALIZATION">
-      <point x="-67.5" y="-14.0" />
-      <point x="340.5" y="45.0" />
-      <point x="300.96243106025463" y="45.0" />
-      <point x="0.0" y="14.0" />
+      <point x="-95.16666666666663" y="-14.0" />
+      <point x="58.0" y="-187.0" />
+      <point x="-59.5" y="-187.0" />
+      <point x="0.0" y="13.999999999999972" />
     </edge>
     <edge source="java.util.ArrayDeque" target="java.util.AbstractCollection" relationship="GENERALIZATION">
-      <point x="43.25" y="-14.0" />
-      <point x="209.75" y="45.0" />
-      <point x="300.96243106025463" y="45.0" />
-      <point x="0.0" y="14.0" />
+      <point x="3.3333333337282056E-4" y="-13.999666666666656" />
+      <point x="201.667" y="-187.0" />
+      <point x="-59.5" y="-187.0" />
+      <point x="0.0" y="13.999999999999972" />
     </edge>
     <edge source="java.util.LinkedList" target="java.util.AbstractCollection" relationship="GENERALIZATION">
-      <point x="40.0" y="-14.0" />
-      <point x="20.0" y="45.0" />
-      <point x="300.96243106025463" y="45.0" />
-      <point x="0.0" y="14.0" />
+      <point x="68.82575762009276" y="-0.5845781516705699" />
+      <point x="138.6085998536943" y="32.28208851499613" />
+      <point x="138.6085998536943" y="32.8666666666667" />
+      <point x="-184.5632772494514" y="32.8666666666667" />
+      <point x="-184.5632772494514" y="-187.0" />
+      <point x="-59.5" y="-187.0" />
+      <point x="0.0" y="13.999999999999972" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="1.4371643394199785" showDependencies="false" x="365.5" y="10.0" />
-  <SelectedNodes>
-    <node>java.util.concurrent.LinkedBlockingDeque</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="250.0" y="-69.0" />
+  <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
