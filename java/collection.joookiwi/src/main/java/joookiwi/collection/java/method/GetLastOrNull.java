@@ -54,7 +54,7 @@ public final class GetLastOrNull
             return null;
         if (collection.isEmpty())
             return null;
-        return collection.get(collection.size() - 1);
+        return collection.getLast();
     }
 
     /// Get the last element in the `collection`

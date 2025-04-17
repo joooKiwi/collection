@@ -52,7 +52,7 @@ public final class GetFirstOrNull
             return null;
         if (collection.isEmpty())
             return null;
-        return collection.get(0);
+        return collection.getFirst();
     }
 
     /// Get the first element in the `collection`
