@@ -247,7 +247,7 @@ export interface CollectionHolder<out T = unknown, >
      * or calling the {@link defaultValue} function
      * if it is out of bound of the current {@link CollectionHolder collection}
      */
-    getFirstOrNull<const U, >(defaultValue: IndexWithReturnCallback<U>,): NullOr<| T | U>
+    getFirstOrElse<const U, >(defaultValue: IndexWithReturnCallback<U>,): NullOr<| T | U>
 
     /**
      * Get the first element in the current {@link CollectionHolder collection}
