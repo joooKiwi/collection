@@ -20,7 +20,7 @@ public class MutableConcurrentSkipListSet<T>
         extends ConcurrentSkipListSet<T>
         implements OrderableCollection<T> {
 
-    @Serial private static final long serialVersionUID = 4781415824411035935L;
+    @Serial private static final long serialVersionUID = -8699445213643860004L;
 
     //#region -------------------- ∅ --------------------
 

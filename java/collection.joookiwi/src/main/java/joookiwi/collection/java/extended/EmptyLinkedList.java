@@ -49,7 +49,7 @@ public class EmptyLinkedList<T extends @Nullable Object>
         extends ImmutableLinkedList<T>
         implements RandomAccess {
 
-    @Serial private static final long serialVersionUID = 6750406829824846383L;
+    @Serial private static final long serialVersionUID = 5267983343961445341L;
 
     //#region -------------------- Singleton usage --------------------
 

@@ -20,7 +20,7 @@ public class MutableTreeSet<T>
         extends TreeSet<T>
         implements OrderableCollection<T> {
 
-    @Serial private static final long serialVersionUID = -6539173170045676655L;
+    @Serial private static final long serialVersionUID = 962782706985725471L;
 
     //#region -------------------- ∅ --------------------
 

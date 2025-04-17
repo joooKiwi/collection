@@ -42,7 +42,7 @@ public class EmptyPriorityBlockingQueue<T>
         extends ImmutablePriorityBlockingQueue<T>
         implements Cloneable {
 
-    @Serial private static final long serialVersionUID = 7316626576904350715L;
+    @Serial private static final long serialVersionUID = -3392198592029396227L;
 
     //#region -------------------- Singleton usage --------------------
 

@@ -25,7 +25,7 @@ public class MutablePriorityQueue<T>
         extends PriorityQueue<T>
         implements OrderableCollection<T> {
 
-    @Serial private static final long serialVersionUID = 3735818677908494154L;
+    @Serial private static final long serialVersionUID = -4362057305272414514L;
 
     //#region -------------------- ∅ --------------------
 

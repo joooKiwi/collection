@@ -25,7 +25,7 @@ public class ImmutableHashSet<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -6000078544787341424L;
+    @Serial private static final long serialVersionUID = 442103063392487397L;
 
     private boolean __isInitialized = false;
     private int __size = -1;

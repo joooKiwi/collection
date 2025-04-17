@@ -26,7 +26,7 @@ public class ImmutableLinkedList<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 289988958485231040L;
+    @Serial private static final long serialVersionUID = 4075097633550903577L;
 
     private final int __size;
     private final boolean __isEmpty;

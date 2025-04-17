@@ -26,7 +26,7 @@ public class ImmutableArrayList<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 7943208248572134989L;
+    @Serial private static final long serialVersionUID = -2943694165894887415L;
 
     private final int __size;
     private final boolean __isEmpty;
