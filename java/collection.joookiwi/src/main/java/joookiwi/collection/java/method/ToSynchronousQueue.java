@@ -1,0 +1,297 @@
+package joookiwi.collection.java.method;
+
+import java.util.concurrent.SynchronousQueue;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.MinimalistCollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.callback.ObjIntFunction;
+import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.ImmutableSynchronousQueue;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CollectionConstants.emptySynchronousQueue;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+
+@NotNullByDefault
+public final class ToSynchronousQueue
+        extends UtilityWithTable {
+
+    @Contract(ALWAYS_FAIL_0)
+    private ToSynchronousQueue() { throw new ImpossibleConstructionException("The utility class “ToSynchronousQueue” cannot be constructed.", ToSynchronousQueue.class); }
+
+    //#region -------------------- Facade methods --------------------
+
+    //#region -------------------- ∅ --------------------
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    public static <T> @Unmodifiable SynchronousQueue<T> toSynchronousQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+        if (collection == null)
+            return emptySynchronousQueue();
+
+        var size = collection.size();
+        if (size == 0)
+            return emptySynchronousQueue();
+        return __withNoTransform(collection, size);
+    }
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    public static <T> @Unmodifiable SynchronousQueue<T> toSynchronousQueue(final @Nullable CollectionHolder<? extends T> collection) {
+        if (collection == null)
+            return emptySynchronousQueue();
+        if (collection.isEmpty())
+            return emptySynchronousQueue();
+        return __withNoTransform(collection, collection.size());
+    }
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    public static <T> @Unmodifiable SynchronousQueue<T> toSynchronousQueue(final T @Nullable @Unmodifiable [] collection) {
+        if (collection == null)
+            return emptySynchronousQueue();
+
+        var size = collection.length;
+        if (size == 0)
+            return emptySynchronousQueue();
+        return __withNoTransform(collection, size);
+    }
+
+    //#endregion -------------------- ∅ --------------------
+    //#region -------------------- (T, int) → U --------------------
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> toSynchronousQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptySynchronousQueue();
+
+        var size = collection.size();
+        if (size == 0)
+            return emptySynchronousQueue();
+        return __with2Argument(collection, size, transform);
+    }
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> toSynchronousQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptySynchronousQueue();
+        if (collection.isEmpty())
+            return emptySynchronousQueue();
+        return __with2Argument(collection, collection.size(), transform);
+    }
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> toSynchronousQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptySynchronousQueue();
+
+        var size = collection.length;
+        if (size == 0)
+            return emptySynchronousQueue();
+        return __with2Argument(collection, size, transform);
+    }
+
+    //#endregion -------------------- (T, int) → U --------------------
+    //#region -------------------- (T) → U --------------------
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> toSynchronousQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptySynchronousQueue();
+
+        var size = collection.size();
+        if (size == 0)
+            return emptySynchronousQueue();
+        return __with1Argument(collection, size, transform);
+    }
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> toSynchronousQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptySynchronousQueue();
+        if (collection.isEmpty())
+            return emptySynchronousQueue();
+        return __with1Argument(collection, collection.size(), transform);
+    }
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> toSynchronousQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptySynchronousQueue();
+
+        var size = collection.length;
+        if (size == 0)
+            return emptySynchronousQueue();
+        return __with1Argument(collection, size, transform);
+    }
+
+    //#endregion -------------------- (T) → U --------------------
+    //#region -------------------- () → U --------------------
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> toSynchronousQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return emptySynchronousQueue();
+
+        var size = collection.size();
+        if (size == 0)
+            return emptySynchronousQueue();
+        return __with0Argument(size, transform);
+    }
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> toSynchronousQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return emptySynchronousQueue();
+        if (collection.isEmpty())
+            return emptySynchronousQueue();
+        return __with0Argument(collection.size(), transform);
+    }
+
+    /// Convert the `collection` to an [immutable][Unmodifiable] [SynchronousQueue]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> toSynchronousQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return emptySynchronousQueue();
+
+        var size = collection.length;
+        if (size == 0)
+            return emptySynchronousQueue();
+        return __with0Argument(size, transform);
+    }
+
+    //#endregion -------------------- () → U --------------------
+
+    //#endregion -------------------- Facade methods --------------------
+    //#region -------------------- Loop methods --------------------
+
+    private static <T> @Unmodifiable SynchronousQueue<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
+                                                                           final int size) {
+        return new ImmutableSynchronousQueue<>(_values(collection, size));
+    }
+
+    private static <T> @Unmodifiable SynchronousQueue<T> __withNoTransform(final T @Unmodifiable [] collection,
+                                                                           final int size) {
+        return new ImmutableSynchronousQueue<>(_values(collection, size));
+    }
+
+
+    private static <U> @Unmodifiable SynchronousQueue<U> __with0Argument(final int size,
+                                                                         final Supplier<? extends U> transform) {
+        return new ImmutableSynchronousQueue<>(_values(size, transform));
+    }
+
+
+    private static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                                     final int size,
+                                                                                                     final Function<? super T, ? extends U> transform) {
+        return new ImmutableSynchronousQueue<>(_values(collection, size, transform));
+    }
+
+    private static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> __with1Argument(final T @Unmodifiable [] collection,
+                                                                                                     final int size,
+                                                                                                    final Function<? super T, ? extends U> transform) {
+        return new ImmutableSynchronousQueue<>(_values(collection, size, transform));
+    }
+
+
+    private static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                                     final int size,
+                                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
+        return new ImmutableSynchronousQueue<>(_values(collection, size, transform));
+    }
+
+    private static <T extends @Nullable Object, U> @Unmodifiable SynchronousQueue<U> __with2Argument(final T @Unmodifiable [] collection,
+                                                                                                     final int size,
+                                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
+        return new ImmutableSynchronousQueue<>(_values(collection, size, transform));
+    }
+
+    //#endregion -------------------- Loop methods --------------------
+
+}
