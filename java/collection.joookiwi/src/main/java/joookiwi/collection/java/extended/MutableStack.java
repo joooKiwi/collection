@@ -1,0 +1,77 @@
+package joookiwi.collection.java.extended;
+
+import java.io.Serial;
+import java.util.Collection;
+import java.util.Stack;
+import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Unmodifiable;
+
+/// An mutable behaviour of a [Stack]
+///
+/// @param <T> The type of the element
+@NotNullByDefault
+public class MutableStack<T>
+        extends Stack<T>
+        implements BasicStack<T> {
+
+    @Serial private static final long serialVersionUID = 2636535014265397713L;
+
+    //#region -------------------- Constructors --------------------
+
+    //#region -------------------- ∅ --------------------
+
+    /// Create a mutable instance of [Stack]
+    public MutableStack() { super(); }
+
+    //#endregion -------------------- ∅ --------------------
+    //#region -------------------- values --------------------
+
+    /// Create a mutable instance of [Stack]
+    /// that starts with the `values` received
+    public MutableStack(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+        super();
+        final var size = elementCount = values.length;
+        if (size == 0)
+            return;
+
+        final var array = elementData;
+        var index = -1;
+        while (++index < size)
+            array[index] = values[index];
+    }
+
+    /// Create a mutable instance of [Stack]
+    /// that starts with the `values` received
+    public MutableStack(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
+        super();
+        final var size = elementCount = values.size();
+        if (size == 0)
+            return;
+        addAll(values);
+    }
+
+    //#endregion -------------------- values --------------------
+
+    //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    @Override public T getFirst() { return super.getFirst(); }
+
+    @Override public T getLast() { return super.getLast(); }
+
+
+    @Override public void addFirst(final T value) { super.addFirst(value); }
+
+    @Override public void addLast(final T value) { super.addLast(value); }
+
+
+    @Override public synchronized T pop() { return super.pop(); }
+
+    @Override public T removeFirst() { return super.removeFirst(); }
+
+    @Override public T removeLast() { return super.removeLast(); }
+
+    //#endregion -------------------- Methods --------------------
+
+}
