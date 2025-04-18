@@ -33,7 +33,7 @@ public final class ToStack
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable Stack<T> toArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @Unmodifiable Stack<T> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyStack();
 
@@ -48,7 +48,7 @@ public final class ToStack
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable Stack<T> toArrayDeque(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @Unmodifiable Stack<T> toStack(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyStack();
         if (collection.isEmpty())
@@ -61,7 +61,7 @@ public final class ToStack
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable Stack<T> toArrayDeque(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> @Unmodifiable Stack<T> toStack(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyStack();
 
@@ -82,8 +82,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyStack();
 
@@ -101,8 +101,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toStack(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyStack();
         if (collection.isEmpty())
@@ -118,8 +118,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toArrayDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toStack(final T @Nullable @Unmodifiable [] collection,
+                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyStack();
 
@@ -140,8 +140,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyStack();
 
@@ -159,8 +159,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toStack(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyStack();
         if (collection.isEmpty())
@@ -176,8 +176,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toArrayDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> toStack(final T @Nullable @Unmodifiable [] collection,
+                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyStack();
 
@@ -198,8 +198,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @Unmodifiable Stack<U> toArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                  final Supplier<? extends U> transform) {
+    public static <T, U> @Unmodifiable Stack<U> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyStack();
 
@@ -217,8 +217,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @Unmodifiable Stack<U> toArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                  final Supplier<? extends U> transform) {
+    public static <T, U> @Unmodifiable Stack<U> toStack(final @Nullable CollectionHolder<? extends T> collection,
+                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyStack();
         if (collection.isEmpty())
@@ -234,8 +234,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> @Unmodifiable Stack<U> toArrayDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                  final Supplier<? extends U> transform) {
+    public static <T, U> @Unmodifiable Stack<U> toStack(final T @Nullable @Unmodifiable [] collection,
+                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyStack();
 
