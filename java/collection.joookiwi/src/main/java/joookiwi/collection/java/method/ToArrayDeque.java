@@ -8,6 +8,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.ImmutableArrayDeque;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -251,51 +252,44 @@ public final class ToArrayDeque
 
     private static <T extends @Nullable Object> @Unmodifiable ArrayDeque<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
                                                                                               final int size) {
-        throw new RuntimeException(); // TODO add ImmutableArrayDeque initialization
-//        return new ImmutableArrayDeque<>(_values(collection, size));
+        return new ImmutableArrayDeque<>(_values(collection, size));
     }
 
     private static <T extends @Nullable Object> @Unmodifiable ArrayDeque<T> __withNoTransform(final T @Unmodifiable [] collection,
                                                                                               final int size) {
-        throw new RuntimeException(); // TODO add ImmutableArrayDeque initialization
-//        return new ImmutableArrayDeque<>(_values(collection, size));
+        return new ImmutableArrayDeque<>(_values(collection, size));
     }
 
 
     private static <U extends @Nullable Object> @Unmodifiable ArrayDeque<U> __with0Argument(final int size,
                                                                                             final Supplier<? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableArrayDeque initialization
-//        return new ImmutableArrayDeque<>(_values(size, transform));
+        return new ImmutableArrayDeque<>(_values(size, transform));
     }
 
 
     private static <T extends @Nullable Object, U> @Unmodifiable ArrayDeque<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
                                                                                                final int size,
                                                                                                final Function<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableArrayDeque initialization
-//        return new ImmutableArrayDeque<>(_values(collection, size, transform));
+        return new ImmutableArrayDeque<>(_values(collection, size, transform));
     }
 
     private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable ArrayDeque<U> __with1Argument(final T @Unmodifiable [] collection,
                                                                                                                         final int size,
                                                                                                                         final Function<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableArrayDeque initialization
-//        return new ImmutableArrayDeque<>(_values(collection, size, transform));
+        return new ImmutableArrayDeque<>(_values(collection, size, transform));
     }
 
 
     private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable ArrayDeque<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
                                                                                                                         final int size,
                                                                                                                         final ObjIntFunction<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableArrayDeque initialization
-//        return new ImmutableArrayDeque<>(_values(collection, size, transform));
+        return new ImmutableArrayDeque<>(_values(collection, size, transform));
     }
 
     private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable ArrayDeque<U> __with2Argument(final T @Unmodifiable [] collection,
                                                                                                                         final int size,
                                                                                                                         final ObjIntFunction<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableArrayDeque initialization
-//        return new ImmutableArrayDeque<>(_values(collection, size, transform));
+        return new ImmutableArrayDeque<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- Loop methods --------------------
