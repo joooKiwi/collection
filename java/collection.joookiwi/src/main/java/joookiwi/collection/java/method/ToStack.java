@@ -8,6 +8,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.ImmutableStack;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -251,51 +252,44 @@ public final class ToStack
 
     private static <T extends @Nullable Object> @Unmodifiable Stack<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
                                                                                               final int size) {
-        throw new RuntimeException(); // TODO add ImmutableStack initialization
-//        return new ImmutableStack<>(_values(collection, size));
+        return new ImmutableStack<>(_values(collection, size));
     }
 
     private static <T extends @Nullable Object> @Unmodifiable Stack<T> __withNoTransform(final T @Unmodifiable [] collection,
                                                                                               final int size) {
-        throw new RuntimeException(); // TODO add ImmutableStack initialization
-//        return new ImmutableStack<>(_values(collection, size));
+        return new ImmutableStack<>(_values(collection, size));
     }
 
 
     private static <U extends @Nullable Object> @Unmodifiable Stack<U> __with0Argument(final int size,
                                                                                        final Supplier<? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableStack initialization
-//        return new ImmutableStack<>(_values(size, transform));
+        return new ImmutableStack<>(_values(size, transform));
     }
 
 
     private static <T extends @Nullable Object, U> @Unmodifiable Stack<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
                                                                                           final int size,
                                                                                           final Function<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableStack initialization
-//        return new ImmutableStack<>(_values(collection, size, transform));
+        return new ImmutableStack<>(_values(collection, size, transform));
     }
 
     private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> __with1Argument(final T @Unmodifiable [] collection,
                                                                                                                    final int size,
                                                                                                                    final Function<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableStack initialization
-//        return new ImmutableStack<>(_values(collection, size, transform));
+        return new ImmutableStack<>(_values(collection, size, transform));
     }
 
 
     private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
                                                                                                                    final int size,
                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableStack initialization
-//        return new ImmutableStack<>(_values(collection, size, transform));
+        return new ImmutableStack<>(_values(collection, size, transform));
     }
 
     private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Stack<U> __with2Argument(final T @Unmodifiable [] collection,
                                                                                                                    final int size,
                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableStack initialization
-//        return new ImmutableStack<>(_values(collection, size, transform));
+        return new ImmutableStack<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- Loop methods --------------------
