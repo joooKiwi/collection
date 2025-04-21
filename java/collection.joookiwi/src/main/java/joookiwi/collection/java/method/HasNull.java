@@ -32,7 +32,7 @@ public final class HasNull
         if (collection == null)
             return false;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return false;
         return __hasNull(collection, size);
@@ -63,7 +63,7 @@ public final class HasNull
         if (collection == null)
             return false;
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return false;
         return __hasNull(collection, size);
