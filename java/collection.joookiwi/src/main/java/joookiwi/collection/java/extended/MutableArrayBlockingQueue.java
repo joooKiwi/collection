@@ -184,15 +184,11 @@ public class MutableArrayBlockingQueue<T>
     /// Create an empty mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
     /// and the fairness received
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
     public MutableArrayBlockingQueue(final boolean isFair) { super(DEFAULT_QUEUE_CAPACITY, isFair); }
 
     /// Create an empty mutable instance of [ArrayBlockingQueue]
     /// with a capacity received (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is `null`)
     /// and the fairness received (or [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS] if it is `null`)
-    ///
-    /// @throws IllegalArgumentException The capacity was under `1`
     public MutableArrayBlockingQueue(final @Nullable Boolean isFair) { super(DEFAULT_QUEUE_CAPACITY, isFair == null ? DEFAULT_FAIRNESS : isFair); }
 
     //#endregion -------------------- isFair --------------------
