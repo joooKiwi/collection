@@ -36,7 +36,7 @@ public final class ToTransferQueue
         if (collection == null)
             return emptyTransferQueue();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptyTransferQueue();
         return __withNoTransform(collection, size);
@@ -64,7 +64,7 @@ public final class ToTransferQueue
         if (collection == null)
             return emptyTransferQueue();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptyTransferQueue();
         return __withNoTransform(collection, size);
@@ -86,7 +86,7 @@ public final class ToTransferQueue
         if (collection == null)
             return emptyTransferQueue();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptyTransferQueue();
         return __with2Argument(collection, size, transform);
@@ -122,7 +122,7 @@ public final class ToTransferQueue
         if (collection == null)
             return emptyTransferQueue();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptyTransferQueue();
         return __with2Argument(collection, size, transform);
@@ -144,7 +144,7 @@ public final class ToTransferQueue
         if (collection == null)
             return emptyTransferQueue();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptyTransferQueue();
         return __with1Argument(collection, size, transform);
@@ -180,7 +180,7 @@ public final class ToTransferQueue
         if (collection == null)
             return emptyTransferQueue();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptyTransferQueue();
         return __with1Argument(collection, size, transform);
@@ -202,7 +202,7 @@ public final class ToTransferQueue
         if (collection == null)
             return emptyTransferQueue();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptyTransferQueue();
         return __with0Argument(size, transform);
@@ -238,7 +238,7 @@ public final class ToTransferQueue
         if (collection == null)
             return emptyTransferQueue();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptyTransferQueue();
         return __with0Argument(size, transform);

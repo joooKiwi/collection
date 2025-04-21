@@ -39,7 +39,7 @@ public final class ToMutableConcurrentSkipListSet
         if (collection == null)
             return new MutableConcurrentSkipListSet<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
         return __withNoTransform(collection, size);
@@ -71,7 +71,7 @@ public final class ToMutableConcurrentSkipListSet
         if (collection == null)
             return new MutableConcurrentSkipListSet<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
         return __withNoTransform(collection, size);
@@ -94,7 +94,7 @@ public final class ToMutableConcurrentSkipListSet
         if (collection == null)
             return new MutableConcurrentSkipListSet<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
         return __with2Argument(collection, size, transform);
@@ -134,7 +134,7 @@ public final class ToMutableConcurrentSkipListSet
         if (collection == null)
             return new MutableConcurrentSkipListSet<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
         return __with2Argument(collection, size, transform);
@@ -157,7 +157,7 @@ public final class ToMutableConcurrentSkipListSet
         if (collection == null)
             return new MutableConcurrentSkipListSet<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
         return __with1Argument(collection, size, transform);
@@ -197,7 +197,7 @@ public final class ToMutableConcurrentSkipListSet
         if (collection == null)
             return new MutableConcurrentSkipListSet<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
         return __with1Argument(collection, size, transform);
@@ -220,7 +220,7 @@ public final class ToMutableConcurrentSkipListSet
         if (collection == null)
             return new MutableConcurrentSkipListSet<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
         return __with0Argument(size, transform);
@@ -260,7 +260,7 @@ public final class ToMutableConcurrentSkipListSet
         if (collection == null)
             return new MutableConcurrentSkipListSet<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
         return __with0Argument(size, transform);

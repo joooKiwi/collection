@@ -36,7 +36,7 @@ public final class ToMutableTreeSet
         if (collection == null)
             return new MutableTreeSet<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableTreeSet<>();
         return __withNoTransform(collection, size);
@@ -66,7 +66,7 @@ public final class ToMutableTreeSet
         if (collection == null)
             return new MutableTreeSet<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableTreeSet<>();
         return __withNoTransform(collection, size);
@@ -88,7 +88,7 @@ public final class ToMutableTreeSet
         if (collection == null)
             return new MutableTreeSet<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableTreeSet<>();
         return __with2Argument(collection, size, transform);
@@ -124,7 +124,7 @@ public final class ToMutableTreeSet
         if (collection == null)
             return new MutableTreeSet<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableTreeSet<>();
         return __with2Argument(collection, size, transform);
@@ -146,7 +146,7 @@ public final class ToMutableTreeSet
         if (collection == null)
             return new MutableTreeSet<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableTreeSet<>();
         return __with1Argument(collection, size, transform);
@@ -182,7 +182,7 @@ public final class ToMutableTreeSet
         if (collection == null)
             return new MutableTreeSet<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableTreeSet<>();
         return __with1Argument(collection, size, transform);
@@ -204,7 +204,7 @@ public final class ToMutableTreeSet
         if (collection == null)
             return new MutableTreeSet<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableTreeSet<>();
         return __with0Argument(size, transform);
@@ -240,7 +240,7 @@ public final class ToMutableTreeSet
         if (collection == null)
             return new MutableTreeSet<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableTreeSet<>();
         return __with0Argument(size, transform);

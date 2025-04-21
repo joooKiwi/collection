@@ -37,7 +37,7 @@ public final class ToTreeSet
         if (collection == null)
             return emptyTreeSet();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptyTreeSet();
         return __withNoTransform(collection, size);
@@ -67,7 +67,7 @@ public final class ToTreeSet
         if (collection == null)
             return emptyTreeSet();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptyTreeSet();
         return __withNoTransform(collection, size);
@@ -89,7 +89,7 @@ public final class ToTreeSet
         if (collection == null)
             return emptyTreeSet();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptyTreeSet();
         return __with2Argument(collection, size, transform);
@@ -125,7 +125,7 @@ public final class ToTreeSet
         if (collection == null)
             return emptyTreeSet();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptyTreeSet();
         return __with2Argument(collection, size, transform);
@@ -147,7 +147,7 @@ public final class ToTreeSet
         if (collection == null)
             return emptyTreeSet();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptyTreeSet();
         return __with1Argument(collection, size, transform);
@@ -183,7 +183,7 @@ public final class ToTreeSet
         if (collection == null)
             return emptyTreeSet();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptyTreeSet();
         return __with1Argument(collection, size, transform);
@@ -205,7 +205,7 @@ public final class ToTreeSet
         if (collection == null)
             return emptyTreeSet();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return emptyTreeSet();
         return __with0Argument(size, transform);
@@ -241,7 +241,7 @@ public final class ToTreeSet
         if (collection == null)
             return emptyTreeSet();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return emptyTreeSet();
         return __with0Argument(size, transform);

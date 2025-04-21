@@ -39,7 +39,7 @@ public final class ToMutableVector
         if (collection == null)
             return new MutableVector<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableVector<>();
         return __withNoTransform(collection, size);
@@ -69,7 +69,7 @@ public final class ToMutableVector
         if (collection == null)
             return new MutableVector<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableVector<>();
         return __withNoTransform(collection, size);
@@ -92,7 +92,7 @@ public final class ToMutableVector
         if (collection == null)
             return new MutableVector<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableVector<>();
         return __with2Argument(collection, size, transform);
@@ -130,7 +130,7 @@ public final class ToMutableVector
         if (collection == null)
             return new MutableVector<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableVector<>();
         return __with2Argument(collection, size, transform);
@@ -153,7 +153,7 @@ public final class ToMutableVector
         if (collection == null)
             return new MutableVector<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableVector<>();
         return __with1Argument(collection, size, transform);
@@ -191,7 +191,7 @@ public final class ToMutableVector
         if (collection == null)
             return new MutableVector<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableVector<>();
         return __with1Argument(collection, size, transform);
@@ -214,7 +214,7 @@ public final class ToMutableVector
         if (collection == null)
             return new MutableVector<>();
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return new MutableVector<>();
         return __with0Argument(size, transform);
@@ -252,7 +252,7 @@ public final class ToMutableVector
         if (collection == null)
             return new MutableVector<>();
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return new MutableVector<>();
         return __with0Argument(size, transform);
