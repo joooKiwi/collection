@@ -33,7 +33,7 @@ public final class ToLowerCaseString
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return DEFAULT_EMPTY_COLLECTION;
         return __toString(collection, size);
@@ -63,7 +63,7 @@ public final class ToLowerCaseString
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return DEFAULT_EMPTY_COLLECTION;
         return __toString(collection, size);
