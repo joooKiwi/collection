@@ -9,7 +9,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 
 /// A mutable behaviour of a [ArrayList]
@@ -19,7 +18,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPAC
 public class MutableArrayList<T extends @Nullable Object>
         extends ArrayList<T> {
 
-    @Serial private static final long serialVersionUID = 7760420228348183846L;
+    @Serial private static final long serialVersionUID = 5882521604946086928L;
 
     //#region -------------------- ∅ --------------------
 
@@ -34,37 +33,37 @@ public class MutableArrayList<T extends @Nullable Object>
     /// with the `initialCapacity` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableArrayList(final @Range(from = 0, to = MAX_VALUE) byte initialCapacity) { super(initialCapacity); }
+    public MutableArrayList(final @Range(from = 0, to = Byte.MAX_VALUE) byte initialCapacity) { super(initialCapacity); }
 
     /// Create a mutable instance of [ArrayList]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableArrayList(final @Range(from = 0, to = MAX_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity); }
+    public MutableArrayList(final @Range(from = 0, to = Byte.MAX_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity); }
 
     /// Create a mutable instance of [ArrayList]
     /// with the `initialCapacity` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableArrayList(final @Range(from = 0, to = MAX_VALUE) short initialCapacity) { super(initialCapacity); }
+    public MutableArrayList(final @Range(from = 0, to = Short.MAX_VALUE) short initialCapacity) { super(initialCapacity); }
 
     /// Create a mutable instance of [ArrayList]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableArrayList(final @Range(from = 0, to = MAX_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity); }
+    public MutableArrayList(final @Range(from = 0, to = Short.MAX_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity); }
 
     /// Create a mutable instance of [ArrayList]
     /// with the `initialCapacity` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableArrayList(final @Range(from = 0, to = MAX_VALUE) int initialCapacity) { super(initialCapacity); }
+    public MutableArrayList(final @Range(from = 0, to = Integer.MAX_VALUE) int initialCapacity) { super(initialCapacity); }
 
     /// Create a mutable instance of [ArrayList]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableArrayList(final @Range(from = 0, to = MAX_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity); }
+    public MutableArrayList(final @Range(from = 0, to = Integer.MAX_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity); }
 
     //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- values --------------------
@@ -78,7 +77,7 @@ public class MutableArrayList<T extends @Nullable Object>
             return;
         var index = -1;
         while (++index < size)
-            super.set(index, values[index]);
+            set(index, values[index]);
     }
 
     /// Create a mutable instance of [ArrayList]
@@ -87,9 +86,157 @@ public class MutableArrayList<T extends @Nullable Object>
         super(values.size());
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     //#endregion -------------------- values --------------------
+    //#region -------------------- values, initialCapacity --------------------
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) byte initialCapacity) {
+        super(initialCapacity < values.length ? values.length : initialCapacity);
+        final var size = values.length;
+        if (size == 0)
+            return;
+        var index = -1;
+        while (++index < size)
+            set(index, values[index]);
+    }
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// (if null provided, then it is the `values.length`)
+    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) @Nullable Byte initialCapacity) {
+        super(initialCapacity == null ? values.length : initialCapacity < values.length ? values.length : initialCapacity);
+        final var size = values.length;
+        if (size == 0)
+            return;
+        var index = -1;
+        while (++index < size)
+            set(index, values[index]);
+    }
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) short initialCapacity) {
+        super(initialCapacity < values.length ? values.length : initialCapacity);
+        final var size = values.length;
+        if (size == 0)
+            return;
+        var index = -1;
+        while (++index < size)
+            set(index, values[index]);
+    }
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// (if null provided, then it is the `values.length`)
+    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) @Nullable Short initialCapacity) {
+        super(initialCapacity == null ? values.length : initialCapacity < values.length ? values.length : initialCapacity);
+        final var size = values.length;
+        if (size == 0)
+            return;
+        var index = -1;
+        while (++index < size)
+            set(index, values[index]);
+    }
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) int initialCapacity) {
+        super(initialCapacity < values.length ? values.length : initialCapacity);
+        final var size = values.length;
+        if (size == 0)
+            return;
+        var index = -1;
+        while (++index < size)
+            set(index, values[index]);
+    }
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// (if null provided, then it is the `values.length`)
+    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) @Nullable Integer initialCapacity) {
+        super(initialCapacity == null ? values.length : initialCapacity < values.length ? values.length : initialCapacity);
+        final var size = values.length;
+        if (size == 0)
+            return;
+        var index = -1;
+        while (++index < size)
+            set(index, values[index]);
+    }
+
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) byte initialCapacity) {
+        super(initialCapacity < values.size() ? values.size() : initialCapacity);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// (if null provided, then it is the <code>values.[size][Collection#size()]</code>)
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) @Nullable Byte initialCapacity) {
+        super(initialCapacity == null ? values.size() : initialCapacity < values.size() ? values.size() : initialCapacity);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) short initialCapacity) {
+        super(initialCapacity < values.size() ? values.size() : initialCapacity);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// (if null provided, then it is the <code>values.[size][Collection#size()]</code>)
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) @Nullable Short initialCapacity) {
+        super(initialCapacity == null ? values.size() : initialCapacity < values.size() ? values.size() : initialCapacity);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) int initialCapacity) {
+        super(initialCapacity < values.size() ? values.size() : initialCapacity);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [ArrayList]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// (if null provided, then it is the <code>values.[size][Collection#size()]</code>)
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                            final @Range(from = 0, to = Byte.MAX_VALUE) @Nullable Integer initialCapacity) {
+        super(initialCapacity == null ? values.size() : initialCapacity < values.size() ? values.size() : initialCapacity);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    //#endregion -------------------- values, initialCapacity --------------------
 
 }
