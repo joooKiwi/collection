@@ -12,13 +12,14 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asLowerCaseString;
 
 @NotNullByDefault
 public final class ToLowerCaseString
         extends Utility {
 
-    @Contract(CommonContracts.ALWAYS_FAIL_0)
+    @Contract(ALWAYS_FAIL_0)
     private ToLowerCaseString() { throw new ImpossibleConstructionException("The utility class “ToLowerCaseString” cannot be constructed.", ToLowerCaseString.class); }
 
     //#region -------------------- Facade method --------------------

@@ -9,11 +9,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+
 @NotNullByDefault
 public final class AsString
         extends Utility {
 
-    @Contract(CommonContracts.ALWAYS_FAIL_0)
+    @Contract(ALWAYS_FAIL_0)
     private AsString() { throw new ImpossibleConstructionException("The utility class “AsString” cannot be constructed.", AsString.class); }
 
     //#region -------------------- Facade methods --------------------

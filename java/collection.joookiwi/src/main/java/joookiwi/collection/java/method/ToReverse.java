@@ -16,12 +16,13 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
 public final class ToReverse
         extends UtilityWithIndex {
 
-    @Contract(CommonContracts.ALWAYS_FAIL_0)
+    @Contract(ALWAYS_FAIL_0)
     private ToReverse() { throw new ImpossibleConstructionException("The utility class “ToReverse” cannot be constructed.", ToReverse.class); }
 
     //#region -------------------- Facade methods --------------------

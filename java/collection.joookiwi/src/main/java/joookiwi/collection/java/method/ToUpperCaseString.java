@@ -12,13 +12,14 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asUpperCaseString;
 
 @NotNullByDefault
 public final class ToUpperCaseString
         extends Utility {
 
-    @Contract(CommonContracts.ALWAYS_FAIL_0)
+    @Contract(ALWAYS_FAIL_0)
     private ToUpperCaseString() { throw new ImpossibleConstructionException("The utility class “ToUpperCaseString” cannot be constructed.", ToUpperCaseString.class); }
 
     //#region -------------------- Facade method --------------------

@@ -11,13 +11,14 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CollectionConstants.*;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asString;
 
 @NotNullByDefault
 public final class ToString
         extends Utility {
 
-    @Contract(CommonContracts.ALWAYS_FAIL_0)
+    @Contract(ALWAYS_FAIL_0)
     private ToString() { throw new ImpossibleConstructionException("The utility class “ToString” cannot be constructed.", ToString.class); }
 
     //#region -------------------- Facade method --------------------
