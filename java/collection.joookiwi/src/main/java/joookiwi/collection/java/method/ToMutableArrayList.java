@@ -38,11 +38,11 @@ public final class ToMutableArrayList
     @Contract(ALWAYS_NEW_1)
     public static <T extends @Nullable Object> ArrayList<T> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.size();
         if (size == 0)
-            return new MutableArrayList<>();
+            return __empty();
         return __withNoTransform(collection, size, size);
     }
 
@@ -54,9 +54,9 @@ public final class ToMutableArrayList
     @Contract(ALWAYS_NEW_1)
     public static <T extends @Nullable Object> ArrayList<T> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
         if (collection.isEmpty())
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.size();
         return __withNoTransform(collection, size, size);
@@ -70,11 +70,11 @@ public final class ToMutableArrayList
     @Contract(ALWAYS_NEW_1)
     public static <T extends @Nullable Object> ArrayList<T> toMutableArrayList(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.length;
         if (size == 0)
-            return new MutableArrayList<>();
+            return __empty();
         return __withNoTransform(collection, size, size);
     }
 
@@ -93,11 +93,11 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.size();
         if (size == 0)
-            return new MutableArrayList<>();
+            return __empty();
         return __with2Argument(collection, size, transform, size);
     }
 
@@ -113,9 +113,9 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
         if (collection.isEmpty())
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.size();
         return __with2Argument(collection, size, transform, size);
@@ -133,11 +133,11 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final T @Nullable @Unmodifiable [] collection,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.length;
         if (size == 0)
-            return new MutableArrayList<>();
+            return __empty();
         return __with2Argument(collection, size, transform, size);
     }
 
@@ -156,11 +156,11 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.size();
         if (size == 0)
-            return new MutableArrayList<>();
+            return __empty();
         return __with1Argument(collection, size, transform, size);
     }
 
@@ -176,9 +176,9 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
         if (collection.isEmpty())
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.size();
         return __with1Argument(collection, size, transform, size);
@@ -196,11 +196,11 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object, U extends @Nullable Object> ArrayList<U> toMutableArrayList(final T @Nullable @Unmodifiable [] collection,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.length;
         if (size == 0)
-            return new MutableArrayList<>();
+            return __empty();
         return __with1Argument(collection, size, transform, size);
     }
 
@@ -219,11 +219,11 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable ArrayList<U> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.size();
         if (size == 0)
-            return new MutableArrayList<>();
+            return __empty();
         return __with0Argument(size, transform, size);
     }
 
@@ -239,9 +239,9 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable ArrayList<U> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
         if (collection.isEmpty())
-            return new MutableArrayList<>();
+            return __empty();
         final var size = collection.size();
         return __with0Argument(size, transform, size);
     }
@@ -258,11 +258,11 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable ArrayList<U> toMutableArrayList(final T @Nullable @Unmodifiable [] collection,
                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>();
+            return __empty();
 
         final var size = collection.length;
         if (size == 0)
-            return new MutableArrayList<>();
+            return __empty();
         return __with0Argument(size, transform, size);
     }
 
@@ -281,11 +281,11 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object> ArrayList<T> toMutableArrayList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                final int initialCapacity) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
 
         final var size = collection.size();
         if (size == 0)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __withNoTransform(collection, size, initialCapacity);
     }
 
@@ -300,9 +300,9 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object> ArrayList<T> toMutableArrayList(final @Nullable CollectionHolder<? extends T> collection,
                                                                                final int initialCapacity) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         if (collection.isEmpty())
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __withNoTransform(collection, collection.size(), initialCapacity);
     }
 
@@ -317,11 +317,11 @@ public final class ToMutableArrayList
     public static <T extends @Nullable Object> ArrayList<T> toMutableArrayList(final T @Nullable @Unmodifiable [] collection,
                                                                                final int initialCapacity) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
 
         final var size = collection.length;
         if (size == 0)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __withNoTransform(collection, size, initialCapacity);
     }
 
@@ -343,11 +343,11 @@ public final class ToMutableArrayList
                                                                                                            final int initialCapacity,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
 
         final var size = collection.size();
         if (size == 0)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __with2Argument(collection, size, transform, initialCapacity);
     }
 
@@ -366,9 +366,9 @@ public final class ToMutableArrayList
                                                                                                            final int initialCapacity,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         if (collection.isEmpty())
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __with2Argument(collection, collection.size(), transform, initialCapacity);
     }
 
@@ -387,11 +387,11 @@ public final class ToMutableArrayList
                                                                                                            final int initialCapacity,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
 
         final var size = collection.length;
         if (size == 0)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __with2Argument(collection, size, transform, initialCapacity);
     }
 
@@ -413,11 +413,11 @@ public final class ToMutableArrayList
                                                                                                            final int initialCapacity,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
 
         final var size = collection.size();
         if (size == 0)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __with1Argument(collection, size, transform, initialCapacity);
     }
 
@@ -436,9 +436,9 @@ public final class ToMutableArrayList
                                                                                                            final int initialCapacity,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         if (collection.isEmpty())
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __with1Argument(collection, collection.size(), transform, initialCapacity);
     }
 
@@ -457,11 +457,11 @@ public final class ToMutableArrayList
                                                                                                            final int initialCapacity,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
 
         final var size = collection.length;
         if (size == 0)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __with1Argument(collection, size, transform, initialCapacity);
     }
 
@@ -483,11 +483,11 @@ public final class ToMutableArrayList
                                                                                                                          final int initialCapacity,
                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
 
         final var size = collection.size();
         if (size == 0)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __with0Argument(size, transform, initialCapacity);
     }
 
@@ -506,9 +506,9 @@ public final class ToMutableArrayList
                                                                                                                          final int initialCapacity,
                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         if (collection.isEmpty())
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __with0Argument(collection.size(), transform, initialCapacity);
     }
 
@@ -527,11 +527,11 @@ public final class ToMutableArrayList
                                                                                                                          final int initialCapacity,
                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
 
         final var size = collection.length;
         if (size == 0)
-            return new MutableArrayList<>(initialCapacity);
+            return __empty(initialCapacity);
         return __with0Argument(size, transform, initialCapacity);
     }
 
@@ -539,6 +539,17 @@ public final class ToMutableArrayList
 
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Creation methods --------------------
+
+    private static <T extends @Nullable Object> @Unmodifiable ArrayList<T> __empty() {
+        return new MutableArrayList<>();
+    }
+
+    private static <T extends @Nullable Object> @Unmodifiable ArrayList<T> __empty(final int initialCapacity) {
+        if (initialCapacity < 0)
+            return new MutableArrayList<>(0);
+        return new MutableArrayList<>(initialCapacity);
+    }
+
 
     private static <T extends @Nullable Object> ArrayList<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
                                                                                final int size,
