@@ -34,38 +34,26 @@ public class MutableArrayDeque<T>
 
     /// Create a mutable instance of [ArrayDeque]
     /// with the `initialCapacity` received
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     public MutableArrayDeque(final @Range(from = 0, to = Byte.MAX_VALUE) byte initialCapacity) { super(initialCapacity); }
 
     /// Create a mutable instance of [ArrayDeque]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     public MutableArrayDeque(final @Range(from = 0, to = Byte.MAX_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity); }
 
     /// Create a mutable instance of [ArrayDeque]
     /// with the `initialCapacity` received
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     public MutableArrayDeque(final @Range(from = 0, to = Short.MAX_VALUE) short initialCapacity) { super(initialCapacity); }
 
     /// Create a mutable instance of [ArrayDeque]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     public MutableArrayDeque(final @Range(from = 0, to = Short.MAX_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity); }
 
     /// Create a mutable instance of [ArrayDeque]
     /// with the `initialCapacity` received
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     public MutableArrayDeque(final @Range(from = 0, to = Integer.MAX_VALUE) int initialCapacity) { super(initialCapacity); }
 
     /// Create a mutable instance of [ArrayDeque]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     public MutableArrayDeque(final @Range(from = 0, to = Integer.MAX_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity); }
 
     //#endregion -------------------- initialCapacity --------------------
