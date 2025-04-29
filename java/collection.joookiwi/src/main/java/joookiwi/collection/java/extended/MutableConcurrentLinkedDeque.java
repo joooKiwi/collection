@@ -22,9 +22,7 @@ public class MutableConcurrentLinkedDeque<T>
     //#region -------------------- ∅ --------------------
 
     /// Create an empty mutable instance of [ConcurrentLinkedDeque]
-    public MutableConcurrentLinkedDeque() {
-        super();
-    }
+    public MutableConcurrentLinkedDeque() { super(); }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- values --------------------

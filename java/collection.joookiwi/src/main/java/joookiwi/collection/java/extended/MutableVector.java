@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static java.lang.Integer.MAX_VALUE;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_CAPACITY_INCREMENT;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 
 /// A mutable behaviour of a [Vector]
@@ -26,7 +27,7 @@ public class MutableVector<T extends @Nullable Object>
     /// Create a mutable instance of [Vector] that starts empty
     /// with an initial capacity of [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY]
     /// and the capacity increment of `0`
-    public MutableVector() { super(DEFAULT_INITIAL_CAPACITY, 0); }
+    public MutableVector() { super(DEFAULT_INITIAL_CAPACITY, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- initialCapacity --------------------
@@ -35,37 +36,37 @@ public class MutableVector<T extends @Nullable Object>
     /// with the `initialCapacity` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) byte initialCapacity) { super(initialCapacity, 0); }
+    public MutableVector(final @Range(from = 0, to = MAX_VALUE) byte initialCapacity) { super(initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     /// Create a mutable instance of [Vector]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, 0); }
+    public MutableVector(final @Range(from = 0, to = MAX_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     /// Create a mutable instance of [Vector]
     /// with the `initialCapacity` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) short initialCapacity) { super(initialCapacity, 0); }
+    public MutableVector(final @Range(from = 0, to = MAX_VALUE) short initialCapacity) { super(initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     /// Create a mutable instance of [Vector]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, 0); }
+    public MutableVector(final @Range(from = 0, to = MAX_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     /// Create a mutable instance of [Vector]
     /// with the `initialCapacity` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) int initialCapacity) { super(initialCapacity, 0); }
+    public MutableVector(final @Range(from = 0, to = MAX_VALUE) int initialCapacity) { super(initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     /// Create a mutable instance of [Vector]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, 0); }
+    public MutableVector(final @Range(from = 0, to = MAX_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- values --------------------
@@ -74,7 +75,7 @@ public class MutableVector<T extends @Nullable Object>
     /// with the initial capacity as the `values.length`
     /// and the capacity increment of `0`
     public MutableVector(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
-        super(values.length, 0);
+        super(values.length, DEFAULT_EMPTY_CAPACITY_INCREMENT);
         final var size = elementCount = values.length;
         if (size == 0)
             return;
@@ -89,7 +90,7 @@ public class MutableVector<T extends @Nullable Object>
     /// with the initial capacity as <code>values.[size][Collection#size()]</code>
     /// and the capacity increment of `0`
     public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
-        super(values.size(), 0);
+        super(values.size(), DEFAULT_EMPTY_CAPACITY_INCREMENT);
         if (values.isEmpty())
             return;
         super.addAll(values);
