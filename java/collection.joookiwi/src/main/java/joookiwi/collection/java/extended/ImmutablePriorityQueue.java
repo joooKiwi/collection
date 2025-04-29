@@ -38,7 +38,7 @@ public class ImmutablePriorityQueue<T>
     /// Create an empty [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue() {
         super(1, null);
         __size = 0;
@@ -50,6 +50,8 @@ public class ImmutablePriorityQueue<T>
 
     /// Create an empty [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Nullable Comparator<? super T> comparator) {
         super(1, comparator);
         __size = 0;
@@ -62,7 +64,7 @@ public class ImmutablePriorityQueue<T>
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(new ArrayAsSortedSet<>(values));
         __isEmpty = (__size = values.length) == 0;
@@ -71,7 +73,7 @@ public class ImmutablePriorityQueue<T>
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(new ImmutableTreeSet<>(values));
         __isEmpty = (__size = values.size()) == 0;
@@ -80,7 +82,7 @@ public class ImmutablePriorityQueue<T>
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// ordered according to the <code>values.[comparator][OrderableCollection#comparator]</code>
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable OrderableCollection<T> values) {
         super(new ImmutableTreeSet<>(values));
         __isEmpty = (__size = values.size()) == 0;
@@ -89,7 +91,7 @@ public class ImmutablePriorityQueue<T>
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// ordered according to the <code>values.[comparator][SortedSet#comparator]</code>
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<T> values) {
         super(new ImmutableTreeSet<>(values));
         __isEmpty = (__size = values.size()) == 0;
@@ -98,7 +100,7 @@ public class ImmutablePriorityQueue<T>
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// ordered according to the <code>values.[comparator][PriorityQueue#comparator()]</code>
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityBlockingQueue<T> values) {
         super(new ImmutableTreeSet<>(values));
         __isEmpty = (__size = values.size()) == 0;
@@ -107,7 +109,7 @@ public class ImmutablePriorityQueue<T>
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// ordered according to the <code>values.[comparator][PriorityBlockingQueue#comparator()]</code>
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityQueue<T> values) {
         super(new ImmutableTreeSet<>(values));
         __isEmpty = (__size = values.size()) == 0;
@@ -118,6 +120,8 @@ public class ImmutablePriorityQueue<T>
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
                                   final @Nullable Comparator<? super T> comparator) {
         super(new ArrayAsSortedSet<>(values, comparator));
@@ -126,6 +130,8 @@ public class ImmutablePriorityQueue<T>
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                   final @Nullable Comparator<? super T> comparator) {
         super(new ImmutableTreeSet<>(values, comparator));

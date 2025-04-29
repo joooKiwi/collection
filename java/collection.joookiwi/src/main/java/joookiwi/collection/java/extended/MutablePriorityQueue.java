@@ -94,7 +94,7 @@ public class MutablePriorityQueue<T>
     /// with an initial capacity of [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY]
     /// ordered according to the `comparator` received
     ///
-    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Nullable Comparator<? super T> comparator) { super(DEFAULT_INITIAL_CAPACITY, comparator); }
 
     //#endregion -------------------- comparator --------------------
@@ -105,7 +105,7 @@ public class MutablePriorityQueue<T>
     /// ordered according to the `comparator` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) byte initialCapacity,
                                         final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
 
@@ -114,7 +114,7 @@ public class MutablePriorityQueue<T>
     /// ordered according to the `comparator` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) @Nullable Byte initialCapacity,
                                         final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
 
@@ -123,7 +123,7 @@ public class MutablePriorityQueue<T>
     /// ordered according to the `comparator` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) short initialCapacity,
                                         final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
 
@@ -132,7 +132,7 @@ public class MutablePriorityQueue<T>
     /// ordered according to the `comparator` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) @Nullable Short initialCapacity,
                                         final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
 
@@ -141,7 +141,7 @@ public class MutablePriorityQueue<T>
     /// ordered according to the `comparator` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) int initialCapacity,
                                         final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
 
@@ -150,7 +150,7 @@ public class MutablePriorityQueue<T>
     /// ordered according to the `comparator` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) @Nullable Integer initialCapacity,
                                         final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
 
@@ -161,48 +161,48 @@ public class MutablePriorityQueue<T>
     /// with the initial capacity as the `values.length`
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
     /// @throws ClassCastException One element cannot be compared to another element
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) { super(new ArrayAsSortedSet<>(values)); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
     /// @throws ClassCastException One element cannot be compared to another element
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(new ImmutableTreeSet<>(values)); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
     /// ordered according to the <code>values.[comparator][OrderableCollection#comparator]</code>
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
     /// @throws ClassCastException One element cannot be compared to another element
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable OrderableCollection<? extends T> values) { super(new ImmutableTreeSet<>(values)); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
     /// ordered according to the <code>values.[comparator][SortedSet#comparator]</code>
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
     /// @throws ClassCastException One element cannot be compared to another element
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> values) { super(new ImmutableTreeSet<>(values)); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
     /// ordered according to the <code>values.[comparator][PriorityBlockingQueue#comparator()]</code>
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
     /// @throws ClassCastException One element cannot be compared to another element
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityBlockingQueue<? extends T> values) { super(new ImmutableTreeSet<>(values)); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
     /// ordered according to the <code>values.[comparator][PriorityQueue#comparator()]</code>
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
     /// @throws ClassCastException One element cannot be compared to another element
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityQueue<? extends T> values) { super(new ImmutableTreeSet<>(values)); }
 
     //#endregion -------------------- values --------------------
@@ -212,8 +212,8 @@ public class MutablePriorityQueue<T>
     /// with the initial capacity as the `values.length`
     /// ordered according to the `comparator` received
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
     /// @throws ClassCastException One element cannot be compared to another element
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                         final @Nullable Comparator<? super T> comparator) { super(new ArrayAsSortedSet<>(values, comparator)); }
 
@@ -221,8 +221,8 @@ public class MutablePriorityQueue<T>
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
     /// ordered according to the `comparator` received
     ///
-    /// @implNote Use a [Comparable] type on [T] to be safe
     /// @throws ClassCastException One element cannot be compared to another element
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                         final @Nullable Comparator<? super T> comparator) { super(new ImmutableTreeSet<>(values, comparator)); }
 

@@ -35,6 +35,8 @@ public class MutableConcurrentSkipListSet<T>
 
     /// Create a mutable instance of [ConcurrentSkipListSet]
     /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableConcurrentSkipListSet(final @Nullable Comparator<? super T> comparator) { super(comparator); }
 
     //#endregion -------------------- comparator --------------------
@@ -114,6 +116,8 @@ public class MutableConcurrentSkipListSet<T>
 
     /// Create a mutable instance of [ConcurrentSkipListSet]
     /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
                                         final @Nullable Comparator<? super T> comparator) {
         super(comparator);
@@ -127,6 +131,8 @@ public class MutableConcurrentSkipListSet<T>
 
     /// Create a mutable instance of [ConcurrentSkipListSet]
     /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                         final @Nullable Comparator<? super T> comparator) {
         super(comparator);
