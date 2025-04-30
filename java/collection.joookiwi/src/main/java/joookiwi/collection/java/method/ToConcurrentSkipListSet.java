@@ -15,9 +15,10 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static java.util.Comparator.naturalOrder;
 import static joookiwi.collection.java.CollectionConstants.emptyConcurrentSkipListSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 
 @NotNullByDefault
 public final class ToConcurrentSkipListSet
@@ -42,7 +43,7 @@ public final class ToConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return emptyConcurrentSkipListSet();
-        return __withNoTransform(collection, size, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
@@ -56,8 +57,8 @@ public final class ToConcurrentSkipListSet
         if (collection.isEmpty())
             return emptyConcurrentSkipListSet();
         if (collection.hasDuplicate())
-            return __withNoDuplicate(collection, collection.size(), naturalOrder());
-        return __withNoTransform(collection, collection.size(), naturalOrder());
+            return new ImmutableConcurrentSkipListSet<>(_values(collection, collection.size()));
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
@@ -72,7 +73,7 @@ public final class ToConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return emptyConcurrentSkipListSet();
-        return __withNoTransform(collection, size, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -94,7 +95,7 @@ public final class ToConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return emptyConcurrentSkipListSet();
-        return __with2Argument(collection, size, transform, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
@@ -111,7 +112,7 @@ public final class ToConcurrentSkipListSet
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
             return emptyConcurrentSkipListSet();
-        return __with2Argument(collection, collection.size(), transform, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
@@ -130,7 +131,7 @@ public final class ToConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return emptyConcurrentSkipListSet();
-        return __with2Argument(collection, size, transform, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -152,7 +153,7 @@ public final class ToConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return emptyConcurrentSkipListSet();
-        return __with1Argument(collection, size, transform, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
@@ -169,7 +170,7 @@ public final class ToConcurrentSkipListSet
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
             return emptyConcurrentSkipListSet();
-        return __with1Argument(collection, collection.size(), transform, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
@@ -188,7 +189,7 @@ public final class ToConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return emptyConcurrentSkipListSet();
-        return __with1Argument(collection, size, transform, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -210,7 +211,7 @@ public final class ToConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return emptyConcurrentSkipListSet();
-        return __with0Argument(size, transform, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
@@ -227,7 +228,7 @@ public final class ToConcurrentSkipListSet
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
             return emptyConcurrentSkipListSet();
-        return __with0Argument(collection.size(), transform, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
@@ -246,7 +247,7 @@ public final class ToConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return emptyConcurrentSkipListSet();
-        return __with0Argument(size, transform, naturalOrder());
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
@@ -254,12 +255,12 @@ public final class ToConcurrentSkipListSet
     //#region -------------------- comparator --------------------
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param <T>        The `collection` type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
     public static <T> @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                      final Comparator<? super T> comparator) {
         if (collection == null)
@@ -268,16 +269,16 @@ public final class ToConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __withNoTransform(collection, size, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size), comparator);
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param <T>        The `collection` type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
     public static <T> @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                      final Comparator<? super T> comparator) {
         if (collection == null)
@@ -285,17 +286,17 @@ public final class ToConcurrentSkipListSet
         if (collection.isEmpty())
             return new ImmutableConcurrentSkipListSet<>(comparator);
         if (collection.hasDuplicate())
-            return __withNoDuplicate(collection, collection.size(), comparator);
-        return __withNoTransform(collection, collection.size(), comparator);
+            return new ImmutableConcurrentSkipListSet<>(_values(collection, collection.size()), comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size()), comparator);
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param <T>        The `collection` type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
     public static <T> @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
                                                                                      final Comparator<? super T> comparator) {
         if (collection == null)
@@ -304,22 +305,22 @@ public final class ToConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __withNoTransform(collection, size, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size), comparator);
     }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- comparator, (T, int) → U --------------------
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
-    /// and applying a transformation
+    /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                  final Comparator<? super U> comparator,
                                                                                                                  final ObjIntFunction<? super T, ? extends U> transform) {
@@ -329,19 +330,19 @@ public final class ToConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __with2Argument(collection, size, transform, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform), comparator);
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
-    /// and applying a transformation
+    /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                  final Comparator<? super U> comparator,
                                                                                                                  final ObjIntFunction<? super T, ? extends U> transform) {
@@ -349,19 +350,19 @@ public final class ToConcurrentSkipListSet
             return new ImmutableConcurrentSkipListSet<>(comparator);
         if (collection.isEmpty())
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __with2Argument(collection, collection.size(), transform, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size(), transform), comparator);
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
-    /// and applying a transformation
+    /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                                  final Comparator<? super U> comparator,
                                                                                                                  final ObjIntFunction<? super T, ? extends U> transform) {
@@ -371,22 +372,22 @@ public final class ToConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __with2Argument(collection, size, transform, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform), comparator);
     }
 
     //#endregion -------------------- comparator, (T, int) → U --------------------
     //#region -------------------- comparator, (T) → U --------------------
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
-    /// and applying a transformation
+    /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                  final Comparator<? super U> comparator,
                                                                                                                  final Function<? super T, ? extends U> transform) {
@@ -396,19 +397,19 @@ public final class ToConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __with1Argument(collection, size, transform, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform), comparator);
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
-    /// and applying a transformation
+    /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                  final Comparator<? super U> comparator,
                                                                                                                  final Function<? super T, ? extends U> transform) {
@@ -416,19 +417,19 @@ public final class ToConcurrentSkipListSet
             return new ImmutableConcurrentSkipListSet<>(comparator);
         if (collection.isEmpty())
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __with1Argument(collection, collection.size(), transform, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size(), transform), comparator);
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
-    /// and applying a transformation
+    /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                                  final Comparator<? super U> comparator,
                                                                                                                  final Function<? super T, ? extends U> transform) {
@@ -438,22 +439,22 @@ public final class ToConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __with1Argument(collection, size, transform, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform), comparator);
     }
 
     //#endregion -------------------- comparator, (T) → U --------------------
     //#region -------------------- comparator, () → U --------------------
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
-    /// and applying a transformation
+    /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                  final Comparator<? super U> comparator,
                                                                                                                  final Supplier<? extends U> transform) {
@@ -463,19 +464,19 @@ public final class ToConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __with0Argument(size, transform, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(size, transform), comparator);
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
-    /// and applying a transformation
+    /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                  final Comparator<? super U> comparator,
                                                                                                                  final Supplier<? extends U> transform) {
@@ -483,15 +484,14 @@ public final class ToConcurrentSkipListSet
             return new ImmutableConcurrentSkipListSet<>(comparator);
         if (collection.isEmpty())
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __with0Argument(collection.size(), transform, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection.size(), transform), comparator);
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
-    /// with a [Comparator]
-    /// and applying a transformation
+    /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param comparator The [Comparator] to compare the values to each other
+    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -505,68 +505,11 @@ public final class ToConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new ImmutableConcurrentSkipListSet<>(comparator);
-        return __with0Argument(size, transform, comparator);
+        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(size, transform), comparator);
     }
 
     //#endregion -------------------- comparator, () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T> @Unmodifiable ConcurrentSkipListSet<T> __withNoDuplicate(final CollectionHolder<? extends T> collection,
-                                                                                final int size,
-                                                                                final Comparator<? super T> comparator) {
-        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size), comparator);
-    }
-
-
-    private static <T> @Unmodifiable ConcurrentSkipListSet<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                final int size,
-                                                                                final Comparator<? super T> comparator) {
-        return new ImmutableConcurrentSkipListSet<>(_values(collection, size), comparator);
-    }
-
-    private static <T> @Unmodifiable ConcurrentSkipListSet<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                                final int size,
-                                                                                final Comparator<? super T> comparator) {
-        return new ImmutableConcurrentSkipListSet<>(_values(collection, size), comparator);
-    }
-
-
-    private static <U> @Unmodifiable ConcurrentSkipListSet<U> __with0Argument(final int size,
-                                                                              final Supplier<? extends U> transform,
-                                                                              final Comparator<? super U> comparator) {
-        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(size, transform), comparator);
-    }
-
-
-    private static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                          final int size,
-                                                                                                          final Function<? super T, ? extends U> transform,
-                                                                                                          final Comparator<? super U> comparator) {
-        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform), comparator);
-    }
-
-    private static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                                          final int size,
-                                                                                                          final Function<? super T, ? extends U> transform,
-                                                                                                          final Comparator<? super U> comparator) {
-        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform), comparator);
-    }
-
-
-    private static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection, int size,
-                                                                                                          final ObjIntFunction<? super T, ? extends U> transform,
-                                                                                                          final Comparator<? super U> comparator) {
-        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform), comparator);
-    }
-
-    private static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> __with2Argument(final T @Unmodifiable [] collection, int size,
-                                                                                                          final ObjIntFunction<? super T, ? extends U> transform,
-                                                                                                          final Comparator<? super U> comparator) {
-        return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform), comparator);
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
