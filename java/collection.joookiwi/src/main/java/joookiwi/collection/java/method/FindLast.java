@@ -11,7 +11,6 @@ import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.NullCollectionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -43,7 +42,7 @@ public final class FindLast
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> T findLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                          final @NotNull ObjIntPredicate<? super T> predicate) {
+                                                          final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -66,7 +65,7 @@ public final class FindLast
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> T findLast(final @Nullable CollectionHolder<? extends T> collection,
-                                                          final @NotNull ObjIntPredicate<? super T> predicate) {
+                                                          final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             throw new NullCollectionException();
         if (collection.isEmpty())
@@ -87,7 +86,7 @@ public final class FindLast
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> T findLast(final T @Nullable @Unmodifiable [] collection,
-                                                          final @NotNull ObjIntPredicate<? super T> predicate) {
+                                                          final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -113,7 +112,7 @@ public final class FindLast
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> T findLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                          final @NotNull Predicate<? super T> predicate) {
+                                                          final Predicate<? super T> predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -136,7 +135,7 @@ public final class FindLast
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> T findLast(final @Nullable CollectionHolder<? extends T> collection,
-                                                          final @NotNull Predicate<? super T> predicate) {
+                                                          final Predicate<? super T> predicate) {
         if (collection == null)
             throw new NullCollectionException();
         if (collection.isEmpty())
@@ -157,7 +156,7 @@ public final class FindLast
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> T findLast(final T @Nullable @Unmodifiable [] collection,
-                                                          final @NotNull Predicate<? super T> predicate) {
+                                                          final Predicate<? super T> predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -183,7 +182,7 @@ public final class FindLast
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> T findLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                          final @NotNull BooleanSupplier predicate) {
+                                                          final BooleanSupplier predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -206,7 +205,7 @@ public final class FindLast
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> T findLast(final @Nullable CollectionHolder<? extends T> collection,
-                                                          final @NotNull BooleanSupplier predicate) {
+                                                          final BooleanSupplier predicate) {
         if (collection == null)
             throw new NullCollectionException();
         if (collection.isEmpty())
@@ -227,7 +226,7 @@ public final class FindLast
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> T findLast(final T @Nullable @Unmodifiable [] collection,
-                                                          final @NotNull BooleanSupplier predicate) {
+                                                          final BooleanSupplier predicate) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -242,8 +241,8 @@ public final class FindLast
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                  final @NotNull BooleanSupplier predicate,
+    private static <T extends @Nullable Object> T __with0Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                  final BooleanSupplier predicate,
                                                                   final int size) {
         var index = size;
         while (index-- > 0)
@@ -252,8 +251,8 @@ public final class FindLast
         throw new IndexOutOfBoundsException("No element could be found from the “findLast” predicate received in the collection.", size - 1);
     }
 
-    private static <T extends @Nullable Object> T __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                  final @NotNull BooleanSupplier predicate,
+    private static <T extends @Nullable Object> T __with0Argument(final T @Unmodifiable [] collection,
+                                                                  final BooleanSupplier predicate,
                                                                   final int size) {
         var index = size;
         while (index-- > 0)
@@ -263,8 +262,8 @@ public final class FindLast
     }
 
 
-    private static <T extends @Nullable Object> T __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                  final @NotNull Predicate<? super T> predicate,
+    private static <T extends @Nullable Object> T __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                  final Predicate<? super T> predicate,
                                                                   final int size) {
         var index = size;
         while (index-- > 0) {
@@ -275,8 +274,8 @@ public final class FindLast
         throw new IndexOutOfBoundsException("No element could be found from the “findLast” predicate received in the collection.", size - 1);
     }
 
-    private static <T extends @Nullable Object> T __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                  final @NotNull Predicate<? super T> predicate,
+    private static <T extends @Nullable Object> T __with1Argument(final T @Unmodifiable [] collection,
+                                                                  final Predicate<? super T> predicate,
                                                                   final int size) {
         var index = size;
         while (index-- > 0) {
@@ -288,8 +287,8 @@ public final class FindLast
     }
 
 
-    private static <T extends @Nullable Object> T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                  final @NotNull ObjIntPredicate<? super T> predicate,
+    private static <T extends @Nullable Object> T __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                  final ObjIntPredicate<? super T> predicate,
                                                                   final int size) {
         var index = size;
         while (index-- > 0) {
@@ -300,8 +299,8 @@ public final class FindLast
         throw new IndexOutOfBoundsException("No element could be found from the “findLast” predicate received in the collection.", size - 1);
     }
 
-    private static <T extends @Nullable Object> T __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                  final @NotNull ObjIntPredicate<? super T> predicate,
+    private static <T extends @Nullable Object> T __with2Argument(final T @Unmodifiable [] collection,
+                                                                  final ObjIntPredicate<? super T> predicate,
                                                                   final int size) {
         var index = size;
         while (index-- > 0) {

@@ -8,7 +8,6 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.IntObjPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -40,7 +39,7 @@ public final class FindLastIndexedOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                 final @NotNull IntObjPredicate<? super T> predicate) {
+                                                                                 final IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -63,7 +62,7 @@ public final class FindLastIndexedOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                 final @NotNull IntObjPredicate<? super T> predicate) {
+                                                                                 final IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -84,7 +83,7 @@ public final class FindLastIndexedOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                 final @NotNull IntObjPredicate<? super T> predicate) {
+                                                                                 final IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -110,7 +109,7 @@ public final class FindLastIndexedOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                 final @NotNull IntPredicate predicate) {
+                                                                                 final IntPredicate predicate) {
         if (collection == null)
             return null;
 
@@ -133,7 +132,7 @@ public final class FindLastIndexedOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                 final @NotNull IntPredicate predicate) {
+                                                                                 final IntPredicate predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -154,7 +153,7 @@ public final class FindLastIndexedOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                 final @NotNull IntPredicate predicate) {
+                                                                                 final IntPredicate predicate) {
         if (collection == null)
             return null;
 
@@ -180,7 +179,7 @@ public final class FindLastIndexedOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                 final @NotNull BooleanSupplier predicate) {
+                                                                                 final BooleanSupplier predicate) {
         if (collection == null)
             return null;
 
@@ -203,7 +202,7 @@ public final class FindLastIndexedOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                 final @NotNull BooleanSupplier predicate) {
+                                                                                 final BooleanSupplier predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -224,7 +223,7 @@ public final class FindLastIndexedOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                 final @NotNull BooleanSupplier predicate) {
+                                                                                 final BooleanSupplier predicate) {
         if (collection == null)
             return null;
 
@@ -239,8 +238,8 @@ public final class FindLastIndexedOrNull
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> @Nullable T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                            final @NotNull BooleanSupplier predicate,
+    private static <T extends @Nullable Object> @Nullable T __with0Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                            final BooleanSupplier predicate,
                                                                             final int size) {
         var index = size;
         while (index-- > 0)
@@ -249,8 +248,8 @@ public final class FindLastIndexedOrNull
         return null;
     }
 
-    private static <T extends @Nullable Object> @Nullable T __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                            final @NotNull BooleanSupplier predicate,
+    private static <T extends @Nullable Object> @Nullable T __with0Argument(final T @Unmodifiable [] collection,
+                                                                            final BooleanSupplier predicate,
                                                                             final int size) {
         var index = size;
         while (index-- > 0)
@@ -260,8 +259,8 @@ public final class FindLastIndexedOrNull
     }
 
 
-    private static <T extends @Nullable Object> @Nullable T __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                            final @NotNull IntPredicate predicate,
+    private static <T extends @Nullable Object> @Nullable T __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                            final IntPredicate predicate,
                                                                             final int size) {
         var index = size;
         while (index-- > 0)
@@ -270,8 +269,8 @@ public final class FindLastIndexedOrNull
         return null;
     }
 
-    private static <T extends @Nullable Object> @Nullable T __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                            final @NotNull IntPredicate predicate,
+    private static <T extends @Nullable Object> @Nullable T __with1Argument(final T @Unmodifiable [] collection,
+                                                                            final IntPredicate predicate,
                                                                             final int size) {
         var index = size;
         while (index-- > 0)
@@ -281,8 +280,8 @@ public final class FindLastIndexedOrNull
     }
 
 
-    private static <T extends @Nullable Object> @Nullable T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                            final @NotNull IntObjPredicate<? super T> predicate,
+    private static <T extends @Nullable Object> @Nullable T __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                            final IntObjPredicate<? super T> predicate,
                                                                             final int size) {
         var index = size;
         while (index-- > 0) {
@@ -293,8 +292,8 @@ public final class FindLastIndexedOrNull
         return null;
     }
 
-    private static <T extends @Nullable Object> @Nullable T __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                            final @NotNull IntObjPredicate<? super T> predicate,
+    private static <T extends @Nullable Object> @Nullable T __with2Argument(final T @Unmodifiable [] collection,
+                                                                            final IntObjPredicate<? super T> predicate,
                                                                             final int size) {
         var index = size;
         while (index-- > 0) {
