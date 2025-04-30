@@ -42,8 +42,10 @@ public class MutableConcurrentLinkedDeque<T>
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
 
+    @Contract(pure = true)
     @Override public T getFirst() { return super.getFirst(); }
 
+    @Contract(pure = true)
     @Override public T getLast() { return super.getLast(); }
 
 
@@ -52,7 +54,7 @@ public class MutableConcurrentLinkedDeque<T>
     @Override public void addLast(final T value) { super.addLast(value); }
 
 
-    @Override public synchronized T pop() { return super.pop(); }
+    @Override public T pop() { return super.pop(); }
 
     @Override public T removeFirst() { return super.removeFirst(); }
 

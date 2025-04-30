@@ -115,7 +115,7 @@ public class MutableLinkedBlockingDeque<T>
     @Override public void addLast(final T value) { super.addLast(value); }
 
 
-    @Override public synchronized T pop() { return super.pop(); }
+    @Override public T pop() { return super.pop(); }
 
     @Override public T removeFirst() { return super.removeFirst(); }
 
