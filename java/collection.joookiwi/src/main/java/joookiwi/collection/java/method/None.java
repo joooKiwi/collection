@@ -8,7 +8,6 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -294,7 +293,7 @@ public final class None
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static boolean __with0Argument(final @NotNull BooleanSupplier predicate,
+    private static boolean __with0Argument(final BooleanSupplier predicate,
                                            final int size) {
         var index = size;
         while (index-- > 0)
@@ -304,8 +303,8 @@ public final class None
     }
 
 
-    private static <T extends @Nullable Object> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                        final @NotNull Predicate<? super T> predicate,
+    private static <T extends @Nullable Object> boolean __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                        final Predicate<? super T> predicate,
                                                                         final int size) {
         var index = -1;
         while (++index < size)
@@ -314,8 +313,8 @@ public final class None
         return true;
     }
 
-    private static <T extends @Nullable Object> boolean __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                        final @NotNull Predicate<? super T> predicate,
+    private static <T extends @Nullable Object> boolean __with1Argument(final T @Unmodifiable [] collection,
+                                                                        final Predicate<? super T> predicate,
                                                                         final int size) {
         var index = -1;
         while (++index < size)
@@ -325,8 +324,8 @@ public final class None
     }
 
 
-    private static <T extends @Nullable Object> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                        final @NotNull ObjIntPredicate<? super T> predicate,
+    private static <T extends @Nullable Object> boolean __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                        final ObjIntPredicate<? super T> predicate,
                                                                         final int size) {
         var index = -1;
         while (++index < size)
@@ -335,8 +334,8 @@ public final class None
         return true;
     }
 
-    private static <T extends @Nullable Object> boolean __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                        final @NotNull ObjIntPredicate<? super T> predicate,
+    private static <T extends @Nullable Object> boolean __with2Argument(final T @Unmodifiable [] collection,
+                                                                        final ObjIntPredicate<? super T> predicate,
                                                                         final int size) {
         var index = -1;
         while (++index < size)
