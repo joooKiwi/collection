@@ -1310,10 +1310,10 @@ public final class IndexOfLast
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOfLast2(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                 final Predicate<? super T> predicate,
-                                                                                                 final @Nullable Integer from,
-                                                                                                 final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOfLast(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final Predicate<? super T> predicate,
+                                                                                                final @Nullable Integer from,
+                                                                                                final int to) {
         if (collection == null)
             throw new NullCollectionException();
         if (from == null)
