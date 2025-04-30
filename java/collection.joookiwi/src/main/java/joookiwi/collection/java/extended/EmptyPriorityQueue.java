@@ -1,5 +1,13 @@
 package joookiwi.collection.java.extended;
 
+import java.io.Serial;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
+import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -7,18 +15,19 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import java.io.Serial;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Spliterator;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import java.util.stream.Stream;
-
-import static joookiwi.collection.java.CollectionConstants.*;
-import static joookiwi.collection.java.CommonContracts.*;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
+import static joookiwi.collection.java.CollectionConstants.emptyIterator;
+import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
+import static joookiwi.collection.java.CollectionConstants.emptyStream;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
 /// A [Singleton] implementation of the [java.util.PriorityQueue],
 /// but in an empty form
