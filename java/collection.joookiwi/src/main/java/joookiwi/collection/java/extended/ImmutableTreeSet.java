@@ -28,7 +28,7 @@ public class ImmutableTreeSet<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -2247769485089749155L;
+    @Serial private static final long serialVersionUID = -8287523124128106809L;
 
     private boolean __isInitialized = false;
     private int __size = -1;

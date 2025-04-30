@@ -29,7 +29,7 @@ public class ImmutableSynchronousQueue<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -9155139302671624495L;
+    @Serial private static final long serialVersionUID = -8482752143049176666L;
 
     private final int __size;
     private final boolean __isEmpty;

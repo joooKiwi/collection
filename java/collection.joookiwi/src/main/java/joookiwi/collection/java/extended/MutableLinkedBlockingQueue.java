@@ -22,7 +22,7 @@ public class MutableLinkedBlockingQueue<T>
         extends LinkedBlockingQueue<T>
         implements Cloneable {
 
-    @Serial private static final long serialVersionUID = 332989695274849359L;
+    @Serial private static final long serialVersionUID = 4191828451803615454L;
 
     //#region -------------------- Constructors --------------------
 

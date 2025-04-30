@@ -18,7 +18,7 @@ public class MutableCopyOnWriteArraySet<T>
         extends CopyOnWriteArraySet<T>
         implements Cloneable {
 
-    @Serial private static final long serialVersionUID = -6307287942052097954L;
+    @Serial private static final long serialVersionUID = -1747477255761385802L;
 
     //#region -------------------- Constructors --------------------
 

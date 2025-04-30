@@ -42,7 +42,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyLinkedHashSet<T extends @Nullable Object>
         extends ImmutableLinkedHashSet<T> {
 
-    @Serial private static final long serialVersionUID = 918584861592640403L;
+    @Serial private static final long serialVersionUID = -4296537754035399243L;
 
     //#region -------------------- Singleton usage --------------------
 

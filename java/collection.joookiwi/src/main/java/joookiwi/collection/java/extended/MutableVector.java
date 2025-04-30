@@ -22,7 +22,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 public class MutableVector<T extends @Nullable Object>
         extends Vector<T> {
 
-    @Serial private static final long serialVersionUID = -5379583952948526076L;
+    @Serial private static final long serialVersionUID = -2085466483357720716L;
 
     //#region -------------------- Constructors --------------------
 

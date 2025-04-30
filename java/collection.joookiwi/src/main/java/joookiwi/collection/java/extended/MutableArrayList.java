@@ -20,7 +20,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 public class MutableArrayList<T extends @Nullable Object>
         extends ArrayList<T> {
 
-    @Serial private static final long serialVersionUID = 5882521604946086928L;
+    @Serial private static final long serialVersionUID = 3159025709828425131L;
 
     //#region -------------------- Constructors --------------------
 

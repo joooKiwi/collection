@@ -41,7 +41,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyPriorityBlockingQueue<T>
         extends ImmutablePriorityBlockingQueue<T> {
 
-    @Serial private static final long serialVersionUID = -3392198592029396227L;
+    @Serial private static final long serialVersionUID = -5326266363006590924L;
 
     //#region -------------------- Singleton usage --------------------
 

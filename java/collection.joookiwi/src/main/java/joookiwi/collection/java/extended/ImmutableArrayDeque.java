@@ -24,7 +24,7 @@ public class ImmutableArrayDeque<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -168888058415265862L;
+    @Serial private static final long serialVersionUID = 8784722695914773748L;
 
     private final int __size;
     private final boolean __isEmpty;

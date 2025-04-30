@@ -41,7 +41,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyConcurrentLinkedDeque<T>
         extends ImmutableConcurrentLinkedDeque<T> {
 
-    @Serial private static final long serialVersionUID = -2856675658236218735L;
+    @Serial private static final long serialVersionUID = -2093664481530738502L;
 
     //#region -------------------- Singleton usage --------------------
 

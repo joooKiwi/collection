@@ -23,9 +23,9 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 public class MutableLinkedHashSet<T extends @Nullable Object>
         extends LinkedHashSet<T> {
 
-    @Serial private static final long serialVersionUID = -6995556967288013676L;
     //#region -------------------- Fields --------------------
 
+    @Serial private static final long serialVersionUID = 299331378293604076L;
 
     private final float __loadFactor;
 

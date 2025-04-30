@@ -29,7 +29,7 @@ public class ImmutableLinkedBlockingDeque<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 7496993854860900864L;
+    @Serial private static final long serialVersionUID = -792047284715714071L;
 
     private final int __size;
     private final boolean __isEmpty;

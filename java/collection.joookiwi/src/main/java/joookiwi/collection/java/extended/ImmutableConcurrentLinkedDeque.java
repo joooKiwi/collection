@@ -25,7 +25,7 @@ public class ImmutableConcurrentLinkedDeque<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 5811572677219871201L;
+    @Serial private static final long serialVersionUID = 1019955596194365726L;
 
     private final int __size;
     private final boolean __isEmpty;
@@ -71,8 +71,10 @@ public class ImmutableConcurrentLinkedDeque<T>
     @Override public boolean isEmpty() { return __isEmpty; }
 
 
+    @Contract(pure = true)
     @Override public T getFirst() { return super.getFirst(); }
 
+    @Contract(pure = true)
     @Override public T getLast() { return super.getLast(); }
 
 

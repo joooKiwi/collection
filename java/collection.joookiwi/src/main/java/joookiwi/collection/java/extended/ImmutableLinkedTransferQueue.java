@@ -28,7 +28,7 @@ public class ImmutableLinkedTransferQueue<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -5023861910586421245L;
+    @Serial private static final long serialVersionUID = 7006196359529217372L;
 
     private final int __size;
     private final boolean __isEmpty;

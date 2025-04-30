@@ -47,10 +47,10 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @see joookiwi.collection.java.CollectionConstants#emptyStack
 @Singleton
 @NotNullByDefault
-public class EmptyStack<T>
+public class EmptyStack<T extends @Nullable Object>
         extends ImmutableStack<T> {
 
-    @Serial private static final long serialVersionUID = 4387819917296724707L;
+    @Serial private static final long serialVersionUID = 95700118112186722L;
 
     //#region -------------------- Singleton usage --------------------
 

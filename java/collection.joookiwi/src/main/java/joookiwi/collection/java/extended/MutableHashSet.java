@@ -22,9 +22,9 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 public class MutableHashSet<T extends @Nullable Object>
         extends HashSet<T> {
 
-    @Serial private static final long serialVersionUID = 2694096885999753256L;
     //#region -------------------- Fields --------------------
 
+    @Serial private static final long serialVersionUID = -3785694475957286791L;
 
     private final float __loadFactor;
 

@@ -22,7 +22,7 @@ public class MutableLinkedBlockingDeque<T>
         implements BasicStack<T>,
                    Cloneable {
 
-    @Serial private static final long serialVersionUID = -2017638086081983516L;
+    @Serial private static final long serialVersionUID = -1322068302287090715L;
 
     //#region -------------------- Constructors --------------------
 

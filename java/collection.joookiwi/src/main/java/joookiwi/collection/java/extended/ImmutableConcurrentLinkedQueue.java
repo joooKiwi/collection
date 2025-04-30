@@ -24,7 +24,7 @@ public class ImmutableConcurrentLinkedQueue<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -5708374228202027350L;
+    @Serial private static final long serialVersionUID = -4862293545064002769L;
 
     private final int __size;
     private final boolean __isEmpty;

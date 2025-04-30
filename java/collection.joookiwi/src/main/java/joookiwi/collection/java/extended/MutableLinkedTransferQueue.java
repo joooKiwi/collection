@@ -19,7 +19,7 @@ public class MutableLinkedTransferQueue<T>
         extends LinkedTransferQueue<T>
         implements Cloneable {
 
-    @Serial private static final long serialVersionUID = 8305870909582435719L;
+    @Serial private static final long serialVersionUID = 6378301088078459416L;
 
     //#region -------------------- Constructors --------------------
 

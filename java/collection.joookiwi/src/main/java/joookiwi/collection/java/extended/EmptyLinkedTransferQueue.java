@@ -39,7 +39,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyLinkedTransferQueue<T>
         extends ImmutableLinkedTransferQueue<T> {
 
-    @Serial private static final long serialVersionUID = 1087545192215108912L;
+    @Serial private static final long serialVersionUID = -6711492231197028200L;
 
     //#region -------------------- Singleton usage --------------------
 

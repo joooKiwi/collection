@@ -24,7 +24,7 @@ public class ImmutableCopyOnWriteArraySet<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -1143887041339012426L;
+    @Serial private static final long serialVersionUID = 1049354801822962647L;
 
     private boolean __isInitialized = false;
     private int __size = -1;

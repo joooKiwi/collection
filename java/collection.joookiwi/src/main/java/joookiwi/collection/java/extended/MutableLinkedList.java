@@ -18,7 +18,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 public class MutableLinkedList<T extends @Nullable Object>
         extends LinkedList<T> {
 
-    @Serial private static final long serialVersionUID = 7547886904697591729L;
+    @Serial private static final long serialVersionUID = 6735854745219200945L;
 
     //#region -------------------- Constructors --------------------
 

@@ -28,7 +28,7 @@ public class ImmutablePriorityQueue<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -151663355589186333L;
+    @Serial private static final long serialVersionUID = -5976385428744770366L;
 
     private final int __size;
     private final boolean __isEmpty;

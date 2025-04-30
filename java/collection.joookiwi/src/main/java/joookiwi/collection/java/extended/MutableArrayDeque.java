@@ -21,7 +21,7 @@ public class MutableArrayDeque<T>
         extends ArrayDeque<T>
         implements BasicStack<T> {
 
-    @Serial private static final long serialVersionUID = 1870490230614814883L;
+    @Serial private static final long serialVersionUID = -4901951039087361762L;
 
     //#region -------------------- Constructors --------------------
 

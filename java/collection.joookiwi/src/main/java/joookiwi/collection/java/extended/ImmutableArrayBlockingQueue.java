@@ -30,7 +30,7 @@ public class ImmutableArrayBlockingQueue<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 4875391426553125880L;
+    @Serial private static final long serialVersionUID = -5980298552322685426L;
 
     private final int __size;
     private final boolean __isEmpty;

@@ -18,7 +18,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
         extends CopyOnWriteArrayList<T> {
 
-    @Serial private static final long serialVersionUID = 6253245103859034347L;
+    @Serial private static final long serialVersionUID = -4131727169165089232L;
 
     //#region -------------------- Constructors --------------------
 

@@ -24,7 +24,7 @@ public class MutableConcurrentSkipListSet<T>
         implements OrderableCollection<T>,
                    Cloneable {
 
-    @Serial private static final long serialVersionUID = -8699445213643860004L;
+    @Serial private static final long serialVersionUID = 8623403948358588540L;
 
     //#region -------------------- Constructors --------------------
 

@@ -19,7 +19,7 @@ public class MutableConcurrentLinkedQueue<T>
         extends ConcurrentLinkedQueue<T>
         implements Cloneable {
 
-    @Serial private static final long serialVersionUID = -1757655120966567357L;
+    @Serial private static final long serialVersionUID = 7578604098380306253L;
 
     //#region -------------------- Constructors --------------------
 

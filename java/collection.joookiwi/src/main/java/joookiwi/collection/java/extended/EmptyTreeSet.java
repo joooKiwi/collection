@@ -46,7 +46,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyTreeSet<T>
         extends ImmutableTreeSet<T> {
 
-    @Serial private static final long serialVersionUID = -5382169962893894270L;
+    @Serial private static final long serialVersionUID = 9054395602706629664L;
 
     //#region -------------------- Singleton usage --------------------
 

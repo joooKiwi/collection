@@ -23,7 +23,7 @@ public class MutableArrayBlockingQueue<T>
         extends ArrayBlockingQueue<T>
         implements Cloneable {
 
-    @Serial private static final long serialVersionUID = -6474680550561543786L;
+    @Serial private static final long serialVersionUID = 8962938998127785606L;
 
     //#region -------------------- Constructors --------------------
 

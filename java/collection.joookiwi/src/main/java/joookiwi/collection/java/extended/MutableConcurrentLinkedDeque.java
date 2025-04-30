@@ -19,7 +19,7 @@ public class MutableConcurrentLinkedDeque<T>
         implements BasicStack<T>,
                    Cloneable {
 
-    @Serial private static final long serialVersionUID = 6621665345620907280L;
+    @Serial private static final long serialVersionUID = -1158958160598704896L;
 
     //#region -------------------- Constructors --------------------
 

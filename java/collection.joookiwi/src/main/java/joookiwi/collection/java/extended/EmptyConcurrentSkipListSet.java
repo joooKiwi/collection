@@ -46,7 +46,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyConcurrentSkipListSet<T>
         extends ImmutableConcurrentSkipListSet<T> {
 
-    @Serial private static final long serialVersionUID = -2122153619148004018L;
+    @Serial private static final long serialVersionUID = -175439926840083523L;
 
     //#region -------------------- Singleton usage --------------------
 

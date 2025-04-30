@@ -20,7 +20,7 @@ public class MutableStack<T extends @Nullable Object>
         extends Stack<T>
         implements BasicStack<T> {
 
-    @Serial private static final long serialVersionUID = 2636535014265397713L;
+    @Serial private static final long serialVersionUID = -4904306971730425078L;
 
     //#region -------------------- Constructors --------------------
 

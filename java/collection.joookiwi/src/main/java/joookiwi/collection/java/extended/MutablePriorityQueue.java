@@ -28,7 +28,7 @@ public class MutablePriorityQueue<T>
         implements OrderableCollection<T>,
                    Cloneable {
 
-    @Serial private static final long serialVersionUID = -4362057305272414514L;
+    @Serial private static final long serialVersionUID = -2019012546399591223L;
 
     //#region -------------------- Constructors --------------------
 

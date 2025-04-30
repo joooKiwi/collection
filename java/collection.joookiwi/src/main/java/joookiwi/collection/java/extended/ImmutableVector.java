@@ -27,7 +27,7 @@ public class ImmutableVector<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 69638651819716771L;
+    @Serial private static final long serialVersionUID = 2498146993236063539L;
 
     private final int __size;
     private final boolean __isEmpty;

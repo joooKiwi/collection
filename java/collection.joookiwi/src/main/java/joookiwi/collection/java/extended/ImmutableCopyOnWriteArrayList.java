@@ -26,7 +26,7 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -1572996847770443L;
+    @Serial private static final long serialVersionUID = -2714216011329921029L;
 
     private final int __size;
     private final boolean __isEmpty;

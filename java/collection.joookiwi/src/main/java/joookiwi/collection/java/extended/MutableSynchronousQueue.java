@@ -22,7 +22,8 @@ public class MutableSynchronousQueue<T>
         extends SynchronousQueue<T>
         implements Cloneable {
 
-    @Serial private static final long serialVersionUID = -3480759734696123616L;
+    @Serial private static final long serialVersionUID = -5260155578817298893L;
+
     //#region -------------------- Fields --------------------
 
     private final boolean __isFair;

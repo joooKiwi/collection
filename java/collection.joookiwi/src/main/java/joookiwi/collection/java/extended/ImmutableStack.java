@@ -23,13 +23,13 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class ImmutableStack<T>
+public class ImmutableStack<T extends @Nullable Object>
         extends Stack<T>
         implements BasicStack<T> {
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 3834915813584061666L;
+    @Serial private static final long serialVersionUID = -4687075000330419307L;
 
     private final int __size;
     private final boolean __isEmpty;

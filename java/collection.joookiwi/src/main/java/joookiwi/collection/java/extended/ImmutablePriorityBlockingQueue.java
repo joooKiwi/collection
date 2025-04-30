@@ -32,7 +32,7 @@ public class ImmutablePriorityBlockingQueue<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -6422035510456348123L;
+    @Serial private static final long serialVersionUID = 8215535591326633836L;
 
     private final int __size;
     private final boolean __isEmpty;

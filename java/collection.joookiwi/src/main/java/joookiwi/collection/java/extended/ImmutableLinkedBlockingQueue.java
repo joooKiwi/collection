@@ -29,7 +29,7 @@ public class ImmutableLinkedBlockingQueue<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -3624388111436418250L;
+    @Serial private static final long serialVersionUID = 8678919895325364366L;
 
     private final int __size;
     private final boolean __isEmpty;
