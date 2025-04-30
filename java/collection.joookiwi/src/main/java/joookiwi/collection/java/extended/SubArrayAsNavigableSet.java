@@ -87,6 +87,8 @@ public class SubArrayAsNavigableSet<T extends @Nullable Object,
 
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 
+    @Override public SubArrayAsNavigableSet<T, SOURCE, SUB_ARRAY> clone() { return new SubArrayAsNavigableSet<>(_source(), _subArray()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

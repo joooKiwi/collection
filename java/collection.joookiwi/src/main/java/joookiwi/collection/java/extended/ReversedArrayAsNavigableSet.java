@@ -85,6 +85,8 @@ public class ReversedArrayAsNavigableSet<T extends @Nullable Object,
 
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 
+    @Override public ReversedArrayAsNavigableSet<T, SOURCE, REVERSED_ARRAY> clone() { return new ReversedArrayAsNavigableSet<>(_source(), _reversedArray()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

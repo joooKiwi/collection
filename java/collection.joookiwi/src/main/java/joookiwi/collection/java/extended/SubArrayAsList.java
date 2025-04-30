@@ -84,6 +84,8 @@ public class SubArrayAsList<T extends @Nullable Object,
         return __isEmpty = size() == 0;
     }
 
+    @Override public SubArrayAsList<T, SOURCE, SUB_ARRAY> clone() { return new SubArrayAsList<>(_source(), _subArray()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

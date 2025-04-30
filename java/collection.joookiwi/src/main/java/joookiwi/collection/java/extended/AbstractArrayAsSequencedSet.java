@@ -30,6 +30,8 @@ public abstract class AbstractArrayAsSequencedSet<T extends @Nullable Object>
         return new ReversedArrayAsSequencedSet<>(this, new ReversedArray<>(_reference()));
     }
 
+    @Override public abstract AbstractArrayAsSequencedSet<T> clone();
+
     //#endregion -------------------- Methods --------------------
 
 }

@@ -82,6 +82,8 @@ public class ReversedArrayAsList<T extends @Nullable Object,
         return __isEmpty = size() == 0;
     }
 
+    @Override public ReversedArrayAsList<T, SOURCE, REVERSED_ARRAY> clone() { return new ReversedArrayAsList<>(_source(), _reversedArray()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

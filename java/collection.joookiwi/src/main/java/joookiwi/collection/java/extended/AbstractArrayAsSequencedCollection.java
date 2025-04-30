@@ -71,6 +71,8 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
         return new ReversedArrayAsSequencedCollection<>(this, new ReversedArray<>(_reference()));
     }
 
+    @Override public abstract AbstractArrayAsSequencedCollection<T> clone();
+
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 

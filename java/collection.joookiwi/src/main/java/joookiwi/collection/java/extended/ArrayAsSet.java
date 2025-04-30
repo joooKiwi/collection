@@ -56,6 +56,8 @@ public class ArrayAsSet<T extends @Nullable Object>
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
 
+    @Override public ArrayAsSet<T> clone() { return new ArrayAsSet<>(_reference().clone()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

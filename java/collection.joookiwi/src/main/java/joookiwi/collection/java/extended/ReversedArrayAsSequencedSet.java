@@ -80,6 +80,8 @@ public class ReversedArrayAsSequencedSet<T extends @Nullable Object,
         return __isEmpty = size() == 0;
     }
 
+    @Override public ReversedArrayAsSequencedSet<T, SOURCE, REVERSED_ARRAY> clone() { return new ReversedArrayAsSequencedSet<>(_source(), _reversedArray()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

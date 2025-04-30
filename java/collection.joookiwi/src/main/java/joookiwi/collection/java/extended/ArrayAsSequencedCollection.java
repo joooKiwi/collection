@@ -55,6 +55,8 @@ public class ArrayAsSequencedCollection<T extends @Nullable Object>
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
 
+    @Override public ArrayAsSequencedCollection<T> clone() { return new ArrayAsSequencedCollection<>(_reference().clone()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

@@ -77,6 +77,8 @@ public class ArrayAsSortedSet<T extends @Nullable Object>
     @Contract(pure = true)
     @Override public @Nullable Comparator<? super T> comparator() { return __comparator; }
 
+    @Override public ArrayAsSortedSet<T> clone() { return new ArrayAsSortedSet<>(_reference().clone(), comparator()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

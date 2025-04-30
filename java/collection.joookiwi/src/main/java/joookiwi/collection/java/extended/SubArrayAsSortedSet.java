@@ -87,6 +87,8 @@ public class SubArrayAsSortedSet<T extends @Nullable Object,
 
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 
+    @Override public SubArrayAsSortedSet<T, SOURCE, SUB_ARRAY> clone() { return new SubArrayAsSortedSet<>(_source(), _subArray()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

@@ -147,6 +147,8 @@ public abstract class AbstractArrayAsSortedSet<T extends @Nullable Object>
 
     //#endregion -------------------- Comparator methods --------------------
 
+    @Override public abstract AbstractArrayAsSortedSet<T> clone();
+
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 

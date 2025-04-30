@@ -37,6 +37,8 @@ public abstract class AbstractArrayAsSet<T extends @Nullable Object>
         return containsAll(otherConverted);
     }
 
+    @Override public abstract AbstractArrayAsSet<T> clone();
+
     //#endregion -------------------- Method --------------------
 
 }

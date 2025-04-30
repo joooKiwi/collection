@@ -85,6 +85,8 @@ public class ReversedArrayAsSortedSet<T extends @Nullable Object,
 
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 
+    @Override public ReversedArrayAsSortedSet<T, SOURCE, REVERSED_ARRAY> clone() { return new ReversedArrayAsSortedSet<>(_source(), _reversedArray()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

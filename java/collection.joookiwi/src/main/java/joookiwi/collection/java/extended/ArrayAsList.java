@@ -56,6 +56,8 @@ public class ArrayAsList<T extends @Nullable Object>
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
 
+    @Override public ArrayAsList<T> clone() { return new ArrayAsList<>(_reference().clone()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

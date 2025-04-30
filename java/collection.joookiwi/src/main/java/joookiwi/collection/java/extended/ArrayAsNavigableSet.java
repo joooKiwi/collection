@@ -78,6 +78,8 @@ public class ArrayAsNavigableSet<T extends @Nullable Object>
     @Contract(pure = true)
     @Override public @Nullable Comparator<? super T> comparator() { return __comparator; }
 
+    @Override public ArrayAsNavigableSet<T> clone() { return new ArrayAsNavigableSet<>(_reference().clone(), comparator()); }
+
     //#endregion -------------------- Methods --------------------
 
 }

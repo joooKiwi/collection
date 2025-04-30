@@ -171,6 +171,8 @@ public abstract class AbstractArrayAsNavigableSet<T extends @Nullable Object>
 
     //#endregion -------------------- Iterator methods --------------------
 
+    @Override public abstract AbstractArrayAsNavigableSet<T> clone();
+
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 

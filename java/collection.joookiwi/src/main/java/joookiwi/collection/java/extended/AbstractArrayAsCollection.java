@@ -37,7 +37,8 @@ import static joookiwi.collection.java.method.HasAll.hasAll;
 /// @see ArrayAsCollection
 @NotNullByDefault
 public abstract class AbstractArrayAsCollection<T extends @Nullable Object>
-        implements Collection<T> {
+        implements Collection<T>,
+                   Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -182,6 +183,8 @@ public abstract class AbstractArrayAsCollection<T extends @Nullable Object>
             return false;
         return containsAll(otherConverted);
     }
+
+    @Override public abstract AbstractArrayAsCollection<T> clone();
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

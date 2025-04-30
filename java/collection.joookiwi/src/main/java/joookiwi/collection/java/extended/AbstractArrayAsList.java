@@ -36,7 +36,7 @@ import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAUL
 public abstract class AbstractArrayAsList<T extends @Nullable Object>
         extends AbstractArrayAsSequencedCollection<T>
         implements List<T>,
-        RandomAccess {
+                   RandomAccess {
 
     //#region -------------------- Constructor --------------------
 
@@ -156,6 +156,8 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
             return false;
         return containsAll(otherConverted);
     }
+
+    @Override public abstract AbstractArrayAsList<T> clone();
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
