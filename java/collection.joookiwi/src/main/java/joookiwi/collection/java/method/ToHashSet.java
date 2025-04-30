@@ -40,7 +40,7 @@ public final class ToHashSet
         final var size = collection.size();
         if (size == 0)
             return emptyHashSet();
-        return __withNoTransform(collection, size);
+        return new ImmutableHashSet<>(_uniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
@@ -54,8 +54,8 @@ public final class ToHashSet
         if (collection.isEmpty())
             return emptyHashSet();
         if (collection.hasDuplicate())
-            return __withNoDuplicate(collection, collection.size());
-        return __withNoTransform(collection, collection.size());
+            return new ImmutableHashSet<>(_uniqueValues(collection, collection.size()));
+        return new ImmutableHashSet<>(_values(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
@@ -70,7 +70,7 @@ public final class ToHashSet
         final var size = collection.length;
         if (size == 0)
             return emptyHashSet();
-        return __withNoTransform(collection, size);
+        return new ImmutableHashSet<>(_uniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -92,7 +92,7 @@ public final class ToHashSet
         final var size = collection.size();
         if (size == 0)
             return emptyHashSet();
-        return __with2Argument(collection, size, transform);
+        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
@@ -109,7 +109,7 @@ public final class ToHashSet
             return emptyHashSet();
         if (collection.isEmpty())
             return emptyHashSet();
-        return __with2Argument(collection, collection.size(), transform);
+        return new ImmutableHashSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
@@ -128,7 +128,7 @@ public final class ToHashSet
         final var size = collection.length;
         if (size == 0)
             return emptyHashSet();
-        return __with2Argument(collection, size, transform);
+        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -150,7 +150,7 @@ public final class ToHashSet
         final var size = collection.size();
         if (size == 0)
             return emptyHashSet();
-        return __with1Argument(collection, size, transform);
+        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
@@ -167,7 +167,7 @@ public final class ToHashSet
             return emptyHashSet();
         if (collection.isEmpty())
             return emptyHashSet();
-        return __with1Argument(collection, collection.size(), transform);
+        return new ImmutableHashSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
@@ -186,7 +186,7 @@ public final class ToHashSet
         final var size = collection.length;
         if (size == 0)
             return emptyHashSet();
-        return __with1Argument(collection, size, transform);
+        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -208,7 +208,7 @@ public final class ToHashSet
         final var size = collection.size();
         if (size == 0)
             return emptyHashSet();
-        return __with0Argument(size, transform);
+        return new ImmutableHashSet<>(_uniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
@@ -225,7 +225,7 @@ public final class ToHashSet
             return emptyHashSet();
         if (collection.isEmpty())
             return emptyHashSet();
-        return __with0Argument(collection.size(), transform);
+        return new ImmutableHashSet<>(_uniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
@@ -244,60 +244,258 @@ public final class ToHashSet
         final var size = collection.length;
         if (size == 0)
             return emptyHashSet();
-        return __with0Argument(size, transform);
+        return new ImmutableHashSet<>(_uniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
 
+    //#region -------------------- loadFactor --------------------
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    public static <T extends @Nullable Object> @Unmodifiable HashSet<T> toHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                  final float loadFactor) {
+        if (collection == null)
+            return emptyHashSet();
+
+        final var size = collection.size();
+        if (size == 0)
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(collection, size), loadFactor);
+    }
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    public static <T extends @Nullable Object> @Unmodifiable HashSet<T> toHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                  final float loadFactor) {
+        if (collection == null)
+            return emptyHashSet();
+        if (collection.isEmpty())
+            return emptyHashSet();
+        if (collection.hasDuplicate())
+            return new ImmutableHashSet<>(_values(collection, collection.size()), loadFactor);
+        return new ImmutableHashSet<>(_uniqueValues(collection, collection.size()), loadFactor);
+    }
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    public static <T extends @Nullable Object> @Unmodifiable HashSet<T> toHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                  final float loadFactor) {
+        if (collection == null)
+            return emptyHashSet();
+
+        final var size = collection.length;
+        if (size == 0)
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(collection, size), loadFactor);
+    }
+
+    //#endregion -------------------- loadFactor --------------------
+    //#region -------------------- loadFactor, (T, int) → U --------------------
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> toHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final float loadFactor,
+                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptyHashSet();
+
+        final var size = collection.size();
+        if (size == 0)
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform), loadFactor);
+    }
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> toHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final float loadFactor,
+                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptyHashSet();
+        if (collection.isEmpty())
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(collection, collection.size(), transform), loadFactor);
+    }
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> toHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final float loadFactor,
+                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptyHashSet();
+
+        final var size = collection.length;
+        if (size == 0)
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform), loadFactor);
+    }
+
+    //#endregion -------------------- loadFactor, (T, int) → U --------------------
+    //#region -------------------- loadFactor, (T) → U --------------------
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> toHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final float loadFactor,
+                                                                                                              final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptyHashSet();
+
+        final var size = collection.size();
+        if (size == 0)
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform), loadFactor);
+    }
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> toHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final float loadFactor,
+                                                                                                              final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptyHashSet();
+        if (collection.isEmpty())
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(collection, collection.size(), transform), loadFactor);
+    }
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> toHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final float loadFactor,
+                                                                                                              final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return emptyHashSet();
+
+        final var size = collection.length;
+        if (size == 0)
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform), loadFactor);
+    }
+
+    //#endregion -------------------- loadFactor, (T) → U --------------------
+    //#region -------------------- loadFactor, () → U --------------------
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> toHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final float loadFactor,
+                                                                                                              final Supplier<? extends U> transform) {
+        if (collection == null)
+            return emptyHashSet();
+
+        final var size = collection.size();
+        if (size == 0)
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(size, transform), loadFactor);
+    }
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> toHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final float loadFactor,
+                                                                                                              final Supplier<? extends U> transform) {
+        if (collection == null)
+            return emptyHashSet();
+        if (collection.isEmpty())
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(collection.size(), transform), loadFactor);
+    }
+
+    /// Convert the `collection` to an [immutable-like][Unmodifiable] [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param loadFactor The [HashSet] load factor
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> toHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final float loadFactor,
+                                                                                                              final Supplier<? extends U> transform) {
+        if (collection == null)
+            return emptyHashSet();
+
+        final var size = collection.length;
+        if (size == 0)
+            return emptyHashSet();
+        return new ImmutableHashSet<>(_uniqueValues(size, transform), loadFactor);
+    }
+
+    //#endregion -------------------- loadFactor, () → U --------------------
+
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T extends @Nullable Object> @Unmodifiable HashSet<T> __withNoDuplicate(final CollectionHolder<? extends T> collection,
-                                                                                           final int size) {
-        return new ImmutableHashSet<>(_uniqueValues(collection, size));
-    }
-
-
-    private static <T extends @Nullable Object> @Unmodifiable HashSet<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                           final int size) {
-        return new ImmutableHashSet<>(_values(collection, size));
-    }
-
-    private static <T extends @Nullable Object> @Unmodifiable HashSet<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                                           final int size) {
-        return new ImmutableHashSet<>(_values(collection, size));
-    }
-
-
-    private static <U extends @Nullable Object> @Unmodifiable HashSet<U> __with0Argument(final int size,
-                                                                                         final Supplier<? extends U> transform) {
-        return new ImmutableHashSet<>(_uniqueValues(size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                     final int size,
-                                                                                                                     final Function<? super T, ? extends U> transform) {
-        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                                                     final int size,
-                                                                                                                     final Function<? super T, ? extends U> transform) {
-        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection, int size,
-                                                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
-        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable HashSet<U> __with2Argument(final T @Unmodifiable [] collection, int size,
-                                                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
-        return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
