@@ -10,7 +10,6 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.IntObjFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -39,8 +38,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                   final @NotNull IntObjFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                          final IntObjFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -60,8 +59,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                   final @NotNull IntObjFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                          final IntObjFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
         if (collection.isEmpty())
@@ -79,8 +78,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                   final @NotNull IntObjFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                                                          final IntObjFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -103,8 +102,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                   final @NotNull IntFunction<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                          final IntFunction<? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -124,8 +123,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                   final @NotNull IntFunction<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                          final IntFunction<? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
         if (collection.isEmpty())
@@ -143,8 +142,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                   final @NotNull IntFunction<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                                                          final IntFunction<? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -167,8 +166,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                   final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -188,8 +187,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                   final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
         if (collection.isEmpty())
@@ -207,8 +206,8 @@ public final class MapIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @NotNull CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                   final @NotNull Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
+                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -223,8 +222,8 @@ public final class MapIndexed
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <U> U @NotNull @Unmodifiable [] __with0Argument(final @NotNull Supplier<? extends U> action,
-                                                                   final int size) {
+    private static <U> U @Unmodifiable [] __with0Argument(final Supplier<? extends U> action,
+                                                          final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
@@ -233,8 +232,8 @@ public final class MapIndexed
     }
 
 
-    private static <U> U @NotNull @Unmodifiable [] __with1Argument(final @NotNull IntFunction<? extends U> transform,
-                                                                   final int size) {
+    private static <U> U @Unmodifiable [] __with1Argument(final IntFunction<? extends U> transform,
+                                                          final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
@@ -243,9 +242,9 @@ public final class MapIndexed
     }
 
 
-    private static <T, U> U @NotNull @Unmodifiable [] __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                      final @NotNull IntObjFunction<? super T, ? extends U> transform,
-                                                                      final int size) {
+    private static <T, U> U @Unmodifiable [] __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                             final IntObjFunction<? super T, ? extends U> transform,
+                                                             final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
@@ -253,9 +252,9 @@ public final class MapIndexed
         return newArray;
     }
 
-    private static <T, U> U @NotNull @Unmodifiable [] __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                      final @NotNull IntObjFunction<? super T, ? extends U> transform,
-                                                                      final int size) {
+    private static <T, U> U @Unmodifiable [] __with2Argument(final T @Unmodifiable [] collection,
+                                                             final IntObjFunction<? super T, ? extends U> transform,
+                                                             final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
