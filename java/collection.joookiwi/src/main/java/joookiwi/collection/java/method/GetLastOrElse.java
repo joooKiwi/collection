@@ -1,16 +1,13 @@
 package joookiwi.collection.java.method;
 
+import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
@@ -31,7 +28,7 @@ public final class GetLastOrElse
     /// @param defaultValue The callback to retrieve the default value if it is over the [size][MinimalistCollectionHolder#size] (after calculation)
     @ExtensionFunction
     public static <T extends @Nullable Object> T getLastOrElse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                               final @NotNull Supplier<? extends T> defaultValue) {
+                                                               final Supplier<? extends T> defaultValue) {
         if (collection == null)
             return defaultValue.get();
 
@@ -49,7 +46,7 @@ public final class GetLastOrElse
     /// @param defaultValue The callback to retrieve the default value if it is over the [size][CollectionHolder#size] (after calculation)
     @ExtensionFunction
     public static <T extends @Nullable Object> T getLastOrElse(final @Nullable CollectionHolder<? extends T> collection,
-                                                               final @NotNull Supplier<? extends T> defaultValue) {
+                                                               final Supplier<? extends T> defaultValue) {
         if (collection == null)
             return defaultValue.get();
         if (collection.isEmpty())
@@ -65,7 +62,7 @@ public final class GetLastOrElse
     /// @param defaultValue The callback to retrieve the default value if it is over the `size` (after calculation)
     @ExtensionFunction
     public static <T extends @Nullable Object> T getLastOrElse(final T @Nullable [] collection,
-                                                               final @NotNull Supplier<? extends T> defaultValue) {
+                                                               final Supplier<? extends T> defaultValue) {
         if (collection == null)
             return defaultValue.get();
 
