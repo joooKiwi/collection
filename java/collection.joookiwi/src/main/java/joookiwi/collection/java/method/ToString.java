@@ -1,16 +1,17 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
-import joookiwi.collection.java.CommonContracts;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
-import static joookiwi.collection.java.CollectionConstants.*;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_POSTFIX;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_POSTFIX_STRING;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_SEPARATOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asString;
 
@@ -29,7 +30,7 @@ public final class ToString
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @see Object#toString()
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull String toString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> String toString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -45,7 +46,7 @@ public final class ToString
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @see Object#toString()
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull String toString(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> String toString(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -59,7 +60,7 @@ public final class ToString
     /// @param collection The [nullable][Nullable] collection
     /// @see Object#toString()
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull String toString(final T @Nullable [] collection) {
+    public static <T extends @Nullable Object> String toString(final T @Nullable [] collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -72,8 +73,8 @@ public final class ToString
     //#endregion -------------------- Facade method --------------------
     //#region -------------------- Loop method --------------------
 
-    private static @NotNull String __toString(final @NotNull MinimalistCollectionHolder<?> collection,
-                                              final int size) {
+    private static String __toString(final MinimalistCollectionHolder<?> collection,
+                                     final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;
@@ -82,8 +83,8 @@ public final class ToString
         return DEFAULT_JOIN_POSTFIX_STRING + string + asString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
     }
 
-    private static @NotNull String __toString(final @Nullable Object @NotNull [] collection,
-                                              final int size) {
+    private static String __toString(final @Nullable Object [] collection,
+                                     final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;
