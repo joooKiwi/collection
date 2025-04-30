@@ -48,7 +48,6 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -2659,8 +2658,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (iterator) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull Iterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final MinimalistCollectionHolder<? extends T> collection,
+                                                                 final Iterator<? extends T> values) {
 
         if (!values.hasNext())
             return true;
@@ -2671,8 +2670,8 @@ public final class HasAll
         return __fromIterator(collection, size, values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                                                 final @NotNull Iterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final CollectionHolder<? extends T> collection,
+                                                                 final Iterator<? extends T> values) {
 
         if (!values.hasNext())
             return true;
@@ -2681,8 +2680,8 @@ public final class HasAll
         return __fromIterator(collection, collection.size(), values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                                                 final @NotNull Iterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @Unmodifiable [] collection,
+                                                                 final Iterator<? extends T> values) {
 
         if (!values.hasNext())
             return true;
@@ -2696,8 +2695,8 @@ public final class HasAll
     //#endregion -------------------- Core methods (iterator) --------------------
     //#region -------------------- Core methods (spliterator) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final MinimalistCollectionHolder<? extends T> collection,
+                                                                 final Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
 
@@ -2707,8 +2706,8 @@ public final class HasAll
         return __fromSpliterator(collection, size, values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                                                 final @NotNull Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final CollectionHolder<? extends T> collection,
+                                                                 final Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
         if (collection.isEmpty())
@@ -2716,8 +2715,8 @@ public final class HasAll
         return __fromSpliterator(collection, collection.size(), values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                                                 final @NotNull Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @Unmodifiable [] collection,
+                                                                 final Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
 
@@ -2730,8 +2729,8 @@ public final class HasAll
     //#endregion -------------------- Core methods (spliterator) --------------------
     //#region -------------------- Core methods (enumeration) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull Enumeration<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final MinimalistCollectionHolder<? extends T> collection,
+                                                                 final Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
 
@@ -2741,8 +2740,8 @@ public final class HasAll
         return __fromEnumeration(collection, size, values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                                                 final @NotNull Enumeration<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final CollectionHolder<? extends T> collection,
+                                                                 final Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
         if (collection.isEmpty())
@@ -2750,8 +2749,8 @@ public final class HasAll
         return __fromEnumeration(collection, collection.size(), values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                                                 final @NotNull Enumeration<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @Unmodifiable [] collection,
+                                                                 final Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
 
@@ -2765,8 +2764,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (iterable) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull Iterable<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final MinimalistCollectionHolder<? extends T> collection,
+                                                                 final Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -2777,8 +2776,8 @@ public final class HasAll
         return __fromIterator(collection, size, iterator);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                                                 final @NotNull Iterable<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final CollectionHolder<? extends T> collection,
+                                                                 final Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -2787,8 +2786,8 @@ public final class HasAll
         return __fromIterator(collection, collection.size(), iterator);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                                                 final @NotNull Iterable<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @Unmodifiable [] collection,
+                                                                 final Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -2803,8 +2802,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (minimalist collection holder) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull MinimalistCollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final MinimalistCollectionHolder<? extends T> collection,
+                                                                 final MinimalistCollectionHolder<? extends T> values) {
 
         final var valuesSize = values.size();
         if (valuesSize == 0)
@@ -2816,8 +2815,8 @@ public final class HasAll
         return __fromMinimalistCollectionHolder(collection, size, values, valuesSize);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                                                 final @NotNull MinimalistCollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final CollectionHolder<? extends T> collection,
+                                                                 final MinimalistCollectionHolder<? extends T> values) {
 
         final var valuesSize = values.size();
         if (valuesSize == 0)
@@ -2827,8 +2826,8 @@ public final class HasAll
         return __fromMinimalistCollectionHolder(collection, collection.size(), values, valuesSize);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                                                 final @NotNull MinimalistCollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @Unmodifiable [] collection,
+                                                                 final MinimalistCollectionHolder<? extends T> values) {
 
         final var valuesSize = values.size();
         if (valuesSize == 0)
@@ -2843,8 +2842,8 @@ public final class HasAll
     //#endregion -------------------- Core methods (minimalist collection holder) --------------------
     //#region -------------------- Core methods (collection holder) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull CollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final MinimalistCollectionHolder<? extends T> collection,
+                                                                 final CollectionHolder<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2857,8 +2856,8 @@ public final class HasAll
         return __fromIterator(collection, size, values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                                                 final @NotNull CollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final CollectionHolder<? extends T> collection,
+                                                                 final CollectionHolder<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2870,8 +2869,8 @@ public final class HasAll
         return __fromIterator(collection, collection.size(), values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                                                 final @NotNull CollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @Unmodifiable [] collection,
+                                                                 final CollectionHolder<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2888,8 +2887,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (collection) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull @Unmodifiable Collection<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Unmodifiable Collection<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2900,8 +2899,8 @@ public final class HasAll
         return __fromIterator(collection, size, values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                                                 final @NotNull @Unmodifiable Collection<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final CollectionHolder<? extends T> collection,
+                                                                 final @Unmodifiable Collection<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2910,8 +2909,8 @@ public final class HasAll
         return __fromIterator(collection, collection.size(), values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                                                 final @NotNull @Unmodifiable Collection<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @Unmodifiable [] collection,
+                                                                 final @Unmodifiable Collection<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2926,8 +2925,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (list) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @NotNull @Unmodifiable List<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Unmodifiable List<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2940,8 +2939,8 @@ public final class HasAll
         return __fromIterator(collection, size, values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                                                 final @NotNull @Unmodifiable List<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final CollectionHolder<? extends T> collection,
+                                                                 final @Unmodifiable List<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2952,8 +2951,8 @@ public final class HasAll
         return __fromIterator(collection, collection.size(), values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                                                 final @NotNull @Unmodifiable List<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @Unmodifiable [] collection,
+                                                                 final @Unmodifiable List<? extends T> values) {
 
         if (values.isEmpty())
             return true;
@@ -2970,8 +2969,8 @@ public final class HasAll
 
     //#region -------------------- Core methods (array) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                 final T @NotNull @Unmodifiable [] values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final MinimalistCollectionHolder<? extends T> collection,
+                                                                 final T @Unmodifiable [] values) {
 
         final var valuesSize = values.length;
         if (valuesSize == 0)
@@ -2983,8 +2982,8 @@ public final class HasAll
         return __fromArray(collection, size, values, valuesSize);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final @NotNull CollectionHolder<? extends T> collection,
-                                                                 final T @NotNull @Unmodifiable [] values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final CollectionHolder<? extends T> collection,
+                                                                 final T @Unmodifiable [] values) {
 
         final var valuesSize = values.length;
         if (valuesSize == 0)
@@ -2994,8 +2993,8 @@ public final class HasAll
         return __fromArray(collection, collection.size(), values, valuesSize);
     }
 
-    private static <T extends @Nullable Object> boolean __hasAll(final T @NotNull @Unmodifiable [] collection,
-                                                                 final T @NotNull @Unmodifiable [] values) {
+    private static <T extends @Nullable Object> boolean __hasAll(final T @Unmodifiable [] collection,
+                                                                 final T @Unmodifiable [] values) {
 
         final var valuesSize = values.length;
         if (valuesSize == 0)
@@ -3014,9 +3013,9 @@ public final class HasAll
 
     //README: The iterator always has at least one element
 
-    private static <T extends @Nullable Object> boolean __fromIterator(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> boolean __fromIterator(final MinimalistCollectionHolder<? extends T> collection,
                                                                        final int size,
-                                                                       final @NotNull Iterator<? extends T> values) {
+                                                                       final Iterator<? extends T> values) {
         valueLoop:
         while (values.hasNext()) {
             final var value = values.next();
@@ -3029,9 +3028,9 @@ public final class HasAll
         return true;
     }
 
-    private static <T extends @Nullable Object> boolean __fromIterator(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> boolean __fromIterator(final T @Unmodifiable [] collection,
                                                                        final int size,
-                                                                       final @NotNull Iterator<? extends T> values) {
+                                                                       final Iterator<? extends T> values) {
         valueLoop:
         while (values.hasNext()) {
             final var value = values.next();
@@ -3045,9 +3044,9 @@ public final class HasAll
     }
 
 
-    private static <T extends @Nullable Object> boolean __fromSpliterator(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> boolean __fromSpliterator(final MinimalistCollectionHolder<? extends T> collection,
                                                                           final int size,
-                                                                          final @NotNull Spliterator<? extends T> values) {
+                                                                          final Spliterator<? extends T> values) {
         final var valueReturned = new AtomicBoolean(true);
         final Consumer<T> action = it -> {
             var index = -1;
@@ -3062,9 +3061,9 @@ public final class HasAll
         return false;
     }
 
-    private static <T extends @Nullable Object> boolean __fromSpliterator(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> boolean __fromSpliterator(final T @Unmodifiable [] collection,
                                                                           final int size,
-                                                                          final @NotNull Spliterator<? extends T> values) {
+                                                                          final Spliterator<? extends T> values) {
         final var valueReturned = new AtomicBoolean(true);
         final Consumer<T> action = it -> {
             var index = -1;
@@ -3080,9 +3079,9 @@ public final class HasAll
     }
 
 
-    private static <T extends @Nullable Object> boolean __fromEnumeration(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> boolean __fromEnumeration(final MinimalistCollectionHolder<? extends T> collection,
                                                                           final int size,
-                                                                          final @NotNull Enumeration<? extends T> values) {
+                                                                          final Enumeration<? extends T> values) {
         valueLoop:
         while (values.hasMoreElements()) {
             final var value = values.nextElement();
@@ -3095,9 +3094,9 @@ public final class HasAll
         return true;
     }
 
-    private static <T extends @Nullable Object> boolean __fromEnumeration(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> boolean __fromEnumeration(final T @Unmodifiable [] collection,
                                                                           final int size,
-                                                                          final @NotNull Enumeration<? extends T> values) {
+                                                                          final Enumeration<? extends T> values) {
         valueLoop:
         while (values.hasMoreElements()) {
             final var value = values.nextElement();
@@ -3111,9 +3110,9 @@ public final class HasAll
     }
 
 
-    private static <T extends @Nullable Object> boolean __fromMinimalistCollectionHolder(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> boolean __fromMinimalistCollectionHolder(final MinimalistCollectionHolder<? extends T> collection,
                                                                                          final int size,
-                                                                                         final @NotNull MinimalistCollectionHolder<? extends T> values,
+                                                                                         final MinimalistCollectionHolder<? extends T> values,
                                                                                          final int valuesSize) {
         var valuesIndex = -1;
         valueLoop:
@@ -3128,9 +3127,9 @@ public final class HasAll
         return true;
     }
 
-    private static <T extends @Nullable Object> boolean __fromMinimalistCollectionHolder(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> boolean __fromMinimalistCollectionHolder(final T @Unmodifiable [] collection,
                                                                                          final int size,
-                                                                                         final @NotNull MinimalistCollectionHolder<? extends T> values,
+                                                                                         final MinimalistCollectionHolder<? extends T> values,
                                                                                          final int valuesSize) {
         var valuesIndex = -1;
         valueLoop:
@@ -3146,9 +3145,9 @@ public final class HasAll
     }
 
 
-    private static <T extends @Nullable Object> boolean __fromList(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> boolean __fromList(final MinimalistCollectionHolder<? extends T> collection,
                                                                    final int size,
-                                                                   final @NotNull @Unmodifiable List<? extends T> values,
+                                                                   final @Unmodifiable List<? extends T> values,
                                                                    final int valuesSize) {
         var valuesIndex = -1;
         valueLoop:
@@ -3163,9 +3162,9 @@ public final class HasAll
         return true;
     }
 
-    private static <T extends @Nullable Object> boolean __fromList(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> boolean __fromList(final T @Unmodifiable [] collection,
                                                                    final int size,
-                                                                   final @NotNull @Unmodifiable List<? extends T> values,
+                                                                   final @Unmodifiable List<? extends T> values,
                                                                    final int valuesSize) {
         var valuesIndex = -1;
         valueLoop:
@@ -3181,9 +3180,9 @@ public final class HasAll
     }
 
 
-    private static <T extends @Nullable Object> boolean __fromArray(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> boolean __fromArray(final MinimalistCollectionHolder<? extends T> collection,
                                                                     final int size,
-                                                                    final T @NotNull @Unmodifiable [] values,
+                                                                    final T @Unmodifiable [] values,
                                                                     final int valuesSize) {
         var valuesIndex = -1;
         valueLoop:
@@ -3198,9 +3197,9 @@ public final class HasAll
         return true;
     }
 
-    private static <T extends @Nullable Object> boolean __fromArray(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> boolean __fromArray(final T @Unmodifiable [] collection,
                                                                     final int size,
-                                                                    final T @NotNull @Unmodifiable [] values,
+                                                                    final T @Unmodifiable [] values,
                                                                     final int valuesSize) {
         var valuesIndex = -1;
         valueLoop:

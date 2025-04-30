@@ -5,7 +5,6 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -100,7 +99,7 @@ public final class Has
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> boolean __has(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> boolean __has(final MinimalistCollectionHolder<? extends T> collection,
                                                               final int size,
                                                               final T value) {
         var index = -1;
@@ -119,7 +118,7 @@ public final class Has
         return false;
     }
 
-    private static <T extends @Nullable Object> boolean __has(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> boolean __has(final T @Unmodifiable [] collection,
                                                               final int size,
                                                               final T value) {
         var index = -1;

@@ -5,7 +5,6 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -71,7 +70,7 @@ public final class HasDuplicate
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> boolean __hasDuplicate(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> boolean __hasDuplicate(final MinimalistCollectionHolder<? extends T> collection,
                                                                        final int size) {
         @SuppressWarnings("unchecked cast") final var temporaryArray = (T[]) new Object[size];
         temporaryArray[0] = collection.get(0);
@@ -100,7 +99,7 @@ public final class HasDuplicate
         return amountOfItemAdded != size;
     }
 
-    private static <T extends @Nullable Object> boolean __hasDuplicate(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> boolean __hasDuplicate(final T @Unmodifiable [] collection,
                                                                        final int size) {
         @SuppressWarnings("unchecked cast") final var temporaryArray = (T[]) new Object[size];
         temporaryArray[0] = collection[0];
