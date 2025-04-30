@@ -8,7 +8,6 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -40,7 +39,7 @@ public final class FindOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                      final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+                                                                      final ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -55,7 +54,7 @@ public final class FindOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                      final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+                                                                      final ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -70,7 +69,7 @@ public final class FindOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                      final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+                                                                      final ObjIntPredicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     //#endregion -------------------- predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T) → boolean --------------------
@@ -88,7 +87,7 @@ public final class FindOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                      final @NotNull Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+                                                                      final Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -103,7 +102,7 @@ public final class FindOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                      final @NotNull Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+                                                                      final Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -118,7 +117,7 @@ public final class FindOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                      final @NotNull Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+                                                                      final Predicate<? super T> predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
@@ -136,7 +135,7 @@ public final class FindOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                      final @NotNull BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+                                                                      final BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -151,7 +150,7 @@ public final class FindOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                      final @NotNull BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+                                                                      final BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     /// or `null` otherwise
@@ -166,7 +165,7 @@ public final class FindOrNull
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Nullable T findOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                      final @NotNull BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
+                                                                      final BooleanSupplier predicate) { return FindFirstOrNull.findFirstOrNull(collection, predicate); }
 
     //#endregion -------------------- predicate () → boolean --------------------
 
