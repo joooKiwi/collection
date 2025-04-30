@@ -17,13 +17,15 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [SynchronousQueue]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
 public class ImmutableSynchronousQueue<T>
-        extends SynchronousQueue<T> {
+        extends SynchronousQueue<T>
+        implements Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -85,6 +87,10 @@ public class ImmutableSynchronousQueue<T>
 
     @Contract(pure = true)
     @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public ImmutableSynchronousQueue<T> clone() { return new ImmutableSynchronousQueue<>(this); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

@@ -48,8 +48,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 @Singleton
 @NotNullByDefault
 public class EmptyStack<T>
-        extends ImmutableStack<T>
-        implements Cloneable {
+        extends ImmutableStack<T> {
 
     @Serial private static final long serialVersionUID = 4387819917296724707L;
 

@@ -2,6 +2,7 @@ package joookiwi.collection.java.extended;
 
 import java.io.Serial;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.function.Predicate;
 import org.intellij.lang.annotations.Flow;
@@ -15,6 +16,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_LOAD_FA
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [LinkedHashSet]
 ///
@@ -184,6 +186,11 @@ public class ImmutableLinkedHashSet<T extends @Nullable Object>
         __isInitialized = true;
         return value;
     }
+
+
+    @Contract(ALWAYS_NEW_0)
+    @SuppressWarnings("unchecked cast")
+    @Override public ImmutableLinkedHashSet<T> clone() { return new ImmutableLinkedHashSet<>((HashSet<T>) super.clone()); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

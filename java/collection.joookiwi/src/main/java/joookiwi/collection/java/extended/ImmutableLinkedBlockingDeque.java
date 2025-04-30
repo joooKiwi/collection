@@ -16,6 +16,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [LinkedBlockingDeque]
 ///
@@ -23,7 +24,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
 @NotNullByDefault
 public class ImmutableLinkedBlockingDeque<T>
         extends LinkedBlockingDeque<T>
-        implements BasicStack<T> {
+        implements BasicStack<T>,
+                   Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -88,9 +90,15 @@ public class ImmutableLinkedBlockingDeque<T>
     @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
 
 
+    @Contract(pure = true)
     @Override public T getFirst() { return super.getFirst(); }
 
+    @Contract(pure = true)
     @Override public T getLast() { return super.getLast(); }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public ImmutableLinkedBlockingDeque<T> clone() { return new ImmutableLinkedBlockingDeque<>(this); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

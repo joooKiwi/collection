@@ -12,13 +12,15 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [CopyOnWriteArraySet]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
 public class ImmutableCopyOnWriteArraySet<T>
-        extends CopyOnWriteArraySet<T> {
+        extends CopyOnWriteArraySet<T>
+        implements Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -103,6 +105,10 @@ public class ImmutableCopyOnWriteArraySet<T>
         __isInitialized = true;
         return value;
     }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public ImmutableCopyOnWriteArraySet<T> clone() { return new ImmutableCopyOnWriteArraySet<>(this); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

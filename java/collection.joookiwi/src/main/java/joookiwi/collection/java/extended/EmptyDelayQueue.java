@@ -37,8 +37,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @see joookiwi.collection.java.CollectionConstants#emptyDelayQueue
 @NotNullByDefault
 public class EmptyDelayQueue<T extends Delayed>
-        extends ImmutableDelayQueue<T>
-        implements Cloneable {
+        extends ImmutableDelayQueue<T> {
 
     //#region -------------------- Singleton usage --------------------
 

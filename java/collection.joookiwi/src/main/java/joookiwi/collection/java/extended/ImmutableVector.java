@@ -16,6 +16,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_INITIAL
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [Vector]
 ///
@@ -89,6 +90,11 @@ public class ImmutableVector<T extends @Nullable Object>
 
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
+
+
+    @Contract(ALWAYS_NEW_0)
+    @SuppressWarnings("unchecked cast")
+    @Override public ImmutableVector<T> clone() { return new ImmutableVector<>((Vector<T>) super.clone()); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

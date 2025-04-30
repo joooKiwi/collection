@@ -1,13 +1,10 @@
 package joookiwi.collection.java.extended;
 
 import java.io.Serial;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
-
-import joookiwi.collection.java.CollectionConstants;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -20,13 +17,16 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [ArrayBlockingQueue]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
 public class ImmutableArrayBlockingQueue<T>
-        extends ArrayBlockingQueue<T> {
+        //#region -------------------- Constructors --------------------
+        extends ArrayBlockingQueue<T>
+        implements Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -91,6 +91,10 @@ public class ImmutableArrayBlockingQueue<T>
 
     @Contract(pure = true)
     @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public ImmutableArrayBlockingQueue<T> clone() { return new ImmutableArrayBlockingQueue<>(this); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

@@ -8,9 +8,12 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.concurrent.PriorityBlockingQueue;
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [TreeSet]
 ///
@@ -21,6 +24,8 @@ public class MutableTreeSet<T>
         implements OrderableCollection<T> {
 
     @Serial private static final long serialVersionUID = 962782706985725471L;
+
+    //#region -------------------- Constructors --------------------
 
     //#region -------------------- ∅ --------------------
 
@@ -142,5 +147,13 @@ public class MutableTreeSet<T>
     }
 
     //#endregion -------------------- values, comparator --------------------
+
+    //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public MutableTreeSet<T> clone() { return new MutableTreeSet<>(this, comparator()); }
+
+    //#endregion -------------------- Methods --------------------
 
 }

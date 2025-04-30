@@ -12,13 +12,15 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [ConcurrentLinkedQueue]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
 public class ImmutableConcurrentLinkedQueue<T>
-        extends ConcurrentLinkedQueue<T> {
+        extends ConcurrentLinkedQueue<T>
+        implements Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -73,6 +75,10 @@ public class ImmutableConcurrentLinkedQueue<T>
 
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public ImmutableConcurrentLinkedQueue<T> clone() { return new ImmutableConcurrentLinkedQueue<>(this); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

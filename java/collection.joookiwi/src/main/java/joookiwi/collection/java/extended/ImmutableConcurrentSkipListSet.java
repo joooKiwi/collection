@@ -16,6 +16,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [ConcurrentSkipListSet]
 ///
@@ -214,6 +215,10 @@ public class ImmutableConcurrentSkipListSet<T>
         __isInitialized = true;
         return value;
     }
+
+
+    @Contract(ALWAYS_NEW_0)
+    @Override public ImmutableConcurrentSkipListSet<T> clone() { return new ImmutableConcurrentSkipListSet<>(super.clone(), comparator()); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

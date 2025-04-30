@@ -4,6 +4,7 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.ArrayBlockingQueue;
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -11,6 +12,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_QUEUE_CAPACITY;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.method.ToCollection.toCollection;
 
 /// A mutable behaviour of a [ArrayBlockingQueue]
@@ -18,9 +20,12 @@ import static joookiwi.collection.java.method.ToCollection.toCollection;
 /// @param <T> The type of the element
 @NotNullByDefault
 public class MutableArrayBlockingQueue<T>
-        extends ArrayBlockingQueue<T> {
+        extends ArrayBlockingQueue<T>
+        implements Cloneable {
 
     @Serial private static final long serialVersionUID = -6474680550561543786L;
+
+    //#region -------------------- Constructors --------------------
 
     //#region -------------------- ∅ --------------------
 
@@ -594,5 +599,14 @@ public class MutableArrayBlockingQueue<T>
                                      final @Nullable Boolean isFair) { super(values.isEmpty() ? DEFAULT_QUEUE_CAPACITY : values.size(), isFair == null ? DEFAULT_FAIRNESS : isFair, values); }
 
     //#endregion -------------------- values, isFair --------------------
+
+    //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public MutableArrayBlockingQueue<T> clone() { return new MutableArrayBlockingQueue<>(this); }
+
+    //#endregion -------------------- Methods --------------------
+
 
 }

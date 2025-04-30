@@ -4,12 +4,14 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.LinkedBlockingDeque;
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_QUEUE_CAPACITY;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An mutable behaviour of a [LinkedBlockingDeque]
 ///
@@ -17,7 +19,8 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_QUEUE_CAPACIT
 @NotNullByDefault
 public class MutableLinkedBlockingDeque<T>
         extends LinkedBlockingDeque<T>
-        implements BasicStack<T> {
+        implements BasicStack<T>,
+                   Cloneable {
 
     @Serial private static final long serialVersionUID = -2017638086081983516L;
 
@@ -100,8 +103,10 @@ public class MutableLinkedBlockingDeque<T>
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
 
+    @Contract(pure = true)
     @Override public T getFirst() { return super.getFirst(); }
 
+    @Contract(pure = true)
     @Override public T getLast() { return super.getLast(); }
 
 
@@ -115,6 +120,10 @@ public class MutableLinkedBlockingDeque<T>
     @Override public T removeFirst() { return super.removeFirst(); }
 
     @Override public T removeLast() { return super.removeLast(); }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public MutableLinkedBlockingDeque<T> clone() { return new MutableLinkedBlockingDeque<>(this); }
 
     //#endregion -------------------- Methods --------------------
 

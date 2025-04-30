@@ -8,9 +8,12 @@ import java.util.SortedSet;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.PriorityBlockingQueue;
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [ConcurrentSkipListSet]
 ///
@@ -18,9 +21,12 @@ import org.jetbrains.annotations.Unmodifiable;
 @NotNullByDefault
 public class MutableConcurrentSkipListSet<T>
         extends ConcurrentSkipListSet<T>
-        implements OrderableCollection<T> {
+        implements OrderableCollection<T>,
+                   Cloneable {
 
     @Serial private static final long serialVersionUID = -8699445213643860004L;
+
+    //#region -------------------- Constructors --------------------
 
     //#region -------------------- ∅ --------------------
 
@@ -142,5 +148,13 @@ public class MutableConcurrentSkipListSet<T>
     }
 
     //#endregion -------------------- values, comparator --------------------
+
+    //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public MutableConcurrentSkipListSet<T> clone() { return new MutableConcurrentSkipListSet<>(this, comparator()); }
+
+    //#endregion -------------------- Methods --------------------
 
 }

@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [ConcurrentLinkedDeque]
 ///
@@ -19,7 +20,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 @NotNullByDefault
 public class ImmutableConcurrentLinkedDeque<T>
         extends ConcurrentLinkedDeque<T>
-        implements BasicStack<T> {
+        implements BasicStack<T>,
+                   Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -72,6 +74,10 @@ public class ImmutableConcurrentLinkedDeque<T>
     @Override public T getFirst() { return super.getFirst(); }
 
     @Override public T getLast() { return super.getLast(); }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public ImmutableConcurrentLinkedDeque<T> clone() { return new ImmutableConcurrentLinkedDeque<>(this); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

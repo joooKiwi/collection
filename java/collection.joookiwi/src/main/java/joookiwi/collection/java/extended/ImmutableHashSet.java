@@ -15,6 +15,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_LOAD_FA
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [HashSet]
 ///
@@ -213,6 +214,11 @@ public class ImmutableHashSet<T extends @Nullable Object>
         __isInitialized = true;
         return value;
     }
+
+
+    @Contract(ALWAYS_NEW_0)
+    @SuppressWarnings("unchecked cast")
+    @Override public ImmutableHashSet<T> clone() { return new ImmutableHashSet<>((HashSet<T>) super.clone()); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

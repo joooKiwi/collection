@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.PriorityBlockingQueue;
 
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -16,6 +17,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [PriorityQueue]
 ///
@@ -23,9 +25,12 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPAC
 @NotNullByDefault
 public class MutablePriorityQueue<T>
         extends PriorityQueue<T>
-        implements OrderableCollection<T> {
+        implements OrderableCollection<T>,
+                   Cloneable {
 
     @Serial private static final long serialVersionUID = -4362057305272414514L;
+
+    //#region -------------------- Constructors --------------------
 
     //#region -------------------- ∅ --------------------
 
@@ -227,5 +232,13 @@ public class MutablePriorityQueue<T>
                                         final @Nullable Comparator<? super T> comparator) { super(new ImmutableTreeSet<>(values, comparator)); }
 
     //#endregion -------------------- values, comparator --------------------
+
+    //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public MutablePriorityQueue<T> clone() { return new MutablePriorityQueue<>(this, comparator()); }
+
+    //#endregion -------------------- Methods --------------------
 
 }

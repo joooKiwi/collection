@@ -4,17 +4,23 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArraySet;
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [CopyOnWriteArraySet]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
 public class MutableCopyOnWriteArraySet<T>
-        extends CopyOnWriteArraySet<T> {
+        extends CopyOnWriteArraySet<T>
+        implements Cloneable {
 
     @Serial private static final long serialVersionUID = -6307287942052097954L;
+
+    //#region -------------------- Constructors --------------------
 
     //#region -------------------- ∅ --------------------
 
@@ -50,5 +56,13 @@ public class MutableCopyOnWriteArraySet<T>
     }
 
     //#endregion -------------------- values --------------------
+
+    //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public MutableCopyOnWriteArraySet<T> clone() { return new MutableCopyOnWriteArraySet<>(this); }
+
+    //#endregion -------------------- Methods --------------------
 
 }

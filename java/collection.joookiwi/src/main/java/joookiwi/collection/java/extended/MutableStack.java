@@ -3,15 +3,20 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.Stack;
+import java.util.Vector;
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An mutable behaviour of a [Stack]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class MutableStack<T>
+public class MutableStack<T extends @Nullable Object>
         extends Stack<T>
         implements BasicStack<T> {
 
@@ -71,6 +76,11 @@ public class MutableStack<T>
     @Override public T removeFirst() { return super.removeFirst(); }
 
     @Override public T removeLast() { return super.removeLast(); }
+
+
+    @Contract(ALWAYS_NEW_0)
+    @SuppressWarnings("unchecked cast")
+    @Override public MutableStack<T> clone() { return new MutableStack<>((Vector<T>) super.clone()); }
 
     //#endregion -------------------- Methods --------------------
 

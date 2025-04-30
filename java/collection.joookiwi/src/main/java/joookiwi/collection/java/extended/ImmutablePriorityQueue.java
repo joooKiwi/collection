@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [PriorityQueue]
 ///
@@ -22,7 +23,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 @NotNullByDefault
 public class ImmutablePriorityQueue<T>
         extends PriorityQueue<T>
-        implements OrderableCollection<T> {
+        implements OrderableCollection<T>,
+                   Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -151,6 +153,10 @@ public class ImmutablePriorityQueue<T>
 
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public ImmutablePriorityQueue<T> clone() { return new ImmutablePriorityQueue<>(this, comparator()); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

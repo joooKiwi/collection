@@ -37,8 +37,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @see joookiwi.collection.java.CollectionConstants#emptyConcurrentLinkedQueue
 @NotNullByDefault
 public class EmptyConcurrentLinkedQueue<T>
-        extends ImmutableConcurrentLinkedQueue<T>
-        implements Cloneable {
+        extends ImmutableConcurrentLinkedQueue<T> {
 
     @Serial private static final long serialVersionUID = 4289068855891871543L;
 

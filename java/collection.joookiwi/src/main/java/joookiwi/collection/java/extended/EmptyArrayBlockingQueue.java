@@ -37,8 +37,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @see joookiwi.collection.java.CollectionConstants#emptyArrayBlockingQueue
 @NotNullByDefault
 public class EmptyArrayBlockingQueue<T>
-        extends ImmutableArrayBlockingQueue<T>
-        implements Cloneable {
+        extends ImmutableArrayBlockingQueue<T> {
 
     @Serial private static final long serialVersionUID = -6262422312517768939L;
 

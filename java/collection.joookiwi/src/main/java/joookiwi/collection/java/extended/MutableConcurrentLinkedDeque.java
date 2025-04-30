@@ -4,8 +4,11 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [ConcurrentLinkedDeque]
 ///
@@ -13,7 +16,8 @@ import org.jetbrains.annotations.Unmodifiable;
 @NotNullByDefault
 public class MutableConcurrentLinkedDeque<T>
         extends ConcurrentLinkedDeque<T>
-        implements BasicStack<T> {
+        implements BasicStack<T>,
+                   Cloneable {
 
     @Serial private static final long serialVersionUID = 6621665345620907280L;
 
@@ -54,5 +58,10 @@ public class MutableConcurrentLinkedDeque<T>
 
     @Override public T removeLast() { return super.removeLast(); }
 
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public MutableConcurrentLinkedDeque<T> clone() { return new MutableConcurrentLinkedDeque<>(this); }
+
     //#endregion -------------------- Methods --------------------
+
 }

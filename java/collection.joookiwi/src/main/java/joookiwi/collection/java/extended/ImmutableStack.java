@@ -4,6 +4,7 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Stack;
+import java.util.Vector;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
@@ -16,6 +17,7 @@ import org.jetbrains.annotations.Unmodifiable;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [Stack]
 ///
@@ -94,6 +96,11 @@ public class ImmutableStack<T>
     @Override public T getFirst() { return super.getFirst(); }
 
     @Override public T getLast() { return super.getLast(); }
+
+
+    @Contract(ALWAYS_NEW_0)
+    @SuppressWarnings("unchecked cast")
+    @Override public synchronized ImmutableStack<T> clone() { return new ImmutableStack<>((Vector<T>) super.clone()); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

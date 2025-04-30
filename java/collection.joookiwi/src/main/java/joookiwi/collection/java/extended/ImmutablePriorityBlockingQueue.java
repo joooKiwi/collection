@@ -19,6 +19,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [PriorityBlockingQueue]
 ///
@@ -26,7 +27,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
 @NotNullByDefault
 public class ImmutablePriorityBlockingQueue<T>
         extends PriorityBlockingQueue<T>
-        implements OrderableCollection<T> {
+        implements OrderableCollection<T>,
+                   Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -158,6 +160,10 @@ public class ImmutablePriorityBlockingQueue<T>
 
     @Contract(pure = true)
     @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public ImmutablePriorityBlockingQueue<T> clone() { return new ImmutablePriorityBlockingQueue<>(this, comparator()); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

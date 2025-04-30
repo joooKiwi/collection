@@ -4,15 +4,21 @@ import java.util.Collection;
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Delayed;
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [DelayQueue]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
 public class MutableDelayQueue<T extends Delayed>
-        extends DelayQueue<T> {
+        extends DelayQueue<T>
+        implements Cloneable {
+
+    //#region -------------------- Constructors --------------------
 
     //#region -------------------- ∅ --------------------
 
@@ -44,5 +50,13 @@ public class MutableDelayQueue<T extends Delayed>
     }
 
     //#endregion -------------------- values --------------------
+
+    //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public MutableDelayQueue<T> clone() { return new MutableDelayQueue<>(this); }
+
+    //#endregion -------------------- Methods --------------------
 
 }

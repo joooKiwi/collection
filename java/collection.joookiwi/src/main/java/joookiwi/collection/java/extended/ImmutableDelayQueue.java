@@ -16,13 +16,15 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [DelayQueue]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
 public class ImmutableDelayQueue<T extends Delayed>
-        extends DelayQueue<T> {
+        extends DelayQueue<T>
+        implements Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -82,6 +84,10 @@ public class ImmutableDelayQueue<T extends Delayed>
 
     @Contract(pure = true)
     @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public ImmutableDelayQueue<T> clone() { return new ImmutableDelayQueue<>(this); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

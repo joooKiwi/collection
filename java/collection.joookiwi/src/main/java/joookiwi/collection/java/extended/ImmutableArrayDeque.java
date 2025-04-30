@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [ArrayDeque]
 ///
@@ -72,9 +73,15 @@ public class ImmutableArrayDeque<T>
     @Override public boolean isEmpty() { return __isEmpty; }
 
 
+    @Contract(pure = true)
     @Override public T getFirst() { return super.getFirst(); }
 
+    @Contract(pure = true)
     @Override public T getLast() { return super.getLast(); }
+
+
+    @Contract(ALWAYS_NEW_0)
+    @Override public ImmutableArrayDeque<T> clone() { return new ImmutableArrayDeque<>(super.clone()); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

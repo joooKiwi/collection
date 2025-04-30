@@ -4,12 +4,14 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.LinkedBlockingQueue;
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_QUEUE_CAPACITY;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.method.ToList.toList;
 
 /// A mutable behaviour of a [LinkedBlockingQueue]
@@ -17,9 +19,12 @@ import static joookiwi.collection.java.method.ToList.toList;
 /// @param <T> The type of the element
 @NotNullByDefault
 public class MutableLinkedBlockingQueue<T>
-        extends LinkedBlockingQueue<T> {
+        extends LinkedBlockingQueue<T>
+        implements Cloneable {
 
     @Serial private static final long serialVersionUID = 332989695274849359L;
+
+    //#region -------------------- Constructors --------------------
 
     //#region -------------------- ∅ --------------------
 
@@ -80,5 +85,13 @@ public class MutableLinkedBlockingQueue<T>
     public MutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(values); }
 
     //#endregion -------------------- values --------------------
+
+    //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public MutableLinkedBlockingQueue<T> clone() { return new MutableLinkedBlockingQueue<>(this); }
+
+    //#endregion -------------------- Methods --------------------
 
 }

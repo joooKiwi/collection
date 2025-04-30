@@ -16,6 +16,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.method.ToList.toList;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [LinkedBlockingQueue]
@@ -23,7 +24,8 @@ import static joookiwi.collection.java.method.ToList.toList;
 /// @param <T> The type of the element
 @NotNullByDefault
 public class ImmutableLinkedBlockingQueue<T>
-        extends LinkedBlockingQueue<T> {
+        extends LinkedBlockingQueue<T>
+        implements Cloneable {
 
     //#region -------------------- Fields --------------------
 
@@ -79,6 +81,10 @@ public class ImmutableLinkedBlockingQueue<T>
 
     @Contract(pure = true)
     @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
+
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public ImmutableLinkedBlockingQueue<T> clone() { return new ImmutableLinkedBlockingQueue<>(this); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

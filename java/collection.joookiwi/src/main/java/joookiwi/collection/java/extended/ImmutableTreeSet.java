@@ -16,6 +16,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [TreeSet]
 ///
@@ -214,6 +215,11 @@ public class ImmutableTreeSet<T>
         __isInitialized = true;
         return value;
     }
+
+
+    @Contract(ALWAYS_NEW_0)
+    @SuppressWarnings("unchecked cast")
+    @Override public ImmutableTreeSet<T> clone() { return new ImmutableTreeSet<>((TreeSet<T>) super.clone(), comparator()); }
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

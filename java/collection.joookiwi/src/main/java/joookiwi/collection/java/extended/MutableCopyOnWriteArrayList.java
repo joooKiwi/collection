@@ -4,9 +4,12 @@ import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [CopyOnWriteArrayList]
 ///
@@ -16,6 +19,8 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
         extends CopyOnWriteArrayList<T> {
 
     @Serial private static final long serialVersionUID = 6253245103859034347L;
+
+    //#region -------------------- Constructors --------------------
 
     //#region -------------------- ∅ --------------------
 
@@ -32,5 +37,13 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
     public MutableCopyOnWriteArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(values); }
 
     //#endregion -------------------- values --------------------
+
+    //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Methods --------------------
+
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public MutableCopyOnWriteArrayList<T> clone() { return new MutableCopyOnWriteArrayList<>(this); }
+
+    //#endregion -------------------- Methods --------------------
 
 }

@@ -39,8 +39,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 @Singleton
 @NotNullByDefault
 public class EmptyConcurrentLinkedDeque<T>
-        extends ImmutableConcurrentLinkedDeque<T>
-        implements Cloneable {
+        extends ImmutableConcurrentLinkedDeque<T> {
 
     @Serial private static final long serialVersionUID = -2856675658236218735L;
 
