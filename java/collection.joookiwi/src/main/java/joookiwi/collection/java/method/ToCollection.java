@@ -40,7 +40,7 @@ public final class ToCollection
         final var size = collection.size();
         if (size == 0)
             return emptyCollection();
-        return __withNoTransform(collection, size);
+        return new ArrayAsCollection<>(_values(collection, size));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Collection]
@@ -53,7 +53,7 @@ public final class ToCollection
             return emptyCollection();
         if (collection.isEmpty())
             return emptyCollection();
-        return __withNoTransform(collection, collection.size());
+        return new ArrayAsCollection<>(_values(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Collection]
@@ -68,7 +68,7 @@ public final class ToCollection
         final var size = collection.length;
         if (size == 0)
             return emptyCollection();
-        return __withNoTransform(collection, size);
+        return new ArrayAsCollection<>(_values(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -90,7 +90,7 @@ public final class ToCollection
         final var size = collection.size();
         if (size == 0)
             return emptyCollection();
-        return __with2Argument(collection, size, transform);
+        return new ArrayAsCollection<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Collection]
@@ -107,7 +107,7 @@ public final class ToCollection
             return emptyCollection();
         if (collection.isEmpty())
             return emptyCollection();
-        return __with2Argument(collection, collection.size(), transform);
+        return new ArrayAsCollection<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Collection]
@@ -126,7 +126,7 @@ public final class ToCollection
         final var size = collection.length;
         if (size == 0)
             return emptyCollection();
-        return __with2Argument(collection, size, transform);
+        return new ArrayAsCollection<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -148,7 +148,7 @@ public final class ToCollection
         final var size = collection.size();
         if (size == 0)
             return emptyCollection();
-        return __with1Argument(collection, size, transform);
+        return new ArrayAsCollection<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Collection]
@@ -165,7 +165,7 @@ public final class ToCollection
             return emptyCollection();
         if (collection.isEmpty())
             return emptyCollection();
-        return __with1Argument(collection, collection.size(), transform);
+        return new ArrayAsCollection<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Collection]
@@ -184,7 +184,7 @@ public final class ToCollection
         final var size = collection.length;
         if (size == 0)
             return emptyCollection();
-        return __with1Argument(collection, size, transform);
+        return new ArrayAsCollection<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -206,7 +206,7 @@ public final class ToCollection
         final var size = collection.size();
         if (size == 0)
             return emptyCollection();
-        return __with0Argument(size, transform);
+        return new ArrayAsCollection<>(_values(size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Collection]
@@ -223,7 +223,7 @@ public final class ToCollection
             return emptyCollection();
         if (collection.isEmpty())
             return emptyCollection();
-        return __with0Argument(collection.size(), transform);
+        return new ArrayAsCollection<>(_values(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Collection]
@@ -242,56 +242,11 @@ public final class ToCollection
         final var size = collection.length;
         if (size == 0)
             return emptyCollection();
-        return __with0Argument(size, transform);
+        return new ArrayAsCollection<>(_values(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T extends @Nullable Object> @Unmodifiable Collection<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                              final int size) {
-        return new ArrayAsCollection<>(_values(collection, size));
-    }
-
-    private static <T extends @Nullable Object> @Unmodifiable Collection<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                                              final int size) {
-        return new ArrayAsCollection<>(_values(collection, size));
-    }
-
-
-    private static <U extends @Nullable Object> @Unmodifiable Collection<U> __with0Argument(final int size,
-                                                                                            final Supplier<? extends U> transform) {
-        return new ArrayAsCollection<>(_values(size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Collection<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                        final int size,
-                                                                                                                        final Function<? super T, ? extends U> transform) {
-        return new ArrayAsCollection<>(_values(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Collection<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                                                        final int size,
-                                                                                                                        final Function<? super T, ? extends U> transform) {
-        return new ArrayAsCollection<>(_values(collection, size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Collection<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                        final int size,
-                                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
-        return new ArrayAsCollection<>(_values(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Collection<U> __with2Argument(final T @Unmodifiable [] collection,
-                                                                                                                        final int size,
-                                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
-        return new ArrayAsCollection<>(_values(collection, size, transform));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
