@@ -33,7 +33,7 @@ public final class Map
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param transform  The given transform
     /// @see java.util.stream.Stream#map(Function) Java map(transform)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">JavaScript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html">Kotlin map(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
@@ -54,7 +54,7 @@ public final class Map
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param transform  The given transform
     /// @see java.util.stream.Stream#map(Function) Java map(transform)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">JavaScript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html">Kotlin map(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
@@ -73,7 +73,7 @@ public final class Map
     /// @param collection The [nullable][Nullable] collection
     /// @param transform  The given transform
     /// @see java.util.stream.Stream#map(Function) Java map(transform)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">JavaScript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html">Kotlin map(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
@@ -97,7 +97,7 @@ public final class Map
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param transform  The given transform
     /// @see java.util.stream.Stream#map(Function) Java map(transform)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">JavaScript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html">Kotlin map(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
@@ -118,7 +118,7 @@ public final class Map
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param transform  The given transform
     /// @see java.util.stream.Stream#map(Function) Java map(transform)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">JavaScript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html">Kotlin map(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
@@ -137,7 +137,7 @@ public final class Map
     /// @param collection The [nullable][Nullable] collection
     /// @param transform  The given transform
     /// @see java.util.stream.Stream#map(Function) Java map(transform)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">JavaScript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html">Kotlin map(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
@@ -161,7 +161,7 @@ public final class Map
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param transform  The given transform
     /// @see java.util.stream.Stream#map(Function) Java map(transform)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">JavaScript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html">Kotlin map(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
@@ -182,7 +182,7 @@ public final class Map
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param transform  The given transform
     /// @see java.util.stream.Stream#map(Function) Java map(transform)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">JavaScript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html">Kotlin map(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
@@ -201,7 +201,7 @@ public final class Map
     /// @param collection The [nullable][Nullable] collection
     /// @param transform  The given transform
     /// @see java.util.stream.Stream#map(Function) Java map(transform)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">JavaScript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html">Kotlin map(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
     @ExtensionFunction
