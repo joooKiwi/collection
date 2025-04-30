@@ -9,7 +9,6 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -37,8 +36,8 @@ public final class DropWhile
     /// @see java.util.stream.Stream#dropWhile(Predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> dropWhile(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                      final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> CollectionHolder<T> dropWhile(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                             final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -56,8 +55,8 @@ public final class DropWhile
     /// @see java.util.stream.Stream#dropWhile(Predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> dropWhile(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                      final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> CollectionHolder<T> dropWhile(final @Nullable CollectionHolder<? extends T> collection,
+                                                                             final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return emptyCollectionHolder();
         if (collection.isEmpty())
@@ -73,8 +72,8 @@ public final class DropWhile
     /// @see java.util.stream.Stream#dropWhile(Predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> dropWhile(final T @Nullable @Unmodifiable [] collection,
-                                                                                      final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> CollectionHolder<T> dropWhile(final T @Nullable @Unmodifiable [] collection,
+                                                                             final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -95,8 +94,8 @@ public final class DropWhile
     /// @see java.util.stream.Stream#dropWhile(Predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> dropWhile(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                      final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> CollectionHolder<T> dropWhile(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                             final Predicate<? super T> predicate) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -114,8 +113,8 @@ public final class DropWhile
     /// @see java.util.stream.Stream#dropWhile(Predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> dropWhile(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                      final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> CollectionHolder<T> dropWhile(final @Nullable CollectionHolder<? extends T> collection,
+                                                                             final Predicate<? super T> predicate) {
         if (collection == null)
             return emptyCollectionHolder();
         if (collection.isEmpty())
@@ -131,8 +130,8 @@ public final class DropWhile
     /// @see java.util.stream.Stream#dropWhile(Predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> dropWhile(final T @Nullable @Unmodifiable [] collection,
-                                                                                      final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> CollectionHolder<T> dropWhile(final T @Nullable @Unmodifiable [] collection,
+                                                                             final Predicate<? super T> predicate) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -153,8 +152,8 @@ public final class DropWhile
     /// @see java.util.stream.Stream#dropWhile(Predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> dropWhile(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                      final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> CollectionHolder<T> dropWhile(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                             final BooleanSupplier predicate) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -172,8 +171,8 @@ public final class DropWhile
     /// @see java.util.stream.Stream#dropWhile(Predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> dropWhile(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                      final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> CollectionHolder<T> dropWhile(final @Nullable CollectionHolder<? extends T> collection,
+                                                                             final BooleanSupplier predicate) {
         if (collection == null)
             return emptyCollectionHolder();
         if (collection.isEmpty())
@@ -189,8 +188,8 @@ public final class DropWhile
     /// @see java.util.stream.Stream#dropWhile(Predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> dropWhile(final T @Nullable @Unmodifiable [] collection,
-                                                                                      final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> CollectionHolder<T> dropWhile(final T @Nullable @Unmodifiable [] collection,
+                                                                             final BooleanSupplier predicate) {
         if (collection == null)
             return emptyCollectionHolder();
 
@@ -205,9 +204,9 @@ public final class DropWhile
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final @NotNull BooleanSupplier predicate,
-                                                                                            final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with0Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                   final BooleanSupplier predicate,
+                                                                                   final int size) {
         var index = -1;
         while (++index < size)
             if (!predicate.getAsBoolean()) {
@@ -221,9 +220,9 @@ public final class DropWhile
         return emptyArray();
     }
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                                            final @NotNull BooleanSupplier predicate,
-                                                                                            final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with0Argument(final T @Unmodifiable [] collection,
+                                                                                   final BooleanSupplier predicate,
+                                                                                   final int size) {
         var index = -1;
         while (++index < size)
             if (!predicate.getAsBoolean()) {
@@ -238,9 +237,9 @@ public final class DropWhile
     }
 
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final @NotNull Predicate<? super T> predicate,
-                                                                                            final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                   final Predicate<? super T> predicate,
+                                                                                   final int size) {
         var index = -1;
         while (++index < size) {
             final var value = collection.get(index);
@@ -257,9 +256,9 @@ public final class DropWhile
         return emptyArray();
     }
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                                            final @NotNull Predicate<? super T> predicate,
-                                                                                            final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with1Argument(final T @Unmodifiable [] collection,
+                                                                                   final Predicate<? super T> predicate,
+                                                                                   final int size) {
         var index = -1;
         while (++index < size) {
             final var value = collection[index];
@@ -277,9 +276,9 @@ public final class DropWhile
     }
 
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                            final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                   final ObjIntPredicate<? super T> predicate,
+                                                                                   final int size) {
         var index = -1;
         while (++index < size) {
             final var value = collection.get(index);
@@ -296,9 +295,9 @@ public final class DropWhile
         return emptyArray();
     }
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                                            final @NotNull ObjIntPredicate<? super T> predicate,
-                                                                                            final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with2Argument(final T @Unmodifiable [] collection,
+                                                                                   final ObjIntPredicate<? super T> predicate,
+                                                                                   final int size) {
         var index = -1;
         while (++index < size) {
             final var value = collection[index];
