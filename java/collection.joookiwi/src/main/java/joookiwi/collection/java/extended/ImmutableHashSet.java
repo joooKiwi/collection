@@ -25,7 +25,7 @@ public class ImmutableHashSet<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 442103063392487397L;
+    @Serial private static final long serialVersionUID = -81658753270951650L;
 
     private boolean __isInitialized = false;
     private int __size = -1;
@@ -48,6 +48,35 @@ public class ImmutableHashSet<T extends @Nullable Object>
     }
 
     //#endregion -------------------- ∅ --------------------
+    //#region -------------------- loadFactor --------------------
+
+    /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [HashSet]
+    /// (similar to {@link java.util.Set#of(Object[])})
+    /// with a `loadFactor` received
+    /// and a capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
+    ///
+    /// @throws IllegalArgumentException The `loadFactor` was negative
+    public ImmutableHashSet(final float loadFactor) {
+        super(DEFAULT_EMPTY_INITIAL_CAPACITY, loadFactor);
+        __size = 0;
+        __isEmpty = true;
+        __isInitialized = true;
+    }
+
+    /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [HashSet]
+    /// (similar to {@link java.util.Set#of(Object[])})
+    /// with a `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
+    /// and a capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
+    ///
+    /// @throws IllegalArgumentException The `loadFactor` was negative
+    public ImmutableHashSet(final @Nullable Float loadFactor) {
+        super(DEFAULT_EMPTY_INITIAL_CAPACITY, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
+        __size = 0;
+        __isEmpty = true;
+        __isInitialized = true;
+    }
+
+    //#endregion -------------------- values, loadFactor --------------------
     //#region -------------------- values --------------------
 
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [HashSet]
