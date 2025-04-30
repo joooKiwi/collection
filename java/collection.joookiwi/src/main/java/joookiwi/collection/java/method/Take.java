@@ -7,7 +7,6 @@ import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -33,8 +32,8 @@ public final class Take
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> take(final @Nullable MinimalistCollectionHolder<T> collection,
-                                                                                 final int n) {
+    public static <T extends @Nullable Object> CollectionHolder<T> take(final @Nullable MinimalistCollectionHolder<T> collection,
+                                                                        final int n) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, n);
@@ -49,8 +48,8 @@ public final class Take
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> take(final @Nullable CollectionHolder<T> collection,
-                                                                                 final int n) {
+    public static <T extends @Nullable Object> CollectionHolder<T> take(final @Nullable CollectionHolder<T> collection,
+                                                                        final int n) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, n);
@@ -65,8 +64,8 @@ public final class Take
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> take(final T @Nullable @Unmodifiable [] collection,
-                                                                                 final int n) {
+    public static <T extends @Nullable Object> CollectionHolder<T> take(final T @Nullable @Unmodifiable [] collection,
+                                                                        final int n) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, n);
@@ -82,8 +81,8 @@ public final class Take
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> take(final @Nullable MinimalistCollectionHolder<T> collection,
-                                                                                 final @NotNull Integer n) {
+    public static <T extends @Nullable Object> CollectionHolder<T> take(final @Nullable MinimalistCollectionHolder<T> collection,
+                                                                        final Integer n) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, n);
@@ -98,8 +97,8 @@ public final class Take
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> take(final @Nullable CollectionHolder<T> collection,
-                                                                                 final @NotNull Integer n) {
+    public static <T extends @Nullable Object> CollectionHolder<T> take(final @Nullable CollectionHolder<T> collection,
+                                                                        final Integer n) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, n);
@@ -114,8 +113,8 @@ public final class Take
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> take(final T @Nullable @Unmodifiable [] collection,
-                                                                                 final @NotNull Integer n) {
+    public static <T extends @Nullable Object> CollectionHolder<T> take(final T @Nullable @Unmodifiable [] collection,
+                                                                        final Integer n) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, n);
@@ -124,8 +123,8 @@ public final class Take
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Core methods --------------------
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<T> collection,
-                                                                                    final int n) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final MinimalistCollectionHolder<T> collection,
+                                                                           final int n) {
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
@@ -147,8 +146,8 @@ public final class Take
         return new GenericCollectionHolder<>(() -> __getAll(collection, size - n2));
     }
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<T> collection,
-                                                                                    final int n) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<T> collection,
+                                                                           final int n) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
         if (n == 0)
@@ -171,8 +170,8 @@ public final class Take
         return new GenericCollectionHolder<>(() -> __getAll(collection, size - n2));
     }
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final T @NotNull @Unmodifiable [] collection,
-                                                                                    final int n) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final T @Unmodifiable [] collection,
+                                                                           final int n) {
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
@@ -198,8 +197,8 @@ public final class Take
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __getAll(final @NotNull MinimalistCollectionHolder<T> collection,
-                                                                                     final int amount) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __getAll(final MinimalistCollectionHolder<T> collection,
+                                                                            final int amount) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[amount];
         var index = -1;
         while (++index < amount)
@@ -207,8 +206,8 @@ public final class Take
         return newArray;
     }
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __getAll(final T @NotNull @Unmodifiable [] collection,
-                                                                                     final int amount) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __getAll(final T @Unmodifiable [] collection,
+                                                                            final int amount) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[amount];
         var index = -1;
         while (++index < amount)
