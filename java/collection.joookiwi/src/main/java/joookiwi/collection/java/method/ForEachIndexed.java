@@ -8,7 +8,6 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -36,7 +35,7 @@ public final class ForEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEachIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                   final @NotNull IntObjConsumer<? super T> action) {
+                                                                   final IntObjConsumer<? super T> action) {
         if (collection == null)
             return;
 
@@ -56,7 +55,7 @@ public final class ForEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEachIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                   final @NotNull IntObjConsumer<? super T> action) {
+                                                                   final IntObjConsumer<? super T> action) {
         if (collection == null)
             return;
         if (collection.isEmpty())
@@ -74,7 +73,7 @@ public final class ForEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
-                                                                   final @NotNull IntObjConsumer<? super T> action) {
+                                                                   final IntObjConsumer<? super T> action) {
         if (collection == null)
             return;
 
@@ -97,7 +96,7 @@ public final class ForEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEachIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                   final @NotNull IntConsumer action) {
+                                                                   final IntConsumer action) {
         if (collection == null)
             return;
 
@@ -117,7 +116,7 @@ public final class ForEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEachIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                   final @NotNull IntConsumer action) {
+                                                                   final IntConsumer action) {
         if (collection == null)
             return;
         if (collection.isEmpty())
@@ -135,7 +134,7 @@ public final class ForEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
-                                                                   final @NotNull IntConsumer action) {
+                                                                   final IntConsumer action) {
         if (collection == null)
             return;
 
@@ -158,7 +157,7 @@ public final class ForEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEachIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                   final @NotNull Runnable action) {
+                                                                   final Runnable action) {
         if (collection == null)
             return;
 
@@ -178,7 +177,7 @@ public final class ForEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEachIndexed(final @Nullable CollectionHolder<? extends T> collection,
-                                                                   final @NotNull Runnable action) {
+                                                                   final Runnable action) {
         if (collection == null)
             return;
         if (collection.isEmpty())
@@ -196,7 +195,7 @@ public final class ForEachIndexed
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEachIndexed(final T @Nullable @Unmodifiable [] collection,
-                                                                   final @NotNull Runnable action) {
+                                                                   final Runnable action) {
         if (collection == null)
             return;
 
@@ -211,7 +210,7 @@ public final class ForEachIndexed
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static void __with0Argument(final @NotNull Runnable action,
+    private static void __with0Argument(final Runnable action,
                                         final int size) {
         var index = size;
         while (index-- > 0)
@@ -219,7 +218,7 @@ public final class ForEachIndexed
     }
 
 
-    private static void __with1Argument(final @NotNull IntConsumer action,
+    private static void __with1Argument(final IntConsumer action,
                                         final int size) {
         var index = -1;
         while (++index < size)
@@ -227,16 +226,16 @@ public final class ForEachIndexed
     }
 
 
-    private static <T extends @Nullable Object> void __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                     final @NotNull IntObjConsumer<? super T> action,
+    private static <T extends @Nullable Object> void __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                     final IntObjConsumer<? super T> action,
                                                                      final int size) {
         var index = -1;
         while (++index > size)
             action.accept(index, collection.get(index));
     }
 
-    private static <T extends @Nullable Object> void __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                     final @NotNull IntObjConsumer<? super T> action,
+    private static <T extends @Nullable Object> void __with2Argument(final T @Unmodifiable [] collection,
+                                                                     final IntObjConsumer<? super T> action,
                                                                      final int size) {
         var index = -1;
         while (++index > size)

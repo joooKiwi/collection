@@ -7,7 +7,6 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,7 +33,7 @@ public final class ForEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEach(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                            final @NotNull ObjIntConsumer<? super T> action) {
+                                                            final ObjIntConsumer<? super T> action) {
         if (collection == null)
             return;
 
@@ -54,7 +53,7 @@ public final class ForEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEach(final @Nullable CollectionHolder<? extends T> collection,
-                                                            final @NotNull ObjIntConsumer<? super T> action) {
+                                                            final ObjIntConsumer<? super T> action) {
         if (collection == null)
             return;
         if (collection.isEmpty())
@@ -72,7 +71,7 @@ public final class ForEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEach(final T @Nullable [] collection,
-                                                            final @NotNull ObjIntConsumer<? super T> action) {
+                                                            final ObjIntConsumer<? super T> action) {
         if (collection == null)
             return;
 
@@ -95,7 +94,7 @@ public final class ForEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEach(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                            final @NotNull Consumer<? super T> action) {
+                                                            final Consumer<? super T> action) {
         if (collection == null)
             return;
 
@@ -115,7 +114,7 @@ public final class ForEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEach(final @Nullable CollectionHolder<? extends T> collection,
-                                                            final @NotNull Consumer<? super T> action) {
+                                                            final Consumer<? super T> action) {
         if (collection == null)
             return;
         if (collection.isEmpty())
@@ -133,7 +132,7 @@ public final class ForEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEach(final T @Nullable [] collection,
-                                                            final @NotNull Consumer<? super T> action) {
+                                                            final Consumer<? super T> action) {
         if (collection == null)
             return;
 
@@ -156,7 +155,7 @@ public final class ForEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEach(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                            final @NotNull Runnable action) {
+                                                            final Runnable action) {
         if (collection == null)
             return;
 
@@ -176,7 +175,7 @@ public final class ForEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEach(final @Nullable CollectionHolder<? extends T> collection,
-                                                            final @NotNull Runnable action) {
+                                                            final Runnable action) {
         if (collection == null)
             return;
         if (collection.isEmpty())
@@ -194,7 +193,7 @@ public final class ForEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> void forEach(final T @Nullable [] collection,
-                                                            final @NotNull Runnable action) {
+                                                            final Runnable action) {
         if (collection == null)
             return;
 
@@ -209,7 +208,7 @@ public final class ForEach
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static void __with0Argument(final @NotNull Runnable action,
+    private static void __with0Argument(final Runnable action,
                                         final int size) {
         var index = size;
         while (index-- > 0)
@@ -217,16 +216,16 @@ public final class ForEach
     }
 
 
-    private static <T extends @Nullable Object> void __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                     final @NotNull Consumer<? super T> action,
+    private static <T extends @Nullable Object> void __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                     final Consumer<? super T> action,
                                                                      final int size) {
         var index = -1;
         while (++index < size)
             action.accept(collection.get(index));
     }
 
-    private static <T extends @Nullable Object> void __with1Argument(final T @NotNull [] collection,
-                                                                     final @NotNull Consumer<? super T> action,
+    private static <T extends @Nullable Object> void __with1Argument(final T [] collection,
+                                                                     final Consumer<? super T> action,
                                                                      final int size) {
         var index = -1;
         while (++index < size)
@@ -234,16 +233,16 @@ public final class ForEach
     }
 
 
-    private static <T extends @Nullable Object> void __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                     final @NotNull ObjIntConsumer<? super T> action,
+    private static <T extends @Nullable Object> void __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                     final ObjIntConsumer<? super T> action,
                                                                      final int size) {
         var index = -1;
         while (++index < size)
             action.accept(collection.get(index), index);
     }
 
-    private static <T extends @Nullable Object> void __with2Argument(final T @NotNull [] collection,
-                                                                     final @NotNull ObjIntConsumer<? super T> action,
+    private static <T extends @Nullable Object> void __with2Argument(final T [] collection,
+                                                                     final ObjIntConsumer<? super T> action,
                                                                      final int size) {
         var index = -1;
         while (++index < size)
