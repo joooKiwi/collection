@@ -11,7 +11,6 @@ import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import joookiwi.collection.java.exception.NullCollectionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -657,7 +656,7 @@ public final class LastIndexOf
 
     //#region -------------------- Core methods (element) --------------------
 
-    private static <T extends @Nullable Object> int __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> int __core(final MinimalistCollectionHolder<? extends T> collection,
                                                            final T element) {
         final var size = collection.size();
         if (size == 0)
@@ -665,14 +664,14 @@ public final class LastIndexOf
         return __findLastInRange(collection, element, -1, size - 1);
     }
 
-    private static <T extends @Nullable Object> int __core(final @NotNull CollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> int __core(final CollectionHolder<? extends T> collection,
                                                            final T element) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
         return __findLastInRange(collection, element, -1, collection.size() - 1);
     }
 
-    private static <T extends @Nullable Object> int __core(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> int __core(final T @Unmodifiable [] collection,
                                                            final T element) {
         final var size = collection.length;
         if (size == 0)
@@ -683,7 +682,7 @@ public final class LastIndexOf
     //#endregion -------------------- Core methods (element) --------------------
     //#region -------------------- Core methods (element, from) --------------------
 
-    private static <T extends @Nullable Object> int __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> int __core(final MinimalistCollectionHolder<? extends T> collection,
                                                            final T element,
                                                            final int from) {
         final var size = collection.size();
@@ -692,7 +691,7 @@ public final class LastIndexOf
         return __findLastInRange(collection, element, _startingIndex(from, size), size - 1);
     }
 
-    private static <T extends @Nullable Object> int __core(final @NotNull CollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> int __core(final CollectionHolder<? extends T> collection,
                                                            final T element,
                                                            final int from) {
         if (collection.isEmpty())
@@ -702,7 +701,7 @@ public final class LastIndexOf
         return __findLastInRange(collection, element, _startingIndex(from, size), size - 1);
     }
 
-    private static <T extends @Nullable Object> int __core(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> int __core(final T @Unmodifiable [] collection,
                                                            final T element,
                                                            final int from) {
         final var size = collection.length;
@@ -714,7 +713,7 @@ public final class LastIndexOf
     //#endregion -------------------- Core methods (element, from) --------------------
     //#region -------------------- Core methods (element, from, to) --------------------
 
-    private static <T extends @Nullable Object> int __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> int __core(final MinimalistCollectionHolder<? extends T> collection,
                                                            final T element,
                                                            final int from,
                                                            final int to) {
@@ -728,7 +727,7 @@ public final class LastIndexOf
         return __findLastInRange(collection, element, startingIndex, endingIndex);
     }
 
-    private static <T extends @Nullable Object> int __core(final @NotNull CollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> int __core(final CollectionHolder<? extends T> collection,
                                                            final T element,
                                                            final int from,
                                                            final int to) {
@@ -742,7 +741,7 @@ public final class LastIndexOf
         return __findLastInRange(collection, element, startingIndex, endingIndex);
     }
 
-    private static <T extends @Nullable Object> int __core(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> int __core(final T @Unmodifiable [] collection,
                                                            final T element,
                                                            final int from,
                                                            final int to) {
@@ -759,7 +758,7 @@ public final class LastIndexOf
     //#endregion -------------------- Core methods (element, from, to) --------------------
     //#region -------------------- Core methods (element, to) --------------------
 
-    private static <T extends @Nullable Object> int __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> int __coreWithNoFrom(final MinimalistCollectionHolder<? extends T> collection,
                                                                      final T element,
                                                                      final int to) {
         final var size = collection.size();
@@ -768,7 +767,7 @@ public final class LastIndexOf
         return __findLastInRange(collection, element, 0, _endingIndex(to, size));
     }
 
-    private static <T extends @Nullable Object> int __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> int __coreWithNoFrom(final CollectionHolder<? extends T> collection,
                                                                      final T element,
                                                                      final int to) {
         if (collection.isEmpty())
@@ -776,7 +775,7 @@ public final class LastIndexOf
         return __findLastInRange(collection, element, 0, _endingIndex(to, collection.size()));
     }
 
-    private static <T extends @Nullable Object> int __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> int __coreWithNoFrom(final T @Unmodifiable [] collection,
                                                                      final T element,
                                                                      final int to) {
         final var size = collection.length;
@@ -790,7 +789,7 @@ public final class LastIndexOf
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> int __findLastInRange(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> int __findLastInRange(final MinimalistCollectionHolder<? extends T> collection,
                                                                       final T element,
                                                                       final int startingIndex,
                                                                       final int endingIndex) {
@@ -807,7 +806,7 @@ public final class LastIndexOf
         throw new IndexOutOfBoundsException("Index out of bound. No index could be found from the starting (“" + startingIndex + "”) to the ending (“" + endingIndex + "”) indexes in the collection.", index);
     }
 
-    private static <T extends @Nullable Object> int __findLastInRange(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> int __findLastInRange(final T @Unmodifiable [] collection,
                                                                       final T element,
                                                                       final int startingIndex,
                                                                       final int endingIndex) {

@@ -7,7 +7,6 @@ import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -497,7 +496,7 @@ public final class LastIndexOfOrNull
 
     //#region -------------------- Core methods (element) --------------------
 
-    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> @Nullable Integer __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                          final T element) {
         final var size = collection.size();
         if (size == 0)
@@ -505,14 +504,14 @@ public final class LastIndexOfOrNull
         return __findLastInRange(collection, element, -1, size - 1);
     }
 
-    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
                                                                          final T element) {
         if (collection.isEmpty())
             return null;
         return __findLastInRange(collection, element, -1, collection.size() - 1);
     }
 
-    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
                                                                          final T element) {
         final var size = collection.length;
         if (size == 0)
@@ -523,7 +522,7 @@ public final class LastIndexOfOrNull
     //#endregion -------------------- Core methods (element) --------------------
     //#region -------------------- Core methods (element, from) --------------------
 
-    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> @Nullable Integer __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                          final T element,
                                                                          final int from) {
         final var size = collection.size();
@@ -532,7 +531,7 @@ public final class LastIndexOfOrNull
         return __findLastInRange(collection, element, _startingIndex(from, size), size - 1);
     }
 
-    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
                                                                          final T element,
                                                                          final int from) {
         if (collection.isEmpty())
@@ -542,7 +541,7 @@ public final class LastIndexOfOrNull
         return __findLastInRange(collection, element, _startingIndex(from, size), size - 1);
     }
 
-    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
                                                                          final T element,
                                                                          final int from) {
         final var size = collection.length;
@@ -554,7 +553,7 @@ public final class LastIndexOfOrNull
     //#endregion -------------------- Core methods (element, from) --------------------
     //#region -------------------- Core methods (element, from, to) --------------------
 
-    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> @Nullable Integer __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                          final T element,
                                                                          final int from,
                                                                          final int to) {
@@ -569,7 +568,7 @@ public final class LastIndexOfOrNull
         return __findLastInRange(collection, element, startingIndex, endingIndex);
     }
 
-    private static <T extends @Nullable Object> @Nullable Integer __core(final @NotNull CollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
                                                                          final T element,
                                                                          final int from,
                                                                          final int to) {
@@ -584,7 +583,7 @@ public final class LastIndexOfOrNull
         return __findLastInRange(collection, element, startingIndex, endingIndex);
     }
 
-    private static <T extends @Nullable Object> @Nullable Integer __core(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
                                                                          final T element,
                                                                          final int from,
                                                                          final int to) {
@@ -602,7 +601,7 @@ public final class LastIndexOfOrNull
     //#endregion -------------------- Core methods (element, from, to) --------------------
     //#region -------------------- Core methods (element, to) --------------------
 
-    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final MinimalistCollectionHolder<? extends T> collection,
                                                                                    final T element,
                                                                                    final int to) {
         final var size = collection.size();
@@ -611,7 +610,7 @@ public final class LastIndexOfOrNull
         return __findLastInRange(collection, element, 0, _endingIndex(to, size));
     }
 
-    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final CollectionHolder<? extends T> collection,
                                                                                    final T element,
                                                                                    final int to) {
         if (collection.isEmpty())
@@ -619,7 +618,7 @@ public final class LastIndexOfOrNull
         return __findLastInRange(collection, element, 0, _endingIndex(to, collection.size()));
     }
 
-    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final T @Unmodifiable [] collection,
                                                                                    final T element,
                                                                                    final int to) {
         final var size = collection.length;
@@ -633,7 +632,7 @@ public final class LastIndexOfOrNull
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> @Nullable Integer __findLastInRange(final @NotNull MinimalistCollectionHolder<? extends T> collection,
+    private static <T extends @Nullable Object> @Nullable Integer __findLastInRange(final MinimalistCollectionHolder<? extends T> collection,
                                                                                     final T element,
                                                                                     final int startingIndex,
                                                                                     final int endingIndex) {
@@ -650,7 +649,7 @@ public final class LastIndexOfOrNull
         return null;
     }
 
-    private static <T extends @Nullable Object> @Nullable Integer __findLastInRange(final T @NotNull @Unmodifiable [] collection,
+    private static <T extends @Nullable Object> @Nullable Integer __findLastInRange(final T @Unmodifiable [] collection,
                                                                                     final T element,
                                                                                     final int startingIndex,
                                                                                     final int endingIndex) {
