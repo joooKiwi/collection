@@ -7,7 +7,6 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -38,7 +37,7 @@ public final class OnEach
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
     public static <T extends @Nullable Object, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
-                                                                                                                                       final @NotNull ObjIntConsumer<? super T> action) {
+                                                                                                                                       final ObjIntConsumer<? super T> action) {
         if (collection == null)
             return null;
 
@@ -60,7 +59,7 @@ public final class OnEach
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
     public static <T extends @Nullable Object, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
-                                                                                                                             final @NotNull ObjIntConsumer<? super T> action) {
+                                                                                                                             final ObjIntConsumer<? super T> action) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -80,7 +79,7 @@ public final class OnEach
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
     public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] __with0Argument(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final @NotNull ObjIntConsumer<? super T> action) {
+                                                                                            final ObjIntConsumer<? super T> action) {
         if (collection == null)
             return null;
 
@@ -105,7 +104,7 @@ public final class OnEach
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
     public static <T extends @Nullable Object, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
-                                                                                                                                       final @NotNull Consumer<? super T> action) {
+                                                                                                                                       final Consumer<? super T> action) {
         if (collection == null)
             return null;
 
@@ -127,7 +126,7 @@ public final class OnEach
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
     public static <T extends @Nullable Object, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
-                                                                                                                             final @NotNull Consumer<? super T> action) {
+                                                                                                                             final Consumer<? super T> action) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -147,7 +146,7 @@ public final class OnEach
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
     public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] __with0Argument(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final @NotNull Consumer<? super T> action) {
+                                                                                            final Consumer<? super T> action) {
         if (collection == null)
             return null;
 
@@ -170,7 +169,7 @@ public final class OnEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @Contract(ALWAYS_1ST_2)
     public static <T extends @Nullable Object, COLLECTION extends @Nullable MinimalistCollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
-                                                                                                                                       final @NotNull Runnable action) {
+                                                                                                                                       final Runnable action) {
         if (collection == null)
             return null;
 
@@ -192,7 +191,7 @@ public final class OnEach
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
     public static <T extends @Nullable Object, COLLECTION extends @Nullable CollectionHolder<? extends T>> COLLECTION onEach(final COLLECTION collection,
-                                                                                                                             final @NotNull Runnable action) {
+                                                                                                                             final Runnable action) {
         if (collection == null)
             return collection;
         if (collection.isEmpty())
@@ -211,7 +210,7 @@ public final class OnEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @Contract(ALWAYS_1ST_2)
     public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] __with0Argument(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final @NotNull Runnable action) {
+                                                                                            final Runnable action) {
         if (collection == null)
             return null;
 
@@ -225,18 +224,18 @@ public final class OnEach
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object, COLLECTION extends MinimalistCollectionHolder<? extends T>> @NotNull COLLECTION __with0Argument(final @NotNull COLLECTION collection,
-                                                                                                                                                final @NotNull Runnable action,
-                                                                                                                                                final int size) {
+    private static <T extends @Nullable Object, COLLECTION extends MinimalistCollectionHolder<? extends T>> COLLECTION __with0Argument(final COLLECTION collection,
+                                                                                                                                       final Runnable action,
+                                                                                                                                       final int size) {
         var index = size;
         while (index-- > 0)
             action.run();
         return collection;
     }
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                                            final @NotNull Runnable action,
-                                                                                            final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with0Argument(final T @Unmodifiable [] collection,
+                                                                                   final Runnable action,
+                                                                                   final int size) {
         var index = size;
         while (index-- > 0)
             action.run();
@@ -244,18 +243,18 @@ public final class OnEach
     }
 
 
-    private static <T extends @Nullable Object, COLLECTION extends MinimalistCollectionHolder<? extends T>> @NotNull COLLECTION __with1Argument(final @NotNull COLLECTION collection,
-                                                                                                                                                final @NotNull Consumer<? super T> action,
-                                                                                                                                                final int size) {
+    private static <T extends @Nullable Object, COLLECTION extends MinimalistCollectionHolder<? extends T>> COLLECTION __with1Argument(final COLLECTION collection,
+                                                                                                                                       final Consumer<? super T> action,
+                                                                                                                                       final int size) {
         var index = -1;
         while (++index < size)
             action.accept(collection.get(index));
         return collection;
     }
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                                            final @NotNull Consumer<? super T> action,
-                                                                                            final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with1Argument(final T @Unmodifiable [] collection,
+                                                                                   final Consumer<? super T> action,
+                                                                                   final int size) {
         var index = -1;
         while (++index < size)
             action.accept(collection[index]);
@@ -263,18 +262,18 @@ public final class OnEach
     }
 
 
-    private static <T extends @Nullable Object, COLLECTION extends MinimalistCollectionHolder<? extends T>> @NotNull COLLECTION __with2Argument(final @NotNull COLLECTION collection,
-                                                                                                                                                final @NotNull ObjIntConsumer<? super T> action,
-                                                                                                                                                final int size) {
+    private static <T extends @Nullable Object, COLLECTION extends MinimalistCollectionHolder<? extends T>> COLLECTION __with2Argument(final COLLECTION collection,
+                                                                                                                                       final ObjIntConsumer<? super T> action,
+                                                                                                                                       final int size) {
         var index = -1;
         while (++index < size)
             action.accept(collection.get(index), index);
         return collection;
     }
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                                                            final @NotNull ObjIntConsumer<? super T> action,
-                                                                                            final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with2Argument(final T @Unmodifiable [] collection,
+                                                                                   final ObjIntConsumer<? super T> action,
+                                                                                   final int size) {
         var index = -1;
         while (++index < size)
             action.accept(collection[index], index);
