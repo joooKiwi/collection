@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
@@ -40,11 +41,7 @@ public final class ToMutableHashSet
     public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableHashSet<>();
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>();
-        return new MutableHashSet<>(_uniqueValues(collection, size));
+        return __core(collection);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -56,11 +53,7 @@ public final class ToMutableHashSet
     public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableHashSet<>();
-        if (collection.isEmpty())
-            return new MutableHashSet<>();
-        if (collection.hasDuplicate())
-            return new MutableHashSet<>(_uniqueValues(collection, collection.size()));
-        return new MutableHashSet<>(_values(collection, collection.size()));
+        return __core(collection);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -72,11 +65,7 @@ public final class ToMutableHashSet
     public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableHashSet<>();
-
-        final var size = collection.length;
-        if (size == 0)
-            return new MutableHashSet<>();
-        return new MutableHashSet<>(_uniqueValues(collection, size));
+        return __core(collection);
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -95,11 +84,7 @@ public final class ToMutableHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>();
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>();
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform));
+        return __core(collection, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -115,9 +100,7 @@ public final class ToMutableHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>();
-        if (collection.isEmpty())
-            return new MutableHashSet<>();
-        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform));
+        return __core(collection, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -156,11 +139,7 @@ public final class ToMutableHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>();
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>();
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform));
+        return __core(collection, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -176,9 +155,7 @@ public final class ToMutableHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>();
-        if (collection.isEmpty())
-            return new MutableHashSet<>();
-        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform));
+        return __core(collection, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -194,11 +171,7 @@ public final class ToMutableHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>();
-
-        final var size = collection.length;
-        if (size == 0)
-            return new MutableHashSet<>();
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform));
+        return __core(collection, transform);
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -217,11 +190,7 @@ public final class ToMutableHashSet
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>();
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>();
-        return new MutableHashSet<>(_uniqueValues(size, transform));
+        return __core(collection, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -237,9 +206,7 @@ public final class ToMutableHashSet
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>();
-        if (collection.isEmpty())
-            return new MutableHashSet<>();
-        return new MutableHashSet<>(_uniqueValues(collection.size(), transform));
+        return __core(collection, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -255,11 +222,7 @@ public final class ToMutableHashSet
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>();
-
-        final var size = collection.length;
-        if (size == 0)
-            return new MutableHashSet<>();
-        return new MutableHashSet<>(_uniqueValues(size, transform));
+        return __core(collection, transform);
     }
 
     //#endregion -------------------- () → U --------------------
@@ -277,11 +240,7 @@ public final class ToMutableHashSet
                                                                            final int initialCapacity) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(collection, size), initialCapacity);
+        return __core(collection, initialCapacity);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -295,11 +254,7 @@ public final class ToMutableHashSet
                                                                            final int initialCapacity) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-        if (collection.isEmpty())
-            return new MutableHashSet<>(initialCapacity);
-        if (collection.hasDuplicate())
-            return new MutableHashSet<>(_uniqueValues(collection, collection.size()), initialCapacity);
-        return new MutableHashSet<>(_values(collection, collection.size()), initialCapacity);
+        return __core(collection, initialCapacity);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -313,11 +268,7 @@ public final class ToMutableHashSet
                                                                            final int initialCapacity) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-
-        final var size = collection.length;
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(collection, size), initialCapacity);
+        return __core(collection, initialCapacity);
     }
 
     //#endregion -------------------- initialCapacity --------------------
@@ -338,11 +289,7 @@ public final class ToMutableHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity);
+        return __core(collection, initialCapacity, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -360,9 +307,7 @@ public final class ToMutableHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-        if (collection.isEmpty())
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform), initialCapacity);
+        return __core(collection, initialCapacity, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -380,11 +325,7 @@ public final class ToMutableHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-
-        final var size = collection.length;
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity);
+        return __core(collection, initialCapacity, transform);
     }
 
     //#endregion -------------------- initialCapacity, (T, int) → U --------------------
@@ -405,11 +346,7 @@ public final class ToMutableHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity);
+        return __core(collection, initialCapacity, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -427,9 +364,7 @@ public final class ToMutableHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-        if (collection.isEmpty())
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform), initialCapacity);
+        return __core(collection, initialCapacity, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -447,11 +382,7 @@ public final class ToMutableHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-
-        final var size = collection.length;
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity);
+        return __core(collection, initialCapacity, transform);
     }
 
     //#endregion -------------------- initialCapacity, (T) → U --------------------
@@ -472,11 +403,7 @@ public final class ToMutableHashSet
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(size, transform), initialCapacity);
+        return __core(collection, initialCapacity, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -494,9 +421,7 @@ public final class ToMutableHashSet
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-        if (collection.isEmpty())
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(collection.size(), transform), initialCapacity);
+        return __core(collection, initialCapacity, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -514,11 +439,7 @@ public final class ToMutableHashSet
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity);
-
-        final var size = collection.length;
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity);
-        return new MutableHashSet<>(_uniqueValues(size, transform), initialCapacity);
+        return __core(collection, initialCapacity, transform);
     }
 
     //#endregion -------------------- initialCapacity, () → U --------------------
@@ -538,11 +459,7 @@ public final class ToMutableHashSet
                                                                            final float loadFactor) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
-        return new MutableHashSet<>(_uniqueValues(collection, size), initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -558,11 +475,7 @@ public final class ToMutableHashSet
                                                                            final float loadFactor) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-        if (collection.isEmpty())
-            return new MutableHashSet<>(initialCapacity, loadFactor);
-        if (collection.hasDuplicate())
-            return new MutableHashSet<>(_uniqueValues(collection, collection.size()), initialCapacity, loadFactor);
-        return new MutableHashSet<>(_values(collection, collection.size()), initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -578,11 +491,187 @@ public final class ToMutableHashSet
                                                                            final float loadFactor) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor);
+    }
 
-        final var size = collection.length;
-        if (size == 0)
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                           final int initialCapacity,
+                                                                           final @Nullable Float loadFactor) {
+        if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-        return new MutableHashSet<>(_uniqueValues(collection, size), initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        return __core(collection, initialCapacity, loadFactor);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                           final int initialCapacity,
+                                                                           final @Nullable Float loadFactor) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        return __core(collection, initialCapacity, loadFactor);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                           final int initialCapacity,
+                                                                           final @Nullable Float loadFactor) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        return __core(collection, initialCapacity, loadFactor);
+    }
+
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                           final @Nullable Integer initialCapacity,
+                                                                           final float loadFactor) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+        return __core(collection, initialCapacity, loadFactor);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                           final @Nullable Integer initialCapacity,
+                                                                           final float loadFactor) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+        return __core(collection, initialCapacity, loadFactor);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                           final @Nullable Integer initialCapacity,
+                                                                           final float loadFactor) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+        return __core(collection, initialCapacity, loadFactor);
+    }
+
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                           final @Nullable Integer initialCapacity,
+                                                                           final @Nullable Float loadFactor) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        return __core(collection, initialCapacity, loadFactor);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                           final @Nullable Integer initialCapacity,
+                                                                           final @Nullable Float loadFactor) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        return __core(collection, initialCapacity, loadFactor);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                           final @Nullable Integer initialCapacity,
+                                                                           final @Nullable Float loadFactor) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        return __core(collection, initialCapacity, loadFactor);
     }
 
     //#endregion -------------------- initialCapacity, loadFactor --------------------
@@ -605,11 +694,7 @@ public final class ToMutableHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -629,9 +714,7 @@ public final class ToMutableHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-        if (collection.isEmpty())
-            return new MutableHashSet<>(initialCapacity, loadFactor);
-        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform), initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -651,11 +734,222 @@ public final class ToMutableHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
 
-        final var size = collection.length;
-        if (size == 0)
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final int initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final int initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final int initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final float loadFactor,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final float loadFactor,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final float loadFactor,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection, transform);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection, transform);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection, transform);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
     }
 
     //#endregion -------------------- initialCapacity, loadFactor, (T, int) → U --------------------
@@ -678,11 +972,7 @@ public final class ToMutableHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -702,9 +992,7 @@ public final class ToMutableHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-        if (collection.isEmpty())
-            return new MutableHashSet<>(initialCapacity, loadFactor);
-        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform), initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -724,11 +1012,223 @@ public final class ToMutableHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
 
-        final var size = collection.length;
-        if (size == 0)
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final int initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final int initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final int initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final float loadFactor,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final float loadFactor,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final float loadFactor,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection, transform);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection, transform);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection, transform);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
     }
 
     //#endregion -------------------- initialCapacity, loadFactor, (T) → U --------------------
@@ -751,11 +1251,7 @@ public final class ToMutableHashSet
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-
-        final var size = collection.size();
-        if (size == 0)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
-        return new MutableHashSet<>(_uniqueValues(size, transform), initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -775,9 +1271,7 @@ public final class ToMutableHashSet
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
-        if (collection.isEmpty())
-            return new MutableHashSet<>(initialCapacity, loadFactor);
-        return new MutableHashSet<>(_uniqueValues(collection.size(), transform), initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor, transform);
     }
 
     /// Convert the `collection` to a new mutable [HashSet]
@@ -797,15 +1291,564 @@ public final class ToMutableHashSet
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableHashSet<>(initialCapacity, loadFactor);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
 
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final int initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final int initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final int initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final float loadFactor,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final float loadFactor,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final float loadFactor,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection, transform);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection, transform);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param loadFactor      The [HashSet] load factor
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_4)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final @Nullable Float loadFactor,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (initialCapacity == null)
+            if (loadFactor == null)
+                return __core(collection, transform);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        return __core(collection, initialCapacity, loadFactor, transform);
+    }
+
+    //#endregion -------------------- initialCapacity, loadFactor, () → U --------------------
+
+    //#endregion -------------------- Facade methods --------------------
+    //#region -------------------- Core methods --------------------
+
+    //#region -------------------- ∅ --------------------
+
+    private static <T extends @Nullable Object> MutableHashSet<T> __core(final MinimalistCollectionHolder<? extends T> collection) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(collection, size));
+    }
+
+    private static <T extends @Nullable Object> MutableHashSet<T> __core(final CollectionHolder<? extends T> collection) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>();
+        if (collection.hasDuplicate())
+            return new MutableHashSet<>(_uniqueValues(collection, collection.size()));
+        return new MutableHashSet<>(_uniqueValues(collection, collection.size()));
+    }
+
+    private static <T extends @Nullable Object> MutableHashSet<T> __core(final T @Unmodifiable [] collection) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(collection, size));
+    }
+
+    //#endregion -------------------- ∅ --------------------
+    //#region -------------------- transform --------------------
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform));
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final CollectionHolder<? extends T> collection,
+                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform));
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final T @Unmodifiable [] collection,
+                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform));
+    }
+
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                              final Function<? super T, ? extends U> transform) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform));
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final CollectionHolder<? extends T> collection,
+                                                                                              final Function<? super T, ? extends U> transform) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform));
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final T @Unmodifiable [] collection,
+                                                                                              final Function<? super T, ? extends U> transform) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform));
+    }
+
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                              final Supplier<? extends U> transform) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(size, transform));
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final CollectionHolder<? extends T> collection,
+                                                                                              final Supplier<? extends U> transform) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(collection.size(), transform));
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final T @Unmodifiable [] collection,
+                                                                                              final Supplier<? extends U> transform) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>();
+        return new MutableHashSet<>(_uniqueValues(size, transform));
+    }
+
+    //#endregion -------------------- transform --------------------
+    //#region -------------------- initialCapacity --------------------
+
+    private static <T extends @Nullable Object> MutableHashSet<T> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                         final int initialCapacity) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(collection, size), initialCapacity);
+    }
+
+    private static <T extends @Nullable Object> MutableHashSet<T> __core(final CollectionHolder<? extends T> collection,
+                                                                         final int initialCapacity) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>(initialCapacity);
+        if (collection.hasDuplicate())
+            return new MutableHashSet<>(_uniqueValues(collection, collection.size()), initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(collection, collection.size()), initialCapacity);
+    }
+
+    private static <T extends @Nullable Object> MutableHashSet<T> __core(final T @Unmodifiable [] collection,
+                                                                         final int initialCapacity) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(collection, size), initialCapacity);
+    }
+
+    //#endregion -------------------- initialCapacity --------------------
+    //#region -------------------- initialCapacity, loadFactor --------------------
+
+    private static <T extends @Nullable Object> MutableHashSet<T> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                         final int initialCapacity,
+                                                                         final float loadFactor) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(collection, size), initialCapacity, loadFactor);
+    }
+
+    private static <T extends @Nullable Object> MutableHashSet<T> __core(final CollectionHolder<? extends T> collection,
+                                                                         final int initialCapacity,
+                                                                         final float loadFactor) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        if (collection.hasDuplicate())
+            return new MutableHashSet<>(_uniqueValues(collection, collection.size()), initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(collection, collection.size()), initialCapacity, loadFactor);
+    }
+
+    private static <T extends @Nullable Object> MutableHashSet<T> __core(final T @Unmodifiable [] collection,
+                                                                         final int initialCapacity,
+                                                                         final float loadFactor) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(collection, size), initialCapacity, loadFactor);
+    }
+
+    //#endregion -------------------- initialCapacity, loadFactor --------------------
+    //#region -------------------- initialCapacity, transform --------------------
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final CollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform), initialCapacity);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final T @Unmodifiable [] collection,
+                                                                                              final int initialCapacity,
+                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity);
+    }
+
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final Function<? super T, ? extends U> transform) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final CollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final Function<? super T, ? extends U> transform) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform), initialCapacity);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final T @Unmodifiable [] collection,
+                                                                                              final int initialCapacity,
+                                                                                              final Function<? super T, ? extends U> transform) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity);
+    }
+
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final Supplier<? extends U> transform) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(size, transform), initialCapacity);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final CollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final Supplier<? extends U> transform) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(collection.size(), transform), initialCapacity);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final T @Unmodifiable [] collection,
+                                                                                              final int initialCapacity,
+                                                                                              final Supplier<? extends U> transform) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity);
+        return new MutableHashSet<>(_uniqueValues(size, transform), initialCapacity);
+    }
+
+    //#endregion -------------------- initialCapacity, transform --------------------
+    //#region -------------------- initialCapacity, loadFactor, transform --------------------
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final float loadFactor,
+                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity, loadFactor);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final CollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final float loadFactor,
+                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform), initialCapacity, loadFactor);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final T @Unmodifiable [] collection,
+                                                                                              final int initialCapacity,
+                                                                                              final float loadFactor,
+                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity, loadFactor);
+    }
+
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final float loadFactor,
+                                                                                              final Function<? super T, ? extends U> transform) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity, loadFactor);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final CollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final float loadFactor,
+                                                                                              final Function<? super T, ? extends U> transform) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(collection, collection.size(), transform), initialCapacity, loadFactor);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final T @Unmodifiable [] collection,
+                                                                                              final int initialCapacity,
+                                                                                              final float loadFactor,
+                                                                                              final Function<? super T, ? extends U> transform) {
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(collection, size, transform), initialCapacity, loadFactor);
+    }
+
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final float loadFactor,
+                                                                                              final Supplier<? extends U> transform) {
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(size, transform), initialCapacity, loadFactor);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final CollectionHolder<? extends T> collection,
+                                                                                              final int initialCapacity,
+                                                                                              final float loadFactor,
+                                                                                              final Supplier<? extends U> transform) {
+        if (collection.isEmpty())
+            return new MutableHashSet<>(initialCapacity, loadFactor);
+        return new MutableHashSet<>(_uniqueValues(collection.size(), transform), initialCapacity, loadFactor);
+    }
+
+    private static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> __core(final T @Unmodifiable [] collection,
+                                                                                              final int initialCapacity,
+                                                                                              final float loadFactor,
+                                                                                              final Supplier<? extends U> transform) {
         final var size = collection.length;
         if (size == 0)
             return new MutableHashSet<>(initialCapacity, loadFactor);
         return new MutableHashSet<>(_uniqueValues(size, transform), initialCapacity, loadFactor);
     }
 
-    //#endregion -------------------- initialCapacity, loadFactor, () → U --------------------
+    //#endregion -------------------- initialCapacity, loadFactor, transform --------------------
 
-    //#endregion -------------------- Facade methods --------------------
+    //#endregion -------------------- Core methods --------------------
 
 }
