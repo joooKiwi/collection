@@ -1,7 +1,6 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
-import joookiwi.collection.java.CommonContracts;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
@@ -10,7 +9,6 @@ import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -39,7 +37,7 @@ public final class ToReverse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection);
@@ -55,7 +53,7 @@ public final class ToReverse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection);
@@ -71,7 +69,7 @@ public final class ToReverse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection);
@@ -95,8 +93,8 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                      final @Nullable Integer from) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                             final @Nullable Integer from) {
         if (collection == null)
             return emptyCollectionHolder();
         if (from == null)
@@ -119,8 +117,8 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                      final @Nullable Integer from) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
+                                                                             final @Nullable Integer from) {
         if (collection == null)
             return emptyCollectionHolder();
         if (from == null)
@@ -143,8 +141,8 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
-                                                                                      final @Nullable Integer from) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
+                                                                             final @Nullable Integer from) {
         if (collection == null)
             return emptyCollectionHolder();
         if (from == null)
@@ -168,8 +166,8 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                      final int from) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                             final int from) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, from);
@@ -190,8 +188,8 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                      final int from) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
+                                                                             final int from) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, from);
@@ -212,8 +210,8 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
-                                                                                      final int from) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
+                                                                             final int from) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, from);
@@ -238,9 +236,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                      final int from,
-                                                                                      final int to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                             final int from,
+                                                                             final int to) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, from, to);
@@ -262,9 +260,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                      final int from,
-                                                                                      final int to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
+                                                                             final int from,
+                                                                             final int to) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, from, to);
@@ -286,9 +284,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
-                                                                                      final int from,
-                                                                                      final int to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
+                                                                             final int from,
+                                                                             final int to) {
         if (collection == null)
             return emptyCollectionHolder();
         return __core(collection, from, to);
@@ -311,9 +309,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                      final int from,
-                                                                                      final @Nullable Integer to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                             final int from,
+                                                                             final @Nullable Integer to) {
         if (collection == null)
             return emptyCollectionHolder();
         if (to == null)
@@ -337,9 +335,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                      final int from,
-                                                                                      final @Nullable Integer to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
+                                                                             final int from,
+                                                                             final @Nullable Integer to) {
         if (collection == null)
             return emptyCollectionHolder();
         if (to == null)
@@ -363,9 +361,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
-                                                                                      final int from,
-                                                                                      final @Nullable Integer to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
+                                                                             final int from,
+                                                                             final @Nullable Integer to) {
         if (collection == null)
             return emptyCollectionHolder();
         if (to == null)
@@ -390,9 +388,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                      final @Nullable Integer from,
-                                                                                      final int to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                             final @Nullable Integer from,
+                                                                             final int to) {
         if (collection == null)
             return emptyCollectionHolder();
         if (from == null)
@@ -416,9 +414,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                      final @Nullable Integer from,
-                                                                                      final int to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
+                                                                             final @Nullable Integer from,
+                                                                             final int to) {
         if (collection == null)
             return emptyCollectionHolder();
         if (from == null)
@@ -442,9 +440,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
-                                                                                      final @Nullable Integer from,
-                                                                                      final int to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
+                                                                             final @Nullable Integer from,
+                                                                             final int to) {
         if (collection == null)
             return emptyCollectionHolder();
         if (from == null)
@@ -469,9 +467,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                      final @Nullable Integer from,
-                                                                                      final @Nullable Integer to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                             final @Nullable Integer from,
+                                                                             final @Nullable Integer to) {
         if (collection == null)
             return emptyCollectionHolder();
         if (to == null)
@@ -500,9 +498,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                      final @Nullable Integer from,
-                                                                                      final @Nullable Integer to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
+                                                                             final @Nullable Integer from,
+                                                                             final @Nullable Integer to) {
         if (collection == null)
             return emptyCollectionHolder();
         if (to == null)
@@ -531,9 +529,9 @@ public final class ToReverse
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> @NotNull CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
-                                                                                      final @Nullable Integer from,
-                                                                                      final @Nullable Integer to) {
+    public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
+                                                                             final @Nullable Integer from,
+                                                                             final @Nullable Integer to) {
         if (collection == null)
             return emptyCollectionHolder();
         if (to == null)
@@ -553,20 +551,20 @@ public final class ToReverse
 
     //#region -------------------- ∅ --------------------
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final MinimalistCollectionHolder<? extends T> collection) {
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
         return new GenericCollectionHolder<>(() -> __all(collection, size));
     }
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
         return new GenericCollectionHolder<>(() -> __all(collection, collection.size()));
     }
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final T @NotNull @Unmodifiable [] collection) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final T @Unmodifiable [] collection) {
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
@@ -576,8 +574,8 @@ public final class ToReverse
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- from --------------------
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                    final int from) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                           final int from) {
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
@@ -586,8 +584,8 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withAStartingIndex(collection, startingIndex, size));
     }
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                                                    final int from) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection,
+                                                                           final int from) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
 
@@ -596,8 +594,8 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withAStartingIndex(collection, startingIndex, size));
     }
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final T @NotNull @Unmodifiable [] collection,
-                                                                                    final int from) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final T @Unmodifiable [] collection,
+                                                                           final int from) {
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
@@ -609,9 +607,9 @@ public final class ToReverse
     //#endregion -------------------- from --------------------
     //#region -------------------- from, to --------------------
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                    final int from,
-                                                                                    final int to) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final MinimalistCollectionHolder<? extends T> collection,
+                                                                           final int from,
+                                                                           final int to) {
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
@@ -623,9 +621,9 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
     }
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final @NotNull CollectionHolder<? extends T> collection,
-                                                                                    final int from,
-                                                                                    final int to) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection,
+                                                                           final int from,
+                                                                           final int to) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
 
@@ -637,9 +635,9 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
     }
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __core(final T @NotNull @Unmodifiable [] collection,
-                                                                                    final int from,
-                                                                                    final int to) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final T @Unmodifiable [] collection,
+                                                                           final int from,
+                                                                           final int to) {
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
@@ -654,8 +652,8 @@ public final class ToReverse
     //#endregion -------------------- from, to --------------------
     //#region -------------------- to --------------------
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __coreWithNoFrom(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                              final int to) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __coreWithNoFrom(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                     final int to) {
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
@@ -663,16 +661,16 @@ public final class ToReverse
         return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, 0, endingIndex));
     }
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __coreWithNoFrom(final @NotNull CollectionHolder<? extends T> collection,
-                                                                                              final int to) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __coreWithNoFrom(final CollectionHolder<? extends T> collection,
+                                                                                     final int to) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
         final var endingIndex = _endingIndex(to, collection.size());
         return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, 0, endingIndex));
     }
 
-    private static <T extends @Nullable Object> @NotNull CollectionHolder<T> __coreWithNoFrom(final T @NotNull @Unmodifiable [] collection,
-                                                                                              final int to) {
+    private static <T extends @Nullable Object> CollectionHolder<T> __coreWithNoFrom(final T @Unmodifiable [] collection,
+                                                                                     final int to) {
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
@@ -685,8 +683,8 @@ public final class ToReverse
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __all(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                  final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __all(final MinimalistCollectionHolder<? extends T> collection,
+                                                                         final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
         var index = size;
         while (--index >= 0)
@@ -694,8 +692,8 @@ public final class ToReverse
         return newArray;
     }
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __all(final T @NotNull @Unmodifiable [] collection,
-                                                                                  final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __all(final T @Unmodifiable [] collection,
+                                                                         final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
         var index = size;
         while (--index >= 0)
@@ -704,9 +702,9 @@ public final class ToReverse
     }
 
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __withAStartingIndex(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                                 final int startingIndex,
-                                                                                                 final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __withAStartingIndex(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                        final int startingIndex,
+                                                                                        final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - startingIndex];
         var indexAdded = -1;
         var index = size - 1;
@@ -715,9 +713,9 @@ public final class ToReverse
         return newArray;
     }
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __withAStartingIndex(final T @NotNull @Unmodifiable [] collection,
-                                                                                                 final int startingIndex,
-                                                                                                 final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __withAStartingIndex(final T @Unmodifiable [] collection,
+                                                                                        final int startingIndex,
+                                                                                        final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - startingIndex];
         var indexAdded = -1;
         var index = size - 1;
@@ -727,9 +725,9 @@ public final class ToReverse
     }
 
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __withAStartingAndEndingIndex(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                                                                          final int startingIndex,
-                                                                                                          final int endingIndex) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __withAStartingAndEndingIndex(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final int startingIndex,
+                                                                                                 final int endingIndex) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[endingIndex - startingIndex];
         var indexAdded = -1;
         var index = endingIndex + 1;
@@ -738,9 +736,9 @@ public final class ToReverse
         return newArray;
     }
 
-    private static <T extends @Nullable Object> T @NotNull @Unmodifiable [] __withAStartingAndEndingIndex(final T @NotNull @Unmodifiable [] collection,
-                                                                                                          final int startingIndex,
-                                                                                                          final int endingIndex) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __withAStartingAndEndingIndex(final T @Unmodifiable [] collection,
+                                                                                                 final int startingIndex,
+                                                                                                 final int endingIndex) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[endingIndex - startingIndex];
         var indexAdded = -1;
         var index = endingIndex + 1;
