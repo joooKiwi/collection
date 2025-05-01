@@ -39,7 +39,7 @@ public final class ToMutableTreeSet
         final var size = collection.size();
         if (size == 0)
             return new MutableTreeSet<>();
-        return __withNoTransform(collection, size);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
@@ -53,8 +53,8 @@ public final class ToMutableTreeSet
         if (collection.isEmpty())
             return new MutableTreeSet<>();
         if (collection.hasDuplicate())
-            return __withNoDuplicate(collection, collection.size());
-        return __withNoTransform(collection, collection.size());
+            return new MutableTreeSet<>(_orderedValues(collection, collection.size()));
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
@@ -69,7 +69,7 @@ public final class ToMutableTreeSet
         final var size = collection.length;
         if (size == 0)
             return new MutableTreeSet<>();
-        return __withNoTransform(collection, size);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -91,7 +91,7 @@ public final class ToMutableTreeSet
         final var size = collection.size();
         if (size == 0)
             return new MutableTreeSet<>();
-        return __with2Argument(collection, size, transform);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
@@ -108,7 +108,7 @@ public final class ToMutableTreeSet
             return new MutableTreeSet<>();
         if (collection.isEmpty())
             return new MutableTreeSet<>();
-        return __with2Argument(collection, collection.size(), transform);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
@@ -127,7 +127,7 @@ public final class ToMutableTreeSet
         final var size = collection.length;
         if (size == 0)
             return new MutableTreeSet<>();
-        return __with2Argument(collection, size, transform);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -149,7 +149,7 @@ public final class ToMutableTreeSet
         final var size = collection.size();
         if (size == 0)
             return new MutableTreeSet<>();
-        return __with1Argument(collection, size, transform);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
@@ -166,7 +166,7 @@ public final class ToMutableTreeSet
             return new MutableTreeSet<>();
         if (collection.isEmpty())
             return new MutableTreeSet<>();
-        return __with1Argument(collection, collection.size(), transform);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
@@ -185,7 +185,7 @@ public final class ToMutableTreeSet
         final var size = collection.length;
         if (size == 0)
             return new MutableTreeSet<>();
-        return __with1Argument(collection, size, transform);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -207,7 +207,7 @@ public final class ToMutableTreeSet
         final var size = collection.size();
         if (size == 0)
             return new MutableTreeSet<>();
-        return __with0Argument(size, transform);
+        return new MutableTreeSet<>(_orderedUniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
@@ -224,7 +224,7 @@ public final class ToMutableTreeSet
             return new MutableTreeSet<>();
         if (collection.isEmpty())
             return new MutableTreeSet<>();
-        return __with0Argument(collection.size(), transform);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
@@ -243,60 +243,11 @@ public final class ToMutableTreeSet
         final var size = collection.length;
         if (size == 0)
             return new MutableTreeSet<>();
-        return __with0Argument(size, transform);
+        return new MutableTreeSet<>(_orderedUniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T> @Unmodifiable TreeSet<T> __withNoDuplicate(final CollectionHolder<? extends T> collection,
-                                                                  final int size) {
-        return new MutableTreeSet<>(_uniqueValues(collection, size));
-    }
-
-
-    private static <T> @Unmodifiable TreeSet<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                  final int size) {
-        return new MutableTreeSet<>(_values(collection, size));
-    }
-
-    private static <T> @Unmodifiable TreeSet<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                  final int size) {
-        return new MutableTreeSet<>(_values(collection, size));
-    }
-
-
-    private static <U> @Unmodifiable TreeSet<U> __with0Argument(final int size,
-                                                                final Supplier<? extends U> transform) {
-        return new MutableTreeSet<>(_uniqueValues(size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final int size,
-                                                                                            final Function<? super T, ? extends U> transform) {
-        return new MutableTreeSet<>(_uniqueValues(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                            final int size,
-                                                                                            final Function<? super T, ? extends U> transform) {
-        return new MutableTreeSet<>(_uniqueValues(collection, size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection, int size,
-                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
-        return new MutableTreeSet<>(_uniqueValues(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> __with2Argument(final T @Unmodifiable [] collection, int size,
-                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
-        return new MutableTreeSet<>(_uniqueValues(collection, size, transform));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
