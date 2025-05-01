@@ -40,7 +40,7 @@ public final class ToLinkedHashSet
         final var size = collection.size();
         if (size == 0)
             return emptyLinkedHashSet();
-        return __withNoTransform(collection, size);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [LinkedHashSet]
@@ -54,8 +54,8 @@ public final class ToLinkedHashSet
         if (collection.isEmpty())
             return emptyLinkedHashSet();
         if (collection.hasDuplicate())
-            return __withNoDuplicate(collection, collection.size());
-        return __withNoTransform(collection, collection.size());
+            return new ImmutableLinkedHashSet<>(_values(collection, collection.size()));
+        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [LinkedHashSet]
@@ -70,7 +70,7 @@ public final class ToLinkedHashSet
         final var size = collection.length;
         if (size == 0)
             return emptyLinkedHashSet();
-        return __withNoTransform(collection, size);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -92,7 +92,7 @@ public final class ToLinkedHashSet
         final var size = collection.size();
         if (size == 0)
             return emptyLinkedHashSet();
-        return __with2Argument(collection, size, transform);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [LinkedHashSet]
@@ -109,7 +109,7 @@ public final class ToLinkedHashSet
             return emptyLinkedHashSet();
         if (collection.isEmpty())
             return emptyLinkedHashSet();
-        return __with2Argument(collection, collection.size(), transform);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [LinkedHashSet]
@@ -128,7 +128,7 @@ public final class ToLinkedHashSet
         final var size = collection.length;
         if (size == 0)
             return emptyLinkedHashSet();
-        return __with2Argument(collection, size, transform);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -150,7 +150,7 @@ public final class ToLinkedHashSet
         final var size = collection.size();
         if (size == 0)
             return emptyLinkedHashSet();
-        return __with1Argument(collection, size, transform);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [LinkedHashSet]
@@ -167,7 +167,7 @@ public final class ToLinkedHashSet
             return emptyLinkedHashSet();
         if (collection.isEmpty())
             return emptyLinkedHashSet();
-        return __with1Argument(collection, collection.size(), transform);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [LinkedHashSet]
@@ -186,7 +186,7 @@ public final class ToLinkedHashSet
         final var size = collection.length;
         if (size == 0)
             return emptyLinkedHashSet();
-        return __with1Argument(collection, size, transform);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -208,7 +208,7 @@ public final class ToLinkedHashSet
         final var size = collection.size();
         if (size == 0)
             return emptyLinkedHashSet();
-        return __with0Argument(size, transform);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [LinkedHashSet]
@@ -225,7 +225,7 @@ public final class ToLinkedHashSet
             return emptyLinkedHashSet();
         if (collection.isEmpty())
             return emptyLinkedHashSet();
-        return __with0Argument(collection.size(), transform);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [LinkedHashSet]
@@ -244,62 +244,11 @@ public final class ToLinkedHashSet
         final var size = collection.length;
         if (size == 0)
             return emptyLinkedHashSet();
-        return __with0Argument(size, transform);
+        return new ImmutableLinkedHashSet<>(_uniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T extends @Nullable Object> @Unmodifiable LinkedHashSet<T> __withNoDuplicate(final CollectionHolder<? extends T> collection,
-                                                                                                 final int size) {
-        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size));
-    }
-
-
-    private static <T extends @Nullable Object> @Unmodifiable LinkedHashSet<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                 final int size) {
-        return new ImmutableLinkedHashSet<>(_values(collection, size));
-    }
-
-    private static <T extends @Nullable Object> @Unmodifiable LinkedHashSet<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                                                 final int size) {
-        return new ImmutableLinkedHashSet<>(_values(collection, size));
-    }
-
-
-    private static <U extends @Nullable Object> @Unmodifiable LinkedHashSet<U> __with0Argument(final int size,
-                                                                                               final Supplier<? extends U> transform) {
-        return new ImmutableLinkedHashSet<>(_uniqueValues(size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedHashSet<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                           final int size,
-                                                                                                                           final Function<? super T, ? extends U> transform) {
-        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedHashSet<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                                                           final int size,
-                                                                                                                           final Function<? super T, ? extends U> transform) {
-        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedHashSet<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                           final int size,
-                                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
-        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedHashSet<U> __with2Argument(final T @Unmodifiable [] collection,
-                                                                                                                           final int size,
-                                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
-        return new ImmutableLinkedHashSet<>(_uniqueValues(collection, size, transform));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
