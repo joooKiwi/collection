@@ -10,7 +10,6 @@ import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.exception.NullCollectionException;
-import joookiwi.collection.java.extended.ArrayAsCollection;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -48,7 +47,7 @@ public final class ToMutableEnumSet
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __withNoTransform(collection, size);
+        return __new(_uniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -65,8 +64,8 @@ public final class ToMutableEnumSet
         if (collection.isEmpty())
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
         if (collection.hasDuplicate())
-            return __withNoDuplicate(collection, collection.size());
-        return __withNoTransform(collection, collection.size());
+            return __new(_values(collection, collection.size()));
+        return __new(_uniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -84,7 +83,7 @@ public final class ToMutableEnumSet
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __withNoTransform(collection, size);
+        return __new(_uniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -109,7 +108,7 @@ public final class ToMutableEnumSet
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __with2Argument(collection, size, transform);
+        return __new(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -129,7 +128,7 @@ public final class ToMutableEnumSet
             throw new NullCollectionException(NullCollectionException.DEFAULT_CONVERSION_MESSAGE);
         if (collection.isEmpty())
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __with2Argument(collection, collection.size(), transform);
+        return __new(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -151,7 +150,7 @@ public final class ToMutableEnumSet
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __with2Argument(collection, size, transform);
+        return __new(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -176,7 +175,7 @@ public final class ToMutableEnumSet
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __with1Argument(collection, size, transform);
+        return __new(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -196,7 +195,7 @@ public final class ToMutableEnumSet
             throw new NullCollectionException(NullCollectionException.DEFAULT_CONVERSION_MESSAGE);
         if (collection.isEmpty())
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __with1Argument(collection, collection.size(), transform);
+        return __new(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -218,7 +217,7 @@ public final class ToMutableEnumSet
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __with1Argument(collection, size, transform);
+        return __new(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -243,7 +242,7 @@ public final class ToMutableEnumSet
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __with0Argument(size, transform);
+        return __new(_uniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -263,7 +262,7 @@ public final class ToMutableEnumSet
             throw new NullCollectionException(NullCollectionException.DEFAULT_CONVERSION_MESSAGE);
         if (collection.isEmpty())
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __with0Argument(collection.size(), transform);
+        return __new(_uniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -285,7 +284,7 @@ public final class ToMutableEnumSet
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException(EmptyCollectionException.DEFAULT_CONVERSION_MESSAGE);
-        return __with0Argument(size, transform);
+        return __new(_uniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
@@ -307,7 +306,7 @@ public final class ToMutableEnumSet
         final var size = collection.size();
         if (size == 0)
             return __empty(clazz);
-        return __withNoTransform(collection, size);
+        return __new(_uniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -324,8 +323,8 @@ public final class ToMutableEnumSet
         if (collection.isEmpty())
             return __empty(clazz);
         if (collection.hasDuplicate())
-            return __withNoDuplicate(collection, collection.size());
-        return __withNoTransform(collection, collection.size());
+            return __new(_values(collection, collection.size()));
+        return __new(_uniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -343,7 +342,7 @@ public final class ToMutableEnumSet
         final var size = collection.length;
         if (size == 0)
             return __empty(clazz);
-        return __withNoTransform(collection, size);
+        return __new(_uniqueValues(collection, size));
     }
 
     //#endregion -------------------- Class<T> --------------------
@@ -368,7 +367,7 @@ public final class ToMutableEnumSet
         final var size = collection.size();
         if (size == 0)
             return __empty(clazz);
-        return __with2Argument(collection, size, transform);
+        return __new(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -388,7 +387,7 @@ public final class ToMutableEnumSet
             return __empty(clazz);
         if (collection.isEmpty())
             return __empty(clazz);
-        return __with2Argument(collection, collection.size(), transform);
+        return __new(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -410,7 +409,7 @@ public final class ToMutableEnumSet
         final var size = collection.length;
         if (size == 0)
             return __empty(clazz);
-        return __with2Argument(collection, size, transform);
+        return __new(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- Class<U>, (T, int) → U --------------------
@@ -435,7 +434,7 @@ public final class ToMutableEnumSet
         final var size = collection.size();
         if (size == 0)
             return __empty(clazz);
-        return __with1Argument(collection, size, transform);
+        return __new(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -455,7 +454,7 @@ public final class ToMutableEnumSet
             return __empty(clazz);
         if (collection.isEmpty())
             return __empty(clazz);
-        return __with1Argument(collection, collection.size(), transform);
+        return __new(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -477,7 +476,7 @@ public final class ToMutableEnumSet
         final var size = collection.length;
         if (size == 0)
             return __empty(clazz);
-        return __with1Argument(collection, size, transform);
+        return __new(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- Class<U>, (T) → U --------------------
@@ -502,7 +501,7 @@ public final class ToMutableEnumSet
         final var size = collection.size();
         if (size == 0)
             return __empty(clazz);
-        return __with0Argument(size, transform);
+        return __new(_uniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -522,7 +521,7 @@ public final class ToMutableEnumSet
             return __empty(clazz);
         if (collection.isEmpty())
             return __empty(clazz);
-        return __with0Argument(collection.size(), transform);
+        return __new(_uniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
@@ -544,65 +543,29 @@ public final class ToMutableEnumSet
         final var size = collection.length;
         if (size == 0)
             return __empty(clazz);
-        return __with0Argument(size, transform);
+        return __new(_uniqueValues(size, transform));
     }
 
     //#endregion -------------------- Class<U>, () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
+    //#region -------------------- Adaptor methods --------------------
 
-    private static <T extends Enum<T>> EnumSet<T> __empty(final Class<T> clazz) {
-        return EnumSet.noneOf(clazz);
+    private static <T extends Enum<T>> EnumSet<T> __empty(final Class<T> clazz) { return EnumSet.noneOf(clazz); }
+
+    private static <T extends Enum<T>> EnumSet<T> __new(final T @Unmodifiable [] values) {
+        //This method is similar to EnumSet.copyOf(Collection<T>) or EnumSet.of(T, T[])
+        final var firstValue = values[0];
+        final var instance = EnumSet.noneOf(firstValue.getDeclaringClass());
+        instance.add(firstValue);
+
+        final var size = values.length;
+        var index = 0;
+        while (++index < size)
+            instance.add(values[index]);
+        return instance;
     }
 
-
-    private static <T extends Enum<T>> EnumSet<T> __withNoDuplicate(final CollectionHolder<? extends T> collection,
-                                                                    final int size) {
-        return EnumSet.copyOf(new ArrayAsCollection<>(_uniqueValues(collection, size)));
-    }
-
-
-    private static <T extends Enum<T>> EnumSet<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                    final int size) {
-        return EnumSet.copyOf(new ArrayAsCollection<>(_values(collection, size)));
-    }
-
-    private static <T extends Enum<T>> EnumSet<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                    final int size) {
-        return EnumSet.copyOf(new ArrayAsCollection<>(_values(collection, size)));
-    }
-
-
-    private static <U extends Enum<U>> EnumSet<U> __with0Argument(final int size,
-                                                                  final Supplier<? extends U> transform) {
-        return EnumSet.copyOf(new ArrayAsCollection<>(_uniqueValues(size, transform)));
-    }
-
-
-    private static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                              final int size,
-                                                                                              final Function<? super T, ? extends U> transform) {
-        return EnumSet.copyOf(new ArrayAsCollection<>(_uniqueValues(collection, size, transform)));
-    }
-
-    private static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                              final int size,
-                                                                                              final Function<? super T, ? extends U> transform) {
-        return EnumSet.copyOf(new ArrayAsCollection<>(_uniqueValues(collection, size, transform)));
-    }
-
-
-    private static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection, int size,
-                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
-        return EnumSet.copyOf(new ArrayAsCollection<>(_uniqueValues(collection, size, transform)));
-    }
-
-    private static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> __with2Argument(final T @Unmodifiable [] collection, int size,
-                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
-        return EnumSet.copyOf(new ArrayAsCollection<>(_uniqueValues(collection, size, transform)));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
+    //#endregion -------------------- Adaptor methods --------------------
 
 }
