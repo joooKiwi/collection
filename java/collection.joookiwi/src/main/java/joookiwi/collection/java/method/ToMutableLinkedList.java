@@ -1,8 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.LinkedList;
-import java.util.function.Function;
-import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -14,6 +11,10 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import java.util.LinkedList;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
@@ -23,7 +24,9 @@ public final class ToMutableLinkedList
         extends UtilityWithTable {
 
     @Contract(ALWAYS_FAIL_0)
-    private ToMutableLinkedList() { throw new ImpossibleConstructionException("The utility class “ToMutableLinkedList” cannot be constructed.", ToMutableLinkedList.class); }
+    private ToMutableLinkedList() {
+        throw new ImpossibleConstructionException("The utility class “ToMutableLinkedList” cannot be constructed.", ToMutableLinkedList.class);
+    }
 
     //#region -------------------- Facade methods --------------------
 
@@ -42,7 +45,7 @@ public final class ToMutableLinkedList
         final var size = collection.size();
         if (size == 0)
             return new MutableLinkedList<>();
-        return __withNoTransform(collection, size);
+        return new MutableLinkedList<>(_values(collection, size));
     }
 
     /// Convert the `collection` to a new mutable [LinkedList]
@@ -56,7 +59,7 @@ public final class ToMutableLinkedList
             return new MutableLinkedList<>();
         if (collection.isEmpty())
             return new MutableLinkedList<>();
-        return __withNoTransform(collection, collection.size());
+        return new MutableLinkedList<>(_values(collection, collection.size()));
     }
 
     /// Convert the `collection` to a new mutable [LinkedList]
@@ -72,7 +75,7 @@ public final class ToMutableLinkedList
         final var size = collection.length;
         if (size == 0)
             return new MutableLinkedList<>();
-        return __withNoTransform(collection, size);
+        return new MutableLinkedList<>(_values(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -95,7 +98,7 @@ public final class ToMutableLinkedList
         final var size = collection.size();
         if (size == 0)
             return new MutableLinkedList<>();
-        return __with2Argument(collection, size, transform);
+        return new MutableLinkedList<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to a new mutable [LinkedList]
@@ -113,7 +116,7 @@ public final class ToMutableLinkedList
             return new MutableLinkedList<>();
         if (collection.isEmpty())
             return new MutableLinkedList<>();
-        return __with2Argument(collection, collection.size(), transform);
+        return new MutableLinkedList<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to a new mutable [LinkedList]
@@ -133,7 +136,7 @@ public final class ToMutableLinkedList
         final var size = collection.length;
         if (size == 0)
             return new MutableLinkedList<>();
-        return __with2Argument(collection, size, transform);
+        return new MutableLinkedList<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -156,7 +159,7 @@ public final class ToMutableLinkedList
         final var size = collection.size();
         if (size == 0)
             return new MutableLinkedList<>();
-        return __with1Argument(collection, size, transform);
+        return new MutableLinkedList<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to a new mutable [LinkedList]
@@ -174,7 +177,7 @@ public final class ToMutableLinkedList
             return new MutableLinkedList<>();
         if (collection.isEmpty())
             return new MutableLinkedList<>();
-        return __with1Argument(collection, collection.size(), transform);
+        return new MutableLinkedList<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to a new mutable [LinkedList]
@@ -194,7 +197,7 @@ public final class ToMutableLinkedList
         final var size = collection.length;
         if (size == 0)
             return new MutableLinkedList<>();
-        return __with1Argument(collection, size, transform);
+        return new MutableLinkedList<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -217,7 +220,7 @@ public final class ToMutableLinkedList
         final var size = collection.size();
         if (size == 0)
             return new MutableLinkedList<>();
-        return __with0Argument(size, transform);
+        return new MutableLinkedList<>(_values(size, transform));
     }
 
     /// Convert the `collection` to a new mutable [LinkedList]
@@ -235,7 +238,7 @@ public final class ToMutableLinkedList
             return new MutableLinkedList<>();
         if (collection.isEmpty())
             return new MutableLinkedList<>();
-        return __with0Argument(collection.size(), transform);
+        return new MutableLinkedList<>(_values(collection.size(), transform));
     }
 
     /// Convert the `collection` to a new mutable [LinkedList]
@@ -255,56 +258,11 @@ public final class ToMutableLinkedList
         final var size = collection.length;
         if (size == 0)
             return new MutableLinkedList<>();
-        return __with0Argument(size, transform);
+        return new MutableLinkedList<>(_values(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T extends @Nullable Object> LinkedList<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                final int size) {
-        return new MutableLinkedList<>(_values(collection, size));
-    }
-
-    private static <T extends @Nullable Object> LinkedList<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                                final int size) {
-        return new MutableLinkedList<>(_values(collection, size));
-    }
-
-
-    private static <U extends @Nullable Object> LinkedList<U> __with0Argument(final int size,
-                                                                              final Supplier<? extends U> transform) {
-        return new MutableLinkedList<>(_values(size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> LinkedList<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                          final int size,
-                                                                                                          final Function<? super T, ? extends U> transform) {
-        return new MutableLinkedList<>(_values(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> LinkedList<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                                          final int size,
-                                                                                                          final Function<? super T, ? extends U> transform) {
-        return new MutableLinkedList<>(_values(collection, size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> LinkedList<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                          final int size,
-                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
-        return new MutableLinkedList<>(_values(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> LinkedList<U> __with2Argument(final T @Unmodifiable [] collection,
-                                                                                                          final int size,
-                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
-        return new MutableLinkedList<>(_values(collection, size, transform));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
