@@ -40,7 +40,7 @@ public final class ToSortedSet
         final var size = collection.size();
         if (size == 0)
             return emptySortedSet();
-        return __withNoTransform(collection, size);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -54,8 +54,8 @@ public final class ToSortedSet
         if (collection.isEmpty())
             return emptySortedSet();
         if (collection.hasDuplicate())
-            return __withNoDuplicate(collection, collection.size());
-        return __withNoTransform(collection, collection.size());
+            return new ArrayAsSortedSet<>(_orderedValues(collection, collection.size()));
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -70,7 +70,7 @@ public final class ToSortedSet
         final var size = collection.length;
         if (size == 0)
             return emptySortedSet();
-        return __withNoTransform(collection, size);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -92,7 +92,7 @@ public final class ToSortedSet
         final var size = collection.size();
         if (size == 0)
             return emptySortedSet();
-        return __with2Argument(collection, size, transform);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -109,7 +109,7 @@ public final class ToSortedSet
             return emptySortedSet();
         if (collection.isEmpty())
             return emptySortedSet();
-        return __with2Argument(collection, collection.size(), transform);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -128,7 +128,7 @@ public final class ToSortedSet
         final var size = collection.length;
         if (size == 0)
             return emptySortedSet();
-        return __with2Argument(collection, size, transform);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -150,7 +150,7 @@ public final class ToSortedSet
         final var size = collection.size();
         if (size == 0)
             return emptySortedSet();
-        return __with1Argument(collection, size, transform);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -167,7 +167,7 @@ public final class ToSortedSet
             return emptySortedSet();
         if (collection.isEmpty())
             return emptySortedSet();
-        return __with1Argument(collection, collection.size(), transform);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -186,7 +186,7 @@ public final class ToSortedSet
         final var size = collection.length;
         if (size == 0)
             return emptySortedSet();
-        return __with1Argument(collection, size, transform);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -208,7 +208,7 @@ public final class ToSortedSet
         final var size = collection.size();
         if (size == 0)
             return emptySortedSet();
-        return __with0Argument(size, transform);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -225,7 +225,7 @@ public final class ToSortedSet
             return emptySortedSet();
         if (collection.isEmpty())
             return emptySortedSet();
-        return __with0Argument(collection.size(), transform);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -244,62 +244,11 @@ public final class ToSortedSet
         final var size = collection.length;
         if (size == 0)
             return emptySortedSet();
-        return __with0Argument(size, transform);
+        return new ArrayAsSortedSet<>(_orderedUniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T extends @Nullable Object> @Unmodifiable SortedSet<T> __withNoDuplicate(final CollectionHolder<? extends T> collection,
-                                                                                             final int size) {
-        return new ArrayAsSortedSet<>(_orderedValues(collection, size));
-    }
-
-
-    private static <T extends @Nullable Object> @Unmodifiable SortedSet<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                             final int size) {
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size));
-    }
-
-    private static <T extends @Nullable Object> @Unmodifiable SortedSet<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                                             final int size) {
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size));
-    }
-
-
-    private static <U extends @Nullable Object> @Unmodifiable SortedSet<U> __with0Argument(final int size,
-                                                                                           final Supplier<? extends U> transform) {
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                       final int size,
-                                                                                                                       final Function<? super T, ? extends U> transform) {
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                                                       final int size,
-                                                                                                                       final Function<? super T, ? extends U> transform) {
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                       final int size,
-                                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> __with2Argument(final T @Unmodifiable [] collection,
-                                                                                                                       final int size,
-                                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
