@@ -45,7 +45,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(collection, size));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size));
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -60,8 +60,8 @@ public final class ToMutableConcurrentSkipListSet
         if (collection.isEmpty())
             return new MutableConcurrentSkipListSet<>();
         if (collection.hasDuplicate())
-            return new MutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size()));
-        return new MutableConcurrentSkipListSet<>(_values(collection, collection.size()));
+            return new MutableConcurrentSkipListSet<>(_orderedValues(collection, collection.size()));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -77,7 +77,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(collection, size));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -100,7 +100,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(collection, size, transform));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -118,7 +118,7 @@ public final class ToMutableConcurrentSkipListSet
             return new MutableConcurrentSkipListSet<>();
         if (collection.isEmpty())
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(collection, collection.size(), transform));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -138,7 +138,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(collection, size, transform));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -161,7 +161,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(collection, size, transform));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -179,7 +179,7 @@ public final class ToMutableConcurrentSkipListSet
             return new MutableConcurrentSkipListSet<>();
         if (collection.isEmpty())
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(collection, collection.size(), transform));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -199,7 +199,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(collection, size, transform));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -222,7 +222,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(size, transform));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(size, transform));
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -240,7 +240,7 @@ public final class ToMutableConcurrentSkipListSet
             return new MutableConcurrentSkipListSet<>();
         if (collection.isEmpty())
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(collection.size(), transform));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -260,7 +260,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>();
-        return new MutableConcurrentSkipListSet<>(_values(size, transform));
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
@@ -282,7 +282,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(collection, size), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size), comparator);
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -299,8 +299,8 @@ public final class ToMutableConcurrentSkipListSet
         if (collection.isEmpty())
             return new MutableConcurrentSkipListSet<>(comparator);
         if (collection.hasDuplicate())
-            return new MutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size()), comparator);
-        return new MutableConcurrentSkipListSet<>(_values(collection, collection.size()), comparator);
+            return new MutableConcurrentSkipListSet<>(_orderedValues(collection, collection.size()), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, collection.size()), comparator);
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -318,7 +318,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(collection, size), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size), comparator);
     }
 
     //#endregion -------------------- comparator --------------------
@@ -343,7 +343,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(collection, size, transform), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size, transform), comparator);
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -363,7 +363,7 @@ public final class ToMutableConcurrentSkipListSet
             return new MutableConcurrentSkipListSet<>(comparator);
         if (collection.isEmpty())
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(collection, collection.size(), transform), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, collection.size(), transform), comparator);
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -385,7 +385,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(collection, size, transform), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size, transform), comparator);
     }
 
     //#endregion -------------------- comparator, (T, int) → U --------------------
@@ -410,7 +410,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(collection, size, transform), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size, transform), comparator);
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -430,7 +430,7 @@ public final class ToMutableConcurrentSkipListSet
             return new MutableConcurrentSkipListSet<>(comparator);
         if (collection.isEmpty())
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(collection, collection.size(), transform), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, collection.size(), transform), comparator);
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -452,7 +452,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(collection, size, transform), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection, size, transform), comparator);
     }
 
     //#endregion -------------------- comparator, (T) → U --------------------
@@ -477,7 +477,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.size();
         if (size == 0)
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(size, transform), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(size, transform), comparator);
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -497,7 +497,7 @@ public final class ToMutableConcurrentSkipListSet
             return new MutableConcurrentSkipListSet<>(comparator);
         if (collection.isEmpty())
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(collection.size(), transform), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(collection.size(), transform), comparator);
     }
 
     /// Convert the `collection` to a new mutable [ConcurrentSkipListSet]
@@ -519,7 +519,7 @@ public final class ToMutableConcurrentSkipListSet
         final var size = collection.length;
         if (size == 0)
             return new MutableConcurrentSkipListSet<>(comparator);
-        return new MutableConcurrentSkipListSet<>(_values(size, transform), comparator);
+        return new MutableConcurrentSkipListSet<>(_orderedUniqueValues(size, transform), comparator);
     }
 
     //#endregion -------------------- comparator, () → U --------------------
